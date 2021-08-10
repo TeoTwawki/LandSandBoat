@@ -3288,33 +3288,33 @@ namespace charutils
      ************************************************************************/
     EMobDifficulty CheckMob(uint8 charlvl, uint8 moblvl)
     {
-        uint32 baseExp = GetRealExp(charlvl, moblvl);
+        uint32 baseExp = GetBaseExp(charlvl, moblvl);
 
         if (baseExp >= 400)
         {
             return EMobDifficulty::IncrediblyTough;
         }
-        if (baseExp >= 350)
+        else if (baseExp >= 350)
         {
             return EMobDifficulty::VeryTough;
         }
-        if (baseExp >= 220)
+        else if (baseExp >= 220)
         {
             return EMobDifficulty::Tough;
         }
-        if (baseExp >= 200)
+        else if (baseExp >= 200)
         {
             return EMobDifficulty::EvenMatch;
         }
-        if (baseExp >= 160)
+        else if (baseExp >= 160)
         {
             return EMobDifficulty::DecentChallenge;
         }
-        if (baseExp >= 60)
+        else if (baseExp >= 60)
         {
             return EMobDifficulty::EasyPrey;
         }
-        if (baseExp >= 14)
+        else if (baseExp >= 1 && moblvl > 55)
         {
             return EMobDifficulty::IncrediblyEasyPrey;
         }
@@ -3324,17 +3324,19 @@ namespace charutils
 
     /************************************************************************
      *                                                                       *
-     *  Узнаем реальное количество опыта, который персонаж получит с цели    *
+     *  Unmodified EXP that the character will receive from the target       *
      *                                                                       *
      ************************************************************************/
 
-    uint32 GetRealExp(uint8 charlvl, uint8 moblvl)
+    uint32 GetBaseExp(uint8 charlvl, uint8 moblvl)
     {
         const int32 levelDif = moblvl - charlvl + 44;
 
-        if ((charlvl > 0) && (charlvl < 100))
+        if (charlvl > 0 && charlvl < 100)
         {
-            return g_ExpTable[std::clamp(levelDif, 0, ExpTableRowCount - 1)][(charlvl - 1) / 5];
+            auto test = g_ExpTable[std::clamp(levelDif, 0, ExpTableRowCount - 1)][(charlvl - 1) / 5];
+            //ShowDebug("GetBaseExp: %d [levelDif: %d (charlvl %d / moblvl %d)]\n", test, levelDif, charlvl, moblvl);
+            return test;
         }
 
         return 0;
@@ -3348,7 +3350,7 @@ namespace charutils
 
     uint32 GetExpNEXTLevel(uint8 charlvl)
     {
-        if ((charlvl > 0) && (charlvl < 100))
+        if (charlvl > 0 && charlvl < 100)
         {
             return g_ExpPerLevel[charlvl];
         }
@@ -3509,7 +3511,7 @@ namespace charutils
             const uint8 memberlevel = PMember->GetMLevel();
 
             EMobDifficulty mobCheck = CheckMob(maxlevel, moblevel);
-            float          exp      = (float)GetRealExp(maxlevel, moblevel);
+            float          exp      = (float)GetBaseExp(maxlevel, moblevel);
 
             if (mobCheck > EMobDifficulty::TooWeak)
             {

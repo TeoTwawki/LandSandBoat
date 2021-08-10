@@ -3684,7 +3684,7 @@ auto CLuaBaseEntity::addSoulPlate(std::string const& name, uint16 mobFamily, uin
         PChar->pushPacket(new CInventoryFinishPacket());
 
         // Used Soul Plate
-        CItem* PItem = itemutils::GetItem(2477); 
+        CItem* PItem = itemutils::GetItem(2477);
         PItem->setQuantity(1);
         PItem->setSoulPlateData(name, mobFamily, zeni, skillIndex, fp);
         auto SlotID = charutils::AddItem(PChar, LOC_INVENTORY, PItem, true);
@@ -12976,6 +12976,26 @@ uint32 CLuaBaseEntity::getHistory(uint8 index)
 }
 
 //==========================================================//
+uint32 CLuaBaseEntity::getBaseXP()
+{
+    XI_DEBUG_BREAK_IF(m_PBaseEntity->objtype != TYPE_PC);
+
+    auto* PChar = dynamic_cast<CCharEntity*>(m_PBaseEntity);
+    auto* PMob = static_cast<CMobEntity*>(PChar->GetEntity(PChar->m_TargID));
+    uint8 charLV = PChar->GetMLevel();
+
+    if (PMob && charLV > 0 && charLV < 100)
+    {
+        uint8 mobLV = PMob->GetMLevel();
+        const int32 levelDif = mobLV - charLV + 44;
+        uint32 exp = charutils::GetBaseExp(charLV, mobLV);
+        ShowDebug("GetBaseExp: %d [levelDif: %d (charLV %d / mobLV %d)]\n", exp, levelDif, charLV, mobLV);
+        return exp;
+    }
+    return 0;
+}
+
+//==========================================================//
 
 void CLuaBaseEntity::Register()
 {
@@ -13690,6 +13710,7 @@ void CLuaBaseEntity::Register()
     SOL_REGISTER("updateToEntireZone", CLuaBaseEntity::updateToEntireZone);
 
     SOL_REGISTER("getHistory", CLuaBaseEntity::getHistory);
+    SOL_REGISTER("getBaseXP", CLuaBaseEntity::getBaseXP);
 }
 
 

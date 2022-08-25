@@ -1564,7 +1564,7 @@ INSERT INTO `item_latents` VALUES (15318,68,2,31,0);
 -- -------------------------------------------------------
 -- Caitiff's Socks
 -- -------------------------------------------------------
--- INSERT INTO `item_latents` VALUES (15324,???,1,2,25); -- Flee when HP <25% and TP <100%
+-- INSERT INTO `item_latents` VALUES (15324,???,1,2,25); -- Flee when HP <25% and TP <100% ("flee spikes" basically)
 
 INSERT INTO `item_latents` VALUES (15328,370,2,13,11);
 
@@ -1651,12 +1651,12 @@ INSERT INTO `item_latents` VALUES (15532,370,1,56,2);    -- Latent Effect is tri
 -- -------------------------------------------------------
 -- Rajas Ring
 -- -------------------------------------------------------
-INSERT INTO `item_latents` VALUES (15543,8,1,51,45);     -- INT+1 above level 45
-INSERT INTO `item_latents` VALUES (15543,8,1,51,60);     -- INT+1 above level 60
-INSERT INTO `item_latents` VALUES (15543,8,1,51,75);     -- INT+1 above level 75
-INSERT INTO `item_latents` VALUES (15543,9,1,51,45);     -- MND+1 above level 45
-INSERT INTO `item_latents` VALUES (15543,9,1,51,60);     -- MND+1 above level 60
-INSERT INTO `item_latents` VALUES (15543,9,1,51,75);     -- MND+1 above level 75
+INSERT INTO `item_latents` VALUES (15543,8,1,51,45);     -- STR+1 above level 45
+INSERT INTO `item_latents` VALUES (15543,8,1,51,60);     -- STR+1 above level 60
+INSERT INTO `item_latents` VALUES (15543,8,1,51,75);     -- STR+1 above level 75 (2+1+1+1=5)
+INSERT INTO `item_latents` VALUES (15543,9,1,51,45);     -- DEX+1 above level 45
+INSERT INTO `item_latents` VALUES (15543,9,1,51,60);     -- DEX+1 above level 60
+INSERT INTO `item_latents` VALUES (15543,9,1,51,75);     -- DEX+1 above level 75 (2+1+1+1=5)
 
 -- -------------------------------------------------------
 -- Tamas Ring
@@ -1664,12 +1664,12 @@ INSERT INTO `item_latents` VALUES (15543,9,1,51,75);     -- MND+1 above level 75
 INSERT INTO `item_latents` VALUES (15544,2,5,51,45);     -- MP+5 above level 45
 INSERT INTO `item_latents` VALUES (15544,2,5,51,60);     -- MP+5 above level 60
 INSERT INTO `item_latents` VALUES (15544,2,5,51,75);     -- MP+5 above level 75
-INSERT INTO `item_latents` VALUES (15544,10,1,51,45);    -- INT+1 above level 45
-INSERT INTO `item_latents` VALUES (15544,10,1,51,60);    -- INT+1 above level 60
-INSERT INTO `item_latents` VALUES (15544,10,1,51,75);    -- INT+1 above level 75
-INSERT INTO `item_latents` VALUES (15544,11,1,51,45);    -- MND+1 above level 45
-INSERT INTO `item_latents` VALUES (15544,11,1,51,60);    -- MND+1 above level 60
-INSERT INTO `item_latents` VALUES (15544,11,1,51,75);    -- MND+1 above level 75
+INSERT INTO `item_latents` VALUES (15544,10,1,51,45);    -- VIT+1 above level 45
+INSERT INTO `item_latents` VALUES (15544,10,1,51,60);    -- VIT+1 above level 60
+INSERT INTO `item_latents` VALUES (15544,10,1,51,75);    -- VIT+1 above level 75 (2+1+1+1=5)
+INSERT INTO `item_latents` VALUES (15544,11,1,51,45);    -- AGI+1 above level 45
+INSERT INTO `item_latents` VALUES (15544,11,1,51,60);    -- AGI+1 above level 60
+INSERT INTO `item_latents` VALUES (15544,11,1,51,75);    -- AGI+1 above level 75 (2+1+1+1=5)
 
 -- -------------------------------------------------------
 -- Sattva Ring
@@ -1679,10 +1679,10 @@ INSERT INTO `item_latents` VALUES (15545,5,5,51,60);     -- MP+5 above level 60
 INSERT INTO `item_latents` VALUES (15545,5,5,51,75);     -- MP+5 above level 75
 INSERT INTO `item_latents` VALUES (15545,12,1,51,45);    -- INT+1 above level 45
 INSERT INTO `item_latents` VALUES (15545,12,1,51,60);    -- INT+1 above level 60
-INSERT INTO `item_latents` VALUES (15545,12,1,51,75);    -- INT+1 above level 75
+INSERT INTO `item_latents` VALUES (15545,12,1,51,75);    -- INT+1 above level 75 (2+1+1+1=5)
 INSERT INTO `item_latents` VALUES (15545,13,1,51,45);    -- MND+1 above level 45
 INSERT INTO `item_latents` VALUES (15545,13,1,51,60);    -- MND+1 above level 60
-INSERT INTO `item_latents` VALUES (15545,13,1,51,75);    -- MND+1 above level 75
+INSERT INTO `item_latents` VALUES (15545,13,1,51,75);    -- MND+1 above level 75 (2+1+1+1=5)
 
 -- -------------------------------------------------------
 -- Diabolos's Ring
@@ -2269,6 +2269,22 @@ INSERT INTO `item_latents` VALUES (17592,171,83,49,4596); -- (wild pamamas)
 -- -------------------------------------------------------
 INSERT INTO `item_latents` VALUES (17599,315,25,52,8);   -- +25% drain/aspir potency in Dark weather
 
+-- -------------------------------------------------------
+-- Chicken Knife
+-- Flee is special and has no ITEM_SUBEFFECT
+-- -------------------------------------------------------
+INSERT INTO `item_latents` VALUES (17615,431,11,62,4);  -- Even Match or above : ITEM_ADDEFFECT_TYPE     11  (SELF_BUFF)
+INSERT INTO `item_latents` VALUES (17615,501,5,62,7);   -- IT or above         : ITEM_ADDEFFECT_CHANCE   15% (3+3+4+5)
+INSERT INTO `item_latents` VALUES (17615,501,4,62,6);   -- Very Tough or above : ITEM_ADDEFFECT_CHANCE   10% (3+3+4)
+-- INSERT INTO `item_latents` VALUES (17615,501,3,62,5);   -- Tough or above      : ITEM_ADDEFFECT_CHANCE   6%  (3+3)
+-- INSERT INTO `item_latents` VALUES (17615,501,3,62,4);   -- Even Match or above : ITEM_ADDEFFECT_CHANCE   3%
+INSERT INTO `item_latents` VALUES (17615,951,32,62,4);  -- Even Match or above : ITEM_ADDEFFECT_STATUS   32  (Flee)
+INSERT INTO `item_latents` VALUES (17615,952,100,62,4); -- Even Match or above : ITEM_ADDEFFECT_POWER    100 (Todo: adjust after we fix movement handling)
+INSERT INTO `item_latents` VALUES (17615,953,30,62,4);  -- Even Match or above : ITEM_ADDEFFECT_DURATION 30
+
+-- -------------------------------------------------------
+-- Dagger of Trials
+-- -------------------------------------------------------
 INSERT INTO `item_latents` VALUES (17616,2,-20,47,0);
 INSERT INTO `item_latents` VALUES (17616,16,-10,47,0);
 INSERT INTO `item_latents` VALUES (17616,18,-10,47,0);
@@ -2278,6 +2294,9 @@ INSERT INTO `item_latents` VALUES (17616,18,-10,47,0);
 -- -------------------------------------------------------
 INSERT INTO `item_latents` VALUES (17619,25,12,26,0);    -- Daytime: ACC +12
 
+-- -------------------------------------------------------
+-- Anubis's Knife
+-- -------------------------------------------------------
 INSERT INTO `item_latents` VALUES (17624,165,7,13,3);
 
 -- -------------------------------------------------------
@@ -3218,6 +3237,19 @@ INSERT INTO `item_latents` VALUES (19949,976,5,13,60);   -- Guard +5% if Dodge A
 INSERT INTO `item_latents` VALUES (20540,23,10,6,1000);      -- Att+10 TP<1000
 INSERT INTO `item_latents` VALUES (20540,25,15,6,1000);      -- Acc+39 (24 normal, +15 more) TP<1000
 INSERT INTO `item_latents` VALUES (20540,366,4,6,1000);      -- Dmg+4  TP<1000
+
+-- -------------------------------------------------------
+-- Shijo
+-- Flee is special and has no ITEM_SUBEFFECT
+-- -------------------------------------------------------
+INSERT INTO `item_latents` VALUES (20598,431,11,62,4);  -- Even Match or above : ITEM_ADDEFFECT_TYPE     11  (SELF_BUFF)
+INSERT INTO `item_latents` VALUES (20598,501,5,62,7);   -- IT or above         : ITEM_ADDEFFECT_CHANCE   15% (3+3+4+5)
+INSERT INTO `item_latents` VALUES (20598,501,4,62,6);   -- Very Tough or above : ITEM_ADDEFFECT_CHANCE   10% (3+3+4)
+INSERT INTO `item_latents` VALUES (20598,501,3,62,5);   -- Tough or above      : ITEM_ADDEFFECT_CHANCE   6%  (3+3)
+INSERT INTO `item_latents` VALUES (20598,501,3,62,4);   -- Even Match or above : ITEM_ADDEFFECT_CHANCE   3%
+INSERT INTO `item_latents` VALUES (20598,951,32,62,4);  -- Even Match or above : ITEM_ADDEFFECT_STATUS   32  (Flee)
+INSERT INTO `item_latents` VALUES (20598,952,100,62,4); -- Even Match or above : ITEM_ADDEFFECT_POWER    100 (Todo: adjust after we fix movement handling)
+INSERT INTO `item_latents` VALUES (20598,953,30,62,4);  -- Even Match or above : ITEM_ADDEFFECT_DURATION 30
 
 -- -------------------------------------------------------
 -- Eminent Scimitar

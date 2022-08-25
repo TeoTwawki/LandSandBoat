@@ -89,6 +89,8 @@ enum class LATENT : uint16
     VS_ECOSYSTEM          = 59, // Vs. Specific Ecosystem ID (e.g. Vs. Plantoid: Accuracy+3)
     VS_FAMILY             = 60, // Vs. Specific Family ID (e.g. Vs. Korrigan: Accuracy+3)
     VS_SUPERFAMILY        = 61, // Vs. Specific SuperFamily ID (e.g. Vs. Mandragora: Accuracy+3)
+    MOB_DIFFICULTY_MIN    = 62, // Check command says mob is at most/least this. Works on NMs. Does not work on players in PvP.
+    MOB_DIFFICULTY_MAX    = 63, // PARAM: 0 = TooWeak, 1 = IncrediblyEasyPrey, 2 = EasyPrey, 3 = DecentChallenge, 4 = EvenMatch, 5 = Tough, 6 = VeryTough, 7 = IncrediblyTough
 };
 
 #define MAX_LATENTEFFECTID 61

@@ -99,10 +99,12 @@ xi.additionalEffect.attack = function(attacker, defender, baseAttackDamage, item
     local subEffect = item:getMod(xi.mod.ITEM_SUBEFFECT)
     local damage = item:getMod(xi.mod.ITEM_ADDEFFECT_DMG)
     local chance = item:getMod(xi.mod.ITEM_ADDEFFECT_CHANCE)
+    if chance > 0 then chance = chance+50 end
     local element = item:getMod(xi.mod.ITEM_ADDEFFECT_ELEMENT)
     local addStatus = item:getMod(xi.mod.ITEM_ADDEFFECT_STATUS)
     local power = item:getMod(xi.mod.ITEM_ADDEFFECT_POWER)
     local duration = item:getMod(xi.mod.ITEM_ADDEFFECT_DURATION)
+    attacker:PrintToPlayer(string.format("addType %d / chance %d ", addType, chance))
     local msgID = 0
     local msgParam = 0
     local procType =
@@ -236,6 +238,12 @@ xi.additionalEffect.attack = function(attacker, defender, baseAttackDamage, item
             -- Todo: verify power/duration/tier/overwrite etc
             msgID = xi.msg.basic.ADD_EFFECT_SELFBUFF
             msgParam = xi.effect.HASTE
+        elseif addStatus == xi.effect.FLEE then
+            if not (attacker:hasStatusEffect(xi.effect.FLEE)) then
+                attacker:addStatusEffect(xi.effect.FLEE, power, 0, duration, 0, 0)
+                -- Flee is special, there is no indication it proc'd other than getting the status effect
+                return 0, 0, 0
+            end
         else
             print("scripts/globals/additional_effects.lua : unhandled additional effect selfbuff! Effect ID: "..addStatus)
         end

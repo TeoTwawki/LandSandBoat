@@ -31,6 +31,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/
 #include "modifier.h"
 #include "status_effect_container.h"
 #include "utils/battleutils.h"
+#include "utils/charutils.h"
 #include "utils/zoneutils.h"
 
 #include "time_server.h"
@@ -636,6 +637,8 @@ void CLatentEffectContainer::CheckLatentsTargetChange()
     ProcessLatentEffects([this](CLatentEffect& latentEffect) {
         switch (latentEffect.GetConditionsID())
         {
+            case LATENT::MOB_DIFFICULTY_MIN:
+            case LATENT::MOB_DIFFICULTY_MAX:
             case LATENT::SIGNET_BONUS:
             case LATENT::VS_ECOSYSTEM:
             case LATENT::VS_FAMILY:
@@ -1143,6 +1146,22 @@ bool CLatentEffectContainer::ProcessLatentEffect(CLatentEffect& latentEffect)
                 }
             }
             break;
+        case LATENT::MOB_DIFFICULTY_MIN:
+        {
+            CBattleEntity* PTarget = dynamic_cast<CBattleEntity*>(m_POwner->GetBattleTarget());
+            expression =
+                PTarget && PTarget->objtype == TYPE_MOB && // Doesn't proc in PvP
+                (uint8)charutils::CheckMob(m_POwner->GetMLevel(), PTarget->GetMLevel()) >= latentEffect.GetConditionsValue();
+            break;
+        }
+        case LATENT::MOB_DIFFICULTY_MAX:
+        {
+            CBattleEntity* PTarget = dynamic_cast<CBattleEntity*>(m_POwner->GetBattleTarget());
+            expression =
+                PTarget && PTarget->objtype == TYPE_MOB && // Doesn't proc in PvP
+                (uint8)charutils::CheckMob(m_POwner->GetMLevel(), PTarget->GetMLevel()) <= latentEffect.GetConditionsValue();
+            break;
+        }
         default:
             latentFound = false;
             ShowWarning("Latent ID %d unhandled in ProcessLatentEffect", static_cast<uint16>(latentEffect.GetConditionsID()));

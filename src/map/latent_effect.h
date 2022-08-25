@@ -121,6 +121,7 @@ public:
     void SetSlot(uint8 slot);
     void SetModValue(Mod value);
     void SetModPower(int16 power);
+    bool IsAddEffect(Mod modID);
     bool Activate();
     bool Deactivate();
 

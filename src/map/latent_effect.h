@@ -89,8 +89,15 @@ enum class LATENT : uint16
     VS_ECOSYSTEM          = 59, // Vs. Specific Ecosystem ID (e.g. Vs. Plantoid: Accuracy+3)
     VS_FAMILY             = 60, // Vs. Specific Family ID (e.g. Vs. Korrigan: Accuracy+3)
     VS_SUPERFAMILY        = 61, // Vs. Specific SuperFamily ID (e.g. Vs. Mandragora: Accuracy+3)
-    MOB_DIFFICULTY_MIN    = 62, // Check command says mob is at most/least this. Works on NMs. Does not work on players in PvP.
-    MOB_DIFFICULTY_MAX    = 63, // PARAM: 0 = TooWeak, 1 = IncrediblyEasyPrey, 2 = EasyPrey, 3 = DecentChallenge, 4 = EvenMatch, 5 = Tough, 6 = VeryTough, 7 = IncrediblyTough
+    CHECKS_NM             = 62, // Notorious Monster,        PARAM: 0 = Checks as, 1 = doesn't check as
+    CHECKS_IT             = 63, // Incredibly Tough,         PARAM: 0 = Checks as, 1 = doesn't check as
+    CHECKS_VT             = 64, // Very Tough,               PARAM: 0 = Checks as, 1 = doesn't check as
+    CHECKS_T              = 65, // Tough,                    PARAM: 0 = Checks as, 1 = doesn't check as
+    CHECKS_EM             = 66, // Even Match,               PARAM: 0 = Checks as, 1 = doesn't check as
+    CHECKS_DC             = 67, // Decent Challenge,         PARAM: 0 = Checks as, 1 = doesn't check as
+    CHECKS_EP             = 68, // Easy Prey,                PARAM: 0 = Checks as, 1 = doesn't check as
+    CHECKS_IEP            = 69, // Incredibly Easy Prey,     PARAM: 0 = Checks as, 1 = doesn't check as
+    CHECKS_TW             = 70, // To Weak to be worthwhile, PARAM: 0 = Checks as, 1 = doesn't check as
 };
 
 #define MAX_LATENTEFFECTID 61

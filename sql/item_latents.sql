@@ -2272,15 +2272,30 @@ INSERT INTO `item_latents` VALUES (17599,315,25,52,8);   -- +25% drain/aspir pot
 -- -------------------------------------------------------
 -- Chicken Knife
 -- Flee is special and has no ITEM_SUBEFFECT
+-- Flee will not prov on weaker than even match.
+-- Anecdotally, the proc rate is higher on IT mobs. http://wiki.ffo.jp/html/6540.html
+-- Lots of rows because the latents do not stack.
 -- -------------------------------------------------------
-INSERT INTO `item_latents` VALUES (17615,431,11,62,4);  -- Even Match or above : ITEM_ADDEFFECT_TYPE     11  (SELF_BUFF)
-INSERT INTO `item_latents` VALUES (17615,501,5,62,7);   -- IT or above         : ITEM_ADDEFFECT_CHANCE   15% (3+3+4+5)
-INSERT INTO `item_latents` VALUES (17615,501,4,62,6);   -- Very Tough or above : ITEM_ADDEFFECT_CHANCE   10% (3+3+4)
--- INSERT INTO `item_latents` VALUES (17615,501,3,62,5);   -- Tough or above      : ITEM_ADDEFFECT_CHANCE   6%  (3+3)
--- INSERT INTO `item_latents` VALUES (17615,501,3,62,4);   -- Even Match or above : ITEM_ADDEFFECT_CHANCE   3%
-INSERT INTO `item_latents` VALUES (17615,951,32,62,4);  -- Even Match or above : ITEM_ADDEFFECT_STATUS   32  (Flee)
-INSERT INTO `item_latents` VALUES (17615,952,100,62,4); -- Even Match or above : ITEM_ADDEFFECT_POWER    100 (Todo: adjust after we fix movement handling)
-INSERT INTO `item_latents` VALUES (17615,953,30,62,4);  -- Even Match or above : ITEM_ADDEFFECT_DURATION 30
+INSERT INTO `item_latents` VALUES (17615,431,11,63,0);  -- IT Mobs         : ITEM_ADDEFFECT_TYPE     = 11  (SELF_BUFF)
+INSERT INTO `item_latents` VALUES (17615,431,11,64,0);  -- Very Tough Mobs : ITEM_ADDEFFECT_TYPE     = 11  (SELF_BUFF)
+INSERT INTO `item_latents` VALUES (17615,431,11,65,0);  -- Tough Mobs      : ITEM_ADDEFFECT_TYPE     = 11  (SELF_BUFF)
+INSERT INTO `item_latents` VALUES (17615,431,11,66,0);  -- Even Match Mobs : ITEM_ADDEFFECT_TYPE     = 11  (SELF_BUFF)
+INSERT INTO `item_latents` VALUES (17615,501,12,63,0);  -- IT Mobs         : ITEM_ADDEFFECT_CHANCE   = 12%
+INSERT INTO `item_latents` VALUES (17615,501,8,64,0);   -- Very Tough Mobs : ITEM_ADDEFFECT_CHANCE   = 8%
+INSERT INTO `item_latents` VALUES (17615,501,5,65,0);   -- Tough Mobs      : ITEM_ADDEFFECT_CHANCE   = 5%
+INSERT INTO `item_latents` VALUES (17615,501,3,66,0);   -- Even Match Mobs : ITEM_ADDEFFECT_CHANCE   = 3%
+INSERT INTO `item_latents` VALUES (17615,951,32,63,0);  -- IT Mobs         : ITEM_ADDEFFECT_STATUS   = 32  (Flee)
+INSERT INTO `item_latents` VALUES (17615,951,32,64,0);  -- VT Mobs         : ITEM_ADDEFFECT_STATUS   = 32  (Flee)
+INSERT INTO `item_latents` VALUES (17615,951,32,65,0);  -- Tough Mobs      : ITEM_ADDEFFECT_STATUS   = 32  (Flee)
+INSERT INTO `item_latents` VALUES (17615,951,32,66,0);  -- Even Match Mobs : ITEM_ADDEFFECT_STATUS   = 32  (Flee)
+INSERT INTO `item_latents` VALUES (17615,952,100,63,0); -- IT Mobs         : ITEM_ADDEFFECT_POWER    = 100 (Todo: adjust after we fix movement handling)
+INSERT INTO `item_latents` VALUES (17615,952,100,64,0); -- VT Mobs         : ITEM_ADDEFFECT_POWER    = 100 (Todo: adjust after we fix movement handling)
+INSERT INTO `item_latents` VALUES (17615,952,100,65,0); -- Tough Mobs      : ITEM_ADDEFFECT_POWER    = 100 (Todo: adjust after we fix movement handling)
+INSERT INTO `item_latents` VALUES (17615,952,100,66,0); -- Even Match Mobs : ITEM_ADDEFFECT_POWER    = 100 (Todo: adjust after we fix movement handling)
+INSERT INTO `item_latents` VALUES (17615,953,30,63,0);  -- IT Mobs         : ITEM_ADDEFFECT_DURATION = 30 seconds
+INSERT INTO `item_latents` VALUES (17615,953,30,64,0);  -- VT Mobs         : ITEM_ADDEFFECT_DURATION = 30 seconds
+INSERT INTO `item_latents` VALUES (17615,953,30,65,0);  -- Tough Mobs      : ITEM_ADDEFFECT_DURATION = 30 seconds
+INSERT INTO `item_latents` VALUES (17615,953,30,66,0);  -- Even Match Mobs : ITEM_ADDEFFECT_DURATION = 30 seconds
 
 -- -------------------------------------------------------
 -- Dagger of Trials
@@ -2965,7 +2980,7 @@ INSERT INTO `item_latents` VALUES (18758,9,3,37,4);      -- Full moon DEX+3
 INSERT INTO `item_latents` VALUES (18763,131,1,24,40);   -- Clothcraft +1 under skill 40
 
 -- -------------------------------------------------------
--- Heofon Knuckles 
+-- Heofon Knuckles
 -- -------------------------------------------------------
 -- INSERT INTO `item_latents` VALUES (18776,355,10,?,13);     -- Final Heaven available after 13 weapon skills
 
@@ -3241,15 +3256,29 @@ INSERT INTO `item_latents` VALUES (20540,366,4,6,1000);      -- Dmg+4  TP<1000
 -- -------------------------------------------------------
 -- Shijo
 -- Flee is special and has no ITEM_SUBEFFECT
+-- It is assumed the same rules as "Chicken knife" apply.
+-- Lots of rows because the latents do not stack.
 -- -------------------------------------------------------
-INSERT INTO `item_latents` VALUES (20598,431,11,62,4);  -- Even Match or above : ITEM_ADDEFFECT_TYPE     11  (SELF_BUFF)
-INSERT INTO `item_latents` VALUES (20598,501,5,62,7);   -- IT or above         : ITEM_ADDEFFECT_CHANCE   15% (3+3+4+5)
-INSERT INTO `item_latents` VALUES (20598,501,4,62,6);   -- Very Tough or above : ITEM_ADDEFFECT_CHANCE   10% (3+3+4)
-INSERT INTO `item_latents` VALUES (20598,501,3,62,5);   -- Tough or above      : ITEM_ADDEFFECT_CHANCE   6%  (3+3)
-INSERT INTO `item_latents` VALUES (20598,501,3,62,4);   -- Even Match or above : ITEM_ADDEFFECT_CHANCE   3%
-INSERT INTO `item_latents` VALUES (20598,951,32,62,4);  -- Even Match or above : ITEM_ADDEFFECT_STATUS   32  (Flee)
-INSERT INTO `item_latents` VALUES (20598,952,100,62,4); -- Even Match or above : ITEM_ADDEFFECT_POWER    100 (Todo: adjust after we fix movement handling)
-INSERT INTO `item_latents` VALUES (20598,953,30,62,4);  -- Even Match or above : ITEM_ADDEFFECT_DURATION 30
+INSERT INTO `item_latents` VALUES (20598,431,11,63,0);  -- IT Mobs         : ITEM_ADDEFFECT_TYPE     = 11  (SELF_BUFF)
+INSERT INTO `item_latents` VALUES (20598,431,11,64,0);  -- Very Tough Mobs : ITEM_ADDEFFECT_TYPE     = 11  (SELF_BUFF)
+INSERT INTO `item_latents` VALUES (20598,431,11,65,0);  -- Tough Mobs      : ITEM_ADDEFFECT_TYPE     = 11  (SELF_BUFF)
+INSERT INTO `item_latents` VALUES (20598,431,11,66,0);  -- Even Match Mobs : ITEM_ADDEFFECT_TYPE     = 11  (SELF_BUFF)
+INSERT INTO `item_latents` VALUES (20598,501,12,63,0);  -- IT Mobs         : ITEM_ADDEFFECT_CHANCE   = 12%
+INSERT INTO `item_latents` VALUES (20598,501,8,64,0);   -- Very Tough Mobs : ITEM_ADDEFFECT_CHANCE   = 8%
+INSERT INTO `item_latents` VALUES (20598,501,5,65,0);   -- Tough Mobs      : ITEM_ADDEFFECT_CHANCE   = 5%
+INSERT INTO `item_latents` VALUES (20598,501,3,66,0);   -- Even Match Mobs : ITEM_ADDEFFECT_CHANCE   = 3%
+INSERT INTO `item_latents` VALUES (20598,951,32,63,0);  -- IT Mobs         : ITEM_ADDEFFECT_STATUS   = 32  (Flee)
+INSERT INTO `item_latents` VALUES (20598,951,32,64,0);  -- VT Mobs         : ITEM_ADDEFFECT_STATUS   = 32  (Flee)
+INSERT INTO `item_latents` VALUES (20598,951,32,65,0);  -- Tough Mobs      : ITEM_ADDEFFECT_STATUS   = 32  (Flee)
+INSERT INTO `item_latents` VALUES (20598,951,32,66,0);  -- Even Match Mobs : ITEM_ADDEFFECT_STATUS   = 32  (Flee)
+INSERT INTO `item_latents` VALUES (20598,952,100,63,0); -- IT Mobs         : ITEM_ADDEFFECT_POWER    = 100 (Todo: adjust after we fix movement handling)
+INSERT INTO `item_latents` VALUES (20598,952,100,64,0); -- VT Mobs         : ITEM_ADDEFFECT_POWER    = 100 (Todo: adjust after we fix movement handling)
+INSERT INTO `item_latents` VALUES (20598,952,100,65,0); -- Tough Mobs      : ITEM_ADDEFFECT_POWER    = 100 (Todo: adjust after we fix movement handling)
+INSERT INTO `item_latents` VALUES (20598,952,100,66,0); -- Even Match Mobs : ITEM_ADDEFFECT_POWER    = 100 (Todo: adjust after we fix movement handling)
+INSERT INTO `item_latents` VALUES (20598,953,30,63,0);  -- IT Mobs         : ITEM_ADDEFFECT_DURATION = 30 seconds
+INSERT INTO `item_latents` VALUES (20598,953,30,64,0);  -- VT Mobs         : ITEM_ADDEFFECT_DURATION = 30 seconds
+INSERT INTO `item_latents` VALUES (20598,953,30,65,0);  -- Tough Mobs      : ITEM_ADDEFFECT_DURATION = 30 seconds
+INSERT INTO `item_latents` VALUES (20598,953,30,66,0);  -- Even Match Mobs : ITEM_ADDEFFECT_DURATION = 30 seconds
 
 -- -------------------------------------------------------
 -- Eminent Scimitar

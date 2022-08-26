@@ -524,6 +524,15 @@ void CLatentEffectContainer::CheckLatentsJobLevel()
     ProcessLatentEffects([this](CLatentEffect& latentEffect) {
         switch (latentEffect.GetConditionsID())
         {
+            case LATENT::CHECKS_NM:
+            case LATENT::CHECKS_IT:
+            case LATENT::CHECKS_VT:
+            case LATENT::CHECKS_T:
+            case LATENT::CHECKS_EM:
+            case LATENT::CHECKS_DC:
+            case LATENT::CHECKS_EP:
+            case LATENT::CHECKS_IEP:
+            case LATENT::CHECKS_TW:
             case LATENT::JOB_MULTIPLE:
             case LATENT::JOB_MULTIPLE_AT_NIGHT:
                 return ProcessLatentEffect(latentEffect);
@@ -637,8 +646,15 @@ void CLatentEffectContainer::CheckLatentsTargetChange()
     ProcessLatentEffects([this](CLatentEffect& latentEffect) {
         switch (latentEffect.GetConditionsID())
         {
-            case LATENT::MOB_DIFFICULTY_MIN:
-            case LATENT::MOB_DIFFICULTY_MAX:
+            case LATENT::CHECKS_NM:
+            case LATENT::CHECKS_IT:
+            case LATENT::CHECKS_VT:
+            case LATENT::CHECKS_T:
+            case LATENT::CHECKS_EM:
+            case LATENT::CHECKS_DC:
+            case LATENT::CHECKS_EP:
+            case LATENT::CHECKS_IEP:
+            case LATENT::CHECKS_TW:
             case LATENT::SIGNET_BONUS:
             case LATENT::VS_ECOSYSTEM:
             case LATENT::VS_FAMILY:
@@ -1146,20 +1162,159 @@ bool CLatentEffectContainer::ProcessLatentEffect(CLatentEffect& latentEffect)
                 }
             }
             break;
-        case LATENT::MOB_DIFFICULTY_MIN:
+        case LATENT::CHECKS_NM:
         {
-            CBattleEntity* PTarget = dynamic_cast<CBattleEntity*>(m_POwner->GetBattleTarget());
-            expression =
-                PTarget && PTarget->objtype == TYPE_MOB && // Doesn't proc in PvP
-                (uint8)charutils::CheckMob(m_POwner->GetMLevel(), PTarget->GetMLevel()) >= latentEffect.GetConditionsValue();
+            if (CBattleEntity* PTarget = m_POwner->GetBattleTarget())
+            {
+                CMobEntity* PMob = dynamic_cast<CMobEntity*>(PTarget);
+                if (PMob)
+                {
+                    if (latentEffect.GetConditionsValue() == 0)
+                    {
+                        expression = PMob->m_Type & MOBTYPE_NOTORIOUS;
+                    }
+                    else
+                    {
+                        expression = !(PMob->m_Type & MOBTYPE_NOTORIOUS);
+                    }
+                }
+            }
             break;
         }
-        case LATENT::MOB_DIFFICULTY_MAX:
+        case LATENT::CHECKS_IT:
         {
             CBattleEntity* PTarget = dynamic_cast<CBattleEntity*>(m_POwner->GetBattleTarget());
-            expression =
-                PTarget && PTarget->objtype == TYPE_MOB && // Doesn't proc in PvP
-                (uint8)charutils::CheckMob(m_POwner->GetMLevel(), PTarget->GetMLevel()) <= latentEffect.GetConditionsValue();
+            if (PTarget && PTarget->objtype == TYPE_MOB)
+            {
+                EMobDifficulty mobCheck = charutils::CheckMob(m_POwner->GetMLevel(), PTarget->GetMLevel());
+                if (latentEffect.GetConditionsValue() == 0)
+                {
+                    expression = mobCheck == EMobDifficulty::IncrediblyTough;
+                }
+                else
+                {
+                    expression = mobCheck != EMobDifficulty::IncrediblyTough;
+                }
+            }
+            break;
+        }
+        case LATENT::CHECKS_VT:
+        {
+            CBattleEntity* PTarget = dynamic_cast<CBattleEntity*>(m_POwner->GetBattleTarget());
+            if (PTarget && PTarget->objtype == TYPE_MOB)
+            {
+                EMobDifficulty mobCheck = charutils::CheckMob(m_POwner->GetMLevel(), PTarget->GetMLevel());
+                if (latentEffect.GetConditionsValue() == 0)
+                {
+                    expression = mobCheck == EMobDifficulty::VeryTough;
+                }
+                else
+                {
+                    expression = mobCheck != EMobDifficulty::VeryTough;
+                }
+            }
+            break;
+        }
+        case LATENT::CHECKS_T:
+        {
+            CBattleEntity* PTarget = dynamic_cast<CBattleEntity*>(m_POwner->GetBattleTarget());
+            if (PTarget && PTarget->objtype == TYPE_MOB)
+            {
+                EMobDifficulty mobCheck = charutils::CheckMob(m_POwner->GetMLevel(), PTarget->GetMLevel());
+                if (latentEffect.GetConditionsValue() == 0)
+                {
+                    expression = mobCheck == EMobDifficulty::Tough;
+                }
+                else
+                {
+                    expression = mobCheck != EMobDifficulty::Tough;
+                }
+            }
+            break;
+        }
+        case LATENT::CHECKS_EM:
+        {
+            CBattleEntity* PTarget = dynamic_cast<CBattleEntity*>(m_POwner->GetBattleTarget());
+            if (PTarget && PTarget->objtype == TYPE_MOB)
+            {
+                EMobDifficulty mobCheck = charutils::CheckMob(m_POwner->GetMLevel(), PTarget->GetMLevel());
+                if (latentEffect.GetConditionsValue() == 0)
+                {
+                    expression = mobCheck == EMobDifficulty::EvenMatch;
+                }
+                else
+                {
+                    expression = mobCheck != EMobDifficulty::EvenMatch;
+                }
+            }
+            break;
+        }
+        case LATENT::CHECKS_DC:
+        {
+            CBattleEntity* PTarget = dynamic_cast<CBattleEntity*>(m_POwner->GetBattleTarget());
+            if (PTarget && PTarget->objtype == TYPE_MOB)
+            {
+                EMobDifficulty mobCheck = charutils::CheckMob(m_POwner->GetMLevel(), PTarget->GetMLevel());
+                if (latentEffect.GetConditionsValue() == 0)
+                {
+                    expression = mobCheck == EMobDifficulty::DecentChallenge;
+                }
+                else
+                {
+                    expression = mobCheck != EMobDifficulty::DecentChallenge;
+                }
+            }
+            break;
+        }
+        case LATENT::CHECKS_EP:
+        {
+            CBattleEntity* PTarget = dynamic_cast<CBattleEntity*>(m_POwner->GetBattleTarget());
+            if (PTarget && PTarget->objtype == TYPE_MOB)
+            {
+                EMobDifficulty mobCheck = charutils::CheckMob(m_POwner->GetMLevel(), PTarget->GetMLevel());
+                if (latentEffect.GetConditionsValue() == 0)
+                {
+                    expression = mobCheck == EMobDifficulty::EasyPrey;
+                }
+                else
+                {
+                    expression = mobCheck != EMobDifficulty::EasyPrey;
+                }
+            }
+            break;
+        }
+        case LATENT::CHECKS_IEP:
+        {
+            CBattleEntity* PTarget = dynamic_cast<CBattleEntity*>(m_POwner->GetBattleTarget());
+            if (PTarget && PTarget->objtype == TYPE_MOB)
+            {
+                EMobDifficulty mobCheck = charutils::CheckMob(m_POwner->GetMLevel(), PTarget->GetMLevel());
+                if (latentEffect.GetConditionsValue() == 0)
+                {
+                    expression = mobCheck == EMobDifficulty::IncrediblyEasyPrey;
+                }
+                else
+                {
+                    expression = mobCheck != EMobDifficulty::IncrediblyEasyPrey;
+                }
+            }
+            break;
+        }
+        case LATENT::CHECKS_TW:
+        {
+            CBattleEntity* PTarget = dynamic_cast<CBattleEntity*>(m_POwner->GetBattleTarget());
+            if (PTarget && PTarget->objtype == TYPE_MOB)
+            {
+                EMobDifficulty mobCheck = charutils::CheckMob(m_POwner->GetMLevel(), PTarget->GetMLevel());
+                if (latentEffect.GetConditionsValue() == 0)
+                {
+                    expression = mobCheck == EMobDifficulty::TooWeak;
+                }
+                else
+                {
+                    expression = mobCheck != EMobDifficulty::TooWeak;
+                }
+            }
             break;
         }
         default:

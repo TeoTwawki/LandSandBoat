@@ -356,18 +356,25 @@ void CLuaBaseEntity::PrintToArea(std::string const& message, sol::object const& 
     }
     else if (messageRange == MESSAGE_AREA_PARTY)
     {
-        int8 packetData[8]{};
-        if (PChar->PParty->m_PAlliance)
+        if (PChar->PParty)
         {
-            ref<uint32>(packetData, 0) = PChar->PParty->m_PAlliance->m_AllianceID;
+            int8 packetData[8]{};
+            auto partyID = PChar->PParty->GetPartyID();
+            auto chatMsg = MSG_CHAT_PARTY;
+
+            if (PChar->PParty->m_PAlliance)
+            {
+                partyID = PChar->PParty->m_PAlliance->m_AllianceID;
+                chatMsg = MSG_CHAT_ALLIANCE;
+            }
+
+            ref<uint32>(packetData, 0) = partyID;
             ref<uint32>(packetData, 4) = 0; // No ID so that the PChar sees the message too
-            message::send(MSG_CHAT_ALLIANCE, packetData, sizeof packetData, new CChatMessagePacket(PChar, messageLook, message, name));
+            message::send(chatMsg, packetData, sizeof packetData, new CChatMessagePacket(PChar, messageLook, message, name));
         }
-        else if (PChar->PParty)
+        else // No ID doesn't handle solo w/no trusts.
         {
-            ref<uint32>(packetData, 0) = PChar->PParty->GetPartyID();
-            ref<uint32>(packetData, 4) = 0; // No ID so that the PChar sees the message too
-            message::send(MSG_CHAT_PARTY, packetData, sizeof packetData, new CChatMessagePacket(PChar, messageLook, message, name));
+            PChar->loc.zone->PushPacket(PChar, CHAR_INRANGE_SELF, new CChatMessagePacket(PChar, messageLook, message, name));
         }
     }
     else if (messageRange == MESSAGE_AREA_YELL)

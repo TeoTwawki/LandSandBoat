@@ -1,23 +1,23 @@
 -----------------------------------
--- xi.effect.LAST_RESORT
+-- invaderXim.effect.LAST_RESORT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    local targetMerit     = target:getMerit(xi.merit.LAST_RESORT_EFFECT)
-    local targetJobPoints = target:getJobPointLevel(xi.jp.LAST_RESORT_EFFECT)
+    local targetMerit     = target:getMerit(invaderXim.merit.LAST_RESORT_EFFECT)
+    local targetJobPoints = target:getJobPointLevel(invaderXim.jp.LAST_RESORT_EFFECT)
 
     -- Job point effect
-    effect:addMod(xi.mod.ATT, 2 * targetJobPoints)
-    effect:addMod(xi.mod.RATT, 2 * targetJobPoints)
+    effect:addMod(invaderXim.mod.ATT, 2 * targetJobPoints)
+    effect:addMod(invaderXim.mod.RATT, 2 * targetJobPoints)
 
     -- Merit effect
-    effect:addMod(xi.mod.ATTP, 25 + targetMerit)
-    effect:addMod(xi.mod.RATTP, 25 + targetMerit)
-    effect:addMod(xi.mod.DEFP, -25 - targetMerit)
+    effect:addMod(invaderXim.mod.ATTP, 25 + targetMerit)
+    effect:addMod(invaderXim.mod.RATTP, 25 + targetMerit)
+    effect:addMod(invaderXim.mod.DEFP, -25 - targetMerit)
 
-    effect:addMod(xi.mod.TWOHAND_HASTE_ABILITY, target:getMod(xi.mod.DESPERATE_BLOWS) + target:getMerit(xi.merit.DESPERATE_BLOWS))
+    effect:addMod(invaderXim.mod.TWOHAND_HASTE_ABILITY, target:getMod(invaderXim.mod.DESPERATE_BLOWS) + target:getMerit(invaderXim.merit.DESPERATE_BLOWS))
 end
 
 effectObject.onEffectTick = function(target, effect)

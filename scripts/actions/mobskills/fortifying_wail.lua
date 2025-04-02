@@ -16,10 +16,10 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local power = 60
-    local duration = xi.mobskills.calculateDuration(mob:getTP(), 120, 180)
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.PROTECT, power, 0, duration))
+    local duration = invaderXim.mobskills.calculateDuration(mob:getTP(), 120, 180)
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.PROTECT, power, 0, duration))
 
-    return xi.effect.PROTECT
+    return invaderXim.effect.PROTECT
 end
 
 return mobskillObject

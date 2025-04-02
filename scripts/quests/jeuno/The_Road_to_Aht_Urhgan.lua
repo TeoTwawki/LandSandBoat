@@ -5,67 +5,67 @@
 -- Faursel : !pos 37.985 3.118 -45.208 245
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_ROAD_TO_AHT_URHGAN)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_ROAD_TO_AHT_URHGAN)
 
 quest.reward =
 {
     fame = 30,
-    fameArea = xi.fameArea.JEUNO,
+    fameArea = invaderXim.fameArea.JEUNO,
 }
 
 local beginnerList =
 {
-    xi.item.DAMSELFLY_WORM,
-    xi.item.MAGICKED_SKULL,
-    xi.item.CRAB_APRON,
-    xi.item.BLOODY_ROBE,
-    xi.item.CUP_OF_DHALMEL_SALIVA,
-    xi.item.WILD_RABBIT_TAIL,
+    invaderXim.item.DAMSELFLY_WORM,
+    invaderXim.item.MAGICKED_SKULL,
+    invaderXim.item.CRAB_APRON,
+    invaderXim.item.BLOODY_ROBE,
+    invaderXim.item.CUP_OF_DHALMEL_SALIVA,
+    invaderXim.item.WILD_RABBIT_TAIL,
 }
 
 local intermediateList =
 {
-    xi.item.JADE_CRYPTEX,
-    xi.item.SILVER_ENGRAVING,
-    xi.item.THIRTEEN_KNOT_QUIPU,
+    invaderXim.item.JADE_CRYPTEX,
+    invaderXim.item.SILVER_ENGRAVING,
+    invaderXim.item.THIRTEEN_KNOT_QUIPU,
 }
 
 local chipList =
 {
-    xi.item.CARMINE_CHIP,
-    xi.item.CYAN_CHIP,
-    xi.item.GRAY_CHIP,
+    invaderXim.item.CARMINE_CHIP,
+    invaderXim.item.CYAN_CHIP,
+    invaderXim.item.GRAY_CHIP,
 }
 
 local advancedSingleList =
 {
-    xi.item.DAVOI_COFFER_KEY,
-    xi.item.BEADEAUX_COFFER_KEY,
-    xi.item.OZTROJA_COFFER_KEY,
-    xi.item.UGGALEPIH_COFFER_KEY,
-    xi.item.RANCOR_DEN_COFFER_KEY,
-    xi.item.QUICKSAND_COFFER_KEY,
-    xi.item.GROTTO_COFFER_KEY,
-    xi.item.WARRIORS_TESTIMONY,
-    xi.item.MONKS_TESTIMONY,
-    xi.item.WHITE_MAGES_TESTIMONY,
-    xi.item.BLACK_MAGES_TESTIMONY,
-    xi.item.RED_MAGES_TESTIMONY,
-    xi.item.THIEFS_TESTIMONY,
-    xi.item.PALADINS_TESTIMONY,
-    xi.item.DARK_KNIGHTS_TESTIMONY,
-    xi.item.BEASTMASTERS_TESTIMONY,
-    xi.item.BARDS_TESTIMONY,
-    xi.item.RANGERS_TESTIMONY,
-    xi.item.SAMURAIS_TESTIMONY,
-    xi.item.NINJAS_TESTIMONY,
-    xi.item.DRAGOONS_TESTIMONY,
-    xi.item.SUMMONERS_TESTIMONY,
-    xi.item.BLUE_MAGES_TESTIMONY,
-    xi.item.CORSAIRS_TESTIMONY,
-    xi.item.PUPPETMASTERS_TESTIMONY,
-    xi.item.DANCERS_TESTIMONY,
-    xi.item.SCHOLARS_TESTIMONY,
+    invaderXim.item.DAVOI_COFFER_KEY,
+    invaderXim.item.BEADEAUX_COFFER_KEY,
+    invaderXim.item.OZTROJA_COFFER_KEY,
+    invaderXim.item.UGGALEPIH_COFFER_KEY,
+    invaderXim.item.RANCOR_DEN_COFFER_KEY,
+    invaderXim.item.QUICKSAND_COFFER_KEY,
+    invaderXim.item.GROTTO_COFFER_KEY,
+    invaderXim.item.WARRIORS_TESTIMONY,
+    invaderXim.item.MONKS_TESTIMONY,
+    invaderXim.item.WHITE_MAGES_TESTIMONY,
+    invaderXim.item.BLACK_MAGES_TESTIMONY,
+    invaderXim.item.RED_MAGES_TESTIMONY,
+    invaderXim.item.THIEFS_TESTIMONY,
+    invaderXim.item.PALADINS_TESTIMONY,
+    invaderXim.item.DARK_KNIGHTS_TESTIMONY,
+    invaderXim.item.BEASTMASTERS_TESTIMONY,
+    invaderXim.item.BARDS_TESTIMONY,
+    invaderXim.item.RANGERS_TESTIMONY,
+    invaderXim.item.SAMURAIS_TESTIMONY,
+    invaderXim.item.NINJAS_TESTIMONY,
+    invaderXim.item.DRAGOONS_TESTIMONY,
+    invaderXim.item.SUMMONERS_TESTIMONY,
+    invaderXim.item.BLUE_MAGES_TESTIMONY,
+    invaderXim.item.CORSAIRS_TESTIMONY,
+    invaderXim.item.PUPPETMASTERS_TESTIMONY,
+    invaderXim.item.DANCERS_TESTIMONY,
+    invaderXim.item.SCHOLARS_TESTIMONY,
 }
 
 local function handleEventUpdate(player, csid, option, npc)
@@ -84,11 +84,11 @@ local function handleSelectionEventFinish(player, csid, option, npc)
     -- Where's Tenzen?
     if
         option == 1 and
-        player:getCurrentMission(xi.mission.log_id.ROV) == xi.mission.id.rov.INESCAPABLE_BINDS
+        player:getCurrentMission(invaderXim.mission.log_id.ROV) == invaderXim.mission.id.rov.INESCAPABLE_BINDS
     then
         if quest:complete(player) then
-            npcUtil.giveKeyItem(player, xi.ki.BOARDING_PERMIT)
-            npcUtil.completeMission(player, xi.mission.log_id.ROV, xi.mission.id.rov.INESCAPABLE_BINDS, { nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.DESERT_WINDS } })
+            npcUtil.giveKeyItem(player, invaderXim.ki.BOARDING_PERMIT)
+            npcUtil.completeMission(player, invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.INESCAPABLE_BINDS, { nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.DESERT_WINDS } })
         end
     -- Let me think about it.
     elseif option == 2 then
@@ -109,11 +109,11 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                xi.settings.main.ENABLE_TOAU == 1
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                invaderXim.settings.main.ENABLE_TOAU == 1
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Faursel'] = quest:progressEvent(10062),
 
@@ -130,10 +130,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Faursel'] =
             {
@@ -154,7 +154,7 @@ quest.sections =
                 onTrigger = function(player, npc)
                     local questProgress = quest:getVar(player, 'Prog')
                     local timePassed = quest:getVar(player, 'Timer') <= VanadielUniqueDay() and not quest:getMustZone(player)
-                    local onRovMission = player:getCurrentMission(xi.mission.log_id.ROV) == xi.mission.id.rov.INESCAPABLE_BINDS and 1 or 0
+                    local onRovMission = player:getCurrentMission(invaderXim.mission.log_id.ROV) == invaderXim.mission.id.rov.INESCAPABLE_BINDS and 1 or 0
 
                     -- Initial Quest Dialogues
                     if questProgress == 0 then
@@ -198,7 +198,7 @@ quest.sections =
 
                 [10067] = function(player, csid, option, npc)
                     quest:setVar(player, 'Prog', 4)
-                    xi.teleport.to(player, xi.teleport.id.WAJAOM_LEYPOINT)
+                    invaderXim.teleport.to(player, invaderXim.teleport.id.WAJAOM_LEYPOINT)
                 end,
 
                 [10068] = function(player, csid, option, npc)
@@ -214,13 +214,13 @@ quest.sections =
 
                 [10070] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        npcUtil.giveKeyItem(player, xi.ki.BOARDING_PERMIT)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.BOARDING_PERMIT)
                     end
                 end,
             },
         },
 
-        [xi.zone.WAJAOM_WOODLANDS] =
+        [invaderXim.zone.WAJAOM_WOODLANDS] =
         {
             afterZoneIn = function(player)
                 -- Player won't see these messages due to teleporting at the
@@ -229,8 +229,8 @@ quest.sections =
                 if
                     quest:getVar(player, 'Prog') == 4
                 then
-                    npcUtil.giveKeyItem(player, xi.ki.BOARDING_PERMIT)
-                    npcUtil.giveKeyItem(player, xi.ki.MAP_OF_WAJAOM_WOODLANDS)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.BOARDING_PERMIT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.MAP_OF_WAJAOM_WOODLANDS)
                     quest:setVar(player, 'Prog', 5)
                 end
             end,
@@ -239,10 +239,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Faursel'] = quest:event(10071):replaceDefault(),
         },

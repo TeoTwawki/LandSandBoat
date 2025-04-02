@@ -1,159 +1,159 @@
 -----------------------------------
 -- Einherjar: Treasure Generation
 -----------------------------------
-local ID = zones[xi.zone.HAZHALM_TESTING_GROUNDS]
+local ID = zones[invaderXim.zone.HAZHALM_TESTING_GROUNDS]
 
 local bossDrops = {
     -- Wing 1
     [ID.mob.HAKENMANN] =
     {
-        { item = xi.item.CHUNK_OF_OROBON_MEAT, rate = 1000 },
+        { item = invaderXim.item.CHUNK_OF_OROBON_MEAT, rate = 1000 },
     },
     [ID.mob.HILDESVINI] =
     {
-        { item = xi.item.MARID_HIDE,         rate = 1000 },
-        { item = xi.item.MARID_HIDE,         rate = 1000 },
-        { item = xi.item.LOCK_OF_MARID_HAIR, rate = 1000 },
+        { item = invaderXim.item.MARID_HIDE,         rate = 1000 },
+        { item = invaderXim.item.MARID_HIDE,         rate = 1000 },
+        { item = invaderXim.item.LOCK_OF_MARID_HAIR, rate = 1000 },
     },
     [ID.mob.HIMINRJOT] =
     {
-        { item = xi.item.BUFFALO_HIDE,          rate = 1000 },
-        { item = xi.item.SLICE_OF_BUFFALO_MEAT, rate = 1000 },
+        { item = invaderXim.item.BUFFALO_HIDE,          rate = 1000 },
+        { item = invaderXim.item.SLICE_OF_BUFFALO_MEAT, rate = 1000 },
     },
     [ID.mob.HRAESVELG] =
     {
-        { item = xi.item.MANTICORE_FANG,         rate = 1000 },
-        { item = xi.item.LOCK_OF_MANTICORE_HAIR, rate = 1000 },
-        { item = xi.item.MANTICORE_HIDE,         rate = 1000 },
+        { item = invaderXim.item.MANTICORE_FANG,         rate = 1000 },
+        { item = invaderXim.item.LOCK_OF_MANTICORE_HAIR, rate = 1000 },
+        { item = invaderXim.item.MANTICORE_HIDE,         rate = 1000 },
     },
     [ID.mob.MORBOL_EMPEROR] =
     {
-        { item = xi.item.AMERETAT_VINE,    rate = 1000 },
-        { item = xi.item.LACQUER_TREE_LOG, rate = 1000 },
+        { item = invaderXim.item.AMERETAT_VINE,    rate = 1000 },
+        { item = invaderXim.item.LACQUER_TREE_LOG, rate = 1000 },
     },
     [ID.mob.NIHHUS] =
     {
-        { item = xi.item.WIVRE_HORN, rate = 1000 },
-        { item = xi.item.WIVRE_HIDE, rate = 1000 },
-        { item = xi.item.WIVRE_MAUL, rate = 1000 },
+        { item = invaderXim.item.WIVRE_HORN, rate = 1000 },
+        { item = invaderXim.item.WIVRE_HIDE, rate = 1000 },
+        { item = invaderXim.item.WIVRE_MAUL, rate = 1000 },
     },
 
     -- Wing 2
     [ID.mob.ANDHRIMNIR] =
     {
-        { item = xi.item.CORSE_BRACELET, rate = 1000 },
-        { item = xi.item.CORSE_ROBE,     rate = 1000 },
-        { item = xi.item.CORSE_BRACELET, rate = 1000 },
+        { item = invaderXim.item.CORSE_BRACELET, rate = 1000 },
+        { item = invaderXim.item.CORSE_ROBE,     rate = 1000 },
+        { item = invaderXim.item.CORSE_BRACELET, rate = 1000 },
     },
     [ID.mob.ARIRI_SAMARIRI] =
     {
-        { item = xi.item.POROGGO_HAT, rate = 1000 },
-        { item = xi.item.POROGGO_HAT, rate = 1000 },
-        { item = xi.item.POROGGO_HAT, rate = 1000 },
+        { item = invaderXim.item.POROGGO_HAT, rate = 1000 },
+        { item = invaderXim.item.POROGGO_HAT, rate = 1000 },
+        { item = invaderXim.item.POROGGO_HAT, rate = 1000 },
     },
     [ID.mob.BALRAHN] =
     {
-        { item = xi.item.SOULFLAYER_TENTACLE, rate = 1000 },
-        { item = xi.item.SOULFLAYER_STAFF,    rate = 1000 },
-        { item = xi.item.SOULFLAYER_ROBE,     rate = 1000 },
+        { item = invaderXim.item.SOULFLAYER_TENTACLE, rate = 1000 },
+        { item = invaderXim.item.SOULFLAYER_STAFF,    rate = 1000 },
+        { item = invaderXim.item.SOULFLAYER_ROBE,     rate = 1000 },
     },
     [ID.mob.HRUNGNIR] =
     {
-        { item = xi.item.CHUNK_OF_MYTHRIL_ORE, rate = 1000 },
-        { item = xi.item.GOLEM_SHARD,          rate = 1000 },
-        { item = xi.item.GOLEM_SHARD,          rate = 1000 },
+        { item = invaderXim.item.CHUNK_OF_MYTHRIL_ORE, rate = 1000 },
+        { item = invaderXim.item.GOLEM_SHARD,          rate = 1000 },
+        { item = invaderXim.item.GOLEM_SHARD,          rate = 1000 },
     },
     [ID.mob.MOKKURALFI] =
     {
-        { item = xi.item.CHUNK_OF_FLAN_MEAT, rate = 1000 },
-        { item = xi.item.CHUNK_OF_FLAN_MEAT, rate = 1000 },
-        { item = xi.item.CHUNK_OF_FLAN_MEAT, rate = 1000 },
+        { item = invaderXim.item.CHUNK_OF_FLAN_MEAT, rate = 1000 },
+        { item = invaderXim.item.CHUNK_OF_FLAN_MEAT, rate = 1000 },
+        { item = invaderXim.item.CHUNK_OF_FLAN_MEAT, rate = 1000 },
     },
     [ID.mob.TANNGRISNIR] =
     {
-        { item = xi.item.HANDFUL_OF_DRAGON_SCALES, rate = 1000 },
-        { item = xi.item.HANDFUL_OF_DRAGON_SCALES, rate = 1000 },
-        { item = xi.item.DRAGON_TALON,             rate = 1000 },
+        { item = invaderXim.item.HANDFUL_OF_DRAGON_SCALES, rate = 1000 },
+        { item = invaderXim.item.HANDFUL_OF_DRAGON_SCALES, rate = 1000 },
+        { item = invaderXim.item.DRAGON_TALON,             rate = 1000 },
     },
 
     -- Wing 3
     [ID.mob.DENDAINSONNE] =
     {
-        { item = xi.item.BEHEMOTH_HORN, rate = 1000 },
+        { item = invaderXim.item.BEHEMOTH_HORN, rate = 1000 },
     },
     [ID.mob.FREKE] =
     {
-        { item = xi.item.SLICE_OF_CERBERUS_MEAT, rate = 1000 },
-        { item = xi.item.CERBERUS_CLAW,          rate =   50 }, -- 5% chance
+        { item = invaderXim.item.SLICE_OF_CERBERUS_MEAT, rate = 1000 },
+        { item = invaderXim.item.CERBERUS_CLAW,          rate =   50 }, -- 5% chance
     },
     [ID.mob.GORGIMERA] =
     {
-        { item = xi.item.KHIMAIRA_HORN, rate = 1000 },
-        { item = xi.item.KHIMAIRA_MANE, rate =   50 }, -- 5% chance
+        { item = invaderXim.item.KHIMAIRA_HORN, rate = 1000 },
+        { item = invaderXim.item.KHIMAIRA_MANE, rate =   50 }, -- 5% chance
     },
     [ID.mob.MOTSOGNIR] =
     {
-        { item = xi.item.DEMON_SKULL, rate = 1000 },
+        { item = invaderXim.item.DEMON_SKULL, rate = 1000 },
     },
     [ID.mob.STOORWORM] =
     {
-        { item = xi.item.CHUNK_OF_HYDRA_MEAT, rate = 1000 },
+        { item = invaderXim.item.CHUNK_OF_HYDRA_MEAT, rate = 1000 },
     },
     [ID.mob.VAMPYR_JARL] =
     {
-        { item = xi.item.VIAL_OF_DRAGON_BLOOD, rate = 1000 },
+        { item = invaderXim.item.VIAL_OF_DRAGON_BLOOD, rate = 1000 },
     },
 }
 
 local synthMaterials =
 {
-    { item = xi.item.GOLD_INGOT,           rate = 300, max = 4 },
-    { item = xi.item.PLATINUM_INGOT,       rate = 300, max = 4 },
-    { item = xi.item.ANGELSTONE,           rate = 100, max = 3 },
-    { item = xi.item.SCINTILLANT_INGOT,    rate = 100, max = 3 },
-    { item = xi.item.ADAMAN_INGOT,         rate =  75, max = 4 },
-    { item = xi.item.ORICHALCUM_INGOT,     rate =  50, max = 2 },
-    { item = xi.item.IMPERIAL_WOOTZ_INGOT, rate =  50, max = 3 }, -- captures show 2 max, ffo.jp claims 3
-    { item = xi.item.CHUNK_OF_KHROMA_ORE,  rate =  25, max = 1 }
+    { item = invaderXim.item.GOLD_INGOT,           rate = 300, max = 4 },
+    { item = invaderXim.item.PLATINUM_INGOT,       rate = 300, max = 4 },
+    { item = invaderXim.item.ANGELSTONE,           rate = 100, max = 3 },
+    { item = invaderXim.item.SCINTILLANT_INGOT,    rate = 100, max = 3 },
+    { item = invaderXim.item.ADAMAN_INGOT,         rate =  75, max = 4 },
+    { item = invaderXim.item.ORICHALCUM_INGOT,     rate =  50, max = 2 },
+    { item = invaderXim.item.IMPERIAL_WOOTZ_INGOT, rate =  50, max = 3 }, -- captures show 2 max, ffo.jp claims 3
+    { item = invaderXim.item.CHUNK_OF_KHROMA_ORE,  rate =  25, max = 1 }
 }
 
 local abjurations =
 {
-    [xi.einherjar.wing.WING_1] =
+    [invaderXim.einherjar.wing.WING_1] =
     {
-        xi.item.HADEAN_ABJURATION_HANDS,
-        xi.item.HADEAN_ABJURATION_FEET,
-        xi.item.PHANTASMAL_ABJURATION_HANDS,
-        xi.item.PHANTASMAL_ABJURATION_LEGS,
-        xi.item.WYRMAL_ABJURATION_HEAD,
-        xi.item.EARTHEN_ABJURATION_LEGS,
-        xi.item.NEPTUNAL_ABJURATION_HEAD,
-        xi.item.NEPTUNAL_ABJURATION_LEGS,
-        xi.item.DRYADIC_ABJURATION_FEET,
+        invaderXim.item.HADEAN_ABJURATION_HANDS,
+        invaderXim.item.HADEAN_ABJURATION_FEET,
+        invaderXim.item.PHANTASMAL_ABJURATION_HANDS,
+        invaderXim.item.PHANTASMAL_ABJURATION_LEGS,
+        invaderXim.item.WYRMAL_ABJURATION_HEAD,
+        invaderXim.item.EARTHEN_ABJURATION_LEGS,
+        invaderXim.item.NEPTUNAL_ABJURATION_HEAD,
+        invaderXim.item.NEPTUNAL_ABJURATION_LEGS,
+        invaderXim.item.DRYADIC_ABJURATION_FEET,
     },
-    [xi.einherjar.wing.WING_2] =
+    [invaderXim.einherjar.wing.WING_2] =
     {
-        xi.item.EARTHEN_ABJURATION_HANDS,
-        xi.item.PHANTASMAL_ABJURATION_HEAD,
-        xi.item.PHANTASMAL_ABJURATION_FEET,
-        xi.item.HADEAN_ABJURATION_HEAD,
-        xi.item.HADEAN_ABJURATION_HANDS,
-        xi.item.NEPTUNAL_ABJURATION_LEGS,
-        xi.item.AQUARIAN_ABJURATION_FEET,
-        xi.item.WYRMAL_ABJURATION_HEAD,
-        xi.item.MARTIAL_ABJURATION_LEGS,
+        invaderXim.item.EARTHEN_ABJURATION_HANDS,
+        invaderXim.item.PHANTASMAL_ABJURATION_HEAD,
+        invaderXim.item.PHANTASMAL_ABJURATION_FEET,
+        invaderXim.item.HADEAN_ABJURATION_HEAD,
+        invaderXim.item.HADEAN_ABJURATION_HANDS,
+        invaderXim.item.NEPTUNAL_ABJURATION_LEGS,
+        invaderXim.item.AQUARIAN_ABJURATION_FEET,
+        invaderXim.item.WYRMAL_ABJURATION_HEAD,
+        invaderXim.item.MARTIAL_ABJURATION_LEGS,
     },
-    [xi.einherjar.wing.WING_3] =
+    [invaderXim.einherjar.wing.WING_3] =
     {
-        xi.item.PHANTASMAL_ABJURATION_HEAD,
-        xi.item.PHANTASMAL_ABJURATION_LEGS,
-        xi.item.HADEAN_ABJURATION_LEGS,
-        xi.item.NEPTUNAL_ABJURATION_HEAD,
-        xi.item.AQUARIAN_ABJURATION_HANDS,
-        xi.item.AQUARIAN_ABJURATION_FEET,
-        xi.item.DRYADIC_ABJURATION_FEET,
-        xi.item.MARTIAL_ABJURATION_LEGS,
-        xi.item.MARTIAL_ABJURATION_FEET,
+        invaderXim.item.PHANTASMAL_ABJURATION_HEAD,
+        invaderXim.item.PHANTASMAL_ABJURATION_LEGS,
+        invaderXim.item.HADEAN_ABJURATION_LEGS,
+        invaderXim.item.NEPTUNAL_ABJURATION_HEAD,
+        invaderXim.item.AQUARIAN_ABJURATION_HANDS,
+        invaderXim.item.AQUARIAN_ABJURATION_FEET,
+        invaderXim.item.DRYADIC_ABJURATION_FEET,
+        invaderXim.item.MARTIAL_ABJURATION_LEGS,
+        invaderXim.item.MARTIAL_ABJURATION_FEET,
     }
 }
 
@@ -218,7 +218,7 @@ end
 
 -- Einherjar Armoury Crate rewards generation
 -- Note: Only for Wing 1-3, no crate in Odin's Chamber
-xi.einherjar.getArmouryCrateRewards = function(bossId, chamberId)
+invaderXim.einherjar.getArmouryCrateRewards = function(bossId, chamberId)
     local rewards = {}
     local tier    = math.ceil(chamberId / 3)
 
@@ -249,43 +249,43 @@ xi.einherjar.getArmouryCrateRewards = function(bossId, chamberId)
     return rewards
 end
 
-xi.einherjar.getAmpoulesReward = function(chamberId, defeatedCount, totalCount)
+invaderXim.einherjar.getAmpoulesReward = function(chamberId, defeatedCount, totalCount)
     local completionRate = defeatedCount / totalCount
-    local baseReward     = xi.einherjar.chambers[chamberId].ichor * xi.einherjar.settings.EINHERJAR_ICHOR_RATE
+    local baseReward     = invaderXim.einherjar.chambers[chamberId].ichor * invaderXim.einherjar.settings.EINHERJAR_ICHOR_RATE
 
     return math.floor(baseReward * completionRate)
 end
 
-xi.einherjar.hideCrate = function(crateNpc)
-    crateNpc:setStatus(xi.status.INVISIBLE)
+invaderXim.einherjar.hideCrate = function(crateNpc)
+    crateNpc:setStatus(invaderXim.status.INVISIBLE)
     crateNpc:setUntargetable(true)
 end
 
 local tempItems =
 {
-    { item = xi.item.BOTTLE_OF_AMRITA,            min = 1,  max = 10 },
-    { item = xi.item.DUSTY_ELIXIR,                min = 1,  max = 10 },
-    { item = xi.item.DUSTY_ETHER,                 min = 12, max = 24 },
-    { item = xi.item.DUSTY_POTION,                min = 12, max = 24 },
-    { item = xi.item.DUSTY_SCROLL_OF_RERAISE,     min = 8,  max = 19 },
-    { item = xi.item.BOTTLE_OF_ASSASSINS_DRINK,   min = 1,  max =  4 },
-    { item = xi.item.BOTTLE_OF_BRAVERS_DRINK,     min = 1,  max =  2 },
-    { item = xi.item.BOTTLE_OF_CHAMPIONS_DRINK,   min = 1,  max =  2 },
-    { item = xi.item.BOTTLE_OF_CLERICS_DRINK,     min = 1,  max =  2 },
-    { item = xi.item.BOTTLE_OF_FANATICS_DRINK,    min = 1,  max =  6 },
-    { item = xi.item.BOTTLE_OF_FIGHTERS_DRINK,    min = 1,  max = 10 },
-    { item = xi.item.BOTTLE_OF_VICARS_DRINK,      min = 1,  max =  7 },
-    { item = xi.item.BOTTLE_OF_SPYS_DRINK,        min = 1,  max =  9 },
-    { item = xi.item.FLASK_OF_STRANGE_MILK,       min = 12, max = 24 },
-    { item = xi.item.BOTTLE_OF_STRANGE_JUICE,     min = 12, max = 24 },
-    { item = xi.item.MAX_POTION,                  min = 1,  max = 13 },
-    { item = xi.item.PINCH_OF_MANA_POWDER,        min = 1,  max =  3 },
-    { item = xi.item.REVITALIZER,                 min = 1,  max =  2 },
+    { item = invaderXim.item.BOTTLE_OF_AMRITA,            min = 1,  max = 10 },
+    { item = invaderXim.item.DUSTY_ELIXIR,                min = 1,  max = 10 },
+    { item = invaderXim.item.DUSTY_ETHER,                 min = 12, max = 24 },
+    { item = invaderXim.item.DUSTY_POTION,                min = 12, max = 24 },
+    { item = invaderXim.item.DUSTY_SCROLL_OF_RERAISE,     min = 8,  max = 19 },
+    { item = invaderXim.item.BOTTLE_OF_ASSASSINS_DRINK,   min = 1,  max =  4 },
+    { item = invaderXim.item.BOTTLE_OF_BRAVERS_DRINK,     min = 1,  max =  2 },
+    { item = invaderXim.item.BOTTLE_OF_CHAMPIONS_DRINK,   min = 1,  max =  2 },
+    { item = invaderXim.item.BOTTLE_OF_CLERICS_DRINK,     min = 1,  max =  2 },
+    { item = invaderXim.item.BOTTLE_OF_FANATICS_DRINK,    min = 1,  max =  6 },
+    { item = invaderXim.item.BOTTLE_OF_FIGHTERS_DRINK,    min = 1,  max = 10 },
+    { item = invaderXim.item.BOTTLE_OF_VICARS_DRINK,      min = 1,  max =  7 },
+    { item = invaderXim.item.BOTTLE_OF_SPYS_DRINK,        min = 1,  max =  9 },
+    { item = invaderXim.item.FLASK_OF_STRANGE_MILK,       min = 12, max = 24 },
+    { item = invaderXim.item.BOTTLE_OF_STRANGE_JUICE,     min = 12, max = 24 },
+    { item = invaderXim.item.MAX_POTION,                  min = 1,  max = 13 },
+    { item = invaderXim.item.PINCH_OF_MANA_POWDER,        min = 1,  max =  3 },
+    { item = invaderXim.item.REVITALIZER,                 min = 1,  max =  2 },
 }
 
 -- Generates a table of 6 random temporary items with random quantities
 -- The quantity is encoded in the upper 16 bits of the returned value
-xi.einherjar.getTempItems = function()
+invaderXim.einherjar.getTempItems = function()
     local temp = { }
 
     local availableTempItems = { unpack(tempItems) }

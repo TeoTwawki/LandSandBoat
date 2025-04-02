@@ -6,11 +6,11 @@
 -- Granite Door (_4fx) : !pos 340 -1.899 331.656 159
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.WISDOM_OF_OUR_FOREFATHERS)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.WISDOM_OF_OUR_FOREFATHERS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.WHERE_DIVINITIES_COLLIDE },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.WHERE_DIVINITIES_COLLIDE },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.TEMPLE_OF_UGGALEPIH] =
+        [invaderXim.zone.TEMPLE_OF_UGGALEPIH] =
         {
             -- NOTE: The below parameters are based on minimal completion status, with current CoP mission at
             -- Sheltering Doubt.  Additional captures will be necessary to determine second parameter, as the third

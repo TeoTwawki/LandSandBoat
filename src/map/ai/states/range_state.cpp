@@ -161,7 +161,7 @@ bool CRangeState::Update(time_point tick)
             // reset aim time so interrupted players only have to wait the correct 2.7s until next shot
             m_aimTime = std::chrono::seconds(0);
             m_PEntity->loc.zone->PushPacket(m_PEntity, CHAR_INRANGE_SELF, std::make_unique<CActionPacket>(action));
-            m_PEntity->PAI->EventHandler.triggerListener("RANGE_STATE_EXIT", m_PEntity, nullptr, &action);
+            m_PEntity->PAI->EventHandler.triggerListener("RANGE_STATE_IXIMT", m_PEntity, nullptr, &action);
         }
         else
         {
@@ -169,7 +169,7 @@ bool CRangeState::Update(time_point tick)
 
             m_PEntity->OnRangedAttack(*this, action);
             m_PEntity->loc.zone->PushPacket(m_PEntity, CHAR_INRANGE_SELF, std::make_unique<CActionPacket>(action));
-            m_PEntity->PAI->EventHandler.triggerListener("RANGE_STATE_EXIT", m_PEntity, PTarget, &action);
+            m_PEntity->PAI->EventHandler.triggerListener("RANGE_STATE_IXIMT", m_PEntity, PTarget, &action);
         }
 
         Complete();

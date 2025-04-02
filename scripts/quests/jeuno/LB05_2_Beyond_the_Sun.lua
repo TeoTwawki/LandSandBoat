@@ -4,15 +4,15 @@
 -- Log ID: 3, Quest ID: 76
 -- Maat : !pos 8 3 118 243
 -----------------------------------
-local ruludeID = zones[xi.zone.RULUDE_GARDENS]
+local ruludeID = zones[invaderXim.zone.RULUDE_GARDENS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.BEYOND_THE_SUN)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.BEYOND_THE_SUN)
 
 quest.reward =
 {
-    item = xi.item.MAATS_CAP,
-    title = xi.title.ULTIMATE_CHAMPION_OF_THE_WORLD,
+    item = invaderXim.item.MAATS_CAP,
+    title = invaderXim.title.ULTIMATE_CHAMPION_OF_THE_WORLD,
 }
 
 quest.sections =
@@ -20,11 +20,11 @@ quest.sections =
     -- Section: Quest available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.SHATTERING_STARS) == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.SHATTERING_STARS) == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Maat'] =
             {
@@ -53,10 +53,10 @@ quest.sections =
     -- Section: Quest completed.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Maat'] =
             {

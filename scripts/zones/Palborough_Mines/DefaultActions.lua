@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.PALBOROUGH_MINES]
+local ID = zones[invaderXim.zone.PALBOROUGH_MINES]
 
 return {
     ['_3za']          = { event = 18 },

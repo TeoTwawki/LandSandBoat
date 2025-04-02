@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Rolanberry_Fields (110)
 -----------------------------------
-local ID = zones[xi.zone.ROLANBERRY_FIELDS]
+local ID = zones[invaderXim.zone.ROLANBERRY_FIELDS]
 require('scripts/quests/i_can_hear_a_rainbow')
 -----------------------------------
 ---@type TZone
@@ -10,7 +10,7 @@ local zoneObject = {}
 zoneObject.onInitialize = function(zone)
     UpdateNMSpawnPoint(ID.mob.SIMURGH)
     GetMobByID(ID.mob.SIMURGH):setRespawnTime(math.random(900, 7200))
-    xi.voidwalker.zoneOnInit(zone)
+    invaderXim.voidwalker.zoneOnInit(zone)
 
     -- A Chocobo Riding Game finish line
     zone:registerCylindricalTriggerArea(1, 218.533, 484.50, 20)
@@ -35,18 +35,18 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.afterZoneIn = function(player)
-    xi.chocoboGame.handleMessage(player)
+    invaderXim.chocoboGame.handleMessage(player)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
     local triggerAreaID = triggerArea:getTriggerAreaID()
 
-    if triggerAreaID == 1 and player:hasStatusEffect(xi.effect.MOUNTED) then
-        xi.chocoboGame.onTriggerAreaEnter(player)
+    if triggerAreaID == 1 and player:hasStatusEffect(invaderXim.effect.MOUNTED) then
+        invaderXim.chocoboGame.onTriggerAreaEnter(player)
     end
 end
 
@@ -69,7 +69,7 @@ zoneObject.onEventUpdate = function(player, csid, option, npc)
 end
 
 zoneObject.onEventFinish = function(player, csid, option, npc)
-    xi.chocoboGame.onEventFinish(player, csid)
+    invaderXim.chocoboGame.onEventFinish(player, csid)
 end
 
 return zoneObject

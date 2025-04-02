@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Tahrongi_Canyon (117)
 -----------------------------------
-local ID = zones[xi.zone.TAHRONGI_CANYON]
+local ID = zones[invaderXim.zone.TAHRONGI_CANYON]
 require('scripts/quests/i_can_hear_a_rainbow')
 require('scripts/missions/amk/helpers')
 -----------------------------------
@@ -9,9 +9,9 @@ require('scripts/missions/amk/helpers')
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.helm.initZone(zone, xi.helmType.EXCAVATION)
-    xi.chocobo.initZone(zone)
-    xi.voidwalker.zoneOnInit(zone)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.EXCAVATION)
+    invaderXim.chocobo.initZone(zone)
+    invaderXim.voidwalker.zoneOnInit(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -30,19 +30,19 @@ zoneObject.onZoneIn = function(player, prevZone)
     end
 
     -- AMK06/AMK07
-    if xi.settings.main.ENABLE_AMK == 1 then
-        xi.amk.helpers.tryRandomlyPlaceDiggingLocation(player)
+    if invaderXim.settings.main.ENABLE_AMK == 1 then
+        invaderXim.amk.helpers.tryRandomlyPlaceDiggingLocation(player)
     end
 
     return cs
 end
 
 zoneObject.afterZoneIn = function(player)
-    xi.chocoboGame.handleMessage(player)
+    invaderXim.chocoboGame.handleMessage(player)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
@@ -58,10 +58,10 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
 end
 
 local function isHabrokWeather(weather)
-    return weather == xi.weather.DUST_STORM or
-        weather == xi.weather.SAND_STORM or
-        weather == xi.weather.WIND or
-        weather == xi.weather.GALES
+    return weather == invaderXim.weather.DUST_STORM or
+        weather == invaderXim.weather.SAND_STORM or
+        weather == invaderXim.weather.WIND or
+        weather == invaderXim.weather.GALES
 end
 
 zoneObject.onZoneWeatherChange = function(weather)

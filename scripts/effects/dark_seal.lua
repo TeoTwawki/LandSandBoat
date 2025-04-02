@@ -1,17 +1,17 @@
 -----------------------------------
--- xi.effect.DARK_SEAL
+-- invaderXim.effect.DARK_SEAL
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
     -- Overwrites
-    target:delStatusEffectSilent(xi.effect.DIVINE_EMBLEM)
-    target:delStatusEffectSilent(xi.effect.DIVINE_SEAL)
-    target:delStatusEffectSilent(xi.effect.ELEMENTAL_SEAL)
+    target:delStatusEffectSilent(invaderXim.effect.DIVINE_EMBLEM)
+    target:delStatusEffectSilent(invaderXim.effect.DIVINE_SEAL)
+    target:delStatusEffectSilent(invaderXim.effect.ELEMENTAL_SEAL)
 
-    effect:addMod(xi.mod.DARK_MAGIC_CAST, -effect:getPower())
-    effect:addMod(xi.mod.DARK_MAGIC_DURATION, effect:getSubPower())
+    effect:addMod(invaderXim.mod.DARK_MAGIC_CAST, -effect:getPower())
+    effect:addMod(invaderXim.mod.DARK_MAGIC_DURATION, effect:getSubPower())
 end
 
 effectObject.onEffectTick = function(target, effect)

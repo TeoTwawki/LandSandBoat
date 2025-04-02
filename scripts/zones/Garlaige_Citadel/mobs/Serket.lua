@@ -8,9 +8,9 @@ mixins = { require('scripts/mixins/rage') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.GIL_MIN, 20000)
-    mob:setMobMod(xi.mobMod.GIL_MAX, 20000)
-    mob:addImmunity(xi.immunity.POISON)
+    mob:setMobMod(invaderXim.mobMod.GIL_MIN, 20000)
+    mob:setMobMod(invaderXim.mobMod.GIL_MAX, 20000)
+    mob:addImmunity(invaderXim.immunity.POISON)
 end
 
 entity.onMobSpawn = function(mob)
@@ -31,7 +31,7 @@ entity.onMobFight = function(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.SERKET_BREAKER)
+    player:addTitle(invaderXim.title.SERKET_BREAKER)
 end
 
 entity.onMobDespawn = function(mob)

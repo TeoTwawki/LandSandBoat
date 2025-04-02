@@ -1,11 +1,11 @@
 -----------------------------------
--- xi.effect.ARCANE_CIRCLE
+-- invaderXim.effect.ARCANE_CIRCLE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    effect:addMod(xi.mod.ARCANA_KILLER, effect:getPower())
+    effect:addMod(invaderXim.mod.ARCANA_KILLER, effect:getPower())
 end
 
 effectObject.onEffectTick = function(target, effect)

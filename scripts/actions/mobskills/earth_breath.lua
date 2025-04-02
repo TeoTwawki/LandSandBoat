@@ -14,14 +14,14 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local dmgCap = 500
-    local dmgmod = xi.mobskills.mobBreathMove(mob, target, skill, 0.10, 1.875, xi.element.EARTH, 500) + 100
+    local dmgmod = invaderXim.mobskills.mobBreathMove(mob, target, skill, 0.10, 1.875, invaderXim.element.EARTH, 500) + 100
 
     if dmgmod > dmgCap then
         dmgmod = dmgCap
     end
 
-    local dmg = xi.mobskills.mobFinalAdjustments(dmgmod, mob, skill, target, xi.attackType.BREATH, xi.damageType.EARTH, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
-    target:takeDamage(dmg, mob, xi.attackType.BREATH, xi.damageType.EARTH)
+    local dmg = invaderXim.mobskills.mobFinalAdjustments(dmgmod, mob, skill, target, invaderXim.attackType.BREATH, invaderXim.damageType.EARTH, invaderXim.mobskills.shadowBehavior.IGNORE_SHADOWS)
+    target:takeDamage(dmg, mob, invaderXim.attackType.BREATH, invaderXim.damageType.EARTH)
     return dmg
 end
 

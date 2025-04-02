@@ -2,7 +2,7 @@
 -- Area: Giddeus (145)
 --  Mob: Yagudo Mendicant
 -----------------------------------
-local ID = zones[xi.zone.GIDDEUS]
+local ID = zones[invaderXim.zone.GIDDEUS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -16,7 +16,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, hooMjuuPHTable, 12, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, hooMjuuPHTable, 12, 3600) -- 1 hour
 end
 
 return entity

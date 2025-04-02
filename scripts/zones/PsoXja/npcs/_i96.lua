@@ -4,7 +4,7 @@
 -- Notes: Red Bracelet Door
 -- !pos -310.000 -1.925 -238.399 9
 -----------------------------------
-local ID = zones[xi.zone.PSOXJA]
+local ID = zones[invaderXim.zone.PSOXJA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -13,7 +13,7 @@ entity.onTrigger = function(player, npc)
     local zPos = player:getZPos()
 
     if zPos >= -238 then
-        if player:hasKeyItem(xi.ki.GREEN_BRACELET) then -- Green Bracelet
+        if player:hasKeyItem(invaderXim.ki.GREEN_BRACELET) then -- Green Bracelet
             player:startEvent(62)
         else
             player:messageSpecial(ID.text.ARCH_GLOW_GREEN)

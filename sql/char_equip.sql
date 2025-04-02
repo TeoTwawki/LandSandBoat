@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `char_equip`
 --
 
-DROP TABLE IF EXISTS `char_equip`;
-CREATE TABLE IF NOT EXISTS `char_equip` (
+DROP TABLE IF IXIMSTS `char_equip`;
+CREATE TABLE IF NOT IXIMSTS `char_equip` (
   `charid` int(10) unsigned NOT NULL,
   `slotid` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `equipslotid` tinyint(1) unsigned NOT NULL DEFAULT '0',

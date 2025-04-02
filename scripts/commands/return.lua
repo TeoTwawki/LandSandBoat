@@ -33,8 +33,8 @@ commandObj.onTrigger = function(player, target)
     local zoneId = targ:getPreviousZone()
     if
         zoneId == nil or
-        zoneId == xi.zone.UNKNOWN or
-        zoneId == xi.zone.RESIDENTIAL_AREA
+        zoneId == invaderXim.zone.UNKNOWN or
+        zoneId == invaderXim.zone.RESIDENTIAL_AREA
     then
         error(player, 'Previous zone was a Mog House or there was a problem fetching the ID.')
         return

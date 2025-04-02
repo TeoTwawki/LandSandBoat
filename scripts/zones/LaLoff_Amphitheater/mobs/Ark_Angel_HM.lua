@@ -8,16 +8,16 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addMod(xi.mod.REGAIN, 50)
+    mob:addMod(invaderXim.mod.REGAIN, 50)
 end
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         between = 30,
         specials =
         {
-            { id = xi.jsa.MIGHTY_STRIKES },
-            { id = xi.jsa.MIJIN_GAKURE },
+            { id = invaderXim.jsa.MIGHTY_STRIKES },
+            { id = invaderXim.jsa.MIJIN_GAKURE },
         },
     })
 end
@@ -27,7 +27,7 @@ entity.onMobEngage = function(mob, target)
 
     for member = mobid, mobid + 7 do
         local m = GetMobByID(member)
-        if m and m:getCurrentAction() == xi.act.ROAMING then
+        if m and m:getCurrentAction() == invaderXim.act.ROAMING then
             m:updateEnmity(target)
         end
     end

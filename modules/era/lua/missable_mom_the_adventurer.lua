@@ -5,13 +5,13 @@ require('modules/module_utils')
 -----------------------------------
 local m = Module:new('missable_mom_the_adventurer')
 
-m:addOverride('xi.server.onServerStart', function()
+m:addOverride('invaderXim.server.onServerStart', function()
     super()
 
-    xi.module.modifyInteractionEntry('scripts/quests/bastok/Mom_the_Adventurer', function(quest)
+    invaderXim.module.modifyInteractionEntry('scripts/quests/bastok/Mom_the_Adventurer', function(quest)
         quest.sections[1].check = function(player, status, vars)
-            return status ~= xi.questStatus.QUEST_ACCEPTED and
-                player:getFameLevel(xi.fameArea.BASTOK) < 2 and
+            return status ~= invaderXim.questStatus.QUEST_ACCEPTED and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) < 2 and
                 vars.Prog == 0
         end
     end)

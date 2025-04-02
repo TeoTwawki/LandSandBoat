@@ -4,23 +4,23 @@
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId           = xi.zone.CLOISTER_OF_STORMS,
-    battlefieldId    = xi.battlefield.id.TRIAL_BY_LIGHTNING,
+    zoneId           = invaderXim.zone.CLOISTER_OF_STORMS,
+    battlefieldId    = invaderXim.battlefield.id.TRIAL_BY_LIGHTNING,
     canLoseExp       = false,
     maxPlayers       = 6,
     timeLimit        = utils.minutes(30),
     index            = 0,
     entryNpc         = 'LP_Entrance',
     exitNpc          = 'Lightning_Protocrystal',
-    requiredKeyItems = { xi.ki.TUNING_FORK_OF_LIGHTNING },
+    requiredKeyItems = { invaderXim.ki.TUNING_FORK_OF_LIGHTNING },
 
-    questArea = xi.questLog.OTHER_AREAS,
-    quest     = xi.quest.id.otherAreas.TRIAL_BY_LIGHTNING,
+    questArea = invaderXim.questLog.OTHER_AREAS,
+    quest     = invaderXim.quest.id.otherAreas.TRIAL_BY_LIGHTNING,
 })
 
 function content:onEventFinishWin(player, csid, option, npc)
-    player:addTitle(xi.title.HEIR_OF_THE_GREAT_LIGHTNING)
-    npcUtil.giveKeyItem(player, xi.ki.WHISPER_OF_STORMS)
+    player:addTitle(invaderXim.title.HEIR_OF_THE_GREAT_LIGHTNING)
+    npcUtil.giveKeyItem(player, invaderXim.ki.WHISPER_OF_STORMS)
 end
 
 content.groups =
@@ -28,7 +28,7 @@ content.groups =
     {
         mobs = { 'Ramuh_Prime_TBL' },
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

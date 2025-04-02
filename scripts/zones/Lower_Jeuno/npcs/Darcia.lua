@@ -8,7 +8,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if xi.settings.main.ENABLE_SOA == 0 then
+    if invaderXim.settings.main.ENABLE_SOA == 0 then
         player:startEvent(10124)
     else
         player:startEvent(10123)

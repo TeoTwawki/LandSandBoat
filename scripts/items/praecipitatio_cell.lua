@@ -7,7 +7,7 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    if target:hasStatusEffect(xi.effect.OMERTA) then
+    if target:hasStatusEffect(invaderXim.effect.OMERTA) then
         return 0
     end
 
@@ -15,10 +15,10 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:delStatusEffectSilent(xi.effect.OMERTA)
+    target:delStatusEffectSilent(invaderXim.effect.OMERTA)
     target:messageText(target, zones[target:getZoneID()].text.CELL_OFFSET + 10)
     if target:hasPet() then
-        target:getPet():delStatusEffectSilent(xi.effect.OMERTA)
+        target:getPet():delStatusEffectSilent(invaderXim.effect.OMERTA)
     end
 end
 

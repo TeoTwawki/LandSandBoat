@@ -7,11 +7,11 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if not player:hasKeyItem(xi.ki.OLD_RING) then
-        npcUtil.giveKeyItem(player, xi.ki.OLD_RING)
+    if not player:hasKeyItem(invaderXim.ki.OLD_RING) then
+        npcUtil.giveKeyItem(player, invaderXim.ki.OLD_RING)
     end
 
-    if npc:getAnimation() == xi.anim.CLOSE_DOOR then
+    if npc:getAnimation() == invaderXim.anim.CLOSE_DOOR then
         npc:openDoor()
     end
 end

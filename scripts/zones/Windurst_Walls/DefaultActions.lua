@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.WINDURST_WALLS]
+local ID = zones[invaderXim.zone.WINDURST_WALLS]
 
 return {
     ['_6n2']                 = { messageSpecial = ID.text.DOORS_SEALED_SHUT },

@@ -8,11 +8,11 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.skillBookCheck(target, xi.skill.NINJUTSU)
+    return invaderXim.itemUtils.skillBookCheck(target, invaderXim.skill.NINJUTSU)
 end
 
 itemObject.onItemUse = function(target)
-    xi.itemUtils.skillBookUse(target, xi.skill.NINJUTSU)
+    invaderXim.itemUtils.skillBookUse(target, invaderXim.skill.NINJUTSU)
 end
 
 return itemObject

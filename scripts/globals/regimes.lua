@@ -15,9 +15,9 @@ require('scripts/globals/npc_util')
 require('scripts/globals/extravaganza')
 -----------------------------------
 xi = xi or {}
-xi.regime = xi.regime or {}
+invaderXim.regime = invaderXim.regime or {}
 
-xi.regime.type =
+invaderXim.regime.type =
 {
     FIELDS  = 1,
     GROUNDS = 2,
@@ -38,7 +38,7 @@ local regimeInfo =
     -- Fields of Valor information
     -----------------------------------
 
-    [xi.regime.type.FIELDS] =
+    [invaderXim.regime.type.FIELDS] =
     {
         sharedOptions =
         {
@@ -81,7 +81,7 @@ local regimeInfo =
         },
         zone =
         {
-            [xi.zone.WEST_RONFAURE] =
+            [invaderXim.zone.WEST_RONFAURE] =
             {
                 event = 61,
                 page =
@@ -93,7 +93,7 @@ local regimeInfo =
                     { 6, 1, 0, 0, 4, 8, 330, 56 },
                 },
             },
-            [xi.zone.EAST_RONFAURE] =
+            [invaderXim.zone.EAST_RONFAURE] =
             {
                 event = 61,
                 page =
@@ -105,7 +105,7 @@ local regimeInfo =
                     { 4, 2, 0, 0, 4, 8, 330, 68 },
                 },
             },
-            [xi.zone.LA_THEINE_PLATEAU] =
+            [invaderXim.zone.LA_THEINE_PLATEAU] =
             {
                 event = 61,
                 page =
@@ -117,7 +117,7 @@ local regimeInfo =
                     { 5, 3, 0, 0, 10, 15, 450, 71 },
                 },
             },
-            [xi.zone.VALKURM_DUNES] =
+            [invaderXim.zone.VALKURM_DUNES] =
             {
                 event = 47,
                 page =
@@ -129,7 +129,7 @@ local regimeInfo =
                     { 4, 2, 0, 0, 22, 25, 575, 57 },
                 },
             },
-            [xi.zone.JUGNER_FOREST] =
+            [invaderXim.zone.JUGNER_FOREST] =
             {
                 event = 32,
                 page =
@@ -141,7 +141,7 @@ local regimeInfo =
                     { 6, 3, 0, 0, 24, 25, 630, 14 },
                 },
             },
-            [xi.zone.BATALLIA_DOWNS] =
+            [invaderXim.zone.BATALLIA_DOWNS] =
             {
                 event = 61,
                 page =
@@ -153,7 +153,7 @@ local regimeInfo =
                     { 9, 0, 0, 0, 31, 32, 730, 75 },
                 },
             },
-            [xi.zone.NORTH_GUSTABERG] =
+            [invaderXim.zone.NORTH_GUSTABERG] =
             {
                 event = 266,
                 page =
@@ -165,7 +165,7 @@ local regimeInfo =
                     { 3, 4, 0, 0, 3, 8, 330, 59 },
                 },
             },
-            [xi.zone.SOUTH_GUSTABERG] =
+            [invaderXim.zone.SOUTH_GUSTABERG] =
             {
                 event = 61,
                 page =
@@ -177,7 +177,7 @@ local regimeInfo =
                     { 5, 2, 0, 0, 4, 8, 330, 80 },
                 },
             },
-            [xi.zone.KONSCHTAT_HIGHLANDS] =
+            [invaderXim.zone.KONSCHTAT_HIGHLANDS] =
             {
                 event = 61,
                 page =
@@ -189,7 +189,7 @@ local regimeInfo =
                     { 2, 2, 2, 0, 12, 14, 400, 84 },
                 },
             },
-            [xi.zone.PASHHOW_MARSHLANDS] =
+            [invaderXim.zone.PASHHOW_MARSHLANDS] =
             {
                 event = 28,
                 page =
@@ -201,7 +201,7 @@ local regimeInfo =
                     { 5, 4, 1, 0, 22, 25, 660, 60 },
                 },
             },
-            [xi.zone.ROLANBERRY_FIELDS] =
+            [invaderXim.zone.ROLANBERRY_FIELDS] =
             {
                 event = 61,
                 page =
@@ -213,7 +213,7 @@ local regimeInfo =
                     { 5, 0, 0, 0, 36, 37, 800, 88 },
                 },
             },
-            [xi.zone.BEAUCEDINE_GLACIER] =
+            [invaderXim.zone.BEAUCEDINE_GLACIER] =
             {
                 event = 218,
                 page =
@@ -225,7 +225,7 @@ local regimeInfo =
                     { 5, 4, 2, 0, 40, 43, 990, 50 },
                 },
             },
-            [xi.zone.XARCABARD] =
+            [invaderXim.zone.XARCABARD] =
             {
                 event = 48,
                 page =
@@ -237,7 +237,7 @@ local regimeInfo =
                     { 5, 4, 3, 0, 45, 52, 1100, 55 },
                 },
             },
-            [xi.zone.CAPE_TERIGGAN] =
+            [invaderXim.zone.CAPE_TERIGGAN] =
             {
                 event = 61,
                 page =
@@ -249,7 +249,7 @@ local regimeInfo =
                     { 4, 5, 0, 0, 71, 79, 1450, 108 },
                 },
             },
-            [xi.zone.EASTERN_ALTEPA_DESERT] =
+            [invaderXim.zone.EASTERN_ALTEPA_DESERT] =
             {
                 event = 61,
                 page =
@@ -261,7 +261,7 @@ local regimeInfo =
                     {  3, 3, 2, 1, 45, 49, 970, 113 },
                 },
             },
-            [xi.zone.WEST_SARUTABARUTA] =
+            [invaderXim.zone.WEST_SARUTABARUTA] =
             {
                 event = 52,
                 page =
@@ -273,7 +273,7 @@ local regimeInfo =
                     { 4, 2, 0, 0, 4, 8, 330, 61 },
                 },
             },
-            [xi.zone.EAST_SARUTABARUTA] =
+            [invaderXim.zone.EAST_SARUTABARUTA] =
             {
                 event = 61,
                 page =
@@ -285,7 +285,7 @@ local regimeInfo =
                     { 4, 3, 0, 0, 3, 6, 330, 93 },
                 },
             },
-            [xi.zone.TAHRONGI_CANYON] =
+            [invaderXim.zone.TAHRONGI_CANYON] =
             {
                 event = 61,
                 page =
@@ -297,7 +297,7 @@ local regimeInfo =
                     { 3, 4, 0, 0, 12, 16, 475, 96 },
                 },
             },
-            [xi.zone.BUBURIMU_PENINSULA] =
+            [invaderXim.zone.BUBURIMU_PENINSULA] =
             {
                 event = 51,
                 page =
@@ -309,7 +309,7 @@ local regimeInfo =
                     { 4, 3, 0, 0, 22, 27, 575, 62 },
                 },
             },
-            [xi.zone.MERIPHATAUD_MOUNTAINS] =
+            [invaderXim.zone.MERIPHATAUD_MOUNTAINS] =
             {
                 event = 46,
                 page =
@@ -321,7 +321,7 @@ local regimeInfo =
                     { 3, 5, 0, 0, 25, 27, 660, 63 },
                 },
             },
-            [xi.zone.SAUROMUGUE_CHAMPAIGN] =
+            [invaderXim.zone.SAUROMUGUE_CHAMPAIGN] =
             {
                 event = 61,
                 page =
@@ -333,7 +333,7 @@ local regimeInfo =
                     { 5, 3, 0, 0, 36, 38, 770, 100 },
                 },
             },
-            [xi.zone.THE_SANCTUARY_OF_ZITAH] =
+            [invaderXim.zone.THE_SANCTUARY_OF_ZITAH] =
             {
                 event = 61,
                 page =
@@ -345,7 +345,7 @@ local regimeInfo =
                     { 3, 5, 0, 0, 44, 50, 1100, 118 },
                 },
             },
-            [xi.zone.ROMAEVE] =
+            [invaderXim.zone.ROMAEVE] =
             {
                 event = 61,
                 page =
@@ -357,7 +357,7 @@ local regimeInfo =
                     { 6, 1, 0, 0, 79, 82, 1570, 123 },
                 },
             },
-            [xi.zone.YUHTUNGA_JUNGLE] =
+            [invaderXim.zone.YUHTUNGA_JUNGLE] =
             {
                 event = 61,
                 page =
@@ -369,7 +369,7 @@ local regimeInfo =
                     {  4, 6, 0, 0, 34, 41, 920, 128 },
                 },
             },
-            [xi.zone.YHOATOR_JUNGLE] =
+            [invaderXim.zone.YHOATOR_JUNGLE] =
             {
                 event = 61,
                 page =
@@ -381,7 +381,7 @@ local regimeInfo =
                     { 10, 0, 0, 0, 45, 49, 1000, 133 },
                 },
             },
-            [xi.zone.WESTERN_ALTEPA_DESERT] =
+            [invaderXim.zone.WESTERN_ALTEPA_DESERT] =
             {
                 event = 61,
                 page =
@@ -393,7 +393,7 @@ local regimeInfo =
                     {  4, 6, 0, 0, 54, 58, 1140, 138 },
                 },
             },
-            [xi.zone.QUFIM_ISLAND] =
+            [invaderXim.zone.QUFIM_ISLAND] =
             {
                 event = 33,
                 page =
@@ -405,7 +405,7 @@ local regimeInfo =
                     { 5, 4, 1, 0, 28, 34, 770, 45 },
                 },
             },
-            [xi.zone.BEHEMOTHS_DOMINION] =
+            [invaderXim.zone.BEHEMOTHS_DOMINION] =
             {
                 event = 61,
                 page =
@@ -415,7 +415,7 @@ local regimeInfo =
                     { 3, 2, 0, 0, 43, 47, 450, 103 },
                 },
             },
-            [xi.zone.VALLEY_OF_SORROWS] =
+            [invaderXim.zone.VALLEY_OF_SORROWS] =
             {
                 event = 61,
                 page =
@@ -425,7 +425,7 @@ local regimeInfo =
                     { 4, 1, 0, 0, 69, 74, 1300, 141 },
                 },
             },
-            [xi.zone.RUAUN_GARDENS] =
+            [invaderXim.zone.RUAUN_GARDENS] =
             {
                 event = 73,
                 page =
@@ -444,7 +444,7 @@ local regimeInfo =
     -- Grounds of Valor information
     -----------------------------------
 
-    [xi.regime.type.GROUNDS] =
+    [invaderXim.regime.type.GROUNDS] =
     {
         sharedOptions =
         {
@@ -490,7 +490,7 @@ local regimeInfo =
         },
         zone =
         {
-            [xi.zone.THE_BOYAHDA_TREE] =
+            [invaderXim.zone.THE_BOYAHDA_TREE] =
             {
                 event = 17,
                 page =
@@ -505,7 +505,7 @@ local regimeInfo =
                     { 2, 2, 2, 0, 102, 105, 2040, 726 },
                 },
             },
-            [xi.zone.MIDDLE_DELKFUTTS_TOWER] =
+            [invaderXim.zone.MIDDLE_DELKFUTTS_TOWER] =
             {
                 event = 18,
                 page =
@@ -515,7 +515,7 @@ local regimeInfo =
                     { 4, 4, 0, 0, 30, 34, 1290, 784 },
                 },
             },
-            [xi.zone.UPPER_DELKFUTTS_TOWER] =
+            [invaderXim.zone.UPPER_DELKFUTTS_TOWER] =
             {
                 event = 20,
                 page =
@@ -527,7 +527,7 @@ local regimeInfo =
                     { 2, 2, 2, 0, 65, 69, 1540, 789 },
                 },
             },
-            [xi.zone.TEMPLE_OF_UGGALEPIH] =
+            [invaderXim.zone.TEMPLE_OF_UGGALEPIH] =
             {
                 event = 83,
                 page =
@@ -540,7 +540,7 @@ local regimeInfo =
                     { 3, 3, 0, 0, 61, 68, 1660, 795 },
                 },
             },
-            [xi.zone.DEN_OF_RANCOR] =
+            [invaderXim.zone.DEN_OF_RANCOR] =
             {
                 event = 13,
                 page =
@@ -555,7 +555,7 @@ local regimeInfo =
                     { 4, 2, 0, 0, 75, 80, 1790, 803 },
                 },
             },
-            [xi.zone.RANGUEMONT_PASS] =
+            [invaderXim.zone.RANGUEMONT_PASS] =
             {
                 event = 24,
                 page =
@@ -570,7 +570,7 @@ local regimeInfo =
                     { 3, 3, 0, 0, 88, 90, 1850, 609 },
                 },
             },
-            [xi.zone.BOSTAUNIEUX_OUBLIETTE] =
+            [invaderXim.zone.BOSTAUNIEUX_OUBLIETTE] =
             {
                 event = 114,
                 page =
@@ -585,7 +585,7 @@ local regimeInfo =
                     { 2, 5, 0, 0, 95, 99, 2480, 617 },
                 },
             },
-            [xi.zone.TORAIMARAI_CANAL] =
+            [invaderXim.zone.TORAIMARAI_CANAL] =
             {
                 event = 100,
                 page =
@@ -600,7 +600,7 @@ local regimeInfo =
                     { 8, 2, 0, 0, 94, 99, 2050, 625 },
                 },
             },
-            [xi.zone.ZERUHN_MINES] =
+            [invaderXim.zone.ZERUHN_MINES] =
             {
                 event = 210,
                 page =
@@ -612,7 +612,7 @@ local regimeInfo =
                     { 5, 2, 0, 0, 75, 80, 1700, 630 },
                 },
             },
-            [xi.zone.KORROLOKA_TUNNEL] =
+            [invaderXim.zone.KORROLOKA_TUNNEL] =
             {
                 event = 4,
                 page =
@@ -627,7 +627,7 @@ local regimeInfo =
                     { 4, 3, 0, 0, 87, 91, 2140, 734 },
                 },
             },
-            [xi.zone.KUFTAL_TUNNEL] =
+            [invaderXim.zone.KUFTAL_TUNNEL] =
             {
                 event = 29,
                 page =
@@ -642,7 +642,7 @@ local regimeInfo =
                     { 3, 3, 0, 0, 99, 103, 1900, 742 },
                 },
             },
-            [xi.zone.SEA_SERPENT_GROTTO] =
+            [invaderXim.zone.SEA_SERPENT_GROTTO] =
             {
                 event = 24,
                 page =
@@ -657,7 +657,7 @@ local regimeInfo =
                     { 3, 3, 0, 0, 66, 69, 1500, 811 },
                 },
             },
-            [xi.zone.VELUGANNON_PALACE] =
+            [invaderXim.zone.VELUGANNON_PALACE] =
             {
                 event = 4,
                 page =
@@ -670,7 +670,7 @@ local regimeInfo =
                     {  6, 0, 0, 0, 79, 80, 2180, 748 },
                 },
             },
-            [xi.zone.THE_SHRINE_OF_RUAVITAU] =
+            [invaderXim.zone.THE_SHRINE_OF_RUAVITAU] =
             {
                 event = 61,
                 page =
@@ -683,7 +683,7 @@ local regimeInfo =
                     {  7, 0, 0, 0, 81, 84, 2390, 754 },
                 },
             },
-            [xi.zone.LOWER_DELKFUTTS_TOWER] =
+            [invaderXim.zone.LOWER_DELKFUTTS_TOWER] =
             {
                 event = 40,
                 page =
@@ -695,7 +695,7 @@ local regimeInfo =
                     { 4, 2, 0, 0, 25, 35, 940, 781 },
                 },
             },
-            [xi.zone.KING_RANPERRES_TOMB] =
+            [invaderXim.zone.KING_RANPERRES_TOMB] =
             {
                 event = 100,
                 page =
@@ -710,7 +710,7 @@ local regimeInfo =
                     { 5, 2, 0, 0, 80, 83, 1720, 638 },
                 },
             },
-            [xi.zone.DANGRUF_WADI] =
+            [invaderXim.zone.DANGRUF_WADI] =
             {
                 event = 160,
                 page =
@@ -725,7 +725,7 @@ local regimeInfo =
                     { 5, 2, 0, 0, 90, 93, 2260, 646 },
                 },
             },
-            [xi.zone.INNER_HORUTOTO_RUINS] =
+            [invaderXim.zone.INNER_HORUTOTO_RUINS] =
             {
                 event = 100,
                 page =
@@ -740,7 +740,7 @@ local regimeInfo =
                     { 2, 4, 0, 0, 81, 84, 1780, 654 },
                 },
             },
-            [xi.zone.ORDELLES_CAVES] =
+            [invaderXim.zone.ORDELLES_CAVES] =
             {
                 event = 100,
                 page =
@@ -755,7 +755,7 @@ local regimeInfo =
                     { 3, 3, 0, 0, 86, 88, 1890, 662 },
                 },
             },
-            [xi.zone.OUTER_HORUTOTO_RUINS] =
+            [invaderXim.zone.OUTER_HORUTOTO_RUINS] =
             {
                 event = 110,
                 page =
@@ -770,7 +770,7 @@ local regimeInfo =
                     { 5, 1, 0, 0, 82, 85, 1850, 670 },
                 },
             },
-            [xi.zone.THE_ELDIEME_NECROPOLIS] =
+            [invaderXim.zone.THE_ELDIEME_NECROPOLIS] =
             {
                 event = 100,
                 page =
@@ -785,7 +785,7 @@ local regimeInfo =
                     { 3, 3, 0, 0, 91, 95, 1890, 678 },
                 },
             },
-            [xi.zone.GUSGEN_MINES] =
+            [invaderXim.zone.GUSGEN_MINES] =
             {
                 event = 100,
                 page =
@@ -800,7 +800,7 @@ local regimeInfo =
                     { 2, 5, 0, 0, 85, 89, 2180, 686 },
                 },
             },
-            [xi.zone.CRAWLERS_NEST] =
+            [invaderXim.zone.CRAWLERS_NEST] =
             {
                 event = 100,
                 page =
@@ -815,7 +815,7 @@ local regimeInfo =
                     { 4, 3, 0, 0, 92, 96, 2220, 694 },
                 },
             },
-            [xi.zone.MAZE_OF_SHAKHRAMI] =
+            [invaderXim.zone.MAZE_OF_SHAKHRAMI] =
             {
                 event = 100,
                 page =
@@ -830,7 +830,7 @@ local regimeInfo =
                     { 3, 3, 0, 0, 86, 88, 1830, 702 },
                 },
             },
-            [xi.zone.GARLAIGE_CITADEL] =
+            [invaderXim.zone.GARLAIGE_CITADEL] =
             {
                 event = 110,
                 page =
@@ -845,7 +845,7 @@ local regimeInfo =
                     { 4, 3, 0, 0, 92, 96, 2220, 710 },
                 },
             },
-            [xi.zone.FEIYIN] =
+            [invaderXim.zone.FEIYIN] =
             {
                 event = 100,
                 page =
@@ -860,7 +860,7 @@ local regimeInfo =
                     { 4, 3, 0, 0, 95, 99, 2250, 718 },
                 },
             },
-            [xi.zone.IFRITS_CAULDRON] =
+            [invaderXim.zone.IFRITS_CAULDRON] =
             {
                 event = 51,
                 page =
@@ -875,7 +875,7 @@ local regimeInfo =
                     { 4, 2, 0, 0, 71, 78, 1760, 762 },
                 },
             },
-            [xi.zone.QUICKSAND_CAVES] =
+            [invaderXim.zone.QUICKSAND_CAVES] =
             {
                 event = 15,
                 page =
@@ -890,7 +890,7 @@ local regimeInfo =
                     { 3, 3, 0, 0, 65, 69, 1540, 819 },
                 },
             },
-            [xi.zone.GUSTAV_TUNNEL] =
+            [invaderXim.zone.GUSTAV_TUNNEL] =
             {
                 event = 17,
                 page =
@@ -905,7 +905,7 @@ local regimeInfo =
                     { 5, 2, 0, 0, 100, 103, 2310, 770 },
                 },
             },
-            [xi.zone.LABYRINTH_OF_ONZOZO] =
+            [invaderXim.zone.LABYRINTH_OF_ONZOZO] =
             {
                 event = 3,
                 page =
@@ -993,18 +993,18 @@ end
 -- can stack each effect up to maxStack times, per https://ffxiclopedia.fandom.com/wiki/Grounds_of_Valor#Prowesses
 local prowessData =
 {
-    { effect = xi.effect.PROWESS_CASKET_RATE,   basePower = 4,   addPower = 4,   maxStack = 5  },
-    { effect = xi.effect.PROWESS_SKILL_RATE,    basePower = 4,   addPower = 4,   maxStack = 11 },
-    { effect = xi.effect.PROWESS_CRYSTAL_YIELD, basePower = 4,   addPower = 4,   maxStack = 5  },
-    { effect = xi.effect.PROWESS_TH,            basePower = 1,   addPower = 1,   maxStack = 3  },
-    { effect = xi.effect.PROWESS_ATTACK_SPEED,  basePower = 400, addPower = 400, maxStack = 4  },
-    { effect = xi.effect.PROWESS_HP_MP,         basePower = 3,   addPower = 1,   maxStack = 11 },
-    { effect = xi.effect.PROWESS_ACC_RACC,      basePower = 4,   addPower = 4,   maxStack = 11 },
-    { effect = xi.effect.PROWESS_ATT_RATT,      basePower = 4,   addPower = 4,   maxStack = 11 },
-    { effect = xi.effect.PROWESS_MACC_MATK,     basePower = 4,   addPower = 4,   maxStack = 10 },
-    { effect = xi.effect.PROWESS_CURE_POTENCY,  basePower = 4,   addPower = 4,   maxStack = 5  },
-    { effect = xi.effect.PROWESS_WS_DMG,        basePower = 2,   addPower = 2,   maxStack = 5  },
-    { effect = xi.effect.PROWESS_KILLER,        basePower = 4,   addPower = 4,   maxStack = 2  },
+    { effect = invaderXim.effect.PROWESS_CASKET_RATE,   basePower = 4,   addPower = 4,   maxStack = 5  },
+    { effect = invaderXim.effect.PROWESS_SKILL_RATE,    basePower = 4,   addPower = 4,   maxStack = 11 },
+    { effect = invaderXim.effect.PROWESS_CRYSTAL_YIELD, basePower = 4,   addPower = 4,   maxStack = 5  },
+    { effect = invaderXim.effect.PROWESS_TH,            basePower = 1,   addPower = 1,   maxStack = 3  },
+    { effect = invaderXim.effect.PROWESS_ATTACK_SPEED,  basePower = 400, addPower = 400, maxStack = 4  },
+    { effect = invaderXim.effect.PROWESS_HP_MP,         basePower = 3,   addPower = 1,   maxStack = 11 },
+    { effect = invaderXim.effect.PROWESS_ACC_RACC,      basePower = 4,   addPower = 4,   maxStack = 11 },
+    { effect = invaderXim.effect.PROWESS_ATT_RATT,      basePower = 4,   addPower = 4,   maxStack = 11 },
+    { effect = invaderXim.effect.PROWESS_MACC_MATK,     basePower = 4,   addPower = 4,   maxStack = 10 },
+    { effect = invaderXim.effect.PROWESS_CURE_POTENCY,  basePower = 4,   addPower = 4,   maxStack = 5  },
+    { effect = invaderXim.effect.PROWESS_WS_DMG,        basePower = 2,   addPower = 2,   maxStack = 5  },
+    { effect = invaderXim.effect.PROWESS_KILLER,        basePower = 4,   addPower = 4,   maxStack = 2  },
 }
 
 local function addGovProwessBonusEffect(player)
@@ -1046,7 +1046,7 @@ local function addGovProwessBonusEffect(player)
 end
 
 -- function made global to be called by hunts.lua
-xi.regime.clearRegimeVars = function(player)
+invaderXim.regime.clearRegimeVars = function(player)
     player:setCharVar('[regime]type', 0)
     player:setCharVar('[regime]zone', 0)
     player:setCharVar('[regime]id', 0)
@@ -1059,13 +1059,13 @@ xi.regime.clearRegimeVars = function(player)
     end
 end
 
-xi.regime.bookOnTrigger = function(player, regimeType)
+invaderXim.regime.bookOnTrigger = function(player, regimeType)
     local cipher = 0 -- Trust Alter Ego Extravaganza
-    local active = xi.extravaganza.campaignActive()
+    local active = invaderXim.extravaganza.campaignActive()
 
     if
-        active == xi.extravaganza.campaign.SPRING_FALL or
-        active == xi.extravaganza.campaign.BOTH
+        active == invaderXim.extravaganza.campaign.SPRING_FALL or
+        active == invaderXim.extravaganza.campaign.BOTH
     then
         cipher = 3
     end
@@ -1076,8 +1076,8 @@ xi.regime.bookOnTrigger = function(player, regimeType)
         player:startEvent(info.event, 0, 0, 3, 1, 0, 0, player:getCurrency('valor_point'), player:getCharVar('[hunt]id'))
 
     elseif
-        (regimeType == xi.regime.type.FIELDS and xi.settings.main.ENABLE_FIELD_MANUALS == 1) or
-        (regimeType == xi.regime.type.GROUNDS and xi.settings.main.ENABLE_GROUNDS_TOMES == 1)
+        (regimeType == invaderXim.regime.type.FIELDS and invaderXim.settings.main.ENABLE_FIELD_MANUALS == 1) or
+        (regimeType == invaderXim.regime.type.GROUNDS and invaderXim.settings.main.ENABLE_GROUNDS_TOMES == 1)
     then
         -- arg2 is a bitmask that controls which pages appear for examination
         -- here, we only show pages that have regime info
@@ -1092,7 +1092,7 @@ xi.regime.bookOnTrigger = function(player, regimeType)
             end
         end
 
-        if player:hasKeyItem(xi.ki.RHAPSODY_IN_WHITE) then
+        if player:hasKeyItem(invaderXim.ki.RHAPSODY_IN_WHITE) then
             arg4 = 1
         end
 
@@ -1102,7 +1102,7 @@ xi.regime.bookOnTrigger = function(player, regimeType)
     end
 end
 
-xi.regime.bookOnEventUpdate = function(player, option, regimeType)
+invaderXim.regime.bookOnEventUpdate = function(player, option, regimeType)
     local page = getPageByRegimeId(player:getCharVar('[regime]type'), player:getCharVar('[regime]zone'), player:getCharVar('[regime]id'))
 
     -- check valid option
@@ -1137,17 +1137,17 @@ xi.regime.bookOnEventUpdate = function(player, option, regimeType)
     end
 end
 
-xi.regime.bookOnEventFinish = function(player, option, regimeType)
+invaderXim.regime.bookOnEventFinish = function(player, option, regimeType)
     local zoneId       = player:getZoneID()
     local msgOffset    = zones[zoneId].text.REGIME_REGISTERED
     local tabs         = player:getCurrency('valor_point')
     local regimeRepeat = bit.band(option, 0x80000000)
-    local hasKI        = player:hasKeyItem(xi.ki.RHAPSODY_IN_WHITE)
+    local hasKI        = player:hasKeyItem(invaderXim.ki.RHAPSODY_IN_WHITE)
 
     option = bit.band(option, 0x7FFFFFFF)
 
     if option == 7 then
-        xi.hunts.clearHuntVars(player)
+        invaderXim.hunts.clearHuntVars(player)
     end
 
     -- check valid option
@@ -1171,8 +1171,8 @@ xi.regime.bookOnEventFinish = function(player, option, regimeType)
     end
 
     -- check player can eat
-    if opt.food and player:hasStatusEffect(xi.effect.FOOD) then
-        player:messageBasic(xi.msg.basic.IS_FULL)
+    if opt.food and player:hasStatusEffect(invaderXim.effect.FOOD) then
+        player:messageBasic(invaderXim.msg.basic.IS_FULL)
         return
     end
 
@@ -1184,50 +1184,50 @@ xi.regime.bookOnEventFinish = function(player, option, regimeType)
         switch (act) : caseof
         {
             ['CANCEL_REGIME'] = function()
-                xi.regime.clearRegimeVars(player)
+                invaderXim.regime.clearRegimeVars(player)
                 player:showText(player, msgOffset + 2) -- Training regime canceled.
             end,
 
             ['REPATRIATION'] = function()
-                player:addStatusEffectEx(xi.effect.TELEPORT, 0, xi.teleport.id.HOME_NATION, 0, 1)
+                player:addStatusEffectEx(invaderXim.effect.TELEPORT, 0, invaderXim.teleport.id.HOME_NATION, 0, 1)
             end,
 
             ['CIRCUMSPECTION'] = function()
-                player:delStatusEffectSilent(xi.effect.SNEAK)
-                player:addStatusEffect(xi.effect.SNEAK, 0, 10, 900 * xi.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER)
-                player:delStatusEffectSilent(xi.effect.INVISIBLE)
-                player:addStatusEffect(xi.effect.INVISIBLE, 0, 10, 900 * xi.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER)
+                player:delStatusEffectSilent(invaderXim.effect.SNEAK)
+                player:addStatusEffect(invaderXim.effect.SNEAK, 0, 10, 900 * invaderXim.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER)
+                player:delStatusEffectSilent(invaderXim.effect.INVISIBLE)
+                player:addStatusEffect(invaderXim.effect.INVISIBLE, 0, 10, 900 * invaderXim.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER)
             end,
 
             ['HOMING_INSTINCT'] = function()
-                player:addStatusEffectEx(xi.effect.TELEPORT, 0, xi.teleport.id.WARP, 0, 3)
+                player:addStatusEffectEx(invaderXim.effect.TELEPORT, 0, invaderXim.teleport.id.WARP, 0, 3)
             end,
 
             ['RERAISE'] = function()
-                player:delStatusEffectSilent(xi.effect.RERAISE)
-                player:addStatusEffect(xi.effect.RERAISE, 1, 0, 7200)
+                player:delStatusEffectSilent(invaderXim.effect.RERAISE)
+                player:addStatusEffect(invaderXim.effect.RERAISE, 1, 0, 7200)
             end,
 
             ['RERAISE_II'] = function()
-                player:delStatusEffectSilent(xi.effect.RERAISE)
-                player:addStatusEffect(xi.effect.RERAISE, 2, 0, 7200)
+                player:delStatusEffectSilent(invaderXim.effect.RERAISE)
+                player:addStatusEffect(invaderXim.effect.RERAISE, 2, 0, 7200)
             end,
 
             ['RERAISE_III'] = function()
-                player:delStatusEffectSilent(xi.effect.RERAISE)
-                player:addStatusEffect(xi.effect.RERAISE, 3, 0, 7200)
+                player:delStatusEffectSilent(invaderXim.effect.RERAISE)
+                player:addStatusEffect(invaderXim.effect.RERAISE, 3, 0, 7200)
             end,
 
             ['REGEN'] = function()
-                player:delStatusEffectSilent(xi.effect.REGEN)
-                player:addStatusEffect(xi.effect.REGEN, 1, 3, 3600)
+                player:delStatusEffectSilent(invaderXim.effect.REGEN)
+                player:addStatusEffect(invaderXim.effect.REGEN, 1, 3, 3600)
             end,
 
             ['REFRESH'] = function()
-                player:delStatusEffectSilent(xi.effect.REFRESH)
-                player:delStatusEffect(xi.effect.SUBLIMATION_COMPLETE)
-                player:delStatusEffect(xi.effect.SUBLIMATION_ACTIVATED)
-                player:addStatusEffect(xi.effect.REFRESH, 1, 3, 3600, 0, 3)
+                player:delStatusEffectSilent(invaderXim.effect.REFRESH)
+                player:delStatusEffect(invaderXim.effect.SUBLIMATION_COMPLETE)
+                player:delStatusEffect(invaderXim.effect.SUBLIMATION_ACTIVATED)
+                player:addStatusEffect(invaderXim.effect.REFRESH, 1, 3, 3600, 0, 3)
             end,
 
             ['PROTECT'] = function()
@@ -1250,13 +1250,13 @@ xi.regime.bookOnEventFinish = function(player, option, regimeType)
                 end
 
                 local bonus = 0
-                if player:getMod(xi.mod.ENHANCES_PROT_SHELL_RCVD) > 0 then
+                if player:getMod(invaderXim.mod.ENHANCES_PROT_SHELL_RCVD) > 0 then
                     bonus = 2 -- 2x Tier from MOD
                 end
 
                 power = power + (bonus * tier)
-                player:delStatusEffectSilent(xi.effect.PROTECT)
-                player:addStatusEffect(xi.effect.PROTECT, power, 0, 1800, 0, 0, tier)
+                player:delStatusEffectSilent(invaderXim.effect.PROTECT)
+                player:addStatusEffect(invaderXim.effect.PROTECT, power, 0, 1800, 0, 0, tier)
             end,
 
             ['SHELL'] = function()
@@ -1281,52 +1281,52 @@ xi.regime.bookOnEventFinish = function(player, option, regimeType)
                 end
 
                 local bonus = 0
-                if player:getMod(xi.mod.ENHANCES_PROT_SHELL_RCVD) > 0 then
+                if player:getMod(invaderXim.mod.ENHANCES_PROT_SHELL_RCVD) > 0 then
                     bonus = 39   -- (1/256 bonus buff per tier of spell)
                 end
 
                 power = power + (bonus * tier)
-                player:delStatusEffectSilent(xi.effect.SHELL)
-                player:addStatusEffect(xi.effect.SHELL, power, 0, 1800, 0, 0, tier)
+                player:delStatusEffectSilent(invaderXim.effect.SHELL)
+                player:addStatusEffect(invaderXim.effect.SHELL, power, 0, 1800, 0, 0, tier)
             end,
 
             ['HASTE'] = function()
-                player:delStatusEffectSilent(xi.effect.HASTE)
-                player:addStatusEffect(xi.effect.HASTE, 1000, 0, 600)
+                player:delStatusEffectSilent(invaderXim.effect.HASTE)
+                player:addStatusEffect(invaderXim.effect.HASTE, 1000, 0, 600)
             end,
 
             ['DRIED_MEAT'] = function()
-                player:addStatusEffect(xi.effect.FOOD, 1, 0, 1800, 0)
+                player:addStatusEffect(invaderXim.effect.FOOD, 1, 0, 1800, 0)
             end,
 
             ['SALTED_FISH'] = function()
-                player:addStatusEffect(xi.effect.FOOD, 2, 0, 1800, 0)
+                player:addStatusEffect(invaderXim.effect.FOOD, 2, 0, 1800, 0)
             end,
 
             ['HARD_COOKIE'] = function()
-                player:addStatusEffect(xi.effect.FOOD, 3, 0, 1800, 0)
+                player:addStatusEffect(invaderXim.effect.FOOD, 3, 0, 1800, 0)
             end,
 
             ['INSTANT_NOODLES'] = function()
-                player:addStatusEffect(xi.effect.FOOD, 4, 0, 1800, 0)
+                player:addStatusEffect(invaderXim.effect.FOOD, 4, 0, 1800, 0)
             end,
 
             ['DRIED_AGARICUS'] = function()
-                player:addStatusEffect(xi.effect.FOOD, 5, 0, 1800, 0)
+                player:addStatusEffect(invaderXim.effect.FOOD, 5, 0, 1800, 0)
             end,
 
             ['INSTANT_RICE'] = function()
-                player:addStatusEffect(xi.effect.FOOD, 6, 0, 1800, 0)
+                player:addStatusEffect(invaderXim.effect.FOOD, 6, 0, 1800, 0)
             end,
 
             ['CIPHER_SAKURA'] = function()
-                if not npcUtil.giveItem(player, xi.item.CIPHER_OF_SAKURAS_ALTER_EGO) then
+                if not npcUtil.giveItem(player, invaderXim.item.CIPHER_OF_SAKURAS_ALTER_EGO) then
                     player:addCurrency('valor_point', 300) --refund player if they can't obtain
                 end
             end,
 
             ['CIPHER_KORU'] = function()
-                if not npcUtil.giveItem(player, xi.item.CIPHER_OF_KORU_MORUS_ALTER_EGO) then
+                if not npcUtil.giveItem(player, invaderXim.item.CIPHER_OF_KORU_MORUS_ALTER_EGO) then
                     player:addCurrency('valor_point', 300) --refund player if they can't obtain
                 end
             end,
@@ -1355,19 +1355,19 @@ xi.regime.bookOnEventFinish = function(player, option, regimeType)
             player:showText(player, msgOffset + 1)
 
             -- Records of Eminence: Undertake a FoV Training Regime
-            if player:getEminenceProgress(3) and regimeType == xi.regime.type.FIELDS then
-                xi.roe.onRecordTrigger(player, 3)
+            if player:getEminenceProgress(3) and regimeType == invaderXim.regime.type.FIELDS then
+                invaderXim.roe.onRecordTrigger(player, 3)
             end
 
             -- Records of Eminence: Undertake a GoV Training Regime
-            if player:getEminenceProgress(11) and regimeType == xi.regime.type.GROUNDS then
-                xi.roe.onRecordTrigger(player, 11)
+            if player:getEminenceProgress(11) and regimeType == invaderXim.regime.type.GROUNDS then
+                invaderXim.roe.onRecordTrigger(player, 11)
             end
         end
     end
 end
 
-xi.regime.checkRegime = function(player, mob, regimeId, index, regimeType)
+invaderXim.regime.checkRegime = function(player, mob, regimeId, index, regimeType)
     -- dead players, or players not on this training regime, get no credit
     -- also prevents error when this function is called onMobDeath from a mob not killed by a player
     if
@@ -1380,8 +1380,8 @@ xi.regime.checkRegime = function(player, mob, regimeId, index, regimeType)
 
     -- people in alliance get no fields credit unless FOV_REWARD_ALLIANCE is 1 in settings/main.lua
     if
-        xi.settings.main.FOV_REWARD_ALLIANCE ~= 1 and
-        regimeType == xi.regime.type.FIELDS and
+        invaderXim.settings.main.FOV_REWARD_ALLIANCE ~= 1 and
+        regimeType == invaderXim.regime.type.FIELDS and
         player:checkSoloPartyAlliance() == 2
     then
         return
@@ -1389,8 +1389,8 @@ xi.regime.checkRegime = function(player, mob, regimeId, index, regimeType)
 
     -- people in alliance get no grounds credit unless GOV_REWARD_ALLIANCE is 1 in settings/main.lua
     if
-        xi.settings.main.GOV_REWARD_ALLIANCE ~= 1 and
-        regimeType == xi.regime.type.GROUNDS and
+        invaderXim.settings.main.GOV_REWARD_ALLIANCE ~= 1 and
+        regimeType == invaderXim.regime.type.GROUNDS and
         player:checkSoloPartyAlliance() == 2
     then
         return
@@ -1412,7 +1412,7 @@ xi.regime.checkRegime = function(player, mob, regimeId, index, regimeType)
 
     -- increment number killed
     killed = killed + 1
-    player:messageBasic(xi.msg.basic.FOV_DEFEATED_TARGET, killed, needed)
+    player:messageBasic(invaderXim.msg.basic.FOV_DEFEATED_TARGET, killed, needed)
     player:setCharVar('[regime]killed' .. index, killed)
 
     -- this mob is not yet finished
@@ -1434,68 +1434,68 @@ xi.regime.checkRegime = function(player, mob, regimeId, index, regimeType)
     end
 
     -- get base reward
-    player:messageBasic(xi.msg.basic.FOV_COMPLETED_REGIME)
+    player:messageBasic(invaderXim.msg.basic.FOV_COMPLETED_REGIME)
     local reward = page[7]
 
     -- adjust reward down if regime is higher than server mob level cap
     -- example: if you have mobs capped at level 80, and the regime is level 100, you will only get 80% of the reward
     if
-        xi.settings.main.NORMAL_MOB_MAX_LEVEL_RANGE_MAX > 0 and
-        page[6] > xi.settings.main.NORMAL_MOB_MAX_LEVEL_RANGE_MAX
+        invaderXim.settings.main.NORMAL_MOB_MAX_LEVEL_RANGE_MAX > 0 and
+        page[6] > invaderXim.settings.main.NORMAL_MOB_MAX_LEVEL_RANGE_MAX
     then
-        local avgCapLevel = (xi.settings.main.NORMAL_MOB_MAX_LEVEL_RANGE_MIN + xi.settings.main.NORMAL_MOB_MAX_LEVEL_RANGE_MAX) / 2
+        local avgCapLevel = (invaderXim.settings.main.NORMAL_MOB_MAX_LEVEL_RANGE_MIN + invaderXim.settings.main.NORMAL_MOB_MAX_LEVEL_RANGE_MAX) / 2
         local avgMobLevel = (page[5] + page[6]) / 2
 
         reward = math.floor(reward * avgCapLevel / avgMobLevel)
     end
 
     -- prowess buffs from completing Grounds regimes
-    if regimeType == xi.regime.type.GROUNDS then
+    if regimeType == invaderXim.regime.type.GROUNDS then
         addGovProwessBonusEffect(player)
 
         -- repeat clears bonus
-        if player:hasStatusEffect(xi.effect.PROWESS) then
+        if player:hasStatusEffect(invaderXim.effect.PROWESS) then
             -- increase reward based on number of clears. hard caps at 2x base reward.
-            local govClears  = player:getStatusEffect(xi.effect.PROWESS):getPower()
+            local govClears  = player:getStatusEffect(invaderXim.effect.PROWESS):getPower()
             local baseReward = reward
 
             reward = reward * (100 + (govClears * 4)) / 100
             reward = utils.clamp(reward, 0, baseReward * 2)
 
             -- increment clears
-            player:delStatusEffectSilent(xi.effect.PROWESS)
-            player:addStatusEffect(xi.effect.PROWESS, govClears + 1, 0, 0)
+            player:delStatusEffectSilent(invaderXim.effect.PROWESS)
+            player:addStatusEffect(invaderXim.effect.PROWESS, govClears + 1, 0, 0)
 
         else
             -- keep track of number of clears
-            player:addStatusEffect(xi.effect.PROWESS, 1, 0, 0)
+            player:addStatusEffect(invaderXim.effect.PROWESS, 1, 0, 0)
         end
     end
 
     -- award gil and tabs once per day, or at every page completion if REGIME_WAIT is 0 in settings.lua
     local vanadielEpoch = VanadielUniqueDay()
     if
-        xi.settings.main.REGIME_WAIT == 0 or
+        invaderXim.settings.main.REGIME_WAIT == 0 or
         player:getCharVar('[regime]lastReward') < vanadielEpoch
     then
         -- gil
         player:addGil(reward)
-        player:messageBasic(xi.msg.basic.FOV_OBTAINS_GIL, reward)
+        player:messageBasic(invaderXim.msg.basic.FOV_OBTAINS_GIL, reward)
 
         -- tabs
-        local tabs = math.floor(reward / 10) * xi.settings.main.TABS_RATE
+        local tabs = math.floor(reward / 10) * invaderXim.settings.main.TABS_RATE
         tabs       = utils.clamp(tabs, 0, 50000 - player:getCurrency('valor_point')) -- Retail caps players at 50000 tabs
 
         player:addCurrency('valor_point', tabs)
-        player:messageBasic(xi.msg.basic.FOV_OBTAINS_TABS, tabs, player:getCurrency('valor_point'))
+        player:messageBasic(invaderXim.msg.basic.FOV_OBTAINS_TABS, tabs, player:getCurrency('valor_point'))
 
         player:setCharVar('[regime]lastReward', vanadielEpoch)
     end
 
     -- Award EXP for page completion
     -- Player must be equal or greater than REGIME_REWARD_THRESHOLD levels below the minimum suggested level
-    if player:getMainLvl() >= math.max(1, page[5] - xi.settings.main.REGIME_REWARD_THRESHOLD) then
-        player:addExp(reward * xi.settings.main.BOOK_EXP_RATE)
+    if player:getMainLvl() >= math.max(1, page[5] - invaderXim.settings.main.REGIME_REWARD_THRESHOLD) then
+        player:addExp(reward * invaderXim.settings.main.BOOK_EXP_RATE)
     end
 
     -- repeating regimes
@@ -1504,8 +1504,8 @@ xi.regime.checkRegime = function(player, mob, regimeId, index, regimeType)
             player:setCharVar('[regime]killed' .. i, 0)
         end
 
-        player:messageBasic(xi.msg.basic.FOV_REGIME_BEGINS_ANEW)
+        player:messageBasic(invaderXim.msg.basic.FOV_REGIME_BEGINS_ANEW)
     else
-        xi.regime.clearRegimeVars(player)
+        invaderXim.regime.clearRegimeVars(player)
     end
 end

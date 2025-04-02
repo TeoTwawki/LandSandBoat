@@ -5,30 +5,30 @@
 -- Ayame           : !pos 133 -19 34 237
 -- qm_truestrength : !pos -100 -71 -132 151
 -----------------------------------
-local oztrojaID = zones[xi.zone.CASTLE_OZTROJA]
+local oztrojaID = zones[invaderXim.zone.CASTLE_OZTROJA]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.TRUE_STRENGTH)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.TRUE_STRENGTH)
 
 quest.reward =
 {
     fame     = 60,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.TEMPLE_HOSE,
-    title    = xi.title.PARAGON_OF_MONK_EXCELLENCE,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.TEMPLE_HOSE,
+    title    = invaderXim.title.PARAGON_OF_MONK_EXCELLENCE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.THE_FIRST_MEETING) and
-                player:getMainJob() == xi.job.MNK and
-                player:getMainLvl() >= xi.settings.main.AF3_QUEST_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_FIRST_MEETING) and
+                player:getMainJob() == invaderXim.job.MNK and
+                player:getMainLvl() >= invaderXim.settings.main.AF3_QUEST_LEVEL
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Ayame'] = quest:progressEvent(748),
 
@@ -43,17 +43,17 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.CASTLE_OZTROJA] =
+        [invaderXim.zone.CASTLE_OZTROJA] =
         {
             ['qm_truestrength'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.BOTTLE_OF_YAGUDO_DRINK) and
-                        not player:hasItem(xi.item.XALMO_FEATHER) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.BOTTLE_OF_YAGUDO_DRINK) and
+                        not player:hasItem(invaderXim.item.XALMO_FEATHER) and
                         npcUtil.popFromQM(player, npc, oztrojaID.mob.HUU_XALMO_THE_SAVAGE, { hide = 0 })
                     then
                         player:confirmTrade()
@@ -64,12 +64,12 @@ quest.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Ayame'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.XALMO_FEATHER) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.XALMO_FEATHER) then
                         return quest:progressEvent(749)
                     end
                 end,

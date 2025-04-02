@@ -30,7 +30,7 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
 end
 
 zoneObject.onInstanceLoadFailed = function()
-    return xi.zone.BASTOK_MINES
+    return invaderXim.zone.BASTOK_MINES
 end
 
 return zoneObject

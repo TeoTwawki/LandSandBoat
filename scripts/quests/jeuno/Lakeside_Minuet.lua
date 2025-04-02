@@ -7,28 +7,28 @@
 -- Valderotaux     : !pos 97 0.1 113 230
 -- Glowing Pebbles : !pos 104.2 4.1 443.6 82
 -----------------------------------
-local upperJeunoID = zones[xi.zone.UPPER_JEUNO]
+local upperJeunoID = zones[invaderXim.zone.UPPER_JEUNO]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.LAKESIDE_MINUET)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.LAKESIDE_MINUET)
 
 quest.reward =
 {
     fame = 30,
-    fameArea = xi.fameArea.JEUNO,
-    title = xi.title.TROUPE_BRILIOTH_DANCER,
+    fameArea = invaderXim.fameArea.JEUNO,
+    title = invaderXim.title.TROUPE_BRILIOTH_DANCER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getMainLvl() >= xi.settings.main.ADVANCED_JOB_LEVEL and
-                xi.settings.main.ENABLE_WOTG == 1
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getMainLvl() >= invaderXim.settings.main.ADVANCED_JOB_LEVEL and
+                invaderXim.settings.main.ENABLE_WOTG == 1
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Laila'] = quest:progressEvent(10111),
 
@@ -45,15 +45,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Laila'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.STARDUST_PEBBLE) then
+                    if player:hasKeyItem(invaderXim.ki.STARDUST_PEBBLE) then
                         return quest:progressEvent(10118)
                     else
                         return quest:progressEvent(10112)
@@ -106,17 +106,17 @@ quest.sections =
 
                 [10118] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:unlockJob(xi.job.DNC)
+                        player:unlockJob(invaderXim.job.DNC)
                         player:messageSpecial(upperJeunoID.text.UNLOCK_DANCER)
-                        player:delKeyItem(xi.ki.STARDUST_PEBBLE)
-                        npcUtil.giveKeyItem(player, xi.ki.JOB_GESTURE_DANCER)
+                        player:delKeyItem(invaderXim.ki.STARDUST_PEBBLE)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.JOB_GESTURE_DANCER)
                         player:needToZone(true)
                     end
                 end,
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Valderotaux'] =
             {
@@ -139,14 +139,14 @@ quest.sections =
             },
         },
 
-        [xi.zone.JUGNER_FOREST_S] =
+        [invaderXim.zone.JUGNER_FOREST_S] =
         {
             ['Glowing_Pebbles'] =
             {
                 onTrigger = function(player, npc)
                     if
                         quest:getVar(player, 'Prog') == 3 and
-                        not player:hasKeyItem(xi.ki.STARDUST_PEBBLE)
+                        not player:hasKeyItem(invaderXim.ki.STARDUST_PEBBLE)
                     then
                         return quest:progressEvent(100)
                     end
@@ -156,7 +156,7 @@ quest.sections =
             onEventFinish =
             {
                 [100] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.STARDUST_PEBBLE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.STARDUST_PEBBLE)
                     quest:setVar(player, 'Prog', 4)
                 end,
             }
@@ -165,11 +165,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                not player:hasCompletedQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_UNFINISHED_WALTZ)
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                not player:hasCompletedQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_UNFINISHED_WALTZ)
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Laila']        = quest:event(10119):replaceDefault(),
             ['Rhea_Myuliah'] = quest:event(10126):replaceDefault(),

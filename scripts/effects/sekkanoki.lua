@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.SEKKANOKI
+-- invaderXim.effect.SEKKANOKI
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

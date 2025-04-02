@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `char_profile`
 --
 
-DROP TABLE IF EXISTS `char_profile`;
-CREATE TABLE IF NOT EXISTS `char_profile` (
+DROP TABLE IF IXIMSTS `char_profile`;
+CREATE TABLE IF NOT IXIMSTS `char_profile` (
   `charid` int(10) unsigned NOT NULL,
   `rank_points` int(10) unsigned NOT NULL DEFAULT '0',
   `rank_sandoria` tinyint(2) unsigned NOT NULL DEFAULT '1',

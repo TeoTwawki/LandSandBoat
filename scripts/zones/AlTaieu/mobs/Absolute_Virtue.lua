@@ -2,9 +2,9 @@
 -- Area: Al'Taieu
 --  HNM: Absolute Virtue
 -- !pos 461.266 -1.643 -580.192 33
--- !exec SpawnMob(zones[xi.zone.ALTAIEU].mob.ABSOLUTE_VIRTUE)
+-- !exec SpawnMob(zones[invaderXim.zone.ALTAIEU].mob.ABSOLUTE_VIRTUE)
 -----------------------------------
-local ID = zones[xi.zone.ALTAIEU]
+local ID = zones[invaderXim.zone.ALTAIEU]
 -----------------------------------
 --[[
     misc sources:
@@ -31,8 +31,8 @@ local ID = zones[xi.zone.ALTAIEU]
     TODO:
     - Remove magic numbers
     - Replace all var strings with table entries
-    - Move 'JoL_Qn_xzomit_Killed' tracking onto xi.av object instead of local vars
-    - Move 'JoL_Qn_hpemde_Killed' tracking onto xi.av object instead of local vars
+    - Move 'JoL_Qn_xzomit_Killed' tracking onto invaderXim.av object instead of local vars
+    - Move 'JoL_Qn_hpemde_Killed' tracking onto invaderXim.av object instead of local vars
     - Give all variables better names
     - Address all inline TODOs
     - Align and format file
@@ -44,10 +44,10 @@ local ID = zones[xi.zone.ALTAIEU]
 
 -- instead of storing a bunch of numeric vars we will store a global object
 xi = xi or {}
-xi.av = xi.av or {}
+invaderXim.av = invaderXim.av or {}
 
 -- While this flag is in place, AV's won't drop any loot. Sorry!
-xi.av.experimental = true
+invaderXim.av.experimental = true
 
 -- Set to true to get local debug prints about AV's behavior
 local debugAV = false
@@ -55,11 +55,11 @@ local avdebug = utils.getDebugPlayerPrinter(debugAV)
 
 local combos =
 {
-    [xi.jsa.CHAINSPELL    ] = { xi.jsa.CHAINSPELL,     xi.jsa.MANAFONT,     { xi.jsa.CHAINSPELL, xi.jsa.SOUL_VOICE } },
-    [xi.jsa.MIGHTY_STRIKES] = { xi.jsa.MIGHTY_STRIKES, xi.jsa.HUNDRED_FISTS                                          },
-    [xi.jsa.MEIKYO_SHISUI ] = { xi.jsa.MEIKYO_SHISUI,  xi.jsa.EES_AERN,     xi.jsa.EES_AERN,     xi.jsa.EES_AERN     },
-    [xi.jsa.INVINCIBLE    ] = { xi.jsa.INVINCIBLE,     xi.jsa.BENEDICTION,  xi.jsa.MIJIN_GAKURE                      },
-    [xi.jsa.CALL_WYVERN   ] = { xi.jsa.CALL_WYVERN,    xi.jsa.FAMILIAR,     xi.jsa.ASTRAL_FLOW                       },
+    [invaderXim.jsa.CHAINSPELL    ] = { invaderXim.jsa.CHAINSPELL,     invaderXim.jsa.MANAFONT,     { invaderXim.jsa.CHAINSPELL, invaderXim.jsa.SOUL_VOICE } },
+    [invaderXim.jsa.MIGHTY_STRIKES] = { invaderXim.jsa.MIGHTY_STRIKES, invaderXim.jsa.HUNDRED_FISTS                                          },
+    [invaderXim.jsa.MEIKYO_SHISUI ] = { invaderXim.jsa.MEIKYO_SHISUI,  invaderXim.jsa.EES_AERN,     invaderXim.jsa.EES_AERN,     invaderXim.jsa.EES_AERN     },
+    [invaderXim.jsa.INVINCIBLE    ] = { invaderXim.jsa.INVINCIBLE,     invaderXim.jsa.BENEDICTION,  invaderXim.jsa.MIJIN_GAKURE                      },
+    [invaderXim.jsa.CALL_WYVERN   ] = { invaderXim.jsa.CALL_WYVERN,    invaderXim.jsa.FAMILIAR,     invaderXim.jsa.ASTRAL_FLOW                       },
 }
 
 local handleDamageResists = function(mob)
@@ -68,39 +68,39 @@ local handleDamageResists = function(mob)
 
     if currentHPP <= nextThreehold then
         local dmg = (100 - currentHPP) * -100 -- This modifiers are base 10000
-        mob:setMod(xi.mod.UDMGPHYS, dmg)
-        mob:setMod(xi.mod.UDMGRANGE, dmg)
-        mob:setMod(xi.mod.UDMGMAGIC, dmg)
-        mob:setMod(xi.mod.UDMGBREATH, dmg)
+        mob:setMod(invaderXim.mod.UDMGPHYS, dmg)
+        mob:setMod(invaderXim.mod.UDMGRANGE, dmg)
+        mob:setMod(invaderXim.mod.UDMGMAGIC, dmg)
+        mob:setMod(invaderXim.mod.UDMGBREATH, dmg)
         mob:setLocalVar('dmgThreshold', nextThreehold - 10)
     end
 end
 
 local playerAbilityToMobSP =
 {
-    [xi.ja.MIGHTY_STRIKES] = xi.jsa.MIGHTY_STRIKES,
-    [xi.ja.HUNDRED_FISTS]  = xi.jsa.HUNDRED_FISTS,
-    [xi.ja.BENEDICTION]    = xi.jsa.BENEDICTION,
-    [xi.ja.MANAFONT]       = xi.jsa.MANAFONT,
-    [xi.ja.CHAINSPELL]     = xi.jsa.CHAINSPELL,
-    [xi.ja.PERFECT_DODGE]  = xi.jsa.PERFECT_DODGE,
-    [xi.ja.INVINCIBLE]     = xi.jsa.INVINCIBLE,
-    [xi.ja.BLOOD_WEAPON]   = xi.jsa.BLOOD_WEAPON,
-    [xi.ja.FAMILIAR]       = xi.jsa.FAMILIAR,
-    [xi.ja.SOUL_VOICE]     = xi.jsa.SOUL_VOICE,
-    [xi.ja.EAGLE_EYE_SHOT] = xi.jsa.EES_AERN,
-    [xi.ja.MEIKYO_SHISUI]  = xi.jsa.MEIKYO_SHISUI,
-    [xi.ja.MIJIN_GAKURE]   = xi.jsa.MIJIN_GAKURE,
-    [xi.ja.ASTRAL_FLOW]    = xi.jsa.ASTRAL_FLOW,
-    [xi.ja.CALL_WYVERN]    = xi.jsa.CALL_WYVERN,
+    [invaderXim.ja.MIGHTY_STRIKES] = invaderXim.jsa.MIGHTY_STRIKES,
+    [invaderXim.ja.HUNDRED_FISTS]  = invaderXim.jsa.HUNDRED_FISTS,
+    [invaderXim.ja.BENEDICTION]    = invaderXim.jsa.BENEDICTION,
+    [invaderXim.ja.MANAFONT]       = invaderXim.jsa.MANAFONT,
+    [invaderXim.ja.CHAINSPELL]     = invaderXim.jsa.CHAINSPELL,
+    [invaderXim.ja.PERFECT_DODGE]  = invaderXim.jsa.PERFECT_DODGE,
+    [invaderXim.ja.INVINCIBLE]     = invaderXim.jsa.INVINCIBLE,
+    [invaderXim.ja.BLOOD_WEAPON]   = invaderXim.jsa.BLOOD_WEAPON,
+    [invaderXim.ja.FAMILIAR]       = invaderXim.jsa.FAMILIAR,
+    [invaderXim.ja.SOUL_VOICE]     = invaderXim.jsa.SOUL_VOICE,
+    [invaderXim.ja.EAGLE_EYE_SHOT] = invaderXim.jsa.EES_AERN,
+    [invaderXim.ja.MEIKYO_SHISUI]  = invaderXim.jsa.MEIKYO_SHISUI,
+    [invaderXim.ja.MIJIN_GAKURE]   = invaderXim.jsa.MIJIN_GAKURE,
+    [invaderXim.ja.ASTRAL_FLOW]    = invaderXim.jsa.ASTRAL_FLOW,
+    [invaderXim.ja.CALL_WYVERN]    = invaderXim.jsa.CALL_WYVERN,
 }
 
 local isLocked = function(sp)
-    if #xi.av.sps == 0 then
+    if #invaderXim.av.sps == 0 then
         return true
     end
 
-    for _, jsa in ipairs(xi.av.sps) do
+    for _, jsa in ipairs(invaderXim.av.sps) do
         if sp == jsa then
             return false
         end
@@ -110,17 +110,17 @@ local isLocked = function(sp)
 end
 
 local lock = function(sp)
-    for i, jsa in ipairs(xi.av.sps) do
+    for i, jsa in ipairs(invaderXim.av.sps) do
         if jsa == sp then
             avdebug(string.format('locked: %d', sp))
-            table.remove(xi.av.sps, i)
+            table.remove(invaderXim.av.sps, i)
             break
         end
     end
 
-    for i, jsa in ipairs(xi.av.braceletsps) do
+    for i, jsa in ipairs(invaderXim.av.braceletsps) do
         if jsa == sp then
-            table.remove(xi.av.braceletsps, i)
+            table.remove(invaderXim.av.braceletsps, i)
             break
         end
     end
@@ -129,11 +129,11 @@ end
 -- TODO: handle pets and pet sp abilities
 local handleSP = function(mob)
     local now = os.time()
-    if now > xi.av.nextsp then
-        if xi.av.bracelets and #xi.av.braceletsps ~= 0 then
-            local trigger = xi.av.braceletsps[math.random(1, #xi.av.braceletsps)]
+    if now > invaderXim.av.nextsp then
+        if invaderXim.av.bracelets and #invaderXim.av.braceletsps ~= 0 then
+            local trigger = invaderXim.av.braceletsps[math.random(1, #invaderXim.av.braceletsps)]
             local combo = combos[trigger]
-            if trigger == xi.jsa.CHAINSPELL then
+            if trigger == invaderXim.jsa.CHAINSPELL then
                 combo = combos[math.random(1, 2)]
             end
 
@@ -144,15 +144,15 @@ local handleSP = function(mob)
                     mob:useMobAbility(jsa)
                 end
             end
-        elseif #xi.av.sps ~= 0 then
-            local sp = xi.av.sps[math.random(1, #xi.av.sps)]
+        elseif #invaderXim.av.sps ~= 0 then
+            local sp = invaderXim.av.sps[math.random(1, #invaderXim.av.sps)]
             mob:setLocalVar(string.format('sp_%u', sp), os.time())
             avdebug(string.format('%s using %d', mob:getName(), sp))
             mob:useMobAbility(sp)
         end
 
         -- TODO: minimum should be max of 2hr combos length
-        xi.av.nextsp = now + math.random(45, 90)
+        invaderXim.av.nextsp = now + math.random(45, 90)
     end
 end
 
@@ -164,32 +164,32 @@ end
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.ABILITY_RESPONSE, 1)
+    mob:setMobMod(invaderXim.mobMod.ABILITY_RESPONSE, 1)
 
     --[[
-    mob:setMobMod(xi.mobMod.MAGIC_COOL, 20)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180)
-    mob:setMod(xi.mod.SOULEATERRES, 4)
-    mob:setMod(xi.mod.UFASTCAST, 100)
-    mob:setMod(xi.mod.MAIN_DMG_RATING, 150)
-    mob:setMod(xi.mod.ATT, 300)
-    mob:setMod(xi.mod.DEF, 300)
-    mob:setMod(xi.mod.MATT, 132)
-    mob:setMod(xi.mod.MDEF, 200)
-    mob:setMod(xi.mod.REFRESH, 500)
-    mob:setMod(xi.mod.REGAIN, 200)
+    mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 20)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180)
+    mob:setMod(invaderXim.mod.SOULEATERRES, 4)
+    mob:setMod(invaderXim.mod.UFASTCAST, 100)
+    mob:setMod(invaderXim.mod.MAIN_DMG_RATING, 150)
+    mob:setMod(invaderXim.mod.ATT, 300)
+    mob:setMod(invaderXim.mod.DEF, 300)
+    mob:setMod(invaderXim.mod.MATT, 132)
+    mob:setMod(invaderXim.mod.MDEF, 200)
+    mob:setMod(invaderXim.mod.REFRESH, 500)
+    mob:setMod(invaderXim.mod.REGAIN, 200)
 
-    mob:addImmunity(xi.immunity.SLEEP)
-    mob:addImmunity(xi.immunity.GRAVITY)
-    mob:addImmunity(xi.immunity.BIND)
-    mob:addImmunity(xi.immunity.STUN)
-    mob:addImmunity(xi.immunity.SILENCE)
-    mob:addImmunity(xi.immunity.PARALYZE)
-    mob:addImmunity(xi.immunity.BLIND)
-    mob:addImmunity(xi.immunity.SLOW)
-    mob:addImmunity(xi.immunity.POISON)
-    mob:addImmunity(xi.immunity.ELEGY)
-    mob:addImmunity(xi.immunity.REQUIEM)
+    mob:addImmunity(invaderXim.immunity.SLEEP)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
+    mob:addImmunity(invaderXim.immunity.BIND)
+    mob:addImmunity(invaderXim.immunity.STUN)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
+    mob:addImmunity(invaderXim.immunity.PARALYZE)
+    mob:addImmunity(invaderXim.immunity.BLIND)
+    mob:addImmunity(invaderXim.immunity.SLOW)
+    mob:addImmunity(invaderXim.immunity.POISON)
+    mob:addImmunity(invaderXim.immunity.ELEGY)
+    mob:addImmunity(invaderXim.immunity.REQUIEM)
 
     mob:speed(60)
     ]]--
@@ -199,61 +199,61 @@ entity.onMobSpawn = function(mob)
     -- reset av
     mob:setAnimationSub(1)
 
-    if xi.av.experimental then
+    if invaderXim.av.experimental then
         mob:setDropID(0) -- No loot!
     end
 
-    xi.av.regen = 250
-    xi.av.bracelets = false
-    xi.av.locks = {}
-    xi.av.sps =
+    invaderXim.av.regen = 250
+    invaderXim.av.bracelets = false
+    invaderXim.av.locks = {}
+    invaderXim.av.sps =
     {
-        xi.jsa.MIGHTY_STRIKES,
-        xi.jsa.BENEDICTION,
-        xi.jsa.HUNDRED_FISTS,
-        xi.jsa.MANAFONT,
-        xi.jsa.CHAINSPELL,
-        xi.jsa.PERFECT_DODGE, -- no combo
-        xi.jsa.INVINCIBLE,
-        xi.jsa.BLOOD_WEAPON, -- no combo
-        xi.jsa.SOUL_VOICE,
-        xi.jsa.MEIKYO_SHISUI,
-        xi.jsa.MIJIN_GAKURE,
-        xi.jsa.EES_AERN,
-        xi.jsa.CALL_WYVERN,
-        xi.jsa.FAMILIAR,
-        xi.jsa.ASTRAL_FLOW,
+        invaderXim.jsa.MIGHTY_STRIKES,
+        invaderXim.jsa.BENEDICTION,
+        invaderXim.jsa.HUNDRED_FISTS,
+        invaderXim.jsa.MANAFONT,
+        invaderXim.jsa.CHAINSPELL,
+        invaderXim.jsa.PERFECT_DODGE, -- no combo
+        invaderXim.jsa.INVINCIBLE,
+        invaderXim.jsa.BLOOD_WEAPON, -- no combo
+        invaderXim.jsa.SOUL_VOICE,
+        invaderXim.jsa.MEIKYO_SHISUI,
+        invaderXim.jsa.MIJIN_GAKURE,
+        invaderXim.jsa.EES_AERN,
+        invaderXim.jsa.CALL_WYVERN,
+        invaderXim.jsa.FAMILIAR,
+        invaderXim.jsa.ASTRAL_FLOW,
     }
 
-    xi.av.braceletsps =
+    invaderXim.av.braceletsps =
     {
-        xi.jsa.CHAINSPELL,
-        xi.jsa.MIGHTY_STRIKES,
-        xi.jsa.MEIKYO_SHISUI,
-        xi.jsa.INVINCIBLE,
-        xi.jsa.CALL_WYVERN,
+        invaderXim.jsa.CHAINSPELL,
+        invaderXim.jsa.MIGHTY_STRIKES,
+        invaderXim.jsa.MEIKYO_SHISUI,
+        invaderXim.jsa.INVINCIBLE,
+        invaderXim.jsa.CALL_WYVERN,
     }
 
     -- Special check for regen modification by JoL pets killed
     local jol = GetMobByID(ID.mob.JAILER_OF_LOVE)
     if jol ~= nil then
         if jol:getLocalVar('JoL_Qn_xzomit_Killed') == 9 then
-            mob:addMod(xi.mod.REGEN, 125)
+            mob:addMod(invaderXim.mod.REGEN, 125)
         end
 
         if jol:getLocalVar('JoL_Qn_hpemde_Killed') == 9 then
-            mob:addMod(xi.mod.REGEN, 125)
+            mob:addMod(invaderXim.mod.REGEN, 125)
         end
     end
 
     -- base regen by day/element
-    mob:addMod(xi.mod.REGEN, 250)
+    mob:addMod(invaderXim.mod.REGEN, 250)
 
     --[[
-    mob:setMod(xi.mod.UDMGPHYS, 0)
-    mob:setMod(xi.mod.UDMGRANGE, 0)
-    mob:setMod(xi.mod.UDMGMAGIC, 0)
-    mob:setMod(xi.mod.UDMGBREATH, 0)
+    mob:setMod(invaderXim.mod.UDMGPHYS, 0)
+    mob:setMod(invaderXim.mod.UDMGRANGE, 0)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, 0)
+    mob:setMod(invaderXim.mod.UDMGBREATH, 0)
     mob:setLocalVar('dmgThreshold', 90)
     ]]--
 end
@@ -262,7 +262,7 @@ entity.onMobRoam = function(mob)
 end
 
 entity.onMobEngage = function(mob, target)
-    xi.av.nextsp = os.time() + math.random(45, 90)
+    invaderXim.av.nextsp = os.time() + math.random(45, 90)
 end
 
 entity.onPlayerAbilityUse = function(mob, player, ability)
@@ -285,30 +285,30 @@ entity.onMobFight = function(mob)
     handleDamageResists(mob) -- damage taken scales with HP
     handleSP(mob) -- AV has complex special ability logic
 
-    if not xi.av.bracelets and mob:getHPP() <= 60 then
+    if not invaderXim.av.bracelets and mob:getHPP() <= 60 then
         mob:queue(0, function(mobArg)
             mobArg:setAnimationSub(2)
             mobArg:stun(2000)
 
-            mobArg:addMod(xi.mod.STR, 50)
-            mobArg:addMod(xi.mod.DEX, 50)
-            mobArg:addMod(xi.mod.VIT, 50)
-            mobArg:addMod(xi.mod.AGI, 50)
-            mobArg:addMod(xi.mod.INT, 50)
-            mobArg:addMod(xi.mod.MND, 50)
-            mobArg:addMod(xi.mod.CHR, 50)
-            mobArg:addMod(xi.mod.ATT, 300)
-            mobArg:addMod(xi.mod.MATT, 50)
+            mobArg:addMod(invaderXim.mod.STR, 50)
+            mobArg:addMod(invaderXim.mod.DEX, 50)
+            mobArg:addMod(invaderXim.mod.VIT, 50)
+            mobArg:addMod(invaderXim.mod.AGI, 50)
+            mobArg:addMod(invaderXim.mod.INT, 50)
+            mobArg:addMod(invaderXim.mod.MND, 50)
+            mobArg:addMod(invaderXim.mod.CHR, 50)
+            mobArg:addMod(invaderXim.mod.ATT, 300)
+            mobArg:addMod(invaderXim.mod.MATT, 50)
 
-            xi.av.bracelets = true
+            invaderXim.av.bracelets = true
         end)
     end
 end
 
 entity.onSpellPrecast = function(mob, spell)
-    if spell:getID() == xi.magic.spell.METEOR then
-        spell:setAoE(xi.magic.aoe.RADIAL)
-        spell:setFlag(xi.magic.spellFlag.HIT_ALL)
+    if spell:getID() == invaderXim.magic.spell.METEOR then
+        spell:setAoE(invaderXim.magic.aoe.RADIAL)
+        spell:setFlag(invaderXim.magic.spellFlag.HIT_ALL)
         spell:setRadius(30)
         spell:setAnimation(280) -- AoE Meteor Animation
     end
@@ -316,26 +316,26 @@ end
 
 entity.onMagicHit = function(caster, target, spell)
     if
-        spell:getSkillType() == xi.skill.ELEMENTAL_MAGIC and
-        xi.av.regen >= 2 and xi.av.regen <= 48
+        spell:getSkillType() == invaderXim.skill.ELEMENTAL_MAGIC and
+        invaderXim.av.regen >= 2 and invaderXim.av.regen <= 48
     then
         local isCasterPCOrPet = caster:isPC() or caster:isPet()
         if
             VanadielDayElement() == spell:getElement() and
             isCasterPCOrPet
         then
-            xi.av.regen = xi.av.regen - 2
-            target:delMod(xi.mod.REGEN, 2)
+            invaderXim.av.regen = invaderXim.av.regen - 2
+            target:delMod(invaderXim.mod.REGEN, 2)
         else
-            xi.av.regen = xi.av.regen + 2
-            target:addMod(xi.mod.REGEN, 2)
+            invaderXim.av.regen = invaderXim.av.regen + 2
+            target:addMod(invaderXim.mod.REGEN, 2)
         end
     end
 end
 
 entity.onMobDeath = function(mob, player, optParams)
     if player then
-        player:addTitle(xi.title.VIRTUOUS_SAINT)
+        player:addTitle(invaderXim.title.VIRTUOUS_SAINT)
     end
 
     local firstCall = optParams.isKiller or optParams.noKiller

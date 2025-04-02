@@ -2,7 +2,7 @@
 -- Area: Ilrusi Atoll
 --  NPC: Cursed Chest
 -----------------------------------
-local ID = zones[xi.zone.ILRUSI_ATOLL]
+local ID = zones[invaderXim.zone.ILRUSI_ATOLL]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

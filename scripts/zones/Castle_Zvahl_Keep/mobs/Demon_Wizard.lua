@@ -3,7 +3,7 @@
 --  Mob: Demon Wizard
 -- Note: PH for Baron Vapula
 -----------------------------------
-local ID = zones[xi.zone.CASTLE_ZVAHL_KEEP]
+local ID = zones[invaderXim.zone.CASTLE_ZVAHL_KEEP]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -72,7 +72,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, baronPHTable, 10, 1, { spawnPoints = baronSpawnPoints }) -- No respawn
+    invaderXim.mob.phOnDespawn(mob, baronPHTable, 10, 1, { spawnPoints = baronSpawnPoints }) -- No respawn
 end
 
 return entity

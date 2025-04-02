@@ -41,8 +41,8 @@ entity.onMobFight = function(mob, target)
     -- Chages forms after 30-60 seconds randomly
     local timeTracker = mob:getLocalVar('formTimeTracker')
     local currentTime = mob:getBattleTime()
-    -- NOTE: Yellow Liquid applies xi.effect.FOOD to the Mammets
-    local cannotChangeForm = mob:hasStatusEffect(xi.effect.FOOD)
+    -- NOTE: Yellow Liquid applies invaderXim.effect.FOOD to the Mammets
+    local cannotChangeForm = mob:hasStatusEffect(invaderXim.effect.FOOD)
 
     if currentTime >= timeTracker and not cannotChangeForm then
         -- Pick a new form --
@@ -69,7 +69,7 @@ entity.onMobFight = function(mob, target)
             end,
 
             [forms.STAFF] = function()
-                mob:setMobMod(xi.mobMod.MAGIC_COOL, 20)
+                mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 20)
                 mob:setMagicCastingEnabled(true)
                 mob:setDelay(3700)
                 mob:setDamage(40)

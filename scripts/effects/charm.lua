@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.CHARM
+-- invaderXim.effect.CHARM
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

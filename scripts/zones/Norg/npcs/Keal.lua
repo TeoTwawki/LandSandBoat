@@ -3,7 +3,7 @@
 --  NPC: Keal
 -- Starts and Ends Quest: It's Not Your Vault
 -----------------------------------
-local ID = zones[xi.zone.NORG]
+local ID = zones[invaderXim.zone.NORG]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -64,43 +64,43 @@ local pathNodes =
 
 entity.onSpawn = function(npc)
     npc:initNpcAi()
-    npc:setPos(xi.path.first(pathNodes))
-    npc:pathThrough(pathNodes, xi.path.flag.PATROL)
+    npc:setPos(invaderXim.path.first(pathNodes))
+    npc:pathThrough(pathNodes, invaderXim.path.flag.PATROL)
 end
 
 entity.onTrigger = function(player, npc)
-    local vault = player:getQuestStatus(xi.questLog.OUTLANDS, xi.quest.id.outlands.ITS_NOT_YOUR_VAULT)
+    local vault = player:getQuestStatus(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.ITS_NOT_YOUR_VAULT)
     local mLvl = player:getMainLvl()
 
     if
-        vault == xi.questStatus.QUEST_AVAILABLE and
-        player:getFameLevel(xi.fameArea.NORG) >= 3 and
+        vault == invaderXim.questStatus.QUEST_AVAILABLE and
+        player:getFameLevel(invaderXim.fameArea.NORG) >= 3 and
         mLvl >= 5
     then
-        player:startEvent(36, xi.ki.SEALED_IRON_BOX) -- Start quest
-    elseif vault == xi.questStatus.QUEST_ACCEPTED then
-        if player:hasKeyItem(xi.ki.SEALED_IRON_BOX) then
+        player:startEvent(36, invaderXim.ki.SEALED_IRON_BOX) -- Start quest
+    elseif vault == invaderXim.questStatus.QUEST_ACCEPTED then
+        if player:hasKeyItem(invaderXim.ki.SEALED_IRON_BOX) then
             player:startEvent(38) -- Finish quest
         else
-            player:startEvent(37, xi.ki.MAP_OF_SEA_SERPENT_GROTTO) -- Reminder/Directions Dialogue
+            player:startEvent(37, invaderXim.ki.MAP_OF_SEA_SERPENT_GROTTO) -- Reminder/Directions Dialogue
         end
-    elseif vault == xi.questStatus.QUEST_COMPLETED then
+    elseif vault == invaderXim.questStatus.QUEST_COMPLETED then
         player:startEvent(39) -- New Standard Dialogue for everyone who has completed the quest
     end
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 36 and option == 1 then
-        player:addQuest(xi.questLog.OUTLANDS, xi.quest.id.outlands.ITS_NOT_YOUR_VAULT)
+        player:addQuest(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.ITS_NOT_YOUR_VAULT)
     elseif csid == 38 then
         if player:getFreeSlotsCount() == 0 then
-            player:messageSpecial(ID.text.ITEM_CANNOT_BE_OBTAINED, xi.item.SCROLL_OF_TONKO_ICHI)
+            player:messageSpecial(ID.text.ITEM_CANNOT_BE_OBTAINED, invaderXim.item.SCROLL_OF_TONKO_ICHI)
         else
-            player:delKeyItem(xi.ki.SEALED_IRON_BOX)
-            player:addItem(xi.item.SCROLL_OF_TONKO_ICHI) -- Scroll of Tonko: Ichi
-            player:messageSpecial(ID.text.ITEM_OBTAINED, xi.item.SCROLL_OF_TONKO_ICHI)
-            player:addFame(xi.fameArea.NORG, 50)
-            player:completeQuest(xi.questLog.OUTLANDS, xi.quest.id.outlands.ITS_NOT_YOUR_VAULT)
+            player:delKeyItem(invaderXim.ki.SEALED_IRON_BOX)
+            player:addItem(invaderXim.item.SCROLL_OF_TONKO_ICHI) -- Scroll of Tonko: Ichi
+            player:messageSpecial(ID.text.ITEM_OBTAINED, invaderXim.item.SCROLL_OF_TONKO_ICHI)
+            player:addFame(invaderXim.fameArea.NORG, 50)
+            player:completeQuest(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.ITS_NOT_YOUR_VAULT)
         end
     end
 end

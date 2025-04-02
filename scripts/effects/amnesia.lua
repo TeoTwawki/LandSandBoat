@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.AMNESIA
+-- invaderXim.effect.AMNESIA
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

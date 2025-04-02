@@ -3,35 +3,35 @@
 -- The Shrouded Maw avatar battlefield
 -- !addkeyitem VIAL_OF_DREAM_INCENSE
 -----------------------------------
-local shroudedMawID = zones[xi.zone.THE_SHROUDED_MAW]
+local shroudedMawID = zones[invaderXim.zone.THE_SHROUDED_MAW]
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId           = xi.zone.THE_SHROUDED_MAW,
-    battlefieldId    = xi.battlefield.id.WAKING_DREAMS,
+    zoneId           = invaderXim.zone.THE_SHROUDED_MAW,
+    battlefieldId    = invaderXim.battlefield.id.WAKING_DREAMS,
     canLoseExp       = false,
     maxPlayers       = 6,
     timeLimit        = utils.minutes(30),
     index            = 2,
     entryNpc         = 'MC_Entrance',
     exitNpc          = 'Memento_Circle',
-    requiredKeyItems = { xi.ki.VIAL_OF_DREAM_INCENSE },
+    requiredKeyItems = { invaderXim.ki.VIAL_OF_DREAM_INCENSE },
 
-    questArea = xi.questLog.WINDURST,
-    quest     = xi.quest.id.windurst.WAKING_DREAMS,
+    questArea = invaderXim.questLog.WINDURST,
+    quest     = invaderXim.quest.id.windurst.WAKING_DREAMS,
 })
 
 function content:setupBattlefield(battlefield)
     local tileOffset = shroudedMawID.npc.DARKNESS_NAMED_TILE_OFFSET + (battlefield:getArea() - 1) * 8
 
     for tileId = tileOffset, tileOffset + 7 do
-        GetNPCByID(tileId):setAnimation(xi.anim.CLOSE_DOOR)
+        GetNPCByID(tileId):setAnimation(invaderXim.anim.CLOSE_DOOR)
     end
 end
 
 function content:onEventFinishWin(player, csid, option, npc)
-    npcUtil.giveKeyItem(player, xi.ki.WHISPER_OF_DREAMS)
-    player:addTitle(xi.title.HEIR_TO_THE_REALM_OF_DREAMS)
+    npcUtil.giveKeyItem(player, invaderXim.ki.WHISPER_OF_DREAMS)
+    player:addTitle(invaderXim.title.HEIR_TO_THE_REALM_OF_DREAMS)
 end
 
 content.groups =
@@ -45,7 +45,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 

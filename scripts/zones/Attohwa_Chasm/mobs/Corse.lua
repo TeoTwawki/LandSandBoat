@@ -3,7 +3,7 @@
 --  Mob: Corse
 -- Note: PH for Citipati
 -----------------------------------
-local ID = zones[xi.zone.ATTOHWA_CHASM]
+local ID = zones[invaderXim.zone.ATTOHWA_CHASM]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -30,7 +30,7 @@ entity.onMobDespawn = function(mob)
     local params = {}
     params.nightOnly = true
     params.spawnPoints = citiSpawnPoints
-    xi.mob.phOnDespawn(mob, citipatiPHTable, 20, math.random(10800, 21600), params) -- 3 to 6 hours, night only
+    invaderXim.mob.phOnDespawn(mob, citipatiPHTable, 20, math.random(10800, 21600), params) -- 3 to 6 hours, night only
 end
 
 return entity

@@ -5,14 +5,14 @@
 -- !addmission 13 102
 -- Granite Door (_4fx) : !pos 340 -1.899 331.656 159
 -----------------------------------
-local uggalepihID = zones[xi.zone.TEMPLE_OF_UGGALEPIH]
+local uggalepihID = zones[invaderXim.zone.TEMPLE_OF_UGGALEPIH]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.THE_CURSED_TEMPLE)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.THE_CURSED_TEMPLE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.WISDOM_OF_OUR_FOREFATHERS },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.WISDOM_OF_OUR_FOREFATHERS },
 }
 
 mission.sections =
@@ -22,13 +22,13 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.TEMPLE_OF_UGGALEPIH] =
+        [invaderXim.zone.TEMPLE_OF_UGGALEPIH] =
         {
             ['_4fx'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:hasCompletedMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_TEMPLE_OF_UGGALEPIH)
+                        player:hasCompletedMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_TEMPLE_OF_UGGALEPIH)
                     then
                         -- NOTE: The below parameters are based on full mission completion status, and will require additional captures
                         -- to determine the first and second parameter breakdown.
@@ -47,7 +47,7 @@ mission.sections =
                 -- is not present.
 
                 if
-                    player:hasCompletedMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_TEMPLE_OF_UGGALEPIH) and
+                    player:hasCompletedMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_TEMPLE_OF_UGGALEPIH) and
                     mission:getVar(player, 'Status') == 0
                 then
                     return 93
@@ -63,10 +63,10 @@ mission.sections =
                 [94] = function(player, csid, option, npc)
                     mission:complete(player)
 
-                    player:addMission(xi.mission.log_id.ROV, xi.mission.id.rov.WISDOM_OF_OUR_FOREFATHERS)
-                    player:completeMission(xi.mission.log_id.ROV, xi.mission.id.rov.WISDOM_OF_OUR_FOREFATHERS)
+                    player:addMission(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.WISDOM_OF_OUR_FOREFATHERS)
+                    player:completeMission(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.WISDOM_OF_OUR_FOREFATHERS)
 
-                    player:addMission(xi.mission.log_id.ROV, xi.mission.id.rov.WHERE_DIVINITIES_COLLIDE)
+                    player:addMission(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.WHERE_DIVINITIES_COLLIDE)
                 end,
             },
         },

@@ -4,7 +4,7 @@
 -- Involved in Mission: Infiltrate Davoi
 -- !pos 23 0.1 -23 149
 -----------------------------------
-local ID = zones[xi.zone.DAVOI]
+local ID = zones[invaderXim.zone.DAVOI]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -21,8 +21,8 @@ local pathNodes =
 
 entity.onSpawn = function(npc)
     npc:initNpcAi()
-    npc:setPos(xi.path.first(pathNodes))
-    npc:pathThrough(pathNodes, xi.path.flag.PATROL)
+    npc:setPos(invaderXim.path.first(pathNodes))
+    npc:pathThrough(pathNodes, invaderXim.path.flag.PATROL)
 end
 
 entity.onTrigger = function(player, npc)

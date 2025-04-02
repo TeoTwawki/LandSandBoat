@@ -1,6 +1,6 @@
 
 xi = xi or {}
-xi.quest = xi.quest or {}
+invaderXim.quest = invaderXim.quest or {}
 
 -----------------------------------
 --
@@ -8,27 +8,27 @@ xi.quest = xi.quest or {}
 --
 -----------------------------------
 
-xi.quest.area =
+invaderXim.quest.area =
 {
-    [xi.questLog.SANDORIA]    = 'sandoria',
-    [xi.questLog.BASTOK]      = 'bastok',
-    [xi.questLog.WINDURST]    = 'windurst',
-    [xi.questLog.JEUNO]       = 'jeuno',
-    [xi.questLog.OTHER_AREAS] = 'otherAreas',
-    [xi.questLog.OUTLANDS]    = 'outlands',
-    [xi.questLog.AHT_URHGAN]  = 'ahtUrhgan',
-    [xi.questLog.CRYSTAL_WAR] = 'crystalWar',
-    [xi.questLog.ABYSSEA]     = 'abyssea',
-    [xi.questLog.ADOULIN]     = 'adoulin',
-    [xi.questLog.COALITION]   = 'coalition',
+    [invaderXim.questLog.SANDORIA]    = 'sandoria',
+    [invaderXim.questLog.BASTOK]      = 'bastok',
+    [invaderXim.questLog.WINDURST]    = 'windurst',
+    [invaderXim.questLog.JEUNO]       = 'jeuno',
+    [invaderXim.questLog.OTHER_AREAS] = 'otherAreas',
+    [invaderXim.questLog.OUTLANDS]    = 'outlands',
+    [invaderXim.questLog.AHT_URHGAN]  = 'ahtUrhgan',
+    [invaderXim.questLog.CRYSTAL_WAR] = 'crystalWar',
+    [invaderXim.questLog.ABYSSEA]     = 'abyssea',
+    [invaderXim.questLog.ADOULIN]     = 'adoulin',
+    [invaderXim.questLog.COALITION]   = 'coalition',
 }
 
-xi.quest.id =
+invaderXim.quest.id =
 {
     -----------------------------------
     --  San d'Oria - 0
     -----------------------------------
-    [xi.quest.area[xi.questLog.SANDORIA]] =
+    [invaderXim.quest.area[invaderXim.questLog.SANDORIA]] =
     {
         A_SENTRYS_PERIL                 = 0,  -- + Converted
         WATERS_OF_THE_CHEVAL            = 1,  -- + Converted
@@ -96,7 +96,7 @@ xi.quest.id =
         METHODS_CREATE_MADNESS          = 98, -- + Converted
         SOULS_IN_SHADOW                 = 99, -- + Converted
         A_TASTE_FOR_MEAT                = 100, -- + Converted
-        EXIT_THE_GAMBLER                = 101, -- ±
+        IXIMT_THE_GAMBLER                = 101, -- ±
         OLD_WOUNDS                      = 102, -- + Converted
         ESCORT_FOR_HIRE                 = 103,
         A_DISCERNING_EYE                = 104,
@@ -117,7 +117,7 @@ xi.quest.id =
     -----------------------------------
     --  Bastok - 1
     -----------------------------------
-    [xi.quest.area[xi.questLog.BASTOK]] =
+    [invaderXim.quest.area[invaderXim.questLog.BASTOK]] =
     {
         THE_SIRENS_TEAR                 = 0,  -- ± Converted
         BEAUTY_AND_THE_GALKA            = 1,  -- ± Converted
@@ -217,7 +217,7 @@ xi.quest.id =
     -----------------------------------
     --  Windurst - 2
     -----------------------------------
-    [xi.quest.area[xi.questLog.WINDURST]] =
+    [invaderXim.quest.area[invaderXim.questLog.WINDURST]] =
     {
         HAT_IN_HAND                     = 0,  -- +
         A_FEATHER_IN_ONES_CAP           = 1,  -- +
@@ -314,7 +314,7 @@ xi.quest.id =
     -----------------------------------
     --  Jeuno - 3
     -----------------------------------
-    [xi.quest.area[xi.questLog.JEUNO]] =
+    [invaderXim.quest.area[invaderXim.questLog.JEUNO]] =
     {
         CREST_OF_DAVOI                  = 0,  -- + Converted
         SAVE_MY_SISTER                  = 1,  -- + Converted
@@ -469,7 +469,7 @@ xi.quest.id =
     -----------------------------------
     --  Other Areas - 4
     -----------------------------------
-    [xi.quest.area[xi.questLog.OTHER_AREAS]] =
+    [invaderXim.quest.area[invaderXim.questLog.OTHER_AREAS]] =
     {
         RYCHARDE_THE_CHEF               = 0,  -- + Converted
         WAY_OF_THE_COOK                 = 1,  -- + Converted
@@ -543,7 +543,7 @@ xi.quest.id =
     -----------------------------------
     --  Outlands - 5
     -----------------------------------
-    [xi.quest.area[xi.questLog.OUTLANDS]] =
+    [invaderXim.quest.area[invaderXim.questLog.OUTLANDS]] =
     {
         -- Kazham (1-15)
         THE_FIREBLOOM_TREE              = 1,
@@ -615,7 +615,7 @@ xi.quest.id =
     -----------------------------------
     --  Aht Urhgan - 6
     -----------------------------------
-    [xi.quest.area[xi.questLog.AHT_URHGAN]] =
+    [invaderXim.quest.area[invaderXim.questLog.AHT_URHGAN]] =
     {
         KEEPING_NOTES                    = 0, -- + Converted
         ARTS_AND_CRAFTS                  = 1, -- + Converted
@@ -700,7 +700,7 @@ xi.quest.id =
     -----------------------------------
     --  Crystal War - 7
     -----------------------------------
-    [xi.quest.area[xi.questLog.CRYSTAL_WAR]] =
+    [invaderXim.quest.area[invaderXim.questLog.CRYSTAL_WAR]] =
     {
         LOST_IN_TRANSLOCATION            = 0,  -- + Converted
         MESSAGE_ON_THE_WINDS             = 1,  -- + Converted
@@ -802,7 +802,7 @@ xi.quest.id =
     -----------------------------------
     --  Abyssea - 8
     -----------------------------------
-    [xi.quest.area[xi.questLog.ABYSSEA]] =
+    [invaderXim.quest.area[invaderXim.questLog.ABYSSEA]] =
     {
         -- For some reason these did not match dat file order,
         -- had to adjust IDs >120 after using @addquest
@@ -976,7 +976,7 @@ xi.quest.id =
         FIRST_CONTACT                   = 167,
         AN_OFFICER_AND_A_PIRATE         = 168,
         HEART_OF_MADNESS                = 169,
-        TENUOUS_EXISTENCE               = 170,
+        TENUOUS_IXIMSTENCE               = 170,
         CHAMPIONS_OF_ABYSSEA            = 171,
         THE_BEAST_OF_BASTORE            = 172,
         A_DELECTABLE_DEMON              = 173,
@@ -1003,7 +1003,7 @@ xi.quest.id =
     -----------------------------------
     --  Adoulin - 9
     -----------------------------------
-    [xi.quest.area[xi.questLog.ADOULIN]] =
+    [invaderXim.quest.area[invaderXim.questLog.ADOULIN]] =
     {
         -- These also do not match the DAT file order, had
         -- discrepencies and swapped orders from the start.
@@ -1109,7 +1109,7 @@ xi.quest.id =
     -----------------------------------
     --  Coalition - 10
     -----------------------------------
-    [xi.quest.area[xi.questLog.COALITION]] =
+    [invaderXim.quest.area[invaderXim.questLog.COALITION]] =
     {
         -- Also slightly incongruent with DAT file order
         PROCURE_CEIZAK_BATTLEGROUNDS    = 0,
@@ -1215,37 +1215,37 @@ local function getVarPrefix(areaId, questId)
     return string.format('Quest[%d][%d]', areaId, questId)
 end
 
-xi.quest.getVarPrefix = getVarPrefix
+invaderXim.quest.getVarPrefix = getVarPrefix
 
 -- Interaction Framework Helper Functions
-xi.quest.incrementVar = function(player, areaId, questId, name, value)
+invaderXim.quest.incrementVar = function(player, areaId, questId, name, value)
     return player:incrementCharVar(getVarPrefix(areaId, questId) .. name, value)
 end
 
-xi.quest.getVar = function(player, areaId, questId, name)
+invaderXim.quest.getVar = function(player, areaId, questId, name)
     return player:getVar(getVarPrefix(areaId, questId) .. name)
 end
 
-xi.quest.setVar = function(player, areaId, questId, name, value, expiry)
+invaderXim.quest.setVar = function(player, areaId, questId, name, value, expiry)
     return player:setVar(getVarPrefix(areaId, questId) .. name, value, expiry)
 end
 
-xi.quest.setVarExpiration = function(player, areaId, questId, name, expiry)
+invaderXim.quest.setVarExpiration = function(player, areaId, questId, name, expiry)
     return player:setCharVarExpiration(getVarPrefix(areaId, questId) .. name, expiry)
 end
 
-xi.quest.getLocalVar = function(player, areaId, questId, name)
+invaderXim.quest.getLocalVar = function(player, areaId, questId, name)
     return player:getLocalVar(getVarPrefix(areaId, questId) .. name)
 end
 
-xi.quest.setLocalVar = function(player, areaId, questId, name, value)
+invaderXim.quest.setLocalVar = function(player, areaId, questId, name, value)
     return player:setLocalVar(getVarPrefix(areaId, questId) .. name, value)
 end
 
-xi.quest.getMustZone = function(player, areaId, questId)
+invaderXim.quest.getMustZone = function(player, areaId, questId)
     return player:getLocalVar(getVarPrefix(areaId, questId) .. 'mustZone') == 1 and true or false
 end
 
-xi.quest.setMustZone = function(player, areaId, questId)
+invaderXim.quest.setMustZone = function(player, areaId, questId)
     player:setLocalVar(getVarPrefix(areaId, questId) .. 'mustZone', 1)
 end

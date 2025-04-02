@@ -4,7 +4,7 @@
 -- Type: Guild Merchant (Blacksmithing Guild)
 -- !pos -106.093 0.999 -24.564 237
 -----------------------------------
-local ID = zones[xi.zone.METALWORKS]
+local ID = zones[invaderXim.zone.METALWORKS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

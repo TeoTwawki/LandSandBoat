@@ -14,7 +14,7 @@ entity.onEventFinish = function(player, csid, option, npc)
         csid == 102 and
         option == 1
     then
-        player:setPos(-297.365, 1.7, 96.049, 0, xi.zone.BEADEAUX_S)
+        player:setPos(-297.365, 1.7, 96.049, 0, invaderXim.zone.BEADEAUX_S)
     end
 end
 

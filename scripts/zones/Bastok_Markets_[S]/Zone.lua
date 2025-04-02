@@ -1,20 +1,20 @@
 -----------------------------------
 -- Zone: Bastok_Markets_[S] (87)
 -----------------------------------
-local ID = zones[xi.zone.BASTOK_MARKETS_S]
+local ID = zones[invaderXim.zone.BASTOK_MARKETS_S]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.chocobo.initZone(zone)
-    xi.extravaganza.shadowEraHide(ID.npc.SHENNI)
+    invaderXim.chocobo.initZone(zone)
+    invaderXim.extravaganza.shadowEraHide(ID.npc.SHENNI)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
     local cs = -1
 
-    -- MOG HOUSE EXIT
+    -- MOG HOUSE IXIMT
     if
         player:getXPos() == 0 and
         player:getYPos() == 0 and

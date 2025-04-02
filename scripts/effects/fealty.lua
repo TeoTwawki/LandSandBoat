@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.FEALTY
+-- invaderXim.effect.FEALTY
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

@@ -3,18 +3,18 @@
 --  Mob: Fe'e
 -- BCNM: Up In Arms
 -----------------------------------
-local ID = zones[xi.zone.WAUGHROON_SHRINE]
+local ID = zones[invaderXim.zone.WAUGHROON_SHRINE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.MULTI_HIT, 6)
-    mob:setMod(xi.mod.BIND_MEVA, 20)
-    mob:setMod(xi.mod.BLIND_MEVA, 20)
-    mob:setMod(xi.mod.SLEEP_MEVA, 20)
-    mob:setMod(xi.mod.LULLABY_MEVA, 20)
-    mob:setMod(xi.mod.GRAVITY_MEVA, 20)
+    mob:setMobMod(invaderXim.mobMod.MULTI_HIT, 6)
+    mob:setMod(invaderXim.mod.BIND_MEVA, 20)
+    mob:setMod(invaderXim.mod.BLIND_MEVA, 20)
+    mob:setMod(invaderXim.mod.SLEEP_MEVA, 20)
+    mob:setMod(invaderXim.mod.LULLABY_MEVA, 20)
+    mob:setMod(invaderXim.mod.GRAVITY_MEVA, 20)
 end
 
 entity.onMobSpawn = function(mob)
@@ -29,20 +29,20 @@ end
 
 local function removeTentacle(mob, tentacles)
     if tentacles > 0 then
-        mob:setMobMod(xi.mobMod.MULTI_HIT, tentacles)
+        mob:setMobMod(invaderXim.mobMod.MULTI_HIT, tentacles)
         mob:messageText(mob, ID.text.ONE_TENTACLE_WOUNDED, false)
     else
         mob:messageText(mob, ID.text.ALL_TENTACLES_WOUNDED, false)
         mob:setMobSkillAttack(704) -- replace melee attack with special Ink Jet attack
     end
 
-    mob:addMod(xi.mod.ATT, 50)
-    mob:addMod(xi.mod.REGAIN, 50)
-    mob:addMod(xi.mod.BIND_MEVA, 10)
-    mob:addMod(xi.mod.BLIND_MEVA, 10)
-    mob:addMod(xi.mod.SLEEP_MEVA, 10)
-    mob:addMod(xi.mod.LULLABY_MEVA, 10)
-    mob:addMod(xi.mod.GRAVITY_MEVA, 10)
+    mob:addMod(invaderXim.mod.ATT, 50)
+    mob:addMod(invaderXim.mod.REGAIN, 50)
+    mob:addMod(invaderXim.mod.BIND_MEVA, 10)
+    mob:addMod(invaderXim.mod.BLIND_MEVA, 10)
+    mob:addMod(invaderXim.mod.SLEEP_MEVA, 10)
+    mob:addMod(invaderXim.mod.LULLABY_MEVA, 10)
+    mob:addMod(invaderXim.mod.GRAVITY_MEVA, 10)
 end
 
 entity.onMobFight = function(mob, target)

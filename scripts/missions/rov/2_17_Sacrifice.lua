@@ -5,14 +5,14 @@
 -- !addmission 13 83
 -- Ornate Door (_521) : !pos -700 -20.25 -303.398 89
 -----------------------------------
-local walkOfEchoesID = zones[xi.zone.WALK_OF_ECHOES]
+local walkOfEchoesID = zones[invaderXim.zone.WALK_OF_ECHOES]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.SACRIFICE)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.SACRIFICE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.SOMBER_DREAMS },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.SOMBER_DREAMS },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WALK_OF_ECHOES] =
+        [invaderXim.zone.WALK_OF_ECHOES] =
         {
             ['_521'] =
             {
@@ -33,11 +33,11 @@ mission.sections =
                     -- retail displays "A Forbidden Reunion" for both blocking quests.
 
                     if mission:getVar(player, 'Status') <= 1 then
-                        if not xi.rhapsodies.charactersAvailable(player) then
+                        if not invaderXim.rhapsodies.charactersAvailable(player) then
                             player:messageSpecial(walkOfEchoesID.text.CANNOT_PROGRESS_MISSION, 0, 2)
-                        elseif player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.A_FORBIDDEN_REUNION) == xi.questStatus.QUEST_ACCEPTED then
+                        elseif player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.A_FORBIDDEN_REUNION) == invaderXim.questStatus.QUEST_ACCEPTED then
                             player:messageSpecial(walkOfEchoesID.text.CANNOT_PROGRESS_QUEST, 0, 1)
-                        elseif player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.CHAMPION_OF_THE_DAWN) == xi.questStatus.QUEST_ACCEPTED then
+                        elseif player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.CHAMPION_OF_THE_DAWN) == invaderXim.questStatus.QUEST_ACCEPTED then
                             player:messageSpecial(walkOfEchoesID.text.CANNOT_PROGRESS_QUEST, 0, 0)
                         else
                             -- NOTE: Parameter 1 changes, but no text change was noted in comparisons.  The below event call is not
@@ -59,8 +59,8 @@ mission.sections =
                 -- updated over time as more data becomes available.
 
                 if
-                    player:getCurrentMission(xi.mission.log_id.WOTG) < xi.mission.id.wotg.FATE_IN_HAZE and
-                    xi.rhapsodies.charactersAvailable(player)
+                    player:getCurrentMission(invaderXim.mission.log_id.WOTG) < invaderXim.mission.id.wotg.FATE_IN_HAZE and
+                    invaderXim.rhapsodies.charactersAvailable(player)
                 then
                     return 26
                 end
@@ -74,12 +74,12 @@ mission.sections =
 
                 [27] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 2)
-                    player:setPos(-123.494, -8.006, 599.561, 126, xi.zone.GRAUBERG_S)
+                    player:setPos(-123.494, -8.006, 599.561, 126, invaderXim.zone.GRAUBERG_S)
                 end,
             },
         },
 
-        [xi.zone.GRAUBERG_S] =
+        [invaderXim.zone.GRAUBERG_S] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 2 then

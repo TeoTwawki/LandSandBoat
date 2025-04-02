@@ -12,7 +12,7 @@ commandObj.cmdprops =
 }
 
 commandObj.onTrigger = function(player)
-    player:setPos(0, 0, 0, 0, xi.zone.GM_HOME)
+    player:setPos(0, 0, 0, 0, invaderXim.zone.GM_HOME)
 end
 
 return commandObj

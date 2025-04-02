@@ -6,14 +6,14 @@
 -- Door: Neptune's Spire : !pos 35 0 -15 245
 -- Monberaux             : !pos -42 0 -2 244
 -----------------------------------
-local upperJeunoID = zones[xi.zone.UPPER_JEUNO]
+local upperJeunoID = zones[invaderXim.zone.UPPER_JEUNO]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.DARKNESS_NAMED)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.DARKNESS_NAMED)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.SHELTERING_DOUBT },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.SHELTERING_DOUBT },
 }
 
 mission.sections =
@@ -23,7 +23,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Aldo'] =
             {
@@ -38,15 +38,15 @@ mission.sections =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        not player:hasKeyItem(xi.ki.PSOXJA_PASS) and
+                        not player:hasKeyItem(invaderXim.ki.PSOXJA_PASS) and
                         mission:getVar(player, 'Status') == 2 and
                         (
-                            npcUtil.tradeHasExactly(trade, xi.item.CARMINE_CHIP) or
-                            npcUtil.tradeHasExactly(trade, xi.item.CYAN_CHIP) or
-                            npcUtil.tradeHasExactly(trade, xi.item.GRAY_CHIP)
+                            npcUtil.tradeHasExactly(trade, invaderXim.item.CARMINE_CHIP) or
+                            npcUtil.tradeHasExactly(trade, invaderXim.item.CYAN_CHIP) or
+                            npcUtil.tradeHasExactly(trade, invaderXim.item.GRAY_CHIP)
                         )
                     then
-                        return mission:progressEvent(52, 500 * xi.settings.main.GIL_RATE)
+                        return mission:progressEvent(52, 500 * invaderXim.settings.main.GIL_RATE)
                     end
                 end,
 
@@ -88,7 +88,7 @@ mission.sections =
                     player:confirmTrade()
 
                     npcUtil.giveCurrency(player, 'gil', 500)
-                    npcUtil.giveKeyItem(player, xi.ki.PSOXJA_PASS)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.PSOXJA_PASS)
                     mission:setVar(player, 'Status', 3)
                 end,
 
@@ -98,7 +98,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Monberaux'] =
             {
@@ -122,14 +122,14 @@ mission.sections =
                 end,
 
                 [82] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.MYSTERIOUS_AMULET)
-                    player:messageSpecial(upperJeunoID.text.LEND_PRISHE_AMULET, xi.ki.MYSTERIOUS_AMULET)
+                    player:delKeyItem(invaderXim.ki.MYSTERIOUS_AMULET)
+                    player:messageSpecial(upperJeunoID.text.LEND_PRISHE_AMULET, invaderXim.ki.MYSTERIOUS_AMULET)
                     mission:setVar(player, 'Status', 1)
                 end,
             },
         },
 
-        [xi.zone.THE_SHROUDED_MAW] =
+        [invaderXim.zone.THE_SHROUDED_MAW] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 3 then
@@ -145,10 +145,10 @@ mission.sections =
 
                 [32001] = function(player, csid, option, npc)
                     if
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.DARKNESS_NAMED and
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.DARKNESS_NAMED and
                         mission:getVar(player, 'Status') == 4
                     then
-                        player:addTitle(xi.title.TRANSIENT_DREAMER)
+                        player:addTitle(invaderXim.title.TRANSIENT_DREAMER)
                         mission:setVar(player, 'Status', 5)
                     end
                 end,
@@ -161,7 +161,7 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Chemioue']     = mission:event(282):replaceDefault(),
             ['Justinius']    = mission:event(129):replaceDefault(),
@@ -170,7 +170,7 @@ mission.sections =
             ['Arquil'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.SLANDEROUS_UTTERINGS) then
+                    if not player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.SLANDEROUS_UTTERINGS) then
                         return mission:event(292):replaceDefault()
                     end
                 end,
@@ -179,7 +179,7 @@ mission.sections =
             ['Despachiaire'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.SLANDEROUS_UTTERINGS) then
+                    if not player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.SLANDEROUS_UTTERINGS) then
                         return mission:event(315):replaceDefault()
                     end
                 end,

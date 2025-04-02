@@ -10,7 +10,7 @@
 -- Iron Eater : !pos 92.936 -19.532 1.814 237
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_FOUR_MUSKETEERS)
+local mission = Mission:new(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_FOUR_MUSKETEERS)
 
 mission.reward =
 {
@@ -28,11 +28,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             onEventFinish =
             {
@@ -40,7 +40,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             onEventFinish =
             {
@@ -48,7 +48,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             onEventFinish =
             {
@@ -56,7 +56,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             onEventFinish =
             {
@@ -70,17 +70,17 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Cleades'] = mission:progressEvent(1002),
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Rashid'] = mission:progressEvent(1002),
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Ayame'] =
             {
@@ -125,7 +125,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BEADEAUX] =
+        [invaderXim.zone.BEADEAUX] =
         {
             ['Copper_Quadav'] =
             {
@@ -156,10 +156,10 @@ mission.sections =
             },
         },
 
-        [xi.zone.PASHHOW_MARSHLANDS] =
+        [invaderXim.zone.PASHHOW_MARSHLANDS] =
         {
             onZoneIn = function(player, prevZone)
-                if prevZone == xi.zone.BEADEAUX then
+                if prevZone == invaderXim.zone.BEADEAUX then
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
                     if
@@ -187,7 +187,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Argus'] = mission:progressEvent(1002),
         },

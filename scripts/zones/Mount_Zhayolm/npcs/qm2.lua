@@ -3,14 +3,14 @@
 --  NPC: ??? (Spawn Claret(ZNM T1))
 -- !pos 497 -9 52 61
 -----------------------------------
-local ID = zones[xi.zone.MOUNT_ZHAYOLM]
+local ID = zones[invaderXim.zone.MOUNT_ZHAYOLM]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHas(trade, xi.item.BEAKER_OF_PECTIN) and
+        npcUtil.tradeHas(trade, invaderXim.item.BEAKER_OF_PECTIN) and
         npcUtil.popFromQM(player, npc, ID.mob.CLARET)
     then
         player:confirmTrade()

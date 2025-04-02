@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.AYDEEWA_SUBTERRANE]
+local ID = zones[invaderXim.zone.AYDEEWA_SUBTERRANE]
 
 return {
     ['blank_omens']    = { special = ID.text.NOTHING_OUT_OF_ORDINARY },

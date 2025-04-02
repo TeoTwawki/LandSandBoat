@@ -28,7 +28,7 @@ npcUtil = {}
         if set, spawn mobs randomly within radius of NPC
     claim (boolean, default true)
         do spawned mobs automatically aggro the player
-    hide (number, default xi.settings.main.FORCE_SPAWN_QM_RESET_TIME)
+    hide (number, default invaderXim.settings.main.FORCE_SPAWN_QM_RESET_TIME)
         how long to hide the QM for after mobs die
     message (number)
         if set a message will play if a entity spawns
@@ -52,7 +52,7 @@ function npcUtil.popFromQM(player, qm, mobId, params)
     end
 
     if params.hide == nil or type(params.hide) ~= 'number' then
-        params.hide = xi.settings.main.FORCE_SPAWN_QM_RESET_TIME
+        params.hide = invaderXim.settings.main.FORCE_SPAWN_QM_RESET_TIME
     end
 
     -- get list of mobs to pop
@@ -80,7 +80,7 @@ function npcUtil.popFromQM(player, qm, mobId, params)
 
     -- hide qm
     if params.hide > 0 then
-        qm:setStatus(xi.status.DISAPPEAR)
+        qm:setStatus(invaderXim.status.DISAPPEAR)
     end
 
     -- spawn mobs and give each a listener that will show QM after they are all dead
@@ -145,7 +145,7 @@ end
 
 --[[
     Queue a position change for an NPC.  We do this because if you setPos() an NPC
-    immediately after you setStatus(xi.status.DISAPPEAR) it, the QM does not hide
+    immediately after you setStatus(invaderXim.status.DISAPPEAR) it, the QM does not hide
     on the players' screens.
 
     point may be any of the following formats:
@@ -241,11 +241,11 @@ end
     If not, do not give items, display a message to indicate this, and return false.
 
     Examples of valid items parameter:
-        npcUtil.giveItem(player, xi.item.CHUNK_OF_COPPER_ORE, 1)                                           -- copper ore x1
-        npcUtil.giveItem(player, { xi.item.CHUNK_OF_COPPER_ORE, 1 , xi.item.CHUNK_OF_TIN_ORE, 1 })         -- copper ore x1, tin ore x1
-        npcUtil.giveItem(player, { { xi.item.CHUNK_OF_COPPER_ORE, 2 } })                                   -- copper ore x2
-        npcUtil.giveItem(player, { { xi.item.CHUNK_OF_COPPER_ORE, 12 }, { xi.item.CHUNK_OF_TIN_ORE, 3 } }) -- copper ore x12 tin ore x3
-        npcUtil.giveItem(target, { { xi.item.CHUNK_OF_COPPER_ORE, math.random(3, 15) } })                  -- random 3-15 copper ores
+        npcUtil.giveItem(player, invaderXim.item.CHUNK_OF_COPPER_ORE, 1)                                           -- copper ore x1
+        npcUtil.giveItem(player, { invaderXim.item.CHUNK_OF_COPPER_ORE, 1 , invaderXim.item.CHUNK_OF_TIN_ORE, 1 })         -- copper ore x1, tin ore x1
+        npcUtil.giveItem(player, { { invaderXim.item.CHUNK_OF_COPPER_ORE, 2 } })                                   -- copper ore x2
+        npcUtil.giveItem(player, { { invaderXim.item.CHUNK_OF_COPPER_ORE, 12 }, { invaderXim.item.CHUNK_OF_TIN_ORE, 3 } }) -- copper ore x12 tin ore x3
+        npcUtil.giveItem(target, { { invaderXim.item.CHUNK_OF_COPPER_ORE, math.random(3, 15) } })                  -- random 3-15 copper ores
         enum can be found in scripts/enum/item.lua
 
     params (table) can contain the following parameters:
@@ -262,13 +262,13 @@ end
         eg. You obtain 1 chunk of rock salt!
 --]]
 
----@class itemQuantityEntry : { [xi.item]: xi.item, [integer]: integer }
+---@class itemQuantityEntry : { [invaderXim.item]: invaderXim.item, [integer]: integer }
 
 ---@class multipleItemList
----@field [integer] { [integer]: xi.item, [integer]: integer }|xi.item
+---@field [integer] { [integer]: invaderXim.item, [integer]: integer }|invaderXim.item
 
 ---@param player CBaseEntity
----@param items xi.item|itemQuantityEntry|multipleItemList
+---@param items invaderXim.item|itemQuantityEntry|multipleItemList
 ---@param params { silent: boolean?, fromTrade: boolean?, multiple: boolean? }?
 ---@return boolean
 function npcUtil.giveItem(player, items, params)
@@ -357,7 +357,7 @@ end
         "Come back again after sorting your inventory"
 --]]
 ---@param player CBaseEntity
----@param items xi.item|itemQuantityEntry|multipleItemList
+---@param items invaderXim.item|itemQuantityEntry|multipleItemList
 ---@param params { silent: boolean? }?
 ---@return boolean
 function npcUtil.giveTempItem(player, items, params)
@@ -435,8 +435,8 @@ function npcUtil.giveCurrency(player, currency, amount)
 
     local currencyTypes =
     {
-        ['gil']   = { 'GIL_OBTAINED', xi.settings.main.GIL_RATE },
-        ['bayld'] = { 'BAYLD_OBTAINED', xi.settings.main.BAYLD_RATE }
+        ['gil']   = { 'GIL_OBTAINED', invaderXim.settings.main.GIL_RATE },
+        ['bayld'] = { 'BAYLD_OBTAINED', invaderXim.settings.main.BAYLD_RATE }
     }
 
     local currencyType = currencyTypes[currency]
@@ -470,12 +470,12 @@ end
     Message is displayed showing key items obtained.
 
     Examples of valid keyitems parameter:
-        xi.ki.ZERUHN_REPORT
-        { xi.ki.PALBOROUGH_MINES_LOGS }
-        { xi.ki.BLUE_ACIDITY_TESTER, xi.ki.RED_ACIDITY_TESTER }
+        invaderXim.ki.ZERUHN_REPORT
+        { invaderXim.ki.PALBOROUGH_MINES_LOGS }
+        { invaderXim.ki.BLUE_ACIDITY_TESTER, invaderXim.ki.RED_ACIDITY_TESTER }
 --]]
 ---@param player CBaseEntity
----@param keyitems xi.keyItem|{ [integer]: xi.keyItem }
+---@param keyitems invaderXim.keyItem|{ [integer]: invaderXim.keyItem }
 ---@param msgId integer?
 function npcUtil.giveKeyItem(player, keyitems, msgId)
     local ID            = zones[player:getZoneID()]
@@ -484,7 +484,7 @@ function npcUtil.giveKeyItem(player, keyitems, msgId)
     -- give key items to player, with message
 
     for _, keyItemId in ipairs(givenKeyItems) do
-        ---@cast keyItemId xi.keyItem
+        ---@cast keyItemId invaderXim.keyItem
         if not player:hasKeyItem(keyItemId) then
             player:addKeyItem(keyItemId)
 
@@ -510,27 +510,27 @@ end
             itemParams = {              -- see npcUtil.giveItem for formats
                 fromTrade = true,
             },
-            keyItem = xi.ki.ZERUHN_REPORT,           -- see npcUtil.giveKeyItem for formats
-            fameArea = xi.fameArea.NORG, -- Required for Fame to be applied
+            keyItem = invaderXim.ki.ZERUHN_REPORT,           -- see npcUtil.giveKeyItem for formats
+            fameArea = invaderXim.fameArea.NORG, -- Required for Fame to be applied
             fame = 120,                         -- fame defaults to 30 if not set
             bayld = 500,
             gil = 200,
             exp = 1000,
-            title = xi.title.ENTRANCE_DENIED,
+            title = invaderXim.title.ENTRANCE_DENIED,
             var = { 'foo1', 'foo2' }      -- variable(s) to set to 0. string or table
         })
 --]]
 
 ---@class rewardParam
----@field item xi.item|itemQuantityEntry|multipleItemList?
+---@field item invaderXim.item|itemQuantityEntry|multipleItemList?
 ---@field itemParams { silent: boolean?, fromTrade: boolean?, multiple: boolean? }?
----@field keyItem xi.keyItem|{ [integer]: xi.keyItem }?
----@field ki xi.keyItem|{ [integer]: xi.keyItem }?
+---@field keyItem invaderXim.keyItem|{ [integer]: invaderXim.keyItem }?
+---@field ki invaderXim.keyItem|{ [integer]: invaderXim.keyItem }?
 ---@field fame integer?
----@field fameArea xi.fameArea?
+---@field fameArea invaderXim.fameArea?
 ---@field bayld integer?
 ---@field gil integer?
----@field title xi.title?
+---@field title invaderXim.title?
 ---@field var string|string[]?
 ---@field exp integer?
 
@@ -568,17 +568,17 @@ function npcUtil.giveReward(player, params)
     end
 
     if params['gil'] ~= nil and type(params['gil']) == 'number' then
-        player:addGil(params['gil'] * xi.settings.main.GIL_RATE)
-        player:messageSpecial(ID.text.GIL_OBTAINED, params['gil'] * xi.settings.main.GIL_RATE)
+        player:addGil(params['gil'] * invaderXim.settings.main.GIL_RATE)
+        player:messageSpecial(ID.text.GIL_OBTAINED, params['gil'] * invaderXim.settings.main.GIL_RATE)
     end
 
     if params['bayld'] ~= nil and type(params['bayld']) == 'number' then
-        player:addCurrency('bayld', params['bayld'] * xi.settings.main.BAYLD_RATE)
-        player:messageSpecial(ID.text.BAYLD_OBTAINED, params['bayld'] * xi.settings.main.BAYLD_RATE)
+        player:addCurrency('bayld', params['bayld'] * invaderXim.settings.main.BAYLD_RATE)
+        player:messageSpecial(ID.text.BAYLD_OBTAINED, params['bayld'] * invaderXim.settings.main.BAYLD_RATE)
     end
 
     if params['exp'] ~= nil and type(params['exp']) == 'number' then
-        player:addExp(params['exp'] * xi.settings.main.EXP_RATE)
+        player:addExp(params['exp'] * invaderXim.settings.main.EXP_RATE)
     end
 
     if params['title'] ~= nil then
@@ -608,24 +608,24 @@ end
     Otherwise, return true.
 
     Example of usage with params (all params are optional):
-        npcUtil.completeQuest(player, xi.questLog.SANDORIA, xi.quest.id.sandoria.ROSEL_THE_ARMORER, {
+        npcUtil.completeQuest(player, invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.ROSEL_THE_ARMORER, {
             item = { { 640, 2 }, 641 },   -- see npcUtil.giveItem for formats
             itemParams = {              -- see npcUtil.giveItem for formats
                 fromTrade = true,
             },
-            keyItem = xi.ki.ZERUHN_REPORT,           -- see npcUtil.giveKeyItem for formats
-            fameArea = xi.fameArea.NORG, -- Required for Fame to be applied
+            keyItem = invaderXim.ki.ZERUHN_REPORT,           -- see npcUtil.giveKeyItem for formats
+            fameArea = invaderXim.fameArea.NORG, -- Required for Fame to be applied
             fame = 120,                         -- fame defaults to 30 if not set
             bayld = 500,
             gil = 200,
             exp = 1000,
-            title = xi.title.ENTRANCE_DENIED,
+            title = invaderXim.title.ENTRANCE_DENIED,
             var = { 'foo1', 'foo2' }      -- variable(s) to set to 0. string or table
         })
 --]]
 
 ---@param player CBaseEntity
----@param area xi.questLog
+---@param area invaderXim.questLog
 ---@param quest integer
 ---@param params rewardParam
 ---@return boolean
@@ -658,17 +658,17 @@ function npcUtil.completeQuest(player, area, quest, params)
     end
 
     if params['gil'] ~= nil and type(params['gil']) == 'number' then
-        player:addGil(params['gil'] * xi.settings.main.GIL_RATE)
-        player:messageSpecial(ID.text.GIL_OBTAINED, params['gil'] * xi.settings.main.GIL_RATE)
+        player:addGil(params['gil'] * invaderXim.settings.main.GIL_RATE)
+        player:messageSpecial(ID.text.GIL_OBTAINED, params['gil'] * invaderXim.settings.main.GIL_RATE)
     end
 
     if params['bayld'] ~= nil and type(params['bayld']) == 'number' then
-        player:addCurrency('bayld', params['bayld'] * xi.settings.main.BAYLD_RATE)
-        player:messageSpecial(ID.text.BAYLD_OBTAINED, params['bayld'] * xi.settings.main.BAYLD_RATE)
+        player:addCurrency('bayld', params['bayld'] * invaderXim.settings.main.BAYLD_RATE)
+        player:messageSpecial(ID.text.BAYLD_OBTAINED, params['bayld'] * invaderXim.settings.main.BAYLD_RATE)
     end
 
     if params['exp'] ~= nil and type(params['exp']) == 'number' then
-        player:addExp(params['exp'] * xi.settings.main.EXP_RATE)
+        player:addExp(params['exp'] * invaderXim.settings.main.EXP_RATE)
     end
 
     if params['title'] ~= nil then
@@ -712,16 +712,16 @@ end
     Otherwise, return true.
 
     Example of usage with params (all params are optional):
-        npcUtil.completeMission(player, xi.questLog.SANDORIA, xi.quest.id.sandoria.ROSEL_THE_ARMORER, {
+        npcUtil.completeMission(player, invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.ROSEL_THE_ARMORER, {
             item = { { 640, 2 }, 641 },   -- see npcUtil.giveItem for formats
             itemParams = {              -- see npcUtil.giveItem for formats
                 fromTrade = true,
             },
-            keyItem = xi.ki.ZERUHN_REPORT,   -- see npcUtil.giveKeyItem for formats
+            keyItem = invaderXim.ki.ZERUHN_REPORT,   -- see npcUtil.giveKeyItem for formats
             bayld = 500,
             gil   = 200,
             exp   = 1000,
-            title = xi.title.ENTRANCE_DENIED,
+            title = invaderXim.title.ENTRANCE_DENIED,
         })
 --]]
 function npcUtil.completeMission(player, logId, missionId, params)
@@ -743,17 +743,17 @@ function npcUtil.completeMission(player, logId, missionId, params)
     end
 
     if params['gil'] ~= nil and type(params['gil']) == 'number' then
-        player:addGil(params['gil'] * xi.settings.main.GIL_RATE)
-        player:messageSpecial(ID.text.GIL_OBTAINED, params['gil'] * xi.settings.main.GIL_RATE)
+        player:addGil(params['gil'] * invaderXim.settings.main.GIL_RATE)
+        player:messageSpecial(ID.text.GIL_OBTAINED, params['gil'] * invaderXim.settings.main.GIL_RATE)
     end
 
     if params['bayld'] ~= nil and type(params['bayld']) == 'number' then
-        player:addCurrency('bayld', params['bayld'] * xi.settings.main.BAYLD_RATE)
-        player:messageSpecial(ID.text.BAYLD_OBTAINED, params['bayld'] * xi.settings.main.BAYLD_RATE)
+        player:addCurrency('bayld', params['bayld'] * invaderXim.settings.main.BAYLD_RATE)
+        player:messageSpecial(ID.text.BAYLD_OBTAINED, params['bayld'] * invaderXim.settings.main.BAYLD_RATE)
     end
 
     if params['exp'] ~= nil and type(params['exp']) == 'number' then
-        player:addExp(params['exp'] * xi.settings.main.EXP_RATE)
+        player:addExp(params['exp'] * invaderXim.settings.main.EXP_RATE)
     end
 
     if params['title'] ~= nil then
@@ -965,27 +965,27 @@ function npcUtil.fishingAnimation(npc, phaseDuration, func)
     npc:timer(phaseDuration * 1000, function(npcArg)
         local anims =
         {
-            [xi.anim.FISHING_NPC] = { duration = 5, nextAnim = { xi.anim.FISHING_START } },
-            [xi.anim.FISHING_START] = { duration = 10, nextAnim = { xi.anim.FISHING_FISH } },
-            [xi.anim.FISHING_FISH] =
+            [invaderXim.anim.FISHING_NPC] = { duration = 5, nextAnim = { invaderXim.anim.FISHING_START } },
+            [invaderXim.anim.FISHING_START] = { duration = 10, nextAnim = { invaderXim.anim.FISHING_FISH } },
+            [invaderXim.anim.FISHING_FISH] =
             {
                 duration = 10,
                 nextAnim =
                 {
-                    xi.anim.FISHING_CAUGHT,
-                    xi.anim.FISHING_ROD_BREAK,
-                    xi.anim.FISHING_LINE_BREAK,
+                    invaderXim.anim.FISHING_CAUGHT,
+                    invaderXim.anim.FISHING_ROD_BREAK,
+                    invaderXim.anim.FISHING_LINE_BREAK,
                 }
             },
 
-            [xi.anim.FISHING_ROD_BREAK] = { duration = 3, nextAnim = { xi.anim.FISHING_NPC } },
-            [xi.anim.FISHING_LINE_BREAK] = { duration = 3, nextAnim = { xi.anim.FISHING_NPC } },
-            [xi.anim.FISHING_CAUGHT] = { duration = 5, nextAnim = { xi.anim.FISHING_NPC } },
-            [xi.anim.FISHING_STOP] = { duration = 3, nextAnim = { xi.anim.FISHING_NPC } },
+            [invaderXim.anim.FISHING_ROD_BREAK] = { duration = 3, nextAnim = { invaderXim.anim.FISHING_NPC } },
+            [invaderXim.anim.FISHING_LINE_BREAK] = { duration = 3, nextAnim = { invaderXim.anim.FISHING_NPC } },
+            [invaderXim.anim.FISHING_CAUGHT] = { duration = 5, nextAnim = { invaderXim.anim.FISHING_NPC } },
+            [invaderXim.anim.FISHING_STOP] = { duration = 3, nextAnim = { invaderXim.anim.FISHING_NPC } },
         }
 
         local anim = anims[npcArg:getAnimation()]
-        local nextAnimationId = xi.anim.FISHING_NPC
+        local nextAnimationId = invaderXim.anim.FISHING_NPC
         local nextAnimationDuration = 10
         local nextAnim = nil
         if anim then
@@ -1017,8 +1017,8 @@ function npcUtil.castingAnimation(npc, magicType, phaseDuration, func)
     npc:timer(phaseDuration * 1000, function(npcArg)
         local anims =
         {
-            [xi.magic.spellGroup.BLACK] = { start = 'cabk', duration = 2000, stop = 'shbk' },
-            [xi.magic.spellGroup.WHITE] = { start = 'cawh', duration = 1800, stop = 'shwh' },
+            [invaderXim.magic.spellGroup.BLACK] = { start = 'cabk', duration = 2000, stop = 'shbk' },
+            [invaderXim.magic.spellGroup.WHITE] = { start = 'cawh', duration = 1800, stop = 'shwh' },
         }
         npcArg:entityAnimationPacket(anims[magicType].start)
         npcArg:timer(anims[magicType].duration, function(npcTimerArg)
@@ -1030,17 +1030,17 @@ function npcUtil.castingAnimation(npc, magicType, phaseDuration, func)
 end
 
 function npcUtil.showCrate(crate)
-    crate:setStatus(xi.status.NORMAL)
+    crate:setStatus(invaderXim.status.NORMAL)
     crate:setUntargetable(false)
     crate:resetLocalVars()
 end
 
 function npcUtil.disappearCrate(crate)
     if crate:isNPC() then
-        crate:entityAnimationPacket(xi.animationString.STATUS_DISAPPEAR)
+        crate:entityAnimationPacket(invaderXim.animationString.STATUS_DISAPPEAR)
         crate:timer(3000, function(npc)
             npc:setUntargetable(true)
-            npc:setStatus(xi.status.DISAPPEAR)
+            npc:setStatus(invaderXim.status.DISAPPEAR)
         end)
     else
         -- Some crates, such as Recover Crates in Limbus, are actually mobs that look like NPCs
@@ -1055,7 +1055,7 @@ function npcUtil.openCrate(crate, callback)
     if crate:getLocalVar('opened') == 0 then
         crate:setLocalVar('opened', 1)
         local shouldDisappear = not callback()
-        crate:entityAnimationPacket(xi.animationString.OPEN_CRATE_GLOW)
+        crate:entityAnimationPacket(invaderXim.animationString.OPEN_CRATE_GLOW)
 
         if shouldDisappear then
             crate:timer(7000, function(npc)

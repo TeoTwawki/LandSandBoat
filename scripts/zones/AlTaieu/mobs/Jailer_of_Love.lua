@@ -3,13 +3,13 @@
 --   NM: Jailer of Love
 -- !pos 431.522 -0.912 -603.503 33
 -----------------------------------
-local ID = zones[xi.zone.ALTAIEU]
+local ID = zones[invaderXim.zone.ALTAIEU]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
-xi.jol = xi.jol or {}
-xi.jol.lastEnmityList = {}
+invaderXim.jol = invaderXim.jol or {}
+invaderXim.jol.lastEnmityList = {}
 
 -- TODO: capture the following
 -- Actual draw in distance & behavior
@@ -33,14 +33,14 @@ local minionGroup =
 
 local spellLists =
 {
-    [xi.element.FIRE]    = 513, -- Fire List
-    [xi.element.ICE]     = 514, -- Ice List
-    [xi.element.WIND]    = 515, -- Wind List
-    [xi.element.EARTH]   = 516, -- Earth List
-    [xi.element.THUNDER] = 517, -- Thunder List
-    [xi.element.WATER]   = 518, -- Water List
-    [xi.element.LIGHT]   = 519, -- Light List
-    [xi.element.DARK]    = 520, -- Dark List
+    [invaderXim.element.FIRE]    = 513, -- Fire List
+    [invaderXim.element.ICE]     = 514, -- Ice List
+    [invaderXim.element.WIND]    = 515, -- Wind List
+    [invaderXim.element.EARTH]   = 516, -- Earth List
+    [invaderXim.element.THUNDER] = 517, -- Thunder List
+    [invaderXim.element.WATER]   = 518, -- Water List
+    [invaderXim.element.LIGHT]   = 519, -- Light List
+    [invaderXim.element.DARK]    = 520, -- Dark List
 }
 
 -- Animations, action IDs and elemental absorb mods are directly mapped to eachother per retail caps
@@ -58,11 +58,11 @@ local astralFlowPets = function()
             -- Picking annoying abilities for now...
             pet:timer(1500, function(petArg)
                 if petArg:getFamily() == 269 then -- xzomit
-                    petArg:useMobAbility(xi.mobskill.MANTLE_PIERCE)
+                    petArg:useMobAbility(invaderXim.mobskill.MANTLE_PIERCE)
                 elseif petArg:getFamily() == 144 then -- hpemde
-                    petArg:useMobAbility(xi.mobskill.SINUATE_RUSH)
+                    petArg:useMobAbility(invaderXim.mobskill.SINUATE_RUSH)
                 elseif petArg:getFamily() == 194 then -- shark
-                    petArg:useMobAbility(xi.mobskill.AERIAL_COLLISION)
+                    petArg:useMobAbility(invaderXim.mobskill.AERIAL_COLLISION)
                 end
             end)
         end
@@ -83,9 +83,9 @@ local spawnPets = function(mob, minionOffset)
             GetMobByID(minionOffset + 0):setSpawn(mobArg:getXPos() + 4, mobArg:getYPos(), mobArg:getZPos())
             GetMobByID(minionOffset + 1):setSpawn(mobArg:getXPos(), mobArg:getYPos(), mobArg:getZPos() + 4)
             GetMobByID(minionOffset + 2):setSpawn(mobArg:getXPos(), mobArg:getYPos(), mobArg:getZPos() - 4)
-            SpawnMob(minionOffset + 0):setMobMod(xi.mobMod.SUPERLINK, mobArg:getTargID())
-            SpawnMob(minionOffset + 1):setMobMod(xi.mobMod.SUPERLINK, mobArg:getTargID())
-            SpawnMob(minionOffset + 2):setMobMod(xi.mobMod.SUPERLINK, mobArg:getTargID())
+            SpawnMob(minionOffset + 0):setMobMod(invaderXim.mobMod.SUPERLINK, mobArg:getTargID())
+            SpawnMob(minionOffset + 1):setMobMod(invaderXim.mobMod.SUPERLINK, mobArg:getTargID())
+            SpawnMob(minionOffset + 2):setMobMod(invaderXim.mobMod.SUPERLINK, mobArg:getTargID())
             GetMobByID(minionOffset + 0):updateEnmity(mobArg:getTarget())
             GetMobByID(minionOffset + 1):updateEnmity(mobArg:getTarget())
             GetMobByID(minionOffset + 2):updateEnmity(mobArg:getTarget())
@@ -129,47 +129,47 @@ local spawnSharks = function(mob)
         if phuabo then
             phuabo:setSpawn(target:getXPos() + math.random(-2, 2), target:getYPos(), target:getZPos())
             SpawnMob(phuaboDn[i])
-            phuabo:setMobMod(xi.mobMod.SUPERLINK, mob:getTargID())
+            phuabo:setMobMod(invaderXim.mobMod.SUPERLINK, mob:getTargID())
             phuabo:updateEnmity(target)
         end
     end
 end
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180)
 end
 
 local function getAbsorbMod(element)
-    local absorbMod = xi.combat.element.getElementalAbsorptionModifier(element)
+    local absorbMod = invaderXim.combat.element.getElementalAbsorptionModifier(element)
 
     return absorbMod
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setBehavior(xi.behavior.STANDBACK)
-    mob:setMobMod(xi.mobMod.STANDBACK_RANGE, 13) -- Guessed, seems approximate based on era videos
-    mob:setMobMod(xi.mobMod.MAGIC_COOL, 20)      -- Seems to be 20~22 depending if a TP move is in the way
+    mob:setBehavior(invaderXim.behavior.STANDBACK)
+    mob:setMobMod(invaderXim.mobMod.STANDBACK_RANGE, 13) -- Guessed, seems approximate based on era videos
+    mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 20)      -- Seems to be 20~22 depending if a TP move is in the way
 
-    mob:addMod(xi.mod.REGEN, 260)
-    mob:setMod(xi.mod.DMGMAGIC, -5000) -- starts the fight with -50% magic damage taken, reduced to 25% after regen is taken off.
-    mob:setMod(xi.mod.ATT, 452)
-    mob:setMod(xi.mod.DEF, 620)
-    mob:setMod(xi.mod.EVA, 328)
+    mob:addMod(invaderXim.mod.REGEN, 260)
+    mob:setMod(invaderXim.mod.DMGMAGIC, -5000) -- starts the fight with -50% magic damage taken, reduced to 25% after regen is taken off.
+    mob:setMod(invaderXim.mod.ATT, 452)
+    mob:setMod(invaderXim.mod.DEF, 620)
+    mob:setMod(invaderXim.mod.EVA, 328)
 
     -- TODO - used to be catch all for SLEEP immunity, but I assume it's immune to both
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.GRAVITY)
-    mob:addImmunity(xi.immunity.BIND)
-    mob:addImmunity(xi.immunity.STUN)
-    mob:addImmunity(xi.immunity.SILENCE)
-    mob:addImmunity(xi.immunity.PARALYZE)
-    mob:addImmunity(xi.immunity.BLIND)
-    mob:addImmunity(xi.immunity.SLOW)
-    mob:addImmunity(xi.immunity.POISON)
-    mob:addImmunity(xi.immunity.ELEGY)
-    mob:addImmunity(xi.immunity.REQUIEM)
-    mob:addImmunity(xi.immunity.TERROR)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
+    mob:addImmunity(invaderXim.immunity.BIND)
+    mob:addImmunity(invaderXim.immunity.STUN)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
+    mob:addImmunity(invaderXim.immunity.PARALYZE)
+    mob:addImmunity(invaderXim.immunity.BLIND)
+    mob:addImmunity(invaderXim.immunity.SLOW)
+    mob:addImmunity(invaderXim.immunity.POISON)
+    mob:addImmunity(invaderXim.immunity.ELEGY)
+    mob:addImmunity(invaderXim.immunity.REQUIEM)
+    mob:addImmunity(invaderXim.immunity.TERROR)
 
     local currentAbsorb = math.random(1, 8) -- pick a random element to absorb after engaging
 
@@ -177,10 +177,10 @@ entity.onMobSpawn = function(mob)
     mob:setSpellList(spellLists[currentAbsorb])
     mob:setMod(getAbsorbMod(currentAbsorb), 100)
 
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
-            { id = xi.jsa.ASTRAL_FLOW, hpp = math.random(45, 55) },
+            { id = invaderXim.jsa.ASTRAL_FLOW, hpp = math.random(45, 55) },
         },
     })
 end
@@ -216,8 +216,8 @@ entity.onMobFight = function(mob, target)
         mob:getLocalVar('JoL_Qn_hpemde_Killed') >= 9
     then
         mob:setLocalVar('JoL_Regen_Reduction', 1)
-        mob:delMod(xi.mod.REGEN, 260)
-        mob:setMod(xi.mod.DMGMAGIC, -2500) -- magic damage taken reduced from 50% to 25% after killing nine xzomits and hpemdes
+        mob:delMod(invaderXim.mod.REGEN, 260)
+        mob:setMod(invaderXim.mod.DMGMAGIC, -2500) -- magic damage taken reduced from 50% to 25% after killing nine xzomits and hpemdes
     end
 
     -- every 2 minutes JoL will change the element it absorbs/casts spells this change happens after a two hour animation
@@ -276,21 +276,21 @@ entity.onMobFight = function(mob, target)
     end
 
     -- empty table
-    for key in pairs(xi.jol.lastEnmityList) do
-        xi.jol.lastEnmityList[key] = nil
+    for key in pairs(invaderXim.jol.lastEnmityList) do
+        invaderXim.jol.lastEnmityList[key] = nil
     end
 
     local enmityList = mob:getEnmityList()
     for index in ipairs(enmityList) do
 
-        xi.jol.lastEnmityList[index] = {}
+        invaderXim.jol.lastEnmityList[index] = {}
         local tempEntity = enmityList[index]['entity']
         local ce         = enmityList[index]['ce']
         local ve         = enmityList[index]['ve']
 
-        xi.jol.lastEnmityList[index]['id'] = tempEntity:getID()
-        xi.jol.lastEnmityList[index]['ce'] = ce
-        xi.jol.lastEnmityList[index]['ve'] = ve
+        invaderXim.jol.lastEnmityList[index]['id'] = tempEntity:getID()
+        invaderXim.jol.lastEnmityList[index]['ce'] = ce
+        invaderXim.jol.lastEnmityList[index]['ve'] = ve
     end
 end
 
@@ -316,10 +316,10 @@ entity.onMobDespawn = function(mob)
         local highestEnmityTarget = nil
         local highestEnmity = -1
 
-        for index in ipairs(xi.jol.lastEnmityList) do
-            local id = xi.jol.lastEnmityList[index]['id']
-            local ce = xi.jol.lastEnmityList[index]['ce']
-            local ve = xi.jol.lastEnmityList[index]['ve']
+        for index in ipairs(invaderXim.jol.lastEnmityList) do
+            local id = invaderXim.jol.lastEnmityList[index]['id']
+            local ce = invaderXim.jol.lastEnmityList[index]['ce']
+            local ve = invaderXim.jol.lastEnmityList[index]['ve']
 
             local target = GetPlayerByID(id)
             if target == nil then

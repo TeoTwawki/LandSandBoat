@@ -1,4 +1,4 @@
-DROP PROCEDURE IF EXISTS replace_drop;
+DROP PROCEDURE IF IXIMSTS replace_drop;
 DELIMITER $$
 CREATE PROCEDURE replace_drop(
     IN zoneName TINYTEXT,

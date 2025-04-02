@@ -37,7 +37,7 @@
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.instance = {}
+invaderXim.instance = {}
 
 --[[
     [zoneId] =
@@ -51,9 +51,9 @@ xi.instance = {}
     },
 --]]
 
-xi.instance.lookup =
+invaderXim.instance.lookup =
 {
-    [xi.zone.ILRUSI_ATOLL] =
+    [invaderXim.zone.ILRUSI_ATOLL] =
     {
         -- Assault: Golden Salvage
         -- Assault: Lamia No.13
@@ -67,7 +67,7 @@ xi.instance.lookup =
         -- Assault: Bellerophon's Bliss
     },
 
-    [xi.zone.PERIQIA] =
+    [invaderXim.zone.PERIQIA] =
     {
         { 5600, { 143, 79, -6, 0, 99, 3, 0 }, { 143, 4 }, { 147, 3 } }, -- Shades of Vengeance (TOAU31)
         { 5601, { 143, 31, -4, 0, 70, 0, 1 }, { 143, 4 }, { 147, 0 } }, -- Assault: Seagull Grounded
@@ -81,7 +81,7 @@ xi.instance.lookup =
         -- Assault: The Price is Right
     },
 
-    [xi.zone.THE_ASHU_TALIF] =
+    [invaderXim.zone.THE_ASHU_TALIF] =
     {
         { 6000, { 221, 53, -6, 0, 99, 6, 0 }, { 221, 4 }, { 222, 6 } }, -- The Black Coffin (TOAU 15)
         { 6001, { 221, 54, -9, 0, 99, 6, 0 }, { 221, 4 }, { 222, 6 } }, -- Against All Odds
@@ -92,7 +92,7 @@ xi.instance.lookup =
         -- Assault: Targeting the Captain
     },
 
-    [xi.zone.LEBROS_CAVERN] =
+    [invaderXim.zone.LEBROS_CAVERN] =
     {
         { 6300, { 203, 21, -4, 0, 50, 0, 1 }, { 203, 4 }, { 208, 0 } }, -- Assault: Excavation Duty
         -- Assault: Lebros Supplies
@@ -106,7 +106,7 @@ xi.instance.lookup =
         -- Assault: Better Than One
     },
 
-    [xi.zone.MAMOOL_JA_TRAINING_GROUNDS] =
+    [invaderXim.zone.MAMOOL_JA_TRAINING_GROUNDS] =
     {
         { 6600, { 505, 11, -4, 0, 60, 0, 1 }, { 505, 4 }, { 511, 0 } }, -- Assault: Imperial Agent Rescue
         -- Assault: Preemptive Strike
@@ -120,7 +120,7 @@ xi.instance.lookup =
         -- Assault: The Susanoo Shuffle
     },
 
-    [xi.zone.LEUJAOAM_SANCTUM] =
+    [invaderXim.zone.LEUJAOAM_SANCTUM] =
     {
         { 6900, { 140, 1, -4, 0, 50, 0, 1 }, { 140, 4 }, { 147, 0 } }, -- Assault: Leujaoam Cleansing
         -- Assault: Orichalcum Survey
@@ -134,27 +134,27 @@ xi.instance.lookup =
         -- Assault: Bloody Rondo
     },
 
-    [xi.zone.ZHAYOLM_REMNANTS] =
+    [invaderXim.zone.ZHAYOLM_REMNANTS] =
     {
         { 7300, { 407, 0, -6, 0, 0, 7 }, { 407, 4 }, { 411, 7 } }, -- Salvage I, Zhayolm Remnants
     },
 
-    [xi.zone.ARRAPAGO_REMNANTS] =
+    [invaderXim.zone.ARRAPAGO_REMNANTS] =
     {
         { 7400, { 408, 0, -6, 0, 0, 8 }, { 408, 4 }, { 411, 8 } }, -- Salvage I, Arrapago Remnants
     },
 
-    [xi.zone.BHAFLAU_REMNANTS] =
+    [invaderXim.zone.BHAFLAU_REMNANTS] =
     {
         { 7500, { 409, 0, -6, 0, 0, 9 }, { 409, 4 }, { 411, 9 } }, -- Salvage I, Bhaflau Remnants
     },
 
-    [xi.zone.SILVER_SEA_REMNANTS] =
+    [invaderXim.zone.SILVER_SEA_REMNANTS] =
     {
         { 7600, { 410, 0, -6, 0, 0, 10 }, { 410, 4 }, { 411, 10 } }, -- Salvage I, Silver Sea Remnants
     },
 
-    [xi.zone.NYZUL_ISLE] =
+    [invaderXim.zone.NYZUL_ISLE] =
     {
         { 7700, { 405, 58,  -6, 0, 99, 5, 0 }, { 116, 1 }, { 411, 5 } }, -- Path of Darkness
         { 7701, { 405, 59, -10, 0, 99, 5, 0 }, { 116, 1 }, { 411, 5 } }, -- Nashmeira's Plea
@@ -163,7 +163,7 @@ xi.instance.lookup =
         { 7704, { 405, 51,  -4, 0, 75, 5, 1 }, { 116, 2 }, { 411, 5 } }, -- Nyzul Isle Investigation
     },
 
-    [xi.zone.EVERBLOOM_HOLLOW] =
+    [invaderXim.zone.EVERBLOOM_HOLLOW] =
     {
         -- Honor Under Fire
         -- Bonds That Never Die
@@ -184,7 +184,7 @@ xi.instance.lookup =
         -- Moblin Maze Mongers
     },
 
-    [xi.zone.RUHOTZ_SILVERMINES] =
+    [invaderXim.zone.RUHOTZ_SILVERMINES] =
     {
         { 9300, {   3, 0, 0, 19 }, {   3, 4 }, {   4, 1 } }, -- Light in the Darkness (WOTG Bastok Quest 3)
         { 9301, { 203, 0, 0, 36 }, { 203, 4 }, { 201, 1 } }, -- Fire in the Hole (WOTG Bastok Quest 6)
@@ -205,7 +205,7 @@ xi.instance.lookup =
         -- Moblin Maze Mongers
     },
 
-    [xi.zone.GHOYUS_REVERIE] =
+    [invaderXim.zone.GHOYUS_REVERIE] =
     {
         -- A Feast for Gnats
         -- A Manifest Problem
@@ -223,7 +223,7 @@ xi.instance.lookup =
         -- Doomvoid - Serket
     },
 
-    [xi.zone.MAQUETTE_ABDHALJS_LEGION_A] =
+    [invaderXim.zone.MAQUETTE_ABDHALJS_LEGION_A] =
     {
         -- Hall of An (Leader entry: { 8009, 0, 0, 0, 0, 6, 1 }, Party entry: { 8003, 0, 0, 0, 0, 6, 1 })
         -- Hall of Ki
@@ -232,7 +232,7 @@ xi.instance.lookup =
         -- Hall of Mul
     },
 
-    [xi.zone.RALA_WATERWAYS_U] =
+    [invaderXim.zone.RALA_WATERWAYS_U] =
     {
         -- {  0, 0 }, -- Endeavoring to Awaken
         -- {  1, 0 }, -- Endeavoring to Awaken
@@ -257,37 +257,37 @@ xi.instance.lookup =
         -- { 20, 0 }, -- Wind of Eternity
     },
 
-    [xi.zone.YORCIA_WEALD_U] =
+    [invaderXim.zone.YORCIA_WEALD_U] =
     {
 
     },
 
-    [xi.zone.CIRDAS_CAVERNS_U] =
+    [invaderXim.zone.CIRDAS_CAVERNS_U] =
     {
 
     },
 
-    [xi.zone.OUTER_RAKAZNAR_U1] =
+    [invaderXim.zone.OUTER_RAKAZNAR_U1] =
     {
 
     },
 
-    [xi.zone.DYNAMIS_SAN_DORIA_D] =
+    [invaderXim.zone.DYNAMIS_SAN_DORIA_D] =
     {
 
     },
 
-    [xi.zone.DYNAMIS_BASTOK_D] =
+    [invaderXim.zone.DYNAMIS_BASTOK_D] =
     {
 
     },
 
-    [xi.zone.DYNAMIS_WINDURST_D] =
+    [invaderXim.zone.DYNAMIS_WINDURST_D] =
     {
 
     },
 
-    [xi.zone.DYNAMIS_JEUNO_D] =
+    [invaderXim.zone.DYNAMIS_JEUNO_D] =
     {
 
     },
@@ -299,7 +299,7 @@ local checkRegistryReqs = function(player, instanceId)
     if type(instanceObj.registryRequirements) == 'function' then
         return instanceObj.registryRequirements(player)
     else
-        print('xi.instance: checkReqs: registryRequirements function not set for instance: ' .. instanceId)
+        print('invaderXim.instance: checkReqs: registryRequirements function not set for instance: ' .. instanceId)
         return false
     end
 end
@@ -310,16 +310,16 @@ local checkEntryReqs = function(player, instanceId)
     if type(instanceObj.entryRequirements) == 'function' then
         return instanceObj.entryRequirements(player)
     else
-        print('xi.instance: checkReqs: entryRequirements function not set for instance: ' .. instanceId)
+        print('invaderXim.instance: checkReqs: entryRequirements function not set for instance: ' .. instanceId)
         return false
     end
 end
 
-xi.instance.onTrade = function(player, npc, trade)
+invaderXim.instance.onTrade = function(player, npc, trade)
 end
 
-xi.instance.onTrigger = function(player, npc, instanceZoneID)
-    local zoneLookup = xi.instance.lookup[instanceZoneID]
+invaderXim.instance.onTrigger = function(player, npc, instanceZoneID)
+    local zoneLookup = invaderXim.instance.lookup[instanceZoneID]
 
     -- Clear up after possible failed loads
     player:setLocalVar('INSTANCE_REQUESTED', 0)
@@ -360,7 +360,7 @@ xi.instance.onTrigger = function(player, npc, instanceZoneID)
     end
 end
 
-xi.instance.onEventUpdate = function(player, csid, option, npc)
+invaderXim.instance.onEventUpdate = function(player, csid, option, npc)
     local instanceId = player:getLocalVar('INSTANCE_ID')
     local party      = player:getParty()
     local ID         = zones[player:getZoneID()]
@@ -410,8 +410,8 @@ xi.instance.onEventUpdate = function(player, csid, option, npc)
 end
 
 -- 'Default' behavior. It's up to each instance whether or not they want to use this logic
-xi.instance.onInstanceCreatedCallback = function(player, instance)
-    local zoneLookup = xi.instance.lookup[instance:getZone():getID()]
+invaderXim.instance.onInstanceCreatedCallback = function(player, instance)
+    local zoneLookup = invaderXim.instance.lookup[instance:getZone():getID()]
     local instanceId = instance:getID()
 
     -- Collect cs for party members
@@ -432,7 +432,7 @@ xi.instance.onInstanceCreatedCallback = function(player, instance)
         player:setInstance(instance)
 
         -- This packet will trigger the end of the blocking
-        -- cutscene and xi.instance.onEventFinish will handle
+        -- cutscene and invaderXim.instance.onEventFinish will handle
         -- the transportation
         for _, v in ipairs(player:getParty()) do
             if v:getZoneID() == player:getZoneID() then
@@ -478,12 +478,12 @@ xi.instance.onInstanceCreatedCallback = function(player, instance)
     end
 end
 
-xi.instance.onEventFinish = function(player, csid, option, npc)
+invaderXim.instance.onEventFinish = function(player, csid, option, npc)
     local instance = player:getInstance()
 
     if instance then
         local instanceZoneId         = instance:getZone():getID()
-        local zoneLookup             = xi.instance.lookup[instanceZoneId]
+        local zoneLookup             = invaderXim.instance.lookup[instanceZoneId]
         local csidEntry, optionEntry = unpack(zoneLookup[1][3])
 
         if csid == csidEntry and option == optionEntry then
@@ -527,7 +527,7 @@ local function setInstanceLastTimeUpdateMessage(instance, players, remainingTime
     end
 end
 
-xi.instance.updateInstanceTime = function(instance, elapsed, text)
+invaderXim.instance.updateInstanceTime = function(instance, elapsed, text)
     local players            = instance:getChars()
     local remainingTimeLimit = instance:getTimeLimit() * 60 - (elapsed / 1000)
     local wipeTime           = instance:getWipeTime()

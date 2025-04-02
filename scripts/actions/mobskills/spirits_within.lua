@@ -11,7 +11,7 @@ local mobskillObject = {}
 
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
     if mob:getPool() ~= 4249 then
-        mob:messageBasic(xi.msg.basic.READIES_WS, 0, 39)
+        mob:messageBasic(invaderXim.msg.basic.READIES_WS, 0, 39)
     end
 
     return 0
@@ -19,7 +19,7 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     if mob:getPool() == 4249 then -- Volker@Throne_Room only
-        target:showText(mob, zones[xi.zone.THRONE_ROOM].text.RETURN_TO_THE_DARKNESS)
+        target:showText(mob, zones[invaderXim.zone.THRONE_ROOM].text.RETURN_TO_THE_DARKNESS)
     end
 
     -- Should produce 1000 - 3750 @ full HP using the player formula, assuming 8k HP for AA EV.
@@ -37,7 +37,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     dmg = target:breathDmgTaken(dmg)
 
     -- Handling phalanx
-    dmg = dmg - target:getMod(xi.mod.PHALANX)
+    dmg = dmg - target:getMod(invaderXim.mod.PHALANX)
 
     if dmg < 0 then
         return 0
@@ -50,7 +50,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
         target:updateEnmityFromDamage(mob, dmg)
     end
 
-    target:takeDamage(dmg, mob, xi.attackType.BREATH, xi.damageType.ELEMENTAL)
+    target:takeDamage(dmg, mob, invaderXim.attackType.BREATH, invaderXim.damageType.ELEMENTAL)
     return dmg
 end
 

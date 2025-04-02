@@ -10,13 +10,13 @@
 -- Sickle           : !additem 1020
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.ADOULIN, xi.quest.id.adoulin.FLAVORS_OF_OUR_LIVES)
+local quest = Quest:new(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.FLAVORS_OF_OUR_LIVES)
 
 quest.reward =
 {
     bayld = 300,
     exp   = 500,
-    title = xi.title.POTATION_PATHFINDER,
+    title = invaderXim.title.POTATION_PATHFINDER,
 }
 
 quest.sections =
@@ -24,10 +24,10 @@ quest.sections =
     -- Section: Talk to Berghent near the Big Bridge in Western Adoulin (J-9) to start the quest.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Berghent'] =
             {
@@ -62,19 +62,19 @@ quest.sections =
     -- Section: Talk to Masad inside the Mummers' Coalition.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 0
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 0
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Berghent'] = quest:event(82), -- Reminder
 
             ['Masad'] =
             {
                 onTrigger = function(player, npc)
-                    if player:getCurrentMission(xi.mission.log_id.SOA) <= xi.mission.id.soa.BUDDING_PROSPECTS then
-                        xi.mission.setVar(player, xi.mission.log_id.SOA, xi.mission.id.soa.BUDDING_PROSPECTS, 'Timer', VanadielUniqueDay() + 1)
-                        xi.mission.setMustZone(player, xi.mission.log_id.SOA, xi.mission.id.soa.BUDDING_PROSPECTS)
+                    if player:getCurrentMission(invaderXim.mission.log_id.SOA) <= invaderXim.mission.id.soa.BUDDING_PROSPECTS then
+                        invaderXim.mission.setVar(player, invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.BUDDING_PROSPECTS, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.mission.setMustZone(player, invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.BUDDING_PROSPECTS)
                     end
 
                     quest:setVar(player, 'Timer', VanadielUniqueDay() + 1)
@@ -95,10 +95,10 @@ quest.sections =
     -- Section: Talk to Dewalt inside the Couriers' Coalition.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 1
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 1
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Berghent'] = quest:event(82),  -- Reminder
             ['Dewalt']   = quest:progressEvent(85),
@@ -129,16 +129,16 @@ quest.sections =
     -- Section: Head to Rala Waterways and talk to Chalvava at (F-11).
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 2
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 2
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Berghent'] = quest:event(82),  -- Reminder
             ['Dewalt']   = quest:event(105), -- Reminder
         },
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['Chalvava'] = quest:progressEvent(8),
 
@@ -154,28 +154,28 @@ quest.sections =
     -- Section: Go to Yahse Hunting Grounds and harvest a Key Item Blightberry using a Sickle
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 3 and not player:hasKeyItem(xi.ki.BLIGHTBERRY)
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 3 and not player:hasKeyItem(invaderXim.ki.BLIGHTBERRY)
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Berghent'] = quest:event(82),  -- Reminder
             ['Dewalt']   = quest:event(105), -- Reminder
         },
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['Chalvava'] = quest:event(9) -- Reminder
         },
 
-        [xi.zone.YAHSE_HUNTING_GROUNDS] =
+        [invaderXim.zone.YAHSE_HUNTING_GROUNDS] =
         {
             ['Harvesting_Point'] =
             {
                 onTrade = function(player, npc, trade)
                     -- TODO: CSID for YAHSE_HUNTING_GROUNDS
-                    xi.helm.onTrade(player, npc, trade, xi.helmType.HARVESTING, nil, nil)
-                    return quest:keyItem(xi.ki.BLIGHTBERRY)
+                    invaderXim.helm.onTrade(player, npc, trade, invaderXim.helmType.HARVESTING, nil, nil)
+                    return quest:keyItem(invaderXim.ki.BLIGHTBERRY)
                 end,
             },
         },
@@ -184,10 +184,10 @@ quest.sections =
     -- Section: Return to Berghent for your reward
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 3 and player:hasKeyItem(xi.ki.BLIGHTBERRY)
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 3 and player:hasKeyItem(invaderXim.ki.BLIGHTBERRY)
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Berghent'] = quest:progressEvent(87),
 
@@ -204,10 +204,10 @@ quest.sections =
     -- New default text
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Berghent'] = quest:event(88),
         },

@@ -10,8 +10,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `delivery_box`
 --
 
-DROP TABLE IF EXISTS `delivery_box`;
-CREATE TABLE IF NOT EXISTS `delivery_box` (
+DROP TABLE IF IXIMSTS `delivery_box`;
+CREATE TABLE IF NOT IXIMSTS `delivery_box` (
   `charid` int(10) unsigned NOT NULL,
   `charname` varchar(15) DEFAULT NULL,
   `box` tinyint(1) unsigned NOT NULL,

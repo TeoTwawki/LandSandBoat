@@ -3,15 +3,15 @@
 --  Mob: Promathia
 -- Note: Phase 1
 -----------------------------------
-local ID = zones[xi.zone.EMPYREAL_PARADOX]
+local ID = zones[invaderXim.zone.EMPYREAL_PARADOX]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addMod(xi.mod.REGAIN, 75)
-    mob:addMod(xi.mod.UFASTCAST, 50)
-    mob:setMobMod(xi.mobMod.MAGIC_COOL, 15)
+    mob:addMod(invaderXim.mod.REGAIN, 75)
+    mob:addMod(invaderXim.mod.UFASTCAST, 50)
+    mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 15)
 end
 
 entity.onMobEngage = function(mob, target)
@@ -31,7 +31,7 @@ entity.onMobEngage = function(mob, target)
 end
 
 entity.onMobFight = function(mob, target)
-    if mob:getAnimationSub() == 3 and not mob:hasStatusEffect(xi.effect.STUN) then
+    if mob:getAnimationSub() == 3 and not mob:hasStatusEffect(invaderXim.effect.STUN) then
         mob:setAnimationSub(0)
         mob:stun(1500)
     end

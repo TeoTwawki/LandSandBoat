@@ -3,7 +3,7 @@
 --  Mob: Garm
 -- Note: PH for Shii
 -----------------------------------
-local ID = zones[xi.zone.BOSTAUNIEUX_OUBLIETTE]
+local ID = zones[invaderXim.zone.BOSTAUNIEUX_OUBLIETTE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -19,11 +19,11 @@ local shiiPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 612, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 612, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, shiiPHTable, 5, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, shiiPHTable, 5, 3600) -- 1 hour
 end
 
 return entity

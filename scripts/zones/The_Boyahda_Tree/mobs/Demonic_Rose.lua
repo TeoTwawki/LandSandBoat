@@ -3,7 +3,7 @@
 --  Mob: Demonic Rose
 -- Note: Placeholder V. Vivian
 -----------------------------------
-local ID = zones[xi.zone.THE_BOYAHDA_TREE]
+local ID = zones[invaderXim.zone.THE_BOYAHDA_TREE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -73,7 +73,7 @@ end
 entity.onMobDespawn = function(mob)
     local params = {}
     params.spawnPoints = vivianSpawnPoints
-    xi.mob.phOnDespawn(mob, vivianPHTable, 10, 57600, params) -- 16 hours
+    invaderXim.mob.phOnDespawn(mob, vivianPHTable, 10, 57600, params) -- 16 hours
 end
 
 return entity

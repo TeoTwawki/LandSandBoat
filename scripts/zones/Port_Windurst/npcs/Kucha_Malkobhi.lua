@@ -2,7 +2,7 @@
 -- Area: Port Windurst
 --  NPC: Kucha Malkobhi
 -----------------------------------
-local ID = zones[xi.zone.PORT_WINDURST]
+local ID = zones[invaderXim.zone.PORT_WINDURST]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -21,7 +21,7 @@ entity.onTrigger = function(player, npc)
     }
 
     player:showText(npc, ID.text.KUCHAMALKOBHI_SHOP_DIALOG)
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 return entity

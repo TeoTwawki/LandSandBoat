@@ -3,7 +3,7 @@
 -- NPC:   Runic Lamp
 -- animition sub 1 == glow
 -----------------------------------
-local ID = zones[xi.zone.NYZUL_ISLE]
+local ID = zones[invaderXim.zone.NYZUL_ISLE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -20,7 +20,7 @@ entity.onTrigger = function(player, npc)
     local wait          = npc:getLocalVar('[Lamp]Wait') - os.time()
 
     -- Type 1 in Nyzul.lua global
-    if lampObjective == xi.nyzul.lampsObjective.REGISTER then -- 1 lamp spawns and everyone must touch
+    if lampObjective == invaderXim.nyzul.lampsObjective.REGISTER then -- 1 lamp spawns and everyone must touch
         if player:getLocalVar('Register') == 0 then
             player:setLocalVar('Register', 1)
             player:messageSpecial(ID.text.LAMP_CERTIFICATION_REGISTERED)
@@ -35,7 +35,7 @@ entity.onTrigger = function(player, npc)
         end
 
     -- Type 2 in Nyzul.lua global
-    elseif lampObjective == xi.nyzul.lampsObjective.ACTIVATE_ALL then
+    elseif lampObjective == invaderXim.nyzul.lampsObjective.ACTIVATE_ALL then
         if npc:getAnimationSub() ~= 1 and wait <= 0 then
             player:messageSpecial(ID.text.LAMP_SAME_TIME)
             player:startOptionalCutscene(3, { [0] = 5, cs_option = { 1, 2 } })
@@ -46,7 +46,7 @@ entity.onTrigger = function(player, npc)
         end
 
     -- Type 3 in Nyzul.lua global
-    elseif lampObjective == xi.nyzul.lampsObjective.ORDER then
+    elseif lampObjective == invaderXim.nyzul.lampsObjective.ORDER then
         if bit.band(lampRegister, bit.lshift(1, lampOrder)) == 0 then
             player:messageSpecial(ID.text.LAMP_ORDER)
             player:startOptionalCutscene(3, { [0] = 6, cs_option = { 1, 2 } })
@@ -81,24 +81,24 @@ entity.onEventFinish = function(player, csid, option, npc)
 
     -- TODO: Change this comment with what is option 1
     if csid == 3 and option == 1 then
-        if lampObjective == xi.nyzul.lampsObjective.ACTIVATE_ALL then
+        if lampObjective == invaderXim.nyzul.lampsObjective.ACTIVATE_ALL then
             npc:setAnimationSub(1)
-            npc:timer(xi.settings.main.ACTIVATE_LAMP_TIME, function(lamp)
+            npc:timer(invaderXim.settings.main.ACTIVATE_LAMP_TIME, function(lamp)
                 lamp:setAnimationSub(0)
                 lamp:setLocalVar('[Lamp]Wait', os.time() + 30)
             end)
 
             if
-                instance:getEntity(bit.band(ID.npc.RUNIC_LAMP_OFFSET, 0xFFF), xi.objType.NPC):getAnimationSub() == 1 and
-                instance:getEntity(bit.band(ID.npc.RUNIC_LAMP_OFFSET + 1, 0xFFF), xi.objType.NPC):getAnimationSub() == 1 and
-                instance:getEntity(bit.band(ID.npc.RUNIC_LAMP_OFFSET + 2, 0xFFF), xi.objType.NPC):getAnimationSub() == 1
+                instance:getEntity(bit.band(ID.npc.RUNIC_LAMP_OFFSET, 0xFFF), invaderXim.objType.NPC):getAnimationSub() == 1 and
+                instance:getEntity(bit.band(ID.npc.RUNIC_LAMP_OFFSET + 1, 0xFFF), invaderXim.objType.NPC):getAnimationSub() == 1 and
+                instance:getEntity(bit.band(ID.npc.RUNIC_LAMP_OFFSET + 2, 0xFFF), invaderXim.objType.NPC):getAnimationSub() == 1
             then
                 if lampCount == 3 then
                     instance:setProgress(15)
-                elseif instance:getEntity(bit.band(ID.npc.RUNIC_LAMP_OFFSET + 3, 0xFFF), xi.objType.NPC):getAnimationSub() == 1 then
+                elseif instance:getEntity(bit.band(ID.npc.RUNIC_LAMP_OFFSET + 3, 0xFFF), invaderXim.objType.NPC):getAnimationSub() == 1 then
                     if lampCount == 4 then
                         instance:setProgress(15)
-                    elseif instance:getEntity(bit.band(ID.npc.RUNIC_LAMP_OFFSET + 4, 0xFFF), xi.objType.NPC):getAnimationSub() == 1 then
+                    elseif instance:getEntity(bit.band(ID.npc.RUNIC_LAMP_OFFSET + 4, 0xFFF), invaderXim.objType.NPC):getAnimationSub() == 1 then
                         instance:setProgress(15)
                     end
                 end
@@ -107,7 +107,7 @@ entity.onEventFinish = function(player, csid, option, npc)
 
     -- TODO: Change this comment with what is option 2
     elseif csid == 3 and option == 2 then
-        if lampObjective == xi.nyzul.lampsObjective.ORDER then
+        if lampObjective == invaderXim.nyzul.lampsObjective.ORDER then
             print('registering lamp, register: '..instance:getLocalVar('[Lamps]lampRegister'))
             lampRegister = lampRegister + bit.lshift(1, lampOrder)
             instance:setLocalVar('[Lamps]lampRegister', lampRegister)
@@ -118,7 +118,7 @@ entity.onEventFinish = function(player, csid, option, npc)
 
             if lampCount == 3 and lampRegister > 13 then
                 for i = ID.npc.RUNIC_LAMP_OFFSET, ID.npc.RUNIC_LAMP_OFFSET + 2 do
-                    local lamp = instance:getEntity(bit.band(i, 0xFFF), xi.objType.NPC)
+                    local lamp = instance:getEntity(bit.band(i, 0xFFF), invaderXim.objType.NPC)
 
                     if lamp then
                         local lampPress = lamp:getLocalVar('[Lamp]press')
@@ -145,7 +145,7 @@ entity.onEventFinish = function(player, csid, option, npc)
                 end
             elseif lampCount == 4 and lampRegister > 29 then
                 for i = ID.npc.RUNIC_LAMP_OFFSET, ID.npc.RUNIC_LAMP_OFFSET + 3 do
-                    local lamp = instance:getEntity(bit.band(i, 0xFFF), xi.objType.NPC)
+                    local lamp = instance:getEntity(bit.band(i, 0xFFF), invaderXim.objType.NPC)
 
                     if lamp then
                         local lampPress = lamp:getLocalVar('[Lamp]press')
@@ -172,7 +172,7 @@ entity.onEventFinish = function(player, csid, option, npc)
                 end
             elseif lampCount == 5 and lampRegister > 61 then
                 for i = ID.npc.RUNIC_LAMP_OFFSET, ID.npc.RUNIC_LAMP_OFFSET + 4 do
-                    local lamp = instance:getEntity(bit.band(i, 0xFFF), xi.objType.NPC)
+                    local lamp = instance:getEntity(bit.band(i, 0xFFF), invaderXim.objType.NPC)
 
                     if lamp then
                         local lampPress = lamp:getLocalVar('[Lamp]press')

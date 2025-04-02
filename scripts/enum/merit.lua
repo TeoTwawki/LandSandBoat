@@ -3,7 +3,7 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.meritCategory
+---@enum invaderXim.meritCategory
 local meritCategory =
 {
     HP_MP      = 0x0040,
@@ -70,8 +70,8 @@ local meritCategory =
     -- COUNT = 0x0D80,
 }
 
----@enum xi.merit
-xi.merit =
+---@enum invaderXim.merit
+invaderXim.merit =
 {
     -- HP
     MAX_HP                      = meritCategory.HP_MP + 0x00,

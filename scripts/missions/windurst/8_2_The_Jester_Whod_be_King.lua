@@ -16,10 +16,10 @@
 -- _5e5 (Cr. Wall)  : !pos -423 0 619.75 194
 -- _5cb (Gate. Drk) : !pos -228 0 99 192
 -----------------------------------
-local outerHorutotoID = zones[xi.zone.OUTER_HORUTOTO_RUINS]
+local outerHorutotoID = zones[invaderXim.zone.OUTER_HORUTOTO_RUINS]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_JESTER_WHOD_BE_KING)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_JESTER_WHOD_BE_KING)
 
 mission.reward =
 {
@@ -38,11 +38,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onEventFinish =
             {
@@ -50,7 +50,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onEventFinish =
             {
@@ -58,7 +58,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onEventFinish =
             {
@@ -66,7 +66,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onEventFinish =
             {
@@ -80,16 +80,16 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.DAVOI] =
+        [invaderXim.zone.DAVOI] =
         {
             ['Sedal-Godjal'] =
             {
                 onTrigger = function(player, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 1 and
-                        not player:hasKeyItem(xi.ki.AURASTERY_RING)
+                        not player:hasKeyItem(invaderXim.ki.AURASTERY_RING)
                     then
-                        return mission:progressEvent(122, 0, xi.ki.AURASTERY_RING)
+                        return mission:progressEvent(122, 0, invaderXim.ki.AURASTERY_RING)
                     end
                 end,
             },
@@ -97,11 +97,11 @@ mission.sections =
             onEventFinish =
             {
                 [122] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.AURASTERY_RING)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.AURASTERY_RING)
 
                     if
-                        player:hasKeyItem(xi.ki.RHINOSTERY_RING) and
-                        player:hasKeyItem(xi.ki.OPTISTERY_RING)
+                        player:hasKeyItem(invaderXim.ki.RHINOSTERY_RING) and
+                        player:hasKeyItem(invaderXim.ki.OPTISTERY_RING)
                     then
                         player:setMissionStatus(mission.areaId, 2)
                     end
@@ -109,16 +109,16 @@ mission.sections =
             },
         },
 
-        [xi.zone.FEIYIN] =
+        [invaderXim.zone.FEIYIN] =
         {
             ['_no4'] =
             {
                 onTrigger = function(player, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 1 and
-                        not player:hasKeyItem(xi.ki.RHINOSTERY_RING)
+                        not player:hasKeyItem(invaderXim.ki.RHINOSTERY_RING)
                     then
-                        return mission:progressEvent(22, 0, xi.ki.RHINOSTERY_RING)
+                        return mission:progressEvent(22, 0, invaderXim.ki.RHINOSTERY_RING)
                     end
                 end,
             },
@@ -126,11 +126,11 @@ mission.sections =
             onEventFinish =
             {
                 [22] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.RHINOSTERY_RING)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.RHINOSTERY_RING)
 
                     if
-                        player:hasKeyItem(xi.ki.AURASTERY_RING) and
-                        player:hasKeyItem(xi.ki.OPTISTERY_RING)
+                        player:hasKeyItem(invaderXim.ki.AURASTERY_RING) and
+                        player:hasKeyItem(invaderXim.ki.OPTISTERY_RING)
                     then
                         player:setMissionStatus(mission.areaId, 2)
                     end
@@ -138,13 +138,13 @@ mission.sections =
             },
         },
 
-        [xi.zone.HEAVENS_TOWER] =
+        [invaderXim.zone.HEAVENS_TOWER] =
         {
             ['Kupipi'] =
             {
                 onTrigger = function(player, npc)
                     if player:getMissionStatus(mission.areaId) == 3 then
-                        return mission:progressEvent(326, 0, xi.ki.ORASTERY_RING)
+                        return mission:progressEvent(326, 0, invaderXim.ki.ORASTERY_RING)
                     end
                 end,
             },
@@ -157,7 +157,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.INNER_HORUTOTO_RUINS] =
+        [invaderXim.zone.INNER_HORUTOTO_RUINS] =
         {
             ['_5cb'] =
             {
@@ -176,7 +176,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.OUTER_HORUTOTO_RUINS] =
+        [invaderXim.zone.OUTER_HORUTOTO_RUINS] =
         {
             ['_5e5'] =
             {
@@ -223,13 +223,13 @@ mission.sections =
             onEventFinish =
             {
                 [71] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.ORASTERY_RING)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ORASTERY_RING)
                     player:setMissionStatus(mission.areaId, 6)
                 end,
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Shantotto'] =
             {
@@ -243,22 +243,22 @@ mission.sections =
             onEventFinish =
             {
                 [397] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.GLOVE_OF_PERPETUAL_TWILIGHT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.GLOVE_OF_PERPETUAL_TWILIGHT)
                     player:setMissionStatus(mission.areaId, 8)
                 end,
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Tosuka-Porika'] =
             {
                 onTrigger = function(player, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 1 and
-                        not player:hasKeyItem(xi.ki.OPTISTERY_RING)
+                        not player:hasKeyItem(invaderXim.ki.OPTISTERY_RING)
                     then
-                        return mission:progressEvent(801, 0, xi.ki.OPTISTERY_RING)
+                        return mission:progressEvent(801, 0, invaderXim.ki.OPTISTERY_RING)
                     end
                 end,
             },
@@ -266,10 +266,10 @@ mission.sections =
             onEventFinish =
             {
                 [801] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.OPTISTERY_RING)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.OPTISTERY_RING)
                     if
-                        player:hasKeyItem(xi.ki.RHINOSTERY_RING) and
-                        player:hasKeyItem(xi.ki.AURASTERY_RING)
+                        player:hasKeyItem(invaderXim.ki.RHINOSTERY_RING) and
+                        player:hasKeyItem(invaderXim.ki.AURASTERY_RING)
                     then
                         player:setMissionStatus(mission.areaId, 2)
                     end
@@ -277,7 +277,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Apururu'] =
             {
@@ -285,9 +285,9 @@ mission.sections =
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
                     if missionStatus == 0 then
-                        return mission:progressEvent(588, 0, xi.ki.MANUSTERY_RING)
+                        return mission:progressEvent(588, 0, invaderXim.ki.MANUSTERY_RING)
                     elseif missionStatus == 2 then
-                        return mission:progressEvent(601, 0, xi.ki.ORASTERY_RING)
+                        return mission:progressEvent(601, 0, invaderXim.ki.ORASTERY_RING)
                     elseif missionStatus == 6 then
                         return mission:progressEvent(590)
                     elseif missionStatus == 7 then
@@ -304,7 +304,7 @@ mission.sections =
             {
                 [588] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 1)
-                    npcUtil.giveKeyItem(player, xi.ki.MANUSTERY_RING)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.MANUSTERY_RING)
                 end,
 
                 [590] = function(player, csid, option, npc)
@@ -335,9 +335,9 @@ mission.sections =
                 vars.Option == 1
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
-            ['Shantotto'] = mission:progressEvent(399, 0, 0, 0, xi.ki.GLOVE_OF_PERPETUAL_TWILIGHT),
+            ['Shantotto'] = mission:progressEvent(399, 0, 0, 0, invaderXim.ki.GLOVE_OF_PERPETUAL_TWILIGHT),
 
             onEventFinish =
             {

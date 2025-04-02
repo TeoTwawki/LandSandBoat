@@ -61,7 +61,7 @@ local spawnPoints =
 
 local function enterFlight(mob)
     mob:setAnimationSub(1)
-    mob:addStatusEffectEx(xi.effect.ALL_MISS, 0, 1, 0, 0)
+    mob:addStatusEffectEx(invaderXim.effect.ALL_MISS, 0, 1, 0, 0)
     mob:setMobSkillAttack(732)
     mob:setLocalVar('flightTime', os.time() + 30)
     mob:setLocalVar('changeHP', mob:getHP() - 6000)
@@ -70,7 +70,7 @@ end
 entity.onMobInitialize = function(mob)
     mob:setCarefulPathing(true)
 
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(math.random(144, 240) * 1800) -- 3 to 5 days in 30 minute windows
 end
 
@@ -78,39 +78,39 @@ entity.onMobSpawn = function(mob)
     -- Ensure Jorm spawns with correct ground status
     mob:setAnimationSub(0)
     mob:setMobSkillAttack(0)
-    mob:delStatusEffect(xi.effect.ALL_MISS)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:delStatusEffect(invaderXim.effect.ALL_MISS)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
 
-    mob:setMod(xi.mod.ATT, 348)
-    mob:setMod(xi.mod.ACC, 442)
-    mob:setMod(xi.mod.CURSE_MEVA, 1000) -- TODO: Needs curse immunity verification
-    mob:setMod(xi.mod.DEF, 460)
-    mob:setMod(xi.mod.EVA, 410)
-    mob:setMod(xi.mod.MATT, 30)
-    mob:setMod(xi.mod.REFRESH, 200)
-    mob:setMod(xi.mod.REGEN, 22)
-    mob:setMod(xi.mod.UFASTCAST, 90)
-    mob:setMod(xi.mod.UDMGMAGIC, -5000)
-    mob:setMod(xi.mod.UDMGRANGE, -5000)
-    mob:setMod(xi.mod.UDMGBREATH, -5000)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
-    mob:setMobMod(xi.mobMod.MAGIC_COOL, 20)
-    mob:setMobMod(xi.mobMod.ROAM_COOL, 55)
-    mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 5)
-    mob:setMobMod(xi.mobMod.WEAPON_BONUS, 158) -- 255 total weapon damage
-    mob:setBehavior(bit.bor(mob:getBehavior(), xi.behavior.NO_TURN))
-    mob:addImmunity(xi.immunity.BIND)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.PARALYZE)
-    mob:addImmunity(xi.immunity.SILENCE)
-    mob:addImmunity(xi.immunity.PETRIFY)
-    mob:addImmunity(xi.immunity.PLAGUE)
-    mob:addImmunity(xi.immunity.GRAVITY)
-    mob:addImmunity(xi.immunity.TERROR)
+    mob:setMod(invaderXim.mod.ATT, 348)
+    mob:setMod(invaderXim.mod.ACC, 442)
+    mob:setMod(invaderXim.mod.CURSE_MEVA, 1000) -- TODO: Needs curse immunity verification
+    mob:setMod(invaderXim.mod.DEF, 460)
+    mob:setMod(invaderXim.mod.EVA, 410)
+    mob:setMod(invaderXim.mod.MATT, 30)
+    mob:setMod(invaderXim.mod.REFRESH, 200)
+    mob:setMod(invaderXim.mod.REGEN, 22)
+    mob:setMod(invaderXim.mod.UFASTCAST, 90)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, -5000)
+    mob:setMod(invaderXim.mod.UDMGRANGE, -5000)
+    mob:setMod(invaderXim.mod.UDMGBREATH, -5000)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
+    mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 20)
+    mob:setMobMod(invaderXim.mobMod.ROAM_COOL, 55)
+    mob:setMobMod(invaderXim.mobMod.ROAM_DISTANCE, 5)
+    mob:setMobMod(invaderXim.mobMod.WEAPON_BONUS, 158) -- 255 total weapon damage
+    mob:setBehavior(bit.bor(mob:getBehavior(), invaderXim.behavior.NO_TURN))
+    mob:addImmunity(invaderXim.immunity.BIND)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.PARALYZE)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
+    mob:addImmunity(invaderXim.immunity.PETRIFY)
+    mob:addImmunity(invaderXim.immunity.PLAGUE)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
+    mob:addImmunity(invaderXim.immunity.TERROR)
 end
 
 entity.onMobRoam = function(mob)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
 end
 
 entity.onMobEngage = function(mob, target)
@@ -131,7 +131,7 @@ end
 entity.onMobFight = function(mob, target)
     -- Animation (Ground or flight mode) logic.
     if
-        not mob:hasStatusEffect(xi.effect.BLOOD_WEAPON) and
+        not mob:hasStatusEffect(invaderXim.effect.BLOOD_WEAPON) and
         mob:actionQueueEmpty()
     then
         local flightTime  = mob:getLocalVar('flightTime')
@@ -186,16 +186,16 @@ entity.onMobFight = function(mob, target)
     }
     for _, condition in ipairs(drawInTable.conditions) do
         if condition then
-            mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+            mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
             utils.drawIn(target, drawInTable)
             break
         else
-            mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+            mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
         end
     end
 
     -- Do not use mobskills or magic during 2hr
-    if mob:hasStatusEffect(xi.effect.BLOOD_WEAPON) then
+    if mob:hasStatusEffect(invaderXim.effect.BLOOD_WEAPON) then
         mob:setMobAbilityEnabled(false)
         mob:setMagicCastingEnabled(false)
     else
@@ -243,7 +243,7 @@ entity.onMobWeaponSkill = function(target, mob, skill)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.ENBLIZZARD, { chance = 20, power = 100 })
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.ENBLIZZARD, { chance = 20, power = 100 })
 end
 
 entity.onMobDisengage = function(mob)
@@ -252,19 +252,19 @@ entity.onMobDisengage = function(mob)
         local flightTime = mob:getLocalVar('flightTime')
         mob:setLocalVar('flightTime', flightTime - os.time()) -- Get seconds left to fly for next pull
         mob:setAnimationSub(0)
-        mob:delStatusEffect(xi.effect.ALL_MISS)
-        mob:setBehavior(bit.bor(mob:getBehavior(), xi.behavior.NO_TURN))
+        mob:delStatusEffect(invaderXim.effect.ALL_MISS)
+        mob:setBehavior(bit.bor(mob:getBehavior(), invaderXim.behavior.NO_TURN))
         mob:setMobSkillAttack(0)
         mob:setLocalVar('changeHP', 0)
     end
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.WORLD_SERPENT_SLAYER)
+    player:addTitle(invaderXim.title.WORLD_SERPENT_SLAYER)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(math.random(144, 240) * 1800) -- 3 to 5 days in 30 minute windows
 end
 

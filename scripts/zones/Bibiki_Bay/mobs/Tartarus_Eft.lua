@@ -17,7 +17,7 @@ entity.onMobDespawn = function(mob)
     {
         [eftId] = splacknuckId, -- -348 0.001 -904
     }
-    xi.mob.phOnDespawn(mob, splacknuckPh, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, splacknuckPh, 10, 3600) -- 1 hour
 end
 
 return entity

@@ -17,11 +17,11 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     -- wscs are in % so 0.2=20%
     params.str_wsc = 0.5 params.int_wsc = 0.5
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         params.ftpMod = { 1.375, 2.75, 4.75 }
     end
 
-    local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doPhysicalWeaponskill(player, target, wsID, params, tp, action, primary, taChar)
+    local damage, criticalHit, tpHits, extraHits = invaderXim.weaponskills.doPhysicalWeaponskill(player, target, wsID, params, tp, action, primary, taChar)
     return tpHits, extraHits, criticalHit, damage
 end
 

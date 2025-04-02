@@ -20,11 +20,11 @@ zoneObject.onZoneIn = function(player, prevZone)
     end
 
     if
-        prevZone == xi.zone.THE_ASHU_TALIF and
+        prevZone == invaderXim.zone.THE_ASHU_TALIF and
         player:getCharVar('AgainstAllOdds') == 3
     then
         cs = 238
-    elseif prevZone == xi.zone.ILRUSI_ATOLL then
+    elseif prevZone == invaderXim.zone.ILRUSI_ATOLL then
         player:setPos(26, -7, 606, 222)
     end
 
@@ -38,7 +38,7 @@ end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
     if
-        player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AGAINST_ALL_ODDS) == xi.questStatus.QUEST_ACCEPTED and
+        player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AGAINST_ALL_ODDS) == invaderXim.questStatus.QUEST_ACCEPTED and
         player:getCharVar('AgainstAllOdds') == 1
     then
         player:startEvent(237)
@@ -46,7 +46,7 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
 end
 
 zoneObject.onGameDay = function()
-    xi.apkallu.updateHate(xi.zone.ARRAPAGO_REEF, -3)
+    invaderXim.apkallu.updateHate(invaderXim.zone.ARRAPAGO_REEF, -3)
 end
 
 zoneObject.onEventUpdate = function(player, csid, option, npc)
@@ -60,7 +60,7 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
     elseif csid == 237 then
         player:startEvent(240)
     elseif csid == 238 then
-        npcUtil.completeQuest(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AGAINST_ALL_ODDS, { item = 15266, var = 'AgainstAllOdds' })
+        npcUtil.completeQuest(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AGAINST_ALL_ODDS, { item = 15266, var = 'AgainstAllOdds' })
     elseif csid == 240 then
         player:setCharVar('AgainstAllOdds', 2)
     end

@@ -13,10 +13,10 @@
 -- Mahogany Door     : !pos -11 0 20 192
 -- House of the Hero : !pos -26 -13 260 239
 -----------------------------------
-local mazeID = zones[xi.zone.MAZE_OF_SHAKHRAMI]
+local mazeID = zones[invaderXim.zone.MAZE_OF_SHAKHRAMI]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.LOST_FOR_WORDS)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.LOST_FOR_WORDS)
 
 mission.reward =
 {
@@ -39,7 +39,7 @@ local examineRock = function(player, npc)
     if rockOffset == correctRock then
         if missionStatus == 3 then
             player:setMissionStatus(mission.areaId, 4)
-            return mission:keyItem(xi.ki.LAPIS_CORAL)
+            return mission:keyItem(invaderXim.ki.LAPIS_CORAL)
         elseif missionStatus == 4 then
             return mission:messageSpecial(mazeID.text.NO_NEED_INVESTIGATE)
         end
@@ -59,12 +59,12 @@ mission.sections =
     -- Choosing to keep the existing flow we had already.
     {
         check = function(player, currentMission)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId and
                 not player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onEventFinish =
             {
@@ -72,7 +72,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onEventFinish =
             {
@@ -80,7 +80,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onEventFinish =
             {
@@ -88,7 +88,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onEventFinish =
             {
@@ -103,7 +103,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Janshura-Rashura'] = mission:event(120),
             ['Nine_of_Clubs']    = mission:event(121),
@@ -111,7 +111,7 @@ mission.sections =
             ['Ten_of_Clubs']     = mission:event(122),
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Chawo_Shipeynyo'] = mission:event(125),
             ['Keo-Koruo']       = mission:event(123),
@@ -119,7 +119,7 @@ mission.sections =
             ['Zokima-Rokima']   = mission:event(122),
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Aora-Uora']       = mission:event(167),
             ['Dagoza-Beruza']   = mission:event(157),
@@ -130,7 +130,7 @@ mission.sections =
             ['Ten_of_Hearts']   = mission:event(159),
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Miiri-Wohri'] = mission:event(161),
             ['Rakoh_Buuma'] = mission:event(160),
@@ -146,7 +146,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 1
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Tosuka-Porika'] = mission:progressEvent(160),
 
@@ -165,21 +165,21 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 2
         end,
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
-            ['Nanaa_Mihgo'] = mission:progressEvent(165, 0, xi.ki.LAPIS_CORAL, xi.ki.LAPIS_MONOCLE),
+            ['Nanaa_Mihgo'] = mission:progressEvent(165, 0, invaderXim.ki.LAPIS_CORAL, invaderXim.ki.LAPIS_MONOCLE),
 
             onEventFinish =
             {
                 [165] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.LAPIS_MONOCLE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LAPIS_MONOCLE)
                     mission:setVar(player, 'Rock', math.random(1, 6))
                     player:setMissionStatus(mission.areaId, 3)
                 end,
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Tosuka-Porika'] = mission:progressEvent(161),
         },
@@ -191,7 +191,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 3
         end,
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Bopa_Greso']  = mission:progressEvent(167),
             ['Cha_Lebagta'] = mission:progressEvent(168),
@@ -205,7 +205,7 @@ mission.sections =
             return currentMission == mission.missionId and (missionStatus == 3 or missionStatus == 4)
         end,
 
-        [xi.zone.MAZE_OF_SHAKHRAMI] =
+        [invaderXim.zone.MAZE_OF_SHAKHRAMI] =
         {
             ['Fossil_Rock'] =
             {
@@ -222,17 +222,17 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 4
         end,
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Nanaa_Mihgo'] = mission:progressEvent(169),
 
             onEventFinish =
             {
                 [169] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.LAPIS_CORAL)
-                    player:delKeyItem(xi.ki.LAPIS_MONOCLE)
+                    player:delKeyItem(invaderXim.ki.LAPIS_CORAL)
+                    player:delKeyItem(invaderXim.ki.LAPIS_MONOCLE)
                     mission:setVar(player, 'Rock', 0)
-                    npcUtil.giveKeyItem(player, xi.ki.HIDEOUT_KEY)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.HIDEOUT_KEY)
                     player:setMissionStatus(mission.areaId, 5)
                 end,
             },
@@ -245,21 +245,21 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 5
         end,
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Bopa_Greso']  = mission:progressEvent(171),
             ['Cha_Lebagta'] = mission:progressEvent(172),
             ['Nanaa_Mihgo'] = mission:progressEvent(170),
         },
 
-        [xi.zone.INNER_HORUTOTO_RUINS] =
+        [invaderXim.zone.INNER_HORUTOTO_RUINS] =
         {
             ['_5ca'] = mission:progressEvent(46),
 
             onEventFinish =
             {
                 [46] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.HIDEOUT_KEY)
+                    player:delKeyItem(invaderXim.ki.HIDEOUT_KEY)
                     player:setMissionStatus(mission.areaId, 6)
                 end,
             },
@@ -272,14 +272,14 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 6
         end,
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Bopa_Greso']  = mission:progressEvent(174),
             ['Cha_Lebagta'] = mission:progressEvent(175),
             ['Nanaa_Mihgo'] = mission:progressEvent(173),
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['_6n2'] = mission:progressEvent(337),
 
@@ -298,7 +298,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 7
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Tosuka-Porika'] = mission:progressEvent(168),
 
@@ -316,24 +316,24 @@ mission.sections =
         check = function(player)
             return player:getNation() == mission.areaId and
                 player:hasCompletedMission(mission.areaId, mission.missionId) and
-                not player:hasCompletedMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.A_TESTING_TIME)
+                not player:hasCompletedMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.A_TESTING_TIME)
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Nine_of_Clubs'] = mission:event(74),
             ['Puo_Rhen']      = mission:event(81),
             ['Ten_of_Clubs']  = mission:event(80),
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Chawo_Shipeynyo'] = mission:event(329),
             ['Keo-Koruo']       = mission:event(88),
             ['Pakke-Pokke']     = mission:event(94),
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Aora-Uora']       = mission:event(175),
             ['Dagoza-Beruza']   = mission:event(115),
@@ -344,7 +344,7 @@ mission.sections =
             ['Tosuka-Porika']   = mission:event(169),
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Miiri-Wohri'] = mission:event(118),
             ['Sola_Jaab']   = mission:event(117),

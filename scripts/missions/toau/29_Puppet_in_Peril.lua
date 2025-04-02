@@ -6,11 +6,11 @@
 -- Ornamental Door : !pos 299 0 -199 67
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.PUPPET_IN_PERIL)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.PUPPET_IN_PERIL)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.PREVALENCE_OF_PIRATES },
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.PREVALENCE_OF_PIRATES },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.JADE_SEPULCHER] =
+        [invaderXim.zone.JADE_SEPULCHER] =
         {
             ['_1v0'] =
             {
@@ -38,7 +38,7 @@ mission.sections =
                 end,
 
                 [32001] = function(player, csid, option, npc)
-                    if player:getLocalVar('battlefieldWin') == xi.battlefield.id.PUPPET_IN_PERIL then
+                    if player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.PUPPET_IN_PERIL then
                         mission:complete(player)
                     end
                 end,

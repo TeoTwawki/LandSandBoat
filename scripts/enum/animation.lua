@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.animation
-xi.animation =
+---@enum invaderXim.animation
+invaderXim.animation =
 {
     NONE                    = 0,
     ATTACK                  = 1,
@@ -45,4 +45,4 @@ xi.animation =
     -- TRUST                = 90, -- This is the animation for a trust NPC spawning in.
 }
 
-xi.anim = xi.animation
+invaderXim.anim = invaderXim.animation

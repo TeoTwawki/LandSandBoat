@@ -7,12 +7,12 @@
 -- Andreine : !pos -91.944 -2.14 -91.538 284
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.JUST_THE_THING)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.JUST_THE_THING)
 
 mission.reward =
 {
-    keyItem     = xi.ki.SUFFERING_SACCHARIFEROUS,
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.SUGARCOATED_SALVATION },
+    keyItem     = invaderXim.ki.SUFFERING_SACCHARIFEROUS,
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.SUGARCOATED_SALVATION },
 }
 
 mission.sections =
@@ -22,12 +22,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(40, 256, 0, 255, 0, 0, 26018, 4095, 4),
         },
 
-        [xi.zone.CELENNIA_MEMORIAL_LIBRARY] =
+        [invaderXim.zone.CELENNIA_MEMORIAL_LIBRARY] =
         {
             ['Andreine'] = mission:progressEvent(7, 284, 1316886, 2963, 28635, 0, 0, 0, 0),
 

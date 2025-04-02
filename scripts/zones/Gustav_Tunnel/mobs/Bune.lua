@@ -60,18 +60,18 @@ local spawnPoints =
 }
 
 entity.onMobInitialize = function(mob)
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(math.random(900, 10800))
 end
 
 entity.onMobSpawn = function(mob)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.TERROR)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.TERROR)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(math.random(75600, 86400)) -- 21-24 hours
 end
 

@@ -15,12 +15,12 @@ abilityObject.onAbilityCheck = function(player, target, ability)
     if pet then
         petID = pet:getPetID()
 
-        if petID >= xi.petId.FIRE_SPIRIT and petID <= xi.petId.DARK_SPIRIT then -- spirits
+        if petID >= invaderXim.petId.FIRE_SPIRIT and petID <= invaderXim.petId.DARK_SPIRIT then -- spirits
             return 0, 0
         end
     end
 
-    return xi.msg.basic.UNABLE_TO_USE_JA, 0
+    return invaderXim.msg.basic.UNABLE_TO_USE_JA, 0
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
@@ -35,10 +35,10 @@ abilityObject.onUseAbility = function(player, target, ability)
     end
 
     -- Calculate potency.
-    local power = utils.clamp(player:getSkillLevel(xi.skill.SUMMONING_MAGIC), 0, 700)                      -- Skill
-    power       = math.floor(power * 1.05 + player:getMod(xi.mod.ENHANCES_ELEMENTAL_SIPHON) - 55)          -- Gear
-    power       = math.floor(power * xi.spells.damage.calculateDayAndWeather(player, spiritElement, true)) -- Day and Weather bonuses (Forced)
-    power       = math.floor(power + player:getJobPointLevel(xi.jp.ELEMENTAL_SIPHON_EFFECT) * 3)           -- Job Points
+    local power = utils.clamp(player:getSkillLevel(invaderXim.skill.SUMMONING_MAGIC), 0, 700)                      -- Skill
+    power       = math.floor(power * 1.05 + player:getMod(invaderXim.mod.ENHANCES_ELEMENTAL_SIPHON) - 55)          -- Gear
+    power       = math.floor(power * invaderXim.spells.damage.calculateDayAndWeather(player, spiritElement, true)) -- Day and Weather bonuses (Forced)
+    power       = math.floor(power + player:getJobPointLevel(invaderXim.jp.ELEMENTAL_SIPHON_EFFECT) * 3)           -- Job Points
 
     -- Enforce special limits (player and spirit mp)
     power = utils.clamp(power, 0, spirit:getMP())                     -- Cap MP drained at spirit's MP

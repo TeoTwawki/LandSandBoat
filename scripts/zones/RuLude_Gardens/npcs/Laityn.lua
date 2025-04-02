@@ -8,7 +8,7 @@ local entity = {}
 
 entity.onTrigger = function(player, npc)
     if
-        player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.RECOLLECTIONS) == xi.questStatus.QUEST_ACCEPTED and
+        player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.RECOLLECTIONS) == invaderXim.questStatus.QUEST_ACCEPTED and
         player:getCharVar('recollectionsQuest') == 0
     then
         player:startEvent(10003) -- Option CS for "Recollections"

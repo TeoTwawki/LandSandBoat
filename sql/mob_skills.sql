@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for `mob_skills`
 --
 
-DROP TABLE IF EXISTS `mob_skills`;
-CREATE TABLE IF NOT EXISTS `mob_skills` (
+DROP TABLE IF IXIMSTS `mob_skills`;
+CREATE TABLE IF NOT IXIMSTS `mob_skills` (
   `mob_skill_id` smallint(4) unsigned NOT NULL,
   `mob_anim_id` smallint(4) unsigned NOT NULL,
   `mob_skill_name` varchar(40) CHARACTER SET latin1 NOT NULL,

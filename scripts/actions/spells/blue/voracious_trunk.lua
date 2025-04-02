@@ -20,20 +20,20 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.attribute = xi.mod.INT
-    params.skillType = xi.skill.BLUE_MAGIC
+    params.attribute = invaderXim.mod.INT
+    params.skillType = invaderXim.skill.BLUE_MAGIC
     local stolen = 0
 
     local resist = applyResistanceEffect(caster, target, spell, params)
     if resist >= 0.5 then
         stolen = caster:stealStatusEffect(target)
         if stolen ~= 0 then
-            spell:setMsg(xi.msg.basic.MAGIC_STEAL)
+            spell:setMsg(invaderXim.msg.basic.MAGIC_STEAL)
         else
-            spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+            spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
         end
     else
-        spell:setMsg(xi.msg.basic.MAGIC_RESIST)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_RESIST)
     end
 
     return stolen

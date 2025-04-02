@@ -8,7 +8,7 @@ local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        trade:hasItemQty(xi.item.PINCH_OF_GLITTERSAND, 1) and
+        trade:hasItemQty(invaderXim.item.PINCH_OF_GLITTERSAND, 1) and
         trade:getItemCount() == 1
     then
         local sinHunting = player:getCharVar('sinHunting')    -- RNG AF1
@@ -23,7 +23,7 @@ entity.onTrigger = function(player, npc)
     local sinHunting = player:getCharVar('sinHunting')    -- RNG AF1
 
     if sinHunting == 1 then
-        player:startEvent(3, 0, xi.item.PINCH_OF_GLITTERSAND)
+        player:startEvent(3, 0, invaderXim.item.PINCH_OF_GLITTERSAND)
     else
         player:startEvent(2)
     end
@@ -34,7 +34,7 @@ entity.onEventFinish = function(player, csid, option, npc)
         player:setCharVar('sinHunting', 2)
     elseif csid == 5 then
         player:tradeComplete()
-        npcUtil.giveKeyItem(player, xi.ki.PERCHONDS_ENVELOPE)
+        npcUtil.giveKeyItem(player, invaderXim.ki.PERCHONDS_ENVELOPE)
         player:setCharVar('sinHunting', 3)
     end
 end

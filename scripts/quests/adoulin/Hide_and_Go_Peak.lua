@@ -6,16 +6,16 @@
 -- Velkk Cache     : !pos 278.126 -0.378 -80.672 266
 -- Scalable Area 2 : !pos 271.483 -59.917 92.095 266
 -----------------------------------
-local marjamiID = zones[xi.zone.MARJAMI_RAVINE]
+local marjamiID = zones[invaderXim.zone.MARJAMI_RAVINE]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.ADOULIN, xi.quest.id.adoulin.HIDE_AND_GO_PEAK)
+local quest = Quest:new(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.HIDE_AND_GO_PEAK)
 
 -- Note: There are multiple KI rewards here, and A Pair of Velkk Gloves is added prior
 -- to the quest complete to cover this.
 quest.reward =
 {
-    fameArea = xi.fameArea.ADOULIN,
+    fameArea = invaderXim.fameArea.ADOULIN,
     bayld    = 500,
 }
 
@@ -23,10 +23,10 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.MARJAMI_RAVINE] =
+        [invaderXim.zone.MARJAMI_RAVINE] =
         {
             ['Toppled_Tree'] = quest:progressEvent(3),
 
@@ -41,10 +41,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.MARJAMI_RAVINE] =
+        [invaderXim.zone.MARJAMI_RAVINE] =
         {
             ['Toppled_Tree'] =
             {
@@ -74,13 +74,13 @@ quest.sections =
             {
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.LARGE_STRIP_OF_VELKK_HIDE) and
+                        not player:hasKeyItem(invaderXim.ki.LARGE_STRIP_OF_VELKK_HIDE) and
                         quest:getVar(player, 'Prog') == 0
                     then
                         player:messageSpecial(marjamiID.text.LEATHER_SCRAPS_STREWN)
                         quest:setVar(player, 'Prog', 1)
 
-                        return quest:keyItem(xi.ki.LARGE_STRIP_OF_VELKK_HIDE)
+                        return quest:keyItem(invaderXim.ki.LARGE_STRIP_OF_VELKK_HIDE)
                     end
                 end,
             },
@@ -88,16 +88,16 @@ quest.sections =
             onEventFinish =
             {
                 [5] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.LARGE_STRIP_OF_VELKK_HIDE)
+                    player:delKeyItem(invaderXim.ki.LARGE_STRIP_OF_VELKK_HIDE)
                     quest:setVar(player, 'Prog', 2)
 
-                    player:messageSpecial(marjamiID.text.KEYITEM_LOST, xi.ki.LARGE_STRIP_OF_VELKK_HIDE)
+                    player:messageSpecial(marjamiID.text.KEYITEM_LOST, invaderXim.ki.LARGE_STRIP_OF_VELKK_HIDE)
                 end,
 
                 [7] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.PAIR_OF_VELKK_GLOVES)
-                    player:addKeyItem(xi.ki.CLIMBING)
-                    player:messageSpecial(marjamiID.text.YOU_HAVE_LEARNED, xi.ki.CLIMBING)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.PAIR_OF_VELKK_GLOVES)
+                    player:addKeyItem(invaderXim.ki.CLIMBING)
+                    player:messageSpecial(marjamiID.text.YOU_HAVE_LEARNED, invaderXim.ki.CLIMBING)
                     quest:complete(player)
                 end,
             },

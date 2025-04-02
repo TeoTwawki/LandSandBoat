@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.OMERTA
+-- invaderXim.effect.OMERTA
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

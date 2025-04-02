@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.PENALTY
+-- invaderXim.effect.PENALTY
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

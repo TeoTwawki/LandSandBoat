@@ -5,26 +5,26 @@ require('scripts/globals/combat/element_tables')
 require('scripts/globals/magian_data')
 require('scripts/globals/npc_util')
 -----------------------------------
-local ruludeID = zones[xi.zone.RULUDE_GARDENS]
+local ruludeID = zones[invaderXim.zone.RULUDE_GARDENS]
 -----------------------------------
 xi = xi or {}
-xi.magian = xi.magian or {}
+invaderXim.magian = invaderXim.magian or {}
 
 -- NOTE: This table should never be accessed directly, and is not guaranteed to contain
 -- data unless returned via getPlayerTrialData().
-xi.magian.playerCache = xi.magian.playerCache or {}
+invaderXim.magian.playerCache = invaderXim.magian.playerCache or {}
 
 local magianMoogleInfo =
 {
-    ['Magian_Moogle_Blue']   = {   nil, 10141, 10142, 10143, 10144, 10148, xi.itemType.ARMOR  },
-    ['Magian_Moogle_Orange'] = { 10121, 10122, 10123, 10124, 10125, 10129, xi.itemType.WEAPON },
+    ['Magian_Moogle_Blue']   = {   nil, 10141, 10142, 10143, 10144, 10148, invaderXim.itemType.ARMOR  },
+    ['Magian_Moogle_Orange'] = { 10121, 10122, 10123, 10124, 10125, 10129, invaderXim.itemType.WEAPON },
 }
 
 -- Returns a table of data containing the player's currently active trials, and caches this data
--- keyed by player ID into xi.magian.playerCache.
+-- keyed by player ID into invaderXim.magian.playerCache.
 local function getPlayerTrialData(player)
     local playerId  = player:getID()
-    local trialData = xi.magian.playerCache[playerId]
+    local trialData = invaderXim.magian.playerCache[playerId]
 
     -- NOTE: This cached data may vary across processes, therefore as a safety measure, refresh
     -- the cache any time the player has zoned.
@@ -42,7 +42,7 @@ local function getPlayerTrialData(player)
         local packedTrial    = player:getCharVar('[trial]' .. trialSlot)
         local trialId        = bit.rshift(packedTrial, 16)
         local trialProgress  = bit.band(packedTrial, 0xFFFF)
-        local objectiveTotal = xi.magian.trials[trialId] and xi.magian.trials[trialId].numRequired or 0
+        local objectiveTotal = invaderXim.magian.trials[trialId] and invaderXim.magian.trials[trialId].numRequired or 0
 
         trialData[trialSlot] =
         {
@@ -56,7 +56,7 @@ local function getPlayerTrialData(player)
         end
     end
 
-    xi.magian.playerCache[playerId] =
+    invaderXim.magian.playerCache[playerId] =
     {
         trialData  = trialData,
         slotLookup = slotLookup,
@@ -64,7 +64,7 @@ local function getPlayerTrialData(player)
 
     player:setLocalVar('magianZoned', 1)
 
-    return xi.magian.playerCache[playerId]
+    return invaderXim.magian.playerCache[playerId]
 end
 
 local function getTrialProgress(player, trialId)
@@ -95,7 +95,7 @@ end
 -- NOTE: This function relies on cached player data, though all functions that
 -- use this will have cached data.
 local function getTrialSlot(player, trialId)
-    return xi.magian.playerCache[player:getID()].slotLookup[trialId]
+    return invaderXim.magian.playerCache[player:getID()].slotLookup[trialId]
 end
 
 -- Updates Player Trial Data in Lua cache and database
@@ -120,7 +120,7 @@ local function updatePlayerTrial(player, trialSlot, trialId, progress)
 
     playerTrialData.trialData[trialSlot].trialId        = trialId
     playerTrialData.trialData[trialSlot].progress       = progress or 0
-    playerTrialData.trialData[trialSlot].objectiveTotal = xi.magian.trials[trialId] and xi.magian.trials[trialId].numRequired or 0
+    playerTrialData.trialData[trialSlot].objectiveTotal = invaderXim.magian.trials[trialId] and invaderXim.magian.trials[trialId].numRequired or 0
 
     local packedData = bit.lshift(trialId, 16) + progress
 
@@ -139,9 +139,9 @@ local function progressPlayerTrial(player, trialId, progressAmt)
 
         local remainingObjectives = activeTrials.trialData[trialSlot].objectiveTotal - activeTrials.trialData[trialSlot].progress
         if remainingObjectives == 0 then
-            player:messageBasic(xi.msg.basic.MAGIAN_TRIAL_COMPLETE, trialId)
+            player:messageBasic(invaderXim.msg.basic.MAGIAN_TRIAL_COMPLETE, trialId)
         else
-            player:messageBasic(xi.msg.basic.MAGIAN_TRIAL_COMPLETE - 1, trialId, remainingObjectives)
+            player:messageBasic(invaderXim.msg.basic.MAGIAN_TRIAL_COMPLETE - 1, trialId, remainingObjectives)
         end
     end
 end
@@ -190,7 +190,7 @@ local function packAugmentParameters(augmentTable)
 end
 
 local function getRequiredTradeItem(trialId)
-    local tradeItem = xi.magian.trials[trialId].tradeItem
+    local tradeItem = invaderXim.magian.trials[trialId].tradeItem
 
     return tradeItem and tradeItem or 0
 end
@@ -238,7 +238,7 @@ local function buildMagianLookupTables()
     local relationTable = {}
     local requiredItemTable = {}
 
-    for trialId, trialData in pairs(xi.magian.trials) do
+    for trialId, trialData in pairs(invaderXim.magian.trials) do
         -- Build Parent-Child Table
         if not relationTable[trialData.previousTrial] then
             relationTable[trialData.previousTrial] = {}
@@ -268,21 +268,21 @@ end
 -- NOTE: This function isn't the most efficient, but is only executed on server
 -- start, or magian reload.
 local function registerTrialListeners()
-    xi.items = xi.items or {}
+    invaderXim.items = invaderXim.items or {}
 
-    for trialId, magianData in pairs(xi.magian.trials) do
+    for trialId, magianData in pairs(invaderXim.magian.trials) do
         if
             magianData.defeatMob or
             magianData.gainExp or
             magianData.useWeaponskill
         then
-            for itemKey, itemId in pairs(xi.item) do
+            for itemKey, itemId in pairs(invaderXim.item) do
                 if magianData.requiredItem.itemId == itemId then
                     local itemName = string.lower(itemKey)
 
-                    xi.items[itemName]                  = xi.items[itemName] or {}
-                    xi.items[itemName]['onItemEquip']   = xi.magian.onItemEquip
-                    xi.items[itemName]['onItemUnequip'] = xi.magian.onItemUnequip
+                    invaderXim.items[itemName]                  = invaderXim.items[itemName] or {}
+                    invaderXim.items[itemName]['onItemEquip']   = invaderXim.magian.onItemEquip
+                    invaderXim.items[itemName]['onItemUnequip'] = invaderXim.magian.onItemUnequip
                     break
                 end
             end
@@ -290,9 +290,9 @@ local function registerTrialListeners()
     end
 end
 
-xi.magian.trialChildren, xi.magian.requiredItemsToTrial = buildMagianLookupTables()
+invaderXim.magian.trialChildren, invaderXim.magian.requiredItemsToTrial = buildMagianLookupTables()
 
--- Given Item ID, if exists in xi.magian.requiredItemsToTrial, return its table
+-- Given Item ID, if exists in invaderXim.magian.requiredItemsToTrial, return its table
 local function getAvailableTrials(itemObj)
     local itemId     = itemObj:getID()
     local lookupKeys = { itemId, 0, 0, 0, 0 }
@@ -302,7 +302,7 @@ local function getAvailableTrials(itemObj)
         lookupKeys[augSlot + 2] = packAugment(itemObj:getAugment(augSlot))
     end
 
-    return getNestedValue(xi.magian.requiredItemsToTrial, lookupKeys) or {}
+    return getNestedValue(invaderXim.magian.requiredItemsToTrial, lookupKeys) or {}
 end
 
 -----------------------------------
@@ -322,16 +322,16 @@ local function giveMagianItem(player, itemData, inscribeTrialId)
     player:addItem(unpack(itemParameters))
 end
 
-xi.magian.giveRequiredItem = function(player, trialId, inscribeTrialId)
-    giveMagianItem(player, xi.magian.trials[trialId].requiredItem, inscribeTrialId == true and trialId or 0)
+invaderXim.magian.giveRequiredItem = function(player, trialId, inscribeTrialId)
+    giveMagianItem(player, invaderXim.magian.trials[trialId].requiredItem, inscribeTrialId == true and trialId or 0)
 end
 
-xi.magian.giveRewardItem = function(player, trialId)
-    giveMagianItem(player, xi.magian.trials[trialId].rewardItem, false)
+invaderXim.magian.giveRewardItem = function(player, trialId)
+    giveMagianItem(player, invaderXim.magian.trials[trialId].rewardItem, false)
 end
 
-xi.magian.magianOnTrade = function(player, npc, trade)
-    if xi.settings.main.ENABLE_MAGIAN_TRIALS ~= 1 then
+invaderXim.magian.magianOnTrade = function(player, npc, trade)
+    if invaderXim.settings.main.ENABLE_MAGIAN_TRIALS ~= 1 then
         return
     end
 
@@ -341,10 +341,10 @@ xi.magian.magianOnTrade = function(player, npc, trade)
     local availableTrials    = getAvailableTrials(itemObj)
     local _, numActiveTrials = packActiveTrials(player)
     local trialId            = itemObj:getTrialNumber()
-    local trialData          = xi.magian.trials[trialId]
+    local trialData          = invaderXim.magian.trials[trialId]
 
     if
-        player:hasKeyItem(xi.ki.MAGIAN_TRIAL_LOG) and
+        player:hasKeyItem(invaderXim.ki.MAGIAN_TRIAL_LOG) and
         trade:getSlotCount() == 1 and
         itemObj:isType(moogleData[7])
     then
@@ -402,8 +402,8 @@ xi.magian.magianOnTrade = function(player, npc, trade)
     end
 end
 
-xi.magian.magianOnTrigger = function(player, npc)
-    if xi.settings.main.ENABLE_MAGIAN_TRIALS ~= 1 then
+invaderXim.magian.magianOnTrigger = function(player, npc)
+    if invaderXim.settings.main.ENABLE_MAGIAN_TRIALS ~= 1 then
         return
     end
 
@@ -414,7 +414,7 @@ xi.magian.magianOnTrigger = function(player, npc)
         player:getMainLvl() < 75
     then
         player:startEvent(moogleData[1])
-    elseif not player:hasKeyItem(xi.ki.MAGIAN_TRIAL_LOG) then
+    elseif not player:hasKeyItem(invaderXim.ki.MAGIAN_TRIAL_LOG) then
         player:startEvent(moogleData[2])
     else
         local packedData, numActiveTrials = packActiveTrials(player)
@@ -423,14 +423,14 @@ xi.magian.magianOnTrigger = function(player, npc)
     end
 end
 
-xi.magian.magianEventUpdate = function(player, csid, option, npc)
+invaderXim.magian.magianEventUpdate = function(player, csid, option, npc)
     local updateType = bit.band(option, 0xFF)
 
     switch (updateType): caseof
     {
         [1] = function()
             local trialId   = bit.rshift(option, 16)
-            local trialData = xi.magian.trials[trialId]
+            local trialData = invaderXim.magian.trials[trialId]
 
             local augParam1, augParam2 = unpack(packAugmentParameters(trialData.requiredItem.itemAugments))
             local tradeItem            = getRequiredTradeItem(trialId)
@@ -439,7 +439,7 @@ xi.magian.magianEventUpdate = function(player, csid, option, npc)
 
         [2] = function()
             local trialId   = bit.rshift(option, 16)
-            local trialData = xi.magian.trials[trialId]
+            local trialData = invaderXim.magian.trials[trialId]
 
             local progress        = getTrialProgress(player, trialId)
             local requiredElement = trialData.requiredElement and trialData.requiredElement or 0
@@ -462,7 +462,7 @@ xi.magian.magianEventUpdate = function(player, csid, option, npc)
         -- Send information regarding the Reward Item
         [3] = function()
             local trialId = bit.rshift(option, 16)
-            local trialData = xi.magian.trials[trialId]
+            local trialData = invaderXim.magian.trials[trialId]
 
             local augParam1, augParam2 = unpack(packAugmentParameters(trialData.rewardItem.itemAugments))
             local tradeItem            = getRequiredTradeItem(trialId)
@@ -473,8 +473,8 @@ xi.magian.magianEventUpdate = function(player, csid, option, npc)
         -- Display Available Trials for the provided Item
         [4] = function()
             local trialId    = bit.rshift(option, 16)
-            local trialData  = xi.magian.trials[trialId]
-            local nextTrials = xi.magian.trialChildren[trialId] or { 0, 0, 0, 0 }
+            local trialData  = invaderXim.magian.trials[trialId]
+            local nextTrials = invaderXim.magian.trialChildren[trialId] or { 0, 0, 0, 0 }
             local tradeItem  = getRequiredTradeItem(trialId)
 
             player:updateEvent(nextTrials[1], nextTrials[2], nextTrials[3], nextTrials[4], trialData.previousTrial, tradeItem)
@@ -501,7 +501,7 @@ xi.magian.magianEventUpdate = function(player, csid, option, npc)
         -- Checks if Trial is already in progress
         [7] = function()
             local trialId   = bit.rshift(option, 8)
-            local trialData = xi.magian.trials[trialId]
+            local trialData = invaderXim.magian.trials[trialId]
 
             local augParam1, augParam2 = unpack(packAugmentParameters(trialData.requiredItem.itemAugments))
             local trialSlot            = getTrialSlot(player, trialId)
@@ -517,14 +517,14 @@ xi.magian.magianEventUpdate = function(player, csid, option, npc)
         -- Abandon Trial through Trade (Options 8 and 11)
         [8] = function()
             local trialId   = bit.rshift(option, 8)
-            local trialData = xi.magian.trials[trialId]
+            local trialData = invaderXim.magian.trials[trialId]
 
             player:updateEvent(0, 0, 0, trialData.requiredItem.itemId)
         end,
 
         [11] = function()
             local trialId   = bit.rshift(option, 8)
-            local trialData = xi.magian.trials[trialId]
+            local trialData = invaderXim.magian.trials[trialId]
 
             player:updateEvent(0, 0, 0, trialData.requiredItem.itemId)
         end,
@@ -532,7 +532,7 @@ xi.magian.magianEventUpdate = function(player, csid, option, npc)
         -- Checks if Item's Level will increase
         [13] = function()
             local trialId      = bit.rshift(option, 8)
-            local trialData    = xi.magian.trials[trialId]
+            local trialData    = invaderXim.magian.trials[trialId]
             local requiredItem = GetReadOnlyItem(trialData.requiredItem.itemId)
             local rewardItem   = GetReadOnlyItem(trialData.rewardItem.itemId)
 
@@ -550,7 +550,7 @@ xi.magian.magianEventUpdate = function(player, csid, option, npc)
         -- Checks if player already has Reward Item, and Item is Rare
         [14] = function()
             local trialId   = bit.rshift(option, 8)
-            local trialData = xi.magian.trials[trialId]
+            local trialData = invaderXim.magian.trials[trialId]
             local rewardObj = player:findItem(trialData.rewardItem.itemId)
 
             if
@@ -565,7 +565,7 @@ xi.magian.magianEventUpdate = function(player, csid, option, npc)
     }
 end
 
-xi.magian.magianOnEventFinish = function(player, csid, option, npc)
+invaderXim.magian.magianOnEventFinish = function(player, csid, option, npc)
     local moogleData = magianMoogleInfo[npc:getName()]
     local finishType = bit.band(option, 0xFF)
 
@@ -573,7 +573,7 @@ xi.magian.magianOnEventFinish = function(player, csid, option, npc)
         csid == moogleData[2] and
         option == 1
     then
-        npcUtil.giveKeyItem(player, xi.ki.MAGIAN_TRIAL_LOG)
+        npcUtil.giveKeyItem(player, invaderXim.ki.MAGIAN_TRIAL_LOG)
     elseif csid == moogleData[4] then
         -- Trial Item Traded without Trial Inscribed
 
@@ -581,9 +581,9 @@ xi.magian.magianOnEventFinish = function(player, csid, option, npc)
             -- Start a new trial for an Item
 
             local trialId   = bit.rshift(option, 8)
-            local trialInfo = xi.magian.trials[trialId]
+            local trialInfo = invaderXim.magian.trials[trialId]
 
-            xi.magian.giveRequiredItem(player, trialId, true)
+            invaderXim.magian.giveRequiredItem(player, trialId, true)
             player:messageSpecial(ruludeID.text.RETURN_MAGIAN_ITEM, trialInfo.requiredItem.itemId)
             updatePlayerTrial(player, getAvailableTrialSlot(player), trialId, 0)
 
@@ -593,9 +593,9 @@ xi.magian.magianOnEventFinish = function(player, csid, option, npc)
             finishType == 255
         then
             local trialId       = player:getLocalVar('storeTrialId')
-            local trialInfo     = xi.magian.trials[trialId]
+            local trialInfo     = invaderXim.magian.trials[trialId]
 
-            xi.magian.giveRequiredItem(player, trialId, false)
+            invaderXim.magian.giveRequiredItem(player, trialId, false)
 
             player:messageSpecial(ruludeID.text.RETURN_MAGIAN_ITEM, trialInfo.requiredItem.itemId)
             player:setLocalVar('storeTrialId', 0)
@@ -609,9 +609,9 @@ xi.magian.magianOnEventFinish = function(player, csid, option, npc)
         then
             -- Return item to the player
             local trialId   = player:getLocalVar('storeTrialId')
-            local trialInfo = xi.magian.trials[trialId]
+            local trialInfo = invaderXim.magian.trials[trialId]
 
-            xi.magian.giveRequiredItem(player, trialId, true)
+            invaderXim.magian.giveRequiredItem(player, trialId, true)
             player:messageSpecial(ruludeID.text.RETURN_MAGIAN_ITEM, trialInfo.requiredItem.itemId)
 
             player:setLocalVar('storeTrialId', 0)
@@ -622,14 +622,14 @@ xi.magian.magianOnEventFinish = function(player, csid, option, npc)
             -- Remove Trial ID and return item to the player
 
             local trialId    = bit.rshift(option, 8)
-            local trialInfo  = xi.magian.trials[trialId]
+            local trialInfo  = invaderXim.magian.trials[trialId]
             local activeSlot = getTrialSlot(player, trialId)
 
             if activeSlot then
                 updatePlayerTrial(player, activeSlot, 0, 0)
             end
 
-            xi.magian.giveRequiredItem(player, trialId, false)
+            invaderXim.magian.giveRequiredItem(player, trialId, false)
             player:messageSpecial(ruludeID.text.RETURN_MAGIAN_ITEM, trialInfo.requiredItem.itemId)
         end
     elseif
@@ -638,14 +638,14 @@ xi.magian.magianOnEventFinish = function(player, csid, option, npc)
     then
         -- Complete Active Trial
         local trialId    = player:getLocalVar('storeTrialId')
-        local trialInfo  = xi.magian.trials[trialId]
+        local trialInfo  = invaderXim.magian.trials[trialId]
         local activeSlot = getTrialSlot(player, trialId)
 
         if activeSlot then
             updatePlayerTrial(player, activeSlot, 0, 0)
         end
 
-        xi.magian.giveRewardItem(player, trialId)
+        invaderXim.magian.giveRewardItem(player, trialId)
         player:messageSpecial(ruludeID.text.ITEM_OBTAINED, trialInfo.rewardItem.itemId)
 
         player:setLocalVar('storeTrialId', 0)
@@ -663,7 +663,7 @@ local function getPlayerTrialsByTradeItemId(player, itemId)
 
     for trialId, trialSlot in pairs(activeTrials.slotLookup) do
         if
-            itemId == xi.magian.trials[trialId].tradeItem and
+            itemId == invaderXim.magian.trials[trialId].tradeItem and
             activeTrials.trialData[trialSlot].progress < activeTrials.trialData[trialSlot].objectiveTotal
         then
             table.insert(resultTrials, activeTrials.trialData[trialSlot])
@@ -673,7 +673,7 @@ local function getPlayerTrialsByTradeItemId(player, itemId)
     return resultTrials
 end
 
-xi.magian.deliveryCrateOnTrade = function(player, npc, trade)
+invaderXim.magian.deliveryCrateOnTrade = function(player, npc, trade)
     local trialId    = 0
     local tradeItems = {}
 
@@ -687,8 +687,8 @@ xi.magian.deliveryCrateOnTrade = function(player, npc, trade)
             if
                 itemTrialId ~= 0 and
                 trialId == 0 and
-                xi.magian.trials[itemTrialId] and
-                xi.magian.trials[itemTrialId].tradeItem
+                invaderXim.magian.trials[itemTrialId] and
+                invaderXim.magian.trials[itemTrialId].tradeItem
             then
                 -- NOTE: First in Wins, and we ignore any other item with a trial
                 trialId = itemTrialId
@@ -698,7 +698,7 @@ xi.magian.deliveryCrateOnTrade = function(player, npc, trade)
         end
     end
 
-    local trialInfo           = xi.magian.trials[trialId]
+    local trialInfo           = invaderXim.magian.trials[trialId]
     local playerTrialProgress = getTrialProgress(player, trialId)
 
     if
@@ -722,7 +722,7 @@ xi.magian.deliveryCrateOnTrade = function(player, npc, trade)
     end
 end
 
-xi.magian.deliveryCrateOnEventUpdate = function(player, csid, option, npc)
+invaderXim.magian.deliveryCrateOnEventUpdate = function(player, csid, option, npc)
     local optionMod         = bit.band(option, 0xFF)
     local tradedItemId      = player:getLocalVar('tradedItemId')
     local numRelevantTrials = #getPlayerTrialsByTradeItemId(player, tradedItemId)
@@ -754,7 +754,7 @@ xi.magian.deliveryCrateOnEventUpdate = function(player, csid, option, npc)
     end
 end
 
-xi.magian.deliveryCrateOnEventFinish = function(player, csid, option, npc)
+invaderXim.magian.deliveryCrateOnEventFinish = function(player, csid, option, npc)
     local optionMod     = bit.band(option, 0xFF)
     local trialId       = bit.rshift(option, 8)
     local tradedItemId  = player:getLocalVar('tradedItemId')
@@ -780,40 +780,40 @@ end
 
 local elementData =
 {
-    [xi.magianElement.FIRE     ] = { xi.element.FIRE    },
-    [xi.magianElement.ICE      ] = { xi.element.ICE     },
-    [xi.magianElement.WIND     ] = { xi.element.WIND    },
-    [xi.magianElement.EARTH    ] = { xi.element.EARTH   },
-    [xi.magianElement.THUNDER  ] = { xi.element.THUNDER },
-    [xi.magianElement.WATER    ] = { xi.element.WATER   },
-    [xi.magianElement.LIGHT    ] = { xi.element.LIGHT   },
-    [xi.magianElement.DARK     ] = { xi.element.DARK    },
-    [xi.magianElement.ANY_LIGHT] =
+    [invaderXim.magianElement.FIRE     ] = { invaderXim.element.FIRE    },
+    [invaderXim.magianElement.ICE      ] = { invaderXim.element.ICE     },
+    [invaderXim.magianElement.WIND     ] = { invaderXim.element.WIND    },
+    [invaderXim.magianElement.EARTH    ] = { invaderXim.element.EARTH   },
+    [invaderXim.magianElement.THUNDER  ] = { invaderXim.element.THUNDER },
+    [invaderXim.magianElement.WATER    ] = { invaderXim.element.WATER   },
+    [invaderXim.magianElement.LIGHT    ] = { invaderXim.element.LIGHT   },
+    [invaderXim.magianElement.DARK     ] = { invaderXim.element.DARK    },
+    [invaderXim.magianElement.ANY_LIGHT] =
     {
-        xi.element.FIRE,
-        xi.element.WIND,
-        xi.element.THUNDER,
-        xi.element.LIGHT,
+        invaderXim.element.FIRE,
+        invaderXim.element.WIND,
+        invaderXim.element.THUNDER,
+        invaderXim.element.LIGHT,
     },
 
-    [xi.magianElement.ANY_DARK] =
+    [invaderXim.magianElement.ANY_DARK] =
     {
-        xi.element.ICE,
-        xi.element.EARTH,
-        xi.element.WATER,
-        xi.element.DARK,
+        invaderXim.element.ICE,
+        invaderXim.element.EARTH,
+        invaderXim.element.WATER,
+        invaderXim.element.DARK,
     },
 
-    [xi.magianElement.ANY] =
+    [invaderXim.magianElement.ANY] =
     {
-        xi.element.FIRE,
-        xi.element.ICE,
-        xi.element.WIND,
-        xi.element.EARTH,
-        xi.element.THUNDER,
-        xi.element.WATER,
-        xi.element.LIGHT,
-        xi.element.DARK,
+        invaderXim.element.FIRE,
+        invaderXim.element.ICE,
+        invaderXim.element.WIND,
+        invaderXim.element.EARTH,
+        invaderXim.element.THUNDER,
+        invaderXim.element.WATER,
+        invaderXim.element.LIGHT,
+        invaderXim.element.DARK,
     },
 }
 
@@ -832,12 +832,12 @@ local trialConditions =
             -- For each element in that table (may not be all elements)
             for _, elementId in ipairs(dayWeatherTable) do
                 -- Check current day element against element checked.
-                if xi.combat.element.getDayElement(currentDay) == elementId then
+                if invaderXim.combat.element.getDayElement(currentDay) == elementId then
                     dayWeatherResult = dayWeatherResult + 1
                 end
 
                 -- Check current weather element against element checked.
-                if xi.combat.element.getWeatherElement(currentWeather) == elementId then
+                if invaderXim.combat.element.getWeatherElement(currentWeather) == elementId then
                     dayWeatherResult = dayWeatherResult + 5
                 end
             end
@@ -894,7 +894,7 @@ end
 -----------------------------------
 -- Item Globals/Callbacks
 -----------------------------------
-xi.magian.onItemEquip = function(player, itemObj)
+invaderXim.magian.onItemEquip = function(player, itemObj)
     local itemTrialId = itemObj:getTrialNumber()
 
     -- If the item has no active trial, or the player has
@@ -906,7 +906,7 @@ xi.magian.onItemEquip = function(player, itemObj)
         return
     end
 
-    local trialData = xi.magian.trials[itemTrialId]
+    local trialData = invaderXim.magian.trials[itemTrialId]
     if not trialData then
         return
     end
@@ -955,7 +955,7 @@ xi.magian.onItemEquip = function(player, itemObj)
     end
 end
 
-xi.magian.onItemUnequip = function(player, itemObj)
+invaderXim.magian.onItemUnequip = function(player, itemObj)
     local itemTrialId = itemObj:getTrialNumber()
 
     if
@@ -966,10 +966,10 @@ xi.magian.onItemUnequip = function(player, itemObj)
     end
 end
 
-xi.magian.onMobDeath = function(mob, player, optParams, trialTable)
+invaderXim.magian.onMobDeath = function(mob, player, optParams, trialTable)
     local relevantTrials = {}
 
-    for equipSlot = xi.slot.MAIN, xi.slot.FEET do
+    for equipSlot = invaderXim.slot.MAIN, invaderXim.slot.FEET do
         local itemObj = player:getEquippedItem(equipSlot)
 
         if itemObj then

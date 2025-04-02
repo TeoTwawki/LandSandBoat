@@ -2,7 +2,7 @@
 -- Area: Tavnazian Safehold
 --  NPC: Caiphimonride
 -----------------------------------
-local ID = zones[xi.zone.TAVNAZIAN_SAFEHOLD]
+local ID = zones[invaderXim.zone.TAVNAZIAN_SAFEHOLD]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -15,7 +15,7 @@ entity.onTrigger = function(player, npc)
         17335,    4, -- Rusty Bolt
     }
 
-    if player:getCurrentMission(xi.mission.log_id.COP) >= xi.mission.id.cop.SHELTERING_DOUBT then
+    if player:getCurrentMission(invaderXim.mission.log_id.COP) >= invaderXim.mission.id.cop.SHELTERING_DOUBT then
         stock =
         {
             16450,  2030,  -- Dagger
@@ -27,7 +27,7 @@ entity.onTrigger = function(player, npc)
     end
 
     player:showText(npc, ID.text.CAIPHIMONRIDE_SHOP_DIALOG) -- 10908 with only 3 items available, may change
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 return entity

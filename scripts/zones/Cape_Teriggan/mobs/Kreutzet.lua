@@ -60,21 +60,21 @@ local spawnPoints =
 }
 
 entity.onMobInitialize = function(mob)
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(math.random(32400, 43200)) -- 9 to 12 hours
     DisallowRespawn(mob:getID(), true) -- prevents accidental 'pop' during no wind weather and immediate despawn
 end
 
 entity.onMobSpawn = function(mob)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
 end
 
 entity.onMobRoam = function(mob)
     local weather = mob:getWeather()
     if
-        weather ~= xi.weather.WIND and
-        weather ~= xi.weather.GALES
+        weather ~= invaderXim.weather.WIND and
+        weather ~= invaderXim.weather.GALES
     then
         DespawnMob(mob:getID())
     end
@@ -110,7 +110,7 @@ end
 
 entity.onMobDespawn = function(mob)
     -- Set Kruetzet's spawnpoint and respawn time (9-12 hours)
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(math.random(32400, 43200))
     DisallowRespawn(mob:getID(), true) -- prevents accidental 'pop' during no wind weather and immediate despawn
 end

@@ -3,7 +3,7 @@
 --  NPC: Varchet
 -- !pos 116.484 -1 91.554 230
 -----------------------------------
-local ID = zones[xi.zone.SOUTHERN_SAN_DORIA]
+local ID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -38,7 +38,7 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    if player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.EXIT_THE_GAMBLER) == xi.questStatus.QUEST_ACCEPTED then
+    if player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.IXIMT_THE_GAMBLER) == invaderXim.questStatus.QUEST_ACCEPTED then
         player:startEvent(638)
     else
         player:startEvent(525)
@@ -54,7 +54,7 @@ entity.onEventFinish = function(player, csid, option, npc)
             local eventTarget = player:getEventTarget()
             if
                 eventTarget and
-                player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.EXIT_THE_GAMBLER) == xi.questStatus.QUEST_ACCEPTED
+                player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.IXIMT_THE_GAMBLER) == invaderXim.questStatus.QUEST_ACCEPTED
             then
                 player:setCharVar('exitTheGamblerStat', 1)
                 player:showText(eventTarget, ID.text.VARCHET_KEEP_PROMISE)

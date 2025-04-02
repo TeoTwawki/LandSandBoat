@@ -6,11 +6,11 @@
 -- Ergon Locus : !pos -140.000 10.000 60.000 270
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.AN_AIMLESS_JOURNEY)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.AN_AIMLESS_JOURNEY)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.ORTHARSYNE },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.ORTHARSYNE },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CIRDAS_CAVERNS] =
+        [invaderXim.zone.CIRDAS_CAVERNS] =
         {
             onTriggerAreaEnter =
             {

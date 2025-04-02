@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Sacrarium (28)
 -----------------------------------
-local ID = zones[xi.zone.SACRARIUM]
+local ID = zones[invaderXim.zone.SACRARIUM]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -10,7 +10,7 @@ zoneObject.onInitialize = function(zone)
     -- randomize Old Prof. Mariselle's spawn location
     GetNPCByID(ID.npc.QM_MARISELLE_OFFSET + math.random(0, 5)):setLocalVar('hasProfessorMariselle', 1)
 
-    xi.treasure.initZone(zone)
+    invaderXim.treasure.initZone(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -31,7 +31,7 @@ zoneObject.afterZoneIn = function(player)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
@@ -41,19 +41,19 @@ zoneObject.onGameDay = function()
     -- change 18 labyrinth doors depending on in-game day (0 = open, 1 = closed)
     local labyrinthDoorsByDay =
     {
-        [xi.day.FIRESDAY]     = { 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0 },
-        [xi.day.EARTHSDAY]    = { 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0 },
-        [xi.day.WATERSDAY]    = { 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1 },
-        [xi.day.WINDSDAY]     = { 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 },
-        [xi.day.ICEDAY]       = { 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0 },
-        [xi.day.LIGHTNINGDAY] = { 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0 },
-        [xi.day.LIGHTSDAY]    = { 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1 },
-        [xi.day.DARKSDAY]     = { 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 },
+        [invaderXim.day.FIRESDAY]     = { 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0 },
+        [invaderXim.day.EARTHSDAY]    = { 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0 },
+        [invaderXim.day.WATERSDAY]    = { 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1 },
+        [invaderXim.day.WINDSDAY]     = { 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 },
+        [invaderXim.day.ICEDAY]       = { 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0 },
+        [invaderXim.day.LIGHTNINGDAY] = { 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0 },
+        [invaderXim.day.LIGHTSDAY]    = { 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1 },
+        [invaderXim.day.DARKSDAY]     = { 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 },
     }
 
     local doors = labyrinthDoorsByDay[VanadielDayOfTheWeek()]
     for i = 0, 17 do
-        GetNPCByID(ID.npc.LABYRINTH_OFFSET + i):setAnimation(xi.anim.OPEN_DOOR + doors[i + 1])
+        GetNPCByID(ID.npc.LABYRINTH_OFFSET + i):setAnimation(invaderXim.anim.OPEN_DOOR + doors[i + 1])
     end
 end
 
@@ -71,7 +71,7 @@ zoneObject.onZoneWeatherChange = function(weather)
         elel and
         elel:getZone():getLocalVar('elelQueued') == 0 and -- Why doesn't onZoneWeatherChange contain the zone object...?
         not elel:isSpawned() and os.time() > elel:getLocalVar('cooldown') and
-        (weather == xi.weather.GLOOM or weather == xi.weather.DARKNESS) and
+        (weather == invaderXim.weather.GLOOM or weather == invaderXim.weather.DARKNESS) and
         (vanadielHour < 4 or vanadielHour >= 20)
     then
         DisallowRespawn(elel:getID(), false)
@@ -88,7 +88,7 @@ zoneObject.onZoneTick = function(zone)
     if vanadielHour < 4 or vanadielHour >= 20 then
         local weather = zone:getWeather()
 
-        if weather == xi.weather.GLOOM or weather == xi.weather.DARKNESS then
+        if weather == invaderXim.weather.GLOOM or weather == invaderXim.weather.DARKNESS then
             local elel = GetMobByID(ID.mob.ELEL)
             if
                 elel and

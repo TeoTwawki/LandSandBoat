@@ -19,8 +19,8 @@ commandObj.onTrigger = function(player, mount, target)
     end
 
     -- validate mount
-    mount = tonumber(mount) or xi.mount[string.upper(mount)]
-    if mount == nil or mount < 0 or mount >= xi.mount.MOUNT_MAX then
+    mount = tonumber(mount) or invaderXim.mount[string.upper(mount)]
+    if mount == nil or mount < 0 or mount >= invaderXim.mount.MOUNT_MAX then
         error(player, 'Invalid mount ID.')
         return
     end
@@ -37,7 +37,7 @@ commandObj.onTrigger = function(player, mount, target)
         end
     end
 
-    targ:addStatusEffectEx(xi.effect.MOUNTED, xi.effect.MOUNTED, mount, 0, 0, true)
+    targ:addStatusEffectEx(invaderXim.effect.MOUNTED, invaderXim.effect.MOUNTED, mount, 0, 0, true)
 end
 
 return commandObj

@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.jobAbility
-xi.jobAbility =
+---@enum invaderXim.jobAbility
+invaderXim.jobAbility =
 {
     MIGHTY_STRIKES     = 16,
     HUNDRED_FISTS      = 17,
@@ -665,4 +665,4 @@ xi.jobAbility =
     HYSTERIC_ASSAULT   = 970,
 }
 
-xi.ja = xi.jobAbility
+invaderXim.ja = invaderXim.jobAbility

@@ -10,8 +10,8 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.BERSERK, 50, 0, 180))
-    return xi.effect.BERSERK
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.BERSERK, 50, 0, 180))
+    return invaderXim.effect.BERSERK
 end
 
 return mobskillObject

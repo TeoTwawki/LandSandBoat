@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.emote
-xi.emote =
+---@enum invaderXim.emote
+invaderXim.emote =
 {
     POINT      = 0,
     BOW        = 1,

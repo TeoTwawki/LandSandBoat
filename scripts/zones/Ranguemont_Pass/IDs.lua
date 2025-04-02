@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.RANGUEMONT_PASS] =
+zones[invaderXim.zone.RANGUEMONT_PASS] =
 {
     text =
     {
@@ -46,4 +46,4 @@ zones[xi.zone.RANGUEMONT_PASS] =
     },
 }
 
-return zones[xi.zone.RANGUEMONT_PASS]
+return zones[invaderXim.zone.RANGUEMONT_PASS]

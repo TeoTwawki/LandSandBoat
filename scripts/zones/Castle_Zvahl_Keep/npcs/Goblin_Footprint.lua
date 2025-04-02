@@ -7,15 +7,15 @@
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.goblinfootprint.rewatch(player)
+    invaderXim.goblinfootprint.rewatch(player)
 end
 
 entity.onTrigger = function(player, npc)
-    xi.goblinfootprint.rewatch(player, true)
+    invaderXim.goblinfootprint.rewatch(player, true)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.goblinfootprint.startEvent(player, csid, option, npc)
+    invaderXim.goblinfootprint.startEvent(player, csid, option, npc)
 end
 
 return entity

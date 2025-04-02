@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.race
-xi.race =
+---@enum invaderXim.race
+invaderXim.race =
 {
     HUME_M   = 1,
     HUME_F   = 2,

@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.UPPER_DELKFUTTS_TOWER] =
+zones[invaderXim.zone.UPPER_DELKFUTTS_TOWER] =
 {
     text =
     {
@@ -44,4 +44,4 @@ zones[xi.zone.UPPER_DELKFUTTS_TOWER] =
     },
 }
 
-return zones[xi.zone.UPPER_DELKFUTTS_TOWER]
+return zones[invaderXim.zone.UPPER_DELKFUTTS_TOWER]

@@ -5,11 +5,11 @@
 local spellObject = {}
 
 spellObject.onMagicCastingCheck = function(caster, target, spell)
-    return xi.trust.canCast(caster, spell)
+    return invaderXim.trust.canCast(caster, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    return xi.trust.spawn(caster, spell)
+    return invaderXim.trust.spawn(caster, spell)
 end
 
 spellObject.onMobSpawn = function(mob)
@@ -20,17 +20,17 @@ spellObject.onMobSpawn = function(mob)
     local potAoe = mob:getMaster():getCharVar('monbAoe') -- CVar used to store gil donation info.
 
     if potAoe == 0 and finalElixir == 0 then
-        xi.trust.message(mob, xi.trust.messageOffset.SPAWN)
+        invaderXim.trust.message(mob, invaderXim.trust.messageOffset.SPAWN)
     elseif potAoe == 0 and finalElixir == 1 then
-        xi.trust.message(mob, xi.trust.messageOffset.TEAMWORK_1) -- 1 Elixir
+        invaderXim.trust.message(mob, invaderXim.trust.messageOffset.TEAMWORK_1) -- 1 Elixir
     elseif potAoe == 0 and finalElixir >= 2 then
-        xi.trust.message(mob, xi.trust.messageOffset.TEAMWORK_2) -- 2 Elixir
+        invaderXim.trust.message(mob, invaderXim.trust.messageOffset.TEAMWORK_2) -- 2 Elixir
     elseif potAoe == 1 and finalElixir < 1 then
-        xi.trust.message(mob, xi.trust.messageOffset.TEAMWORK_3) -- Gil donation (AoE)
+        invaderXim.trust.message(mob, invaderXim.trust.messageOffset.TEAMWORK_3) -- Gil donation (AoE)
     elseif potAoe == 1 and finalElixir == 1 then
-        xi.trust.message(mob, xi.trust.messageOffset.TEAMWORK_4) -- 1 Elixir and Gil
+        invaderXim.trust.message(mob, invaderXim.trust.messageOffset.TEAMWORK_4) -- 1 Elixir and Gil
     elseif potAoe == 1 and finalElixir >= 2 then
-        xi.trust.message(mob, xi.trust.messageOffset.TEAMWORK_5) -- ALL Donations
+        invaderXim.trust.message(mob, invaderXim.trust.messageOffset.TEAMWORK_5) -- ALL Donations
     end
 
     local healingMoveCooldown = math.random(3, 4) -- Mix I Retail values from BGWiki
@@ -38,17 +38,17 @@ spellObject.onMobSpawn = function(mob)
     local mpMoveCooldown = 90 -- Mix III Retail values from BGWiki
 
     -- MobMods --
-        mob:setMod(xi.mod.MPP, -90)
-        mob:setMod(xi.mod.SLEEPRES, 100) -- Handle negate sleep
-        mob:setMod(xi.mod.LULLABYRES, 100) -- Handle negate sleep
-        mob:setMod(xi.mod.STATUSRES, 15)
+        mob:setMod(invaderXim.mod.MPP, -90)
+        mob:setMod(invaderXim.mod.SLEEPRES, 100) -- Handle negate sleep
+        mob:setMod(invaderXim.mod.LULLABYRES, 100) -- Handle negate sleep
+        mob:setMod(invaderXim.mod.STATUSRES, 15)
 
     -- Guard Drink should always be the first spell he casts. --
-        mob:addGambit(ai.t.PARTY, { ai.c.NOT_STATUS, xi.effect.PROTECT }, { ai.r.MS, ai.s.SPECIFIC, 4255 }, healingMoveCooldown) -- Mix: Guard Drink (Prot/Shell)
-        mob:addGambit(ai.t.PARTY, { ai.c.NOT_STATUS, xi.effect.SHELL }, { ai.r.MS, ai.s.SPECIFIC, 4255 }, healingMoveCooldown) -- Mix: Guard Drink (Prot/Shell)
+        mob:addGambit(ai.t.PARTY, { ai.c.NOT_STATUS, invaderXim.effect.PROTECT }, { ai.r.MS, ai.s.SPECIFIC, 4255 }, healingMoveCooldown) -- Mix: Guard Drink (Prot/Shell)
+        mob:addGambit(ai.t.PARTY, { ai.c.NOT_STATUS, invaderXim.effect.SHELL }, { ai.r.MS, ai.s.SPECIFIC, 4255 }, healingMoveCooldown) -- Mix: Guard Drink (Prot/Shell)
     -- Handle his Final Elixir (item donation) system, will use whenever a party memeber is asleep --
         if finalElixir ~= 0 then
-            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, xi.effect.SLEEP_I }, { ai.r.MS, ai.s.SPECIFIC, 4231 }, healingMoveCooldown)
+            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, invaderXim.effect.SLEEP_I }, { ai.r.MS, ai.s.SPECIFIC, 4231 }, healingMoveCooldown)
         end
 
     -- Top Priority Heals --
@@ -58,41 +58,41 @@ spellObject.onMobSpawn = function(mob)
     -- Mix I AoE --
         if potAoe == 1 then
             mob:addGambit(ai.t.PARTY, { ai.l.OR(
-                                { ai.c.STATUS, xi.effect.CURSE_I },
-                                { ai.c.STATUS, xi.effect.CURSE_II },
-                                { ai.c.STATUS, xi.effect.BANE },
-                                { ai.c.STATUS, xi.effect.DOOM })
+                                { ai.c.STATUS, invaderXim.effect.CURSE_I },
+                                { ai.c.STATUS, invaderXim.effect.CURSE_II },
+                                { ai.c.STATUS, invaderXim.effect.BANE },
+                                { ai.c.STATUS, invaderXim.effect.DOOM })
                                     }, { ai.r.MS, ai.s.SPECIFIC, 4242 }, healingMoveCooldown)   -- AoE Holy Water
-            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, xi.effect.BLINDNESS }, { ai.r.MS, ai.s.SPECIFIC, 4240 }, healingMoveCooldown) -- AoE Mix: Eye Drops
-            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, xi.effect.POISON }, { ai.r.MS, ai.s.SPECIFIC, 4238 }, healingMoveCooldown) -- AoE Mix: Antidote
-            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, xi.effect.SILENCE }, { ai.r.MS, ai.s.SPECIFIC, 4241 }, healingMoveCooldown) -- AoE Echo Drops
-            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, xi.effect.PARALYSIS }, { ai.r.MS, ai.s.SPECIFIC, 4239 }, healingMoveCooldown) -- AoE Mix: Para-B-Gone
-            mob:addGambit(ai.t.PARTY, { ai.c.STATUS_FLAG, xi.effectFlag.ERASABLE }, { ai.r.MS, ai.s.SPECIFIC, 4245 }, healingMoveCooldown) -- AoE Mix: Panacea-1
-            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, xi.effect.PLAGUE }, { ai.r.MS, ai.s.SPECIFIC, 4243 }, healingMoveCooldown) -- AoE Mix: Vaccine
-            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, xi.effect.PETRIFICATION }, { ai.r.MS, ai.s.SPECIFIC, 4244 }, healingMoveCooldown) -- AoE Mix: Gold Needle
+            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, invaderXim.effect.BLINDNESS }, { ai.r.MS, ai.s.SPECIFIC, 4240 }, healingMoveCooldown) -- AoE Mix: Eye Drops
+            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, invaderXim.effect.POISON }, { ai.r.MS, ai.s.SPECIFIC, 4238 }, healingMoveCooldown) -- AoE Mix: Antidote
+            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, invaderXim.effect.SILENCE }, { ai.r.MS, ai.s.SPECIFIC, 4241 }, healingMoveCooldown) -- AoE Echo Drops
+            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, invaderXim.effect.PARALYSIS }, { ai.r.MS, ai.s.SPECIFIC, 4239 }, healingMoveCooldown) -- AoE Mix: Para-B-Gone
+            mob:addGambit(ai.t.PARTY, { ai.c.STATUS_FLAG, invaderXim.effectFlag.ERASABLE }, { ai.r.MS, ai.s.SPECIFIC, 4245 }, healingMoveCooldown) -- AoE Mix: Panacea-1
+            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, invaderXim.effect.PLAGUE }, { ai.r.MS, ai.s.SPECIFIC, 4243 }, healingMoveCooldown) -- AoE Mix: Vaccine
+            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, invaderXim.effect.PETRIFICATION }, { ai.r.MS, ai.s.SPECIFIC, 4244 }, healingMoveCooldown) -- AoE Mix: Gold Needle
     -- Mix I Single Target --
         elseif potAoe == 0 then
             mob:addGambit(ai.t.PARTY, { ai.l.OR(
-                                { ai.c.STATUS, xi.effect.CURSE_I },
-                                { ai.c.STATUS, xi.effect.CURSE_II },
-                                { ai.c.STATUS, xi.effect.BANE },
-                                { ai.c.STATUS, xi.effect.DOOM })
+                                { ai.c.STATUS, invaderXim.effect.CURSE_I },
+                                { ai.c.STATUS, invaderXim.effect.CURSE_II },
+                                { ai.c.STATUS, invaderXim.effect.BANE },
+                                { ai.c.STATUS, invaderXim.effect.DOOM })
                                     }, { ai.r.MS, ai.s.SPECIFIC, 4242 }, healingMoveCooldown)   -- Holy Water
-            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, xi.effect.BLINDNESS }, { ai.r.MS, ai.s.SPECIFIC, 4248 }, healingMoveCooldown) -- Mix: Eye Drops
-            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, xi.effect.POISON }, { ai.r.MS, ai.s.SPECIFIC, 4246 }, healingMoveCooldown) -- Mix: Antidote
-            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, xi.effect.SILENCE }, { ai.r.MS, ai.s.SPECIFIC, 4249 }, healingMoveCooldown) -- Echo Drops
-            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, xi.effect.PARALYSIS }, { ai.r.MS, ai.s.SPECIFIC, 4247 }, healingMoveCooldown) -- Mix: Para-B-Gone
-            mob:addGambit(ai.t.PARTY, { ai.c.STATUS_FLAG, xi.effectFlag.ERASABLE }, { ai.r.MS, ai.s.SPECIFIC, 4253 }, healingMoveCooldown) -- Mix: Panacea-1
-            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, xi.effect.PLAGUE, ai.r.MS }, { ai.s.SPECIFIC, 4251 }, healingMoveCooldown) -- Vaccine
-            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, xi.effect.PETRIFICATION }, { ai.r.MS, ai.s.SPECIFIC, 4252 }, healingMoveCooldown) -- Mix: Gold Needle
+            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, invaderXim.effect.BLINDNESS }, { ai.r.MS, ai.s.SPECIFIC, 4248 }, healingMoveCooldown) -- Mix: Eye Drops
+            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, invaderXim.effect.POISON }, { ai.r.MS, ai.s.SPECIFIC, 4246 }, healingMoveCooldown) -- Mix: Antidote
+            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, invaderXim.effect.SILENCE }, { ai.r.MS, ai.s.SPECIFIC, 4249 }, healingMoveCooldown) -- Echo Drops
+            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, invaderXim.effect.PARALYSIS }, { ai.r.MS, ai.s.SPECIFIC, 4247 }, healingMoveCooldown) -- Mix: Para-B-Gone
+            mob:addGambit(ai.t.PARTY, { ai.c.STATUS_FLAG, invaderXim.effectFlag.ERASABLE }, { ai.r.MS, ai.s.SPECIFIC, 4253 }, healingMoveCooldown) -- Mix: Panacea-1
+            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, invaderXim.effect.PLAGUE, ai.r.MS }, { ai.s.SPECIFIC, 4251 }, healingMoveCooldown) -- Vaccine
+            mob:addGambit(ai.t.PARTY, { ai.c.STATUS, invaderXim.effect.PETRIFICATION }, { ai.r.MS, ai.s.SPECIFIC, 4252 }, healingMoveCooldown) -- Mix: Gold Needle
         end
 
-        --mob:addGambit(ai.t.PARTY, {ai.c.NOT_STATUS, xi.effect.NEGATE_SLEEP}, {ai.r.MS, ai.s.SPECIFIC, 4256}, healingMoveCooldown) -- Insomniant. Disabled because animation when used is completely wrong.
+        --mob:addGambit(ai.t.PARTY, {ai.c.NOT_STATUS, invaderXim.effect.NEGATE_SLEEP}, {ai.r.MS, ai.s.SPECIFIC, 4256}, healingMoveCooldown) -- Insomniant. Disabled because animation when used is completely wrong.
     -- Mix II--
-        mob:addGambit(ai.t.PARTY, { ai.c.NOT_STATUS, xi.effect.REGEN }, { ai.r.MS, ai.s.SPECIFIC, 4257 }, buffMoveCooldown) -- Mix: Life Water
-        mob:addGambit(ai.t.PARTY, { ai.c.NOT_STATUS, xi.effect.STR_BOOST }, { ai.r.MS, ai.s.SPECIFIC, 4261 }, buffMoveCooldown) -- Mix: Samson's Strength
-        mob:addGambit(ai.t.PARTY, { ai.c.NOT_STATUS, xi.effect.MAGIC_DEF_BOOST }, { ai.r.MS, ai.s.SPECIFIC, 4259 }, buffMoveCooldown) -- Mix: Dragon Shield
-        mob:addGambit(ai.t.CASTER, { ai.c.NOT_STATUS, xi.effect.MAGIC_ATK_BOOST }, { ai.r.MS, ai.s.SPECIFIC, 4258 }, buffMoveCooldown) -- Mix: Elemental Power
+        mob:addGambit(ai.t.PARTY, { ai.c.NOT_STATUS, invaderXim.effect.REGEN }, { ai.r.MS, ai.s.SPECIFIC, 4257 }, buffMoveCooldown) -- Mix: Life Water
+        mob:addGambit(ai.t.PARTY, { ai.c.NOT_STATUS, invaderXim.effect.STR_BOOST }, { ai.r.MS, ai.s.SPECIFIC, 4261 }, buffMoveCooldown) -- Mix: Samson's Strength
+        mob:addGambit(ai.t.PARTY, { ai.c.NOT_STATUS, invaderXim.effect.MAGIC_DEF_BOOST }, { ai.r.MS, ai.s.SPECIFIC, 4259 }, buffMoveCooldown) -- Mix: Dragon Shield
+        mob:addGambit(ai.t.CASTER, { ai.c.NOT_STATUS, invaderXim.effect.MAGIC_ATK_BOOST }, { ai.r.MS, ai.s.SPECIFIC, 4258 }, buffMoveCooldown) -- Mix: Elemental Power
         mob:addGambit(ai.t.TARGET, { ai.c.ALWAYS, 0 }, { ai.r.MS, ai.s.SPECIFIC, 4260 }, buffMoveCooldown) -- Dark Potion (666 Dark Damage)
     -- Mix III--
         mob:addGambit(ai.t.CASTER, { ai.c.MPP_LT, 50 }, { ai.r.MS, ai.s.SPECIFIC, 4254 }, mpMoveCooldown) -- Mix: Dry Ether Concoction
@@ -114,9 +114,9 @@ spellObject.onMobSpawn = function(mob)
     --mob:addListener('WEAPONSKILL_BEFORE_USE', 'MONBERAUX_WEAPONSKILL_BEFORE_USE', function(mobArg, skillid)
     --local buffs = { 4234, 4239, 4240, 4241, 4242, 4243, 4244, 4245, 4246, 4247, 4248, 4248, 4249, 4250, 4251, 4252 } -- status condition removals only
     --if skillid == 4259 then
-    --xi.trust.message(mob, xi.trust.messageOffset.SPECIAL_MOVE_1) -- Using Mix: Dragon Shield: Illness and unjury know no boundaries!
+    --invaderXim.trust.message(mob, invaderXim.trust.messageOffset.SPECIAL_MOVE_1) -- Using Mix: Dragon Shield: Illness and unjury know no boundaries!
     --elseif skillid == buffs then
-    --xi.trust.message(mob, xi.trust.messageOffset.SPECIAL_MOVE_2) -- Other: I shall administer a remedy immediately!
+    --invaderXim.trust.message(mob, invaderXim.trust.messageOffset.SPECIAL_MOVE_2) -- Other: I shall administer a remedy immediately!
     --end
     --end)
 
@@ -129,18 +129,18 @@ spellObject.onMobSpawn = function(mob)
 
     -- This listener is needed for Monberaux to display the correct skill name in the combat log.
     mob:addListener('WEAPONSKILL_USE', 'MONBERAUX_WS', function(mobArg, targetArg, skillid, spentTP, action)
-        action:setCategory(xi.action.MOBABILITY_FINISH)
+        action:setCategory(invaderXim.action.MOBABILITY_FINISH)
     end)
 
-    mob:setMobMod(xi.mobMod.TRUST_DISTANCE, xi.trust.movementType.NO_MOVE)
+    mob:setMobMod(invaderXim.mobMod.TRUST_DISTANCE, invaderXim.trust.movementType.NO_MOVE)
 end
 
 spellObject.onMobDespawn = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.DESPAWN)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.DESPAWN)
 end
 
 spellObject.onMobDeath = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.DEATH)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.DEATH)
 end
 
 return spellObject

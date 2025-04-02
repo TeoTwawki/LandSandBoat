@@ -25,7 +25,7 @@ entity.onTrigger = function(player, npc)
         player:addTreasure(5374)
     end
 
-    GetNPCByID(npcID, instance):setStatus(xi.status.DISAPPEAR)
+    GetNPCByID(npcID, instance):setStatus(invaderXim.status.DISAPPEAR)
 end
 
 return entity

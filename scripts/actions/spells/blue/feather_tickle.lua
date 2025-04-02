@@ -21,22 +21,22 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.BIRD
-    params.attribute = xi.mod.INT
-    params.skillType = xi.skill.BLUE_MAGIC
+    params.ecosystem = invaderXim.ecosystem.BIRD
+    params.attribute = invaderXim.mod.INT
+    params.skillType = invaderXim.skill.BLUE_MAGIC
     local power = 1500
     local resistThreshold = 0.5
 
     local resist = applyResistanceEffect(caster, target, spell, params)
     if resist >= resistThreshold then
         if target:getTP() == 0 then
-            spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+            spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
         else
             target:delTP(power * resist)
-            spell:setMsg(xi.msg.basic.MAGIC_TP_REDUCE)
+            spell:setMsg(invaderXim.msg.basic.MAGIC_TP_REDUCE)
         end
     else
-        spell:setMsg(xi.msg.basic.MAGIC_RESIST)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_RESIST)
     end
 
     return 0

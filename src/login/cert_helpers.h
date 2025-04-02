@@ -1,7 +1,7 @@
 ﻿/*
 ===========================================================================
 
-  Copyright (c) 2023 LandSandBoat Dev Teams
+  Copyright (c) 2023 InvaderXim Dev Teams
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -108,7 +108,7 @@ namespace certificateHelpers
             /* X509_NAME_add_entry_by_txt(name, "C", MBSTRING_ASC,
                                        (unsigned char*)"CA", -1, -1, 0);*/
             X509_NAME_add_entry_by_txt(name, "O", MBSTRING_ASC,
-                                       (unsigned char*)"LSB self-signed certificate for login server", -1, -1, 0);
+                                       (unsigned char*)"IXIM self-signed certificate for login server", -1, -1, 0);
             X509_NAME_add_entry_by_txt(name, "CN", MBSTRING_ASC,
                                        commonNameIpAddr, -1, -1, 0);
 

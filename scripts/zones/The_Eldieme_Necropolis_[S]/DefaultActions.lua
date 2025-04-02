@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.THE_ELDIEME_NECROPOLIS_S]
+local ID = zones[invaderXim.zone.THE_ELDIEME_NECROPOLIS_S]
 
 return {
     ['Erik']                  = { event = 1 },

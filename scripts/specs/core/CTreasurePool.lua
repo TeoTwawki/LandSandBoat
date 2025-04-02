@@ -5,7 +5,7 @@
 local CTreasurePool = {}
 
 ---@nodiscard
----@return xi.treasurePool
+---@return invaderXim.treasurePool
 function CTreasurePool:getType()
 end
 

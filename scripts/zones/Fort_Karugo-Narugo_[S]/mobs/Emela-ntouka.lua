@@ -8,8 +8,8 @@ local entity = {}
 entity.onMobInitialize = function(mob)
     -- The value below is estimated based on another example in the code
     -- where the mob 'Seemed to have very high TP gain.'
-    mob:setMod(xi.mod.REGAIN, 200)
-    mob:setMod(xi.mod.TRIPLE_ATTACK, 25)
+    mob:setMod(invaderXim.mod.REGAIN, 200)
+    mob:setMod(invaderXim.mod.TRIPLE_ATTACK, 25)
 end
 
 entity.onMobSpawn = function(mob)
@@ -30,7 +30,7 @@ entity.onMobSpawn = function(mob)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 521)
+    invaderXim.hunts.checkHunt(mob, player, 521)
 end
 
 entity.onMobDespawn = function(mob)

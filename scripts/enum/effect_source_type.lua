@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.effectSourceType
-xi.effectSourceType =
+---@enum invaderXim.effectSourceType
+invaderXim.effectSourceType =
 {
     NONE           = 0,
     EQUIPPED_ITEM  = 1,

@@ -3,7 +3,7 @@
 --  Mob: Recluse Spider
 -- Note: Place Holder for Arachne
 -----------------------------------
-local ID = zones[xi.zone.KUFTAL_TUNNEL]
+local ID = zones[invaderXim.zone.KUFTAL_TUNNEL]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -71,14 +71,14 @@ local arachnePHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 737, 2, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 739, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 737, 2, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 739, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
     local params = {}
     params.spawnPoints = arachneSpawnPoints
-    xi.mob.phOnDespawn(mob, arachnePHTable, 5, 7200, params) -- 2 hours
+    invaderXim.mob.phOnDespawn(mob, arachnePHTable, 5, 7200, params) -- 2 hours
 end
 
 return entity

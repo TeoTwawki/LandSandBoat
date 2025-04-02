@@ -8,11 +8,11 @@ require('scripts/globals/interaction/interaction_global')
 local m = Module:new('modify_interaction_entry_example')
 
 -- When the server has started and everything is ready, apply interaction changes
-m:addOverride('xi.server.onServerStart', function()
+m:addOverride('invaderXim.server.onServerStart', function()
     -- Call super!
     super()
 
-    xi.module.modifyInteractionEntry('scripts/quests/ahtUrhgan/Rock_Bottom', function(quest)
+    invaderXim.module.modifyInteractionEntry('scripts/quests/ahtUrhgan/Rock_Bottom', function(quest)
         -- REMEMBER: Lua is 1-indexed!
 
         -- Disable the quest

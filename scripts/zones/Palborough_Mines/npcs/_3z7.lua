@@ -6,13 +6,13 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local state  = GetElevatorState(xi.elevator.PALBOROUGH_MINES_LIFT)
+    local state  = GetElevatorState(invaderXim.elevator.PALBOROUGH_MINES_LIFT)
     local isBusy = npc:getLocalVar('isBusy')
 
     if
         isBusy == 0 and
-        (state == xi.elevatorState.BOTTOM or
-        state == xi.elevatorState.TOP)
+        (state == invaderXim.elevatorState.BOTTOM or
+        state == invaderXim.elevatorState.TOP)
     then
         player:startEvent(10)
     end
@@ -26,18 +26,18 @@ entity.onEventFinish = function(player, csid, option, npc)
         csid == 10 and
         option == 1
     then
-        local state = GetElevatorState(xi.elevator.PALBOROUGH_MINES_LIFT)
+        local state = GetElevatorState(invaderXim.elevator.PALBOROUGH_MINES_LIFT)
 
-        if state == xi.elevatorState.BOTTOM or state == xi.elevatorState.TOP then
-            if npc:getAnimation() == xi.animation.OPEN_DOOR then
-                npc:setAnimation(xi.animation.CLOSE_DOOR)
+        if state == invaderXim.elevatorState.BOTTOM or state == invaderXim.elevatorState.TOP then
+            if npc:getAnimation() == invaderXim.animation.OPEN_DOOR then
+                npc:setAnimation(invaderXim.animation.CLOSE_DOOR)
             else
-                npc:setAnimation(xi.animation.OPEN_DOOR)
+                npc:setAnimation(invaderXim.animation.OPEN_DOOR)
             end
 
             npc:setLocalVar('isBusy', 1)
             npc:timer(3000, function()
-                RunElevator(xi.elevator.PALBOROUGH_MINES_LIFT)
+                RunElevator(invaderXim.elevator.PALBOROUGH_MINES_LIFT)
                 npc:setLocalVar('isBusy', 0)
             end)
         end

@@ -12,17 +12,17 @@
 -- Kasaroro         : !pos -72 -3 34 231
 -- Patt-Pott        : !pos 23 -17 42 237
 -----------------------------------
-local northernSandoriaID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local northernSandoriaID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_THREE_KINGDOMS)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_THREE_KINGDOMS)
 
 mission.reward =
 {
     rank    = 3,
     gil     = 3000,
-    keyItem = xi.ki.ADVENTURERS_CERTIFICATE,
-    title   = xi.title.CERTIFIED_ADVENTURER,
+    keyItem = invaderXim.ki.ADVENTURERS_CERTIFICATE,
+    title   = invaderXim.title.CERTIFIED_ADVENTURER,
 }
 
 local handleAcceptMission = function(player, csid, option, npc)
@@ -36,11 +36,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onEventFinish =
             {
@@ -48,7 +48,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onEventFinish =
             {
@@ -56,7 +56,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onEventFinish =
             {
@@ -64,7 +64,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onEventFinish =
             {
@@ -78,27 +78,27 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Janshura-Rashura'] = mission:progressEvent(138),
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Zokima-Rokima'] = mission:progressEvent(134),
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Mokyokyo'] = mission:progressEvent(215),
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Rakoh_Buuma'] = mission:progressEvent(177),
         },
 
-        [xi.zone.HEAVENS_TOWER] =
+        [invaderXim.zone.HEAVENS_TOWER] =
         {
             ['Kupipi'] =
             {
@@ -106,15 +106,15 @@ mission.sections =
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
                     if missionStatus == 0 then
-                        if xi.settings.main.ENABLE_TRUST_QUESTS == 1 then
-                            local needsSemihTrust = (not player:hasSpell(xi.magic.spell.SEMIH_LAFIHNA) and not player:findItem(xi.item.CIPHER_OF_SEMIHS_ALTER_EGO)) and 1 or 0
+                        if invaderXim.settings.main.ENABLE_TRUST_QUESTS == 1 then
+                            local needsSemihTrust = (not player:hasSpell(invaderXim.magic.spell.SEMIH_LAFIHNA) and not player:findItem(invaderXim.item.CIPHER_OF_SEMIHS_ALTER_EGO)) and 1 or 0
 
-                            return mission:progressEvent(95, 0, 0, 0, xi.ki.LETTER_TO_THE_CONSULS_WINDURST, 0, 0, 0, needsSemihTrust)
+                            return mission:progressEvent(95, 0, 0, 0, invaderXim.ki.LETTER_TO_THE_CONSULS_WINDURST, 0, 0, 0, needsSemihTrust)
                         else
                             return mission:progressEvent(95)
                         end
                     elseif missionStatus == 11 then
-                        return mission:progressEvent(101, 0, 0, xi.ki.ADVENTURERS_CERTIFICATE)
+                        return mission:progressEvent(101, 0, 0, invaderXim.ki.ADVENTURERS_CERTIFICATE)
                     else
                         return mission:event(97)
                     end
@@ -125,26 +125,26 @@ mission.sections =
             {
                 [95] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 1)
-                    npcUtil.giveKeyItem(player, xi.ki.LETTER_TO_THE_CONSULS_WINDURST)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LETTER_TO_THE_CONSULS_WINDURST)
 
                     if
-                        xi.settings.main.ENABLE_TRUST_QUESTS == 1 and
-                        not player:hasSpell(xi.magic.spell.SEMIH_LAFIHNA) and
-                        not player:findItem(xi.item.CIPHER_OF_SEMIHS_ALTER_EGO)
+                        invaderXim.settings.main.ENABLE_TRUST_QUESTS == 1 and
+                        not player:hasSpell(invaderXim.magic.spell.SEMIH_LAFIHNA) and
+                        not player:findItem(invaderXim.item.CIPHER_OF_SEMIHS_ALTER_EGO)
                     then
-                        npcUtil.giveItem(player, xi.item.CIPHER_OF_SEMIHS_ALTER_EGO)
+                        npcUtil.giveItem(player, invaderXim.item.CIPHER_OF_SEMIHS_ALTER_EGO)
                     end
                 end,
 
                 [101] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.KINDRED_REPORT)
+                        player:delKeyItem(invaderXim.ki.KINDRED_REPORT)
                     end
                 end,
             },
         },
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Halver'] =
             {
@@ -156,7 +156,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Patt-Pott'] =
             {
@@ -179,26 +179,26 @@ mission.sections =
             {
                 [254] = function(player, csid, option, npc)
                     player:delMission(mission.areaId, mission.missionId)
-                    player:addMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_THREE_KINGDOMS_BASTOK)
-                    player:delKeyItem(xi.ki.LETTER_TO_THE_CONSULS_WINDURST)
+                    player:addMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_THREE_KINGDOMS_BASTOK)
+                    player:delKeyItem(invaderXim.ki.LETTER_TO_THE_CONSULS_WINDURST)
                     player:setMissionStatus(mission.areaId, 3)
                 end,
 
                 [256] = function(player, csid, option, npc)
                     player:delMission(mission.areaId, mission.missionId)
-                    player:addMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_THREE_KINGDOMS_BASTOK2)
+                    player:addMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_THREE_KINGDOMS_BASTOK2)
                     player:setMissionStatus(mission.areaId, 8)
                 end,
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Heruze-Moruze'] =
             {
                 onTrigger = function(player, npc)
                     if player:getMissionStatus(mission.areaId) == 1 then
-                        local onPathUntraveled = player:getCurrentMission(xi.mission.log_id.ROV) == xi.mission.id.rov.THE_PATH_UNTRAVELED and 1 or 0
+                        local onPathUntraveled = player:getCurrentMission(invaderXim.mission.log_id.ROV) == invaderXim.mission.id.rov.THE_PATH_UNTRAVELED and 1 or 0
 
                         return mission:progressEvent(582, { [7] = onPathUntraveled })
                     end
@@ -227,14 +227,14 @@ mission.sections =
             {
                 [546] = function(player, csid, option, npc)
                     player:delMission(mission.areaId, mission.missionId)
-                    player:addMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_THREE_KINGDOMS_SANDORIA)
-                    player:delKeyItem(xi.ki.LETTER_TO_THE_CONSULS_WINDURST)
+                    player:addMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_THREE_KINGDOMS_SANDORIA)
+                    player:delKeyItem(invaderXim.ki.LETTER_TO_THE_CONSULS_WINDURST)
                     player:setMissionStatus(mission.areaId, 3)
                 end,
 
                 [547] = function(player, csid, option, npc)
                     player:delMission(mission.areaId, mission.missionId)
-                    player:addMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_THREE_KINGDOMS_SANDORIA2)
+                    player:addMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_THREE_KINGDOMS_SANDORIA2)
                     player:setMissionStatus(mission.areaId, 8)
                 end,
 
@@ -248,10 +248,10 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return player:hasCompletedMission(mission.areaId, mission.missionId) and
-                player:getNation() == xi.nation.WINDURST
+                player:getNation() == invaderXim.nation.WINDURST
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Kasaroro'] = mission:event(604):replaceDefault(),
         },

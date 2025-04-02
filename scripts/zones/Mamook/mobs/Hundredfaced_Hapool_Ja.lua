@@ -15,7 +15,7 @@ entity.onMobSpawn = function(mob)
 
         -- Utsusemi: Ichi (3 clones)
         if hateTarget then
-            if spellId == xi.magic.spell.UTSUSEMI_ICHI then
+            if spellId == invaderXim.magic.spell.UTSUSEMI_ICHI then
                 for clone = hundredfacedHapoolJa + 1, hundredfacedHapoolJa + 3 do
                     if not GetMobByID(clone):isSpawned() then
                         GetMobByID(clone):setSpawn(mob:getXPos() + math.random(1, 5), mob:getYPos(), mob:getZPos() + math.random(1, 5))
@@ -25,8 +25,8 @@ entity.onMobSpawn = function(mob)
 
             -- Utsusemi: Ni/San (4 clones)
             elseif
-                spellId == xi.magic.spell.UTSUSEMI_NI or
-                spellId == xi.magic.spell.UTSUSEMI_SAN
+                spellId == invaderXim.magic.spell.UTSUSEMI_NI or
+                spellId == invaderXim.magic.spell.UTSUSEMI_SAN
             then
                 for clone = hundredfacedHapoolJa + 1, hundredfacedHapoolJa + 4 do
                     if not GetMobByID(clone):isSpawned() then
@@ -40,7 +40,7 @@ entity.onMobSpawn = function(mob)
         for i = hundredfacedHapoolJa + 1, hundredfacedHapoolJa + 4 do
             local pet = GetMobByID(i)
 
-            if pet and pet:getCurrentAction() == xi.act.ROAMING then
+            if pet and pet:getCurrentAction() == invaderXim.act.ROAMING then
                 pet:updateEnmity(target)
             end
         end
@@ -48,7 +48,7 @@ entity.onMobSpawn = function(mob)
 end
 
 entity.onMobEngage = function(mob, target)
-    mob:castSpell(xi.magic.spell.UTSUSEMI_SAN, mob)
+    mob:castSpell(invaderXim.magic.spell.UTSUSEMI_SAN, mob)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

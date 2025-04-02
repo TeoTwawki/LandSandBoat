@@ -4,12 +4,12 @@
 -- Kohlo-Lakolo, !pos -26.8 -6 190 240
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.THE_PROMISE)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.THE_PROMISE)
 
 local function timedEvents(player, inTime, outATime)
     if
         quest:getVar(player, 'Prog') == 1 and
-        player:getRank(xi.nation.WINDURST) < 9
+        player:getRank(invaderXim.nation.WINDURST) < 9
     then
         return quest:event(inTime)
     else
@@ -28,8 +28,8 @@ end
 quest.reward =
 {
     fame     = 10,
-    fameArea = xi.fameArea.WINDURST,
-    item     = xi.item.PROMISE_BADGE,
+    fameArea = invaderXim.fameArea.WINDURST,
+    item     = invaderXim.item.PROMISE_BADGE,
 }
 
 quest.sections =
@@ -37,27 +37,27 @@ quest.sections =
     -- Section: Quest is available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.WINDURST, xi.quest.id.windurst.WILD_CARD)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.WILD_CARD)
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Kohlo-Lakolo'] =
             {
                 onTrigger = function(player, npc)
                     if
                         player:getMainLvl() >= 5 and
-                        player:getFameLevel(xi.fameArea.WINDURST) >= 5 and
+                        player:getFameLevel(invaderXim.fameArea.WINDURST) >= 5 and
                         not quest:getMustZone(player)
                     then
-                        if player:getRank(xi.nation.WINDURST) < 9 then
-                            return quest:progressEvent(513, 0, xi.ki.INVISIBLE_MAN_STICKER) -- Quest starting event in time.
+                        if player:getRank(invaderXim.nation.WINDURST) < 9 then
+                            return quest:progressEvent(513, 0, invaderXim.ki.INVISIBLE_MAN_STICKER) -- Quest starting event in time.
                         else
-                            return quest:progressEvent(532, 0, xi.ki.INVISIBLE_MAN_STICKER) -- Quest starting event late.
+                            return quest:progressEvent(532, 0, invaderXim.ki.INVISIBLE_MAN_STICKER) -- Quest starting event late.
                         end
                     else
-                        if player:getRank(xi.nation.WINDURST) < 9 then
+                        if player:getRank(invaderXim.nation.WINDURST) < 9 then
                             return quest:event(505) -- Default text in time.
                         else
                             return quest:event(535) -- Default text late.
@@ -83,33 +83,33 @@ quest.sections =
     -- Section: Quest accepeted.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Kohlo-Lakolo'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.INVISIBLE_MAN_STICKER) then
+                    if player:hasKeyItem(invaderXim.ki.INVISIBLE_MAN_STICKER) then
                         if quest:getVar(player, 'Prog') == 1 then
-                            if player:getRank(xi.nation.WINDURST) < 9 then
-                                return quest:progressEvent(522, 0, xi.ki.INVISIBLE_MAN_STICKER) -- Quest Complete. In time.
+                            if player:getRank(invaderXim.nation.WINDURST) < 9 then
+                                return quest:progressEvent(522, 0, invaderXim.ki.INVISIBLE_MAN_STICKER) -- Quest Complete. In time.
                             else
-                                return quest:progressEvent(542, 0, xi.ki.INVISIBLE_MAN_STICKER) -- Quest Complete. Started in time, arrived late.
+                                return quest:progressEvent(542, 0, invaderXim.ki.INVISIBLE_MAN_STICKER) -- Quest Complete. Started in time, arrived late.
                             end
                         else
-                            return quest:progressEvent(534, 0, xi.ki.INVISIBLE_MAN_STICKER) -- Quest Complete. Started late.
+                            return quest:progressEvent(534, 0, invaderXim.ki.INVISIBLE_MAN_STICKER) -- Quest Complete. Started late.
                         end
                     else
                         if quest:getVar(player, 'Prog') == 1 then
-                            if player:getRank(xi.nation.WINDURST) < 9 then
+                            if player:getRank(invaderXim.nation.WINDURST) < 9 then
                                 return quest:event(514) -- Reminder. In time.
                             else
-                                return quest:event(543, 0, xi.ki.INVISIBLE_MAN_STICKER) -- Reminder. Started in time, but are late.
+                                return quest:event(543, 0, invaderXim.ki.INVISIBLE_MAN_STICKER) -- Reminder. Started in time, but are late.
                             end
                         else
-                            return quest:event(533, 0, xi.ki.INVISIBLE_MAN_STICKER) -- Reminder. Started late.
+                            return quest:event(533, 0, invaderXim.ki.INVISIBLE_MAN_STICKER) -- Reminder. Started late.
                         end
                     end
                 end,
@@ -134,7 +134,7 @@ quest.sections =
                 onTrigger = function(player, npc)
                     if
                         quest:getVar(player, 'Prog') == 1 or
-                        player:getRank(xi.nation.WINDURST) >= 9
+                        player:getRank(invaderXim.nation.WINDURST) >= 9
                     then
                         return quest:event(530)
                     end
@@ -153,7 +153,7 @@ quest.sections =
                 onTrigger = function(player, npc)
                     if
                         quest:getVar(player, 'Prog') == 0 or
-                        player:getRank(xi.nation.WINDURST) >= 9
+                        player:getRank(invaderXim.nation.WINDURST) >= 9
                     then
                         return quest:event(529)
                     end
@@ -189,27 +189,27 @@ quest.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Chamama'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.INVISIBLE_MAN_STICKER) then
+                    if player:hasKeyItem(invaderXim.ki.INVISIBLE_MAN_STICKER) then
                         return quest:event(800)
                     elseif quest:getVar(player, 'Chamama') > 0 then
-                        return quest:event(798, 0, xi.item.SHOALWEED, xi.ki.INVISIBLE_MAN_STICKER)
+                        return quest:event(798, 0, invaderXim.item.SHOALWEED, invaderXim.ki.INVISIBLE_MAN_STICKER)
                     else
-                        return quest:progressEvent(797, 0, xi.item.SHOALWEED, xi.ki.INVISIBLE_MAN_STICKER)
+                        return quest:progressEvent(797, 0, invaderXim.item.SHOALWEED, invaderXim.ki.INVISIBLE_MAN_STICKER)
                     end
                 end,
 
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'Chamama') == 1 and
-                        npcUtil.tradeHasExactly(trade, xi.item.SHOALWEED) and
-                        not player:hasKeyItem(xi.ki.INVISIBLE_MAN_STICKER)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.SHOALWEED) and
+                        not player:hasKeyItem(invaderXim.ki.INVISIBLE_MAN_STICKER)
                     then
-                        return quest:progressEvent(799, 0, 0, xi.ki.INVISIBLE_MAN_STICKER)
+                        return quest:progressEvent(799, 0, 0, invaderXim.ki.INVISIBLE_MAN_STICKER)
                     end
                 end,
             },
@@ -222,7 +222,7 @@ quest.sections =
 
                 [799] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    npcUtil.giveKeyItem(player, xi.ki.INVISIBLE_MAN_STICKER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.INVISIBLE_MAN_STICKER)
                 end,
             },
         },
@@ -231,10 +231,10 @@ quest.sections =
     -- Section: Quest completed.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Gomada-Vulmada'] =
             {
@@ -247,7 +247,7 @@ quest.sections =
             {
                 onTrigger = function(player, npc)
                     if player:getCharVar('SOBfinalEvent') == 1 then
-                        if player:hasKeyItem(xi.ki.DARK_MANA_ORB) then
+                        if player:hasKeyItem(invaderXim.ki.DARK_MANA_ORB) then
                             return quest:progressEvent(584)
                         else
                             return quest:event(528)

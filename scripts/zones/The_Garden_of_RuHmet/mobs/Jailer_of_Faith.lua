@@ -2,7 +2,7 @@
 -- Area: The Garden of Ru'Hmet
 --   NM: Jailer of Faith
 -----------------------------------
-local ID = zones[xi.zone.THE_GARDEN_OF_RUHMET]
+local ID = zones[invaderXim.zone.THE_GARDEN_OF_RUHMET]
 local gardenGlobal = require('scripts/zones/The_Garden_of_RuHmet/globals')
 mixins = { require('scripts/mixins/job_special') }
 -----------------------------------
@@ -10,7 +10,7 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 900)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 900)
 end
 
 entity.onMobSpawn = function(mob)

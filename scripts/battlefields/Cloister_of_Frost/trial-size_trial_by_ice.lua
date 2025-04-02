@@ -2,12 +2,12 @@
 -- Area: Cloister of Frost
 -- BCNM: Trial-size Trial by Ice
 -----------------------------------
-local cloisterOfFrostID = zones[xi.zone.CLOISTER_OF_FROST]
+local cloisterOfFrostID = zones[invaderXim.zone.CLOISTER_OF_FROST]
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId           = xi.zone.CLOISTER_OF_FROST,
-    battlefieldId    = xi.battlefield.id.TRIAL_SIZE_TRIAL_BY_ICE,
+    zoneId           = invaderXim.zone.CLOISTER_OF_FROST,
+    battlefieldId    = invaderXim.battlefield.id.TRIAL_SIZE_TRIAL_BY_ICE,
     canLoseExp       = false,
     maxPlayers       = 1,
     levelCap         = 20,
@@ -15,29 +15,29 @@ local content = BattlefieldQuest:new({
     index            = 2,
     entryNpc         = 'IP_Entrance',
     exitNpc          = 'Ice_Protocrystal',
-    requiredItems    = { xi.item.MINI_TUNING_FORK_OF_ICE },
+    requiredItems    = { invaderXim.item.MINI_TUNING_FORK_OF_ICE },
 
-    questArea = xi.questLog.SANDORIA,
-    quest     = xi.quest.id.sandoria.TRIAL_SIZE_TRIAL_BY_ICE,
+    questArea = invaderXim.questLog.SANDORIA,
+    quest     = invaderXim.quest.id.sandoria.TRIAL_SIZE_TRIAL_BY_ICE,
 })
 
 function content:entryRequirement(player, npc, isRegistrant, trade)
-    return player:getMainJob() == xi.job.SMN and
+    return player:getMainJob() == invaderXim.job.SMN and
         player:getMainLvl() >= 20
 end
 
 function content:onEventFinishWin(player, csid, option, npc)
-    if not player:hasSpell(xi.magic.spell.SHIVA) then
-        player:addSpell(xi.magic.spell.SHIVA)
+    if not player:hasSpell(invaderXim.magic.spell.SHIVA) then
+        player:addSpell(invaderXim.magic.spell.SHIVA)
         player:messageSpecial(cloisterOfFrostID.text.SHIVA_UNLOCKED, 0, 0, 4)
     end
 
-    if not player:hasItem(xi.item.SCROLL_OF_INSTANT_WARP) then
-        npcUtil.giveItem(player, xi.item.SCROLL_OF_INSTANT_WARP)
+    if not player:hasItem(invaderXim.item.SCROLL_OF_INSTANT_WARP) then
+        npcUtil.giveItem(player, invaderXim.item.SCROLL_OF_INSTANT_WARP)
     end
 
-    player:addFame(xi.fameArea.SANDORIA, 30)
-    player:completeQuest(xi.questLog.SANDORIA, xi.quest.id.sandoria.TRIAL_SIZE_TRIAL_BY_ICE)
+    player:addFame(invaderXim.fameArea.SANDORIA, 30)
+    player:completeQuest(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.TRIAL_SIZE_TRIAL_BY_ICE)
 end
 
 content.groups =
@@ -45,7 +45,7 @@ content.groups =
     {
         mobs = { 'Shiva_Prime_TSTBI' },
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

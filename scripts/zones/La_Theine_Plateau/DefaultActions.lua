@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.LA_THEINE_PLATEAU]
+local ID = zones[invaderXim.zone.LA_THEINE_PLATEAU]
 
 return {
     ['Augevinne']           = { text = ID.text.RESCUE_DRILL + 33 },

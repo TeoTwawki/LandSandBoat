@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.YAEGASUMI
+-- invaderXim.effect.YAEGASUMI
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

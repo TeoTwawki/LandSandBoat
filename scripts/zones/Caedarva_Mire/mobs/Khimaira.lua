@@ -6,11 +6,11 @@
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
 end
 
 entity.onMobRoam = function(mob)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
 end
 
 entity.onMobFight = function(mob, target)
@@ -40,17 +40,17 @@ entity.onMobFight = function(mob, target)
     }
     for _, condition in ipairs(drawInTable.conditions) do
         if condition then
-            mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+            mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
             utils.drawIn(target, drawInTable)
             break
         else
-            mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+            mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
         end
     end
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.KHIMAIRA_CARVER)
+    player:addTitle(invaderXim.title.KHIMAIRA_CARVER)
 end
 
 entity.onMobDespawn = function(mob)

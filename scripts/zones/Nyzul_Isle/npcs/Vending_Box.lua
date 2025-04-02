@@ -7,11 +7,11 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.nyzul.vendingBoxOnTrigger(player)
+    invaderXim.nyzul.vendingBoxOnTrigger(player)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.nyzul.vendingBoxOnEventUpdate(player, csid, option)
+    invaderXim.nyzul.vendingBoxOnEventUpdate(player, csid, option)
 end
 
 return entity

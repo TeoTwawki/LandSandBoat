@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.WOH_GATES] =
+zones[invaderXim.zone.WOH_GATES] =
 {
     text =
     {
@@ -26,4 +26,4 @@ zones[xi.zone.WOH_GATES] =
     },
 }
 
-return zones[xi.zone.WOH_GATES]
+return zones[invaderXim.zone.WOH_GATES]

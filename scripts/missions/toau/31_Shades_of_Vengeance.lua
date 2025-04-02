@@ -6,12 +6,12 @@
 -- Nashib : !pos -274.334 -9.287 -64.255 79
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.SHADES_OF_VENGEANCE)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.SHADES_OF_VENGEANCE)
 
 mission.reward =
 {
-    title       = xi.title.NASHMEIRAS_MERCENARY,
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.IN_THE_BLOOD },
+    title       = invaderXim.title.NASHMEIRAS_MERCENARY,
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.IN_THE_BLOOD },
 }
 
 mission.sections =
@@ -21,13 +21,13 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CAEDARVA_MIRE] =
+        [invaderXim.zone.CAEDARVA_MIRE] =
         {
             ['Nashib'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.PERIQIA_ASSAULT_AREA_ENTRY_PERMIT) and
+                        not player:hasKeyItem(invaderXim.ki.PERIQIA_ASSAULT_AREA_ENTRY_PERMIT) and
                         VanadielUniqueDay() >= mission:getVar(player, 'Timer')
                     then
                         return mission:progressEvent(22)
@@ -48,7 +48,7 @@ mission.sections =
                 end,
 
                 [22] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.PERIQIA_ASSAULT_AREA_ENTRY_PERMIT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.PERIQIA_ASSAULT_AREA_ENTRY_PERMIT)
                 end,
             },
         },

@@ -10,25 +10,25 @@
 -----------------------------------
 require('scripts/missions/wotg/helpers')
 -----------------------------------
-local graubergID = zones[xi.zone.GRAUBERG_S]
+local graubergID = zones[invaderXim.zone.GRAUBERG_S]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.HER_MEMORIES_OF_MALIGN_MALADIES)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.HER_MEMORIES_OF_MALIGN_MALADIES)
 
 quest.reward =
 {
-    keyItem = xi.ki.LARGE_MEMORY_FRAGMENT2,
+    keyItem = invaderXim.ki.LARGE_MEMORY_FRAGMENT2,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getCurrentMission(xi.mission.log_id.WOTG) == xi.mission.id.wotg.HER_MEMORIES
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getCurrentMission(invaderXim.mission.log_id.WOTG) == invaderXim.mission.id.wotg.HER_MEMORIES
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Amaura'] = quest:progressEvent(955, 649992904, 0, 0, 0, 156286100, 19935, 0, 4),
 
@@ -43,15 +43,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Amaura'] = quest:event(956, 649993042, 0, 27830, 94060, 0, 0, 0, 0):oncePerZone(),
         },
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Monberaux'] =
             {
@@ -72,7 +72,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Library_book3'] =
             {
@@ -95,13 +95,13 @@ quest.sections =
             },
         },
 
-        [xi.zone.GRAUBERG_S] =
+        [invaderXim.zone.GRAUBERG_S] =
         {
             ['Fey_Blossoms'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.PHILOSOPHERS_STONE) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.PHILOSOPHERS_STONE) and
                         quest:getVar(player, 'Prog') == 2
                     then
                         return quest:progressEvent(30, 89, 23, 2964, 56, 0, 6029313, 0, 0)
@@ -112,10 +112,10 @@ quest.sections =
                     local questProgress = quest:getVar(player, 'Prog')
 
                     if questProgress == 2 then
-                        return quest:messageSpecial(graubergID.text.SUITABLE_PLACE_TO_SOAK, xi.item.PHILOSOPHERS_STONE)
+                        return quest:messageSpecial(graubergID.text.SUITABLE_PLACE_TO_SOAK, invaderXim.item.PHILOSOPHERS_STONE)
                     elseif
                         questProgress == 3 and
-                        not player:hasKeyItem(xi.ki.FEY_STONE)
+                        not player:hasKeyItem(invaderXim.ki.FEY_STONE)
                     then
                         if quest:getVar(player, 'Timer') <= VanadielUniqueDay() then
                             return quest:progressEvent(32, 89, 6, 0, 56, 0, 6029328, 0, 0)
@@ -136,17 +136,17 @@ quest.sections =
                 end,
 
                 [32] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.FEY_STONE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.FEY_STONE)
                 end,
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Raustigne'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.FEY_STONE) then
+                    if player:hasKeyItem(invaderXim.ki.FEY_STONE) then
                         return quest:progressEvent(169, 80, 23, 1756, 0, 67108863, 85453257, 3903, 131140)
                     end
                 end,
@@ -155,10 +155,10 @@ quest.sections =
             onEventFinish =
             {
                 [169] = function(player, csid, option, npc)
-                    xi.wotg.helpers.checkMemoryFragments(player)
+                    invaderXim.wotg.helpers.checkMemoryFragments(player)
 
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.FEY_STONE)
+                        player:delKeyItem(invaderXim.ki.FEY_STONE)
                     end
                 end,
             },

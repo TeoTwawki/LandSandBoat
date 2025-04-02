@@ -5,12 +5,12 @@
 -- !addmission 12 61
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.LOOKING_FOR_LEADS)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.LOOKING_FOR_LEADS)
 
 mission.reward =
 {
-    keyItem     = xi.ki.TINTINNABULUM,
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.DRIFTING_NORTHWEST },
+    keyItem     = invaderXim.ki.TINTINNABULUM,
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.DRIFTING_NORTHWEST },
 }
 
 mission.sections =
@@ -20,12 +20,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(144),
         },
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             onTriggerAreaEnter =
             {

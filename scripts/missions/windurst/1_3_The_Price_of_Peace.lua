@@ -12,10 +12,10 @@
 -- Laa Mozi         : !pos -22 0 148 145
 -- Ghoo Pakya       : !pos -139 0 147 145
 -----------------------------------
-local giddeusID = zones[xi.zone.GIDDEUS]
+local giddeusID = zones[invaderXim.zone.GIDDEUS]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_PRICE_OF_PEACE)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_PRICE_OF_PEACE)
 
 mission.reward =
 {
@@ -34,13 +34,13 @@ end
 local offeringsTurnedIn = function(player, csid, option, npc)
     local offeringsVar = mission:getVar(player, 'OfferingsTurnedIn')
 
-    if csid == 45 and player:hasKeyItem(xi.ki.FOOD_OFFERING) then
-        player:delKeyItem(xi.ki.FOOD_OFFERING)
-        player:messageSpecial(giddeusID.text.OFFERED_UP_KEY_ITEM, xi.ki.FOOD_OFFERING)
+    if csid == 45 and player:hasKeyItem(invaderXim.ki.FOOD_OFFERING) then
+        player:delKeyItem(invaderXim.ki.FOOD_OFFERING)
+        player:messageSpecial(giddeusID.text.OFFERED_UP_KEY_ITEM, invaderXim.ki.FOOD_OFFERING)
         offeringsVar = offeringsVar + 1
-    elseif csid == 49 and player:hasKeyItem(xi.ki.DRINK_OFFERING) then
-        player:delKeyItem(xi.ki.DRINK_OFFERING)
-        player:messageSpecial(giddeusID.text.OFFERED_UP_KEY_ITEM, xi.ki.DRINK_OFFERING)
+    elseif csid == 49 and player:hasKeyItem(invaderXim.ki.DRINK_OFFERING) then
+        player:delKeyItem(invaderXim.ki.DRINK_OFFERING)
+        player:messageSpecial(giddeusID.text.OFFERED_UP_KEY_ITEM, invaderXim.ki.DRINK_OFFERING)
         offeringsVar = offeringsVar + 1
     end
 
@@ -60,12 +60,12 @@ mission.sections =
     -- Choosing to keep the existing flow we had already.
     {
         check = function(player, currentMission)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId and
                 not player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onEventFinish =
             {
@@ -73,7 +73,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onEventFinish =
             {
@@ -81,7 +81,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onEventFinish =
             {
@@ -89,7 +89,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onEventFinish =
             {
@@ -104,7 +104,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Janshura-Rashura'] = mission:event(110),
             ['Nine_of_Clubs']    = mission:event(112),
@@ -112,7 +112,7 @@ mission.sections =
             ['Ten_of_Clubs']     = mission:event(113),
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Chawo_Shipeynyo'] = mission:event(115),
             ['Keo-Koruo']       = mission:event(114),
@@ -120,7 +120,7 @@ mission.sections =
             ['Zokima-Rokima']   = mission:event(112),
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Dagoza-Beruza'] = mission:event(138),
             ['Mokyokyo']      = mission:event(136),
@@ -128,7 +128,7 @@ mission.sections =
             ['Ten_of_Hearts'] = mission:event(139),
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Miiri-Wohri'] = mission:event(151),
             ['Rakoh_Buuma'] = mission:event(150),
@@ -143,7 +143,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 1
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Kenapa-Keppa']   = mission:event(145),
             ['Leepe-Hoppe']    = mission:progressEvent(140),
@@ -153,8 +153,8 @@ mission.sections =
             {
                 [140] = function(player, csid, option, npc)
                     npcUtil.giveKeyItem(player, {
-                        xi.ki.FOOD_OFFERING,
-                        xi.ki.DRINK_OFFERING
+                        invaderXim.ki.FOOD_OFFERING,
+                        invaderXim.ki.DRINK_OFFERING
                     })
                     player:setMissionStatus(mission.areaId, 2)
                 end,
@@ -170,12 +170,12 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 2
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Leepe-Hoppe'] = mission:progressEvent(142),
         },
 
-        [xi.zone.GIDDEUS] =
+        [invaderXim.zone.GIDDEUS] =
         {
             ['Ghoo_Pakya'] = mission:progressEvent(49),
             ['Laa_Mozi']   = mission:progressEvent(45),
@@ -194,13 +194,13 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 3
         end,
 
-        [xi.zone.GIDDEUS] =
+        [invaderXim.zone.GIDDEUS] =
         {
             ['Ghoo_Pakya'] = mission:event(52):replaceDefault(),
             ['Laa_Mozi']   = mission:event(48):replaceDefault(),
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Ohbiru-Dohbiru'] = mission:event(144),
 
@@ -226,7 +226,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 4
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Janshura-Rashura'] = mission:progressEvent(114),
 
@@ -238,7 +238,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Zokima-Rokima'] = mission:progressEvent(116),
 
@@ -250,7 +250,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Leepe-Hoppe'] = mission:event(147):importantOnce(),
             ['Mokyokyo']    = mission:progressEvent(148),
@@ -263,7 +263,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Rakoh_Buuma'] = mission:progressEvent(154),
 
@@ -281,31 +281,31 @@ mission.sections =
         check = function(player)
             return player:getNation() == mission.areaId and
                 player:hasCompletedMission(mission.areaId, mission.missionId) and
-                not player:hasCompletedMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.LOST_FOR_WODS)
+                not player:hasCompletedMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.LOST_FOR_WODS)
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Nine_of_Clubs'] = mission:event(117),
             ['Puo_Rhen']      = mission:event(116),
             ['Ten_of_Clubs']  = mission:event(118),
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Chawo_Shipeynyo'] = mission:event(120),
             ['Keo-Koruo']       = mission:event(118),
             ['Pakke-Pokke']     = mission:event(119),
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Dagoza-Beruza'] = mission:event(150),
             ['Panna-Donna']   = mission:event(152),
             ['Ten_of_Hearts'] = mission:event(154),
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Miiri-Wohri'] = mission:event(157),
             ['Sola_Jaab']   = mission:event(158),

@@ -22,8 +22,8 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.LUMINION
-    params.effect = xi.effect.FLASH
+    params.ecosystem = invaderXim.ecosystem.LUMINION
+    params.effect = invaderXim.effect.FLASH
     local power = 200
     local tick = 0
     local duration = 16
@@ -31,7 +31,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     local isGaze = false
     local isConal = false
 
-    return xi.spells.blue.useEnfeeblingSpell(caster, target, spell, params, power, tick, duration, resistThreshold, isGaze, isConal)
+    return invaderXim.spells.blue.useEnfeeblingSpell(caster, target, spell, params, power, tick, duration, resistThreshold, isGaze, isConal)
 end
 
 return spellObject

@@ -1,7 +1,7 @@
 ﻿/*
 ===========================================================================
 
-  Copyright (c) 2025 LandSandBoat Dev Teams
+  Copyright (c) 2025 InvaderXim Dev Teams
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -245,7 +245,7 @@ int32 MapNetworking::map_decipher_packet(uint8* buff, size_t buffsize, MapSessio
     uint16 i   = 0;
 
     // counting blocks whose size = 4 byte
-    tmp = (uint16)((buffsize - FFXI_HEADER_SIZE) / 4);
+    tmp = (uint16)((buffsize - FFIXIM_HEADER_SIZE) / 4);
     tmp -= tmp % 2;
 
     const auto ip = PSession->client_ipp.getIP();
@@ -255,7 +255,7 @@ int32 MapNetworking::map_decipher_packet(uint8* buff, size_t buffsize, MapSessio
         blowfish_decipher((uint32*)buff + i + 7, (uint32*)buff + i + 8, pbfkey->P, pbfkey->S[0]);
     }
 
-    if (checksum((uint8*)(buff + FFXI_HEADER_SIZE), (uint32)(buffsize - (FFXI_HEADER_SIZE + 16)), (char*)(buff + buffsize - 16)) == 0)
+    if (checksum((uint8*)(buff + FFIXIM_HEADER_SIZE), (uint32)(buffsize - (FFIXIM_HEADER_SIZE + 16)), (char*)(buff + buffsize - 16)) == 0)
     {
         return 0;
     }
@@ -278,11 +278,11 @@ int32 MapNetworking::recv_parse(uint8* buff, size_t* buffsize, MapSession* map_s
 
     try
     {
-        if (size <= (FFXI_HEADER_SIZE + 16)) // check for underflow or no-data packet
+        if (size <= (FFIXIM_HEADER_SIZE + 16)) // check for underflow or no-data packet
         {
             return -1;
         }
-        checksumResult = checksum((uint8*)(buff + FFXI_HEADER_SIZE), (uint32)(size - (FFXI_HEADER_SIZE + 16)), (char*)(buff + size - 16));
+        checksumResult = checksum((uint8*)(buff + FFIXIM_HEADER_SIZE), (uint32)(size - (FFIXIM_HEADER_SIZE + 16)), (char*)(buff + size - 16));
     }
     catch (...)
     {
@@ -292,7 +292,7 @@ int32 MapNetworking::recv_parse(uint8* buff, size_t* buffsize, MapSession* map_s
 
     if (checksumResult == 0)
     {
-        uint16 packetID = ref<uint16>(buff, FFXI_HEADER_SIZE) & 0x1FF;
+        uint16 packetID = ref<uint16>(buff, FFIXIM_HEADER_SIZE) & 0x1FF;
 
         if (packetID != 0x00A)
         {
@@ -300,14 +300,14 @@ int32 MapNetworking::recv_parse(uint8* buff, size_t* buffsize, MapSession* map_s
         }
 
         // Not big enough to be 0x00A
-        if (size < (FFXI_HEADER_SIZE + sizeof(GP_CLI_LOGIN)))
+        if (size < (FFIXIM_HEADER_SIZE + sizeof(GP_CLI_LOGIN)))
         {
             return -1;
         }
 
         GP_CLI_LOGIN loginPacket = {};
 
-        std::memcpy(&loginPacket, buff + FFXI_HEADER_SIZE, sizeof(GP_CLI_LOGIN));
+        std::memcpy(&loginPacket, buff + FFIXIM_HEADER_SIZE, sizeof(GP_CLI_LOGIN));
 
         // See LoginPacketCheck from https://github.com/atom0s/XiPackets/tree/main/world/client/0x000A
         uint8 checksum = 0;
@@ -335,8 +335,8 @@ int32 MapNetworking::recv_parse(uint8* buff, size_t* buffsize, MapSession* map_s
 
         if (map_session_data->PChar == nullptr)
         {
-            uint32 charID = ref<uint32>(buff, FFXI_HEADER_SIZE + 0x0C);
-            uint16 langID = ref<uint16>(buff, FFXI_HEADER_SIZE + 0x58);
+            uint32 charID = ref<uint32>(buff, FFIXIM_HEADER_SIZE + 0x0C);
+            uint16 langID = ref<uint16>(buff, FFIXIM_HEADER_SIZE + 0x58);
 
             std::ignore = langID;
 
@@ -413,15 +413,15 @@ int32 MapNetworking::recv_parse(uint8* buff, size_t* buffsize, MapSession* map_s
         uint32 PacketDataSize = ref<uint32>(buff, *buffsize - sizeof(int32) - 16);
 
         // it's decompressing data and getting new size
-        PacketDataSize = zlib_decompress((int8*)(buff + FFXI_HEADER_SIZE), PacketDataSize, (int8*)PScratchBuffer.data(), kMaxBufferSize);
+        PacketDataSize = zlib_decompress((int8*)(buff + FFIXIM_HEADER_SIZE), PacketDataSize, (int8*)PScratchBuffer.data(), kMaxBufferSize);
 
         // Not sure why zlib_decompress is defined to return a uint32 when it returns -1 in situations.
         if (static_cast<int32>(PacketDataSize) != -1)
         {
             // it's making result buff
             // don't need std::memcpy header
-            std::memcpy(buff + FFXI_HEADER_SIZE, PScratchBuffer.data(), PacketDataSize);
-            *buffsize = FFXI_HEADER_SIZE + PacketDataSize;
+            std::memcpy(buff + FFIXIM_HEADER_SIZE, PScratchBuffer.data(), PacketDataSize);
+            *buffsize = FFIXIM_HEADER_SIZE + PacketDataSize;
 
             return decryptCount;
         }
@@ -437,7 +437,7 @@ int32 MapNetworking::parse(uint8* buff, size_t* buffsize, MapSession* map_sessio
     TracyZoneScoped;
 
     // Start processing the incoming packet
-    uint8* PacketData_Begin = &buff[FFXI_HEADER_SIZE];
+    uint8* PacketData_Begin = &buff[FFIXIM_HEADER_SIZE];
     uint8* PacketData_End   = &buff[*buffsize];
 
     CCharEntity* PChar = map_session_data->PChar;
@@ -605,7 +605,7 @@ int32 MapNetworking::send_parse(uint8* buff, size_t* buffsize, MapSession* map_s
     {
         do
         {
-            *buffsize       = FFXI_HEADER_SIZE;
+            *buffsize       = FFIXIM_HEADER_SIZE;
             auto packetList = PChar->getPacketListCopy();
             packets         = 0;
 
@@ -658,7 +658,7 @@ int32 MapNetworking::send_parse(uint8* buff, size_t* buffsize, MapSession* map_s
 
             // Compress the data without regard to the header
             // The returned size is 8 times the real data
-            PacketSize = zlib_compress((int8*)(buff + FFXI_HEADER_SIZE), (uint32)(*buffsize - FFXI_HEADER_SIZE), (int8*)PScratchBuffer.data(), kMaxBufferSize);
+            PacketSize = zlib_compress((int8*)(buff + FFIXIM_HEADER_SIZE), (uint32)(*buffsize - FFIXIM_HEADER_SIZE), (int8*)PScratchBuffer.data(), kMaxBufferSize);
 
             // handle compression error
             if (PacketSize == static_cast<uint32>(-1))
@@ -671,7 +671,7 @@ int32 MapNetworking::send_parse(uint8* buff, size_t* buffsize, MapSession* map_s
 
             PacketSize = (uint32)zlib_compressed_size(PacketSize) + 4;
 
-        } while (PacketCount > 0 && PacketSize > 1300 - FFXI_HEADER_SIZE - 16); // max size for client to accept
+        } while (PacketCount > 0 && PacketSize > 1300 - FFIXIM_HEADER_SIZE - 16); // max size for client to accept
 
         if (PacketSize == static_cast<uint32>(-1))
         {
@@ -704,7 +704,7 @@ int32 MapNetworking::send_parse(uint8* buff, size_t* buffsize, MapSession* map_s
     }
 
     // Making total outgoing packet
-    std::memcpy(buff + FFXI_HEADER_SIZE, PScratchBuffer.data(), PacketSize);
+    std::memcpy(buff + FFIXIM_HEADER_SIZE, PScratchBuffer.data(), PacketSize);
 
     uint32 CypherSize = (PacketSize / 4) & -2;
 
@@ -740,7 +740,7 @@ int32 MapNetworking::send_parse(uint8* buff, size_t* buffsize, MapSession* map_s
     // in case of a similar situation, display a warning message and
     // decrease the size of BuffMaxSize in 4 byte increments until it is removed (manually)
 
-    *buffsize = PacketSize + FFXI_HEADER_SIZE;
+    *buffsize = PacketSize + FFIXIM_HEADER_SIZE;
 
     auto remainingPackets = PChar->getPacketCount();
     TotalPacketsDelayedPerTick += static_cast<uint32>(remainingPackets);

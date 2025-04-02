@@ -9,16 +9,16 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local exitTheGambler = player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.EXIT_THE_GAMBLER)
+    local exitTheGambler = player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.IXIMT_THE_GAMBLER)
     local exitTheGamblerStat = player:getCharVar('exitTheGamblerStat')
 
     if
-        exitTheGambler < xi.questStatus.QUEST_COMPLETED and
+        exitTheGambler < invaderXim.questStatus.QUEST_COMPLETED and
         exitTheGamblerStat == 0
     then
         player:startEvent(521)
     elseif
-        exitTheGambler == xi.questStatus.QUEST_ACCEPTED and
+        exitTheGambler == invaderXim.questStatus.QUEST_ACCEPTED and
         exitTheGamblerStat == 1
     then
         player:startEvent(516)
@@ -30,14 +30,14 @@ end
 entity.onEventFinish = function(player, csid, option, npc)
     if
         csid == 521 and
-        player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.EXIT_THE_GAMBLER) == xi.questStatus.QUEST_AVAILABLE
+        player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.IXIMT_THE_GAMBLER) == invaderXim.questStatus.QUEST_AVAILABLE
     then
-        player:addQuest(xi.questLog.SANDORIA, xi.quest.id.sandoria.EXIT_THE_GAMBLER)
+        player:addQuest(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.IXIMT_THE_GAMBLER)
     elseif csid == 516 then
-        npcUtil.completeQuest(player, xi.questLog.SANDORIA, xi.quest.id.sandoria.EXIT_THE_GAMBLER, {
-            keyItem = xi.ki.MAP_OF_KING_RANPERRES_TOMB,
+        npcUtil.completeQuest(player, invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.IXIMT_THE_GAMBLER, {
+            keyItem = invaderXim.ki.MAP_OF_KING_RANPERRES_TOMB,
             exp = 2000,
-            title = xi.title.DAYBREAK_GAMBLER
+            title = invaderXim.title.DAYBREAK_GAMBLER
         })
     end
 end

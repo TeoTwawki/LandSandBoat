@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.SAUROMUGUE_CHAMPAIGN_S]
+local ID = zones[invaderXim.zone.SAUROMUGUE_CHAMPAIGN_S]
 
 return {
     ['qm_maw']       = { messageSpecial = ID.text.NOTHING_HAPPENS },

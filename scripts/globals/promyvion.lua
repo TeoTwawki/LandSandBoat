@@ -4,17 +4,17 @@
 require('scripts/globals/combat/element_tables')
 -----------------------------------
 xi = xi or {}
-xi.promyvion = xi.promyvion or {}
+invaderXim.promyvion = invaderXim.promyvion or {}
 -----------------------------------
-local demID   = zones[xi.zone.PROMYVION_DEM]
-local hollaID = zones[xi.zone.PROMYVION_HOLLA]
-local meaID   = zones[xi.zone.PROMYVION_MEA]
-local vahzlID = zones[xi.zone.PROMYVION_VAHZL]
+local demID   = zones[invaderXim.zone.PROMYVION_DEM]
+local hollaID = zones[invaderXim.zone.PROMYVION_HOLLA]
+local meaID   = zones[invaderXim.zone.PROMYVION_MEA]
+local vahzlID = zones[invaderXim.zone.PROMYVION_VAHZL]
 
 -----------------------------------
 -- Information Tables
 -----------------------------------
-xi.promyvion.mobType =
+invaderXim.promyvion.mobType =
 {
     WANDERER =  1,
     STRAY    =  2,
@@ -31,21 +31,21 @@ xi.promyvion.mobType =
 -- Contains model IDs and subAnimations, in elemental order, per mob type.
 local mobTable =
 {
-    [xi.promyvion.mobType.WANDERER] = { { 1108,  6 }, { 1110,  5 }, { 1110,  6 }, { 1107,  6 }, { 1107,  5 }, { 1106,  6 }, { 1108,  5 }, { 1106,  5 } },
-    [xi.promyvion.mobType.STRAY   ] = { { 1108, 14 }, { 1110, 13 }, { 1110, 14 }, { 1107, 14 }, { 1107, 13 }, { 1106, 14 }, { 1108, 13 }, { 1106, 13 } },
-    [xi.promyvion.mobType.WEEPER  ] = { { 1114,  6 }, { 1115,  5 }, { 1115,  6 }, { 1113,  6 }, { 1113,  5 }, { 1112,  6 }, { 1114,  5 }, { 1112,  5 } },
-    [xi.promyvion.mobType.SEETHER ] = { { 1120,  6 }, { 1121,  5 }, { 1121,  6 }, { 1119,  6 }, { 1119,  5 }, { 1117,  6 }, { 1120,  5 }, { 1117,  5 } },
-    [xi.promyvion.mobType.THINKER ] = { { 1126, 14 }, { 1127, 13 }, { 1127, 14 }, { 1124, 14 }, { 1124, 13 }, { 1123, 14 }, { 1126, 13 }, { 1123, 13 } },
-    [xi.promyvion.mobType.GORGER  ] = { { 1131, 14 }, { 1132, 13 }, { 1132, 14 }, { 1130, 14 }, { 1130, 13 }, { 1129, 14 }, { 1131, 13 }, { 1129, 13 } },
-    [xi.promyvion.mobType.CRAVER  ] = { { 1137, 14 }, { 1138, 13 }, { 1138, 14 }, { 1135, 14 }, { 1135, 13 }, { 1134, 14 }, { 1137, 13 }, { 1134, 13 } },
-    [xi.promyvion.mobType.DRIFTER ] = { { 3616,  6 }, { 3617,  5 }, { 3617,  6 }, { 3615,  6 }, { 3615,  5 }, { 3614,  6 }, { 3616,  5 }, { 3614,  5 } },
-    [xi.promyvion.mobType.LAMENTER] = { { 3621,  6 }, { 3622,  5 }, { 3622,  6 }, { 3620,  6 }, { 3620,  5 }, { 3619,  6 }, { 3621,  5 }, { 3619,  5 } },
-    [xi.promyvion.mobType.RAGER   ] = { { 3626,  6 }, { 3627,  5 }, { 3627,  6 }, { 3625,  6 }, { 3625,  5 }, { 3624,  6 }, { 3626,  5 }, { 3624,  5 } },
+    [invaderXim.promyvion.mobType.WANDERER] = { { 1108,  6 }, { 1110,  5 }, { 1110,  6 }, { 1107,  6 }, { 1107,  5 }, { 1106,  6 }, { 1108,  5 }, { 1106,  5 } },
+    [invaderXim.promyvion.mobType.STRAY   ] = { { 1108, 14 }, { 1110, 13 }, { 1110, 14 }, { 1107, 14 }, { 1107, 13 }, { 1106, 14 }, { 1108, 13 }, { 1106, 13 } },
+    [invaderXim.promyvion.mobType.WEEPER  ] = { { 1114,  6 }, { 1115,  5 }, { 1115,  6 }, { 1113,  6 }, { 1113,  5 }, { 1112,  6 }, { 1114,  5 }, { 1112,  5 } },
+    [invaderXim.promyvion.mobType.SEETHER ] = { { 1120,  6 }, { 1121,  5 }, { 1121,  6 }, { 1119,  6 }, { 1119,  5 }, { 1117,  6 }, { 1120,  5 }, { 1117,  5 } },
+    [invaderXim.promyvion.mobType.THINKER ] = { { 1126, 14 }, { 1127, 13 }, { 1127, 14 }, { 1124, 14 }, { 1124, 13 }, { 1123, 14 }, { 1126, 13 }, { 1123, 13 } },
+    [invaderXim.promyvion.mobType.GORGER  ] = { { 1131, 14 }, { 1132, 13 }, { 1132, 14 }, { 1130, 14 }, { 1130, 13 }, { 1129, 14 }, { 1131, 13 }, { 1129, 13 } },
+    [invaderXim.promyvion.mobType.CRAVER  ] = { { 1137, 14 }, { 1138, 13 }, { 1138, 14 }, { 1135, 14 }, { 1135, 13 }, { 1134, 14 }, { 1137, 13 }, { 1134, 13 } },
+    [invaderXim.promyvion.mobType.DRIFTER ] = { { 3616,  6 }, { 3617,  5 }, { 3617,  6 }, { 3615,  6 }, { 3615,  5 }, { 3614,  6 }, { 3616,  5 }, { 3614,  5 } },
+    [invaderXim.promyvion.mobType.LAMENTER] = { { 3621,  6 }, { 3622,  5 }, { 3622,  6 }, { 3620,  6 }, { 3620,  5 }, { 3619,  6 }, { 3621,  5 }, { 3619,  5 } },
+    [invaderXim.promyvion.mobType.RAGER   ] = { { 3626,  6 }, { 3627,  5 }, { 3627,  6 }, { 3625,  6 }, { 3625,  5 }, { 3624,  6 }, { 3626,  5 }, { 3624,  5 } },
 }
 
 local receptacleInfoTable =
 {
-    [xi.zone.PROMYVION_DEM] =
+    [invaderXim.zone.PROMYVION_DEM] =
     {
         -- [Mob ID (Memory receptacle)] = { Portal Group, Number of Strays, Associated "Memory stream" NPC ID }
         [demID.mob.MEMORY_RECEPTACLE_TABLE[1] ] = { 1, 3, demID.npc.MEMORY_STREAM_OFFSET      }, -- Floor 1: Portal
@@ -61,7 +61,7 @@ local receptacleInfoTable =
         [demID.mob.MEMORY_RECEPTACLE_TABLE[11]] = { 5, 7, demID.npc.MEMORY_STREAM_OFFSET + 10 }, -- Floor 3 (North): Portal SE
     },
 
-    [xi.zone.PROMYVION_HOLLA] =
+    [invaderXim.zone.PROMYVION_HOLLA] =
     {
         -- [Mob ID (Memory receptacle)] = { Portal Group, Number of Strays, Associated "Memory stream" NPC ID }
         [hollaID.mob.MEMORY_RECEPTACLE_TABLE[1] ] = { 1, 3, hollaID.npc.MEMORY_STREAM_OFFSET + 7  }, -- Floor 1: Portal
@@ -77,7 +77,7 @@ local receptacleInfoTable =
         [hollaID.mob.MEMORY_RECEPTACLE_TABLE[11]] = { 5, 7, hollaID.npc.MEMORY_STREAM_OFFSET + 10 }, -- Floor 3 (East): Portal SE
     },
 
-    [xi.zone.PROMYVION_MEA] =
+    [invaderXim.zone.PROMYVION_MEA] =
     {
         -- [Mob ID (Memory receptacle)] = { Portal Group, Number of Strays, Associated "Memory stream" NPC ID }
         [meaID.mob.MEMORY_RECEPTACLE_TABLE[1] ] = { 1, 3, meaID.npc.MEMORY_STREAM_OFFSET      }, -- Floor 1: Portal
@@ -93,7 +93,7 @@ local receptacleInfoTable =
         [meaID.mob.MEMORY_RECEPTACLE_TABLE[11]] = { 5, 7, meaID.npc.MEMORY_STREAM_OFFSET + 10 }, -- Floor 3 (East): Portal SW
     },
 
-    [xi.zone.PROMYVION_VAHZL] =
+    [invaderXim.zone.PROMYVION_VAHZL] =
     {
         -- [Mob ID (Memory receptacle)] = { Portal Group, Number of Strays, Associated "Memory stream" NPC ID }
         [vahzlID.mob.MEMORY_RECEPTACLE_TABLE[1] ] = { 1, 3, vahzlID.npc.MEMORY_STREAM_OFFSET + 2  }, -- Floor 1: Portal S
@@ -112,7 +112,7 @@ local receptacleInfoTable =
 
 local portalGroupTable =
 {
-    [xi.zone.PROMYVION_DEM] =
+    [invaderXim.zone.PROMYVION_DEM] =
     {
         [1] = { demID.npc.MEMORY_STREAM_OFFSET },                                                                              -- Floor 1
         [2] = { demID.npc.MEMORY_STREAM_OFFSET + 5, demID.npc.MEMORY_STREAM_OFFSET + 6 },                                      -- Floor 2 leading South
@@ -121,7 +121,7 @@ local portalGroupTable =
         [5] = { demID.npc.MEMORY_STREAM_OFFSET + 8, demID.npc.MEMORY_STREAM_OFFSET + 9, demID.npc.MEMORY_STREAM_OFFSET + 10 }, -- Floor 3 North
     },
 
-    [xi.zone.PROMYVION_HOLLA] =
+    [invaderXim.zone.PROMYVION_HOLLA] =
     {
         [1] = { hollaID.npc.MEMORY_STREAM_OFFSET + 7 },                                                                              -- Floor 1
         [2] = { hollaID.npc.MEMORY_STREAM_OFFSET + 4, hollaID.npc.MEMORY_STREAM_OFFSET + 6 },                                        -- Floor 2 leading West
@@ -130,7 +130,7 @@ local portalGroupTable =
         [5] = { hollaID.npc.MEMORY_STREAM_OFFSET + 8, hollaID.npc.MEMORY_STREAM_OFFSET + 9, hollaID.npc.MEMORY_STREAM_OFFSET + 10 }, -- Floor 3 East
     },
 
-    [xi.zone.PROMYVION_MEA] =
+    [invaderXim.zone.PROMYVION_MEA] =
     {
         [1] = { meaID.npc.MEMORY_STREAM_OFFSET },                                                                              -- Floor 1
         [2] = { meaID.npc.MEMORY_STREAM_OFFSET + 7, meaID.npc.MEMORY_STREAM_OFFSET + 8 },                                      -- Floor 2 leading West
@@ -139,7 +139,7 @@ local portalGroupTable =
         [5] = { meaID.npc.MEMORY_STREAM_OFFSET + 5, meaID.npc.MEMORY_STREAM_OFFSET + 6, meaID.npc.MEMORY_STREAM_OFFSET + 10 }, -- Floor 3 East
     },
 
-    [xi.zone.PROMYVION_VAHZL] =
+    [invaderXim.zone.PROMYVION_VAHZL] =
     {
         [1] = { vahzlID.npc.MEMORY_STREAM_OFFSET + 2, vahzlID.npc.MEMORY_STREAM_OFFSET + 3 },                                                                             -- Floor 1
         [2] = { vahzlID.npc.MEMORY_STREAM_OFFSET,     vahzlID.npc.MEMORY_STREAM_OFFSET + 1 },                                                                             -- Floor 2
@@ -199,7 +199,7 @@ end
 -----------------------------------
 -- Zone global functions
 -----------------------------------
-xi.promyvion.setupInitialPortals = function(zone)
+invaderXim.promyvion.setupInitialPortals = function(zone)
     local zoneId = zone:getID()
 
     for portalGroup = 1, #portalGroupTable[zoneId] do
@@ -212,10 +212,10 @@ xi.promyvion.setupInitialPortals = function(zone)
     end
 end
 
-xi.promyvion.handlePortal = function(player, npcId, eventId)
+invaderXim.promyvion.handlePortal = function(player, npcId, eventId)
     if
-        player:getAnimation() == xi.anim.NONE and
-        GetNPCByID(npcId):getAnimation() == xi.anim.OPEN_DOOR
+        player:getAnimation() == invaderXim.anim.NONE and
+        GetNPCByID(npcId):getAnimation() == invaderXim.anim.OPEN_DOOR
     then
         player:startOptionalCutscene(eventId)
     end
@@ -224,20 +224,20 @@ end
 -----------------------------------
 -- Mob global functions (Element setup)
 -----------------------------------
-xi.promyvion.emptyOnMobSpawn = function(mob, mobType)
-    local element    = math.random(xi.element.FIRE, xi.element.DARK)
-    local opposite   = xi.combat.element.getOppositeElement(element)
-    local complement = xi.element.NONE
+invaderXim.promyvion.emptyOnMobSpawn = function(mob, mobType)
+    local element    = math.random(invaderXim.element.FIRE, invaderXim.element.DARK)
+    local opposite   = invaderXim.combat.element.getOppositeElement(element)
+    local complement = invaderXim.element.NONE
 
-    if element == xi.element.WATER then
-        complement = xi.element.FIRE
-    elseif element < xi.element.WATER then
+    if element == invaderXim.element.WATER then
+        complement = invaderXim.element.FIRE
+    elseif element < invaderXim.element.WATER then
         complement = element + 1
     end
 
     -- Setup resistances.
-    for i = xi.element.FIRE, xi.element.DARK do
-        local resRankModId = xi.combat.element.getElementalResistanceRankModifier(i)
+    for i = invaderXim.element.FIRE, invaderXim.element.DARK do
+        local resRankModId = invaderXim.combat.element.getElementalResistanceRankModifier(i)
         local value        = 0
 
         if
@@ -260,13 +260,13 @@ end
 -----------------------------------
 -- Memory Receptacle global functions
 -----------------------------------
-xi.promyvion.receptacleOnMobInitialize = function(mob)
+invaderXim.promyvion.receptacleOnMobInitialize = function(mob)
     mob:setAutoAttackEnabled(false) -- Receptacles only use TP moves.
-    mob:addMod(xi.mod.DEF, 55)
-    mob:setMod(xi.mod.DESPAWN_TIME_REDUCTION, 15)
+    mob:addMod(invaderXim.mod.DEF, 55)
+    mob:setMod(invaderXim.mod.DESPAWN_TIME_REDUCTION, 15)
 end
 
-xi.promyvion.receptacleOnMobSpawn = function(mob)
+invaderXim.promyvion.receptacleOnMobSpawn = function(mob)
     -- Handle Stray pop cooldown.
     mob:setLocalVar('[Stray]CooldownIdle', os.time() + 60 * math.random(2, 6))
     mob:setLocalVar('[Stray]CooldownFight', 0)
@@ -274,11 +274,11 @@ xi.promyvion.receptacleOnMobSpawn = function(mob)
     -- Handle decoration: Fade-in.
     local decoration = GetNPCByID(mob:getID() - 1)
     if decoration then
-        decoration:updateToEntireZone(xi.status.NORMAL, xi.anim.NONE)
+        decoration:updateToEntireZone(invaderXim.status.NORMAL, invaderXim.anim.NONE)
     end
 end
 
-xi.promyvion.receptacleOnMobRoam = function(mob)
+invaderXim.promyvion.receptacleOnMobRoam = function(mob)
     -- Handle idle stray spawn.
     -- NOTE: Strays poped when receptacles are idle don't automatically link unless they are in a certain range.
     if os.time() >= mob:getLocalVar('[Stray]CooldownIdle') then
@@ -295,12 +295,12 @@ xi.promyvion.receptacleOnMobRoam = function(mob)
     end
 end
 
-xi.promyvion.receptacleOnMobEngage = function(mob)
+invaderXim.promyvion.receptacleOnMobEngage = function(mob)
     -- Handle initial TP.
     mob:setTP(3000)
 end
 
-xi.promyvion.receptacleOnMobFight = function(mob, target)
+invaderXim.promyvion.receptacleOnMobFight = function(mob, target)
     local zoneId        = mob:getZone():getID()
     local mobId         = mob:getID()
     local strayCooldown = mob:getLocalVar('[Stray]CooldownFight')
@@ -346,12 +346,12 @@ xi.promyvion.receptacleOnMobFight = function(mob, target)
     end
 end
 
-xi.promyvion.receptacleOnMobWeaponSkill = function(mob)
+invaderXim.promyvion.receptacleOnMobWeaponSkill = function(mob)
     -- When left alone after hitting it, Memory Receptacle uses it's skill every 1-3 minutes (aprox).
-    mob:setMod(xi.mod.REGAIN, 50 * math.random(1, 3))
+    mob:setMod(invaderXim.mod.REGAIN, 50 * math.random(1, 3))
 end
 
-xi.promyvion.receptacleOnMobDespawn = function(mob)
+invaderXim.promyvion.receptacleOnMobDespawn = function(mob)
     local zoneId = mob:getZone():getID()
     local mobId  = mob:getID()
 
@@ -380,10 +380,10 @@ xi.promyvion.receptacleOnMobDespawn = function(mob)
     -- Handle decoration: Reset.
     local decoration = GetNPCByID(mobId - 1)
     if decoration then
-        decoration:entityAnimationPacket(xi.animationString.STATUS_DISAPPEAR)
+        decoration:entityAnimationPacket(invaderXim.animationString.STATUS_DISAPPEAR)
         decoration:timer(2500, function(decorationArg)
-            decorationArg:updateToEntireZone(xi.status.CUTSCENE_ONLY, xi.anim.DESPAWN)
-            decorationArg:entityAnimationPacket(xi.animationString.STATUS_VISIBLE)
+            decorationArg:updateToEntireZone(invaderXim.status.CUTSCENE_ONLY, invaderXim.anim.DESPAWN)
+            decorationArg:entityAnimationPacket(invaderXim.animationString.STATUS_VISIBLE)
         end)
     end
 end

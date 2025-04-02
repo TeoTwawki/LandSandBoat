@@ -5,28 +5,28 @@
 -- Tami   : !pos 62.617 0 -68.222 234
 -- Zelman : !pos 17.095 7.704 -52.995 172
 -----------------------------------
-local bastokMinesID = zones[xi.zone.BASTOK_MINES]
-local zeruhnMinesID = zones[xi.zone.ZERUHN_MINES]
+local bastokMinesID = zones[invaderXim.zone.BASTOK_MINES]
+local zeruhnMinesID = zones[invaderXim.zone.ZERUHN_MINES]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.GROCERIES)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.GROCERIES)
 
 quest.reward =
 {
     fame     = 75,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.RABBIT_MANTLE,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.RABBIT_MANTLE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE or
-                (status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 0)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE or
+                (status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 0)
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Tami'] = quest:progressEvent(110),
 
@@ -35,7 +35,7 @@ quest.sections =
                 [110] = function(player, csid, option, npc)
                     quest:begin(player)
 
-                    npcUtil.giveKeyItem(player, xi.ki.TAMIS_NOTE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.TAMIS_NOTE)
                     quest:setVar(player, 'Prog', 1)
                 end,
             },
@@ -44,16 +44,16 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Tami'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.STRIP_OF_MEAT_JERKY) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.STRIP_OF_MEAT_JERKY) and
                         quest:getVar(player, 'Prog') == 3
                     then
                         return quest:progressEvent(113)
@@ -76,7 +76,7 @@ quest.sections =
             onEventFinish =
             {
                 [112] = function(player, csid, option, npc)
-                    player:addFame(xi.fameArea.BASTOK, 8)
+                    player:addFame(invaderXim.fameArea.BASTOK, 8)
                     npcUtil.giveCurrency(player, 'gil', 10)
 
                     quest:setVar(player, 'Prog', 0)
@@ -90,7 +90,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.ZERUHN_MINES] =
+        [invaderXim.zone.ZERUHN_MINES] =
         {
             ['Zelman'] =
             {
@@ -98,7 +98,7 @@ quest.sections =
                     local questProgress = quest:getVar(player, 'Prog')
 
                     if questProgress == 1 then
-                        if player:seenKeyItem(xi.ki.TAMIS_NOTE) then
+                        if player:seenKeyItem(invaderXim.ki.TAMIS_NOTE) then
                             return quest:progressEvent(162)
                         else
                             return quest:progressEvent(161)
@@ -113,12 +113,12 @@ quest.sections =
             {
                 [161] = function(player, csid, option, npc)
                     quest:setVar(player, 'Prog', 2)
-                    player:delKeyItem(xi.ki.TAMIS_NOTE)
+                    player:delKeyItem(invaderXim.ki.TAMIS_NOTE)
                 end,
 
                 [162] = function(player, csid, option, npc)
                     quest:setVar(player, 'Prog', 3)
-                    player:delKeyItem(xi.ki.TAMIS_NOTE)
+                    player:delKeyItem(invaderXim.ki.TAMIS_NOTE)
                 end,
             },
         },

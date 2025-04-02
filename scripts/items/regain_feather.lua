@@ -8,8 +8,8 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    if target:hasStatusEffect(xi.effect.MEDICINE) then
-        return xi.msg.basic.ITEM_NO_USE_MEDICATED
+    if target:hasStatusEffect(invaderXim.effect.MEDICINE) then
+        return invaderXim.msg.basic.ITEM_NO_USE_MEDICATED
     end
 
     return 0
@@ -19,7 +19,7 @@ itemObject.onItemUse = function(target)
     target:setHP(target:getMaxHP())
     target:setMP(target:getMaxMP())
     target:setTP(3000)
-    target:addStatusEffect(xi.effect.MEDICINE, 0, 0, 7200)
+    target:addStatusEffect(invaderXim.effect.MEDICINE, 0, 0, 7200)
 end
 
 return itemObject

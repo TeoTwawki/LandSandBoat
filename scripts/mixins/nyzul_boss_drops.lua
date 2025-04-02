@@ -4,7 +4,7 @@
 require('scripts/globals/mixins')
 -----------------------------------
 xi = xi or {}
-xi.mix = xi.mix or {}
+invaderXim.mix = invaderXim.mix or {}
 g_mixins = g_mixins or {}
 
 g_mixins.nyzul_boss_drop = function(nyzulMob)

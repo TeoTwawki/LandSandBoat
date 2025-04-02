@@ -3,7 +3,7 @@
 --  NPC: Nembet
 -- !pos 147 -3 110 80
 -----------------------------------
-local ID = zones[xi.zone.SOUTHERN_SAN_DORIA_S]
+local ID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA_S]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

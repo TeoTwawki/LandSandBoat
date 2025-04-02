@@ -8,11 +8,11 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local classReunion = player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.CLASS_REUNION)
+    local classReunion = player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.CLASS_REUNION)
 
     -- CLASS REUNION
     if
-        classReunion == xi.questStatus.QUEST_ACCEPTED and
+        classReunion == invaderXim.questStatus.QUEST_ACCEPTED and
         player:getCharVar('ClassReunionProgress') >= 3 and
         player:getCharVar('ClassReunion_TalkedToFupepe') ~= 1
     then

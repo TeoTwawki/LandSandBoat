@@ -7,14 +7,14 @@ local attachmentObject = {}
 attachmentObject.onEquip = function(pet)
     pet:addListener('AUTOMATON_ATTACHMENT_CHECK', 'ATTACHMENT_ECONOMIZER', function(automaton, target)
         local master = automaton:getMaster()
-        local maneuvers = (master and master:countEffect(xi.effect.DARK_MANEUVER) > 0) and master:countEffect(xi.effect.DARK_MANEUVER) or 7
+        local maneuvers = (master and master:countEffect(invaderXim.effect.DARK_MANEUVER) > 0) and master:countEffect(invaderXim.effect.DARK_MANEUVER) or 7
         local mpthreshold = 60 - maneuvers * 10
         local mpp = automaton:getMaxMP() > 0 and math.ceil(automaton:getMP() / automaton:getMaxMP() * 100) or 100
         if
             mpp < mpthreshold and
-            not automaton:hasRecast(xi.recast.ABILITY, xi.automaton.abilities.ECONOMIZER)
+            not automaton:hasRecast(invaderXim.recast.ABILITY, invaderXim.automaton.abilities.ECONOMIZER)
         then
-            automaton:useMobAbility(xi.automaton.abilities.ECONOMIZER, automaton)
+            automaton:useMobAbility(invaderXim.automaton.abilities.ECONOMIZER, automaton)
         end
     end)
 end

@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.CAEDARVA_MIRE]
+local ID = zones[invaderXim.zone.CAEDARVA_MIRE]
 
 return {
     ['_27b']                 = { event   = 305 },

@@ -11,7 +11,7 @@
 -- Kaa Toru the Just : !pos -100.188 -62.125 145.422 151
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.SAINTLY_INVITATION)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.SAINTLY_INVITATION)
 
 mission.reward =
 {
@@ -30,11 +30,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onEventFinish =
             {
@@ -42,7 +42,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onEventFinish =
             {
@@ -50,7 +50,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onEventFinish =
             {
@@ -58,7 +58,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onEventFinish =
             {
@@ -72,7 +72,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.HEAVENS_TOWER] =
+        [invaderXim.zone.HEAVENS_TOWER] =
         {
             ['_6q2'] =
             {
@@ -91,36 +91,36 @@ mission.sections =
             {
                 [310] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 1)
-                    player:addTitle(xi.title.HERO_ON_BEHALF_OF_WINDURST)
-                    npcUtil.giveKeyItem(player, xi.ki.HOLY_ONES_INVITATION)
+                    player:addTitle(invaderXim.title.HERO_ON_BEHALF_OF_WINDURST)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.HOLY_ONES_INVITATION)
                 end,
 
                 [312] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.HOLY_ONES_OATH)
+                        player:delKeyItem(invaderXim.ki.HOLY_ONES_OATH)
                     end
                 end,
             },
         },
 
-        [xi.zone.BALGAS_DAIS] =
+        [invaderXim.zone.BALGAS_DAIS] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 1 and
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.SAINTLY_INVITATION
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.SAINTLY_INVITATION
                     then
-                        player:addTitle(xi.title.VICTOR_OF_THE_BALGA_CONTEST)
-                        npcUtil.giveKeyItem(player, xi.ki.BALGA_CHAMPION_CERTIFICATE)
+                        player:addTitle(invaderXim.title.VICTOR_OF_THE_BALGA_CONTEST)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.BALGA_CHAMPION_CERTIFICATE)
                         player:setMissionStatus(mission.areaId, 2)
                     end
                 end,
             }
         },
 
-        [xi.zone.CASTLE_OZTROJA] =
+        [invaderXim.zone.CASTLE_OZTROJA] =
         {
             ['Kaa_Toru_the_Just'] =
             {
@@ -134,9 +134,9 @@ mission.sections =
             onEventFinish =
             {
                 [45] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.ASHURA_NECKLACE) then
-                        player:delKeyItem(xi.ki.HOLY_ONES_INVITATION)
-                        npcUtil.giveKeyItem(player, xi.ki.HOLY_ONES_OATH)
+                    if npcUtil.giveItem(player, invaderXim.item.ASHURA_NECKLACE) then
+                        player:delKeyItem(invaderXim.ki.HOLY_ONES_INVITATION)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.HOLY_ONES_OATH)
                         player:setMissionStatus(mission.areaId, 3)
                     end
                 end,

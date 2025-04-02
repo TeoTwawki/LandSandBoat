@@ -12,9 +12,9 @@ mixins =
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 798, 1, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 799, 2, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 800, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 798, 1, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 799, 2, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 800, 2, invaderXim.regime.type.GROUNDS)
 end
 
 return entity

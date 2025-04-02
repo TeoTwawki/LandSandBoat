@@ -4,15 +4,15 @@
 -- Only sells when Windurst controls Movalpolos
 -- Confirmed shop stock, August 2013
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WATERS]
+local ID = zones[invaderXim.zone.WINDURST_WATERS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local regionOwner = GetRegionOwner(xi.region.MOVALPOLOS)
+    local regionOwner = GetRegionOwner(invaderXim.region.MOVALPOLOS)
 
-    if regionOwner ~= xi.nation.WINDURST then
+    if regionOwner ~= invaderXim.nation.WINDURST then
         player:showText(npc, ID.text.PRESTAPIQ_CLOSED_DIALOG)
     else
         player:showText(npc, ID.text.PRESTAPIQ_OPEN_DIALOG)
@@ -25,7 +25,7 @@ entity.onTrigger = function(player, npc)
             1650,  6500,   --Kopparnickel Ore
             5165,   736    --Movalpolos Water
         }
-        xi.shop.general(player, stock, xi.fameArea.WINDURST)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.WINDURST)
     end
 end
 

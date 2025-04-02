@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.RAKAZNAR_INNER_COURT] =
+zones[invaderXim.zone.RAKAZNAR_INNER_COURT] =
 {
     text =
     {
@@ -27,4 +27,4 @@ zones[xi.zone.RAKAZNAR_INNER_COURT] =
     },
 }
 
-return zones[xi.zone.RAKAZNAR_INNER_COURT]
+return zones[invaderXim.zone.RAKAZNAR_INNER_COURT]

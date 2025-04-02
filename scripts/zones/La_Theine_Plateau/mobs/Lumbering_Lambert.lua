@@ -4,7 +4,7 @@
 -----------------------------------
 require('scripts/quests/tutorial')
 -----------------------------------
-local ID = zones[xi.zone.LA_THEINE_PLATEAU]
+local ID = zones[invaderXim.zone.LA_THEINE_PLATEAU]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -35,15 +35,15 @@ local bloodtearSpawnPoints =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 156)
-    xi.tutorial.onMobDeath(player)
-    xi.magian.onMobDeath(mob, player, optParams, set{ 579 })
+    invaderXim.hunts.checkHunt(mob, player, 156)
+    invaderXim.tutorial.onMobDeath(player)
+    invaderXim.magian.onMobDeath(mob, player, optParams, set{ 579 })
 end
 
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = bloodtearSpawnPoints
-    xi.mob.phOnDespawn(mob, bloodtearPHTable, 10, 75600, params) -- 21 hours
+    invaderXim.mob.phOnDespawn(mob, bloodtearPHTable, 10, 75600, params) -- 21 hours
 end
 
 return entity

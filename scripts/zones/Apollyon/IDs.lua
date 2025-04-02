@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.APOLLYON] =
+zones[invaderXim.zone.APOLLYON] =
 {
     text =
     {
@@ -242,4 +242,4 @@ zones[xi.zone.APOLLYON] =
     -- },
 }
 
-return zones[xi.zone.APOLLYON]
+return zones[invaderXim.zone.APOLLYON]

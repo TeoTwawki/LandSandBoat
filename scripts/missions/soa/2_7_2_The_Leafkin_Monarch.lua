@@ -6,11 +6,11 @@
 -- Ploh Trishbahk (trigger area) : !pos 100.580 -40.150 -63.830 257
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.THE_LEAFKIN_MONARCH)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_LEAFKIN_MONARCH)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.YGGDRASIL },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.YGGDRASIL },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             onTriggerAreaEnter =
             {
@@ -33,7 +33,7 @@ mission.sections =
             {
                 [1507] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        xi.mission.setVar(player, xi.mission.log_id.SOA, xi.mission.id.soa.YGGDRASIL, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.mission.setVar(player, invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.YGGDRASIL, 'Timer', VanadielUniqueDay() + 1)
                     end
                 end,
             },

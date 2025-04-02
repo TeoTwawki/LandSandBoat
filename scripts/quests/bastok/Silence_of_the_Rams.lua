@@ -4,28 +4,28 @@
 -- Log ID: 1, Quest ID: 48
 -- Paujean : !pos -93.738 4.649 34.373 236
 -----------------------------------
-local portBastokID = zones[xi.zone.PORT_BASTOK]
+local portBastokID = zones[invaderXim.zone.PORT_BASTOK]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.SILENCE_OF_THE_RAMS)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.SILENCE_OF_THE_RAMS)
 
 quest.reward =
 {
     fame     = 125,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.PURPLE_BELT,
-    title    = xi.title.PURPLE_BELT,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.PURPLE_BELT,
+    title    = invaderXim.title.PURPLE_BELT,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.NORG) >= 2
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.NORG) >= 2
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Paujean'] = quest:progressEvent(195),
 
@@ -40,15 +40,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Paujean'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.LUMBERING_HORN, xi.item.RAMPAGING_HORN }) then
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.LUMBERING_HORN, invaderXim.item.RAMPAGING_HORN }) then
                         return quest:progressEvent(196)
                     end
                 end,

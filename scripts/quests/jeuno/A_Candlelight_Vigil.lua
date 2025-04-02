@@ -5,25 +5,25 @@
 -- Ilumida : !pos -75 -1 58 244
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.A_CANDLELIGHT_VIGIL)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.A_CANDLELIGHT_VIGIL)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.JEUNO,
-    item     = xi.item.FLOWER_NECKLACE,
-    title    = xi.title.ACTIVIST_FOR_KINDNESS,
+    fameArea = invaderXim.fameArea.JEUNO,
+    item     = invaderXim.item.FLOWER_NECKLACE,
+    title    = invaderXim.title.ACTIVIST_FOR_KINDNESS,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.JEUNO) >= 4
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.JEUNO) >= 4
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Ilumida'] =
             {
@@ -60,15 +60,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Ilumida'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.HOLY_CANDLE) then
+                    if player:hasKeyItem(invaderXim.ki.HOLY_CANDLE) then
                         return quest:progressEvent(194)
                     else
                         return quest:progressEvent(191)
@@ -80,7 +80,7 @@ quest.sections =
             {
                 [194] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.HOLY_CANDLE)
+                        player:delKeyItem(invaderXim.ki.HOLY_CANDLE)
                         player:setLocalVar('Quest[3][66]mustZone', 1)
                     end
                 end,

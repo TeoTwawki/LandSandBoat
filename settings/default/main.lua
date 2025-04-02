@@ -1,21 +1,21 @@
 -----------------------------------
 -- MAIN SETTINGS
 -----------------------------------
--- All settings are attached to the `xi.settings` object. This is published globally, and be accessed from C++ and any script.
+-- All settings are attached to the `invaderXim.settings` object. This is published globally, and be accessed from C++ and any script.
 --
 -- This file is concerned mainly with content, balance, and gameplay tweaking.
 -----------------------------------
 
 xi = xi or {}
-xi.settings = xi.settings or {}
+invaderXim.settings = invaderXim.settings or {}
 
-xi.settings.main =
+invaderXim.settings.main =
 {
     -- Server name (not longer than 15 characters)
     SERVER_NAME = "Nameless",
 
     SERVER_MESSAGE =
-        "Please visit https://github.com/LandSandBoat/server for the latest information on the project.\n" ..
+        "Please visit https://github.com/InvaderXim/server for the latest information on the project.\n" ..
         "Thank you, and we hope you enjoy sailing the sands!",
 
     -- Setting to lock content more accurately to the expansions defined below.

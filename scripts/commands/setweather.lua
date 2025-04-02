@@ -23,7 +23,7 @@ commandObj.onTrigger = function(player, weather)
         return
     end
 
-    weather = tonumber(weather) or xi.weather[string.upper(weather)]
+    weather = tonumber(weather) or invaderXim.weather[string.upper(weather)]
     if weather == nil or weather < 0 or weather > 19 then
         error(player, 'Invalid weather ID.')
         return
@@ -31,7 +31,7 @@ commandObj.onTrigger = function(player, weather)
 
     -- invert weather table
     local weatherByNum = {}
-    for k, v in pairs(xi.weather) do
+    for k, v in pairs(invaderXim.weather) do
         weatherByNum[v] = k
     end
 

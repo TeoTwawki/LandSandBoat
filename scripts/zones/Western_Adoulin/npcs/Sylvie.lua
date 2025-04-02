@@ -4,17 +4,17 @@
 -- Starts Dances with Luopans
 -- !pos 78.094 32.000 135.725
 -----------------------------------
-local ID = zones[xi.zone.WESTERN_ADOULIN]
+local ID = zones[invaderXim.zone.WESTERN_ADOULIN]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     -- DANCES WITH LUOPANS
-    if player:getQuestStatus(xi.questLog.ADOULIN, xi.quest.id.adoulin.DANCES_WITH_LUOPANS) == xi.questStatus.QUEST_ACCEPTED then
+    if player:getQuestStatus(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.DANCES_WITH_LUOPANS) == invaderXim.questStatus.QUEST_ACCEPTED then
         if
-            player:hasKeyItem(xi.ki.FISTFUL_OF_HOMELAND_SOIL) and
-            npcUtil.tradeHas(trade, xi.item.PETRIFIED_LOG)
+            player:hasKeyItem(invaderXim.ki.FISTFUL_OF_HOMELAND_SOIL) and
+            npcUtil.tradeHas(trade, invaderXim.item.PETRIFIED_LOG)
         then
             player:startEvent(34)
         end
@@ -25,8 +25,8 @@ entity.onTrigger = function(player, npc)
     -- Buying a replacement Matre Bell on Geomancer
     if
         player:getLocalVar('Sylvie_Need_Zone') == 0 and
-        player:getMainJob() == xi.job.GEO and
-        not player:hasItem(xi.item.MATRE_BELL)
+        player:getMainJob() == invaderXim.job.GEO and
+        not player:hasItem(invaderXim.item.MATRE_BELL)
     then
         player:setLocalVar('Sylvie_Need_Zone', 1)
         player:startEvent(37)
@@ -34,23 +34,23 @@ entity.onTrigger = function(player, npc)
     end
 
     -- DANCES WITH LUOPANS
-    local dwlQuestStatus = player:getQuestStatus(xi.questLog.ADOULIN, xi.quest.id.adoulin.DANCES_WITH_LUOPANS)
-    if dwlQuestStatus == xi.questStatus.QUEST_COMPLETED then
+    local dwlQuestStatus = player:getQuestStatus(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.DANCES_WITH_LUOPANS)
+    if dwlQuestStatus == invaderXim.questStatus.QUEST_COMPLETED then
         player:startEvent(39)
     elseif player:getCharVar('GEO_DWL_Luopan') == 1 then
         player:startEvent(36)
     elseif
-        dwlQuestStatus == xi.questStatus.QUEST_ACCEPTED and
-        player:hasKeyItem(xi.ki.LUOPAN)
+        dwlQuestStatus == invaderXim.questStatus.QUEST_ACCEPTED and
+        player:hasKeyItem(invaderXim.ki.LUOPAN)
     then
         player:startEvent(35)
-    elseif dwlQuestStatus == xi.questStatus.QUEST_ACCEPTED then
+    elseif dwlQuestStatus == invaderXim.questStatus.QUEST_ACCEPTED then
         player:startEvent(33)
     elseif player:getCharVar('GEO_DWL_Triggered') == 1 then
         player:startEvent(32)
     elseif
-        dwlQuestStatus == xi.questStatus.QUEST_AVAILABLE and
-        player:getMainLvl() >= xi.settings.main.ADVANCED_JOB_LEVEL
+        dwlQuestStatus == invaderXim.questStatus.QUEST_AVAILABLE and
+        player:getMainLvl() >= invaderXim.settings.main.ADVANCED_JOB_LEVEL
     then
         player:startEvent(31)
     else
@@ -83,19 +83,19 @@ entity.onEventFinish = function(player, csid, option, npc)
             player:setCharVar('GEO_DWL_Triggered', 1)
         elseif option == 1 then
             player:setCharVar('GEO_DWL_Triggered', 0)
-            player:addQuest(xi.questLog.ADOULIN, xi.quest.id.adoulin.DANCES_WITH_LUOPANS)
+            player:addQuest(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.DANCES_WITH_LUOPANS)
         end
     elseif csid == 34 then
         player:confirmTrade()
-        player:delKeyItem(xi.ki.FISTFUL_OF_HOMELAND_SOIL)
-        npcUtil.giveKeyItem(player, xi.ki.LUOPAN)
+        player:delKeyItem(invaderXim.ki.FISTFUL_OF_HOMELAND_SOIL)
+        npcUtil.giveKeyItem(player, invaderXim.ki.LUOPAN)
     elseif csid == 36 then
-        if npcUtil.giveItem(player, { xi.item.PLATE_OF_INDI_POISON, xi.item.MATRE_BELL }) then -- 'plate of Indi-Poison' and 'Matre Bell'
-            player:unlockJob(xi.job.GEO)
+        if npcUtil.giveItem(player, { invaderXim.item.PLATE_OF_INDI_POISON, invaderXim.item.MATRE_BELL }) then -- 'plate of Indi-Poison' and 'Matre Bell'
+            player:unlockJob(invaderXim.job.GEO)
             player:messageSpecial(ID.text.YOU_CAN_NOW_BECOME, 0)  -- You can now become a geomancer!
-            npcUtil.giveKeyItem(player, xi.ki.JOB_GESTURE_GEOMANCER)
+            npcUtil.giveKeyItem(player, invaderXim.ki.JOB_GESTURE_GEOMANCER)
             player:setCharVar('GEO_DWL_Luopan', 0)
-            player:completeQuest(xi.questLog.ADOULIN, xi.quest.id.adoulin.DANCES_WITH_LUOPANS)
+            player:completeQuest(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.DANCES_WITH_LUOPANS)
         end
     end
 
@@ -104,7 +104,7 @@ entity.onEventFinish = function(player, csid, option, npc)
         local purchaseOption = player:getLocalVar('Sylvie_Matre_Bell')
         if
             purchaseOption ~= 0 and
-            npcUtil.giveItem(player, { xi.item.MATRE_BELL })
+            npcUtil.giveItem(player, { invaderXim.item.MATRE_BELL })
         then
             player:setLocalVar('Sylvie_Matre_Bell', 0)
             if purchaseOption == 1 then  -- gil

@@ -13,7 +13,7 @@
 -- Table structure for table `nm_spawn_points`
 --
 
-DROP TABLE IF EXISTS `nm_spawn_points`;
+DROP TABLE IF IXIMSTS `nm_spawn_points`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `nm_spawn_points` (

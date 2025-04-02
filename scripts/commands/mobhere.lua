@@ -23,7 +23,7 @@ commandObj.onTrigger = function(player, mobId, noDepop)
         return
     end
 
-    if zone:getTypeMask() == xi.zoneType.INSTANCED then
+    if zone:getTypeMask() == invaderXim.zoneType.INSTANCED then
         local instance = player:getInstance()
         local targ
 

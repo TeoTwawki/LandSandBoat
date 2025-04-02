@@ -21,18 +21,18 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.LUMINIAN
-    params.tpmod = xi.spells.blue.tpMod.ACC
+    params.ecosystem = invaderXim.ecosystem.LUMINIAN
+    params.tpmod = invaderXim.spells.blue.tpMod.ACC
     params.bonusacc = 0
-    if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
+    if caster:hasStatusEffect(invaderXim.effect.AZURE_LORE) then
         params.bonusacc = 70
-    elseif caster:hasStatusEffect(xi.effect.CHAIN_AFFINITY) then
+    elseif caster:hasStatusEffect(invaderXim.effect.CHAIN_AFFINITY) then
         params.bonusacc = math.floor(caster:getTP() / 50)
     end
 
-    params.attackType = xi.attackType.PHYSICAL
-    params.damageType = xi.damageType.PIERCING
-    params.scattr = xi.skillchainType.DISTORTION
+    params.attackType = invaderXim.attackType.PHYSICAL
+    params.damageType = invaderXim.damageType.PIERCING
+    params.scattr = invaderXim.skillchainType.DISTORTION
     params.numhits = 5
     params.multiplier = 1.5
     params.tp150 = 1.5
@@ -47,13 +47,13 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
 
-    params.effect = xi.effect.POISON
+    params.effect = invaderXim.effect.POISON
     local power = (caster:getMainLvl() / 5) + 3
     local tick = 0
     local duration = 180
 
-    local damage = xi.spells.blue.usePhysicalSpell(caster, target, spell, params)
-    xi.spells.blue.usePhysicalSpellAddedEffect(caster, target, spell, params, damage, power, tick, duration)
+    local damage = invaderXim.spells.blue.usePhysicalSpell(caster, target, spell, params)
+    invaderXim.spells.blue.usePhysicalSpellAddedEffect(caster, target, spell, params, damage, power, tick, duration)
 
     return damage
 end

@@ -1,17 +1,17 @@
 -----------------------------------
 -- Zone: Kuftal_Tunnel (174)
 -----------------------------------
-local ID = zones[xi.zone.KUFTAL_TUNNEL]
+local ID = zones[invaderXim.zone.KUFTAL_TUNNEL]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.treasure.initZone(zone)
+    invaderXim.treasure.initZone(zone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -97,7 +97,7 @@ zoneObject.onGameHour = function(zone)
         if
             boulder and
             isInRange(VanadielMoonPhase(), phaseInfo) and
-            boulder:getAnimation() == xi.anim.CLOSE_DOOR
+            boulder:getAnimation() == invaderXim.anim.CLOSE_DOOR
         then
             boulder:openDoor(144 * 6) -- one vanadiel hour is 144 earth seconds. lower boulder for 6 vanadiel hours.
         end

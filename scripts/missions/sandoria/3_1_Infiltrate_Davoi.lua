@@ -13,11 +13,11 @@
 -- '!' South Block Code : !pos 335.5 0 -136 149
 -- '!' North Block Code : !pos 163 0 -18 149
 -----------------------------------
-local southernSandoriaID = zones[xi.zone.SOUTHERN_SAN_DORIA]
-local northernSandoriaID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local southernSandoriaID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
+local northernSandoriaID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.INFILTRATE_DAVOI)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.INFILTRATE_DAVOI)
 
 mission.reward =
 {
@@ -36,11 +36,11 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -49,7 +49,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -64,7 +64,7 @@ mission.sections =
             return currentMission == mission.missionId and not player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Grilau'] =
             {
@@ -81,7 +81,7 @@ mission.sections =
 
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] =
             {
@@ -110,7 +110,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['_6h0'] =
             {
@@ -118,9 +118,9 @@ mission.sections =
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
                     if missionStatus == 4 then
-                        return mission:progressEvent(554, 0, xi.ki.ROYAL_KNIGHTS_DAVOI_REPORT)
+                        return mission:progressEvent(554, 0, invaderXim.ki.ROYAL_KNIGHTS_DAVOI_REPORT)
                     elseif missionStatus == 0 then
-                        return mission:progressEvent(553, 0, xi.ki.ROYAL_KNIGHTS_DAVOI_REPORT)
+                        return mission:progressEvent(553, 0, invaderXim.ki.ROYAL_KNIGHTS_DAVOI_REPORT)
                     end
                 end,
             },
@@ -133,14 +133,14 @@ mission.sections =
 
                 [554] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.ROYAL_KNIGHTS_DAVOI_REPORT)
+                        player:delKeyItem(invaderXim.ki.ROYAL_KNIGHTS_DAVOI_REPORT)
                         player:addRankPoints(100)
                     end
                 end,
             },
         },
 
-        [xi.zone.DAVOI] =
+        [invaderXim.zone.DAVOI] =
         {
             ['Quemaricond'] =
             {
@@ -167,7 +167,7 @@ mission.sections =
                 [117] = function(player, csid, option, npc)
                     npc:continuePath()
                     player:setMissionStatus(mission.areaId, 4)
-                    npcUtil.giveKeyItem(player, xi.ki.ROYAL_KNIGHTS_DAVOI_REPORT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ROYAL_KNIGHTS_DAVOI_REPORT)
                 end,
             },
         },
@@ -179,7 +179,7 @@ mission.sections =
             return currentMission == mission.missionId and player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Grilau'] =
             {
@@ -202,7 +202,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] =
             {
@@ -242,7 +242,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.DAVOI] =
+        [invaderXim.zone.DAVOI] =
         {
             -- TODO: Rename this NPC to be a non-special character, also separate these duplicate NPCs
             ['!'] =
@@ -259,28 +259,28 @@ mission.sections =
                             xPos <= 296 and
                             zPos >= -30 and
                             zPos <= -26 and
-                            not player:hasKeyItem(xi.ki.EAST_BLOCK_CODE)
+                            not player:hasKeyItem(invaderXim.ki.EAST_BLOCK_CODE)
                         then
                             player:setMissionStatus(player:getNation(), missionStatus + 1)
-                            return mission:keyItem(xi.ki.EAST_BLOCK_CODE):setPriority(1000)
+                            return mission:keyItem(invaderXim.ki.EAST_BLOCK_CODE):setPriority(1000)
                         elseif
                             xPos >= 333 and
                             xPos <= 337 and
                             zPos >= -138 and
                             zPos <= -134 and
-                            not player:hasKeyItem(xi.ki.SOUTH_BLOCK_CODE)
+                            not player:hasKeyItem(invaderXim.ki.SOUTH_BLOCK_CODE)
                         then
                             player:setMissionStatus(player:getNation(), missionStatus + 1)
-                            return mission:keyItem(xi.ki.SOUTH_BLOCK_CODE):setPriority(1000)
+                            return mission:keyItem(invaderXim.ki.SOUTH_BLOCK_CODE):setPriority(1000)
                         elseif
                             xPos >= 161 and
                             xPos <= 165 and
                             zPos >= -20 and
                             zPos <= -16 and
-                            not player:hasKeyItem(xi.ki.NORTH_BLOCK_CODE)
+                            not player:hasKeyItem(invaderXim.ki.NORTH_BLOCK_CODE)
                         then
                             player:setMissionStatus(player:getNation(), missionStatus + 1)
-                            return mission:keyItem(xi.ki.NORTH_BLOCK_CODE):setPriority(1000)
+                            return mission:keyItem(invaderXim.ki.NORTH_BLOCK_CODE):setPriority(1000)
                         end
                     end
                 end,
@@ -307,9 +307,9 @@ mission.sections =
 
                 [105] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 10)
-                    player:delKeyItem(xi.ki.EAST_BLOCK_CODE)
-                    player:delKeyItem(xi.ki.SOUTH_BLOCK_CODE)
-                    player:delKeyItem(xi.ki.NORTH_BLOCK_CODE)
+                    player:delKeyItem(invaderXim.ki.EAST_BLOCK_CODE)
+                    player:delKeyItem(invaderXim.ki.SOUTH_BLOCK_CODE)
+                    player:delKeyItem(invaderXim.ki.NORTH_BLOCK_CODE)
                 end,
             },
         },

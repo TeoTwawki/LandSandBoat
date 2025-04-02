@@ -7,11 +7,11 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.itemBoxOnItemCheck(target)
+    return invaderXim.itemUtils.itemBoxOnItemCheck(target)
 end
 
 itemObject.onItemUse = function(target)
-    npcUtil.giveItem(target, { { xi.item.RIFTBORN_BOULDER, math.random(3, 15) } })
+    npcUtil.giveItem(target, { { invaderXim.item.RIFTBORN_BOULDER, math.random(3, 15) } })
 end
 
 return itemObject

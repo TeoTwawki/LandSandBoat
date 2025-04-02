@@ -13,7 +13,7 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability, action)
-    return xi.job_utils.rune_fencer.useOneForAll(player, target, ability, action)
+    return invaderXim.job_utils.rune_fencer.useOneForAll(player, target, ability, action)
 end
 
 return abilityObject

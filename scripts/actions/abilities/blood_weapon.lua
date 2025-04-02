@@ -9,11 +9,11 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.dark_knight.checkBloodWeapon(player, target, ability)
+    return invaderXim.job_utils.dark_knight.checkBloodWeapon(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    xi.job_utils.dark_knight.useBloodWeapon(player, target, ability)
+    invaderXim.job_utils.dark_knight.useBloodWeapon(player, target, ability)
 end
 
 return abilityObject

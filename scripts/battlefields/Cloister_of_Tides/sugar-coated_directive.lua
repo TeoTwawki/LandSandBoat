@@ -2,12 +2,12 @@
 -- Area: Cloister of Tides
 -- BCNM: Sugar Coated Directive (ASA-4)
 -----------------------------------
-local cloisterOfTidesID = zones[xi.zone.CLOISTER_OF_TIDES]
+local cloisterOfTidesID = zones[invaderXim.zone.CLOISTER_OF_TIDES]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId        = xi.zone.CLOISTER_OF_TIDES,
-    battlefieldId = xi.battlefield.id.SUGAR_COATED_DIRECTIVE_CLOISTER_OF_TIDES,
+    zoneId        = invaderXim.zone.CLOISTER_OF_TIDES,
+    battlefieldId = invaderXim.battlefield.id.SUGAR_COATED_DIRECTIVE_CLOISTER_OF_TIDES,
     canLoseExp    = false,
     isMission     = true,
     allowTrusts   = true,
@@ -18,9 +18,9 @@ local content = BattlefieldMission:new({
     entryNpc      = 'WP_Entrance',
     exitNpc       = 'Water_Protocrystal',
 
-    requiredKeyItems = { xi.ki.DOMINAS_CERULEAN_SEAL, keep = true },
-    missionArea      = xi.mission.log_id.ASA,
-    mission          = xi.mission.id.asa.SUGAR_COATED_DIRECTIVE,
+    requiredKeyItems = { invaderXim.ki.DOMINAS_CERULEAN_SEAL, keep = true },
+    missionArea      = invaderXim.mission.log_id.ASA,
+    mission          = invaderXim.mission.id.asa.SUGAR_COATED_DIRECTIVE,
     requiredVar      = 'Mission[11][3]Leviathan',
     requiredValue    = 1,
 
@@ -38,7 +38,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

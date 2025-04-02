@@ -299,7 +299,7 @@ bool CMagicState::Update(time_point tick)
             CCharEntity* PChar = static_cast<CCharEntity*>(m_PEntity);
             PChar->m_charHistory.spellsCast++;
         }
-        m_PEntity->PAI->EventHandler.triggerListener("MAGIC_STATE_EXIT", m_PEntity, m_PSpell.get());
+        m_PEntity->PAI->EventHandler.triggerListener("MAGIC_STATE_IXIMT", m_PEntity, m_PSpell.get());
         return true;
     }
     return false;

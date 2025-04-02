@@ -30,7 +30,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
         realDmg = 50 * math.random(50, 100)
     end
 
-    target:takeDamage(realDmg, mob, xi.attackType.MAGICAL, xi.damageType.ELEMENTAL)
+    target:takeDamage(realDmg, mob, invaderXim.attackType.MAGICAL, invaderXim.damageType.ELEMENTAL)
 
     return realDmg
 end

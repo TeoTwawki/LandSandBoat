@@ -2,7 +2,7 @@
 -- Area: Windurst Waters
 --  NPC: Shohrun-Tuhrun
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WATERS]
+local ID = zones[invaderXim.zone.WINDURST_WATERS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -30,7 +30,7 @@ entity.onTrigger = function(player, npc)
         4868, 64400, 3, -- Scroll of Dispel
     }
 
-    xi.shop.nation(player, stock, xi.nation.WINDURST)
+    invaderXim.shop.nation(player, stock, invaderXim.nation.WINDURST)
 end
 
 return entity

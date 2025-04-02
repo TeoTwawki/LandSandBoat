@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.keyItem
-xi.keyItem =
+---@enum invaderXim.keyItem
+invaderXim.keyItem =
 {
     ZERUHN_REPORT                            = 1,
     PALBOROUGH_MINES_LOGS                    = 2,
@@ -408,7 +408,7 @@ xi.keyItem =
     MAP_OF_THE_CRAWLERS_NEST                 = 401,
     MAP_OF_THE_GARLAIGE_CITADEL              = 402,
     MAP_OF_THE_RANGUEMONT_PASS               = 403,
-    MAP_OF_GHELSBA                           = 404,
+    MAP_OF_GHEIXIMA                           = 404,
     MAP_OF_DAVOI                             = 405,
     MAP_OF_THE_PALBOROUGH_MINES              = 406,
     MAP_OF_BEADEAUX                          = 407,
@@ -451,7 +451,7 @@ xi.keyItem =
     MAP_OF_ALTAIEU                           = 444,
     MAP_OF_HUXZOI                            = 445,
     MAP_OF_RUHMET                            = 446,
-    MAP_OF_DIO_ABDHALJS_GHELSBA              = 447,
+    MAP_OF_DIO_ABDHALJS_GHEIXIMA              = 447,
     DAZE_BREAKER_CHARM                       = 448,
     SHINY_EARRING                            = 449,
     CARBUNCLES_TEAR                          = 450,
@@ -3235,5 +3235,5 @@ xi.keyItem =
     SHEET_OF_DIVINE_TUNES                    = 3360,
 }
 
----@alias xi.ki xi.keyItem
-xi.ki = xi.keyItem
+---@alias invaderXim.ki invaderXim.keyItem
+invaderXim.ki = invaderXim.keyItem

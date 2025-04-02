@@ -3,7 +3,7 @@
 --  Mob: Damselfly
 -- Note: Place holder Valkurm Emperor
 -----------------------------------
-local ID = zones[xi.zone.VALKURM_DUNES]
+local ID = zones[invaderXim.zone.VALKURM_DUNES]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -68,14 +68,14 @@ local emperorSpawnPoints =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 9, 1, xi.regime.type.FIELDS)
-    xi.regime.checkRegime(player, mob, 10, 2, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 9, 1, invaderXim.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 10, 2, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = emperorSpawnPoints
-    xi.mob.phOnDespawn(mob, emperorPHList, 10, 3600, params) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, emperorPHList, 10, 3600, params) -- 1 hour
 end
 
 return entity

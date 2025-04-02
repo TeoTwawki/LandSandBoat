@@ -14,16 +14,16 @@ abilityObject.onPetAbility = function(target, pet, skill)
     local mpAmount  = math.floor(3 * pet:getMainLvl())
     local mpRestore = mpAmount
 
-    if master and master:getMerit(xi.merit.RADIAL_ARCANA) > 0 then
-        mpRestore = mpRestore + (mpRestore * 0.03 * master:getMerit(xi.merit.RADIAL_ARCANA))
-        if master:getMod(xi.mod.RADIAL_ARCANA) > 0 then
-            mpRestore = mpRestore + (mpRestore * 0.05 * master:getMerit(xi.merit.RADIAL_ARCANA))
+    if master and master:getMerit(invaderXim.merit.RADIAL_ARCANA) > 0 then
+        mpRestore = mpRestore + (mpRestore * 0.03 * master:getMerit(invaderXim.merit.RADIAL_ARCANA))
+        if master:getMod(invaderXim.mod.RADIAL_ARCANA) > 0 then
+            mpRestore = mpRestore + (mpRestore * 0.05 * master:getMerit(invaderXim.merit.RADIAL_ARCANA))
         end
     end
 
     mpRestore = utils.clamp(mpRestore, 0, target:getMaxMP())
 
-    skill:setMsg(xi.msg.basic.SKILL_RECOVERS_MP)
+    skill:setMsg(invaderXim.msg.basic.SKILL_RECOVERS_MP)
 
     if target:getID() == pet:getID() then
         mpRestore = 0

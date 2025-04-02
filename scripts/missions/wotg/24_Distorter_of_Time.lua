@@ -6,11 +6,11 @@
 -- Regal Pawprints (9) : !pos 54.437 -41.904 104.974 136
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.DISTORTER_OF_TIME)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.DISTORTER_OF_TIME)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.THE_WILL_OF_THE_WORLD },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.THE_WILL_OF_THE_WORLD },
 }
 
 mission.sections =
@@ -20,13 +20,13 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BEAUCEDINE_GLACIER_S] =
+        [invaderXim.zone.BEAUCEDINE_GLACIER_S] =
         {
             ['Regal_Pawprints_1'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.UMBRA_BUG) and
+                        not player:hasKeyItem(invaderXim.ki.UMBRA_BUG) and
                         mission:getVar(player, 'Timer') <= VanadielUniqueDay()
                     then
                         -- TODO: For future Instance implementation, on instance fail,
@@ -50,12 +50,12 @@ mission.sections =
                 end,
 
                 [26] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.UMBRA_BUG)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.UMBRA_BUG)
                 end,
             },
         },
 
-        [xi.zone.RUHOTZ_SILVERMINES] =
+        [invaderXim.zone.RUHOTZ_SILVERMINES] =
         {
             onEventFinish =
             {
@@ -65,7 +65,7 @@ mission.sections =
                     -- implementation of the instance.
 
                     mission:setVar(player, 'Status', 1)
-                    player:setPos(51.641, -41.230, 98.680, 0, xi.zone.BEAUCEDINE_GLACIER_S)
+                    player:setPos(51.641, -41.230, 98.680, 0, invaderXim.zone.BEAUCEDINE_GLACIER_S)
                 end,
             },
         },

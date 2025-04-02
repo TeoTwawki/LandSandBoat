@@ -10,7 +10,7 @@ local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
     if player:getAnimation() ~= 1 then
-        return xi.msg.basic.REQUIRES_COMBAT, 0
+        return invaderXim.msg.basic.REQUIRES_COMBAT, 0
     end
 
     return 0, 0
@@ -18,15 +18,15 @@ end
 
 abilityObject.onUseAbility = function(player, target, ability, action)
     if
-        not target:hasStatusEffect(xi.effect.CHAINBOUND, 0) and
-        not target:hasStatusEffect(xi.effect.SKILLCHAIN, 0)
+        not target:hasStatusEffect(invaderXim.effect.CHAINBOUND, 0) and
+        not target:hasStatusEffect(invaderXim.effect.SKILLCHAIN, 0)
     then
-        target:addStatusEffectEx(xi.effect.CHAINBOUND, 0, 2, 0, 10, 0, 1)
+        target:addStatusEffectEx(invaderXim.effect.CHAINBOUND, 0, 2, 0, 10, 0, 1)
     else
-        ability:setMsg(xi.msg.basic.JA_NO_EFFECT)
+        ability:setMsg(invaderXim.msg.basic.JA_NO_EFFECT)
     end
 
-    local skill = player:getWeaponSkillType(xi.slot.MAIN)
+    local skill = player:getWeaponSkillType(invaderXim.slot.MAIN)
     local anim  = 36
 
     if skill <= 1 then

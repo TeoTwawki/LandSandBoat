@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.MIGAWARI
+-- invaderXim.effect.MIGAWARI
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

@@ -6,7 +6,7 @@
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.ECCENTRICITY_EXPUNGER)
+    player:addTitle(invaderXim.title.ECCENTRICITY_EXPUNGER)
 end
 
 return entity

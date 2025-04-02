@@ -7,12 +7,12 @@ require('scripts/globals/mobskills')
 require('scripts/globals/combat/physical_utilities')
 -----------------------------------
 xi = xi or {}
-xi.spells = xi.spells or {}
-xi.spells.blue = xi.spells.blue or {}
+invaderXim.spells = invaderXim.spells or {}
+invaderXim.spells.blue = invaderXim.spells.blue or {}
 -----------------------------------
 
 -- The TP modifier (currently unused)
-xi.spells.blue.tpMod =
+invaderXim.spells.blue.tpMod =
 {
     NONE          = 0,
     CRITICAL      = 1,
@@ -41,13 +41,13 @@ end
 -- Get WSC
 local function calculateWSC(attacker, params)
     local wsc = calculateAlpha(attacker:getMainLvl()) *
-    (attacker:getStat(xi.mod.STR) * params.str_wsc +
-    attacker:getStat(xi.mod.DEX) * params.dex_wsc +
-    attacker:getStat(xi.mod.VIT) * params.vit_wsc +
-    attacker:getStat(xi.mod.AGI) * params.agi_wsc +
-    attacker:getStat(xi.mod.INT) * params.int_wsc +
-    attacker:getStat(xi.mod.MND) * params.mnd_wsc +
-    attacker:getStat(xi.mod.CHR) * params.chr_wsc)
+    (attacker:getStat(invaderXim.mod.STR) * params.str_wsc +
+    attacker:getStat(invaderXim.mod.DEX) * params.dex_wsc +
+    attacker:getStat(invaderXim.mod.VIT) * params.vit_wsc +
+    attacker:getStat(invaderXim.mod.AGI) * params.agi_wsc +
+    attacker:getStat(invaderXim.mod.INT) * params.int_wsc +
+    attacker:getStat(invaderXim.mod.MND) * params.mnd_wsc +
+    attacker:getStat(invaderXim.mod.CHR) * params.chr_wsc)
 
     return wsc
 end
@@ -133,7 +133,7 @@ end
 
 -- Get hitrate
 local function calculateHitrate(attacker, target, bonusacc)
-    local acc     = attacker:getACC() + attacker:getMerit(xi.merit.PHYSICAL_POTENCY) * 2 + (attacker:getMainLvl() - target:getMainLvl()) * 4 + bonusacc
+    local acc     = attacker:getACC() + attacker:getMerit(invaderXim.merit.PHYSICAL_POTENCY) * 2 + (attacker:getMainLvl() - target:getMainLvl()) * 4 + bonusacc
     local eva     = target:getEVA()
     local hitrate = (75 + (acc - eva) / 2) / 100
 
@@ -158,17 +158,17 @@ end
 -----------------------------------
 
 -- Get the damage for a physical Blue Magic spell
-xi.spells.blue.usePhysicalSpell = function(caster, target, spell, params)
+invaderXim.spells.blue.usePhysicalSpell = function(caster, target, spell, params)
     -----------------------
     -- Get final D value --
     -----------------------
 
     -- Initial D value
-    local initialD = math.floor(caster:getSkillLevel(xi.skill.BLUE_MAGIC) * 0.11) * 2 + 3
+    local initialD = math.floor(caster:getSkillLevel(invaderXim.skill.BLUE_MAGIC) * 0.11) * 2 + 3
     initialD       = utils.clamp(initialD, 0, params.duppercap)
 
     -- fSTR
-    local fStr = calculatefSTR(caster:getStat(xi.mod.STR) - target:getStat(xi.mod.VIT))
+    local fStr = calculatefSTR(caster:getStat(invaderXim.mod.STR) - target:getStat(invaderXim.mod.VIT))
     if fStr > 22 then
         if params.ignorefstrcap == nil then -- Smite of Rage / Grand Slam don't have this cap applied
             fStr = 22
@@ -180,13 +180,13 @@ xi.spells.blue.usePhysicalSpell = function(caster, target, spell, params)
     local bonusWSC   = 0
 
     -- BLU AF3 bonus (triples the base WSC when it procs)
-    if caster:getMod(xi.mod.AUGMENT_BLU_MAGIC) > math.random(0, 99) then
+    if caster:getMod(invaderXim.mod.AUGMENT_BLU_MAGIC) > math.random(0, 99) then
         bonusWSC = 2
     end
 
     -- Chain Affinity -- TODO: add 'Damage/Accuracy/Critical Hit Chance varies with TP'
-    if caster:getStatusEffect(xi.effect.CHAIN_AFFINITY) then
-        local tp   = caster:getTP() + caster:getMerit(xi.merit.ENCHAINMENT) -- Total TP available
+    if caster:getStatusEffect(invaderXim.effect.CHAIN_AFFINITY) then
+        local tp   = caster:getTP() + caster:getMerit(invaderXim.merit.ENCHAINMENT) -- Total TP available
         tp         = utils.clamp(tp, 0, 3000)
         multiplier = calculatefTP(tp, params.multiplier, params.tp150, params.tp300)
         bonusWSC   = bonusWSC + 1 -- Chain Affinity doubles base WSC
@@ -197,10 +197,10 @@ xi.spells.blue.usePhysicalSpell = function(caster, target, spell, params)
     wsc       = wsc + wsc * bonusWSC -- Bonus WSC from AF3/CA
 
     -- Monster correlation
-    local correlationMultiplier = calculateCorrelation(params.ecosystem, target:getEcosystem(), caster:getMerit(xi.merit.MONSTER_CORRELATION))
+    local correlationMultiplier = calculateCorrelation(params.ecosystem, target:getEcosystem(), caster:getMerit(invaderXim.merit.MONSTER_CORRELATION))
 
     -- Azure Lore
-    if caster:getStatusEffect(xi.effect.AZURE_LORE) then
+    if caster:getStatusEffect(invaderXim.effect.AZURE_LORE) then
         multiplier = params.azuretp
     end
 
@@ -212,18 +212,18 @@ xi.spells.blue.usePhysicalSpell = function(caster, target, spell, params)
     ----------------------------------------------
 
     if params.offcratiomod == nil then -- For all spells except Cannonball, which uses a DEF mod
-        params.offcratiomod = caster:getStat(xi.mod.ATT)
+        params.offcratiomod = caster:getStat(invaderXim.mod.ATT)
     end
 
-    params.offcratiomod = params.offcratiomod * (caster:getMerit(xi.merit.PHYSICAL_POTENCY) + 100) / 100
+    params.offcratiomod = params.offcratiomod * (caster:getMerit(invaderXim.merit.PHYSICAL_POTENCY) + 100) / 100
     params.bonusacc     = params.bonusacc == nil and 0 or params.bonusacc
     params.tphitslanded = 0
 
     -- params.critchance will only be non-nil if base critchance is passed from spell lua
-    local nativecrit  = xi.combat.physical.calculateSwingCriticalRate(caster, target, 0, false)
+    local nativecrit  = invaderXim.combat.physical.calculateSwingCriticalRate(caster, target, 0, false)
     params.critchance = params.critchance == nil and 0 or utils.clamp(params.critchance / 100 + nativecrit, 0.05, 0.95)
 
-    local cratio  = calculatecRatio(params.offcratiomod / target:getStat(xi.mod.DEF), caster:getMainLvl(), target:getMainLvl())
+    local cratio  = calculatecRatio(params.offcratiomod / target:getStat(invaderXim.mod.DEF), caster:getMainLvl(), target:getMainLvl())
     local hitrate = calculateHitrate(caster, target, params.bonusacc)
 
     -------------------------
@@ -236,15 +236,15 @@ xi.spells.blue.usePhysicalSpell = function(caster, target, spell, params)
     local sneakIsApplicable = false
     local trickAttackTarget = nil
 
-    if spell:isAoE() == 0 and params.attackType ~= xi.attackType.RANGED then
+    if spell:isAoE() == 0 and params.attackType ~= invaderXim.attackType.RANGED then
         if
-            caster:hasStatusEffect(xi.effect.SNEAK_ATTACK) and
-            (caster:isBehind(target) or caster:hasStatusEffect(xi.effect.HIDE))
+            caster:hasStatusEffect(invaderXim.effect.SNEAK_ATTACK) and
+            (caster:isBehind(target) or caster:hasStatusEffect(invaderXim.effect.HIDE))
         then
             sneakIsApplicable = true
         end
 
-        if caster:hasStatusEffect(xi.effect.TRICK_ATTACK) then
+        if caster:hasStatusEffect(invaderXim.effect.TRICK_ATTACK) then
             trickAttackTarget = caster:getTrickAttackChar(target)
         end
     end
@@ -285,23 +285,23 @@ xi.spells.blue.usePhysicalSpell = function(caster, target, spell, params)
             end
         end
 
-        if params.attackType ~= xi.attackType.RANGED then
-            caster:delStatusEffect(xi.effect.SNEAK_ATTACK)
-            caster:delStatusEffect(xi.effect.TRICK_ATTACK)
+        if params.attackType ~= invaderXim.attackType.RANGED then
+            caster:delStatusEffect(invaderXim.effect.SNEAK_ATTACK)
+            caster:delStatusEffect(invaderXim.effect.TRICK_ATTACK)
         end
 
         hitsdone = hitsdone + 1
     end
 
     if finaldmg <= 0 then
-        spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
     end
 
-    return xi.spells.blue.applySpellDamage(caster, target, spell, finaldmg, params, trickAttackTarget)
+    return invaderXim.spells.blue.applySpellDamage(caster, target, spell, finaldmg, params, trickAttackTarget)
 end
 
 -- Get the damage for a magical Blue Magic spell
-xi.spells.blue.useMagicalSpell = function(caster, target, spell, params)
+invaderXim.spells.blue.useMagicalSpell = function(caster, target, spell, params)
     -- In individual magical spells, don't use params.effect for the added effect
     -- This would affect the resistance check for damage here
     -- We just want that to affect the resistance check for the added effect
@@ -309,11 +309,11 @@ xi.spells.blue.useMagicalSpell = function(caster, target, spell, params)
 
     -- Initial values
     local initialD   = utils.clamp(caster:getMainLvl() + 2, 0, params.duppercap)
-    params.skillType = xi.skill.BLUE_MAGIC
+    params.skillType = invaderXim.skill.BLUE_MAGIC
 
     -- WSC
     local wsc = calculateWSC(caster, params)
-    if caster:hasStatusEffect(xi.effect.BURST_AFFINITY) then
+    if caster:hasStatusEffect(invaderXim.effect.BURST_AFFINITY) then
         wsc = wsc * 2
     end
 
@@ -323,18 +323,18 @@ xi.spells.blue.useMagicalSpell = function(caster, target, spell, params)
 
     -- Azure Lore
     local azureBonus = 0
-    if caster:getStatusEffect(xi.effect.AZURE_LORE) then
+    if caster:getStatusEffect(invaderXim.effect.AZURE_LORE) then
         azureBonus = params.azureBonus or 0
     end
 
     -- Monster correlation
-    local correlationMultiplier = calculateCorrelation(params.ecosystem, target:getEcosystem(), caster:getMerit(xi.merit.MONSTER_CORRELATION))
+    local correlationMultiplier = calculateCorrelation(params.ecosystem, target:getEcosystem(), caster:getMerit(invaderXim.merit.MONSTER_CORRELATION))
 
     -- Final D value
     local finalD = (initialD + wsc) * (params.multiplier + azureBonus + correlationMultiplier) + statBonus
 
     -- Multitarget damage reduction
-    local finaldmg = math.floor(finalD * xi.spells.damage.calculateMTDR(spell))
+    local finaldmg = math.floor(finalD * invaderXim.spells.damage.calculateMTDR(spell))
 
     -- Resistance
     finaldmg = math.floor(finaldmg * applyResistanceEffect(caster, target, spell, params))
@@ -342,25 +342,25 @@ xi.spells.blue.useMagicalSpell = function(caster, target, spell, params)
     -- MAB/MDB/weather/day/affinity/burst effect on damage
     finaldmg = math.floor(addBonuses(caster, spell, target, finaldmg))
 
-    return xi.spells.blue.applySpellDamage(caster, target, spell, finaldmg, params, nil)
+    return invaderXim.spells.blue.applySpellDamage(caster, target, spell, finaldmg, params, nil)
 end
 
 -- Spell script Helper function.
-xi.spells.blue.useDrainSpell = function(caster, target, spell, params, damageCap, mpDrain)
+invaderXim.spells.blue.useDrainSpell = function(caster, target, spell, params, damageCap, mpDrain)
     local finalDamage = 0
 
     -- Early returns
     if
         target:isUndead() or
-        xi.spells.damage.calculateNukeAbsorbOrNullify(target, spell:getElement()) == 0 -- Drain spells cannot be absorbed, but they can be nullified.
+        invaderXim.spells.damage.calculateNukeAbsorbOrNullify(target, spell:getElement()) == 0 -- Drain spells cannot be absorbed, but they can be nullified.
     then
-        spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
 
         return 0
     end
 
     -- Base damage
-    finalDamage = math.floor(caster:getSkillLevel(xi.skill.BLUE_MAGIC) * 0.11)
+    finalDamage = math.floor(caster:getSkillLevel(invaderXim.skill.BLUE_MAGIC) * 0.11)
     finalDamage = math.floor(finalDamage * params.dmgMultiplier)
     if damageCap > 0 then
         finalDamage = utils.clamp(finalDamage, 0, damageCap)
@@ -369,8 +369,8 @@ xi.spells.blue.useDrainSpell = function(caster, target, spell, params, damageCap
     -- Multipliers
     finalDamage = math.floor(finalDamage * applyResistanceEffect(caster, target, spell, params))
     finalDamage = math.floor(addBonuses(caster, spell, target, finalDamage))
-    finalDamage = math.floor(finalDamage * xi.spells.damage.calculateTMDA(target, spell:getElement()))
-    finalDamage = math.floor(finalDamage * xi.settings.main.BLUE_POWER)
+    finalDamage = math.floor(finalDamage * invaderXim.spells.damage.calculateTMDA(target, spell:getElement()))
+    finalDamage = math.floor(finalDamage * invaderXim.settings.main.BLUE_POWER)
 
     -- MP drain
     if mpDrain then
@@ -383,7 +383,7 @@ xi.spells.blue.useDrainSpell = function(caster, target, spell, params, damageCap
     end
 
     -- Handle Phalanx, One for All, Stoneskin and target HP (Cant be higher than current HP)
-    finalDamage = utils.clamp(finalDamage - target:getMod(xi.mod.PHALANX), 0, 99999)
+    finalDamage = utils.clamp(finalDamage - target:getMod(invaderXim.mod.PHALANX), 0, 99999)
     finalDamage = utils.clamp(utils.oneforall(target, finalDamage), 0, 99999)
     finalDamage = utils.clamp(utils.stoneskin(target, finalDamage), -99999, 99999)
     finalDamage = utils.clamp(finalDamage, 0, target:getHP())
@@ -391,7 +391,7 @@ xi.spells.blue.useDrainSpell = function(caster, target, spell, params, damageCap
     -- Check if the mob has a damage cap
     finalDamage = target:checkDamageCap(finalDamage)
 
-    target:takeSpellDamage(caster, spell, finalDamage, xi.attackType.MAGICAL, xi.damageType.ELEMENTAL + spell:getElement())
+    target:takeSpellDamage(caster, spell, finalDamage, invaderXim.attackType.MAGICAL, invaderXim.damageType.ELEMENTAL + spell:getElement())
 
     if not target:isPC() then
         target:updateEnmityFromDamage(caster, finalDamage)
@@ -404,7 +404,7 @@ xi.spells.blue.useDrainSpell = function(caster, target, spell, params, damageCap
 end
 
 -- Get the damage and resistance for a breath Blue Magic spell
-xi.spells.blue.useBreathSpell = function(caster, target, spell, params, isConal)
+invaderXim.spells.blue.useBreathSpell = function(caster, target, spell, params, isConal)
     local results = {}
     results[1] = 0 -- damage
     results[2] = 0 -- resistance (used in spell to determine added effect resistance)
@@ -427,15 +427,15 @@ xi.spells.blue.useBreathSpell = function(caster, target, spell, params, isConal)
     end
 
     -- Monster correlation
-    local correlationMultiplier = calculateCorrelation(params.ecosystem, target:getEcosystem(), caster:getMerit(xi.merit.MONSTER_CORRELATION))
+    local correlationMultiplier = calculateCorrelation(params.ecosystem, target:getEcosystem(), caster:getMerit(invaderXim.merit.MONSTER_CORRELATION))
     dmg = math.floor(dmg * (1 + correlationMultiplier))
 
     -- Monster elemental adjustments
-    local mobEleAdjustments = xi.spells.damage.calculateSDT(target, spell:getElement())
+    local mobEleAdjustments = invaderXim.spells.damage.calculateSDT(target, spell:getElement())
     dmg = math.floor(dmg * mobEleAdjustments)
 
     -- Modifiers
-    dmg = math.floor(dmg * (1 + caster:getMod(xi.mod.BREATH_DMG_DEALT) / 100))
+    dmg = math.floor(dmg * (1 + caster:getMod(invaderXim.mod.BREATH_DMG_DEALT) / 100))
 
     -- Resistance
     local resistance = applyResistanceEffect(caster, target, spell, params)
@@ -444,23 +444,23 @@ xi.spells.blue.useBreathSpell = function(caster, target, spell, params, isConal)
     -- Final damage
     dmg = target:breathDmgTaken(dmg)
 
-    results[1] = xi.spells.blue.applySpellDamage(caster, target, spell, dmg, params, nil)
+    results[1] = invaderXim.spells.blue.applySpellDamage(caster, target, spell, dmg, params, nil)
     results[2] = resistance
 
     return results
 end
 
 -- Apply spell damage
-xi.spells.blue.applySpellDamage = function(caster, target, spell, dmg, params, trickAttackTarget)
-    dmg                 = math.floor(dmg * xi.settings.main.BLUE_POWER)
-    local attackType    = params.attackType or xi.attackType.NONE
-    local damageType    = params.damageType or xi.damageType.NONE
+invaderXim.spells.blue.applySpellDamage = function(caster, target, spell, dmg, params, trickAttackTarget)
+    dmg                 = math.floor(dmg * invaderXim.settings.main.BLUE_POWER)
+    local attackType    = params.attackType or invaderXim.attackType.NONE
+    local damageType    = params.damageType or invaderXim.damageType.NONE
     local tpHits        = params.tphitslanded or 0
-    local extraTPGained = xi.combat.tp.calculateTPGainOnMagicalDamage(dmg, caster, target) * math.max(tpHits - 1, 0) -- Calculate extra TP gained from multihits. takeSpellDamage accounts for one already.
+    local extraTPGained = invaderXim.combat.tp.calculateTPGainOnMagicalDamage(dmg, caster, target) * math.max(tpHits - 1, 0) -- Calculate extra TP gained from multihits. takeSpellDamage accounts for one already.
 
     -- handle MDT, One For All, Liement
-    if attackType == xi.attackType.MAGICAL then
-        local absorbOrNullify = xi.spells.damage.calculateNukeAbsorbOrNullify(target, spell:getElement())
+    if attackType == invaderXim.attackType.MAGICAL then
+        local absorbOrNullify = invaderXim.spells.damage.calculateNukeAbsorbOrNullify(target, spell:getElement())
         dmg                   = math.floor(dmg * absorbOrNullify)
 
         if dmg < 0 then
@@ -470,7 +470,7 @@ xi.spells.blue.applySpellDamage = function(caster, target, spell, dmg, params, t
             return dmg
         end
 
-        local targetMagicDamageAdjustment = xi.spells.damage.calculateTMDA(target, spell:getElement())
+        local targetMagicDamageAdjustment = invaderXim.spells.damage.calculateTMDA(target, spell:getElement())
         dmg                               = math.floor(dmg * targetMagicDamageAdjustment)
 
         dmg = utils.oneforall(target, dmg)
@@ -478,7 +478,7 @@ xi.spells.blue.applySpellDamage = function(caster, target, spell, dmg, params, t
 
     -- handle Phalanx
     if dmg > 0 then
-        dmg = utils.clamp(dmg - target:getMod(xi.mod.PHALANX), 0, 99999)
+        dmg = utils.clamp(dmg - target:getMod(invaderXim.mod.PHALANX), 0, 99999)
     end
 
     -- handle stoneskin
@@ -504,30 +504,30 @@ xi.spells.blue.applySpellDamage = function(caster, target, spell, dmg, params, t
 end
 
 -- Get the duration of an enhancing Blue Magic spell
-xi.spells.blue.calculateDurationWithDiffusion = function(caster, duration)
-    if caster:hasStatusEffect(xi.effect.DIFFUSION) then
-        local merits = caster:getMerit(xi.merit.DIFFUSION)
+invaderXim.spells.blue.calculateDurationWithDiffusion = function(caster, duration)
+    if caster:hasStatusEffect(invaderXim.effect.DIFFUSION) then
+        local merits = caster:getMerit(invaderXim.merit.DIFFUSION)
 
         if merits > 0 then -- each merit after the first increases duration by 5%
             duration = duration + (merits - 5) * duration / 100
         end
 
-        caster:delStatusEffect(xi.effect.DIFFUSION)
+        caster:delStatusEffect(invaderXim.effect.DIFFUSION)
     end
 
     return duration
 end
 
 -- Perform an enfeebling Blue Magic spell
-xi.spells.blue.useEnfeeblingSpell = function(caster, target, spell, params, power, tick, duration, resistThreshold, isGaze, isConal)
+invaderXim.spells.blue.useEnfeeblingSpell = function(caster, target, spell, params, power, tick, duration, resistThreshold, isGaze, isConal)
     -- INT and Blue Magic skill are the default resistance modifiers
-    params.diff      = caster:getStat(xi.mod.INT) - target:getStat(xi.mod.INT)
-    params.skillType = xi.skill.BLUE_MAGIC
+    params.diff      = caster:getStat(invaderXim.mod.INT) - target:getStat(invaderXim.mod.INT)
+    params.skillType = invaderXim.skill.BLUE_MAGIC
     local resist     = applyResistanceEffect(caster, target, spell, params)
 
     -- If unresisted
     if resist >= resistThreshold then
-        spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
 
         -- If this is a conal move, target needs to be in front of caster
         if
@@ -543,19 +543,19 @@ xi.spells.blue.useEnfeeblingSpell = function(caster, target, spell, params, powe
 
                 -- If status effect was inflicted
                 if target:addStatusEffect(params.effect, power, tick, duration * resist) then
-                    spell:setMsg(xi.msg.basic.MAGIC_ENFEEB_IS)
+                    spell:setMsg(invaderXim.msg.basic.MAGIC_ENFEEB_IS)
                 end
             end
         end
     else
-        spell:setMsg(xi.msg.basic.MAGIC_RESIST)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_RESIST)
     end
 
     return params.effect
 end
 
 -- Perform a curative Blue Magic spell
-xi.spells.blue.useCuringSpell = function(caster, target, spell, params)
+invaderXim.spells.blue.useCuringSpell = function(caster, target, spell, params)
     local power    = getCurePowerOld(caster)
     local divisor  = params.divisor0
     local constant = params.constant0
@@ -569,8 +569,8 @@ xi.spells.blue.useCuringSpell = function(caster, target, spell, params)
     end
 
     local final = getCureFinal(caster, spell, getBaseCureOld(power, divisor, constant), params.minCure, true)
-    final       = final + final * target:getMod(xi.mod.CURE_POTENCY_RCVD) / 100
-    final       = final * xi.settings.main.CURE_POWER
+    final       = final + final * target:getMod(invaderXim.mod.CURE_POTENCY_RCVD) / 100
+    final       = final * invaderXim.settings.main.CURE_POWER
     final       = utils.clamp(final, 0, target:getMaxHP() - target:getHP())
 
     target:addHP(final)
@@ -578,21 +578,21 @@ xi.spells.blue.useCuringSpell = function(caster, target, spell, params)
     caster:updateEnmityFromCure(target, final)
 
     if target:getID() == spell:getPrimaryTargetID() then
-        spell:setMsg(xi.msg.basic.MAGIC_RECOVERS_HP)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_RECOVERS_HP)
     else
-        spell:setMsg(xi.msg.basic.SELF_HEAL_SECONDARY)
+        spell:setMsg(invaderXim.msg.basic.SELF_HEAL_SECONDARY)
     end
 
     return final
 end
 
 -- Inflict an added enfeebling effect (after a physical spell)
-xi.spells.blue.usePhysicalSpellAddedEffect = function(caster, target, spell, params, damage, power, tick, duration)
+invaderXim.spells.blue.usePhysicalSpellAddedEffect = function(caster, target, spell, params, damage, power, tick, duration)
     -- Physical spell needs to do damage before added effect can hit
     if damage > 0 then
         -- INT and Blue Magic skill are the default resistance modifiers
-        params.diff      = caster:getStat(xi.mod.INT) - target:getStat(xi.mod.INT)
-        params.skillType = xi.skill.BLUE_MAGIC
+        params.diff      = caster:getStat(invaderXim.mod.INT) - target:getStat(invaderXim.mod.INT)
+        params.skillType = invaderXim.skill.BLUE_MAGIC
         local resist     = applyResistanceEffect(caster, target, spell, params)
 
         if resist >= 0.5 then
@@ -602,10 +602,10 @@ xi.spells.blue.usePhysicalSpellAddedEffect = function(caster, target, spell, par
 end
 
 -- Inflict an added enfeebling effect (after a magical spell)
-xi.spells.blue.useMagicalSpellAddedEffect = function(caster, target, spell, params, power, tick, duration)
+invaderXim.spells.blue.useMagicalSpellAddedEffect = function(caster, target, spell, params, power, tick, duration)
     -- Blue Magic skill + whichever attribute the spell uses will be used as resistance modifiers
     params.diff      = caster:getStat(params.attribute) - target:getStat(params.attribute)
-    params.skillType = xi.skill.BLUE_MAGIC
+    params.skillType = invaderXim.skill.BLUE_MAGIC
     params.effect    = params.addedEffect -- renamed to avoid magical spells' dmg resistance check being influenced by this
     local resist     = applyResistanceEffect(caster, target, spell, params)
 

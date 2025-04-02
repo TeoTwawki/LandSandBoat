@@ -16,9 +16,9 @@ entity.onEventFinish = function(player, csid, option, npc)
         if option == 1 then -- 1: Whence I came
             player:warp() -- TODO: Workaround for now, the last zone seems to get messed up due to mog house issues.
         elseif option == 2 then -- 2: Western Adoulin
-            player:setPos(0, 0, 0, 0, xi.zone.WESTERN_ADOULIN)
+            player:setPos(0, 0, 0, 0, invaderXim.zone.WESTERN_ADOULIN)
         elseif option == 3 then -- 3: Eastern Adoulin
-            player:setPos(0, 0, 0, 0, xi.zone.EASTERN_ADOULIN)
+            player:setPos(0, 0, 0, 0, invaderXim.zone.EASTERN_ADOULIN)
         end
     elseif csid == 1089 then
         -- TODO

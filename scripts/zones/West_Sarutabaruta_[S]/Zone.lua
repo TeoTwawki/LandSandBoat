@@ -7,13 +7,13 @@ require('scripts/globals/dark_ixion')
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.helm.initZone(zone, xi.helmType.HARVESTING)
-    xi.voidwalker.zoneOnInit(zone)
-    xi.darkixion.zoneOnInit(zone)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.HARVESTING)
+    invaderXim.voidwalker.zoneOnInit(zone)
+    invaderXim.darkixion.zoneOnInit(zone)
 end
 
 zoneObject.onGameHour = function(zone)
-    xi.darkixion.zoneOnGameHour(zone)
+    invaderXim.darkixion.zoneOnGameHour(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)

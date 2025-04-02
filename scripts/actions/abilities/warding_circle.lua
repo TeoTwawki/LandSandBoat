@@ -13,14 +13,14 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    local duration = 180 + player:getMod(xi.mod.WARDING_CIRCLE_DURATION)
+    local duration = 180 + player:getMod(invaderXim.mod.WARDING_CIRCLE_DURATION)
     local power    = 5
 
-    if player:getMainJob() == xi.job.SAM then
+    if player:getMainJob() == invaderXim.job.SAM then
         power = 15
     end
 
-    target:addStatusEffect(xi.effect.WARDING_CIRCLE, power, 0, duration)
+    target:addStatusEffect(invaderXim.effect.WARDING_CIRCLE, power, 0, duration)
 end
 
 return abilityObject

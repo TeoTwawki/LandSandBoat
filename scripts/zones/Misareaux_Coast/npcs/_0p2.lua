@@ -10,8 +10,8 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     -- Can pass after completing COP 2-4
     if
-        player:getCurrentMission(xi.mission.log_id.COP) > xi.mission.id.cop.AN_ETERNAL_MELODY or
-        player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.THE_LAST_VERSE)
+        player:getCurrentMission(invaderXim.mission.log_id.COP) > invaderXim.mission.id.cop.AN_ETERNAL_MELODY or
+        player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_LAST_VERSE)
     then
         player:startEvent(552)
     end

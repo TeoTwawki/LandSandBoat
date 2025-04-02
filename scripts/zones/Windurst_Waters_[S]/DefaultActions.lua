@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.WINDURST_WATERS_S]
+local ID = zones[invaderXim.zone.WINDURST_WATERS_S]
 
 return {
     ['Adjutant']        = { event = 305 },

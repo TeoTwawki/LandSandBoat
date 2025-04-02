@@ -2,29 +2,29 @@
 -- Rhapsodies of Vana'diel
 -- Rhapsodies of Vana'diel Mission 1-1
 -----------------------------------
--- NOTE: xi.mission.id.rov.RHAPSODIES_OF_VANADIEL is set by default
+-- NOTE: invaderXim.mission.id.rov.RHAPSODIES_OF_VANADIEL is set by default
 -- !addmission 13 0
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.RHAPSODIES_OF_VANADIEL)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.RHAPSODIES_OF_VANADIEL)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.RESONACE },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.RESONACE },
 }
 
 local rovEntryZones =
 {
-    xi.zone.BASTOK_MARKETS,
-    xi.zone.BASTOK_MINES,
-    xi.zone.NORTHERN_SAN_DORIA,
-    xi.zone.PORT_BASTOK,
-    xi.zone.PORT_SAN_DORIA,
-    xi.zone.PORT_WINDURST,
-    xi.zone.SOUTHERN_SAN_DORIA,
-    xi.zone.WINDURST_WALLS,
-    xi.zone.WINDURST_WATERS,
-    xi.zone.WINDURST_WOODS,
+    invaderXim.zone.BASTOK_MARKETS,
+    invaderXim.zone.BASTOK_MINES,
+    invaderXim.zone.NORTHERN_SAN_DORIA,
+    invaderXim.zone.PORT_BASTOK,
+    invaderXim.zone.PORT_SAN_DORIA,
+    invaderXim.zone.PORT_WINDURST,
+    invaderXim.zone.SOUTHERN_SAN_DORIA,
+    invaderXim.zone.WINDURST_WALLS,
+    invaderXim.zone.WINDURST_WATERS,
+    invaderXim.zone.WINDURST_WOODS,
 }
 
 mission.sections    = {}
@@ -32,7 +32,7 @@ mission.sections[1] =
 {
     check = function(player, currentMission, missionStatus, vars)
         return currentMission == mission.missionId and
-            xi.settings.main.ENABLE_ROV == 1 and
+            invaderXim.settings.main.ENABLE_ROV == 1 and
             player:getMainLvl() >= 3 and
             not player:isInMogHouse()
     end,

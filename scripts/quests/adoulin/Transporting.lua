@@ -6,14 +6,14 @@
 -- Kongramm         : !pos 61 32 138 256
 -- qm_sluice_gate_6 : !pos -563 -5.768 61.5 258
 -----------------------------------
-local ralaID = zones[xi.zone.RALA_WATERWAYS]
+local ralaID = zones[invaderXim.zone.RALA_WATERWAYS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.ADOULIN, xi.quest.id.adoulin.TRANSPORTING)
+local quest = Quest:new(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.TRANSPORTING)
 
 quest.reward =
 {
-    fameArea = xi.fameArea.ADOULIN,
+    fameArea = invaderXim.fameArea.ADOULIN,
     bayld    = 300,
     exp      = 1000,
 }
@@ -22,11 +22,11 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.ADOULIN) >= 2
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.ADOULIN) >= 2
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Vaulois'] = quest:progressEvent(2590),
 
@@ -34,7 +34,7 @@ quest.sections =
             {
                 [2590] = function(player, csid, option, npc)
                     quest:begin(player)
-                    npcUtil.giveKeyItem(player, xi.ki.MISDELIVERED_PARCEL)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.MISDELIVERED_PARCEL)
                 end,
             },
         },
@@ -42,10 +42,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Kongramm'] =
             {
@@ -77,7 +77,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['qm_sluice_gate_6'] =
             {
@@ -91,8 +91,8 @@ quest.sections =
             onEventFinish =
             {
                 [2802] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.MISDELIVERED_PARCEL)
-                    player:messageSpecial(ralaID.text.KEYITEM_LOST, xi.ki.MISDELIVERED_PARCEL)
+                    player:delKeyItem(invaderXim.ki.MISDELIVERED_PARCEL)
+                    player:messageSpecial(ralaID.text.KEYITEM_LOST, invaderXim.ki.MISDELIVERED_PARCEL)
 
                     quest:setVar(player, 'Prog', 2)
                 end,

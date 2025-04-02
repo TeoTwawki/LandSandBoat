@@ -5,9 +5,9 @@ require('scripts/globals/battlefield')
 require('scripts/globals/interaction/container')
 -----------------------------------
 xi = xi or {}
-xi.limbus = xi.limbus or {}
+invaderXim.limbus = invaderXim.limbus or {}
 
-function xi.limbus.enter(player, entrance)
+function invaderXim.limbus.enter(player, entrance)
     switch (entrance): caseof
     {
         [0] = function()
@@ -20,40 +20,40 @@ function xi.limbus.enter(player, entrance)
     }
 end
 
-function xi.limbus.showRecoverCrate(crateID)
+function invaderXim.limbus.showRecoverCrate(crateID)
     local crate = GetMobByID(crateID)
 
     if crate then
         crate:setAnimationSub(8)
-        crate:setStatus(xi.status.NORMAL)
+        crate:setStatus(invaderXim.status.NORMAL)
         crate:setUntargetable(false)
         crate:resetLocalVars()
     end
 end
 
-function xi.limbus.hideCrate(crate)
-    crate:setStatus(xi.status.DISAPPEAR)
+function invaderXim.limbus.hideCrate(crate)
+    crate:setStatus(invaderXim.status.DISAPPEAR)
     crate:setUntargetable(true)
     crate:resetLocalVars()
 end
 
-function xi.limbus.spawnFrom(mob, crateID)
+function invaderXim.limbus.spawnFrom(mob, crateID)
     local crate = GetEntityByID(crateID)
 
     if crate and crate:getLocalVar('opened') == 0 then
         crate:setPos(mob:getXPos(), mob:getYPos(), mob:getZPos(), mob:getRotPos())
-        crate:setStatus(xi.status.NORMAL)
+        crate:setStatus(invaderXim.status.NORMAL)
         crate:setUntargetable(false)
         crate:setAnimationSub(8)
     end
 end
 
-function xi.limbus.spawnRecoverFrom(mob, crateID)
+function invaderXim.limbus.spawnRecoverFrom(mob, crateID)
     local crate = GetMobByID(crateID)
 
     if crate then
         crate:setPos(mob:getXPos(), mob:getYPos(), mob:getZPos(), mob:getRotPos())
-        xi.limbus.showRecoverCrate(crateID)
+        invaderXim.limbus.showRecoverCrate(crateID)
     end
 end
 
@@ -134,7 +134,7 @@ function Limbus:onBattlefieldInitialize(battlefield)
             local crate = GetEntityByID(crateID)
 
             if crate then
-                xi.limbus.hideCrate(crate)
+                invaderXim.limbus.hideCrate(crate)
                 crate:addListener('ON_TRIGGER', 'TRIGGER_ITEM_CRATE', utils.bind(self.handleOpenItemCrate, self))
             end
         end
@@ -146,7 +146,7 @@ function Limbus:onBattlefieldInitialize(battlefield)
             local crate = GetEntityByID(crateID)
 
             if crate then
-                xi.limbus.hideCrate(crate)
+                invaderXim.limbus.hideCrate(crate)
                 crate:addListener('ON_TRIGGER', 'TRIGGER_TIME_CRATE', utils.bind(self.handleOpenTimeCrate, self))
             end
         end
@@ -159,7 +159,7 @@ function Limbus:onBattlefieldInitialize(battlefield)
             local crate = GetEntityByID(crateID)
 
             if crate then
-                xi.limbus.hideCrate(crate)
+                invaderXim.limbus.hideCrate(crate)
                 crate:setBattleID(1) -- Different battle ID prevents the crate from being hit by AOEs
                 crate:addListener('ON_TRIGGER', 'TRIGGER_RECOVER_CRATE', utils.bind(self.handleOpenRecoverCrate, self))
             end
@@ -171,7 +171,7 @@ function Limbus:onBattlefieldInitialize(battlefield)
         local crate = GetEntityByID(self.lootCrateId)
 
         if crate then
-            xi.limbus.hideCrate(crate)
+            invaderXim.limbus.hideCrate(crate)
             crate:addListener('ON_TRIGGER', 'TRIGGER_LOOT_CRATE', utils.bind(self.handleOpenLootCrate, self))
         end
     end
@@ -264,7 +264,7 @@ function Limbus:handleOpenLootCrate(player, crate)
 
         self:handleLootRolls(battlefield, self.loot[self.lootCrateId], crate)
         battlefield:setLocalVar('cutsceneTimer', self.delayToExit)
-        battlefield:setStatus(xi.battlefield.status.WON)
+        battlefield:setStatus(invaderXim.battlefield.status.WON)
     end)
 end
 
@@ -282,7 +282,7 @@ end
 function Limbus:openDoor(battlefield, floor)
     local door = GetNPCByID(self.ID.npc.PORTAL[floor])
 
-    if not door or door:getAnimation() == xi.animation.OPEN_DOOR then
+    if not door or door:getAnimation() == invaderXim.animation.OPEN_DOOR then
         return
     end
 
@@ -294,13 +294,13 @@ function Limbus:openDoor(battlefield, floor)
         player:messageSpecial(ID.text.TIME_LEFT, remaining)
     end
 
-    door:setAnimation(xi.animation.OPEN_DOOR)
+    door:setAnimation(invaderXim.animation.OPEN_DOOR)
 end
 
 function Limbus:closeDoors()
     if self.ID.npc.PORTAL then
         for _, doorID in ipairs(self.ID.npc.PORTAL) do
-            GetNPCByID(doorID):setAnimation(xi.animation.CLOSE_DOOR)
+            GetNPCByID(doorID):setAnimation(invaderXim.animation.CLOSE_DOOR)
         end
     end
 end

@@ -61,7 +61,7 @@ local spawnPoints =
 
 local function enterFlight(mob)
     mob:setAnimationSub(1) -- Change to flight.
-    mob:addStatusEffectEx(xi.effect.ALL_MISS, 0, 1, 0, 0)
+    mob:addStatusEffectEx(invaderXim.effect.ALL_MISS, 0, 1, 0, 0)
     mob:setMobSkillAttack(730)
     mob:setLocalVar('flightTime', os.time() + 120)
     mob:setLocalVar('changeHP', mob:getHP() - 10000)
@@ -70,7 +70,7 @@ end
 entity.onMobInitialize = function(mob)
     mob:setCarefulPathing(true) -- Used for drawin
 
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(math.random(144, 240) * 1800) -- 3 to 5 days in 30 minute windows
 end
 
@@ -78,38 +78,38 @@ entity.onMobSpawn = function(mob)
     -- Ensure Tiamat spawns with correct ground status
     mob:setMobSkillAttack(0)
     mob:setAnimationSub(0)
-    mob:delStatusEffect(xi.effect.ALL_MISS)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:delStatusEffect(invaderXim.effect.ALL_MISS)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
 
-    mob:setMod(xi.mod.ACC, 444)
-    mob:setMod(xi.mod.ATT, 388)
-    mob:setMod(xi.mod.COUNTER, 10)
-    mob:setMod(xi.mod.CURSE_MEVA, 1000) -- TODO: Needs curse immunity verification
-    mob:setMod(xi.mod.DEF, 463)
-    mob:setMod(xi.mod.EVA, 397)
-    mob:setMod(xi.mod.MATT, 0)
-    mob:setMod(xi.mod.REFRESH, 200)
-    mob:setMod(xi.mod.REGEN, 22)
-    mob:setMod(xi.mod.UDMGMAGIC, -5000)
-    mob:setMod(xi.mod.UDMGRANGE, -5000)
-    mob:setMod(xi.mod.UDMGBREATH, -5000)
-    mob:setMod(xi.mod.UFASTCAST, 50)
-    mob:setMod(xi.mod.VIT, 19)
-    mob:setMobMod(xi.mobMod.ROAM_COOL, 55)
-    mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 5)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
-    mob:setMobMod(xi.mobMod.WEAPON_BONUS, 150) -- 247 total weapon damage
-    mob:setBehavior(bit.bor(mob:getBehavior(), xi.behavior.NO_TURN))
-    mob:addImmunity(xi.immunity.BIND)
-    mob:addImmunity(xi.immunity.PARALYZE)
-    mob:addImmunity(xi.immunity.PLAGUE)
-    mob:addImmunity(xi.immunity.PETRIFY)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.TERROR)
+    mob:setMod(invaderXim.mod.ACC, 444)
+    mob:setMod(invaderXim.mod.ATT, 388)
+    mob:setMod(invaderXim.mod.COUNTER, 10)
+    mob:setMod(invaderXim.mod.CURSE_MEVA, 1000) -- TODO: Needs curse immunity verification
+    mob:setMod(invaderXim.mod.DEF, 463)
+    mob:setMod(invaderXim.mod.EVA, 397)
+    mob:setMod(invaderXim.mod.MATT, 0)
+    mob:setMod(invaderXim.mod.REFRESH, 200)
+    mob:setMod(invaderXim.mod.REGEN, 22)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, -5000)
+    mob:setMod(invaderXim.mod.UDMGRANGE, -5000)
+    mob:setMod(invaderXim.mod.UDMGBREATH, -5000)
+    mob:setMod(invaderXim.mod.UFASTCAST, 50)
+    mob:setMod(invaderXim.mod.VIT, 19)
+    mob:setMobMod(invaderXim.mobMod.ROAM_COOL, 55)
+    mob:setMobMod(invaderXim.mobMod.ROAM_DISTANCE, 5)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
+    mob:setMobMod(invaderXim.mobMod.WEAPON_BONUS, 150) -- 247 total weapon damage
+    mob:setBehavior(bit.bor(mob:getBehavior(), invaderXim.behavior.NO_TURN))
+    mob:addImmunity(invaderXim.immunity.BIND)
+    mob:addImmunity(invaderXim.immunity.PARALYZE)
+    mob:addImmunity(invaderXim.immunity.PLAGUE)
+    mob:addImmunity(invaderXim.immunity.PETRIFY)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.TERROR)
 end
 
 entity.onMobRoam = function(mob)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
 end
 
 entity.onMobEngage = function(mob, target)
@@ -143,11 +143,11 @@ entity.onMobFight = function(mob, target)
 
     for _, condition in ipairs(drawInTable.conditions) do
         if condition then
-            mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+            mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
             utils.drawIn(target, drawInTable)
             break
         else
-            mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+            mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
         end
     end
 
@@ -155,24 +155,24 @@ entity.onMobFight = function(mob, target)
     local hpp = mob:getHPP()
     if
         hpp <= 25 and
-        not mob:hasStatusEffect(xi.effect.ATTACK_BOOST)
+        not mob:hasStatusEffect(invaderXim.effect.ATTACK_BOOST)
     then
-        mob:addStatusEffect(xi.effect.ATTACK_BOOST, 75, 0, 0)
-        mob:getStatusEffect(xi.effect.ATTACK_BOOST):addEffectFlag(xi.effectFlag.DEATH)
+        mob:addStatusEffect(invaderXim.effect.ATTACK_BOOST, 75, 0, 0)
+        mob:getStatusEffect(invaderXim.effect.ATTACK_BOOST):addEffectFlag(invaderXim.effectFlag.DEATH)
     end
 
     -- Gains a delay reduction (from 210 to 160) when health is under 10%
     if hpp <= 10 and mob:getLocalVar('appliedDelayReduction') == 0 then
-        mob:addMod(xi.mod.DELAY, 833)
+        mob:addMod(invaderXim.mod.DELAY, 833)
         mob:setLocalVar('appliedDelayReduction', 1)
     elseif hpp > 10 and mob:getLocalVar('appliedDelayReduction') == 1 then
-        mob:delMod(xi.mod.DELAY, 833)
+        mob:delMod(invaderXim.mod.DELAY, 833)
         mob:setLocalVar('appliedDelayReduction', 0)
     end
 
     -- Animation (Ground or flight mode) logic.
     if
-        not mob:hasStatusEffect(xi.effect.MIGHTY_STRIKES) and
+        not mob:hasStatusEffect(invaderXim.effect.MIGHTY_STRIKES) and
         mob:actionQueueEmpty()
     then
         local flightTime  = mob:getLocalVar('flightTime')
@@ -194,7 +194,7 @@ entity.onMobFight = function(mob, target)
             mob:checkDistance(target) <= 6 -- This 2 checks are a hack until we can handle skills targeting a position and not an entity.
         then
             mob:useMobAbility(1282) -- This ability also handles animation change to 2.
-            mob:setBehavior(bit.bor(mob:getBehavior(), xi.behavior.NO_TURN))
+            mob:setBehavior(bit.bor(mob:getBehavior(), invaderXim.behavior.NO_TURN))
             mob:setLocalVar('flightTime', os.time() + 120)
             mob:setLocalVar('changeHP', mob:getHP() - 10000)
 
@@ -216,9 +216,9 @@ entity.onMobFight = function(mob, target)
 
     -- Tiamat wakes from sleep in air
     if
-        (mob:hasStatusEffect(xi.effect.SLEEP_I) or
-        mob:hasStatusEffect(xi.effect.SLEEP_II) or
-        mob:hasStatusEffect(xi.effect.LULLABY)) and
+        (mob:hasStatusEffect(invaderXim.effect.SLEEP_I) or
+        mob:hasStatusEffect(invaderXim.effect.SLEEP_II) or
+        mob:hasStatusEffect(invaderXim.effect.LULLABY)) and
         mob:getAnimationSub() == 1
     then
         mob:wakeUp()
@@ -243,7 +243,7 @@ entity.onMobWeaponSkill = function(target, mob, skill)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.ENFIRE, { chance = 20, power = 100 })
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.ENFIRE, { chance = 20, power = 100 })
 end
 
 entity.onMobDisengage = function(mob)
@@ -252,19 +252,19 @@ entity.onMobDisengage = function(mob)
         local flightTime = mob:getLocalVar('flightTime')
         mob:setLocalVar('flightTime', flightTime - os.time()) -- Get seconds left to fly for next pull
         mob:setAnimationSub(0)
-        mob:delStatusEffect(xi.effect.ALL_MISS)
-        mob:setBehavior(bit.bor(mob:getBehavior(), xi.behavior.NO_TURN))
+        mob:delStatusEffect(invaderXim.effect.ALL_MISS)
+        mob:setBehavior(bit.bor(mob:getBehavior(), invaderXim.behavior.NO_TURN))
         mob:setMobSkillAttack(0)
         mob:setLocalVar('changeHP', 0)
     end
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.TIAMAT_TROUNCER)
+    player:addTitle(invaderXim.title.TIAMAT_TROUNCER)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(math.random(144, 240) * 1800) -- 3 to 5 days in 30 minute windows
 end
 

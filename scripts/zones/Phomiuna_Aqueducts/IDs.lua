@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.PHOMIUNA_AQUEDUCTS] =
+zones[invaderXim.zone.PHOMIUNA_AQUEDUCTS] =
 {
     text =
     {
@@ -35,4 +35,4 @@ zones[xi.zone.PHOMIUNA_AQUEDUCTS] =
     },
 }
 
-return zones[xi.zone.PHOMIUNA_AQUEDUCTS]
+return zones[invaderXim.zone.PHOMIUNA_AQUEDUCTS]

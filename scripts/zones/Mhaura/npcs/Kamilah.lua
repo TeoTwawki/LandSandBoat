@@ -4,7 +4,7 @@
 -- Guild Merchant NPC: Blacksmithing Guild
 -- !pos -64.302 -16.000 35.261 249
 -----------------------------------
-local ID = zones[xi.zone.MHAURA]
+local ID = zones[invaderXim.zone.MHAURA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

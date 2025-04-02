@@ -8,14 +8,14 @@
 -- SW / Tarutaru tower !pos -580 0 -644 35
 -- NW / Mithra tower   !pos -683 0 -340 35
 -----------------------------------
-local ID = zones[xi.zone.THE_GARDEN_OF_RUHMET]
+local ID = zones[invaderXim.zone.THE_GARDEN_OF_RUHMET]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHas(trade, xi.item.HIGH_QUALITY_EUVHI_ORGAN) and
+        npcUtil.tradeHas(trade, invaderXim.item.HIGH_QUALITY_EUVHI_ORGAN) and
         npcUtil.popFromQM(player, npc, ID.mob.JAILER_OF_FAITH, { radius = 1 })
     then
         player:confirmTrade()

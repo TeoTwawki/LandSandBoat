@@ -5,30 +5,30 @@
 -- Romilda : !pos 5.424 4.898 -18.699 236
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.TILL_DEATH_DO_US_PART)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.TILL_DEATH_DO_US_PART)
 
 quest.reward =
 {
     fame     = 160,
-    fameArea = xi.fameArea.BASTOK,
+    fameArea = invaderXim.fameArea.BASTOK,
     gil      = 2000,
-    title    = xi.title.QIJIS_RIVAL,
+    title    = invaderXim.title.QIJIS_RIVAL,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.FOREVER_TO_HOLD)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.FOREVER_TO_HOLD)
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Romilda'] =
             {
                 onTrigger = function(player, npc)
-                    if player:getFameLevel(xi.fameArea.BASTOK) >= 3 then
+                    if player:getFameLevel(invaderXim.fameArea.BASTOK) >= 3 then
                         return quest:progressEvent(128)
                     else
                         return quest:event(127)
@@ -47,15 +47,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Romilda'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.COTTON_GLOVES) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.COTTON_GLOVES) then
                         return quest:progressEvent(129)
                     end
                 end,

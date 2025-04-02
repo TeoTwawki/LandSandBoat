@@ -2,14 +2,14 @@
 -- Area: Temple of Uggalepih
 --  NPC: ??? (Spawns Sozu Rogberry NM)
 -----------------------------------
-local ID = zones[xi.zone.TEMPLE_OF_UGGALEPIH]
+local ID = zones[invaderXim.zone.TEMPLE_OF_UGGALEPIH]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHas(trade, xi.item.FLICKERING_LANTERN) and
+        npcUtil.tradeHas(trade, invaderXim.item.FLICKERING_LANTERN) and
         npcUtil.popFromQM(player, npc, ID.mob.SOZU_ROGBERRY)
     then
         player:confirmTrade()

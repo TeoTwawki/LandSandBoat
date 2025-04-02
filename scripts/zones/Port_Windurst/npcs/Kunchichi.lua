@@ -7,14 +7,14 @@
 local entity = {}
 
 entity.onSpawn = function(npc)
-    npcUtil.castingAnimation(npc, xi.magic.spellGroup.BLACK, 16)
+    npcUtil.castingAnimation(npc, invaderXim.magic.spellGroup.BLACK, 16)
 end
 
 entity.onTrigger = function(player, npc)
     local wildcatWindurst = player:getCharVar('WildcatWindurst')
 
     if
-        player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.LURE_OF_THE_WILDCAT) == xi.questStatus.QUEST_ACCEPTED and
+        player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.LURE_OF_THE_WILDCAT) == invaderXim.questStatus.QUEST_ACCEPTED and
         not utils.mask.getBit(wildcatWindurst, 15)
     then
         player:startEvent(623)

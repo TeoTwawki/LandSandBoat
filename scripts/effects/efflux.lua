@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.EFFLUX
+-- invaderXim.effect.EFFLUX
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

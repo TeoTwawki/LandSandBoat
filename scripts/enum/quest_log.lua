@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.questLog
-xi.questLog =
+---@enum invaderXim.questLog
+invaderXim.questLog =
 {
     SANDORIA    =  0,
     BASTOK      =  1,

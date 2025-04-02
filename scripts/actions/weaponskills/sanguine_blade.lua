@@ -21,11 +21,11 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     local params = {}
     params.ftpMod = { 2.75, 2.75, 2.75 }
     params.str_wsc = 0.3 params.mnd_wsc = 0.5
-    params.ele = xi.element.DARK
-    params.skill = xi.skill.SWORD
+    params.ele = invaderXim.element.DARK
+    params.skill = invaderXim.skill.SWORD
     params.includemab = true
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         if tp >= 2000 and tp <= 2999 then
             drain = 100
         elseif tp == 3000 then
@@ -33,7 +33,7 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
         end
     end
 
-    local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
+    local damage, criticalHit, tpHits, extraHits = invaderXim.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
 
     if not target:isUndead() then
         player:addHP((damage / 100) * drain)

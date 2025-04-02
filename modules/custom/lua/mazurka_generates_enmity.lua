@@ -17,8 +17,8 @@ local raptorMazurkaPower = 1.1
 local mazurkaProvoke = function(caster, target, spell, power)
     -- If not Mazurka, bail out
     if
-        spell:getID() ~= xi.magic.spell.CHOCOBO_MAZURKA and
-        spell:getID() ~= xi.magic.spell.RAPTOR_MAZURKA
+        spell:getID() ~= invaderXim.magic.spell.CHOCOBO_MAZURKA and
+        spell:getID() ~= invaderXim.magic.spell.RAPTOR_MAZURKA
     then
         return
     end
@@ -37,13 +37,13 @@ local mazurkaProvoke = function(caster, target, spell, power)
     battleTarget:addEnmity(caster, 0, enmity)
 end
 
-m:addOverride('xi.actions.spells.songs.chocobo_mazurka.onSpellCast', function(caster, target, spell)
+m:addOverride('invaderXim.actions.spells.songs.chocobo_mazurka.onSpellCast', function(caster, target, spell)
     local songEffect = super(caster, target, spell)
     mazurkaProvoke(caster, target, spell, chocoboMazurkaPower)
     return songEffect
 end)
 
-m:addOverride('xi.actions.spells.songs.raptor_mazurka.onSpellCast', function(caster, target, spell)
+m:addOverride('invaderXim.actions.spells.songs.raptor_mazurka.onSpellCast', function(caster, target, spell)
     local songEffect = super(caster, target, spell)
     mazurkaProvoke(caster, target, spell, raptorMazurkaPower)
     return songEffect

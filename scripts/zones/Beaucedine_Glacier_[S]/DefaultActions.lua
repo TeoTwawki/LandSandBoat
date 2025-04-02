@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.BEAUCEDINE_GLACIER_S]
+local ID = zones[invaderXim.zone.BEAUCEDINE_GLACIER_S]
 
 return {
     ['blank_fork']         = { messageSpecial = ID.text.NOTHING_OUT_OF_ORDINARY },

@@ -5,12 +5,12 @@
 -- !addmission 6 438
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.SLANDEROUS_UTTERINGS)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.SLANDEROUS_UTTERINGS)
 
 mission.reward =
 {
-    title = xi.title.THE_LOST_ONE,
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.THE_ENDURING_TUMULT_OF_WAR },
+    title = invaderXim.title.THE_LOST_ONE,
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_ENDURING_TUMULT_OF_WAR },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Despachiaire'] = mission:event(132):importantEvent(),
 
@@ -41,7 +41,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SEALIONS_DEN] =
+        [invaderXim.zone.SEALIONS_DEN] =
         {
             ['_0w0'] =
             {
@@ -66,7 +66,7 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Arquil']       = mission:event(293):replaceDefault(),
             ['Despachiaire'] = mission:event(317):replaceDefault(),

@@ -10,14 +10,14 @@ abilityObject.onAutomatonAbilityCheck = function(target, automaton, skill)
         return
     end
 
-    return master:countEffect(xi.effect.LIGHT_MANEUVER)
+    return master:countEffect(invaderXim.effect.LIGHT_MANEUVER)
 end
 
 abilityObject.onAutomatonAbility = function(target, automaton, skill, master, action)
     local ftp
     local tp = skill:getTP()
 
-    if not xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if not invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         ftp = 0.5 + ((0.5 / 3000) * tp)
     else
         -- Might be wrong, it may only use max hp in its new form, also it may be able to miss and take defense into account as well
@@ -31,7 +31,7 @@ abilityObject.onAutomatonAbility = function(target, automaton, skill, master, ac
     end
 
     local hpdamage = (automaton:getMaxHP() - automaton:getHP()) * ftp
-    local skilldamage = automaton:getSkillLevel(xi.skill.AUTOMATON_MELEE) * ftp
+    local skilldamage = automaton:getSkillLevel(invaderXim.skill.AUTOMATON_MELEE) * ftp
     local damage = (hpdamage > skilldamage) and hpdamage or skilldamage
 
     if damage > 0 then
@@ -39,7 +39,7 @@ abilityObject.onAutomatonAbility = function(target, automaton, skill, master, ac
         automaton:addTP(80)
     end
 
-    target:takeDamage(damage, automaton, xi.attackType.MAGICAL, xi.damageType.LIGHT)
+    target:takeDamage(damage, automaton, invaderXim.attackType.MAGICAL, invaderXim.damageType.LIGHT)
     return damage
 end
 

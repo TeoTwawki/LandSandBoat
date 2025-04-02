@@ -10,13 +10,13 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local circleOfTime = player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_CIRCLE_OF_TIME)
+    local circleOfTime = player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_CIRCLE_OF_TIME)
     local circleProgress = player:getCharVar('circleTime')
-    local lureOfTheWildcat = player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.LURE_OF_THE_WILDCAT)
+    local lureOfTheWildcat = player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.LURE_OF_THE_WILDCAT)
     local wildcatSandy = player:getCharVar('WildcatSandy')
 
     -- CIRCLE OF TIME (Bard AF3)
-    if circleOfTime == xi.questStatus.QUEST_ACCEPTED then
+    if circleOfTime == invaderXim.questStatus.QUEST_ACCEPTED then
         if circleProgress == 5 then
             player:startEvent(99)
         elseif circleProgress == 6 then
@@ -29,7 +29,7 @@ entity.onTrigger = function(player, npc)
 
     -- LURE OF THE WILDCAT
     elseif
-        lureOfTheWildcat == xi.questStatus.QUEST_ACCEPTED and
+        lureOfTheWildcat == invaderXim.questStatus.QUEST_ACCEPTED and
         not utils.mask.getBit(wildcatSandy, 19)
     then
         player:startEvent(561)
@@ -42,11 +42,11 @@ entity.onEventFinish = function(player, csid, option, npc)
         player:setCharVar('circleTime', 6)
     elseif (csid == 98 or csid == 99) and option == 1 then
         player:setCharVar('circleTime', 7)
-        npcUtil.giveKeyItem(player, xi.ki.MOON_RING)
+        npcUtil.giveKeyItem(player, invaderXim.ki.MOON_RING)
     elseif csid == 96 then
-        if npcUtil.giveItem(player, xi.item.CHORAL_JUSTAUCORPS) then
-            player:completeQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_CIRCLE_OF_TIME)
-            player:addTitle(xi.title.PARAGON_OF_BARD_EXCELLENCE)
+        if npcUtil.giveItem(player, invaderXim.item.CHORAL_JUSTAUCORPS) then
+            player:completeQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_CIRCLE_OF_TIME)
+            player:addTitle(invaderXim.title.PARAGON_OF_BARD_EXCELLENCE)
             player:setCharVar('circleTime', 0)
         end
     -- LURE OF THE WILDCAT

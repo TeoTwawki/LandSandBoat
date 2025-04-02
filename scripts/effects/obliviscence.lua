@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.OBLIVISCENCE
+-- invaderXim.effect.OBLIVISCENCE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

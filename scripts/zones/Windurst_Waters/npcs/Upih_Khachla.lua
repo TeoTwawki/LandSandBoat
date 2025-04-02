@@ -2,13 +2,13 @@
 -- Area: Windurst Waters
 --  NPC: Upih Khachla
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WATERS]
+local ID = zones[invaderXim.zone.WINDURST_WATERS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.events.harvestFestival.onHalloweenTrade(player, trade, npc)
+    invaderXim.events.harvestFestival.onHalloweenTrade(player, trade, npc)
 end
 
 entity.onTrigger = function(player, npc)
@@ -32,7 +32,7 @@ entity.onTrigger = function(player, npc)
         1241,   354, 3, -- Twinkle Powder
     }
 
-    local rank = GetNationRank(xi.nation.WINDURST)
+    local rank = GetNationRank(invaderXim.nation.WINDURST)
     if rank ~= 1 then
         table.insert(stock, 1022) --Thief's Tools
         table.insert(stock, 3643)
@@ -45,7 +45,7 @@ entity.onTrigger = function(player, npc)
         table.insert(stock, 3)
     end
 
-    xi.shop.nation(player, stock, xi.nation.WINDURST)
+    invaderXim.shop.nation(player, stock, invaderXim.nation.WINDURST)
 end
 
 return entity

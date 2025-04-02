@@ -5,7 +5,7 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.summoner.canUseBloodPact(player, player:getPet(), target, ability)
+    return invaderXim.job_utils.summoner.canUseBloodPact(player, player:getPet(), target, ability)
 end
 
 abilityObject.onPetAbility = function(target, pet, petskill, summoner, action)
@@ -13,16 +13,16 @@ abilityObject.onPetAbility = function(target, pet, petskill, summoner, action)
     local accmod = 1
     local dmgmod = 6
 
-    xi.job_utils.summoner.onUseBloodPact(target, petskill, summoner, action)
+    invaderXim.job_utils.summoner.onUseBloodPact(target, petskill, summoner, action)
 
-    local damage = xi.summon.avatarPhysicalMove(pet, target, petskill, numhits, accmod, dmgmod, 0, xi.mobskills.magicalTpBonus.NO_EFFECT, 1, 2, 3)
-    local totaldamage = xi.summon.avatarFinalAdjustments(damage.dmg, pet, petskill, target, xi.attackType.PHYSICAL, xi.damageType.PIERCING, numhits)
+    local damage = invaderXim.summon.avatarPhysicalMove(pet, target, petskill, numhits, accmod, dmgmod, 0, invaderXim.mobskills.magicalTpBonus.NO_EFFECT, 1, 2, 3)
+    local totaldamage = invaderXim.summon.avatarFinalAdjustments(damage.dmg, pet, petskill, target, invaderXim.attackType.PHYSICAL, invaderXim.damageType.PIERCING, numhits)
 
     if damage.hitslanded > 0 then
-        target:addStatusEffect(xi.effect.PARALYSIS, 22.5, 0, 90)
+        target:addStatusEffect(invaderXim.effect.PARALYSIS, 22.5, 0, 90)
     end
 
-    target:takeDamage(totaldamage, pet, xi.attackType.PHYSICAL, xi.damageType.PIERCING)
+    target:takeDamage(totaldamage, pet, invaderXim.attackType.PHYSICAL, invaderXim.damageType.PIERCING)
     target:updateEnmityFromDamage(pet, totaldamage)
 
     return totaldamage

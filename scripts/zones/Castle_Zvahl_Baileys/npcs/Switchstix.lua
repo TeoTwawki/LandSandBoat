@@ -3,7 +3,7 @@
 --  NPC: Switchstix
 -- !pos 386.091 -13 -17.399 161
 -----------------------------------
-local ID = zones[xi.zone.CASTLE_ZVAHL_BAILEYS]
+local ID = zones[invaderXim.zone.CASTLE_ZVAHL_BAILEYS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -137,7 +137,7 @@ local function hasRelic(player, isTrade)
         return nil
     else
         for key, value in pairs(relics) do
-            if player:hasItem(key, xi.inv.INVENTORY) then
+            if player:hasItem(key, invaderXim.inv.INVENTORY) then
                 return key
             end
         end
@@ -222,9 +222,9 @@ entity.onTrade = function(player, npc, trade)
             if currentStage == 1 then
                 player:setCharVar('RELIC_DUE_AT', getVanaMidnight())
             elseif currentStage == 2 then
-                player:setCharVar('RELIC_DUE_AT', os.time() + xi.settings.main.RELIC_2ND_UPGRADE_WAIT_TIME)
+                player:setCharVar('RELIC_DUE_AT', os.time() + invaderXim.settings.main.RELIC_2ND_UPGRADE_WAIT_TIME)
             elseif currentStage == 3 then
-                player:setCharVar('RELIC_DUE_AT', os.time() + xi.settings.main.RELIC_3RD_UPGRADE_WAIT_TIME)
+                player:setCharVar('RELIC_DUE_AT', os.time() + invaderXim.settings.main.RELIC_3RD_UPGRADE_WAIT_TIME)
             end
 
             player:tradeComplete()
@@ -292,7 +292,7 @@ entity.onTrigger = function(player, npc)
         elseif currentStage == 3 then
             player:startEvent(50, relicId, requiredItem1, requiredItem2, requiredItem3, 0, 0, 0, relic[csParam])
         elseif currentStage == 4 then
-            -- TODO: Use xi.items enum in key for the below table
+            -- TODO: Use invaderXim.items enum in key for the below table
             local itemToEventId =
             {
                 [18263] = 68, -- Spharai
@@ -375,7 +375,7 @@ entity.onEventFinish = function(player, csid, option, npc)
 
         -- Stage 4 cutscenes
     elseif (csid >= 68 and csid <= 82) or csid == 86 then
-        -- TODO: Use xi.items enum below
+        -- TODO: Use invaderXim.items enum below
         local eventToItemId =
         {
                 [68] = 18263, -- Spharai

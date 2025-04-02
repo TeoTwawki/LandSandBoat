@@ -9,10 +9,10 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
-            { id = xi.jsa.CALL_WYVERN, hpp = 75 },
+            { id = invaderXim.jsa.CALL_WYVERN, hpp = 75 },
         },
     })
 end
@@ -24,7 +24,7 @@ entity.onMobFight = function(mob, target)
     if
         pet and
         pet:isSpawned() and
-        pet:getCurrentAction() == xi.act.ROAMING
+        pet:getCurrentAction() == invaderXim.act.ROAMING
     then
         pet:updateEnmity(target)
     end

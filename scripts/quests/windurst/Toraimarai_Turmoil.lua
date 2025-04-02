@@ -9,36 +9,36 @@
 -- Giddeus Spring : !pos -258 -2 -249 145
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.TORAIMARAI_TURMOIL)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.TORAIMARAI_TURMOIL)
 
 quest.reward =
 {
     gil  = 4500,
     fame = 100,
-    fameArea = xi.fameArea.WINDURST,
-    title = xi.title.CERTIFIED_RHINOSTERY_VENTURER,
+    fameArea = invaderXim.fameArea.WINDURST,
+    title = invaderXim.title.CERTIFIED_RHINOSTERY_VENTURER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.WINDURST, xi.quest.id.windurst.BLUE_RIBBON_BLUES) and
-                player:getFameLevel(xi.fameArea.WINDURST) >= 6 and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.BLUE_RIBBON_BLUES) and
+                player:getFameLevel(invaderXim.fameArea.WINDURST) >= 6 and
                 not quest:getMustZone(player)
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
-            ['Ohbiru-Dohbiru'] = quest:progressEvent(785, 4500, xi.keyItem.RHINOSTERY_CERTIFICATE, xi.item.STARMITE_SHELL),
+            ['Ohbiru-Dohbiru'] = quest:progressEvent(785, 4500, invaderXim.keyItem.RHINOSTERY_CERTIFICATE, invaderXim.item.STARMITE_SHELL),
 
             onEventFinish =
             {
                 [785] = function(player, csid, option, npc)
                     if option == 1 then
                         quest:begin(player)
-                        npcUtil.giveKeyItem(player, xi.ki.RHINOSTERY_CERTIFICATE)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.RHINOSTERY_CERTIFICATE)
                     end
                 end,
             },
@@ -48,17 +48,17 @@ quest.sections =
     {
         --initial completion
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Ohbiru-Dohbiru'] =
             {
-                onTrigger = quest:event(786, 4500, xi.keyItem.RHINOSTERY_CERTIFICATE, xi.item.STARMITE_SHELL), -- Reminder text.
+                onTrigger = quest:event(786, 4500, invaderXim.keyItem.RHINOSTERY_CERTIFICATE, invaderXim.item.STARMITE_SHELL), -- Reminder text.
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.STARMITE_SHELL, 3 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.STARMITE_SHELL, 3 } }) then
                         return quest:progressEvent(791)
                     end
                 end,
@@ -67,7 +67,7 @@ quest.sections =
             ['Leepe-Hoppe'] =
             {
                 onTrigger = function(player, npc)
-                    return quest:event(790, 0, xi.ki.RHINOSTERY_CERTIFICATE)
+                    return quest:event(790, 0, invaderXim.ki.RHINOSTERY_CERTIFICATE)
                 end,
             },
 
@@ -81,7 +81,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Polikal-Ramikal'] =
             {
@@ -102,17 +102,17 @@ quest.sections =
     {
         --repeat completion
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Ohbiru-Dohbiru'] =
             {
-                onTrigger = quest:event(795, 4500, 0, xi.item.STARMITE_SHELL), -- repeat dialog
+                onTrigger = quest:event(795, 4500, 0, invaderXim.item.STARMITE_SHELL), -- repeat dialog
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.STARMITE_SHELL, 3 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.STARMITE_SHELL, 3 } }) then
                         return quest:progressEvent(791)
                     end
                 end,
@@ -125,7 +125,7 @@ quest.sections =
 
                     --From previous implementation, award 100 fame on first completion,
                     -- and 50 fame for any subsequent trade.
-                    player:addFame(xi.fameArea.WINDURST, 50)
+                    player:addFame(invaderXim.fameArea.WINDURST, 50)
                     npcUtil.giveCurrency(player, 'gil', 4500)
                 end,
             },

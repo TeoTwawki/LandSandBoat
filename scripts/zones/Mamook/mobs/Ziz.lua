@@ -4,7 +4,7 @@
 -- Note: PH for Zizzy Zillah
 -----------------------------------
 mixins = { require('scripts/mixins/families/ziz') }
-local ID = zones[xi.zone.MAMOOK]
+local ID = zones[invaderXim.zone.MAMOOK]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -22,7 +22,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, zizzyPHTable, 5, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, zizzyPHTable, 5, 3600) -- 1 hour
 end
 
 return entity

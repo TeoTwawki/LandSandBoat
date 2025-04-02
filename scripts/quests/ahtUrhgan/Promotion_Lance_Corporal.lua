@@ -11,11 +11,11 @@
 -- Prog: running total of player's test tube contents
 -- Option: what mixture was turned in to the guild
 -----------------------------------
-local ahturhganID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
-local bhaflauID    = zones[xi.zone.BHAFLAU_THICKETS]
-local wajaomID     = zones[xi.zone.WAJAOM_WOODLANDS]
+local ahturhganID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
+local bhaflauID    = zones[invaderXim.zone.BHAFLAU_THICKETS]
+local wajaomID     = zones[invaderXim.zone.WAJAOM_WOODLANDS]
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.PROMOTION_LANCE_CORPORAL)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.PROMOTION_LANCE_CORPORAL)
 
 local stage =
 {
@@ -36,11 +36,11 @@ local tube =
 
 local tubeKeyItems =
 {
-    [tube.ONE]   = { filledTube = xi.ki.TEST_TUBE_1, emptyTube = xi.ki.EMPTY_TEST_TUBE_1 },
-    [tube.TWO]   = { filledTube = xi.ki.TEST_TUBE_2, emptyTube = xi.ki.EMPTY_TEST_TUBE_2 },
-    [tube.THREE] = { filledTube = xi.ki.TEST_TUBE_3, emptyTube = xi.ki.EMPTY_TEST_TUBE_3 },
-    [tube.FOUR]  = { filledTube = xi.ki.TEST_TUBE_4, emptyTube = xi.ki.EMPTY_TEST_TUBE_4 },
-    [tube.FIVE]  = { filledTube = xi.ki.TEST_TUBE_5, emptyTube = xi.ki.EMPTY_TEST_TUBE_5 },
+    [tube.ONE]   = { filledTube = invaderXim.ki.TEST_TUBE_1, emptyTube = invaderXim.ki.EMPTY_TEST_TUBE_1 },
+    [tube.TWO]   = { filledTube = invaderXim.ki.TEST_TUBE_2, emptyTube = invaderXim.ki.EMPTY_TEST_TUBE_2 },
+    [tube.THREE] = { filledTube = invaderXim.ki.TEST_TUBE_3, emptyTube = invaderXim.ki.EMPTY_TEST_TUBE_3 },
+    [tube.FOUR]  = { filledTube = invaderXim.ki.TEST_TUBE_4, emptyTube = invaderXim.ki.EMPTY_TEST_TUBE_4 },
+    [tube.FIVE]  = { filledTube = invaderXim.ki.TEST_TUBE_5, emptyTube = invaderXim.ki.EMPTY_TEST_TUBE_5 },
 }
 
 local fillLevel =
@@ -125,11 +125,11 @@ local function getQuestReward(player)
     local reward
     local rewardTiers =
     {
-        luminium = { item = xi.item.IMPERIAL_GOLD_PIECE, amount = 2 },
+        luminium = { item = invaderXim.item.IMPERIAL_GOLD_PIECE, amount = 2 },
         platinum =
         {
-            { item = xi.item.IMPERIAL_MYTHRIL_PIECE, amount = math.random(3, 4) },
-            { item = xi.item.IMPERIAL_GOLD_PIECE, amount = 1 },
+            { item = invaderXim.item.IMPERIAL_MYTHRIL_PIECE, amount = math.random(3, 4) },
+            { item = invaderXim.item.IMPERIAL_GOLD_PIECE, amount = 1 },
         },
     }
 
@@ -144,20 +144,20 @@ end
 
 quest.reward =
 {
-    keyItem = xi.ki.LC_WILDCAT_BADGE,
-    title   = xi.title.LANCE_CORPORAL,
+    keyItem = invaderXim.ki.LC_WILDCAT_BADGE,
+    title   = invaderXim.title.LANCE_CORPORAL,
 }
 
 quest.sections =
 {
     { -- Start: Trigger Abquhbah
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
             player:getCharVar('AssaultPromotion') >= 25 and
-            player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.PROMOTION_SUPERIOR_PRIVATE) == xi.questStatus.QUEST_COMPLETED
+            player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.PROMOTION_SUPERIOR_PRIVATE) == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] = quest:progressEvent(5030, { text_table = 0 }),
 
@@ -171,11 +171,11 @@ quest.sections =
     },
     { -- 1st Stage: Trigger Nafiwaa and recieve 5 KI empty test tubes
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Stage == stage.START
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] = quest:event(5032):importantOnce(),
 
@@ -185,19 +185,19 @@ quest.sections =
             {
                 [5035] = function(player, csid, option, npc)
                     quest:setVar(player, 'Stage', stage.FIRST_MIX)
-                    npcUtil.giveKeyItem(player, { xi.ki.EMPTY_TEST_TUBE_1, xi.ki.EMPTY_TEST_TUBE_2,
-                        xi.ki.EMPTY_TEST_TUBE_3, xi.ki.EMPTY_TEST_TUBE_4, xi.ki.EMPTY_TEST_TUBE_5 })
+                    npcUtil.giveKeyItem(player, { invaderXim.ki.EMPTY_TEST_TUBE_1, invaderXim.ki.EMPTY_TEST_TUBE_2,
+                        invaderXim.ki.EMPTY_TEST_TUBE_3, invaderXim.ki.EMPTY_TEST_TUBE_4, invaderXim.ki.EMPTY_TEST_TUBE_5 })
                 end,
             },
         },
     },
     { -- 2nd (and optional 3rd) Stage: Go to Mythralline Wellsprings and fill tubes; Trigger Nafiwaa to do mini game and mix mythralline
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             (vars.Stage == stage.FIRST_MIX or vars.Stage == stage.REMIX)
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] = quest:event(5033):importantOnce(),
 
@@ -253,7 +253,7 @@ quest.sections =
                         quest:setVar(player, 'Wait', VanadielUniqueDay() + 1)
                         quest:setVar(player, 'Option', remainingTubeContents - startingContents)
 
-                        for keyItem = xi.ki.EMPTY_TEST_TUBE_1, xi.ki.TEST_TUBE_5 do
+                        for keyItem = invaderXim.ki.EMPTY_TEST_TUBE_1, invaderXim.ki.TEST_TUBE_5 do
                             if player:hasKeyItem(keyItem) then
                                 player:delKeyItem(keyItem)
                             end
@@ -276,7 +276,7 @@ quest.sections =
                 end,
             },
         },
-        [xi.zone.WAJAOM_WOODLANDS] =
+        [invaderXim.zone.WAJAOM_WOODLANDS] =
         {
             ['Mythralline_Wellspring'] =
             {
@@ -309,7 +309,7 @@ quest.sections =
                 end,
             },
         },
-        [xi.zone.BHAFLAU_THICKETS] =
+        [invaderXim.zone.BHAFLAU_THICKETS] =
         {
             ['Mythralline_Wellspring'] =
             {
@@ -332,12 +332,12 @@ quest.sections =
     },
     { -- Complete: after game day wait, enter region
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Stage == stage.WAIT and
             vars.Option > 0
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Nafiwaa'] = quest:event(5039),
 
@@ -366,11 +366,11 @@ quest.sections =
                     quest:complete(player)
                     quest:messageSpecial(ahturhganID.text.LANCE_CORPORAL)
                     player:setCharVar('AssaultPromotion', 0)
-                    player:delKeyItem(xi.ki.SP_WILDCAT_BADGE)
+                    player:delKeyItem(invaderXim.ki.SP_WILDCAT_BADGE)
                 end,
             },
         },
-        [xi.zone.WAJAOM_WOODLANDS] =
+        [invaderXim.zone.WAJAOM_WOODLANDS] =
         {
             ['Mythralline_Wellspring'] =
             {
@@ -379,7 +379,7 @@ quest.sections =
                 end,
             },
         },
-        [xi.zone.BHAFLAU_THICKETS] =
+        [invaderXim.zone.BHAFLAU_THICKETS] =
         {
             ['Mythralline_Wellspring'] =
             {

@@ -1,14 +1,14 @@
 -----------------------------------
--- xi.effect.HASTE
+-- invaderXim.effect.HASTE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
     -- Overwrites regular Flurry Effect
-    target:delStatusEffect(xi.effect.FLURRY_II)
+    target:delStatusEffect(invaderXim.effect.FLURRY_II)
 
-    effect:addMod(xi.mod.HASTE_MAGIC, effect:getPower())
+    effect:addMod(invaderXim.mod.HASTE_MAGIC, effect:getPower())
 end
 
 effectObject.onEffectTick = function(target, effect)

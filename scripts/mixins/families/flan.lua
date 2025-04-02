@@ -9,8 +9,8 @@ g_mixins.families.flan = function(flanMob)
         local accumulatedMagical  = mob:getLocalVar('magical')
 
         if
-            attackType == xi.attackType.PHYSICAL or
-            attackType == xi.attackType.RANGED
+            attackType == invaderXim.attackType.PHYSICAL or
+            attackType == invaderXim.attackType.RANGED
         then
             accumulatedPhisical = accumulatedPhisical + damage
 
@@ -19,9 +19,9 @@ g_mixins.families.flan = function(flanMob)
                 damage > mob:getMaxHP() * 0.1
             then
                 mob:setAnimationSub(2) -- Spike head
-                mob:setMod(xi.mod.DMGPHYS, -5000)
-                mob:setMod(xi.mod.DMGRANGE, -5000)
-                mob:setMod(xi.mod.DMGMAGIC, 0)
+                mob:setMod(invaderXim.mod.DMGPHYS, -5000)
+                mob:setMod(invaderXim.mod.DMGRANGE, -5000)
+                mob:setMod(invaderXim.mod.DMGMAGIC, 0)
                 mob:setLocalVar('Damage', 0)
                 accumulatedPhisical = 0
             end
@@ -35,9 +35,9 @@ g_mixins.families.flan = function(flanMob)
                 damage > mob:getMaxHP() * 0.1
             then
                 mob:setAnimationSub(1) -- Smooth head
-                mob:setMod(xi.mod.DMGPHYS, 0)
-                mob:setMod(xi.mod.DMGRANGE, 0)
-                mob:setMod(xi.mod.DMGMAGIC, -5000)
+                mob:setMod(invaderXim.mod.DMGPHYS, 0)
+                mob:setMod(invaderXim.mod.DMGRANGE, 0)
+                mob:setMod(invaderXim.mod.DMGMAGIC, -5000)
                 mob:setLocalVar('Damage', 1)
                 accumulatedMagical = 0
             end

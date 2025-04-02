@@ -30,7 +30,7 @@ page1 =
     {
         'Send me to Jeuno!',
         function(playerArg)
-            playerArg:setPos(0, 0, 0, 0, xi.zone.LOWER_JEUNO)
+            playerArg:setPos(0, 0, 0, 0, invaderXim.zone.LOWER_JEUNO)
         end,
     },
     {
@@ -47,7 +47,7 @@ page2 =
     {
         'Send me to Aht Urghan!',
         function(playerArg)
-            playerArg:setPos(0, 0, 0, 0, xi.zone.AHT_URHGAN_WHITEGATE)
+            playerArg:setPos(0, 0, 0, 0, invaderXim.zone.AHT_URHGAN_WHITEGATE)
         end,
     },
     {
@@ -59,7 +59,7 @@ page2 =
     },
 }
 
-m:addOverride('xi.zones.GM_Home.Zone.onInitialize', function(zone)
+m:addOverride('invaderXim.zones.GM_Home.Zone.onInitialize', function(zone)
     -- Call the zone's original function for onInitialize
     super(zone)
 
@@ -67,7 +67,7 @@ m:addOverride('xi.zones.GM_Home.Zone.onInitialize', function(zone)
     local horro = zone:insertDynamicEntity({
 
         -- NPC or MOB
-        objtype = xi.objType.NPC,
+        objtype = invaderXim.objType.NPC,
 
         -- The name visible to players
         -- NOTE: Even if you plan on making the name invisible, we're using it internally for lookups
@@ -123,7 +123,7 @@ m:addOverride('xi.zones.GM_Home.Zone.onInitialize', function(zone)
 
     -- Menu NPC Example
     zone:insertDynamicEntity({
-        objtype   = xi.objType.NPC,
+        objtype   = invaderXim.objType.NPC,
         name      = 'Menu Example',
         look      = 2433,
         x         = 5.000,

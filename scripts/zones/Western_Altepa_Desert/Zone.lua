@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Western_Altepa_Desert (125)
 -----------------------------------
-local ID = zones[xi.zone.WESTERN_ALTEPA_DESERT]
+local ID = zones[invaderXim.zone.WESTERN_ALTEPA_DESERT]
 require('scripts/quests/i_can_hear_a_rainbow')
 require('scripts/missions/amk/helpers')
 -----------------------------------
@@ -12,11 +12,11 @@ zoneObject.onInitialize = function(zone)
     UpdateNMSpawnPoint(ID.mob.KING_VINEGARROON)
     GetMobByID(ID.mob.KING_VINEGARROON):setRespawnTime(math.random(900, 10800))
 
-    xi.beastmenTreasure.updatePeddlestox(xi.zone.YUHTUNGA_JUNGLE, ID.npc.PEDDLESTOX)
+    invaderXim.beastmenTreasure.updatePeddlestox(invaderXim.zone.YUHTUNGA_JUNGLE, ID.npc.PEDDLESTOX)
 end
 
 zoneObject.onGameDay = function()
-    xi.beastmenTreasure.updatePeddlestox(xi.zone.WESTERN_ALTEPA_DESERT, ID.npc.PEDDLESTOX)
+    invaderXim.beastmenTreasure.updatePeddlestox(invaderXim.zone.WESTERN_ALTEPA_DESERT, ID.npc.PEDDLESTOX)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -35,15 +35,15 @@ zoneObject.onZoneIn = function(player, prevZone)
     end
 
     -- AMK06/AMK07
-    if xi.settings.main.ENABLE_AMK == 1 then
-        xi.amk.helpers.tryRandomlyPlaceDiggingLocation(player)
+    if invaderXim.settings.main.ENABLE_AMK == 1 then
+        invaderXim.amk.helpers.tryRandomlyPlaceDiggingLocation(player)
     end
 
     return cs
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
@@ -63,7 +63,7 @@ zoneObject.onZoneWeatherChange = function(weather)
     local kvMob = GetMobByID(ID.mob.KING_VINEGARROON)
 
     if kvMob then
-        if weather == xi.weather.DUST_STORM or weather == xi.weather.SAND_STORM then
+        if weather == invaderXim.weather.DUST_STORM or weather == invaderXim.weather.SAND_STORM then
             DisallowRespawn(ID.mob.KING_VINEGARROON, false) -- Allow respawn.
 
             -- Check for respawn.
@@ -72,8 +72,8 @@ zoneObject.onZoneWeatherChange = function(weather)
                 kvMob:getRespawnTime() == 0
             then
                 if
-                    (weather == xi.weather.DUST_STORM and math.random(1, 100) <= 10) or
-                    weather == xi.weather.SAND_STORM
+                    (weather == invaderXim.weather.DUST_STORM and math.random(1, 100) <= 10) or
+                    weather == invaderXim.weather.SAND_STORM
                 then
                     SpawnMob(ID.mob.KING_VINEGARROON)
                 end
@@ -90,10 +90,10 @@ zoneObject.onZoneWeatherChange = function(weather)
     if dahu then
         local dahuValidWeather =
         {
-            xi.weather.DUST_STORM,
-            xi.weather.SAND_STORM,
-            xi.weather.HOT_SPELL,
-            xi.weather.HEAT_WAVE,
+            invaderXim.weather.DUST_STORM,
+            invaderXim.weather.SAND_STORM,
+            invaderXim.weather.HOT_SPELL,
+            invaderXim.weather.HEAT_WAVE,
         }
 
         if utils.contains(weather, dahuValidWeather) then
@@ -120,7 +120,7 @@ zoneObject.afterZoneIn = function(player)
         local gateObj = GetNPCByID(gateId)
 
         if gateObj then
-            player:sendEntityUpdateToPlayer(gateObj, xi.entityUpdate.ENTITY_UPDATE, xi.updateType.UPDATE_COMBAT)
+            player:sendEntityUpdateToPlayer(gateObj, invaderXim.entityUpdate.ENTITY_UPDATE, invaderXim.updateType.UPDATE_COMBAT)
         end
     end
 end

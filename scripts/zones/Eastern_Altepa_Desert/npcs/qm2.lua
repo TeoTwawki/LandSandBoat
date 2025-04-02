@@ -4,7 +4,7 @@
 -- Involved In Quest: 20 in Pirate Years
 -- !pos 47.852 -7.808 403.391 114
 -----------------------------------
-local ID = zones[xi.zone.EASTERN_ALTEPA_DESERT]
+local ID = zones[invaderXim.zone.EASTERN_ALTEPA_DESERT]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -23,7 +23,7 @@ entity.onTrigger = function(player, npc)
         SpawnMob(ID.mob.TSUCHIGUMO_OFFSET):updateClaim(player)
         SpawnMob(ID.mob.TSUCHIGUMO_OFFSET + 1):updateClaim(player)
     elseif twentyInPirateYearsCS == 3 and tsuchigumoKilled >= 2 then
-        npcUtil.giveKeyItem(player, xi.ki.TRICK_BOX)
+        npcUtil.giveKeyItem(player, invaderXim.ki.TRICK_BOX)
         player:setCharVar('twentyInPirateYearsCS', 4)
         player:setCharVar('TsuchigumoKilled', 0)
     end

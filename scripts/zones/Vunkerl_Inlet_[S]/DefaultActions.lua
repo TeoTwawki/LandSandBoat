@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.VUNKERL_INLET_S]
+local ID = zones[invaderXim.zone.VUNKERL_INLET_S]
 
 return {
     ['Leadavox']          = { event = 100 },

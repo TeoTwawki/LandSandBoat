@@ -1,7 +1,7 @@
 ﻿/*
 ===========================================================================
 
-  Copyright (c) 2024 LandSandBoat Dev Teams
+  Copyright (c) 2024 InvaderXim Dev Teams
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 #include "logging.h"
 #include "synchronized.h"
 #include "tracy.h"
-#include "xi.h"
+#include "invaderXim.h"
 
 #include <array>
 #include <bitset>

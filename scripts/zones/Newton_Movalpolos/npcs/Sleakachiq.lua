@@ -3,7 +3,7 @@
 --  NPC: Sleakachiq
 -- !pos 162.504 14.999 136.901 12
 -----------------------------------
-local ID = zones[xi.zone.NEWTON_MOVALPOLOS]
+local ID = zones[invaderXim.zone.NEWTON_MOVALPOLOS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

@@ -8,7 +8,7 @@
 -- Table structure for table `campaign_map`
 --
 
-DROP TABLE IF EXISTS `campaign_map`;
+DROP TABLE IF IXIMSTS `campaign_map`;
 CREATE TABLE `campaign_map` (
   `id` tinyint(2) unsigned NOT NULL,
   `zoneid` smallint(3) unsigned NOT NULL DEFAULT 0,

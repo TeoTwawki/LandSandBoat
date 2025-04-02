@@ -8,12 +8,12 @@ local entity = {}
 
 -- mob takes double dmg
 entity.onMobSpawn = function(mob)
-    mob:setMod(xi.mod.UDMGMAGIC, 1000)
-    mob:setMod(xi.mod.UDMGPHYS, 100)
-    mob:setMod(xi.mod.UDMGRANGE, 100)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, 1000)
+    mob:setMod(invaderXim.mod.UDMGPHYS, 100)
+    mob:setMod(invaderXim.mod.UDMGRANGE, 100)
 
     -- TODO:
-    -- mob:setMobMod(xi.mobMod.SPAWN_ROAMED, 0)
+    -- mob:setMobMod(invaderXim.mobMod.SPAWN_ROAMED, 0)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

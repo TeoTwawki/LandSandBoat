@@ -2,12 +2,12 @@
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.combat = xi.combat or {}
-xi.combat.treasureHunter = xi.combat.treasureHunter or {}
+invaderXim.combat = invaderXim.combat or {}
+invaderXim.combat.treasureHunter = invaderXim.combat.treasureHunter or {}
 -----------------------------------
 
 -- https://forum.square-enix.com/ffxi/threads/56550
-xi.combat.treasureHunter.treasureHunterTable =
+invaderXim.combat.treasureHunter.treasureHunterTable =
 {
 -- TH lvl    VC    C     UC    R     VR    SR   UR
     [ 0] = { 2400, 1500, 1000,  500,  100,  50,  10 },
@@ -27,7 +27,7 @@ xi.combat.treasureHunter.treasureHunterTable =
     [14] = { 8000, 7000, 3250, 2000, 1000, 500, 150 },
 }
 
-xi.combat.treasureHunter.dropBracketTable =
+invaderXim.combat.treasureHunter.dropBracketTable =
 {
     [1] = { 2400 },
     [2] = { 1500 },
@@ -38,7 +38,7 @@ xi.combat.treasureHunter.dropBracketTable =
     [7] = {    0 }, -- Set to 0, for weird cases in DB.
 }
 
-xi.combat.treasureHunter.getDropRate = function(thLevel, dropRate)
+invaderXim.combat.treasureHunter.getDropRate = function(thLevel, dropRate)
     -- Sanitize parameters
     local thTier     = utils.defaultIfNil(thLevel, 0)
     local thDropRate = utils.defaultIfNil(dropRate, 0)
@@ -56,8 +56,8 @@ xi.combat.treasureHunter.getDropRate = function(thLevel, dropRate)
     -- Calculate original drop rate bracket.
     local thBracket = 0
 
-    for i = 1, #xi.combat.treasureHunter.dropBracketTable do
-        if thDropRate >= xi.combat.treasureHunter.dropBracketTable[i][1] then
+    for i = 1, #invaderXim.combat.treasureHunter.dropBracketTable do
+        if thDropRate >= invaderXim.combat.treasureHunter.dropBracketTable[i][1] then
             thBracket = i
 
             break
@@ -65,7 +65,7 @@ xi.combat.treasureHunter.getDropRate = function(thLevel, dropRate)
     end
 
     -- Calculate TH drop rate
-    local newDropRate = xi.combat.treasureHunter.treasureHunterTable[thTier][thBracket]
+    local newDropRate = invaderXim.combat.treasureHunter.treasureHunterTable[thTier][thBracket]
 
     return newDropRate
 end

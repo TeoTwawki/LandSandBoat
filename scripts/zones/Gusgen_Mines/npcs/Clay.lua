@@ -8,8 +8,8 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if not player:hasItem(xi.item.DISH_OF_GUSGEN_CLAY) then
-        npcUtil.giveItem(player, xi.item.DISH_OF_GUSGEN_CLAY)
+    if not player:hasItem(invaderXim.item.DISH_OF_GUSGEN_CLAY) then
+        npcUtil.giveItem(player, invaderXim.item.DISH_OF_GUSGEN_CLAY)
     end
 end
 

@@ -6,11 +6,11 @@
 -- Ominous Postern : !pos 118 37.5 20 277
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.BLOOD_FOR_BLOOD)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.BLOOD_FOR_BLOOD)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.RECKONING },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.RECKONING },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.RAKAZNAR_TURRIS] =
+        [invaderXim.zone.RAKAZNAR_TURRIS] =
         {
             ['Ominous_Postern'] = mission:progressEvent(2, 277, 3823678, 1756, 0, 277, 1, 0, 0),
 

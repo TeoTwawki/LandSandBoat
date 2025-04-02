@@ -2,22 +2,22 @@
 -- Area: Cloister of Storms
 -- BCNM: Carbuncle Debacle
 -----------------------------------
-local cloisterOfStormsID = zones[xi.zone.CLOISTER_OF_STORMS]
+local cloisterOfStormsID = zones[invaderXim.zone.CLOISTER_OF_STORMS]
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId           = xi.zone.CLOISTER_OF_STORMS,
-    battlefieldId    = xi.battlefield.id.CARBUNCLE_DEBACLE_CLOISTER_OF_STORMS,
+    zoneId           = invaderXim.zone.CLOISTER_OF_STORMS,
+    battlefieldId    = invaderXim.battlefield.id.CARBUNCLE_DEBACLE_CLOISTER_OF_STORMS,
     canLoseExp       = false,
     maxPlayers       = 18,
     timeLimit        = utils.minutes(30),
     index            = 1,
     entryNpc         = 'LP_Entrance',
     exitNpc          = 'Lightning_Protocrystal',
-    requiredItems    = { xi.item.LIGHTNING_PENDULUM },
+    requiredItems    = { invaderXim.item.LIGHTNING_PENDULUM },
 
-    questArea     = xi.questLog.WINDURST,
-    quest         = xi.quest.id.windurst.CARBUNCLE_DEBACLE,
+    questArea     = invaderXim.questLog.WINDURST,
+    quest         = invaderXim.quest.id.windurst.CARBUNCLE_DEBACLE,
     requiredVar   = 'CarbuncleDebacleProgress',
     requiredValue = 3,
 })
@@ -50,7 +50,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

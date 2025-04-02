@@ -3,7 +3,7 @@
 --  Mob: Tomb Wolf
 -- Note: PH for Cwn Cyrff
 -----------------------------------
-local ID = zones[xi.zone.THE_ELDIEME_NECROPOLIS]
+local ID = zones[invaderXim.zone.THE_ELDIEME_NECROPOLIS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -17,11 +17,11 @@ local cwnCryffPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 675, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 675, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, cwnCryffPHTable, 5, 3600) -- 1-4 hours
+    invaderXim.mob.phOnDespawn(mob, cwnCryffPHTable, 5, 3600) -- 1-4 hours
 end
 
 return entity

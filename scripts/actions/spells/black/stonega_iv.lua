@@ -9,7 +9,7 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    return xi.spells.damage.useDamageSpell(caster, target, spell)
+    return invaderXim.spells.damage.useDamageSpell(caster, target, spell)
 end
 
 return spellObject

@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.wsUnlock
-xi.wsUnlock =
+---@enum invaderXim.wsUnlock
+invaderXim.wsUnlock =
 {
     ASURAN_FISTS        = 1,
     EVISCERATION        = 2,

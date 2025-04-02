@@ -2,12 +2,12 @@
 -- Rank 5 Mission
 -- Qu'Bia Arena mission battlefield
 -----------------------------------
-local qubiaID = zones[xi.zone.QUBIA_ARENA]
+local qubiaID = zones[invaderXim.zone.QUBIA_ARENA]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId                = xi.zone.QUBIA_ARENA,
-    battlefieldId         = xi.battlefield.id.RANK_5_MISSION,
+    zoneId                = invaderXim.zone.QUBIA_ARENA,
+    battlefieldId         = invaderXim.battlefield.id.RANK_5_MISSION,
     canLoseExp            = false,
     isMission             = true,
     allowTrusts           = true,
@@ -17,9 +17,9 @@ local content = BattlefieldMission:new({
     index                 = 0,
     entryNpc              = 'BC_Entrance',
     exitNpc               = 'Burning_Circle',
-    mission               = xi.mission.id.nation.ARCHLICH,
+    mission               = invaderXim.mission.id.nation.ARCHLICH,
     requiredMissionStatus = 11,
-    title                 = xi.title.ARCHMAGE_ASSASSIN,
+    title                 = invaderXim.title.ARCHMAGE_ASSASSIN,
 })
 
 content.groups =
@@ -33,7 +33,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
 
         superlinkGroup = 1,

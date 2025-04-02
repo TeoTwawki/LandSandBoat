@@ -5,11 +5,11 @@
 -- Fari-Wari: !pos 80 -6 -137 50
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.ODE_TO_THE_SERPENTS)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.ODE_TO_THE_SERPENTS)
 
 quest.reward =
 {
-    item = xi.item.IMPERIAL_GOLD_PIECE,
+    item = invaderXim.item.IMPERIAL_GOLD_PIECE,
 }
 
 quest.sections =
@@ -17,11 +17,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-            player:hasCompletedQuest(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.SAGA_OF_THE_SKYSERPENT)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+            player:hasCompletedQuest(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.SAGA_OF_THE_SKYSERPENT)
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Fari-Wari'] = quest:progressEvent(882),
 
@@ -29,24 +29,24 @@ quest.sections =
             {
                 [882] = function(player, csid, option, npc)
                     quest:begin(player)
-                    npcUtil.giveKeyItem(player, xi.ki.BIYAADAS_LETTER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.BIYAADAS_LETTER)
                 end,
             },
         },
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Fari-Wari'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:hasCompletedQuest(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.WHEN_THE_BOW_BREAKS) and
-                        player:hasCompletedQuest(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.FIST_OF_THE_PEOPLE)
+                        player:hasCompletedQuest(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.WHEN_THE_BOW_BREAKS) and
+                        player:hasCompletedQuest(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.FIST_OF_THE_PEOPLE)
                     then
                         return quest:progressEvent(883)
                     else
@@ -59,7 +59,7 @@ quest.sections =
             {
                 [883] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.BIYAADAS_LETTER)
+                        player:delKeyItem(invaderXim.ki.BIYAADAS_LETTER)
                     end
                 end,
             },

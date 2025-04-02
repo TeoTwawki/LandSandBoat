@@ -4,14 +4,14 @@
 -- Involved In Mission: Death From Above
 -- !pos 53 1 -32 159
 -----------------------------------
-local ID = zones[xi.zone.TEMPLE_OF_UGGALEPIH]
+local ID = zones[invaderXim.zone.TEMPLE_OF_UGGALEPIH]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHas(trade, xi.item.BAG_OF_BEE_LARVAE) and
+        npcUtil.tradeHas(trade, invaderXim.item.BAG_OF_BEE_LARVAE) and
         npcUtil.popFromQM(player, npc, ID.mob.DEATH_FROM_ABOVE)
     then
         player:confirmTrade()

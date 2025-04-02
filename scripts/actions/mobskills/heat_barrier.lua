@@ -15,10 +15,10 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     -- TODO: Blaze Spikes reduced power in Salvage zones
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.BLAZE_SPIKES, mob:getMainLvl() * 0.8, 0, 180))
-    xi.mobskills.mobBuffMove(mob, xi.effect.ENFIRE, mob:getMainLvl() * 0.4, 0, 300)
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.BLAZE_SPIKES, mob:getMainLvl() * 0.8, 0, 180))
+    invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.ENFIRE, mob:getMainLvl() * 0.4, 0, 300)
 
-    return xi.effect.BLAZE_SPIKES
+    return invaderXim.effect.BLAZE_SPIKES
 end
 
 return mobskillObject

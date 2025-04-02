@@ -7,8 +7,8 @@ require('scripts/quests/i_can_hear_a_rainbow')
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.conquest.setRegionalConquestOverseers(zone:getRegionID())
-    xi.voidwalker.zoneOnInit(zone)
+    invaderXim.conquest.setRegionalConquestOverseers(zone:getRegionID())
+    invaderXim.voidwalker.zoneOnInit(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -30,11 +30,11 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.afterZoneIn = function(player)
-    xi.chocoboGame.handleMessage(player)
+    invaderXim.chocoboGame.handleMessage(player)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

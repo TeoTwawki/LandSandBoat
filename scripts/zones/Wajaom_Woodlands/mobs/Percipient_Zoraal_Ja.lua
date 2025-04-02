@@ -2,7 +2,7 @@
 -- Area: Wajaom Woodlands
 --  Mob: Percipient Zoraal Ja
 -----------------------------------
-local ID = zones[xi.zone.WAJAOM_WOODLANDS]
+local ID = zones[invaderXim.zone.WAJAOM_WOODLANDS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

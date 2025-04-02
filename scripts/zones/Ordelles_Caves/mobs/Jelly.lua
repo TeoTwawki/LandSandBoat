@@ -3,7 +3,7 @@
 --  Mob: Jelly
 -- Note: PH for Agar Agar
 -----------------------------------
-local ID = zones[xi.zone.ORDELLES_CAVES]
+local ID = zones[invaderXim.zone.ORDELLES_CAVES]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -17,11 +17,11 @@ local agarPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 659, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 659, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, agarPHTable, 5, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, agarPHTable, 5, 3600) -- 1 hour
 end
 
 return entity

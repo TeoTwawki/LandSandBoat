@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.effectFlag
-xi.effectFlag =
+---@enum invaderXim.effectFlag
+invaderXim.effectFlag =
 {
     NONE            = 0x00000000,
     DISPELABLE      = 0x00000001,

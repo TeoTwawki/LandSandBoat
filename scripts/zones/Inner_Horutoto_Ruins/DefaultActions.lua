@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.INNER_HORUTOTO_RUINS]
+local ID = zones[invaderXim.zone.INNER_HORUTOTO_RUINS]
 
 return {
     ['_5ca'] = { event = 44 },

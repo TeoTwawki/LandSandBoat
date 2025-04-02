@@ -4,7 +4,7 @@
 -- Note: PH for Leshonki
 -- TODO: 3 PHs should be in a spawning group that only one of them can be up at a time
 -----------------------------------
-local ID = zones[xi.zone.THE_BOYAHDA_TREE]
+local ID = zones[invaderXim.zone.THE_BOYAHDA_TREE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -27,14 +27,14 @@ local leshonkiSpawnPoints =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 725, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 725, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
     local params = {}
     params.dayOnly = true
     params.spawnPoints = leshonkiSpawnPoints
-    xi.mob.phOnDespawn(mob, leshonkiPHTable, 5, 3600, params) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, leshonkiPHTable, 5, 3600, params) -- 1 hour
 end
 
 return entity

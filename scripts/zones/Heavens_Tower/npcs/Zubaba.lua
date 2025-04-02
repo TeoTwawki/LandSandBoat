@@ -8,7 +8,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if player:hasKeyItem(xi.ki.STAR_CRESTED_SUMMONS_1) then
+    if player:hasKeyItem(invaderXim.ki.STAR_CRESTED_SUMMONS_1) then
         player:startEvent(157)
     end
 end

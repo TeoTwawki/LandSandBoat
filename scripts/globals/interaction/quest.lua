@@ -5,7 +5,7 @@ require('scripts/globals/interaction/container')
 -----------------------------------
 ---@see TInteractionContainer
 ---@class TQuest : TInteractionContainer
----@field areaId xi.questLog
+---@field areaId invaderXim.questLog
 ---@field questId integer
 Quest = setmetatable({ areaId = 0 }, { __index = Container })
 Quest.__index = Quest
@@ -21,7 +21,7 @@ Quest.reward = {}
 Quest.sections = {}
 
 ---@nodiscard
----@param areaId xi.questLog
+---@param areaId invaderXim.questLog
 ---@param questId integer
 ---@return TQuest
 function Quest:new(areaId, questId)
@@ -33,7 +33,7 @@ function Quest:new(areaId, questId)
 end
 
 ---@nodiscard
----@param areaId xi.questLog
+---@param areaId invaderXim.questLog
 ---@param questId integer
 ---@return string
 function Quest.getVarPrefix(areaId, questId)
@@ -42,7 +42,7 @@ end
 
 ---@nodiscard
 ---@param player CBaseEntity
----@return table<xi.questStatus>
+---@return table<invaderXim.questStatus>
 function Quest:getCheckArgs(player)
     return { player:getQuestStatus(self.areaId, self.questId) }
 end

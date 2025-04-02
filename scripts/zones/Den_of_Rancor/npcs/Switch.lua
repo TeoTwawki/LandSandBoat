@@ -3,7 +3,7 @@
 --  NPC: Switch
 -- !pos -56 45 40 160
 -----------------------------------
-local ID = zones[xi.zone.DEN_OF_RANCOR]
+local ID = zones[invaderXim.zone.DEN_OF_RANCOR]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

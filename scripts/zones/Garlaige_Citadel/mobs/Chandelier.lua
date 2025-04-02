@@ -3,13 +3,13 @@
 --   NM: Chandelier
 -- Note: Spawned for quest "Hitting the Marquisate"
 -----------------------------------
-local ID = zones[xi.zone.GARLAIGE_CITADEL]
+local ID = zones[invaderXim.zone.GARLAIGE_CITADEL]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 120)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 120)
 end
 
 entity.onMobSpawn = function(mob)
@@ -20,7 +20,7 @@ entity.onMobEngage = function(mob, target)
     local ce = mob:getCE(target)
     local ve = mob:getVE(target)
     if ce == 0 and ve == 0 then
-        mob:setMobMod(xi.mobMod.NO_DROPS, 1)
+        mob:setMobMod(invaderXim.mobMod.NO_DROPS, 1)
         mob:useMobAbility(511) -- self-destruct
     end
 end

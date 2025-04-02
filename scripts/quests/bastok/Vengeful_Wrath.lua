@@ -5,24 +5,24 @@
 -- Goraow : !pos 38 .1 14 234
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.VENGEFUL_WRATH)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.VENGEFUL_WRATH)
 
 quest.reward =
 {
-    fameArea = xi.fameArea.BASTOK,
+    fameArea = invaderXim.fameArea.BASTOK,
     gil      = 900,
-    title    = xi.title.AVENGER,
+    title    = invaderXim.title.AVENGER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 3
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 3
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Goraow'] = quest:progressEvent(106),
 
@@ -37,15 +37,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status ~= xi.questStatus.QUEST_AVAILABLE
+            return status ~= invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Goraow'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.QUADAV_HELM) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.QUADAV_HELM) then
                         return quest:progressEvent(107)
                     end
                 end,
@@ -56,8 +56,8 @@ quest.sections =
                 [107] = function(player, csid, option, npc)
                     player:confirmTrade()
 
-                    if player:getQuestStatus(quest.areaId, quest.questId) == xi.questStatus.QUEST_ACCEPTED then
-                        player:addFame(xi.fameArea.BASTOK, 112)
+                    if player:getQuestStatus(quest.areaId, quest.questId) == invaderXim.questStatus.QUEST_ACCEPTED then
+                        player:addFame(invaderXim.fameArea.BASTOK, 112)
                     end
 
                     quest:complete(player)

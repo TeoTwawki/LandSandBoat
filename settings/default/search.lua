@@ -1,15 +1,15 @@
 -----------------------------------
 -- SEARCH SERVER SETTINGS
 -----------------------------------
--- All settings are attached to the `xi.settings` object. This is published globally, and be accessed from C++ and any script.
+-- All settings are attached to the `invaderXim.settings` object. This is published globally, and be accessed from C++ and any script.
 --
 -- This file is concerned mainly with /sea, searching, and the auction house.
 -----------------------------------
 
 xi = xi or {}
-xi.settings = xi.settings or {}
+invaderXim.settings = invaderXim.settings or {}
 
-xi.settings.search =
+invaderXim.settings.search =
 {
     -- Omit items with no listing history from auction house results
     OMIT_NO_HISTORY = false,

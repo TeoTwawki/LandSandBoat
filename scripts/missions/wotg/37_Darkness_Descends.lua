@@ -5,11 +5,11 @@
 -- !addmission 5 36
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.DARKNESS_DESCENDS)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.DARKNESS_DESCENDS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.ADIEU_LILISETTE },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.ADIEU_LILISETTE },
 }
 
 mission.sections =
@@ -19,7 +19,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.THRONE_ROOM_S] =
+        [invaderXim.zone.THRONE_ROOM_S] =
         {
             onZoneIn = function(player, prevZone)
                 local missionStatus = mission:getVar(player, 'Status')
@@ -65,11 +65,11 @@ mission.sections =
                     -- in various missions.
 
                     if
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.DARKNESS_DESCENDS and
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.DARKNESS_DESCENDS and
                         mission:getVar(player, 'Status') == 1
                     then
                         mission:setVar(player, 'Status', 2)
-                        player:setPos(-90.854, -5.75, -0.009, 129, xi.zone.THRONE_ROOM_S)
+                        player:setPos(-90.854, -5.75, -0.009, 129, invaderXim.zone.THRONE_ROOM_S)
                     end
                 end,
             },

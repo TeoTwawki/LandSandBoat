@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if player:getCurrentMission(xi.mission.log_id.SOA) >= xi.mission.id.soa.LIFE_ON_THE_FRONTIER then
+    if player:getCurrentMission(invaderXim.mission.log_id.SOA) >= invaderXim.mission.id.soa.LIFE_ON_THE_FRONTIER then
         player:startEvent(574)
     else
         -- Dialogue prior to joining colonization effort

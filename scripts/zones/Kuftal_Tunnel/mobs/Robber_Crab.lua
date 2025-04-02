@@ -2,21 +2,21 @@
 -- Area: Kuftal Tunnel
 --  Mob: Robber Crab
 -----------------------------------
-local ID = zones[xi.zone.KUFTAL_TUNNEL]
+local ID = zones[invaderXim.zone.KUFTAL_TUNNEL]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
     if mob:getID() == ID.mob.CANCER + 1 then
-        mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180)
+        mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180)
     end
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 735, 1, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 736, 1, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 738, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 735, 1, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 736, 1, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 738, 1, invaderXim.regime.type.GROUNDS)
 end
 
 return entity

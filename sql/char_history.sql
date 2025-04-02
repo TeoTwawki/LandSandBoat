@@ -2,7 +2,7 @@
 -- Table structure for table `char_history`
 --
 
-DROP TABLE IF EXISTS `char_history`;
+DROP TABLE IF IXIMSTS `char_history`;
 CREATE TABLE `char_history` (
   `charid` int(10) unsigned NOT NULL,
   `enemies_defeated` int(10) unsigned NOT NULL DEFAULT '0',

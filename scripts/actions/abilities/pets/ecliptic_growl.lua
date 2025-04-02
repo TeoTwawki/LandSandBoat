@@ -5,14 +5,14 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.summoner.canUseBloodPact(player, player:getPet(), target, ability)
+    return invaderXim.job_utils.summoner.canUseBloodPact(player, player:getPet(), target, ability)
 end
 
 abilityObject.onPetAbility = function(target, pet, petskill, summoner, action)
-    local bonusTime = utils.clamp(summoner:getSkillLevel(xi.skill.SUMMONING_MAGIC) - 300, 0, 200)
+    local bonusTime = utils.clamp(summoner:getSkillLevel(invaderXim.skill.SUMMONING_MAGIC) - 300, 0, 200)
     local duration = 180 + bonusTime
 
-    xi.job_utils.summoner.onUseBloodPact(target, petskill, summoner, action)
+    invaderXim.job_utils.summoner.onUseBloodPact(target, petskill, summoner, action)
 
     local moon = VanadielMoonPhase()
     local buffvalue = 1
@@ -30,25 +30,25 @@ abilityObject.onPetAbility = function(target, pet, petskill, summoner, action)
         buffvalue = 2
     end
 
-    target:delStatusEffect(xi.effect.STR_BOOST)
-    target:delStatusEffect(xi.effect.DEX_BOOST)
-    target:delStatusEffect(xi.effect.VIT_BOOST)
-    target:delStatusEffect(xi.effect.AGI_BOOST)
-    target:delStatusEffect(xi.effect.MND_BOOST)
-    target:delStatusEffect(xi.effect.CHR_BOOST)
+    target:delStatusEffect(invaderXim.effect.STR_BOOST)
+    target:delStatusEffect(invaderXim.effect.DEX_BOOST)
+    target:delStatusEffect(invaderXim.effect.VIT_BOOST)
+    target:delStatusEffect(invaderXim.effect.AGI_BOOST)
+    target:delStatusEffect(invaderXim.effect.MND_BOOST)
+    target:delStatusEffect(invaderXim.effect.CHR_BOOST)
 
-    target:addStatusEffect(xi.effect.STR_BOOST, buffvalue, 0, duration)
-    target:addStatusEffect(xi.effect.DEX_BOOST, buffvalue, 0, duration)
-    target:addStatusEffect(xi.effect.VIT_BOOST, buffvalue, 0, duration)
-    target:addStatusEffect(xi.effect.AGI_BOOST, 8-buffvalue, 0, duration)
-    target:addStatusEffect(xi.effect.INT_BOOST, 8-buffvalue, 0, duration)
-    target:addStatusEffect(xi.effect.MND_BOOST, 8-buffvalue, 0, duration)
-    target:addStatusEffect(xi.effect.CHR_BOOST, 8-buffvalue, 0, duration)
+    target:addStatusEffect(invaderXim.effect.STR_BOOST, buffvalue, 0, duration)
+    target:addStatusEffect(invaderXim.effect.DEX_BOOST, buffvalue, 0, duration)
+    target:addStatusEffect(invaderXim.effect.VIT_BOOST, buffvalue, 0, duration)
+    target:addStatusEffect(invaderXim.effect.AGI_BOOST, 8-buffvalue, 0, duration)
+    target:addStatusEffect(invaderXim.effect.INT_BOOST, 8-buffvalue, 0, duration)
+    target:addStatusEffect(invaderXim.effect.MND_BOOST, 8-buffvalue, 0, duration)
+    target:addStatusEffect(invaderXim.effect.CHR_BOOST, 8-buffvalue, 0, duration)
 
     if target:getID() == action:getPrimaryTargetID() then
-        petskill:setMsg(xi.msg.basic.STATUS_BOOST)
+        petskill:setMsg(invaderXim.msg.basic.STATUS_BOOST)
     else
-        petskill:setMsg(xi.msg.basic.STATUS_BOOST_2)
+        petskill:setMsg(invaderXim.msg.basic.STATUS_BOOST_2)
     end
 
     return 0

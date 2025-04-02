@@ -21,10 +21,10 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.AMORPH
-    params.attackType = xi.attackType.MAGICAL
-    params.damageType = xi.damageType.WATER
-    params.attribute = xi.mod.INT
+    params.ecosystem = invaderXim.ecosystem.AMORPH
+    params.attackType = invaderXim.attackType.MAGICAL
+    params.damageType = invaderXim.damageType.WATER
+    params.attribute = invaderXim.mod.INT
     params.multiplier = 2.125
     params.azureBonus = 0.5
     params.tMultiplier = 2.0
@@ -37,15 +37,15 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
 
-    local damage = xi.spells.blue.useMagicalSpell(caster, target, spell, params)
+    local damage = invaderXim.spells.blue.useMagicalSpell(caster, target, spell, params)
 
-    params.attribute = xi.mod.INT
-    params.skillType = xi.skill.BLUE_MAGIC
+    params.attribute = invaderXim.mod.INT
+    params.skillType = invaderXim.skill.BLUE_MAGIC
     local resist = applyResistanceEffect(caster, target, spell, params)
 
     if resist >= 0.5 then
-        target:addStatusEffect(xi.effect.DEFENSE_DOWN, 5, 0, 90 * resist)
-        target:addStatusEffect(xi.effect.ATTACK_DOWN, 5, 0, 90 * resist)
+        target:addStatusEffect(invaderXim.effect.DEFENSE_DOWN, 5, 0, 90 * resist)
+        target:addStatusEffect(invaderXim.effect.ATTACK_DOWN, 5, 0, 90 * resist)
     end
 
     return damage

@@ -3,7 +3,7 @@
 --  Mob: Toad
 -- Note: Place holder Ramponneau
 -----------------------------------
-local ID = zones[xi.zone.WEST_SARUTABARUTA_S]
+local ID = zones[invaderXim.zone.WEST_SARUTABARUTA_S]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -17,7 +17,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, ramponneauPHTable, 20, 5400) -- 90 minutes
+    invaderXim.mob.phOnDespawn(mob, ramponneauPHTable, 20, 5400) -- 90 minutes
 end
 
 return entity

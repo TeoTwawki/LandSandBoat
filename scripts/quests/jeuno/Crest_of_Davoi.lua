@@ -5,24 +5,24 @@
 -- Baudin : !pos -75 0 80 244
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.CREST_OF_DAVOI)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.CREST_OF_DAVOI)
 
 quest.reward =
 {
     fame = 30,
-    fameArea = xi.fameArea.JEUNO,
-    keyItem = xi.ki.CREST_OF_DAVOI,
+    fameArea = invaderXim.fameArea.JEUNO,
+    keyItem = invaderXim.ki.CREST_OF_DAVOI,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasKeyItem(xi.ki.SILVER_BELL)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasKeyItem(invaderXim.ki.SILVER_BELL)
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Baudin'] =
             {
@@ -44,15 +44,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Baudin'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.SLICE_OF_COEURL_MEAT) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.SLICE_OF_COEURL_MEAT) then
                         return quest:progressEvent(171)
                     end
                 end,

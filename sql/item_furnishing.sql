@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `item_furnishing`
 --
 
-DROP TABLE IF EXISTS `item_furnishing`;
-CREATE TABLE IF NOT EXISTS `item_furnishing` (
+DROP TABLE IF IXIMSTS `item_furnishing`;
+CREATE TABLE IF NOT IXIMSTS `item_furnishing` (
   `itemid` smallint(5) unsigned NOT NULL,
   `name` text NOT NULL,
   `storage` tinyint(3) unsigned NOT NULL DEFAULT '0',

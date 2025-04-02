@@ -8,11 +8,11 @@ local entity = {}
 
 entity.onTrigger = function(player, npc)
     local csid = 528
-    xi.events.loginCampaign.onTrigger(player, csid)
+    invaderXim.events.loginCampaign.onTrigger(player, csid)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.events.loginCampaign.onEventUpdate(player, csid, option, npc)
+    invaderXim.events.loginCampaign.onEventUpdate(player, csid, option, npc)
 end
 
 return entity

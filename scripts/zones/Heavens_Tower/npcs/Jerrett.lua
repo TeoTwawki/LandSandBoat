@@ -9,15 +9,15 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.abyssea.traverserNPCOnTrigger(player, npc)
+    invaderXim.abyssea.traverserNPCOnTrigger(player, npc)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.abyssea.traverserNPCOnUpdate(player, csid, option, npc)
+    invaderXim.abyssea.traverserNPCOnUpdate(player, csid, option, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.abyssea.traverserNPCOnEventFinish(player, csid, option, npc)
+    invaderXim.abyssea.traverserNPCOnEventFinish(player, csid, option, npc)
 end
 
 return entity

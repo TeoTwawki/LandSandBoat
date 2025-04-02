@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.PORT_BASTOK]
+local ID = zones[invaderXim.zone.PORT_BASTOK]
 
 return {
     ['_6k9']             = { event = 140 },

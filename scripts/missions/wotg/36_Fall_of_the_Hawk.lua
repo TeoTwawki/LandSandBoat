@@ -5,11 +5,11 @@
 -- !addmission 5 35
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.FALL_OF_THE_HAWK)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.FALL_OF_THE_HAWK)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.DARKNESS_DESCENDS },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.DARKNESS_DESCENDS },
 }
 
 mission.sections =
@@ -19,7 +19,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CASTLE_ZVAHL_BAILEYS_S] =
+        [invaderXim.zone.CASTLE_ZVAHL_BAILEYS_S] =
         {
             onZoneIn = function(player, prevZone)
                 return 4

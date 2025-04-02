@@ -6,11 +6,11 @@
 -- Halver : !pos 2 0.1 0.1 233
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.EASTERLY_WINDS)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.EASTERLY_WINDS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.WESTERLY_WINDS },
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.WESTERLY_WINDS },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Halver'] =
             {
@@ -30,7 +30,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             onTriggerAreaEnter =
             {
@@ -46,7 +46,7 @@ mission.sections =
                     -- This is the reasoning for the two different mission:complete() calls.
 
                     if option == 1 then
-                        if npcUtil.giveItem(player, { { xi.item.IMPERIAL_BRONZE_PIECE, 10 } }) then
+                        if npcUtil.giveItem(player, { { invaderXim.item.IMPERIAL_BRONZE_PIECE, 10 } }) then
                             mission:complete(player)
                         end
                     else

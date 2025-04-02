@@ -7,11 +7,11 @@
 -- Ru'Lude Homepoint 1   : !pos -6 3 0.001 243
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.A_VESSEL_WITHOUT_A_CAPTAIN)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.A_VESSEL_WITHOUT_A_CAPTAIN)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.THE_ROAD_FORKS },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_ROAD_FORKS },
 }
 
 mission.sections =
@@ -21,12 +21,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Cid'] = mission:progressEvent(861):oncePerZone(),
         },
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['_6tc'] =
             {
@@ -59,14 +59,14 @@ mission.sections =
             },
         },
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             onTriggerAreaEnter =
             {
                 [1] = function(player, triggerArea)
                     if mission:getVar(player, 'Status') == 1 then
                         local pNation = player:getNation()
-                        local hasDefeatedShadowlord = player:hasCompletedMission(pNation, xi.mission.id.nation.SHADOW_LORD)
+                        local hasDefeatedShadowlord = player:hasCompletedMission(pNation, invaderXim.mission.id.nation.SHADOW_LORD)
 
                         return mission:progressEvent(65, pNation, hasDefeatedShadowlord)
                     end

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.STYMIE
+-- invaderXim.effect.STYMIE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

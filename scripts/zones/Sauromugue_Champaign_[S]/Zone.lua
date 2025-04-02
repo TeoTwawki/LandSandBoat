@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Sauromugue_Champaign_[S] (98)
 -----------------------------------
-local ID = zones[xi.zone.SAUROMUGUE_CHAMPAIGN_S]
+local ID = zones[invaderXim.zone.SAUROMUGUE_CHAMPAIGN_S]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -9,7 +9,7 @@ local zoneObject = {}
 zoneObject.onInitialize = function(zone)
     UpdateNMSpawnPoint(ID.mob.COQUECIGRUE)
     GetMobByID(ID.mob.COQUECIGRUE):setRespawnTime(math.random(7200, 7800))
-    xi.voidwalker.zoneOnInit(zone)
+    invaderXim.voidwalker.zoneOnInit(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)

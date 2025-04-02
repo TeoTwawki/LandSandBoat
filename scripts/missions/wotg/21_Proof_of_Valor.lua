@@ -5,31 +5,31 @@
 -- !addmission 5 20
 -- Raustigne : !pos 3.979 -1.999 44.456 80
 -----------------------------------
-local pastSandoriaID = zones[xi.zone.SOUTHERN_SAN_DORIA_S]
+local pastSandoriaID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA_S]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.PROOF_OF_VALOR)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.PROOF_OF_VALOR)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.A_SANGUINARY_PRELUDE },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.A_SANGUINARY_PRELUDE },
 }
 
 local itemRewards =
 {
-    [xi.item.MOLYBDENUM_INGOT ] = 120,
-    [xi.item.ORICHALCUM_INGOT ] = 100,
-    [xi.item.ANGEL_SKIN_ORB   ] = 81,
-    [xi.item.SQUARE_OF_FOULARD] = 41,
-    [xi.item.OXBLOOD_ORB      ] = 30,
+    [invaderXim.item.MOLYBDENUM_INGOT ] = 120,
+    [invaderXim.item.ORICHALCUM_INGOT ] = 100,
+    [invaderXim.item.ANGEL_SKIN_ORB   ] = 81,
+    [invaderXim.item.SQUARE_OF_FOULARD] = 41,
+    [invaderXim.item.OXBLOOD_ORB      ] = 30,
 }
 
 local orcItems =
 {
-    [xi.item.ORCISH_AXE  ] = 5,
-    [xi.item.ORC_HELMET  ] = 10,
-    [xi.item.ORC_PAULDRON] = 10,
-    [xi.item.GOLD_ORCMASK] = 15,
+    [invaderXim.item.ORCISH_AXE  ] = 5,
+    [invaderXim.item.ORC_HELMET  ] = 10,
+    [invaderXim.item.ORC_PAULDRON] = 10,
+    [invaderXim.item.GOLD_ORCMASK] = 15,
 }
 
 local function completePetition(player, posBit, numSignatures)
@@ -38,7 +38,7 @@ local function completePetition(player, posBit, numSignatures)
 
     local totalSignatures = mission:getVar(player, 'Option')
 
-    player:messageSpecial(pastSandoriaID.text.HAVE_GATHERED_SIGNATURE, xi.ki.NORTH_BOUND_PETITION, totalSignatures)
+    player:messageSpecial(pastSandoriaID.text.HAVE_GATHERED_SIGNATURE, invaderXim.ki.NORTH_BOUND_PETITION, totalSignatures)
 end
 
 local function updateGameRound(player, option, correctOptions)
@@ -60,7 +60,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Raustigne'] =
             {
@@ -73,7 +73,7 @@ mission.sections =
                             mission:setMustZone(player)
 
                             player:messageSpecial(pastSandoriaID.text.MUST_GATHER_SIGNATURES, 20)
-                            return mission:messageSpecial(pastSandoriaID.text.CURRENT_PETITIONS, 0, numPetitions, xi.ki.NORTH_BOUND_PETITION)
+                            return mission:messageSpecial(pastSandoriaID.text.CURRENT_PETITIONS, 0, numPetitions, invaderXim.ki.NORTH_BOUND_PETITION)
                         else
                             return mission:progressEvent(148, player:getCampaignAllegiance(), mission:getVar(player, 'Option'))
                         end
@@ -168,7 +168,7 @@ mission.sections =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.ANGLERS_CASSOULET) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.ANGLERS_CASSOULET) and
                         mission:isVarBitsSet(player, 'Remind', 0)
                     then
                         return mission:progressEvent(135)
@@ -205,7 +205,7 @@ mission.sections =
                     -- discovered with Sabiliont.  A single crossbow bolt may be an
                     -- acceptable trade.
                     if
-                        npcUtil.tradeHasOnly(trade, xi.item.CROSSBOW_BOLT) and
+                        npcUtil.tradeHasOnly(trade, invaderXim.item.CROSSBOW_BOLT) and
                         trade:getItemCount() >= 99 and
                         mission:isVarBitsSet(player, 'Remind', 2)
                     then
@@ -286,7 +286,7 @@ mission.sections =
             ['Rongelouts_N_Distaud'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.GNOLE_CLAW) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.GNOLE_CLAW) then
                         return mission:progressEvent(144)
                     end
                 end,
@@ -312,7 +312,7 @@ mission.sections =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasOnly(trade, xi.item.BUNCH_OF_GYSAHL_GREENS) and
+                        npcUtil.tradeHasOnly(trade, invaderXim.item.BUNCH_OF_GYSAHL_GREENS) and
                         mission:isVarBitsSet(player, 'Remind', 3)
                     then
                         -- TODO: This formula is estimated; however, a trade of a single gysahl green

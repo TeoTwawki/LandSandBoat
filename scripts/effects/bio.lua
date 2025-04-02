@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.BIO
+-- invaderXim.effect.BIO
 -- Tier > 0 signals this is a bio that doesn't break sleep
 -- See mobskills/nightmare.lua for full explanation
 -----------------------------------
@@ -8,10 +8,10 @@ local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
     if effect:getTier() == 0 then
-        effect:addMod(xi.mod.REGEN_DOWN, effect:getPower())
+        effect:addMod(invaderXim.mod.REGEN_DOWN, effect:getPower())
     end
 
-    effect:addMod(xi.mod.ATTP, -effect:getSubPower())
+    effect:addMod(invaderXim.mod.ATTP, -effect:getSubPower())
 end
 
 effectObject.onEffectTick = function(target, effect)

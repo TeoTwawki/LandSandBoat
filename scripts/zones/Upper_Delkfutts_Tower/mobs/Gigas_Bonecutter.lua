@@ -3,7 +3,7 @@
 --  Mob: Gigas Bonecutter
 -- Note: PH for Enkelados
 -----------------------------------
-local ID = zones[xi.zone.UPPER_DELKFUTTS_TOWER]
+local ID = zones[invaderXim.zone.UPPER_DELKFUTTS_TOWER]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -15,11 +15,11 @@ local enkeladosPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 785, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 785, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, enkeladosPHTable, 5, 1) -- no cooldown
+    invaderXim.mob.phOnDespawn(mob, enkeladosPHTable, 5, 1) -- no cooldown
 end
 
 return entity

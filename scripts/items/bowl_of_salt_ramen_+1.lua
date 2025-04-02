@@ -15,37 +15,37 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.foodOnItemCheck(target, xi.foodType.BASIC)
+    return invaderXim.itemUtils.foodOnItemCheck(target, invaderXim.foodType.BASIC)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffect(xi.effect.FOOD, 0, 0, 3600, 6463)
+    target:addStatusEffect(invaderXim.effect.FOOD, 0, 0, 3600, 6463)
 end
 
 itemObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.DEX, 6)
-    target:addMod(xi.mod.VIT, 6)
-    target:addMod(xi.mod.AGI, 6)
-    target:addMod(xi.mod.FOOD_ACCP, 6)
-    target:addMod(xi.mod.FOOD_ACC_CAP, 95)
-    target:addMod(xi.mod.FOOD_RACCP, 6)
-    target:addMod(xi.mod.FOOD_RACC_CAP, 95)
-    -- target:addMod(xi.mod.FOOD_EVAP, 6)
-    -- target:addMod(xi.mod.FOOD_EVA_CAP, 95)
-    target:addMod(xi.mod.SLOWRES, 15)
+    target:addMod(invaderXim.mod.DEX, 6)
+    target:addMod(invaderXim.mod.VIT, 6)
+    target:addMod(invaderXim.mod.AGI, 6)
+    target:addMod(invaderXim.mod.FOOD_ACCP, 6)
+    target:addMod(invaderXim.mod.FOOD_ACC_CAP, 95)
+    target:addMod(invaderXim.mod.FOOD_RACCP, 6)
+    target:addMod(invaderXim.mod.FOOD_RACC_CAP, 95)
+    -- target:addMod(invaderXim.mod.FOOD_EVAP, 6)
+    -- target:addMod(invaderXim.mod.FOOD_EVA_CAP, 95)
+    target:addMod(invaderXim.mod.SLOWRES, 15)
 end
 
 itemObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.DEX, 6)
-    target:delMod(xi.mod.VIT, 6)
-    target:delMod(xi.mod.AGI, 6)
-    target:delMod(xi.mod.FOOD_ACCP, 6)
-    target:delMod(xi.mod.FOOD_ACC_CAP, 95)
-    target:delMod(xi.mod.FOOD_RACCP, 6)
-    target:delMod(xi.mod.FOOD_RACC_CAP, 95)
-    -- target:delMod(xi.mod.FOOD_EVAP, 6)
-    -- target:delMod(xi.mod.FOOD_EVA_CAP, 95)
-    target:delMod(xi.mod.SLOWRES, 15)
+    target:delMod(invaderXim.mod.DEX, 6)
+    target:delMod(invaderXim.mod.VIT, 6)
+    target:delMod(invaderXim.mod.AGI, 6)
+    target:delMod(invaderXim.mod.FOOD_ACCP, 6)
+    target:delMod(invaderXim.mod.FOOD_ACC_CAP, 95)
+    target:delMod(invaderXim.mod.FOOD_RACCP, 6)
+    target:delMod(invaderXim.mod.FOOD_RACC_CAP, 95)
+    -- target:delMod(invaderXim.mod.FOOD_EVAP, 6)
+    -- target:delMod(invaderXim.mod.FOOD_EVA_CAP, 95)
+    target:delMod(invaderXim.mod.SLOWRES, 15)
 end
 
 return itemObject

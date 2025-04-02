@@ -9,12 +9,12 @@ abilityObject.onAutomatonAbilityCheck = function(target, automaton, skill)
 end
 
 abilityObject.onAutomatonAbility = function(target, automaton, skill, master, action)
-    automaton:addRecast(xi.recast.ABILITY, skill:getID(), 90)
-    local maneuvers = master:countEffect(xi.effect.FIRE_MANEUVER)
-    skill:setMsg(xi.msg.basic.TP_INCREASE)
+    automaton:addRecast(invaderXim.recast.ABILITY, skill:getID(), 90)
+    local maneuvers = master:countEffect(invaderXim.effect.FIRE_MANEUVER)
+    skill:setMsg(invaderXim.msg.basic.TP_INCREASE)
 
     for i = 1, maneuvers do
-        master:delStatusEffectSilent(xi.effect.FIRE_MANEUVER)
+        master:delStatusEffectSilent(invaderXim.effect.FIRE_MANEUVER)
     end
 
     if automaton:getLocalVar('heat_capacitor') >= 3 then -- Heat Capacitor & Heat Capacitor II

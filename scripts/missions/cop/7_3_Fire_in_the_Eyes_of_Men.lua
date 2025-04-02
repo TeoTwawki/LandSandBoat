@@ -6,12 +6,12 @@
 -- Cid : !pos -12 -12 1 237
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.FIRE_IN_THE_EYES_OF_MEN)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.FIRE_IN_THE_EYES_OF_MEN)
 
 mission.reward =
 {
-    title = xi.title.PRISHES_BUDDY,
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.CALM_BEFORE_THE_STORM },
+    title = invaderXim.title.PRISHES_BUDDY,
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.CALM_BEFORE_THE_STORM },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.MINE_SHAFT_2716] =
+        [invaderXim.zone.MINE_SHAFT_2716] =
         {
             ['_0d0'] =
             {
@@ -40,7 +40,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Cid'] =
             {

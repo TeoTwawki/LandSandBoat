@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.UNBRIDLED_LEARNING
+-- invaderXim.effect.UNBRIDLED_LEARNING
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

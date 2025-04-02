@@ -8,7 +8,7 @@ local entity = {}
 entity.onSpawn = function(npc)
     local elevator =
     {
-        id = xi.elevator.DAVOI_LIFT,
+        id = invaderXim.elevator.DAVOI_LIFT,
         lowerDoor = npc:getID() - 2,
         upperDoor = npc:getID(),
         elevator = npc:getID() - 3,

@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.PROMYVION_VAHZL] =
+zones[invaderXim.zone.PROMYVION_VAHZL] =
 {
     text =
     {
@@ -40,4 +40,4 @@ zones[xi.zone.PROMYVION_VAHZL] =
     },
 }
 
-return zones[xi.zone.PROMYVION_VAHZL]
+return zones[invaderXim.zone.PROMYVION_VAHZL]

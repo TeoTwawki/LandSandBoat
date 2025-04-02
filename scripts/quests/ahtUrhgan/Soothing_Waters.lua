@@ -9,12 +9,12 @@
 -- qm10         : !pos 352 2 376 68
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.SOOTHING_WATERS)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.SOOTHING_WATERS)
 
 quest.reward =
 {
-    item = xi.item.IMPERIAL_GOLD_PIECE,
-    title = xi.title.SPRINGSERPENT_SENTRY
+    item = invaderXim.item.IMPERIAL_GOLD_PIECE,
+    title = invaderXim.title.SPRINGSERPENT_SENTRY
 }
 
 quest.sections =
@@ -22,11 +22,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-            player:hasCompletedQuest(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.ODE_TO_THE_SERPENTS)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+            player:hasCompletedQuest(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.ODE_TO_THE_SERPENTS)
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Fari-Wari'] = quest:progressEvent(894, { text_table = 0 }),
 
@@ -42,10 +42,10 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 0
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 0
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Fari-Wari'] = quest:replaceEvent(906),
             ['Eunheem'] = quest:progressEvent(895, { text_table = 0 }),
@@ -60,10 +60,10 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 1
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 1
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Fari-Wari'] = quest:replaceEvent(906),
             ['Eunheem'] = quest:replaceEvent(907),
@@ -79,16 +79,16 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 2
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 2
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Fari-Wari'] = quest:replaceEvent(906),
             ['Eunheem'] = quest:replaceEvent(907),
         },
 
-        [xi.zone.AL_ZAHBI] =
+        [invaderXim.zone.AL_ZAHBI] =
         {
             ['Mihli_Aliapoh'] = quest:progressEvent(289),
 
@@ -102,21 +102,21 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 3
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 3
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Fari-Wari'] = quest:replaceEvent(906),
             ['Eunheem'] = quest:replaceEvent(907),
         },
 
-        [xi.zone.AYDEEWA_SUBTERRANE] =
+        [invaderXim.zone.AYDEEWA_SUBTERRANE] =
         {
             ['qm10'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.TUFT_OF_COLORFUL_HAIR) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.TUFT_OF_COLORFUL_HAIR) then
                         return quest:progressCutscene(34)
                     end
                 end,
@@ -132,10 +132,10 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 4
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 4
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Fari-Wari'] = quest:progressEvent(897, { text_table = 0 }),
             ['Eunheem'] = quest:replaceEvent(907),
@@ -153,20 +153,20 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Eunheem'] = quest:replaceEvent(285),
         },
 
-        [xi.zone.AL_ZAHBI] =
+        [invaderXim.zone.AL_ZAHBI] =
         {
             ['Rughadjeen'] =
             {
                 onTrigger = function(player, npc)
-                    return quest:replaceEvent(284, { [0] = xi.besieged.getMercenaryRank(player) })
+                    return quest:replaceEvent(284, { [0] = invaderXim.besieged.getMercenaryRank(player) })
                 end,
             },
             ['Gadalar'] = quest:replaceEvent(285),

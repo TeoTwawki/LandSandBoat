@@ -1,22 +1,22 @@
 -----------------------------------
--- xi.effect.SABER_DANCE
+-- invaderXim.effect.SABER_DANCE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    local saberDanceMerits = target:getMerit(xi.merit.SABER_DANCE)
+    local saberDanceMerits = target:getMerit(invaderXim.merit.SABER_DANCE)
     if saberDanceMerits > 5 then
-        target:addMod(xi.mod.SAMBA_PDURATION, (saberDanceMerits - 5))
+        target:addMod(invaderXim.mod.SAMBA_PDURATION, (saberDanceMerits - 5))
     end
 
     -- Does not stack with warrior Double Attack trait, so disable it
-    if target:hasTrait(xi.trait.DOUBLE_ATTACK) then
-        target:delMod(xi.mod.DOUBLE_ATTACK, 10)
+    if target:hasTrait(invaderXim.trait.DOUBLE_ATTACK) then
+        target:delMod(invaderXim.mod.DOUBLE_ATTACK, 10)
     end
 
-    target:addMod(xi.mod.DOUBLE_ATTACK, effect:getPower())
-    target:delStatusEffect(xi.effect.FAN_DANCE)
+    target:addMod(invaderXim.mod.DOUBLE_ATTACK, effect:getPower())
+    target:delStatusEffect(invaderXim.effect.FAN_DANCE)
 end
 
 effectObject.onEffectTick = function(target, effect)
@@ -27,22 +27,22 @@ effectObject.onEffectTick = function(target, effect)
     if power > 20 then
         decayby = 3
         effect:setPower(power - decayby)
-        target:delMod(xi.mod.DOUBLE_ATTACK, decayby)
+        target:delMod(invaderXim.mod.DOUBLE_ATTACK, decayby)
     end
 end
 
 effectObject.onEffectLose = function(target, effect)
-    local saberDanceMerits = target:getMerit(xi.merit.SABER_DANCE)
+    local saberDanceMerits = target:getMerit(invaderXim.merit.SABER_DANCE)
     if saberDanceMerits > 1 then
-        target:delMod(xi.mod.SAMBA_PDURATION, (saberDanceMerits - 5))
+        target:delMod(invaderXim.mod.SAMBA_PDURATION, (saberDanceMerits - 5))
     end
 
-    if target:hasTrait(xi.trait.DOUBLE_ATTACK) then
+    if target:hasTrait(invaderXim.trait.DOUBLE_ATTACK) then
         -- put Double Attack trait back on.
-        target:addMod(xi.mod.DOUBLE_ATTACK, 10)
+        target:addMod(invaderXim.mod.DOUBLE_ATTACK, 10)
     end
 
-    target:delMod(xi.mod.DOUBLE_ATTACK, effect:getPower())
+    target:delMod(invaderXim.mod.DOUBLE_ATTACK, effect:getPower())
 end
 
 return effectObject

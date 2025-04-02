@@ -7,26 +7,26 @@
 -- Chomoro-Kyotoro : !pos 133 -5 167 238
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.MAKING_THE_GRADE)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.MAKING_THE_GRADE)
 
 quest.reward =
 {
     fame     = 75,
-    fameArea = xi.fameArea.WINDURST,
-    item     = xi.item.SCROLL_OF_ASPIR,
+    fameArea = invaderXim.fameArea.WINDURST,
+    item     = invaderXim.item.SCROLL_OF_ASPIR,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.WINDURST, xi.quest.id.windurst.TEACHERS_PET) and
-                player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.LET_SLEEPING_DOGS_LIE) ~= xi.questStatus.QUEST_ACCEPTED and
-                player:getFameLevel(xi.fameArea.WINDURST) >= 3
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.TEACHERS_PET) and
+                player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.LET_SLEEPING_DOGS_LIE) ~= invaderXim.questStatus.QUEST_ACCEPTED and
+                player:getFameLevel(invaderXim.fameArea.WINDURST) >= 3
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Fuepepe'] = quest:progressEvent(442),
 
@@ -43,10 +43,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Chomoro-Kyotoro'] =
             {
@@ -69,7 +69,7 @@ quest.sections =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.PILE_OF_ANSWER_SHEETS) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.PILE_OF_ANSWER_SHEETS) and
                         quest:getVar(player, 'Prog') == 0
                     then
                         return quest:progressEvent(455)
@@ -113,18 +113,18 @@ quest.sections =
                 end,
 
                 [460] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.TATTERED_TEST_SHEET)
+                    player:delKeyItem(invaderXim.ki.TATTERED_TEST_SHEET)
                     quest:setVar(player, 'Prog', 3)
                 end,
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Koru-Moru'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.PILE_OF_ANSWER_SHEETS) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.PILE_OF_ANSWER_SHEETS) then
                         if quest:getVar(player, 'Prog') == 1 then
                             return quest:progressEvent(285)
                         else
@@ -138,7 +138,7 @@ quest.sections =
 
                     if
                         questProgress == 0 and
-                        player:hasItem(xi.item.PILE_OF_ANSWER_SHEETS)
+                        player:hasItem(invaderXim.item.PILE_OF_ANSWER_SHEETS)
                     then
                         return quest:event(287)
                     elseif questProgress >= 2 then
@@ -152,7 +152,7 @@ quest.sections =
                 [285] = function(player, csid, option, npc)
                     player:confirmTrade()
 
-                    npcUtil.giveKeyItem(player, xi.ki.TATTERED_TEST_SHEET)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.TATTERED_TEST_SHEET)
                     quest:setVar(player, 'Prog', 2)
                 end,
             },
@@ -161,11 +161,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
                 not quest:getMustZone(player)
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Fuepepe'] = quest:event(459):importantEvent(),
         },

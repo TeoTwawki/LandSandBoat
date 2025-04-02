@@ -1,7 +1,7 @@
 -----------------------------------
 -- Regeneration
 --
--- Description: Adds a Regen xi.effect.
+-- Description: Adds a Regen invaderXim.effect.
 -- Type: Enhancing
 -- Utsusemi/Blink absorb: N/A
 -- Range: Self
@@ -16,9 +16,9 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local power = mob:getMainLvl() / 10 * 4 + 5
 
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.REGEN, power, 3, 60))
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.REGEN, power, 3, 60))
 
-    return xi.effect.REGEN
+    return invaderXim.effect.REGEN
 end
 
 return mobskillObject

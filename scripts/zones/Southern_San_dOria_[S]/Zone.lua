@@ -1,29 +1,29 @@
 -----------------------------------
 -- Zone: Southern_San_dOria_[S] (80)
 -----------------------------------
-local ID = zones[xi.zone.SOUTHERN_SAN_DORIA_S]
+local ID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA_S]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.chocobo.initZone(zone)
-    xi.extravaganza.shadowEraHide(ID.npc.SHIXO)
+    invaderXim.chocobo.initZone(zone)
+    invaderXim.extravaganza.shadowEraHide(ID.npc.SHIXO)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
     local cs = -1
 
-    if prevZone == xi.zone.EAST_RONFAURE_S then
+    if prevZone == invaderXim.zone.EAST_RONFAURE_S then
         if
-            player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.KNOT_QUITE_THERE) == xi.questStatus.QUEST_ACCEPTED and
+            player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.KNOT_QUITE_THERE) == invaderXim.questStatus.QUEST_ACCEPTED and
             player:getCharVar('KnotQuiteThere') == 2
         then
             cs = 62
         end
     end
 
-    -- MOG HOUSE EXIT
+    -- MOG HOUSE IXIMT
     if
         player:getXPos() == 0 and
         player:getYPos() == 0 and

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.EGG
+-- invaderXim.effect.EGG
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

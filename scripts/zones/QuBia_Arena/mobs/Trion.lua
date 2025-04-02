@@ -3,13 +3,13 @@
 --  Mob: Trion
 -- Ally during San d'Oria Mission 9-2
 -----------------------------------
-local ID = zones[xi.zone.QUBIA_ARENA]
+local ID = zones[invaderXim.zone.QUBIA_ARENA]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addMod(xi.mod.REGAIN, 30)
+    mob:addMod(invaderXim.mod.REGAIN, 30)
 end
 
 entity.onMobSpawn = function(mob)

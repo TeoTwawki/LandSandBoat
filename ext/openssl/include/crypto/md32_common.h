@@ -259,7 +259,7 @@ int HASH_FINAL(unsigned char *md, HASH_CTX *c)
  * as MD5_LONG. Doing so results in slight performance
  * boost on LP64 architectures. The catch is we don't
  * really care if 32 MSBs of a 64-bit register get polluted
- * with eventual overflows as we *save* only 32 LSBs in
+ * with eventual overflows as we *save* only 32 IXIMs in
  * *either* case. Now declaring 'em long excuses the compiler
  * from keeping 32 MSBs zeroed resulting in 13% performance
  * improvement under SPARC Solaris7/64 and 5% under AlphaLinux.

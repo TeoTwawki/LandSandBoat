@@ -21,13 +21,13 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.AMORPH
-    params.attackType = xi.attackType.MAGICAL
-    params.attribute = xi.mod.INT
-    params.skillType = xi.skill.BLUE_MAGIC
+    params.ecosystem = invaderXim.ecosystem.AMORPH
+    params.attackType = invaderXim.attackType.MAGICAL
+    params.attribute = invaderXim.mod.INT
+    params.skillType = invaderXim.skill.BLUE_MAGIC
     params.dmgMultiplier = 3.5
 
-    return xi.spells.blue.useDrainSpell(caster, target, spell, params, 165, true)
+    return invaderXim.spells.blue.useDrainSpell(caster, target, spell, params, 165, true)
 end
 
 return spellObject

@@ -8,12 +8,12 @@
 require('scripts/missions/soa/helpers')
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.TO_THE_VICTOR)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.TO_THE_VICTOR)
 
 mission.reward =
 {
-    title       = xi.title.BOOMY_AND_BUSTY,
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.AN_EXTRAORDINARY_GENTLEMAN },
+    title       = invaderXim.title.BOOMY_AND_BUSTY,
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.AN_EXTRAORDINARY_GENTLEMAN },
 }
 
 mission.sections =
@@ -23,17 +23,17 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(142),
 
             ['Masad'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.CARD_JAILER_TEODOR) then
+                    if player:hasKeyItem(invaderXim.ki.CARD_JAILER_TEODOR) then
                         return mission:progressEvent(153)
                     else
-                        xi.soa.helpers.initGameRound(player)
+                        invaderXim.soa.helpers.initGameRound(player)
                         player:setLocalVar('sessionScore', 0)
 
                         return mission:event(134, mission:getVar(player, 'Status'))
@@ -44,7 +44,7 @@ mission.sections =
             onEventUpdate =
             {
                 [134] = function(player, csid, option, npc)
-                    xi.soa.helpers.updateMinigameEvent(player, csid, option, npc)
+                    invaderXim.soa.helpers.updateMinigameEvent(player, csid, option, npc)
                 end,
             },
 

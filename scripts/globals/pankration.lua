@@ -5,13 +5,13 @@ require('scripts/globals/magic')
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.pankration = xi.pankration or {}
+invaderXim.pankration = invaderXim.pankration or {}
 
 -- https://www.bg-wiki.com/ffxi/Category:Pankration#Prohibited_Monsters
 -- IDs from mob_family_system.sql
 -- We only store the family, not the ecosystem, so we have to lookup
 -- based on that
-xi.pankration.prohibitedFamilies =
+invaderXim.pankration.prohibitedFamilies =
 set{
     -- All Beastmen
     25, -- Antica
@@ -101,7 +101,7 @@ set{
 -- https://github.com/Windower/Lua/blob/dev/addons/libs/extdata.lua
 -- https://www.bg-wiki.com/ffxi/Feral_Skills_Guide_by_Shoya
 -- https://ffxiclopedia.fandom.com/wiki/Category:Feral_Skills
-xi.pankration.feralSkills =
+invaderXim.pankration.feralSkills =
 {
     [0x001] = { text = 'Main Job: Warrior',      fp = 8 },
     [0x002] = { text = 'Main Job: Monk',         fp = 8 },

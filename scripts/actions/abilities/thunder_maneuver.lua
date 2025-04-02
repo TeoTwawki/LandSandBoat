@@ -9,11 +9,11 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.automaton.onManeuverCheck(player, target, ability)
+    return invaderXim.automaton.onManeuverCheck(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability, action)
-    return xi.automaton.onUseManeuver(player, target, ability, action)
+    return invaderXim.automaton.onUseManeuver(player, target, ability, action)
 end
 
 return abilityObject

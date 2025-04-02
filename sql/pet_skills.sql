@@ -17,7 +17,7 @@ SET @SKILLFLAG_BLOODPACT_RAGE = 64;  -- Used for identifying Bloodpact Rage abil
 SET @SKILLFLAG_BLOODPACT_WARD = 128; -- Used for identifying Bloodpact Ward abilities
 
 -- pet_skill_id is intended to map 1:1 with a real player id, i.e. "Welt" on this table would have the same id as "Welt" on abilities.sql
-DROP TABLE IF EXISTS `pet_skills`;
+DROP TABLE IF IXIMSTS `pet_skills`;
 CREATE TABLE `pet_skills` (
   `pet_skill_id` smallint(4) unsigned NOT NULL,
   `pet_anim_id` smallint(4) unsigned NOT NULL,

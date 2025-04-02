@@ -25,11 +25,11 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.corsair.onRollAbilityCheck(player, target, ability)
+    return invaderXim.job_utils.corsair.onRollAbilityCheck(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(caster, target, ability, action)
-    return xi.job_utils.corsair.onRollUseAbility(caster, target, ability, action)
+    return invaderXim.job_utils.corsair.onRollUseAbility(caster, target, ability, action)
 end
 
 return abilityObject

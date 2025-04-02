@@ -4,50 +4,50 @@
 -- Log ID: 3, Quest ID: 43
 -- Zona Shodhun : !pos -175 -5 -4 246
 -----------------------------------
-local portJeunoID = zones[xi.zone.PORT_JEUNO]
+local portJeunoID = zones[invaderXim.zone.PORT_JEUNO]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.PRETTY_LITTLE_THINGS)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.PRETTY_LITTLE_THINGS)
 
 quest.reward =
 {
     fame = 30,
-    fameArea = xi.fameArea.JEUNO,
+    fameArea = invaderXim.fameArea.JEUNO,
 }
 
 local invalidRocks =
 {
-    xi.item.RED_ROCK,
-    xi.item.BLUE_ROCK,
-    xi.item.GREEN_ROCK,
-    xi.item.TRANSLUCENT_ROCK,
-    xi.item.PURPLE_ROCK,
-    xi.item.BLACK_ROCK,
-    xi.item.WHITE_ROCK,
+    invaderXim.item.RED_ROCK,
+    invaderXim.item.BLUE_ROCK,
+    invaderXim.item.GREEN_ROCK,
+    invaderXim.item.TRANSLUCENT_ROCK,
+    invaderXim.item.PURPLE_ROCK,
+    invaderXim.item.BLACK_ROCK,
+    invaderXim.item.WHITE_ROCK,
 }
 
 local flowerItems =
 {
-    xi.item.AMARYLLIS,
-    xi.item.ASPHODEL,
-    xi.item.CARNATION,
-    xi.item.CASABLANCA,
-    xi.item.CATTLEYA,
-    xi.item.CHAMOMILE,
-    xi.item.DAHLIA,
-    xi.item.FLAX_FLOWER,
-    xi.item.LILAC,
-    xi.item.LYCOPODIUM_FLOWER,
-    xi.item.MARGUERITE,
-    xi.item.OLIVE_FLOWER,
-    xi.item.PAPAKA_GRASS,
-    xi.item.PHALAENOPSIS,
-    xi.item.RAIN_LILY,
-    xi.item.RED_ROSE,
-    xi.item.SNOW_LILY,
-    xi.item.SWEET_WILLIAM,
-    xi.item.TAHRONGI_CACTUS,
-    xi.item.WATER_LILY,
+    invaderXim.item.AMARYLLIS,
+    invaderXim.item.ASPHODEL,
+    invaderXim.item.CARNATION,
+    invaderXim.item.CASABLANCA,
+    invaderXim.item.CATTLEYA,
+    invaderXim.item.CHAMOMILE,
+    invaderXim.item.DAHLIA,
+    invaderXim.item.FLAX_FLOWER,
+    invaderXim.item.LILAC,
+    invaderXim.item.LYCOPODIUM_FLOWER,
+    invaderXim.item.MARGUERITE,
+    invaderXim.item.OLIVE_FLOWER,
+    invaderXim.item.PAPAKA_GRASS,
+    invaderXim.item.PHALAENOPSIS,
+    invaderXim.item.RAIN_LILY,
+    invaderXim.item.RED_ROSE,
+    invaderXim.item.SNOW_LILY,
+    invaderXim.item.SWEET_WILLIAM,
+    invaderXim.item.TAHRONGI_CACTUS,
+    invaderXim.item.WATER_LILY,
 }
 
 local function isTradeInTable(trade, itemTable)
@@ -64,10 +64,10 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE or status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE or status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_JEUNO] =
+        [invaderXim.zone.PORT_JEUNO] =
         {
             -- Any trade or onTrigger flags this quest.  Default action is handled
             -- in the NPC script (onTrigger).  All valid items are consumed until
@@ -75,7 +75,7 @@ quest.sections =
             ['Zona_Shodhun'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.YELLOW_ROCK) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.YELLOW_ROCK) then
                         return quest:progressEvent(10023, 1, 246, 2, 1, 0, 1, 5, 1)
                     elseif isTradeInTable(trade, invalidRocks) then
                         return quest:progressEvent(10023, 0, 246, 1, 1, 0, 1, 7, 1)
@@ -103,9 +103,9 @@ quest.sections =
                             player:confirmTrade()
                             local mhflag = player:getMoghouseFlag()
                             player:setMoghouseFlag(mhflag + 0x0008)
-                            player:messageSpecial(portJeunoID.text.MOGHOUSE_EXIT)
+                            player:messageSpecial(portJeunoID.text.MOGHOUSE_IXIMT)
                         end
-                    elseif player:getQuestStatus(quest.areaId, quest.questId) == xi.questStatus.QUEST_AVAILABLE then
+                    elseif player:getQuestStatus(quest.areaId, quest.questId) == invaderXim.questStatus.QUEST_AVAILABLE then
                         quest:begin(player)
                     end
                 end,
@@ -115,16 +115,16 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.PORT_JEUNO] =
+        [invaderXim.zone.PORT_JEUNO] =
         {
             ['Zona_Shodhun'] =
             {
                 -- NOTE: No items are consumed after quest complete.
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.YELLOW_ROCK) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.YELLOW_ROCK) then
                         return quest:progressEvent(10023, 0, 246, 4, 1, 0, 1, 7, 0)
                     elseif isTradeInTable(trade, invalidRocks) then
                         return quest:progressEvent(10023, 0, 246, 5, 1, 0, 1, 7, 0)

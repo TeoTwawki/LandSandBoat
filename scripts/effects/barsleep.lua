@@ -1,18 +1,18 @@
 -----------------------------------
--- xi.effect.BARSLEEP
+-- invaderXim.effect.BARSLEEP
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.SLEEP_MEVA, effect:getPower())
+    target:addMod(invaderXim.mod.SLEEP_MEVA, effect:getPower())
 end
 
 effectObject.onEffectTick = function(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.SLEEP_MEVA, effect:getPower())
+    target:delMod(invaderXim.mod.SLEEP_MEVA, effect:getPower())
 end
 
 return effectObject

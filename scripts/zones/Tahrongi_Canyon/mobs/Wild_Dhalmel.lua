@@ -3,7 +3,7 @@
 --  Mob: Wild Dhalmel
 -- Note: PH for Serpopard Ishtar
 -----------------------------------
-local ID = zones[xi.zone.TAHRONGI_CANYON]
+local ID = zones[invaderXim.zone.TAHRONGI_CANYON]
 require('scripts/quests/tutorial')
 -----------------------------------
 ---@type TMobEntity
@@ -16,12 +16,12 @@ local serpopardPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 96, 2, xi.regime.type.FIELDS)
-    xi.tutorial.onMobDeath(player)
+    invaderXim.regime.checkRegime(player, mob, 96, 2, invaderXim.regime.type.FIELDS)
+    invaderXim.tutorial.onMobDeath(player)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, serpopardPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, serpopardPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

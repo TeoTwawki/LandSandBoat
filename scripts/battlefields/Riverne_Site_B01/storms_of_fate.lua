@@ -3,12 +3,12 @@
 -- Name: Storms of Fate
 -- !pos 299 -123 345 146
 -----------------------------------
-local riverneID = zones[xi.zone.RIVERNE_SITE_B01]
+local riverneID = zones[invaderXim.zone.RIVERNE_SITE_B01]
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId        = xi.zone.RIVERNE_SITE_B01,
-    battlefieldId = xi.battlefield.id.STORMS_OF_FATE,
+    zoneId        = invaderXim.zone.RIVERNE_SITE_B01,
+    battlefieldId = invaderXim.battlefield.id.STORMS_OF_FATE,
     allowTrusts   = true,
     maxPlayers    = 18,
     timeLimit     = utils.minutes(30),
@@ -16,12 +16,12 @@ local content = BattlefieldQuest:new({
     area          = 1,
     entryNpc      = 'Unstable_Displacement',
     exitNpc       = 'SD_BCNM_Exit',
-    questArea     = xi.questLog.JEUNO,
-    quest         = xi.quest.id.jeuno.STORMS_OF_FATE,
+    questArea     = invaderXim.questLog.JEUNO,
+    quest         = invaderXim.quest.id.jeuno.STORMS_OF_FATE,
     requiredVar   = 'Quest[3][86]Prog',
     requiredValue = 2,
 
-    title = xi.title.CONQUEROR_OF_FATE,
+    title = invaderXim.title.CONQUEROR_OF_FATE,
 })
 
 content.groups =
@@ -33,7 +33,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

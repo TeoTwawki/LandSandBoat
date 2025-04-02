@@ -9,14 +9,14 @@ local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.RECOLLECTIONS) == xi.questStatus.QUEST_ACCEPTED and
+        player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.RECOLLECTIONS) == invaderXim.questStatus.QUEST_ACCEPTED and
         player:getCharVar('recollectionsQuest') == 2
     then
         if
-            trade:hasItemQty(xi.item.WHINE_CELLAR_KEY, 1) and
+            trade:hasItemQty(invaderXim.item.WHINE_CELLAR_KEY, 1) and
             trade:getItemCount() == 1
         then
-            player:startEvent(8, xi.item.WHINE_CELLAR_KEY)
+            player:startEvent(8, invaderXim.item.WHINE_CELLAR_KEY)
         end
     end
 end
@@ -29,7 +29,7 @@ entity.onEventFinish = function(player, csid, option, npc)
     if csid == 8 then
         player:tradeComplete()
         player:setCharVar('recollectionsQuest', 3)
-        npcUtil.giveKeyItem(player, xi.ki.FOE_FINDER_MK_I)
+        npcUtil.giveKeyItem(player, invaderXim.ki.FOE_FINDER_MK_I)
     end
 end
 

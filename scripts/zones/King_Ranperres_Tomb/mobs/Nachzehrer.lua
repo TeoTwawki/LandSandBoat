@@ -3,7 +3,7 @@
 --  Mob: Nachzehrer
 -- Note: PH for Gwyllgi
 -----------------------------------
-local ID = zones[xi.zone.KING_RANPERRES_TOMB]
+local ID = zones[invaderXim.zone.KING_RANPERRES_TOMB]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -17,7 +17,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, gwyllgiPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, gwyllgiPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

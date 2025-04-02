@@ -26,7 +26,7 @@ local function error(player)
 end
 
 commandObj.onTrigger = function(player, type)
-    if xi.settings.main.ENABLE_TRUST_CUSTOM_ENGAGEMENT ~= 1 then
+    if invaderXim.settings.main.ENABLE_TRUST_CUSTOM_ENGAGEMENT ~= 1 then
         player:printToPlayer('Trust custom engage conditions are disabled.')
         return
     end

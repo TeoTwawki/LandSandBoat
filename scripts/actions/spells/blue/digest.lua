@@ -21,14 +21,14 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.AMORPH
-    params.attackType = xi.attackType.MAGICAL
-    params.damageType = xi.damageType.DARK
+    params.ecosystem = invaderXim.ecosystem.AMORPH
+    params.attackType = invaderXim.attackType.MAGICAL
+    params.damageType = invaderXim.damageType.DARK
     params.diff = 0 -- no stat increases magic accuracy
-    params.skillType = xi.skill.BLUE_MAGIC
+    params.skillType = invaderXim.skill.BLUE_MAGIC
     params.dmgMultiplier = 5
 
-    return xi.spells.blue.useDrainSpell(caster, target, spell, params, 0, false)
+    return invaderXim.spells.blue.useDrainSpell(caster, target, spell, params, 0, false)
 end
 
 return spellObject

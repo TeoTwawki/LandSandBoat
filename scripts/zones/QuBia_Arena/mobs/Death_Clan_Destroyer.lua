@@ -2,13 +2,13 @@
 -- Area: QuBia_Arena
 --  Mob: Death Clan Destroyer
 -----------------------------------
-local ID = zones[xi.zone.QUBIA_ARENA]
+local ID = zones[invaderXim.zone.QUBIA_ARENA]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.HP_STANDBACK, 60)
+    mob:setMobMod(invaderXim.mobMod.HP_STANDBACK, 60)
 end
 
 entity.onMobFight = function(mob, target)
@@ -18,7 +18,7 @@ entity.onMobFight = function(mob, target)
 
     -- queue curaga II on any sleeping ally
     for i = instOffset + 3, instOffset + 12 do
-        if GetMobByID(i):getCurrentAction() == xi.act.SLEEP then
+        if GetMobByID(i):getCurrentAction() == invaderXim.act.SLEEP then
             if mob:actionQueueEmpty() then
                 if mob:getLocalVar('cooldown') == 0 then
                     mob:castSpell(8, GetMobByID(i))

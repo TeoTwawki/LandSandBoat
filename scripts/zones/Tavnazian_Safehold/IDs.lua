@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.TAVNAZIAN_SAFEHOLD] =
+zones[invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
 {
     text =
     {
@@ -57,4 +57,4 @@ zones[xi.zone.TAVNAZIAN_SAFEHOLD] =
     },
 }
 
-return zones[xi.zone.TAVNAZIAN_SAFEHOLD]
+return zones[invaderXim.zone.TAVNAZIAN_SAFEHOLD]

@@ -5,25 +5,25 @@
 -- Hanaa Punaa : !pos -179.726 -8.8 27.574 230
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.THE_SEAMSTRESS)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.THE_SEAMSTRESS)
 
 quest.reward =
 {
     fame = 30,
-    fameArea = xi.fameArea.SANDORIA,
+    fameArea = invaderXim.fameArea.SANDORIA,
     -- Repeatable Items handled within the Trigger:
-    -- item = xi.item.LEATHER_GLOVES,
-    -- title = xi.title.SILENCER_OF_THE_LAMBS,
+    -- item = invaderXim.item.LEATHER_GLOVES,
+    -- title = invaderXim.title.SILENCER_OF_THE_LAMBS,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Hanaa_Punaa'] =
             {
@@ -59,28 +59,28 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Hanaa_Punaa'] = quest:progressEvent(529),
         },
     },
 
-    -- These functions check the status of ~= xi.questStatus.QUEST_AVAILABLE to support repeating
+    -- These functions check the status of ~= invaderXim.questStatus.QUEST_AVAILABLE to support repeating
     -- the quest.  Does not have to be flagged again to complete an additional time.
     {
         check = function(player, status, vars)
-            return status ~= xi.questStatus.QUEST_AVAILABLE
+            return status ~= invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Hanaa_Punaa'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.SHEEPSKIN, 3 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.SHEEPSKIN, 3 } }) then
                         return quest:progressEvent(530)
                     end
                 end,
@@ -89,13 +89,13 @@ quest.sections =
             onEventFinish =
             {
                 [530] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.LEATHER_GLOVES, { fromTrade = true }) then
+                    if npcUtil.giveItem(player, invaderXim.item.LEATHER_GLOVES, { fromTrade = true }) then
                         player:confirmTrade()
-                        player:addTitle(xi.title.SILENCER_OF_THE_LAMBS)
+                        player:addTitle(invaderXim.title.SILENCER_OF_THE_LAMBS)
                         if not player:hasCompletedQuest(quest.areaId, quest.questId) then
                             quest:complete(player)
                         else
-                            player:addFame(xi.fameArea.SANDORIA, 5)
+                            player:addFame(invaderXim.fameArea.SANDORIA, 5)
                         end
                     end
                 end,
@@ -105,10 +105,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and player:getFameLevel(xi.fameArea.SANDORIA) < 2
+            return status == invaderXim.questStatus.QUEST_COMPLETED and player:getFameLevel(invaderXim.fameArea.SANDORIA) < 2
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Hanaa_Punaa'] = quest:event(590):replaceDefault()
         },

@@ -30,7 +30,7 @@ commandObj.onTrigger = function(player, item, length, weight, ranked)
         return
     elseif item ~= nil and tonumber(item) == nil then
         -- Item was provided, but was not a number.  Try text lookup.
-        local retItems = utils.filterArray(xi.fishingContest.fish, function(_, fish)
+        local retItems = utils.filterArray(invaderXim.fishingContest.fish, function(_, fish)
             return fish.name == item
         end)
 
@@ -71,7 +71,7 @@ commandObj.onTrigger = function(player, item, length, weight, ranked)
     -- Give the GM the item...
     local obtained = player:addItem({ id = itemToGet,
                                     quantity = 1,
-                                    exdata = xi.fishingContest.createExData(length, weight, ranked) })
+                                    exdata = invaderXim.fishingContest.createExData(length, weight, ranked) })
     if obtained then
         player:messageSpecial(ID.text.ITEM_OBTAINED, itemToGet)
     end

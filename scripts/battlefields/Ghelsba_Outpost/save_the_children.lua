@@ -3,12 +3,12 @@
 -- Ghelsba Outpost mission battlefield
 -- !pos -162 -11 78 140
 -----------------------------------
-local ghelsbaID = zones[xi.zone.GHELSBA_OUTPOST]
+local ghelsbaID = zones[invaderXim.zone.GHEIXIMA_OUTPOST]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId                = xi.zone.GHELSBA_OUTPOST,
-    battlefieldId         = xi.battlefield.id.SAVE_THE_CHILDREN,
+    zoneId                = invaderXim.zone.GHEIXIMA_OUTPOST,
+    battlefieldId         = invaderXim.battlefield.id.SAVE_THE_CHILDREN,
     canLoseExp            = false,
     isMission             = true,
     allowTrusts           = true,
@@ -18,9 +18,9 @@ local content = BattlefieldMission:new({
     index                 = 0,
     area                  = 1,
     entryNpc              = 'Hut_Door',
-    missionArea           = xi.mission.log_id.SANDORIA,
-    mission               = xi.mission.id.sandoria.SAVE_THE_CHILDREN,
-    missionStatusArea     = xi.mission.log_id.SANDORIA,
+    missionArea           = invaderXim.mission.log_id.SANDORIA,
+    mission               = invaderXim.mission.id.sandoria.SAVE_THE_CHILDREN,
+    missionStatusArea     = invaderXim.mission.log_id.SANDORIA,
     requiredMissionStatus = 2,
 })
 
@@ -35,7 +35,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

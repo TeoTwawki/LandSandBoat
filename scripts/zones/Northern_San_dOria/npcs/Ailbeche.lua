@@ -10,12 +10,12 @@ local entity = {}
 entity.onTrade = function(player, npc, trade)
     if player:getCharVar('aBoysDreamCS') >= 3 then
         if
-            npcUtil.tradeHasExactly(trade, xi.item.GIANT_SHELL_BUG) and
+            npcUtil.tradeHasExactly(trade, invaderXim.item.GIANT_SHELL_BUG) and
             player:getCharVar('aBoysDreamCS') == 3
         then
             player:startEvent(15) -- During Quest "A Boy's Dream" (trading bug) madame ?
         elseif
-            npcUtil.tradeHasExactly(trade, xi.item.ODONTOTYRANNUS) and
+            npcUtil.tradeHasExactly(trade, invaderXim.item.ODONTOTYRANNUS) and
             player:getCharVar('aBoysDreamCS') == 4
         then
             player:startEvent(47) -- During Quest "A Boy's Dream" (trading odontotyrannus)
@@ -24,8 +24,8 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    local aBoysDream   = player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.A_BOYS_DREAM)
-    local sharpenStone = player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.SHARPENING_THE_SWORD)
+    local aBoysDream   = player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.A_BOYS_DREAM)
+    local sharpenStone = player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.SHARPENING_THE_SWORD)
 
     -- Checking levels and jobs for af quest
     local mLvl = player:getMainLvl()
@@ -33,9 +33,9 @@ entity.onTrigger = function(player, npc)
     local aBoysDreamCS = player:getCharVar('aBoysDreamCS')
 
     if
-        aBoysDream == xi.questStatus.QUEST_AVAILABLE and
-        sharpenStone == xi.questStatus.QUEST_COMPLETED and
-        mJob == xi.job.PLD and
+        aBoysDream == invaderXim.questStatus.QUEST_AVAILABLE and
+        sharpenStone == invaderXim.questStatus.QUEST_COMPLETED and
+        mJob == invaderXim.job.PLD and
         mLvl >= 50
     then
         if aBoysDreamCS == 0 then
@@ -54,7 +54,7 @@ entity.onTrigger = function(player, npc)
     elseif aBoysDreamCS >= 6 then
         player:startEvent(25) -- During Quest 'A Boy's Dream' (after Zaldon CS)
     elseif
-        player:hasKeyItem(xi.ki.KNIGHTS_CONFESSION) and
+        player:hasKeyItem(invaderXim.ki.KNIGHTS_CONFESSION) and
         player:getCharVar('UnderOathCS') == 6
     then
         player:startEvent(59) -- During Quest 'Under Oath' (he's going fishing in Jugner)
@@ -66,7 +66,7 @@ end
 entity.onEventFinish = function(player, csid, option, npc)
     -- "A Boy's Dream"
     if (csid == 41 or csid == 40) and option == 1 then
-        player:addQuest(xi.questLog.SANDORIA, xi.quest.id.sandoria.A_BOYS_DREAM)
+        player:addQuest(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.A_BOYS_DREAM)
         player:setCharVar('aBoysDreamCS', 2)
     elseif csid == 41 and option == 0 then
         player:setCharVar('aBoysDreamCS', 1)

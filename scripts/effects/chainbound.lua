@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.CHAINBOUND
+-- invaderXim.effect.CHAINBOUND
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

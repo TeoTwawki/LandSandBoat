@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.PARSIMONY
+-- invaderXim.effect.PARSIMONY
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

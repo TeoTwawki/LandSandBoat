@@ -3,15 +3,15 @@
 --  NPC: Altar of Rancor (flame of blue rancor)
 -- !pos 400.880 22.830 359.636 160
 -----------------------------------
-local denOfRancorID = zones[xi.zone.DEN_OF_RANCOR]
+local denOfRancorID = zones[invaderXim.zone.DEN_OF_RANCOR]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    if trade:getItemQty(xi.item.UNLIT_LANTERN) > 0 then
-        if npcUtil.giveItem(player, xi.item.FLAME_OF_BLUE_RANCOR) then
-            trade:confirmItem(xi.item.UNLIT_LANTERN, 1)
+    if trade:getItemQty(invaderXim.item.UNLIT_LANTERN) > 0 then
+        if npcUtil.giveItem(player, invaderXim.item.FLAME_OF_BLUE_RANCOR) then
+            trade:confirmItem(invaderXim.item.UNLIT_LANTERN, 1)
             player:confirmTrade()
         end
     end

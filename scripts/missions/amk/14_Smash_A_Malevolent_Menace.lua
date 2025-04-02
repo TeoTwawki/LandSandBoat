@@ -4,7 +4,7 @@
 -- !addmission 10 13
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.AMK, xi.mission.id.amk.SMASH_A_MALEVOLENT_MENACE)
+local mission = Mission:new(invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.SMASH_A_MALEVOLENT_MENACE)
 
 mission.reward =
 {
@@ -17,7 +17,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Inconspicuous_Door'] =
             {

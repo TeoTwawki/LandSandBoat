@@ -1,15 +1,15 @@
 -----------------------------------
--- xi.effect.AGGRESSOR
+-- invaderXim.effect.AGGRESSOR
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    local jpLevel = target:getJobPointLevel(xi.jp.AGGRESSOR_EFFECT)
+    local jpLevel = target:getJobPointLevel(invaderXim.jp.AGGRESSOR_EFFECT)
 
-    effect:addMod(xi.mod.RACC, effect:getPower() + jpLevel)
-    effect:addMod(xi.mod.ACC, 25 + jpLevel)
-    effect:addMod(xi.mod.EVA, -25)
+    effect:addMod(invaderXim.mod.RACC, effect:getPower() + jpLevel)
+    effect:addMod(invaderXim.mod.ACC, 25 + jpLevel)
+    effect:addMod(invaderXim.mod.EVA, -25)
 end
 
 effectObject.onEffectTick = function(target, effect)

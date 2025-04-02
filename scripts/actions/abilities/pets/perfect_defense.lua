@@ -13,7 +13,7 @@ abilityObject.onPetAbility = function(target, pet, skill, master)
     local duration = 60
 
     if master ~= nil then
-        local summoningSkill = master:getSkillLevel(xi.skill.SUMMONING_MAGIC)
+        local summoningSkill = master:getSkillLevel(invaderXim.skill.SUMMONING_MAGIC)
         if summoningSkill > 600 then
             summoningSkill = 600
         end
@@ -22,11 +22,11 @@ abilityObject.onPetAbility = function(target, pet, skill, master)
         master:setMP(0)
     end
 
-    target:delStatusEffect(xi.effect.PERFECT_DEFENSE)
-    target:addStatusEffect(xi.effect.PERFECT_DEFENSE, power, 3, duration)
-    skill:setMsg(xi.msg.basic.SKILL_GAIN_EFFECT)
+    target:delStatusEffect(invaderXim.effect.PERFECT_DEFENSE)
+    target:addStatusEffect(invaderXim.effect.PERFECT_DEFENSE, power, 3, duration)
+    skill:setMsg(invaderXim.msg.basic.SKILL_GAIN_EFFECT)
 
-    return xi.effect.PERFECT_DEFENSE
+    return invaderXim.effect.PERFECT_DEFENSE
 end
 
 return abilityObject

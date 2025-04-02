@@ -3,7 +3,7 @@
 --  Mob: Witch Hazel
 -- Note: PH for Morille Mortelle
 -----------------------------------
-local ID = zones[xi.zone.CRAWLERS_NEST_S]
+local ID = zones[invaderXim.zone.CRAWLERS_NEST_S]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -17,7 +17,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, morillePHTable, 12, 18000) -- 5 hours
+    invaderXim.mob.phOnDespawn(mob, morillePHTable, 12, 18000) -- 5 hours
 end
 
 return entity

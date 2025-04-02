@@ -9,13 +9,13 @@
 -- Rashid  : !pos -8.444 -2 -123.575 234
 -- Alois   : !pos 96 -20 14 237
 -----------------------------------
-local bastokMarketsID = zones[xi.zone.BASTOK_MARKETS]
-local bastokMinesID   = zones[xi.zone.BASTOK_MINES]
-local metalworksID    = zones[xi.zone.METALWORKS]
-local portBastokID    = zones[xi.zone.PORT_BASTOK]
+local bastokMarketsID = zones[invaderXim.zone.BASTOK_MARKETS]
+local bastokMinesID   = zones[invaderXim.zone.BASTOK_MINES]
+local metalworksID    = zones[invaderXim.zone.METALWORKS]
+local portBastokID    = zones[invaderXim.zone.PORT_BASTOK]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.BASTOK, xi.mission.id.bastok.WADING_BEASTS)
+local mission = Mission:new(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.WADING_BEASTS)
 
 mission.reward =
 {
@@ -33,11 +33,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             onEventFinish =
             {
@@ -45,7 +45,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             onEventFinish =
             {
@@ -53,7 +53,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             onEventFinish =
             {
@@ -61,7 +61,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             onEventFinish =
             {
@@ -75,22 +75,22 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Cleades'] = mission:messageSpecial(bastokMarketsID.text.ORIGINAL_MISSION_OFFSET + 21),
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Rashid'] = mission:messageSpecial(bastokMinesID.text.ORIGINAL_MISSION_OFFSET + 21),
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Alois'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.LIZARD_EGG) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.LIZARD_EGG) then
                         if not player:hasCompletedMission(mission.areaId, mission.missionId) then
                             return mission:progressEvent(372)
                         else
@@ -118,7 +118,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Argus'] = mission:messageSpecial(portBastokID.text.ORIGINAL_MISSION_OFFSET + 21),
         },

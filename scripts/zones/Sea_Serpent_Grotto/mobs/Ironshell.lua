@@ -6,11 +6,11 @@
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.CHARMABLE, 1)
+    mob:setMobMod(invaderXim.mobMod.CHARMABLE, 1)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 805, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 805, 1, invaderXim.regime.type.GROUNDS)
 end
 
 return entity

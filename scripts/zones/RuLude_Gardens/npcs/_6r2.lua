@@ -3,7 +3,7 @@
 -- Door: Bastokan Emb.
 -- Bastok Missions 3.3 "Jeuno" and 4.1 "Magicite"
 -----------------------------------
-local ID = zones[xi.zone.RULUDE_GARDENS]
+local ID = zones[invaderXim.zone.RULUDE_GARDENS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -12,7 +12,7 @@ entity.onTrigger = function(player, npc)
     local pNation = player:getNation()
 
     if
-        pNation == xi.nation.BASTOK and
+        pNation == invaderXim.nation.BASTOK and
         player:getRank(pNation) >= 4
     then
         player:messageSpecial(ID.text.RESTRICTED)

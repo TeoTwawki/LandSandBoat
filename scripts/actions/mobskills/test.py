@@ -19,7 +19,7 @@ def main():
             content = f.read()
 
         # Check if file contains the target string
-        if "xi.mobskills.mobPhysicalMove" in content:
+        if "invaderXim.mobskills.mobPhysicalMove" in content:
             # Perform the replacement
             new_content = pattern.sub("ftp", content)
 

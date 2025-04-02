@@ -1,4 +1,4 @@
--- local ID = zones[xi.zone.ABYSSEA_VUNKERL]
+-- local ID = zones[invaderXim.zone.ABYSSEA_VUNKERL]
 
 return {
     ['Liloune']   = { event = 1099 },

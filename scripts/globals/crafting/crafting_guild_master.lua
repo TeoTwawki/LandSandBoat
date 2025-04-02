@@ -6,39 +6,39 @@ require('scripts/globals/npc_util')
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.crafting = xi.crafting or {}
+invaderXim.crafting = invaderXim.crafting or {}
 
 -----------------------------------
 -- Data
 -----------------------------------
-local lastRank = xi.craftRank.EXPERT
+local lastRank = invaderXim.craftRank.EXPERT
 
 local npcTable =
 {
-    ['Thubu_Parohren'] = { 10009, xi.guild.FISHING,      xi.skill.FISHING,      xi.item.WATER_CRYSTAL, xi.ki.ANGLERS_ALMANAC,       '[Expert]Fishing'      },
-    ['Cheupirudaux'  ] = {   621, xi.guild.WOODWORKING,  xi.skill.WOODWORKING,  xi.item.WIND_CRYSTAL,  xi.ki.WAY_OF_THE_CARPENTER,  '[Expert]Woodworking'  },
-    ['Ghemp'         ] = {   101, xi.guild.SMITHING,     xi.skill.SMITHING,     xi.item.FIRE_CRYSTAL,  xi.ki.WAY_OF_THE_BLACKSMITH, '[Expert]Smithing'     },
-    ['Mevreauche'    ] = {   626, xi.guild.SMITHING,     xi.skill.SMITHING,     xi.item.FIRE_CRYSTAL,  xi.ki.WAY_OF_THE_BLACKSMITH, '[Expert]Smithing'     },
-    ['Reinberta'     ] = {   300, xi.guild.GOLDSMITHING, xi.skill.GOLDSMITHING, xi.item.FIRE_CRYSTAL,  xi.ki.WAY_OF_THE_GOLDSMITH,  '[Expert]Goldsmithing' },
-    ['Ponono'        ] = { 10011, xi.guild.CLOTHCRAFT,   xi.skill.CLOTHCRAFT,   xi.item.EARTH_CRYSTAL, xi.ki.WAY_OF_THE_WEAVER,     '[Expert]Clothcraft'   },
-    ['Faulpie'       ] = {   648, xi.guild.LEATHERCRAFT, xi.skill.LEATHERCRAFT, xi.item.DARK_CRYSTAL,  xi.ki.WAY_OF_THE_TANNER,     '[Expert]Leathercraft' },
-    ['Peshi_Yohnts'  ] = { 10016, xi.guild.BONECRAFT,    xi.skill.BONECRAFT,    xi.item.WIND_CRYSTAL,  xi.ki.WAY_OF_THE_BONEWORKER, '[Expert]Bonecraft'    },
-    ['Abd-al-Raziq'  ] = {   120, xi.guild.ALCHEMY,      xi.skill.ALCHEMY,      xi.item.WATER_CRYSTAL, xi.ki.WAY_OF_THE_ALCHEMIST,  '[Expert]Alchemy'      },
-    ['Piketo-Puketo' ] = { 10013, xi.guild.COOKING,      xi.skill.COOKING,      xi.item.FIRE_CRYSTAL,  xi.ki.WAY_OF_THE_CULINARIAN, '[Expert]Cooking'      },
+    ['Thubu_Parohren'] = { 10009, invaderXim.guild.FISHING,      invaderXim.skill.FISHING,      invaderXim.item.WATER_CRYSTAL, invaderXim.ki.ANGLERS_ALMANAC,       '[Expert]Fishing'      },
+    ['Cheupirudaux'  ] = {   621, invaderXim.guild.WOODWORKING,  invaderXim.skill.WOODWORKING,  invaderXim.item.WIND_CRYSTAL,  invaderXim.ki.WAY_OF_THE_CARPENTER,  '[Expert]Woodworking'  },
+    ['Ghemp'         ] = {   101, invaderXim.guild.SMITHING,     invaderXim.skill.SMITHING,     invaderXim.item.FIRE_CRYSTAL,  invaderXim.ki.WAY_OF_THE_BLACKSMITH, '[Expert]Smithing'     },
+    ['Mevreauche'    ] = {   626, invaderXim.guild.SMITHING,     invaderXim.skill.SMITHING,     invaderXim.item.FIRE_CRYSTAL,  invaderXim.ki.WAY_OF_THE_BLACKSMITH, '[Expert]Smithing'     },
+    ['Reinberta'     ] = {   300, invaderXim.guild.GOLDSMITHING, invaderXim.skill.GOLDSMITHING, invaderXim.item.FIRE_CRYSTAL,  invaderXim.ki.WAY_OF_THE_GOLDSMITH,  '[Expert]Goldsmithing' },
+    ['Ponono'        ] = { 10011, invaderXim.guild.CLOTHCRAFT,   invaderXim.skill.CLOTHCRAFT,   invaderXim.item.EARTH_CRYSTAL, invaderXim.ki.WAY_OF_THE_WEAVER,     '[Expert]Clothcraft'   },
+    ['Faulpie'       ] = {   648, invaderXim.guild.LEATHERCRAFT, invaderXim.skill.LEATHERCRAFT, invaderXim.item.DARK_CRYSTAL,  invaderXim.ki.WAY_OF_THE_TANNER,     '[Expert]Leathercraft' },
+    ['Peshi_Yohnts'  ] = { 10016, invaderXim.guild.BONECRAFT,    invaderXim.skill.BONECRAFT,    invaderXim.item.WIND_CRYSTAL,  invaderXim.ki.WAY_OF_THE_BONEWORKER, '[Expert]Bonecraft'    },
+    ['Abd-al-Raziq'  ] = {   120, invaderXim.guild.ALCHEMY,      invaderXim.skill.ALCHEMY,      invaderXim.item.WATER_CRYSTAL, invaderXim.ki.WAY_OF_THE_ALCHEMIST,  '[Expert]Alchemy'      },
+    ['Piketo-Puketo' ] = { 10013, invaderXim.guild.COOKING,      invaderXim.skill.COOKING,      invaderXim.item.FIRE_CRYSTAL,  invaderXim.ki.WAY_OF_THE_CULINARIAN, '[Expert]Cooking'      },
 }
 
 -- TODO: Enum this items. This PR is already massive.
 local testItemTable =
 {
-    [xi.guild.FISHING     ] = {  4401,  4379,  4469,  4480,  4462,  4479,  4471,  4478,  4474,  5817 },
-    [xi.guild.WOODWORKING ] = {    22,    23, 17354, 17348, 17053, 17156, 17054,    56, 17101, 18884 },
-    [xi.guild.SMITHING    ] = { 16530, 12299, 16512, 16650, 16651, 16559, 12427, 16577, 12428, 19788 },
-    [xi.guild.GOLDSMITHING] = { 12496, 12497, 12495, 13082, 13446, 13084, 12545, 13125, 16515, 11060 },
-    [xi.guild.CLOTHCRAFT  ] = { 13583, 13584, 13204, 13075, 12723, 13586, 13752, 12612, 14253, 11000 },
-    [xi.guild.LEATHERCRAFT] = { 13594, 16386, 13588, 13195, 12571, 12572, 12980, 12702, 12447, 10577 },
-    [xi.guild.BONECRAFT   ] = { 13442, 13441, 13323, 13459, 13091, 17299, 16420, 12508, 13987, 11058 },
-    [xi.guild.ALCHEMY     ] = {   937,  4157,  4163,   947, 16543,  4116, 16479,  4120, 16609, 10792 },
-    [xi.guild.COOKING     ] = {  4355,  4416,  4489,  4381,  4413,  4558,  4546,  4440,  4561,  5930 },
+    [invaderXim.guild.FISHING     ] = {  4401,  4379,  4469,  4480,  4462,  4479,  4471,  4478,  4474,  5817 },
+    [invaderXim.guild.WOODWORKING ] = {    22,    23, 17354, 17348, 17053, 17156, 17054,    56, 17101, 18884 },
+    [invaderXim.guild.SMITHING    ] = { 16530, 12299, 16512, 16650, 16651, 16559, 12427, 16577, 12428, 19788 },
+    [invaderXim.guild.GOLDSMITHING] = { 12496, 12497, 12495, 13082, 13446, 13084, 12545, 13125, 16515, 11060 },
+    [invaderXim.guild.CLOTHCRAFT  ] = { 13583, 13584, 13204, 13075, 12723, 13586, 13752, 12612, 14253, 11000 },
+    [invaderXim.guild.LEATHERCRAFT] = { 13594, 16386, 13588, 13195, 12571, 12572, 12980, 12702, 12447, 10577 },
+    [invaderXim.guild.BONECRAFT   ] = { 13442, 13441, 13323, 13459, 13091, 17299, 16420, 12508, 13987, 11058 },
+    [invaderXim.guild.ALCHEMY     ] = {   937,  4157,  4163,   947, 16543,  4116, 16479,  4120, 16609, 10792 },
+    [invaderXim.guild.COOKING     ] = {  4355,  4416,  4489,  4381,  4413,  4558,  4546,  4440,  4561,  5930 },
 }
 
 local function giveNewRank(player, skillId, newRank)
@@ -52,7 +52,7 @@ end
 -----------------------------------
 -- NPC Functions
 -----------------------------------
-xi.crafting.guildMasterOnTrade = function(player, npc, trade)
+invaderXim.crafting.guildMasterOnTrade = function(player, npc, trade)
     local npcName = npc:getName()
     local eventId = npcTable[npcName][1] + 1 -- Trade event = Trigger event + 1
     local guildId = npcTable[npcName][2]
@@ -61,8 +61,8 @@ xi.crafting.guildMasterOnTrade = function(player, npc, trade)
     -- Get test item and new rank.
     local newRank    = player:getSkillRank(skillId) + 1
     local testItem   = 0
-    local skillLevel = xi.crafting.getRealSkill(player, skillId)
-    local skillCap   = xi.crafting.getCraftSkillCap(player, skillId)
+    local skillLevel = invaderXim.crafting.getRealSkill(player, skillId)
+    local skillCap   = invaderXim.crafting.getCraftSkillCap(player, skillId)
 
     if
         skillLevel >= skillCap - 2 and
@@ -79,13 +79,13 @@ xi.crafting.guildMasterOnTrade = function(player, npc, trade)
     then
         -- Expert quest.
         if
-            newRank == xi.craftRank.EXPERT and           -- Check if new rank is the last one. (Tied to mini-quest)
+            newRank == invaderXim.craftRank.EXPERT and           -- Check if new rank is the last one. (Tied to mini-quest)
             player:hasKeyItem(npcTable[npcName][5]) and  -- Check if player has appropiate Key Item.
             player:getCharVar(npcTable[npcName][6]) == 2 -- Check if player has gotten quest dialog.
         then
             if
-                (guildId ~= xi.guild.FISHING and trade:getItem():getSignature() == player:getName()) or
-                guildId == xi.guild.FISHING
+                (guildId ~= invaderXim.guild.FISHING and trade:getItem():getSignature() == player:getName()) or
+                guildId == invaderXim.guild.FISHING
             then
                 player:setCharVar(npcTable[npcName][6], 0)
                 giveNewRank(player, skillId, newRank)
@@ -96,7 +96,7 @@ xi.crafting.guildMasterOnTrade = function(player, npc, trade)
 
         -- All other ranks.
         elseif
-            newRank > xi.craftRank.AMATEUR and
+            newRank > invaderXim.craftRank.AMATEUR and
             newRank < lastRank
         then
             giveNewRank(player, skillId, newRank)
@@ -105,7 +105,7 @@ xi.crafting.guildMasterOnTrade = function(player, npc, trade)
     end
 end
 
-xi.crafting.guildMasterOnTrigger = function(player, npc)
+invaderXim.crafting.guildMasterOnTrigger = function(player, npc)
     local npcName  = npc:getName()
     local eventId  = npcTable[npcName][1]
     local guildId  = npcTable[npcName][2]
@@ -115,8 +115,8 @@ xi.crafting.guildMasterOnTrigger = function(player, npc)
 
     -- Event parameters
     local testItem       = os.time()                                     -- Parameter 1: Current time OR Test Item if applicable.
-    local skillLevel     = xi.crafting.getRealSkill(player, skillId)     -- Parameter 2: Player real level on concrete craft.
-    local skillCap       = xi.crafting.getCraftSkillCap(player, skillId) -- Parameter 3: Player max level on concrete craft.
+    local skillLevel     = invaderXim.crafting.getRealSkill(player, skillId)     -- Parameter 2: Player real level on concrete craft.
+    local skillCap       = invaderXim.crafting.getCraftSkillCap(player, skillId) -- Parameter 3: Player max level on concrete craft.
     local guildsJoined   = player:getCharVar('Guild_Member')             -- Parameter 4: Bitmask with guilds joined.
     local questStatus    = 0                                             -- Parameter 5: Used for expert quest.
     local artisanCount   = 0                                             -- Parameter 7: Number of crafts at Artisan rank or higher.
@@ -149,8 +149,8 @@ xi.crafting.guildMasterOnTrigger = function(player, npc)
     -- Note 1: It cycles. First time returns params. Second doesnt. Third does. And so on.
     -- Note 2: Highest level craft cannot be renounced.
     if
-        xi.crafting.hasJoinedGuild(player, guildId) and
-        guildId ~= xi.guild.FISHING
+        invaderXim.crafting.hasJoinedGuild(player, guildId) and
+        guildId ~= invaderXim.guild.FISHING
     then
         if player:getLocalVar('skipRenounceDialog') == 0 then
             local rankChecked       = 0
@@ -159,7 +159,7 @@ xi.crafting.guildMasterOnTrigger = function(player, npc)
             local currentSkillLevel = 0
 
             -- Track highest skill. This one wont appear in renounce list.
-            for skillChecked = xi.skill.WOODWORKING, xi.skill.COOKING do
+            for skillChecked = invaderXim.skill.WOODWORKING, invaderXim.skill.COOKING do
                 currentSkillLevel = player:getCharSkillLevel(skillChecked)
 
                 if currentSkillLevel > highestSkillLevel then
@@ -168,10 +168,10 @@ xi.crafting.guildMasterOnTrigger = function(player, npc)
                 end
             end
 
-            local rankFromSetting = math.floor(xi.settings.map.CRAFT_COMMON_CAP / 100) -- If 700, it will return rank 7 (Artisan)
+            local rankFromSetting = math.floor(invaderXim.settings.map.CRAFT_COMMON_CAP / 100) -- If 700, it will return rank 7 (Artisan)
 
             -- Params 7 and 8.
-            for skillChecked = xi.skill.WOODWORKING, xi.skill.COOKING do
+            for skillChecked = invaderXim.skill.WOODWORKING, invaderXim.skill.COOKING do
                 rankChecked = player:getSkillRank(skillChecked)
 
                 -- Param 7: Count crafts over craftsman rank.
@@ -197,7 +197,7 @@ xi.crafting.guildMasterOnTrigger = function(player, npc)
     player:startEvent(eventId, testItem, skillLevel, skillCap, guildsJoined, questStatus, 0, artisanCount, artisanBitmask)
 end
 
-xi.crafting.guildMasterOnEventFinish = function(player, csid, option, npc)
+invaderXim.crafting.guildMasterOnEventFinish = function(player, csid, option, npc)
     local ID      = zones[player:getZoneID()]
     local npcName = npc:getName()
     local eventId = npcTable[npcName][1]
@@ -220,7 +220,7 @@ xi.crafting.guildMasterOnEventFinish = function(player, csid, option, npc)
 
         -- Expert quest: Start.
         elseif option == 2 then
-            if xi.crafting.hasJoinedGuild(player, guildId) then
+            if invaderXim.crafting.hasJoinedGuild(player, guildId) then
                 if player:getCharVar(npcTable[npcName][6]) == 0 then
                     player:setCharVar(npcTable[npcName][6], 1)
                 end
@@ -232,13 +232,13 @@ xi.crafting.guildMasterOnEventFinish = function(player, csid, option, npc)
 
         -- Rank renouncement.
         elseif
-            option >= xi.skill.WOODWORKING and
-            option <= xi.skill.COOKING
+            option >= invaderXim.skill.WOODWORKING and
+            option <= invaderXim.skill.COOKING
         then
-            local rankFromSetting = math.floor(xi.settings.map.CRAFT_COMMON_CAP / 100) - 1  -- If 700, it will return rank 6 (Craftsman)
+            local rankFromSetting = math.floor(invaderXim.settings.map.CRAFT_COMMON_CAP / 100) - 1  -- If 700, it will return rank 6 (Craftsman)
 
             player:setSkillRank(option, rankFromSetting)
-            player:setSkillLevel(option, xi.settings.map.CRAFT_COMMON_CAP)
+            player:setSkillLevel(option, invaderXim.settings.map.CRAFT_COMMON_CAP)
 
             player:messageSpecial(ID.text.RENOUNCE_CRAFTSMAN, 0, option - 49)
         end
@@ -252,11 +252,11 @@ xi.crafting.guildMasterOnEventFinish = function(player, csid, option, npc)
     end
 
     -- Handle RoE.
-    if guildId ~= xi.guild.FISHING then
+    if guildId ~= invaderXim.guild.FISHING then
         local recordId = guildId + 99
 
         if player:hasEminenceRecord(recordId) then
-            xi.roe.onRecordTrigger(player, recordId)
+            invaderXim.roe.onRecordTrigger(player, recordId)
         end
     end
 end

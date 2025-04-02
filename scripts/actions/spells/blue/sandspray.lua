@@ -21,8 +21,8 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.BEASTMEN
-    params.effect = xi.effect.BLINDNESS
+    params.ecosystem = invaderXim.ecosystem.BEASTMEN
+    params.effect = invaderXim.effect.BLINDNESS
     local power = 25
     local tick = 0
     local duration = 120
@@ -30,7 +30,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     local isGaze = false
     local isConal = true
 
-    return xi.spells.blue.useEnfeeblingSpell(caster, target, spell, params, power, tick, duration, resistThreshold, isGaze, isConal)
+    return invaderXim.spells.blue.useEnfeeblingSpell(caster, target, spell, params, power, tick, duration, resistThreshold, isGaze, isConal)
 end
 
 return spellObject

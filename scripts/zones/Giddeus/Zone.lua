@@ -5,8 +5,8 @@
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.treasure.initZone(zone)
-    xi.helm.initZone(zone, xi.helmType.HARVESTING)
+    invaderXim.treasure.initZone(zone)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.HARVESTING)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -24,7 +24,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

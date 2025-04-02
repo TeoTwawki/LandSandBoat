@@ -4,7 +4,7 @@
 -- Type: Clamming NPC
 -- !pos -371 -1 -421 4
 -----------------------------------
-local ID = zones[xi.zone.BIBIKI_BAY]
+local ID = zones[invaderXim.zone.BIBIKI_BAY]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -70,7 +70,7 @@ local function owePlayerClammedItems(player)
 end
 
 entity.onTrigger = function(player, npc)
-    if player:hasKeyItem(xi.ki.CLAMMING_KIT) then -- Player has clamming kit
+    if player:hasKeyItem(invaderXim.ki.CLAMMING_KIT) then -- Player has clamming kit
         if player:getCharVar('ClammingKitBroken') == 1 then -- Broken bucket
             player:startEvent(30, 0, 0, 0, 0, 0, 0, 0, 0)
         else --Bucket not broken
@@ -93,7 +93,7 @@ entity.onEventUpdate = function(player, csid, option, npc)
             enoughMoney = 1 --Player has enough Money
         end
 
-        player:updateEvent(xi.ki.CLAMMING_KIT, enoughMoney, 0, 0, 0, 500, 0, 0)
+        player:updateEvent(invaderXim.ki.CLAMMING_KIT, enoughMoney, 0, 0, 0, 500, 0, 0)
     elseif csid == 29 then
         local clammingKitSize = player:getCharVar('ClammingKitSize')
 
@@ -106,14 +106,14 @@ entity.onEventFinish = function(player, csid, option, npc)
         if option == 1 then -- Give 50pz clamming kit
             player:setCharVar('ClammingKitSize', 50)
             player:delGil(500)
-            npcUtil.giveKeyItem(player, xi.ki.CLAMMING_KIT)
+            npcUtil.giveKeyItem(player, invaderXim.ki.CLAMMING_KIT)
         end
     elseif csid == 29 then
         if option == 2 then -- Give player clammed items
             player:setCharVar('ClammingKitSize', 0)
             player:setCharVar('ClammingKitWeight', 0)
-            player:delKeyItem(xi.ki.CLAMMING_KIT)
-            player:messageSpecial(ID.text.YOU_RETURN_THE, xi.ki.CLAMMING_KIT)
+            player:delKeyItem(invaderXim.ki.CLAMMING_KIT)
+            player:messageSpecial(ID.text.YOU_RETURN_THE, invaderXim.ki.CLAMMING_KIT)
 
             giveClammedItems(player)
         elseif option == 3 then -- Get bigger kit
@@ -126,8 +126,8 @@ entity.onEventFinish = function(player, csid, option, npc)
         player:setCharVar('ClammingKitSize', 0)
         player:setCharVar('ClammingKitBroken', 0)
         player:setCharVar('ClammingKitWeight', 0)
-        player:delKeyItem(xi.ki.CLAMMING_KIT)
-        player:messageSpecial(ID.text.YOU_RETURN_THE, xi.ki.CLAMMING_KIT)
+        player:delKeyItem(invaderXim.ki.CLAMMING_KIT)
+        player:messageSpecial(ID.text.YOU_RETURN_THE, invaderXim.ki.CLAMMING_KIT)
     end
 end
 

@@ -9,12 +9,12 @@
 -- Erminold       : !pos 50.949 -40 -90.942 257
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.A_CURSE_FROM_THE_PAST)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.A_CURSE_FROM_THE_PAST)
 
 mission.reward =
 {
-    keyItem     = xi.ki.WEATHER_VANE_WINGS,
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.THE_PURGATION },
+    keyItem     = invaderXim.ki.WEATHER_VANE_WINGS,
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_PURGATION },
 }
 
 mission.sections =
@@ -24,12 +24,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Behsa_Alehgo'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.ETERNAL_FLAME) then
+                    if player:hasKeyItem(invaderXim.ki.ETERNAL_FLAME) then
                         return mission:event(1523):importantEvent()
                     end
                 end,
@@ -62,7 +62,7 @@ mission.sections =
             ['Rigobertine'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.ETERNAL_FLAME) then
+                    if not player:hasKeyItem(invaderXim.ki.ETERNAL_FLAME) then
                         return mission:progressEvent(1521)
                     else
                         return mission:event(1522):oncePerZone()
@@ -77,7 +77,7 @@ mission.sections =
                 end,
 
                 [1521] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.ETERNAL_FLAME)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ETERNAL_FLAME)
                     player:setMissionStatus(mission.areaId, 1)
                 end,
 
@@ -87,20 +87,20 @@ mission.sections =
             },
         },
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Fontis_Xanira'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.VIAL_OF_UNTAINTED_HOLY_WATER) and
+                        not player:hasKeyItem(invaderXim.ki.VIAL_OF_UNTAINTED_HOLY_WATER) and
                         player:getMissionStatus(mission.areaId) == 1
                     then
-                        if player:hasKeyItem(xi.ki.PIECE_OF_A_STONE_WALL) then
+                        if player:hasKeyItem(invaderXim.ki.PIECE_OF_A_STONE_WALL) then
                             player:setMissionStatus(mission.areaId, 2)
                         end
 
-                        return mission:keyItem(xi.ki.VIAL_OF_UNTAINTED_HOLY_WATER)
+                        return mission:keyItem(invaderXim.ki.VIAL_OF_UNTAINTED_HOLY_WATER)
                     end
                 end,
             },
@@ -109,14 +109,14 @@ mission.sections =
             {
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.PIECE_OF_A_STONE_WALL) and
+                        not player:hasKeyItem(invaderXim.ki.PIECE_OF_A_STONE_WALL) and
                         player:getMissionStatus(mission.areaId) == 1
                     then
-                        if player:hasKeyItem(xi.ki.VIAL_OF_UNTAINTED_HOLY_WATER) then
+                        if player:hasKeyItem(invaderXim.ki.VIAL_OF_UNTAINTED_HOLY_WATER) then
                             player:setMissionStatus(mission.areaId, 2)
                         end
 
-                        return mission:keyItem(xi.ki.PIECE_OF_A_STONE_WALL)
+                        return mission:keyItem(invaderXim.ki.PIECE_OF_A_STONE_WALL)
                     end
                 end,
             },

@@ -26,7 +26,7 @@ attachmentObject.onEquip = function(automaton)
         end
 
         local master = pet:getMaster()
-        local maneuvers = master:countEffect(xi.effect.FIRE_MANEUVER)
+        local maneuvers = master:countEffect(invaderXim.effect.FIRE_MANEUVER)
 
         if maneuvers < 1 or maneuvers > 3 then
             return
@@ -35,11 +35,11 @@ attachmentObject.onEquip = function(automaton)
         local amount = 25 * maneuvers
         pet:setLocalVar('flameholdermaneuvers', maneuvers)
 
-        pet:addMod(xi.mod.WEAPONSKILL_DAMAGE_BASE, amount)
+        pet:addMod(invaderXim.mod.WEAPONSKILL_DAMAGE_BASE, amount)
         pet:setLocalVar('flameholder', amount)
     end)
 
-    automaton:addListener('WEAPONSKILL_STATE_EXIT', 'AUTO_FLAME_HOLDER_END', function(pet, skill)
+    automaton:addListener('WEAPONSKILL_STATE_IXIMT', 'AUTO_FLAME_HOLDER_END', function(pet, skill)
         local master = pet:getMaster()
         local toremove = pet:getLocalVar('flameholdermaneuvers')
         if toremove == 0 then
@@ -47,10 +47,10 @@ attachmentObject.onEquip = function(automaton)
         end
 
         for i = 1, toremove do
-            master:delStatusEffectSilent(xi.effect.FIRE_MANEUVER)
+            master:delStatusEffectSilent(invaderXim.effect.FIRE_MANEUVER)
         end
 
-        pet:delMod(xi.mod.WEAPONSKILL_DAMAGE_BASE, pet:getLocalVar('flameholder'))
+        pet:delMod(invaderXim.mod.WEAPONSKILL_DAMAGE_BASE, pet:getLocalVar('flameholder'))
         pet:setLocalVar('flameholder', 0)
         pet:setLocalVar('flameholdermaneuvers', 0)
     end)

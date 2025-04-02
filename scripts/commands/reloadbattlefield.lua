@@ -27,7 +27,7 @@ commandObj.onTrigger = function(player, battlefieldName)
         return
     end
 
-    local content = xi.battlefield.contents[xi.battlefield.id[string.upper(battlefieldName)]]
+    local content = invaderXim.battlefield.contents[invaderXim.battlefield.id[string.upper(battlefieldName)]]
     if content == nil then
         error(player, string.format('Unable to find battlefield \'%s\' to reload.', battlefieldName))
         return

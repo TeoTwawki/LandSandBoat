@@ -2,7 +2,7 @@
 -- Area: Ilrusi Atoll (Extermination)
 --  Mob: Carrion Toad
 -----------------------------------
-local ID = zones[xi.zone.ILRUSI_ATOLL]
+local ID = zones[invaderXim.zone.ILRUSI_ATOLL]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

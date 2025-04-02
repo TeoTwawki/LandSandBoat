@@ -2,7 +2,7 @@
 -- Zone: Carpenters' Landing (2)
 -- Desc: this file contains functions that are shared by multiple luas in this zone's directory
 -----------------------------------
-local ID = zones[xi.zone.CARPENTERS_LANDING]
+local ID = zones[invaderXim.zone.CARPENTERS_LANDING]
 -----------------------------------
 
 local carpentersLandingGlobal =
@@ -12,10 +12,10 @@ local carpentersLandingGlobal =
         ..............................................................................................]]
     herculesTreeOnGameHour = function()
         local hour = VanadielHour()
-        local stat = xi.status.NORMAL
+        local stat = invaderXim.status.NORMAL
 
         if hour >= 7 and hour < 22 then
-            stat = xi.status.DISAPPEAR
+            stat = invaderXim.status.DISAPPEAR
         else
             GetMobByID(ID.mob.HERCULES_BEETLE):setLocalVar('hasSpawned', 0)
         end
@@ -35,15 +35,15 @@ local carpentersLandingGlobal =
     herculesTreeOnTrade = function(player, npc, trade)
         local msgOffset = ID.text.HERCULES_TREE_NOTHING_YET
 
-        if npcUtil.tradeHas(trade, xi.item.POT_OF_HONEY) then
+        if npcUtil.tradeHas(trade, invaderXim.item.POT_OF_HONEY) then
             if npc:getLocalVar('honey') == 0 then
-                player:messageSpecial(msgOffset + 4, xi.item.POT_OF_HONEY) -- "You plaster the contents of a pot of honey on the tree."
+                player:messageSpecial(msgOffset + 4, invaderXim.item.POT_OF_HONEY) -- "You plaster the contents of a pot of honey on the tree."
 
                 local hour = VanadielHour()
                 npc:setLocalVar('honey', (hour >= 22 or hour < 4) and 1 or 2) -- 1 = trade was done in time (before 4am). 2 = trade was too late.
                 player:confirmTrade()
             else
-                player:messageSpecial(msgOffset + 1, xi.item.POT_OF_HONEY) -- "The bark is sticky. The tree has already been plastered with the contents of a pot of honey."
+                player:messageSpecial(msgOffset + 1, invaderXim.item.POT_OF_HONEY) -- "The bark is sticky. The tree has already been plastered with the contents of a pot of honey."
             end
         end
     end,
@@ -76,7 +76,7 @@ local carpentersLandingGlobal =
                     player:messageSpecial(msgOffset + 3) -- "You did not catch anything."
                 end
 
-                npc:setStatus(xi.status.DISAPPEAR)
+                npc:setStatus(invaderXim.status.DISAPPEAR)
             end
         end
     end

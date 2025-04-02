@@ -5,14 +5,14 @@
 -- !addmission 5 18
 -- Regal Pawprints : -15.066 -40.249 -217.276 136
 -----------------------------------
-local pastBeaucedineID = zones[xi.zone.BEAUCEDINE_GLACIER_S]
+local pastBeaucedineID = zones[invaderXim.zone.BEAUCEDINE_GLACIER_S]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.BETRAYAL_AT_BEAUCEDINE)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.BETRAYAL_AT_BEAUCEDINE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.ON_THIN_ICE },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.ON_THIN_ICE },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BEAUCEDINE_GLACIER_S] =
+        [invaderXim.zone.BEAUCEDINE_GLACIER_S] =
         {
             ['Regal_Pawprints_2'] =
             {
@@ -78,7 +78,7 @@ mission.sections =
 
                 [16] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 3)
-                    player:setPos(-15.036, -40.355, -219.202, 189, xi.zone.BEAUCEDINE_GLACIER_S)
+                    player:setPos(-15.036, -40.355, -219.202, 189, invaderXim.zone.BEAUCEDINE_GLACIER_S)
                 end,
 
                 [30] = function(player, csid, option, npc)

@@ -5,23 +5,23 @@
 -- Corann : !pos 90.935 -8.772 32.564 236
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.THE_QUADAVS_CURSE)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_QUADAVS_CURSE)
 
 quest.reward =
 {
     fame     = 120,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.BRONZE_SUBLIGAR,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.BRONZE_SUBLIGAR,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Corann'] = quest:progressEvent(80),
 
@@ -36,15 +36,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Corann'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.QUADAV_BACKPLATE) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.QUADAV_BACKPLATE) then
                         return quest:progressEvent(81)
                     end
                 end,
@@ -63,11 +63,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                not player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.OUT_OF_ONES_SHELL)
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                not player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.OUT_OF_ONES_SHELL)
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Corann'] = quest:event(87):replaceDefault(),
         },

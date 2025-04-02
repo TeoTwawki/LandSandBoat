@@ -3,7 +3,7 @@
 --  Mob: Wamoura
 -- Note: PH for Ignamoth
 -----------------------------------
-local ID = zones[xi.zone.MOUNT_ZHAYOLM]
+local ID = zones[invaderXim.zone.MOUNT_ZHAYOLM]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -18,7 +18,7 @@ entity.onMobDeath = function(mob)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, ignamothPHTable, 10, 7200) -- 2 hours
+    invaderXim.mob.phOnDespawn(mob, ignamothPHTable, 10, 7200) -- 2 hours
 end
 
 return entity

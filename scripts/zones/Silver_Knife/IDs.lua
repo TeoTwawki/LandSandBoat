@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.SILVER_KNIFE] =
+zones[invaderXim.zone.SILVER_KNIFE] =
 {
     text =
     {
@@ -23,4 +23,4 @@ zones[xi.zone.SILVER_KNIFE] =
     },
 }
 
-return zones[xi.zone.SILVER_KNIFE]
+return zones[invaderXim.zone.SILVER_KNIFE]

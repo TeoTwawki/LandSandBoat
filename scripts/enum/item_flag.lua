@@ -1,9 +1,9 @@
 xi = xi or {}
 
 -- Check Lua item with:
--- local isEx = bit.band(item:getFlag(), xi.itemFlag.EX) ~= 0
----@enum xi.itemFlag
-xi.itemFlag =
+-- local isEx = bit.band(item:getFlag(), invaderXim.itemFlag.EX) ~= 0
+---@enum invaderXim.itemFlag
+invaderXim.itemFlag =
 {
     WALLHANGING  = 0x0001,
     -- 01          = 0x0002,

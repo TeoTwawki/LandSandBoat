@@ -1,15 +1,15 @@
 -----------------------------------
 -- NETWORK SETTINGS
 -----------------------------------
--- All settings are attached to the `xi.settings` object. This is published globally, and be accessed from C++ and any script.
+-- All settings are attached to the `invaderXim.settings` object. This is published globally, and be accessed from C++ and any script.
 --
 -- This file is concerned mainly with networking between the database, client, and server executables.
 -----------------------------------
 
 xi = xi or {}
-xi.settings = xi.settings or {}
+invaderXim.settings = invaderXim.settings or {}
 
-xi.settings.network =
+invaderXim.settings.network =
 {
     SQL_HOST     = "127.0.0.1",
     SQL_PORT     = 3306,

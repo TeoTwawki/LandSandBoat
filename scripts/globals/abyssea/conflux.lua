@@ -5,7 +5,7 @@ require('scripts/globals/teleports')
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.conflux = {}
+invaderXim.conflux = {}
 
 -- TODO: Confirm that price calculations are accurate
 
@@ -13,20 +13,20 @@ xi.conflux = {}
 -- 0 is always active, and added to the mask in the onTrigger function itself.
 local zoneMaskID =
 {
-    [xi.zone.ABYSSEA_KONSCHTAT ] = 0,
-    [xi.zone.ABYSSEA_TAHRONGI  ] = 1,
-    [xi.zone.ABYSSEA_LA_THEINE ] = 2,
-    [xi.zone.ABYSSEA_ATTOHWA   ] = 3,
-    [xi.zone.ABYSSEA_MISAREAUX ] = 4,
-    [xi.zone.ABYSSEA_VUNKERL   ] = 5,
-    [xi.zone.ABYSSEA_ALTEPA    ] = 6,
-    [xi.zone.ABYSSEA_ULEGUERAND] = 7,
-    [xi.zone.ABYSSEA_GRAUBERG  ] = 8,
+    [invaderXim.zone.ABYSSEA_KONSCHTAT ] = 0,
+    [invaderXim.zone.ABYSSEA_TAHRONGI  ] = 1,
+    [invaderXim.zone.ABYSSEA_LA_THEINE ] = 2,
+    [invaderXim.zone.ABYSSEA_ATTOHWA   ] = 3,
+    [invaderXim.zone.ABYSSEA_MISAREAUX ] = 4,
+    [invaderXim.zone.ABYSSEA_VUNKERL   ] = 5,
+    [invaderXim.zone.ABYSSEA_ALTEPA    ] = 6,
+    [invaderXim.zone.ABYSSEA_ULEGUERAND] = 7,
+    [invaderXim.zone.ABYSSEA_GRAUBERG  ] = 8,
 }
 
 local confluxData =
 {
-    [xi.zone.ABYSSEA_KONSCHTAT] =
+    [invaderXim.zone.ABYSSEA_KONSCHTAT] =
     {
     --   NPC Name                   Bit, CSID,   Cruor Costs
         ['Veridical_Conflux_#01'] = { 0, 2132, { 50, 100, 150, 200, 250, 300, 350, 400 } },
@@ -39,7 +39,7 @@ local confluxData =
         ['Veridical_Conflux_#08'] = { 7, 2139, { 50, 100, 150, 200, 250, 300, 350, 400 } },
     },
 
-    [xi.zone.ABYSSEA_TAHRONGI] =
+    [invaderXim.zone.ABYSSEA_TAHRONGI] =
     {
     --   NPC Name                   Bit, CSID,   Cruor Costs
         ['Veridical_Conflux_#01'] = { 0, 2132, { 50, 100, 150, 200, 250, 300, 350, 400 } },
@@ -52,7 +52,7 @@ local confluxData =
         ['Veridical_Conflux_#08'] = { 7, 2139, { 50, 100, 150, 200, 250, 300, 350, 400 } },
     },
 
-    [xi.zone.ABYSSEA_LA_THEINE] =
+    [invaderXim.zone.ABYSSEA_LA_THEINE] =
     {
     --   NPC Name                   Bit, CSID,   Cruor Costs
         ['Veridical_Conflux_#01'] = { 0, 2132, { 50, 100, 150, 200, 250, 300, 350, 400 } },
@@ -65,7 +65,7 @@ local confluxData =
         ['Veridical_Conflux_#08'] = { 7, 2139, { 50, 100, 150, 200, 250, 300, 350, 400 } },
     },
 
-    [xi.zone.ABYSSEA_ATTOHWA] =
+    [invaderXim.zone.ABYSSEA_ATTOHWA] =
     {
     --   NPC Name                   Bit, CSID,   Cruor Costs
         ['Veridical_Conflux_#01'] = { 0, 2132, { 200, 400, 600, 800, 1000, 1200, 1400, 1600 } },
@@ -79,7 +79,7 @@ local confluxData =
         ['Veridical_Conflux_#00'] = { 8,  123, { 200, 400, 600, 800, 1000, 1200, 1400, 1600 } },
     },
 
-    [xi.zone.ABYSSEA_MISAREAUX] =
+    [invaderXim.zone.ABYSSEA_MISAREAUX] =
     {
     --   NPC Name                   Bit, CSID,   Cruor Costs
         ['Veridical_Conflux_#01'] = { 0, 2132, { 200, 400, 600, 800, 1000, 1200, 1400, 1600 } },
@@ -93,7 +93,7 @@ local confluxData =
         ['Veridical_Conflux_#00'] = { 8,  123, { 200, 400, 600, 800, 1000, 1200, 1400, 1600 } },
     },
 
-    [xi.zone.ABYSSEA_VUNKERL] =
+    [invaderXim.zone.ABYSSEA_VUNKERL] =
     {
     --   NPC Name                   Bit, CSID,   Cruor Costs
         ['Veridical_Conflux_#01'] = { 0, 2132, { 200, 400, 600, 800, 1000, 1200, 1400, 1600 } },
@@ -107,7 +107,7 @@ local confluxData =
         ['Veridical_Conflux_#00'] = { 8,  123, { 200, 400, 600, 800, 1000, 1200, 1400, 1600 } },
     },
 
-    [xi.zone.ABYSSEA_ALTEPA] =
+    [invaderXim.zone.ABYSSEA_ALTEPA] =
     {
     --   NPC Name                   Bit, CSID,   Cruor Costs
         ['Veridical_Conflux_#01'] = { 0, 2132, { 600, 800, 1000, 1200, 1400, 1600, 1800, 2000 } },
@@ -120,7 +120,7 @@ local confluxData =
         ['Veridical_Conflux_#08'] = { 7, 2139, { 600, 800, 1000, 1200, 1400, 1600, 1800, 2000 } },
     },
 
-    [xi.zone.ABYSSEA_ULEGUERAND] =
+    [invaderXim.zone.ABYSSEA_ULEGUERAND] =
     {
     --   NPC Name                   Bit, CSID,   Cruor Costs
         ['Veridical_Conflux_#01'] = { 0, 2132, { 600, 800, 1000, 1200, 1400, 1600, 1800, 2000 } },
@@ -133,7 +133,7 @@ local confluxData =
         ['Veridical_Conflux_#08'] = { 7, 2138, { 600, 800, 1000, 1200, 1400, 1600, 1800, 2000 } },
     },
 
-    [xi.zone.ABYSSEA_GRAUBERG] =
+    [invaderXim.zone.ABYSSEA_GRAUBERG] =
     {
     --   NPC Name                   Bit, CSID,   Cruor Costs
         ['Veridical_Conflux_#01'] = { 0, 2132, { 600, 800, 1000, 1200, 1400, 1600, 1800, 2000 } },
@@ -151,7 +151,7 @@ local function updateCruorCosts(player, confluxInfo)
     local discount = 1
     local updatedConfluxInfo = {}
 
-    for keyItem = xi.ki.IVORY_ABYSSITE_OF_CONFLUENCE, xi.ki.INDIGO_ABYSSITE_OF_CONFLUENCE do
+    for keyItem = invaderXim.ki.IVORY_ABYSSITE_OF_CONFLUENCE, invaderXim.ki.INDIGO_ABYSSITE_OF_CONFLUENCE do
         if player:hasKeyItem(keyItem) then
             discount = discount - 0.2
         end
@@ -186,11 +186,11 @@ local function packCostParameters(costData)
     return costParameters
 end
 
-xi.conflux.confluxOnTrigger = function(player, npc)
+invaderXim.conflux.confluxOnTrigger = function(player, npc)
     local npcName = npc:getName()
     local cruor = player:getCurrency('cruor')
     local maskOffset = zoneMaskID[player:getZoneID()]
-    local activatedMask = player:getTeleport(xi.teleport.type.ABYSSEA_CONFLUX, maskOffset)
+    local activatedMask = player:getTeleport(invaderXim.teleport.type.ABYSSEA_CONFLUX, maskOffset)
     local confluxInfo = updateCruorCosts(player, confluxData[player:getZoneID()][npcName])
 
     -- Veridical Conflux #00 is active by default.
@@ -211,12 +211,12 @@ xi.conflux.confluxOnTrigger = function(player, npc)
     end
 end
 
-xi.conflux.confluxEventUpdate = function(player, csid, option, npc)
+invaderXim.conflux.confluxEventUpdate = function(player, csid, option, npc)
     player:updateEvent(1, 0, 0, 0, 0, 0, 0, 0)
 end
 
-xi.conflux.confluxEventFinish = function(player, csid, option, npc)
-    local activatedMask = player:getTeleport(xi.teleport.type.ABYSSEA_CONFLUX, zoneMaskID[player:getZoneID()])
+invaderXim.conflux.confluxEventFinish = function(player, csid, option, npc)
+    local activatedMask = player:getTeleport(invaderXim.teleport.type.ABYSSEA_CONFLUX, zoneMaskID[player:getZoneID()])
     local confluxInfo = updateCruorCosts(player, confluxData[player:getZoneID()][npc:getName()])
 
     if
@@ -231,6 +231,6 @@ xi.conflux.confluxEventFinish = function(player, csid, option, npc)
         confluxInfo[1] ~= 8
     then
         player:delCurrency('cruor', confluxInfo[3][confluxInfo[1] + 1])
-        player:addTeleport(xi.teleport.type.ABYSSEA_CONFLUX, confluxInfo[1], zoneMaskID[player:getZoneID()])
+        player:addTeleport(invaderXim.teleport.type.ABYSSEA_CONFLUX, confluxInfo[1], zoneMaskID[player:getZoneID()])
     end
 end

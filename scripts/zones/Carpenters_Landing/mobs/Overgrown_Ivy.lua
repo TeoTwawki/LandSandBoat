@@ -6,7 +6,7 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180)
 end
 
 entity.onMobFight = function(mob, target)
@@ -15,7 +15,7 @@ entity.onMobFight = function(mob, target)
     local badBreaths = mob:getLocalVar('badBreaths')
     -- also check to make sure that mob is not currently using a bad breath
     if
-        mob:getCurrentAction() == xi.act.ATTACK and
+        mob:getCurrentAction() == invaderXim.act.ATTACK and
         badBreaths < 5 and
         mob:getHPP() <= 25
     then

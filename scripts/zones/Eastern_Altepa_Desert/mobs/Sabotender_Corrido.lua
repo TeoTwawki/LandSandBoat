@@ -8,26 +8,26 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
-    mob:setMod(xi.mod.DOUBLE_ATTACK, 25)
-    mob:setMod(xi.mod.MOVE_SPEED_STACKABLE, 25)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
+    mob:setMod(invaderXim.mod.DOUBLE_ATTACK, 25)
+    mob:setMod(invaderXim.mod.MOVE_SPEED_STACKABLE, 25)
 end
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
-            { id = xi.jsa.HUNDRED_FISTS, hpp = 25 },
+            { id = invaderXim.jsa.HUNDRED_FISTS, hpp = 25 },
         },
     })
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.SLOW)
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.SLOW)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 411)
+    invaderXim.hunts.checkHunt(mob, player, 411)
 end
 
 return entity

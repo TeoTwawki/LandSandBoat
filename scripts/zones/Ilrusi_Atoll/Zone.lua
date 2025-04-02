@@ -35,7 +35,7 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
 end
 
 zoneObject.onInstanceLoadFailed = function()
-    return xi.zone.ARRAPAGO_REEF
+    return invaderXim.zone.ARRAPAGO_REEF
 end
 
 return zoneObject

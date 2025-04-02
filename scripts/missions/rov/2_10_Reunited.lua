@@ -5,11 +5,11 @@
 -- !addmission 13 64
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.REUNITED)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.REUNITED)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.TAKE_WING },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.TAKE_WING },
 }
 
 mission.sections =
@@ -19,9 +19,9 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
-            ['Nadeey'] = mission:progressEvent(167, { [0] = xi.besieged.getAstralCandescence(), text_table = 0 }),
+            ['Nadeey'] = mission:progressEvent(167, { [0] = invaderXim.besieged.getAstralCandescence(), text_table = 0 }),
 
             onEventFinish =
             {

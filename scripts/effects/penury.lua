@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.PENURY
+-- invaderXim.effect.PENURY
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

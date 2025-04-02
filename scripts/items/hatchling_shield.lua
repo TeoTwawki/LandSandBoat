@@ -7,24 +7,24 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.itemBoxOnItemCheck(target)
+    return invaderXim.itemUtils.itemBoxOnItemCheck(target)
 end
 
 local eggTable =
 {
-    { xi.item.BIRD_EGG,        1,  8, },
-    { xi.item.CRAWLER_EGG,     3,  9, },
-    { xi.item.EMPEROR_ROE,     1, 10, },
-    { xi.item.HARD_BOILED_EGG, 4,  7, },
-    { xi.item.LIZARD_EGG,      2,  9, },
-    { xi.item.SAIRUI_RAN,      1, 10, },
+    { invaderXim.item.BIRD_EGG,        1,  8, },
+    { invaderXim.item.CRAWLER_EGG,     3,  9, },
+    { invaderXim.item.EMPEROR_ROE,     1, 10, },
+    { invaderXim.item.HARD_BOILED_EGG, 4,  7, },
+    { invaderXim.item.LIZARD_EGG,      2,  9, },
+    { invaderXim.item.SAIRUI_RAN,      1, 10, },
 }
 
-if xi.settings.main.ENABLE_TOAU == 1 then
-    table.insert(eggTable, { xi.item.APKALLU_EGG,        1, 11, })
-    table.insert(eggTable, { xi.item.CHUNK_OF_FLAN_MEAT, 1,  6, })
-    table.insert(eggTable, { xi.item.PUK_EGG,            1,  7, })
-    table.insert(eggTable, { xi.item.SALMON_EGGS,        3,  7, })
+if invaderXim.settings.main.ENABLE_TOAU == 1 then
+    table.insert(eggTable, { invaderXim.item.APKALLU_EGG,        1, 11, })
+    table.insert(eggTable, { invaderXim.item.CHUNK_OF_FLAN_MEAT, 1,  6, })
+    table.insert(eggTable, { invaderXim.item.PUK_EGG,            1,  7, })
+    table.insert(eggTable, { invaderXim.item.SALMON_EGGS,        3,  7, })
 end
 
 itemObject.onItemUse = function(target)

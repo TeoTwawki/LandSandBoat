@@ -7,13 +7,13 @@
 -- Ohbiru-Dohbiru : !pos 23 -5 -193 238
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.FOOD_FOR_THOUGHT)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.FOOD_FOR_THOUGHT)
 
 quest.reward =
 {
     fame  = 100,
-    fameArea = xi.fameArea.WINDURST,
-    title = xi.title.FAST_FOOD_DELIVERER,
+    fameArea = invaderXim.fameArea.WINDURST,
+    title = invaderXim.title.FAST_FOOD_DELIVERER,
 }
 
 local kenapaTradeEventFinish = function(player, csid, option, npc)
@@ -52,10 +52,10 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Kenapa-Keppa'] =
             {
@@ -125,17 +125,17 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Kenapa-Keppa'] =
             {
                 onTrade = function(player, npc, trade)
                     local kenapaProg = quest:getVar(player, 'kenapaProg')
 
-                    if npcUtil.tradeHasExactly(trade, xi.item.HARD_BOILED_EGG) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.HARD_BOILED_EGG) then
                         -- Traded item without receiving order
                         if kenapaProg < 3 then
                             if math.random(1, 100) <= 50 then
@@ -161,12 +161,12 @@ quest.sections =
                     elseif kenapaProg == 1 then
                         return quest:progressEvent(319)
                     elseif kenapaProg == 2 then
-                        return quest:progressEvent(320, 0, xi.item.HARD_BOILED_EGG)
+                        return quest:progressEvent(320, 0, invaderXim.item.HARD_BOILED_EGG)
                     elseif kenapaProg == 3 then
                         local randEvent = math.random(1, 3)
 
                         if randEvent == 1 then
-                            return quest:progressEvent(320, 0, xi.item.HARD_BOILED_EGG) -- Repeats Order
+                            return quest:progressEvent(320, 0, invaderXim.item.HARD_BOILED_EGG) -- Repeats Order
                         elseif randEvent == 2 then
                             return quest:progressEvent(321) -- 'Or Whatever'
                         else
@@ -180,7 +180,7 @@ quest.sections =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.SLICE_OF_GRILLED_HARE) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.SLICE_OF_GRILLED_HARE) and
                         quest:getVar(player, 'kerutotoProg') == 1
                     then
                         return quest:progressEvent(332, 440)
@@ -191,7 +191,7 @@ quest.sections =
                     local kerutotoProgress = quest:getVar(player, 'kerutotoProg')
 
                     if kerutotoProgress == 1 then
-                        return quest:progressEvent(315, 0, xi.item.SLICE_OF_GRILLED_HARE)
+                        return quest:progressEvent(315, 0, invaderXim.item.SLICE_OF_GRILLED_HARE)
                     elseif kerutotoProgress == 2 then
                         return quest:progressEvent(333)
                     end
@@ -208,7 +208,7 @@ quest.sections =
             ['Ohbiru-Dohbiru'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.CUP_OF_WINDURSTIAN_TEA, xi.item.TORTILLA, xi.item.CLUMP_OF_PAMTAM_KELP }) then
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.CUP_OF_WINDURSTIAN_TEA, invaderXim.item.TORTILLA, invaderXim.item.CLUMP_OF_PAMTAM_KELP }) then
                         local ohbiruProgress = quest:getVar(player, 'ohbiruProg')
 
                         -- Traded all 3 items & Didn't ask for order
@@ -286,10 +286,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and quest:getMustZone(player)
+            return status == invaderXim.questStatus.QUEST_COMPLETED and quest:getMustZone(player)
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Kerutoto']       = quest:event(304):replaceDefault(),
             ['Ohbiru-Dohbiru'] = quest:event(344):replaceDefault(),

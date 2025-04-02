@@ -6,19 +6,19 @@
 -- !addkeyitem cosmo_cleanse
 -- !pos 580.000 -2.375 104.000 37
 -----------------------------------
-local ID = zones[xi.zone.TEMENOS]
+local ID = zones[invaderXim.zone.TEMENOS]
 -----------------------------------
 
 local content = Limbus:new({
-    zoneId           = xi.zone.TEMENOS,
-    battlefieldId    = xi.battlefield.id.CENTRAL_TEMENOS_1ST_FLOOR,
+    zoneId           = invaderXim.zone.TEMENOS,
+    battlefieldId    = invaderXim.battlefield.id.CENTRAL_TEMENOS_1ST_FLOOR,
     maxPlayers       = 18,
     timeLimit        = utils.minutes(45),
     index            = 6,
     area             = 7,
     entryNpc         = 'Matter_Diffusion_Module',
-    requiredKeyItems = { xi.ki.COSMO_CLEANSE, xi.ki.WHITE_CARD, message = ID.text.YOU_INSERT_THE_CARD_POLISHED },
-    requiredItems    = { xi.item.EMERALD_CHIP },
+    requiredKeyItems = { invaderXim.ki.COSMO_CLEANSE, invaderXim.ki.WHITE_CARD, message = ID.text.YOU_INSERT_THE_CARD_POLISHED },
+    requiredItems    = { invaderXim.item.EMERALD_CHIP },
     name             = 'CENTRAL_TEMENOS_1ST_FLOOR',
     lootCrateId      = ID.npc.C1_LOOT_CRATE,
 })
@@ -38,7 +38,7 @@ function content:handleMobPartnerDeath(mobs, battlefield, mob, count)
     target:timer(15000, function(mobArg)
         if target:isAlive() then
             target:injectActionPacket(target:getID(), 11, 439, 0, 24, 0, 307, 0)
-            target:addMod(xi.mod.REGAIN, 150)
+            target:addMod(invaderXim.mod.REGAIN, 150)
         end
     end)
 end
@@ -71,9 +71,9 @@ content.groups =
             'Enhanced_Ahriman',
         },
 
-        mods     = { [xi.mod.REGEN] = 24 },
+        mods     = { [invaderXim.mod.REGEN] = 24 },
         allDeath = function(battlefield, mob)
-            xi.limbus.spawnFrom(mob, ID.npc.C1_LOOT_CRATE)
+            invaderXim.limbus.spawnFrom(mob, ID.npc.C1_LOOT_CRATE)
         end
     }
 }
@@ -84,38 +84,38 @@ content.loot =
     {
         {
             quantity = 6,
-            { item = xi.item.ANCIENT_BEASTCOIN, weight = xi.loot.weight.NORMAL },
+            { item = invaderXim.item.ANCIENT_BEASTCOIN, weight = invaderXim.loot.weight.NORMAL },
         },
 
         {
-            { item = xi.item.SQUARE_OF_BENEDICT_SILK, weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SQUARE_OF_DIABOLIC_SILK, weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SPOOL_OF_CHAMELEON_YARN, weight = xi.loot.weight.NORMAL },
-            { item = xi.item.PANTIN_WIRE,             weight = xi.loot.weight.NORMAL },
+            { item = invaderXim.item.SQUARE_OF_BENEDICT_SILK, weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SQUARE_OF_DIABOLIC_SILK, weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SPOOL_OF_CHAMELEON_YARN, weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.PANTIN_WIRE,             weight = invaderXim.loot.weight.NORMAL },
         },
 
         {
-            { item = xi.item.SPOOL_OF_RUBY_SILK_THREAD, weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SQUARE_OF_SUPPLE_SKIN,     weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SPOOL_OF_GLITTERING_YARN,  weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SQUARE_OF_BRILLIANTINE,    weight = xi.loot.weight.NORMAL },
+            { item = invaderXim.item.SPOOL_OF_RUBY_SILK_THREAD, weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SQUARE_OF_SUPPLE_SKIN,     weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SPOOL_OF_GLITTERING_YARN,  weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SQUARE_OF_BRILLIANTINE,    weight = invaderXim.loot.weight.NORMAL },
         },
 
         {
-            { item = xi.item.NONE,                     weight = xi.loot.weight.VERY_HIGH },
-            { item = xi.item.SQUARE_OF_ECARLATE_CLOTH, weight = xi.loot.weight.LOW       },
-            { item = xi.item.CHUNK_OF_SNOWY_CERMET,    weight = xi.loot.weight.LOW       },
-            { item = xi.item.SQUARE_OF_SMALT_LEATHER,  weight = xi.loot.weight.LOW       },
-            { item = xi.item.SQUARE_OF_FILET_LACE,     weight = xi.loot.weight.LOW       },
+            { item = invaderXim.item.NONE,                     weight = invaderXim.loot.weight.VERY_HIGH },
+            { item = invaderXim.item.SQUARE_OF_ECARLATE_CLOTH, weight = invaderXim.loot.weight.LOW       },
+            { item = invaderXim.item.CHUNK_OF_SNOWY_CERMET,    weight = invaderXim.loot.weight.LOW       },
+            { item = invaderXim.item.SQUARE_OF_SMALT_LEATHER,  weight = invaderXim.loot.weight.LOW       },
+            { item = invaderXim.item.SQUARE_OF_FILET_LACE,     weight = invaderXim.loot.weight.LOW       },
         },
 
         {
-            { item = xi.item.ORCHID_CHIP, weight = xi.loot.weight.NORMAL },
+            { item = invaderXim.item.ORCHID_CHIP, weight = invaderXim.loot.weight.NORMAL },
         },
 
         {
-            { item = xi.item.NONE,       weight = xi.loot.weight.VERY_HIGH },
-            { item = xi.item.METAL_CHIP, weight = xi.loot.weight.VERY_LOW  },
+            { item = invaderXim.item.NONE,       weight = invaderXim.loot.weight.VERY_HIGH },
+            { item = invaderXim.item.METAL_CHIP, weight = invaderXim.loot.weight.VERY_LOW  },
         },
     }
 }

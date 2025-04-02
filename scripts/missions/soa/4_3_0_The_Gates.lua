@@ -7,12 +7,12 @@
 -- Darkened Crevice : !pos 185.752 27.311 240.72 273
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.THE_GATES)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_GATES)
 
 mission.reward =
 {
-    title       = xi.title.ULBUKAN_UNDERSTUDY,
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.MORIMAR },
+    title       = invaderXim.title.ULBUKAN_UNDERSTUDY,
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.MORIMAR },
 }
 
 mission.sections =
@@ -22,18 +22,18 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(165),
         },
 
-        [xi.zone.WOH_GATES] =
+        [invaderXim.zone.WOH_GATES] =
         {
             ['Large_Animal_Track'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.TUFT_OF_GOLDEN_FUR) then
-                        npcUtil.giveKeyItem(player, xi.ki.TUFT_OF_GOLDEN_FUR)
+                    if not player:hasKeyItem(invaderXim.ki.TUFT_OF_GOLDEN_FUR) then
+                        npcUtil.giveKeyItem(player, invaderXim.ki.TUFT_OF_GOLDEN_FUR)
 
                         return mission:noAction()
                     end
@@ -54,7 +54,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.CIRDAS_CAVERNS_U] =
+        [invaderXim.zone.CIRDAS_CAVERNS_U] =
         {
             onEventFinish =
             {
@@ -63,7 +63,7 @@ mission.sections =
                 -- implementation of the instance.
                 [1000] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 1)
-                    player:setPos(182.053, 29.962, 240.197, 131, xi.zone.WOH_GATES)
+                    player:setPos(182.053, 29.962, 240.197, 131, invaderXim.zone.WOH_GATES)
                 end,
             },
         },

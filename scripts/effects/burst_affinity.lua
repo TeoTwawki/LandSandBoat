@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.BURST_AFFINITY
+-- invaderXim.effect.BURST_AFFINITY
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

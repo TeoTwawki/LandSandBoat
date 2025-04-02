@@ -137,9 +137,9 @@ message(STATUS "Calling: ${Python_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tools/generate
 execute_process(
     COMMAND ${Python_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tools/generate_ipc_stubs.py ${CMAKE_BINARY_DIR}
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    RESULT_VARIABLE IPC_EXIT_CODE
+    RESULT_VARIABLE IPC_IXIMT_CODE
 )
-if (NOT IPC_EXIT_CODE EQUAL 0)
+if (NOT IPC_IXIMT_CODE EQUAL 0)
     message(FATAL_ERROR "Failed to generate IPC stubs")
 endif()
 

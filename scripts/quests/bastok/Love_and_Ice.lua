@@ -6,32 +6,32 @@
 -- Mirror Pond (J-8) : !pos -96.165 1.518 -392.700 111
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.LOVE_AND_ICE)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.LOVE_AND_ICE)
 
 quest.reward =
 {
     fame     = 120,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.LAMIA_HARP,
-    title    = xi.title.SORROW_DROWNER,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.LAMIA_HARP,
+    title    = invaderXim.title.SORROW_DROWNER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:seenKeyItem(xi.ki.CARRIER_PIGEON_LETTER)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:seenKeyItem(invaderXim.ki.CARRIER_PIGEON_LETTER)
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Carmelo'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.THE_SIRENS_TEAR) and
-                        player:getFameLevel(xi.fameArea.BASTOK) >= 5
+                        player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_SIRENS_TEAR) and
+                        player:getFameLevel(invaderXim.fameArea.BASTOK) >= 5
                     then
                         return quest:progressEvent(185)
                     else
@@ -43,7 +43,7 @@ quest.sections =
             onEventFinish =
             {
                 [185] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.CARMELOS_SONG_SHEET)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.CARMELOS_SONG_SHEET)
                     quest:begin(player)
                 end,
             },
@@ -52,15 +52,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Carmelo'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.CARMELOS_SONG_SHEET) then
+                    if not player:hasKeyItem(invaderXim.ki.CARMELOS_SONG_SHEET) then
                         return quest:progressEvent(186)
                     end
                 end,
@@ -70,18 +70,18 @@ quest.sections =
             {
                 [186] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        xi.quest.setMustZone(player, xi.questLog.BASTOK, xi.quest.id.bastok.A_TEST_OF_TRUE_LOVE)
+                        invaderXim.quest.setMustZone(player, invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.A_TEST_OF_TRUE_LOVE)
                     end
                 end,
             },
         },
 
-        [xi.zone.BEAUCEDINE_GLACIER] =
+        [invaderXim.zone.BEAUCEDINE_GLACIER] =
         {
             ['Mirror_Pond_1'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.CARMELOS_SONG_SHEET) then
+                    if player:hasKeyItem(invaderXim.ki.CARMELOS_SONG_SHEET) then
                         return quest:progressEvent(100)
                     end
                 end,
@@ -90,7 +90,7 @@ quest.sections =
             onEventFinish =
             {
                 [100] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.CARMELOS_SONG_SHEET)
+                    player:delKeyItem(invaderXim.ki.CARMELOS_SONG_SHEET)
                 end,
             },
         },

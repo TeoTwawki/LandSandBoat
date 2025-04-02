@@ -2,9 +2,9 @@
 -- Abyssea Sturdy Pyxis Red Chest
 -----------------------------------
 xi = xi or {}
-xi.pyxis = xi.pyxis or {}
+invaderXim.pyxis = invaderXim.pyxis or {}
 
-xi.pyxis.goldChest = {}
+invaderXim.pyxis.goldChest = {}
 
 local function isEven(number)
     if number % 2 == 0 then
@@ -14,7 +14,7 @@ local function isEven(number)
     end
 end
 
-xi.pyxis.goldChest.startEvent = function(player, npc, event, contentMessage, timeleft)
+invaderXim.pyxis.goldChest.startEvent = function(player, npc, event, contentMessage, timeleft)
     local targetnumber    = npc:getLocalVar('RAND_NUM')
     local maxUnlockNumber = npc:getLocalVar('MAX_UNLOCK_NUMBER')
     local currentAttempts = npc:getLocalVar('CURRENT_ATTEMPTS')
@@ -24,7 +24,7 @@ xi.pyxis.goldChest.startEvent = function(player, npc, event, contentMessage, tim
     player:startEvent(event, contentMessage, minNumber, maxUnlockNumber, attemptsallowed, currentAttempts, targetnumber, 3, timeleft) -- Gold
 end
 
-xi.pyxis.goldChest.unlock = function(player, csid, option, npc)
+invaderXim.pyxis.goldChest.unlock = function(player, csid, option, npc)
     local ID              = zones[player:getZoneID()]
     local currentAttempts = npc:getLocalVar('CURRENT_ATTEMPTS')
     local attemptsallowed = 5
@@ -42,15 +42,15 @@ xi.pyxis.goldChest.unlock = function(player, csid, option, npc)
         npc:setLocalVar('CURRENT_ATTEMPTS', currentAttempts)
 
         if inputnumber == targetnumber then
-            xi.pyxis.messageChest(player, ID.text.INPUT_SUCCESS_FAIL_GUESS, inputnumber, 1, 0, 0, npc) -- unlocking chest
-            xi.pyxis.messageChest(player, ID.text.PLAYER_OPENED_LOCK, 0, 0, 0, 0, npc)
-            xi.pyxis.openChest(player, npc)
+            invaderXim.pyxis.messageChest(player, ID.text.INPUT_SUCCESS_FAIL_GUESS, inputnumber, 1, 0, 0, npc) -- unlocking chest
+            invaderXim.pyxis.messageChest(player, ID.text.PLAYER_OPENED_LOCK, 0, 0, 0, 0, npc)
+            invaderXim.pyxis.openChest(player, npc)
         elseif currentAttempts >= attemptsallowed then
-            xi.pyxis.removeChest(player, npc, 0, 1)
-            xi.pyxis.messageChest(player, ID.text.PLAYER_FAILED_LOCK, 0, 0, 0, 0, npc)
+            invaderXim.pyxis.removeChest(player, npc, 0, 1)
+            invaderXim.pyxis.messageChest(player, ID.text.PLAYER_FAILED_LOCK, 0, 0, 0, 0, npc)
             player:messageSpecial(ID.text.CHEST_DISAPPEARED)
         else
-            xi.pyxis.messageChest(player, ID.text.INPUT_SUCCESS_FAIL_GUESS, inputnumber, 0, 0, 0, npc) -- nothing happens
+            invaderXim.pyxis.messageChest(player, ID.text.INPUT_SUCCESS_FAIL_GUESS, inputnumber, 0, 0, 0, npc) -- nothing happens
 
             if inputnumber > targetnumber then
                 player:messageSpecial(ID.text.GREATER_OR_LESS_THAN, inputnumber, 1, 0, 0) -- greater

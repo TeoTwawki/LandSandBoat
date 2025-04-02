@@ -6,11 +6,11 @@
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
 end
 
 entity.onMobRoam = function(mob)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
 end
 
 entity.onMobFight = function(mob, target)
@@ -46,23 +46,23 @@ entity.onMobFight = function(mob, target)
     }
     for _, condition in ipairs(drawInTable.conditions) do
         if condition then
-            mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+            mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
             utils.drawIn(target, drawInTable)
             break
         else
-            mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+            mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
         end
     end
 
     if mob:getHPP() > 25 then
-        mob:setMod(xi.mod.REGAIN, 10)
+        mob:setMod(invaderXim.mod.REGAIN, 10)
     else
-        mob:setMod(xi.mod.REGAIN, 70)
+        mob:setMod(invaderXim.mod.REGAIN, 70)
     end
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.CERBERUS_MUZZLER)
+    player:addTitle(invaderXim.title.CERBERUS_MUZZLER)
 end
 
 entity.onMobDespawn = function(mob)

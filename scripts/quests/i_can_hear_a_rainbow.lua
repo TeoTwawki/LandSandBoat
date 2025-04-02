@@ -11,91 +11,91 @@ quests.i_can_hear_a_rainbow = quests.i_can_hear_a_rainbow or {}
 
 local rubyData =
 {
-    [xi.weather.HOT_SPELL] =
+    [invaderXim.weather.HOT_SPELL] =
     {
         bit = 0,
         zones = set{
-            xi.zone.VALKURM_DUNES,
-            xi.zone.ROLANBERRY_FIELDS,
-            xi.zone.CAPE_TERIGGAN,
-            xi.zone.EASTERN_ALTEPA_DESERT,
-            xi.zone.MERIPHATAUD_MOUNTAINS,
-            xi.zone.YUHTUNGA_JUNGLE,
-            xi.zone.YHOATOR_JUNGLE,
-            xi.zone.WESTERN_ALTEPA_DESERT,
+            invaderXim.zone.VALKURM_DUNES,
+            invaderXim.zone.ROLANBERRY_FIELDS,
+            invaderXim.zone.CAPE_TERIGGAN,
+            invaderXim.zone.EASTERN_ALTEPA_DESERT,
+            invaderXim.zone.MERIPHATAUD_MOUNTAINS,
+            invaderXim.zone.YUHTUNGA_JUNGLE,
+            invaderXim.zone.YHOATOR_JUNGLE,
+            invaderXim.zone.WESTERN_ALTEPA_DESERT,
         },
     },
-    [xi.weather.NONE] =
+    [invaderXim.weather.NONE] =
     {
         bit = 1,
         zones = set{
-            xi.zone.WEST_RONFAURE,
-            xi.zone.EAST_RONFAURE,
-            xi.zone.NORTH_GUSTABERG,
-            xi.zone.SOUTH_GUSTABERG,
-            xi.zone.EASTERN_ALTEPA_DESERT,
-            xi.zone.WEST_SARUTABARUTA,
-            xi.zone.EAST_SARUTABARUTA,
-            xi.zone.BUBURIMU_PENINSULA,
-            xi.zone.YHOATOR_JUNGLE,
+            invaderXim.zone.WEST_RONFAURE,
+            invaderXim.zone.EAST_RONFAURE,
+            invaderXim.zone.NORTH_GUSTABERG,
+            invaderXim.zone.SOUTH_GUSTABERG,
+            invaderXim.zone.EASTERN_ALTEPA_DESERT,
+            invaderXim.zone.WEST_SARUTABARUTA,
+            invaderXim.zone.EAST_SARUTABARUTA,
+            invaderXim.zone.BUBURIMU_PENINSULA,
+            invaderXim.zone.YHOATOR_JUNGLE,
         },
     },
-    [xi.weather.DUST_STORM] =
+    [invaderXim.weather.DUST_STORM] =
     {
         bit = 2,
         zones = set{
-            xi.zone.VALKURM_DUNES,
-            xi.zone.BATALLIA_DOWNS,
-            xi.zone.KONSCHTAT_HIGHLANDS,
-            xi.zone.EASTERN_ALTEPA_DESERT,
-            xi.zone.TAHRONGI_CANYON,
-            xi.zone.MERIPHATAUD_MOUNTAINS,
-            xi.zone.SAUROMUGUE_CHAMPAIGN,
-            xi.zone.WESTERN_ALTEPA_DESERT,
+            invaderXim.zone.VALKURM_DUNES,
+            invaderXim.zone.BATALLIA_DOWNS,
+            invaderXim.zone.KONSCHTAT_HIGHLANDS,
+            invaderXim.zone.EASTERN_ALTEPA_DESERT,
+            invaderXim.zone.TAHRONGI_CANYON,
+            invaderXim.zone.MERIPHATAUD_MOUNTAINS,
+            invaderXim.zone.SAUROMUGUE_CHAMPAIGN,
+            invaderXim.zone.WESTERN_ALTEPA_DESERT,
         },
     },
-    [xi.weather.WIND] =
+    [invaderXim.weather.WIND] =
     {
         bit = 3,
         zones = set{
-            xi.zone.LA_THEINE_PLATEAU,
-            xi.zone.CAPE_TERIGGAN,
-            xi.zone.TAHRONGI_CANYON,
-            xi.zone.BUBURIMU_PENINSULA,
+            invaderXim.zone.LA_THEINE_PLATEAU,
+            invaderXim.zone.CAPE_TERIGGAN,
+            invaderXim.zone.TAHRONGI_CANYON,
+            invaderXim.zone.BUBURIMU_PENINSULA,
         },
     },
-    [xi.weather.RAIN] =
+    [invaderXim.weather.RAIN] =
     {
         bit = 4,
         zones = set{
-            xi.zone.LA_THEINE_PLATEAU,
-            xi.zone.JUGNER_FOREST,
-            xi.zone.PASHHOW_MARSHLANDS,
-            xi.zone.ROLANBERRY_FIELDS,
-            xi.zone.BUBURIMU_PENINSULA,
-            xi.zone.THE_SANCTUARY_OF_ZITAH,
-            xi.zone.YUHTUNGA_JUNGLE,
-            xi.zone.YHOATOR_JUNGLE,
+            invaderXim.zone.LA_THEINE_PLATEAU,
+            invaderXim.zone.JUGNER_FOREST,
+            invaderXim.zone.PASHHOW_MARSHLANDS,
+            invaderXim.zone.ROLANBERRY_FIELDS,
+            invaderXim.zone.BUBURIMU_PENINSULA,
+            invaderXim.zone.THE_SANCTUARY_OF_ZITAH,
+            invaderXim.zone.YUHTUNGA_JUNGLE,
+            invaderXim.zone.YHOATOR_JUNGLE,
         },
     },
-    [xi.weather.SNOW] =
+    [invaderXim.weather.SNOW] =
     {
         bit = 5,
         zones = set{
-            xi.zone.BATALLIA_DOWNS,
-            xi.zone.BEAUCEDINE_GLACIER,
-            xi.zone.XARCABARD,
+            invaderXim.zone.BATALLIA_DOWNS,
+            invaderXim.zone.BEAUCEDINE_GLACIER,
+            invaderXim.zone.XARCABARD,
         },
     },
-    [xi.weather.THUNDER] =
+    [invaderXim.weather.THUNDER] =
     {
         bit = 6,
         zones = set{
-            xi.zone.JUGNER_FOREST,
-            xi.zone.KONSCHTAT_HIGHLANDS,
-            xi.zone.PASHHOW_MARSHLANDS,
-            xi.zone.SAUROMUGUE_CHAMPAIGN,
-            xi.zone.THE_SANCTUARY_OF_ZITAH,
+            invaderXim.zone.JUGNER_FOREST,
+            invaderXim.zone.KONSCHTAT_HIGHLANDS,
+            invaderXim.zone.PASHHOW_MARSHLANDS,
+            invaderXim.zone.SAUROMUGUE_CHAMPAIGN,
+            invaderXim.zone.THE_SANCTUARY_OF_ZITAH,
         },
     },
 }
@@ -106,8 +106,8 @@ local rubyData =
 
 quests.i_can_hear_a_rainbow.onZoneIn = function(player)
     if
-        player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.I_CAN_HEAR_A_RAINBOW) == xi.questStatus.QUEST_ACCEPTED and
-        player:hasItem(xi.item.CARBUNCLES_RUBY, 0)
+        player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.I_CAN_HEAR_A_RAINBOW) == invaderXim.questStatus.QUEST_ACCEPTED and
+        player:hasItem(invaderXim.item.CARBUNCLES_RUBY, 0)
     then
         local trigger = false
 
@@ -143,9 +143,9 @@ end
 quests.i_can_hear_a_rainbow.onEventUpdate = function(player)
     local weather = player:getLocalVar('[rainbow]weather')
 
-    -- in some zones the light cutscene does not handle xi.weather.SUNSHINE properly
-    if weather == xi.weather.SUNSHINE then
-        weather = xi.weather.NONE
+    -- in some zones the light cutscene does not handle invaderXim.weather.SUNSHINE properly
+    if weather == invaderXim.weather.SUNSHINE then
+        weather = invaderXim.weather.NONE
     end
 
     if utils.mask.isFull(player:getCharVar('I_CAN_HEAR_A_RAINBOW'), 7) then -- has collected all 7 colors?

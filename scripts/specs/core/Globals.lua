@@ -21,7 +21,7 @@ function GetZone(zoneId)
 end
 
 ---@nodiscard
----@param itemId xi.item
+---@param itemId invaderXim.item
 ---@return CItem?
 function GetItemByID(itemId)
 end
@@ -81,8 +81,8 @@ end
 function IsConquestAlliance()
 end
 
----@param requestingZoneId xi.zone
----@param executorZoneId xi.zone
+---@param requestingZoneId invaderXim.zone
+---@param executorZoneId invaderXim.zone
 ---@param str string
 ---@return nil
 function SendLuaFuncStringToZone(requestingZoneId, executorZoneId, str)

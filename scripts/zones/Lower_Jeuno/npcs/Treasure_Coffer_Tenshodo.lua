@@ -4,31 +4,31 @@
 -- Type: Add-on NPC
 -- !pos 41.169 3.899 -51.005 245
 -----------------------------------
-local ID = zones[xi.zone.LOWER_JEUNO]
+local ID = zones[invaderXim.zone.LOWER_JEUNO]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 local optionToKI =
 {
-    [ 1] = xi.ki.CRIMSON_KEY,
-    [ 2] = xi.ki.VIRIDIAN_KEY,
-    [ 3] = xi.ki.AMBER_KEY,
-    [ 4] = xi.ki.AZURE_KEY,
-    [ 5] = xi.ki.IVORY_KEY,
-    [ 6] = xi.ki.EBON_KEY,
-    [ 8] = xi.ki.WHITE_CORAL_KEY,
-    [ 9] = xi.ki.BLUE_CORAL_KEY,
-    [10] = xi.ki.PEACH_CORAL_KEY,
-    [11] = xi.ki.BLACK_CORAL_KEY,
-    [12] = xi.ki.RED_CORAL_KEY,
-    [13] = xi.ki.ANGEL_SKIN_KEY,
-    [15] = xi.ki.MOOGLE_KEY,
-    [16] = xi.ki.BIRD_KEY,
-    [17] = xi.ki.CACTUAR_KEY,
-    [18] = xi.ki.BOMB_KEY,
-    [19] = xi.ki.CHOCOBO_KEY,
-    [20] = xi.ki.TONBERRY_KEY,
+    [ 1] = invaderXim.ki.CRIMSON_KEY,
+    [ 2] = invaderXim.ki.VIRIDIAN_KEY,
+    [ 3] = invaderXim.ki.AMBER_KEY,
+    [ 4] = invaderXim.ki.AZURE_KEY,
+    [ 5] = invaderXim.ki.IVORY_KEY,
+    [ 6] = invaderXim.ki.EBON_KEY,
+    [ 8] = invaderXim.ki.WHITE_CORAL_KEY,
+    [ 9] = invaderXim.ki.BLUE_CORAL_KEY,
+    [10] = invaderXim.ki.PEACH_CORAL_KEY,
+    [11] = invaderXim.ki.BLACK_CORAL_KEY,
+    [12] = invaderXim.ki.RED_CORAL_KEY,
+    [13] = invaderXim.ki.ANGEL_SKIN_KEY,
+    [15] = invaderXim.ki.MOOGLE_KEY,
+    [16] = invaderXim.ki.BIRD_KEY,
+    [17] = invaderXim.ki.CACTUAR_KEY,
+    [18] = invaderXim.ki.BOMB_KEY,
+    [19] = invaderXim.ki.CHOCOBO_KEY,
+    [20] = invaderXim.ki.TONBERRY_KEY,
 }
 
 -- No good data on augments.  Just pulled from each key on: https://ffxiclopedia.fandom.com/wiki/Treasure_Coffer_(Tenshodo)
@@ -37,16 +37,16 @@ local optionToKI =
 -- augments that span negative and positive range are grouped into a single array of augments (not to pollute the pool of augments)
 local keyitems =
 {
-    [xi.ki.CRIMSON_KEY] =
+    [invaderXim.ki.CRIMSON_KEY] =
     {
-        expansion = xi.mission.log_id.ACP,
-        mission = xi.mission.id.acp.THE_ECHO_AWAKENS,
+        expansion = invaderXim.mission.log_id.ACP,
+        mission = invaderXim.mission.id.acp.THE_ECHO_AWAKENS,
         repeatable = true,
         prizes =
         {
             {
                 cutoff =   70,
-                itemId = xi.item.GOLD_OBI,
+                itemId = invaderXim.item.GOLD_OBI,
                 augments =
                 {
                     { 516, 0, 1 }, -- INT+1-2
@@ -59,7 +59,7 @@ local keyitems =
             },
             {
                 cutoff =   80,
-                itemId = xi.item.GOLD_RING,
+                itemId = invaderXim.item.GOLD_RING,
                 augments =
                 {
                     {   9, 0, 8 }, -- MP+0-9
@@ -72,7 +72,7 @@ local keyitems =
             },
             {
                 cutoff =  186,
-                itemId = xi.item.MYTHRIL_RING,
+                itemId = invaderXim.item.MYTHRIL_RING,
                 augments =
                 {
                     {   1, 0, 15 }, -- HP+0-16
@@ -85,7 +85,7 @@ local keyitems =
             },
             {
                 cutoff =  276,
-                itemId = xi.item.SARCENET_CAPE,
+                itemId = invaderXim.item.SARCENET_CAPE,
                 augments =
                 {
                     {   9, 0, 5 }, -- MP+0-6
@@ -98,7 +98,7 @@ local keyitems =
             },
             {
                 cutoff =  351,
-                itemId = xi.item.SILVER_BELT,
+                itemId = invaderXim.item.SILVER_BELT,
                 augments =
                 {
                     {   1, 0, 5 }, -- HP+0-6
@@ -111,7 +111,7 @@ local keyitems =
             },
             {
                 cutoff =  460,
-                itemId = xi.item.WOLF_MANTLE,
+                itemId = invaderXim.item.WOLF_MANTLE,
                 augments =
                 {
                     {   1, 0, 5 }, -- HP+0-6
@@ -122,40 +122,40 @@ local keyitems =
                     {  32, 0, 2 }, -- Evasion-0-3
                 }
             },
-            { cutoff =  468, itemId = xi.item.CHESTNUT_LOG },
-            { cutoff =  471, itemId = xi.item.CORAL_FRAGMENT },
-            { cutoff =  476, itemId = xi.item.DARK_SPIRIT_PACT },
-            { cutoff =  479, itemId = xi.item.DARKSTEEL_INGOT },
-            { cutoff =  500, itemId = xi.item.CHUNK_OF_DARKSTEEL_ORE },
-            { cutoff =  523, itemId = xi.item.SCROLL_OF_DISPEL },
-            { cutoff =  619, itemId = xi.item.ELIXIR },
-            { cutoff =  668, itemId = xi.item.ELM_LOG },
-            { cutoff =  699, itemId = xi.item.SCROLL_OF_ERASE },
-            { cutoff =  702, itemId = xi.item.HI_POTION },
-            { cutoff =  723, itemId = xi.item.IRON_INGOT },
-            { cutoff =  775, itemId = xi.item.CHUNK_OF_IRON_ORE },
-            { cutoff =  785, itemId = xi.item.LIGHT_SPIRIT_PACT },
-            { cutoff =  821, itemId = xi.item.SCROLL_OF_MAGIC_FINALE },
-            { cutoff =  824, itemId = xi.item.MAPLE_LOG },
-            { cutoff =  858, itemId = xi.item.MYTHRIL_INGOT },
-            { cutoff =  879, itemId = xi.item.CHUNK_OF_MYTHRIL_ORE },
-            { cutoff =  884, itemId = xi.item.POTION_P1 },
-            { cutoff =  923, itemId = xi.item.SILVER_INGOT },
-            { cutoff =  949, itemId = xi.item.CHUNK_OF_SILVER_ORE },
-            { cutoff =  993, itemId = xi.item.STEEL_INGOT },
-            { cutoff = 1003, itemId = xi.item.SCROLL_OF_UTSUSEMI_NI },
+            { cutoff =  468, itemId = invaderXim.item.CHESTNUT_LOG },
+            { cutoff =  471, itemId = invaderXim.item.CORAL_FRAGMENT },
+            { cutoff =  476, itemId = invaderXim.item.DARK_SPIRIT_PACT },
+            { cutoff =  479, itemId = invaderXim.item.DARKSTEEL_INGOT },
+            { cutoff =  500, itemId = invaderXim.item.CHUNK_OF_DARKSTEEL_ORE },
+            { cutoff =  523, itemId = invaderXim.item.SCROLL_OF_DISPEL },
+            { cutoff =  619, itemId = invaderXim.item.ELIXIR },
+            { cutoff =  668, itemId = invaderXim.item.ELM_LOG },
+            { cutoff =  699, itemId = invaderXim.item.SCROLL_OF_ERASE },
+            { cutoff =  702, itemId = invaderXim.item.HI_POTION },
+            { cutoff =  723, itemId = invaderXim.item.IRON_INGOT },
+            { cutoff =  775, itemId = invaderXim.item.CHUNK_OF_IRON_ORE },
+            { cutoff =  785, itemId = invaderXim.item.LIGHT_SPIRIT_PACT },
+            { cutoff =  821, itemId = invaderXim.item.SCROLL_OF_MAGIC_FINALE },
+            { cutoff =  824, itemId = invaderXim.item.MAPLE_LOG },
+            { cutoff =  858, itemId = invaderXim.item.MYTHRIL_INGOT },
+            { cutoff =  879, itemId = invaderXim.item.CHUNK_OF_MYTHRIL_ORE },
+            { cutoff =  884, itemId = invaderXim.item.POTION_P1 },
+            { cutoff =  923, itemId = invaderXim.item.SILVER_INGOT },
+            { cutoff =  949, itemId = invaderXim.item.CHUNK_OF_SILVER_ORE },
+            { cutoff =  993, itemId = invaderXim.item.STEEL_INGOT },
+            { cutoff = 1003, itemId = invaderXim.item.SCROLL_OF_UTSUSEMI_NI },
         },
     },
-    [xi.ki.VIRIDIAN_KEY] =
+    [invaderXim.ki.VIRIDIAN_KEY] =
     {
-        expansion = xi.mission.log_id.ACP,
-        mission = xi.mission.id.acp.GATHERER_OF_LIGHT_I,
+        expansion = invaderXim.mission.log_id.ACP,
+        mission = invaderXim.mission.id.acp.GATHERER_OF_LIGHT_I,
         repeatable = true,
         prizes =
         {
             {
                 cutoff =   65,
-                itemId = xi.item.AURORA_MANTLE,
+                itemId = invaderXim.item.AURORA_MANTLE,
                 augments =
                 {
                     {   9, 0, 19 }, -- MP+0-20
@@ -168,7 +168,7 @@ local keyitems =
             },
             {
                 cutoff =  142,
-                itemId = xi.item.CORSETTE,
+                itemId = invaderXim.item.CORSETTE,
                 augments =
                 {
                     { 23, 0,  2 }, -- Accuracy+0-3
@@ -181,7 +181,7 @@ local keyitems =
             },
             {
                 cutoff =  237,
-                itemId = xi.item.NYMPH_SHIELD,
+                itemId = invaderXim.item.NYMPH_SHIELD,
                 augments =
                 {
                     {   9, 0, 9 }, -- MP+0-10
@@ -194,7 +194,7 @@ local keyitems =
             },
             {
                 cutoff =  356,
-                itemId = xi.item.RAM_MANTLE,
+                itemId = invaderXim.item.RAM_MANTLE,
                 augments =
                 {
                     {   5, 0,  5 }, -- HP-0-6
@@ -207,7 +207,7 @@ local keyitems =
             },
             {
                 cutoff =  457,
-                itemId = xi.item.SWORDBELT,
+                itemId = invaderXim.item.SWORDBELT,
                 augments =
                 {
                     {   1, 0, 4 }, -- HP+0-5
@@ -219,39 +219,39 @@ local keyitems =
                     {  52, 1, 1 },-- MP Recovered While Healing
                 }
             },
-            { cutoff =  469, itemId = xi.item.BLACK_PEARL },
-            { cutoff =  497, itemId = xi.item.BLACK_ROCK },
-            { cutoff =  515, itemId = xi.item.BLUE_ROCK },
-            { cutoff =  616, itemId = xi.item.ELIXIR },
-            { cutoff =  670, itemId = xi.item.ETHER_P1 },
-            { cutoff =  676, itemId = xi.item.GARNET },
-            { cutoff =  672, itemId = xi.item.GOSHENITE },
-            { cutoff =  684, itemId = xi.item.GREEN_ROCK },
-            { cutoff =  775, itemId = xi.item.OAK_LOG },
-            { cutoff =  811, itemId = xi.item.PEARL },
-            { cutoff =  829, itemId = xi.item.PERIDOT },
-            { cutoff =  835, itemId = xi.item.CHUNK_OF_PLATINUM_ORE },
-            { cutoff =  871, itemId = xi.item.POTION_P1 },
-            { cutoff =  877, itemId = xi.item.PURPLE_ROCK },
-            { cutoff =  901, itemId = xi.item.RED_ROCK },
-            { cutoff =  984, itemId = xi.item.ROSEWOOD_LOG },
-            { cutoff = 1008, itemId = xi.item.SPHENE },
-            { cutoff = 1020, itemId = xi.item.TRANSLUCENT_ROCK },
-            { cutoff = 1032, itemId = xi.item.WHITE_ROCK },
-            { cutoff = 1044, itemId = xi.item.YELLOW_ROCK },
-            { cutoff = 1056, itemId = xi.item.TURQUOISE },
+            { cutoff =  469, itemId = invaderXim.item.BLACK_PEARL },
+            { cutoff =  497, itemId = invaderXim.item.BLACK_ROCK },
+            { cutoff =  515, itemId = invaderXim.item.BLUE_ROCK },
+            { cutoff =  616, itemId = invaderXim.item.ELIXIR },
+            { cutoff =  670, itemId = invaderXim.item.ETHER_P1 },
+            { cutoff =  676, itemId = invaderXim.item.GARNET },
+            { cutoff =  672, itemId = invaderXim.item.GOSHENITE },
+            { cutoff =  684, itemId = invaderXim.item.GREEN_ROCK },
+            { cutoff =  775, itemId = invaderXim.item.OAK_LOG },
+            { cutoff =  811, itemId = invaderXim.item.PEARL },
+            { cutoff =  829, itemId = invaderXim.item.PERIDOT },
+            { cutoff =  835, itemId = invaderXim.item.CHUNK_OF_PLATINUM_ORE },
+            { cutoff =  871, itemId = invaderXim.item.POTION_P1 },
+            { cutoff =  877, itemId = invaderXim.item.PURPLE_ROCK },
+            { cutoff =  901, itemId = invaderXim.item.RED_ROCK },
+            { cutoff =  984, itemId = invaderXim.item.ROSEWOOD_LOG },
+            { cutoff = 1008, itemId = invaderXim.item.SPHENE },
+            { cutoff = 1020, itemId = invaderXim.item.TRANSLUCENT_ROCK },
+            { cutoff = 1032, itemId = invaderXim.item.WHITE_ROCK },
+            { cutoff = 1044, itemId = invaderXim.item.YELLOW_ROCK },
+            { cutoff = 1056, itemId = invaderXim.item.TURQUOISE },
         },
     },
-    [xi.ki.AMBER_KEY] =
+    [invaderXim.ki.AMBER_KEY] =
     {
-        expansion = xi.mission.log_id.ACP,
-        mission = xi.mission.id.acp.GATHERER_OF_LIGHT_II,
+        expansion = invaderXim.mission.log_id.ACP,
+        mission = invaderXim.mission.id.acp.GATHERER_OF_LIGHT_II,
         repeatable = true,
         prizes =
         {
             {
                 cutoff = 111,
-                itemId = xi.item.BEAK_NECKLACE,
+                itemId = invaderXim.item.BEAK_NECKLACE,
                 augments =
                 {
                     {   9, 0, 12 }, -- MP+0-13
@@ -265,7 +265,7 @@ local keyitems =
             },
             {
                 cutoff = 219,
-                itemId = xi.item.BROCADE_OBI,
+                itemId = invaderXim.item.BROCADE_OBI,
                 augments =
                 {
                     {   1, 0, 11 }, -- HP+0-12
@@ -278,7 +278,7 @@ local keyitems =
             },
             {
                 cutoff = 334,
-                itemId = xi.item.CARAPACE_GORGET,
+                itemId = invaderXim.item.CARAPACE_GORGET,
                 augments =
                 {
                     { 513, 0,  0 }, -- DEX+0-1
@@ -292,7 +292,7 @@ local keyitems =
             },
             {
                 cutoff = 436,
-                itemId = xi.item.GOLD_RING,
+                itemId = invaderXim.item.GOLD_RING,
                 augments =
                 {
                     {   9, 0, 13 }, -- MP+0-14
@@ -305,7 +305,7 @@ local keyitems =
             },
             {
                 cutoff = 561,
-                itemId = xi.item.RAPTOR_MANTLE,
+                itemId = invaderXim.item.RAPTOR_MANTLE,
                 augments =
                 {
                     {   1, 0, 29 }, -- HP+0-30
@@ -316,37 +316,37 @@ local keyitems =
                     { 774, 0,  5 }, -- Light resist +0-6
                 }
             },
-            { cutoff = 564, itemId = xi.item.CORAL_FRAGMENT },
-            { cutoff = 576, itemId = xi.item.CHUNK_OF_DARKSTEEL_ORE },
-            { cutoff = 599, itemId = xi.item.DEMON_HORN },
-            { cutoff = 616, itemId = xi.item.EBONY_LOG },
-            { cutoff = 625, itemId = xi.item.CHUNK_OF_GOLD_ORE },
-            { cutoff = 683, itemId = xi.item.HI_ELIXIR },
-            { cutoff = 730, itemId = xi.item.HI_ETHER },
-            { cutoff = 771, itemId = xi.item.HI_POTION },
-            { cutoff = 788, itemId = xi.item.MAHOGANY_LOG },
-            { cutoff = 805, itemId = xi.item.MANTICORE_HIDE },
-            { cutoff = 807, itemId = xi.item.PETRIFIED_LOG },
-            { cutoff = 809, itemId = xi.item.CHUNK_OF_PLATINUM_ORE },
-            { cutoff = 818, itemId = xi.item.CHUNK_OF_MYTHRIL_ORE },
-            { cutoff = 835, itemId = xi.item.RAM_HORN },
-            { cutoff = 876, itemId = xi.item.RAM_SKIN },
-            { cutoff = 885, itemId = xi.item.SCROLL_OF_RAISE_II },
-            { cutoff = 920, itemId = xi.item.SCROLL_OF_REGEN_III },
-            { cutoff = 946, itemId = xi.item.HANDFUL_OF_WYVERN_SCALES },
-            { cutoff = 961, itemId = xi.item.WYVERN_SKIN },
+            { cutoff = 564, itemId = invaderXim.item.CORAL_FRAGMENT },
+            { cutoff = 576, itemId = invaderXim.item.CHUNK_OF_DARKSTEEL_ORE },
+            { cutoff = 599, itemId = invaderXim.item.DEMON_HORN },
+            { cutoff = 616, itemId = invaderXim.item.EBONY_LOG },
+            { cutoff = 625, itemId = invaderXim.item.CHUNK_OF_GOLD_ORE },
+            { cutoff = 683, itemId = invaderXim.item.HI_ELIXIR },
+            { cutoff = 730, itemId = invaderXim.item.HI_ETHER },
+            { cutoff = 771, itemId = invaderXim.item.HI_POTION },
+            { cutoff = 788, itemId = invaderXim.item.MAHOGANY_LOG },
+            { cutoff = 805, itemId = invaderXim.item.MANTICORE_HIDE },
+            { cutoff = 807, itemId = invaderXim.item.PETRIFIED_LOG },
+            { cutoff = 809, itemId = invaderXim.item.CHUNK_OF_PLATINUM_ORE },
+            { cutoff = 818, itemId = invaderXim.item.CHUNK_OF_MYTHRIL_ORE },
+            { cutoff = 835, itemId = invaderXim.item.RAM_HORN },
+            { cutoff = 876, itemId = invaderXim.item.RAM_SKIN },
+            { cutoff = 885, itemId = invaderXim.item.SCROLL_OF_RAISE_II },
+            { cutoff = 920, itemId = invaderXim.item.SCROLL_OF_REGEN_III },
+            { cutoff = 946, itemId = invaderXim.item.HANDFUL_OF_WYVERN_SCALES },
+            { cutoff = 961, itemId = invaderXim.item.WYVERN_SKIN },
         },
     },
-    [xi.ki.AZURE_KEY] =
+    [invaderXim.ki.AZURE_KEY] =
     {
-        expansion = xi.mission.log_id.ACP,
-        mission = xi.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_II,
+        expansion = invaderXim.mission.log_id.ACP,
+        mission = invaderXim.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_II,
         repeatable = true,
         prizes =
         {
             {
                 cutoff = 106,
-                itemId = xi.item.BEAK_MANTLE,
+                itemId = invaderXim.item.BEAK_MANTLE,
                 augments =
                 {
                     { 512, 0,  1 }, -- STR+0-2
@@ -359,7 +359,7 @@ local keyitems =
             },
             {
                 cutoff = 203,
-                itemId = xi.item.COEURL_GORGET,
+                itemId = invaderXim.item.COEURL_GORGET,
                 augments =
                 {
                     { 515, 0,  3 }, -- AGI+0-4
@@ -372,7 +372,7 @@ local keyitems =
             },
             {
                 cutoff = 305,
-                itemId = xi.item.PLATINUM_RING,
+                itemId = invaderXim.item.PLATINUM_RING,
                 augments =
                 {
                     {   1, 0,  9 }, -- HP+0-10
@@ -385,7 +385,7 @@ local keyitems =
             },
             {
                 cutoff = 386,
-                itemId = xi.item.RAINBOW_OBI,
+                itemId = invaderXim.item.RAINBOW_OBI,
                 augments =
                 {
                     {   9, 0, 19 }, -- MP+0-20
@@ -398,7 +398,7 @@ local keyitems =
             },
             {
                 cutoff = 490,
-                itemId = xi.item.TORQUE,
+                itemId = invaderXim.item.TORQUE,
                 augments =
                 {
                     {   5, 0, 13 }, -- HP-0-14
@@ -409,35 +409,35 @@ local keyitems =
                     { 518, 0,  1 }, -- CHR+0-2
                 }
             },
-            { cutoff = 498, itemId = xi.item.AQUAMARINE },
-            { cutoff = 502, itemId = xi.item.CHRYSOBERYL },
-            { cutoff = 536, itemId = xi.item.DARKSTEEL_INGOT },
-            { cutoff = 612, itemId = xi.item.CHUNK_OF_DARKSTEEL_ORE },
-            { cutoff = 659, itemId = xi.item.EBONY_LOG },
-            { cutoff = 693, itemId = xi.item.GOLD_INGOT },
-            { cutoff = 786, itemId = xi.item.HI_ELIXIR },
-            { cutoff = 789, itemId = xi.item.HI_ETHER_P1 },
-            { cutoff = 831, itemId = xi.item.HI_POTION_P1 },
-            { cutoff = 835, itemId = xi.item.JADEITE },
-            { cutoff = 856, itemId = xi.item.MAHOGANY_LOG },
-            { cutoff = 907, itemId = xi.item.MYTHRIL_INGOT },
-            { cutoff = 911, itemId = xi.item.RAM_HORN },
-            { cutoff = 915, itemId = xi.item.SCROLL_OF_REGEN_III },
-            { cutoff = 948, itemId = xi.item.STEEL_INGOT },
-            { cutoff = 956, itemId = xi.item.SUNSTONE },
-            { cutoff = 960, itemId = xi.item.HANDFUL_OF_WYVERN_SCALES },
+            { cutoff = 498, itemId = invaderXim.item.AQUAMARINE },
+            { cutoff = 502, itemId = invaderXim.item.CHRYSOBERYL },
+            { cutoff = 536, itemId = invaderXim.item.DARKSTEEL_INGOT },
+            { cutoff = 612, itemId = invaderXim.item.CHUNK_OF_DARKSTEEL_ORE },
+            { cutoff = 659, itemId = invaderXim.item.EBONY_LOG },
+            { cutoff = 693, itemId = invaderXim.item.GOLD_INGOT },
+            { cutoff = 786, itemId = invaderXim.item.HI_ELIXIR },
+            { cutoff = 789, itemId = invaderXim.item.HI_ETHER_P1 },
+            { cutoff = 831, itemId = invaderXim.item.HI_POTION_P1 },
+            { cutoff = 835, itemId = invaderXim.item.JADEITE },
+            { cutoff = 856, itemId = invaderXim.item.MAHOGANY_LOG },
+            { cutoff = 907, itemId = invaderXim.item.MYTHRIL_INGOT },
+            { cutoff = 911, itemId = invaderXim.item.RAM_HORN },
+            { cutoff = 915, itemId = invaderXim.item.SCROLL_OF_REGEN_III },
+            { cutoff = 948, itemId = invaderXim.item.STEEL_INGOT },
+            { cutoff = 956, itemId = invaderXim.item.SUNSTONE },
+            { cutoff = 960, itemId = invaderXim.item.HANDFUL_OF_WYVERN_SCALES },
         },
     },
-    [xi.ki.IVORY_KEY] =
+    [invaderXim.ki.IVORY_KEY] =
     {
-        expansion = xi.mission.log_id.ACP,
-        mission = xi.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_III,
+        expansion = invaderXim.mission.log_id.ACP,
+        mission = invaderXim.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_III,
         repeatable = true,
         prizes =
         {
             {
                 cutoff =   62,
-                itemId = xi.item.ANGELS_EARRING,
+                itemId = invaderXim.item.ANGELS_EARRING,
                 augments =
                 {
                     { 518, 0, 1 }, -- CHR+1-2
@@ -451,7 +451,7 @@ local keyitems =
             },
             {
                 cutoff =   70,
-                itemId = xi.item.DEATH_EARRING,
+                itemId = invaderXim.item.DEATH_EARRING,
                 augments =
                 {
                     {  33, 0, 3 }, -- Defense+1-4
@@ -464,7 +464,7 @@ local keyitems =
             },
             {
                 cutoff =  113,
-                itemId = xi.item.DIAMOND_EARRING,
+                itemId = invaderXim.item.DIAMOND_EARRING,
                 augments =
                 {
                     { 516, 0, 1 }, -- INT+1-2
@@ -477,7 +477,7 @@ local keyitems =
             },
             {
                 cutoff =  196,
-                itemId = xi.item.EMERALD_EARRING,
+                itemId = invaderXim.item.EMERALD_EARRING,
                 augments =
                 {
                     { 515, 0, 1 }, -- AGI+1-2
@@ -490,7 +490,7 @@ local keyitems =
             },
             {
                 cutoff =  301,
-                itemId = xi.item.RUBY_EARRING,
+                itemId = invaderXim.item.RUBY_EARRING,
                 augments =
                 {
                     {  25, 0, 4 }, -- Attack+1-5
@@ -503,7 +503,7 @@ local keyitems =
             },
             {
                 cutoff =  392,
-                itemId = xi.item.SAPPHIRE_EARRING,
+                itemId = invaderXim.item.SAPPHIRE_EARRING,
                 augments =
                 {
                     {  35, 0, 1 }, -- Magic Accuracy+1-2
@@ -516,7 +516,7 @@ local keyitems =
             },
             {
                 cutoff =  478,
-                itemId = xi.item.SPINEL_EARRING,
+                itemId = invaderXim.item.SPINEL_EARRING,
                 augments =
                 {
                     {  23, 0, 2 }, -- Accuracy+1-3
@@ -530,7 +530,7 @@ local keyitems =
             },
             {
                 cutoff =  497,
-                itemId = xi.item.TOPAZ_EARRING,
+                itemId = invaderXim.item.TOPAZ_EARRING,
                 augments =
                 {
                     {  33, 0,  4 }, -- DEF+1-5
@@ -541,29 +541,29 @@ local keyitems =
                     {  32, 0,  2 }, -- Evasion-3--1
                 }
             },
-            { cutoff =  546, itemId = xi.item.VIAL_OF_BLACK_BEETLE_BLOOD },
-            { cutoff =  602, itemId = xi.item.SPOOL_OF_GOLD_THREAD },
-            { cutoff =  627, itemId = xi.item.SLAB_OF_GRANITE },
-            { cutoff =  658, itemId = xi.item.HI_ETHER_P2 },
-            { cutoff =  901, itemId = xi.item.HI_POTION_P2 },
-            { cutoff =  963, itemId = xi.item.SPOOL_OF_MALBORO_FIBER },
-            { cutoff =  982, itemId = xi.item.PHILOSOPHERS_STONE },
-            { cutoff = 1019, itemId = xi.item.PHOENIX_FEATHER },
-            { cutoff = 1062, itemId = xi.item.SQUARE_OF_RAINBOW_CLOTH },
-            { cutoff = 1124, itemId = xi.item.SQUARE_OF_RAXA },
-            { cutoff = 1172, itemId = xi.item.VILE_ELIXIR },
+            { cutoff =  546, itemId = invaderXim.item.VIAL_OF_BLACK_BEETLE_BLOOD },
+            { cutoff =  602, itemId = invaderXim.item.SPOOL_OF_GOLD_THREAD },
+            { cutoff =  627, itemId = invaderXim.item.SLAB_OF_GRANITE },
+            { cutoff =  658, itemId = invaderXim.item.HI_ETHER_P2 },
+            { cutoff =  901, itemId = invaderXim.item.HI_POTION_P2 },
+            { cutoff =  963, itemId = invaderXim.item.SPOOL_OF_MALBORO_FIBER },
+            { cutoff =  982, itemId = invaderXim.item.PHILOSOPHERS_STONE },
+            { cutoff = 1019, itemId = invaderXim.item.PHOENIX_FEATHER },
+            { cutoff = 1062, itemId = invaderXim.item.SQUARE_OF_RAINBOW_CLOTH },
+            { cutoff = 1124, itemId = invaderXim.item.SQUARE_OF_RAXA },
+            { cutoff = 1172, itemId = invaderXim.item.VILE_ELIXIR },
         },
     },
-    [xi.ki.EBON_KEY] =
+    [invaderXim.ki.EBON_KEY] =
     {
-        expansion = xi.mission.log_id.ACP,
-        mission = xi.mission.id.acp.ODE_OF_LIFE_BESTOWING,
+        expansion = invaderXim.mission.log_id.ACP,
+        mission = invaderXim.mission.id.acp.ODE_OF_LIFE_BESTOWING,
         repeatable = true,
         prizes =
         {
             {
                 cutoff =  31,
-                itemId = xi.item.ANGELS_RING,
+                itemId = invaderXim.item.ANGELS_RING,
                 augments =
                 {
                     -- https://ffxiclopedia.fandom.com/wiki/Ebon_Key?oldid=934097 doesn't list -acc and -def, but this had -dark resist before the restructure
@@ -578,7 +578,7 @@ local keyitems =
             },
             {
                 cutoff =  82,
-                itemId = xi.item.DEATH_RING,
+                itemId = invaderXim.item.DEATH_RING,
                 augments =
                 {
                     { 782, 0, 29 }, -- Light-0-30
@@ -591,7 +591,7 @@ local keyitems =
             },
             {
                 cutoff = 174,
-                itemId = xi.item.DIAMOND_RING,
+                itemId = invaderXim.item.DIAMOND_RING,
                 augments =
                 {
                     { 776, 0, 29 }, -- Fire-0-30
@@ -604,7 +604,7 @@ local keyitems =
             },
             {
                 cutoff = 225,
-                itemId = xi.item.EMERALD_RING,
+                itemId = invaderXim.item.EMERALD_RING,
                 augments =
                 {
                     { 777, 0, 29 }, -- ice -0-30 (wiki is conflicting, might be water?)
@@ -617,7 +617,7 @@ local keyitems =
             },
             {
                 cutoff = 296,
-                itemId = xi.item.RUBY_RING,
+                itemId = invaderXim.item.RUBY_RING,
                 augments =
                 {
                     { 781, 0, 29 }, -- Water-0-30
@@ -630,7 +630,7 @@ local keyitems =
             },
             {
                 cutoff = 357,
-                itemId = xi.item.SAPPHIRE_RING,
+                itemId = invaderXim.item.SAPPHIRE_RING,
                 augments =
                 {
                     { 780, 0, 29 }, -- Lightning-0-30
@@ -643,7 +643,7 @@ local keyitems =
             },
             {
                 cutoff = 459,
-                itemId = xi.item.SPINEL_RING,
+                itemId = invaderXim.item.SPINEL_RING,
                 augments =
                 {
                     { 779, 0, 29 }, -- Earth-0-30
@@ -659,7 +659,7 @@ local keyitems =
             },
             {
                 cutoff = 500,
-                itemId = xi.item.TOPAZ_RING,
+                itemId = invaderXim.item.TOPAZ_RING,
                 augments =
                 {
                     { 778, 0, 29 }, -- Wind-0-30
@@ -671,41 +671,41 @@ local keyitems =
                     { 516, 0,  2 }, -- INT+0-3
                 }
             },
-            { cutoff = 510, itemId = xi.item.ADAMAN_INGOT },
-            { cutoff = 541, itemId = xi.item.ANGELSTONE },
-            { cutoff = 561, itemId = xi.item.CHUNK_OF_DARKSTEEL_ORE },
-            { cutoff = 592, itemId = xi.item.DEATHSTONE },
-            { cutoff = 633, itemId = xi.item.DIAMOND },
-            { cutoff = 643, itemId = xi.item.EMERALD },
-            { cutoff = 714, itemId = xi.item.HI_ETHER_P3 },
-            { cutoff = 785, itemId = xi.item.HI_POTION_P3 },
-            { cutoff = 805, itemId = xi.item.CHUNK_OF_ORICHALCUM_ORE },
-            { cutoff = 815, itemId = xi.item.CHUNK_OF_PLATINUM_ORE },
-            { cutoff = 835, itemId = xi.item.RUBY },
-            { cutoff = 855, itemId = xi.item.SAPPHIRE },
-            { cutoff = 896, itemId = xi.item.SCROLL_OF_CURE_V },
-            { cutoff = 916, itemId = xi.item.SCROLL_OF_SHELL_IV },
-            { cutoff = 936, itemId = xi.item.SCROLL_OF_THUNDER_III },
-            { cutoff = 987, itemId = xi.item.VILE_ELIXIR },
-            { cutoff = 997, itemId = xi.item.SCROLL_OF_RAISE_III },
+            { cutoff = 510, itemId = invaderXim.item.ADAMAN_INGOT },
+            { cutoff = 541, itemId = invaderXim.item.ANGELSTONE },
+            { cutoff = 561, itemId = invaderXim.item.CHUNK_OF_DARKSTEEL_ORE },
+            { cutoff = 592, itemId = invaderXim.item.DEATHSTONE },
+            { cutoff = 633, itemId = invaderXim.item.DIAMOND },
+            { cutoff = 643, itemId = invaderXim.item.EMERALD },
+            { cutoff = 714, itemId = invaderXim.item.HI_ETHER_P3 },
+            { cutoff = 785, itemId = invaderXim.item.HI_POTION_P3 },
+            { cutoff = 805, itemId = invaderXim.item.CHUNK_OF_ORICHALCUM_ORE },
+            { cutoff = 815, itemId = invaderXim.item.CHUNK_OF_PLATINUM_ORE },
+            { cutoff = 835, itemId = invaderXim.item.RUBY },
+            { cutoff = 855, itemId = invaderXim.item.SAPPHIRE },
+            { cutoff = 896, itemId = invaderXim.item.SCROLL_OF_CURE_V },
+            { cutoff = 916, itemId = invaderXim.item.SCROLL_OF_SHELL_IV },
+            { cutoff = 936, itemId = invaderXim.item.SCROLL_OF_THUNDER_III },
+            { cutoff = 987, itemId = invaderXim.item.VILE_ELIXIR },
+            { cutoff = 997, itemId = invaderXim.item.SCROLL_OF_RAISE_III },
         },
     },
-    [xi.ki.PRISMATIC_KEY] =
+    [invaderXim.ki.PRISMATIC_KEY] =
     {
-        expansion = xi.mission.log_id.ACP,
-        mission = xi.mission.id.acp.ODE_OF_LIFE_BESTOWING,
+        expansion = invaderXim.mission.log_id.ACP,
+        mission = invaderXim.mission.id.acp.ODE_OF_LIFE_BESTOWING,
         repeatable = false,
     },
-    [xi.ki.WHITE_CORAL_KEY] =
+    [invaderXim.ki.WHITE_CORAL_KEY] =
     {
-        expansion = xi.mission.log_id.AMK,
-        mission = xi.mission.id.amk.DRENCHED_IT_BEGAN_WITH_A_RAINDROP,
+        expansion = invaderXim.mission.log_id.AMK,
+        mission = invaderXim.mission.id.amk.DRENCHED_IT_BEGAN_WITH_A_RAINDROP,
         repeatable = true,
         prizes =
         {
             {
                 cutoff =   31,
-                itemId = xi.item.BRASS_MASK,
+                itemId = invaderXim.item.BRASS_MASK,
                 augments =
                 {
                     {   1, 0, 1 }, -- HP +1-2
@@ -718,7 +718,7 @@ local keyitems =
             },
             {
                 cutoff =  109,
-                itemId = xi.item.CHESTNUT_SABOTS,
+                itemId = invaderXim.item.CHESTNUT_SABOTS,
                 augments =
                 {
                     {  13, 5, 5 }, -- MP -6
@@ -731,7 +731,7 @@ local keyitems =
             },
             {
                 cutoff =  218,
-                itemId = xi.item.COTTON_GLOVES,
+                itemId = invaderXim.item.COTTON_GLOVES,
                 augments =
                 {
                     {  23, 0, 1 }, -- Accuracy +1-2
@@ -743,7 +743,7 @@ local keyitems =
             },
             {
                 cutoff =  296,
-                itemId = xi.item.STUDDED_TROUSERS,
+                itemId = invaderXim.item.STUDDED_TROUSERS,
                 augments =
                 {
                     {  29, 0, 1 }, -- Ranged Attack +1-2
@@ -755,7 +755,7 @@ local keyitems =
             },
             {
                 cutoff =  437,
-                itemId = xi.item.WOOL_ROBE,
+                itemId = invaderXim.item.WOOL_ROBE,
                 augments =
                 {
                     { 771, 0, 4 }, -- Earth resist +1-5
@@ -766,33 +766,33 @@ local keyitems =
                     { 519, 0, 1 }, -- STR -1-2
                 },
             },
-            { cutoff =  468, itemId = xi.item.CHESTNUT_LOG },
-            { cutoff =  499, itemId = xi.item.CHUNK_OF_DARKSTEEL_ORE },
-            { cutoff =  624, itemId = xi.item.ELIXIR },
-            { cutoff =  655, itemId = xi.item.ELM_LOG },
-            { cutoff =  686, itemId = xi.item.CHUNK_OF_IRON_ORE },
-            { cutoff =  717, itemId = xi.item.IRON_INGOT },
-            { cutoff =  764, itemId = xi.item.MYTHRIL_INGOT },
-            { cutoff =  780, itemId = xi.item.CHUNK_OF_MYTHRIL_ORE },
-            { cutoff =  843, itemId = xi.item.SILVER_INGOT },
-            { cutoff =  874, itemId = xi.item.CHUNK_OF_SILVER_ORE },
-            { cutoff =  937, itemId = xi.item.STEEL_INGOT },
-            { cutoff =  968, itemId = xi.item.SCROLL_OF_DISPEL },
-            { cutoff =  999, itemId = xi.item.SCROLL_OF_MAGIC_FINALE },
-            { cutoff = 1015, itemId = xi.item.SCROLL_OF_UTSUSEMI_NI },
-            { cutoff = 1031, itemId = xi.item.SCROLL_OF_ERASE },
+            { cutoff =  468, itemId = invaderXim.item.CHESTNUT_LOG },
+            { cutoff =  499, itemId = invaderXim.item.CHUNK_OF_DARKSTEEL_ORE },
+            { cutoff =  624, itemId = invaderXim.item.ELIXIR },
+            { cutoff =  655, itemId = invaderXim.item.ELM_LOG },
+            { cutoff =  686, itemId = invaderXim.item.CHUNK_OF_IRON_ORE },
+            { cutoff =  717, itemId = invaderXim.item.IRON_INGOT },
+            { cutoff =  764, itemId = invaderXim.item.MYTHRIL_INGOT },
+            { cutoff =  780, itemId = invaderXim.item.CHUNK_OF_MYTHRIL_ORE },
+            { cutoff =  843, itemId = invaderXim.item.SILVER_INGOT },
+            { cutoff =  874, itemId = invaderXim.item.CHUNK_OF_SILVER_ORE },
+            { cutoff =  937, itemId = invaderXim.item.STEEL_INGOT },
+            { cutoff =  968, itemId = invaderXim.item.SCROLL_OF_DISPEL },
+            { cutoff =  999, itemId = invaderXim.item.SCROLL_OF_MAGIC_FINALE },
+            { cutoff = 1015, itemId = invaderXim.item.SCROLL_OF_UTSUSEMI_NI },
+            { cutoff = 1031, itemId = invaderXim.item.SCROLL_OF_ERASE },
         },
     },
-    [xi.ki.BLUE_CORAL_KEY] =
+    [invaderXim.ki.BLUE_CORAL_KEY] =
     {
-        expansion = xi.mission.log_id.AMK,
-        mission = xi.mission.id.amk.WELCOME_TO_MY_DECREPIT_DOMICILE,
+        expansion = invaderXim.mission.log_id.AMK,
+        mission = invaderXim.mission.id.amk.WELCOME_TO_MY_DECREPIT_DOMICILE,
         repeatable = true,
         prizes =
         {
             {
                 cutoff =   42,
-                itemId = xi.item.CUIR_BOUILLI,
+                itemId = invaderXim.item.CUIR_BOUILLI,
                 augments =
                 {
                     {   1, 3, 3 }, -- HP+4
@@ -805,7 +805,7 @@ local keyitems =
             },
             {
                 cutoff =  250,
-                itemId = xi.item.IRON_GREAVES,
+                itemId = invaderXim.item.IRON_GREAVES,
                 augments =
                 {
                     {   1, 1, 1 }, -- HP +2
@@ -817,7 +817,7 @@ local keyitems =
             },
             {
                 cutoff =  292,
-                itemId = xi.item.LINEN_SLACKS,
+                itemId = invaderXim.item.LINEN_SLACKS,
                 augments =
                 {
                     {   9, 6, 6 }, -- MP +7
@@ -829,7 +829,7 @@ local keyitems =
             },
             {
                 cutoff =  375,
-                itemId = xi.item.PADDED_CAP,
+                itemId = invaderXim.item.PADDED_CAP,
                 augments =
                 {
                     { 513, 1, 1 }, -- DEX +2
@@ -840,7 +840,7 @@ local keyitems =
             },
             {
                 cutoff =  458,
-                itemId = xi.item.VELVET_CUFFS,
+                itemId = invaderXim.item.VELVET_CUFFS,
                 augments =
                 {
                     {   5, 0, 0 }, -- HP -1
@@ -849,28 +849,28 @@ local keyitems =
                     {  31, 2, 2 }, -- Evasion +3
                 },
             },
-            { cutoff =  500, itemId = xi.item.BLACK_PEARL },
-            { cutoff =  583, itemId = xi.item.ELIXIR },
-            { cutoff =  625, itemId = xi.item.ETHER_P1 },
-            { cutoff =  667, itemId = xi.item.GARNET },
-            { cutoff =  709, itemId = xi.item.PERIDOT },
-            { cutoff =  751, itemId = xi.item.POTION_P1 },
-            { cutoff =  876, itemId = xi.item.OAK_LOG },
-            { cutoff =  918, itemId = xi.item.SQUARE_OF_RAINBOW_CLOTH },
-            { cutoff =  960, itemId = xi.item.RED_ROCK },
-            { cutoff = 1002, itemId = xi.item.TURQUOISE },
+            { cutoff =  500, itemId = invaderXim.item.BLACK_PEARL },
+            { cutoff =  583, itemId = invaderXim.item.ELIXIR },
+            { cutoff =  625, itemId = invaderXim.item.ETHER_P1 },
+            { cutoff =  667, itemId = invaderXim.item.GARNET },
+            { cutoff =  709, itemId = invaderXim.item.PERIDOT },
+            { cutoff =  751, itemId = invaderXim.item.POTION_P1 },
+            { cutoff =  876, itemId = invaderXim.item.OAK_LOG },
+            { cutoff =  918, itemId = invaderXim.item.SQUARE_OF_RAINBOW_CLOTH },
+            { cutoff =  960, itemId = invaderXim.item.RED_ROCK },
+            { cutoff = 1002, itemId = invaderXim.item.TURQUOISE },
         },
     },
-    [xi.ki.PEACH_CORAL_KEY] =
+    [invaderXim.ki.PEACH_CORAL_KEY] =
     {
-        expansion = xi.mission.log_id.AMK,
-        mission = xi.mission.id.amk.AN_ERRAND_THE_PROFESSORS_PRICE,
+        expansion = invaderXim.mission.log_id.AMK,
+        mission = invaderXim.mission.id.amk.AN_ERRAND_THE_PROFESSORS_PRICE,
         repeatable = true,
         prizes =
         {
             {
                 cutoff =   66,
-                itemId = xi.item.CARAPACE_HARNESS,
+                itemId = invaderXim.item.CARAPACE_HARNESS,
                 augments =
                 {
                     {  23, 0, 5 }, -- Accuracy +1-6
@@ -883,7 +883,7 @@ local keyitems =
             },
             {
                 cutoff =  198,
-                itemId = xi.item.RAPTOR_LEDELSENS,
+                itemId = invaderXim.item.RAPTOR_LEDELSENS,
                 augments =
                 {
                     {   1, 0,  5 }, -- HP +1-6
@@ -895,7 +895,7 @@ local keyitems =
             },
             {
                 cutoff =  303,
-                itemId = xi.item.SILK_HAT,
+                itemId = invaderXim.item.SILK_HAT,
                 augments =
                 {
                     {  13, 1, 1 }, -- MP-2
@@ -907,7 +907,7 @@ local keyitems =
             },
             {
                 cutoff =  395,
-                itemId = xi.item.STEEL_FINGER_GAUNTLETS,
+                itemId = invaderXim.item.STEEL_FINGER_GAUNTLETS,
                 augments =
                 {
                     {  68, 0, 2 }, -- Accuracy +1-3 Attack +1-3
@@ -918,7 +918,7 @@ local keyitems =
             },
             {
                 cutoff =  487,
-                itemId = xi.item.WHITE_SLACKS,
+                itemId = invaderXim.item.WHITE_SLACKS,
                 augments =
                 {
                     { 516, 0, 3 }, -- INT+1-4
@@ -929,36 +929,36 @@ local keyitems =
                     {  39, 0, 2 }, -- Enmity +1-3
                 },
             },
-            { cutoff =  500, itemId = xi.item.CHUNK_OF_DARKSTEEL_ORE },
-            { cutoff =  526, itemId = xi.item.DEMON_HORN },
-            { cutoff =  565, itemId = xi.item.EBONY_LOG },
-            { cutoff =  591, itemId = xi.item.CHUNK_OF_GOLD_ORE },
-            { cutoff =  696, itemId = xi.item.HI_ELIXIR },
-            { cutoff =  747, itemId = xi.item.HI_ETHER },
-            { cutoff =  773, itemId = xi.item.HI_POTION },
-            { cutoff =  786, itemId = xi.item.MAHOGANY_LOG },
-            { cutoff =  839, itemId = xi.item.MANTICORE_HIDE },
-            { cutoff =  852, itemId = xi.item.CHUNK_OF_MYTHRIL_ORE },
-            { cutoff =  891, itemId = xi.item.PETRIFIED_LOG },
-            { cutoff =  930, itemId = xi.item.SCROLL_OF_RAISE_II },
-            { cutoff =  969, itemId = xi.item.CHUNK_OF_PLATINUM_ORE },
-            { cutoff = 1008, itemId = xi.item.RAM_HORN },
-            { cutoff = 1021, itemId = xi.item.RAM_SKIN },
-            { cutoff = 1074, itemId = xi.item.SCROLL_OF_REGEN_III },
-            { cutoff = 1087, itemId = xi.item.HANDFUL_OF_WYVERN_SCALES },
-            { cutoff = 1103, itemId = xi.item.WYVERN_SKIN },
+            { cutoff =  500, itemId = invaderXim.item.CHUNK_OF_DARKSTEEL_ORE },
+            { cutoff =  526, itemId = invaderXim.item.DEMON_HORN },
+            { cutoff =  565, itemId = invaderXim.item.EBONY_LOG },
+            { cutoff =  591, itemId = invaderXim.item.CHUNK_OF_GOLD_ORE },
+            { cutoff =  696, itemId = invaderXim.item.HI_ELIXIR },
+            { cutoff =  747, itemId = invaderXim.item.HI_ETHER },
+            { cutoff =  773, itemId = invaderXim.item.HI_POTION },
+            { cutoff =  786, itemId = invaderXim.item.MAHOGANY_LOG },
+            { cutoff =  839, itemId = invaderXim.item.MANTICORE_HIDE },
+            { cutoff =  852, itemId = invaderXim.item.CHUNK_OF_MYTHRIL_ORE },
+            { cutoff =  891, itemId = invaderXim.item.PETRIFIED_LOG },
+            { cutoff =  930, itemId = invaderXim.item.SCROLL_OF_RAISE_II },
+            { cutoff =  969, itemId = invaderXim.item.CHUNK_OF_PLATINUM_ORE },
+            { cutoff = 1008, itemId = invaderXim.item.RAM_HORN },
+            { cutoff = 1021, itemId = invaderXim.item.RAM_SKIN },
+            { cutoff = 1074, itemId = invaderXim.item.SCROLL_OF_REGEN_III },
+            { cutoff = 1087, itemId = invaderXim.item.HANDFUL_OF_WYVERN_SCALES },
+            { cutoff = 1103, itemId = invaderXim.item.WYVERN_SKIN },
         },
     },
-    [xi.ki.BLACK_CORAL_KEY] =
+    [invaderXim.ki.BLACK_CORAL_KEY] =
     {
-        expansion = xi.mission.log_id.AMK,
-        mission = xi.mission.id.amk.SHOCK_ARRANT_ABUSE_OF_AUTHORITY,
+        expansion = invaderXim.mission.log_id.AMK,
+        mission = invaderXim.mission.id.amk.SHOCK_ARRANT_ABUSE_OF_AUTHORITY,
         repeatable = true,
         prizes =
         {
             {
                 cutoff =   90,
-                itemId = xi.item.BEAK_HELM,
+                itemId = invaderXim.item.BEAK_HELM,
                 augments =
                 {
                     {  9, 0, 5 }, -- MP +1-6
@@ -970,7 +970,7 @@ local keyitems =
             },
             {
                 cutoff =  194,
-                itemId = xi.item.PIGACHES,
+                itemId = invaderXim.item.PIGACHES,
                 augments =
                 {
                     {   1, 1, 11 }, -- HP +2-12
@@ -983,7 +983,7 @@ local keyitems =
             },
             {
                 cutoff =  224,
-                itemId = xi.item.DARKSTEEL_BREECHES,
+                itemId = invaderXim.item.DARKSTEEL_BREECHES,
                 augments =
                 {
                     { 770, 1, 4 }, -- Wind resist +2-5
@@ -994,7 +994,7 @@ local keyitems =
             },
             {
                 cutoff =  433,
-                itemId = xi.item.SCORPION_MITTENS,
+                itemId = invaderXim.item.SCORPION_MITTENS,
                 augments =
                 {
                     { 512, 0,  3 }, -- STR +1-4
@@ -1007,7 +1007,7 @@ local keyitems =
             },
             {
                 cutoff =  552,
-                itemId = xi.item.SILK_COAT,
+                itemId = invaderXim.item.SILK_COAT,
                 augments =
                 {
                     { 516, 0,  3 }, -- INT +1-4
@@ -1019,29 +1019,29 @@ local keyitems =
                     { 293, 0,  4 }, -- Dark +1-5
                 },
             },
-            { cutoff =  597, itemId = xi.item.CHUNK_OF_DARKSTEEL_ORE },
-            { cutoff =  612, itemId = xi.item.DARKSTEEL_INGOT },
-            { cutoff =  642, itemId = xi.item.GOLD_INGOT },
-            { cutoff =  776, itemId = xi.item.HI_ELIXIR },
-            { cutoff =  821, itemId = xi.item.HI_ETHER_P1 },
-            { cutoff =  851, itemId = xi.item.HI_POTION_P1 },
-            { cutoff =  866, itemId = xi.item.MAHOGANY_LOG },
-            { cutoff =  881, itemId = xi.item.MYTHRIL_INGOT },
-            { cutoff =  896, itemId = xi.item.PAINITE },
-            { cutoff = 1000, itemId = xi.item.STEEL_INGOT },
-            { cutoff = 1015, itemId = xi.item.ZIRCON },
+            { cutoff =  597, itemId = invaderXim.item.CHUNK_OF_DARKSTEEL_ORE },
+            { cutoff =  612, itemId = invaderXim.item.DARKSTEEL_INGOT },
+            { cutoff =  642, itemId = invaderXim.item.GOLD_INGOT },
+            { cutoff =  776, itemId = invaderXim.item.HI_ELIXIR },
+            { cutoff =  821, itemId = invaderXim.item.HI_ETHER_P1 },
+            { cutoff =  851, itemId = invaderXim.item.HI_POTION_P1 },
+            { cutoff =  866, itemId = invaderXim.item.MAHOGANY_LOG },
+            { cutoff =  881, itemId = invaderXim.item.MYTHRIL_INGOT },
+            { cutoff =  896, itemId = invaderXim.item.PAINITE },
+            { cutoff = 1000, itemId = invaderXim.item.STEEL_INGOT },
+            { cutoff = 1015, itemId = invaderXim.item.ZIRCON },
         },
     },
-    [xi.ki.RED_CORAL_KEY] =
+    [invaderXim.ki.RED_CORAL_KEY] =
     {
-        expansion = xi.mission.log_id.AMK,
-        mission = xi.mission.id.amk.ROAR_A_CAT_BURGLAR_BARES_HER_FANGS,
+        expansion = invaderXim.mission.log_id.AMK,
+        mission = invaderXim.mission.id.amk.ROAR_A_CAT_BURGLAR_BARES_HER_FANGS,
         repeatable = true,
         prizes =
         {
             {
                 cutoff =  109,
-                itemId = xi.item.ALLOY_TORQUE,
+                itemId = invaderXim.item.ALLOY_TORQUE,
                 augments =
                 {
                     {  51, 0, 1 }, -- HP Recovered while Healing +1-2
@@ -1053,7 +1053,7 @@ local keyitems =
             },
             {
                 cutoff =  200,
-                itemId = xi.item.AUREATE_NECKLACE,
+                itemId = invaderXim.item.AUREATE_NECKLACE,
                 augments =
                 {
                     { 768, 2, 3 }, -- Fire resist +3-4
@@ -1066,7 +1066,7 @@ local keyitems =
             },
             {
                 cutoff =  273,
-                itemId = xi.item.BURLY_GORGET,
+                itemId = invaderXim.item.BURLY_GORGET,
                 augments =
                 {
                     { 516, 0, 2 }, -- INT +1-3
@@ -1079,7 +1079,7 @@ local keyitems =
             },
             {
                 cutoff =  382,
-                itemId = xi.item.NITID_CHOKER,
+                itemId = invaderXim.item.NITID_CHOKER,
                 augments =
                 {
                     {   5, 0, 8 }, -- HP -1-9
@@ -1092,7 +1092,7 @@ local keyitems =
             },
             {
                 cutoff =  473,
-                itemId = xi.item.PNEUMA_COLLAR,
+                itemId = invaderXim.item.PNEUMA_COLLAR,
                 augments =
                 {
                     {  34, 2, 2 }, -- Defense -3
@@ -1103,29 +1103,29 @@ local keyitems =
                     {  98, 0, 2 }, -- Pet: Evasion +1-3
                 },
             },
-            { cutoff =  528, itemId = xi.item.VIAL_OF_BLACK_BEETLE_BLOOD },
-            { cutoff =  619, itemId = xi.item.SPOOL_OF_GOLD_THREAD },
-            { cutoff =  692, itemId = xi.item.SLAB_OF_GRANITE },
-            { cutoff =  728, itemId = xi.item.HI_ETHER_P2 },
-            { cutoff =  764, itemId = xi.item.SPOOL_OF_MALBORO_FIBER },
-            { cutoff =  782, itemId = xi.item.PHILOSOPHERS_STONE },
-            { cutoff =  800, itemId = xi.item.PHOENIX_FEATHER },
-            { cutoff =  836, itemId = xi.item.SQUARE_OF_RAINBOW_CLOTH },
-            { cutoff =  872, itemId = xi.item.SQUARE_OF_RAXA },
-            { cutoff =  999, itemId = xi.item.VILE_ELIXIR },
-            { cutoff = 1017, itemId = xi.item.SERVING_OF_YELLOW_CURRY },
+            { cutoff =  528, itemId = invaderXim.item.VIAL_OF_BLACK_BEETLE_BLOOD },
+            { cutoff =  619, itemId = invaderXim.item.SPOOL_OF_GOLD_THREAD },
+            { cutoff =  692, itemId = invaderXim.item.SLAB_OF_GRANITE },
+            { cutoff =  728, itemId = invaderXim.item.HI_ETHER_P2 },
+            { cutoff =  764, itemId = invaderXim.item.SPOOL_OF_MALBORO_FIBER },
+            { cutoff =  782, itemId = invaderXim.item.PHILOSOPHERS_STONE },
+            { cutoff =  800, itemId = invaderXim.item.PHOENIX_FEATHER },
+            { cutoff =  836, itemId = invaderXim.item.SQUARE_OF_RAINBOW_CLOTH },
+            { cutoff =  872, itemId = invaderXim.item.SQUARE_OF_RAXA },
+            { cutoff =  999, itemId = invaderXim.item.VILE_ELIXIR },
+            { cutoff = 1017, itemId = invaderXim.item.SERVING_OF_YELLOW_CURRY },
         },
     },
-    [xi.ki.ANGEL_SKIN_KEY] =
+    [invaderXim.ki.ANGEL_SKIN_KEY] =
     {
-        expansion = xi.mission.log_id.AMK,
-        mission = xi.mission.id.amk.SMASH_A_MALEVOLENT_MENACE,
+        expansion = invaderXim.mission.log_id.AMK,
+        mission = invaderXim.mission.id.amk.SMASH_A_MALEVOLENT_MENACE,
         repeatable = true,
         prizes =
         {
             {
                 cutoff =   65,
-                itemId = xi.item.ALTIUS_MANTLE,
+                itemId = invaderXim.item.ALTIUS_MANTLE,
                 augments =
                 {
                     { 782, 0, 19 }, -- Light resist -1--20
@@ -1138,7 +1138,7 @@ local keyitems =
             },
             {
                 cutoff =  162,
-                itemId = xi.item.CHIFFON_CAPE,
+                itemId = invaderXim.item.CHIFFON_CAPE,
                 augments =
                 {
                     {   1, 17, 29 }, -- HP +18-30
@@ -1151,7 +1151,7 @@ local keyitems =
             },
             {
                 cutoff =  243,
-                itemId = xi.item.CORTEGE_CAPE,
+                itemId = invaderXim.item.CORTEGE_CAPE,
                 augments =
                 {
                     {  52, 0, 1 }, -- MP Recovered While Healing +1-2
@@ -1164,7 +1164,7 @@ local keyitems =
             },
             {
                 cutoff =  356,
-                itemId = xi.item.RESILIENT_MANTLE,
+                itemId = invaderXim.item.RESILIENT_MANTLE,
                 augments =
                 {
                     {  23, 0,  2 }, -- Accuracy +1-3 (from item page, assumed typo in key item page since not colored red)
@@ -1176,7 +1176,7 @@ local keyitems =
             },
             {
                 cutoff =  437,
-                itemId = xi.item.RUGGED_MANTLE,
+                itemId = invaderXim.item.RUGGED_MANTLE,
                 augments =
                 {
                     {  13, 1, 3 }, -- MP -2-4
@@ -1187,40 +1187,40 @@ local keyitems =
                     { 323, 0, 3 }, -- Cure casting time -1--4%
                 },
             },
-            { cutoff =  469, itemId = xi.item.CHUNK_OF_ADAMAN_ORE },
-            { cutoff =  501, itemId = xi.item.ANGELSTONE },
-            { cutoff =  517, itemId = xi.item.CHUNK_OF_DARKSTEEL_ORE },
-            { cutoff =  582, itemId = xi.item.DEATHSTONE },
-            { cutoff =  614, itemId = xi.item.DIAMOND },
-            { cutoff =  646, itemId = xi.item.EMERALD },
-            { cutoff =  662, itemId = xi.item.HI_ETHER_P3 },
-            { cutoff =  694, itemId = xi.item.HI_POTION_P3 },
-            { cutoff =  742, itemId = xi.item.CHUNK_OF_ORICHALCUM_ORE },
-            { cutoff =  790, itemId = xi.item.RUBY },
-            { cutoff =  822, itemId = xi.item.SCROLL_OF_CURE_V },
-            { cutoff =  855, itemId = xi.item.SCROLL_OF_SHELL_IV },
-            { cutoff =  888, itemId = xi.item.SPINEL },
-            { cutoff = 1021, itemId = xi.item.VILE_ELIXIR },
-            { cutoff = 1037, itemId = xi.item.SCROLL_OF_THUNDER_III },
-            { cutoff = 1047, itemId = xi.item.SCROLL_OF_RAISE_III },
+            { cutoff =  469, itemId = invaderXim.item.CHUNK_OF_ADAMAN_ORE },
+            { cutoff =  501, itemId = invaderXim.item.ANGELSTONE },
+            { cutoff =  517, itemId = invaderXim.item.CHUNK_OF_DARKSTEEL_ORE },
+            { cutoff =  582, itemId = invaderXim.item.DEATHSTONE },
+            { cutoff =  614, itemId = invaderXim.item.DIAMOND },
+            { cutoff =  646, itemId = invaderXim.item.EMERALD },
+            { cutoff =  662, itemId = invaderXim.item.HI_ETHER_P3 },
+            { cutoff =  694, itemId = invaderXim.item.HI_POTION_P3 },
+            { cutoff =  742, itemId = invaderXim.item.CHUNK_OF_ORICHALCUM_ORE },
+            { cutoff =  790, itemId = invaderXim.item.RUBY },
+            { cutoff =  822, itemId = invaderXim.item.SCROLL_OF_CURE_V },
+            { cutoff =  855, itemId = invaderXim.item.SCROLL_OF_SHELL_IV },
+            { cutoff =  888, itemId = invaderXim.item.SPINEL },
+            { cutoff = 1021, itemId = invaderXim.item.VILE_ELIXIR },
+            { cutoff = 1037, itemId = invaderXim.item.SCROLL_OF_THUNDER_III },
+            { cutoff = 1047, itemId = invaderXim.item.SCROLL_OF_RAISE_III },
         },
     },
-    [xi.ki.OXBLOOD_KEY] =
+    [invaderXim.ki.OXBLOOD_KEY] =
     {
-        expansion = xi.mission.log_id.AMK,
-        mission = xi.mission.id.amk.SMASH_A_MALEVOLENT_MENACE,
+        expansion = invaderXim.mission.log_id.AMK,
+        mission = invaderXim.mission.id.amk.SMASH_A_MALEVOLENT_MENACE,
         repeatable = false,
     },
-    [xi.ki.MOOGLE_KEY] =
+    [invaderXim.ki.MOOGLE_KEY] =
     {
-        expansion = xi.mission.log_id.ASA,
-        mission = xi.mission.id.asa.THAT_WHICH_CURDLES_BLOOD,
+        expansion = invaderXim.mission.log_id.ASA,
+        mission = invaderXim.mission.id.asa.THAT_WHICH_CURDLES_BLOOD,
         repeatable = true,
         prizes =
         {
             {
                 cutoff =  167,
-                itemId = xi.item.STUDDED_BANDANA,
+                itemId = invaderXim.item.STUDDED_BANDANA,
                 augments =
                 {
                     {  23, 0, 0 }, -- Accuracy+1
@@ -1229,7 +1229,7 @@ local keyitems =
             },
             {
                 cutoff =  374,
-                itemId = xi.item.CHAIN_BELT,
+                itemId = invaderXim.item.CHAIN_BELT,
                 augments =
                 {
                     { 770, 0, 0 }, -- Wind+1
@@ -1239,7 +1239,7 @@ local keyitems =
             },
             {
                 cutoff =  707,
-                itemId = xi.item.CHAIN_CHOKER,
+                itemId = invaderXim.item.CHAIN_CHOKER,
                 augments =
                 {
                     {   9, 0, 11 }, -- MP+12
@@ -1248,21 +1248,21 @@ local keyitems =
                     {  53, 0,  0 }, -- Spell Interruption Rate-1%
                 }
             },
-            { cutoff =  874, itemId = xi.item.SCROLL_OF_ERASE },
-            { cutoff = 1041, itemId = xi.item.MYTHRIL_INGOT },
-            { cutoff = 1100, itemId = xi.item.SILVER_INGOT },
+            { cutoff =  874, itemId = invaderXim.item.SCROLL_OF_ERASE },
+            { cutoff = 1041, itemId = invaderXim.item.MYTHRIL_INGOT },
+            { cutoff = 1100, itemId = invaderXim.item.SILVER_INGOT },
         }
     },
-    [xi.ki.BIRD_KEY] =
+    [invaderXim.ki.BIRD_KEY] =
     {
-        expansion = xi.mission.log_id.ASA,
-        mission = xi.mission.id.asa.SUGAR_COATED_DIRECTIVE,
+        expansion = invaderXim.mission.log_id.ASA,
+        mission = invaderXim.mission.id.asa.SUGAR_COATED_DIRECTIVE,
         repeatable = true,
         prizes =
         {
             {
                 cutoff = 143,
-                itemId = xi.item.EBONY_SABOTS,
+                itemId = invaderXim.item.EBONY_SABOTS,
                 augments =
                 {
                     { 774, 0, 2 }, -- Light+0-3
@@ -1275,7 +1275,7 @@ local keyitems =
             },
             {
                 cutoff = 393,
-                itemId = xi.item.IRON_SCALE_MAIL,
+                itemId = invaderXim.item.IRON_SCALE_MAIL,
                 augments =
                 {
                     {   1, 0, 9 }, -- HP+0-10
@@ -1288,7 +1288,7 @@ local keyitems =
             },
             {
                 cutoff = 536,
-                itemId = xi.item.OAK_SHIELD,
+                itemId = invaderXim.item.OAK_SHIELD,
                 augments =
                 {
                     { 768, 0, 3 }, -- Fire+0-4
@@ -1301,7 +1301,7 @@ local keyitems =
             },
             {
                 cutoff = 653,
-                itemId = xi.item.WAISTBELT,
+                itemId = invaderXim.item.WAISTBELT,
                 augments =
                 {
                     { 188, 0, 1 }, -- Resist Charm+0-2
@@ -1311,33 +1311,33 @@ local keyitems =
                     {  32, 0, 5 }, -- Evasion-0-6
                 }
             },
-            { cutoff = 663, itemId = xi.item.BLACK_PEARL },
-            { cutoff = 678, itemId = xi.item.BLUE_ROCK },
-            { cutoff = 770, itemId = xi.item.ELIXIR },
-            { cutoff = 801, itemId = xi.item.ETHER_P1 },
-            { cutoff = 816, itemId = xi.item.GOSHENITE },
-            { cutoff = 847, itemId = xi.item.OAK_LOG },
-            { cutoff = 852, itemId = xi.item.PEARL },
-            { cutoff = 862, itemId = xi.item.PERIDOT },
-            { cutoff = 871, itemId = xi.item.POTION_P1 },
-            { cutoff = 922, itemId = xi.item.ROSEWOOD_LOG },
-            { cutoff = 927, itemId = xi.item.SPHENE },
-            { cutoff = 947, itemId = xi.item.TRANSLUCENT_ROCK },
-            { cutoff = 957, itemId = xi.item.WHITE_ROCK },
-            { cutoff = 967, itemId = xi.item.YELLOW_ROCK },
-            { cutoff = 972, itemId = xi.item.PURPLE_ROCK },
+            { cutoff = 663, itemId = invaderXim.item.BLACK_PEARL },
+            { cutoff = 678, itemId = invaderXim.item.BLUE_ROCK },
+            { cutoff = 770, itemId = invaderXim.item.ELIXIR },
+            { cutoff = 801, itemId = invaderXim.item.ETHER_P1 },
+            { cutoff = 816, itemId = invaderXim.item.GOSHENITE },
+            { cutoff = 847, itemId = invaderXim.item.OAK_LOG },
+            { cutoff = 852, itemId = invaderXim.item.PEARL },
+            { cutoff = 862, itemId = invaderXim.item.PERIDOT },
+            { cutoff = 871, itemId = invaderXim.item.POTION_P1 },
+            { cutoff = 922, itemId = invaderXim.item.ROSEWOOD_LOG },
+            { cutoff = 927, itemId = invaderXim.item.SPHENE },
+            { cutoff = 947, itemId = invaderXim.item.TRANSLUCENT_ROCK },
+            { cutoff = 957, itemId = invaderXim.item.WHITE_ROCK },
+            { cutoff = 967, itemId = invaderXim.item.YELLOW_ROCK },
+            { cutoff = 972, itemId = invaderXim.item.PURPLE_ROCK },
         }
     },
-    [xi.ki.CACTUAR_KEY] =
+    [invaderXim.ki.CACTUAR_KEY] =
     {
-        expansion = xi.mission.log_id.ASA,
-        mission = xi.mission.id.asa.ENEMY_OF_THE_EMPIRE_II,
+        expansion = invaderXim.mission.log_id.ASA,
+        mission = invaderXim.mission.id.asa.ENEMY_OF_THE_EMPIRE_II,
         repeatable = true,
         prizes =
         {
             {
                 cutoff = 109,
-                itemId = xi.item.NODOWA,
+                itemId = invaderXim.item.NODOWA,
                 augments =
                 {
                     { 512, 0, 1 }, -- STR+1-2
@@ -1350,7 +1350,7 @@ local keyitems =
             },
             {
                 cutoff = 196,
-                itemId = xi.item.SILK_COAT,
+                itemId = invaderXim.item.SILK_COAT,
                 augments =
                 {
                     { 516, 0, 3 }, -- INT+1-4
@@ -1363,7 +1363,7 @@ local keyitems =
             },
             {
                 cutoff = 305,
-                itemId = xi.item.TURTLE_BANGLES,
+                itemId = invaderXim.item.TURTLE_BANGLES,
                 augments =
                 {
                     { 518, 0, 1 }, -- CHR+1-2
@@ -1376,7 +1376,7 @@ local keyitems =
             },
             {
                 cutoff = 370,
-                itemId = xi.item.CARAPACE_MASK,
+                itemId = invaderXim.item.CARAPACE_MASK,
                 augments =
                 {
                     { 517, 0, 1 }, -- MND+1-2
@@ -1386,32 +1386,32 @@ local keyitems =
                     { 770, 0, 4 }, -- Wind+1-5
                 }
             },
-            { cutoff = 435, itemId = xi.item.HI_ETHER },
-            { cutoff = 544, itemId = xi.item.HI_ELIXIR },
-            { cutoff = 609, itemId = xi.item.CHUNK_OF_DARKSTEEL_ORE },
-            { cutoff = 631, itemId = xi.item.CHUNK_OF_GOLD_ORE },
-            { cutoff = 674, itemId = xi.item.SCROLL_OF_REGEN_III },
-            { cutoff = 696, itemId = xi.item.SCROLL_OF_RAISE_II },
-            { cutoff = 718, itemId = xi.item.CHUNK_OF_PLATINUM_ORE },
-            { cutoff = 761, itemId = xi.item.HANDFUL_OF_WYVERN_SCALES },
-            { cutoff = 804, itemId = xi.item.EBONY_LOG },
-            { cutoff = 847, itemId = xi.item.DEMON_HORN },
-            { cutoff = 869, itemId = xi.item.PETRIFIED_LOG },
-            { cutoff = 891, itemId = xi.item.MANTICORE_HIDE },
-            { cutoff = 913, itemId = xi.item.RAM_HORN },
-            { cutoff = 935, itemId = xi.item.RAM_SKIN },
+            { cutoff = 435, itemId = invaderXim.item.HI_ETHER },
+            { cutoff = 544, itemId = invaderXim.item.HI_ELIXIR },
+            { cutoff = 609, itemId = invaderXim.item.CHUNK_OF_DARKSTEEL_ORE },
+            { cutoff = 631, itemId = invaderXim.item.CHUNK_OF_GOLD_ORE },
+            { cutoff = 674, itemId = invaderXim.item.SCROLL_OF_REGEN_III },
+            { cutoff = 696, itemId = invaderXim.item.SCROLL_OF_RAISE_II },
+            { cutoff = 718, itemId = invaderXim.item.CHUNK_OF_PLATINUM_ORE },
+            { cutoff = 761, itemId = invaderXim.item.HANDFUL_OF_WYVERN_SCALES },
+            { cutoff = 804, itemId = invaderXim.item.EBONY_LOG },
+            { cutoff = 847, itemId = invaderXim.item.DEMON_HORN },
+            { cutoff = 869, itemId = invaderXim.item.PETRIFIED_LOG },
+            { cutoff = 891, itemId = invaderXim.item.MANTICORE_HIDE },
+            { cutoff = 913, itemId = invaderXim.item.RAM_HORN },
+            { cutoff = 935, itemId = invaderXim.item.RAM_SKIN },
         }
     },
-    [xi.ki.BOMB_KEY] =
+    [invaderXim.ki.BOMB_KEY] =
     {
-        expansion = xi.mission.log_id.ASA,
-        mission = xi.mission.id.asa.SHANTOTTO_IN_CHAINS,
+        expansion = invaderXim.mission.log_id.ASA,
+        mission = invaderXim.mission.id.asa.SHANTOTTO_IN_CHAINS,
         repeatable = true,
         prizes =
         {
             {
                 cutoff = 308,
-                itemId = xi.item.BATTLE_BOOTS,
+                itemId = invaderXim.item.BATTLE_BOOTS,
                 augments =
                 {
                     {  34, 1,  5 }, -- DEF-6--2
@@ -1423,7 +1423,7 @@ local keyitems =
             },
             {
                 cutoff = 462,
-                itemId = xi.item.SILK_SLOPS,
+                itemId = invaderXim.item.SILK_SLOPS,
                 augments =
                 {
                     {   9, 2, 2 }, -- MP+3
@@ -1435,7 +1435,7 @@ local keyitems =
             },
             {
                 cutoff = 616,
-                itemId = xi.item.TIGER_MANTLE,
+                itemId = invaderXim.item.TIGER_MANTLE,
                 augments =
                 {
                     {   1, 1, 4 }, -- HP+2-5
@@ -1447,7 +1447,7 @@ local keyitems =
             },
             {
                 cutoff = 693,
-                itemId = xi.item.BASCINET,
+                itemId = invaderXim.item.BASCINET,
                 augments =
                 {
                     {  49, 1, 2 }, -- Haste+3
@@ -1456,21 +1456,21 @@ local keyitems =
                     { 100, 0, 0 }, -- Pet: Magic Accuracy+1
                 }
             },
-            { cutoff = 747, itemId = xi.item.HI_ELIXIR },
-            { cutoff = 824, itemId = xi.item.DARKSTEEL_INGOT },
-            { cutoff = 901, itemId = xi.item.CHUNK_OF_DARKSTEEL_ORE },
+            { cutoff = 747, itemId = invaderXim.item.HI_ELIXIR },
+            { cutoff = 824, itemId = invaderXim.item.DARKSTEEL_INGOT },
+            { cutoff = 901, itemId = invaderXim.item.CHUNK_OF_DARKSTEEL_ORE },
         },
     },
-    [xi.ki.CHOCOBO_KEY] =
+    [invaderXim.ki.CHOCOBO_KEY] =
     {
-        expansion = xi.mission.log_id.ASA,
-        mission = xi.mission.id.asa.BATTARU_ROYALE,
+        expansion = invaderXim.mission.log_id.ASA,
+        mission = invaderXim.mission.id.asa.BATTARU_ROYALE,
         repeatable = true,
         prizes =
         {
             {
                 cutoff =  190,
-                itemId = xi.item.APTUS_EARRING,
+                itemId = invaderXim.item.APTUS_EARRING,
                 augments =
                 {
                     -- assumed magic skill caps are all the same
@@ -1492,7 +1492,7 @@ local keyitems =
             },
             {
                 cutoff =  285,
-                itemId = xi.item.STEARC_SUBLIGAR,
+                itemId = invaderXim.item.STEARC_SUBLIGAR,
                 augments =
                 {
                     {  44, 0, 2 }, -- Subtle Blow+1-3
@@ -1505,7 +1505,7 @@ local keyitems =
             },
             {
                 cutoff =  571,
-                itemId = xi.item.VARIUS_TORQUE,
+                itemId = invaderXim.item.VARIUS_TORQUE,
                 augments =
                 {
                     -- assumed combat skill caps are all the same
@@ -1525,29 +1525,29 @@ local keyitems =
                     {   5, 15, 24 }, -- HP-16-25
                 }
             },
-            { cutoff =  595, itemId = xi.item.SPOOL_OF_GOLD_THREAD },
-            { cutoff =  643, itemId = xi.item.HI_ETHER_P2 },
-            { cutoff =  714, itemId = xi.item.HI_POTION_P2 },
-            { cutoff =  785, itemId = xi.item.SPOOL_OF_MALBORO_FIBER },
-            { cutoff =  856, itemId = xi.item.VIAL_OF_BLACK_BEETLE_BLOOD },
-            { cutoff =  927, itemId = xi.item.PHILOSOPHERS_STONE },
-            { cutoff =  995, itemId = xi.item.SQUARE_OF_RAINBOW_CLOTH },
-            { cutoff = 1043, itemId = xi.item.SQUARE_OF_RAXA },
-            { cutoff = 1067, itemId = xi.item.SLAB_OF_GRANITE },
-            { cutoff = 1115, itemId = xi.item.VILE_ELIXIR },
-            { cutoff = 1186, itemId = xi.item.PHOENIX_FEATHER },
+            { cutoff =  595, itemId = invaderXim.item.SPOOL_OF_GOLD_THREAD },
+            { cutoff =  643, itemId = invaderXim.item.HI_ETHER_P2 },
+            { cutoff =  714, itemId = invaderXim.item.HI_POTION_P2 },
+            { cutoff =  785, itemId = invaderXim.item.SPOOL_OF_MALBORO_FIBER },
+            { cutoff =  856, itemId = invaderXim.item.VIAL_OF_BLACK_BEETLE_BLOOD },
+            { cutoff =  927, itemId = invaderXim.item.PHILOSOPHERS_STONE },
+            { cutoff =  995, itemId = invaderXim.item.SQUARE_OF_RAINBOW_CLOTH },
+            { cutoff = 1043, itemId = invaderXim.item.SQUARE_OF_RAXA },
+            { cutoff = 1067, itemId = invaderXim.item.SLAB_OF_GRANITE },
+            { cutoff = 1115, itemId = invaderXim.item.VILE_ELIXIR },
+            { cutoff = 1186, itemId = invaderXim.item.PHOENIX_FEATHER },
         },
     },
-    [xi.ki.TONBERRY_KEY] =
+    [invaderXim.ki.TONBERRY_KEY] =
     {
-        expansion = xi.mission.log_id.ASA,
-        mission = xi.mission.id.asa.PROJECT_SHANTOTTOFICATION,
+        expansion = invaderXim.mission.log_id.ASA,
+        mission = invaderXim.mission.id.asa.PROJECT_SHANTOTTOFICATION,
         repeatable = true,
         prizes =
         {
             {
                 cutoff =  291,
-                itemId = xi.item.ESPRIT_BELT,
+                itemId = invaderXim.item.ESPRIT_BELT,
                 augments =
                 {
                     { 516, 0, 5 }, -- INT+1-6
@@ -1560,7 +1560,7 @@ local keyitems =
             },
             {
                 cutoff =  600,
-                itemId = xi.item.FETTLE_BELT,
+                itemId = invaderXim.item.FETTLE_BELT,
                 augments =
                 {
                     {  49, 0, 4 }, -- Haste+1-5
@@ -1571,44 +1571,44 @@ local keyitems =
                     {  24, 0, 9 }, -- Accuracy-10--1
                 }
             },
-            { cutoff =  636, itemId = xi.item.ANGELSTONE },
-            { cutoff =  654, itemId = xi.item.DEATHSTONE },
-            { cutoff =  690, itemId = xi.item.CHUNK_OF_DARKSTEEL_ORE },
-            { cutoff =  708, itemId = xi.item.DIAMOND },
-            { cutoff =  744, itemId = xi.item.EMERALD },
-            { cutoff =  780, itemId = xi.item.SPOOL_OF_GOLD_THREAD },
-            { cutoff =  798, itemId = xi.item.HI_POTION_P3 },
-            { cutoff =  816, itemId = xi.item.CHUNK_OF_PLATINUM_ORE },
-            { cutoff =  834, itemId = xi.item.CHUNK_OF_ORICHALCUM_ORE },
-            { cutoff =  870, itemId = xi.item.RUBY },
-            { cutoff =  883, itemId = xi.item.SAPPHIRE },
-            { cutoff =  901, itemId = xi.item.SCROLL_OF_CURE_V },
-            { cutoff =  919, itemId = xi.item.SCROLL_OF_RAISE_III },
-            { cutoff =  937, itemId = xi.item.SCROLL_OF_THUNDER_III },
-            { cutoff =  955, itemId = xi.item.SPINEL },
-            { cutoff =  973, itemId = xi.item.TOPAZ },
-            { cutoff = 1082, itemId = xi.item.VILE_ELIXIR },
+            { cutoff =  636, itemId = invaderXim.item.ANGELSTONE },
+            { cutoff =  654, itemId = invaderXim.item.DEATHSTONE },
+            { cutoff =  690, itemId = invaderXim.item.CHUNK_OF_DARKSTEEL_ORE },
+            { cutoff =  708, itemId = invaderXim.item.DIAMOND },
+            { cutoff =  744, itemId = invaderXim.item.EMERALD },
+            { cutoff =  780, itemId = invaderXim.item.SPOOL_OF_GOLD_THREAD },
+            { cutoff =  798, itemId = invaderXim.item.HI_POTION_P3 },
+            { cutoff =  816, itemId = invaderXim.item.CHUNK_OF_PLATINUM_ORE },
+            { cutoff =  834, itemId = invaderXim.item.CHUNK_OF_ORICHALCUM_ORE },
+            { cutoff =  870, itemId = invaderXim.item.RUBY },
+            { cutoff =  883, itemId = invaderXim.item.SAPPHIRE },
+            { cutoff =  901, itemId = invaderXim.item.SCROLL_OF_CURE_V },
+            { cutoff =  919, itemId = invaderXim.item.SCROLL_OF_RAISE_III },
+            { cutoff =  937, itemId = invaderXim.item.SCROLL_OF_THUNDER_III },
+            { cutoff =  955, itemId = invaderXim.item.SPINEL },
+            { cutoff =  973, itemId = invaderXim.item.TOPAZ },
+            { cutoff = 1082, itemId = invaderXim.item.VILE_ELIXIR },
         },
     },
-    [xi.ki.BEHEMOTH_KEY] =
+    [invaderXim.ki.BEHEMOTH_KEY] =
     {
-        expansion = xi.mission.log_id.ASA,
-        mission = xi.mission.id.asa.AN_UNEASY_PEACE,
+        expansion = invaderXim.mission.log_id.ASA,
+        mission = invaderXim.mission.id.asa.AN_UNEASY_PEACE,
         repeatable = false,
     },
 }
 
 local optionToGear =
 {
-    [1] = { addon = 1, itemId = xi.item.NUEVO_COSELETE },
-    [2] = { addon = 1, itemId = xi.item.MIRKE_WARDECORS },
-    [3] = { addon = 1, itemId = xi.item.ROYAL_REDINGOTE },
-    [4] = { addon = 2, itemId = xi.item.CHAMPIONS_GALEA },
-    [5] = { addon = 2, itemId = xi.item.ANWIG_SALADE },
-    [6] = { addon = 2, itemId = xi.item.SELENIAN_CAP },
-    [7] = { addon = 3, itemId = xi.item.BLITZER_POLEYN },
-    [8] = { addon = 3, itemId = xi.item.DESULTOR_TASSETS },
-    [9] = { addon = 3, itemId = xi.item.TATSUMAKI_SITAGOROMO },
+    [1] = { addon = 1, itemId = invaderXim.item.NUEVO_COSELETE },
+    [2] = { addon = 1, itemId = invaderXim.item.MIRKE_WARDECORS },
+    [3] = { addon = 1, itemId = invaderXim.item.ROYAL_REDINGOTE },
+    [4] = { addon = 2, itemId = invaderXim.item.CHAMPIONS_GALEA },
+    [5] = { addon = 2, itemId = invaderXim.item.ANWIG_SALADE },
+    [6] = { addon = 2, itemId = invaderXim.item.SELENIAN_CAP },
+    [7] = { addon = 3, itemId = invaderXim.item.BLITZER_POLEYN },
+    [8] = { addon = 3, itemId = invaderXim.item.DESULTOR_TASSETS },
+    [9] = { addon = 3, itemId = invaderXim.item.TATSUMAKI_SITAGOROMO },
 }
 
 local optionToAugment =
@@ -1814,7 +1814,7 @@ local function scenarioArmor(player, option, giveToPlayer)
         else
             player:addItem(optionToGear[gear].itemId, 1, unpack(addAug))
             player:messageSpecial(ID.text.ITEM_OBTAINED, optionToGear[gear].itemId)
-            player:delKeyItem(({ xi.ki.PRISMATIC_KEY, xi.ki.OXBLOOD_KEY, xi.ki.BEHEMOTH_KEY })[addon])
+            player:delKeyItem(({ invaderXim.ki.PRISMATIC_KEY, invaderXim.ki.OXBLOOD_KEY, invaderXim.ki.BEHEMOTH_KEY })[addon])
         end
     else
         -- Convert each augment's power and ID to binary (5 bits for power followed by 11 bits for ID)
@@ -1839,46 +1839,46 @@ local argumentKeyItems =
 {
     [1] =
     {
-        xi.ki.CRIMSON_KEY,
-        xi.ki.VIRIDIAN_KEY,
-        xi.ki.AMBER_KEY,
-        xi.ki.AZURE_KEY,
-        xi.ki.IVORY_KEY,
-        xi.ki.EBON_KEY,
-        xi.ki.PRISMATIC_KEY,
+        invaderXim.ki.CRIMSON_KEY,
+        invaderXim.ki.VIRIDIAN_KEY,
+        invaderXim.ki.AMBER_KEY,
+        invaderXim.ki.AZURE_KEY,
+        invaderXim.ki.IVORY_KEY,
+        invaderXim.ki.EBON_KEY,
+        invaderXim.ki.PRISMATIC_KEY,
     },
 
     [2] =
     {
-        xi.ki.WHITE_CORAL_KEY,
-        xi.ki.BLUE_CORAL_KEY,
-        xi.ki.PEACH_CORAL_KEY,
-        xi.ki.BLACK_CORAL_KEY,
-        xi.ki.RED_CORAL_KEY,
-        xi.ki.ANGEL_SKIN_KEY,
-        xi.ki.OXBLOOD_KEY,
+        invaderXim.ki.WHITE_CORAL_KEY,
+        invaderXim.ki.BLUE_CORAL_KEY,
+        invaderXim.ki.PEACH_CORAL_KEY,
+        invaderXim.ki.BLACK_CORAL_KEY,
+        invaderXim.ki.RED_CORAL_KEY,
+        invaderXim.ki.ANGEL_SKIN_KEY,
+        invaderXim.ki.OXBLOOD_KEY,
     },
 
     [3] =
     {
-        xi.ki.MOOGLE_KEY,
-        xi.ki.BIRD_KEY,
-        xi.ki.CACTUAR_KEY,
-        xi.ki.BOMB_KEY,
-        xi.ki.CHOCOBO_KEY,
-        xi.ki.TONBERRY_KEY,
-        xi.ki.BEHEMOTH_KEY,
+        invaderXim.ki.MOOGLE_KEY,
+        invaderXim.ki.BIRD_KEY,
+        invaderXim.ki.CACTUAR_KEY,
+        invaderXim.ki.BOMB_KEY,
+        invaderXim.ki.CHOCOBO_KEY,
+        invaderXim.ki.TONBERRY_KEY,
+        invaderXim.ki.BEHEMOTH_KEY,
     },
 }
 
 entity.onTrigger = function(player, npc)
     -- determines if server/player is eligible to receive a nexus cape
-    local eligibleNexusCape = xi.settings.main.ENABLE_ACP == 1 and
-                            xi.settings.main.ENABLE_AMK == 1 and
-                            xi.settings.main.ENABLE_ASA == 1 and
-                            not player:hasItem(xi.item.NEXUS_CAPE)
+    local eligibleNexusCape = invaderXim.settings.main.ENABLE_ACP == 1 and
+                            invaderXim.settings.main.ENABLE_AMK == 1 and
+                            invaderXim.settings.main.ENABLE_ASA == 1 and
+                            not player:hasItem(invaderXim.item.NEXUS_CAPE)
 
-    local receivedNexusCape = player:hasCompletedUniqueEvent(xi.uniqueEvent.RECEIVED_NEXUS_CAPE)
+    local receivedNexusCape = player:hasCompletedUniqueEvent(invaderXim.uniqueEvent.RECEIVED_NEXUS_CAPE)
     local kiArgs = { 0, 0, 0, 0 }
 
     -- Reminder that a "true" here removes the option from the player's menu
@@ -1890,15 +1890,15 @@ entity.onTrigger = function(player, npc)
         end
     end
 
-    if xi.settings.main.ENABLE_ACP == 0 or kiArgs[1] == 254 then
+    if invaderXim.settings.main.ENABLE_ACP == 0 or kiArgs[1] == 254 then
         kiArgs[4] = utils.mask.setBit(kiArgs[4], 1, true)
     end
 
-    if xi.settings.main.ENABLE_AMK == 0 or kiArgs[2] == 254 then
+    if invaderXim.settings.main.ENABLE_AMK == 0 or kiArgs[2] == 254 then
         kiArgs[4] = utils.mask.setBit(kiArgs[4], 2, true)
     end
 
-    if xi.settings.main.ENABLE_ASA == 0 or kiArgs[3] == 254 then
+    if invaderXim.settings.main.ENABLE_ASA == 0 or kiArgs[3] == 254 then
         kiArgs[4] = utils.mask.setBit(kiArgs[4], 3, true)
     end
 
@@ -1927,15 +1927,15 @@ entity.onEventFinish = function(player, csid, option, npc)
     if csid == 10099 then
         if
             option == 16777216 and
-            not player:hasCompletedUniqueEvent(xi.uniqueEvent.RECEIVED_NEXUS_CAPE) and
-            npcUtil.giveItem(player, xi.item.NEXUS_CAPE)
+            not player:hasCompletedUniqueEvent(invaderXim.uniqueEvent.RECEIVED_NEXUS_CAPE) and
+            npcUtil.giveItem(player, invaderXim.item.NEXUS_CAPE)
         then
-            player:setUniqueEvent(xi.uniqueEvent.RECEIVED_NEXUS_CAPE)
+            player:setUniqueEvent(invaderXim.uniqueEvent.RECEIVED_NEXUS_CAPE)
         elseif
             option == 33554432 or
-            (option == 16777216 and player:hasCompletedUniqueEvent(xi.uniqueEvent.RECEIVED_NEXUS_CAPE))
+            (option == 16777216 and player:hasCompletedUniqueEvent(invaderXim.uniqueEvent.RECEIVED_NEXUS_CAPE))
         then
-            player:addUsedItem(xi.item.NEXUS_CAPE)
+            player:addUsedItem(invaderXim.item.NEXUS_CAPE)
         elseif option >= 1 and option <= 20 then
             local ki = optionToKI[option]
             if ki ~= nil then

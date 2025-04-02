@@ -2,7 +2,7 @@
 -- Magian Trial Data
 -----------------------------------
 xi = xi or {}
-xi.magian = xi.magian or {}
+invaderXim.magian = invaderXim.magian or {}
 
 -- Trial data requires that all conditions be defined per table if they are to be
 -- checked.  Undefined (nil) values for specific keys will be ignored in the applied
@@ -11,14 +11,14 @@ xi.magian = xi.magian or {}
 -- Available Options to define:
 -- tradeItem  : Item required for trades to delivery crate
 
-xi.magian.trials =
+invaderXim.magian.trials =
 {
     [2] = -- Nocuous Weapon x3
     {
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.PEELER,
+            itemId = invaderXim.item.PEELER,
         },
 
         textOffset  = 1,
@@ -26,7 +26,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.RENEGADE,
+            itemId = invaderXim.item.RENEGADE,
         },
     },
 
@@ -35,7 +35,7 @@ xi.magian.trials =
         previousTrial = 2,
         requiredItem  =
         {
-            itemId = xi.item.RENEGADE,
+            itemId = invaderXim.item.RENEGADE,
         },
 
         textOffset  = 2,
@@ -43,7 +43,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.RENEGADE,
+            itemId       = invaderXim.item.RENEGADE,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack +3
@@ -56,7 +56,7 @@ xi.magian.trials =
         previousTrial = 3,
         requiredItem  =
         {
-            itemId       = xi.item.RENEGADE,
+            itemId       = invaderXim.item.RENEGADE,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack +3
@@ -68,7 +68,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.RENEGADE,
+            itemId       = invaderXim.item.RENEGADE,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack +5
@@ -81,7 +81,7 @@ xi.magian.trials =
         previousTrial = 4,
         requiredItem  =
         {
-            itemId       = xi.item.RENEGADE,
+            itemId       = invaderXim.item.RENEGADE,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack +5
@@ -93,7 +93,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.KARTIKA,
+            itemId = invaderXim.item.KARTIKA,
         },
     },
 
@@ -102,7 +102,7 @@ xi.magian.trials =
         previousTrial = 5,
         requiredItem  =
         {
-            itemId       = xi.item.KARTIKA,
+            itemId       = invaderXim.item.KARTIKA,
         },
 
         textOffset  = 44,
@@ -110,7 +110,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.KARTIKA,
+            itemId       = invaderXim.item.KARTIKA,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack +3
@@ -123,7 +123,7 @@ xi.magian.trials =
         previousTrial = 6,
         requiredItem  =
         {
-            itemId       = xi.item.KARTIKA,
+            itemId       = invaderXim.item.KARTIKA,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack +3
@@ -135,7 +135,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.KARTIKA,
+            itemId       = invaderXim.item.KARTIKA,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack +5
@@ -148,7 +148,7 @@ xi.magian.trials =
         previousTrial = 7,
         requiredItem  =
         {
-            itemId       = xi.item.KARTIKA,
+            itemId       = invaderXim.item.KARTIKA,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack +5
@@ -160,7 +160,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.KARTIKA,
+            itemId       = invaderXim.item.KARTIKA,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack +7
@@ -173,7 +173,7 @@ xi.magian.trials =
         previousTrial = 8,
         requiredItem  =
         {
-            itemId       = xi.item.KARTIKA,
+            itemId       = invaderXim.item.KARTIKA,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack +5
@@ -185,7 +185,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.KARTIKA,
+            itemId       = invaderXim.item.KARTIKA,
             itemAugments =
             {
                 [1] = { 45, 4 }, -- DMG: +5
@@ -198,7 +198,7 @@ xi.magian.trials =
         previousTrial = 4,
         requiredItem  =
         {
-            itemId       = xi.item.RENEGADE,
+            itemId       = invaderXim.item.RENEGADE,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack +5
@@ -207,12 +207,12 @@ xi.magian.trials =
 
         textOffset   = 68,
         defeatMob    = true,
-        mobEcosystem = xi.ecosystem.ARCANA,
+        mobEcosystem = invaderXim.ecosystem.ARCANA,
         numRequired  = 400,
 
         rewardItem =
         {
-            itemId = xi.item.ATHAME,
+            itemId = invaderXim.item.ATHAME,
         },
     },
 
@@ -221,7 +221,7 @@ xi.magian.trials =
         previousTrial = 10,
         requiredItem  =
         {
-            itemId = xi.item.ATHAME,
+            itemId = invaderXim.item.ATHAME,
         },
 
         textOffset  = 69,
@@ -230,7 +230,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.ATHAME,
+            itemId = invaderXim.item.ATHAME,
             itemAugments =
             {
                 [1] = { 764, 14 }, -- Delay:-15
@@ -243,7 +243,7 @@ xi.magian.trials =
         previousTrial = 11,
         requiredItem  =
         {
-            itemId       = xi.item.ATHAME,
+            itemId       = invaderXim.item.ATHAME,
             itemAugments =
             {
                 [1] = { 764, 14 }, -- Delay:-15
@@ -251,12 +251,12 @@ xi.magian.trials =
         },
 
         textOffset  = 70,
-        tradeItem   = xi.item.EYE_OF_VERTHANDI,
+        tradeItem   = invaderXim.item.EYE_OF_VERTHANDI,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.ATHAME,
+            itemId = invaderXim.item.ATHAME,
             itemAugments =
             {
                 [1] = {  45, 12 }, -- DMG: +13
@@ -271,7 +271,7 @@ xi.magian.trials =
         previousTrial = 11,
         requiredItem  =
         {
-            itemId       = xi.item.ATHAME,
+            itemId       = invaderXim.item.ATHAME,
             itemAugments =
             {
                 [1] = { 764, 14 }, -- Delay:-15
@@ -280,12 +280,12 @@ xi.magian.trials =
 
         textOffset   = 71,
         defeatMob    = true,
-        mobEcosystem = xi.ecosystem.AMORPH,
+        mobEcosystem = invaderXim.ecosystem.AMORPH,
         numRequired  = 500,
 
         rewardItem =
         {
-            itemId       = xi.item.ATHAME,
+            itemId       = invaderXim.item.ATHAME,
             itemAugments =
             {
                 [1] = { 764, 29 }, -- Delay:-30
@@ -298,7 +298,7 @@ xi.magian.trials =
         previousTrial = 13,
         requiredItem  =
         {
-            itemId       = xi.item.ATHAME,
+            itemId       = invaderXim.item.ATHAME,
             itemAugments =
             {
                 [1] = { 764, 29 }, -- Delay:-30
@@ -307,12 +307,12 @@ xi.magian.trials =
 
         textOffset   = 72,
         defeatMob    = true,
-        mobEcosystem = xi.ecosystem.PLANTOID,
+        mobEcosystem = invaderXim.ecosystem.PLANTOID,
         numRequired  = 600,
 
         rewardItem =
         {
-            itemId       = xi.item.ATHAME,
+            itemId       = invaderXim.item.ATHAME,
             itemAugments =
             {
                 [1] = { 757, 7 }, -- Delay:-40
@@ -325,7 +325,7 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.PUGILISTS,
+            itemId = invaderXim.item.PUGILISTS,
         },
 
         textOffset  = 4,
@@ -333,7 +333,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.SIMIAN_FISTS,
+            itemId = invaderXim.item.SIMIAN_FISTS,
         },
     },
 
@@ -342,7 +342,7 @@ xi.magian.trials =
         previousTrial = 68,
         requiredItem  =
         {
-            itemId = xi.item.SIMIAN_FISTS,
+            itemId = invaderXim.item.SIMIAN_FISTS,
         },
 
         textOffset  = 5,
@@ -350,7 +350,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.SIMIAN_FISTS,
+            itemId = invaderXim.item.SIMIAN_FISTS,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -363,7 +363,7 @@ xi.magian.trials =
         previousTrial = 69,
         requiredItem  =
         {
-            itemId       = xi.item.SIMIAN_FISTS,
+            itemId       = invaderXim.item.SIMIAN_FISTS,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -375,7 +375,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.SIMIAN_FISTS,
+            itemId = invaderXim.item.SIMIAN_FISTS,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -388,7 +388,7 @@ xi.magian.trials =
         previousTrial = 70,
         requiredItem  =
         {
-            itemId       = xi.item.SIMIAN_FISTS,
+            itemId       = invaderXim.item.SIMIAN_FISTS,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -400,7 +400,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.MANTIS,
+            itemId = invaderXim.item.MANTIS,
         },
     },
 
@@ -409,7 +409,7 @@ xi.magian.trials =
         previousTrial = 71,
         requiredItem  =
         {
-            itemId = xi.item.MANTIS,
+            itemId = invaderXim.item.MANTIS,
         },
 
         textOffset  = 49,
@@ -417,7 +417,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.MANTIS,
+            itemId = invaderXim.item.MANTIS,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -430,7 +430,7 @@ xi.magian.trials =
         previousTrial = 72,
         requiredItem  =
         {
-            itemId       = xi.item.MANTIS,
+            itemId       = invaderXim.item.MANTIS,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -442,7 +442,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.MANTIS,
+            itemId = invaderXim.item.MANTIS,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -455,7 +455,7 @@ xi.magian.trials =
         previousTrial = 73,
         requiredItem  =
         {
-            itemId       = xi.item.MANTIS,
+            itemId       = invaderXim.item.MANTIS,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -467,7 +467,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.MANTIS,
+            itemId = invaderXim.item.MANTIS,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -480,7 +480,7 @@ xi.magian.trials =
         previousTrial = 74,
         requiredItem  =
         {
-            itemId       = xi.item.MANTIS,
+            itemId       = invaderXim.item.MANTIS,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -492,7 +492,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.MANTIS,
+            itemId = invaderXim.item.MANTIS,
             itemAugments =
             {
                 [1] = { 45, 6 }, -- DMG:+7
@@ -505,18 +505,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.PUGILISTS,
+            itemId = invaderXim.item.PUGILISTS,
         },
 
         textOffset     = 99,
-        dayWeather     = xi.magianElement.ANY,
+        dayWeather     = invaderXim.magianElement.ANY,
         defeatMob      = true,
         mobSuperFamily = set{ 56 },
         numRequired    = 50,
 
         rewardItem =
         {
-            itemId = xi.item.CATS_CLAWS,
+            itemId = invaderXim.item.CATS_CLAWS,
         },
     },
 
@@ -525,7 +525,7 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SIDE_SWORD,
+            itemId = invaderXim.item.SIDE_SWORD,
         },
 
         textOffset  = 7,
@@ -533,7 +533,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.SCHIAVONA,
+            itemId = invaderXim.item.SCHIAVONA,
         },
     },
 
@@ -542,7 +542,7 @@ xi.magian.trials =
         previousTrial = 150,
         requiredItem  =
         {
-            itemId = xi.item.SCHIAVONA,
+            itemId = invaderXim.item.SCHIAVONA,
         },
 
         textOffset  = 8,
@@ -550,7 +550,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.SCHIAVONA,
+            itemId       = invaderXim.item.SCHIAVONA,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -563,7 +563,7 @@ xi.magian.trials =
         previousTrial = 151,
         requiredItem  =
         {
-            itemId       = xi.item.SCHIAVONA,
+            itemId       = invaderXim.item.SCHIAVONA,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -575,7 +575,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.SCHIAVONA,
+            itemId       = invaderXim.item.SCHIAVONA,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -588,7 +588,7 @@ xi.magian.trials =
         previousTrial = 152,
         requiredItem  =
         {
-            itemId       = xi.item.SCHIAVONA,
+            itemId       = invaderXim.item.SCHIAVONA,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -600,7 +600,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.NOBILIS,
+            itemId = invaderXim.item.NOBILIS,
         },
     },
 
@@ -609,7 +609,7 @@ xi.magian.trials =
         previousTrial = 153,
         requiredItem  =
         {
-            itemId = xi.item.NOBILIS,
+            itemId = invaderXim.item.NOBILIS,
         },
 
         textOffset  = 54,
@@ -617,7 +617,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.NOBILIS,
+            itemId       = invaderXim.item.NOBILIS,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -630,7 +630,7 @@ xi.magian.trials =
         previousTrial = 154,
         requiredItem  =
         {
-            itemId       = xi.item.NOBILIS,
+            itemId       = invaderXim.item.NOBILIS,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -642,7 +642,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.NOBILIS,
+            itemId       = invaderXim.item.NOBILIS,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -655,7 +655,7 @@ xi.magian.trials =
         previousTrial = 155,
         requiredItem  =
         {
-            itemId       = xi.item.NOBILIS,
+            itemId       = invaderXim.item.NOBILIS,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -667,7 +667,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.NOBILIS,
+            itemId       = invaderXim.item.NOBILIS,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -680,7 +680,7 @@ xi.magian.trials =
         previousTrial = 156,
         requiredItem  =
         {
-            itemId       = xi.item.NOBILIS,
+            itemId       = invaderXim.item.NOBILIS,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -692,7 +692,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.NOBILIS,
+            itemId       = invaderXim.item.NOBILIS,
             itemAugments =
             {
                 [1] = { 45, 6 }, -- DMG:+7
@@ -705,7 +705,7 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BREAK_BLADE,
+            itemId = invaderXim.item.BREAK_BLADE,
         },
 
         textOffset  = 10,
@@ -713,7 +713,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.SUNBLADE,
+            itemId = invaderXim.item.SUNBLADE,
         },
     },
 
@@ -722,7 +722,7 @@ xi.magian.trials =
         previousTrial = 216,
         requiredItem  =
         {
-            itemId = xi.item.SUNBLADE,
+            itemId = invaderXim.item.SUNBLADE,
         },
 
         textOffset  = 11,
@@ -730,7 +730,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.SUNBLADE,
+            itemId       = invaderXim.item.SUNBLADE,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -743,7 +743,7 @@ xi.magian.trials =
         previousTrial = 217,
         requiredItem  =
         {
-            itemId       = xi.item.SUNBLADE,
+            itemId       = invaderXim.item.SUNBLADE,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -755,7 +755,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.SUNBLADE,
+            itemId       = invaderXim.item.SUNBLADE,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -768,7 +768,7 @@ xi.magian.trials =
         previousTrial = 218,
         requiredItem  =
         {
-            itemId       = xi.item.SUNBLADE,
+            itemId       = invaderXim.item.SUNBLADE,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -780,7 +780,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.ALBION,
+            itemId = invaderXim.item.ALBION,
         },
     },
 
@@ -789,7 +789,7 @@ xi.magian.trials =
         previousTrial = 219,
         requiredItem  =
         {
-            itemId = xi.item.ALBION,
+            itemId = invaderXim.item.ALBION,
         },
 
         textOffset  = 59,
@@ -797,7 +797,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.ALBION,
+            itemId       = invaderXim.item.ALBION,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -810,7 +810,7 @@ xi.magian.trials =
         previousTrial = 220,
         requiredItem  =
         {
-            itemId       = xi.item.ALBION,
+            itemId       = invaderXim.item.ALBION,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -822,7 +822,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.ALBION,
+            itemId       = invaderXim.item.ALBION,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -835,7 +835,7 @@ xi.magian.trials =
         previousTrial = 221,
         requiredItem  =
         {
-            itemId       = xi.item.ALBION,
+            itemId       = invaderXim.item.ALBION,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -847,7 +847,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.ALBION,
+            itemId       = invaderXim.item.ALBION,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -860,7 +860,7 @@ xi.magian.trials =
         previousTrial = 222,
         requiredItem  =
         {
-            itemId       = xi.item.ALBION,
+            itemId       = invaderXim.item.ALBION,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -872,7 +872,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.ALBION,
+            itemId       = invaderXim.item.ALBION,
             itemAugments =
             {
                 [1] = { 45, 9 }, -- DMG:+10
@@ -885,7 +885,7 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CHOPPER,
+            itemId = invaderXim.item.CHOPPER,
         },
 
         textOffset  = 13,
@@ -893,7 +893,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.SPLINTER,
+            itemId = invaderXim.item.SPLINTER,
         },
     },
 
@@ -902,7 +902,7 @@ xi.magian.trials =
         previousTrial = 282,
         requiredItem  =
         {
-            itemId = xi.item.SPLINTER,
+            itemId = invaderXim.item.SPLINTER,
         },
 
         textOffset  = 14,
@@ -910,7 +910,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.SPLINTER,
+            itemId       = invaderXim.item.SPLINTER,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -923,7 +923,7 @@ xi.magian.trials =
         previousTrial = 283,
         requiredItem  =
         {
-            itemId       = xi.item.SPLINTER,
+            itemId       = invaderXim.item.SPLINTER,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -935,7 +935,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.SPLINTER,
+            itemId       = invaderXim.item.SPLINTER,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -948,7 +948,7 @@ xi.magian.trials =
         previousTrial = 284,
         requiredItem  =
         {
-            itemId       = xi.item.SPLINTER,
+            itemId       = invaderXim.item.SPLINTER,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -960,7 +960,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.BONEBITER,
+            itemId = invaderXim.item.BONEBITER,
         },
     },
 
@@ -969,7 +969,7 @@ xi.magian.trials =
         previousTrial = 285,
         requiredItem  =
         {
-            itemId = xi.item.BONEBITER,
+            itemId = invaderXim.item.BONEBITER,
         },
 
         textOffset  = 49,
@@ -977,7 +977,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.BONEBITER,
+            itemId       = invaderXim.item.BONEBITER,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -990,7 +990,7 @@ xi.magian.trials =
         previousTrial = 286,
         requiredItem  =
         {
-            itemId       = xi.item.BONEBITER,
+            itemId       = invaderXim.item.BONEBITER,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1002,7 +1002,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.BONEBITER,
+            itemId       = invaderXim.item.BONEBITER,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1015,7 +1015,7 @@ xi.magian.trials =
         previousTrial = 287,
         requiredItem  =
         {
-            itemId       = xi.item.BONEBITER,
+            itemId       = invaderXim.item.BONEBITER,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1027,7 +1027,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.BONEBITER,
+            itemId       = invaderXim.item.BONEBITER,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -1040,7 +1040,7 @@ xi.magian.trials =
         previousTrial = 288,
         requiredItem  =
         {
-            itemId       = xi.item.BONEBITER,
+            itemId       = invaderXim.item.BONEBITER,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -1052,7 +1052,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.BONEBITER,
+            itemId       = invaderXim.item.BONEBITER,
             itemAugments =
             {
                 [1] = { 45, 5 }, -- DMG:+6
@@ -1065,7 +1065,7 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.LUMBERJACK,
+            itemId = invaderXim.item.LUMBERJACK,
         },
 
         textOffset  = 16,
@@ -1073,7 +1073,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.SAGARIS,
+            itemId = invaderXim.item.SAGARIS,
         },
     },
 
@@ -1082,7 +1082,7 @@ xi.magian.trials =
         previousTrial = 364,
         requiredItem  =
         {
-            itemId = xi.item.SAGARIS,
+            itemId = invaderXim.item.SAGARIS,
         },
 
         textOffset  = 17,
@@ -1090,7 +1090,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.SAGARIS,
+            itemId       = invaderXim.item.SAGARIS,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1103,7 +1103,7 @@ xi.magian.trials =
         previousTrial = 365,
         requiredItem  =
         {
-            itemId       = xi.item.SAGARIS,
+            itemId       = invaderXim.item.SAGARIS,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1115,7 +1115,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.SAGARIS,
+            itemId       = invaderXim.item.SAGARIS,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1128,7 +1128,7 @@ xi.magian.trials =
         previousTrial = 366,
         requiredItem  =
         {
-            itemId       = xi.item.SAGARIS,
+            itemId       = invaderXim.item.SAGARIS,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1140,7 +1140,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.BONESPLITTER,
+            itemId = invaderXim.item.BONESPLITTER,
         },
     },
 
@@ -1149,7 +1149,7 @@ xi.magian.trials =
         previousTrial = 367,
         requiredItem  =
         {
-            itemId = xi.item.BONESPLITTER,
+            itemId = invaderXim.item.BONESPLITTER,
         },
 
         textOffset  = 54,
@@ -1157,7 +1157,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.BONESPLITTER,
+            itemId       = invaderXim.item.BONESPLITTER,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1170,7 +1170,7 @@ xi.magian.trials =
         previousTrial = 368,
         requiredItem  =
         {
-            itemId       = xi.item.BONESPLITTER,
+            itemId       = invaderXim.item.BONESPLITTER,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1182,7 +1182,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.BONESPLITTER,
+            itemId       = invaderXim.item.BONESPLITTER,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1195,7 +1195,7 @@ xi.magian.trials =
         previousTrial = 369,
         requiredItem  =
         {
-            itemId       = xi.item.BONESPLITTER,
+            itemId       = invaderXim.item.BONESPLITTER,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1207,7 +1207,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.BONESPLITTER,
+            itemId       = invaderXim.item.BONESPLITTER,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -1220,7 +1220,7 @@ xi.magian.trials =
         previousTrial = 370,
         requiredItem  =
         {
-            itemId       = xi.item.BONESPLITTER,
+            itemId       = invaderXim.item.BONESPLITTER,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -1232,7 +1232,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.BONESPLITTER,
+            itemId       = invaderXim.item.BONESPLITTER,
             itemAugments =
             {
                 [1] = { 45, 10 }, -- DMG:+11
@@ -1245,7 +1245,7 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.RANSEUR,
+            itemId = invaderXim.item.RANSEUR,
         },
 
         textOffset  = 19,
@@ -1253,7 +1253,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.COPPERHEAD,
+            itemId = invaderXim.item.COPPERHEAD,
         },
     },
 
@@ -1262,7 +1262,7 @@ xi.magian.trials =
         previousTrial = 430,
         requiredItem  =
         {
-            itemId = xi.item.COPPERHEAD,
+            itemId = invaderXim.item.COPPERHEAD,
         },
 
         textOffset  = 20,
@@ -1270,7 +1270,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.COPPERHEAD,
+            itemId       = invaderXim.item.COPPERHEAD,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1283,7 +1283,7 @@ xi.magian.trials =
         previousTrial = 431,
         requiredItem  =
         {
-            itemId       = xi.item.COPPERHEAD,
+            itemId       = invaderXim.item.COPPERHEAD,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1295,7 +1295,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.COPPERHEAD,
+            itemId       = invaderXim.item.COPPERHEAD,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1308,7 +1308,7 @@ xi.magian.trials =
         previousTrial = 432,
         requiredItem  =
         {
-            itemId       = xi.item.COPPERHEAD,
+            itemId       = invaderXim.item.COPPERHEAD,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1320,7 +1320,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.OATHKEEPER,
+            itemId = invaderXim.item.OATHKEEPER,
         },
     },
 
@@ -1329,7 +1329,7 @@ xi.magian.trials =
         previousTrial = 433,
         requiredItem  =
         {
-            itemId = xi.item.OATHKEEPER,
+            itemId = invaderXim.item.OATHKEEPER,
         },
 
         textOffset  = 49,
@@ -1337,7 +1337,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.OATHKEEPER,
+            itemId       = invaderXim.item.OATHKEEPER,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1350,7 +1350,7 @@ xi.magian.trials =
         previousTrial = 434,
         requiredItem  =
         {
-            itemId       = xi.item.OATHKEEPER,
+            itemId       = invaderXim.item.OATHKEEPER,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1362,7 +1362,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.OATHKEEPER,
+            itemId       = invaderXim.item.OATHKEEPER,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1375,7 +1375,7 @@ xi.magian.trials =
         previousTrial = 435,
         requiredItem  =
         {
-            itemId       = xi.item.OATHKEEPER,
+            itemId       = invaderXim.item.OATHKEEPER,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1387,7 +1387,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.OATHKEEPER,
+            itemId       = invaderXim.item.OATHKEEPER,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -1400,7 +1400,7 @@ xi.magian.trials =
         previousTrial = 436,
         requiredItem  =
         {
-            itemId       = xi.item.OATHKEEPER,
+            itemId       = invaderXim.item.OATHKEEPER,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -1412,7 +1412,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.OATHKEEPER,
+            itemId       = invaderXim.item.OATHKEEPER,
             itemAugments =
             {
                 [1] = { 45, 11 }, -- DMG:+12
@@ -1425,7 +1425,7 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.FARMHAND,
+            itemId = invaderXim.item.FARMHAND,
         },
 
         textOffset  = 22,
@@ -1433,7 +1433,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.STIGMA,
+            itemId = invaderXim.item.STIGMA,
         },
     },
 
@@ -1442,7 +1442,7 @@ xi.magian.trials =
         previousTrial = 512,
         requiredItem  =
         {
-            itemId = xi.item.STIGMA,
+            itemId = invaderXim.item.STIGMA,
         },
 
         textOffset  = 23,
@@ -1450,7 +1450,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.STIGMA,
+            itemId       = invaderXim.item.STIGMA,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1463,7 +1463,7 @@ xi.magian.trials =
         previousTrial = 513,
         requiredItem  =
         {
-            itemId       = xi.item.STIGMA,
+            itemId       = invaderXim.item.STIGMA,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1475,7 +1475,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.STIGMA,
+            itemId       = invaderXim.item.STIGMA,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1488,7 +1488,7 @@ xi.magian.trials =
         previousTrial = 514,
         requiredItem  =
         {
-            itemId       = xi.item.STIGMA,
+            itemId       = invaderXim.item.STIGMA,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1500,7 +1500,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.ULTIMATUM,
+            itemId = invaderXim.item.ULTIMATUM,
         },
     },
 
@@ -1509,7 +1509,7 @@ xi.magian.trials =
         previousTrial = 515,
         requiredItem  =
         {
-            itemId = xi.item.ULTIMATUM,
+            itemId = invaderXim.item.ULTIMATUM,
         },
 
         textOffset  = 44,
@@ -1517,7 +1517,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.ULTIMATUM,
+            itemId       = invaderXim.item.ULTIMATUM,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1530,7 +1530,7 @@ xi.magian.trials =
         previousTrial = 516,
         requiredItem  =
         {
-            itemId = xi.item.ULTIMATUM,
+            itemId = invaderXim.item.ULTIMATUM,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1542,7 +1542,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.ULTIMATUM,
+            itemId       = invaderXim.item.ULTIMATUM,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1555,7 +1555,7 @@ xi.magian.trials =
         previousTrial = 517,
         requiredItem  =
         {
-            itemId = xi.item.ULTIMATUM,
+            itemId = invaderXim.item.ULTIMATUM,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1567,7 +1567,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.ULTIMATUM,
+            itemId       = invaderXim.item.ULTIMATUM,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -1580,7 +1580,7 @@ xi.magian.trials =
         previousTrial = 518,
         requiredItem  =
         {
-            itemId = xi.item.ULTIMATUM,
+            itemId = invaderXim.item.ULTIMATUM,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -1592,7 +1592,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.ULTIMATUM,
+            itemId       = invaderXim.item.ULTIMATUM,
             itemAugments =
             {
                 [1] = { 45, 11 }, -- DMG:+12
@@ -1605,7 +1605,7 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.KIBASHIRI,
+            itemId = invaderXim.item.KIBASHIRI,
         },
 
         textOffset  = 25,
@@ -1613,7 +1613,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.KORURI,
+            itemId = invaderXim.item.KORURI,
         },
     },
 
@@ -1622,7 +1622,7 @@ xi.magian.trials =
         previousTrial = 578,
         requiredItem  =
         {
-            itemId = xi.item.KORURI,
+            itemId = invaderXim.item.KORURI,
         },
 
         textOffset  = 26,
@@ -1630,7 +1630,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.KORURI,
+            itemId       = invaderXim.item.KORURI,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1643,7 +1643,7 @@ xi.magian.trials =
         previousTrial = 579,
         requiredItem  =
         {
-            itemId       = xi.item.KORURI,
+            itemId       = invaderXim.item.KORURI,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1655,7 +1655,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.KORURI,
+            itemId       = invaderXim.item.KORURI,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1668,7 +1668,7 @@ xi.magian.trials =
         previousTrial = 580,
         requiredItem  =
         {
-            itemId       = xi.item.KORURI,
+            itemId       = invaderXim.item.KORURI,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1680,7 +1680,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.MOZU,
+            itemId = invaderXim.item.MOZU,
         },
     },
 
@@ -1689,7 +1689,7 @@ xi.magian.trials =
         previousTrial = 581,
         requiredItem  =
         {
-            itemId = xi.item.MOZU,
+            itemId = invaderXim.item.MOZU,
         },
 
         textOffset  = 54,
@@ -1697,7 +1697,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.MOZU,
+            itemId       = invaderXim.item.MOZU,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1710,7 +1710,7 @@ xi.magian.trials =
         previousTrial = 582,
         requiredItem  =
         {
-            itemId       = xi.item.MOZU,
+            itemId       = invaderXim.item.MOZU,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1722,7 +1722,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.MOZU,
+            itemId       = invaderXim.item.MOZU,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1735,7 +1735,7 @@ xi.magian.trials =
         previousTrial = 583,
         requiredItem  =
         {
-            itemId       = xi.item.MOZU,
+            itemId       = invaderXim.item.MOZU,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1747,7 +1747,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.MOZU,
+            itemId       = invaderXim.item.MOZU,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -1760,7 +1760,7 @@ xi.magian.trials =
         previousTrial = 584,
         requiredItem  =
         {
-            itemId       = xi.item.MOZU,
+            itemId       = invaderXim.item.MOZU,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -1772,7 +1772,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.MOZU,
+            itemId       = invaderXim.item.MOZU,
             itemAugments =
             {
                 [1] = { 45, 6 }, -- DMG:+7
@@ -1785,7 +1785,7 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.DONTO,
+            itemId = invaderXim.item.DONTO,
         },
 
         textOffset  = 28,
@@ -1793,7 +1793,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.SHIRODACHI,
+            itemId = invaderXim.item.SHIRODACHI,
         },
     },
 
@@ -1802,7 +1802,7 @@ xi.magian.trials =
         previousTrial = 644,
         requiredItem  =
         {
-            itemId = xi.item.SHIRODACHI,
+            itemId = invaderXim.item.SHIRODACHI,
         },
 
         textOffset  = 29,
@@ -1810,7 +1810,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.SHIRODACHI,
+            itemId       = invaderXim.item.SHIRODACHI,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1823,7 +1823,7 @@ xi.magian.trials =
         previousTrial = 645,
         requiredItem  =
         {
-            itemId       = xi.item.SHIRODACHI,
+            itemId       = invaderXim.item.SHIRODACHI,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1835,7 +1835,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.SHIRODACHI,
+            itemId       = invaderXim.item.SHIRODACHI,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1848,7 +1848,7 @@ xi.magian.trials =
         previousTrial = 646,
         requiredItem  =
         {
-            itemId       = xi.item.SHIRODACHI,
+            itemId       = invaderXim.item.SHIRODACHI,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1860,7 +1860,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.RADENNOTACHI,
+            itemId = invaderXim.item.RADENNOTACHI,
         },
     },
 
@@ -1869,7 +1869,7 @@ xi.magian.trials =
         previousTrial = 647,
         requiredItem  =
         {
-            itemId = xi.item.RADENNOTACHI,
+            itemId = invaderXim.item.RADENNOTACHI,
         },
 
         textOffset  = 59,
@@ -1877,7 +1877,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.RADENNOTACHI,
+            itemId       = invaderXim.item.RADENNOTACHI,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1890,7 +1890,7 @@ xi.magian.trials =
         previousTrial = 648,
         requiredItem  =
         {
-            itemId       = xi.item.RADENNOTACHI,
+            itemId       = invaderXim.item.RADENNOTACHI,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -1902,7 +1902,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.RADENNOTACHI,
+            itemId       = invaderXim.item.RADENNOTACHI,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1915,7 +1915,7 @@ xi.magian.trials =
         previousTrial = 649,
         requiredItem  =
         {
-            itemId       = xi.item.RADENNOTACHI,
+            itemId       = invaderXim.item.RADENNOTACHI,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -1927,7 +1927,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.RADENNOTACHI,
+            itemId       = invaderXim.item.RADENNOTACHI,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -1940,7 +1940,7 @@ xi.magian.trials =
         previousTrial = 650,
         requiredItem  =
         {
-            itemId       = xi.item.RADENNOTACHI,
+            itemId       = invaderXim.item.RADENNOTACHI,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -1952,7 +1952,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.RADENNOTACHI,
+            itemId       = invaderXim.item.RADENNOTACHI,
             itemAugments =
             {
                 [1] = { 45, 9 }, -- DMG:+10
@@ -1965,7 +1965,7 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.STENZ,
+            itemId = invaderXim.item.STENZ,
         },
 
         textOffset  = 31,
@@ -1973,7 +1973,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.RAGEBLOW,
+            itemId = invaderXim.item.RAGEBLOW,
         },
     },
 
@@ -1982,7 +1982,7 @@ xi.magian.trials =
         previousTrial = 710,
         requiredItem  =
         {
-            itemId = xi.item.RAGEBLOW,
+            itemId = invaderXim.item.RAGEBLOW,
         },
 
         textOffset  = 32,
@@ -1990,7 +1990,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.RAGEBLOW,
+            itemId       = invaderXim.item.RAGEBLOW,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -2003,7 +2003,7 @@ xi.magian.trials =
         previousTrial = 711,
         requiredItem  =
         {
-            itemId       = xi.item.RAGEBLOW,
+            itemId       = invaderXim.item.RAGEBLOW,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -2015,7 +2015,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.RAGEBLOW,
+            itemId       = invaderXim.item.RAGEBLOW,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -2028,7 +2028,7 @@ xi.magian.trials =
         previousTrial = 712,
         requiredItem  =
         {
-            itemId       = xi.item.RAGEBLOW,
+            itemId       = invaderXim.item.RAGEBLOW,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -2040,7 +2040,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.CULACULA,
+            itemId = invaderXim.item.CULACULA,
         },
     },
 
@@ -2049,7 +2049,7 @@ xi.magian.trials =
         previousTrial = 713,
         requiredItem  =
         {
-            itemId = xi.item.CULACULA,
+            itemId = invaderXim.item.CULACULA,
         },
 
         textOffset  = 59,
@@ -2057,7 +2057,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.CULACULA,
+            itemId       = invaderXim.item.CULACULA,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -2070,7 +2070,7 @@ xi.magian.trials =
         previousTrial = 714,
         requiredItem  =
         {
-            itemId       = xi.item.CULACULA,
+            itemId       = invaderXim.item.CULACULA,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -2082,7 +2082,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.CULACULA,
+            itemId       = invaderXim.item.CULACULA,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -2095,7 +2095,7 @@ xi.magian.trials =
         previousTrial = 715,
         requiredItem  =
         {
-            itemId       = xi.item.CULACULA,
+            itemId       = invaderXim.item.CULACULA,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -2107,7 +2107,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.CULACULA,
+            itemId       = invaderXim.item.CULACULA,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -2120,7 +2120,7 @@ xi.magian.trials =
         previousTrial = 716,
         requiredItem  =
         {
-            itemId       = xi.item.CULACULA,
+            itemId       = invaderXim.item.CULACULA,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -2132,7 +2132,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.CULACULA,
+            itemId       = invaderXim.item.CULACULA,
             itemAugments =
             {
                 [1] = { 45, 14 }, -- DMG:+15
@@ -2145,7 +2145,7 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CROOK,
+            itemId = invaderXim.item.CROOK,
         },
 
         textOffset  = 34,
@@ -2153,7 +2153,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.SHILLELAGH,
+            itemId = invaderXim.item.SHILLELAGH,
         },
     },
 
@@ -2162,7 +2162,7 @@ xi.magian.trials =
         previousTrial = 776,
         requiredItem  =
         {
-            itemId = xi.item.SHILLELAGH,
+            itemId = invaderXim.item.SHILLELAGH,
         },
 
         textOffset  = 35,
@@ -2170,7 +2170,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.SHILLELAGH,
+            itemId       = invaderXim.item.SHILLELAGH,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -2183,7 +2183,7 @@ xi.magian.trials =
         previousTrial = 777,
         requiredItem  =
         {
-            itemId       = xi.item.SHILLELAGH,
+            itemId       = invaderXim.item.SHILLELAGH,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -2195,7 +2195,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.SHILLELAGH,
+            itemId       = invaderXim.item.SHILLELAGH,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -2208,7 +2208,7 @@ xi.magian.trials =
         previousTrial = 778,
         requiredItem  =
         {
-            itemId       = xi.item.SHILLELAGH,
+            itemId       = invaderXim.item.SHILLELAGH,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -2220,7 +2220,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.SLAINE,
+            itemId = invaderXim.item.SLAINE,
         },
     },
 
@@ -2229,7 +2229,7 @@ xi.magian.trials =
         previousTrial = 779,
         requiredItem  =
         {
-            itemId = xi.item.SLAINE,
+            itemId = invaderXim.item.SLAINE,
         },
 
         textOffset  = 64,
@@ -2237,7 +2237,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.SLAINE,
+            itemId       = invaderXim.item.SLAINE,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -2250,7 +2250,7 @@ xi.magian.trials =
         previousTrial = 780,
         requiredItem  =
         {
-            itemId       = xi.item.SLAINE,
+            itemId       = invaderXim.item.SLAINE,
             itemAugments =
             {
                 [1] = { 25, 2 }, -- Attack+3
@@ -2262,7 +2262,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.SLAINE,
+            itemId       = invaderXim.item.SLAINE,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -2275,7 +2275,7 @@ xi.magian.trials =
         previousTrial = 781,
         requiredItem  =
         {
-            itemId       = xi.item.SLAINE,
+            itemId       = invaderXim.item.SLAINE,
             itemAugments =
             {
                 [1] = { 25, 4 }, -- Attack+5
@@ -2287,7 +2287,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.SLAINE,
+            itemId       = invaderXim.item.SLAINE,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -2300,7 +2300,7 @@ xi.magian.trials =
         previousTrial = 782,
         requiredItem  =
         {
-            itemId       = xi.item.SLAINE,
+            itemId       = invaderXim.item.SLAINE,
             itemAugments =
             {
                 [1] = { 25, 6 }, -- Attack+7
@@ -2312,7 +2312,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.SLAINE,
+            itemId       = invaderXim.item.SLAINE,
             itemAugments =
             {
                 [1] = { 45, 12 }, -- DMG:+13
@@ -2325,7 +2325,7 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.THUNDERSTICK,
+            itemId = invaderXim.item.THUNDERSTICK,
         },
 
         textOffset  = 37,
@@ -2333,7 +2333,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.BLUE_STEEL,
+            itemId = invaderXim.item.BLUE_STEEL,
         },
     },
 
@@ -2342,7 +2342,7 @@ xi.magian.trials =
         previousTrial = 891,
         requiredItem  =
         {
-            itemId = xi.item.BLUE_STEEL,
+            itemId = invaderXim.item.BLUE_STEEL,
         },
 
         textOffset  = 38,
@@ -2350,7 +2350,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.BLUE_STEEL,
+            itemId       = invaderXim.item.BLUE_STEEL,
             itemAugments =
             {
                 [1] = { 29, 2 }, -- Rng.Atk.+3
@@ -2363,7 +2363,7 @@ xi.magian.trials =
         previousTrial = 892,
         requiredItem  =
         {
-            itemId       = xi.item.BLUE_STEEL,
+            itemId       = invaderXim.item.BLUE_STEEL,
             itemAugments =
             {
                 [1] = { 29, 2 }, -- Rng.Atk.+3
@@ -2375,7 +2375,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.BLUE_STEEL,
+            itemId       = invaderXim.item.BLUE_STEEL,
             itemAugments =
             {
                 [1] = { 29, 4 }, -- Rng.Atk.+5
@@ -2388,7 +2388,7 @@ xi.magian.trials =
         previousTrial = 893,
         requiredItem  =
         {
-            itemId       = xi.item.BLUE_STEEL,
+            itemId       = invaderXim.item.BLUE_STEEL,
             itemAugments =
             {
                 [1] = { 29, 4 }, -- Rng.Atk.+5
@@ -2400,7 +2400,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.MAGNATUS,
+            itemId = invaderXim.item.MAGNATUS,
         },
     },
 
@@ -2409,7 +2409,7 @@ xi.magian.trials =
         previousTrial = 894,
         requiredItem  =
         {
-            itemId = xi.item.MAGNATUS,
+            itemId = invaderXim.item.MAGNATUS,
         },
 
         textOffset  = 44,
@@ -2417,7 +2417,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.MAGNATUS,
+            itemId       = invaderXim.item.MAGNATUS,
             itemAugments =
             {
                 [1] = { 29, 2 }, -- Rng.Atk.+3
@@ -2430,7 +2430,7 @@ xi.magian.trials =
         previousTrial = 895,
         requiredItem  =
         {
-            itemId       = xi.item.MAGNATUS,
+            itemId       = invaderXim.item.MAGNATUS,
             itemAugments =
             {
                 [1] = { 29, 2 }, -- Rng.Atk.+3
@@ -2442,7 +2442,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.MAGNATUS,
+            itemId       = invaderXim.item.MAGNATUS,
             itemAugments =
             {
                 [1] = { 29, 4 }, -- Rng.Atk.+5
@@ -2455,7 +2455,7 @@ xi.magian.trials =
         previousTrial = 896,
         requiredItem  =
         {
-            itemId       = xi.item.MAGNATUS,
+            itemId       = invaderXim.item.MAGNATUS,
             itemAugments =
             {
                 [1] = { 29, 4 }, -- Rng.Atk.+5
@@ -2467,7 +2467,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.MAGNATUS,
+            itemId       = invaderXim.item.MAGNATUS,
             itemAugments =
             {
                 [1] = { 29, 6 }, -- Rng.Atk.+7
@@ -2480,7 +2480,7 @@ xi.magian.trials =
         previousTrial = 897,
         requiredItem  =
         {
-            itemId       = xi.item.MAGNATUS,
+            itemId       = invaderXim.item.MAGNATUS,
             itemAugments =
             {
                 [1] = { 29, 6 }, -- Rng.Atk.+7
@@ -2492,7 +2492,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.MAGNATUS,
+            itemId       = invaderXim.item.MAGNATUS,
             itemAugments =
             {
                 [1] = { 45, 6 }, -- DMG:+7
@@ -2505,7 +2505,7 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SPARROW,
+            itemId = invaderXim.item.SPARROW,
         },
 
         textOffset  = 40,
@@ -2513,7 +2513,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.KESTREL,
+            itemId = invaderXim.item.KESTREL,
         },
     },
 
@@ -2522,7 +2522,7 @@ xi.magian.trials =
         previousTrial = 941,
         requiredItem  =
         {
-            itemId = xi.item.KESTREL,
+            itemId = invaderXim.item.KESTREL,
         },
 
         textOffset  = 41,
@@ -2530,7 +2530,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.KESTREL,
+            itemId       = invaderXim.item.KESTREL,
             itemAugments =
             {
                 [1] = { 29, 2 }, -- Rng.Atk.+3
@@ -2543,7 +2543,7 @@ xi.magian.trials =
         previousTrial = 942,
         requiredItem  =
         {
-            itemId       = xi.item.KESTREL,
+            itemId       = invaderXim.item.KESTREL,
             itemAugments =
             {
                 [1] = { 29, 2 }, -- Rng.Atk.+3
@@ -2555,7 +2555,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.KESTREL,
+            itemId       = invaderXim.item.KESTREL,
             itemAugments =
             {
                 [1] = { 29, 4 }, -- Rng.Atk.+5
@@ -2568,7 +2568,7 @@ xi.magian.trials =
         previousTrial = 943,
         requiredItem  =
         {
-            itemId       = xi.item.KESTREL,
+            itemId       = invaderXim.item.KESTREL,
             itemAugments =
             {
                 [1] = { 29, 4 }, -- Rng.Atk.+5
@@ -2580,7 +2580,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.ASTRILD,
+            itemId = invaderXim.item.ASTRILD,
         },
     },
 
@@ -2589,7 +2589,7 @@ xi.magian.trials =
         previousTrial = 944,
         requiredItem  =
         {
-            itemId = xi.item.ASTRILD,
+            itemId = invaderXim.item.ASTRILD,
         },
 
         textOffset  = 59,
@@ -2597,7 +2597,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.ASTRILD,
+            itemId       = invaderXim.item.ASTRILD,
             itemAugments =
             {
                 [1] = { 29, 2 }, -- Rng.Atk.+3
@@ -2610,7 +2610,7 @@ xi.magian.trials =
         previousTrial = 945,
         requiredItem  =
         {
-            itemId       = xi.item.ASTRILD,
+            itemId       = invaderXim.item.ASTRILD,
             itemAugments =
             {
                 [1] = { 29, 2 }, -- Rng.Atk.+3
@@ -2622,7 +2622,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.ASTRILD,
+            itemId       = invaderXim.item.ASTRILD,
             itemAugments =
             {
                 [1] = { 29, 4 }, -- Rng.Atk.+5
@@ -2635,7 +2635,7 @@ xi.magian.trials =
         previousTrial = 946,
         requiredItem  =
         {
-            itemId       = xi.item.ASTRILD,
+            itemId       = invaderXim.item.ASTRILD,
             itemAugments =
             {
                 [1] = { 29, 4 }, -- Rng.Atk.+5
@@ -2647,7 +2647,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.ASTRILD,
+            itemId       = invaderXim.item.ASTRILD,
             itemAugments =
             {
                 [1] = { 29, 6 }, -- Rng.Atk.+7
@@ -2660,7 +2660,7 @@ xi.magian.trials =
         previousTrial = 947,
         requiredItem  =
         {
-            itemId       = xi.item.ASTRILD,
+            itemId       = invaderXim.item.ASTRILD,
             itemAugments =
             {
                 [1] = { 29, 6 }, -- Rng.Atk.+7
@@ -2672,7 +2672,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.ASTRILD,
+            itemId       = invaderXim.item.ASTRILD,
             itemAugments =
             {
                 [1] = { 45, 9 }, -- DMG:+10
@@ -2685,18 +2685,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MANDAU_75,
+            itemId = invaderXim.item.MANDAU_75,
         },
 
         textOffset     = 349,
         defeatMob      = false, -- NOTE: This is a sub-requirement of useWeaponskill
-        mobEcosystem   = xi.ecosystem.BEAST,
-        useWeaponskill = xi.weaponskill.MERCY_STROKE,
+        mobEcosystem   = invaderXim.ecosystem.BEAST,
+        useWeaponskill = invaderXim.weaponskill.MERCY_STROKE,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.MANDAU_75,
+            itemId       = invaderXim.item.MANDAU_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -2709,7 +2709,7 @@ xi.magian.trials =
         previousTrial = 991,
         requiredItem  =
         {
-            itemId       = xi.item.MANDAU_75,
+            itemId       = invaderXim.item.MANDAU_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -2718,13 +2718,13 @@ xi.magian.trials =
 
         textOffset     = 350,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.VERMIN,
-        useWeaponskill = xi.weaponskill.MERCY_STROKE,
+        mobEcosystem   = invaderXim.ecosystem.VERMIN,
+        useWeaponskill = invaderXim.weaponskill.MERCY_STROKE,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.MANDAU_75,
+            itemId       = invaderXim.item.MANDAU_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -2737,18 +2737,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.VAJRA_75,
+            itemId = invaderXim.item.VAJRA_75,
         },
 
         textOffset     = 351,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.VERMIN,
-        useWeaponskill = xi.weaponskill.MANDALIC_STAB,
+        mobEcosystem   = invaderXim.ecosystem.VERMIN,
+        useWeaponskill = invaderXim.weaponskill.MANDALIC_STAB,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.VAJRA_75,
+            itemId       = invaderXim.item.VAJRA_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -2761,7 +2761,7 @@ xi.magian.trials =
         previousTrial = 994,
         requiredItem  =
         {
-            itemId = xi.item.VAJRA_75,
+            itemId = invaderXim.item.VAJRA_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -2770,13 +2770,13 @@ xi.magian.trials =
 
         textOffset     = 352,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.UNDEAD,
-        useWeaponskill = xi.weaponskill.MANDALIC_STAB,
+        mobEcosystem   = invaderXim.ecosystem.UNDEAD,
+        useWeaponskill = invaderXim.weaponskill.MANDALIC_STAB,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.VAJRA_75,
+            itemId       = invaderXim.item.VAJRA_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -2789,18 +2789,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CARNWENHAN_75,
+            itemId = invaderXim.item.CARNWENHAN_75,
         },
 
         textOffset     = 353,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.AMORPH,
-        useWeaponskill = xi.weaponskill.MORDANT_RIME,
+        mobEcosystem   = invaderXim.ecosystem.AMORPH,
+        useWeaponskill = invaderXim.weaponskill.MORDANT_RIME,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.CARNWENHAN_75,
+            itemId       = invaderXim.item.CARNWENHAN_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -2813,7 +2813,7 @@ xi.magian.trials =
         previousTrial = 997,
         requiredItem  =
         {
-            itemId = xi.item.CARNWENHAN_75,
+            itemId = invaderXim.item.CARNWENHAN_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -2822,13 +2822,13 @@ xi.magian.trials =
 
         textOffset     = 354,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BIRD,
-        useWeaponskill = xi.weaponskill.MORDANT_RIME,
+        mobEcosystem   = invaderXim.ecosystem.BIRD,
+        useWeaponskill = invaderXim.weaponskill.MORDANT_RIME,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.CARNWENHAN_75,
+            itemId       = invaderXim.item.CARNWENHAN_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -2841,18 +2841,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.TERPSICHORE_75,
+            itemId = invaderXim.item.TERPSICHORE_75,
         },
 
         textOffset     = 355,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.UNDEAD,
-        useWeaponskill = xi.weaponskill.PYRRHIC_KLEOS,
+        mobEcosystem   = invaderXim.ecosystem.UNDEAD,
+        useWeaponskill = invaderXim.weaponskill.PYRRHIC_KLEOS,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.TERPSICHORE_75,
+            itemId       = invaderXim.item.TERPSICHORE_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -2865,7 +2865,7 @@ xi.magian.trials =
         previousTrial = 1000,
         requiredItem  =
         {
-            itemId = xi.item.TERPSICHORE_75,
+            itemId = invaderXim.item.TERPSICHORE_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -2874,13 +2874,13 @@ xi.magian.trials =
 
         textOffset     = 356,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AQUAN,
-        useWeaponskill = xi.weaponskill.PYRRHIC_KLEOS,
+        mobEcosystem   = invaderXim.ecosystem.AQUAN,
+        useWeaponskill = invaderXim.weaponskill.PYRRHIC_KLEOS,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.TERPSICHORE_75,
+            itemId       = invaderXim.item.TERPSICHORE_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -2893,18 +2893,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SPHARAI_75,
+            itemId = invaderXim.item.SPHARAI_75,
         },
 
         textOffset     = 357,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.VERMIN,
-        useWeaponskill = xi.weaponskill.FINAL_HEAVEN,
+        mobEcosystem   = invaderXim.ecosystem.VERMIN,
+        useWeaponskill = invaderXim.weaponskill.FINAL_HEAVEN,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.SPHARAI_75,
+            itemId       = invaderXim.item.SPHARAI_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -2917,7 +2917,7 @@ xi.magian.trials =
         previousTrial = 1003,
         requiredItem  =
         {
-            itemId       = xi.item.SPHARAI_75,
+            itemId       = invaderXim.item.SPHARAI_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -2926,13 +2926,13 @@ xi.magian.trials =
 
         textOffset     = 358,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.PLANTOID,
-        useWeaponskill = xi.weaponskill.FINAL_HEAVEN,
+        mobEcosystem   = invaderXim.ecosystem.PLANTOID,
+        useWeaponskill = invaderXim.weaponskill.FINAL_HEAVEN,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.SPHARAI_75,
+            itemId       = invaderXim.item.SPHARAI_75,
             itemAugments =
             {
                 [1] = { 740, 5 }, -- DMG:+6
@@ -2945,18 +2945,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.GLANZFAUST_75,
+            itemId = invaderXim.item.GLANZFAUST_75,
         },
 
         textOffset     = 359,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.BIRD,
-        useWeaponskill = xi.weaponskill.ASCETICS_FURY,
+        mobEcosystem   = invaderXim.ecosystem.BIRD,
+        useWeaponskill = invaderXim.weaponskill.ASCETICS_FURY,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.GLANZFAUST_75,
+            itemId       = invaderXim.item.GLANZFAUST_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -2969,7 +2969,7 @@ xi.magian.trials =
         previousTrial = 1006,
         requiredItem  =
         {
-            itemId       = xi.item.GLANZFAUST_75,
+            itemId       = invaderXim.item.GLANZFAUST_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -2978,13 +2978,13 @@ xi.magian.trials =
 
         textOffset     = 360,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AMORPH,
-        useWeaponskill = xi.weaponskill.ASCETICS_FURY,
+        mobEcosystem   = invaderXim.ecosystem.AMORPH,
+        useWeaponskill = invaderXim.weaponskill.ASCETICS_FURY,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.GLANZFAUST_75,
+            itemId       = invaderXim.item.GLANZFAUST_75,
             itemAugments =
             {
                 [1] = { 740, 5 }, -- DMG:+6
@@ -2997,18 +2997,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.KENKONKEN_75,
+            itemId = invaderXim.item.KENKONKEN_75,
         },
 
         textOffset     = 361,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.BEAST,
-        useWeaponskill = xi.weaponskill.STRINGING_PUMMEL,
+        mobEcosystem   = invaderXim.ecosystem.BEAST,
+        useWeaponskill = invaderXim.weaponskill.STRINGING_PUMMEL,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.KENKONKEN_75,
+            itemId       = invaderXim.item.KENKONKEN_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -3021,7 +3021,7 @@ xi.magian.trials =
         previousTrial = 1009,
         requiredItem  =
         {
-            itemId = xi.item.KENKONKEN_75,
+            itemId = invaderXim.item.KENKONKEN_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -3030,13 +3030,13 @@ xi.magian.trials =
 
         textOffset     = 362,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.ARCANA,
-        useWeaponskill = xi.weaponskill.STRINGING_PUMMEL,
+        mobEcosystem   = invaderXim.ecosystem.ARCANA,
+        useWeaponskill = invaderXim.weaponskill.STRINGING_PUMMEL,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.KENKONKEN_75,
+            itemId       = invaderXim.item.KENKONKEN_75,
             itemAugments =
             {
                 [1] = { 740, 4 }, -- DMG:+5
@@ -3049,18 +3049,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.EXCALIBUR_75,
+            itemId = invaderXim.item.EXCALIBUR_75,
         },
 
         textOffset     = 363,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.AQUAN,
-        useWeaponskill = xi.weaponskill.KNIGHTS_OF_ROUND,
+        mobEcosystem   = invaderXim.ecosystem.AQUAN,
+        useWeaponskill = invaderXim.weaponskill.KNIGHTS_OF_ROUND,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.EXCALIBUR_75,
+            itemId       = invaderXim.item.EXCALIBUR_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -3073,7 +3073,7 @@ xi.magian.trials =
         previousTrial = 1012,
         requiredItem  =
         {
-            itemId       = xi.item.EXCALIBUR_75,
+            itemId       = invaderXim.item.EXCALIBUR_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -3082,13 +3082,13 @@ xi.magian.trials =
 
         textOffset     = 364,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.UNDEAD,
-        useWeaponskill = xi.weaponskill.KNIGHTS_OF_ROUND,
+        mobEcosystem   = invaderXim.ecosystem.UNDEAD,
+        useWeaponskill = invaderXim.weaponskill.KNIGHTS_OF_ROUND,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.EXCALIBUR_75,
+            itemId       = invaderXim.item.EXCALIBUR_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -3101,18 +3101,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MURGLEIS_75,
+            itemId = invaderXim.item.MURGLEIS_75,
         },
 
         textOffset     = 365,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.AMORPH,
-        useWeaponskill = xi.weaponskill.DEATH_BLOSSOM,
+        mobEcosystem   = invaderXim.ecosystem.AMORPH,
+        useWeaponskill = invaderXim.weaponskill.DEATH_BLOSSOM,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.MURGLEIS_75,
+            itemId       = invaderXim.item.MURGLEIS_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -3125,7 +3125,7 @@ xi.magian.trials =
         previousTrial = 1015,
         requiredItem  =
         {
-            itemId = xi.item.MURGLEIS_75,
+            itemId = invaderXim.item.MURGLEIS_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -3134,13 +3134,13 @@ xi.magian.trials =
 
         textOffset     = 366,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.PLANTOID,
-        useWeaponskill = xi.weaponskill.DEATH_BLOSSOM,
+        mobEcosystem   = invaderXim.ecosystem.PLANTOID,
+        useWeaponskill = invaderXim.weaponskill.DEATH_BLOSSOM,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.MURGLEIS_75,
+            itemId       = invaderXim.item.MURGLEIS_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -3153,18 +3153,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BURTGANG_75,
+            itemId = invaderXim.item.BURTGANG_75,
         },
 
         textOffset     = 367,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.LIZARD,
-        useWeaponskill = xi.weaponskill.ATONEMENT,
+        mobEcosystem   = invaderXim.ecosystem.LIZARD,
+        useWeaponskill = invaderXim.weaponskill.ATONEMENT,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.BURTGANG_75,
+            itemId       = invaderXim.item.BURTGANG_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -3177,7 +3177,7 @@ xi.magian.trials =
         previousTrial = 1018,
         requiredItem  =
         {
-            itemId = xi.item.BURTGANG_75,
+            itemId = invaderXim.item.BURTGANG_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -3186,13 +3186,13 @@ xi.magian.trials =
 
         textOffset     = 368,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.DRAGON,
-        useWeaponskill = xi.weaponskill.ATONEMENT,
+        mobEcosystem   = invaderXim.ecosystem.DRAGON,
+        useWeaponskill = invaderXim.weaponskill.ATONEMENT,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.BURTGANG_75,
+            itemId       = invaderXim.item.BURTGANG_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -3205,18 +3205,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.TIZONA_75,
+            itemId = invaderXim.item.TIZONA_75,
         },
 
         textOffset     = 369,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.VERMIN,
-        useWeaponskill = xi.weaponskill.EXPIACION,
+        mobEcosystem   = invaderXim.ecosystem.VERMIN,
+        useWeaponskill = invaderXim.weaponskill.EXPIACION,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.TIZONA_75,
+            itemId       = invaderXim.item.TIZONA_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -3229,7 +3229,7 @@ xi.magian.trials =
         previousTrial = 1021,
         requiredItem  =
         {
-            itemId = xi.item.TIZONA_75,
+            itemId = invaderXim.item.TIZONA_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -3238,13 +3238,13 @@ xi.magian.trials =
 
         textOffset     = 370,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AQUAN,
-        useWeaponskill = xi.weaponskill.EXPIACION,
+        mobEcosystem   = invaderXim.ecosystem.AQUAN,
+        useWeaponskill = invaderXim.weaponskill.EXPIACION,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.TIZONA_75,
+            itemId       = invaderXim.item.TIZONA_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -3257,18 +3257,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.RAGNAROK_75,
+            itemId = invaderXim.item.RAGNAROK_75,
         },
 
         textOffset     = 371,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.BIRD,
-        useWeaponskill = xi.weaponskill.SCOURGE,
+        mobEcosystem   = invaderXim.ecosystem.BIRD,
+        useWeaponskill = invaderXim.weaponskill.SCOURGE,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.RAGNAROK_75,
+            itemId       = invaderXim.item.RAGNAROK_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -3281,7 +3281,7 @@ xi.magian.trials =
         previousTrial = 1024,
         requiredItem  =
         {
-            itemId       = xi.item.RAGNAROK_75,
+            itemId       = invaderXim.item.RAGNAROK_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -3290,13 +3290,13 @@ xi.magian.trials =
 
         textOffset     = 372,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BEAST,
-        useWeaponskill = xi.weaponskill.SCOURGE,
+        mobEcosystem   = invaderXim.ecosystem.BEAST,
+        useWeaponskill = invaderXim.weaponskill.SCOURGE,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.RAGNAROK_75,
+            itemId       = invaderXim.item.RAGNAROK_75,
             itemAugments =
             {
                 [1] = { 740, 8 }, -- DMG:+9
@@ -3309,18 +3309,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.GUTTLER_75,
+            itemId = invaderXim.item.GUTTLER_75,
         },
 
         textOffset     = 373,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.UNDEAD,
-        useWeaponskill = xi.weaponskill.ONSLAUGHT,
+        mobEcosystem   = invaderXim.ecosystem.UNDEAD,
+        useWeaponskill = invaderXim.weaponskill.ONSLAUGHT,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.GUTTLER_75,
+            itemId       = invaderXim.item.GUTTLER_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -3333,7 +3333,7 @@ xi.magian.trials =
         previousTrial = 1027,
         requiredItem  =
         {
-            itemId       = xi.item.GUTTLER_75,
+            itemId       = invaderXim.item.GUTTLER_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -3342,13 +3342,13 @@ xi.magian.trials =
 
         textOffset     = 374,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.ARCANA,
-        useWeaponskill = xi.weaponskill.ONSLAUGHT,
+        mobEcosystem   = invaderXim.ecosystem.ARCANA,
+        useWeaponskill = invaderXim.weaponskill.ONSLAUGHT,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.GUTTLER_75,
+            itemId       = invaderXim.item.GUTTLER_75,
             itemAugments =
             {
                 [1] = { 740, 5 }, -- DMG:+6
@@ -3361,18 +3361,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.AYMUR_75,
+            itemId = invaderXim.item.AYMUR_75,
         },
 
         textOffset     = 375,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.LIZARD,
-        useWeaponskill = xi.weaponskill.PRIMAL_REND,
+        mobEcosystem   = invaderXim.ecosystem.LIZARD,
+        useWeaponskill = invaderXim.weaponskill.PRIMAL_REND,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.AYMUR_75,
+            itemId       = invaderXim.item.AYMUR_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -3385,7 +3385,7 @@ xi.magian.trials =
         previousTrial = 1030,
         requiredItem  =
         {
-            itemId = xi.item.AYMUR_75,
+            itemId = invaderXim.item.AYMUR_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -3394,13 +3394,13 @@ xi.magian.trials =
 
         textOffset     = 376,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BIRD,
-        useWeaponskill = xi.weaponskill.PRIMAL_REND,
+        mobEcosystem   = invaderXim.ecosystem.BIRD,
+        useWeaponskill = invaderXim.weaponskill.PRIMAL_REND,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.AYMUR_75,
+            itemId       = invaderXim.item.AYMUR_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -3413,18 +3413,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BRAVURA_75,
+            itemId = invaderXim.item.BRAVURA_75,
         },
 
         textOffset     = 377,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.LIZARD,
-        useWeaponskill = xi.weaponskill.METATRON_TORMENT,
+        mobEcosystem   = invaderXim.ecosystem.LIZARD,
+        useWeaponskill = invaderXim.weaponskill.METATRON_TORMENT,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.BRAVURA_75,
+            itemId       = invaderXim.item.BRAVURA_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -3437,7 +3437,7 @@ xi.magian.trials =
         previousTrial = 1033,
         requiredItem  =
         {
-            itemId       = xi.item.BRAVURA_75,
+            itemId       = invaderXim.item.BRAVURA_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -3446,13 +3446,13 @@ xi.magian.trials =
 
         textOffset     = 378,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.PLANTOID,
-        useWeaponskill = xi.weaponskill.METATRON_TORMENT,
+        mobEcosystem   = invaderXim.ecosystem.PLANTOID,
+        useWeaponskill = invaderXim.weaponskill.METATRON_TORMENT,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.BRAVURA_75,
+            itemId       = invaderXim.item.BRAVURA_75,
             itemAugments =
             {
                 [1] = { 740, 6 }, -- DMG:+7
@@ -3465,18 +3465,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CONQUEROR_75,
+            itemId = invaderXim.item.CONQUEROR_75,
         },
 
         textOffset     = 379,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.AQUAN,
-        useWeaponskill = xi.weaponskill.KINGS_JUSTICE,
+        mobEcosystem   = invaderXim.ecosystem.AQUAN,
+        useWeaponskill = invaderXim.weaponskill.KINGS_JUSTICE,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.CONQUEROR_75,
+            itemId       = invaderXim.item.CONQUEROR_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -3489,7 +3489,7 @@ xi.magian.trials =
         previousTrial = 1036,
         requiredItem  =
         {
-            itemId = xi.item.CONQUEROR_75,
+            itemId = invaderXim.item.CONQUEROR_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -3498,13 +3498,13 @@ xi.magian.trials =
 
         textOffset     = 380,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.DRAGON,
-        useWeaponskill = xi.weaponskill.KINGS_JUSTICE,
+        mobEcosystem   = invaderXim.ecosystem.DRAGON,
+        useWeaponskill = invaderXim.weaponskill.KINGS_JUSTICE,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.CONQUEROR_75,
+            itemId       = invaderXim.item.CONQUEROR_75,
             itemAugments =
             {
                 [1] = { 740, 7 }, -- DMG:+8
@@ -3517,18 +3517,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.GUNGNIR_75,
+            itemId = invaderXim.item.GUNGNIR_75,
         },
 
         textOffset     = 381,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.AMORPH,
-        useWeaponskill = xi.weaponskill.GEIRSKOGUL,
+        mobEcosystem   = invaderXim.ecosystem.AMORPH,
+        useWeaponskill = invaderXim.weaponskill.GEIRSKOGUL,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.GUNGNIR_75,
+            itemId       = invaderXim.item.GUNGNIR_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -3541,7 +3541,7 @@ xi.magian.trials =
         previousTrial = 1039,
         requiredItem  =
         {
-            itemId       = xi.item.GUNGNIR_75,
+            itemId       = invaderXim.item.GUNGNIR_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -3550,13 +3550,13 @@ xi.magian.trials =
 
         textOffset     = 382,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.LIZARD,
-        useWeaponskill = xi.weaponskill.GEIRSKOGUL,
+        mobEcosystem   = invaderXim.ecosystem.LIZARD,
+        useWeaponskill = invaderXim.weaponskill.GEIRSKOGUL,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.GUNGNIR_75,
+            itemId       = invaderXim.item.GUNGNIR_75,
             itemAugments =
             {
                 [1] = { 740, 6 }, -- DMG:+7
@@ -3569,18 +3569,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.RYUNOHIGE_75,
+            itemId = invaderXim.item.RYUNOHIGE_75,
         },
 
         textOffset     = 383,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.UNDEAD,
-        useWeaponskill = xi.weaponskill.DRAKESBANE,
+        mobEcosystem   = invaderXim.ecosystem.UNDEAD,
+        useWeaponskill = invaderXim.weaponskill.DRAKESBANE,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.RYUNOHIGE_75,
+            itemId       = invaderXim.item.RYUNOHIGE_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -3593,7 +3593,7 @@ xi.magian.trials =
         previousTrial = 1042,
         requiredItem  =
         {
-            itemId       = xi.item.RYUNOHIGE_75,
+            itemId       = invaderXim.item.RYUNOHIGE_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -3602,13 +3602,13 @@ xi.magian.trials =
 
         textOffset     = 384,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.PLANTOID,
-        useWeaponskill = xi.weaponskill.DRAKESBANE,
+        mobEcosystem   = invaderXim.ecosystem.PLANTOID,
+        useWeaponskill = invaderXim.weaponskill.DRAKESBANE,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.RYUNOHIGE_75,
+            itemId       = invaderXim.item.RYUNOHIGE_75,
             itemAugments =
             {
                 [1] = { 740, 6 }, -- DMG:+7
@@ -3621,18 +3621,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.APOCALYPSE_75,
+            itemId = invaderXim.item.APOCALYPSE_75,
         },
 
         textOffset     = 385,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.UNDEAD,
-        useWeaponskill = xi.weaponskill.CATASTROPHE,
+        mobEcosystem   = invaderXim.ecosystem.UNDEAD,
+        useWeaponskill = invaderXim.weaponskill.CATASTROPHE,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.APOCALYPSE_75,
+            itemId       = invaderXim.item.APOCALYPSE_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -3645,7 +3645,7 @@ xi.magian.trials =
         previousTrial = 1045,
         requiredItem  =
         {
-            itemId       = xi.item.APOCALYPSE_75,
+            itemId       = invaderXim.item.APOCALYPSE_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -3654,13 +3654,13 @@ xi.magian.trials =
 
         textOffset     = 386,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AQUAN,
-        useWeaponskill = xi.weaponskill.CATASTROPHE,
+        mobEcosystem   = invaderXim.ecosystem.AQUAN,
+        useWeaponskill = invaderXim.weaponskill.CATASTROPHE,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.APOCALYPSE_75,
+            itemId       = invaderXim.item.APOCALYPSE_75,
             itemAugments =
             {
                 [1] = { 740, 6 }, -- DMG:+7
@@ -3673,18 +3673,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.LIBERATOR_75,
+            itemId = invaderXim.item.LIBERATOR_75,
         },
 
         textOffset     = 387,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.VERMIN,
-        useWeaponskill = xi.weaponskill.INSURGENCY,
+        mobEcosystem   = invaderXim.ecosystem.VERMIN,
+        useWeaponskill = invaderXim.weaponskill.INSURGENCY,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.LIBERATOR_75,
+            itemId       = invaderXim.item.LIBERATOR_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -3697,7 +3697,7 @@ xi.magian.trials =
         previousTrial = 1048,
         requiredItem  =
         {
-            itemId = xi.item.LIBERATOR_75,
+            itemId = invaderXim.item.LIBERATOR_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -3706,13 +3706,13 @@ xi.magian.trials =
 
         textOffset     = 388,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AMORPH,
-        useWeaponskill = xi.weaponskill.INSURGENCY,
+        mobEcosystem   = invaderXim.ecosystem.AMORPH,
+        useWeaponskill = invaderXim.weaponskill.INSURGENCY,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.LIBERATOR_75,
+            itemId       = invaderXim.item.LIBERATOR_75,
             itemAugments =
             {
                 [1] = { 740, 7 }, -- DMG:+8
@@ -3725,18 +3725,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.KIKOKU_75,
+            itemId = invaderXim.item.KIKOKU_75,
         },
 
         textOffset     = 389,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.BIRD,
-        useWeaponskill = xi.weaponskill.BLADE_METSU,
+        mobEcosystem   = invaderXim.ecosystem.BIRD,
+        useWeaponskill = invaderXim.weaponskill.BLADE_METSU,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.KIKOKU_75,
+            itemId       = invaderXim.item.KIKOKU_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -3749,7 +3749,7 @@ xi.magian.trials =
         previousTrial = 1051,
         requiredItem  =
         {
-            itemId       = xi.item.KIKOKU_75,
+            itemId       = invaderXim.item.KIKOKU_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -3758,13 +3758,13 @@ xi.magian.trials =
 
         textOffset     = 390,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.ARCANA,
-        useWeaponskill = xi.weaponskill.BLADE_METSU,
+        mobEcosystem   = invaderXim.ecosystem.ARCANA,
+        useWeaponskill = invaderXim.weaponskill.BLADE_METSU,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.KIKOKU_75,
+            itemId       = invaderXim.item.KIKOKU_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -3777,18 +3777,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.NAGI_75,
+            itemId = invaderXim.item.NAGI_75,
         },
 
         textOffset     = 391,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.AQUAN,
-        useWeaponskill = xi.weaponskill.BLADE_KAMU,
+        mobEcosystem   = invaderXim.ecosystem.AQUAN,
+        useWeaponskill = invaderXim.weaponskill.BLADE_KAMU,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.NAGI_75,
+            itemId       = invaderXim.item.NAGI_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -3801,7 +3801,7 @@ xi.magian.trials =
         previousTrial = 1054,
         requiredItem  =
         {
-            itemId       = xi.item.NAGI_75,
+            itemId       = invaderXim.item.NAGI_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -3810,13 +3810,13 @@ xi.magian.trials =
 
         textOffset     = 392,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.LIZARD,
-        useWeaponskill = xi.weaponskill.BLADE_KAMU,
+        mobEcosystem   = invaderXim.ecosystem.LIZARD,
+        useWeaponskill = invaderXim.weaponskill.BLADE_KAMU,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.NAGI_75,
+            itemId       = invaderXim.item.NAGI_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -3829,18 +3829,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.AMANOMURAKUMO_75,
+            itemId = invaderXim.item.AMANOMURAKUMO_75,
         },
 
         textOffset     = 393,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.BEAST,
-        useWeaponskill = xi.weaponskill.TACHI_KAITEN,
+        mobEcosystem   = invaderXim.ecosystem.BEAST,
+        useWeaponskill = invaderXim.weaponskill.TACHI_KAITEN,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.AMANOMURAKUMO_75,
+            itemId       = invaderXim.item.AMANOMURAKUMO_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -3853,7 +3853,7 @@ xi.magian.trials =
         previousTrial = 1057,
         requiredItem  =
         {
-            itemId       = xi.item.AMANOMURAKUMO_75,
+            itemId       = invaderXim.item.AMANOMURAKUMO_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -3862,13 +3862,13 @@ xi.magian.trials =
 
         textOffset     = 394,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.VERMIN,
-        useWeaponskill = xi.weaponskill.TACHI_KAITEN,
+        mobEcosystem   = invaderXim.ecosystem.VERMIN,
+        useWeaponskill = invaderXim.weaponskill.TACHI_KAITEN,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.AMANOMURAKUMO_75,
+            itemId       = invaderXim.item.AMANOMURAKUMO_75,
             itemAugments =
             {
                 [1] = { 740, 4 }, -- DMG:+5
@@ -3881,18 +3881,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.KOGARASUMARU_75,
+            itemId = invaderXim.item.KOGARASUMARU_75,
         },
 
         textOffset     = 395,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.UNDEAD,
-        useWeaponskill = xi.weaponskill.TACHI_RANA,
+        mobEcosystem   = invaderXim.ecosystem.UNDEAD,
+        useWeaponskill = invaderXim.weaponskill.TACHI_RANA,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.KOGARASUMARU_75,
+            itemId       = invaderXim.item.KOGARASUMARU_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -3905,7 +3905,7 @@ xi.magian.trials =
         previousTrial = 1060,
         requiredItem  =
         {
-            itemId       = xi.item.KOGARASUMARU_75,
+            itemId       = invaderXim.item.KOGARASUMARU_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -3914,13 +3914,13 @@ xi.magian.trials =
 
         textOffset     = 396,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BIRD,
-        useWeaponskill = xi.weaponskill.TACHI_RANA,
+        mobEcosystem   = invaderXim.ecosystem.BIRD,
+        useWeaponskill = invaderXim.weaponskill.TACHI_RANA,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.KOGARASUMARU_75,
+            itemId       = invaderXim.item.KOGARASUMARU_75,
             itemAugments =
             {
                 [1] = { 740, 4 }, -- DMG:+5
@@ -3933,18 +3933,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MJOLLNIR_75,
+            itemId = invaderXim.item.MJOLLNIR_75,
         },
 
         textOffset     = 397,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.LIZARD,
-        useWeaponskill = xi.weaponskill.RANDGRITH,
+        mobEcosystem   = invaderXim.ecosystem.LIZARD,
+        useWeaponskill = invaderXim.weaponskill.RANDGRITH,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.MJOLLNIR_75,
+            itemId       = invaderXim.item.MJOLLNIR_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -3957,7 +3957,7 @@ xi.magian.trials =
         previousTrial = 1063,
         requiredItem  =
         {
-            itemId       = xi.item.MJOLLNIR_75,
+            itemId       = invaderXim.item.MJOLLNIR_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -3966,13 +3966,13 @@ xi.magian.trials =
 
         textOffset     = 398,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BEAST,
-        useWeaponskill = xi.weaponskill.RANDGRITH,
+        mobEcosystem   = invaderXim.ecosystem.BEAST,
+        useWeaponskill = invaderXim.weaponskill.RANDGRITH,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.MJOLLNIR_75,
+            itemId       = invaderXim.item.MJOLLNIR_75,
             itemAugments =
             {
                 [1] = { 740, 7 }, -- DMG:+8
@@ -3985,18 +3985,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.YAGRUSH_75,
+            itemId = invaderXim.item.YAGRUSH_75,
         },
 
         textOffset     = 399,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.BIRD,
-        useWeaponskill = xi.weaponskill.MYSTIC_BOON,
+        mobEcosystem   = invaderXim.ecosystem.BIRD,
+        useWeaponskill = invaderXim.weaponskill.MYSTIC_BOON,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.YAGRUSH_75,
+            itemId       = invaderXim.item.YAGRUSH_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -4009,7 +4009,7 @@ xi.magian.trials =
         previousTrial = 1066,
         requiredItem  =
         {
-            itemId       = xi.item.YAGRUSH_75,
+            itemId       = invaderXim.item.YAGRUSH_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -4018,13 +4018,13 @@ xi.magian.trials =
 
         textOffset     = 400,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.DRAGON,
-        useWeaponskill = xi.weaponskill.MYSTIC_BOON,
+        mobEcosystem   = invaderXim.ecosystem.DRAGON,
+        useWeaponskill = invaderXim.weaponskill.MYSTIC_BOON,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.YAGRUSH_75,
+            itemId       = invaderXim.item.YAGRUSH_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -4037,18 +4037,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CLAUSTRUM_75,
+            itemId = invaderXim.item.CLAUSTRUM_75,
         },
 
         textOffset     = 401,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.AQUAN,
-        useWeaponskill = xi.weaponskill.GATE_OF_TARTARUS,
+        mobEcosystem   = invaderXim.ecosystem.AQUAN,
+        useWeaponskill = invaderXim.weaponskill.GATE_OF_TARTARUS,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.CLAUSTRUM_75,
+            itemId       = invaderXim.item.CLAUSTRUM_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -4061,7 +4061,7 @@ xi.magian.trials =
         previousTrial = 1069,
         requiredItem  =
         {
-            itemId       = xi.item.CLAUSTRUM_75,
+            itemId       = invaderXim.item.CLAUSTRUM_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -4070,13 +4070,13 @@ xi.magian.trials =
 
         textOffset     = 402,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.LIZARD,
-        useWeaponskill = xi.weaponskill.GATE_OF_TARTARUS,
+        mobEcosystem   = invaderXim.ecosystem.LIZARD,
+        useWeaponskill = invaderXim.weaponskill.GATE_OF_TARTARUS,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.CLAUSTRUM_75,
+            itemId       = invaderXim.item.CLAUSTRUM_75,
             itemAugments =
             {
                 [1] = { 740, 9 }, -- DMG:+10
@@ -4089,18 +4089,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.LAEVATEINN_75,
+            itemId = invaderXim.item.LAEVATEINN_75,
         },
 
         textOffset     = 403,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.VERMIN,
-        useWeaponskill = xi.weaponskill.VIDOHUNIR,
+        mobEcosystem   = invaderXim.ecosystem.VERMIN,
+        useWeaponskill = invaderXim.weaponskill.VIDOHUNIR,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.LAEVATEINN_75,
+            itemId       = invaderXim.item.LAEVATEINN_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -4113,7 +4113,7 @@ xi.magian.trials =
         previousTrial = 1072,
         requiredItem  =
         {
-            itemId       = xi.item.LAEVATEINN_75,
+            itemId       = invaderXim.item.LAEVATEINN_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -4122,13 +4122,13 @@ xi.magian.trials =
 
         textOffset     = 404,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.UNDEAD,
-        useWeaponskill = xi.weaponskill.VIDOHUNIR,
+        mobEcosystem   = invaderXim.ecosystem.UNDEAD,
+        useWeaponskill = invaderXim.weaponskill.VIDOHUNIR,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.LAEVATEINN_75,
+            itemId       = invaderXim.item.LAEVATEINN_75,
             itemAugments =
             {
                 [1] = { 740, 10 }, -- DMG:+11
@@ -4141,18 +4141,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.NIRVANA_75,
+            itemId = invaderXim.item.NIRVANA_75,
         },
 
         textOffset     = 405,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.BEAST,
-        useWeaponskill = xi.weaponskill.GARLAND_OF_BLISS,
+        mobEcosystem   = invaderXim.ecosystem.BEAST,
+        useWeaponskill = invaderXim.weaponskill.GARLAND_OF_BLISS,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.NIRVANA_75,
+            itemId       = invaderXim.item.NIRVANA_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -4165,7 +4165,7 @@ xi.magian.trials =
         previousTrial = 1075,
         requiredItem  =
         {
-            itemId       = xi.item.NIRVANA_75,
+            itemId       = invaderXim.item.NIRVANA_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -4174,13 +4174,13 @@ xi.magian.trials =
 
         textOffset     = 406,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.ARCANA,
-        useWeaponskill = xi.weaponskill.GARLAND_OF_BLISS,
+        mobEcosystem   = invaderXim.ecosystem.ARCANA,
+        useWeaponskill = invaderXim.weaponskill.GARLAND_OF_BLISS,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.NIRVANA_75,
+            itemId       = invaderXim.item.NIRVANA_75,
             itemAugments =
             {
                 [1] = { 740, 10 }, -- DMG:+11
@@ -4193,18 +4193,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.TUPSIMATI_75,
+            itemId = invaderXim.item.TUPSIMATI_75,
         },
 
         textOffset     = 407,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.LIZARD,
-        useWeaponskill = xi.weaponskill.OMNISCIENCE,
+        mobEcosystem   = invaderXim.ecosystem.LIZARD,
+        useWeaponskill = invaderXim.weaponskill.OMNISCIENCE,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.TUPSIMATI_75,
+            itemId       = invaderXim.item.TUPSIMATI_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -4217,7 +4217,7 @@ xi.magian.trials =
         previousTrial = 1078,
         requiredItem  =
         {
-            itemId       = xi.item.TUPSIMATI_75,
+            itemId       = invaderXim.item.TUPSIMATI_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -4226,13 +4226,13 @@ xi.magian.trials =
 
         textOffset     = 408,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.VERMIN,
-        useWeaponskill = xi.weaponskill.OMNISCIENCE,
+        mobEcosystem   = invaderXim.ecosystem.VERMIN,
+        useWeaponskill = invaderXim.weaponskill.OMNISCIENCE,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.TUPSIMATI_75,
+            itemId       = invaderXim.item.TUPSIMATI_75,
             itemAugments =
             {
                 [1] = { 740, 10 }, -- DMG:+11
@@ -4245,18 +4245,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ANNIHILATOR_75,
+            itemId = invaderXim.item.ANNIHILATOR_75,
         },
 
         textOffset     = 409,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.BEAST,
-        useWeaponskill = xi.weaponskill.CORONACH,
+        mobEcosystem   = invaderXim.ecosystem.BEAST,
+        useWeaponskill = invaderXim.weaponskill.CORONACH,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.ANNIHILATOR_75,
+            itemId       = invaderXim.item.ANNIHILATOR_75,
             itemAugments =
             {
                 [1] = { 746, 1 }, -- DMG:+2 (Ranged)
@@ -4269,7 +4269,7 @@ xi.magian.trials =
         previousTrial = 1081,
         requiredItem  =
         {
-            itemId       = xi.item.ANNIHILATOR_75,
+            itemId       = invaderXim.item.ANNIHILATOR_75,
             itemAugments =
             {
                 [1] = { 746, 1 }, -- DMG:+2 (Ranged)
@@ -4278,13 +4278,13 @@ xi.magian.trials =
 
         textOffset     = 410,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AQUAN,
-        useWeaponskill = xi.weaponskill.CORONACH,
+        mobEcosystem   = invaderXim.ecosystem.AQUAN,
+        useWeaponskill = invaderXim.weaponskill.CORONACH,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.ANNIHILATOR_75,
+            itemId       = invaderXim.item.ANNIHILATOR_75,
             itemAugments =
             {
                 [1] = { 746, 5 }, -- DMG:+6 (Ranged)
@@ -4297,18 +4297,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.GASTRAPHETES_75,
+            itemId = invaderXim.item.GASTRAPHETES_75,
         },
 
         textOffset     = 411,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.BIRD,
-        useWeaponskill = xi.weaponskill.TRUEFLIGHT,
+        mobEcosystem   = invaderXim.ecosystem.BIRD,
+        useWeaponskill = invaderXim.weaponskill.TRUEFLIGHT,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.GASTRAPHETES_75,
+            itemId       = invaderXim.item.GASTRAPHETES_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -4321,7 +4321,7 @@ xi.magian.trials =
         previousTrial = 1084,
         requiredItem  =
         {
-            itemId       = xi.item.GASTRAPHETES_75,
+            itemId       = invaderXim.item.GASTRAPHETES_75,
             itemAugments =
             {
                 [1] = { 740, 0 }, -- DMG:+1
@@ -4330,13 +4330,13 @@ xi.magian.trials =
 
         textOffset     = 412,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AMORPH,
-        useWeaponskill = xi.weaponskill.TRUEFLIGHT,
+        mobEcosystem   = invaderXim.ecosystem.AMORPH,
+        useWeaponskill = invaderXim.weaponskill.TRUEFLIGHT,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.GASTRAPHETES_75,
+            itemId       = invaderXim.item.GASTRAPHETES_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -4349,18 +4349,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.DEATH_PENALTY_75,
+            itemId = invaderXim.item.DEATH_PENALTY_75,
         },
 
         textOffset     = 413,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.AQUAN,
-        useWeaponskill = xi.weaponskill.LEADEN_SALUTE,
+        mobEcosystem   = invaderXim.ecosystem.AQUAN,
+        useWeaponskill = invaderXim.weaponskill.LEADEN_SALUTE,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.DEATH_PENALTY_75,
+            itemId       = invaderXim.item.DEATH_PENALTY_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -4373,7 +4373,7 @@ xi.magian.trials =
         previousTrial = 1087,
         requiredItem  =
         {
-            itemId       = xi.item.DEATH_PENALTY_75,
+            itemId       = invaderXim.item.DEATH_PENALTY_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -4382,13 +4382,13 @@ xi.magian.trials =
 
         textOffset     = 414,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.DRAGON,
-        useWeaponskill = xi.weaponskill.LEADEN_SALUTE,
+        mobEcosystem   = invaderXim.ecosystem.DRAGON,
+        useWeaponskill = invaderXim.weaponskill.LEADEN_SALUTE,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.DEATH_PENALTY_75,
+            itemId       = invaderXim.item.DEATH_PENALTY_75,
             itemAugments =
             {
                 [1] = { 740, 4 }, -- DMG:+5
@@ -4401,18 +4401,18 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.YOICHINOYUMI_75,
+            itemId = invaderXim.item.YOICHINOYUMI_75,
         },
 
         textOffset     = 415,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.AMORPH,
-        useWeaponskill = xi.weaponskill.NAMAS_ARROW,
+        mobEcosystem   = invaderXim.ecosystem.AMORPH,
+        useWeaponskill = invaderXim.weaponskill.NAMAS_ARROW,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.YOICHINOYUMI_75,
+            itemId       = invaderXim.item.YOICHINOYUMI_75,
             itemAugments =
             {
                 [1] = { 746, 1 }, -- DMG:+2 (Ranged)
@@ -4425,7 +4425,7 @@ xi.magian.trials =
         previousTrial = 1090,
         requiredItem  =
         {
-            itemId       = xi.item.YOICHINOYUMI_75,
+            itemId       = invaderXim.item.YOICHINOYUMI_75,
             itemAugments =
             {
                 [1] = { 746, 1 }, -- DMG:+2 (Ranged)
@@ -4434,13 +4434,13 @@ xi.magian.trials =
 
         textOffset     = 416,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BEAST,
-        useWeaponskill = xi.weaponskill.NAMAS_ARROW,
+        mobEcosystem   = invaderXim.ecosystem.BEAST,
+        useWeaponskill = invaderXim.weaponskill.NAMAS_ARROW,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.YOICHINOYUMI_75,
+            itemId       = invaderXim.item.YOICHINOYUMI_75,
             itemAugments =
             {
                 [1] = { 746, 4 }, -- DMG:+5 (Ranged)
@@ -4453,7 +4453,7 @@ xi.magian.trials =
         previousTrial = 9,
         requiredItem  =
         {
-            itemId       = xi.item.KARTIKA,
+            itemId       = invaderXim.item.KARTIKA,
             itemAugments =
             {
                 [1] = { 45, 4 }, -- DMG:+5
@@ -4465,7 +4465,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.KARTIKA,
+            itemId       = invaderXim.item.KARTIKA,
             itemAugments =
             {
                 [1] = { 45, 5 }, -- DMG:+6
@@ -4478,7 +4478,7 @@ xi.magian.trials =
         previousTrial = 75,
         requiredItem  =
         {
-            itemId       = xi.item.MANTIS,
+            itemId       = invaderXim.item.MANTIS,
             itemAugments =
             {
                 [1] = { 45, 6 }, -- DMG:+7
@@ -4490,7 +4490,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.MANTIS,
+            itemId = invaderXim.item.MANTIS,
             itemAugments =
             {
                 [1] = { 45, 7 }, -- DMG:+8
@@ -4503,7 +4503,7 @@ xi.magian.trials =
         previousTrial = 1138,
         requiredItem  =
         {
-            itemId = xi.item.MANTIS,
+            itemId = invaderXim.item.MANTIS,
             itemAugments =
             {
                 [1] = { 45, 7 }, -- DMG:+8
@@ -4511,12 +4511,12 @@ xi.magian.trials =
         },
 
         textOffset  = 70,
-        tradeItem   = xi.item.TWO_LEAF_CHLORIS_BUD,
+        tradeItem   = invaderXim.item.TWO_LEAF_CHLORIS_BUD,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.VERETHRAGNA,
+            itemId = invaderXim.item.VERETHRAGNA,
         },
     },
 
@@ -4525,7 +4525,7 @@ xi.magian.trials =
         previousTrial = 1138,
         requiredItem  =
         {
-            itemId = xi.item.MANTIS,
+            itemId = invaderXim.item.MANTIS,
             itemAugments =
             {
                 [1] = { 45, 7 }, -- DMG:+8
@@ -4533,12 +4533,12 @@ xi.magian.trials =
         },
 
         textOffset  = 70,
-        tradeItem   = xi.item.COIN_OF_ADVANCEMENT,
+        tradeItem   = invaderXim.item.COIN_OF_ADVANCEMENT,
         numRequired = 15,
 
         rewardItem =
         {
-            itemId = xi.item.REVENANT_FISTS,
+            itemId = invaderXim.item.REVENANT_FISTS,
         },
     },
 
@@ -4547,7 +4547,7 @@ xi.magian.trials =
         previousTrial = 156,
         requiredItem  =
         {
-            itemId       = xi.item.NOBILIS,
+            itemId       = invaderXim.item.NOBILIS,
             itemAugments =
             {
                 [1] = { 45, 6 }, -- DMG:+7
@@ -4559,7 +4559,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.NOBILIS,
+            itemId       = invaderXim.item.NOBILIS,
             itemAugments =
             {
                 [1] = { 45, 7 }, -- DMG:+8
@@ -4572,7 +4572,7 @@ xi.magian.trials =
         previousTrial = 223,
         requiredItem  =
         {
-            itemId       = xi.item.ALBION,
+            itemId       = invaderXim.item.ALBION,
             itemAugments =
             {
                 [1] = { 45, 9 }, -- DMG:+10
@@ -4584,7 +4584,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.ALBION,
+            itemId       = invaderXim.item.ALBION,
             itemAugments =
             {
                 [1] = { 45, 11 }, -- DMG:+12
@@ -4597,7 +4597,7 @@ xi.magian.trials =
         previousTrial = 289,
         requiredItem  =
         {
-            itemId       = xi.item.BONEBITER,
+            itemId       = invaderXim.item.BONEBITER,
             itemAugments =
             {
                 [1] = { 45, 5 }, -- DMG:+6
@@ -4609,7 +4609,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.BONEBITER,
+            itemId       = invaderXim.item.BONEBITER,
             itemAugments =
             {
                 [1] = { 45, 7 }, -- DMG:+8
@@ -4622,7 +4622,7 @@ xi.magian.trials =
         previousTrial = 371,
         requiredItem  =
         {
-            itemId       = xi.item.BONESPLITTER,
+            itemId       = invaderXim.item.BONESPLITTER,
             itemAugments =
             {
                 [1] = { 45, 10 }, -- DMG:+11
@@ -4634,7 +4634,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.BONESPLITTER,
+            itemId       = invaderXim.item.BONESPLITTER,
             itemAugments =
             {
                 [1] = { 45, 12 }, -- DMG:+13
@@ -4647,7 +4647,7 @@ xi.magian.trials =
         previousTrial = 437,
         requiredItem  =
         {
-            itemId       = xi.item.OATHKEEPER,
+            itemId       = invaderXim.item.OATHKEEPER,
             itemAugments =
             {
                 [1] = { 45, 11 }, -- DMG:+12
@@ -4659,7 +4659,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.OATHKEEPER,
+            itemId       = invaderXim.item.OATHKEEPER,
             itemAugments =
             {
                 [1] = { 45, 13 }, -- DMG:+14
@@ -4672,7 +4672,7 @@ xi.magian.trials =
         previousTrial = 519,
         requiredItem  =
         {
-            itemId = xi.item.ULTIMATUM,
+            itemId = invaderXim.item.ULTIMATUM,
             itemAugments =
             {
                 [1] = { 45, 11 }, -- DMG:+12
@@ -4684,7 +4684,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.ULTIMATUM,
+            itemId       = invaderXim.item.ULTIMATUM,
             itemAugments =
             {
                 [1] = { 45, 13 }, -- DMG:+14
@@ -4697,7 +4697,7 @@ xi.magian.trials =
         previousTrial = 585,
         requiredItem  =
         {
-            itemId       = xi.item.MOZU,
+            itemId       = invaderXim.item.MOZU,
             itemAugments =
             {
                 [1] = { 45, 6 }, -- DMG:+7
@@ -4709,7 +4709,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.MOZU,
+            itemId       = invaderXim.item.MOZU,
             itemAugments =
             {
                 [1] = { 45, 7 }, -- DMG:+8
@@ -4722,7 +4722,7 @@ xi.magian.trials =
         previousTrial = 651,
         requiredItem  =
         {
-            itemId       = xi.item.RADENNOTACHI,
+            itemId       = invaderXim.item.RADENNOTACHI,
             itemAugments =
             {
                 [1] = { 45, 9 }, -- DMG:+10
@@ -4734,7 +4734,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.RADENNOTACHI,
+            itemId       = invaderXim.item.RADENNOTACHI,
             itemAugments =
             {
                 [1] = { 45, 11 }, -- DMG:+12
@@ -4747,7 +4747,7 @@ xi.magian.trials =
         previousTrial = 717,
         requiredItem  =
         {
-            itemId       = xi.item.CULACULA,
+            itemId       = invaderXim.item.CULACULA,
             itemAugments =
             {
                 [1] = { 45, 14 }, -- DMG:+15
@@ -4759,7 +4759,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.CULACULA,
+            itemId       = invaderXim.item.CULACULA,
             itemAugments =
             {
                 [1] = { 45, 15 }, -- DMG:+16
@@ -4772,7 +4772,7 @@ xi.magian.trials =
         previousTrial = 783,
         requiredItem  =
         {
-            itemId       = xi.item.SLAINE,
+            itemId       = invaderXim.item.SLAINE,
             itemAugments =
             {
                 [1] = { 45, 12 }, -- DMG:+13
@@ -4784,7 +4784,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.SLAINE,
+            itemId       = invaderXim.item.SLAINE,
             itemAugments =
             {
                 [1] = { 45, 14 }, -- DMG:+15
@@ -4797,7 +4797,7 @@ xi.magian.trials =
         previousTrial = 898,
         requiredItem  =
         {
-            itemId       = xi.item.MAGNATUS,
+            itemId       = invaderXim.item.MAGNATUS,
             itemAugments =
             {
                 [1] = { 45, 6 }, -- DMG:+7
@@ -4809,7 +4809,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.MAGNATUS,
+            itemId       = invaderXim.item.MAGNATUS,
             itemAugments =
             {
                 [1] = { 45, 7 }, -- DMG:+8
@@ -4822,17 +4822,17 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ANARCHY,
+            itemId = invaderXim.item.ANARCHY,
         },
 
         textOffset     = 768,
         defeatMob      = false,
-        useWeaponskill = xi.weaponskill.HOT_SHOT,
+        useWeaponskill = invaderXim.weaponskill.HOT_SHOT,
         numRequired    = 100,
 
         rewardItem =
         {
-            itemId       = xi.item.ANARCHY,
+            itemId       = invaderXim.item.ANARCHY,
             itemAugments =
             {
                 [1] = { 746,  0 }, -- DMG:+1 (Ranged)
@@ -4846,7 +4846,7 @@ xi.magian.trials =
         previousTrial = 1783,
         requiredItem  =
         {
-            itemId       = xi.item.ANARCHY,
+            itemId       = invaderXim.item.ANARCHY,
             itemAugments =
             {
                 [1] = { 746,  0 }, -- DMG:+1 (Ranged)
@@ -4856,12 +4856,12 @@ xi.magian.trials =
 
         textOffset     = 769,
         defeatMob      = false,
-        useWeaponskill = xi.weaponskill.SPLIT_SHOT,
+        useWeaponskill = invaderXim.weaponskill.SPLIT_SHOT,
         numRequired    = 200,
 
         rewardItem =
         {
-            itemId       = xi.item.ANARCHY,
+            itemId       = invaderXim.item.ANARCHY,
             itemAugments =
             {
                 [1] = { 746,  2 }, -- DMG:+3 (Ranged)
@@ -4875,7 +4875,7 @@ xi.magian.trials =
         previousTrial = 1784,
         requiredItem  =
         {
-            itemId       = xi.item.ANARCHY,
+            itemId       = invaderXim.item.ANARCHY,
             itemAugments =
             {
                 [1] = { 746,  2 }, -- DMG:+3 (Ranged)
@@ -4885,13 +4885,13 @@ xi.magian.trials =
 
         textOffset     = 770,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.LIZARD,
-        useWeaponskill = xi.weaponskill.SNIPER_SHOT,
+        mobEcosystem   = invaderXim.ecosystem.LIZARD,
+        useWeaponskill = invaderXim.weaponskill.SNIPER_SHOT,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.ANARCHY,
+            itemId       = invaderXim.item.ANARCHY,
             itemAugments =
             {
                 [1] = { 746,  4 }, -- DMG:+5 (Ranged)
@@ -4905,7 +4905,7 @@ xi.magian.trials =
         previousTrial = 1785,
         requiredItem  =
         {
-            itemId       = xi.item.ANARCHY,
+            itemId       = invaderXim.item.ANARCHY,
             itemAugments =
             {
                 [1] = { 746,  4 }, -- DMG:+5 (Ranged)
@@ -4915,13 +4915,13 @@ xi.magian.trials =
 
         textOffset     = 771,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.VERMIN,
-        useWeaponskill = xi.weaponskill.DETONATOR,
+        mobEcosystem   = invaderXim.ecosystem.VERMIN,
+        useWeaponskill = invaderXim.weaponskill.DETONATOR,
         numRequired    = 500,
 
         rewardItem =
         {
-            itemId       = xi.item.ANARCHY,
+            itemId       = invaderXim.item.ANARCHY,
             itemAugments =
             {
                 [1] = { 746,  9 }, -- DMG:+10 (Ranged)
@@ -4935,7 +4935,7 @@ xi.magian.trials =
         previousTrial = 1785,
         requiredItem  =
         {
-            itemId       = xi.item.ANARCHY,
+            itemId       = invaderXim.item.ANARCHY,
             itemAugments =
             {
                 [1] = { 746,  4 }, -- DMG:+5 (Ranged)
@@ -4945,29 +4945,29 @@ xi.magian.trials =
 
         textOffset     = 788,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.LIZARD,
+        mobEcosystem   = invaderXim.ecosystem.LIZARD,
         useWeaponskill = set{
-            xi.weaponskill.HOT_SHOT,
-            xi.weaponskill.SPLIT_SHOT,
-            xi.weaponskill.SNIPER_SHOT,
-            xi.weaponskill.SLUG_SHOT,
-            xi.weaponskill.BLAST_SHOT,
-            xi.weaponskill.HEAVY_SHOT,
-            xi.weaponskill.DETONATOR,
-            xi.weaponskill.CORONACH,
-            xi.weaponskill.TRUEFLIGHT,
-            xi.weaponskill.LEADEN_SALUTE,
-            xi.weaponskill.NUMBING_SHOT,
-            xi.weaponskill.WILDFIRE,
-            xi.weaponskill.LAST_STAND,
-            xi.weaponskill.TERMINUS,
+            invaderXim.weaponskill.HOT_SHOT,
+            invaderXim.weaponskill.SPLIT_SHOT,
+            invaderXim.weaponskill.SNIPER_SHOT,
+            invaderXim.weaponskill.SLUG_SHOT,
+            invaderXim.weaponskill.BLAST_SHOT,
+            invaderXim.weaponskill.HEAVY_SHOT,
+            invaderXim.weaponskill.DETONATOR,
+            invaderXim.weaponskill.CORONACH,
+            invaderXim.weaponskill.TRUEFLIGHT,
+            invaderXim.weaponskill.LEADEN_SALUTE,
+            invaderXim.weaponskill.NUMBING_SHOT,
+            invaderXim.weaponskill.WILDFIRE,
+            invaderXim.weaponskill.LAST_STAND,
+            invaderXim.weaponskill.TERMINUS,
         },
 
         numRequired = 800,
 
         rewardItem =
         {
-            itemId       = xi.item.ANARCHY,
+            itemId       = invaderXim.item.ANARCHY,
             itemAugments =
             {
                 [1] = { 746, 6 }, -- DMG:+7 (Ranged)
@@ -4981,7 +4981,7 @@ xi.magian.trials =
         previousTrial = 948,
         requiredItem  =
         {
-            itemId       = xi.item.ASTRILD,
+            itemId       = invaderXim.item.ASTRILD,
             itemAugments =
             {
                 [1] = { 45, 9 }, -- DMG:+10
@@ -4993,7 +4993,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId       = xi.item.ASTRILD,
+            itemId       = invaderXim.item.ASTRILD,
             itemAugments =
             {
                 [1] = { 45, 10 }, -- DMG:+11
@@ -5006,7 +5006,7 @@ xi.magian.trials =
         previousTrial = 992,
         requiredItem  =
         {
-            itemId       = xi.item.MANDAU_75,
+            itemId       = invaderXim.item.MANDAU_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -5015,13 +5015,13 @@ xi.magian.trials =
 
         textOffset     = 652,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.PLANTOID,
-        useWeaponskill = xi.weaponskill.MERCY_STROKE,
+        mobEcosystem   = invaderXim.ecosystem.PLANTOID,
+        useWeaponskill = invaderXim.weaponskill.MERCY_STROKE,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.MANDAU_75,
+            itemId       = invaderXim.item.MANDAU_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -5034,7 +5034,7 @@ xi.magian.trials =
         previousTrial = 1818,
         requiredItem  =
         {
-            itemId       = xi.item.MANDAU_75,
+            itemId       = invaderXim.item.MANDAU_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -5043,13 +5043,13 @@ xi.magian.trials =
 
         textOffset     = 653,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BIRD,
-        useWeaponskill = xi.weaponskill.MERCY_STROKE,
+        mobEcosystem   = invaderXim.ecosystem.BIRD,
+        useWeaponskill = invaderXim.weaponskill.MERCY_STROKE,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId = xi.item.MANDAU_80,
+            itemId = invaderXim.item.MANDAU_80,
         },
     },
 
@@ -5058,7 +5058,7 @@ xi.magian.trials =
         previousTrial = 995,
         requiredItem  =
         {
-            itemId = xi.item.VAJRA_75,
+            itemId = invaderXim.item.VAJRA_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -5067,13 +5067,13 @@ xi.magian.trials =
 
         textOffset     = 654,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AQUAN,
-        useWeaponskill = xi.weaponskill.MANDALIC_STAB,
+        mobEcosystem   = invaderXim.ecosystem.AQUAN,
+        useWeaponskill = invaderXim.weaponskill.MANDALIC_STAB,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.VAJRA_75,
+            itemId       = invaderXim.item.VAJRA_75,
             itemAugments =
             {
                 [1] = { 740, 5 }, -- DMG:+6
@@ -5086,7 +5086,7 @@ xi.magian.trials =
         previousTrial = 998,
         requiredItem  =
         {
-            itemId = xi.item.CARNWENHAN_75,
+            itemId = invaderXim.item.CARNWENHAN_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -5095,13 +5095,13 @@ xi.magian.trials =
 
         textOffset     = 656,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BEAST,
-        useWeaponskill = xi.weaponskill.MORDANT_RIME,
+        mobEcosystem   = invaderXim.ecosystem.BEAST,
+        useWeaponskill = invaderXim.weaponskill.MORDANT_RIME,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.CARNWENHAN_75,
+            itemId       = invaderXim.item.CARNWENHAN_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -5114,7 +5114,7 @@ xi.magian.trials =
         previousTrial = 1001,
         requiredItem  =
         {
-            itemId = xi.item.TERPSICHORE_75,
+            itemId = invaderXim.item.TERPSICHORE_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -5123,13 +5123,13 @@ xi.magian.trials =
 
         textOffset     = 658,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BIRD,
-        useWeaponskill = xi.weaponskill.PYRRHIC_KLEOS,
+        mobEcosystem   = invaderXim.ecosystem.BIRD,
+        useWeaponskill = invaderXim.weaponskill.PYRRHIC_KLEOS,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.TERPSICHORE_75,
+            itemId       = invaderXim.item.TERPSICHORE_75,
             itemAugments =
             {
                 [1] = { 740, 5 }, -- DMG:+6
@@ -5142,7 +5142,7 @@ xi.magian.trials =
         previousTrial = 1004,
         requiredItem  =
         {
-            itemId       = xi.item.SPHARAI_75,
+            itemId       = invaderXim.item.SPHARAI_75,
             itemAugments =
             {
                 [1] = { 740, 5 }, -- DMG:+6
@@ -5151,13 +5151,13 @@ xi.magian.trials =
 
         textOffset     = 660,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BEAST,
-        useWeaponskill = xi.weaponskill.FINAL_HEAVEN,
+        mobEcosystem   = invaderXim.ecosystem.BEAST,
+        useWeaponskill = invaderXim.weaponskill.FINAL_HEAVEN,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.SPHARAI_75,
+            itemId       = invaderXim.item.SPHARAI_75,
             itemAugments =
             {
                 [1] = { 740, 7 }, -- DMG:+8
@@ -5170,7 +5170,7 @@ xi.magian.trials =
         previousTrial = 1826,
         requiredItem  =
         {
-            itemId       = xi.item.SPHARAI_75,
+            itemId       = invaderXim.item.SPHARAI_75,
             itemAugments =
             {
                 [1] = { 740, 7 },
@@ -5179,13 +5179,13 @@ xi.magian.trials =
 
         textOffset     = 661,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AMORPH,
-        useWeaponskill = xi.weaponskill.FINAL_HEAVEN,
+        mobEcosystem   = invaderXim.ecosystem.AMORPH,
+        useWeaponskill = invaderXim.weaponskill.FINAL_HEAVEN,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId = xi.item.SPHARAI_80,
+            itemId = invaderXim.item.SPHARAI_80,
         },
     },
 
@@ -5194,7 +5194,7 @@ xi.magian.trials =
         previousTrial = 1007,
         requiredItem  =
         {
-            itemId       = xi.item.GLANZFAUST_75,
+            itemId       = invaderXim.item.GLANZFAUST_75,
             itemAugments =
             {
                 [1] = { 740, 5 }, -- DMG:+6
@@ -5203,13 +5203,13 @@ xi.magian.trials =
 
         textOffset     = 662,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.LIZARD,
-        useWeaponskill = xi.weaponskill.ASCETICS_FURY,
+        mobEcosystem   = invaderXim.ecosystem.LIZARD,
+        useWeaponskill = invaderXim.weaponskill.ASCETICS_FURY,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.GLANZFAUST_75,
+            itemId       = invaderXim.item.GLANZFAUST_75,
             itemAugments =
             {
                 [1] = { 740, 7 }, -- DMG:+8
@@ -5222,7 +5222,7 @@ xi.magian.trials =
         previousTrial = 1010,
         requiredItem  =
         {
-            itemId = xi.item.KENKONKEN_75,
+            itemId = invaderXim.item.KENKONKEN_75,
             itemAugments =
             {
                 [1] = { 740, 4 }, -- DMG:+5
@@ -5231,13 +5231,13 @@ xi.magian.trials =
 
         textOffset     = 664,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.PLANTOID,
-        useWeaponskill = xi.weaponskill.STRINGING_PUMMEL,
+        mobEcosystem   = invaderXim.ecosystem.PLANTOID,
+        useWeaponskill = invaderXim.weaponskill.STRINGING_PUMMEL,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.KENKONKEN_75,
+            itemId       = invaderXim.item.KENKONKEN_75,
             itemAugments =
             {
                 [1] = { 740, 5 }, -- DMG:+6
@@ -5250,7 +5250,7 @@ xi.magian.trials =
         previousTrial = 1013,
         requiredItem  =
         {
-            itemId       = xi.item.EXCALIBUR_75,
+            itemId       = invaderXim.item.EXCALIBUR_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -5259,13 +5259,13 @@ xi.magian.trials =
 
         textOffset     = 666,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.LIZARD,
-        useWeaponskill = xi.weaponskill.KNIGHTS_OF_ROUND,
+        mobEcosystem   = invaderXim.ecosystem.LIZARD,
+        useWeaponskill = invaderXim.weaponskill.KNIGHTS_OF_ROUND,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.EXCALIBUR_75,
+            itemId       = invaderXim.item.EXCALIBUR_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -5278,7 +5278,7 @@ xi.magian.trials =
         previousTrial = 1832,
         requiredItem  =
         {
-            itemId       = xi.item.EXCALIBUR_75,
+            itemId       = invaderXim.item.EXCALIBUR_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -5287,13 +5287,13 @@ xi.magian.trials =
 
         textOffset     = 667,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.DRAGON,
-        useWeaponskill = xi.weaponskill.KNIGHTS_OF_ROUND,
+        mobEcosystem   = invaderXim.ecosystem.DRAGON,
+        useWeaponskill = invaderXim.weaponskill.KNIGHTS_OF_ROUND,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId = xi.item.EXCALIBUR_80,
+            itemId = invaderXim.item.EXCALIBUR_80,
         },
     },
 
@@ -5302,7 +5302,7 @@ xi.magian.trials =
         previousTrial = 1016,
         requiredItem  =
         {
-            itemId = xi.item.MURGLEIS_75,
+            itemId = invaderXim.item.MURGLEIS_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -5311,13 +5311,13 @@ xi.magian.trials =
 
         textOffset     = 668,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BEAST,
-        useWeaponskill = xi.weaponskill.DEATH_BLOSSOM,
+        mobEcosystem   = invaderXim.ecosystem.BEAST,
+        useWeaponskill = invaderXim.weaponskill.DEATH_BLOSSOM,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.MURGLEIS_75,
+            itemId       = invaderXim.item.MURGLEIS_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -5330,7 +5330,7 @@ xi.magian.trials =
         previousTrial = 1019,
         requiredItem  =
         {
-            itemId = xi.item.BURTGANG_75,
+            itemId = invaderXim.item.BURTGANG_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -5339,13 +5339,13 @@ xi.magian.trials =
 
         textOffset     = 670,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.VERMIN,
-        useWeaponskill = xi.weaponskill.ATONEMENT,
+        mobEcosystem   = invaderXim.ecosystem.VERMIN,
+        useWeaponskill = invaderXim.weaponskill.ATONEMENT,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.BURTGANG_75,
+            itemId       = invaderXim.item.BURTGANG_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -5358,7 +5358,7 @@ xi.magian.trials =
         previousTrial = 1022,
         requiredItem  =
         {
-            itemId = xi.item.TIZONA_75,
+            itemId = invaderXim.item.TIZONA_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -5367,13 +5367,13 @@ xi.magian.trials =
 
         textOffset     = 672,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.ARCANA,
-        useWeaponskill = xi.weaponskill.EXPIACION,
+        mobEcosystem   = invaderXim.ecosystem.ARCANA,
+        useWeaponskill = invaderXim.weaponskill.EXPIACION,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.TIZONA_75,
+            itemId       = invaderXim.item.TIZONA_75,
             itemAugments =
             {
                 [1] = { 740, 4 }, -- DMG:+5
@@ -5386,7 +5386,7 @@ xi.magian.trials =
         previousTrial = 1025,
         requiredItem  =
         {
-            itemId       = xi.item.RAGNAROK_75,
+            itemId       = invaderXim.item.RAGNAROK_75,
             itemAugments =
             {
                 [1] = { 740, 8 }, -- DMG:+9
@@ -5395,13 +5395,13 @@ xi.magian.trials =
 
         textOffset     = 674,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AQUAN,
-        useWeaponskill = xi.weaponskill.SCOURGE,
+        mobEcosystem   = invaderXim.ecosystem.AQUAN,
+        useWeaponskill = invaderXim.weaponskill.SCOURGE,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.RAGNAROK_75,
+            itemId       = invaderXim.item.RAGNAROK_75,
             itemAugments =
             {
                 [1] = { 740, 9 }, -- DMG:+10
@@ -5414,7 +5414,7 @@ xi.magian.trials =
         previousTrial = 1840,
         requiredItem  =
         {
-            itemId       = xi.item.RAGNAROK_75,
+            itemId       = invaderXim.item.RAGNAROK_75,
             itemAugments =
             {
                 [1] = { 740, 9 }, -- DMG:+10
@@ -5423,13 +5423,13 @@ xi.magian.trials =
 
         textOffset     = 675,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.UNDEAD,
-        useWeaponskill = xi.weaponskill.SCOURGE,
+        mobEcosystem   = invaderXim.ecosystem.UNDEAD,
+        useWeaponskill = invaderXim.weaponskill.SCOURGE,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId = xi.item.RAGNAROK_80,
+            itemId = invaderXim.item.RAGNAROK_80,
         },
     },
 
@@ -5438,7 +5438,7 @@ xi.magian.trials =
         previousTrial = 1028,
         requiredItem  =
         {
-            itemId       = xi.item.GUTTLER_75,
+            itemId       = invaderXim.item.GUTTLER_75,
             itemAugments =
             {
                 [1] = { 740, 5 }, -- DMG:+6
@@ -5447,13 +5447,13 @@ xi.magian.trials =
 
         textOffset     = 676,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BEAST,
-        useWeaponskill = xi.weaponskill.ONSLAUGHT,
+        mobEcosystem   = invaderXim.ecosystem.BEAST,
+        useWeaponskill = invaderXim.weaponskill.ONSLAUGHT,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.GUTTLER_75,
+            itemId       = invaderXim.item.GUTTLER_75,
             itemAugments =
             {
                 [1] = { 740, 6 }, -- DMG:+7
@@ -5466,7 +5466,7 @@ xi.magian.trials =
         previousTrial = 1842,
         requiredItem  =
         {
-            itemId       = xi.item.GUTTLER_75,
+            itemId       = invaderXim.item.GUTTLER_75,
             itemAugments =
             {
                 [1] = { 740, 6 }, -- DMG:+7
@@ -5475,13 +5475,13 @@ xi.magian.trials =
 
         textOffset     = 677,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AMORPH,
-        useWeaponskill = xi.weaponskill.ONSLAUGHT,
+        mobEcosystem   = invaderXim.ecosystem.AMORPH,
+        useWeaponskill = invaderXim.weaponskill.ONSLAUGHT,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId = xi.item.GUTTLER_80,
+            itemId = invaderXim.item.GUTTLER_80,
         },
     },
 
@@ -5490,7 +5490,7 @@ xi.magian.trials =
         previousTrial = 1031,
         requiredItem  =
         {
-            itemId = xi.item.AYMUR_75,
+            itemId = invaderXim.item.AYMUR_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -5499,13 +5499,13 @@ xi.magian.trials =
 
         textOffset     = 678,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.DRAGON,
-        useWeaponskill = xi.weaponskill.PRIMAL_REND,
+        mobEcosystem   = invaderXim.ecosystem.DRAGON,
+        useWeaponskill = invaderXim.weaponskill.PRIMAL_REND,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.AYMUR_75,
+            itemId       = invaderXim.item.AYMUR_75,
             itemAugments =
             {
                 [1] = { 740, 4 }, -- DMG:+5
@@ -5518,7 +5518,7 @@ xi.magian.trials =
         previousTrial = 1034,
         requiredItem  =
         {
-            itemId       = xi.item.BRAVURA_75,
+            itemId       = invaderXim.item.BRAVURA_75,
             itemAugments =
             {
                 [1] = { 740, 6 }, -- DMG:+7
@@ -5527,13 +5527,13 @@ xi.magian.trials =
 
         textOffset     = 680,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.UNDEAD,
-        useWeaponskill = xi.weaponskill.METATRON_TORMENT,
+        mobEcosystem   = invaderXim.ecosystem.UNDEAD,
+        useWeaponskill = invaderXim.weaponskill.METATRON_TORMENT,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.BRAVURA_75,
+            itemId       = invaderXim.item.BRAVURA_75,
             itemAugments =
             {
                 [1] = { 740, 8 }, -- DMG:+9
@@ -5546,7 +5546,7 @@ xi.magian.trials =
         previousTrial = 1846,
         requiredItem  =
         {
-            itemId       = xi.item.BRAVURA_75,
+            itemId       = invaderXim.item.BRAVURA_75,
             itemAugments =
             {
                 [1] = { 740, 8 }, -- DMG:+9
@@ -5555,13 +5555,13 @@ xi.magian.trials =
 
         textOffset     = 681,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.PLANTOID,
-        useWeaponskill = xi.weaponskill.METATRON_TORMENT,
+        mobEcosystem   = invaderXim.ecosystem.PLANTOID,
+        useWeaponskill = invaderXim.weaponskill.METATRON_TORMENT,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId = xi.item.BRAVURA_80,
+            itemId = invaderXim.item.BRAVURA_80,
         },
     },
 
@@ -5570,7 +5570,7 @@ xi.magian.trials =
         previousTrial = 1037,
         requiredItem  =
         {
-            itemId = xi.item.CONQUEROR_75,
+            itemId = invaderXim.item.CONQUEROR_75,
             itemAugments =
             {
                 [1] = { 740, 7 }, -- DMG:+8
@@ -5579,13 +5579,13 @@ xi.magian.trials =
 
         textOffset     = 682,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BEAST,
-        useWeaponskill = xi.weaponskill.KINGS_JUSTICE,
+        mobEcosystem   = invaderXim.ecosystem.BEAST,
+        useWeaponskill = invaderXim.weaponskill.KINGS_JUSTICE,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.CONQUEROR_75,
+            itemId       = invaderXim.item.CONQUEROR_75,
             itemAugments =
             {
                 [1] = { 740, 9 }, -- DMG:+10
@@ -5598,7 +5598,7 @@ xi.magian.trials =
         previousTrial = 1040,
         requiredItem  =
         {
-            itemId       = xi.item.GUNGNIR_75,
+            itemId       = invaderXim.item.GUNGNIR_75,
             itemAugments =
             {
                 [1] = { 740, 6 }, -- DMG:+7
@@ -5607,13 +5607,13 @@ xi.magian.trials =
 
         textOffset     = 684,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.ARCANA,
-        useWeaponskill = xi.weaponskill.GEIRSKOGUL,
+        mobEcosystem   = invaderXim.ecosystem.ARCANA,
+        useWeaponskill = invaderXim.weaponskill.GEIRSKOGUL,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.GUNGNIR_75,
+            itemId       = invaderXim.item.GUNGNIR_75,
             itemAugments =
             {
                 [1] = { 740, 8 }, -- DMG:+9
@@ -5626,7 +5626,7 @@ xi.magian.trials =
         previousTrial = 1850,
         requiredItem  =
         {
-            itemId       = xi.item.GUNGNIR_75,
+            itemId       = invaderXim.item.GUNGNIR_75,
             itemAugments =
             {
                 [1] = { 740, 8 }, -- DMG:+9
@@ -5635,13 +5635,13 @@ xi.magian.trials =
 
         textOffset     = 685,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.VERMIN,
-        useWeaponskill = xi.weaponskill.GEIRSKOGUL,
+        mobEcosystem   = invaderXim.ecosystem.VERMIN,
+        useWeaponskill = invaderXim.weaponskill.GEIRSKOGUL,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId = xi.item.GUNGNIR_80,
+            itemId = invaderXim.item.GUNGNIR_80,
         },
     },
 
@@ -5650,7 +5650,7 @@ xi.magian.trials =
         previousTrial = 1043,
         requiredItem  =
         {
-            itemId       = xi.item.RYUNOHIGE_75,
+            itemId       = invaderXim.item.RYUNOHIGE_75,
             itemAugments =
             {
                 [1] = { 740, 6 }, -- DMG:+7
@@ -5659,13 +5659,13 @@ xi.magian.trials =
 
         textOffset     = 686,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AQUAN,
-        useWeaponskill = xi.weaponskill.DRAKESBANE,
+        mobEcosystem   = invaderXim.ecosystem.AQUAN,
+        useWeaponskill = invaderXim.weaponskill.DRAKESBANE,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.RYUNOHIGE_75,
+            itemId       = invaderXim.item.RYUNOHIGE_75,
             itemAugments =
             {
                 [1] = { 740, 8 }, -- DMG:+9
@@ -5678,7 +5678,7 @@ xi.magian.trials =
         previousTrial = 1046,
         requiredItem  =
         {
-            itemId       = xi.item.APOCALYPSE_75,
+            itemId       = invaderXim.item.APOCALYPSE_75,
             itemAugments =
             {
                 [1] = { 740, 6 }, -- DMG:+7
@@ -5687,13 +5687,13 @@ xi.magian.trials =
 
         textOffset     = 688,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.LIZARD,
-        useWeaponskill = xi.weaponskill.CATASTROPHE,
+        mobEcosystem   = invaderXim.ecosystem.LIZARD,
+        useWeaponskill = invaderXim.weaponskill.CATASTROPHE,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.APOCALYPSE_75,
+            itemId       = invaderXim.item.APOCALYPSE_75,
             itemAugments =
             {
                 [1] = { 740, 8 }, -- DMG:+9
@@ -5706,7 +5706,7 @@ xi.magian.trials =
         previousTrial = 1854,
         requiredItem  =
         {
-            itemId       = xi.item.APOCALYPSE_75,
+            itemId       = invaderXim.item.APOCALYPSE_75,
             itemAugments =
             {
                 [1] = { 740, 8 }, -- DMG:+9
@@ -5715,13 +5715,13 @@ xi.magian.trials =
 
         textOffset     = 689,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BIRD,
-        useWeaponskill = xi.weaponskill.CATASTROPHE,
+        mobEcosystem   = invaderXim.ecosystem.BIRD,
+        useWeaponskill = invaderXim.weaponskill.CATASTROPHE,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId = xi.item.APOCALYPSE_80,
+            itemId = invaderXim.item.APOCALYPSE_80,
         },
     },
 
@@ -5730,7 +5730,7 @@ xi.magian.trials =
         previousTrial = 1049,
         requiredItem  =
         {
-            itemId = xi.item.LIBERATOR_75,
+            itemId = invaderXim.item.LIBERATOR_75,
             itemAugments =
             {
                 [1] = { 740, 7 }, -- DMG:+8
@@ -5739,13 +5739,13 @@ xi.magian.trials =
 
         textOffset     = 690,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.UNDEAD,
-        useWeaponskill = xi.weaponskill.INSURGENCY,
+        mobEcosystem   = invaderXim.ecosystem.UNDEAD,
+        useWeaponskill = invaderXim.weaponskill.INSURGENCY,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.LIBERATOR_75,
+            itemId       = invaderXim.item.LIBERATOR_75,
             itemAugments =
             {
                 [1] = { 740, 9 }, -- DMG:+10
@@ -5758,7 +5758,7 @@ xi.magian.trials =
         previousTrial = 1052,
         requiredItem  =
         {
-            itemId       = xi.item.KIKOKU_75,
+            itemId       = invaderXim.item.KIKOKU_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -5767,13 +5767,13 @@ xi.magian.trials =
 
         textOffset     = 692,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AMORPH,
-        useWeaponskill = xi.weaponskill.BLADE_METSU,
+        mobEcosystem   = invaderXim.ecosystem.AMORPH,
+        useWeaponskill = invaderXim.weaponskill.BLADE_METSU,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.KIKOKU_75,
+            itemId       = invaderXim.item.KIKOKU_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -5786,7 +5786,7 @@ xi.magian.trials =
         previousTrial = 1858,
         requiredItem  =
         {
-            itemId       = xi.item.KIKOKU_75,
+            itemId       = invaderXim.item.KIKOKU_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -5795,13 +5795,13 @@ xi.magian.trials =
 
         textOffset     = 693,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AQUAN,
-        useWeaponskill = xi.weaponskill.BLADE_METSU,
+        mobEcosystem   = invaderXim.ecosystem.AQUAN,
+        useWeaponskill = invaderXim.weaponskill.BLADE_METSU,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId = xi.item.KIKOKU_80,
+            itemId = invaderXim.item.KIKOKU_80,
         },
     },
 
@@ -5810,7 +5810,7 @@ xi.magian.trials =
         previousTrial = 1055,
         requiredItem  =
         {
-            itemId       = xi.item.NAGI_75,
+            itemId       = invaderXim.item.NAGI_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -5819,13 +5819,13 @@ xi.magian.trials =
 
         textOffset     = 694,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.PLANTOID,
-        useWeaponskill = xi.weaponskill.BLADE_KAMU,
+        mobEcosystem   = invaderXim.ecosystem.PLANTOID,
+        useWeaponskill = invaderXim.weaponskill.BLADE_KAMU,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.NAGI_75,
+            itemId       = invaderXim.item.NAGI_75,
             itemAugments =
             {
                 [1] = { 740, 4 }, -- DMG:+5
@@ -5838,7 +5838,7 @@ xi.magian.trials =
         previousTrial = 1058,
         requiredItem  =
         {
-            itemId       = xi.item.AMANOMURAKUMO_75,
+            itemId       = invaderXim.item.AMANOMURAKUMO_75,
             itemAugments =
             {
                 [1] = { 740, 4 }, -- DMG:+5
@@ -5847,13 +5847,13 @@ xi.magian.trials =
 
         textOffset     = 696,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.ARCANA,
-        useWeaponskill = xi.weaponskill.TACHI_KAITEN,
+        mobEcosystem   = invaderXim.ecosystem.ARCANA,
+        useWeaponskill = invaderXim.weaponskill.TACHI_KAITEN,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.AMANOMURAKUMO_75,
+            itemId       = invaderXim.item.AMANOMURAKUMO_75,
             itemAugments =
             {
                 [1] = { 740, 5 }, -- DMG:+6
@@ -5866,7 +5866,7 @@ xi.magian.trials =
         previousTrial = 1862,
         requiredItem  =
         {
-            itemId       = xi.item.AMANOMURAKUMO_75,
+            itemId       = invaderXim.item.AMANOMURAKUMO_75,
             itemAugments =
             {
                 [1] = { 740, 5 }, -- DMG:+6
@@ -5875,13 +5875,13 @@ xi.magian.trials =
 
         textOffset     = 697,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BIRD,
-        useWeaponskill = xi.weaponskill.TACHI_KAITEN,
+        mobEcosystem   = invaderXim.ecosystem.BIRD,
+        useWeaponskill = invaderXim.weaponskill.TACHI_KAITEN,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId = xi.item.AMANOMURAKUMO_80,
+            itemId = invaderXim.item.AMANOMURAKUMO_80,
         },
     },
 
@@ -5890,7 +5890,7 @@ xi.magian.trials =
         previousTrial = 1061,
         requiredItem  =
         {
-            itemId       = xi.item.KOGARASUMARU_75,
+            itemId       = invaderXim.item.KOGARASUMARU_75,
             itemAugments =
             {
                 [1] = { 740, 4 }, -- DMG:+5
@@ -5899,13 +5899,13 @@ xi.magian.trials =
 
         textOffset     = 698,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.DRAGON,
-        useWeaponskill = xi.weaponskill.TACHI_RANA,
+        mobEcosystem   = invaderXim.ecosystem.DRAGON,
+        useWeaponskill = invaderXim.weaponskill.TACHI_RANA,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.KOGARASUMARU_75,
+            itemId       = invaderXim.item.KOGARASUMARU_75,
             itemAugments =
             {
                 [1] = { 740, 6 }, -- DMG:+7
@@ -5918,7 +5918,7 @@ xi.magian.trials =
         previousTrial = 1064,
         requiredItem  =
         {
-            itemId       = xi.item.MJOLLNIR_75,
+            itemId       = invaderXim.item.MJOLLNIR_75,
             itemAugments =
             {
                 [1] = { 740, 7 }, -- DMG:+8
@@ -5927,13 +5927,13 @@ xi.magian.trials =
 
         textOffset     = 700,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AMORPH,
-        useWeaponskill = xi.weaponskill.RANDGRITH,
+        mobEcosystem   = invaderXim.ecosystem.AMORPH,
+        useWeaponskill = invaderXim.weaponskill.RANDGRITH,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.MJOLLNIR_75,
+            itemId       = invaderXim.item.MJOLLNIR_75,
             itemAugments =
             {
                 [1] = { 740, 8 }, -- DMG:+9
@@ -5946,7 +5946,7 @@ xi.magian.trials =
         previousTrial = 1866,
         requiredItem  =
         {
-            itemId       = xi.item.MJOLLNIR_75,
+            itemId       = invaderXim.item.MJOLLNIR_75,
             itemAugments =
             {
                 [1] = { 740, 8 }, -- DMG:+9
@@ -5955,13 +5955,13 @@ xi.magian.trials =
 
         textOffset     = 701,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.VERMIN,
-        useWeaponskill = xi.weaponskill.RANDGRITH,
+        mobEcosystem   = invaderXim.ecosystem.VERMIN,
+        useWeaponskill = invaderXim.weaponskill.RANDGRITH,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId = xi.item.MJOLLNIR_80,
+            itemId = invaderXim.item.MJOLLNIR_80,
         },
     },
 
@@ -5970,7 +5970,7 @@ xi.magian.trials =
         previousTrial = 1067,
         requiredItem  =
         {
-            itemId       = xi.item.YAGRUSH_75,
+            itemId       = invaderXim.item.YAGRUSH_75,
             itemAugments =
             {
                 [1] = { 740, 3 }, -- DMG:+4
@@ -5979,13 +5979,13 @@ xi.magian.trials =
 
         textOffset     = 702,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.ARCANA,
-        useWeaponskill = xi.weaponskill.MYSTIC_BOON,
+        mobEcosystem   = invaderXim.ecosystem.ARCANA,
+        useWeaponskill = invaderXim.weaponskill.MYSTIC_BOON,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.YAGRUSH_75,
+            itemId       = invaderXim.item.YAGRUSH_75,
             itemAugments =
             {
                 [1] = { 740, 5 }, -- DMG:+6
@@ -5998,7 +5998,7 @@ xi.magian.trials =
         previousTrial = 1070,
         requiredItem  =
         {
-            itemId       = xi.item.CLAUSTRUM_75,
+            itemId       = invaderXim.item.CLAUSTRUM_75,
             itemAugments =
             {
                 [1] = { 740, 9 }, -- DMG:+10
@@ -6007,13 +6007,13 @@ xi.magian.trials =
 
         textOffset     = 704,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.UNDEAD,
-        useWeaponskill = xi.weaponskill.GATE_OF_TARTARUS,
+        mobEcosystem   = invaderXim.ecosystem.UNDEAD,
+        useWeaponskill = invaderXim.weaponskill.GATE_OF_TARTARUS,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.CLAUSTRUM_75,
+            itemId       = invaderXim.item.CLAUSTRUM_75,
             itemAugments =
             {
                 [1] = { 740, 11 }, -- DMG:+12
@@ -6026,7 +6026,7 @@ xi.magian.trials =
         previousTrial = 1870,
         requiredItem  =
         {
-            itemId       = xi.item.CLAUSTRUM_75,
+            itemId       = invaderXim.item.CLAUSTRUM_75,
             itemAugments =
             {
                 [1] = { 740, 11 }, -- DMG:+12
@@ -6035,13 +6035,13 @@ xi.magian.trials =
 
         textOffset     = 705,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BEAST,
-        useWeaponskill = xi.weaponskill.GATE_OF_TARTARUS,
+        mobEcosystem   = invaderXim.ecosystem.BEAST,
+        useWeaponskill = invaderXim.weaponskill.GATE_OF_TARTARUS,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId = xi.item.CLAUSTRUM_80,
+            itemId = invaderXim.item.CLAUSTRUM_80,
         },
     },
 
@@ -6050,7 +6050,7 @@ xi.magian.trials =
         previousTrial = 1073,
         requiredItem  =
         {
-            itemId       = xi.item.LAEVATEINN_75,
+            itemId       = invaderXim.item.LAEVATEINN_75,
             itemAugments =
             {
                 [1] = { 740, 10 }, -- DMG:+11
@@ -6059,13 +6059,13 @@ xi.magian.trials =
 
         textOffset     = 706,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.LIZARD,
-        useWeaponskill = xi.weaponskill.VIDOHUNIR,
+        mobEcosystem   = invaderXim.ecosystem.LIZARD,
+        useWeaponskill = invaderXim.weaponskill.VIDOHUNIR,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.LAEVATEINN_75,
+            itemId       = invaderXim.item.LAEVATEINN_75,
             itemAugments =
             {
                 [1] = { 740, 12 }, -- DMG:+13
@@ -6078,7 +6078,7 @@ xi.magian.trials =
         previousTrial = 1076,
         requiredItem  =
         {
-            itemId       = xi.item.NIRVANA_75,
+            itemId       = invaderXim.item.NIRVANA_75,
             itemAugments =
             {
                 [1] = { 740, 10 }, -- DMG:+11
@@ -6087,13 +6087,13 @@ xi.magian.trials =
 
         textOffset     = 708,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.PLANTOID,
-        useWeaponskill = xi.weaponskill.GARLAND_OF_BLISS,
+        mobEcosystem   = invaderXim.ecosystem.PLANTOID,
+        useWeaponskill = invaderXim.weaponskill.GARLAND_OF_BLISS,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.NIRVANA_75,
+            itemId       = invaderXim.item.NIRVANA_75,
             itemAugments =
             {
                 [1] = { 740, 12 }, -- DMG:+13
@@ -6106,7 +6106,7 @@ xi.magian.trials =
         previousTrial = 1079,
         requiredItem  =
         {
-            itemId       = xi.item.TUPSIMATI_75,
+            itemId       = invaderXim.item.TUPSIMATI_75,
             itemAugments =
             {
                 [1] = { 740, 10 }, -- DMG:+11
@@ -6115,13 +6115,13 @@ xi.magian.trials =
 
         textOffset     = 710,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.UNDEAD,
-        useWeaponskill = xi.weaponskill.OMNISCIENCE,
+        mobEcosystem   = invaderXim.ecosystem.UNDEAD,
+        useWeaponskill = invaderXim.weaponskill.OMNISCIENCE,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.TUPSIMATI_75,
+            itemId       = invaderXim.item.TUPSIMATI_75,
             itemAugments =
             {
                 [1] = { 740, 12 }, -- DMG:+13
@@ -6134,7 +6134,7 @@ xi.magian.trials =
         previousTrial = 1082,
         requiredItem  =
         {
-            itemId       = xi.item.ANNIHILATOR_75,
+            itemId       = invaderXim.item.ANNIHILATOR_75,
             itemAugments =
             {
                 [1] = { 746, 5 }, -- DMG:+6 (Ranged)
@@ -6143,13 +6143,13 @@ xi.magian.trials =
 
         textOffset     = 712,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.ARCANA,
-        useWeaponskill = xi.weaponskill.CORONACH,
+        mobEcosystem   = invaderXim.ecosystem.ARCANA,
+        useWeaponskill = invaderXim.weaponskill.CORONACH,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.ANNIHILATOR_75,
+            itemId       = invaderXim.item.ANNIHILATOR_75,
             itemAugments =
             {
                 [1] = { 746, 7 }, -- DMG:+8 (Ranged)
@@ -6162,7 +6162,7 @@ xi.magian.trials =
         previousTrial = 1878,
         requiredItem  =
         {
-            itemId       = xi.item.ANNIHILATOR_75,
+            itemId       = invaderXim.item.ANNIHILATOR_75,
             itemAugments =
             {
                 [1] = { 746, 7 }, -- DMG:+8 (Ranged)
@@ -6171,13 +6171,13 @@ xi.magian.trials =
 
         textOffset     = 713,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.PLANTOID,
-        useWeaponskill = xi.weaponskill.CORONACH,
+        mobEcosystem   = invaderXim.ecosystem.PLANTOID,
+        useWeaponskill = invaderXim.weaponskill.CORONACH,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId = xi.item.ANNIHILATOR_80,
+            itemId = invaderXim.item.ANNIHILATOR_80,
         },
     },
 
@@ -6186,7 +6186,7 @@ xi.magian.trials =
         previousTrial = 1085,
         requiredItem  =
         {
-            itemId       = xi.item.GASTRAPHETES_75,
+            itemId       = invaderXim.item.GASTRAPHETES_75,
             itemAugments =
             {
                 [1] = { 740, 1 }, -- DMG:+2
@@ -6195,13 +6195,13 @@ xi.magian.trials =
 
         textOffset     = 714,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.DRAGON,
-        useWeaponskill = xi.weaponskill.TRUEFLIGHT,
+        mobEcosystem   = invaderXim.ecosystem.DRAGON,
+        useWeaponskill = invaderXim.weaponskill.TRUEFLIGHT,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.GASTRAPHETES_75,
+            itemId       = invaderXim.item.GASTRAPHETES_75,
             itemAugments =
             {
                 [1] = { 740, 2 }, -- DMG:+3
@@ -6214,7 +6214,7 @@ xi.magian.trials =
         previousTrial = 1088,
         requiredItem  =
         {
-            itemId       = xi.item.DEATH_PENALTY_75,
+            itemId       = invaderXim.item.DEATH_PENALTY_75,
             itemAugments =
             {
                 [1] = { 740, 4 }, -- DMG:+5
@@ -6223,13 +6223,13 @@ xi.magian.trials =
 
         textOffset     = 716,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.UNDEAD,
-        useWeaponskill = xi.weaponskill.LEADEN_SALUTE,
+        mobEcosystem   = invaderXim.ecosystem.UNDEAD,
+        useWeaponskill = invaderXim.weaponskill.LEADEN_SALUTE,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.DEATH_PENALTY_75,
+            itemId       = invaderXim.item.DEATH_PENALTY_75,
             itemAugments =
             {
                 [1] = { 740, 6 }, -- DMG:+7
@@ -6242,7 +6242,7 @@ xi.magian.trials =
         previousTrial = 1091,
         requiredItem  =
         {
-            itemId       = xi.item.YOICHINOYUMI_75,
+            itemId       = invaderXim.item.YOICHINOYUMI_75,
             itemAugments =
             {
                 [1] = { 746, 4 }, -- DMG:+5 (Ranged)
@@ -6251,13 +6251,13 @@ xi.magian.trials =
 
         textOffset     = 718,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.LIZARD,
-        useWeaponskill = xi.weaponskill.NAMAS_ARROW,
+        mobEcosystem   = invaderXim.ecosystem.LIZARD,
+        useWeaponskill = invaderXim.weaponskill.NAMAS_ARROW,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.YOICHINOYUMI_75,
+            itemId       = invaderXim.item.YOICHINOYUMI_75,
             itemAugments =
             {
                 [1] = { 746, 7 }, -- DMG:+8 (Ranged)
@@ -6270,7 +6270,7 @@ xi.magian.trials =
         previousTrial = 1884,
         requiredItem  =
         {
-            itemId       = xi.item.YOICHINOYUMI_75,
+            itemId       = invaderXim.item.YOICHINOYUMI_75,
             itemAugments =
             {
                 [1] = { 746, 7 }, -- DMG:+8 (Ranged)
@@ -6279,13 +6279,13 @@ xi.magian.trials =
 
         textOffset     = 719,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AQUAN,
-        useWeaponskill = xi.weaponskill.NAMAS_ARROW,
+        mobEcosystem   = invaderXim.ecosystem.AQUAN,
+        useWeaponskill = invaderXim.weaponskill.NAMAS_ARROW,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId = xi.item.YOICHINOYUMI_80,
+            itemId = invaderXim.item.YOICHINOYUMI_80,
         },
     },
 
@@ -6294,16 +6294,16 @@ xi.magian.trials =
         previousTrial = 1139,
         requiredItem  =
         {
-            itemId = xi.item.VERETHRAGNA,
+            itemId = invaderXim.item.VERETHRAGNA,
         },
 
         textOffset  = 70,
-        tradeItem   = xi.item.ULHUADSHIS_FANG,
+        tradeItem   = invaderXim.item.ULHUADSHIS_FANG,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.VERETHRAGNA_85,
+            itemId = invaderXim.item.VERETHRAGNA_85,
         },
     },
 
@@ -6312,7 +6312,7 @@ xi.magian.trials =
         previousTrial = 1786,
         requiredItem  =
         {
-            itemId       = xi.item.ANARCHY,
+            itemId       = invaderXim.item.ANARCHY,
             itemAugments =
             {
                 [1] = { 746,  9 }, -- DMG:+10 (Ranged)
@@ -6322,13 +6322,13 @@ xi.magian.trials =
 
         textOffset     = 995,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BEAST,
-        useWeaponskill = xi.weaponskill.DETONATOR,
+        mobEcosystem   = invaderXim.ecosystem.BEAST,
+        useWeaponskill = invaderXim.weaponskill.DETONATOR,
         numRequired    = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.ANARCHY_P1,
+            itemId       = invaderXim.item.ANARCHY_P1,
             itemAugments =
             {
                 [1] = { 327,  9 }, -- Weapon Skill:DMG:+10%
@@ -6341,7 +6341,7 @@ xi.magian.trials =
         previousTrial = 1787,
         requiredItem  =
         {
-            itemId       = xi.item.ANARCHY,
+            itemId       = invaderXim.item.ANARCHY,
             itemAugments =
             {
                 [1] = { 746, 6 }, -- DMG:+7 (Ranged)
@@ -6351,29 +6351,29 @@ xi.magian.trials =
 
         textOffset     = 788,
         defeatMob      = false,
-        mobEcosystem   = xi.ecosystem.LIZARD,
+        mobEcosystem   = invaderXim.ecosystem.LIZARD,
         useWeaponskill = set{
-            xi.weaponskill.HOT_SHOT,
-            xi.weaponskill.SPLIT_SHOT,
-            xi.weaponskill.SNIPER_SHOT,
-            xi.weaponskill.SLUG_SHOT,
-            xi.weaponskill.BLAST_SHOT,
-            xi.weaponskill.HEAVY_SHOT,
-            xi.weaponskill.DETONATOR,
-            xi.weaponskill.CORONACH,
-            xi.weaponskill.TRUEFLIGHT,
-            xi.weaponskill.LEADEN_SALUTE,
-            xi.weaponskill.NUMBING_SHOT,
-            xi.weaponskill.WILDFIRE,
-            xi.weaponskill.LAST_STAND,
-            xi.weaponskill.TERMINUS,
+            invaderXim.weaponskill.HOT_SHOT,
+            invaderXim.weaponskill.SPLIT_SHOT,
+            invaderXim.weaponskill.SNIPER_SHOT,
+            invaderXim.weaponskill.SLUG_SHOT,
+            invaderXim.weaponskill.BLAST_SHOT,
+            invaderXim.weaponskill.HEAVY_SHOT,
+            invaderXim.weaponskill.DETONATOR,
+            invaderXim.weaponskill.CORONACH,
+            invaderXim.weaponskill.TRUEFLIGHT,
+            invaderXim.weaponskill.LEADEN_SALUTE,
+            invaderXim.weaponskill.NUMBING_SHOT,
+            invaderXim.weaponskill.WILDFIRE,
+            invaderXim.weaponskill.LAST_STAND,
+            invaderXim.weaponskill.TERMINUS,
         },
 
         numRequired = 800,
 
         rewardItem =
         {
-            itemId       = xi.item.ANARCHY_P1,
+            itemId       = invaderXim.item.ANARCHY_P1,
             itemAugments =
             {
                 [1] = { 142, 12 }, -- "Store TP"+13
@@ -6386,18 +6386,18 @@ xi.magian.trials =
         previousTrial = 1819,
         requiredItem  =
         {
-            itemId = xi.item.MANDAU_80,
+            itemId = invaderXim.item.MANDAU_80,
         },
 
         textOffset     = 949,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.DRAGON,
-        useWeaponskill = xi.weaponskill.MERCY_STROKE,
+        mobEcosystem   = invaderXim.ecosystem.DRAGON,
+        useWeaponskill = invaderXim.weaponskill.MERCY_STROKE,
         numRequired    = 400,
 
         rewardItem =
         {
-            itemId = xi.item.MANDAU_85,
+            itemId = invaderXim.item.MANDAU_85,
         },
     },
 
@@ -6406,18 +6406,18 @@ xi.magian.trials =
         previousTrial = 1827,
         requiredItem  =
         {
-            itemId = xi.item.SPHARAI_80,
+            itemId = invaderXim.item.SPHARAI_80,
         },
 
         textOffset     = 953,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.ARCANA,
-        useWeaponskill = xi.weaponskill.FINAL_HEAVEN,
+        mobEcosystem   = invaderXim.ecosystem.ARCANA,
+        useWeaponskill = invaderXim.weaponskill.FINAL_HEAVEN,
         numRequired    = 400,
 
         rewardItem =
         {
-            itemId = xi.item.SPHARAI_85,
+            itemId = invaderXim.item.SPHARAI_85,
         },
     },
 
@@ -6426,18 +6426,18 @@ xi.magian.trials =
         previousTrial = 1833,
         requiredItem  =
         {
-            itemId = xi.item.EXCALIBUR_80,
+            itemId = invaderXim.item.EXCALIBUR_80,
         },
 
         textOffset     = 956,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BIRD,
-        useWeaponskill = xi.weaponskill.KNIGHTS_OF_ROUND,
+        mobEcosystem   = invaderXim.ecosystem.BIRD,
+        useWeaponskill = invaderXim.weaponskill.KNIGHTS_OF_ROUND,
         numRequired    = 400,
 
         rewardItem =
         {
-            itemId = xi.item.EXCALIBUR_85,
+            itemId = invaderXim.item.EXCALIBUR_85,
         },
     },
 
@@ -6446,18 +6446,18 @@ xi.magian.trials =
         previousTrial = 1841,
         requiredItem  =
         {
-            itemId = xi.item.RAGNAROK_80,
+            itemId = invaderXim.item.RAGNAROK_80,
         },
 
         textOffset     = 960,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.ARCANA,
-        useWeaponskill = xi.weaponskill.SCOURGE,
+        mobEcosystem   = invaderXim.ecosystem.ARCANA,
+        useWeaponskill = invaderXim.weaponskill.SCOURGE,
         numRequired    = 400,
 
         rewardItem =
         {
-            itemId = xi.item.RAGNAROK_85,
+            itemId = invaderXim.item.RAGNAROK_85,
         },
     },
 
@@ -6466,18 +6466,18 @@ xi.magian.trials =
         previousTrial = 1843,
         requiredItem  =
         {
-            itemId = xi.item.GUTTLER_80,
+            itemId = invaderXim.item.GUTTLER_80,
         },
 
         textOffset     = 961,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BIRD,
-        useWeaponskill = xi.weaponskill.ONSLAUGHT,
+        mobEcosystem   = invaderXim.ecosystem.BIRD,
+        useWeaponskill = invaderXim.weaponskill.ONSLAUGHT,
         numRequired    = 400,
 
         rewardItem =
         {
-            itemId = xi.item.GUTTLER_85,
+            itemId = invaderXim.item.GUTTLER_85,
         },
     },
 
@@ -6486,18 +6486,18 @@ xi.magian.trials =
         previousTrial = 1847,
         requiredItem  =
         {
-            itemId = xi.item.BRAVURA_80,
+            itemId = invaderXim.item.BRAVURA_80,
         },
 
         textOffset     = 963,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.DRAGON,
-        useWeaponskill = xi.weaponskill.METATRON_TORMENT,
+        mobEcosystem   = invaderXim.ecosystem.DRAGON,
+        useWeaponskill = invaderXim.weaponskill.METATRON_TORMENT,
         numRequired    = 400,
 
         rewardItem =
         {
-            itemId = xi.item.BRAVURA_85,
+            itemId = invaderXim.item.BRAVURA_85,
         },
     },
 
@@ -6506,18 +6506,18 @@ xi.magian.trials =
         previousTrial = 1855,
         requiredItem  =
         {
-            itemId = xi.item.APOCALYPSE_80,
+            itemId = invaderXim.item.APOCALYPSE_80,
         },
 
         textOffset     = 967,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BEAST,
-        useWeaponskill = xi.weaponskill.CATASTROPHE,
+        mobEcosystem   = invaderXim.ecosystem.BEAST,
+        useWeaponskill = invaderXim.weaponskill.CATASTROPHE,
         numRequired    = 400,
 
         rewardItem =
         {
-            itemId = xi.item.APOCALYPSE_85,
+            itemId = invaderXim.item.APOCALYPSE_85,
         },
     },
 
@@ -6526,18 +6526,18 @@ xi.magian.trials =
         previousTrial = 1851,
         requiredItem  =
         {
-            itemId = xi.item.GUNGNIR_80,
+            itemId = invaderXim.item.GUNGNIR_80,
         },
 
         textOffset     = 965,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AQUAN,
-        useWeaponskill = xi.weaponskill.GEIRSKOGUL,
+        mobEcosystem   = invaderXim.ecosystem.AQUAN,
+        useWeaponskill = invaderXim.weaponskill.GEIRSKOGUL,
         numRequired    = 400,
 
         rewardItem =
         {
-            itemId = xi.item.GUNGNIR_85,
+            itemId = invaderXim.item.GUNGNIR_85,
         },
     },
 
@@ -6546,18 +6546,18 @@ xi.magian.trials =
         previousTrial = 1859,
         requiredItem  =
         {
-            itemId = xi.item.KIKOKU_80,
+            itemId = invaderXim.item.KIKOKU_80,
         },
 
         textOffset     = 969,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.UNDEAD,
-        useWeaponskill = xi.weaponskill.BLADE_METSU,
+        mobEcosystem   = invaderXim.ecosystem.UNDEAD,
+        useWeaponskill = invaderXim.weaponskill.BLADE_METSU,
         numRequired    = 400,
 
         rewardItem =
         {
-            itemId = xi.item.KIKOKU_85,
+            itemId = invaderXim.item.KIKOKU_85,
         },
     },
 
@@ -6566,18 +6566,18 @@ xi.magian.trials =
         previousTrial = 1863,
         requiredItem  =
         {
-            itemId = xi.item.AMANOMURAKUMO_80,
+            itemId = invaderXim.item.AMANOMURAKUMO_80,
         },
 
         textOffset     = 971,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.AQUAN,
-        useWeaponskill = xi.weaponskill.TACHI_KAITEN,
+        mobEcosystem   = invaderXim.ecosystem.AQUAN,
+        useWeaponskill = invaderXim.weaponskill.TACHI_KAITEN,
         numRequired    = 400,
 
         rewardItem =
         {
-            itemId = xi.item.AMANOMURAKUMO_85,
+            itemId = invaderXim.item.AMANOMURAKUMO_85,
         },
     },
 
@@ -6586,18 +6586,18 @@ xi.magian.trials =
         previousTrial = 1867,
         requiredItem  =
         {
-            itemId = xi.item.MJOLLNIR_80,
+            itemId = invaderXim.item.MJOLLNIR_80,
         },
 
         textOffset     = 973,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.BIRD,
-        useWeaponskill = xi.weaponskill.RANDGRITH,
+        mobEcosystem   = invaderXim.ecosystem.BIRD,
+        useWeaponskill = invaderXim.weaponskill.RANDGRITH,
         numRequired    = 400,
 
         rewardItem =
         {
-            itemId = xi.item.MJOLLNIR_85,
+            itemId = invaderXim.item.MJOLLNIR_85,
         },
     },
 
@@ -6606,18 +6606,18 @@ xi.magian.trials =
         previousTrial = 1871,
         requiredItem  =
         {
-            itemId = xi.item.CLAUSTRUM_80,
+            itemId = invaderXim.item.CLAUSTRUM_80,
         },
 
         textOffset     = 975,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.PLANTOID,
-        useWeaponskill = xi.weaponskill.GATE_OF_TARTARUS,
+        mobEcosystem   = invaderXim.ecosystem.PLANTOID,
+        useWeaponskill = invaderXim.weaponskill.GATE_OF_TARTARUS,
         numRequired    = 400,
 
         rewardItem =
         {
-            itemId = xi.item.CLAUSTRUM_85,
+            itemId = invaderXim.item.CLAUSTRUM_85,
         },
     },
 
@@ -6626,18 +6626,18 @@ xi.magian.trials =
         previousTrial = 1885,
         requiredItem  =
         {
-            itemId = xi.item.YOICHINOYUMI_80,
+            itemId = invaderXim.item.YOICHINOYUMI_80,
         },
 
         textOffset     = 982,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.VERMIN,
-        useWeaponskill = xi.weaponskill.NAMAS_ARROW,
+        mobEcosystem   = invaderXim.ecosystem.VERMIN,
+        useWeaponskill = invaderXim.weaponskill.NAMAS_ARROW,
         numRequired    = 400,
 
         rewardItem =
         {
-            itemId = xi.item.YOICHINOYUMI_85,
+            itemId = invaderXim.item.YOICHINOYUMI_85,
         },
     },
 
@@ -6646,18 +6646,18 @@ xi.magian.trials =
         previousTrial = 1879,
         requiredItem  =
         {
-            itemId = xi.item.ANNIHILATOR_80,
+            itemId = invaderXim.item.ANNIHILATOR_80,
         },
 
         textOffset     = 979,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.UNDEAD,
-        useWeaponskill = xi.weaponskill.CORONACH,
+        mobEcosystem   = invaderXim.ecosystem.UNDEAD,
+        useWeaponskill = invaderXim.weaponskill.CORONACH,
         numRequired    = 400,
 
         rewardItem =
         {
-            itemId = xi.item.ANNIHILATOR_85,
+            itemId = invaderXim.item.ANNIHILATOR_85,
         },
     },
 
@@ -6666,16 +6666,16 @@ xi.magian.trials =
         previousTrial = 1909,
         requiredItem  =
         {
-            itemId = xi.item.VERETHRAGNA_85,
+            itemId = invaderXim.item.VERETHRAGNA_85,
         },
 
         textOffset  = 70,
-        tradeItem   = xi.item.DRAGUAS_SCALE,
+        tradeItem   = invaderXim.item.DRAGUAS_SCALE,
         numRequired = 75,
 
         rewardItem =
         {
-            itemId = xi.item.VERETHRAGNA_90,
+            itemId = invaderXim.item.VERETHRAGNA_90,
         },
     },
 
@@ -6684,7 +6684,7 @@ xi.magian.trials =
         previousTrial = 2249,
         requiredItem  =
         {
-            itemId = xi.item.MANDAU_85,
+            itemId = invaderXim.item.MANDAU_85,
         },
 
         textOffset  = 1085,
@@ -6692,7 +6692,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.MANDAU_90,
+            itemId = invaderXim.item.MANDAU_90,
         },
     },
 
@@ -6701,7 +6701,7 @@ xi.magian.trials =
         previousTrial = 2247,
         requiredItem  =
         {
-            itemId       = xi.item.ANARCHY_P1,
+            itemId       = invaderXim.item.ANARCHY_P1,
             itemAugments =
             {
                 [1] = { 327, 9 }, -- Weapon Skill:DMG:+10%
@@ -6710,29 +6710,29 @@ xi.magian.trials =
 
         textOffset     = 1101,
         defeatMob      = true,
-        mobEcosystem   = xi.ecosystem.PLANTOID,
+        mobEcosystem   = invaderXim.ecosystem.PLANTOID,
         useWeaponskill = set{
-            xi.weaponskill.HOT_SHOT,
-            xi.weaponskill.SPLIT_SHOT,
-            xi.weaponskill.SNIPER_SHOT,
-            xi.weaponskill.SLUG_SHOT,
-            xi.weaponskill.BLAST_SHOT,
-            xi.weaponskill.HEAVY_SHOT,
-            xi.weaponskill.DETONATOR,
-            xi.weaponskill.CORONACH,
-            xi.weaponskill.TRUEFLIGHT,
-            xi.weaponskill.LEADEN_SALUTE,
-            xi.weaponskill.NUMBING_SHOT,
-            xi.weaponskill.WILDFIRE,
-            xi.weaponskill.LAST_STAND,
-            xi.weaponskill.TERMINUS,
+            invaderXim.weaponskill.HOT_SHOT,
+            invaderXim.weaponskill.SPLIT_SHOT,
+            invaderXim.weaponskill.SNIPER_SHOT,
+            invaderXim.weaponskill.SLUG_SHOT,
+            invaderXim.weaponskill.BLAST_SHOT,
+            invaderXim.weaponskill.HEAVY_SHOT,
+            invaderXim.weaponskill.DETONATOR,
+            invaderXim.weaponskill.CORONACH,
+            invaderXim.weaponskill.TRUEFLIGHT,
+            invaderXim.weaponskill.LEADEN_SALUTE,
+            invaderXim.weaponskill.NUMBING_SHOT,
+            invaderXim.weaponskill.WILDFIRE,
+            invaderXim.weaponskill.LAST_STAND,
+            invaderXim.weaponskill.TERMINUS,
         },
 
         numRequired = 300,
 
         rewardItem =
         {
-            itemId       = xi.item.ANARCHY_P2,
+            itemId       = invaderXim.item.ANARCHY_P2,
             itemAugments =
             {
                 [1] = { 746, 1 }, -- DMG:+2 (Ranged)
@@ -6746,7 +6746,7 @@ xi.magian.trials =
         previousTrial = 2247,
         requiredItem  =
         {
-            itemId       = xi.item.ANARCHY_P1,
+            itemId       = invaderXim.item.ANARCHY_P1,
             itemAugments =
             {
                 [1] = { 327, 9 }, -- Weapon Skill:DMG:+10%
@@ -6756,29 +6756,29 @@ xi.magian.trials =
         textOffset     = 1115,
         defeatMob      = false,
         minDamage      = 400,
-        mobEcosystem   = xi.ecosystem.UNDEAD,
+        mobEcosystem   = invaderXim.ecosystem.UNDEAD,
         useWeaponskill = set{
-            xi.weaponskill.HOT_SHOT,
-            xi.weaponskill.SPLIT_SHOT,
-            xi.weaponskill.SNIPER_SHOT,
-            xi.weaponskill.SLUG_SHOT,
-            xi.weaponskill.BLAST_SHOT,
-            xi.weaponskill.HEAVY_SHOT,
-            xi.weaponskill.DETONATOR,
-            xi.weaponskill.CORONACH,
-            xi.weaponskill.TRUEFLIGHT,
-            xi.weaponskill.LEADEN_SALUTE,
-            xi.weaponskill.NUMBING_SHOT,
-            xi.weaponskill.WILDFIRE,
-            xi.weaponskill.LAST_STAND,
-            xi.weaponskill.TERMINUS,
+            invaderXim.weaponskill.HOT_SHOT,
+            invaderXim.weaponskill.SPLIT_SHOT,
+            invaderXim.weaponskill.SNIPER_SHOT,
+            invaderXim.weaponskill.SLUG_SHOT,
+            invaderXim.weaponskill.BLAST_SHOT,
+            invaderXim.weaponskill.HEAVY_SHOT,
+            invaderXim.weaponskill.DETONATOR,
+            invaderXim.weaponskill.CORONACH,
+            invaderXim.weaponskill.TRUEFLIGHT,
+            invaderXim.weaponskill.LEADEN_SALUTE,
+            invaderXim.weaponskill.NUMBING_SHOT,
+            invaderXim.weaponskill.WILDFIRE,
+            invaderXim.weaponskill.LAST_STAND,
+            invaderXim.weaponskill.TERMINUS,
         },
 
         numRequired = 500,
 
         rewardItem =
         {
-            itemId       = xi.item.ANARCHY_P2,
+            itemId       = invaderXim.item.ANARCHY_P2,
             itemAugments =
             {
                 [1] = { 761, 27 }, -- Delay:+60 (Ranged)
@@ -6792,7 +6792,7 @@ xi.magian.trials =
         previousTrial = 2253,
         requiredItem  =
         {
-            itemId = xi.item.SPHARAI_85,
+            itemId = invaderXim.item.SPHARAI_85,
         },
 
         textOffset  = 1083,
@@ -6800,7 +6800,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.SPHARAI_90,
+            itemId = invaderXim.item.SPHARAI_90,
         },
     },
 
@@ -6809,7 +6809,7 @@ xi.magian.trials =
         previousTrial = 2256,
         requiredItem  =
         {
-            itemId = xi.item.EXCALIBUR_85,
+            itemId = invaderXim.item.EXCALIBUR_85,
         },
 
         textOffset  = 1084,
@@ -6817,7 +6817,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.EXCALIBUR_90,
+            itemId = invaderXim.item.EXCALIBUR_90,
         },
     },
 
@@ -6826,7 +6826,7 @@ xi.magian.trials =
         previousTrial = 2260,
         requiredItem  =
         {
-            itemId = xi.item.RAGNAROK_85,
+            itemId = invaderXim.item.RAGNAROK_85,
         },
 
         textOffset  = 1084,
@@ -6834,7 +6834,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.RAGNAROK_90,
+            itemId = invaderXim.item.RAGNAROK_90,
         },
     },
 
@@ -6843,7 +6843,7 @@ xi.magian.trials =
         previousTrial = 2261,
         requiredItem  =
         {
-            itemId = xi.item.GUTTLER_85,
+            itemId = invaderXim.item.GUTTLER_85,
         },
 
         textOffset  = 1082,
@@ -6851,7 +6851,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.GUTTLER_90,
+            itemId = invaderXim.item.GUTTLER_90,
         },
     },
 
@@ -6860,7 +6860,7 @@ xi.magian.trials =
         previousTrial = 2263,
         requiredItem  =
         {
-            itemId = xi.item.BRAVURA_85,
+            itemId = invaderXim.item.BRAVURA_85,
         },
 
         textOffset  = 1084,
@@ -6868,7 +6868,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.BRAVURA_90,
+            itemId = invaderXim.item.BRAVURA_90,
         },
     },
 
@@ -6877,7 +6877,7 @@ xi.magian.trials =
         previousTrial = 2265,
         requiredItem  =
         {
-            itemId = xi.item.APOCALYPSE_85,
+            itemId = invaderXim.item.APOCALYPSE_85,
         },
 
         textOffset  = 1081,
@@ -6885,7 +6885,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.APOCALYPSE_90,
+            itemId = invaderXim.item.APOCALYPSE_90,
         },
     },
 
@@ -6894,7 +6894,7 @@ xi.magian.trials =
         previousTrial = 2267,
         requiredItem  =
         {
-            itemId = xi.item.GUNGNIR_85,
+            itemId = invaderXim.item.GUNGNIR_85,
         },
 
         textOffset  = 1082,
@@ -6902,7 +6902,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.GUNGNIR_90,
+            itemId = invaderXim.item.GUNGNIR_90,
         },
     },
 
@@ -6911,7 +6911,7 @@ xi.magian.trials =
         previousTrial = 2269,
         requiredItem  =
         {
-            itemId = xi.item.KIKOKU_85,
+            itemId = invaderXim.item.KIKOKU_85,
         },
 
         textOffset  = 1083,
@@ -6919,7 +6919,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.KIKOKU_90,
+            itemId = invaderXim.item.KIKOKU_90,
         },
     },
 
@@ -6928,7 +6928,7 @@ xi.magian.trials =
         previousTrial = 2271,
         requiredItem  =
         {
-            itemId = xi.item.AMANOMURAKUMO_85,
+            itemId = invaderXim.item.AMANOMURAKUMO_85,
         },
 
         textOffset  = 1081,
@@ -6936,7 +6936,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.AMANOMURAKUMO_90,
+            itemId = invaderXim.item.AMANOMURAKUMO_90,
         },
     },
 
@@ -6945,7 +6945,7 @@ xi.magian.trials =
         previousTrial = 2273,
         requiredItem  =
         {
-            itemId = xi.item.MJOLLNIR_85,
+            itemId = invaderXim.item.MJOLLNIR_85,
         },
 
         textOffset  = 1085,
@@ -6953,7 +6953,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.MJOLLNIR_90,
+            itemId = invaderXim.item.MJOLLNIR_90,
         },
     },
 
@@ -6962,7 +6962,7 @@ xi.magian.trials =
         previousTrial = 2275,
         requiredItem  =
         {
-            itemId = xi.item.CLAUSTRUM_85,
+            itemId = invaderXim.item.CLAUSTRUM_85,
         },
 
         textOffset  = 1082,
@@ -6970,7 +6970,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.CLAUSTRUM_90,
+            itemId = invaderXim.item.CLAUSTRUM_90,
         },
     },
 
@@ -6979,7 +6979,7 @@ xi.magian.trials =
         previousTrial = 2279,
         requiredItem  =
         {
-            itemId = xi.item.YOICHINOYUMI_85,
+            itemId = invaderXim.item.YOICHINOYUMI_85,
         },
 
         textOffset  = 1081,
@@ -6987,7 +6987,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.YOICHINOYUMI_90,
+            itemId = invaderXim.item.YOICHINOYUMI_90,
         },
     },
 
@@ -6996,7 +6996,7 @@ xi.magian.trials =
         previousTrial = 2280,
         requiredItem  =
         {
-            itemId = xi.item.ANNIHILATOR_85,
+            itemId = invaderXim.item.ANNIHILATOR_85,
         },
 
         textOffset  = 1083,
@@ -7004,7 +7004,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.ANNIHILATOR_90,
+            itemId = invaderXim.item.ANNIHILATOR_90,
         },
     },
 
@@ -7013,7 +7013,7 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.GJALLARHORN_75,
+            itemId = invaderXim.item.GJALLARHORN_75,
         },
 
         textOffset  = 1131,
@@ -7021,7 +7021,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.GJALLARHORN_80,
+            itemId = invaderXim.item.GJALLARHORN_80,
         },
     },
 
@@ -7030,7 +7030,7 @@ xi.magian.trials =
         previousTrial = 2713,
         requiredItem  =
         {
-            itemId = xi.item.GJALLARHORN_80,
+            itemId = invaderXim.item.GJALLARHORN_80,
         },
 
         textOffset  = 1133,
@@ -7038,7 +7038,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.GJALLARHORN_85,
+            itemId = invaderXim.item.GJALLARHORN_85,
         },
     },
 
@@ -7047,7 +7047,7 @@ xi.magian.trials =
         previousTrial = 2714,
         requiredItem  =
         {
-            itemId = xi.item.GJALLARHORN_85,
+            itemId = invaderXim.item.GJALLARHORN_85,
         },
 
         textOffset  = 1085,
@@ -7055,7 +7055,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.GJALLARHORN_90,
+            itemId = invaderXim.item.GJALLARHORN_90,
         },
     },
 
@@ -7064,16 +7064,16 @@ xi.magian.trials =
         previousTrial = 2307,
         requiredItem  =
         {
-            itemId = xi.item.VERETHRAGNA_90,
+            itemId = invaderXim.item.VERETHRAGNA_90,
         },
 
         textOffset  = 70,
-        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
+        tradeItem   = invaderXim.item.PLATE_OF_HEAVY_METAL,
         numRequired = 1500,
 
         rewardItem =
         {
-            itemId = xi.item.VERETHRAGNA_95,
+            itemId = invaderXim.item.VERETHRAGNA_95,
         },
     },
 
@@ -7082,7 +7082,7 @@ xi.magian.trials =
         previousTrial = 2660,
         requiredItem  =
         {
-            itemId = xi.item.MANDAU_90,
+            itemId = invaderXim.item.MANDAU_90,
         },
 
         textOffset  = 1178,
@@ -7090,7 +7090,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.MANDAU_95,
+            itemId = invaderXim.item.MANDAU_95,
         },
     },
 
@@ -7099,7 +7099,7 @@ xi.magian.trials =
         previousTrial = 2664,
         requiredItem  =
         {
-            itemId = xi.item.SPHARAI_90,
+            itemId = invaderXim.item.SPHARAI_90,
         },
 
         textOffset  = 1177,
@@ -7107,7 +7107,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.SPHARAI_95,
+            itemId = invaderXim.item.SPHARAI_95,
         },
     },
 
@@ -7116,7 +7116,7 @@ xi.magian.trials =
         previousTrial = 2667,
         requiredItem  =
         {
-            itemId = xi.item.EXCALIBUR_90,
+            itemId = invaderXim.item.EXCALIBUR_90,
         },
 
         textOffset  = 1179,
@@ -7124,7 +7124,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.EXCALIBUR_95,
+            itemId = invaderXim.item.EXCALIBUR_95,
         },
     },
 
@@ -7133,7 +7133,7 @@ xi.magian.trials =
         previousTrial = 2671,
         requiredItem  =
         {
-            itemId = xi.item.RAGNAROK_90,
+            itemId = invaderXim.item.RAGNAROK_90,
         },
 
         textOffset  = 1180,
@@ -7141,7 +7141,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.RAGNAROK_95,
+            itemId = invaderXim.item.RAGNAROK_95,
         },
     },
 
@@ -7150,7 +7150,7 @@ xi.magian.trials =
         previousTrial = 2672,
         requiredItem  =
         {
-            itemId = xi.item.GUTTLER_90,
+            itemId = invaderXim.item.GUTTLER_90,
         },
 
         textOffset  = 1181,
@@ -7158,7 +7158,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.GUTTLER_95,
+            itemId = invaderXim.item.GUTTLER_95,
         },
     },
 
@@ -7167,7 +7167,7 @@ xi.magian.trials =
         previousTrial = 2674,
         requiredItem  =
         {
-            itemId = xi.item.BRAVURA_90,
+            itemId = invaderXim.item.BRAVURA_90,
         },
 
         textOffset  = 1182,
@@ -7175,7 +7175,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.BRAVURA_95,
+            itemId = invaderXim.item.BRAVURA_95,
         },
     },
 
@@ -7184,7 +7184,7 @@ xi.magian.trials =
         previousTrial = 2676,
         requiredItem  =
         {
-            itemId = xi.item.APOCALYPSE_90,
+            itemId = invaderXim.item.APOCALYPSE_90,
         },
 
         textOffset  = 1184,
@@ -7192,7 +7192,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.APOCALYPSE_95,
+            itemId = invaderXim.item.APOCALYPSE_95,
         },
     },
 
@@ -7201,7 +7201,7 @@ xi.magian.trials =
         previousTrial = 2678,
         requiredItem  =
         {
-            itemId = xi.item.GUNGNIR_90,
+            itemId = invaderXim.item.GUNGNIR_90,
         },
 
         textOffset  = 1183,
@@ -7209,7 +7209,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.GUNGNIR_95,
+            itemId = invaderXim.item.GUNGNIR_95,
         },
     },
 
@@ -7218,7 +7218,7 @@ xi.magian.trials =
         previousTrial = 2680,
         requiredItem  =
         {
-            itemId = xi.item.KIKOKU_90,
+            itemId = invaderXim.item.KIKOKU_90,
         },
 
         textOffset  = 1185,
@@ -7226,7 +7226,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.KIKOKU_95,
+            itemId = invaderXim.item.KIKOKU_95,
         },
     },
 
@@ -7235,7 +7235,7 @@ xi.magian.trials =
         previousTrial = 2682,
         requiredItem  =
         {
-            itemId = xi.item.AMANOMURAKUMO_90,
+            itemId = invaderXim.item.AMANOMURAKUMO_90,
         },
 
         textOffset  = 1186,
@@ -7243,7 +7243,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.AMANOMURAKUMO_95,
+            itemId = invaderXim.item.AMANOMURAKUMO_95,
         },
     },
 
@@ -7252,7 +7252,7 @@ xi.magian.trials =
         previousTrial = 2684,
         requiredItem  =
         {
-            itemId = xi.item.MJOLLNIR_90,
+            itemId = invaderXim.item.MJOLLNIR_90,
         },
 
         textOffset  = 1187,
@@ -7260,7 +7260,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.MJOLLNIR_95,
+            itemId = invaderXim.item.MJOLLNIR_95,
         },
     },
 
@@ -7269,7 +7269,7 @@ xi.magian.trials =
         previousTrial = 2686,
         requiredItem  =
         {
-            itemId = xi.item.CLAUSTRUM_90,
+            itemId = invaderXim.item.CLAUSTRUM_90,
         },
 
         textOffset  = 1188,
@@ -7277,7 +7277,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.CLAUSTRUM_95,
+            itemId = invaderXim.item.CLAUSTRUM_95,
         },
     },
 
@@ -7286,7 +7286,7 @@ xi.magian.trials =
         previousTrial = 2690,
         requiredItem  =
         {
-            itemId = xi.item.YOICHINOYUMI_90,
+            itemId = invaderXim.item.YOICHINOYUMI_90,
         },
 
         textOffset  = 1189,
@@ -7294,7 +7294,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.YOICHINOYUMI_95,
+            itemId = invaderXim.item.YOICHINOYUMI_95,
         },
     },
 
@@ -7303,7 +7303,7 @@ xi.magian.trials =
         previousTrial = 2691,
         requiredItem  =
         {
-            itemId = xi.item.ANNIHILATOR_90,
+            itemId = invaderXim.item.ANNIHILATOR_90,
         },
 
         textOffset  = 1190,
@@ -7311,7 +7311,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.ANNIHILATOR_95,
+            itemId = invaderXim.item.ANNIHILATOR_95,
         },
     },
 
@@ -7320,7 +7320,7 @@ xi.magian.trials =
         previousTrial = 2715,
         requiredItem  =
         {
-            itemId = xi.item.GJALLARHORN_90,
+            itemId = invaderXim.item.GJALLARHORN_90,
         },
 
         textOffset  = 1191,
@@ -7328,7 +7328,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.GJALLARHORN_95,
+            itemId = invaderXim.item.GJALLARHORN_95,
         },
     },
 
@@ -7337,16 +7337,16 @@ xi.magian.trials =
         previousTrial = 2740,
         requiredItem  =
         {
-            itemId = xi.item.VERETHRAGNA_95,
+            itemId = invaderXim.item.VERETHRAGNA_95,
         },
 
         textOffset  = 70,
-        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        tradeItem   = invaderXim.item.PINCH_OF_RIFTCINDER,
         numRequired = 60,
 
         rewardItem =
         {
-            itemId = xi.item.VERETHRAGNA_99,
+            itemId = invaderXim.item.VERETHRAGNA_99,
         },
     },
 
@@ -7355,16 +7355,16 @@ xi.magian.trials =
         previousTrial = 3093,
         requiredItem  =
         {
-            itemId = xi.item.MANDAU_95,
+            itemId = invaderXim.item.MANDAU_95,
         },
 
         textOffset  = 1329,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 5,
 
         rewardItem =
         {
-            itemId = xi.item.MANDAU_99,
+            itemId = invaderXim.item.MANDAU_99,
         },
     },
 
@@ -7373,16 +7373,16 @@ xi.magian.trials =
         previousTrial = 3097,
         requiredItem  =
         {
-            itemId = xi.item.SPHARAI_95,
+            itemId = invaderXim.item.SPHARAI_95,
         },
 
         textOffset  = 1329,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 5,
 
         rewardItem =
         {
-            itemId = xi.item.SPHARAI_99,
+            itemId = invaderXim.item.SPHARAI_99,
         },
     },
 
@@ -7391,16 +7391,16 @@ xi.magian.trials =
         previousTrial = 3100,
         requiredItem  =
         {
-            itemId = xi.item.EXCALIBUR_95,
+            itemId = invaderXim.item.EXCALIBUR_95,
         },
 
         textOffset  = 1329,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 5,
 
         rewardItem =
         {
-            itemId = xi.item.EXCALIBUR_99,
+            itemId = invaderXim.item.EXCALIBUR_99,
         },
     },
 
@@ -7409,16 +7409,16 @@ xi.magian.trials =
         previousTrial = 3104,
         requiredItem  =
         {
-            itemId = xi.item.RAGNAROK_95,
+            itemId = invaderXim.item.RAGNAROK_95,
         },
 
         textOffset  = 1329,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 5,
 
         rewardItem =
         {
-            itemId = xi.item.RAGNAROK_99,
+            itemId = invaderXim.item.RAGNAROK_99,
         },
     },
 
@@ -7427,16 +7427,16 @@ xi.magian.trials =
         previousTrial = 3105,
         requiredItem  =
         {
-            itemId = xi.item.GUTTLER_95,
+            itemId = invaderXim.item.GUTTLER_95,
         },
 
         textOffset  = 1329,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 5,
 
         rewardItem =
         {
-            itemId = xi.item.GUTTLER_99,
+            itemId = invaderXim.item.GUTTLER_99,
         },
     },
 
@@ -7445,16 +7445,16 @@ xi.magian.trials =
         previousTrial = 3107,
         requiredItem  =
         {
-            itemId = xi.item.BRAVURA_95,
+            itemId = invaderXim.item.BRAVURA_95,
         },
 
         textOffset  = 1329,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 5,
 
         rewardItem =
         {
-            itemId = xi.item.BRAVURA_99,
+            itemId = invaderXim.item.BRAVURA_99,
         },
     },
 
@@ -7463,16 +7463,16 @@ xi.magian.trials =
         previousTrial = 3109,
         requiredItem  =
         {
-            itemId = xi.item.APOCALYPSE_95,
+            itemId = invaderXim.item.APOCALYPSE_95,
         },
 
         textOffset  = 1329,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 5,
 
         rewardItem =
         {
-            itemId = xi.item.APOCALYPSE_99,
+            itemId = invaderXim.item.APOCALYPSE_99,
         },
     },
 
@@ -7481,16 +7481,16 @@ xi.magian.trials =
         previousTrial = 3111,
         requiredItem  =
         {
-            itemId = xi.item.GUNGNIR_95,
+            itemId = invaderXim.item.GUNGNIR_95,
         },
 
         textOffset  = 1329,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 5,
 
         rewardItem =
         {
-            itemId = xi.item.GUNGNIR_99,
+            itemId = invaderXim.item.GUNGNIR_99,
         },
     },
 
@@ -7499,16 +7499,16 @@ xi.magian.trials =
         previousTrial = 3113,
         requiredItem  =
         {
-            itemId = xi.item.KIKOKU_95,
+            itemId = invaderXim.item.KIKOKU_95,
         },
 
         textOffset  = 1329,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 5,
 
         rewardItem =
         {
-            itemId = xi.item.KIKOKU_99,
+            itemId = invaderXim.item.KIKOKU_99,
         },
     },
 
@@ -7517,16 +7517,16 @@ xi.magian.trials =
         previousTrial = 3115,
         requiredItem  =
         {
-            itemId = xi.item.AMANOMURAKUMO_95,
+            itemId = invaderXim.item.AMANOMURAKUMO_95,
         },
 
         textOffset  = 1329,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 5,
 
         rewardItem =
         {
-            itemId = xi.item.AMANOMURAKUMO_99,
+            itemId = invaderXim.item.AMANOMURAKUMO_99,
         },
     },
 
@@ -7535,16 +7535,16 @@ xi.magian.trials =
         previousTrial = 3117,
         requiredItem  =
         {
-            itemId = xi.item.MJOLLNIR_95,
+            itemId = invaderXim.item.MJOLLNIR_95,
         },
 
         textOffset  = 1329,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 5,
 
         rewardItem =
         {
-            itemId = xi.item.MJOLLNIR_99,
+            itemId = invaderXim.item.MJOLLNIR_99,
         },
     },
 
@@ -7553,16 +7553,16 @@ xi.magian.trials =
         previousTrial = 3119,
         requiredItem  =
         {
-            itemId = xi.item.CLAUSTRUM_95,
+            itemId = invaderXim.item.CLAUSTRUM_95,
         },
 
         textOffset  = 1329,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 5,
 
         rewardItem =
         {
-            itemId = xi.item.CLAUSTRUM_99,
+            itemId = invaderXim.item.CLAUSTRUM_99,
         },
     },
 
@@ -7571,16 +7571,16 @@ xi.magian.trials =
         previousTrial = 3123,
         requiredItem  =
         {
-            itemId = xi.item.YOICHINOYUMI_95,
+            itemId = invaderXim.item.YOICHINOYUMI_95,
         },
 
         textOffset  = 1329,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 5,
 
         rewardItem =
         {
-            itemId = xi.item.YOICHINOYUMI_99,
+            itemId = invaderXim.item.YOICHINOYUMI_99,
         },
     },
 
@@ -7589,16 +7589,16 @@ xi.magian.trials =
         previousTrial = 3124,
         requiredItem  =
         {
-            itemId = xi.item.ANNIHILATOR_95,
+            itemId = invaderXim.item.ANNIHILATOR_95,
         },
 
         textOffset  = 1329,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 5,
 
         rewardItem =
         {
-            itemId = xi.item.ANNIHILATOR_99,
+            itemId = invaderXim.item.ANNIHILATOR_99,
         },
     },
 
@@ -7607,16 +7607,16 @@ xi.magian.trials =
         previousTrial = 3128,
         requiredItem  =
         {
-            itemId = xi.item.GJALLARHORN_95,
+            itemId = invaderXim.item.GJALLARHORN_95,
         },
 
         textOffset  = 1329,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 5,
 
         rewardItem =
         {
-            itemId = xi.item.GJALLARHORN_99,
+            itemId = invaderXim.item.GJALLARHORN_99,
         },
     },
 
@@ -7625,16 +7625,16 @@ xi.magian.trials =
         previousTrial = 3203,
         requiredItem  =
         {
-            itemId = xi.item.VERETHRAGNA_99,
+            itemId = invaderXim.item.VERETHRAGNA_99,
         },
 
         textOffset  = 70,
-        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        tradeItem   = invaderXim.item.PINCH_OF_RIFTCINDER,
         numRequired = 3000,
 
         rewardItem =
         {
-            itemId = xi.item.VERETHRAGNA_99_II,
+            itemId = invaderXim.item.VERETHRAGNA_99_II,
         },
     },
 
@@ -7643,16 +7643,16 @@ xi.magian.trials =
         previousTrial = 3556,
         requiredItem  =
         {
-            itemId = xi.item.MANDAU_99,
+            itemId = invaderXim.item.MANDAU_99,
         },
 
         textOffset  = 1258,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 250,
 
         rewardItem =
         {
-            itemId = xi.item.MANDAU_99_II,
+            itemId = invaderXim.item.MANDAU_99_II,
         },
     },
 
@@ -7661,16 +7661,16 @@ xi.magian.trials =
         previousTrial = 3560,
         requiredItem  =
         {
-            itemId = xi.item.SPHARAI_99,
+            itemId = invaderXim.item.SPHARAI_99,
         },
 
         textOffset  = 1258,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 250,
 
         rewardItem =
         {
-            itemId = xi.item.SPHARAI_99_II,
+            itemId = invaderXim.item.SPHARAI_99_II,
         },
     },
 
@@ -7679,16 +7679,16 @@ xi.magian.trials =
         previousTrial = 3563,
         requiredItem  =
         {
-            itemId = xi.item.EXCALIBUR_99,
+            itemId = invaderXim.item.EXCALIBUR_99,
         },
 
         textOffset  = 1258,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 250,
 
         rewardItem =
         {
-            itemId = xi.item.EXCALIBUR_99_II,
+            itemId = invaderXim.item.EXCALIBUR_99_II,
         },
     },
 
@@ -7697,16 +7697,16 @@ xi.magian.trials =
         previousTrial = 3567,
         requiredItem  =
         {
-            itemId = xi.item.RAGNAROK_99,
+            itemId = invaderXim.item.RAGNAROK_99,
         },
 
         textOffset  = 1258,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 250,
 
         rewardItem =
         {
-            itemId = xi.item.RAGNAROK_99_II,
+            itemId = invaderXim.item.RAGNAROK_99_II,
         },
     },
 
@@ -7715,16 +7715,16 @@ xi.magian.trials =
         previousTrial = 3568,
         requiredItem  =
         {
-            itemId = xi.item.GUTTLER_99,
+            itemId = invaderXim.item.GUTTLER_99,
         },
 
         textOffset  = 1258,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 250,
 
         rewardItem =
         {
-            itemId = xi.item.GUTTLER_99_II,
+            itemId = invaderXim.item.GUTTLER_99_II,
         },
     },
 
@@ -7733,16 +7733,16 @@ xi.magian.trials =
         previousTrial = 3570,
         requiredItem  =
         {
-            itemId = xi.item.BRAVURA_99,
+            itemId = invaderXim.item.BRAVURA_99,
         },
 
         textOffset  = 1258,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 250,
 
         rewardItem =
         {
-            itemId = xi.item.BRAVURA_99_II,
+            itemId = invaderXim.item.BRAVURA_99_II,
         },
     },
 
@@ -7751,16 +7751,16 @@ xi.magian.trials =
         previousTrial = 3572,
         requiredItem  =
         {
-            itemId = xi.item.APOCALYPSE_99,
+            itemId = invaderXim.item.APOCALYPSE_99,
         },
 
         textOffset  = 1258,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 250,
 
         rewardItem =
         {
-            itemId = xi.item.APOCALYPSE_99_II,
+            itemId = invaderXim.item.APOCALYPSE_99_II,
         },
     },
 
@@ -7769,16 +7769,16 @@ xi.magian.trials =
         previousTrial = 3574,
         requiredItem  =
         {
-            itemId = xi.item.GUNGNIR_99,
+            itemId = invaderXim.item.GUNGNIR_99,
         },
 
         textOffset  = 1258,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 250,
 
         rewardItem =
         {
-            itemId = xi.item.GUNGNIR_99_II,
+            itemId = invaderXim.item.GUNGNIR_99_II,
         },
     },
 
@@ -7787,16 +7787,16 @@ xi.magian.trials =
         previousTrial = 3576,
         requiredItem  =
         {
-            itemId = xi.item.KIKOKU_99,
+            itemId = invaderXim.item.KIKOKU_99,
         },
 
         textOffset  = 1258,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 250,
 
         rewardItem =
         {
-            itemId = xi.item.KIKOKU_99_II,
+            itemId = invaderXim.item.KIKOKU_99_II,
         },
     },
 
@@ -7805,16 +7805,16 @@ xi.magian.trials =
         previousTrial = 3578,
         requiredItem  =
         {
-            itemId = xi.item.AMANOMURAKUMO_99,
+            itemId = invaderXim.item.AMANOMURAKUMO_99,
         },
 
         textOffset  = 1258,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 250,
 
         rewardItem =
         {
-            itemId = xi.item.AMANOMURAKUMO_99_II,
+            itemId = invaderXim.item.AMANOMURAKUMO_99_II,
         },
     },
 
@@ -7823,16 +7823,16 @@ xi.magian.trials =
         previousTrial = 3581,
         requiredItem  =
         {
-            itemId = xi.item.MJOLLNIR_99,
+            itemId = invaderXim.item.MJOLLNIR_99,
         },
 
         textOffset  = 1258,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 250,
 
         rewardItem =
         {
-            itemId = xi.item.MJOLLNIR_99_II,
+            itemId = invaderXim.item.MJOLLNIR_99_II,
         },
     },
 
@@ -7841,16 +7841,16 @@ xi.magian.trials =
         previousTrial = 3582,
         requiredItem  =
         {
-            itemId = xi.item.CLAUSTRUM_99,
+            itemId = invaderXim.item.CLAUSTRUM_99,
         },
 
         textOffset  = 1258,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 250,
 
         rewardItem =
         {
-            itemId = xi.item.CLAUSTRUM_99_II,
+            itemId = invaderXim.item.CLAUSTRUM_99_II,
         },
     },
 
@@ -7859,16 +7859,16 @@ xi.magian.trials =
         previousTrial = 3586,
         requiredItem  =
         {
-            itemId = xi.item.YOICHINOYUMI_99,
+            itemId = invaderXim.item.YOICHINOYUMI_99,
         },
 
         textOffset  = 1258,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 250,
 
         rewardItem =
         {
-            itemId = xi.item.YOICHINOYUMI_99_II,
+            itemId = invaderXim.item.YOICHINOYUMI_99_II,
         },
     },
 
@@ -7877,16 +7877,16 @@ xi.magian.trials =
         previousTrial = 3587,
         requiredItem  =
         {
-            itemId = xi.item.ANNIHILATOR_99,
+            itemId = invaderXim.item.ANNIHILATOR_99,
         },
 
         textOffset  = 1258,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 250,
 
         rewardItem =
         {
-            itemId = xi.item.ANNIHILATOR_99_II,
+            itemId = invaderXim.item.ANNIHILATOR_99_II,
         },
     },
 
@@ -7895,16 +7895,16 @@ xi.magian.trials =
         previousTrial = 3591,
         requiredItem  =
         {
-            itemId = xi.item.GJALLARHORN_99,
+            itemId = invaderXim.item.GJALLARHORN_99,
         },
 
         textOffset  = 1258,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 250,
 
         rewardItem =
         {
-            itemId = xi.item.GJALLARHORN_99_II,
+            itemId = invaderXim.item.GJALLARHORN_99_II,
         },
     },
 
@@ -7913,16 +7913,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.RAVAGERS_MASK,
+            itemId = invaderXim.item.RAVAGERS_MASK,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.RAVAGERS_SEAL_HEAD,
+        tradeItem   = invaderXim.item.RAVAGERS_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.RAVAGERS_MASK_P1,
+            itemId = invaderXim.item.RAVAGERS_MASK_P1,
         },
     },
 
@@ -7931,16 +7931,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.TANTRA_CROWN,
+            itemId = invaderXim.item.TANTRA_CROWN,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.TANTRA_SEAL_HEAD,
+        tradeItem   = invaderXim.item.TANTRA_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.TANTRA_CROWN_P1,
+            itemId = invaderXim.item.TANTRA_CROWN_P1,
         },
     },
 
@@ -7949,16 +7949,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ORISON_CAP,
+            itemId = invaderXim.item.ORISON_CAP,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.ORISON_SEAL_HEAD,
+        tradeItem   = invaderXim.item.ORISON_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.ORISON_CAP_P1,
+            itemId = invaderXim.item.ORISON_CAP_P1,
         },
     },
 
@@ -7967,16 +7967,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.GOETIA_PETASOS,
+            itemId = invaderXim.item.GOETIA_PETASOS,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.GOETIA_SEAL_HEAD,
+        tradeItem   = invaderXim.item.GOETIA_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.GOETIA_PETASOS_P1,
+            itemId = invaderXim.item.GOETIA_PETASOS_P1,
         },
     },
 
@@ -7985,16 +7985,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ESTOQUEURS_CHAPPEL,
+            itemId = invaderXim.item.ESTOQUEURS_CHAPPEL,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.ESTOQUEURS_SEAL_HEAD,
+        tradeItem   = invaderXim.item.ESTOQUEURS_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.ESTOQUEURS_CHAPPEL_P1,
+            itemId = invaderXim.item.ESTOQUEURS_CHAPPEL_P1,
         },
     },
 
@@ -8003,16 +8003,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.RAIDERS_BONNET,
+            itemId = invaderXim.item.RAIDERS_BONNET,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.RAIDERS_SEAL_HEAD,
+        tradeItem   = invaderXim.item.RAIDERS_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.RAIDERS_BONNET_P1,
+            itemId = invaderXim.item.RAIDERS_BONNET_P1,
         },
     },
 
@@ -8021,16 +8021,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CREED_ARMET,
+            itemId = invaderXim.item.CREED_ARMET,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.CREED_SEAL_HEAD,
+        tradeItem   = invaderXim.item.CREED_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.CREED_ARMET_P1,
+            itemId = invaderXim.item.CREED_ARMET_P1,
         },
     },
 
@@ -8039,16 +8039,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BALE_BURGEONET,
+            itemId = invaderXim.item.BALE_BURGEONET,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.BALE_SEAL_HEAD,
+        tradeItem   = invaderXim.item.BALE_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.BALE_BURGEONET_P1,
+            itemId = invaderXim.item.BALE_BURGEONET_P1,
         },
     },
 
@@ -8057,16 +8057,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.FERINE_CABASSET,
+            itemId = invaderXim.item.FERINE_CABASSET,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.FERINE_SEAL_HEAD,
+        tradeItem   = invaderXim.item.FERINE_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.FERINE_CABASSET_P1,
+            itemId = invaderXim.item.FERINE_CABASSET_P1,
         },
     },
 
@@ -8075,16 +8075,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.AOIDOS_CALOT,
+            itemId = invaderXim.item.AOIDOS_CALOT,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.AOIDOS_SEAL_HEAD,
+        tradeItem   = invaderXim.item.AOIDOS_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.AOIDOS_CALOT_P1,
+            itemId = invaderXim.item.AOIDOS_CALOT_P1,
         },
     },
 
@@ -8093,16 +8093,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SYLVAN_GAPETTE,
+            itemId = invaderXim.item.SYLVAN_GAPETTE,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.SYLVAN_SEAL_HEAD,
+        tradeItem   = invaderXim.item.SYLVAN_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.SYLVAN_GAPETTE_P1,
+            itemId = invaderXim.item.SYLVAN_GAPETTE_P1,
         },
     },
 
@@ -8111,16 +8111,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.UNKAI_KABUTO,
+            itemId = invaderXim.item.UNKAI_KABUTO,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.UNKAI_SEAL_HEAD,
+        tradeItem   = invaderXim.item.UNKAI_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.UNKAI_KABUTO_P1,
+            itemId = invaderXim.item.UNKAI_KABUTO_P1,
         },
     },
 
@@ -8129,16 +8129,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.IGA_ZUKIN,
+            itemId = invaderXim.item.IGA_ZUKIN,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.IGA_SEAL_HEAD,
+        tradeItem   = invaderXim.item.IGA_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.IGA_ZUKIN_P1,
+            itemId = invaderXim.item.IGA_ZUKIN_P1,
         },
     },
 
@@ -8147,16 +8147,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.LANCERS_MEZAIL,
+            itemId = invaderXim.item.LANCERS_MEZAIL,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.LANCERS_SEAL_HEAD,
+        tradeItem   = invaderXim.item.LANCERS_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.LANCERS_MEZAIL_P1,
+            itemId = invaderXim.item.LANCERS_MEZAIL_P1,
         },
     },
 
@@ -8165,16 +8165,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CALLERS_HORN,
+            itemId = invaderXim.item.CALLERS_HORN,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.CALLERS_SEAL_HEAD,
+        tradeItem   = invaderXim.item.CALLERS_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.CALLERS_HORN_P1,
+            itemId = invaderXim.item.CALLERS_HORN_P1,
         },
     },
 
@@ -8183,16 +8183,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MAVI_KAVUK,
+            itemId = invaderXim.item.MAVI_KAVUK,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.MAVI_SEAL_HEAD,
+        tradeItem   = invaderXim.item.MAVI_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.MAVI_KAVUK_P1,
+            itemId = invaderXim.item.MAVI_KAVUK_P1,
         },
     },
 
@@ -8201,16 +8201,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.NAVARCHS_TRICORNE,
+            itemId = invaderXim.item.NAVARCHS_TRICORNE,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.NAVARCHS_SEAL_HEAD,
+        tradeItem   = invaderXim.item.NAVARCHS_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.NAVARCHS_TRICORNE_P1,
+            itemId = invaderXim.item.NAVARCHS_TRICORNE_P1,
         },
     },
 
@@ -8219,16 +8219,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CIRQUE_CAPPELLO,
+            itemId = invaderXim.item.CIRQUE_CAPPELLO,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.CIRQUE_SEAL_HEAD,
+        tradeItem   = invaderXim.item.CIRQUE_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.CIRQUE_CAPPELLO_P1,
+            itemId = invaderXim.item.CIRQUE_CAPPELLO_P1,
         },
     },
 
@@ -8237,16 +8237,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CHARIS_TIARA,
+            itemId = invaderXim.item.CHARIS_TIARA,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.CHARIS_SEAL_HEAD,
+        tradeItem   = invaderXim.item.CHARIS_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.CHARIS_TIARA_P1,
+            itemId = invaderXim.item.CHARIS_TIARA_P1,
         },
     },
 
@@ -8255,16 +8255,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SAVANTS_BONNET,
+            itemId = invaderXim.item.SAVANTS_BONNET,
         },
 
         textOffset  = 1049,
-        tradeItem   = xi.item.SAVANTS_SEAL_HEAD,
+        tradeItem   = invaderXim.item.SAVANTS_SEAL_HEAD,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.SAVANTS_BONNET_P1,
+            itemId = invaderXim.item.SAVANTS_BONNET_P1,
         },
     },
 
@@ -8273,16 +8273,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.RAVAGERS_CUISSES,
+            itemId = invaderXim.item.RAVAGERS_CUISSES,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.RAVAGERS_SEAL_LEGS,
+        tradeItem   = invaderXim.item.RAVAGERS_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.RAVAGERS_CUISSES_P1,
+            itemId = invaderXim.item.RAVAGERS_CUISSES_P1,
         },
     },
 
@@ -8291,16 +8291,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.TANTRA_HOSE,
+            itemId = invaderXim.item.TANTRA_HOSE,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.TANTRA_SEAL_LEGS,
+        tradeItem   = invaderXim.item.TANTRA_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.TANTRA_HOSE_P1,
+            itemId = invaderXim.item.TANTRA_HOSE_P1,
         },
     },
 
@@ -8309,16 +8309,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ORISON_PANTALOONS,
+            itemId = invaderXim.item.ORISON_PANTALOONS,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.ORISON_SEAL_LEGS,
+        tradeItem   = invaderXim.item.ORISON_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.ORISON_PANTALOONS_P1,
+            itemId = invaderXim.item.ORISON_PANTALOONS_P1,
         },
     },
 
@@ -8327,16 +8327,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.GOETIA_CHAUSSES,
+            itemId = invaderXim.item.GOETIA_CHAUSSES,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.GOETIA_SEAL_LEGS,
+        tradeItem   = invaderXim.item.GOETIA_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.GOETIA_CHAUSSES_P1,
+            itemId = invaderXim.item.GOETIA_CHAUSSES_P1,
         },
     },
 
@@ -8345,16 +8345,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ESTOQUEURS_FUSEAU,
+            itemId = invaderXim.item.ESTOQUEURS_FUSEAU,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.ESTOQUEURS_SEAL_LEGS,
+        tradeItem   = invaderXim.item.ESTOQUEURS_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.ESTOQUEURS_FUSEAU_P1,
+            itemId = invaderXim.item.ESTOQUEURS_FUSEAU_P1,
         },
     },
 
@@ -8363,16 +8363,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.RAIDERS_CULOTTES,
+            itemId = invaderXim.item.RAIDERS_CULOTTES,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.RAIDERS_SEAL_LEGS,
+        tradeItem   = invaderXim.item.RAIDERS_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.RAIDERS_CULOTTES_P1,
+            itemId = invaderXim.item.RAIDERS_CULOTTES_P1,
         },
     },
 
@@ -8381,16 +8381,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CREED_CUISSES,
+            itemId = invaderXim.item.CREED_CUISSES,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.CREED_SEAL_LEGS,
+        tradeItem   = invaderXim.item.CREED_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.CREED_CUISSES_P1,
+            itemId = invaderXim.item.CREED_CUISSES_P1,
         },
     },
 
@@ -8399,16 +8399,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BALE_FLANCHARD,
+            itemId = invaderXim.item.BALE_FLANCHARD,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.BALE_SEAL_LEGS,
+        tradeItem   = invaderXim.item.BALE_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.BALE_FLANCHARD_P1,
+            itemId = invaderXim.item.BALE_FLANCHARD_P1,
         },
     },
 
@@ -8417,16 +8417,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.FERINE_QUIJOTES,
+            itemId = invaderXim.item.FERINE_QUIJOTES,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.FERINE_SEAL_LEGS,
+        tradeItem   = invaderXim.item.FERINE_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.FERINE_QUIJOTES_P1,
+            itemId = invaderXim.item.FERINE_QUIJOTES_P1,
         },
     },
 
@@ -8435,16 +8435,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.AOIDOS_RHINGRAVE,
+            itemId = invaderXim.item.AOIDOS_RHINGRAVE,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.AOIDOS_SEAL_LEGS,
+        tradeItem   = invaderXim.item.AOIDOS_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.AOIDOS_RHINGRAVE_P1,
+            itemId = invaderXim.item.AOIDOS_RHINGRAVE_P1,
         },
     },
 
@@ -8453,16 +8453,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SYLVAN_BRAGUES,
+            itemId = invaderXim.item.SYLVAN_BRAGUES,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.SYLVAN_SEAL_LEGS,
+        tradeItem   = invaderXim.item.SYLVAN_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.SYLVAN_BRAGUES_P1,
+            itemId = invaderXim.item.SYLVAN_BRAGUES_P1,
         },
     },
 
@@ -8471,16 +8471,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.UNKAI_HAIDATE,
+            itemId = invaderXim.item.UNKAI_HAIDATE,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.UNKAI_SEAL_LEGS,
+        tradeItem   = invaderXim.item.UNKAI_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.UNKAI_HAIDATE_P1,
+            itemId = invaderXim.item.UNKAI_HAIDATE_P1,
         },
     },
 
@@ -8489,16 +8489,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.IGA_HAKAMA,
+            itemId = invaderXim.item.IGA_HAKAMA,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.IGA_SEAL_LEGS,
+        tradeItem   = invaderXim.item.IGA_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.IGA_HAKAMA_P1,
+            itemId = invaderXim.item.IGA_HAKAMA_P1,
         },
     },
 
@@ -8507,16 +8507,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.LANCERS_CUISSOTS,
+            itemId = invaderXim.item.LANCERS_CUISSOTS,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.LANCERS_SEAL_LEGS,
+        tradeItem   = invaderXim.item.LANCERS_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.LANCERS_CUISSOTS_P1,
+            itemId = invaderXim.item.LANCERS_CUISSOTS_P1,
         },
     },
 
@@ -8525,16 +8525,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CALLERS_SPATS,
+            itemId = invaderXim.item.CALLERS_SPATS,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.CALLERS_SEAL_LEGS,
+        tradeItem   = invaderXim.item.CALLERS_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.CALLERS_SPATS_P1,
+            itemId = invaderXim.item.CALLERS_SPATS_P1,
         },
     },
 
@@ -8543,16 +8543,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MAVI_TAYT,
+            itemId = invaderXim.item.MAVI_TAYT,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.MAVI_SEAL_LEGS,
+        tradeItem   = invaderXim.item.MAVI_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.MAVI_TAYT_P1,
+            itemId = invaderXim.item.MAVI_TAYT_P1,
         },
     },
 
@@ -8561,16 +8561,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.NAVARCHS_CULOTTES,
+            itemId = invaderXim.item.NAVARCHS_CULOTTES,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.NAVARCHS_SEAL_LEGS,
+        tradeItem   = invaderXim.item.NAVARCHS_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.NAVARCHS_CULOTTES_P1,
+            itemId = invaderXim.item.NAVARCHS_CULOTTES_P1,
         },
     },
 
@@ -8579,16 +8579,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CIRQUE_PANTALONI,
+            itemId = invaderXim.item.CIRQUE_PANTALONI,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.CIRQUE_SEAL_LEGS,
+        tradeItem   = invaderXim.item.CIRQUE_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.CIRQUE_PANTALONI_P1,
+            itemId = invaderXim.item.CIRQUE_PANTALONI_P1,
         },
     },
 
@@ -8597,16 +8597,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CHARIS_TIGHTS,
+            itemId = invaderXim.item.CHARIS_TIGHTS,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.CHARIS_SEAL_LEGS,
+        tradeItem   = invaderXim.item.CHARIS_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.CHARIS_TIGHTS_P1,
+            itemId = invaderXim.item.CHARIS_TIGHTS_P1,
         },
     },
 
@@ -8615,16 +8615,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SAVANTS_PANTS,
+            itemId = invaderXim.item.SAVANTS_PANTS,
         },
 
         textOffset  = 1055,
-        tradeItem   = xi.item.SAVANTS_SEAL_LEGS,
+        tradeItem   = invaderXim.item.SAVANTS_SEAL_LEGS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.SAVANTS_PANTS_P1,
+            itemId = invaderXim.item.SAVANTS_PANTS_P1,
         },
     },
 
@@ -8633,16 +8633,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.RAVAGERS_CALLIGAE,
+            itemId = invaderXim.item.RAVAGERS_CALLIGAE,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.RAVAGERS_SEAL_FEET,
+        tradeItem   = invaderXim.item.RAVAGERS_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.RAVAGERS_CALLIGAE_P1,
+            itemId = invaderXim.item.RAVAGERS_CALLIGAE_P1,
         },
     },
 
@@ -8651,16 +8651,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.TANTRA_GAITERS,
+            itemId = invaderXim.item.TANTRA_GAITERS,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.TANTRA_SEAL_FEET,
+        tradeItem   = invaderXim.item.TANTRA_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.TANTRA_GAITERS_P1,
+            itemId = invaderXim.item.TANTRA_GAITERS_P1,
         },
     },
 
@@ -8669,16 +8669,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ORISON_DUCKBILLS,
+            itemId = invaderXim.item.ORISON_DUCKBILLS,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.ORISON_SEAL_FEET,
+        tradeItem   = invaderXim.item.ORISON_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.ORISON_DUCKBILLS_P1,
+            itemId = invaderXim.item.ORISON_DUCKBILLS_P1,
         },
     },
 
@@ -8687,16 +8687,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.GOETIA_SABOTS,
+            itemId = invaderXim.item.GOETIA_SABOTS,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.GOETIA_SEAL_FEET,
+        tradeItem   = invaderXim.item.GOETIA_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.GOETIA_SABOTS_P1,
+            itemId = invaderXim.item.GOETIA_SABOTS_P1,
         },
     },
 
@@ -8705,16 +8705,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ESTOQUEURS_HOUSEAUX,
+            itemId = invaderXim.item.ESTOQUEURS_HOUSEAUX,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.ESTOQUEURS_SEAL_FEET,
+        tradeItem   = invaderXim.item.ESTOQUEURS_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.ESTOQUEURS_HOUSEAUX_P1,
+            itemId = invaderXim.item.ESTOQUEURS_HOUSEAUX_P1,
         },
     },
 
@@ -8723,16 +8723,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.RAIDERS_POULAINES,
+            itemId = invaderXim.item.RAIDERS_POULAINES,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.RAIDERS_SEAL_FEET,
+        tradeItem   = invaderXim.item.RAIDERS_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.RAIDERS_POULAINES_P1,
+            itemId = invaderXim.item.RAIDERS_POULAINES_P1,
         },
     },
 
@@ -8741,16 +8741,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CREED_SABATONS,
+            itemId = invaderXim.item.CREED_SABATONS,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.CREED_SEAL_FEET,
+        tradeItem   = invaderXim.item.CREED_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.CREED_SABATONS_P1,
+            itemId = invaderXim.item.CREED_SABATONS_P1,
         },
     },
 
@@ -8759,16 +8759,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BALE_SOLLERETS,
+            itemId = invaderXim.item.BALE_SOLLERETS,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.BALE_SEAL_FEET,
+        tradeItem   = invaderXim.item.BALE_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.BALE_SOLLERETS_P1,
+            itemId = invaderXim.item.BALE_SOLLERETS_P1,
         },
     },
 
@@ -8777,16 +8777,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.FERINE_OCREAE,
+            itemId = invaderXim.item.FERINE_OCREAE,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.FERINE_SEAL_FEET,
+        tradeItem   = invaderXim.item.FERINE_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.FERINE_OCREAE_P1,
+            itemId = invaderXim.item.FERINE_OCREAE_P1,
         },
     },
 
@@ -8795,16 +8795,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.AOIDOS_COTHURNES,
+            itemId = invaderXim.item.AOIDOS_COTHURNES,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.AOIDOS_SEAL_FEET,
+        tradeItem   = invaderXim.item.AOIDOS_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.AOIDOS_COTHURNES_P1,
+            itemId = invaderXim.item.AOIDOS_COTHURNES_P1,
         },
     },
 
@@ -8813,16 +8813,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SYLVAN_BOTTILLONS,
+            itemId = invaderXim.item.SYLVAN_BOTTILLONS,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.SYLVAN_SEAL_FEET,
+        tradeItem   = invaderXim.item.SYLVAN_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.SYLVAN_BOTTILLONS_P1,
+            itemId = invaderXim.item.SYLVAN_BOTTILLONS_P1,
         },
     },
 
@@ -8831,16 +8831,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.UNKAI_SUNE_ATE,
+            itemId = invaderXim.item.UNKAI_SUNE_ATE,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.UNKAI_SEAL_FEET,
+        tradeItem   = invaderXim.item.UNKAI_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.UNKAI_SUNE_ATE_P1,
+            itemId = invaderXim.item.UNKAI_SUNE_ATE_P1,
         },
     },
 
@@ -8849,16 +8849,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.IGA_KYAHAN,
+            itemId = invaderXim.item.IGA_KYAHAN,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.IGA_SEAL_FEET,
+        tradeItem   = invaderXim.item.IGA_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.IGA_KYAHAN_P1,
+            itemId = invaderXim.item.IGA_KYAHAN_P1,
         },
     },
 
@@ -8867,16 +8867,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.LANCERS_SCHYNBALDS,
+            itemId = invaderXim.item.LANCERS_SCHYNBALDS,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.LANCERS_SEAL_FEET,
+        tradeItem   = invaderXim.item.LANCERS_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.LANCERS_SCHYNBALDS_P1,
+            itemId = invaderXim.item.LANCERS_SCHYNBALDS_P1,
         },
     },
 
@@ -8885,16 +8885,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CALLERS_PIGACHES,
+            itemId = invaderXim.item.CALLERS_PIGACHES,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.CALLERS_SEAL_FEET,
+        tradeItem   = invaderXim.item.CALLERS_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.CALLERS_PIGACHES_P1,
+            itemId = invaderXim.item.CALLERS_PIGACHES_P1,
         },
     },
 
@@ -8903,16 +8903,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MAVI_BASMAK,
+            itemId = invaderXim.item.MAVI_BASMAK,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.MAVI_SEAL_FEET,
+        tradeItem   = invaderXim.item.MAVI_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.MAVI_BASMAK_P1,
+            itemId = invaderXim.item.MAVI_BASMAK_P1,
         },
     },
 
@@ -8921,16 +8921,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.NAVARCHS_BOTTES,
+            itemId = invaderXim.item.NAVARCHS_BOTTES,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.NAVARCHS_SEAL_FEET,
+        tradeItem   = invaderXim.item.NAVARCHS_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.NAVARCHS_BOTTES_P1,
+            itemId = invaderXim.item.NAVARCHS_BOTTES_P1,
         },
     },
 
@@ -8939,16 +8939,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CIRQUE_SCARPE,
+            itemId = invaderXim.item.CIRQUE_SCARPE,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.CIRQUE_SEAL_FEET,
+        tradeItem   = invaderXim.item.CIRQUE_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.CIRQUE_SCARPE_P1,
+            itemId = invaderXim.item.CIRQUE_SCARPE_P1,
         },
     },
 
@@ -8957,16 +8957,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CHARIS_TOE_SHOES,
+            itemId = invaderXim.item.CHARIS_TOE_SHOES,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.CHARIS_SEAL_FEET,
+        tradeItem   = invaderXim.item.CHARIS_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.CHARIS_TOE_SHOES_P1,
+            itemId = invaderXim.item.CHARIS_TOE_SHOES_P1,
         },
     },
 
@@ -8975,16 +8975,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SAVANTS_LOAFERS,
+            itemId = invaderXim.item.SAVANTS_LOAFERS,
         },
 
         textOffset  = 842,
-        tradeItem   = xi.item.SAVANTS_SEAL_FEET,
+        tradeItem   = invaderXim.item.SAVANTS_SEAL_FEET,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.SAVANTS_LOAFERS_P1,
+            itemId = invaderXim.item.SAVANTS_LOAFERS_P1,
         },
     },
 
@@ -8993,16 +8993,16 @@ xi.magian.trials =
         previousTrial = 4156,
         requiredItem  =
         {
-            itemId = xi.item.RAVAGERS_MASK_P1,
+            itemId = invaderXim.item.RAVAGERS_MASK_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.STONE_OF_VISION,
+        tradeItem   = invaderXim.item.STONE_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.RAVAGERS_MASK_P2,
+            itemId = invaderXim.item.RAVAGERS_MASK_P2,
         },
     },
 
@@ -9011,16 +9011,16 @@ xi.magian.trials =
         previousTrial = 4157,
         requiredItem  =
         {
-            itemId = xi.item.TANTRA_CROWN_P1,
+            itemId = invaderXim.item.TANTRA_CROWN_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.JEWEL_OF_VISION,
+        tradeItem   = invaderXim.item.JEWEL_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.TANTRA_CROWN_P2,
+            itemId = invaderXim.item.TANTRA_CROWN_P2,
         },
     },
 
@@ -9029,16 +9029,16 @@ xi.magian.trials =
         previousTrial = 4158,
         requiredItem  =
         {
-            itemId = xi.item.ORISON_CAP_P1,
+            itemId = invaderXim.item.ORISON_CAP_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.STONE_OF_VISION,
+        tradeItem   = invaderXim.item.STONE_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.ORISON_CAP_P2,
+            itemId = invaderXim.item.ORISON_CAP_P2,
         },
     },
 
@@ -9047,16 +9047,16 @@ xi.magian.trials =
         previousTrial = 4159,
         requiredItem  =
         {
-            itemId = xi.item.GOETIA_PETASOS_P1,
+            itemId = invaderXim.item.GOETIA_PETASOS_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.COIN_OF_VISION,
+        tradeItem   = invaderXim.item.COIN_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.GOETIA_PETASOS_P2,
+            itemId = invaderXim.item.GOETIA_PETASOS_P2,
         },
     },
 
@@ -9065,16 +9065,16 @@ xi.magian.trials =
         previousTrial = 4160,
         requiredItem  =
         {
-            itemId = xi.item.ESTOQUEURS_CHAPPEL_P1,
+            itemId = invaderXim.item.ESTOQUEURS_CHAPPEL_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.JEWEL_OF_VISION,
+        tradeItem   = invaderXim.item.JEWEL_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.ESTOQUEURS_CHAPPEL_P2,
+            itemId = invaderXim.item.ESTOQUEURS_CHAPPEL_P2,
         },
     },
 
@@ -9083,16 +9083,16 @@ xi.magian.trials =
         previousTrial = 4161,
         requiredItem  =
         {
-            itemId = xi.item.RAIDERS_BONNET_P1,
+            itemId = invaderXim.item.RAIDERS_BONNET_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.STONE_OF_VISION,
+        tradeItem   = invaderXim.item.STONE_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.RAIDERS_BONNET_P2,
+            itemId = invaderXim.item.RAIDERS_BONNET_P2,
         },
     },
 
@@ -9101,16 +9101,16 @@ xi.magian.trials =
         previousTrial = 4162,
         requiredItem  =
         {
-            itemId = xi.item.CREED_ARMET_P1,
+            itemId = invaderXim.item.CREED_ARMET_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.CARD_OF_VISION,
+        tradeItem   = invaderXim.item.CARD_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.CREED_ARMET_P2,
+            itemId = invaderXim.item.CREED_ARMET_P2,
         },
     },
 
@@ -9119,16 +9119,16 @@ xi.magian.trials =
         previousTrial = 4163,
         requiredItem  =
         {
-            itemId = xi.item.BALE_BURGEONET_P1,
+            itemId = invaderXim.item.BALE_BURGEONET_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.COIN_OF_VISION,
+        tradeItem   = invaderXim.item.COIN_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.BALE_BURGEONET_P2,
+            itemId = invaderXim.item.BALE_BURGEONET_P2,
         },
     },
 
@@ -9137,16 +9137,16 @@ xi.magian.trials =
         previousTrial = 4164,
         requiredItem  =
         {
-            itemId = xi.item.FERINE_CABASSET_P1,
+            itemId = invaderXim.item.FERINE_CABASSET_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.COIN_OF_VISION,
+        tradeItem   = invaderXim.item.COIN_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.FERINE_CABASSET_P2,
+            itemId = invaderXim.item.FERINE_CABASSET_P2,
         },
     },
 
@@ -9155,16 +9155,16 @@ xi.magian.trials =
         previousTrial = 4165,
         requiredItem  =
         {
-            itemId = xi.item.AOIDOS_CALOT_P1,
+            itemId = invaderXim.item.AOIDOS_CALOT_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.STONE_OF_VISION,
+        tradeItem   = invaderXim.item.STONE_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.AOIDOS_CALOT_P2,
+            itemId = invaderXim.item.AOIDOS_CALOT_P2,
         },
     },
 
@@ -9173,16 +9173,16 @@ xi.magian.trials =
         previousTrial = 4166,
         requiredItem  =
         {
-            itemId = xi.item.SYLVAN_GAPETTE_P1,
+            itemId = invaderXim.item.SYLVAN_GAPETTE_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.STONE_OF_VISION,
+        tradeItem   = invaderXim.item.STONE_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.SYLVAN_GAPETTE_P2,
+            itemId = invaderXim.item.SYLVAN_GAPETTE_P2,
         },
     },
 
@@ -9191,16 +9191,16 @@ xi.magian.trials =
         previousTrial = 4167,
         requiredItem  =
         {
-            itemId = xi.item.UNKAI_KABUTO_P1,
+            itemId = invaderXim.item.UNKAI_KABUTO_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.JEWEL_OF_VISION,
+        tradeItem   = invaderXim.item.JEWEL_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.UNKAI_KABUTO_P2,
+            itemId = invaderXim.item.UNKAI_KABUTO_P2,
         },
     },
 
@@ -9209,16 +9209,16 @@ xi.magian.trials =
         previousTrial = 4168,
         requiredItem  =
         {
-            itemId = xi.item.IGA_ZUKIN_P1,
+            itemId = invaderXim.item.IGA_ZUKIN_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.COIN_OF_VISION,
+        tradeItem   = invaderXim.item.COIN_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.IGA_ZUKIN_P2,
+            itemId = invaderXim.item.IGA_ZUKIN_P2,
         },
     },
 
@@ -9227,16 +9227,16 @@ xi.magian.trials =
         previousTrial = 4169,
         requiredItem  =
         {
-            itemId = xi.item.LANCERS_MEZAIL_P1,
+            itemId = invaderXim.item.LANCERS_MEZAIL_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.CARD_OF_VISION,
+        tradeItem   = invaderXim.item.CARD_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.LANCERS_MEZAIL_P2,
+            itemId = invaderXim.item.LANCERS_MEZAIL_P2,
         },
     },
 
@@ -9245,16 +9245,16 @@ xi.magian.trials =
         previousTrial = 4170,
         requiredItem  =
         {
-            itemId = xi.item.CALLERS_HORN_P1,
+            itemId = invaderXim.item.CALLERS_HORN_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.COIN_OF_VISION,
+        tradeItem   = invaderXim.item.COIN_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.CALLERS_HORN_P2,
+            itemId = invaderXim.item.CALLERS_HORN_P2,
         },
     },
 
@@ -9263,16 +9263,16 @@ xi.magian.trials =
         previousTrial = 4171,
         requiredItem  =
         {
-            itemId = xi.item.MAVI_KAVUK_P1,
+            itemId = invaderXim.item.MAVI_KAVUK_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.CARD_OF_VISION,
+        tradeItem   = invaderXim.item.CARD_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.MAVI_KAVUK_P2,
+            itemId = invaderXim.item.MAVI_KAVUK_P2,
         },
     },
 
@@ -9281,16 +9281,16 @@ xi.magian.trials =
         previousTrial = 4172,
         requiredItem  =
         {
-            itemId = xi.item.NAVARCHS_TRICORNE_P1,
+            itemId = invaderXim.item.NAVARCHS_TRICORNE_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.JEWEL_OF_VISION,
+        tradeItem   = invaderXim.item.JEWEL_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.NAVARCHS_TRICORNE_P2,
+            itemId = invaderXim.item.NAVARCHS_TRICORNE_P2,
         },
     },
 
@@ -9299,16 +9299,16 @@ xi.magian.trials =
         previousTrial = 4173,
         requiredItem  =
         {
-            itemId = xi.item.CIRQUE_CAPPELLO_P1,
+            itemId = invaderXim.item.CIRQUE_CAPPELLO_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.JEWEL_OF_VISION,
+        tradeItem   = invaderXim.item.JEWEL_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.CIRQUE_CAPPELLO_P2,
+            itemId = invaderXim.item.CIRQUE_CAPPELLO_P2,
         },
     },
 
@@ -9317,16 +9317,16 @@ xi.magian.trials =
         previousTrial = 4174,
         requiredItem  =
         {
-            itemId = xi.item.CHARIS_TIARA_P1,
+            itemId = invaderXim.item.CHARIS_TIARA_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.CARD_OF_VISION,
+        tradeItem   = invaderXim.item.CARD_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.CHARIS_TIARA_P2,
+            itemId = invaderXim.item.CHARIS_TIARA_P2,
         },
     },
 
@@ -9335,16 +9335,16 @@ xi.magian.trials =
         previousTrial = 4175,
         requiredItem  =
         {
-            itemId = xi.item.SAVANTS_BONNET_P1,
+            itemId = invaderXim.item.SAVANTS_BONNET_P1,
         },
 
         textOffset  = 1050,
-        tradeItem   = xi.item.CARD_OF_VISION,
+        tradeItem   = invaderXim.item.CARD_OF_VISION,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.SAVANTS_BONNET_P2,
+            itemId = invaderXim.item.SAVANTS_BONNET_P2,
         },
     },
 
@@ -9353,16 +9353,16 @@ xi.magian.trials =
         previousTrial = 4176,
         requiredItem  =
         {
-            itemId = xi.item.RAVAGERS_CUISSES_P1,
+            itemId = invaderXim.item.RAVAGERS_CUISSES_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.STONE_OF_BALANCE,
+        tradeItem   = invaderXim.item.STONE_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.RAVAGERS_CUISSES_P2,
+            itemId = invaderXim.item.RAVAGERS_CUISSES_P2,
         },
     },
 
@@ -9371,16 +9371,16 @@ xi.magian.trials =
         previousTrial = 4177,
         requiredItem  =
         {
-            itemId = xi.item.TANTRA_HOSE_P1,
+            itemId = invaderXim.item.TANTRA_HOSE_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.JEWEL_OF_BALANCE,
+        tradeItem   = invaderXim.item.JEWEL_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.TANTRA_HOSE_P2,
+            itemId = invaderXim.item.TANTRA_HOSE_P2,
         },
     },
 
@@ -9389,16 +9389,16 @@ xi.magian.trials =
         previousTrial = 4178,
         requiredItem  =
         {
-            itemId = xi.item.ORISON_PANTALOONS_P1,
+            itemId = invaderXim.item.ORISON_PANTALOONS_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.CARD_OF_BALANCE,
+        tradeItem   = invaderXim.item.CARD_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.ORISON_PANTALOONS_P2,
+            itemId = invaderXim.item.ORISON_PANTALOONS_P2,
         },
     },
 
@@ -9407,16 +9407,16 @@ xi.magian.trials =
         previousTrial = 4179,
         requiredItem  =
         {
-            itemId = xi.item.GOETIA_CHAUSSES_P1,
+            itemId = invaderXim.item.GOETIA_CHAUSSES_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.STONE_OF_BALANCE,
+        tradeItem   = invaderXim.item.STONE_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.GOETIA_CHAUSSES_P2,
+            itemId = invaderXim.item.GOETIA_CHAUSSES_P2,
         },
     },
 
@@ -9425,16 +9425,16 @@ xi.magian.trials =
         previousTrial = 4180,
         requiredItem  =
         {
-            itemId = xi.item.ESTOQUEURS_FUSEAU_P1,
+            itemId = invaderXim.item.ESTOQUEURS_FUSEAU_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.COIN_OF_BALANCE,
+        tradeItem   = invaderXim.item.COIN_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.ESTOQUEURS_FUSEAU_P2,
+            itemId = invaderXim.item.ESTOQUEURS_FUSEAU_P2,
         },
     },
 
@@ -9443,16 +9443,16 @@ xi.magian.trials =
         previousTrial = 4181,
         requiredItem  =
         {
-            itemId = xi.item.RAIDERS_CULOTTES_P1,
+            itemId = invaderXim.item.RAIDERS_CULOTTES_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.COIN_OF_BALANCE,
+        tradeItem   = invaderXim.item.COIN_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.RAIDERS_CULOTTES_P2,
+            itemId = invaderXim.item.RAIDERS_CULOTTES_P2,
         },
     },
 
@@ -9461,16 +9461,16 @@ xi.magian.trials =
         previousTrial = 4182,
         requiredItem  =
         {
-            itemId = xi.item.CREED_CUISSES_P1,
+            itemId = invaderXim.item.CREED_CUISSES_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.COIN_OF_BALANCE,
+        tradeItem   = invaderXim.item.COIN_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.CREED_CUISSES_P2,
+            itemId = invaderXim.item.CREED_CUISSES_P2,
         },
     },
 
@@ -9479,16 +9479,16 @@ xi.magian.trials =
         previousTrial = 4183,
         requiredItem  =
         {
-            itemId = xi.item.BALE_FLANCHARD_P1,
+            itemId = invaderXim.item.BALE_FLANCHARD_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.COIN_OF_BALANCE,
+        tradeItem   = invaderXim.item.COIN_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.BALE_FLANCHARD_P2,
+            itemId = invaderXim.item.BALE_FLANCHARD_P2,
         },
     },
 
@@ -9497,16 +9497,16 @@ xi.magian.trials =
         previousTrial = 4184,
         requiredItem  =
         {
-            itemId = xi.item.FERINE_QUIJOTES_P1,
+            itemId = invaderXim.item.FERINE_QUIJOTES_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.JEWEL_OF_BALANCE,
+        tradeItem   = invaderXim.item.JEWEL_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.FERINE_QUIJOTES_P2,
+            itemId = invaderXim.item.FERINE_QUIJOTES_P2,
         },
     },
 
@@ -9515,16 +9515,16 @@ xi.magian.trials =
         previousTrial = 4185,
         requiredItem  =
         {
-            itemId = xi.item.AOIDOS_RHINGRAVE_P1,
+            itemId = invaderXim.item.AOIDOS_RHINGRAVE_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.COIN_OF_BALANCE,
+        tradeItem   = invaderXim.item.COIN_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.AOIDOS_RHINGRAVE_P2,
+            itemId = invaderXim.item.AOIDOS_RHINGRAVE_P2,
         },
     },
 
@@ -9533,16 +9533,16 @@ xi.magian.trials =
         previousTrial = 4186,
         requiredItem  =
         {
-            itemId = xi.item.SYLVAN_BRAGUES_P1,
+            itemId = invaderXim.item.SYLVAN_BRAGUES_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.JEWEL_OF_BALANCE,
+        tradeItem   = invaderXim.item.JEWEL_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.SYLVAN_BRAGUES_P2,
+            itemId = invaderXim.item.SYLVAN_BRAGUES_P2,
         },
     },
 
@@ -9551,16 +9551,16 @@ xi.magian.trials =
         previousTrial = 4187,
         requiredItem  =
         {
-            itemId = xi.item.UNKAI_HAIDATE_P1,
+            itemId = invaderXim.item.UNKAI_HAIDATE_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.JEWEL_OF_BALANCE,
+        tradeItem   = invaderXim.item.JEWEL_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.UNKAI_HAIDATE_P2,
+            itemId = invaderXim.item.UNKAI_HAIDATE_P2,
         },
     },
 
@@ -9569,16 +9569,16 @@ xi.magian.trials =
         previousTrial = 4188,
         requiredItem  =
         {
-            itemId = xi.item.IGA_HAKAMA_P1,
+            itemId = invaderXim.item.IGA_HAKAMA_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.STONE_OF_BALANCE,
+        tradeItem   = invaderXim.item.STONE_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.IGA_HAKAMA_P2,
+            itemId = invaderXim.item.IGA_HAKAMA_P2,
         },
     },
 
@@ -9587,16 +9587,16 @@ xi.magian.trials =
         previousTrial = 4189,
         requiredItem  =
         {
-            itemId = xi.item.LANCERS_CUISSOTS_P1,
+            itemId = invaderXim.item.LANCERS_CUISSOTS_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.CARD_OF_BALANCE,
+        tradeItem   = invaderXim.item.CARD_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.LANCERS_CUISSOTS_P2,
+            itemId = invaderXim.item.LANCERS_CUISSOTS_P2,
         },
     },
 
@@ -9605,16 +9605,16 @@ xi.magian.trials =
         previousTrial = 4190,
         requiredItem  =
         {
-            itemId = xi.item.CALLERS_SPATS_P1,
+            itemId = invaderXim.item.CALLERS_SPATS_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.CARD_OF_BALANCE,
+        tradeItem   = invaderXim.item.CARD_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.CALLERS_SPATS_P2,
+            itemId = invaderXim.item.CALLERS_SPATS_P2,
         },
     },
 
@@ -9623,16 +9623,16 @@ xi.magian.trials =
         previousTrial = 4191,
         requiredItem  =
         {
-            itemId = xi.item.MAVI_TAYT_P1,
+            itemId = invaderXim.item.MAVI_TAYT_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.STONE_OF_BALANCE,
+        tradeItem   = invaderXim.item.STONE_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.MAVI_TAYT_P2,
+            itemId = invaderXim.item.MAVI_TAYT_P2,
         },
     },
 
@@ -9641,16 +9641,16 @@ xi.magian.trials =
         previousTrial = 4192,
         requiredItem  =
         {
-            itemId = xi.item.NAVARCHS_CULOTTES_P1,
+            itemId = invaderXim.item.NAVARCHS_CULOTTES_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.CARD_OF_BALANCE,
+        tradeItem   = invaderXim.item.CARD_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.NAVARCHS_CULOTTES_P2,
+            itemId = invaderXim.item.NAVARCHS_CULOTTES_P2,
         },
     },
 
@@ -9659,16 +9659,16 @@ xi.magian.trials =
         previousTrial = 4193,
         requiredItem  =
         {
-            itemId = xi.item.CIRQUE_PANTALONI_P1,
+            itemId = invaderXim.item.CIRQUE_PANTALONI_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.STONE_OF_BALANCE,
+        tradeItem   = invaderXim.item.STONE_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.CIRQUE_PANTALONI_P2,
+            itemId = invaderXim.item.CIRQUE_PANTALONI_P2,
         },
     },
 
@@ -9677,16 +9677,16 @@ xi.magian.trials =
         previousTrial = 4194,
         requiredItem  =
         {
-            itemId = xi.item.CHARIS_TIGHTS_P1,
+            itemId = invaderXim.item.CHARIS_TIGHTS_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.CARD_OF_BALANCE,
+        tradeItem   = invaderXim.item.CARD_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.CHARIS_TIGHTS_P2,
+            itemId = invaderXim.item.CHARIS_TIGHTS_P2,
         },
     },
 
@@ -9695,16 +9695,16 @@ xi.magian.trials =
         previousTrial = 4195,
         requiredItem  =
         {
-            itemId = xi.item.SAVANTS_PANTS_P1,
+            itemId = invaderXim.item.SAVANTS_PANTS_P1,
         },
 
         textOffset  = 1056,
-        tradeItem   = xi.item.JEWEL_OF_BALANCE,
+        tradeItem   = invaderXim.item.JEWEL_OF_BALANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.SAVANTS_PANTS_P2,
+            itemId = invaderXim.item.SAVANTS_PANTS_P2,
         },
     },
 
@@ -9713,16 +9713,16 @@ xi.magian.trials =
         previousTrial = 4196,
         requiredItem  =
         {
-            itemId = xi.item.RAVAGERS_CALLIGAE_P1,
+            itemId = invaderXim.item.RAVAGERS_CALLIGAE_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.STONE_OF_VOYAGE,
+        tradeItem   = invaderXim.item.STONE_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.RAVAGERS_CALLIGAE_P2,
+            itemId = invaderXim.item.RAVAGERS_CALLIGAE_P2,
         },
     },
 
@@ -9731,16 +9731,16 @@ xi.magian.trials =
         previousTrial = 4197,
         requiredItem  =
         {
-            itemId = xi.item.TANTRA_GAITERS_P1,
+            itemId = invaderXim.item.TANTRA_GAITERS_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.COIN_OF_VOYAGE,
+        tradeItem   = invaderXim.item.COIN_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.TANTRA_GAITERS_P2,
+            itemId = invaderXim.item.TANTRA_GAITERS_P2,
         },
     },
 
@@ -9749,16 +9749,16 @@ xi.magian.trials =
         previousTrial = 4198,
         requiredItem  =
         {
-            itemId = xi.item.ORISON_DUCKBILLS_P1,
+            itemId = invaderXim.item.ORISON_DUCKBILLS_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.JEWEL_OF_VOYAGE,
+        tradeItem   = invaderXim.item.JEWEL_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.ORISON_DUCKBILLS_P2,
+            itemId = invaderXim.item.ORISON_DUCKBILLS_P2,
         },
     },
 
@@ -9767,16 +9767,16 @@ xi.magian.trials =
         previousTrial = 4199,
         requiredItem  =
         {
-            itemId = xi.item.GOETIA_SABOTS_P1,
+            itemId = invaderXim.item.GOETIA_SABOTS_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.CARD_OF_VOYAGE,
+        tradeItem   = invaderXim.item.CARD_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.GOETIA_SABOTS_P2,
+            itemId = invaderXim.item.GOETIA_SABOTS_P2,
         },
     },
 
@@ -9785,16 +9785,16 @@ xi.magian.trials =
         previousTrial = 4200,
         requiredItem  =
         {
-            itemId = xi.item.ESTOQUEURS_HOUSEAUX_P1,
+            itemId = invaderXim.item.ESTOQUEURS_HOUSEAUX_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.STONE_OF_VOYAGE,
+        tradeItem   = invaderXim.item.STONE_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.ESTOQUEURS_HOUSEAUX_P2,
+            itemId = invaderXim.item.ESTOQUEURS_HOUSEAUX_P2,
         },
     },
 
@@ -9803,16 +9803,16 @@ xi.magian.trials =
         previousTrial = 4201,
         requiredItem  =
         {
-            itemId = xi.item.RAIDERS_POULAINES_P1,
+            itemId = invaderXim.item.RAIDERS_POULAINES_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.JEWEL_OF_VOYAGE,
+        tradeItem   = invaderXim.item.JEWEL_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.RAIDERS_POULAINES_P2,
+            itemId = invaderXim.item.RAIDERS_POULAINES_P2,
         },
     },
 
@@ -9821,16 +9821,16 @@ xi.magian.trials =
         previousTrial = 4202,
         requiredItem  =
         {
-            itemId = xi.item.CREED_SABATONS_P1,
+            itemId = invaderXim.item.CREED_SABATONS_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.STONE_OF_VOYAGE,
+        tradeItem   = invaderXim.item.STONE_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.CREED_SABATONS_P2,
+            itemId = invaderXim.item.CREED_SABATONS_P2,
         },
     },
 
@@ -9839,16 +9839,16 @@ xi.magian.trials =
         previousTrial = 4203,
         requiredItem  =
         {
-            itemId = xi.item.BALE_SOLLERETS_P1,
+            itemId = invaderXim.item.BALE_SOLLERETS_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.COIN_OF_VOYAGE,
+        tradeItem   = invaderXim.item.COIN_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.BALE_SOLLERETS_P2,
+            itemId = invaderXim.item.BALE_SOLLERETS_P2,
         },
     },
 
@@ -9857,16 +9857,16 @@ xi.magian.trials =
         previousTrial = 4204,
         requiredItem  =
         {
-            itemId = xi.item.FERINE_OCREAE_P1,
+            itemId = invaderXim.item.FERINE_OCREAE_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.CARD_OF_VOYAGE,
+        tradeItem   = invaderXim.item.CARD_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.FERINE_OCREAE_P2,
+            itemId = invaderXim.item.FERINE_OCREAE_P2,
         },
     },
 
@@ -9875,16 +9875,16 @@ xi.magian.trials =
         previousTrial = 4205,
         requiredItem  =
         {
-            itemId = xi.item.AOIDOS_COTHURNES_P1,
+            itemId = invaderXim.item.AOIDOS_COTHURNES_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.JEWEL_OF_VOYAGE,
+        tradeItem   = invaderXim.item.JEWEL_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.AOIDOS_COTHURNES_P2,
+            itemId = invaderXim.item.AOIDOS_COTHURNES_P2,
         },
     },
 
@@ -9893,16 +9893,16 @@ xi.magian.trials =
         previousTrial = 4206,
         requiredItem  =
         {
-            itemId = xi.item.SYLVAN_BOTTILLONS_P1,
+            itemId = invaderXim.item.SYLVAN_BOTTILLONS_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.CARD_OF_VOYAGE,
+        tradeItem   = invaderXim.item.CARD_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.SYLVAN_BOTTILLONS_P2,
+            itemId = invaderXim.item.SYLVAN_BOTTILLONS_P2,
         },
     },
 
@@ -9911,16 +9911,16 @@ xi.magian.trials =
         previousTrial = 4207,
         requiredItem  =
         {
-            itemId = xi.item.UNKAI_SUNE_ATE_P1,
+            itemId = invaderXim.item.UNKAI_SUNE_ATE_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.JEWEL_OF_VOYAGE,
+        tradeItem   = invaderXim.item.JEWEL_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.UNKAI_SUNE_ATE_P2,
+            itemId = invaderXim.item.UNKAI_SUNE_ATE_P2,
         },
     },
 
@@ -9929,16 +9929,16 @@ xi.magian.trials =
         previousTrial = 4208,
         requiredItem  =
         {
-            itemId = xi.item.IGA_KYAHAN_P1,
+            itemId = invaderXim.item.IGA_KYAHAN_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.CARD_OF_VOYAGE,
+        tradeItem   = invaderXim.item.CARD_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.IGA_KYAHAN_P2,
+            itemId = invaderXim.item.IGA_KYAHAN_P2,
         },
     },
 
@@ -9947,16 +9947,16 @@ xi.magian.trials =
         previousTrial = 4209,
         requiredItem  =
         {
-            itemId = xi.item.LANCERS_SCHYNBALDS_P1,
+            itemId = invaderXim.item.LANCERS_SCHYNBALDS_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.CARD_OF_VOYAGE,
+        tradeItem   = invaderXim.item.CARD_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.LANCERS_SCHYNBALDS_P2,
+            itemId = invaderXim.item.LANCERS_SCHYNBALDS_P2,
         },
     },
 
@@ -9965,16 +9965,16 @@ xi.magian.trials =
         previousTrial = 4210,
         requiredItem  =
         {
-            itemId = xi.item.CALLERS_PIGACHES_P1,
+            itemId = invaderXim.item.CALLERS_PIGACHES_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.STONE_OF_VOYAGE,
+        tradeItem   = invaderXim.item.STONE_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.CALLERS_PIGACHES_P2,
+            itemId = invaderXim.item.CALLERS_PIGACHES_P2,
         },
     },
 
@@ -9983,16 +9983,16 @@ xi.magian.trials =
         previousTrial = 4211,
         requiredItem  =
         {
-            itemId = xi.item.MAVI_BASMAK_P1,
+            itemId = invaderXim.item.MAVI_BASMAK_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.COIN_OF_VOYAGE,
+        tradeItem   = invaderXim.item.COIN_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.MAVI_BASMAK_P2,
+            itemId = invaderXim.item.MAVI_BASMAK_P2,
         },
     },
 
@@ -10001,16 +10001,16 @@ xi.magian.trials =
         previousTrial = 4212,
         requiredItem  =
         {
-            itemId = xi.item.NAVARCHS_BOTTES_P1,
+            itemId = invaderXim.item.NAVARCHS_BOTTES_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.COIN_OF_VOYAGE,
+        tradeItem   = invaderXim.item.COIN_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.NAVARCHS_BOTTES_P2,
+            itemId = invaderXim.item.NAVARCHS_BOTTES_P2,
         },
     },
 
@@ -10019,16 +10019,16 @@ xi.magian.trials =
         previousTrial = 4213,
         requiredItem  =
         {
-            itemId = xi.item.CIRQUE_SCARPE_P1,
+            itemId = invaderXim.item.CIRQUE_SCARPE_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.JEWEL_OF_VOYAGE,
+        tradeItem   = invaderXim.item.JEWEL_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.CIRQUE_SCARPE_P2,
+            itemId = invaderXim.item.CIRQUE_SCARPE_P2,
         },
     },
 
@@ -10037,16 +10037,16 @@ xi.magian.trials =
         previousTrial = 4214,
         requiredItem  =
         {
-            itemId = xi.item.CHARIS_TOE_SHOES_P1,
+            itemId = invaderXim.item.CHARIS_TOE_SHOES_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.STONE_OF_VOYAGE,
+        tradeItem   = invaderXim.item.STONE_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.CHARIS_TOE_SHOES_P2,
+            itemId = invaderXim.item.CHARIS_TOE_SHOES_P2,
         },
     },
 
@@ -10055,16 +10055,16 @@ xi.magian.trials =
         previousTrial = 4215,
         requiredItem  =
         {
-            itemId = xi.item.SAVANTS_LOAFERS_P1,
+            itemId = invaderXim.item.SAVANTS_LOAFERS_P1,
         },
 
         textOffset  = 843,
-        tradeItem   = xi.item.COIN_OF_VOYAGE,
+        tradeItem   = invaderXim.item.COIN_OF_VOYAGE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.SAVANTS_LOAFERS_P2,
+            itemId = invaderXim.item.SAVANTS_LOAFERS_P2,
         },
     },
 
@@ -10073,16 +10073,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.RAVAGERS_MUFFLERS,
+            itemId = invaderXim.item.RAVAGERS_MUFFLERS,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.RAVAGERS_SEAL_HANDS,
+        tradeItem   = invaderXim.item.RAVAGERS_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.RAVAGERS_MUFFLERS_P1,
+            itemId = invaderXim.item.RAVAGERS_MUFFLERS_P1,
         },
     },
 
@@ -10091,16 +10091,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.TANTRA_GLOVES,
+            itemId = invaderXim.item.TANTRA_GLOVES,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.TANTRA_SEAL_HANDS,
+        tradeItem   = invaderXim.item.TANTRA_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.TANTRA_GLOVES_P1,
+            itemId = invaderXim.item.TANTRA_GLOVES_P1,
         },
     },
 
@@ -10109,16 +10109,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ORISON_MITTS,
+            itemId = invaderXim.item.ORISON_MITTS,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.ORISON_SEAL_HANDS,
+        tradeItem   = invaderXim.item.ORISON_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.ORISON_MITTS_P1,
+            itemId = invaderXim.item.ORISON_MITTS_P1,
         },
     },
 
@@ -10127,16 +10127,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.GOETIA_GLOVES,
+            itemId = invaderXim.item.GOETIA_GLOVES,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.GOETIA_SEAL_HANDS,
+        tradeItem   = invaderXim.item.GOETIA_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.GOETIA_GLOVES_P1,
+            itemId = invaderXim.item.GOETIA_GLOVES_P1,
         },
     },
 
@@ -10145,16 +10145,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ESTOQUEURS_GANTHEROTS,
+            itemId = invaderXim.item.ESTOQUEURS_GANTHEROTS,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.ESTOQUEURS_SEAL_HANDS,
+        tradeItem   = invaderXim.item.ESTOQUEURS_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.ESTOQUEURS_GANTHEROTS_P1,
+            itemId = invaderXim.item.ESTOQUEURS_GANTHEROTS_P1,
         },
     },
 
@@ -10163,16 +10163,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.RAIDERS_ARMLETS,
+            itemId = invaderXim.item.RAIDERS_ARMLETS,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.RAIDERS_SEAL_HANDS,
+        tradeItem   = invaderXim.item.RAIDERS_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.RAIDERS_ARMLETS_P1,
+            itemId = invaderXim.item.RAIDERS_ARMLETS_P1,
         },
     },
 
@@ -10181,16 +10181,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CREED_GAUNTLETS,
+            itemId = invaderXim.item.CREED_GAUNTLETS,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.CREED_SEAL_HANDS,
+        tradeItem   = invaderXim.item.CREED_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.CREED_GAUNTLETS_P1,
+            itemId = invaderXim.item.CREED_GAUNTLETS_P1,
         },
     },
 
@@ -10199,16 +10199,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BALE_GAUNTLETS,
+            itemId = invaderXim.item.BALE_GAUNTLETS,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.BALE_SEAL_HANDS,
+        tradeItem   = invaderXim.item.BALE_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.BALE_GAUNTLETS_P1,
+            itemId = invaderXim.item.BALE_GAUNTLETS_P1,
         },
     },
 
@@ -10217,16 +10217,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.FERINE_MANOPLAS,
+            itemId = invaderXim.item.FERINE_MANOPLAS,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.FERINE_SEAL_HANDS,
+        tradeItem   = invaderXim.item.FERINE_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.FERINE_MANOPLAS_P1,
+            itemId = invaderXim.item.FERINE_MANOPLAS_P1,
         },
     },
 
@@ -10235,16 +10235,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.AOIDOS_MANCHETTES,
+            itemId = invaderXim.item.AOIDOS_MANCHETTES,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.AOIDOS_SEAL_HANDS,
+        tradeItem   = invaderXim.item.AOIDOS_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.AOIDOS_MANCHETTES_P1,
+            itemId = invaderXim.item.AOIDOS_MANCHETTES_P1,
         },
     },
 
@@ -10253,16 +10253,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SYLVAN_GLOVELETTES,
+            itemId = invaderXim.item.SYLVAN_GLOVELETTES,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.SYLVAN_SEAL_HANDS,
+        tradeItem   = invaderXim.item.SYLVAN_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.SYLVAN_GLOVELETTES_P1,
+            itemId = invaderXim.item.SYLVAN_GLOVELETTES_P1,
         },
     },
 
@@ -10271,16 +10271,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.UNKAI_KOTE,
+            itemId = invaderXim.item.UNKAI_KOTE,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.UNKAI_SEAL_HANDS,
+        tradeItem   = invaderXim.item.UNKAI_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.UNKAI_KOTE_P1,
+            itemId = invaderXim.item.UNKAI_KOTE_P1,
         },
     },
 
@@ -10289,16 +10289,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.IGA_TEKKO,
+            itemId = invaderXim.item.IGA_TEKKO,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.IGA_SEAL_HANDS,
+        tradeItem   = invaderXim.item.IGA_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.IGA_TEKKO_P1,
+            itemId = invaderXim.item.IGA_TEKKO_P1,
         },
     },
 
@@ -10307,16 +10307,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.LANCERS_VAMBRACES,
+            itemId = invaderXim.item.LANCERS_VAMBRACES,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.LANCERS_SEAL_HANDS,
+        tradeItem   = invaderXim.item.LANCERS_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.LANCERS_VAMBRACES_P1,
+            itemId = invaderXim.item.LANCERS_VAMBRACES_P1,
         },
     },
 
@@ -10325,16 +10325,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CALLERS_BRACERS,
+            itemId = invaderXim.item.CALLERS_BRACERS,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.CALLERS_SEAL_HANDS,
+        tradeItem   = invaderXim.item.CALLERS_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.CALLERS_BRACERS_P1,
+            itemId = invaderXim.item.CALLERS_BRACERS_P1,
         },
     },
 
@@ -10343,16 +10343,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MAVI_BAZUBANDS,
+            itemId = invaderXim.item.MAVI_BAZUBANDS,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.MAVI_SEAL_HANDS,
+        tradeItem   = invaderXim.item.MAVI_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.MAVI_BAZUBANDS_P1,
+            itemId = invaderXim.item.MAVI_BAZUBANDS_P1,
         },
     },
 
@@ -10361,16 +10361,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.NAVARCHS_GANTS,
+            itemId = invaderXim.item.NAVARCHS_GANTS,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.NAVARCHS_SEAL_HANDS,
+        tradeItem   = invaderXim.item.NAVARCHS_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.NAVARCHS_GANTS_P1,
+            itemId = invaderXim.item.NAVARCHS_GANTS_P1,
         },
     },
 
@@ -10379,16 +10379,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CIRQUE_GUANTI,
+            itemId = invaderXim.item.CIRQUE_GUANTI,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.CIRQUE_SEAL_HANDS,
+        tradeItem   = invaderXim.item.CIRQUE_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.CIRQUE_GUANTI_P1,
+            itemId = invaderXim.item.CIRQUE_GUANTI_P1,
         },
     },
 
@@ -10397,16 +10397,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CHARIS_BANGLES,
+            itemId = invaderXim.item.CHARIS_BANGLES,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.CHARIS_SEAL_HANDS,
+        tradeItem   = invaderXim.item.CHARIS_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.CHARIS_BANGLES_P1,
+            itemId = invaderXim.item.CHARIS_BANGLES_P1,
         },
     },
 
@@ -10415,16 +10415,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SAVANTS_BRACERS,
+            itemId = invaderXim.item.SAVANTS_BRACERS,
         },
 
         textOffset  = 1053,
-        tradeItem   = xi.item.SAVANTS_SEAL_HANDS,
+        tradeItem   = invaderXim.item.SAVANTS_SEAL_HANDS,
         numRequired = 8,
 
         rewardItem =
         {
-            itemId = xi.item.SAVANTS_BRACERS_P1,
+            itemId = invaderXim.item.SAVANTS_BRACERS_P1,
         },
     },
 
@@ -10433,16 +10433,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.RAVAGERS_LORICA,
+            itemId = invaderXim.item.RAVAGERS_LORICA,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.RAVAGERS_SEAL_BODY,
+        tradeItem   = invaderXim.item.RAVAGERS_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.RAVAGERS_LORICA_P1,
+            itemId = invaderXim.item.RAVAGERS_LORICA_P1,
         },
     },
 
@@ -10451,16 +10451,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.TANTRA_CYCLAS,
+            itemId = invaderXim.item.TANTRA_CYCLAS,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.TANTRA_SEAL_BODY,
+        tradeItem   = invaderXim.item.TANTRA_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.TANTRA_CYCLAS_P1,
+            itemId = invaderXim.item.TANTRA_CYCLAS_P1,
         },
     },
 
@@ -10469,16 +10469,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ORISON_BLIAUD,
+            itemId = invaderXim.item.ORISON_BLIAUD,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.ORISON_SEAL_BODY,
+        tradeItem   = invaderXim.item.ORISON_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.ORISON_BLIAUD_P1,
+            itemId = invaderXim.item.ORISON_BLIAUD_P1,
         },
     },
 
@@ -10487,16 +10487,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.GOETIA_COAT,
+            itemId = invaderXim.item.GOETIA_COAT,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.GOETIA_SEAL_BODY,
+        tradeItem   = invaderXim.item.GOETIA_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.GOETIA_COAT_P1,
+            itemId = invaderXim.item.GOETIA_COAT_P1,
         },
     },
 
@@ -10505,16 +10505,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ESTOQUEURS_SAYON,
+            itemId = invaderXim.item.ESTOQUEURS_SAYON,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.ESTOQUEURS_SEAL_BODY,
+        tradeItem   = invaderXim.item.ESTOQUEURS_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.ESTOQUEURS_SAYON_P1,
+            itemId = invaderXim.item.ESTOQUEURS_SAYON_P1,
         },
     },
 
@@ -10523,16 +10523,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.RAIDERS_VEST,
+            itemId = invaderXim.item.RAIDERS_VEST,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.RAIDERS_SEAL_BODY,
+        tradeItem   = invaderXim.item.RAIDERS_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.RAIDERS_VEST_P1,
+            itemId = invaderXim.item.RAIDERS_VEST_P1,
         },
     },
 
@@ -10541,16 +10541,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CREED_CUIRASS,
+            itemId = invaderXim.item.CREED_CUIRASS,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.CREED_SEAL_BODY,
+        tradeItem   = invaderXim.item.CREED_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.CREED_CUIRASS_P1,
+            itemId = invaderXim.item.CREED_CUIRASS_P1,
         },
     },
 
@@ -10559,16 +10559,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BALE_CUIRASS,
+            itemId = invaderXim.item.BALE_CUIRASS,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.BALE_SEAL_BODY,
+        tradeItem   = invaderXim.item.BALE_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.BALE_CUIRASS_P1,
+            itemId = invaderXim.item.BALE_CUIRASS_P1,
         },
     },
 
@@ -10577,16 +10577,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.FERINE_GAUSAPE,
+            itemId = invaderXim.item.FERINE_GAUSAPE,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.FERINE_SEAL_BODY,
+        tradeItem   = invaderXim.item.FERINE_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.FERINE_GAUSAPE_P1,
+            itemId = invaderXim.item.FERINE_GAUSAPE_P1,
         },
     },
 
@@ -10595,16 +10595,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.AOIDOS_HONGRELINE,
+            itemId = invaderXim.item.AOIDOS_HONGRELINE,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.AOIDOS_SEAL_BODY,
+        tradeItem   = invaderXim.item.AOIDOS_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.AOIDOS_HONGRELINE_P1,
+            itemId = invaderXim.item.AOIDOS_HONGRELINE_P1,
         },
     },
 
@@ -10613,16 +10613,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SYLVAN_CABAN,
+            itemId = invaderXim.item.SYLVAN_CABAN,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.SYLVAN_SEAL_BODY,
+        tradeItem   = invaderXim.item.SYLVAN_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.SYLVAN_CABAN_P1,
+            itemId = invaderXim.item.SYLVAN_CABAN_P1,
         },
     },
 
@@ -10631,16 +10631,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.UNKAI_DOMARU,
+            itemId = invaderXim.item.UNKAI_DOMARU,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.UNKAI_SEAL_BODY,
+        tradeItem   = invaderXim.item.UNKAI_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.UNKAI_DOMARU_P1,
+            itemId = invaderXim.item.UNKAI_DOMARU_P1,
         },
     },
 
@@ -10649,16 +10649,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.IGA_NINGI,
+            itemId = invaderXim.item.IGA_NINGI,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.IGA_SEAL_BODY,
+        tradeItem   = invaderXim.item.IGA_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.IGA_NINGI_P1,
+            itemId = invaderXim.item.IGA_NINGI_P1,
         },
     },
 
@@ -10667,16 +10667,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.LANCERS_PLACKART,
+            itemId = invaderXim.item.LANCERS_PLACKART,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.LANCERS_SEAL_BODY,
+        tradeItem   = invaderXim.item.LANCERS_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.LANCERS_PLACKART_P1,
+            itemId = invaderXim.item.LANCERS_PLACKART_P1,
         },
     },
 
@@ -10685,16 +10685,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CALLERS_DOUBLET,
+            itemId = invaderXim.item.CALLERS_DOUBLET,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.CALLERS_SEAL_BODY,
+        tradeItem   = invaderXim.item.CALLERS_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.CALLERS_DOUBLET_P1,
+            itemId = invaderXim.item.CALLERS_DOUBLET_P1,
         },
     },
 
@@ -10703,16 +10703,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MAVI_MINTAN,
+            itemId = invaderXim.item.MAVI_MINTAN,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.MAVI_SEAL_BODY,
+        tradeItem   = invaderXim.item.MAVI_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.MAVI_MINTAN_P1,
+            itemId = invaderXim.item.MAVI_MINTAN_P1,
         },
     },
 
@@ -10721,16 +10721,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.NAVARCHS_FRAC,
+            itemId = invaderXim.item.NAVARCHS_FRAC,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.NAVARCHS_SEAL_BODY,
+        tradeItem   = invaderXim.item.NAVARCHS_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.NAVARCHS_FRAC_P1,
+            itemId = invaderXim.item.NAVARCHS_FRAC_P1,
         },
     },
 
@@ -10739,16 +10739,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CIRQUE_FARSETTO,
+            itemId = invaderXim.item.CIRQUE_FARSETTO,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.CIRQUE_SEAL_BODY,
+        tradeItem   = invaderXim.item.CIRQUE_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.CIRQUE_FARSETTO_P1,
+            itemId = invaderXim.item.CIRQUE_FARSETTO_P1,
         },
     },
 
@@ -10757,16 +10757,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CHARIS_CASAQUE,
+            itemId = invaderXim.item.CHARIS_CASAQUE,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.CHARIS_SEAL_BODY,
+        tradeItem   = invaderXim.item.CHARIS_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.CHARIS_CASAQUE_P1,
+            itemId = invaderXim.item.CHARIS_CASAQUE_P1,
         },
     },
 
@@ -10775,16 +10775,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SAVANTS_GOWN,
+            itemId = invaderXim.item.SAVANTS_GOWN,
         },
 
         textOffset  = 1051,
-        tradeItem   = xi.item.SAVANTS_SEAL_BODY,
+        tradeItem   = invaderXim.item.SAVANTS_SEAL_BODY,
         numRequired = 10,
 
         rewardItem =
         {
-            itemId = xi.item.SAVANTS_GOWN_P1,
+            itemId = invaderXim.item.SAVANTS_GOWN_P1,
         },
     },
 
@@ -10793,16 +10793,16 @@ xi.magian.trials =
         previousTrial = 4316,
         requiredItem  =
         {
-            itemId = xi.item.RAVAGERS_MUFFLERS_P1,
+            itemId = invaderXim.item.RAVAGERS_MUFFLERS_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.STONE_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.STONE_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.RAVAGERS_MUFFLERS_P2,
+            itemId = invaderXim.item.RAVAGERS_MUFFLERS_P2,
         },
     },
 
@@ -10811,16 +10811,16 @@ xi.magian.trials =
         previousTrial = 4317,
         requiredItem  =
         {
-            itemId = xi.item.TANTRA_GLOVES_P1,
+            itemId = invaderXim.item.TANTRA_GLOVES_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.JEWEL_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.JEWEL_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.TANTRA_GLOVES_P2,
+            itemId = invaderXim.item.TANTRA_GLOVES_P2,
         },
     },
 
@@ -10829,16 +10829,16 @@ xi.magian.trials =
         previousTrial = 4318,
         requiredItem  =
         {
-            itemId = xi.item.ORISON_MITTS_P1,
+            itemId = invaderXim.item.ORISON_MITTS_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.COIN_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.COIN_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.ORISON_MITTS_P2,
+            itemId = invaderXim.item.ORISON_MITTS_P2,
         },
     },
 
@@ -10847,16 +10847,16 @@ xi.magian.trials =
         previousTrial = 4319,
         requiredItem  =
         {
-            itemId = xi.item.GOETIA_GLOVES_P1,
+            itemId = invaderXim.item.GOETIA_GLOVES_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.JEWEL_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.JEWEL_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.GOETIA_GLOVES_P2,
+            itemId = invaderXim.item.GOETIA_GLOVES_P2,
         },
     },
 
@@ -10865,16 +10865,16 @@ xi.magian.trials =
         previousTrial = 4320,
         requiredItem  =
         {
-            itemId = xi.item.ESTOQUEURS_GANTHEROTS_P1,
+            itemId = invaderXim.item.ESTOQUEURS_GANTHEROTS_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.STONE_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.STONE_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.ESTOQUEURS_GANTHEROTS_P2,
+            itemId = invaderXim.item.ESTOQUEURS_GANTHEROTS_P2,
         },
     },
 
@@ -10883,16 +10883,16 @@ xi.magian.trials =
         previousTrial = 4321,
         requiredItem  =
         {
-            itemId = xi.item.RAIDERS_ARMLETS_P1,
+            itemId = invaderXim.item.RAIDERS_ARMLETS_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.STONE_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.STONE_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.RAIDERS_ARMLETS_P2,
+            itemId = invaderXim.item.RAIDERS_ARMLETS_P2,
         },
     },
 
@@ -10901,16 +10901,16 @@ xi.magian.trials =
         previousTrial = 4322,
         requiredItem  =
         {
-            itemId = xi.item.CREED_GAUNTLETS_P1,
+            itemId = invaderXim.item.CREED_GAUNTLETS_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.CARD_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.CARD_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.CREED_GAUNTLETS_P2,
+            itemId = invaderXim.item.CREED_GAUNTLETS_P2,
         },
     },
 
@@ -10919,16 +10919,16 @@ xi.magian.trials =
         previousTrial = 4323,
         requiredItem  =
         {
-            itemId = xi.item.BALE_GAUNTLETS_P1,
+            itemId = invaderXim.item.BALE_GAUNTLETS_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.COIN_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.COIN_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.BALE_GAUNTLETS_P2,
+            itemId = invaderXim.item.BALE_GAUNTLETS_P2,
         },
     },
 
@@ -10937,16 +10937,16 @@ xi.magian.trials =
         previousTrial = 4324,
         requiredItem  =
         {
-            itemId = xi.item.FERINE_MANOPLAS_P1,
+            itemId = invaderXim.item.FERINE_MANOPLAS_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.STONE_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.STONE_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.FERINE_MANOPLAS_P2,
+            itemId = invaderXim.item.FERINE_MANOPLAS_P2,
         },
     },
 
@@ -10955,16 +10955,16 @@ xi.magian.trials =
         previousTrial = 4325,
         requiredItem  =
         {
-            itemId = xi.item.AOIDOS_MANCHETTES_P1,
+            itemId = invaderXim.item.AOIDOS_MANCHETTES_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.JEWEL_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.JEWEL_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.AOIDOS_MANCHETTES_P2,
+            itemId = invaderXim.item.AOIDOS_MANCHETTES_P2,
         },
     },
 
@@ -10973,16 +10973,16 @@ xi.magian.trials =
         previousTrial = 4326,
         requiredItem  =
         {
-            itemId = xi.item.SYLVAN_GLOVELETTES_P1,
+            itemId = invaderXim.item.SYLVAN_GLOVELETTES_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.COIN_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.COIN_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.SYLVAN_GLOVELETTES_P2,
+            itemId = invaderXim.item.SYLVAN_GLOVELETTES_P2,
         },
     },
 
@@ -10991,16 +10991,16 @@ xi.magian.trials =
         previousTrial = 4327,
         requiredItem  =
         {
-            itemId = xi.item.UNKAI_KOTE_P1,
+            itemId = invaderXim.item.UNKAI_KOTE_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.JEWEL_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.JEWEL_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.UNKAI_KOTE_P2,
+            itemId = invaderXim.item.UNKAI_KOTE_P2,
         },
     },
 
@@ -11009,16 +11009,16 @@ xi.magian.trials =
         previousTrial = 4328,
         requiredItem  =
         {
-            itemId = xi.item.IGA_TEKKO_P1,
+            itemId = invaderXim.item.IGA_TEKKO_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.CARD_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.CARD_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.IGA_TEKKO_P2,
+            itemId = invaderXim.item.IGA_TEKKO_P2,
         },
     },
 
@@ -11027,16 +11027,16 @@ xi.magian.trials =
         previousTrial = 4329,
         requiredItem  =
         {
-            itemId = xi.item.LANCERS_VAMBRACES_P1,
+            itemId = invaderXim.item.LANCERS_VAMBRACES_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.CARD_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.CARD_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.LANCERS_VAMBRACES_P2,
+            itemId = invaderXim.item.LANCERS_VAMBRACES_P2,
         },
     },
 
@@ -11045,16 +11045,16 @@ xi.magian.trials =
         previousTrial = 4330,
         requiredItem  =
         {
-            itemId = xi.item.CALLERS_BRACERS_P1,
+            itemId = invaderXim.item.CALLERS_BRACERS_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.JEWEL_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.JEWEL_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.CALLERS_BRACERS_P2,
+            itemId = invaderXim.item.CALLERS_BRACERS_P2,
         },
     },
 
@@ -11063,16 +11063,16 @@ xi.magian.trials =
         previousTrial = 4331,
         requiredItem  =
         {
-            itemId = xi.item.MAVI_BAZUBANDS_P1,
+            itemId = invaderXim.item.MAVI_BAZUBANDS_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.COIN_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.COIN_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.MAVI_BAZUBANDS_P2,
+            itemId = invaderXim.item.MAVI_BAZUBANDS_P2,
         },
     },
 
@@ -11081,16 +11081,16 @@ xi.magian.trials =
         previousTrial = 4332,
         requiredItem  =
         {
-            itemId = xi.item.NAVARCHS_GANTS_P1,
+            itemId = invaderXim.item.NAVARCHS_GANTS_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.CARD_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.CARD_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.NAVARCHS_GANTS_P2,
+            itemId = invaderXim.item.NAVARCHS_GANTS_P2,
         },
     },
 
@@ -11099,16 +11099,16 @@ xi.magian.trials =
         previousTrial = 4333,
         requiredItem  =
         {
-            itemId = xi.item.CIRQUE_GUANTI_P1,
+            itemId = invaderXim.item.CIRQUE_GUANTI_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.CARD_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.CARD_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.CIRQUE_GUANTI_P2,
+            itemId = invaderXim.item.CIRQUE_GUANTI_P2,
         },
     },
 
@@ -11117,16 +11117,16 @@ xi.magian.trials =
         previousTrial = 4334,
         requiredItem  =
         {
-            itemId = xi.item.CHARIS_BANGLES_P1,
+            itemId = invaderXim.item.CHARIS_BANGLES_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.COIN_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.COIN_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.CHARIS_BANGLES_P2,
+            itemId = invaderXim.item.CHARIS_BANGLES_P2,
         },
     },
 
@@ -11135,16 +11135,16 @@ xi.magian.trials =
         previousTrial = 4335,
         requiredItem  =
         {
-            itemId = xi.item.SAVANTS_BRACERS_P1,
+            itemId = invaderXim.item.SAVANTS_BRACERS_P1,
         },
 
         textOffset  = 1054,
-        tradeItem   = xi.item.STONE_OF_WIELDANCE,
+        tradeItem   = invaderXim.item.STONE_OF_WIELDANCE,
         numRequired = 6,
 
         rewardItem =
         {
-            itemId = xi.item.SAVANTS_BRACERS_P2,
+            itemId = invaderXim.item.SAVANTS_BRACERS_P2,
         },
     },
 
@@ -11153,16 +11153,16 @@ xi.magian.trials =
         previousTrial = 4336,
         requiredItem  =
         {
-            itemId = xi.item.RAVAGERS_LORICA_P1,
+            itemId = invaderXim.item.RAVAGERS_LORICA_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.STONE_OF_ARDOR,
+        tradeItem   = invaderXim.item.STONE_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.RAVAGERS_LORICA_P2,
+            itemId = invaderXim.item.RAVAGERS_LORICA_P2,
         },
     },
 
@@ -11171,16 +11171,16 @@ xi.magian.trials =
         previousTrial = 4337,
         requiredItem  =
         {
-            itemId = xi.item.TANTRA_CYCLAS_P1,
+            itemId = invaderXim.item.TANTRA_CYCLAS_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.CARD_OF_ARDOR,
+        tradeItem   = invaderXim.item.CARD_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.TANTRA_CYCLAS_P2,
+            itemId = invaderXim.item.TANTRA_CYCLAS_P2,
         },
     },
 
@@ -11189,16 +11189,16 @@ xi.magian.trials =
         previousTrial = 4338,
         requiredItem  =
         {
-            itemId = xi.item.ORISON_BLIAUD_P1,
+            itemId = invaderXim.item.ORISON_BLIAUD_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.CARD_OF_ARDOR,
+        tradeItem   = invaderXim.item.CARD_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.ORISON_BLIAUD_P2,
+            itemId = invaderXim.item.ORISON_BLIAUD_P2,
         },
     },
 
@@ -11207,16 +11207,16 @@ xi.magian.trials =
         previousTrial = 4339,
         requiredItem  =
         {
-            itemId = xi.item.GOETIA_COAT_P1,
+            itemId = invaderXim.item.GOETIA_COAT_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.JEWEL_OF_ARDOR,
+        tradeItem   = invaderXim.item.JEWEL_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.GOETIA_COAT_P2,
+            itemId = invaderXim.item.GOETIA_COAT_P2,
         },
     },
 
@@ -11225,16 +11225,16 @@ xi.magian.trials =
         previousTrial = 4340,
         requiredItem  =
         {
-            itemId = xi.item.ESTOQUEURS_SAYON_P1,
+            itemId = invaderXim.item.ESTOQUEURS_SAYON_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.JEWEL_OF_ARDOR,
+        tradeItem   = invaderXim.item.JEWEL_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.ESTOQUEURS_SAYON_P2,
+            itemId = invaderXim.item.ESTOQUEURS_SAYON_P2,
         },
     },
 
@@ -11243,16 +11243,16 @@ xi.magian.trials =
         previousTrial = 4341,
         requiredItem  =
         {
-            itemId = xi.item.RAIDERS_VEST_P1,
+            itemId = invaderXim.item.RAIDERS_VEST_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.COIN_OF_ARDOR,
+        tradeItem   = invaderXim.item.COIN_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.RAIDERS_VEST_P2,
+            itemId = invaderXim.item.RAIDERS_VEST_P2,
         },
     },
 
@@ -11261,16 +11261,16 @@ xi.magian.trials =
         previousTrial = 4342,
         requiredItem  =
         {
-            itemId = xi.item.CREED_CUIRASS_P1,
+            itemId = invaderXim.item.CREED_CUIRASS_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.STONE_OF_ARDOR,
+        tradeItem   = invaderXim.item.STONE_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.CREED_CUIRASS_P2,
+            itemId = invaderXim.item.CREED_CUIRASS_P2,
         },
     },
 
@@ -11279,16 +11279,16 @@ xi.magian.trials =
         previousTrial = 4343,
         requiredItem  =
         {
-            itemId = xi.item.BALE_CUIRASS_P1,
+            itemId = invaderXim.item.BALE_CUIRASS_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.COIN_OF_ARDOR,
+        tradeItem   = invaderXim.item.COIN_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.BALE_CUIRASS_P2,
+            itemId = invaderXim.item.BALE_CUIRASS_P2,
         },
     },
 
@@ -11297,16 +11297,16 @@ xi.magian.trials =
         previousTrial = 4344,
         requiredItem  =
         {
-            itemId = xi.item.FERINE_GAUSAPE_P1,
+            itemId = invaderXim.item.FERINE_GAUSAPE_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.CARD_OF_ARDOR,
+        tradeItem   = invaderXim.item.CARD_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.FERINE_GAUSAPE_P2,
+            itemId = invaderXim.item.FERINE_GAUSAPE_P2,
         },
     },
 
@@ -11315,16 +11315,16 @@ xi.magian.trials =
         previousTrial = 4345,
         requiredItem  =
         {
-            itemId = xi.item.AOIDOS_HONGRELINE_P1,
+            itemId = invaderXim.item.AOIDOS_HONGRELINE_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.STONE_OF_ARDOR,
+        tradeItem   = invaderXim.item.STONE_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.AOIDOS_HONGRELINE_P2,
+            itemId = invaderXim.item.AOIDOS_HONGRELINE_P2,
         },
     },
 
@@ -11333,16 +11333,16 @@ xi.magian.trials =
         previousTrial = 4346,
         requiredItem  =
         {
-            itemId = xi.item.SYLVAN_CABAN_P1,
+            itemId = invaderXim.item.SYLVAN_CABAN_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.COIN_OF_ARDOR,
+        tradeItem   = invaderXim.item.COIN_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.SYLVAN_CABAN_P2,
+            itemId = invaderXim.item.SYLVAN_CABAN_P2,
         },
     },
 
@@ -11351,16 +11351,16 @@ xi.magian.trials =
         previousTrial = 4347,
         requiredItem  =
         {
-            itemId = xi.item.UNKAI_DOMARU_P1,
+            itemId = invaderXim.item.UNKAI_DOMARU_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.JEWEL_OF_ARDOR,
+        tradeItem   = invaderXim.item.JEWEL_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.UNKAI_DOMARU_P2,
+            itemId = invaderXim.item.UNKAI_DOMARU_P2,
         },
     },
 
@@ -11369,16 +11369,16 @@ xi.magian.trials =
         previousTrial = 4348,
         requiredItem  =
         {
-            itemId = xi.item.IGA_NINGI_P1,
+            itemId = invaderXim.item.IGA_NINGI_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.STONE_OF_ARDOR,
+        tradeItem   = invaderXim.item.STONE_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.IGA_NINGI_P2,
+            itemId = invaderXim.item.IGA_NINGI_P2,
         },
     },
 
@@ -11387,16 +11387,16 @@ xi.magian.trials =
         previousTrial = 4349,
         requiredItem  =
         {
-            itemId = xi.item.LANCERS_PLACKART_P1,
+            itemId = invaderXim.item.LANCERS_PLACKART_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.CARD_OF_ARDOR,
+        tradeItem   = invaderXim.item.CARD_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.LANCERS_PLACKART_P2,
+            itemId = invaderXim.item.LANCERS_PLACKART_P2,
         },
     },
 
@@ -11405,16 +11405,16 @@ xi.magian.trials =
         previousTrial = 4350,
         requiredItem  =
         {
-            itemId = xi.item.CALLERS_DOUBLET_P1,
+            itemId = invaderXim.item.CALLERS_DOUBLET_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.COIN_OF_ARDOR,
+        tradeItem   = invaderXim.item.COIN_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.CALLERS_DOUBLET_P2,
+            itemId = invaderXim.item.CALLERS_DOUBLET_P2,
         },
     },
 
@@ -11423,16 +11423,16 @@ xi.magian.trials =
         previousTrial = 4351,
         requiredItem  =
         {
-            itemId = xi.item.MAVI_MINTAN_P1,
+            itemId = invaderXim.item.MAVI_MINTAN_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.STONE_OF_ARDOR,
+        tradeItem   = invaderXim.item.STONE_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.MAVI_MINTAN_P2,
+            itemId = invaderXim.item.MAVI_MINTAN_P2,
         },
     },
 
@@ -11441,16 +11441,16 @@ xi.magian.trials =
         previousTrial = 4352,
         requiredItem  =
         {
-            itemId = xi.item.NAVARCHS_FRAC_P1,
+            itemId = invaderXim.item.NAVARCHS_FRAC_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.COIN_OF_ARDOR,
+        tradeItem   = invaderXim.item.COIN_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.NAVARCHS_FRAC_P2,
+            itemId = invaderXim.item.NAVARCHS_FRAC_P2,
         },
     },
 
@@ -11459,16 +11459,16 @@ xi.magian.trials =
         previousTrial = 4353,
         requiredItem  =
         {
-            itemId = xi.item.CIRQUE_FARSETTO_P1,
+            itemId = invaderXim.item.CIRQUE_FARSETTO_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.JEWEL_OF_ARDOR,
+        tradeItem   = invaderXim.item.JEWEL_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.CIRQUE_FARSETTO_P2,
+            itemId = invaderXim.item.CIRQUE_FARSETTO_P2,
         },
     },
 
@@ -11477,16 +11477,16 @@ xi.magian.trials =
         previousTrial = 4354,
         requiredItem  =
         {
-            itemId = xi.item.CHARIS_CASAQUE_P1,
+            itemId = invaderXim.item.CHARIS_CASAQUE_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.JEWEL_OF_ARDOR,
+        tradeItem   = invaderXim.item.JEWEL_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.CHARIS_CASAQUE_P2,
+            itemId = invaderXim.item.CHARIS_CASAQUE_P2,
         },
     },
 
@@ -11495,16 +11495,16 @@ xi.magian.trials =
         previousTrial = 4355,
         requiredItem  =
         {
-            itemId = xi.item.SAVANTS_GOWN_P1,
+            itemId = invaderXim.item.SAVANTS_GOWN_P1,
         },
 
         textOffset  = 1052,
-        tradeItem   = xi.item.CARD_OF_ARDOR,
+        tradeItem   = invaderXim.item.CARD_OF_ARDOR,
         numRequired = 9,
 
         rewardItem =
         {
-            itemId = xi.item.SAVANTS_GOWN_P2,
+            itemId = invaderXim.item.SAVANTS_GOWN_P2,
         },
     },
 
@@ -11513,7 +11513,7 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.AEGIS_75,
+            itemId = invaderXim.item.AEGIS_75,
         },
 
         textOffset  = 1132,
@@ -11521,7 +11521,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.AEGIS_80,
+            itemId = invaderXim.item.AEGIS_80,
         },
     },
 
@@ -11530,7 +11530,7 @@ xi.magian.trials =
         previousTrial = 4401,
         requiredItem  =
         {
-            itemId = xi.item.AEGIS_80,
+            itemId = invaderXim.item.AEGIS_80,
         },
 
         textOffset  = 1134,
@@ -11538,7 +11538,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.AEGIS_85,
+            itemId = invaderXim.item.AEGIS_85,
         },
     },
 
@@ -11547,7 +11547,7 @@ xi.magian.trials =
         previousTrial = 4402,
         requiredItem  =
         {
-            itemId = xi.item.AEGIS_85,
+            itemId = invaderXim.item.AEGIS_85,
         },
 
         textOffset  = 1084,
@@ -11555,7 +11555,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.AEGIS_90,
+            itemId = invaderXim.item.AEGIS_90,
         },
     },
 
@@ -11564,7 +11564,7 @@ xi.magian.trials =
         previousTrial = 4403,
         requiredItem  =
         {
-            itemId = xi.item.AEGIS_90,
+            itemId = invaderXim.item.AEGIS_90,
         },
 
         textOffset  = 1192,
@@ -11572,7 +11572,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.AEGIS_95,
+            itemId = invaderXim.item.AEGIS_95,
         },
     },
 
@@ -11581,16 +11581,16 @@ xi.magian.trials =
         previousTrial = 4448,
         requiredItem  =
         {
-            itemId = xi.item.AEGIS_95,
+            itemId = invaderXim.item.AEGIS_95,
         },
 
         textOffset  = 1329,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 5,
 
         rewardItem =
         {
-            itemId = xi.item.AEGIS_99,
+            itemId = invaderXim.item.AEGIS_99,
         },
     },
 
@@ -11599,16 +11599,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WARRIORS_MASK,
+            itemId = invaderXim.item.WARRIORS_MASK,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.WARRIORS_MASK_P2,
+            itemId = invaderXim.item.WARRIORS_MASK_P2,
         },
     },
 
@@ -11617,16 +11617,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WARRIORS_MASK_P1,
+            itemId = invaderXim.item.WARRIORS_MASK_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.WARRIORS_MASK_P2,
+            itemId = invaderXim.item.WARRIORS_MASK_P2,
         },
     },
 
@@ -11635,16 +11635,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WARRIORS_LORICA,
+            itemId = invaderXim.item.WARRIORS_LORICA,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.WARRIORS_LORICA_P2,
+            itemId = invaderXim.item.WARRIORS_LORICA_P2,
         },
     },
 
@@ -11653,16 +11653,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WARRIORS_LORICA_P1,
+            itemId = invaderXim.item.WARRIORS_LORICA_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.WARRIORS_LORICA_P2,
+            itemId = invaderXim.item.WARRIORS_LORICA_P2,
         },
     },
 
@@ -11671,16 +11671,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WARRIORS_MUFFLERS,
+            itemId = invaderXim.item.WARRIORS_MUFFLERS,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.WARRIORS_MUFFLERS_P2,
+            itemId = invaderXim.item.WARRIORS_MUFFLERS_P2,
         },
     },
 
@@ -11689,16 +11689,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WARRIORS_MUFFLERS_P1,
+            itemId = invaderXim.item.WARRIORS_MUFFLERS_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.WARRIORS_MUFFLERS_P2,
+            itemId = invaderXim.item.WARRIORS_MUFFLERS_P2,
         },
     },
 
@@ -11707,16 +11707,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WARRIORS_CUISSES,
+            itemId = invaderXim.item.WARRIORS_CUISSES,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.WARRIORS_CUISSES_P2,
+            itemId = invaderXim.item.WARRIORS_CUISSES_P2,
         },
     },
 
@@ -11725,16 +11725,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WARRIORS_CUISSES_P1,
+            itemId = invaderXim.item.WARRIORS_CUISSES_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.WARRIORS_CUISSES_P2,
+            itemId = invaderXim.item.WARRIORS_CUISSES_P2,
         },
     },
 
@@ -11743,16 +11743,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WARRIORS_CALLIGAE,
+            itemId = invaderXim.item.WARRIORS_CALLIGAE,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.WARRIORS_CALLIGAE_P2,
+            itemId = invaderXim.item.WARRIORS_CALLIGAE_P2,
         },
     },
 
@@ -11761,16 +11761,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WARRIORS_CALLIGAE_P1,
+            itemId = invaderXim.item.WARRIORS_CALLIGAE_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.WARRIORS_CALLIGAE_P2,
+            itemId = invaderXim.item.WARRIORS_CALLIGAE_P2,
         },
     },
 
@@ -11779,16 +11779,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MELEE_CROWN,
+            itemId = invaderXim.item.MELEE_CROWN,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.MELEE_CROWN_P2,
+            itemId = invaderXim.item.MELEE_CROWN_P2,
         },
     },
 
@@ -11797,16 +11797,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MELEE_CROWN_P1,
+            itemId = invaderXim.item.MELEE_CROWN_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.MELEE_CROWN_P2,
+            itemId = invaderXim.item.MELEE_CROWN_P2,
         },
     },
 
@@ -11815,16 +11815,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MELEE_CYCLAS,
+            itemId = invaderXim.item.MELEE_CYCLAS,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.MELEE_CYCLAS_P2,
+            itemId = invaderXim.item.MELEE_CYCLAS_P2,
         },
     },
 
@@ -11833,16 +11833,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MELEE_CYCLAS_P1,
+            itemId = invaderXim.item.MELEE_CYCLAS_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.MELEE_CYCLAS_P2,
+            itemId = invaderXim.item.MELEE_CYCLAS_P2,
         },
     },
 
@@ -11851,16 +11851,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MELEE_GLOVES,
+            itemId = invaderXim.item.MELEE_GLOVES,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.MELEE_GLOVES_P2,
+            itemId = invaderXim.item.MELEE_GLOVES_P2,
         },
     },
 
@@ -11869,16 +11869,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MELEE_GLOVES_P1,
+            itemId = invaderXim.item.MELEE_GLOVES_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.MELEE_GLOVES_P2,
+            itemId = invaderXim.item.MELEE_GLOVES_P2,
         },
     },
 
@@ -11887,16 +11887,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MELEE_HOSE,
+            itemId = invaderXim.item.MELEE_HOSE,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.MELEE_HOSE_P2,
+            itemId = invaderXim.item.MELEE_HOSE_P2,
         },
     },
 
@@ -11905,16 +11905,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MELEE_HOSE_P1,
+            itemId = invaderXim.item.MELEE_HOSE_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.MELEE_HOSE_P2,
+            itemId = invaderXim.item.MELEE_HOSE_P2,
         },
     },
 
@@ -11923,16 +11923,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MELEE_GAITERS,
+            itemId = invaderXim.item.MELEE_GAITERS,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.MELEE_GAITERS_P2,
+            itemId = invaderXim.item.MELEE_GAITERS_P2,
         },
     },
 
@@ -11941,16 +11941,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MELEE_GAITERS_P1,
+            itemId = invaderXim.item.MELEE_GAITERS_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.MELEE_GAITERS_P2,
+            itemId = invaderXim.item.MELEE_GAITERS_P2,
         },
     },
 
@@ -11959,16 +11959,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CLERICS_CAP,
+            itemId = invaderXim.item.CLERICS_CAP,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.CLERICS_CAP_P2,
+            itemId = invaderXim.item.CLERICS_CAP_P2,
         },
     },
 
@@ -11977,16 +11977,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CLERICS_CAP_P1,
+            itemId = invaderXim.item.CLERICS_CAP_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.CLERICS_CAP_P2,
+            itemId = invaderXim.item.CLERICS_CAP_P2,
         },
     },
 
@@ -11995,16 +11995,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CLERICS_BLIAUT,
+            itemId = invaderXim.item.CLERICS_BLIAUT,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.CLERICS_BLIAUT_P2,
+            itemId = invaderXim.item.CLERICS_BLIAUT_P2,
         },
     },
 
@@ -12013,16 +12013,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CLERICS_BLIAUT_P1,
+            itemId = invaderXim.item.CLERICS_BLIAUT_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.CLERICS_BLIAUT_P2,
+            itemId = invaderXim.item.CLERICS_BLIAUT_P2,
         },
     },
 
@@ -12031,16 +12031,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CLERICS_MITTS,
+            itemId = invaderXim.item.CLERICS_MITTS,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.CLERICS_MITTS_P2,
+            itemId = invaderXim.item.CLERICS_MITTS_P2,
         },
     },
 
@@ -12049,16 +12049,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CLERICS_MITTS_P1,
+            itemId = invaderXim.item.CLERICS_MITTS_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.CLERICS_MITTS_P2,
+            itemId = invaderXim.item.CLERICS_MITTS_P2,
         },
     },
 
@@ -12067,16 +12067,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CLERICS_PANTALOONS,
+            itemId = invaderXim.item.CLERICS_PANTALOONS,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.CLERICS_PANTALOONS_P2,
+            itemId = invaderXim.item.CLERICS_PANTALOONS_P2,
         },
     },
 
@@ -12085,16 +12085,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CLERICS_PANTALOONS_P1,
+            itemId = invaderXim.item.CLERICS_PANTALOONS_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.CLERICS_PANTALOONS_P2,
+            itemId = invaderXim.item.CLERICS_PANTALOONS_P2,
         },
     },
 
@@ -12103,16 +12103,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CLERICS_DUCKBILLS,
+            itemId = invaderXim.item.CLERICS_DUCKBILLS,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.CLERICS_DUCKBILLS_P2,
+            itemId = invaderXim.item.CLERICS_DUCKBILLS_P2,
         },
     },
 
@@ -12121,16 +12121,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.CLERICS_DUCKBILLS_P1,
+            itemId = invaderXim.item.CLERICS_DUCKBILLS_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.CLERICS_DUCKBILLS_P2,
+            itemId = invaderXim.item.CLERICS_DUCKBILLS_P2,
         },
     },
 
@@ -12139,16 +12139,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SORCERERS_PETASOS,
+            itemId = invaderXim.item.SORCERERS_PETASOS,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SORCERERS_PETASOS_P2,
+            itemId = invaderXim.item.SORCERERS_PETASOS_P2,
         },
     },
 
@@ -12157,16 +12157,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SORCERERS_PETASOS_P1,
+            itemId = invaderXim.item.SORCERERS_PETASOS_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SORCERERS_PETASOS_P2,
+            itemId = invaderXim.item.SORCERERS_PETASOS_P2,
         },
     },
 
@@ -12175,16 +12175,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SORCERERS_COAT,
+            itemId = invaderXim.item.SORCERERS_COAT,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SORCERERS_COAT_P2,
+            itemId = invaderXim.item.SORCERERS_COAT_P2,
         },
     },
 
@@ -12193,16 +12193,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SORCERERS_COAT_P1,
+            itemId = invaderXim.item.SORCERERS_COAT_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SORCERERS_COAT_P2,
+            itemId = invaderXim.item.SORCERERS_COAT_P2,
         },
     },
 
@@ -12211,16 +12211,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SORCERERS_GLOVES,
+            itemId = invaderXim.item.SORCERERS_GLOVES,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SORCERERS_GLOVES_P2,
+            itemId = invaderXim.item.SORCERERS_GLOVES_P2,
         },
     },
 
@@ -12229,16 +12229,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SORCERERS_GLOVES_P1,
+            itemId = invaderXim.item.SORCERERS_GLOVES_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SORCERERS_GLOVES_P2,
+            itemId = invaderXim.item.SORCERERS_GLOVES_P2,
         },
     },
 
@@ -12247,16 +12247,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SORCERERS_TONBAN,
+            itemId = invaderXim.item.SORCERERS_TONBAN,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SORCERERS_TONBAN_P2,
+            itemId = invaderXim.item.SORCERERS_TONBAN_P2,
         },
     },
 
@@ -12265,16 +12265,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SORCERERS_TONBAN_P1,
+            itemId = invaderXim.item.SORCERERS_TONBAN_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SORCERERS_TONBAN_P2,
+            itemId = invaderXim.item.SORCERERS_TONBAN_P2,
         },
     },
 
@@ -12283,16 +12283,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SORCERERS_SABOTS,
+            itemId = invaderXim.item.SORCERERS_SABOTS,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SORCERERS_SABOTS_P2,
+            itemId = invaderXim.item.SORCERERS_SABOTS_P2,
         },
     },
 
@@ -12301,16 +12301,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SORCERERS_SABOTS_P1,
+            itemId = invaderXim.item.SORCERERS_SABOTS_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SORCERERS_SABOTS_P2,
+            itemId = invaderXim.item.SORCERERS_SABOTS_P2,
         },
     },
 
@@ -12319,16 +12319,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.DUELISTS_CHAPEAU,
+            itemId = invaderXim.item.DUELISTS_CHAPEAU,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.DUELISTS_CHAPEAU_P2,
+            itemId = invaderXim.item.DUELISTS_CHAPEAU_P2,
         },
     },
 
@@ -12337,16 +12337,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.DUELISTS_CHAPEAU_P1,
+            itemId = invaderXim.item.DUELISTS_CHAPEAU_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.DUELISTS_CHAPEAU_P2,
+            itemId = invaderXim.item.DUELISTS_CHAPEAU_P2,
         },
     },
 
@@ -12355,16 +12355,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.DUELISTS_TABARD,
+            itemId = invaderXim.item.DUELISTS_TABARD,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.DUELISTS_TABARD_P2,
+            itemId = invaderXim.item.DUELISTS_TABARD_P2,
         },
     },
 
@@ -12373,16 +12373,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.DUELISTS_TABARD_P1,
+            itemId = invaderXim.item.DUELISTS_TABARD_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.DUELISTS_TABARD_P2,
+            itemId = invaderXim.item.DUELISTS_TABARD_P2,
         },
     },
 
@@ -12391,16 +12391,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.DUELISTS_GLOVES,
+            itemId = invaderXim.item.DUELISTS_GLOVES,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.DUELISTS_GLOVES_P2,
+            itemId = invaderXim.item.DUELISTS_GLOVES_P2,
         },
     },
 
@@ -12409,16 +12409,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.DUELISTS_GLOVES_P1,
+            itemId = invaderXim.item.DUELISTS_GLOVES_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.DUELISTS_GLOVES_P2,
+            itemId = invaderXim.item.DUELISTS_GLOVES_P2,
         },
     },
 
@@ -12427,16 +12427,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.DUELISTS_TIGHTS,
+            itemId = invaderXim.item.DUELISTS_TIGHTS,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.DUELISTS_TIGHTS_P2,
+            itemId = invaderXim.item.DUELISTS_TIGHTS_P2,
         },
     },
 
@@ -12445,16 +12445,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.DUELISTS_TIGHTS_P1,
+            itemId = invaderXim.item.DUELISTS_TIGHTS_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.DUELISTS_TIGHTS_P2,
+            itemId = invaderXim.item.DUELISTS_TIGHTS_P2,
         },
     },
 
@@ -12463,16 +12463,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.DUELISTS_BOOTS,
+            itemId = invaderXim.item.DUELISTS_BOOTS,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.DUELISTS_BOOTS_P2,
+            itemId = invaderXim.item.DUELISTS_BOOTS_P2,
         },
     },
 
@@ -12481,16 +12481,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.DUELISTS_BOOTS_P1,
+            itemId = invaderXim.item.DUELISTS_BOOTS_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.DUELISTS_BOOTS_P2,
+            itemId = invaderXim.item.DUELISTS_BOOTS_P2,
         },
     },
 
@@ -12499,16 +12499,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ASSASSINS_BONNET,
+            itemId = invaderXim.item.ASSASSINS_BONNET,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ASSASSINS_BONNET_P2,
+            itemId = invaderXim.item.ASSASSINS_BONNET_P2,
         },
     },
 
@@ -12517,16 +12517,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ASSASSINS_BONNET_P1,
+            itemId = invaderXim.item.ASSASSINS_BONNET_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ASSASSINS_BONNET_P2,
+            itemId = invaderXim.item.ASSASSINS_BONNET_P2,
         },
     },
 
@@ -12535,16 +12535,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ASSASSINS_VEST,
+            itemId = invaderXim.item.ASSASSINS_VEST,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ASSASSINS_VEST_P2,
+            itemId = invaderXim.item.ASSASSINS_VEST_P2,
         },
     },
 
@@ -12553,16 +12553,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ASSASSINS_VEST_P1,
+            itemId = invaderXim.item.ASSASSINS_VEST_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ASSASSINS_VEST_P2,
+            itemId = invaderXim.item.ASSASSINS_VEST_P2,
         },
     },
 
@@ -12571,16 +12571,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ASSASSINS_ARMLETS,
+            itemId = invaderXim.item.ASSASSINS_ARMLETS,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ASSASSINS_ARMLETS_P2,
+            itemId = invaderXim.item.ASSASSINS_ARMLETS_P2,
         },
     },
 
@@ -12589,16 +12589,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ASSASSINS_ARMLETS_P1,
+            itemId = invaderXim.item.ASSASSINS_ARMLETS_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ASSASSINS_ARMLETS_P2,
+            itemId = invaderXim.item.ASSASSINS_ARMLETS_P2,
         },
     },
 
@@ -12607,16 +12607,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ASSASSINS_CULOTTES,
+            itemId = invaderXim.item.ASSASSINS_CULOTTES,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ASSASSINS_CULOTTES_P2,
+            itemId = invaderXim.item.ASSASSINS_CULOTTES_P2,
         },
     },
 
@@ -12625,16 +12625,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ASSASSINS_CULOTTES_P1,
+            itemId = invaderXim.item.ASSASSINS_CULOTTES_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ASSASSINS_CULOTTES_P2,
+            itemId = invaderXim.item.ASSASSINS_CULOTTES_P2,
         },
     },
 
@@ -12643,16 +12643,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ASSASSINS_POULAINES,
+            itemId = invaderXim.item.ASSASSINS_POULAINES,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ASSASSINS_POULAINES_P2,
+            itemId = invaderXim.item.ASSASSINS_POULAINES_P2,
         },
     },
 
@@ -12661,16 +12661,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ASSASSINS_POULAINES_P1,
+            itemId = invaderXim.item.ASSASSINS_POULAINES_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ASSASSINS_POULAINES_P2,
+            itemId = invaderXim.item.ASSASSINS_POULAINES_P2,
         },
     },
 
@@ -12679,16 +12679,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.VALOR_CORONET,
+            itemId = invaderXim.item.VALOR_CORONET,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.VALOR_CORONET_P2,
+            itemId = invaderXim.item.VALOR_CORONET_P2,
         },
     },
 
@@ -12697,16 +12697,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.VALOR_CORONET_P1,
+            itemId = invaderXim.item.VALOR_CORONET_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.VALOR_CORONET_P2,
+            itemId = invaderXim.item.VALOR_CORONET_P2,
         },
     },
 
@@ -12715,16 +12715,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.VALOR_SURCOAT,
+            itemId = invaderXim.item.VALOR_SURCOAT,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.VALOR_SURCOAT_P2,
+            itemId = invaderXim.item.VALOR_SURCOAT_P2,
         },
     },
 
@@ -12733,16 +12733,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.VALOR_SURCOAT_P1,
+            itemId = invaderXim.item.VALOR_SURCOAT_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.VALOR_SURCOAT_P2,
+            itemId = invaderXim.item.VALOR_SURCOAT_P2,
         },
     },
 
@@ -12751,16 +12751,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.VALOR_GAUNTLETS,
+            itemId = invaderXim.item.VALOR_GAUNTLETS,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.VALOR_GAUNTLETS_P2,
+            itemId = invaderXim.item.VALOR_GAUNTLETS_P2,
         },
     },
 
@@ -12769,16 +12769,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.VALOR_GAUNTLETS_P1,
+            itemId = invaderXim.item.VALOR_GAUNTLETS_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.VALOR_GAUNTLETS_P2,
+            itemId = invaderXim.item.VALOR_GAUNTLETS_P2,
         },
     },
 
@@ -12787,16 +12787,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.VALOR_BREECHES,
+            itemId = invaderXim.item.VALOR_BREECHES,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.VALOR_BREECHES_P2,
+            itemId = invaderXim.item.VALOR_BREECHES_P2,
         },
     },
 
@@ -12805,16 +12805,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.VALOR_BREECHES_P1,
+            itemId = invaderXim.item.VALOR_BREECHES_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.VALOR_BREECHES_P2,
+            itemId = invaderXim.item.VALOR_BREECHES_P2,
         },
     },
 
@@ -12823,16 +12823,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.VALOR_LEGGINGS,
+            itemId = invaderXim.item.VALOR_LEGGINGS,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.VALOR_LEGGINGS_P2,
+            itemId = invaderXim.item.VALOR_LEGGINGS_P2,
         },
     },
 
@@ -12841,16 +12841,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.VALOR_LEGGINGS_P1,
+            itemId = invaderXim.item.VALOR_LEGGINGS_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.VALOR_LEGGINGS_P2,
+            itemId = invaderXim.item.VALOR_LEGGINGS_P2,
         },
     },
 
@@ -12859,16 +12859,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ABYSS_BURGEONET,
+            itemId = invaderXim.item.ABYSS_BURGEONET,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ABYSS_BURGEONET_P2,
+            itemId = invaderXim.item.ABYSS_BURGEONET_P2,
         },
     },
 
@@ -12877,16 +12877,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ABYSS_BURGEONET_P1,
+            itemId = invaderXim.item.ABYSS_BURGEONET_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ABYSS_BURGEONET_P2,
+            itemId = invaderXim.item.ABYSS_BURGEONET_P2,
         },
     },
 
@@ -12895,16 +12895,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ABYSS_CUIRASS,
+            itemId = invaderXim.item.ABYSS_CUIRASS,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ABYSS_CUIRASS_P2,
+            itemId = invaderXim.item.ABYSS_CUIRASS_P2,
         },
     },
 
@@ -12913,16 +12913,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ABYSS_CUIRASS_P1,
+            itemId = invaderXim.item.ABYSS_CUIRASS_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ABYSS_CUIRASS_P2,
+            itemId = invaderXim.item.ABYSS_CUIRASS_P2,
         },
     },
 
@@ -12931,16 +12931,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ABYSS_GAUNTLETS,
+            itemId = invaderXim.item.ABYSS_GAUNTLETS,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ABYSS_GAUNTLETS_P2,
+            itemId = invaderXim.item.ABYSS_GAUNTLETS_P2,
         },
     },
 
@@ -12949,16 +12949,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ABYSS_GAUNTLETS_P1,
+            itemId = invaderXim.item.ABYSS_GAUNTLETS_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ABYSS_GAUNTLETS_P2,
+            itemId = invaderXim.item.ABYSS_GAUNTLETS_P2,
         },
     },
 
@@ -12967,16 +12967,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ABYSS_FLANCHARD,
+            itemId = invaderXim.item.ABYSS_FLANCHARD,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ABYSS_FLANCHARD_P2,
+            itemId = invaderXim.item.ABYSS_FLANCHARD_P2,
         },
     },
 
@@ -12985,16 +12985,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ABYSS_FLANCHARD_P1,
+            itemId = invaderXim.item.ABYSS_FLANCHARD_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ABYSS_FLANCHARD_P2,
+            itemId = invaderXim.item.ABYSS_FLANCHARD_P2,
         },
     },
 
@@ -13003,16 +13003,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ABYSS_SOLLERETS,
+            itemId = invaderXim.item.ABYSS_SOLLERETS,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ABYSS_SOLLERETS_P2,
+            itemId = invaderXim.item.ABYSS_SOLLERETS_P2,
         },
     },
 
@@ -13021,16 +13021,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ABYSS_SOLLERETS_P1,
+            itemId = invaderXim.item.ABYSS_SOLLERETS_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ABYSS_SOLLERETS_P2,
+            itemId = invaderXim.item.ABYSS_SOLLERETS_P2,
         },
     },
 
@@ -13039,16 +13039,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MONSTER_HELM,
+            itemId = invaderXim.item.MONSTER_HELM,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.MONSTER_HELM_P2,
+            itemId = invaderXim.item.MONSTER_HELM_P2,
         },
     },
 
@@ -13057,16 +13057,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MONSTER_HELM_P1,
+            itemId = invaderXim.item.MONSTER_HELM_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.MONSTER_HELM_P2,
+            itemId = invaderXim.item.MONSTER_HELM_P2,
         },
     },
 
@@ -13075,16 +13075,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MONSTER_JACKCOAT,
+            itemId = invaderXim.item.MONSTER_JACKCOAT,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.MONSTER_JACKCOAT_P2,
+            itemId = invaderXim.item.MONSTER_JACKCOAT_P2,
         },
     },
 
@@ -13093,16 +13093,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MONSTER_JACKCOAT_P1,
+            itemId = invaderXim.item.MONSTER_JACKCOAT_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.MONSTER_JACKCOAT_P2,
+            itemId = invaderXim.item.MONSTER_JACKCOAT_P2,
         },
     },
 
@@ -13111,16 +13111,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MONSTER_GLOVES,
+            itemId = invaderXim.item.MONSTER_GLOVES,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.MONSTER_GLOVES_P2,
+            itemId = invaderXim.item.MONSTER_GLOVES_P2,
         },
     },
 
@@ -13129,16 +13129,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MONSTER_GLOVES_P1,
+            itemId = invaderXim.item.MONSTER_GLOVES_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.MONSTER_GLOVES_P2,
+            itemId = invaderXim.item.MONSTER_GLOVES_P2,
         },
     },
 
@@ -13147,16 +13147,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MONSTER_TROUSERS,
+            itemId = invaderXim.item.MONSTER_TROUSERS,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.MONSTER_TROUSERS_P2,
+            itemId = invaderXim.item.MONSTER_TROUSERS_P2,
         },
     },
 
@@ -13165,16 +13165,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MONSTER_TROUSERS_P1,
+            itemId = invaderXim.item.MONSTER_TROUSERS_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.MONSTER_TROUSERS_P2,
+            itemId = invaderXim.item.MONSTER_TROUSERS_P2,
         },
     },
 
@@ -13183,16 +13183,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MONSTER_GAITERS,
+            itemId = invaderXim.item.MONSTER_GAITERS,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.MONSTER_GAITERS_P2,
+            itemId = invaderXim.item.MONSTER_GAITERS_P2,
         },
     },
 
@@ -13201,16 +13201,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MONSTER_GAITERS_P1,
+            itemId = invaderXim.item.MONSTER_GAITERS_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.MONSTER_GAITERS_P2,
+            itemId = invaderXim.item.MONSTER_GAITERS_P2,
         },
     },
 
@@ -13219,16 +13219,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BARDS_ROUNDLET,
+            itemId = invaderXim.item.BARDS_ROUNDLET,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.BARDS_ROUNDLET_P2,
+            itemId = invaderXim.item.BARDS_ROUNDLET_P2,
         },
     },
 
@@ -13237,16 +13237,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BARDS_ROUNDLET_P1,
+            itemId = invaderXim.item.BARDS_ROUNDLET_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.BARDS_ROUNDLET_P2,
+            itemId = invaderXim.item.BARDS_ROUNDLET_P2,
         },
     },
 
@@ -13255,16 +13255,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BARDS_JUSTAUCORPS,
+            itemId = invaderXim.item.BARDS_JUSTAUCORPS,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.BARDS_JUSTAUCORPS_P2,
+            itemId = invaderXim.item.BARDS_JUSTAUCORPS_P2,
         },
     },
 
@@ -13273,16 +13273,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BARDS_JUSTAUCORPS_P1,
+            itemId = invaderXim.item.BARDS_JUSTAUCORPS_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.BARDS_JUSTAUCORPS_P2,
+            itemId = invaderXim.item.BARDS_JUSTAUCORPS_P2,
         },
     },
 
@@ -13291,16 +13291,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BARDS_CUFFS,
+            itemId = invaderXim.item.BARDS_CUFFS,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.BARDS_CUFFS_P2,
+            itemId = invaderXim.item.BARDS_CUFFS_P2,
         },
     },
 
@@ -13309,16 +13309,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BARDS_CUFFS_P1,
+            itemId = invaderXim.item.BARDS_CUFFS_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.BARDS_CUFFS_P2,
+            itemId = invaderXim.item.BARDS_CUFFS_P2,
         },
     },
 
@@ -13327,16 +13327,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BARDS_CANNIONS,
+            itemId = invaderXim.item.BARDS_CANNIONS,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.BARDS_CANNIONS_P2,
+            itemId = invaderXim.item.BARDS_CANNIONS_P2,
         },
     },
 
@@ -13345,16 +13345,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BARDS_CANNIONS_P1,
+            itemId = invaderXim.item.BARDS_CANNIONS_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.BARDS_CANNIONS_P2,
+            itemId = invaderXim.item.BARDS_CANNIONS_P2,
         },
     },
 
@@ -13363,16 +13363,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BARDS_SLIPPERS,
+            itemId = invaderXim.item.BARDS_SLIPPERS,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.BARDS_SLIPPERS_P2,
+            itemId = invaderXim.item.BARDS_SLIPPERS_P2,
         },
     },
 
@@ -13381,16 +13381,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.BARDS_SLIPPERS_P1,
+            itemId = invaderXim.item.BARDS_SLIPPERS_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.BARDS_SLIPPERS_P2,
+            itemId = invaderXim.item.BARDS_SLIPPERS_P2,
         },
     },
 
@@ -13399,16 +13399,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SCOUTS_BERET,
+            itemId = invaderXim.item.SCOUTS_BERET,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SCOUTS_BERET_P2,
+            itemId = invaderXim.item.SCOUTS_BERET_P2,
         },
     },
 
@@ -13417,16 +13417,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SCOUTS_BERET_P1,
+            itemId = invaderXim.item.SCOUTS_BERET_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SCOUTS_BERET_P2,
+            itemId = invaderXim.item.SCOUTS_BERET_P2,
         },
     },
 
@@ -13435,16 +13435,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SCOUTS_JERKIN,
+            itemId = invaderXim.item.SCOUTS_JERKIN,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SCOUTS_JERKIN_P2,
+            itemId = invaderXim.item.SCOUTS_JERKIN_P2,
         },
     },
 
@@ -13453,16 +13453,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SCOUTS_JERKIN_P1,
+            itemId = invaderXim.item.SCOUTS_JERKIN_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SCOUTS_JERKIN_P2,
+            itemId = invaderXim.item.SCOUTS_JERKIN_P2,
         },
     },
 
@@ -13471,16 +13471,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SCOUTS_BRACERS,
+            itemId = invaderXim.item.SCOUTS_BRACERS,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SCOUTS_BRACERS_P2,
+            itemId = invaderXim.item.SCOUTS_BRACERS_P2,
         },
     },
 
@@ -13489,16 +13489,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SCOUTS_BRACERS_P1,
+            itemId = invaderXim.item.SCOUTS_BRACERS_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SCOUTS_BRACERS_P2,
+            itemId = invaderXim.item.SCOUTS_BRACERS_P2,
         },
     },
 
@@ -13507,16 +13507,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SCOUTS_BRACCAE,
+            itemId = invaderXim.item.SCOUTS_BRACCAE,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SCOUTS_BRACCAE_P2,
+            itemId = invaderXim.item.SCOUTS_BRACCAE_P2,
         },
     },
 
@@ -13525,16 +13525,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SCOUTS_BRACCAE_P1,
+            itemId = invaderXim.item.SCOUTS_BRACCAE_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SCOUTS_BRACCAE_P2,
+            itemId = invaderXim.item.SCOUTS_BRACCAE_P2,
         },
     },
 
@@ -13543,16 +13543,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SCOUTS_SOCKS,
+            itemId = invaderXim.item.SCOUTS_SOCKS,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SCOUTS_SOCKS_P2,
+            itemId = invaderXim.item.SCOUTS_SOCKS_P2,
         },
     },
 
@@ -13561,16 +13561,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SCOUTS_SOCKS_P1,
+            itemId = invaderXim.item.SCOUTS_SOCKS_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SCOUTS_SOCKS_P2,
+            itemId = invaderXim.item.SCOUTS_SOCKS_P2,
         },
     },
 
@@ -13579,16 +13579,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SAOTOME_KABUTO,
+            itemId = invaderXim.item.SAOTOME_KABUTO,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SAOTOME_KABUTO_P2,
+            itemId = invaderXim.item.SAOTOME_KABUTO_P2,
         },
     },
 
@@ -13597,16 +13597,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SAOTOME_KABUTO_P1,
+            itemId = invaderXim.item.SAOTOME_KABUTO_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SAOTOME_KABUTO_P2,
+            itemId = invaderXim.item.SAOTOME_KABUTO_P2,
         },
     },
 
@@ -13615,16 +13615,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SAOTOME_DOMARU,
+            itemId = invaderXim.item.SAOTOME_DOMARU,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SAOTOME_DOMARU_P2,
+            itemId = invaderXim.item.SAOTOME_DOMARU_P2,
         },
     },
 
@@ -13633,16 +13633,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SAOTOME_DOMARU_P1,
+            itemId = invaderXim.item.SAOTOME_DOMARU_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SAOTOME_DOMARU_P2,
+            itemId = invaderXim.item.SAOTOME_DOMARU_P2,
         },
     },
 
@@ -13651,16 +13651,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SAOTOME_KOTE,
+            itemId = invaderXim.item.SAOTOME_KOTE,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SAOTOME_KOTE_P2,
+            itemId = invaderXim.item.SAOTOME_KOTE_P2,
         },
     },
 
@@ -13669,16 +13669,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SAOTOME_KOTE_P1,
+            itemId = invaderXim.item.SAOTOME_KOTE_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SAOTOME_KOTE_P2,
+            itemId = invaderXim.item.SAOTOME_KOTE_P2,
         },
     },
 
@@ -13687,16 +13687,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SAOTOME_HAIDATE,
+            itemId = invaderXim.item.SAOTOME_HAIDATE,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SAOTOME_HAIDATE_P2,
+            itemId = invaderXim.item.SAOTOME_HAIDATE_P2,
         },
     },
 
@@ -13705,16 +13705,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SAOTOME_HAIDATE_P1,
+            itemId = invaderXim.item.SAOTOME_HAIDATE_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SAOTOME_HAIDATE_P2,
+            itemId = invaderXim.item.SAOTOME_HAIDATE_P2,
         },
     },
 
@@ -13723,16 +13723,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SAOTOME_SUNE_ATE,
+            itemId = invaderXim.item.SAOTOME_SUNE_ATE,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SAOTOME_SUNE_ATE_P2,
+            itemId = invaderXim.item.SAOTOME_SUNE_ATE_P2,
         },
     },
 
@@ -13741,16 +13741,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SAOTOME_SUNE_ATE_P1,
+            itemId = invaderXim.item.SAOTOME_SUNE_ATE_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SAOTOME_SUNE_ATE_P2,
+            itemId = invaderXim.item.SAOTOME_SUNE_ATE_P2,
         },
     },
 
@@ -13759,16 +13759,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.KOGA_HATSUBURI,
+            itemId = invaderXim.item.KOGA_HATSUBURI,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.KOGA_HATSUBURI_P2,
+            itemId = invaderXim.item.KOGA_HATSUBURI_P2,
         },
     },
 
@@ -13777,16 +13777,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.KOGA_HATSUBURI_P1,
+            itemId = invaderXim.item.KOGA_HATSUBURI_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.KOGA_HATSUBURI_P2,
+            itemId = invaderXim.item.KOGA_HATSUBURI_P2,
         },
     },
 
@@ -13795,16 +13795,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.KOGA_CHAINMAIL,
+            itemId = invaderXim.item.KOGA_CHAINMAIL,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.KOGA_CHAINMAIL_P2,
+            itemId = invaderXim.item.KOGA_CHAINMAIL_P2,
         },
     },
 
@@ -13813,16 +13813,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.KOGA_CHAINMAIL_P1,
+            itemId = invaderXim.item.KOGA_CHAINMAIL_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.KOGA_CHAINMAIL_P2,
+            itemId = invaderXim.item.KOGA_CHAINMAIL_P2,
         },
     },
 
@@ -13831,16 +13831,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.KOGA_TEKKO,
+            itemId = invaderXim.item.KOGA_TEKKO,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.KOGA_TEKKO_P2,
+            itemId = invaderXim.item.KOGA_TEKKO_P2,
         },
     },
 
@@ -13849,16 +13849,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.KOGA_TEKKO_P1,
+            itemId = invaderXim.item.KOGA_TEKKO_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.KOGA_TEKKO_P2,
+            itemId = invaderXim.item.KOGA_TEKKO_P2,
         },
     },
 
@@ -13867,16 +13867,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.KOGA_HAKAMA,
+            itemId = invaderXim.item.KOGA_HAKAMA,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.KOGA_HAKAMA_P2,
+            itemId = invaderXim.item.KOGA_HAKAMA_P2,
         },
     },
 
@@ -13885,16 +13885,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.KOGA_HAKAMA_P1,
+            itemId = invaderXim.item.KOGA_HAKAMA_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.KOGA_HAKAMA_P2,
+            itemId = invaderXim.item.KOGA_HAKAMA_P2,
         },
     },
 
@@ -13903,16 +13903,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.KOGA_KYAHAN,
+            itemId = invaderXim.item.KOGA_KYAHAN,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.KOGA_KYAHAN_P2,
+            itemId = invaderXim.item.KOGA_KYAHAN_P2,
         },
     },
 
@@ -13921,16 +13921,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.KOGA_KYAHAN_P1,
+            itemId = invaderXim.item.KOGA_KYAHAN_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.KOGA_KYAHAN_P2,
+            itemId = invaderXim.item.KOGA_KYAHAN_P2,
         },
     },
 
@@ -13939,16 +13939,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WYRM_ARMET,
+            itemId = invaderXim.item.WYRM_ARMET,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.WYRM_ARMET_P2,
+            itemId = invaderXim.item.WYRM_ARMET_P2,
         },
     },
 
@@ -13957,16 +13957,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WYRM_ARMET_P1,
+            itemId = invaderXim.item.WYRM_ARMET_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.WYRM_ARMET_P2,
+            itemId = invaderXim.item.WYRM_ARMET_P2,
         },
     },
 
@@ -13975,16 +13975,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WYRM_MAIL,
+            itemId = invaderXim.item.WYRM_MAIL,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.WYRM_MAIL_P2,
+            itemId = invaderXim.item.WYRM_MAIL_P2,
         },
     },
 
@@ -13993,16 +13993,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WYRM_MAIL_P1,
+            itemId = invaderXim.item.WYRM_MAIL_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.WYRM_MAIL_P2,
+            itemId = invaderXim.item.WYRM_MAIL_P2,
         },
     },
 
@@ -14011,16 +14011,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WYRM_FINGER_GAUNTLETS,
+            itemId = invaderXim.item.WYRM_FINGER_GAUNTLETS,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.WYRM_FINGER_GAUNTLETS_P2,
+            itemId = invaderXim.item.WYRM_FINGER_GAUNTLETS_P2,
         },
     },
 
@@ -14029,16 +14029,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WYRM_FINGER_GAUNTLETS_P1,
+            itemId = invaderXim.item.WYRM_FINGER_GAUNTLETS_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.WYRM_FINGER_GAUNTLETS_P2,
+            itemId = invaderXim.item.WYRM_FINGER_GAUNTLETS_P2,
         },
     },
 
@@ -14047,16 +14047,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WYRM_BRAIS,
+            itemId = invaderXim.item.WYRM_BRAIS,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.WYRM_BRAIS_P2,
+            itemId = invaderXim.item.WYRM_BRAIS_P2,
         },
     },
 
@@ -14065,16 +14065,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WYRM_BRAIS_P1,
+            itemId = invaderXim.item.WYRM_BRAIS_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.WYRM_BRAIS_P2,
+            itemId = invaderXim.item.WYRM_BRAIS_P2,
         },
     },
 
@@ -14083,16 +14083,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WYRM_GREAVES,
+            itemId = invaderXim.item.WYRM_GREAVES,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.WYRM_GREAVES_P2,
+            itemId = invaderXim.item.WYRM_GREAVES_P2,
         },
     },
 
@@ -14101,16 +14101,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.WYRM_GREAVES_P1,
+            itemId = invaderXim.item.WYRM_GREAVES_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.WYRM_GREAVES_P2,
+            itemId = invaderXim.item.WYRM_GREAVES_P2,
         },
     },
 
@@ -14119,16 +14119,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SUMMONERS_HORN,
+            itemId = invaderXim.item.SUMMONERS_HORN,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SUMMONERS_HORN_P2,
+            itemId = invaderXim.item.SUMMONERS_HORN_P2,
         },
     },
 
@@ -14137,16 +14137,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SUMMONERS_HORN_P1,
+            itemId = invaderXim.item.SUMMONERS_HORN_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SUMMONERS_HORN_P2,
+            itemId = invaderXim.item.SUMMONERS_HORN_P2,
         },
     },
 
@@ -14155,16 +14155,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SUMMONERS_DOUBLET,
+            itemId = invaderXim.item.SUMMONERS_DOUBLET,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SUMMONERS_DOUBLET_P2,
+            itemId = invaderXim.item.SUMMONERS_DOUBLET_P2,
         },
     },
 
@@ -14173,16 +14173,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SUMMONERS_DOUBLET_P1,
+            itemId = invaderXim.item.SUMMONERS_DOUBLET_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SUMMONERS_DOUBLET_P2,
+            itemId = invaderXim.item.SUMMONERS_DOUBLET_P2,
         },
     },
 
@@ -14191,16 +14191,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SUMMONERS_BRACERS,
+            itemId = invaderXim.item.SUMMONERS_BRACERS,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SUMMONERS_BRACERS_P2,
+            itemId = invaderXim.item.SUMMONERS_BRACERS_P2,
         },
     },
 
@@ -14209,16 +14209,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SUMMONERS_BRACERS_P1,
+            itemId = invaderXim.item.SUMMONERS_BRACERS_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SUMMONERS_BRACERS_P2,
+            itemId = invaderXim.item.SUMMONERS_BRACERS_P2,
         },
     },
 
@@ -14227,16 +14227,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SUMMONERS_SPATS,
+            itemId = invaderXim.item.SUMMONERS_SPATS,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SUMMONERS_SPATS_P2,
+            itemId = invaderXim.item.SUMMONERS_SPATS_P2,
         },
     },
 
@@ -14245,16 +14245,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SUMMONERS_SPATS_P1,
+            itemId = invaderXim.item.SUMMONERS_SPATS_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SUMMONERS_SPATS_P2,
+            itemId = invaderXim.item.SUMMONERS_SPATS_P2,
         },
     },
 
@@ -14263,16 +14263,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SUMMONERS_PIGACHES,
+            itemId = invaderXim.item.SUMMONERS_PIGACHES,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.SUMMONERS_PIGACHES_P2,
+            itemId = invaderXim.item.SUMMONERS_PIGACHES_P2,
         },
     },
 
@@ -14281,16 +14281,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.SUMMONERS_PIGACHES_P1,
+            itemId = invaderXim.item.SUMMONERS_PIGACHES_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.SUMMONERS_PIGACHES_P2,
+            itemId = invaderXim.item.SUMMONERS_PIGACHES_P2,
         },
     },
 
@@ -14299,16 +14299,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MIRAGE_KEFFIYEH,
+            itemId = invaderXim.item.MIRAGE_KEFFIYEH,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.MIRAGE_KEFFIYEH_P2,
+            itemId = invaderXim.item.MIRAGE_KEFFIYEH_P2,
         },
     },
 
@@ -14317,16 +14317,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MIRAGE_KEFFIYEH_P1,
+            itemId = invaderXim.item.MIRAGE_KEFFIYEH_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.MIRAGE_KEFFIYEH_P2,
+            itemId = invaderXim.item.MIRAGE_KEFFIYEH_P2,
         },
     },
 
@@ -14335,16 +14335,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MIRAGE_JUBBAH,
+            itemId = invaderXim.item.MIRAGE_JUBBAH,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.MIRAGE_JUBBAH_P2,
+            itemId = invaderXim.item.MIRAGE_JUBBAH_P2,
         },
     },
 
@@ -14353,16 +14353,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MIRAGE_JUBBAH_P1,
+            itemId = invaderXim.item.MIRAGE_JUBBAH_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.MIRAGE_JUBBAH_P2,
+            itemId = invaderXim.item.MIRAGE_JUBBAH_P2,
         },
     },
 
@@ -14371,16 +14371,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MIRAGE_BAZUBANDS,
+            itemId = invaderXim.item.MIRAGE_BAZUBANDS,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.MIRAGE_BAZUBANDS_P2,
+            itemId = invaderXim.item.MIRAGE_BAZUBANDS_P2,
         },
     },
 
@@ -14389,16 +14389,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MIRAGE_BAZUBANDS_P1,
+            itemId = invaderXim.item.MIRAGE_BAZUBANDS_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.MIRAGE_BAZUBANDS_P2,
+            itemId = invaderXim.item.MIRAGE_BAZUBANDS_P2,
         },
     },
 
@@ -14407,16 +14407,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MIRAGE_SHALWAR,
+            itemId = invaderXim.item.MIRAGE_SHALWAR,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.MIRAGE_SHALWAR_P2,
+            itemId = invaderXim.item.MIRAGE_SHALWAR_P2,
         },
     },
 
@@ -14425,16 +14425,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MIRAGE_SHALWAR_P1,
+            itemId = invaderXim.item.MIRAGE_SHALWAR_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.MIRAGE_SHALWAR_P2,
+            itemId = invaderXim.item.MIRAGE_SHALWAR_P2,
         },
     },
 
@@ -14443,16 +14443,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MIRAGE_CHARUQS,
+            itemId = invaderXim.item.MIRAGE_CHARUQS,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.MIRAGE_CHARUQS_P2,
+            itemId = invaderXim.item.MIRAGE_CHARUQS_P2,
         },
     },
 
@@ -14461,16 +14461,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.MIRAGE_CHARUQS_P1,
+            itemId = invaderXim.item.MIRAGE_CHARUQS_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.MIRAGE_CHARUQS_P2,
+            itemId = invaderXim.item.MIRAGE_CHARUQS_P2,
         },
     },
 
@@ -14479,16 +14479,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.COMMODORE_TRICORNE,
+            itemId = invaderXim.item.COMMODORE_TRICORNE,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.COMMODORES_TRICORNE_P2,
+            itemId = invaderXim.item.COMMODORES_TRICORNE_P2,
         },
     },
 
@@ -14497,16 +14497,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.COMMODORE_TRICORNE_P1,
+            itemId = invaderXim.item.COMMODORE_TRICORNE_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.COMMODORES_TRICORNE_P2,
+            itemId = invaderXim.item.COMMODORES_TRICORNE_P2,
         },
     },
 
@@ -14515,16 +14515,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.COMMODORE_FRAC,
+            itemId = invaderXim.item.COMMODORE_FRAC,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.COMMODORE_FRAC_P2,
+            itemId = invaderXim.item.COMMODORE_FRAC_P2,
         },
     },
 
@@ -14533,16 +14533,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.COMMODORE_FRAC_P1,
+            itemId = invaderXim.item.COMMODORE_FRAC_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.COMMODORE_FRAC_P2,
+            itemId = invaderXim.item.COMMODORE_FRAC_P2,
         },
     },
 
@@ -14551,16 +14551,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.COMMODORE_GANTS,
+            itemId = invaderXim.item.COMMODORE_GANTS,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.COMMODORE_GANTS_P2,
+            itemId = invaderXim.item.COMMODORE_GANTS_P2,
         },
     },
 
@@ -14569,16 +14569,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.COMMODORE_GANTS_P1,
+            itemId = invaderXim.item.COMMODORE_GANTS_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.COMMODORE_GANTS_P2,
+            itemId = invaderXim.item.COMMODORE_GANTS_P2,
         },
     },
 
@@ -14587,16 +14587,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.COMMODORE_TREWS,
+            itemId = invaderXim.item.COMMODORE_TREWS,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.COMMODORE_TREWS_P2,
+            itemId = invaderXim.item.COMMODORE_TREWS_P2,
         },
     },
 
@@ -14605,16 +14605,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.COMMODORE_TREWS_P1,
+            itemId = invaderXim.item.COMMODORE_TREWS_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.COMMODORE_TREWS_P2,
+            itemId = invaderXim.item.COMMODORE_TREWS_P2,
         },
     },
 
@@ -14623,16 +14623,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.COMMODORE_BOTTES,
+            itemId = invaderXim.item.COMMODORE_BOTTES,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.COMMODORE_BOTTES_P2,
+            itemId = invaderXim.item.COMMODORE_BOTTES_P2,
         },
     },
 
@@ -14641,16 +14641,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.COMMODORE_BOTTES_P1,
+            itemId = invaderXim.item.COMMODORE_BOTTES_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.COMMODORE_BOTTES_P2,
+            itemId = invaderXim.item.COMMODORE_BOTTES_P2,
         },
     },
 
@@ -14659,16 +14659,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.PANTIN_TAJ,
+            itemId = invaderXim.item.PANTIN_TAJ,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.PANTIN_TAJ_P2,
+            itemId = invaderXim.item.PANTIN_TAJ_P2,
         },
     },
 
@@ -14677,16 +14677,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.PANTIN_TAJ_P1,
+            itemId = invaderXim.item.PANTIN_TAJ_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.PANTIN_TAJ_P2,
+            itemId = invaderXim.item.PANTIN_TAJ_P2,
         },
     },
 
@@ -14695,16 +14695,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.PANTIN_TOBE,
+            itemId = invaderXim.item.PANTIN_TOBE,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.PANTIN_TOBE_P2,
+            itemId = invaderXim.item.PANTIN_TOBE_P2,
         },
     },
 
@@ -14713,16 +14713,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.PANTIN_TOBE_P1,
+            itemId = invaderXim.item.PANTIN_TOBE_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.PANTIN_TOBE_P2,
+            itemId = invaderXim.item.PANTIN_TOBE_P2,
         },
     },
 
@@ -14731,16 +14731,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.PANTIN_DASTANAS,
+            itemId = invaderXim.item.PANTIN_DASTANAS,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.PANTIN_DASTANAS_P2,
+            itemId = invaderXim.item.PANTIN_DASTANAS_P2,
         },
     },
 
@@ -14749,16 +14749,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.PANTIN_DASTANAS_P1,
+            itemId = invaderXim.item.PANTIN_DASTANAS_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.PANTIN_DASTANAS_P2,
+            itemId = invaderXim.item.PANTIN_DASTANAS_P2,
         },
     },
 
@@ -14767,16 +14767,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.PANTIN_CHURIDARS,
+            itemId = invaderXim.item.PANTIN_CHURIDARS,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.PANTIN_CHURIDARS_P2,
+            itemId = invaderXim.item.PANTIN_CHURIDARS_P2,
         },
     },
 
@@ -14785,16 +14785,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.PANTIN_CHURIDARS_P1,
+            itemId = invaderXim.item.PANTIN_CHURIDARS_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.PANTIN_CHURIDARS_P2,
+            itemId = invaderXim.item.PANTIN_CHURIDARS_P2,
         },
     },
 
@@ -14803,16 +14803,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.PANTIN_BABOUCHES,
+            itemId = invaderXim.item.PANTIN_BABOUCHES,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.PANTIN_BABOUCHES_P2,
+            itemId = invaderXim.item.PANTIN_BABOUCHES_P2,
         },
     },
 
@@ -14821,16 +14821,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.PANTIN_BABOUCHES_P1,
+            itemId = invaderXim.item.PANTIN_BABOUCHES_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.PANTIN_BABOUCHES_P2,
+            itemId = invaderXim.item.PANTIN_BABOUCHES_P2,
         },
     },
 
@@ -14839,16 +14839,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ETOILE_TIARA,
+            itemId = invaderXim.item.ETOILE_TIARA,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ETOILE_TIARA_P2,
+            itemId = invaderXim.item.ETOILE_TIARA_P2,
         },
     },
 
@@ -14857,16 +14857,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ETOILE_TIARA_P1,
+            itemId = invaderXim.item.ETOILE_TIARA_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ETOILE_TIARA_P2,
+            itemId = invaderXim.item.ETOILE_TIARA_P2,
         },
     },
 
@@ -14875,16 +14875,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ETOILE_CASAQUE,
+            itemId = invaderXim.item.ETOILE_CASAQUE,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ETOILE_CASAQUE_P2,
+            itemId = invaderXim.item.ETOILE_CASAQUE_P2,
         },
     },
 
@@ -14893,16 +14893,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ETOILE_CASAQUE_P1,
+            itemId = invaderXim.item.ETOILE_CASAQUE_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ETOILE_CASAQUE_P2,
+            itemId = invaderXim.item.ETOILE_CASAQUE_P2,
         },
     },
 
@@ -14911,16 +14911,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ETOILE_BANGLES,
+            itemId = invaderXim.item.ETOILE_BANGLES,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ETOILE_BANGLES_P2,
+            itemId = invaderXim.item.ETOILE_BANGLES_P2,
         },
     },
 
@@ -14929,16 +14929,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ETOILE_BANGLES_P1,
+            itemId = invaderXim.item.ETOILE_BANGLES_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ETOILE_BANGLES_P2,
+            itemId = invaderXim.item.ETOILE_BANGLES_P2,
         },
     },
 
@@ -14947,16 +14947,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ETOILE_TIGHTS,
+            itemId = invaderXim.item.ETOILE_TIGHTS,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ETOILE_TIGHTS_P2,
+            itemId = invaderXim.item.ETOILE_TIGHTS_P2,
         },
     },
 
@@ -14965,16 +14965,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ETOILE_TIGHTS_P1,
+            itemId = invaderXim.item.ETOILE_TIGHTS_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ETOILE_TIGHTS_P2,
+            itemId = invaderXim.item.ETOILE_TIGHTS_P2,
         },
     },
 
@@ -14983,16 +14983,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ETOILE_TOE_SHOES,
+            itemId = invaderXim.item.ETOILE_TOE_SHOES,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ETOILE_TOE_SHOES_P2,
+            itemId = invaderXim.item.ETOILE_TOE_SHOES_P2,
         },
     },
 
@@ -15001,16 +15001,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ETOILE_TOE_SHOES_P1,
+            itemId = invaderXim.item.ETOILE_TOE_SHOES_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ETOILE_TOE_SHOES_P2,
+            itemId = invaderXim.item.ETOILE_TOE_SHOES_P2,
         },
     },
 
@@ -15019,16 +15019,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ARGUTE_MORTARBOARD,
+            itemId = invaderXim.item.ARGUTE_MORTARBOARD,
         },
 
         textOffset  = 1302,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ARGUTE_MORTARBOARD_P2,
+            itemId = invaderXim.item.ARGUTE_MORTARBOARD_P2,
         },
     },
 
@@ -15037,16 +15037,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ARGUTE_MORTARBOARD_P1,
+            itemId = invaderXim.item.ARGUTE_MORTARBOARD_P1,
         },
 
         textOffset  = 1303,
-        tradeItem   = xi.item.FORGOTTEN_THOUGHT,
+        tradeItem   = invaderXim.item.FORGOTTEN_THOUGHT,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ARGUTE_MORTARBOARD_P2,
+            itemId = invaderXim.item.ARGUTE_MORTARBOARD_P2,
         },
     },
 
@@ -15055,16 +15055,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ARGUTE_GOWN,
+            itemId = invaderXim.item.ARGUTE_GOWN,
         },
 
         textOffset  = 1304,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ARGUTE_GOWN_P2,
+            itemId = invaderXim.item.ARGUTE_GOWN_P2,
         },
     },
 
@@ -15073,16 +15073,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ARGUTE_GOWN_P1,
+            itemId = invaderXim.item.ARGUTE_GOWN_P1,
         },
 
         textOffset  = 1305,
-        tradeItem   = xi.item.FORGOTTEN_HOPE,
+        tradeItem   = invaderXim.item.FORGOTTEN_HOPE,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ARGUTE_GOWN_P2,
+            itemId = invaderXim.item.ARGUTE_GOWN_P2,
         },
     },
 
@@ -15091,16 +15091,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ARGUTE_BRACERS,
+            itemId = invaderXim.item.ARGUTE_BRACERS,
         },
 
         textOffset  = 1306,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ARGUTE_BRACERS_P2,
+            itemId = invaderXim.item.ARGUTE_BRACERS_P2,
         },
     },
 
@@ -15109,16 +15109,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ARGUTE_BRACERS_P1,
+            itemId = invaderXim.item.ARGUTE_BRACERS_P1,
         },
 
         textOffset  = 1307,
-        tradeItem   = xi.item.FORGOTTEN_TOUCH,
+        tradeItem   = invaderXim.item.FORGOTTEN_TOUCH,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ARGUTE_BRACERS_P2,
+            itemId = invaderXim.item.ARGUTE_BRACERS_P2,
         },
     },
 
@@ -15127,16 +15127,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ARGUTE_PANTS,
+            itemId = invaderXim.item.ARGUTE_PANTS,
         },
 
         textOffset  = 1308,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ARGUTE_PANTS_P2,
+            itemId = invaderXim.item.ARGUTE_PANTS_P2,
         },
     },
 
@@ -15145,16 +15145,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ARGUTE_PANTS_P1,
+            itemId = invaderXim.item.ARGUTE_PANTS_P1,
         },
 
         textOffset  = 1309,
-        tradeItem   = xi.item.FORGOTTEN_JOURNEY,
+        tradeItem   = invaderXim.item.FORGOTTEN_JOURNEY,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ARGUTE_PANTS_P2,
+            itemId = invaderXim.item.ARGUTE_PANTS_P2,
         },
     },
 
@@ -15163,16 +15163,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ARGUTE_LOAFERS,
+            itemId = invaderXim.item.ARGUTE_LOAFERS,
         },
 
         textOffset  = 1310,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 50,
 
         rewardItem =
         {
-            itemId = xi.item.ARGUTE_LOAFERS_P2,
+            itemId = invaderXim.item.ARGUTE_LOAFERS_P2,
         },
     },
 
@@ -15181,16 +15181,16 @@ xi.magian.trials =
         previousTrial = 0,
         requiredItem  =
         {
-            itemId = xi.item.ARGUTE_LOAFERS_P1,
+            itemId = invaderXim.item.ARGUTE_LOAFERS_P1,
         },
 
         textOffset  = 1311,
-        tradeItem   = xi.item.FORGOTTEN_STEP,
+        tradeItem   = invaderXim.item.FORGOTTEN_STEP,
         numRequired = 30,
 
         rewardItem =
         {
-            itemId = xi.item.ARGUTE_LOAFERS_P2,
+            itemId = invaderXim.item.ARGUTE_LOAFERS_P2,
         },
     },
 
@@ -15199,17 +15199,17 @@ xi.magian.trials =
         previousTrial = 4665,
         requiredItem  =
         {
-            itemId = xi.item.MELEE_CROWN_P2,
+            itemId = invaderXim.item.MELEE_CROWN_P2,
         },
 
         textOffset  = 1325,
         gainExp     = true,
-        zoneId      = set{ xi.zone.DYNAMIS_XARCABARD, xi.zone.DYNAMIS_TAVNAZIA },
+        zoneId      = set{ invaderXim.zone.DYNAMIS_XARCABARD, invaderXim.zone.DYNAMIS_TAVNAZIA },
         numRequired = 20000,
 
         rewardItem =
         {
-            itemId = xi.item.MELEE_CROWN_P2,
+            itemId = invaderXim.item.MELEE_CROWN_P2,
             itemAugments =
             {
                 [1] = { 1334, 0 }, -- Enhances 'Penance' Effect
@@ -15222,16 +15222,16 @@ xi.magian.trials =
         previousTrial = 4453,
         requiredItem  =
         {
-            itemId = xi.item.AEGIS_99,
+            itemId = invaderXim.item.AEGIS_99,
         },
 
         textOffset  = 1258,
-        tradeItem   = xi.item.VIAL_OF_UMBRAL_MARROW,
+        tradeItem   = invaderXim.item.VIAL_OF_UMBRAL_MARROW,
         numRequired = 250,
 
         rewardItem =
         {
-            itemId = xi.item.AEGIS_99_II,
+            itemId = invaderXim.item.AEGIS_99_II,
         },
     },
 }

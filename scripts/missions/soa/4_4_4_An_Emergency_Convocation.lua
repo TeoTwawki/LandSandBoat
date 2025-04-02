@@ -7,11 +7,11 @@
 -- Ploh Trishbahk : !pos 100.580 -40.150 -63.830 257
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.AN_EMERGENCY_CONVOCATION)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.AN_EMERGENCY_CONVOCATION)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.BALAMOR_THE_DEATHBORNE_XOL },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.BALAMOR_THE_DEATHBORNE_XOL },
 }
 
 mission.sections =
@@ -21,12 +21,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(40, 256, 0, 5, 975, 3551, 1487, 975, 4),
         },
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Ploh_Trishbahk'] =
             {
@@ -62,17 +62,17 @@ mission.sections =
             {
                 [1535] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 1)
-                    player:setPos(91.751, -40, -63.998, 127, xi.zone.EASTERN_ADOULIN)
+                    player:setPos(91.751, -40, -63.998, 127, invaderXim.zone.EASTERN_ADOULIN)
                 end,
 
                 [1551] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 2)
-                    player:setPos(91.751, -40, -63.998, 127, xi.zone.EASTERN_ADOULIN)
+                    player:setPos(91.751, -40, -63.998, 127, invaderXim.zone.EASTERN_ADOULIN)
                 end,
 
                 [1552] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        xi.mission.setVar(player, xi.mission.log_id.SOA, xi.mission.id.soa.BALAMOR_THE_DEATHBORNE_XOL, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.mission.setVar(player, invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.BALAMOR_THE_DEATHBORNE_XOL, 'Timer', VanadielUniqueDay() + 1)
                     end
                 end,
             },

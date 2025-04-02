@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.SUBLIMATION_COMPLETE
+-- invaderXim.effect.SUBLIMATION_COMPLETE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

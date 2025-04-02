@@ -5,11 +5,11 @@
 -- !addmission 13 54
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.DESERT_WINDS)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.DESERT_WINDS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.EVER_FORWARD },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.EVER_FORWARD },
 }
 
 mission.sections =
@@ -25,7 +25,7 @@ mission.sections =
         -- in order to ensure that this case is covered.  Event 164 was observed in caps,
         -- but no longer appears capable of displaying the palace-related cutscenes.
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             onZoneIn = function(player, prevZone)
                 return { 165, 0 }
@@ -34,10 +34,10 @@ mission.sections =
             onEventUpdate =
             {
                 [165] = function(player, csid, option, npc)
-                    local toauProgress = player:getCurrentMission(xi.mission.log_id.TOAU) >= xi.mission.id.toau.ROYAL_PUPPETEER and 1 or 0
-                    local copProgress = player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.THE_WARRIORS_PATH) and 1 or 0
+                    local toauProgress = player:getCurrentMission(invaderXim.mission.log_id.TOAU) >= invaderXim.mission.id.toau.ROYAL_PUPPETEER and 1 or 0
+                    local copProgress = player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_WARRIORS_PATH) and 1 or 0
 
-                    if player:hasCompletedMission(xi.mission.log_id.TOAU, xi.mission.id.toau.PASSING_GLORY) then
+                    if player:hasCompletedMission(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.PASSING_GLORY) then
                         toauProgress = toauProgress + 1
                     end
 

@@ -12,7 +12,7 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local dmg = target:getHP() * 0.95
-    target:takeDamage(dmg, mob, xi.attackType.PHYSICAL, xi.damageType.SLASHING)
+    target:takeDamage(dmg, mob, invaderXim.attackType.PHYSICAL, invaderXim.damageType.SLASHING)
     mob:resetEnmity(target)
     return dmg
 end

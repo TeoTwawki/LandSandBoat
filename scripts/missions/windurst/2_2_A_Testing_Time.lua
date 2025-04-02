@@ -12,7 +12,7 @@
 -- Moreno-Toeno - !pos 169 -1.25 159 238
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.A_TESTING_TIME)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.A_TESTING_TIME)
 
 mission.reward =
 {
@@ -100,13 +100,13 @@ local failMission = function(player, csid, option, npc)
     mission:setVar(player, 'StartHour', 0)
     mission:setVar(player, 'StartTime', 0)
     mission:setVar(player, 'KillCount', 0)
-    player:delKeyItem(xi.ki.CREATURE_COUNTER_MAGIC_DOLL)
+    player:delKeyItem(invaderXim.ki.CREATURE_COUNTER_MAGIC_DOLL)
     player:delMission(mission.areaId, mission.missionId)
 end
 
 local clearMission = function(player, csid, option, npc)
     if mission:complete(player) then
-        player:delKeyItem(xi.ki.CREATURE_COUNTER_MAGIC_DOLL)
+        player:delKeyItem(invaderXim.ki.CREATURE_COUNTER_MAGIC_DOLL)
     end
 end
 
@@ -118,12 +118,12 @@ mission.sections =
     -- Choosing to keep the existing flow we had already.
     {
         check = function(player, currentMission)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId and
                 not player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onEventFinish =
             {
@@ -131,7 +131,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onEventFinish =
             {
@@ -139,7 +139,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onEventFinish =
             {
@@ -147,7 +147,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onEventFinish =
             {
@@ -162,7 +162,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Janshura-Rashura'] = mission:event(133),
             ['Nine_of_Clubs']    = mission:event(134),
@@ -170,7 +170,7 @@ mission.sections =
             ['Ten_of_Clubs']     = mission:event(135),
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Chawo_Shipeynyo'] = mission:event(130),
             ['Keo-Koruo']       = mission:event(128),
@@ -178,7 +178,7 @@ mission.sections =
             ['Zokima-Rokima']   = mission:event(127),
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Akkeke']          = mission:event(190),
             ['Chomoro-Kyotoro'] = mission:event(195),
@@ -198,7 +198,7 @@ mission.sections =
             ['Ten_of_Hearts']   = mission:event(180),
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Miiri-Wohri'] = mission:event(474),
             ['Rakoh_Buuma'] = mission:event(473),
@@ -213,7 +213,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 1
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Moreno-Toeno'] =
             {
@@ -233,7 +233,7 @@ mission.sections =
                 [182] = function(player, csid, option, npc)
                     if option == 2 then
                         player:setMissionStatus(mission.areaId, 2)
-                        npcUtil.giveKeyItem(player, xi.ki.CREATURE_COUNTER_MAGIC_DOLL)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.CREATURE_COUNTER_MAGIC_DOLL)
                         mission:setVar(player, 'StartDay', VanadielDayOfTheYear())
                         mission:setVar(player, 'StartHour', VanadielHour())
                         mission:setVar(player, 'StartTime', os.time())
@@ -243,7 +243,7 @@ mission.sections =
                 [687] = function(player, csid, option, npc)
                     if option == 2 then
                         player:setMissionStatus(mission.areaId, 2)
-                        npcUtil.giveKeyItem(player, xi.ki.CREATURE_COUNTER_MAGIC_DOLL)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.CREATURE_COUNTER_MAGIC_DOLL)
                         mission:setVar(player, 'StartDay', VanadielDayOfTheYear())
                         mission:setVar(player, 'StartHour', VanadielHour())
                         mission:setVar(player, 'StartTime', os.time())
@@ -260,7 +260,7 @@ mission.sections =
             not player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.TAHRONGI_CANYON] =
+        [invaderXim.zone.TAHRONGI_CANYON] =
         {
             ['Air_Elemental']         = { onMobDeath = killCounter, },
             ['Akbaba']                = { onMobDeath = killCounter, },
@@ -302,7 +302,7 @@ mission.sections =
             player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.BUBURIMU_PENINSULA] =
+        [invaderXim.zone.BUBURIMU_PENINSULA] =
         {
             ['Air_Elemental']         = { onMobDeath = killCounter, },
             ['Backoo']                = { onMobDeath = killCounter, },
@@ -337,7 +337,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 2
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Moreno-Toeno'] =
             {

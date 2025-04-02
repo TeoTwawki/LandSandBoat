@@ -2,19 +2,19 @@
 -- The Rites of Life
 -- Promathia 1-1
 -----------------------------------
--- NOTE: xi.mission.id.cop.THE_RITES_OF_LIFE is set when zoning into Lower Delkfutt's Tower from Qufim
+-- NOTE: invaderXim.mission.id.cop.THE_RITES_OF_LIFE is set when zoning into Lower Delkfutt's Tower from Qufim
 --       ENABLE_COP must be set to 1 in settings/main.lua
 -- 1. Enter Lower Delkfutt: !pos -286 -20 320 126
 -- 2. Enter Upper Jeuno:    !pos 2.2 -3.2 58.4 245
 -- 3. Talk to Monberaux:    !pos -43 0 -1 244
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.THE_RITES_OF_LIFE)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_RITES_OF_LIFE)
 
 mission.reward =
 {
-    keyItem     = xi.ki.MYSTERIOUS_AMULET,
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.BELOW_THE_ARKS },
+    keyItem     = invaderXim.ki.MYSTERIOUS_AMULET,
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.BELOW_THE_ARKS },
 }
 
 mission.sections =
@@ -22,13 +22,13 @@ mission.sections =
     -- 1. To start this mission, enter Lower Delkfutt's Tower for a cutscene after installing the Chains of Promathia expansion pack.
     {
         check = function(player, currentMission, missionStatus, vars)
-            return xi.settings.main.ENABLE_COP == 1 and currentMission < xi.mission.id.cop.THE_RITES_OF_LIFE
+            return invaderXim.settings.main.ENABLE_COP == 1 and currentMission < invaderXim.mission.id.cop.THE_RITES_OF_LIFE
         end,
 
-        [xi.zone.LOWER_DELKFUTTS_TOWER] =
+        [invaderXim.zone.LOWER_DELKFUTTS_TOWER] =
         {
             onZoneIn = function(player, prevZone)
-                if prevZone == xi.zone.QUFIM_ISLAND then
+                if prevZone == invaderXim.zone.QUFIM_ISLAND then
                     return 22
                 end
             end,
@@ -69,7 +69,7 @@ mission.sections =
             return currentMission == mission.missionId and vars.Status == 1
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             onZoneIn = function(player, prevZone)
                 return 2
@@ -90,7 +90,7 @@ mission.sections =
             return currentMission == mission.missionId and vars.Status == 2
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Monberaux'] = mission:progressEvent(10),
 
@@ -118,14 +118,14 @@ mission.sections =
                 vars.Status > 0
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Auchefort'] = mission:event(8):replaceDefault(),
             ['Baran']     = mission:event(17):replaceDefault(),
             ['Colti']     = mission:event(21):replaceDefault(),
         },
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Rosaline'] = mission:event(97):replaceDefault(),
         },

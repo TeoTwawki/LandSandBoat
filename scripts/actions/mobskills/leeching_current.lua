@@ -18,9 +18,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     end
 
     local damage = base / skill:getTotalTargets()
-    damage = xi.mobskills.mobFinalAdjustments(damage, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.WATER, xi.mobskills.shadowBehavior.WIPE_SHADOWS)
-    target:takeDamage(damage, mob, xi.attackType.PHYSICAL, xi.damageType.WATER)
-    skill:setMsg(xi.mobskills.mobPhysicalDrainMove(mob, target, skill, xi.mobskills.drainType.HP, damage))
+    damage = invaderXim.mobskills.mobFinalAdjustments(damage, mob, skill, target, invaderXim.attackType.PHYSICAL, invaderXim.damageType.WATER, invaderXim.mobskills.shadowBehavior.WIPE_SHADOWS)
+    target:takeDamage(damage, mob, invaderXim.attackType.PHYSICAL, invaderXim.damageType.WATER)
+    skill:setMsg(invaderXim.mobskills.mobPhysicalDrainMove(mob, target, skill, invaderXim.mobskills.drainType.HP, damage))
 
     return damage
 end

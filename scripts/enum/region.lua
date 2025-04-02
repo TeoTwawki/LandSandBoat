@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.region
-xi.region =
+---@enum invaderXim.region
+invaderXim.region =
 {
     RONFAURE         = 0,
     ZULKHEIM         = 1,

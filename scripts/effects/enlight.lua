@@ -1,26 +1,26 @@
 -----------------------------------
--- xi.effect.ENLIGHT
+-- invaderXim.effect.ENLIGHT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    local jpValue = target:getJobPointLevel(xi.jp.ENLIGHT_EFFECT)
+    local jpValue = target:getJobPointLevel(invaderXim.jp.ENLIGHT_EFFECT)
 
-    target:addMod(xi.mod.ENSPELL, xi.element.LIGHT)
-    target:addMod(xi.mod.ENSPELL_DMG, effect:getPower() + jpValue)
-    target:addMod(xi.mod.ACC, jpValue)
+    target:addMod(invaderXim.mod.ENSPELL, invaderXim.element.LIGHT)
+    target:addMod(invaderXim.mod.ENSPELL_DMG, effect:getPower() + jpValue)
+    target:addMod(invaderXim.mod.ACC, jpValue)
 end
 
 effectObject.onEffectTick = function(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    local jpValue = target:getJobPointLevel(xi.jp.ENLIGHT_EFFECT)
+    local jpValue = target:getJobPointLevel(invaderXim.jp.ENLIGHT_EFFECT)
 
-    target:setMod(xi.mod.ENSPELL_DMG, 0)
-    target:setMod(xi.mod.ENSPELL, 0)
-    target:delMod(xi.mod.ACC, jpValue)
+    target:setMod(invaderXim.mod.ENSPELL_DMG, 0)
+    target:setMod(invaderXim.mod.ENSPELL, 0)
+    target:delMod(invaderXim.mod.ACC, jpValue)
 end
 
 return effectObject

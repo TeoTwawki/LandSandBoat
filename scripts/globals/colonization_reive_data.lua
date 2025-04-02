@@ -2,27 +2,27 @@
 -- Colonization Reive Data
 -----------------------------------
 xi = xi or {}
-xi.reives = xi.reives or {}
+invaderXim.reives = invaderXim.reives or {}
 
-local ceizakBattlegroundsID = zones[xi.zone.CEIZAK_BATTLEGROUNDS]
-local cirdasCavernsID       = zones[xi.zone.CIRDAS_CAVERNS]
-local dhoGatesID            = zones[xi.zone.DHO_GATES]
-local foretDeHennetielID    = zones[xi.zone.FORET_DE_HENNETIEL]
-local kamihrDriftsID        = zones[xi.zone.KAMIHR_DRIFTS]
-local marjamiRavineID       = zones[xi.zone.MARJAMI_RAVINE]
-local mohGatesID            = zones[xi.zone.MOH_GATES]
-local morimarBasaltFieldsID = zones[xi.zone.MORIMAR_BASALT_FIELDS]
-local outerRakaznarID       = zones[xi.zone.OUTER_RAKAZNAR]
-local rakaznarInnerCourtID  = zones[xi.zone.RAKAZNAR_INNER_COURT]
-local sihGatesID            = zones[xi.zone.SIH_GATES]
-local wohGatesID            = zones[xi.zone.WOH_GATES]
-local yahseHuntingGroundsID = zones[xi.zone.YAHSE_HUNTING_GROUNDS]
-local yorciaWealdID         = zones[xi.zone.YORCIA_WEALD]
+local ceizakBattlegroundsID = zones[invaderXim.zone.CEIZAK_BATTLEGROUNDS]
+local cirdasCavernsID       = zones[invaderXim.zone.CIRDAS_CAVERNS]
+local dhoGatesID            = zones[invaderXim.zone.DHO_GATES]
+local foretDeHennetielID    = zones[invaderXim.zone.FORET_DE_HENNETIEL]
+local kamihrDriftsID        = zones[invaderXim.zone.KAMIHR_DRIFTS]
+local marjamiRavineID       = zones[invaderXim.zone.MARJAMI_RAVINE]
+local mohGatesID            = zones[invaderXim.zone.MOH_GATES]
+local morimarBasaltFieldsID = zones[invaderXim.zone.MORIMAR_BASALT_FIELDS]
+local outerRakaznarID       = zones[invaderXim.zone.OUTER_RAKAZNAR]
+local rakaznarInnerCourtID  = zones[invaderXim.zone.RAKAZNAR_INNER_COURT]
+local sihGatesID            = zones[invaderXim.zone.SIH_GATES]
+local wohGatesID            = zones[invaderXim.zone.WOH_GATES]
+local yahseHuntingGroundsID = zones[invaderXim.zone.YAHSE_HUNTING_GROUNDS]
+local yorciaWealdID         = zones[invaderXim.zone.YORCIA_WEALD]
 
 --Zone Data
-xi.reives.zoneData =
+invaderXim.reives.zoneData =
 {
-    [xi.zone.CEIZAK_BATTLEGROUNDS] =
+    [invaderXim.zone.CEIZAK_BATTLEGROUNDS] =
     {
         reiveObjRespawnTime = 3600, -- 60 minutes
         reiveMobRespawnTime = 300,  -- 5 minutes
@@ -128,7 +128,7 @@ xi.reives.zoneData =
         },
     },
 
-    [xi.zone.CIRDAS_CAVERNS] =
+    [invaderXim.zone.CIRDAS_CAVERNS] =
     {
         reiveObjRespawnTime = 3600, -- 60 minutes
         reiveMobRespawnTime = 300,  -- 5 minutes
@@ -269,7 +269,7 @@ xi.reives.zoneData =
         },
     },
 
-    [xi.zone.DHO_GATES] =
+    [invaderXim.zone.DHO_GATES] =
     {
         reiveObjRespawnTime = 3600, -- 60 minutes
         reiveMobRespawnTime = 300,  -- 5 minutes
@@ -321,7 +321,7 @@ xi.reives.zoneData =
         },
     },
 
-    [xi.zone.FORET_DE_HENNETIEL] =
+    [invaderXim.zone.FORET_DE_HENNETIEL] =
     {
         reiveObjRespawnTime = 3600, -- 60 minutes
         reiveMobRespawnTime = 300,  -- 5 minutes
@@ -528,7 +528,7 @@ xi.reives.zoneData =
         },
     },
 
-    [xi.zone.KAMIHR_DRIFTS] =
+    [invaderXim.zone.KAMIHR_DRIFTS] =
     {
         reiveObjRespawnTime = 3600, -- 60 minutes
         reiveMobRespawnTime = 300,  -- 5 minutes
@@ -620,7 +620,7 @@ xi.reives.zoneData =
         },
     },
 
-    [xi.zone.MARJAMI_RAVINE] =
+    [invaderXim.zone.MARJAMI_RAVINE] =
     {
         reiveObjRespawnTime = 3600, -- 60 minutes
         reiveMobRespawnTime = 300,  -- 5 minutes
@@ -776,7 +776,7 @@ xi.reives.zoneData =
         },
     },
 
-    [xi.zone.MOH_GATES] =
+    [invaderXim.zone.MOH_GATES] =
     {
         reiveObjRespawnTime = 3600, -- 60 minutes
         reiveMobRespawnTime = 300,  -- 5 minutes
@@ -834,7 +834,7 @@ xi.reives.zoneData =
         },
     },
 
-    [xi.zone.MORIMAR_BASALT_FIELDS] =
+    [invaderXim.zone.MORIMAR_BASALT_FIELDS] =
     {
         reiveObjRespawnTime = 3600, -- 60 minutes
         reiveMobRespawnTime = 300,  -- 5 minutes
@@ -1018,7 +1018,7 @@ xi.reives.zoneData =
         },
     },
 
-    [xi.zone.OUTER_RAKAZNAR] =
+    [invaderXim.zone.OUTER_RAKAZNAR] =
     {
         reiveObjRespawnTime = 900, -- 15 minutes
         reiveMobRespawnTime = 60,  -- 1 minute
@@ -1115,7 +1115,7 @@ xi.reives.zoneData =
         },
     },
 
-    [xi.zone.RAKAZNAR_INNER_COURT] =
+    [invaderXim.zone.RAKAZNAR_INNER_COURT] =
     {
         reiveObjRespawnTime = 900, -- 15 minutes
         reiveMobRespawnTime = 60,  -- 1 minute
@@ -1211,7 +1211,7 @@ xi.reives.zoneData =
         },
     },
 
-    [xi.zone.SIH_GATES] =
+    [invaderXim.zone.SIH_GATES] =
     {
         reiveObjRespawnTime = 3600, -- 60 minutes
         reiveMobRespawnTime = 300,  -- 5 minutes
@@ -1270,7 +1270,7 @@ xi.reives.zoneData =
         },
     },
 
-    [xi.zone.WOH_GATES] =
+    [invaderXim.zone.WOH_GATES] =
     {
         reiveObjRespawnTime = 3600, -- 60 minutes
         reiveMobRespawnTime = 300,  -- 5 minutes
@@ -1323,7 +1323,7 @@ xi.reives.zoneData =
         },
     },
 
-    [xi.zone.YAHSE_HUNTING_GROUNDS] =
+    [invaderXim.zone.YAHSE_HUNTING_GROUNDS] =
     {
         reiveObjRespawnTime = 3600, -- 60 minutes
         reiveMobRespawnTime = 300,  -- 5 minutes
@@ -1452,7 +1452,7 @@ xi.reives.zoneData =
         },
     },
 
-    [xi.zone.YORCIA_WEALD] =
+    [invaderXim.zone.YORCIA_WEALD] =
     {
         reiveObjRespawnTime = 3600, -- 60 minutes
         reiveMobRespawnTime = 300,  -- 5 minutes

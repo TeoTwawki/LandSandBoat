@@ -3,7 +3,7 @@
 -- Zalsuhm
 -- !pos -33 6 -117
 -----------------------------------
-local ID = zones[xi.zone.LOWER_JEUNO]
+local ID = zones[invaderXim.zone.LOWER_JEUNO]
 -----------------------------------
 
 quest = quest or {}
@@ -12,14 +12,14 @@ quest.unlockingMyth = quest.unlockingMyth or {}
 -- There are several "Unlocking a Myth" quests. 1 per job, except GEO and RUN.
 -- Possible TODO: This was not made with GEO and RUN in mind. Clamp may be needed.
 function quest.unlockingMyth.getQuestId(mainJobId)
-    return (xi.quest.id.jeuno.UNLOCKING_A_MYTH_WARRIOR - 1 + mainJobId)
+    return (invaderXim.quest.id.jeuno.UNLOCKING_A_MYTH_WARRIOR - 1 + mainJobId)
 end
 
 function quest.unlockingMyth.onTrade(player, npc, trade)
-    for jobID, wepId in pairs(xi.nyzul.baseWeapons) do
+    for jobID, wepId in pairs(invaderXim.nyzul.baseWeapons) do
         if npcUtil.tradeHasExactly(trade, wepId) then
-            local unlockingAMyth = player:getQuestStatus(xi.questLog.JEUNO, quest.unlockingMyth.getQuestId(jobID))
-            if unlockingAMyth == xi.questStatus.QUEST_ACCEPTED then
+            local unlockingAMyth = player:getQuestStatus(invaderXim.questLog.JEUNO, quest.unlockingMyth.getQuestId(jobID))
+            if unlockingAMyth == invaderXim.questStatus.QUEST_ACCEPTED then
                 local wsPoints = trade:getItem(0):getWeaponskillPoints()
 
                 -- player:printToPlayer(string.format('points Accumulated: %s', wsPoints))
@@ -42,11 +42,11 @@ end
 
 function quest.unlockingMyth.onTrigger(player, npc)
     local mainJobId = player:getMainJob()
-    local unlockingAMyth = player:getQuestStatus(xi.questLog.JEUNO, quest.unlockingMyth.getQuestId(mainJobId))
-    local nyzulWeaponMain = xi.nyzul.isBaseWeapon(player:getEquipID(xi.slot.MAIN))
-    local nyzulWeaponRanged = xi.nyzul.isBaseWeapon(player:getEquipID(xi.slot.RANGED))
+    local unlockingAMyth = player:getQuestStatus(invaderXim.questLog.JEUNO, quest.unlockingMyth.getQuestId(mainJobId))
+    local nyzulWeaponMain = invaderXim.nyzul.isBaseWeapon(player:getEquipID(invaderXim.slot.MAIN))
+    local nyzulWeaponRanged = invaderXim.nyzul.isBaseWeapon(player:getEquipID(invaderXim.slot.RANGED))
 
-    if unlockingAMyth == xi.questStatus.QUEST_AVAILABLE then
+    if unlockingAMyth == invaderXim.questStatus.QUEST_AVAILABLE then
         if player:needToZone() and player:getVar('Quest[3][102]Prog') > 0 then
             player:startEvent(10090)
         else
@@ -60,7 +60,7 @@ function quest.unlockingMyth.onTrigger(player, npc)
                 player:startEvent(10085)
             end
         end
-    elseif unlockingAMyth == xi.questStatus.QUEST_ACCEPTED then
+    elseif unlockingAMyth == invaderXim.questStatus.QUEST_ACCEPTED then
         player:startEvent(10087)
     else
         player:startEvent(10089)
@@ -73,36 +73,36 @@ function quest.unlockingMyth.onEventFinish(player, csid, option, npc)
         if option == 53 then
             player:setVar('Quest[3][102]Prog', 1)
             player:needToZone(true)
-        elseif option <= xi.job.SCH then
-            player:addQuest(xi.questLog.JEUNO, questId)
+        elseif option <= invaderXim.job.SCH then
+            player:addQuest(invaderXim.questLog.JEUNO, questId)
         end
-    elseif csid == 10088 and option <= xi.job.SCH then
+    elseif csid == 10088 and option <= invaderXim.job.SCH then
         local jobs =
         {
-            [xi.job.WAR] = xi.wsUnlock.KINGS_JUSTICE,
-            [xi.job.MNK] = xi.wsUnlock.ASCETICS_FURY,
-            [xi.job.WHM] = xi.wsUnlock.MYSTIC_BOON,
-            [xi.job.BLM] = xi.wsUnlock.VIDOHUNIR,
-            [xi.job.RDM] = xi.wsUnlock.DEATH_BLOSSOM,
-            [xi.job.THF] = xi.wsUnlock.MANDALIC_STAB,
-            [xi.job.PLD] = xi.wsUnlock.ATONEMENT,
-            [xi.job.DRK] = xi.wsUnlock.INSURGENCY,
-            [xi.job.BST] = xi.wsUnlock.PRIMAL_REND,
-            [xi.job.BRD] = xi.wsUnlock.MORDANT_RIME,
-            [xi.job.RNG] = xi.wsUnlock.TRUEFLIGHT,
-            [xi.job.SAM] = xi.wsUnlock.TACHI_RANA,
-            [xi.job.NIN] = xi.wsUnlock.BLADE_KAMU,
-            [xi.job.DRG] = xi.wsUnlock.DRAKESBANE,
-            [xi.job.SMN] = xi.wsUnlock.GARLAND_OF_BLISS,
-            [xi.job.BLU] = xi.wsUnlock.EXPIACION,
-            [xi.job.COR] = xi.wsUnlock.LEADEN_SALUTE,
-            [xi.job.PUP] = xi.wsUnlock.STRINGING_PUMMEL,
-            [xi.job.DNC] = xi.wsUnlock.PYRRHIC_KLEOS,
-            [xi.job.SCH] = xi.wsUnlock.OMNISCIENCE,
+            [invaderXim.job.WAR] = invaderXim.wsUnlock.KINGS_JUSTICE,
+            [invaderXim.job.MNK] = invaderXim.wsUnlock.ASCETICS_FURY,
+            [invaderXim.job.WHM] = invaderXim.wsUnlock.MYSTIC_BOON,
+            [invaderXim.job.BLM] = invaderXim.wsUnlock.VIDOHUNIR,
+            [invaderXim.job.RDM] = invaderXim.wsUnlock.DEATH_BLOSSOM,
+            [invaderXim.job.THF] = invaderXim.wsUnlock.MANDALIC_STAB,
+            [invaderXim.job.PLD] = invaderXim.wsUnlock.ATONEMENT,
+            [invaderXim.job.DRK] = invaderXim.wsUnlock.INSURGENCY,
+            [invaderXim.job.BST] = invaderXim.wsUnlock.PRIMAL_REND,
+            [invaderXim.job.BRD] = invaderXim.wsUnlock.MORDANT_RIME,
+            [invaderXim.job.RNG] = invaderXim.wsUnlock.TRUEFLIGHT,
+            [invaderXim.job.SAM] = invaderXim.wsUnlock.TACHI_RANA,
+            [invaderXim.job.NIN] = invaderXim.wsUnlock.BLADE_KAMU,
+            [invaderXim.job.DRG] = invaderXim.wsUnlock.DRAKESBANE,
+            [invaderXim.job.SMN] = invaderXim.wsUnlock.GARLAND_OF_BLISS,
+            [invaderXim.job.BLU] = invaderXim.wsUnlock.EXPIACION,
+            [invaderXim.job.COR] = invaderXim.wsUnlock.LEADEN_SALUTE,
+            [invaderXim.job.PUP] = invaderXim.wsUnlock.STRINGING_PUMMEL,
+            [invaderXim.job.DNC] = invaderXim.wsUnlock.PYRRHIC_KLEOS,
+            [invaderXim.job.SCH] = invaderXim.wsUnlock.OMNISCIENCE,
         }
         local skill = jobs[option]
 
-        player:completeQuest(xi.questLog.JEUNO, questId)
+        player:completeQuest(invaderXim.questLog.JEUNO, questId)
         player:messageSpecial(ID.text.MYTHIC_LEARNED, player:getMainJob())
         player:addLearnedWeaponskill(skill)
     end

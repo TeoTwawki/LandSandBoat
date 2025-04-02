@@ -1,7 +1,7 @@
 -----------------------------------
 -- Rapid Molt
 -- Family: Hpemde
--- Description: Erases all negative effects on the mob, and adds a Regen xi.effect.
+-- Description: Erases all negative effects on the mob, and adds a Regen invaderXim.effect.
 -- Can be dispelled: Yes (regen)
 -- Utsusemi/Blink absorb: N/A
 -- Range: Self
@@ -13,7 +13,7 @@ local mobskillObject = {}
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
     local dispel = target:eraseStatusEffect()
 
-    if dispel ~= xi.effect.NONE then
+    if dispel ~= invaderXim.effect.NONE then
         return 0
     end
 
@@ -23,9 +23,9 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     mob:eraseAllStatusEffect()
 
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.REGEN, 10, 3, 180))
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.REGEN, 10, 3, 180))
 
-    return xi.effect.REGEN
+    return invaderXim.effect.REGEN
 end
 
 return mobskillObject

@@ -3,7 +3,7 @@
 --  Mob: Phasma
 -- Note: PH for Ixtab
 -----------------------------------
-local ID = zones[xi.zone.UPPER_DELKFUTTS_TOWER]
+local ID = zones[invaderXim.zone.UPPER_DELKFUTTS_TOWER]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -23,7 +23,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, ixtabPHTable, 5, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, ixtabPHTable, 5, 3600) -- 1 hour
 end
 
 return entity

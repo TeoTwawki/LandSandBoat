@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.MANIFESTATION
+-- invaderXim.effect.MANIFESTATION
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

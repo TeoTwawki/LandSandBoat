@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.ARIA
+-- invaderXim.effect.ARIA
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

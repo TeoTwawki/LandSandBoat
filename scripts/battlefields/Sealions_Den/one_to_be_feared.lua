@@ -2,12 +2,12 @@
 -- Area: Sealion's Den
 -- Name: One to be Feared
 -----------------------------------
-local sealionsDenID = zones[xi.zone.SEALIONS_DEN]
+local sealionsDenID = zones[invaderXim.zone.SEALIONS_DEN]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId        = xi.zone.SEALIONS_DEN,
-    battlefieldId = xi.battlefield.id.ONE_TO_BE_FEARED,
+    zoneId        = invaderXim.zone.SEALIONS_DEN,
+    battlefieldId = invaderXim.battlefield.id.ONE_TO_BE_FEARED,
     canLoseExp    = false,
     isMission     = true,
     allowTrusts   = true,
@@ -17,13 +17,13 @@ local content = BattlefieldMission:new({
     index         = 0,
     entryNpc      = '_0w0',
     exitNpc       = 'Airship_Door',
-    missionArea   = xi.mission.log_id.COP,
-    mission       = xi.mission.id.cop.ONE_TO_BE_FEARED,
+    missionArea   = invaderXim.mission.log_id.COP,
+    mission       = invaderXim.mission.id.cop.ONE_TO_BE_FEARED,
     requiredVar   = 'Mission[6][638]Status',
     requiredValue = 3,
 
     grantXP = 1500,
-    title   = xi.title.ULTIMA_UNDERTAKER,
+    title   = invaderXim.title.ULTIMA_UNDERTAKER,
 })
 
 -- NOTE: Mob spawning for phase changes in this battlefield is triggered
@@ -71,7 +71,7 @@ function content:onEventFinishExit(player, csid, option, npc)
 
         if party ~= nil then
             for _, v in pairs(party) do
-                if v:hasStatusEffect(xi.effect.BATTLEFIELD) then
+                if v:hasStatusEffect(invaderXim.effect.BATTLEFIELD) then
                     v:startEvent(v:getLocalVar('[OTBF]battleCompleted'), option - 99)
                 end
             end
@@ -91,7 +91,7 @@ end
 content.sections =
 {
     {
-        [xi.zone.SEALIONS_DEN] =
+        [invaderXim.zone.SEALIONS_DEN] =
         {
             onEventUpdate =
             {
@@ -121,7 +121,7 @@ content.sections =
             onEventFinish =
             {
                 [10] = function(player, csid, option, npc)
-                    player:addTitle(xi.title.BRANDED_BY_LIGHTNING)
+                    player:addTitle(invaderXim.title.BRANDED_BY_LIGHTNING)
                     healCharacter(player)
                     returnToAirship(player)
 
@@ -129,7 +129,7 @@ content.sections =
                 end,
 
                 [11] = function(player, csid, option, npc)
-                    player:addTitle(xi.title.OMEGA_OSTRACIZER)
+                    player:addTitle(invaderXim.title.OMEGA_OSTRACIZER)
                     healCharacter(player)
                     returnToAirship(player)
 
@@ -207,7 +207,7 @@ content.groups =
 
         spawned  = false,
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

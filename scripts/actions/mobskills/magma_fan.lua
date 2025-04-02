@@ -12,10 +12,10 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     -- Breath damage is HP * 1/12
-    local dmgmod = xi.mobskills.mobBreathMove(mob, target, skill, 0.0833, 1, xi.element.FIRE, 600)
+    local dmgmod = invaderXim.mobskills.mobBreathMove(mob, target, skill, 0.0833, 1, invaderXim.element.FIRE, 600)
 
-    local dmg = xi.mobskills.mobFinalAdjustments(dmgmod, mob, skill, target, xi.attackType.BREATH, xi.damageType.FIRE, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
-    target:takeDamage(dmg, mob, xi.attackType.BREATH, xi.damageType.FIRE)
+    local dmg = invaderXim.mobskills.mobFinalAdjustments(dmgmod, mob, skill, target, invaderXim.attackType.BREATH, invaderXim.damageType.FIRE, invaderXim.mobskills.shadowBehavior.IGNORE_SHADOWS)
+    target:takeDamage(dmg, mob, invaderXim.attackType.BREATH, invaderXim.damageType.FIRE)
     return dmg
 end
 

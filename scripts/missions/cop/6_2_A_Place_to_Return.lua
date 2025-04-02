@@ -6,14 +6,14 @@
 -- Pherimociel      : !pos -31.627 1.002 67.956 243
 -- Dilapidated Gate : !pos 260 9 -435 25
 -----------------------------------
-local misareauxID = zones[xi.zone.MISAREAUX_COAST]
+local misareauxID = zones[invaderXim.zone.MISAREAUX_COAST]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.A_PLACE_TO_RETURN)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.A_PLACE_TO_RETURN)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.MORE_QUESTIONS_THAN_ANSWERS },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.MORE_QUESTIONS_THAN_ANSWERS },
 }
 
 mission.sections =
@@ -23,7 +23,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Pherimociel'] =
             {
@@ -67,7 +67,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.MISAREAUX_COAST] =
+        [invaderXim.zone.MISAREAUX_COAST] =
         {
             ['_0p0'] =
             {

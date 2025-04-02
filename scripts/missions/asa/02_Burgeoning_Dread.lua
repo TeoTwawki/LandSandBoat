@@ -5,11 +5,11 @@
 -- !addmission 11 1
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ASA, xi.mission.id.asa.BURGEONING_DREAD)
+local mission = Mission:new(invaderXim.mission.log_id.ASA, invaderXim.mission.id.asa.BURGEONING_DREAD)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ASA, xi.mission.id.asa.THAT_WHICH_CURDLES_BLOOD },
+    nextMission = { invaderXim.mission.log_id.ASA, invaderXim.mission.id.asa.THAT_WHICH_CURDLES_BLOOD },
 }
 
 mission.sections =
@@ -19,12 +19,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.EAST_SARUTABARUTA] =
+        [invaderXim.zone.EAST_SARUTABARUTA] =
         {
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.WINDURST_WOODS and
-                    not player:hasStatusEffect(xi.effect.MOUNTED)
+                    prevZone == invaderXim.zone.WINDURST_WOODS and
+                    not player:hasStatusEffect(invaderXim.effect.MOUNTED)
                 then
                     return mission:event(71)
                 end
@@ -35,7 +35,7 @@ mission.sections =
                 [71] = function(player, csid, option, npc)
                     local kit = 2779 + math.random(0, 3)
                     player:updateEvent(kit)
-                    xi.mission.setVar(player, xi.mission.log_id.ASA, xi.mission.id.asa.THAT_WHICH_CURDLES_BLOOD, 'Option', kit)
+                    invaderXim.mission.setVar(player, invaderXim.mission.log_id.ASA, invaderXim.mission.id.asa.THAT_WHICH_CURDLES_BLOOD, 'Option', kit)
                 end,
             },
 
@@ -47,12 +47,12 @@ mission.sections =
             },
         },
 
-        [xi.zone.WEST_SARUTABARUTA] =
+        [invaderXim.zone.WEST_SARUTABARUTA] =
         {
             onZoneIn = function(player, prevZone)
-                if prevZone == xi.zone.WINDURST_WATERS then
+                if prevZone == invaderXim.zone.WINDURST_WATERS then
                     return 62
-                elseif prevZone == xi.zone.PORT_WINDURST then
+                elseif prevZone == invaderXim.zone.PORT_WINDURST then
                     return 63
                 end
             end,
@@ -62,13 +62,13 @@ mission.sections =
                 [62] = function(player, csid, option, npc)
                     local kit = 2779 + math.random(0, 3)
                     player:updateEvent(kit)
-                    xi.mission.setVar(player, xi.mission.log_id.ASA, xi.mission.id.asa.THAT_WHICH_CURDLES_BLOOD, 'Option', kit)
+                    invaderXim.mission.setVar(player, invaderXim.mission.log_id.ASA, invaderXim.mission.id.asa.THAT_WHICH_CURDLES_BLOOD, 'Option', kit)
                 end,
 
                 [63] = function(player, csid, option, npc)
                     local kit = 2779 + math.random(0, 3)
                     player:updateEvent(kit)
-                    xi.mission.setVar(player, xi.mission.log_id.ASA, xi.mission.id.asa.THAT_WHICH_CURDLES_BLOOD, 'Option', kit)
+                    invaderXim.mission.setVar(player, invaderXim.mission.log_id.ASA, invaderXim.mission.id.asa.THAT_WHICH_CURDLES_BLOOD, 'Option', kit)
                 end,
             },
 

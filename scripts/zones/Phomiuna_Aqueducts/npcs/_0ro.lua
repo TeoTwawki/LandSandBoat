@@ -3,7 +3,7 @@
 --  NPC: Oil Lamp - Light (West)
 -- !pos -63 -26 73
 -----------------------------------
-local ID = zones[xi.zone.PHOMIUNA_AQUEDUCTS]
+local ID = zones[invaderXim.zone.PHOMIUNA_AQUEDUCTS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -17,8 +17,8 @@ entity.onTrigger = function(player, npc)
     local day = VanadielDayOfTheWeek()
 
     if
-        day == xi.day.LIGHTSDAY or
-        day == xi.day.DARKSDAY
+        day == invaderXim.day.LIGHTSDAY or
+        day == invaderXim.day.DARKSDAY
     then
         if GetNPCByID(doorOffset-1):getAnimation() == 8 then -- Is the Dark lamp open?
             GetNPCByID(doorOffset-3):openDoor(15) -- Open Door _0rk

@@ -5,7 +5,7 @@
 -- Joachim : !pos -52.844 0 -9.978 246
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.ABYSSEA, xi.quest.id.abyssea.SCARS_OF_ABYSSEA)
+local quest = Quest:new(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.SCARS_OF_ABYSSEA)
 
 quest.reward = {}
 
@@ -13,15 +13,15 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
                 (
-                    player:getQuestStatus(xi.questLog.ABYSSEA, xi.quest.id.abyssea.THE_BEAST_OF_BASTORE) > xi.questStatus.QUEST_AVAILABLE or
-                    player:getQuestStatus(xi.questLog.ABYSSEA, xi.quest.id.abyssea.A_DELECTABLE_DEMON) > xi.questStatus.QUEST_AVAILABLE or
-                    player:getQuestStatus(xi.questLog.ABYSSEA, xi.quest.id.abyssea.A_FLUTTERY_FIEND) > xi.questStatus.QUEST_AVAILABLE
+                    player:getQuestStatus(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.THE_BEAST_OF_BASTORE) > invaderXim.questStatus.QUEST_AVAILABLE or
+                    player:getQuestStatus(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.A_DELECTABLE_DEMON) > invaderXim.questStatus.QUEST_AVAILABLE or
+                    player:getQuestStatus(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.A_FLUTTERY_FIEND) > invaderXim.questStatus.QUEST_AVAILABLE
                 )
         end,
 
-        [xi.zone.PORT_JEUNO] =
+        [invaderXim.zone.PORT_JEUNO] =
         {
             ['Joachim'] =
             {
@@ -41,13 +41,13 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
-                player:hasCompletedQuest(xi.questLog.ABYSSEA, xi.quest.id.abyssea.THE_BEAST_OF_BASTORE) and
-                player:hasCompletedQuest(xi.questLog.ABYSSEA, xi.quest.id.abyssea.A_DELECTABLE_DEMON) and
-                player:hasCompletedQuest(xi.questLog.ABYSSEA, xi.quest.id.abyssea.A_FLUTTERY_FIEND)
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
+                player:hasCompletedQuest(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.THE_BEAST_OF_BASTORE) and
+                player:hasCompletedQuest(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.A_DELECTABLE_DEMON) and
+                player:hasCompletedQuest(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.A_FLUTTERY_FIEND)
         end,
 
-        [xi.zone.PORT_JEUNO] =
+        [invaderXim.zone.PORT_JEUNO] =
         {
             ['Joachim'] =
             {

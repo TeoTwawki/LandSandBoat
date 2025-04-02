@@ -1,5 +1,5 @@
 
-DROP TABLE IF EXISTS `char_unlocks`;
+DROP TABLE IF IXIMSTS `char_unlocks`;
 CREATE TABLE `char_unlocks` (
   `charid` int(10) unsigned NOT NULL,
   `outpost_sandy` int(10) unsigned NOT NULL DEFAULT 0,

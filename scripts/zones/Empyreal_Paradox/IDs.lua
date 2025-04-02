@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.EMPYREAL_PARADOX] =
+zones[invaderXim.zone.EMPYREAL_PARADOX] =
 {
     text =
     {
@@ -39,4 +39,4 @@ zones[xi.zone.EMPYREAL_PARADOX] =
     },
 }
 
-return zones[xi.zone.EMPYREAL_PARADOX]
+return zones[invaderXim.zone.EMPYREAL_PARADOX]

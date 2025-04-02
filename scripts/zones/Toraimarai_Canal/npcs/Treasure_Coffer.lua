@@ -8,11 +8,11 @@
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.treasure.onTrade(player, npc, trade, xi.treasure.type.COFFER)
+    invaderXim.treasure.onTrade(player, npc, trade, invaderXim.treasure.type.COFFER)
 end
 
 entity.onTrigger = function(player, npc)
-    xi.treasure.onTrigger(player, xi.treasure.type.COFFER)
+    invaderXim.treasure.onTrigger(player, invaderXim.treasure.type.COFFER)
 end
 
 return entity

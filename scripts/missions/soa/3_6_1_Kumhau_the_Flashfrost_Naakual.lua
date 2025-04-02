@@ -6,12 +6,12 @@
 -- Crawling Cave : !pos -349.302 40.339 -379.79 267
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.KUMHAU_THE_FLASHFROST_NAAKUAL)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.KUMHAU_THE_FLASHFROST_NAAKUAL)
 
 mission.reward =
 {
-    keyItem     = xi.ki.AUREATE_BALL_OF_FUR,
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.SOUL_SIPHON },
+    keyItem     = invaderXim.ki.AUREATE_BALL_OF_FUR,
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.SOUL_SIPHON },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] =
             {
@@ -42,7 +42,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.KAMIHR_DRIFTS] =
+        [invaderXim.zone.KAMIHR_DRIFTS] =
         {
             ['Crawling_Cave'] = mission:progressEvent(30),
 
@@ -56,7 +56,7 @@ mission.sections =
             {
                 [30] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 1)
-                    player:setPos(429.938, 0.412, 176.818, 128, xi.zone.CEIZAK_BATTLEGROUNDS)
+                    player:setPos(429.938, 0.412, 176.818, 128, invaderXim.zone.CEIZAK_BATTLEGROUNDS)
                 end,
 
                 [31] = function(player, csid, option, npc)
@@ -65,7 +65,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.CEIZAK_BATTLEGROUNDS] =
+        [invaderXim.zone.CEIZAK_BATTLEGROUNDS] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 1 then
@@ -87,7 +87,7 @@ mission.sections =
             {
                 [27] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 2)
-                    player:setPos(344.003, 40.676, -381.140, 12, xi.zone.KAMIHR_DRIFTS)
+                    player:setPos(344.003, 40.676, -381.140, 12, invaderXim.zone.KAMIHR_DRIFTS)
                 end,
             },
         },

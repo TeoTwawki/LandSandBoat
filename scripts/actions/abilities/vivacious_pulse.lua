@@ -13,7 +13,7 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability, action)
-    return xi.job_utils.rune_fencer.useVivaciousPulse(player, target, ability)
+    return invaderXim.job_utils.rune_fencer.useVivaciousPulse(player, target, ability)
 end
 
 return abilityObject

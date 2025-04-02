@@ -21,18 +21,18 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.VERMIN
-    params.tpmod = xi.spells.blue.tpMod.CRITICAL
+    params.ecosystem = invaderXim.ecosystem.VERMIN
+    params.tpmod = invaderXim.spells.blue.tpMod.CRITICAL
     params.critchance = 0
-    if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
+    if caster:hasStatusEffect(invaderXim.effect.AZURE_LORE) then
         params.critchance = 55
-    elseif caster:hasStatusEffect(xi.effect.CHAIN_AFFINITY) then
+    elseif caster:hasStatusEffect(invaderXim.effect.CHAIN_AFFINITY) then
         params.critchance = math.floor(caster:getTP() / 75)
     end
 
-    params.attackType = xi.attackType.PHYSICAL
-    params.damageType = xi.damageType.HTH
-    params.scattr = xi.skillchainType.COMPRESSION
+    params.attackType = invaderXim.attackType.PHYSICAL
+    params.damageType = invaderXim.damageType.HTH
+    params.scattr = invaderXim.skillchainType.COMPRESSION
     params.numhits = 1
     params.multiplier = 1.5
     params.tp150 = 1.5
@@ -47,7 +47,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
 
-    return xi.spells.blue.usePhysicalSpell(caster, target, spell, params)
+    return invaderXim.spells.blue.usePhysicalSpell(caster, target, spell, params)
 end
 
 return spellObject

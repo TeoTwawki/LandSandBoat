@@ -8,11 +8,11 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local adoulinMission = player:getCurrentMission(xi.mission.log_id.SOA)
+    local adoulinMission = player:getCurrentMission(invaderXim.mission.log_id.SOA)
 
     if
-        adoulinMission >= xi.mission.id.soa.BEAUTY_AND_THE_BEAST and
-        adoulinMission <= xi.mission.id.soa.SALVATION
+        adoulinMission >= invaderXim.mission.id.soa.BEAUTY_AND_THE_BEAST and
+        adoulinMission <= invaderXim.mission.id.soa.SALVATION
     then
         -- Speech while Arciela is 'kidnapped'
         player:startEvent(150)

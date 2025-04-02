@@ -15,9 +15,9 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.STR_DOWN, 10, 3, 120))
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.STR_DOWN, 10, 3, 120))
 
-    return xi.effect.STR_DOWN
+    return invaderXim.effect.STR_DOWN
 end
 
 return mobskillObject

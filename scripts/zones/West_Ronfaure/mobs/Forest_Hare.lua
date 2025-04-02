@@ -3,7 +3,7 @@
 --  Mob: Forest Hare
 -- Note: PH for Jaggedy-Eared Jack
 -----------------------------------
-local ID = zones[xi.zone.WEST_RONFAURE]
+local ID = zones[invaderXim.zone.WEST_RONFAURE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -44,13 +44,13 @@ local jaggedySpawnPoints =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 2, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 2, 1, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = jaggedySpawnPoints
-    xi.mob.phOnDespawn(mob, jaggedyPHTable, 9, 2400, params) -- 40 minute minimum
+    invaderXim.mob.phOnDespawn(mob, jaggedyPHTable, 9, 2400, params) -- 40 minute minimum
 end
 
 return entity

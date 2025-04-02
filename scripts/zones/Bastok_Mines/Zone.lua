@@ -1,21 +1,21 @@
 -----------------------------------
 -- Zone: Bastok_Mines (234)
 -----------------------------------
-local ID = zones[xi.zone.BASTOK_MINES]
+local ID = zones[invaderXim.zone.BASTOK_MINES]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.server.setExplorerMoogles(ID.npc.EXPLORER_MOOGLE)
+    invaderXim.server.setExplorerMoogles(ID.npc.EXPLORER_MOOGLE)
 
-    xi.events.harvestFestival.applyHalloweenNpcCostumes(zone:getID())
-    xi.chocobo.initZone(zone)
-    xi.chocoboGame.clearRecord(zone)
+    invaderXim.events.harvestFestival.applyHalloweenNpcCostumes(zone:getID())
+    invaderXim.chocobo.initZone(zone)
+    invaderXim.chocoboGame.clearRecord(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
-    -- MOG HOUSE EXIT
+    -- MOG HOUSE IXIMT
     if
         player:getXPos() == 0 and
         player:getYPos() == 0 and
@@ -27,7 +27,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

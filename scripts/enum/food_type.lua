@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.foodType
-xi.foodType =
+---@enum invaderXim.foodType
+invaderXim.foodType =
 {
     BASIC    = 1,
     RAW_FISH = 2,

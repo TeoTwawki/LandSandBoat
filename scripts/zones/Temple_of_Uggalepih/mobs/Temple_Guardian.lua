@@ -2,7 +2,7 @@
 -- Area: Temple of Uggalepih
 --  Mob: Temple Guardian
 -----------------------------------
-local ID = zones[xi.zone.TEMPLE_OF_UGGALEPIH]
+local ID = zones[invaderXim.zone.TEMPLE_OF_UGGALEPIH]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

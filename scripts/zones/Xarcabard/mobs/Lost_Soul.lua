@@ -3,7 +3,7 @@
 --  Mob: Lost Soul
 -- Note: PH for Timeworn Warrior
 -----------------------------------
-local ID = zones[xi.zone.XARCABARD]
+local ID = zones[invaderXim.zone.XARCABARD]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -14,14 +14,14 @@ local timewornPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 51, 1, xi.regime.type.FIELDS)
-    xi.regime.checkRegime(player, mob, 52, 1, xi.regime.type.FIELDS)
-    xi.regime.checkRegime(player, mob, 53, 2, xi.regime.type.FIELDS)
-    xi.regime.checkRegime(player, mob, 54, 3, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 51, 1, invaderXim.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 52, 1, invaderXim.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 53, 2, invaderXim.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 54, 3, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, timewornPHTable, 5, 5400) -- 90 minutes
+    invaderXim.mob.phOnDespawn(mob, timewornPHTable, 5, 5400) -- 90 minutes
 end
 
 return entity

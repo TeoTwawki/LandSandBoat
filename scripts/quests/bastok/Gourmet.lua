@@ -5,13 +5,13 @@
 -- Salimah : !pos -173 -5 64 235
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.GOURMET)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.GOURMET)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.BASTOK,
-    title    = xi.title.MOMMYS_HELPER,
+    fameArea = invaderXim.fameArea.BASTOK,
+    title    = invaderXim.title.MOMMYS_HELPER,
 }
 
 -- Table Format: { eventId, timeMin, timeMax }
@@ -19,9 +19,9 @@ quest.reward =
 -- logic, all time comparisons are 6 less than the actual time.
 local tradeItemData =
 {
-    [xi.item.SLEEPSHROOM] = { 201, 12, 24 }, -- 18:00 ~ 06:00
-    [xi.item.TREANT_BULB] = { 201,  0,  6 }, -- 06:00 ~ 12:00
-    [xi.item.WILD_ONION]  = { 202,  6, 12 }, -- 12:00 ~ 18:00
+    [invaderXim.item.SLEEPSHROOM] = { 201, 12, 24 }, -- 18:00 ~ 06:00
+    [invaderXim.item.TREANT_BULB] = { 201,  0,  6 }, -- 06:00 ~ 12:00
+    [invaderXim.item.WILD_ONION]  = { 202,  6, 12 }, -- 12:00 ~ 18:00
 }
 
 local function tradeEventFinish(player, gilReward, additionalFame)
@@ -29,7 +29,7 @@ local function tradeEventFinish(player, gilReward, additionalFame)
         player:confirmTrade()
 
         npcUtil.giveCurrency(player, 'gil', gilReward)
-        player:addFame(xi.fameArea.BASTOK, additionalFame)
+        player:addFame(invaderXim.fameArea.BASTOK, additionalFame)
         quest:setMustZone(player)
     end
 end
@@ -38,10 +38,10 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Salimah'] = quest:progressEvent(200),
 
@@ -56,10 +56,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status >= xi.questStatus.QUEST_ACCEPTED
+            return status >= invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Salimah'] =
             {

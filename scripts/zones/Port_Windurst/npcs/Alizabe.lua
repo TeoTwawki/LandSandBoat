@@ -3,14 +3,14 @@
 --  NPC: Alizabe
 --  Tavnazian Archipelago Regional Merchant
 -----------------------------------
-local ID = zones[xi.zone.PORT_WINDURST]
+local ID = zones[invaderXim.zone.PORT_WINDURST]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if player:getCurrentMission(xi.mission.log_id.COP) >= xi.mission.id.cop.THE_SAVAGE then
-        if GetRegionOwner(xi.region.TAVNAZIANARCH) ~= xi.nation.WINDURST then
+    if player:getCurrentMission(invaderXim.mission.log_id.COP) >= invaderXim.mission.id.cop.THE_SAVAGE then
+        if GetRegionOwner(invaderXim.region.TAVNAZIANARCH) ~= invaderXim.nation.WINDURST then
             player:showText(npc, ID.text.ALIZABE_CLOSED_DIALOG)
         else
             local stock =
@@ -23,7 +23,7 @@ entity.onTrigger = function(player, npc)
             }
 
             player:showText(npc, ID.text.ALIZABE_OPEN_DIALOG)
-            xi.shop.general(player, stock, xi.fameArea.WINDURST)
+            invaderXim.shop.general(player, stock, invaderXim.fameArea.WINDURST)
         end
     else
         player:showText(npc, ID.text.ALIZABE_COP_NOT_COMPLETED)

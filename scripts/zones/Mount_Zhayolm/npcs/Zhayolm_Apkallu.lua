@@ -6,9 +6,9 @@
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    if npcUtil.tradeSetInList(trade, xi.apkallu.fish) then
+    if npcUtil.tradeSetInList(trade, invaderXim.apkallu.fish) then
         player:confirmTrade()
-        npc:follow(player, xi.followType.ROAM)
+        npc:follow(player, invaderXim.followType.ROAM)
     end
 end
 

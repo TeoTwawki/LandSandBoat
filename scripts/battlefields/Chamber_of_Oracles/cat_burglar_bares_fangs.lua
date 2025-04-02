@@ -3,12 +3,12 @@
 -- Name: A Moogle Kupo d'Etat Mission 10
 -- !pos -221 -24 19 206
 -----------------------------------
-local chamberOfOraclesID = zones[xi.zone.CHAMBER_OF_ORACLES]
+local chamberOfOraclesID = zones[invaderXim.zone.CHAMBER_OF_ORACLES]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId                = xi.zone.CHAMBER_OF_ORACLES,
-    battlefieldId         = xi.battlefield.id.CAT_BURGLAR_BARES_FANGS,
+    zoneId                = invaderXim.zone.CHAMBER_OF_ORACLES,
+    battlefieldId         = invaderXim.battlefield.id.CAT_BURGLAR_BARES_FANGS,
     canLoseExp            = false,
     isMission             = true,
     allowTrusts           = true,
@@ -19,13 +19,13 @@ local content = BattlefieldMission:new({
     allowedAreas          = set{ 1 },
     entryNpc              = 'SC_Entrance',
     exitNpc               = 'Shimmering_Circle',
-    requiredKeyItems      = { xi.ki.NAVARATNA_TALISMAN, onlyInitiator = true },
+    requiredKeyItems      = { invaderXim.ki.NAVARATNA_TALISMAN, onlyInitiator = true },
 
     -- TODO: Currently AMK does not depend on this fight in mission scripts.  Verify
     -- that this mission status is updated/correct once doing so.
-    missionArea           = xi.mission.log_id.AMK,
-    mission               = xi.mission.id.amk.ROAR_A_CAT_BURGLAR_BARES_HER_FANGS,
-    missionStatusArea     = xi.mission.log_id.AMK,
+    missionArea           = invaderXim.mission.log_id.AMK,
+    mission               = invaderXim.mission.id.amk.ROAR_A_CAT_BURGLAR_BARES_HER_FANGS,
+    missionStatusArea     = invaderXim.mission.log_id.AMK,
     requiredMissionStatus = 0,
 
     experimental = true,
@@ -43,7 +43,7 @@ content.groups =
 
         superlinkGroup = 1,
         allDeath       = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 

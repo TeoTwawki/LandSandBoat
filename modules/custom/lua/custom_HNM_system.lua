@@ -6,9 +6,9 @@ require('scripts/globals/npc_util')
 -----------------------------------
 -- ID Requires
 -----------------------------------
-local dragonsAeryID   = zones[xi.zone.DRAGONS_AERY]
-local valleySorrowsID = zones[xi.zone.VALLEY_OF_SORROWS]
-local behemothDomID   = zones[xi.zone.BEHEMOTHS_DOMINION]
+local dragonsAeryID   = zones[invaderXim.zone.DRAGONS_AERY]
+local valleySorrowsID = zones[invaderXim.zone.VALLEY_OF_SORROWS]
+local behemothDomID   = zones[invaderXim.zone.BEHEMOTHS_DOMINION]
 
 -----------------------------------
 -- Module definition
@@ -27,7 +27,7 @@ hnmSystem:setEnabled(false)
 -----------------------------------
 -- Dragon's Aery: Fafnir, Nidhogg
 -----------------------------------
-hnmSystem:addOverride('xi.zones.Dragons_Aery.Zone.onInitialize', function(zone)
+hnmSystem:addOverride('invaderXim.zones.Dragons_Aery.Zone.onInitialize', function(zone)
     super(zone)
 
     local hnmPopTime  = GetServerVariable('[HNM]Fafnir')   -- Time the NM will spawn at.
@@ -50,7 +50,7 @@ hnmSystem:addOverride('xi.zones.Dragons_Aery.Zone.onInitialize', function(zone)
     end
 end)
 
-hnmSystem:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDespawn', function(mob)
+hnmSystem:addOverride('invaderXim.zones.Dragons_Aery.mobs.Fafnir.onMobDespawn', function(mob)
     super(mob)
 
     -- Server Variable work.
@@ -63,11 +63,11 @@ hnmSystem:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDespawn', function
     UpdateNMSpawnPoint(dragonsAeryID.mob.FAFNIR)
 end)
 
-hnmSystem:addOverride('xi.zones.Dragons_Aery.npcs.qm0.onTrade', function(player, npc, trade)
+hnmSystem:addOverride('invaderXim.zones.Dragons_Aery.npcs.qm0.onTrade', function(player, npc, trade)
     if
         not GetMobByID(dragonsAeryID.mob.FAFNIR):isSpawned() and
         not GetMobByID(dragonsAeryID.mob.NIDHOGG):isSpawned() and
-        npcUtil.tradeHasExactly(trade, xi.item.CUP_OF_SWEET_TEA) and
+        npcUtil.tradeHasExactly(trade, invaderXim.item.CUP_OF_SWEET_TEA) and
         npcUtil.popFromQM(player, npc, dragonsAeryID.mob.NIDHOGG)
     then
         player:confirmTrade()
@@ -77,7 +77,7 @@ end)
 -----------------------------------
 -- Valley of Sorrows: Adamantoise, Aspidochelone
 -----------------------------------
-hnmSystem:addOverride('xi.zones.Valley_of_Sorrows.Zone.onInitialize', function(zone)
+hnmSystem:addOverride('invaderXim.zones.Valley_of_Sorrows.Zone.onInitialize', function(zone)
     super(zone)
 
     local hnmPopTime  = GetServerVariable('[HNM]Adamantoise')   -- Time the NM will spawn at.
@@ -100,7 +100,7 @@ hnmSystem:addOverride('xi.zones.Valley_of_Sorrows.Zone.onInitialize', function(z
     end
 end)
 
-hnmSystem:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDespawn', function(mob)
+hnmSystem:addOverride('invaderXim.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDespawn', function(mob)
     super(mob)
 
     -- Server Variable work.
@@ -113,11 +113,11 @@ hnmSystem:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDespawn'
     UpdateNMSpawnPoint(valleySorrowsID.mob.ADAMANTOISE)
 end)
 
-hnmSystem:addOverride('xi.zones.Valley_of_Sorrows.npcs.qm1.onTrade', function(player, npc, trade)
+hnmSystem:addOverride('invaderXim.zones.Valley_of_Sorrows.npcs.qm1.onTrade', function(player, npc, trade)
     if
         not GetMobByID(valleySorrowsID.mob.ADAMANTOISE):isSpawned() and
         not GetMobByID(valleySorrowsID.mob.ASPIDOCHELONE):isSpawned() and
-        npcUtil.tradeHasExactly(trade, xi.item.CLUMP_OF_RED_PONDWEED) and
+        npcUtil.tradeHasExactly(trade, invaderXim.item.CLUMP_OF_RED_PONDWEED) and
         npcUtil.popFromQM(player, npc, valleySorrowsID.mob.ASPIDOCHELONE)
     then
         player:confirmTrade()
@@ -127,7 +127,7 @@ end)
 -----------------------------------
 -- Behemoth's Dominion: Behemoth, King Behemoth
 -----------------------------------
-hnmSystem:addOverride('xi.zones.Behemoths_Dominion.Zone.onInitialize', function(zone)
+hnmSystem:addOverride('invaderXim.zones.Behemoths_Dominion.Zone.onInitialize', function(zone)
     super(zone)
 
     local hnmPopTime  = GetServerVariable('[HNM]Behemoth')   -- Time the NM will spawn at.
@@ -150,7 +150,7 @@ hnmSystem:addOverride('xi.zones.Behemoths_Dominion.Zone.onInitialize', function(
     end
 end)
 
-hnmSystem:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDespawn', function(mob)
+hnmSystem:addOverride('invaderXim.zones.Behemoths_Dominion.mobs.Behemoth.onMobDespawn', function(mob)
     super(mob)
 
     -- Server Variable work.
@@ -163,11 +163,11 @@ hnmSystem:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDespawn', 
     UpdateNMSpawnPoint(behemothDomID.mob.BEHEMOTH)
 end)
 
-hnmSystem:addOverride('xi.zones.Behemoths_Dominion.npcs.qm2.onTrade', function(player, npc, trade)
+hnmSystem:addOverride('invaderXim.zones.Behemoths_Dominion.npcs.qm2.onTrade', function(player, npc, trade)
     if
         not GetMobByID(behemothDomID.mob.BEHEMOTH):isSpawned() and
         not GetMobByID(behemothDomID.mob.KING_BEHEMOTH):isSpawned() and
-        npcUtil.tradeHasExactly(trade, xi.item.SAVORY_SHANK) and
+        npcUtil.tradeHasExactly(trade, invaderXim.item.SAVORY_SHANK) and
         npcUtil.popFromQM(player, npc, behemothDomID.mob.KING_BEHEMOTH)
     then
         player:confirmTrade()

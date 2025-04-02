@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.ATTACK_BOOST
+-- invaderXim.effect.ATTACK_BOOST
 --
 -- getPower()       = ATTP
 -- getSubPower()    = RATTP
@@ -16,9 +16,9 @@ effectObject.onEffectGain = function(target, effect)
         effect:setSubPower(50)
     end
 
-    target:addMod(xi.mod.ATTP, effect:getPower())
+    target:addMod(invaderXim.mod.ATTP, effect:getPower())
     if effect:getSubPower() > 0 then
-        target:addMod(xi.mod.RATTP, effect:getSubPower())
+        target:addMod(invaderXim.mod.RATTP, effect:getSubPower())
     end
 end
 
@@ -26,9 +26,9 @@ effectObject.onEffectTick = function(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.ATTP, effect:getPower())
+    target:delMod(invaderXim.mod.ATTP, effect:getPower())
     if effect:getSubPower() > 0 then
-        target:delMod(xi.mod.RATTP, effect:getSubPower())
+        target:delMod(invaderXim.mod.RATTP, effect:getSubPower())
     end
 end
 

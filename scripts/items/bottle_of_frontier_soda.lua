@@ -11,10 +11,10 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    if not target:hasStatusEffect(xi.effect.REGAIN) then
-        target:addStatusEffect(xi.effect.REGAIN, 1, 3, 60)
+    if not target:hasStatusEffect(invaderXim.effect.REGAIN) then
+        target:addStatusEffect(invaderXim.effect.REGAIN, 1, 3, 60)
     else
-        target:messageBasic(xi.msg.basic.NO_EFFECT)
+        target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
     end
 end
 

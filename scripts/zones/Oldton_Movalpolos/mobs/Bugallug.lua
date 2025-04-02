@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:addImmunity(xi.immunity.GRAVITY)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
     -- Immediately uses Bionic Boost and Heavy Whisk
     mob:useMobAbility(359)
     mob:queue(2000, function(mobArg)

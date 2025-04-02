@@ -5,24 +5,24 @@
 -- Rholont : !pos -168 -2 56 80
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.PERILS_OF_THE_GRIFFON)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.PERILS_OF_THE_GRIFFON)
 
 quest.reward =
 {
-    item  = xi.item.ELIXIR,
-    title = xi.title.KNIGHT_OF_THE_SWIFTWING_GRIFFIN,
+    item  = invaderXim.item.ELIXIR,
+    title = invaderXim.title.KNIGHT_OF_THE_SWIFTWING_GRIFFIN,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.WRATH_OF_THE_GRIFFON) and
-                player:hasCompletedMission(xi.mission.log_id.WOTG, xi.mission.id.wotg.PURPLE_THE_NEW_BLACK)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.WRATH_OF_THE_GRIFFON) and
+                player:hasCompletedMission(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.PURPLE_THE_NEW_BLACK)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Rholont'] =
             {
@@ -84,15 +84,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Rholont'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.ORCISH_WARMACHINE_BODY) then
+                    if not player:hasKeyItem(invaderXim.ki.ORCISH_WARMACHINE_BODY) then
                         return quest:event(636)
                     else
                         return quest:progressEvent(633)
@@ -108,12 +108,12 @@ quest.sections =
             },
         },
 
-        [xi.zone.JUGNER_FOREST_S] =
+        [invaderXim.zone.JUGNER_FOREST_S] =
         {
             ['qm6'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.ORCISH_WARMACHINE_BODY) then
+                    if not player:hasKeyItem(invaderXim.ki.ORCISH_WARMACHINE_BODY) then
                         return quest:progressEvent(210)
                     end
                 end,
@@ -122,7 +122,7 @@ quest.sections =
             onEventFinish =
             {
                 [210] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.ORCISH_WARMACHINE_BODY)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ORCISH_WARMACHINE_BODY)
                 end,
             },
         },

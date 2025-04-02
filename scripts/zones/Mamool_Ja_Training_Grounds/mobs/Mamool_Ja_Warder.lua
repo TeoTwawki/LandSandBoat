@@ -3,17 +3,17 @@
 --  MOB: Mamool Ja Warder (NIN, WHM, BST)
 -----------------------------------
 mixins = { require('scripts/mixins/weapon_break') }
-local ID = zones[xi.zone.MAMOOL_JA_TRAINING_GROUNDS]
+local ID = zones[invaderXim.zone.MAMOOL_JA_TRAINING_GROUNDS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    xi.assault.adjustMobLevel(mob)
+    invaderXim.assault.adjustMobLevel(mob)
 
-    if mob:getMainJob() == xi.job.NIN then
+    if mob:getMainJob() == invaderXim.job.NIN then
         mob:setLocalVar('BreakChance', 0) -- Nin mobs dont have a weapon to break
-    elseif mob:getMainJob() == xi.job.BST then
+    elseif mob:getMainJob() == invaderXim.job.BST then
         local instance = mob:getInstance()
         local pet = mob:getID() + 1
 
@@ -35,7 +35,7 @@ entity.onMobSkillTarget = function(target, mob, skill)
     if utils.contains(skillID, triggerSkills) then
         if math.random(0, 100) > 50 then
             local instance = mob:getInstance()
-            for _, gateid in ipairs(ID.mob[xi.assault.mission.IMPERIAL_AGENT_RESCUE].GATES) do
+            for _, gateid in ipairs(ID.mob[invaderXim.assault.mission.IMPERIAL_AGENT_RESCUE].GATES) do
                 local gate = GetMobByID(gateid, instance)
                 if
                     gate and

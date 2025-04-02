@@ -21,7 +21,7 @@ g_mixins.families.marid = function(maridMob)
         local brokenTusks = mob:getAnimationSub()
 
         for _ = 1, brokenTusks do
-            loot:addItem(xi.item.MARID_TUSK, xi.drop_rate.GUARANTEED)
+            loot:addItem(invaderXim.item.MARID_TUSK, invaderXim.drop_rate.GUARANTEED)
         end
     end)
 end

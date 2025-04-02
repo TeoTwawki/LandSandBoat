@@ -10,7 +10,7 @@ abilityObject.onAutomatonAbilityCheck = function(target, automaton, skill)
         return
     end
 
-    return master:countEffect(xi.effect.FIRE_MANEUVER)
+    return master:countEffect(invaderXim.effect.FIRE_MANEUVER)
 end
 
 abilityObject.onAutomatonAbility = function(target, automaton, skill, master, action)
@@ -23,11 +23,11 @@ abilityObject.onAutomatonAbility = function(target, automaton, skill, master, ac
         dex_wsc = 0.5,
     }
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         params.ftpMod = { 7.0, 10.0, 13.0 }
     end
 
-    local damage = xi.autows.doAutoRangedWeaponskill(automaton, target, 0, params, skill:getTP(), true, skill, action)
+    local damage = invaderXim.autows.doAutoRangedWeaponskill(automaton, target, 0, params, skill:getTP(), true, skill, action)
 
     return damage
 end

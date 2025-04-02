@@ -5,13 +5,13 @@
 -- !addmission 4 33
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.TESTING_THE_WATERS)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.TESTING_THE_WATERS)
 
 mission.reward =
 {
-    keyItem     = xi.ki.PERCIPIENT_EYE,
-    title       = xi.title.TREASURE_TROVE_TENDER,
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.LEGACY_OF_THE_LOST },
+    keyItem     = invaderXim.ki.PERCIPIENT_EYE,
+    title       = invaderXim.title.TREASURE_TROVE_TENDER,
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.LEGACY_OF_THE_LOST },
 }
 
 mission.sections =
@@ -21,12 +21,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.ARRAPAGO_REEF] =
+        [invaderXim.zone.ARRAPAGO_REEF] =
         {
             onTriggerAreaEnter =
             {
                 [1] = function(player, triggerArea)
-                    if player:hasKeyItem(xi.ki.EPHRAMADIAN_GOLD_COIN) then
+                    if player:hasKeyItem(invaderXim.ki.EPHRAMADIAN_GOLD_COIN) then
                         return mission:progressEvent(15)
                     end
                 end,
@@ -43,7 +43,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.TALACCA_COVE] =
+        [invaderXim.zone.TALACCA_COVE] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -55,7 +55,7 @@ mission.sections =
             {
                 [106] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.EPHRAMADIAN_GOLD_COIN)
+                        player:delKeyItem(invaderXim.ki.EPHRAMADIAN_GOLD_COIN)
                     end
                 end,
             },

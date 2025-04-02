@@ -3,7 +3,7 @@
 --  NPC: Indescript Markings
 -- NOTE: There are 3 Indescript Markings
 -----------------------------------
-local ID = zones[xi.zone.PASHHOW_MARSHLANDS_S]
+local ID = zones[invaderXim.zone.PASHHOW_MARSHLANDS_S]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -18,9 +18,9 @@ entity.onTrigger = function(player, npc)
         offset == 1 and
         pantsQuestProgress > 0 and
         pantsQuestProgress < 3 and
-        not player:hasKeyItem(xi.ki.SLUG_MUCUS)
+        not player:hasKeyItem(invaderXim.ki.SLUG_MUCUS)
     then
-        npcUtil.giveKeyItem(player, xi.ki.SLUG_MUCUS)
+        npcUtil.giveKeyItem(player, invaderXim.ki.SLUG_MUCUS)
         player:setCharVar('AF_SCH_PANTS', pantsQuestProgress + 1)
 
         local positions =
@@ -44,9 +44,9 @@ entity.onTrigger = function(player, npc)
         offset == 2 and
         gownQuestProgress > 0 and
         gownQuestProgress < 3 and
-        not player:hasKeyItem(xi.ki.PEISTE_DUNG)
+        not player:hasKeyItem(invaderXim.ki.PEISTE_DUNG)
     then
-        npcUtil.giveKeyItem(player, xi.ki.PEISTE_DUNG)
+        npcUtil.giveKeyItem(player, invaderXim.ki.PEISTE_DUNG)
         player:setCharVar('AF_SCH_BODY', gownQuestProgress + 1)
 
         local positions =

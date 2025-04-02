@@ -4,7 +4,7 @@
 --  ENM: Sheep in Antlion's Clothing
 -----------------------------------
 mixins = { require('scripts/mixins/families/antlion_ambush') }
-local ID = zones[xi.zone.BONEYARD_GULLY]
+local ID = zones[invaderXim.zone.BONEYARD_GULLY]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -51,16 +51,16 @@ local antlionPositions =
 
 entity.onMobSpawn = function(mob)
     -- Aggros via ambush, not superlinking
-    mob:setMobMod(xi.mobMod.SUPERLINK, 0)
+    mob:setMobMod(invaderXim.mobMod.SUPERLINK, 0)
 
     -- Used with HPP to keep track of the number of Sandpits
     mob:setLocalVar('Sandpits', 0)
 
-    mob:addListener('WEAPONSKILL_STATE_EXIT', 'TUCHULCHA_SANDPIT', function(tuchulcha, skillID)
+    mob:addListener('WEAPONSKILL_STATE_IXIMT', 'TUCHULCHA_SANDPIT', function(tuchulcha, skillID)
         if skillID == sandpitID then
             tuchulcha:disengage()
-            tuchulcha:setMobMod(xi.mobMod.NO_MOVE, 1)
-            tuchulcha:setMobMod(xi.mobMod.NO_REST, 1)
+            tuchulcha:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
+            tuchulcha:setMobMod(invaderXim.mobMod.NO_REST, 1)
             local posIndex = tuchulcha:getLocalVar('sand_pit' .. tuchulcha:getLocalVar('Sandpits'))
             local coords   = antlionPositions[tuchulcha:getBattlefield():getArea()][posIndex]
             local players  = tuchulcha:getBattlefield():getPlayers()
@@ -73,23 +73,23 @@ entity.onMobSpawn = function(mob)
             end
 
             -- ensure the client doesn't get the position update
-            tuchulcha:setStatus(xi.status.INVISIBLE)
+            tuchulcha:setStatus(invaderXim.status.INVISIBLE)
             tuchulcha:setPos(coords)
         end
     end)
 
     mob:addListener('ENGAGE', 'TUCHULCHA_ENGAGE', function(mobArg)
-        if mobArg:getStatus() ~= xi.status.UPDATE then
-            mobArg:setStatus(xi.status.UPDATE)
+        if mobArg:getStatus() ~= invaderXim.status.UPDATE then
+            mobArg:setStatus(invaderXim.status.UPDATE)
         end
     end)
 end
 
 -- Reset restHP when re-engaging after a sandpit
 entity.onMobEngage = function(mob, target)
-    if mob:getMobMod(xi.mobMod.NO_REST) == 1 then
-        mob:setMobMod(xi.mobMod.NO_MOVE, 0)
-        mob:setMobMod(xi.mobMod.NO_REST, 0)
+    if mob:getMobMod(invaderXim.mobMod.NO_REST) == 1 then
+        mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
+        mob:setMobMod(invaderXim.mobMod.NO_REST, 0)
     end
 end
 

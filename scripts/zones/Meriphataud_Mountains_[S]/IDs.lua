@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.MERIPHATAUD_MOUNTAINS_S] =
+zones[invaderXim.zone.MERIPHATAUD_MOUNTAINS_S] =
 {
     text =
     {
@@ -37,7 +37,7 @@ zones[xi.zone.MERIPHATAUD_MOUNTAINS_S] =
 
         VOIDWALKER =
         {
-            [xi.keyItem.CLEAR_ABYSSITE] =
+            [invaderXim.keyItem.CLEAR_ABYSSITE] =
             {
                 17174917, -- Raker bee
                 17174916, -- Raker bee
@@ -49,18 +49,18 @@ zones[xi.zone.MERIPHATAUD_MOUNTAINS_S] =
                 17174910, -- Rummager beetle
             },
 
-            [xi.keyItem.COLORFUL_ABYSSITE] =
+            [invaderXim.keyItem.COLORFUL_ABYSSITE] =
             {
                 17174909,  -- Jyeshtha
                 17174908, -- Farruca Fly
             },
 
-            [xi.keyItem.BROWN_ABYSSITE] =
+            [invaderXim.keyItem.BROWN_ABYSSITE] =
             {
                 17174907  -- Orcus
             },
 
-            [xi.keyItem.BLACK_ABYSSITE] =
+            [invaderXim.keyItem.BLACK_ABYSSITE] =
             {
                 17174906  -- Yilbegan
             }
@@ -74,4 +74,4 @@ zones[xi.zone.MERIPHATAUD_MOUNTAINS_S] =
     },
 }
 
-return zones[xi.zone.MERIPHATAUD_MOUNTAINS_S]
+return zones[invaderXim.zone.MERIPHATAUD_MOUNTAINS_S]

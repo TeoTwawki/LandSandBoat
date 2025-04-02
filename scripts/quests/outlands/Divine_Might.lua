@@ -6,37 +6,37 @@
 -- Qu'Hau Spring      : !pos 0 -29 64 122
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OUTLANDS, xi.quest.id.outlands.DIVINE_MIGHT)
+local quest = Quest:new(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.DIVINE_MIGHT)
 
 quest.reward =
 {
-    title = xi.title.PENTACIDE_PERPETRATOR,
+    title = invaderXim.title.PENTACIDE_PERPETRATOR,
 }
 
 local earringRewards =
 {
-    [1] = xi.item.SUPPANOMIMI,
-    [2] = xi.item.KNIGHTS_EARRING,
-    [3] = xi.item.ABYSSAL_EARRING,
-    [4] = xi.item.BEASTLY_EARRING,
-    [5] = xi.item.BUSHINOMIMI,
+    [1] = invaderXim.item.SUPPANOMIMI,
+    [2] = invaderXim.item.KNIGHTS_EARRING,
+    [3] = invaderXim.item.ABYSSAL_EARRING,
+    [4] = invaderXim.item.BEASTLY_EARRING,
+    [5] = invaderXim.item.BUSHINOMIMI,
 }
 
 local onTriggerIncomplete = function(player, npc)
-    local currentMission = player:getCurrentMission(xi.mission.log_id.ZILART)
+    local currentMission = player:getCurrentMission(invaderXim.mission.log_id.ZILART)
 
     if
-        currentMission == xi.mission.id.zilart.ARK_ANGELS and
-        player:getMissionStatus(xi.mission.log_id.ZILART) == 1
+        currentMission == invaderXim.mission.id.zilart.ARK_ANGELS and
+        player:getMissionStatus(invaderXim.mission.log_id.ZILART) == 1
     then
-        return quest:event(54, xi.item.SHEET_OF_PARCHMENT, xi.item.BOTTLE_OF_ILLUMININK, xi.item.ARK_PENTASPHERE)
-    elseif currentMission >= xi.mission.id.zilart.ARK_ANGELS then
+        return quest:event(54, invaderXim.item.SHEET_OF_PARCHMENT, invaderXim.item.BOTTLE_OF_ILLUMININK, invaderXim.item.ARK_PENTASPHERE)
+    elseif currentMission >= invaderXim.mission.id.zilart.ARK_ANGELS then
         -- NOTE: In order for a player to have the appropriate KI for an event to be displayed, they will be at least
         -- at missionStatus 1, so no need to verify greater than.
 
-        for keyItemId = xi.ki.SHARD_OF_APATHY, xi.ki.SHARD_OF_RAGE do
+        for keyItemId = invaderXim.ki.SHARD_OF_APATHY, invaderXim.ki.SHARD_OF_RAGE do
             if player:hasKeyItem(keyItemId) then
-                return quest:event(56, xi.item.SHEET_OF_PARCHMENT, xi.item.BOTTLE_OF_ILLUMININK, xi.item.ARK_PENTASPHERE)
+                return quest:event(56, invaderXim.item.SHEET_OF_PARCHMENT, invaderXim.item.BOTTLE_OF_ILLUMININK, invaderXim.item.ARK_PENTASPHERE)
             end
         end
     end
@@ -46,10 +46,10 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.THE_SHRINE_OF_RUAVITAU] =
+        [invaderXim.zone.THE_SHRINE_OF_RUAVITAU] =
         {
             ['blank_divine_might'] = onTriggerIncomplete,
 
@@ -68,16 +68,16 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.THE_SHRINE_OF_RUAVITAU] =
+        [invaderXim.zone.THE_SHRINE_OF_RUAVITAU] =
         {
             ['blank_divine_might'] =
             {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 1 then
-                        return quest:progressEvent(55, xi.item.SUPPANOMIMI, xi.item.KNIGHTS_EARRING, xi.item.ABYSSAL_EARRING, xi.item.BEASTLY_EARRING, xi.item.BUSHINOMIMI)
+                        return quest:progressEvent(55, invaderXim.item.SUPPANOMIMI, invaderXim.item.KNIGHTS_EARRING, invaderXim.item.ABYSSAL_EARRING, invaderXim.item.BEASTLY_EARRING, invaderXim.item.BUSHINOMIMI)
                     else
                         return onTriggerIncomplete(player, npc)
                     end
@@ -88,7 +88,7 @@ quest.sections =
             {
                 [55] = function(player, csid, option, npc)
                     if option == 2 then
-                        player:updateEvent(xi.item.SUPPANOMIMI, xi.item.KNIGHTS_EARRING, xi.item.ABYSSAL_EARRING, xi.item.BEASTLY_EARRING, xi.item.BUSHINOMIMI)
+                        player:updateEvent(invaderXim.item.SUPPANOMIMI, invaderXim.item.KNIGHTS_EARRING, invaderXim.item.ABYSSAL_EARRING, invaderXim.item.BEASTLY_EARRING, invaderXim.item.BUSHINOMIMI)
                     end
                 end,
             },
@@ -111,7 +111,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.ROMAEVE] =
+        [invaderXim.zone.ROMAEVE] =
         {
             ['QuHau_Spring'] =
             {
@@ -121,9 +121,9 @@ quest.sections =
                     if
                         IsMoonFull() and
                         (vanaHour >= 18 or vanaHour < 6) and
-                        npcUtil.tradeHasExactly(trade, { xi.item.BOTTLE_OF_ILLUMININK, xi.item.SHEET_OF_PARCHMENT })
+                        npcUtil.tradeHasExactly(trade, { invaderXim.item.BOTTLE_OF_ILLUMININK, invaderXim.item.SHEET_OF_PARCHMENT })
                     then
-                        return quest:progressEvent(7, xi.item.SHEET_OF_PARCHMENT, xi.item.BOTTLE_OF_ILLUMININK)
+                        return quest:progressEvent(7, invaderXim.item.SHEET_OF_PARCHMENT, invaderXim.item.BOTTLE_OF_ILLUMININK)
                     end
                 end,
             },
@@ -131,19 +131,19 @@ quest.sections =
             onEventFinish =
             {
                 [7] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.ARK_PENTASPHERE) then
+                    if npcUtil.giveItem(player, invaderXim.item.ARK_PENTASPHERE) then
                         player:confirmTrade()
                     end
                 end,
             },
         },
 
-        [xi.zone.LALOFF_AMPHITHEATER] =
+        [invaderXim.zone.LALOFF_AMPHITHEATER] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
-                    if player:getLocalVar('battlefieldWin') == xi.battlefield.id.DIVINE_MIGHT then
+                    if player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.DIVINE_MIGHT then
                         quest:setVar(player, 'Prog', 1)
                     end
                 end,

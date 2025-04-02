@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.EVERBLOOM_HOLLOW] =
+zones[invaderXim.zone.EVERBLOOM_HOLLOW] =
 {
     text =
     {
@@ -24,4 +24,4 @@ zones[xi.zone.EVERBLOOM_HOLLOW] =
     },
 }
 
-return zones[xi.zone.EVERBLOOM_HOLLOW]
+return zones[invaderXim.zone.EVERBLOOM_HOLLOW]

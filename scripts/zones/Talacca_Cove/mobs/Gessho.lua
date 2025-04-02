@@ -2,7 +2,7 @@
 -- Area: Talacca Cove
 --  Mob: Gessho
 -----------------------------------
-local ID = zones[xi.zone.TALACCA_COVE]
+local ID = zones[invaderXim.zone.TALACCA_COVE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

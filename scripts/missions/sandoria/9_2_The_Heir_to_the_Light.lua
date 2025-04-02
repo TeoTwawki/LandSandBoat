@@ -9,16 +9,16 @@
 -- (_6h4) Great Hall     : !pos 0 -1 13 233
 -- _5a0: Heavy Stone Dr  : !pos -39 4.823 20 190
 -----------------------------------
-local chateauID = zones[xi.zone.CHATEAU_DORAGUILLE]
+local chateauID = zones[invaderXim.zone.CHATEAU_DORAGUILLE]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.THE_HEIR_TO_THE_LIGHT)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.THE_HEIR_TO_THE_LIGHT)
 
 mission.reward =
 {
     rank = 10,
     gil = 100000,
-    title = xi.title.SAN_DORIAN_ROYAL_HEIR,
+    title = invaderXim.title.SAN_DORIAN_ROYAL_HEIR,
 }
 
 local handleAcceptMission = function(player, csid, option, npc)
@@ -32,11 +32,11 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -45,7 +45,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -60,7 +60,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['_6h0'] =
             {
@@ -204,7 +204,7 @@ mission.sections =
                     mission:complete(player)
                     mission:setVar(player, 'Option', 1)
 
-                    if not npcUtil.giveItem(player, xi.item.SAN_DORIAN_FLAG) then
+                    if not npcUtil.giveItem(player, invaderXim.item.SAN_DORIAN_FLAG) then
                         mission:setVar(player, 'Flag', 1)
                     end
                 end,
@@ -215,7 +215,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['_6fc'] =
             {
@@ -248,7 +248,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.FEIYIN] =
+        [invaderXim.zone.FEIYIN] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 2 then
@@ -264,14 +264,14 @@ mission.sections =
             },
         },
 
-        [xi.zone.QUBIA_ARENA] =
+        [invaderXim.zone.QUBIA_ARENA] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 3 and
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.HEIR_TO_THE_LIGHT
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.HEIR_TO_THE_LIGHT
                     then
                         player:setMissionStatus(mission.areaId, 4)
                     end
@@ -279,7 +279,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.KING_RANPERRES_TOMB] =
+        [invaderXim.zone.KING_RANPERRES_TOMB] =
         {
             ['_5a0'] =
             {
@@ -305,7 +305,7 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Aramaviont'] =
             {
@@ -332,7 +332,7 @@ mission.sections =
                 -- with one conditional, but playing it safe.
                 onTrigger = function(player, npc)
                     if mission:getVar(player, 'Flag') == 1 then
-                        if npcUtil.giveItem(player, xi.item.SAN_DORIAN_FLAG) then
+                        if npcUtil.giveItem(player, invaderXim.item.SAN_DORIAN_FLAG) then
                             mission:setVar(player, 'Flag', 0)
                         end
                     end
@@ -349,7 +349,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['_6fc'] =
             {
@@ -361,7 +361,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Option') == 1 then

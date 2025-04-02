@@ -16,7 +16,7 @@ require('scripts/globals/interaction/interaction_util')
 --[[ Illustration of the structure of the data:
 {
     -- First level (zone ID)
-    [xi.zone.SOME_ZONE] =
+    [invaderXim.zone.SOME_ZONE] =
     {
         -- Second level (entity name)
         ['Some_NPC'] =

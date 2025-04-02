@@ -3,17 +3,17 @@
 -- Ququroon !pos -2.400 -1 66.824 53
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.COOK_A_ROON)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.COOK_A_ROON)
 
 quest.sections =
 {
     -- Setion: Quest available
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             ['Ququroon'] =
             {
@@ -36,10 +36,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             ['Ququroon'] =
             {
@@ -48,7 +48,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.AHTAPOT, xi.item.ISTAKOZ, xi.item.ISTAVRIT, xi.item.ISTIRIDYE, xi.item.MERCANBALIGI }) then
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.AHTAPOT, invaderXim.item.ISTAKOZ, invaderXim.item.ISTAVRIT, invaderXim.item.ISTIRIDYE, invaderXim.item.MERCANBALIGI }) then
                         quest:setVar(player, 'Prog', math.random(2, 3))
                         return quest:progressEvent(243, { [7] = quest:getVar(player, 'Prog') })
                     end
@@ -59,7 +59,7 @@ quest.sections =
             {
                 [243] = function(player, csid, option, npc)
                     if quest:getVar(player, 'Prog') == 2 then
-                        npcUtil.giveItem(player, xi.item.BOWL_OF_NASHMAU_STEW)
+                        npcUtil.giveItem(player, invaderXim.item.BOWL_OF_NASHMAU_STEW)
                     end
 
                     if quest:complete(player) then
@@ -73,15 +73,15 @@ quest.sections =
     -- Section: Quest complete
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             ['Ququroon'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.AHTAPOT, xi.item.ISTAKOZ, xi.item.ISTAVRIT, xi.item.ISTIRIDYE, xi.item.MERCANBALIGI }) then
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.AHTAPOT, invaderXim.item.ISTAKOZ, invaderXim.item.ISTAVRIT, invaderXim.item.ISTIRIDYE, invaderXim.item.MERCANBALIGI }) then
                         quest:setVar(player, 'Prog', math.random(2, 3))
                         return quest:progressEvent(243, { [7] = quest:getVar(player, 'Prog') })
                     end
@@ -97,7 +97,7 @@ quest.sections =
                 [243] = function(player, csid, option, npc)
                     player:confirmTrade()
                     if quest:getVar(player, 'Prog') == 2 then
-                        npcUtil.giveItem(player, xi.item.BOWL_OF_NASHMAU_STEW)
+                        npcUtil.giveItem(player, invaderXim.item.BOWL_OF_NASHMAU_STEW)
                     end
 
                     quest:setVar(player, 'Prog', 0)

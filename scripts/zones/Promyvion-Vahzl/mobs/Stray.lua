@@ -6,7 +6,7 @@
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    xi.promyvion.emptyOnMobSpawn(mob, xi.promyvion.mobType.STRAY)
+    invaderXim.promyvion.emptyOnMobSpawn(mob, invaderXim.promyvion.mobType.STRAY)
 end
 
 return entity

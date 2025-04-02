@@ -5,18 +5,18 @@
 -- Thunder Hawk : !pos -58 -10 6 248
 -- Jail Door    : !pos 56 0.1 -23 147
 -----------------------------------
-local beadeauxID = zones[xi.zone.BEADEAUX]
+local beadeauxID = zones[invaderXim.zone.BEADEAUX]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.THE_RESCUE)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.THE_RESCUE)
 
 quest.reward =
 {
     exp      = 2000,
     gil      = 5000,
-    fameArea = xi.fameArea.SELBINA_RABAO,
-    keyItem  = xi.ki.MAP_OF_THE_RANGUEMONT_PASS,
-    title    = xi.title.HONORARY_CITIZEN_OF_SELBINA,
+    fameArea = invaderXim.fameArea.SELBINA_RABAO,
+    keyItem  = invaderXim.ki.MAP_OF_THE_RANGUEMONT_PASS,
+    title    = invaderXim.title.HONORARY_CITIZEN_OF_SELBINA,
 }
 
 quest.sections =
@@ -24,10 +24,10 @@ quest.sections =
     {
         check = function(player, status, vars)
             -- TODO: Fame requirement needs verification
-            return status == xi.questStatus.QUEST_AVAILABLE and player:getFameLevel(xi.fameArea.SELBINA_RABAO) >= 1
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and player:getFameLevel(invaderXim.fameArea.SELBINA_RABAO) >= 1
         end,
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Thunder_Hawk'] = quest:progressEvent(80),
 
@@ -44,15 +44,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Thunder_Hawk'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.TRADERS_SACK) then
+                    if player:hasKeyItem(invaderXim.ki.TRADERS_SACK) then
                         return quest:progressEvent(81)
                     else
                         return quest:event(83)
@@ -64,27 +64,27 @@ quest.sections =
             {
                 [81] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.TRADERS_SACK)
+                        player:delKeyItem(invaderXim.ki.TRADERS_SACK)
                     end
                 end,
             },
         },
 
-        [xi.zone.BEADEAUX] =
+        [invaderXim.zone.BEADEAUX] =
         {
             ['_43b'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        not player:hasKeyItem(xi.ki.TRADERS_SACK) and
-                        npcUtil.tradeHasExactly(trade, xi.item.QUADAV_CHARM)
+                        not player:hasKeyItem(invaderXim.ki.TRADERS_SACK) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.QUADAV_CHARM)
                     then
                         return quest:progressEvent(1000)
                     end
                 end,
 
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.TRADERS_SACK) then
+                    if not player:hasKeyItem(invaderXim.ki.TRADERS_SACK) then
                         return quest:messageSpecial(beadeauxID.text.LOCKED_DOOR_QUADAV_HAS_KEY)
                     end
                 end,
@@ -94,7 +94,7 @@ quest.sections =
             {
                 [1000] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    npcUtil.giveKeyItem(player, xi.ki.TRADERS_SACK)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.TRADERS_SACK)
                 end,
             },
         },
@@ -102,10 +102,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Thunder_Hawk'] = quest:event(82):replaceDefault(),
         },

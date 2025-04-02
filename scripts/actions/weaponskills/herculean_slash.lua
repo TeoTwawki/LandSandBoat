@@ -18,22 +18,22 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     local params      = {}
     params.ftpMod     = { 3.5, 3.5, 3.5 }
     params.vit_wsc    = 0.6
-    params.ele        = xi.element.ICE
-    params.skill      = xi.skill.GREAT_SWORD
+    params.ele        = invaderXim.element.ICE
+    params.skill      = invaderXim.skill.GREAT_SWORD
     params.includemab = true
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         params.vit_wsc = 0.8
     end
 
-    local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
+    local damage, criticalHit, tpHits, extraHits = invaderXim.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
 
     -- Handle status effect
-    local effectId      = xi.effect.PARALYSIS
-    local actionElement = xi.element.ICE
+    local effectId      = invaderXim.effect.PARALYSIS
+    local actionElement = invaderXim.element.ICE
     local power         = 30
     local duration      = math.floor(6 * tp / 100 * applyResistanceAddEffect(player, target, actionElement, 0))
-    xi.weaponskills.handleWeaponskillEffect(player, target, effectId, actionElement, damage, power, duration)
+    invaderXim.weaponskills.handleWeaponskillEffect(player, target, effectId, actionElement, damage, power, duration)
 
     return tpHits, extraHits, criticalHit, damage
 end

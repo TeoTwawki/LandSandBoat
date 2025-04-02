@@ -2,7 +2,7 @@
 -- Area: Zhayolm Remnants
 -- MOB: Archaic Gear
 -----------------------------------
-local ID = zones[xi.zone.ZHAYOLM_REMNANTS]
+local ID = zones[invaderXim.zone.ZHAYOLM_REMNANTS]
 mixins = { require('scripts/mixins/families/gear') }
 -----------------------------------
 
@@ -143,7 +143,7 @@ end
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
 end
 
 entity.onMobSpawn = function(mob)
@@ -159,14 +159,14 @@ entity.onMobSpawn = function(mob)
                 utils.contains(mobID, utils.slice(ID.mob.ARCHAIC_GEAR, 1, 8)) or
                 utils.contains(mobID, utils.slice(ID.mob.ARCHAIC_GEAR, 17, 20))
             then
-                mob:delImmunity(xi.immunity.DARK_SLEEP)
-                mob:pathThrough(getPath(mob), xi.path.flag.PATROL)
+                mob:delImmunity(invaderXim.immunity.DARK_SLEEP)
+                mob:pathThrough(getPath(mob), invaderXim.path.flag.PATROL)
             elseif utils.contains(mobID, utils.slice(ID.mob.ARCHAIC_GEAR, 9, 16)) then
-                mob:pathThrough(getPath(mob), xi.path.flag.PATROL)
-                mob:addImmunity(xi.immunity.LIGHT_SLEEP)
+                mob:pathThrough(getPath(mob), invaderXim.path.flag.PATROL)
+                mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
             end
         elseif stage == 6 then
-            mob:addImmunity(xi.immunity.LIGHT_SLEEP)
+            mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
         end
     end
 end

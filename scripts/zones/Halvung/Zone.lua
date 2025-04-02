@@ -5,7 +5,7 @@
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.helm.initZone(zone, xi.helmType.MINING)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.MINING)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)

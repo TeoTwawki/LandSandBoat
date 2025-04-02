@@ -6,16 +6,16 @@
 -- Parvipon : !pos -169 -1 13 230
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.THE_MERCHANTS_BIDDING)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.THE_MERCHANTS_BIDDING)
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Parvipon'] = quest:progressEvent(90),
 
@@ -31,21 +31,21 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status ~= xi.questStatus.QUEST_AVAILABLE
+            return status ~= invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Parvipon'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHas(trade, { { xi.item.RABBIT_HIDE, 3 } }) then
+                    if npcUtil.tradeHas(trade, { { invaderXim.item.RABBIT_HIDE, 3 } }) then
                         return quest:progressEvent(89)
                     end
                 end,
 
                 onTrigger = function(player, npc)
-                    if player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.THE_MERCHANTS_BIDDING) == xi.questStatus.QUEST_ACCEPTED then
+                    if player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.THE_MERCHANTS_BIDDING) == invaderXim.questStatus.QUEST_ACCEPTED then
                         return quest:event(88)
                     else
                         return quest:event(90, { [7] = 1 })
@@ -57,9 +57,9 @@ quest.sections =
             {
                 [89] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:addFame(xi.fameArea.SANDORIA, 30)
+                        player:addFame(invaderXim.fameArea.SANDORIA, 30)
                     else
-                        player:addFame(xi.fameArea.SANDORIA, 5)
+                        player:addFame(invaderXim.fameArea.SANDORIA, 5)
                     end
 
                     npcUtil.giveCurrency(player, 'gil', 120)

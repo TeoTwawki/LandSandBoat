@@ -25,29 +25,29 @@ g_mixins.families.gear = function(gearMob)
             if mobHPP >= dropSecond and mobHPP <= dropFirst then
                 if mob:getAnimationSub() ~= doubleGear then
                     mob:setAnimationSub(doubleGear)
-                    mob:setMobMod(xi.mobMod.SKILL_LIST, skillList + doubleGear)
+                    mob:setMobMod(invaderXim.mobMod.SKILL_LIST, skillList + doubleGear)
                 end
 
                 if mob:getLocalVar('Def1') == 0 then
-                    mob:delMod(xi.mod.MDEF, 10)
-                    mob:delMod(xi.mod.DEF, 20)
+                    mob:delMod(invaderXim.mod.MDEF, 10)
+                    mob:delMod(invaderXim.mod.DEF, 20)
                     mob:setLocalVar('Def1', 1)
                 end
             elseif mobHPP <= dropSecond then
                 if mob:getAnimationSub() ~= singleGear then
                     mob:setAnimationSub(singleGear)
-                    mob:setMobMod(xi.mobMod.SKILL_LIST, skillList + singleGear)
+                    mob:setMobMod(invaderXim.mobMod.SKILL_LIST, skillList + singleGear)
                 end
 
                 if mob:getLocalVar('Def2') == 0 then
-                    mob:delMod(xi.mod.MDEF, 10)
-                    mob:delMod(xi.mod.DEF, 20)
+                    mob:delMod(invaderXim.mod.MDEF, 10)
+                    mob:delMod(invaderXim.mod.DEF, 20)
                     mob:setLocalVar('Def2', 1)
                 end
             elseif mobHPP > dropFirst then
                 if mob:getAnimationSub() ~= 0 then
                     mob:setAnimationSub(tripleGear)
-                    mob:setMobMod(xi.mobMod.SKILL_LIST, skillList)
+                    mob:setMobMod(invaderXim.mobMod.SKILL_LIST, skillList)
                 end
             end
         end

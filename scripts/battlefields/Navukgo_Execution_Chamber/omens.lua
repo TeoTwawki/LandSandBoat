@@ -2,20 +2,20 @@
 -- Area: Navukgo Execution Chamber
 -- BCNM: Omens
 -----------------------------------
-local navukgoID = zones[xi.zone.NAVUKGO_EXECUTION_CHAMBER]
+local navukgoID = zones[invaderXim.zone.NAVUKGO_EXECUTION_CHAMBER]
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId           = xi.zone.NAVUKGO_EXECUTION_CHAMBER,
-    battlefieldId    = xi.battlefield.id.OMENS,
+    zoneId           = invaderXim.zone.NAVUKGO_EXECUTION_CHAMBER,
+    battlefieldId    = invaderXim.battlefield.id.OMENS,
     maxPlayers       = 18,
     timeLimit        = utils.minutes(30),
     index            = 2,
     entryNpc         = '_1s0',
     exitNpcs         = { '_1s1', '_1s2', '_1s3' },
 
-    questArea     = xi.questLog.AHT_URHGAN,
-    quest         = xi.quest.id.ahtUrhgan.OMENS,
+    questArea     = invaderXim.questLog.AHT_URHGAN,
+    quest         = invaderXim.quest.id.ahtUrhgan.OMENS,
     requiredVar   = 'Quest[6][22]Prog',
     requiredValue = 0,
 })
@@ -58,7 +58,7 @@ local handleDeath = function(battlefield, mob)
         end
     end
 
-    battlefield:setStatus(xi.battlefield.status.WON)
+    battlefield:setStatus(invaderXim.battlefield.status.WON)
 end
 
 content.groups =

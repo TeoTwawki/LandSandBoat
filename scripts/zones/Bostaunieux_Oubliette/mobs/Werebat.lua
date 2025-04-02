@@ -3,7 +3,7 @@
 --  Mob: Werebat
 -- Note: PH for Arioch
 -----------------------------------
-local ID = zones[xi.zone.BOSTAUNIEUX_OUBLIETTE]
+local ID = zones[invaderXim.zone.BOSTAUNIEUX_OUBLIETTE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -14,11 +14,11 @@ local ariochPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 611, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 611, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, ariochPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, ariochPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

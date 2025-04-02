@@ -36,7 +36,7 @@ extern sol::state lua;
 #include "sol/sol.hpp"
 #include "sol_bindings.h"
 
-#include "common/xi.h"
+#include "common/invaderXim.h"
 
 #include "items/item_equipment.h"
 #include "spell.h"
@@ -115,7 +115,7 @@ namespace luautils
     namespace detail
     {
         // TODO:
-        // Instead of always taking a string of the form "xi.server.onTimeServerTick"
+        // Instead of always taking a string of the form "invaderXim.server.onTimeServerTick"
         // and splitting it into parts, then using those parts to walk up the Lua
         // global table, we can build a map of that string to the underlying sol::reference.
         //
@@ -139,9 +139,9 @@ namespace luautils
     // Examples:
     //
     // ```cpp
-    // luautils::callGlobal<void>("xi.server.onTimeServerTick");
-    // luautils::callGlobal<void>("xi.player.onPlayerDeath", PChar);
-    // auto value = callGlobal<uint32>("xi.server.functionThatReturnsANumber");
+    // luautils::callGlobal<void>("invaderXim.server.onTimeServerTick");
+    // luautils::callGlobal<void>("invaderXim.player.onPlayerDeath", PChar);
+    // auto value = callGlobal<uint32>("invaderXim.server.functionThatReturnsANumber");
     // ```
     //
     // NOTE: This is slower (but safet) than looking up something manually like this:

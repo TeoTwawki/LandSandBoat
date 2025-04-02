@@ -3,7 +3,7 @@
 --    NM: Alsha
 -- Quest: Knocking on Forbidden Doors
 -----------------------------------
-local ID = zones[xi.zone.MISAREAUX_COAST]
+local ID = zones[invaderXim.zone.MISAREAUX_COAST]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

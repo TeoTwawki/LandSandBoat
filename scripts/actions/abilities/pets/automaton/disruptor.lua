@@ -9,12 +9,12 @@ abilityObject.onAutomatonAbilityCheck = function(target, automaton, skill)
 end
 
 abilityObject.onAutomatonAbility = function(target, automaton, skill, master, action)
-    automaton:addRecast(xi.recast.ABILITY, skill:getID(), 60)
+    automaton:addRecast(invaderXim.recast.ABILITY, skill:getID(), 60)
     local effect = target:dispelStatusEffect()
-    if effect ~= xi.effect.NONE then
-        skill:setMsg(xi.msg.basic.SKILL_ERASE)
+    if effect ~= invaderXim.effect.NONE then
+        skill:setMsg(invaderXim.msg.basic.SKILL_ERASE)
     else
-        skill:setMsg(xi.msg.basic.SKILL_NO_EFFECT)
+        skill:setMsg(invaderXim.msg.basic.SKILL_NO_EFFECT)
     end
 
     return effect

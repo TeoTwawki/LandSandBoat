@@ -7,11 +7,11 @@
 -- TRAINEE_HAMMER: !additem 18855
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.HAMMERING_HEARTS)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.HAMMERING_HEARTS)
 
 quest.reward =
 {
-    item = xi.item.TRAINEE_HAMMER,
+    item = invaderXim.item.TRAINEE_HAMMER,
 }
 
 quest.sections =
@@ -19,10 +19,10 @@ quest.sections =
     -- Section: Talk to Scarred Shark in Bastok Markets (S) at (G-5) for a cutscene.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.BASTOK_MARKETS_S] =
+        [invaderXim.zone.BASTOK_MARKETS_S] =
         {
             ['Scarred_Shark'] =
             {
@@ -45,10 +45,10 @@ quest.sections =
     -- 0: Trade a Heavy Quadav Backplate and a Heavy Quadav Chestplate to Scarred Shark.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 0
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 0
         end,
 
-        [xi.zone.BASTOK_MARKETS_S] =
+        [invaderXim.zone.BASTOK_MARKETS_S] =
         {
             ['Scarred_Shark'] =
             {
@@ -58,7 +58,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.HEAVY_QUADAV_CHESTPLATE, xi.item.HEAVY_QUADAV_BACKPLATE }) then
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.HEAVY_QUADAV_CHESTPLATE, invaderXim.item.HEAVY_QUADAV_BACKPLATE }) then
                         return quest:progressEvent(41)
                     end
                 end,
@@ -78,10 +78,10 @@ quest.sections =
     -- 1: Zone, then talk to Scarred Shark again for a final cutscene and your reward.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 1
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 1
         end,
 
-        [xi.zone.BASTOK_MARKETS_S] =
+        [invaderXim.zone.BASTOK_MARKETS_S] =
         {
             ['Scarred_Shark'] =
             {
@@ -106,10 +106,10 @@ quest.sections =
     -- Section: Quest completed. New default text
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.BASTOK_MARKETS_S] =
+        [invaderXim.zone.BASTOK_MARKETS_S] =
         {
             ['Scarred_Shark'] =
             {

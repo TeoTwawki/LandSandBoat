@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.ASPIR_DAZE
+-- invaderXim.effect.ASPIR_DAZE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

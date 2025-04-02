@@ -6,7 +6,7 @@ require('scripts/missions/soa/helpers')
 -----------------------------------
 local m = Module:new('soa_remove_imprimatur_gate')
 
-m:addOverride('xi.soa.helpers.imprimaturGate', function(player, gateAmount)
+m:addOverride('invaderXim.soa.helpers.imprimaturGate', function(player, gateAmount)
     -- Ignore the spending and fame requirements, just return true
     return true
 end)

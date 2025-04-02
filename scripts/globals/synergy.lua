@@ -4,7 +4,7 @@
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.synergy = xi.synergy or {}
+invaderXim.synergy = invaderXim.synergy or {}
 
 -----------------------------------
 -- Synergy Furnace
@@ -77,7 +77,7 @@ local setFurnaceVeryActive = function(npc)
     end)
 end
 
-xi.synergy.relinquishFurnaceClaim = function(player)
+invaderXim.synergy.relinquishFurnaceClaim = function(player)
     print('relinquishFurnaceClaim')
 
     local npcID = player:getLocalVar(vars.SYNERGY_FURNACE_NPC_ID)
@@ -103,7 +103,7 @@ xi.synergy.relinquishFurnaceClaim = function(player)
     player:messageSpecial(synergyMessages.CLAIM_RELINQUISHED)
 end
 
-xi.synergy.synergyDistanceChecker = function(player)
+invaderXim.synergy.synergyDistanceChecker = function(player)
     -- TODO: Ensure sure multiple of this can't be attached to player/npc
 
     local npcID = player:getLocalVar(vars.SYNERGY_FURNACE_NPC_ID)
@@ -125,7 +125,7 @@ xi.synergy.synergyDistanceChecker = function(player)
         -- TODO: Limit how often this message triggers
 
         player:timer(10000, function(playerArg)
-            xi.synergy.relinquishFurnaceClaim(playerArg)
+            invaderXim.synergy.relinquishFurnaceClaim(playerArg)
         end)
 
         return
@@ -138,11 +138,11 @@ xi.synergy.synergyDistanceChecker = function(player)
 
     -- Check every second
     player:timer(1000, function(playerArg)
-        xi.synergy.synergyDistanceChecker(playerArg)
+        invaderXim.synergy.synergyDistanceChecker(playerArg)
     end)
 end
 
-xi.synergy.attachToSynergyFurnace = function(player, npc)
+invaderXim.synergy.attachToSynergyFurnace = function(player, npc)
     -- TODO: Start 1 minute timer
 
     -- Pair these together so we can easily find them
@@ -150,11 +150,11 @@ xi.synergy.attachToSynergyFurnace = function(player, npc)
     npc:setLocalVar(vars.SYNERGY_FURNACE_PLAYER_ID, player:getID())
     npc:setLocalVar(vars.SYNERGY_FURNACE_STATE, furnaceStates.CLAIMED)
 
-    xi.synergy.synergyDistanceChecker(player)
+    invaderXim.synergy.synergyDistanceChecker(player)
 end
 
-xi.synergy.synergyFurnaceOnTrade = function(player, npc, trade)
-    if not xi.settings.main.ENABLE_SYNERGY then
+invaderXim.synergy.synergyFurnaceOnTrade = function(player, npc, trade)
+    if not invaderXim.settings.main.ENABLE_SYNERGY then
         return
     end
 
@@ -190,34 +190,34 @@ xi.synergy.synergyFurnaceOnTrade = function(player, npc, trade)
     -- NOTE: If the value is zero, the icon won't be shown
     local fewellCosts =
     {
-        [xi.element.FIRE]    = recipe['cost_fire_fewell'],
-        [xi.element.ICE]     = recipe['cost_ice_fewell'],
-        [xi.element.WIND]    = recipe['cost_wind_fewell'],
-        [xi.element.EARTH]   = recipe['cost_earth_fewell'],
-        [xi.element.THUNDER] = recipe['cost_lightning_fewell'],
-        [xi.element.WATER]   = recipe['cost_water_fewell'],
-        [xi.element.LIGHT]   = recipe['cost_light_fewell'],
-        [xi.element.DARK]    = recipe['cost_dark_fewell'],
+        [invaderXim.element.FIRE]    = recipe['cost_fire_fewell'],
+        [invaderXim.element.ICE]     = recipe['cost_ice_fewell'],
+        [invaderXim.element.WIND]    = recipe['cost_wind_fewell'],
+        [invaderXim.element.EARTH]   = recipe['cost_earth_fewell'],
+        [invaderXim.element.THUNDER] = recipe['cost_lightning_fewell'],
+        [invaderXim.element.WATER]   = recipe['cost_water_fewell'],
+        [invaderXim.element.LIGHT]   = recipe['cost_light_fewell'],
+        [invaderXim.element.DARK]    = recipe['cost_dark_fewell'],
     }
 
     local fewellMask = 0x00
     for key, value in pairs(fewellCosts) do
         if value > 0 then
-            fewellMask = bit.bor(fewellMask, bit.lshift(1, key - 1)) -- The offset inside xi.element because of NONE
+            fewellMask = bit.bor(fewellMask, bit.lshift(1, key - 1)) -- The offset inside invaderXim.element because of NONE
         end
     end
 
     local fewellCosts0 = bit.bor(
-        bit.lshift(fewellCosts[xi.element.FIRE], 0),
-        bit.lshift(fewellCosts[xi.element.ICE], 8),
-        bit.lshift(fewellCosts[xi.element.WIND], 16),
-        bit.lshift(fewellCosts[xi.element.EARTH], 24))
+        bit.lshift(fewellCosts[invaderXim.element.FIRE], 0),
+        bit.lshift(fewellCosts[invaderXim.element.ICE], 8),
+        bit.lshift(fewellCosts[invaderXim.element.WIND], 16),
+        bit.lshift(fewellCosts[invaderXim.element.EARTH], 24))
 
     local fewellCosts1 = bit.bor(
-        bit.lshift(fewellCosts[xi.element.THUNDER], 0),
-        bit.lshift(fewellCosts[xi.element.WATER], 8),
-        bit.lshift(fewellCosts[xi.element.LIGHT], 16),
-        bit.lshift(fewellCosts[xi.element.DARK], 24))
+        bit.lshift(fewellCosts[invaderXim.element.THUNDER], 0),
+        bit.lshift(fewellCosts[invaderXim.element.WATER], 8),
+        bit.lshift(fewellCosts[invaderXim.element.LIGHT], 16),
+        bit.lshift(fewellCosts[invaderXim.element.DARK], 24))
 
     local itemInfo = bit.bor(
         bit.lshift(recipeItemId, 0),
@@ -226,8 +226,8 @@ xi.synergy.synergyFurnaceOnTrade = function(player, npc, trade)
     player:startEvent(4521, fewellMask, fewellCosts0, fewellCosts1, itemInfo, recipeRank)
 end
 
-xi.synergy.synergyFurnaceOnTrigger = function(player, npc)
-    if not xi.settings.main.ENABLE_SYNERGY then
+invaderXim.synergy.synergyFurnaceOnTrigger = function(player, npc)
+    if not invaderXim.settings.main.ENABLE_SYNERGY then
         return
     end
 
@@ -248,9 +248,9 @@ xi.synergy.synergyFurnaceOnTrigger = function(player, npc)
     local handleFurnaceState =
     {
         [furnaceStates.AVAILABLE] = function()
-            player:messageSpecial(synergyMessages.CLAIM_SET, xi.ki.SYNERGY_CRUCIBLE, 1)
+            player:messageSpecial(synergyMessages.CLAIM_SET, invaderXim.ki.SYNERGY_CRUCIBLE, 1)
 
-            xi.synergy.attachToSynergyFurnace(player, npc)
+            invaderXim.synergy.attachToSynergyFurnace(player, npc)
         end,
 
         [furnaceStates.CLAIMED] = function()
@@ -304,15 +304,15 @@ xi.synergy.synergyFurnaceOnTrigger = function(player, npc)
                 player:messageSpecial(synergyMessages.REMOVE_FROM_FURNACE, resultId)
             end
 
-            xi.synergy.relinquishFurnaceClaim(player)
+            invaderXim.synergy.relinquishFurnaceClaim(player)
         end,
     }
 
     handleFurnaceState[furnaceState]()
 end
 
-xi.synergy.synergyFurnaceOnEventUpdate = function(player, csid, option, npc)
-    if not xi.settings.main.ENABLE_SYNERGY then
+invaderXim.synergy.synergyFurnaceOnEventUpdate = function(player, csid, option, npc)
+    if not invaderXim.settings.main.ENABLE_SYNERGY then
         return
     end
 
@@ -334,45 +334,45 @@ xi.synergy.synergyFurnaceOnEventUpdate = function(player, csid, option, npc)
         local updateOperations =
         {
             [100] = function() -- Feed fewell: Fire
-                npc:entityAnimationPacket(xi.animationString.SYNERGY_FIRE_FEWELL)
+                npc:entityAnimationPacket(invaderXim.animationString.SYNERGY_FIRE_FEWELL)
 
                 player:messageSpecial(synergyMessages.ELEMENTAL_POWER_LEAKING, 0)
-                npc:entityAnimationPacket(xi.animationString.SYNERGY_FIRE_LEAK)
+                npc:entityAnimationPacket(invaderXim.animationString.SYNERGY_FIRE_LEAK)
             end,
 
             [101] = function() -- Feed fewell: Ice
-                npc:entityAnimationPacket(xi.animationString.SYNERGY_ICE_FEWELL)
+                npc:entityAnimationPacket(invaderXim.animationString.SYNERGY_ICE_FEWELL)
             end,
 
             [102] = function() -- Feed fewell: Wind
-                npc:entityAnimationPacket(xi.animationString.SYNERGY_WIND_FEWELL)
+                npc:entityAnimationPacket(invaderXim.animationString.SYNERGY_WIND_FEWELL)
             end,
 
             [103] = function() -- Feed fewell: Earth
-                npc:entityAnimationPacket(xi.animationString.SYNERGY_EARTH_FEWELL)
+                npc:entityAnimationPacket(invaderXim.animationString.SYNERGY_EARTH_FEWELL)
             end,
 
             [104] = function() -- Feed fewell: Lightning
-                npc:entityAnimationPacket(xi.animationString.SYNERGY_LIGHTNING_FEWELL)
+                npc:entityAnimationPacket(invaderXim.animationString.SYNERGY_LIGHTNING_FEWELL)
             end,
 
             [105] = function() -- Feed fewell: Water
-                npc:entityAnimationPacket(xi.animationString.SYNERGY_WATER_FEWELL)
+                npc:entityAnimationPacket(invaderXim.animationString.SYNERGY_WATER_FEWELL)
             end,
 
             [106] = function() -- Feed fewell: Light
-                npc:entityAnimationPacket(xi.animationString.SYNERGY_LIGHT_FEWELL)
+                npc:entityAnimationPacket(invaderXim.animationString.SYNERGY_LIGHT_FEWELL)
             end,
 
             [107] = function() -- Feed fewell: Dark
-                npc:entityAnimationPacket(xi.animationString.SYNERGY_DARK_FEWELL)
+                npc:entityAnimationPacket(invaderXim.animationString.SYNERGY_DARK_FEWELL)
             end,
 
             [120] = function() -- Operate furnace: Thwack furnace
             end,
 
             [121] = function() -- Operate furnace: Operate pressure handle
-                npc:entityAnimationPacket(xi.animationString.SYNERGY_STEAM)
+                npc:entityAnimationPacket(invaderXim.animationString.SYNERGY_STEAM)
                 setFurnaceVeryActive(npc)
                 npc:timer(500, function(npcArg)
                     -- TODO: Look up what kind of leak we've just fixed
@@ -497,8 +497,8 @@ xi.synergy.synergyFurnaceOnEventUpdate = function(player, csid, option, npc)
     end
 end
 
-xi.synergy.synergyFurnaceOnEventFinish = function(player, csid, option, npc)
-    if not xi.settings.main.ENABLE_SYNERGY then
+invaderXim.synergy.synergyFurnaceOnEventFinish = function(player, csid, option, npc)
+    if not invaderXim.settings.main.ENABLE_SYNERGY then
         return
     end
 
@@ -507,7 +507,7 @@ xi.synergy.synergyFurnaceOnEventFinish = function(player, csid, option, npc)
     if csid == 4520 and option == 146 then -- Relinquish csid
         print('Relinquish furnace')
 
-        xi.synergy.relinquishFurnaceClaim(player)
+        invaderXim.synergy.relinquishFurnaceClaim(player)
     elseif csid == 4521 and option == 150 then -- Commence synergy (150 yes, 151 no)
         print('Commence synergy')
 
@@ -524,7 +524,7 @@ xi.synergy.synergyFurnaceOnEventFinish = function(player, csid, option, npc)
 
         setFurnaceClosed(furnaceNpc)
         npc:timer(2000, function(furnaceNpcArg)
-            furnaceNpcArg:entityAnimationPacket(xi.animationString.SYNERGY_STEAM)
+            furnaceNpcArg:entityAnimationPacket(invaderXim.animationString.SYNERGY_STEAM)
         end)
 
         furnaceNpc:setLocalVar(vars.SYNERGY_FURNACE_STATE, furnaceStates.ACTIVE)

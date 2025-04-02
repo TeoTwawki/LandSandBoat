@@ -3,7 +3,7 @@
 --  Mob: Death Jacket
 -- Note: PH for Erle
 -----------------------------------
-local ID = zones[xi.zone.ROLANBERRY_FIELDS_S]
+local ID = zones[invaderXim.zone.ROLANBERRY_FIELDS_S]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -17,7 +17,7 @@ entity.onMobDespawn = function(mob)
         [ID.mob.ERLE - 6] = ID.mob.ERLE,
     }
 
-    xi.mob.phOnDespawn(mob, phTable, 10, 5400) -- 1.5 hour
+    invaderXim.mob.phOnDespawn(mob, phTable, 10, 5400) -- 1.5 hour
 end
 
 return entity

@@ -27,7 +27,7 @@ local points =
 
 entity.onMobRoam = function(mob)
     if not mob:isFollowingPath() then
-        xi.path.randomPath(mob, points, 10, 70)
+        invaderXim.path.randomPath(mob, points, 10, 70)
     end
 end
 

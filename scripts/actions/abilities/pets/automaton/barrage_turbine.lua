@@ -11,14 +11,14 @@ abilityObject.onAutomatonAbilityCheck = function(target, automaton, skill)
 end
 
 abilityObject.onAutomatonAbility = function(target, automaton, skill, master, action)
-    automaton:addRecast(xi.recast.ABILITY, skill:getID(), 60 * 3)
+    automaton:addRecast(invaderXim.recast.ABILITY, skill:getID(), 60 * 3)
 
     -- Apply overload.
     -- TODO: This is a placeholder that adds zero overload for now.
-    --       For reference, the full maneuver handling is xi.automaton.onUseManeuver.
-    -- local overload = automaton:addBurden(xi.element.WIND - 1, 0)
+    --       For reference, the full maneuver handling is invaderXim.automaton.onUseManeuver.
+    -- local overload = automaton:addBurden(invaderXim.element.WIND - 1, 0)
 
-    local windManeuvers = master:countEffect(xi.effect.WIND_MANEUVER)
+    local windManeuvers = master:countEffect(invaderXim.effect.WIND_MANEUVER)
     windManeuvers = utils.clamp(windManeuvers, 0, 3)
 
     -- Shots per wind maneuver.
@@ -41,7 +41,7 @@ abilityObject.onAutomatonAbility = function(target, automaton, skill, master, ac
     }
 
     -- TODO: Remove/adjust the 8 hit weaponskill cap; tweak damage and TP return.
-    local damage = xi.autows.doAutoRangedWeaponskill(automaton, target, 0, params, 1000, true, skill, action)
+    local damage = invaderXim.autows.doAutoRangedWeaponskill(automaton, target, 0, params, 1000, true, skill, action)
 
     return damage
 end

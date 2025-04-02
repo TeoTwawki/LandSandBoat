@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.NETHER_VOID
+-- invaderXim.effect.NETHER_VOID
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

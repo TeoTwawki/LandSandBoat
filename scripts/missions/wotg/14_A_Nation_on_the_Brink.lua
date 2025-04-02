@@ -5,15 +5,15 @@
 -- !addmission 5 13
 -- Underpass_Hatch : !pos 314.083 -1.160 -181.455 84
 -----------------------------------
-local pastSauromugueID = zones[xi.zone.SAUROMUGUE_CHAMPAIGN_S]
+local pastSauromugueID = zones[invaderXim.zone.SAUROMUGUE_CHAMPAIGN_S]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.A_NATION_ON_THE_BRINK)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.A_NATION_ON_THE_BRINK)
 
 mission.reward =
 {
-    title       = xi.title.BATTLE_OF_JEUNO_VETERAN,
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.CROSSROADS_OF_TIME },
+    title       = invaderXim.title.BATTLE_OF_JEUNO_VETERAN,
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.CROSSROADS_OF_TIME },
 }
 
 mission.sections =
@@ -25,12 +25,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.SAUROMUGUE_CHAMPAIGN_S] =
+        [invaderXim.zone.SAUROMUGUE_CHAMPAIGN_S] =
         {
             ['Bulwark_Gate'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.UNDERPASS_HATCH_KEY) then
+                    if not player:hasKeyItem(invaderXim.ki.UNDERPASS_HATCH_KEY) then
                         return mission:progressEvent(6, 98, 23, 1756)
                     else
                         return mission:messageSpecial(pastSauromugueID.text.SURRENDER_CEREMONY_HASTE):oncePerZone()
@@ -41,12 +41,12 @@ mission.sections =
             onEventFinish =
             {
                 [6] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.UNDERPASS_HATCH_KEY)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.UNDERPASS_HATCH_KEY)
                 end,
             },
         },
 
-        [xi.zone.BATALLIA_DOWNS_S] =
+        [invaderXim.zone.BATALLIA_DOWNS_S] =
         {
             ['Underpass_Hatch'] =
             {
@@ -89,30 +89,30 @@ mission.sections =
 
                 [4] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 3)
-                    player:setPos(399.999, 8.3, -269.999, 159, xi.zone.BATALLIA_DOWNS_S)
+                    player:setPos(399.999, 8.3, -269.999, 159, invaderXim.zone.BATALLIA_DOWNS_S)
                 end,
 
                 [20] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 4)
-                    player:setPos(399.999, 8.3, -269.999, 159, xi.zone.BATALLIA_DOWNS_S)
+                    player:setPos(399.999, 8.3, -269.999, 159, invaderXim.zone.BATALLIA_DOWNS_S)
                 end,
 
                 [21] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 5)
-                    player:setPos(399.999, 8.3, -269.999, 159, xi.zone.BATALLIA_DOWNS_S)
+                    player:setPos(399.999, 8.3, -269.999, 159, invaderXim.zone.BATALLIA_DOWNS_S)
                 end,
 
                 [22] = function(player, csid, option, npc)
                     mission:complete(player)
 
-                    if not npcUtil.giveItem(player, xi.item.JEUNOAN_FLAG) then
+                    if not npcUtil.giveItem(player, invaderXim.item.JEUNOAN_FLAG) then
                         mission:setVar(player, 'Unclaimed', 1)
                     end
                 end,
             },
         },
 
-        [xi.zone.EVERBLOOM_HOLLOW] =
+        [invaderXim.zone.EVERBLOOM_HOLLOW] =
         {
             onEventFinish =
             {
@@ -122,7 +122,7 @@ mission.sections =
                     -- implementation of the instance.
 
                     player:setMissionStatus(mission.areaId, 2)
-                    player:setPos(302.747, -1, -174.367, 31, xi.zone.BATALLIA_DOWNS_S)
+                    player:setPos(302.747, -1, -174.367, 31, invaderXim.zone.BATALLIA_DOWNS_S)
                 end,
             },
         },
@@ -133,7 +133,7 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.BATALLIA_DOWNS_S] =
+        [invaderXim.zone.BATALLIA_DOWNS_S] =
         {
             ['_qm5'] =
             {
@@ -149,7 +149,7 @@ mission.sections =
                 [5] = function(player, csid, option, npc)
                     if
                         option == 1 and
-                        npcUtil.giveItem(player, xi.item.JEUNOAN_FLAG)
+                        npcUtil.giveItem(player, invaderXim.item.JEUNOAN_FLAG)
                     then
                         mission:setVar(player, 'Unclaimed', 0)
                     end

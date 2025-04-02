@@ -8,13 +8,13 @@ local entity = {}
 
 entity.onMobInitialize = function(mob)
     -- Set Immunities.
-    -- mob:addImmunity(xi.immunity.DARK_SLEEP)
+    -- mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
     if optParams.isKiller or optParams.noKiller then
-        xi.nyzul.spawnChest(mob, player)
-        xi.nyzul.enemyLeaderKill(mob)
+        invaderXim.nyzul.spawnChest(mob, player)
+        invaderXim.nyzul.enemyLeaderKill(mob)
     end
 end
 

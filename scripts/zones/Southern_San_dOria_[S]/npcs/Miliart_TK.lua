@@ -8,15 +8,15 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.campaign.sigilOnTrigger(player, npc)
+    invaderXim.campaign.sigilOnTrigger(player, npc)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.campaign.sigilOnEventUpdate(player, csid, option, npc)
+    invaderXim.campaign.sigilOnEventUpdate(player, csid, option, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.campaign.sigilOnEventFinish(player, csid, option, npc)
+    invaderXim.campaign.sigilOnEventFinish(player, csid, option, npc)
 end
 
 return entity

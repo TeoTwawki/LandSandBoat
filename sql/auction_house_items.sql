@@ -2,7 +2,7 @@
 -- Table structure for table `auction_house_items`
 --
 
-DROP TABLE IF EXISTS `auction_house_items`;
+DROP TABLE IF IXIMSTS `auction_house_items`;
 CREATE TABLE `auction_house_items` (
   `itemid` smallint(5) unsigned NOT NULL,
   PRIMARY KEY `itemid` (`itemid`)

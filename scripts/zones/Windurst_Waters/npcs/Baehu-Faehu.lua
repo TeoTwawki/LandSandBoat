@@ -4,14 +4,14 @@
 -- Only sells when Windurst has control of Sarutabaruta
 -- Confirmed shop stock, August 2013
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WATERS]
+local ID = zones[invaderXim.zone.WINDURST_WATERS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local regionOwner = GetRegionOwner(xi.region.SARUTABARUTA)
-    if regionOwner ~= xi.nation.WINDURST then
+    local regionOwner = GetRegionOwner(invaderXim.region.SARUTABARUTA)
+    if regionOwner ~= invaderXim.nation.WINDURST then
         player:showText(npc, ID.text.BAEHUFAEHU_CLOSED_DIALOG)
     else
         player:showText(npc, ID.text.BAEHUFAEHU_OPEN_DIALOG)
@@ -25,7 +25,7 @@ entity.onTrigger = function(player, npc)
             635,   18   -- Windurstian Tea Leaves
         }
 
-        xi.shop.general(player, stock, xi.fameArea.WINDURST)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.WINDURST)
     end
 end
 

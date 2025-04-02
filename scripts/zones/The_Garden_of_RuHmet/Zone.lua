@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: The_Garden_of_RuHmet (35)
 -----------------------------------
-local ID = zones[xi.zone.THE_GARDEN_OF_RUHMET]
+local ID = zones[invaderXim.zone.THE_GARDEN_OF_RUHMET]
 local gardenGlobal = require('scripts/zones/The_Garden_of_RuHmet/globals')
 -----------------------------------
 ---@type TZone
@@ -107,7 +107,7 @@ zoneObject.onGameHour = function(zone)
     if
         qmDrk and
         vanadielHour % 12 == 0 and
-        qmDrk:getStatus() ~= xi.status.DISAPPEAR
+        qmDrk:getStatus() ~= invaderXim.status.DISAPPEAR
     then
         -- Change ??? position every 12 hours Vana'diel time (30 mins)
         local qmDrkPos = math.random(1, 4)
@@ -119,7 +119,7 @@ zoneObject.onGameHour = function(zone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -178,9 +178,9 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
         if areaId == 1 then
             if
                 areaId == 1 and
-                (player:getCurrentMission(xi.mission.log_id.COP) == xi.mission.id.cop.DAWN or
-                player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.DAWN) or
-                player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.THE_LAST_VERSE))
+                (player:getCurrentMission(invaderXim.mission.log_id.COP) == invaderXim.mission.id.cop.DAWN or
+                player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.DAWN) or
+                player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_LAST_VERSE))
             then
                 player:startEvent(101)
             else
@@ -188,8 +188,8 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
             end
         elseif areaId == 2 then
             if
-                player:hasKeyItem(xi.ki.BRAND_OF_DAWN) and
-                player:hasKeyItem(xi.ki.BRAND_OF_TWILIGHT)
+                player:hasKeyItem(invaderXim.ki.BRAND_OF_DAWN) and
+                player:hasKeyItem(invaderXim.ki.BRAND_OF_TWILIGHT)
             then
                 player:startEvent(156)
             else

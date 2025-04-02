@@ -4,32 +4,32 @@
 -- Log ID: 6, Quest ID: 5
 -- Waoud : !pos 65 -6 -78 50
 -----------------------------------
-local whitegateID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local whitegateID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AN_EMPTY_VESSEL)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AN_EMPTY_VESSEL)
 
 quest.reward =
 {
-    title = xi.title.BEARER_OF_THE_MARK_OF_ZAHAK,
+    title = invaderXim.title.BEARER_OF_THE_MARK_OF_ZAHAK,
 }
 
 local requiredItemList =
 {
-    xi.item.SIRENS_TEAR,
-    xi.item.PINCH_OF_VALKURM_SUNSAND,
-    xi.item.DANGRUF_STONE,
+    invaderXim.item.SIRENS_TEAR,
+    invaderXim.item.PINCH_OF_VALKURM_SUNSAND,
+    invaderXim.item.DANGRUF_STONE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getMainLvl() >= xi.settings.main.ADVANCED_JOB_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getMainLvl() >= invaderXim.settings.main.ADVANCED_JOB_LEVEL
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Waoud'] =
             {
@@ -100,10 +100,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Waoud'] =
             {
@@ -155,7 +155,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.AYDEEWA_SUBTERRANE] =
+        [invaderXim.zone.AYDEEWA_SUBTERRANE] =
         {
             onTriggerAreaEnter =
             {
@@ -177,9 +177,9 @@ quest.sections =
                     if option == 13 then
                         if quest:complete(player) then
                             -- Note: Messages for receiving the below items are handled by the event.
-                            player:unlockJob(xi.job.BLU)
-                            player:addKeyItem(xi.ki.MARK_OF_ZAHAK)
-                            player:addKeyItem(xi.ki.JOB_GESTURE_BLUE_MAGE)
+                            player:unlockJob(invaderXim.job.BLU)
+                            player:addKeyItem(invaderXim.ki.MARK_OF_ZAHAK)
+                            player:addKeyItem(invaderXim.ki.JOB_GESTURE_BLUE_MAGE)
 
                             quest:setVar(player, 'completeEvent', 1)
                         end
@@ -199,10 +199,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Waoud'] =
             {
@@ -237,7 +237,7 @@ quest.sections =
                         quest:setVar(player, 'completeEvent', 0)
 
                         quest:setVar(player, 'Timer', VanadielUniqueDay() + 1)
-                        xi.quest.setMustZone(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.BEGINNINGS)
+                        invaderXim.quest.setMustZone(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.BEGINNINGS)
                     end
                 end,
 

@@ -19,17 +19,17 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     local params = {}
     params.ftpMod = { 1.0, 2.375, 2.875 }
     params.dex_wsc = 0.3 params.int_wsc = 0.25
-    params.ele = xi.element.WIND
-    params.skill = xi.skill.DAGGER
+    params.ele = invaderXim.element.WIND
+    params.skill = invaderXim.skill.DAGGER
     params.includemab = true
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         -- http://wiki.ffo.jp/html/685.html
         params.dex_wsc = 0.4 params.int_wsc = 0.4
         params.ftpMod = { 1.0, 2.375, 3.75 }
     end
 
-    local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
+    local damage, criticalHit, tpHits, extraHits = invaderXim.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
     return tpHits, extraHits, criticalHit, damage
 end
 

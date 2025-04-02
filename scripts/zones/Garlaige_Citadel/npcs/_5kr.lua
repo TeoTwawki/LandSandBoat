@@ -4,14 +4,14 @@
 -- Type: Door
 -- !pos 139 -6 127 200
 -----------------------------------
-local ID = zones[xi.zone.GARLAIGE_CITADEL]
+local ID = zones[invaderXim.zone.GARLAIGE_CITADEL]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        trade:hasItemQty(xi.item.GARLAIGE_KEY, 1) and
+        trade:hasItemQty(invaderXim.item.GARLAIGE_KEY, 1) and
         trade:getItemCount() == 1
     then
         player:startEvent(4) -- Open the door

@@ -4,9 +4,9 @@ g_mixins = g_mixins or {}
 
 g_mixins.maat = function(maatMob)
     maatMob:addListener('SPAWN', 'JOB_SPECIAL_SPAWN', function(mob)
-        if mob:getMainJob() == xi.job.NIN then
+        if mob:getMainJob() == invaderXim.job.NIN then
             mob:setLocalVar('specialThreshold', 40)
-        elseif mob:getMainJob() == xi.job.DRG then
+        elseif mob:getMainJob() == invaderXim.job.DRG then
             mob:setLocalVar('specialThreshold', 75)
         else
             mob:setLocalVar('specialThreshold', math.random(50, 60))
@@ -48,21 +48,21 @@ g_mixins.maat = function(maatMob)
     maatMob:addListener('COMBAT_TICK', 'MAAT_CTICK', function(mob)
         local defaultAbility =
         {
-            [xi.job.WAR] = xi.jsa.MIGHTY_STRIKES_MAAT,
-            [xi.job.MNK] = xi.jsa.HUNDRED_FISTS_MAAT,
-            [xi.job.WHM] = xi.jsa.BENEDICTION_MAAT,
-            [xi.job.BLM] = xi.jsa.MANAFONT_MAAT,
-            [xi.job.RDM] = xi.jsa.CHAINSPELL_MAAT,
-            [xi.job.THF] = xi.jsa.PERFECT_DODGE_MAAT,
-            [xi.job.PLD] = xi.jsa.INVINCIBLE_MAAT,
-            [xi.job.DRK] = xi.jsa.BLOOD_WEAPON_MAAT,
-            [xi.job.BST] = xi.jsa.FAMILIAR_MAAT,
-            [xi.job.BRD] = xi.jsa.SOUL_VOICE_MAAT,
-            [xi.job.RNG] = xi.jsa.EES_MAAT,
-            [xi.job.SAM] = xi.jsa.MEIKYO_SHISUI_MAAT,
-            [xi.job.NIN] = xi.jsa.MIJIN_GAKURE_MAAT,
-            [xi.job.DRG] = xi.jsa.CALL_WYVERN_MAAT,
-            [xi.job.SMN] = xi.jsa.ASTRAL_FLOW_MAAT,
+            [invaderXim.job.WAR] = invaderXim.jsa.MIGHTY_STRIKES_MAAT,
+            [invaderXim.job.MNK] = invaderXim.jsa.HUNDRED_FISTS_MAAT,
+            [invaderXim.job.WHM] = invaderXim.jsa.BENEDICTION_MAAT,
+            [invaderXim.job.BLM] = invaderXim.jsa.MANAFONT_MAAT,
+            [invaderXim.job.RDM] = invaderXim.jsa.CHAINSPELL_MAAT,
+            [invaderXim.job.THF] = invaderXim.jsa.PERFECT_DODGE_MAAT,
+            [invaderXim.job.PLD] = invaderXim.jsa.INVINCIBLE_MAAT,
+            [invaderXim.job.DRK] = invaderXim.jsa.BLOOD_WEAPON_MAAT,
+            [invaderXim.job.BST] = invaderXim.jsa.FAMILIAR_MAAT,
+            [invaderXim.job.BRD] = invaderXim.jsa.SOUL_VOICE_MAAT,
+            [invaderXim.job.RNG] = invaderXim.jsa.EES_MAAT,
+            [invaderXim.job.SAM] = invaderXim.jsa.MEIKYO_SHISUI_MAAT,
+            [invaderXim.job.NIN] = invaderXim.jsa.MIJIN_GAKURE_MAAT,
+            [invaderXim.job.DRG] = invaderXim.jsa.CALL_WYVERN_MAAT,
+            [invaderXim.job.SMN] = invaderXim.jsa.ASTRAL_FLOW_MAAT,
         }
 
         if mob:getHPP() < mob:getLocalVar('specialThreshold') then
@@ -74,7 +74,7 @@ g_mixins.maat = function(maatMob)
 
         if
             mob:getHPP() < 20 or
-            (mob:getMainJob() == xi.job.WHM and mob:getBattleTime() > 300)
+            (mob:getMainJob() == invaderXim.job.WHM and mob:getBattleTime() > 300)
         then
             local ID = zones[mob:getZoneID()]
             mob:showText(mob, ID.text.YOUVE_COME_A_LONG_WAY)
@@ -83,7 +83,7 @@ g_mixins.maat = function(maatMob)
     end)
 
     maatMob:addListener('ITEM_STOLEN', 'MAAT_ITEM_STOLEN', function(mob, player, itemId)
-        if mob:getMainJob() == xi.job.THF then
+        if mob:getMainJob() == invaderXim.job.THF then
             local ID = zones[mob:getZoneID()]
             mob:messageText(mob, ID.text.YOUVE_COME_A_LONG_WAY)
             mob:getBattlefield():win()

@@ -2,9 +2,9 @@
 -- Abyssea Sturdy Pyxis - Temporary item
 -----------------------------------
 xi = xi or {}
-xi.pyxis = xi.pyxis or {}
+invaderXim.pyxis = invaderXim.pyxis or {}
 
-xi.pyxis.tempItem = {}
+invaderXim.pyxis.tempItem = {}
 
 -----------------------------------
 -- drop id's for temp items
@@ -15,112 +15,112 @@ local drops =
 {
     [1] =
     {
-        xi.item.BOTTLE_OF_CATHOLICON,
-        xi.item.MEGALIXIR,
-        xi.item.BOTTLE_OF_GNOSTICS_DRINK,
-        xi.item.BOTTLE_OF_SPRINTERS_DRINK,
-        xi.item.DUSTY_ELIXIR,
-        xi.item.LUCID_POTION_I,
-        xi.item.LUCID_ETHER_I,
+        invaderXim.item.BOTTLE_OF_CATHOLICON,
+        invaderXim.item.MEGALIXIR,
+        invaderXim.item.BOTTLE_OF_GNOSTICS_DRINK,
+        invaderXim.item.BOTTLE_OF_SPRINTERS_DRINK,
+        invaderXim.item.DUSTY_ELIXIR,
+        invaderXim.item.LUCID_POTION_I,
+        invaderXim.item.LUCID_ETHER_I,
     },
 
     [2] =
     {
-        xi.item.BOTTLE_OF_CATHOLICON,
-        xi.item.MEGALIXIR,
-        xi.item.BOTTLE_OF_GNOSTICS_DRINK,
-        xi.item.BOTTLE_OF_SPRINTERS_DRINK,
-        xi.item.DUSTY_ELIXIR,
-        xi.item.LUCID_POTION_I,
-        xi.item.LUCID_ETHER_I,
-        xi.item.DUSTY_WING,
-        xi.item.TUBE_OF_HEALING_SALVE_I,
-        xi.item.TUBE_OF_CLEAR_SALVE_I,
-        xi.item.BOTTLE_OF_STALWARTS_TONIC,
-        xi.item.BOTTLE_OF_ASCETICS_TONIC,
-        xi.item.BOTTLE_OF_CHAMPIONS_TONIC,
-        xi.item.BOTTLE_OF_SWIFTSHOT_DRINK,
-        xi.item.BOTTLE_OF_BERSERKERS_DRINK,
+        invaderXim.item.BOTTLE_OF_CATHOLICON,
+        invaderXim.item.MEGALIXIR,
+        invaderXim.item.BOTTLE_OF_GNOSTICS_DRINK,
+        invaderXim.item.BOTTLE_OF_SPRINTERS_DRINK,
+        invaderXim.item.DUSTY_ELIXIR,
+        invaderXim.item.LUCID_POTION_I,
+        invaderXim.item.LUCID_ETHER_I,
+        invaderXim.item.DUSTY_WING,
+        invaderXim.item.TUBE_OF_HEALING_SALVE_I,
+        invaderXim.item.TUBE_OF_CLEAR_SALVE_I,
+        invaderXim.item.BOTTLE_OF_STALWARTS_TONIC,
+        invaderXim.item.BOTTLE_OF_ASCETICS_TONIC,
+        invaderXim.item.BOTTLE_OF_CHAMPIONS_TONIC,
+        invaderXim.item.BOTTLE_OF_SWIFTSHOT_DRINK,
+        invaderXim.item.BOTTLE_OF_BERSERKERS_DRINK,
     },
 
     [3] =
     {
-        xi.item.BOTTLE_OF_CLERICS_DRINK,
-        xi.item.BOTTLE_OF_FOOLS_DRINK,
-        xi.item.BOTTLE_OF_VICARS_DRINK,
-        xi.item.LUCID_POTION_II,
-        xi.item.LUCID_ETHER_II,
-        xi.item.LUCID_ELIXIR_I,
-        xi.item.FLASK_OF_HEALING_MIST,
-        xi.item.FLASK_OF_MANA_MIST,
-        xi.item.PAIR_OF_LUCID_WINGS_I,
-        xi.item.TUBE_OF_CLEAR_SALVE_II,
-        xi.item.BOTTLE_OF_CHAMPIONS_GAMBIR,
-        xi.item.BOTTLE_OF_FOOLS_TONIC,
-        xi.item.BOTTLE_OF_SWIFTSHOT_TONIC,
+        invaderXim.item.BOTTLE_OF_CLERICS_DRINK,
+        invaderXim.item.BOTTLE_OF_FOOLS_DRINK,
+        invaderXim.item.BOTTLE_OF_VICARS_DRINK,
+        invaderXim.item.LUCID_POTION_II,
+        invaderXim.item.LUCID_ETHER_II,
+        invaderXim.item.LUCID_ELIXIR_I,
+        invaderXim.item.FLASK_OF_HEALING_MIST,
+        invaderXim.item.FLASK_OF_MANA_MIST,
+        invaderXim.item.PAIR_OF_LUCID_WINGS_I,
+        invaderXim.item.TUBE_OF_CLEAR_SALVE_II,
+        invaderXim.item.BOTTLE_OF_CHAMPIONS_GAMBIR,
+        invaderXim.item.BOTTLE_OF_FOOLS_TONIC,
+        invaderXim.item.BOTTLE_OF_SWIFTSHOT_TONIC,
     },
 
     [4] =
     {
-        xi.item.BOTTLE_OF_CLERICS_DRINK,
-        xi.item.BOTTLE_OF_FOOLS_DRINK,
-        xi.item.BOTTLE_OF_VICARS_DRINK,
-        xi.item.LUCID_POTION_II,
-        xi.item.LUCID_ETHER_II,
-        xi.item.LUCID_ELIXIR_I,
-        xi.item.FLASK_OF_HEALING_MIST,
-        xi.item.FLASK_OF_MANA_MIST,
-        xi.item.PAIR_OF_LUCID_WINGS_I,
-        xi.item.TUBE_OF_CLEAR_SALVE_II,
-        xi.item.BOTTLE_OF_CHAMPIONS_GAMBIR,
-        xi.item.BOTTLE_OF_FOOLS_TONIC,
-        xi.item.BOTTLE_OF_SWIFTSHOT_TONIC,
-        xi.item.PINCH_OF_MANA_POWDER,
-        xi.item.FLASK_OF_HEALING_POWDER,
-        xi.item.BOTTLE_OF_MONARCHS_DRINK,
-        xi.item.BOTTLE_OF_FANATICS_DRINK,
-        xi.item.LUCID_POTION_III,
-        xi.item.LUCID_ETHER_III,
-        xi.item.LUCID_ELIXIR_II,
-        xi.item.TUBE_OF_HEALING_SALVE_II,
-        xi.item.BOTTLE_OF_STALWARTS_GAMBIR,
-        xi.item.BOTTLE_OF_ASCETICS_GAMBIR,
-        xi.item.PINCH_OF_FANATICS_POWDER,
-        xi.item.PINCH_OF_FOOLS_POWDER,
-        xi.item.BOTTLE_OF_BERSERKERS_TONIC,
+        invaderXim.item.BOTTLE_OF_CLERICS_DRINK,
+        invaderXim.item.BOTTLE_OF_FOOLS_DRINK,
+        invaderXim.item.BOTTLE_OF_VICARS_DRINK,
+        invaderXim.item.LUCID_POTION_II,
+        invaderXim.item.LUCID_ETHER_II,
+        invaderXim.item.LUCID_ELIXIR_I,
+        invaderXim.item.FLASK_OF_HEALING_MIST,
+        invaderXim.item.FLASK_OF_MANA_MIST,
+        invaderXim.item.PAIR_OF_LUCID_WINGS_I,
+        invaderXim.item.TUBE_OF_CLEAR_SALVE_II,
+        invaderXim.item.BOTTLE_OF_CHAMPIONS_GAMBIR,
+        invaderXim.item.BOTTLE_OF_FOOLS_TONIC,
+        invaderXim.item.BOTTLE_OF_SWIFTSHOT_TONIC,
+        invaderXim.item.PINCH_OF_MANA_POWDER,
+        invaderXim.item.FLASK_OF_HEALING_POWDER,
+        invaderXim.item.BOTTLE_OF_MONARCHS_DRINK,
+        invaderXim.item.BOTTLE_OF_FANATICS_DRINK,
+        invaderXim.item.LUCID_POTION_III,
+        invaderXim.item.LUCID_ETHER_III,
+        invaderXim.item.LUCID_ELIXIR_II,
+        invaderXim.item.TUBE_OF_HEALING_SALVE_II,
+        invaderXim.item.BOTTLE_OF_STALWARTS_GAMBIR,
+        invaderXim.item.BOTTLE_OF_ASCETICS_GAMBIR,
+        invaderXim.item.PINCH_OF_FANATICS_POWDER,
+        invaderXim.item.PINCH_OF_FOOLS_POWDER,
+        invaderXim.item.BOTTLE_OF_BERSERKERS_TONIC,
     },
 
     [5] =
     {
-        xi.item.BOTTLE_OF_CLERICS_DRINK,
-        xi.item.BOTTLE_OF_FOOLS_DRINK,
-        xi.item.BOTTLE_OF_VICARS_DRINK,
-        xi.item.LUCID_POTION_II,
-        xi.item.LUCID_ETHER_II,
-        xi.item.LUCID_ELIXIR_I,
-        xi.item.FLASK_OF_HEALING_MIST,
-        xi.item.FLASK_OF_MANA_MIST,
-        xi.item.PAIR_OF_LUCID_WINGS_I,
-        xi.item.TUBE_OF_CLEAR_SALVE_II,
-        xi.item.BOTTLE_OF_CHAMPIONS_GAMBIR,
-        xi.item.BOTTLE_OF_FOOLS_TONIC,
-        xi.item.BOTTLE_OF_SWIFTSHOT_TONIC,
-        xi.item.PINCH_OF_MANA_POWDER,
-        xi.item.FLASK_OF_HEALING_POWDER,
-        xi.item.BOTTLE_OF_MONARCHS_DRINK,
-        xi.item.BOTTLE_OF_FANATICS_DRINK,
-        xi.item.LUCID_POTION_III,
-        xi.item.LUCID_ETHER_III,
-        xi.item.LUCID_ELIXIR_II,
-        xi.item.TUBE_OF_HEALING_SALVE_II,
-        xi.item.BOTTLE_OF_STALWARTS_GAMBIR,
-        xi.item.BOTTLE_OF_ASCETICS_GAMBIR,
-        xi.item.PINCH_OF_FANATICS_POWDER,
-        xi.item.PINCH_OF_FOOLS_POWDER,
-        xi.item.BOTTLE_OF_BERSERKERS_TONIC,
-        xi.item.REVITALIZER,
-        xi.item.DAEDALUS_WING,
-        xi.item.BOTTLE_OF_FANATICS_TONIC,
+        invaderXim.item.BOTTLE_OF_CLERICS_DRINK,
+        invaderXim.item.BOTTLE_OF_FOOLS_DRINK,
+        invaderXim.item.BOTTLE_OF_VICARS_DRINK,
+        invaderXim.item.LUCID_POTION_II,
+        invaderXim.item.LUCID_ETHER_II,
+        invaderXim.item.LUCID_ELIXIR_I,
+        invaderXim.item.FLASK_OF_HEALING_MIST,
+        invaderXim.item.FLASK_OF_MANA_MIST,
+        invaderXim.item.PAIR_OF_LUCID_WINGS_I,
+        invaderXim.item.TUBE_OF_CLEAR_SALVE_II,
+        invaderXim.item.BOTTLE_OF_CHAMPIONS_GAMBIR,
+        invaderXim.item.BOTTLE_OF_FOOLS_TONIC,
+        invaderXim.item.BOTTLE_OF_SWIFTSHOT_TONIC,
+        invaderXim.item.PINCH_OF_MANA_POWDER,
+        invaderXim.item.FLASK_OF_HEALING_POWDER,
+        invaderXim.item.BOTTLE_OF_MONARCHS_DRINK,
+        invaderXim.item.BOTTLE_OF_FANATICS_DRINK,
+        invaderXim.item.LUCID_POTION_III,
+        invaderXim.item.LUCID_ETHER_III,
+        invaderXim.item.LUCID_ELIXIR_II,
+        invaderXim.item.TUBE_OF_HEALING_SALVE_II,
+        invaderXim.item.BOTTLE_OF_STALWARTS_GAMBIR,
+        invaderXim.item.BOTTLE_OF_ASCETICS_GAMBIR,
+        invaderXim.item.PINCH_OF_FANATICS_POWDER,
+        invaderXim.item.PINCH_OF_FOOLS_POWDER,
+        invaderXim.item.BOTTLE_OF_BERSERKERS_TONIC,
+        invaderXim.item.REVITALIZER,
+        invaderXim.item.DAEDALUS_WING,
+        invaderXim.item.BOTTLE_OF_FANATICS_TONIC,
     },
 }
 
@@ -148,18 +148,18 @@ local function GiveTempItem(player, npc, tempNum)
             return
         else
             player:addTempItem(tempItems[tempNum])
-            xi.pyxis.messageChest(player, ID.text.OBTAINS_TEMP_ITEM, tempItems[tempNum], 0, 0, 0, npc)
+            invaderXim.pyxis.messageChest(player, ID.text.OBTAINS_TEMP_ITEM, tempItems[tempNum], 0, 0, 0, npc)
             npc:setLocalVar('TEMP' .. tempNum, 0)
             tempItems[tempNum] = 0
         end
     end
 
-    if xi.pyxis.isChestEmpty(tempItems) then
-        xi.pyxis.removeChest(player, npc, 0, 3)
+    if invaderXim.pyxis.isChestEmpty(tempItems) then
+        invaderXim.pyxis.removeChest(player, npc, 0, 3)
     end
 end
 
-xi.pyxis.tempItem.setTempItems = function(npc, tier)
+invaderXim.pyxis.tempItem.setTempItems = function(npc, tier)
     local maxItem = npc:getLocalVar('NB_ITEM')
 
     for i = 1, maxItem do
@@ -168,7 +168,7 @@ xi.pyxis.tempItem.setTempItems = function(npc, tier)
     end
 end
 
-xi.pyxis.tempItem.giveTemporaryItems = function(npc, player)
+invaderXim.pyxis.tempItem.giveTemporaryItems = function(npc, player)
     local tier = npc:getLocalVar('TIER')
     local ID = zones[npc:getZoneID()]
     local alliance = player:getAlliance()
@@ -193,11 +193,11 @@ xi.pyxis.tempItem.giveTemporaryItems = function(npc, player)
     end
 end
 
-xi.pyxis.tempItem.updateEvent = function(player, npc)
+invaderXim.pyxis.tempItem.updateEvent = function(player, npc)
     player:updateEvent(unpack(GetTempDropTable(npc)))
 end
 
-xi.pyxis.tempItem.giveTemporaryItem = function(player, npc, option)
+invaderXim.pyxis.tempItem.giveTemporaryItem = function(player, npc, option)
     local itemSelected = bit.rshift(option, 16)
 
     if itemSelected > 0 and itemSelected <= 8 then

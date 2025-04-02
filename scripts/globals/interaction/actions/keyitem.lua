@@ -7,7 +7,7 @@ require('scripts/globals/interaction/actions/action')
 ---@field id integer
 KeyItemAction = Action:new(Action.Type.KeyItem)
 
----@param keyItemId xi.keyItem
+---@param keyItemId invaderXim.keyItem
 ---@return TKeyItem
 function KeyItemAction:new(keyItemId)
     local obj = {}

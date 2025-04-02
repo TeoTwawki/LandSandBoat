@@ -4,33 +4,33 @@
 -- !addquest 3 167
 -- Nomad Moogle : !pos 10.012 1.453 121.883 243
 -----------------------------------
-local ruLudeID = zones[xi.zone.RULUDE_GARDENS]
+local ruLudeID = zones[invaderXim.zone.RULUDE_GARDENS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.MARTIAL_MASTERY)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.MARTIAL_MASTERY)
 
 quest.reward =
 {
-    keyItem = xi.ki.HEART_OF_THE_BUSHIN,
-    title = xi.title.BUSHIN_RYU_INHERITOR,
+    keyItem = invaderXim.ki.HEART_OF_THE_BUSHIN,
+    title = invaderXim.title.BUSHIN_RYU_INHERITOR,
 }
 
 local validCombatSkills =
 {
-    xi.skill.HAND_TO_HAND,
-    xi.skill.DAGGER,
-    xi.skill.SWORD,
-    xi.skill.GREAT_SWORD,
-    xi.skill.AXE,
-    xi.skill.GREAT_AXE,
-    xi.skill.SCYTHE,
-    xi.skill.POLEARM,
-    xi.skill.KATANA,
-    xi.skill.GREAT_KATANA,
-    xi.skill.CLUB,
-    xi.skill.STAFF,
-    xi.skill.ARCHERY,
-    xi.skill.MARKSMANSHIP,
+    invaderXim.skill.HAND_TO_HAND,
+    invaderXim.skill.DAGGER,
+    invaderXim.skill.SWORD,
+    invaderXim.skill.GREAT_SWORD,
+    invaderXim.skill.AXE,
+    invaderXim.skill.GREAT_AXE,
+    invaderXim.skill.SCYTHE,
+    invaderXim.skill.POLEARM,
+    invaderXim.skill.KATANA,
+    invaderXim.skill.GREAT_KATANA,
+    invaderXim.skill.CLUB,
+    invaderXim.skill.STAFF,
+    invaderXim.skill.ARCHERY,
+    invaderXim.skill.MARKSMANSHIP,
 }
 
 local function hasRequiredCombatSkill(player)
@@ -47,12 +47,12 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
                 player:getMainLvl() >= 96 and
                 hasRequiredCombatSkill(player)
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Nomad_Moogle'] = quest:progressEvent(10196),
 
@@ -68,13 +68,13 @@ quest.sections =
     {
         check = function(player, status, vars)
             -- TODO: Confirm that the player must be on a valid job to complete
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
                 player:getMainLvl() >= 96 and
                 hasRequiredCombatSkill(player) and
                 player:getMeritCount() >= 15
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Nomad_Moogle'] = quest:progressEvent(10198),
 

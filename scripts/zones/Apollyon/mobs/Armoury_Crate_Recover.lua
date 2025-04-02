@@ -6,10 +6,10 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.NO_REST, 1)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 1)
-    mob:setMobMod(xi.mobMod.NO_DESPAWN, 1)
-    mob:setStatus(xi.status.NORMAL)
+    mob:setMobMod(invaderXim.mobMod.NO_REST, 1)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
+    mob:setMobMod(invaderXim.mobMod.NO_DESPAWN, 1)
+    mob:setStatus(invaderXim.status.NORMAL)
 end
 
 entity.onMobSpawn = function(mob)

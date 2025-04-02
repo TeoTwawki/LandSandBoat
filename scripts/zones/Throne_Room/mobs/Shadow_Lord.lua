@@ -3,7 +3,7 @@
 --  Mob: Shadow Lord
 -- Mission 5-2 BCNM Fight
 -----------------------------------
-local ID = zones[xi.zone.THRONE_ROOM]
+local ID = zones[invaderXim.zone.THRONE_ROOM]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -25,11 +25,11 @@ entity.onMobFight = function(mob, target)
             -- subanimation 0 is first phase subanim, so just go straight to magic mode
             if mob:getAnimationSub() == 0 then
                 mob:setAnimationSub(1)
-                mob:delStatusEffect(xi.effect.PHYSICAL_SHIELD)
-                mob:addStatusEffectEx(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
+                mob:delStatusEffect(invaderXim.effect.PHYSICAL_SHIELD)
+                mob:addStatusEffectEx(invaderXim.effect.MAGIC_SHIELD, 0, 1, 0, 0)
                 mob:setAutoAttackEnabled(false)
                 mob:setMagicCastingEnabled(true)
-                mob:setMobMod(xi.mobMod.MAGIC_COOL, 2)
+                mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 2)
                 --and record the time and HP this immunity was started
                 mob:setLocalVar('changeTime', mob:getBattleTime())
                 mob:setLocalVar('changeHP', mob:getHP())
@@ -40,11 +40,11 @@ entity.onMobFight = function(mob, target)
                 mob:getBattleTime() - changeTime > 300)
             then
                 mob:setAnimationSub(1)
-                mob:delStatusEffect(xi.effect.PHYSICAL_SHIELD)
-                mob:addStatusEffectEx(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
+                mob:delStatusEffect(invaderXim.effect.PHYSICAL_SHIELD)
+                mob:addStatusEffectEx(invaderXim.effect.MAGIC_SHIELD, 0, 1, 0, 0)
                 mob:setAutoAttackEnabled(false)
                 mob:setMagicCastingEnabled(true)
-                mob:setMobMod(xi.mobMod.MAGIC_COOL, 2)
+                mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 2)
                 mob:setLocalVar('changeTime', mob:getBattleTime())
                 mob:setLocalVar('changeHP', mob:getHP())
             -- subanimation 1 is magic mode, so check if he should change into physical mode
@@ -56,11 +56,11 @@ entity.onMobFight = function(mob, target)
                 -- and use an ability before changing
                 mob:useMobAbility(673)
                 mob:setAnimationSub(2)
-                mob:delStatusEffect(xi.effect.MAGIC_SHIELD)
-                mob:addStatusEffectEx(xi.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
+                mob:delStatusEffect(invaderXim.effect.MAGIC_SHIELD)
+                mob:addStatusEffectEx(invaderXim.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
                 mob:setAutoAttackEnabled(true)
                 mob:setMagicCastingEnabled(false)
-                mob:setMobMod(xi.mobMod.MAGIC_COOL, 10)
+                mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 10)
                 mob:setLocalVar('changeTime', mob:getBattleTime())
                 mob:setLocalVar('changeHP', mob:getHP())
             end
@@ -80,8 +80,8 @@ entity.onMobDeath = function(mob, player, optParams)
     mob:setAnimationSub(0)
     mob:setAutoAttackEnabled(true)
     mob:setMagicCastingEnabled(true)
-    mob:delStatusEffect(xi.effect.MAGIC_SHIELD)
-    mob:delStatusEffect(xi.effect.PHYSICAL_SHIELD)
+    mob:delStatusEffect(invaderXim.effect.MAGIC_SHIELD)
+    mob:delStatusEffect(invaderXim.effect.PHYSICAL_SHIELD)
 end
 
 entity.onMobDespawn = function(mob)
@@ -89,8 +89,8 @@ entity.onMobDespawn = function(mob)
     mob:setAnimationSub(0)
     mob:setAutoAttackEnabled(true)
     mob:setMagicCastingEnabled(true)
-    mob:delStatusEffect(xi.effect.MAGIC_SHIELD)
-    mob:delStatusEffect(xi.effect.PHYSICAL_SHIELD)
+    mob:delStatusEffect(invaderXim.effect.MAGIC_SHIELD)
+    mob:delStatusEffect(invaderXim.effect.PHYSICAL_SHIELD)
 end
 
 return entity

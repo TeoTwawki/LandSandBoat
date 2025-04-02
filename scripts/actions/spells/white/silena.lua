@@ -10,13 +10,13 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    if target:delStatusEffect(xi.effect.SILENCE) then
-        spell:setMsg(xi.msg.basic.MAGIC_REMOVE_EFFECT)
+    if target:delStatusEffect(invaderXim.effect.SILENCE) then
+        spell:setMsg(invaderXim.msg.basic.MAGIC_REMOVE_EFFECT)
     else
-        spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
     end
 
-    return xi.effect.SILENCE
+    return invaderXim.effect.SILENCE
 end
 
 return spellObject

@@ -2,24 +2,24 @@
 -- Abyssea Sturdy Pyxis - Pop Item
 -----------------------------------
 xi = xi or {}
-xi.pyxis = xi.pyxis or {}
+invaderXim.pyxis = invaderXim.pyxis or {}
 
-xi.pyxis.popitem = {}
+invaderXim.pyxis.popitem = {}
 
 -----------------------------------
 -- drop id's for pop item
 -----------------------------------
 local popitemDrops =
 {
-    [xi.zone.ABYSSEA_KONSCHTAT ] = { 2903, 2904, 2906, 2907, 2908, 2909, 2910, 2911, 2912, 2913, 2914 },
-    [xi.zone.ABYSSEA_TAHRONGI  ] = { },
-    [xi.zone.ABYSSEA_LA_THEINE ] = { },
-    [xi.zone.ABYSSEA_ATTOHWA   ] = { },
-    [xi.zone.ABYSSEA_MISAREAUX ] = { },
-    [xi.zone.ABYSSEA_VUNKERL   ] = { },
-    [xi.zone.ABYSSEA_ALTEPA    ] = { },
-    [xi.zone.ABYSSEA_ULEGUERAND] = { },
-    [xi.zone.ABYSSEA_GRAUBERG  ] = { },
+    [invaderXim.zone.ABYSSEA_KONSCHTAT ] = { 2903, 2904, 2906, 2907, 2908, 2909, 2910, 2911, 2912, 2913, 2914 },
+    [invaderXim.zone.ABYSSEA_TAHRONGI  ] = { },
+    [invaderXim.zone.ABYSSEA_LA_THEINE ] = { },
+    [invaderXim.zone.ABYSSEA_ATTOHWA   ] = { },
+    [invaderXim.zone.ABYSSEA_MISAREAUX ] = { },
+    [invaderXim.zone.ABYSSEA_VUNKERL   ] = { },
+    [invaderXim.zone.ABYSSEA_ALTEPA    ] = { },
+    [invaderXim.zone.ABYSSEA_ULEGUERAND] = { },
+    [invaderXim.zone.ABYSSEA_GRAUBERG  ] = { },
 }
 
 local function GetChestItemTable(npc)
@@ -65,7 +65,7 @@ local function GiveItem(player, npc, itemnum)
             return
         else
             player:addItem(itemList[itemnum], 1, 0, 0, 0, 0)
-            xi.pyxis.messageChest(player, ID.text.OBTAINS_ITEM, itemList[itemnum], 0, 0, 0, npc)
+            invaderXim.pyxis.messageChest(player, ID.text.OBTAINS_ITEM, itemList[itemnum], 0, 0, 0, npc)
 
             if chest then
                 chest:setLocalVar('POPITEM' .. itemnum, 0)
@@ -75,12 +75,12 @@ local function GiveItem(player, npc, itemnum)
         end
     end
 
-    if xi.pyxis.isChestEmpty(itemList) then
-        xi.pyxis.removeChest(player, npc, 0, 3)
+    if invaderXim.pyxis.isChestEmpty(itemList) then
+        invaderXim.pyxis.removeChest(player, npc, 0, 3)
     end
 end
 
-xi.pyxis.popitem.setPopItems = function(npc)
+invaderXim.pyxis.popitem.setPopItems = function(npc)
     local itemcount = npc:getLocalVar('NB_ITEM')
 
     for i = 1, itemcount do
@@ -89,11 +89,11 @@ xi.pyxis.popitem.setPopItems = function(npc)
     end
 end
 
-xi.pyxis.popitem.updateEvent = function(player, npc)
+invaderXim.pyxis.popitem.updateEvent = function(player, npc)
     player:updateEvent(unpack(GetChestItemTable(npc)))
 end
 
-xi.pyxis.popitem.givePopItem = function(player, npc, option)
+invaderXim.pyxis.popitem.givePopItem = function(player, npc, option)
     local ID = zones[npc:getZoneID()]
     local loottable = GetLootTable(player, npc)
     local itemSelected = bit.rshift(option, 16)
@@ -105,7 +105,7 @@ xi.pyxis.popitem.givePopItem = function(player, npc, option)
             player:addTreasure(v)
         end
 
-        xi.pyxis.messageChest(player, ID.text.ADD_SPOILS_TO_TREASURE, 0, 0, 0, 0, npc)
-        xi.pyxis.removeChest(player, npc, 0, 1)
+        invaderXim.pyxis.messageChest(player, ID.text.ADD_SPOILS_TO_TREASURE, 0, 0, 0, 0, npc)
+        invaderXim.pyxis.removeChest(player, npc, 0, 1)
     end
 end

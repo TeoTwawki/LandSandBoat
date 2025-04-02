@@ -2,7 +2,7 @@
 -- Area: Upper Jeuno
 --  NPC: Theraisie
 -----------------------------------
-local ID = zones[xi.zone.UPPER_JEUNO]
+local ID = zones[invaderXim.zone.UPPER_JEUNO]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -35,7 +35,7 @@ entity.onTrigger = function(player, npc)
     }
 
     player:showText(npc, ID.text.MP_SHOP_DIALOG)
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 return entity

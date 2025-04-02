@@ -9,12 +9,12 @@ attachmentObject.onEquip = function(pet)
         local master = automaton:getMaster()
         if
             master and
-            master:countEffect(xi.effect.DARK_MANEUVER) > 0 and
+            master:countEffect(invaderXim.effect.DARK_MANEUVER) > 0 and
             automaton:getLocalVar('dispel') < VanadielTime() and
-            target:hasStatusEffectByFlag(xi.effectFlag.DISPELABLE) and
+            target:hasStatusEffectByFlag(invaderXim.effectFlag.DISPELABLE) and
             (automaton:checkDistance(target) - target:getModelSize()) < 7
         then
-            automaton:useMobAbility(xi.automaton.abilities.DISRUPTOR)
+            automaton:useMobAbility(invaderXim.automaton.abilities.DISRUPTOR)
         end
     end)
 end

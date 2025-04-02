@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.TAHRONGI_CANYON] =
+zones[invaderXim.zone.TAHRONGI_CANYON] =
 {
     text =
     {
@@ -70,7 +70,7 @@ zones[xi.zone.TAHRONGI_CANYON] =
 
         VOIDWALKER =
         {
-            [xi.keyItem.CLEAR_ABYSSITE] =
+            [invaderXim.keyItem.CLEAR_ABYSSITE] =
             {
                 17256918, -- Prickly Sheep
                 17256917, -- Prickly Sheep
@@ -82,18 +82,18 @@ zones[xi.zone.TAHRONGI_CANYON] =
                 17256911,  -- Void Hare
             },
 
-            [xi.keyItem.COLORFUL_ABYSSITE] =
+            [invaderXim.keyItem.COLORFUL_ABYSSITE] =
             {
                 17256910, -- Chesma
                 17256909, -- Tammuz
             },
 
-            [xi.keyItem.GREY_ABYSSITE] =
+            [invaderXim.keyItem.GREY_ABYSSITE] =
             {
                 17256908, -- Dawon
             },
 
-            [xi.keyItem.BLACK_ABYSSITE] =
+            [invaderXim.keyItem.BLACK_ABYSSITE] =
             {
                 17256907, -- Yilbegan
             }
@@ -107,4 +107,4 @@ zones[xi.zone.TAHRONGI_CANYON] =
     },
 }
 
-return zones[xi.zone.TAHRONGI_CANYON]
+return zones[invaderXim.zone.TAHRONGI_CANYON]

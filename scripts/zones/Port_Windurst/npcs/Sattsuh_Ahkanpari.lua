@@ -3,13 +3,13 @@
 --  NPC: Sattsuh Ahkanpari
 -- Elshimo Uplands Regional Merchant
 -----------------------------------
-local ID = zones[xi.zone.PORT_WINDURST]
+local ID = zones[invaderXim.zone.PORT_WINDURST]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if GetRegionOwner(xi.region.ELSHIMOUPLANDS) ~= xi.nation.WINDURST then
+    if GetRegionOwner(invaderXim.region.ELSHIMOUPLANDS) ~= invaderXim.nation.WINDURST then
         player:showText(npc, ID.text.SATTSUHAHKANPARI_CLOSED_DIALOG)
     else
         local stock =
@@ -21,7 +21,7 @@ entity.onTrigger = function(player, npc)
         }
 
         player:showText(npc, ID.text.SATTSUHAHKANPARI_OPEN_DIALOG)
-        xi.shop.general(player, stock, xi.fameArea.WINDURST)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.WINDURST)
     end
 end
 

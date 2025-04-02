@@ -7,7 +7,7 @@
 require('scripts/globals/regimes')
 
 xi = xi or {}
-xi.hunts = xi.hunts or {}
+invaderXim.hunts = invaderXim.hunts or {}
 
 local hunts =
 {
@@ -428,7 +428,7 @@ local hunts =
 
 local zone =
 {
-    [xi.zone.RULUDE_GARDENS] =
+    [invaderXim.zone.RULUDE_GARDENS] =
     {
         -- these params display the correct number of hunts
         huntMenu =
@@ -529,7 +529,7 @@ local zone =
         [1914] = { params = 174639, huntId = 559 },
     },
 
-    [xi.zone.NORTHERN_SAN_DORIA] =
+    [invaderXim.zone.NORTHERN_SAN_DORIA] =
     {
         huntMenu =
         {
@@ -624,7 +624,7 @@ local zone =
         [ 890] = { params = 174624, huntId = 544 },
     },
 
-    [xi.zone.BASTOK_MINES] =
+    [invaderXim.zone.BASTOK_MINES] =
     {
         huntMenu =
         {
@@ -718,7 +718,7 @@ local zone =
         [ 890] = { params = 174627, huntId = 547 },
     },
 
-    [xi.zone.PORT_WINDURST] =
+    [invaderXim.zone.PORT_WINDURST] =
     {
         huntMenu =
         {
@@ -820,7 +820,7 @@ local zone =
         [ 906] = { params = 174630, huntId = 550 },
     },
 
-    [xi.zone.KAZHAM] =
+    [invaderXim.zone.KAZHAM] =
     {
         huntMenu =
         {
@@ -883,7 +883,7 @@ local zone =
         [1330] = { params = 140691, huntId = 403 },
     },
 
-    [xi.zone.NORG] =
+    [invaderXim.zone.NORG] =
     {
         huntMenu =
         {
@@ -946,7 +946,7 @@ local zone =
         [1330] = { params = 140691, huntId = 403 },
     },
 
-    [xi.zone.RABAO] =
+    [invaderXim.zone.RABAO] =
     {
         huntMenu =
         {
@@ -1003,7 +1003,7 @@ local zone =
         [3378] = { params = 141750, huntId = 438 },
     },
 
-    [xi.zone.TAVNAZIAN_SAFEHOLD] =
+    [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
     {
         huntMenu =
         {
@@ -1023,7 +1023,7 @@ local zone =
         [1042] = { params = 104894, huntId = 446 },
     },
 
-    [xi.zone.AHT_URHGAN_WHITEGATE] =
+    [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
     {
         huntMenu =
         {
@@ -1064,7 +1064,7 @@ local zone =
         [ 818] = { params = 173523, huntId = 467 },
     },
 
-    [xi.zone.NASHMAU] =
+    [invaderXim.zone.NASHMAU] =
     {
         huntMenu =
         {
@@ -1087,7 +1087,7 @@ local zone =
         [ 794] = { params = 174558, huntId = 478 },
     },
 
-    [xi.zone.SOUTHERN_SAN_DORIA_S] =
+    [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
     {
         huntMenu =
         {
@@ -1136,7 +1136,7 @@ local zone =
         [1082] = { params = 174623, huntId = 543 },
     },
 
-    [xi.zone.BASTOK_MARKETS_S] =
+    [invaderXim.zone.BASTOK_MARKETS_S] =
     {
         huntMenu =
         {
@@ -1185,7 +1185,7 @@ local zone =
         [1082] = { params = 174623, huntId = 543 },
     },
 
-    [xi.zone.WINDURST_WATERS_S] =
+    [invaderXim.zone.WINDURST_WATERS_S] =
     {
         huntMenu =
         {
@@ -1240,7 +1240,7 @@ local zone =
       lock |   Scyld Qty    | NM pageId #  | status
 (Has distinct values) ]]--
 
-function xi.hunts.onTrigger(player, npc)
+function invaderXim.hunts.onTrigger(player, npc)
     local huntId = player:getCharVar('[hunt]id')
     local huntStatus = player:getCharVar('[hunt]status')
     local scyldBits = bit.lshift(player:getCurrency('scyld'), 14)
@@ -1265,7 +1265,7 @@ function xi.hunts.onTrigger(player, npc)
     player:startEvent(1500, scyldBits, zone[player:getZoneID()].huntMenu[1])
 end
 
-function xi.hunts.onEventUpdate(player, csid, option, npc)
+function invaderXim.hunts.onEventUpdate(player, csid, option, npc)
     local registryZone = zone[player:getZoneID()]
     local region = registryZone[option]
     player:updateEvent(0, 0, registryZone.huntMenu[option])
@@ -1291,12 +1291,12 @@ function xi.hunts.onEventUpdate(player, csid, option, npc)
     end
 end
 
-xi.hunts.clearHuntVars = function(player)
+invaderXim.hunts.clearHuntVars = function(player)
     player:setCharVar('[hunt]id', 0)
     player:setCharVar('[hunt]status', 0)
 end
 
-function xi.hunts.onEventFinish(player, csid, option, npc)
+function invaderXim.hunts.onEventFinish(player, csid, option, npc)
     local zoneid = player:getZoneID()
     -- local registryZone = zone[zoneid]
     local huntEntry = hunts[bit.rshift(option, 3)]
@@ -1318,7 +1318,7 @@ function xi.hunts.onEventFinish(player, csid, option, npc)
     -- cancels training regime and clears all vars
     elseif option == 4 then
         player:messageSpecial(msg.REGIME_CANCELED)
-        xi.regime.clearRegimeVars(player)
+        invaderXim.regime.clearRegimeVars(player)
 
     -- completes hunt
     elseif option == 5 then
@@ -1326,7 +1326,7 @@ function xi.hunts.onEventFinish(player, csid, option, npc)
         local scyldBounty = hunts[huntId].bounty
         -- give player evoliths here
         player:setCharVar('[hunt]nextHunt', getVanaMidnight())
-        xi.hunts.clearHuntVars(player)
+        invaderXim.hunts.clearHuntVars(player)
 
         -- scylds cap at 1000
         if player:getCurrency('scyld') + scyldBounty > 1000 then
@@ -1340,7 +1340,7 @@ function xi.hunts.onEventFinish(player, csid, option, npc)
     end
 end
 
-function xi.hunts.checkHunt(mob, player, mobHuntID)
+function invaderXim.hunts.checkHunt(mob, player, mobHuntID)
     -- dead players and players out of XP range get no credit
     -- also prevents error when this function is called onMobDeath from a mob not killed by a player
     if not player or player:getHP() == 0 or player:checkDistance(mob) > 100 then
@@ -1351,7 +1351,7 @@ function xi.hunts.checkHunt(mob, player, mobHuntID)
 
     -- required NM has been defeated
     if player:getCharVar('[hunt]status') == 1 and playerHuntID == mobHuntID then
-        player:messageBasic(xi.msg.basic.FOV_DEFEATED_TARGET + 20)
+        player:messageBasic(invaderXim.msg.basic.FOV_DEFEATED_TARGET + 20)
         player:setCharVar('[hunt]status', 2)
     end
 end

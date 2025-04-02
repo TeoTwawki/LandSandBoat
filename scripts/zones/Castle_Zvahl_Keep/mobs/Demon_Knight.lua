@@ -3,7 +3,7 @@
 --  Mob: Demon Knight
 -- Note: PH for Count Bifrons
 -----------------------------------
-local ID = zones[xi.zone.CASTLE_ZVAHL_KEEP]
+local ID = zones[invaderXim.zone.CASTLE_ZVAHL_KEEP]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -71,7 +71,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, bifronsPHTable, 10, 1, { spawnPoints = bifronsSpawnPoints }) -- No respawn
+    invaderXim.mob.phOnDespawn(mob, bifronsPHTable, 10, 1, { spawnPoints = bifronsSpawnPoints }) -- No respawn
 end
 
 return entity

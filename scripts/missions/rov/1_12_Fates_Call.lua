@@ -5,26 +5,26 @@
 -- !addmission 13 28
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.FATES_CALL)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.FATES_CALL)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.WHAT_LIES_BEYOND },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.WHAT_LIES_BEYOND },
 }
 
 -- TODO: We use this table in the first mission as well, move this.
 local rovEntryZones =
 {
-    xi.zone.BASTOK_MARKETS,
-    xi.zone.BASTOK_MINES,
-    xi.zone.NORTHERN_SAN_DORIA,
-    xi.zone.PORT_BASTOK,
-    xi.zone.PORT_SAN_DORIA,
-    xi.zone.PORT_WINDURST,
-    xi.zone.SOUTHERN_SAN_DORIA,
-    xi.zone.WINDURST_WALLS,
-    xi.zone.WINDURST_WATERS,
-    xi.zone.WINDURST_WOODS,
+    invaderXim.zone.BASTOK_MARKETS,
+    invaderXim.zone.BASTOK_MINES,
+    invaderXim.zone.NORTHERN_SAN_DORIA,
+    invaderXim.zone.PORT_BASTOK,
+    invaderXim.zone.PORT_SAN_DORIA,
+    invaderXim.zone.PORT_WINDURST,
+    invaderXim.zone.SOUTHERN_SAN_DORIA,
+    invaderXim.zone.WINDURST_WALLS,
+    invaderXim.zone.WINDURST_WATERS,
+    invaderXim.zone.WINDURST_WOODS,
 }
 
 mission.sections    = {}
@@ -36,7 +36,7 @@ mission.sections[1] =
         return currentMission == mission.missionId and
             (
                 player:getRank(pNation) > 5 or
-                (player:getCurrentMission(pNation) == xi.mission.id.nation.SHADOW_LORD and player:getMissionStatus(pNation) >= 4)
+                (player:getCurrentMission(pNation) == invaderXim.mission.id.nation.SHADOW_LORD and player:getMissionStatus(pNation) >= 4)
             )
     end,
 }

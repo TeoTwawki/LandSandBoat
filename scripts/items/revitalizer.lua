@@ -12,7 +12,7 @@ end
 
 itemObject.onItemUse = function(target)
     target:resetRecasts()
-    target:messageBasic(xi.msg.basic.ALL_ABILITIES_RECHARGED, 0)
+    target:messageBasic(invaderXim.msg.basic.ALL_ABILITIES_RECHARGED, 0)
 end
 
 return itemObject

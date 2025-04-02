@@ -25,11 +25,11 @@
 -- Craggy Pillar 4 : !pos -236 -52 103 162
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.AMK, xi.mission.id.amk.A_CHALLENGE_YOU_COULD_BE_A_WINNER)
+local mission = Mission:new(invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.A_CHALLENGE_YOU_COULD_BE_A_WINNER)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.AMK, xi.mission.id.amk.SMASH_A_MALEVOLENT_MENACE },
+    nextMission = { invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.SMASH_A_MALEVOLENT_MENACE },
 }
 
 mission.sections =
@@ -38,10 +38,10 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission >= mission.missionId and
-                not player:hasKeyItem(xi.ki.GAUNTLET_CHALLENGE_KUPON)
+                not player:hasKeyItem(invaderXim.ki.GAUNTLET_CHALLENGE_KUPON)
         end,
 
-        [xi.zone.CASTLE_ZVAHL_BAILEYS] =
+        [invaderXim.zone.CASTLE_ZVAHL_BAILEYS] =
         {
             ['Shadowy_Pillar'] =
             {
@@ -67,12 +67,12 @@ mission.sections =
             return currentMission >= mission.missionId and
                 (mission:getVar(player, 'progress') == 1 or
                 currentMission > mission.missionId) and
-                not player:hasKeyItem(xi.ki.POCKET_MOGBOMB) and
-                not player:hasKeyItem(xi.ki.TRIVIA_CHALLENGE_KUPON) and
+                not player:hasKeyItem(invaderXim.ki.POCKET_MOGBOMB) and
+                not player:hasKeyItem(invaderXim.ki.TRIVIA_CHALLENGE_KUPON) and
                 player:needToZone() == false
         end,
 
-        [xi.zone.BEAUCEDINE_GLACIER] =
+        [invaderXim.zone.BEAUCEDINE_GLACIER] =
         {
             ['Lonely_Evergreen'] =
             {
@@ -101,12 +101,12 @@ mission.sections =
         check = function(player, currentMission, missionStatus, vars)
             return currentMission >= mission.missionId and
                 mission:getVar(player, 'progress') == 1 and
-                not player:hasKeyItem(xi.ki.POCKET_MOGBOMB) and
-                not player:hasKeyItem(xi.ki.TRIVIA_CHALLENGE_KUPON) and
+                not player:hasKeyItem(invaderXim.ki.POCKET_MOGBOMB) and
+                not player:hasKeyItem(invaderXim.ki.TRIVIA_CHALLENGE_KUPON) and
                 player:needToZone() == true
         end,
 
-        [xi.zone.BEAUCEDINE_GLACIER] =
+        [invaderXim.zone.BEAUCEDINE_GLACIER] =
         {
             ['Lonely_Evergreen'] =
             {
@@ -118,14 +118,14 @@ mission.sections =
             ['Goblin_Grenadier'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.MAP_OF_THE_NORTHLANDS_AREA) then
+                    if not player:hasKeyItem(invaderXim.ki.MAP_OF_THE_NORTHLANDS_AREA) then
                         return mission:event(509)
                     end
 
                     local answer = mission:getLocalVar(player, '[p1]pipSet') - 1
 
                     if answer < 0 then
-                        return mission:progressEvent(508, xi.ki.MAP_OF_THE_NORTHLANDS_AREA)
+                        return mission:progressEvent(508, invaderXim.ki.MAP_OF_THE_NORTHLANDS_AREA)
                     else
                         local today = VanadielDayOfTheWeek()
                         local tomorrow = (today + 1) % 8
@@ -137,9 +137,9 @@ mission.sections =
                             507,
                             hintsUsed + 2,
                             answer,
-                            xi.ki.MAP_OF_THE_NORTHLANDS_AREA,
-                            xi.ki.POCKET_MOGBOMB,
-                            xi.ki.MAP_OF_THE_NORTHLANDS_AREA
+                            invaderXim.ki.MAP_OF_THE_NORTHLANDS_AREA,
+                            invaderXim.ki.POCKET_MOGBOMB,
+                            invaderXim.ki.MAP_OF_THE_NORTHLANDS_AREA
                         )
                     end
                 end,
@@ -148,42 +148,42 @@ mission.sections =
             ['Northwestern_Pip'] =
             {
                 onTrigger = function(player, npc)
-                    return xi.amk.helpers.puzzleOneOnTrigger(player, npc, mission, 1)
+                    return invaderXim.amk.helpers.puzzleOneOnTrigger(player, npc, mission, 1)
                 end,
             },
 
             ['Western_Pip'] =
             {
                 onTrigger = function(player, npc)
-                    return xi.amk.helpers.puzzleOneOnTrigger(player, npc, mission, 2)
+                    return invaderXim.amk.helpers.puzzleOneOnTrigger(player, npc, mission, 2)
                 end,
             },
 
             ['Southwestern_Pip'] =
             {
                 onTrigger = function(player, npc)
-                    return xi.amk.helpers.puzzleOneOnTrigger(player, npc, mission, 3)
+                    return invaderXim.amk.helpers.puzzleOneOnTrigger(player, npc, mission, 3)
                 end,
             },
 
             ['Northeastern_Pip'] =
             {
                 onTrigger = function(player, npc)
-                    return xi.amk.helpers.puzzleOneOnTrigger(player, npc, mission, 4)
+                    return invaderXim.amk.helpers.puzzleOneOnTrigger(player, npc, mission, 4)
                 end,
             },
 
             ['Eastern_Pip'] =
             {
                 onTrigger = function(player, npc)
-                    return xi.amk.helpers.puzzleOneOnTrigger(player, npc, mission, 5)
+                    return invaderXim.amk.helpers.puzzleOneOnTrigger(player, npc, mission, 5)
                 end,
             },
 
             ['Southeastern_Pip'] =
             {
                 onTrigger = function(player, npc)
-                    return xi.amk.helpers.puzzleOneOnTrigger(player, npc, mission, 6)
+                    return invaderXim.amk.helpers.puzzleOneOnTrigger(player, npc, mission, 6)
                 end,
             },
 
@@ -221,7 +221,7 @@ mission.sections =
                         option == 7    -- Correct answer, two hints used
                     then
                         player:needToZone(false)
-                        npcUtil.giveKeyItem(player, xi.ki.POCKET_MOGBOMB)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.POCKET_MOGBOMB)
 
                         -- Add flee affect, base 5 minutes for no hints used, 3 for 1 hint, no flee for 2 hints
                         local fleeDuration =
@@ -231,7 +231,7 @@ mission.sections =
                         }
 
                         if option == 5 or option == 6 then
-                            player:addStatusEffect(xi.effect.FLEE, 10000, 0, fleeDuration[option])
+                            player:addStatusEffect(invaderXim.effect.FLEE, 10000, 0, fleeDuration[option])
                         end
                     end
                 end,
@@ -249,15 +249,15 @@ mission.sections =
         check = function(player, currentMission, missionStatus, vars)
             return currentMission >= mission.missionId and
                 mission:getVar(player, 'progress') == 1 and
-                player:hasKeyItem(xi.ki.POCKET_MOGBOMB)
+                player:hasKeyItem(invaderXim.ki.POCKET_MOGBOMB)
         end,
 
-        [xi.zone.BEAUCEDINE_GLACIER] =
+        [invaderXim.zone.BEAUCEDINE_GLACIER] =
         {
             ['Lonely_Evergreen'] =
             {
                 onTrigger = function(player, npc)
-                    return mission:progressEvent(502, xi.ki.POCKET_MOGBOMB, xi.ki.TRIVIA_CHALLENGE_KUPON)
+                    return mission:progressEvent(502, invaderXim.ki.POCKET_MOGBOMB, invaderXim.ki.TRIVIA_CHALLENGE_KUPON)
                 end,
             },
 
@@ -265,15 +265,15 @@ mission.sections =
             {
                 onTrigger = function(player, npc)
                     -- Reminder to take mogbomb to lonely evergreen moogle
-                    player:messageSpecial(zones[player:getZoneID()].text.GRENADIER_TAKE_PRIZE, xi.ki.POCKET_MOGBOMB)
+                    player:messageSpecial(zones[player:getZoneID()].text.GRENADIER_TAKE_PRIZE, invaderXim.ki.POCKET_MOGBOMB)
                 end,
             },
 
             onEventFinish =
             {
                 [502] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.POCKET_MOGBOMB)
-                    npcUtil.giveKeyItem(player, xi.ki.TRIVIA_CHALLENGE_KUPON)
+                    player:delKeyItem(invaderXim.ki.POCKET_MOGBOMB)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.TRIVIA_CHALLENGE_KUPON)
                     mission:setVar(player, 'progress', 2)
                 end,
             },
@@ -285,54 +285,54 @@ mission.sections =
         check = function(player, currentMission, missionStatus, vars)
             return currentMission >= mission.missionId and
                 mission:getVar(player, 'progress') == 2 and
-                player:hasKeyItem(xi.ki.TRIVIA_CHALLENGE_KUPON)
+                player:hasKeyItem(invaderXim.ki.TRIVIA_CHALLENGE_KUPON)
         end,
 
-        [xi.zone.BEAUCEDINE_GLACIER] =
+        [invaderXim.zone.BEAUCEDINE_GLACIER] =
         {
             ['Lonely_Evergreen'] =
             {
                 onTrigger = function(player, npc)
                     -- Reminder text
-                    return mission:progressEvent(501, xi.ki.TRIVIA_CHALLENGE_KUPON)
+                    return mission:progressEvent(501, invaderXim.ki.TRIVIA_CHALLENGE_KUPON)
                 end,
             },
         },
 
-        [xi.zone.XARCABARD] =
+        [invaderXim.zone.XARCABARD] =
         {
             ['Option_One'] =
             {
                 onTrigger = function(player, npc)
-                    return xi.amk.helpers.puzzleTwoOnTrigger(player, npc, mission)
+                    return invaderXim.amk.helpers.puzzleTwoOnTrigger(player, npc, mission)
                 end,
             },
 
             ['Option_Two'] =
             {
                 onTrigger = function(player, npc)
-                    return xi.amk.helpers.puzzleTwoOnTrigger(player, npc, mission)
+                    return invaderXim.amk.helpers.puzzleTwoOnTrigger(player, npc, mission)
                 end,
             },
 
             ['Option_Three'] =
             {
                 onTrigger = function(player, npc)
-                    return xi.amk.helpers.puzzleTwoOnTrigger(player, npc, mission)
+                    return invaderXim.amk.helpers.puzzleTwoOnTrigger(player, npc, mission)
                 end,
             },
 
             onEventUpdate =
             {
                 [200] = function(player, csid, option, npc)
-                    xi.amk.helpers.puzzleTwoOnEventUpdate(player, csid, option, npc, mission)
+                    invaderXim.amk.helpers.puzzleTwoOnEventUpdate(player, csid, option, npc, mission)
                 end,
             },
 
             onEventFinish =
             {
                 [200] = function(player, csid, option, npc)
-                    xi.amk.helpers.puzzleTwoOnEventFinish(player, csid, option, npc, mission)
+                    invaderXim.amk.helpers.puzzleTwoOnEventFinish(player, csid, option, npc, mission)
                 end
             },
         },
@@ -343,34 +343,34 @@ mission.sections =
         check = function(player, currentMission, missionStatus, vars)
             return currentMission >= mission.missionId and
                 mission:getVar(player, 'progress') == 3 and
-                player:hasKeyItem(xi.ki.GAUNTLET_CHALLENGE_KUPON)
+                player:hasKeyItem(invaderXim.ki.GAUNTLET_CHALLENGE_KUPON)
         end,
 
-        [xi.zone.XARCABARD] =
+        [invaderXim.zone.XARCABARD] =
         {
             ['Option_One'] =
             {
                 onTrigger = function(player, npc)
-                    return xi.amk.helpers.puzzleTwoOnTrigger(player, npc, mission)
+                    return invaderXim.amk.helpers.puzzleTwoOnTrigger(player, npc, mission)
                 end,
             },
 
             ['Option_Two'] =
             {
                 onTrigger = function(player, npc)
-                    return xi.amk.helpers.puzzleTwoOnTrigger(player, npc, mission)
+                    return invaderXim.amk.helpers.puzzleTwoOnTrigger(player, npc, mission)
                 end,
             },
 
             ['Option_Three'] =
             {
                 onTrigger = function(player, npc)
-                    return xi.amk.helpers.puzzleTwoOnTrigger(player, npc, mission)
+                    return invaderXim.amk.helpers.puzzleTwoOnTrigger(player, npc, mission)
                 end,
             },
         },
 
-        [xi.zone.CASTLE_ZVAHL_BAILEYS] =
+        [invaderXim.zone.CASTLE_ZVAHL_BAILEYS] =
         {
             ['Shadowy_Pillar'] =
             {
@@ -386,7 +386,7 @@ mission.sections =
             ['Flame_of_Fate'] =
             {
                 onTrigger = function(player, npc)
-                    player:delStatusEffect(xi.effect.LEVEL_RESTRICTION)
+                    player:delStatusEffect(invaderXim.effect.LEVEL_RESTRICTION)
 
                     if not player:needToZone() then
                         return mission:progressEvent(101, 4)
@@ -405,27 +405,27 @@ mission.sections =
                         -- Start run
                         player:needToZone(true)
                         mission:setLocalVar(player, '[p3]timeLimit', os.time() + utils.minutes(8))
-                        player:addStatusEffect(xi.effect.LEVEL_RESTRICTION, 1, 0, 0)
+                        player:addStatusEffect(invaderXim.effect.LEVEL_RESTRICTION, 1, 0, 0)
 
                         -- https://www.bg-wiki.com/ffxi/Kupo_Mission_13 : "The effect durations are random. They can be 3-7 minutes long. "
-                        local buffDuration = math.floor(utils.minutes(math.random(3, 7)) * xi.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER)
-                        player:addStatusEffect(xi.effect.INVISIBLE, 1, 10, buffDuration)
-                        player:addStatusEffect(xi.effect.DEODORIZE, 1, 10, buffDuration)
-                        player:addStatusEffect(xi.effect.SNEAK, 1, 10, buffDuration)
+                        local buffDuration = math.floor(utils.minutes(math.random(3, 7)) * invaderXim.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER)
+                        player:addStatusEffect(invaderXim.effect.INVISIBLE, 1, 10, buffDuration)
+                        player:addStatusEffect(invaderXim.effect.DEODORIZE, 1, 10, buffDuration)
+                        player:addStatusEffect(invaderXim.effect.SNEAK, 1, 10, buffDuration)
                     elseif option == 2 then
                         -- Player came back to refresh buffs
-                        local buffDuration = math.floor(utils.minutes(math.random(3, 7)) * xi.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER)
-                        player:addStatusEffect(xi.effect.INVISIBLE, 1, 10, buffDuration)
-                        player:addStatusEffect(xi.effect.DEODORIZE, 1, 10, buffDuration)
-                        player:addStatusEffect(xi.effect.SNEAK, 1, 10, buffDuration)
+                        local buffDuration = math.floor(utils.minutes(math.random(3, 7)) * invaderXim.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER)
+                        player:addStatusEffect(invaderXim.effect.INVISIBLE, 1, 10, buffDuration)
+                        player:addStatusEffect(invaderXim.effect.DEODORIZE, 1, 10, buffDuration)
+                        player:addStatusEffect(invaderXim.effect.SNEAK, 1, 10, buffDuration)
                     end
                 end,
 
                 [101] = function(player, csid, option, npc)
                     if option == 1 then
                         -- Won the game!
-                        npcUtil.giveKeyItem(player, xi.ki.FESTIVAL_SOUVENIR_KUPON)
-                        player:delKeyItem(xi.ki.GAUNTLET_CHALLENGE_KUPON)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.FESTIVAL_SOUVENIR_KUPON)
+                        player:delKeyItem(invaderXim.ki.GAUNTLET_CHALLENGE_KUPON)
 
                         -- Advance to puzzle 4
                         mission:setVar(player, 'progress', 4)
@@ -446,10 +446,10 @@ mission.sections =
         check = function(player, currentMission, missionStatus, vars)
             return currentMission >= mission.missionId and
                 mission:getVar(player, 'progress') == 4 and
-                player:hasKeyItem(xi.ki.FESTIVAL_SOUVENIR_KUPON)
+                player:hasKeyItem(invaderXim.ki.FESTIVAL_SOUVENIR_KUPON)
         end,
 
-        [xi.zone.CASTLE_ZVAHL_BAILEYS] =
+        [invaderXim.zone.CASTLE_ZVAHL_BAILEYS] =
         {
             ['Flame_of_Fate'] =
             {
@@ -460,7 +460,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.CASTLE_ZVAHL_KEEP] =
+        [invaderXim.zone.CASTLE_ZVAHL_KEEP] =
         {
             ['Ominous_Pillar'] =
             {
@@ -515,19 +515,19 @@ mission.sections =
                 end,
 
                 [101] = function(player, csid, option, npc)
-                    xi.amk.helpers.puzzleFourOnEventFinish(player, csid, option, npc, mission)
+                    invaderXim.amk.helpers.puzzleFourOnEventFinish(player, csid, option, npc, mission)
                 end,
 
                 [102] = function(player, csid, option, npc)
-                    xi.amk.helpers.puzzleFourOnEventFinish(player, csid, option, npc, mission)
+                    invaderXim.amk.helpers.puzzleFourOnEventFinish(player, csid, option, npc, mission)
                 end,
 
                 [103] = function(player, csid, option, npc)
-                    xi.amk.helpers.puzzleFourOnEventFinish(player, csid, option, npc, mission)
+                    invaderXim.amk.helpers.puzzleFourOnEventFinish(player, csid, option, npc, mission)
                 end,
 
                 [104] = function(player, csid, option, npc)
-                    xi.amk.helpers.puzzleFourOnEventFinish(player, csid, option, npc, mission)
+                    invaderXim.amk.helpers.puzzleFourOnEventFinish(player, csid, option, npc, mission)
                 end,
             },
         },
@@ -538,10 +538,10 @@ mission.sections =
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
             mission:getVar(player, 'progress') == 5 and
-            player:hasKeyItem(xi.ki.MEGA_BONANZA_KUPON)
+            player:hasKeyItem(invaderXim.ki.MEGA_BONANZA_KUPON)
         end,
 
-        [xi.zone.THRONE_ROOM] =
+        [invaderXim.zone.THRONE_ROOM] =
         {
             ['_4l1'] =
             {

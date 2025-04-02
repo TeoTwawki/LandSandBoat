@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.JUGNER_FOREST] =
+zones[invaderXim.zone.JUGNER_FOREST] =
 {
     text =
     {
@@ -27,7 +27,7 @@ zones[xi.zone.JUGNER_FOREST] =
         AMK_DIGGING_OFFSET            = 7804,  -- You spot some familiar footprints. You are convinced that your moogle friend has been digging in the immediate vicinity.
         FOUND_ITEM_WITH_EASE          = 7813,  -- It appears your chocobo found this item with ease.
         SIGNPOST_NEW                  = 7895,  -- The signpost looks as good as new!
-        ALEXIUS_ORDERS                = 7906,  -- Take that <keyitem> back and hand it to the master at the weapons shop. Got it?
+        ALIXIMUS_ORDERS                = 7906,  -- Take that <keyitem> back and hand it to the master at the weapons shop. Got it?
         LOGGING_IS_POSSIBLE_HERE      = 7916,  -- Logging is possible here if you have <item>.
         VOIDWALKER_OBTAIN_KI          = 7923,  -- Obtained key item: <keyitem>!
         CONQUEST                      = 8067,  -- You've earned conquest points!
@@ -66,7 +66,7 @@ zones[xi.zone.JUGNER_FOREST] =
 
         VOIDWALKER =
         {
-            [xi.keyItem.CLEAR_ABYSSITE] =
+            [invaderXim.keyItem.CLEAR_ABYSSITE] =
             {
                 17203695, -- Sunderclaw
                 17203694, -- Sunderclaw
@@ -78,18 +78,18 @@ zones[xi.zone.JUGNER_FOREST] =
                 17203688, -- Quagmire Pugil
             },
 
-            [xi.keyItem.COLORFUL_ABYSSITE] =
+            [invaderXim.keyItem.COLORFUL_ABYSSITE] =
             {
                 17203687, -- Capricornus
                 17203686, -- Yacumama
             },
 
-            [xi.keyItem.BLUE_ABYSSITE] =
+            [invaderXim.keyItem.BLUE_ABYSSITE] =
             {
                 17203685, -- Krabkatoa
             },
 
-            [xi.keyItem.BLACK_ABYSSITE] =
+            [invaderXim.keyItem.BLACK_ABYSSITE] =
             {
                 17203684, -- Yilbegan
             }
@@ -105,4 +105,4 @@ zones[xi.zone.JUGNER_FOREST] =
     },
 }
 
-return zones[xi.zone.JUGNER_FOREST]
+return zones[invaderXim.zone.JUGNER_FOREST]

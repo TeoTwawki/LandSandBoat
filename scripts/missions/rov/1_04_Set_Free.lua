@@ -7,18 +7,18 @@
 -- Ekokoko : !pos -78 -24 28 249
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.SET_FREE)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.SET_FREE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.THE_BEGINNING },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.THE_BEGINNING },
 }
 
 local handleTradeEventFinish = function(player, csid, option, npc)
     if not player:hasJob(0) then
-        npcUtil.giveKeyItem(player, xi.ki.GILGAMESHS_INTRODUCTORY_LETTER)
+        npcUtil.giveKeyItem(player, invaderXim.ki.GILGAMESHS_INTRODUCTORY_LETTER)
     else
-        if not npcUtil.giveItem(player, xi.item.COPPER_AMAN_VOUCHER) then
+        if not npcUtil.giveItem(player, invaderXim.item.COPPER_AMAN_VOUCHER) then
             -- Do not complete mission or confirm trade if the player is not
             -- able to receive the reward.  Instead, bail out here.
             return
@@ -39,13 +39,13 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Abelard'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, { { xi.item.CLUMP_OF_BEE_POLLEN, 3 } }) and
+                        npcUtil.tradeHasExactly(trade, { { invaderXim.item.CLUMP_OF_BEE_POLLEN, 3 } }) and
                         player:getMissionStatus(mission.areaId) == 1
                     then
                         return mission:progressEvent(178, 0, 0, 0, 0, 0, 0, player:hasJob(0) and 1 or 0)
@@ -63,13 +63,13 @@ mission.sections =
             },
         },
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Ekokoko'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, { { xi.item.MANDRAGORA_DEWDROP, 3 } }) and
+                        npcUtil.tradeHasExactly(trade, { { invaderXim.item.MANDRAGORA_DEWDROP, 3 } }) and
                         player:getMissionStatus(mission.areaId) == 2
                     then
                         return mission:progressEvent(370, 0, 0, 0, 0, 0, 0, player:hasJob(0) and 1 or 0)

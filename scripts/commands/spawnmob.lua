@@ -22,7 +22,7 @@ commandObj.onTrigger = function(player, mobId, despawntime, respawntime)
         return
     end
 
-    if zone:getTypeMask() == xi.zoneType.INSTANCED then
+    if zone:getTypeMask() == invaderXim.zoneType.INSTANCED then
         local instance = player:getInstance()
 
         -- validate mobId

@@ -4,7 +4,7 @@
 -- Guild Merchant NPC: Fishing Guild
 -- !pos -175.185 -3.324 70.445 240
 -----------------------------------
-local ID = zones[xi.zone.PORT_WINDURST]
+local ID = zones[invaderXim.zone.PORT_WINDURST]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

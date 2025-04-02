@@ -9,19 +9,19 @@ require('scripts/globals/monstrosity')
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.monstrosity.teyrnonOnTrade(player, npc, trade)
+    invaderXim.monstrosity.teyrnonOnTrade(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    xi.monstrosity.teyrnonOnTrigger(player, npc)
+    invaderXim.monstrosity.teyrnonOnTrigger(player, npc)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.monstrosity.teyrnonOnEventUpdate(player, csid, option, npc)
+    invaderXim.monstrosity.teyrnonOnEventUpdate(player, csid, option, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.monstrosity.teyrnonOnEventFinish(player, csid, option, npc)
+    invaderXim.monstrosity.teyrnonOnEventFinish(player, csid, option, npc)
 end
 
 return entity

@@ -6,11 +6,11 @@
 -- qm_rov2_20 : !pos -44.741 -23.753 568.504 25
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.TEMPORARY_FAREWELLS)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.TEMPORARY_FAREWELLS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.BRUSHING_UP },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.BRUSHING_UP },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.MISAREAUX_COAST] =
+        [invaderXim.zone.MISAREAUX_COAST] =
         {
             -- NOTE: No observed impact between minimal requirements vs fully completed for
             -- the below event.

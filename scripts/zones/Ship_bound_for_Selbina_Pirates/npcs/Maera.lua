@@ -3,7 +3,7 @@
 --  NPC: Maera
 -- !pos -1.139 -2.101 -9.000 220
 -----------------------------------
-local ID = zones[xi.zone.SHIP_BOUND_FOR_SELBINA_PIRATES]
+local ID = zones[invaderXim.zone.SHIP_BOUND_FOR_SELBINA_PIRATES]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -19,7 +19,7 @@ entity.onTrigger = function(player, npc)
     }
 
     player:showText(npc, ID.text.MAERA_SHOP_DIALOG)
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 return entity

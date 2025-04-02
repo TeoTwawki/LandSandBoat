@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if player:getNation() == xi.nation.SANDORIA then
+    if player:getNation() == invaderXim.nation.SANDORIA then
         player:startEvent(447)
     else
         player:startEvent(444)

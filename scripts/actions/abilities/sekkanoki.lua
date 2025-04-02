@@ -13,8 +13,8 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    target:delStatusEffect(xi.effect.SEKKANOKI)
-    target:addStatusEffect(xi.effect.SEKKANOKI, 1, 0, 60)
+    target:delStatusEffect(invaderXim.effect.SEKKANOKI)
+    target:addStatusEffect(invaderXim.effect.SEKKANOKI, 1, 0, 60)
 end
 
 return abilityObject

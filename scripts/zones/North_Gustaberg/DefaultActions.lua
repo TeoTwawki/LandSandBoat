@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.NORTH_GUSTABERG]
+local ID = zones[invaderXim.zone.NORTH_GUSTABERG]
 
 return {
     ['Field_Parchment'] = { event = 2001 },

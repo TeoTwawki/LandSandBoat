@@ -5,12 +5,12 @@
 -- instance 2 Promathia !pos 521 -0.500 517
 -- instance 3 Promathia !pos -519 120 -520
 -----------------------------------
-local empyrealParadoxID = zones[xi.zone.EMPYREAL_PARADOX]
+local empyrealParadoxID = zones[invaderXim.zone.EMPYREAL_PARADOX]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId        = xi.zone.EMPYREAL_PARADOX,
-    battlefieldId = xi.battlefield.id.DAWN,
+    zoneId        = invaderXim.zone.EMPYREAL_PARADOX,
+    battlefieldId = invaderXim.battlefield.id.DAWN,
     canLoseExp    = false,
     isMission     = true,
     allowTrusts   = true,
@@ -20,13 +20,13 @@ local content = BattlefieldMission:new({
     index         = 0,
     entryNpc      = 'TR_Entrance',
     exitNpc       = 'Transcendental_Radiance',
-    missionArea   = xi.mission.log_id.COP,
-    mission       = xi.mission.id.cop.DAWN,
+    missionArea   = invaderXim.mission.log_id.COP,
+    mission       = invaderXim.mission.id.cop.DAWN,
     requiredVar   = 'Mission[6][840]Status',
     requiredValue = 1,
 
     grantXP = 2000,
-    title   = xi.title.AVERTER_OF_THE_APOCALYPSE,
+    title   = invaderXim.title.AVERTER_OF_THE_APOCALYPSE,
 })
 
 function content:setupBattlefield(battlefield)
@@ -71,7 +71,7 @@ function content:onEventFinishBattlefield(player, csid, option, npc)
 end
 
 function content:onEventFinishWin(player, csid, option, npc)
-    player:setPos(540, 0, -514, 63, xi.zone.EMPYREAL_PARADOX)
+    player:setPos(540, 0, -514, 63, invaderXim.zone.EMPYREAL_PARADOX)
 end
 
 content.groups =
@@ -103,7 +103,7 @@ content.groups =
 
         spawned  = false,
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

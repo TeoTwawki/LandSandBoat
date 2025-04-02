@@ -13,7 +13,7 @@
 -- Table structure for table `item_basic`
 --
 
-DROP TABLE IF EXISTS `item_basic`;
+DROP TABLE IF IXIMSTS `item_basic`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `item_basic` (

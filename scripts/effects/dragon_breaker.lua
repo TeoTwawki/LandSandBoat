@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.DRAGON_BREAKER
+-- invaderXim.effect.DRAGON_BREAKER
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -8,11 +8,11 @@ local effectObject = {}
 effectObject.onEffectGain = function(target, effect)
     local power = effect:getPower()
 
-    target:delMod(xi.mod.ACC, power)
-    target:delMod(xi.mod.EVA, power)
-    target:delMod(xi.mod.MACC, power)
-    target:delMod(xi.mod.MEVA, power)
-    target:delMod(xi.mod.STORETP, power)
+    target:delMod(invaderXim.mod.ACC, power)
+    target:delMod(invaderXim.mod.EVA, power)
+    target:delMod(invaderXim.mod.MACC, power)
+    target:delMod(invaderXim.mod.MEVA, power)
+    target:delMod(invaderXim.mod.STORETP, power)
 end
 
 effectObject.onEffectTick = function(target, effect)
@@ -21,11 +21,11 @@ end
 effectObject.onEffectLose = function(target, effect)
     local power = effect:getPower()
 
-    target:addMod(xi.mod.ACC, power)
-    target:addMod(xi.mod.EVA, power)
-    target:addMod(xi.mod.MACC, power)
-    target:addMod(xi.mod.MEVA, power)
-    target:addMod(xi.mod.STORETP, power)
+    target:addMod(invaderXim.mod.ACC, power)
+    target:addMod(invaderXim.mod.EVA, power)
+    target:addMod(invaderXim.mod.MACC, power)
+    target:addMod(invaderXim.mod.MEVA, power)
+    target:addMod(invaderXim.mod.STORETP, power)
 end
 
 return effectObject

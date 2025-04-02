@@ -27,7 +27,7 @@ commandObj.onTrigger = function(player)
 
     local mob = zoneOrInstanceObj:insertDynamicEntity({
         -- NPC or MOB
-        objtype = xi.objType.MOB,
+        objtype = invaderXim.objType.MOB,
 
         -- The name visible to players
         -- NOTE: Even if you plan on making the name invisible, we're using it internally for lookups
@@ -80,7 +80,7 @@ commandObj.onTrigger = function(player)
     -- Use the mob object as you normally would
     mob:setSpawn(player:getXPos(), player:getYPos(), player:getZPos(), player:getRotPos())
     mob:setDropID(0) -- No loot!
-    mob:setMobMod(xi.mobMod.NO_DROPS, 1)
+    mob:setMobMod(invaderXim.mobMod.NO_DROPS, 1)
     mob:spawn()
 
     player:printToPlayer(string.format('Spawning Fafnir (Lv: %i, HP: %i)\n%s', mob:getMainLvl(), mob:getMaxHP(), mob))

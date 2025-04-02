@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.transport.onDockTimekeeperTrigger(player, npc)
+    invaderXim.transport.onDockTimekeeperTrigger(player, npc)
 end
 
 return entity

@@ -8,21 +8,21 @@ mixins = { require('scripts/mixins/warriors_path_taru') }
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.SPECIAL_COOL, 30) -- Makki Chebukki uses ranged attack every 30 seconds
-    mob:setMobMod(xi.mobMod.NO_AGGRO, 1)
-    mob:setMobMod(xi.mobMod.NO_LINK, 1)
-    mob:addMod(xi.mod.UDMGPHYS, -10000)
-    mob:addMod(xi.mod.UDMGMAGIC, -10000)
-    mob:addMod(xi.mod.UDMGRANGE, -10000)
-    mob:addMod(xi.mod.UDMGBREATH, -10000)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+    mob:setMobMod(invaderXim.mobMod.SPECIAL_COOL, 30) -- Makki Chebukki uses ranged attack every 30 seconds
+    mob:setMobMod(invaderXim.mobMod.NO_AGGRO, 1)
+    mob:setMobMod(invaderXim.mobMod.NO_LINK, 1)
+    mob:addMod(invaderXim.mod.UDMGPHYS, -10000)
+    mob:addMod(invaderXim.mod.UDMGMAGIC, -10000)
+    mob:addMod(invaderXim.mod.UDMGRANGE, -10000)
+    mob:addMod(invaderXim.mod.UDMGBREATH, -10000)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
     mob:setLocalVar('makki', 1)
 end
 
 entity.onMobEngage = function(mob, target)
     mob:entityAnimationPacket('ouen') -- each taru will use this animation at the start of the fight
-    mob:setMobMod(xi.mobMod.NO_LINK, 0)
-    mob:setMobMod(xi.mobMod.NO_AGGRO, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_LINK, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_AGGRO, 0)
     mob:setAnimationSub(1)
 end
 

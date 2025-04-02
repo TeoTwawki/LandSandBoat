@@ -3,7 +3,7 @@
 --  NPC: Kamih Mapokhalam
 -- 20 -30 597 z 52
 -----------------------------------
-local ID = zones[xi.zone.BHAFLAU_THICKETS]
+local ID = zones[invaderXim.zone.BHAFLAU_THICKETS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -13,15 +13,15 @@ entity.onTrade = function(player, npc, trade)
 
     if
         count == 1 and
-        trade:hasItemQty(xi.item.IMPERIAL_SILVER_PIECE, 1)
+        trade:hasItemQty(invaderXim.item.IMPERIAL_SILVER_PIECE, 1)
     then
         player:tradeComplete()
         player:startEvent(121)
     elseif
         count == 3 and
-        trade:hasItemQty(xi.item.IMPERIAL_MYTHRIL_PIECE, 3)
+        trade:hasItemQty(invaderXim.item.IMPERIAL_MYTHRIL_PIECE, 3)
     then
-        if player:hasKeyItem(xi.ki.MAP_OF_ALZADAAL_RUINS) then
+        if player:hasKeyItem(invaderXim.ki.MAP_OF_ALZADAAL_RUINS) then
             player:startEvent(147)
         else
             player:startEvent(146)
@@ -31,8 +31,8 @@ end
 
 entity.onTrigger = function(player, npc)
     if player:getZPos() < 597 then
-        if player:hasKeyItem(xi.ki.CAPTAIN_WILDCAT_BADGE) then
-            player:messageSpecial(ID.text.YOU_HAVE_A_BADGE, xi.ki.CAPTAIN_WILDCAT_BADGE)
+        if player:hasKeyItem(invaderXim.ki.CAPTAIN_WILDCAT_BADGE) then
+            player:messageSpecial(ID.text.YOU_HAVE_A_BADGE, invaderXim.ki.CAPTAIN_WILDCAT_BADGE)
             player:startEvent(121)
         else
             player:startEvent(120)
@@ -47,7 +47,7 @@ entity.onEventFinish = function(player, csid, option, npc)
         player:setPos(325.137, -3.999, -619.968, 0, 72) -- To Alzadaal Undersea Ruins G-8 (R)
     elseif csid == 146 then
         player:tradeComplete()
-        npcUtil.giveKeyItem(player, xi.ki.MAP_OF_ALZADAAL_RUINS)
+        npcUtil.giveKeyItem(player, invaderXim.ki.MAP_OF_ALZADAAL_RUINS)
     end
 end
 

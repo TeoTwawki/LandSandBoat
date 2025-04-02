@@ -1,37 +1,37 @@
 require('scripts/globals/mixins')
 -----------------------------------
 xi = xi or {}
-xi.mix = xi.mix or {}
-xi.mix.ladybug = xi.mix.ladybug or {}
+invaderXim.mix = invaderXim.mix or {}
+invaderXim.mix.ladybug = invaderXim.mix.ladybug or {}
 
 g_mixins = g_mixins or {}
 g_mixins.families = g_mixins.families or {}
 
 local function night(mob)
     if mob:getLocalVar('Phase') == 0 then
-        mob:setMobMod(xi.mobMod.NO_AGGRO, 1)
-        mob:setMobMod(xi.mobMod.ROAM_COOL, 10)
-        mob:delMod(xi.mod.EVA, 15)
-        mob:delMod(xi.mod.ACC, 15)
-        mob:setMod(xi.mod.DELAY, -400)
-        mob:setMobMod(xi.mobMod.SKILL_LIST, mob:getLocalVar('[ladybug]nightSkillList'))
+        mob:setMobMod(invaderXim.mobMod.NO_AGGRO, 1)
+        mob:setMobMod(invaderXim.mobMod.ROAM_COOL, 10)
+        mob:delMod(invaderXim.mod.EVA, 15)
+        mob:delMod(invaderXim.mod.ACC, 15)
+        mob:setMod(invaderXim.mod.DELAY, -400)
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, mob:getLocalVar('[ladybug]nightSkillList'))
         mob:setLocalVar('Phase', 1)
     end
 end
 
 local function day(mob)
     if mob:getLocalVar('Phase') == 1 then
-        mob:setMobMod(xi.mobMod.NO_AGGRO, 0)
-        mob:setMobMod(xi.mobMod.ROAM_COOL, 0)
-        mob:addMod(xi.mod.EVA, 15)
-        mob:addMod(xi.mod.ACC, 15)
-        mob:setMod(xi.mod.DELAY, 0)
-        mob:setMobMod(xi.mobMod.SKILL_LIST, mob:getLocalVar('[ladybug]daySkillList'))
+        mob:setMobMod(invaderXim.mobMod.NO_AGGRO, 0)
+        mob:setMobMod(invaderXim.mobMod.ROAM_COOL, 0)
+        mob:addMod(invaderXim.mod.EVA, 15)
+        mob:addMod(invaderXim.mod.ACC, 15)
+        mob:setMod(invaderXim.mod.DELAY, 0)
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, mob:getLocalVar('[ladybug]daySkillList'))
         mob:setLocalVar('Phase', 0)
     end
 end
 
-xi.mix.ladybug.config = function(mob, params)
+invaderXim.mix.ladybug.config = function(mob, params)
     if params.nightTime and type(params.nightTime) == 'number' then
         mob:setLocalVar('[ladybug]nightTime', params.nightTime)
     end

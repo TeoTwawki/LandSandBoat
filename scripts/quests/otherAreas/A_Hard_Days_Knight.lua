@@ -5,25 +5,25 @@
 -- Quelveuiat          : !pos -3.177 -22.750 -25.970 26
 -- qm_hard_days_knight : !pos -38.605 -9.022 -290.700 24
 -----------------------------------
-local lufaiseID = zones[xi.zone.LUFAISE_MEADOWS]
+local lufaiseID = zones[invaderXim.zone.LUFAISE_MEADOWS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.A_HARD_DAYS_KNIGHT)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.A_HARD_DAYS_KNIGHT)
 
 quest.reward =
 {
     gil = 2100,
-    title = xi.title.TAVNAZIAN_SQUIRE,
+    title = invaderXim.title.TAVNAZIAN_SQUIRE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Quelveuiat'] = quest:progressEvent(119),
 
@@ -40,10 +40,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Quelveuiat'] =
             {
@@ -66,7 +66,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.LUFAISE_MEADOWS] =
+        [invaderXim.zone.LUFAISE_MEADOWS] =
         {
             ['qm_hard_days_knight'] =
             {
@@ -93,24 +93,24 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Quelveuiat'] =
             {
                 onTrade = function(player, npc, trade)
                     -- TODO: Needs verification for single-trade events
-                    if not player:hasKeyItem(xi.ki.TEMPLE_KNIGHT_KEY) then
+                    if not player:hasKeyItem(invaderXim.ki.TEMPLE_KNIGHT_KEY) then
                         if
-                            npcUtil.tradeHasExactly(trade, xi.item.SEALION_CREST_KEY) or
-                            npcUtil.tradeHasExactly(trade, xi.item.CORAL_CREST_KEY)
+                            npcUtil.tradeHasExactly(trade, invaderXim.item.SEALION_CREST_KEY) or
+                            npcUtil.tradeHasExactly(trade, invaderXim.item.CORAL_CREST_KEY)
                         then
                             return quest:progressEvent(631, trade:getItemId())
-                        elseif npcUtil.tradeHasExactly(trade, { xi.item.SEALION_CREST_KEY, xi.item.CORAL_CREST_KEY }) then
+                        elseif npcUtil.tradeHasExactly(trade, { invaderXim.item.SEALION_CREST_KEY, invaderXim.item.CORAL_CREST_KEY }) then
                             quest:setVar(player, 'Prog', 2)
-                            return quest:progressEvent(631, xi.item.SEALION_CREST_KEY, xi.item.CORAL_CREST_KEY)
+                            return quest:progressEvent(631, invaderXim.item.SEALION_CREST_KEY, invaderXim.item.CORAL_CREST_KEY)
                         end
                     end
                 end,
@@ -119,7 +119,7 @@ quest.sections =
                     local itemCount = 0
                     local itemTable = { 0, 0 }
 
-                    for itemId = xi.item.SEALION_CREST_KEY, xi.item.CORAL_CREST_KEY do
+                    for itemId = invaderXim.item.SEALION_CREST_KEY, invaderXim.item.CORAL_CREST_KEY do
                         if player:findItem(itemId) then
                             itemCount = itemCount + 1
                             itemTable[itemCount] = itemId
@@ -143,7 +143,7 @@ quest.sections =
                 [632] = function(player, csid, option, npc)
                     player:confirmTrade()
                     quest:setVar(player, 'Prog', 0)
-                    npcUtil.giveKeyItem(player, xi.ki.TEMPLE_KNIGHT_KEY)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.TEMPLE_KNIGHT_KEY)
                 end
             },
         },

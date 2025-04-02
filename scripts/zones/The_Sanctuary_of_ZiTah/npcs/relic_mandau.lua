@@ -3,7 +3,7 @@
 --  NPC: <this space intentionally left blank>
 -- !pos 646 -2 -165 121
 -----------------------------------
-local ID = zones[xi.zone.THE_SANCTUARY_OF_ZITAH]
+local ID = zones[invaderXim.zone.THE_SANCTUARY_OF_ZITAH]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -13,11 +13,11 @@ entity.onTrade = function(player, npc, trade)
 
     -- Mandau
     if
-        currentRelic == xi.item.BATARDEAU and
-        npcUtil.tradeHas(trade, { xi.item.TEN_THOUSAND_BYNE_BILL, xi.item.ORNATE_FRAGMENT, xi.item.SHARD_OF_NECROPSYCHE, xi.item.BATARDEAU })
+        currentRelic == invaderXim.item.BATARDEAU and
+        npcUtil.tradeHas(trade, { invaderXim.item.TEN_THOUSAND_BYNE_BILL, invaderXim.item.ORNATE_FRAGMENT, invaderXim.item.SHARD_OF_NECROPSYCHE, invaderXim.item.BATARDEAU })
     then
         -- currency, shard, necropsyche, stage 4
-        player:startEvent(207, xi.item.MANDAU_75)
+        player:startEvent(207, invaderXim.item.MANDAU_75)
     end
 end
 
@@ -28,7 +28,7 @@ end
 entity.onEventFinish = function(player, csid, option, npc)
     if
         csid == 207 and
-        npcUtil.giveItem(player, { xi.item.MANDAU_75, { xi.item.ONE_HUNDRED_BYNE_BILL, 30 } })
+        npcUtil.giveItem(player, { invaderXim.item.MANDAU_75, { invaderXim.item.ONE_HUNDRED_BYNE_BILL, 30 } })
     then
         player:confirmTrade()
         player:setCharVar('RELIC_IN_PROGRESS', 0)

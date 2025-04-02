@@ -20,7 +20,7 @@ local function pickRunPoint(mob)
     mob:setLocalVar('posX', pos.x)
     mob:setLocalVar('posY', pos.y)
     mob:setLocalVar('posZ', pos.z)
-    mob:pathTo(pos.x, pos.y, pos.z, xi.path.flag.RUN)
+    mob:pathTo(pos.x, pos.y, pos.z, invaderXim.path.flag.RUN)
 end
 
 local function continuePoints(mob)
@@ -31,7 +31,7 @@ local function continuePoints(mob)
     local cycles = mob:getLocalVar('cycles')
 
     if pos.x ~= pathX and pos.z ~= pathZ then
-        mob:pathTo(pathX, pathY, pathZ, xi.path.flag.RUN)
+        mob:pathTo(pathX, pathY, pathZ, invaderXim.path.flag.RUN)
     elseif cycles > 0 then
         mob:setLocalVar('cycles', cycles - 1)
         pickRunPoint(mob)
@@ -52,7 +52,7 @@ local function dropBomb(mob)
     local pos    = mob:getPos()
 
     bombMob:setPos(pos.x, pos.y, pos.z, pos.rot)
-    bombMob:setStatus(xi.status.UPDATE)
+    bombMob:setStatus(invaderXim.status.UPDATE)
 
     if target ~= nil then
         bombMob:updateEnmity(target)
@@ -63,7 +63,7 @@ local function dropBomb(mob)
     end
 
     bombMob:timer(4500, function(bomb)
-        bomb:setStatus(xi.status.DISAPPEAR)
+        bomb:setStatus(invaderXim.status.DISAPPEAR)
     end)
 end
 
@@ -91,7 +91,7 @@ entity.onMobFight = function(mob, target)
     elseif ignore == 1 then
         continuePoints(mob)
 
-        if GetMobByID(mob:getID() - 1, instance):getStatus() == xi.status.DISAPPEAR then
+        if GetMobByID(mob:getID() - 1, instance):getStatus() == invaderXim.status.DISAPPEAR then
             if math.random(1, 5) == 2 then -- TODO: Add sleep check.
                 dropBomb(mob)
             end
@@ -101,8 +101,8 @@ end
 
 entity.onMobDeath = function(mob, player, optParams)
     if optParams.isKiller or optParams.noKiller then
-        xi.nyzul.spawnChest(mob, player)
-        xi.nyzul.enemyLeaderKill(mob)
+        invaderXim.nyzul.spawnChest(mob, player)
+        invaderXim.nyzul.enemyLeaderKill(mob)
     end
 end
 

@@ -8,14 +8,14 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:addMod(xi.mod.SLEEP_MEVA, 30)
-    mob:addMod(xi.mod.BIND_MEVA, 30)
-    mob:addMod(xi.mod.GRAVITY_MEVA, 30)
-    mob:addMod(xi.mod.ATT, 200)
+    mob:addMod(invaderXim.mod.SLEEP_MEVA, 30)
+    mob:addMod(invaderXim.mod.BIND_MEVA, 30)
+    mob:addMod(invaderXim.mod.GRAVITY_MEVA, 30)
+    mob:addMod(invaderXim.mod.ATT, 200)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

@@ -11,7 +11,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:delStatusEffect(xi.effect.FOOD)
+    target:delStatusEffect(invaderXim.effect.FOOD)
 end
 
 return itemObject

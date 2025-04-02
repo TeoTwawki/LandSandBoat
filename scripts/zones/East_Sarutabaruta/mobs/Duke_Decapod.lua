@@ -6,8 +6,8 @@
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.NO_STANDBACK, 1)
-    mob:addImmunity(xi.immunity.SILENCE)
+    mob:setMobMod(invaderXim.mobMod.NO_STANDBACK, 1)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
 end
 
 entity.onMobFight = function(mob, target)
@@ -20,7 +20,7 @@ entity.onMobFight = function(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 255)
+    invaderXim.hunts.checkHunt(mob, player, 255)
 end
 
 entity.onMobDespawn = function(mob)

@@ -2,7 +2,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for blue_spell_mods
 -- ----------------------------
-DROP TABLE IF EXISTS `blue_spell_mods`;
+DROP TABLE IF IXIMSTS `blue_spell_mods`;
 CREATE TABLE `blue_spell_mods` (
   `spellId` smallint(3) unsigned NOT NULL,
   `modid` smallint(5) unsigned NOT NULL,

@@ -30,7 +30,7 @@ commandObj.onTrigger = function(player, logId, questId, target)
     logId = questLog.quest_log
 
     -- validate questId
-    local areaQuestIds = xi.quest.id[xi.quest.area[logId]]
+    local areaQuestIds = invaderXim.quest.id[invaderXim.quest.area[logId]]
     if questId ~= nil then
         questId = tonumber(questId) or areaQuestIds[string.upper(questId)]
     end

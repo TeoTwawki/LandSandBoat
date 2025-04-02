@@ -17,7 +17,7 @@ entity.onMobDespawn = function(mob)
     {
         [jagilId] = serraId, -- -348 0.001 -904
     }
-    xi.mob.phOnDespawn(mob, serraPh, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, serraPh, 10, 3600) -- 1 hour
 end
 
 return entity

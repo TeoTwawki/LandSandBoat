@@ -1,14 +1,14 @@
 -----------------------------------
 -- Helpers for otherAreas quests
 -----------------------------------
-local davoiID = zones[xi.zone.DAVOI]
+local davoiID = zones[invaderXim.zone.DAVOI]
 -----------------------------------
 xi = xi or {}
-xi.otherAreas = xi.otherAreas or {}
-xi.otherAreas.helpers = xi.otherAreas.helpers or {}
-xi.otherAreas.helpers.TestMyMettle = {}
+invaderXim.otherAreas = invaderXim.otherAreas or {}
+invaderXim.otherAreas.helpers = invaderXim.otherAreas.helpers or {}
+invaderXim.otherAreas.helpers.TestMyMettle = {}
 
-function xi.otherAreas.helpers.TestMyMettle.moveJar(npc)
+function invaderXim.otherAreas.helpers.TestMyMettle.moveJar(npc)
     -- 5 min (offset by onGameHour frequency of ~2.5 min) to 3 hours
     -- full equation = ((2.5 * 10) * 6) to ((3 * 60) * 60)
     local randomHourSpan = math.random(125, 10800)

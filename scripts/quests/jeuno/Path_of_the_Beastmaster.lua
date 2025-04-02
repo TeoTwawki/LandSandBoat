@@ -4,36 +4,36 @@
 -- Log ID: 3, Quest ID: 19
 -- Brutus : !pos -55 8 95 244
 -----------------------------------
-local upperJeunoID = zones[xi.zone.UPPER_JEUNO]
+local upperJeunoID = zones[invaderXim.zone.UPPER_JEUNO]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.PATH_OF_THE_BEASTMASTER)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.PATH_OF_THE_BEASTMASTER)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.JEUNO,
-    keyItem  = xi.ki.JOB_GESTURE_BEASTMASTER,
-    title    = xi.title.ANIMAL_TRAINER,
+    fameArea = invaderXim.fameArea.JEUNO,
+    keyItem  = invaderXim.ki.JOB_GESTURE_BEASTMASTER,
+    title    = invaderXim.title.ANIMAL_TRAINER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.SAVE_MY_SON) and
-                player:getMainLvl() >= xi.settings.main.ADVANCED_JOB_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.SAVE_MY_SON) and
+                player:getMainLvl() >= invaderXim.settings.main.ADVANCED_JOB_LEVEL
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Brutus'] = quest:progressEvent(70),
 
             onEventFinish =
             {
                 [70] = function(player, csid, option, npc)
-                    player:unlockJob(xi.job.BST)
+                    player:unlockJob(invaderXim.job.BST)
                     player:messageSpecial(upperJeunoID.text.YOU_CAN_NOW_BECOME_A_BEASTMASTER)
                     quest:complete(player)
                 end,
@@ -43,10 +43,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Brutus']  = quest:event(20),
             ['Chocobo'] = quest:event(72):replaceDefault(),

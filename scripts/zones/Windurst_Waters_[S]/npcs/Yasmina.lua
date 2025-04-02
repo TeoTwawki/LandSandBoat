@@ -11,11 +11,11 @@ local eventSucceed = 6
 local eventFail    = 7
 
 entity.onTrigger = function(player, npc)
-    xi.chocobo.renterOnTrigger(player, npc, eventSucceed, eventFail)
+    invaderXim.chocobo.renterOnTrigger(player, npc, eventSucceed, eventFail)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.chocobo.renterOnEventFinish(player, csid, option, eventSucceed)
+    invaderXim.chocobo.renterOnEventFinish(player, csid, option, eventSucceed)
 end
 
 return entity

@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.specEffect
-xi.specEffect =
+---@enum invaderXim.specEffect
+invaderXim.specEffect =
 {
     NONE           = 0x00,
     BLOOD          = 0x02,

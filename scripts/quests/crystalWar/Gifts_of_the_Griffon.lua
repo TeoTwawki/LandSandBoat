@@ -12,11 +12,11 @@
 -- Sabiliont  : !pos 9 2 -87 80
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.GIFTS_OF_THE_GRIFFON)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.GIFTS_OF_THE_GRIFFON)
 
 quest.reward =
 {
-    item = xi.item.DEATHSTONE,
+    item = invaderXim.item.DEATHSTONE,
 }
 
 local npcTradeEvents =
@@ -36,7 +36,7 @@ local plumeTradeNpc =
         local tradeEventId = npcTradeEvents[npc:getName()]
 
         if
-            npcUtil.tradeHasExactly(trade, xi.item.PLUME_DOR) and
+            npcUtil.tradeHasExactly(trade, invaderXim.item.PLUME_DOR) and
             not quest:isVarBitsSet(player, 'Option', tradeEventId - 25)
         then
             return quest:progressEvent(tradeEventId)
@@ -53,11 +53,11 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                xi.wotg.helpers.hasCompletedFirstQuest(player)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                invaderXim.wotg.helpers.hasCompletedFirstQuest(player)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Louxiard'] =
             {
@@ -99,7 +99,7 @@ quest.sections =
 
                 [23] = function(player, csid, option, npc)
                     quest:begin(player)
-                    npcUtil.giveItem(player, { { xi.item.PLUME_DOR, 7 } })
+                    npcUtil.giveItem(player, { { invaderXim.item.PLUME_DOR, 7 } })
                 end,
             },
         },
@@ -107,10 +107,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Rholont'] =
             {
@@ -118,7 +118,7 @@ quest.sections =
                     local plumesTraded = utils.mask.countBits(quest:getVar(player, 'Option'), 7)
 
                     if
-                        not player:hasItem(xi.item.PLUME_DOR) and
+                        not player:hasItem(invaderXim.item.PLUME_DOR) and
                         plumesTraded < 7
                     then
                         local waitTime = quest:getVar(player, 'Timer')
@@ -150,7 +150,7 @@ quest.sections =
             {
                 [24] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        xi.quest.setVar(player, xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.CLAWS_OF_THE_GRIFFON, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.quest.setVar(player, invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.CLAWS_OF_THE_GRIFFON, 'Timer', VanadielUniqueDay() + 1)
                     end
                 end,
 
@@ -170,7 +170,7 @@ quest.sections =
                     local numPlumes = 7 - utils.mask.countBits(quest:getVar(player, 'Option'), 7)
 
                     quest:setVar(player, 'Timer', 0)
-                    npcUtil.giveItem(player, { { xi.item.PLUME_DOR, numPlumes } })
+                    npcUtil.giveItem(player, { { invaderXim.item.PLUME_DOR, numPlumes } })
                 end,
             },
         },

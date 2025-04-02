@@ -4,7 +4,7 @@
 -- Notes: Tonberry Priest Room (Offers Tonberry Hate Reset)
 -- !pos 60.001 -1.653 -147.755 159
 -----------------------------------
-local ID = zones[xi.zone.TEMPLE_OF_UGGALEPIH]
+local ID = zones[invaderXim.zone.TEMPLE_OF_UGGALEPIH]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -12,7 +12,7 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     local killCount = player:getCharVar('EVERYONES_GRUDGE_KILLS')
 
-    if player:hasKeyItem(xi.ki.TONBERRY_PRIEST_KEY) then
+    if player:hasKeyItem(invaderXim.ki.TONBERRY_PRIEST_KEY) then
         if killCount >= 1 then
             local payment = 250 * (killCount / 20 + 1)
             player:startEvent(66, 0, payment)

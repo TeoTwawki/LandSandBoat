@@ -3,7 +3,7 @@
 -----------------------------------
 -- Suibhne : !pos -366 -3.612 -466 285
 -----------------------------------
-local feretoryID = zones[xi.zone.FERETORY]
+local feretoryID = zones[invaderXim.zone.FERETORY]
 -----------------------------------
 
 local quest = HiddenQuest:new('monstrosityBee')
@@ -42,12 +42,12 @@ quest.sections =
 {
     {
         check = function(player, questVars, vars)
-            return xi.settings.main.ENABLE_MONSTROSITY == 1 and
+            return invaderXim.settings.main.ENABLE_MONSTROSITY == 1 and
                 quest:getVar(player, 'Timer') <= VanadielUniqueDay() and
-                not xi.monstrosity.hasUnlockedSpecies(player, xi.monstrosity.species.BEE)
+                not invaderXim.monstrosity.hasUnlockedSpecies(player, invaderXim.monstrosity.species.BEE)
         end,
 
-        [xi.zone.FERETORY] =
+        [invaderXim.zone.FERETORY] =
         {
             ['Suibhne'] =
             {
@@ -68,7 +68,7 @@ quest.sections =
                 [11] = function(player, csid, option, npc)
                     if option == 1 + getCheckValue(quest:getVar(player, 'Option')) then
                         if quest:complete(player) then
-                            xi.monstrosity.unlockSpecies(xi.monstrosity.species.BEE)
+                            invaderXim.monstrosity.unlockSpecies(invaderXim.monstrosity.species.BEE)
                             player:messageSpecial(feretoryID.text.MAY_POSSESS_BEES)
                         end
                     elseif option == 2 then

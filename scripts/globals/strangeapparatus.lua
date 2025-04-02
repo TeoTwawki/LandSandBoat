@@ -20,15 +20,15 @@ xi = xi or {}
 -- }
 -----------------------------------
 
--- TODO: Use xi.items enum
+-- TODO: Use invaderXim.items enum
 local strAppData =
 {
-    [xi.zone.DANGRUF_WADI] =
+    [invaderXim.zone.DANGRUF_WADI] =
     {
         suffix  = 'DW',
         uid     = 0,
-        chip    = xi.item.RED_CHIP,
-        cluster = xi.item.FIRE_CLUSTER,
+        chip    = invaderXim.item.RED_CHIP,
+        cluster = invaderXim.item.FIRE_CLUSTER,
         drop    =
         {
             17093, 0.0400, 1, -- rune_staff
@@ -46,12 +46,12 @@ local strAppData =
             931,   1.0000, 8, -- cermet_chunk
         },
     },
-    [xi.zone.ORDELLES_CAVES] =
+    [invaderXim.zone.ORDELLES_CAVES] =
     {
         suffix  = 'OC',
         uid     = 3,
-        chip    = xi.item.GREEN_CHIP,
-        cluster = xi.item.WIND_CLUSTER,
+        chip    = invaderXim.item.GREEN_CHIP,
+        cluster = invaderXim.item.WIND_CLUSTER,
         drop    =
         {
             17093, 0.0400, 1, -- rune_staff
@@ -69,12 +69,12 @@ local strAppData =
             931,   1.0000, 8, -- cermet_chunk
         },
     },
-    [xi.zone.OUTER_HORUTOTO_RUINS] =
+    [invaderXim.zone.OUTER_HORUTOTO_RUINS] =
     {
         suffix  = 'HR',
         uid     = 5,
-        chip    = xi.item.PURPLE_CHIP,
-        cluster = xi.item.LIGHTNING_CLUSTER,
+        chip    = invaderXim.item.PURPLE_CHIP,
+        cluster = invaderXim.item.LIGHTNING_CLUSTER,
         drop    =
         {
             17093, 0.0400, 1, -- rune_staff
@@ -92,12 +92,12 @@ local strAppData =
             931,   1.0000, 8, -- cermet_chunk
         },
     },
-    [xi.zone.THE_ELDIEME_NECROPOLIS] =
+    [invaderXim.zone.THE_ELDIEME_NECROPOLIS] =
     {
         suffix  = 'EN',
         uid     = 4,
-        chip    = xi.item.CLEAR_CHIP,
-        cluster = xi.item.ICE_CLUSTER,
+        chip    = invaderXim.item.CLEAR_CHIP,
+        cluster = invaderXim.item.ICE_CLUSTER,
         drop    =
         {
             17093, 0.0400, 1, -- rune_staff
@@ -115,12 +115,12 @@ local strAppData =
             931,   1.0000, 8, -- cermet_chunk
         },
     },
-    [xi.zone.GUSGEN_MINES] =
+    [invaderXim.zone.GUSGEN_MINES] =
     {
         suffix  = 'GM',
         uid     = 1,
-        chip    = xi.item.YELLOW_CHIP,
-        cluster = xi.item.EARTH_CLUSTER,
+        chip    = invaderXim.item.YELLOW_CHIP,
+        cluster = invaderXim.item.EARTH_CLUSTER,
         drop    =
         {
             17093, 0.0400, 1, -- rune_staff
@@ -138,12 +138,12 @@ local strAppData =
             931,   1.0000, 8, -- cermet_chunk
         },
     },
-    [xi.zone.CRAWLERS_NEST] =
+    [invaderXim.zone.CRAWLERS_NEST] =
     {
         suffix  = 'CN',
         uid     = 2,
-        chip    = xi.item.BLUE_CHIP,
-        cluster = xi.item.WATER_CLUSTER,
+        chip    = invaderXim.item.BLUE_CHIP,
+        cluster = invaderXim.item.WATER_CLUSTER,
         drop    =
         {
             17093, 0.0400, 1, -- rune_staff
@@ -161,12 +161,12 @@ local strAppData =
             931,   1.0000, 8, -- cermet_chunk
         },
     },
-    [xi.zone.MAZE_OF_SHAKHRAMI] =
+    [invaderXim.zone.MAZE_OF_SHAKHRAMI] =
     {
         suffix  = 'MS',
         uid     = 7,
-        chip    = xi.item.BLACK_CHIP,
-        cluster = xi.item.DARK_CLUSTER,
+        chip    = invaderXim.item.BLACK_CHIP,
+        cluster = invaderXim.item.DARK_CLUSTER,
         drop    =
         {
             17093, 0.0400, 1, -- rune_staff
@@ -184,12 +184,12 @@ local strAppData =
             931,   1.0000, 8, -- cermet_chunk
         },
     },
-    [xi.zone.GARLAIGE_CITADEL] =
+    [invaderXim.zone.GARLAIGE_CITADEL] =
     {
         suffix  = 'GC',
         uid     = 6,
-        chip    = xi.item.WHITE_CHIP,
-        cluster = xi.item.LIGHT_CLUSTER,
+        chip    = invaderXim.item.WHITE_CHIP,
+        cluster = invaderXim.item.LIGHT_CLUSTER,
         drop    =
         {
             17093, 0.0400, 1, -- rune_staff
@@ -266,7 +266,7 @@ end
 -- strangeApparatus object
 -----------------------------------
 
-xi.strangeApparatus =
+invaderXim.strangeApparatus =
 {
     onTrade = function(player, trade, eventId)
         local zone = player:getZoneID()
@@ -275,8 +275,8 @@ xi.strangeApparatus =
         local drops = data.drop
         local foundChip = false
 
-        for chipTraded = xi.item.RED_CHIP, xi.item.BLACK_CHIP do
-            if npcUtil.tradeHasExactly(trade, { xi.item.INFINITY_CORE, chipTraded }) then
+        for chipTraded = invaderXim.item.RED_CHIP, invaderXim.item.BLACK_CHIP do
+            if npcUtil.tradeHasExactly(trade, { invaderXim.item.INFINITY_CORE, chipTraded }) then
                 player:confirmTrade()
                 foundChip = true
 
@@ -306,11 +306,11 @@ xi.strangeApparatus =
 
                     -- start event
                     local doctorStatus = hasDoctorStatus(player) and 1 or 0
-                    player:startEvent(eventId, item, qty, xi.item.INFINITY_CORE, 0, 0, 0, doctorStatus, 0)
+                    player:startEvent(eventId, item, qty, invaderXim.item.INFINITY_CORE, 0, 0, 0, doctorStatus, 0)
 
                 -- player traded a chip that does not match this zone. spawn elemental that matches apparatus.
                 else
-                    player:addItem(xi.item.INFINITY_CORE, 1)
+                    player:addItem(invaderXim.item.INFINITY_CORE, 1)
                     player:messageSpecial(ID.text.SYS_OVERLOAD)
                     player:messageSpecial(ID.text.YOU_LOST_THE, chipTraded)
                     delDoctorStatus(player)
@@ -338,7 +338,7 @@ xi.strangeApparatus =
             player:setLocalVar('strAppPass', 1)
         end
 
-        player:startEvent(eventId, doctorStatus, 0, xi.item.INFINITY_CORE, 0, 0, 0, 0, player:getZoneID())
+        player:startEvent(eventId, doctorStatus, 0, invaderXim.item.INFINITY_CORE, 0, 0, 0, 0, player:getZoneID())
     end,
 
     -----------------------------------
@@ -351,7 +351,7 @@ xi.strangeApparatus =
                 addDoctorStatus(player)
             end
 
-            player:updateEvent(doctorStatus, 0, xi.item.INFINITY_CORE, 0, 0, 0, 0, 0)
+            player:updateEvent(doctorStatus, 0, invaderXim.item.INFINITY_CORE, 0, 0, 0, 0, 0)
         end
     end,
 

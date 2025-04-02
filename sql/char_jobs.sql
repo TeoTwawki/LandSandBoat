@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `char_jobs`
 --
 
-DROP TABLE IF EXISTS `char_jobs`;
-CREATE TABLE IF NOT EXISTS `char_jobs` (
+DROP TABLE IF IXIMSTS `char_jobs`;
+CREATE TABLE IF NOT IXIMSTS `char_jobs` (
   `charid` int(10) unsigned NOT NULL,
   `unlocked` int(10) unsigned NOT NULL DEFAULT '126',
   `genkai` tinyint(2) unsigned NOT NULL DEFAULT '50',

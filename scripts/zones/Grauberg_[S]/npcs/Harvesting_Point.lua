@@ -2,13 +2,13 @@
 -- Area: Grauberg [S]
 --  NPC: Harvesting Point
 -----------------------------------
-local ID = zones[xi.zone.GRAUBERG_S]
+local ID = zones[invaderXim.zone.GRAUBERG_S]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.helm.onTrade(player, npc, trade, xi.helmType.HARVESTING, 901)
+    invaderXim.helm.onTrade(player, npc, trade, invaderXim.helmType.HARVESTING, 901)
 end
 
 entity.onTrigger = function(player, npc)

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.DIFFUSION
+-- invaderXim.effect.DIFFUSION
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

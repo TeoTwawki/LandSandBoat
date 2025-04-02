@@ -95,39 +95,39 @@ local findHealNode = function(mob, target)
     end
 
     mob:setLocalVar('healNode', nextNode)
-    mob:pathTo(pathNodes[nextNode][1].x, pathNodes[nextNode][1].y, pathNodes[nextNode][1].z, bit.bor(xi.path.flag.SCRIPT, xi.path.flag.RUN))
+    mob:pathTo(pathNodes[nextNode][1].x, pathNodes[nextNode][1].y, pathNodes[nextNode][1].z, bit.bor(invaderXim.path.flag.SCRIPT, invaderXim.path.flag.RUN))
 end
 
 local doHealing = function(mob)
     mob:setLocalVar('isHealing', 1)
     mob:setAutoAttackEnabled(false) -- Stops the NM from attacking until it is fully re-engaged with the player
-    mob:addStatusEffectEx(xi.effect.BIND, xi.effect.BIND, 0, 0, 5, 0, 0, 0, xi.effectFlag.NO_LOSS_MESSAGE, true) -- Will bind the NM to stop it from moving for a set time.
+    mob:addStatusEffectEx(invaderXim.effect.BIND, invaderXim.effect.BIND, 0, 0, 5, 0, 0, 0, invaderXim.effectFlag.NO_LOSS_MESSAGE, true) -- Will bind the NM to stop it from moving for a set time.
     if
         mob:getHPP() < 85 and
-        not mob:hasStatusEffect(xi.effect.REGEN)
+        not mob:hasStatusEffect(invaderXim.effect.REGEN)
     then
-        mob:addStatusEffectEx(xi.effect.REGEN, xi.effect.REGEN, 264, 5, 100, 0, 0, xi.effectFlag.NO_LOSS_MESSAGE, true)
+        mob:addStatusEffectEx(invaderXim.effect.REGEN, invaderXim.effect.REGEN, 264, 5, 100, 0, 0, invaderXim.effectFlag.NO_LOSS_MESSAGE, true)
     end
 end
 
 local spawnDance = function(mob)
-    mob:pathTo(pathNodes[paths.SPAWN][1].x, pathNodes[paths.SPAWN][1].y, pathNodes[paths.SPAWN][1].z, xi.path.flag.SCRIPT)
-    mob:pathTo(pathNodes[paths.SPAWN][2].x, pathNodes[paths.SPAWN][2].y, pathNodes[paths.SPAWN][2].z, xi.path.flag.SCRIPT)
+    mob:pathTo(pathNodes[paths.SPAWN][1].x, pathNodes[paths.SPAWN][1].y, pathNodes[paths.SPAWN][1].z, invaderXim.path.flag.SCRIPT)
+    mob:pathTo(pathNodes[paths.SPAWN][2].x, pathNodes[paths.SPAWN][2].y, pathNodes[paths.SPAWN][2].z, invaderXim.path.flag.SCRIPT)
 
     if mob:checkDistance(pathNodes[paths.SPAWN][2].x, pathNodes[paths.SPAWN][2].y, pathNodes[paths.SPAWN][2].z) < 1 then
-        mob:addStatusEffectEx(xi.effect.BIND, xi.effect.BIND, 0, 0, 5, 0, 0, 0, xi.effectFlag.NO_LOSS_MESSAGE, true)
+        mob:addStatusEffectEx(invaderXim.effect.BIND, invaderXim.effect.BIND, 0, 0, 5, 0, 0, 0, invaderXim.effectFlag.NO_LOSS_MESSAGE, true)
         mob:setLocalVar('justSpawned', 0)
     end
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180)
     mob:setLocalVar('justSpawned', 1)
 end
 
 entity.onMobWeaponSkillPrepare = function(mob)
     if mob:getAnimationSub() >= 1 then
-        return xi.mobSkill.FORCEFUL_BLOW -- Will ONLY use Forceful Blow when it's weapon is broken.
+        return invaderXim.mobSkill.FORCEFUL_BLOW -- Will ONLY use Forceful Blow when it's weapon is broken.
     end
 end
 
@@ -149,11 +149,11 @@ entity.onMobFight = function(mob, target)
     -- When the NM is taken down to 75% or less it has a high chance of being intimidated
     if
         hpp <= 75 and
-        not mob:hasStatusEffect(xi.effect.INTIMIDATE)
+        not mob:hasStatusEffect(invaderXim.effect.INTIMIDATE)
     then
-        mob:addStatusEffectEx(xi.effect.INTIMIDATE, xi.effect.NONE, 20, 0, 0xFFFF, 0, 0, 0, xi.effectFlag.NO_LOSS_MESSAGE, true)
+        mob:addStatusEffectEx(invaderXim.effect.INTIMIDATE, invaderXim.effect.NONE, 20, 0, 0xFFFF, 0, 0, 0, invaderXim.effectFlag.NO_LOSS_MESSAGE, true)
     elseif hpp > 75 then
-        mob:delStatusEffect(xi.effect.INTIMIDATE)
+        mob:delStatusEffect(invaderXim.effect.INTIMIDATE)
     end
 
     -- If the player enters melee range then the NM will re-engage and stop healing
@@ -162,7 +162,7 @@ entity.onMobFight = function(mob, target)
         isHealing == 1 and
         (hpp >= 85 or targetDist <= 5)
     then
-        mob:delStatusEffectSilent(xi.effect.REGEN)
+        mob:delStatusEffectSilent(invaderXim.effect.REGEN)
         mob:setAutoAttackEnabled(true)
         mob:clearPath()
         mob:setLocalVar('healNode', 0)

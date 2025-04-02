@@ -9,22 +9,22 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.itemBoxOnItemCheck(target)
+    return invaderXim.itemUtils.itemBoxOnItemCheck(target)
 end
 
 itemObject.onItemUse = function(target)
     local giftList =
     {
-        xi.item.FAERIE_APPLE,
-        xi.item.HANDFUL_OF_SUNFLOWER_SEEDS,
-        xi.item.CLUMP_OF_RED_MOKO_GRASS,
-        xi.item.LA_THEINE_CABBAGE,
-        xi.item.CLUMP_OF_BOYAHDA_MOSS,
-        xi.item.HANDFUL_OF_PINE_NUTS,
-        xi.item.CLUMP_OF_BEAUGREENS,
-        xi.item.ACORN,
-        xi.item.CLUMP_OF_BATAGREENS,
-        xi.item.CLUMP_OF_MOKO_GRASS
+        invaderXim.item.FAERIE_APPLE,
+        invaderXim.item.HANDFUL_OF_SUNFLOWER_SEEDS,
+        invaderXim.item.CLUMP_OF_RED_MOKO_GRASS,
+        invaderXim.item.LA_THEINE_CABBAGE,
+        invaderXim.item.CLUMP_OF_BOYAHDA_MOSS,
+        invaderXim.item.HANDFUL_OF_PINE_NUTS,
+        invaderXim.item.CLUMP_OF_BEAUGREENS,
+        invaderXim.item.ACORN,
+        invaderXim.item.CLUMP_OF_BATAGREENS,
+        invaderXim.item.CLUMP_OF_MOKO_GRASS
     }
 
     local gift = math.random(1, #giftList)

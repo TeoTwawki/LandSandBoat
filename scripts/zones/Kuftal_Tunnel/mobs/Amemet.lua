@@ -139,14 +139,14 @@ local pathFind =
 }
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.GIL_MIN, 6000)
-    mob:setMobMod(xi.mobMod.GIL_MAX, 6000)
+    mob:setMobMod(invaderXim.mobMod.GIL_MIN, 6000)
+    mob:setMobMod(invaderXim.mobMod.GIL_MAX, 6000)
 end
 
 entity.onMobSpawn = function(mob)
     mob:setLocalVar('isPaused', 0)
     mob:setLocalVar('mobPath', 1)
-    mob:pathThrough(pathStart, xi.path.flag.COORDS)
+    mob:pathThrough(pathStart, invaderXim.path.flag.COORDS)
 end
 
 entity.onPath = function(mob)
@@ -162,9 +162,9 @@ entity.onPath = function(mob)
 
             local newReverse = mob:getLocalVar('reversePath')
             if newReverse == 0 then
-                mob:pathThrough(pathNodes, xi.path.flag.COORDS)
+                mob:pathThrough(pathNodes, invaderXim.path.flag.COORDS)
             else
-                mob:pathThrough(pathNodes, bit.bor(xi.path.flag.REVERSE, xi.path.flag.COORDS))
+                mob:pathThrough(pathNodes, bit.bor(invaderXim.path.flag.REVERSE, invaderXim.path.flag.COORDS))
             end
         else
             -- Amemet has a chance to pause, if successful he will wait
@@ -194,7 +194,7 @@ entity.onPath = function(mob)
                 end
             end
 
-            mob:pathThrough(pauses, xi.path.flag.COORDS)
+            mob:pathThrough(pauses, invaderXim.path.flag.COORDS)
             mob:setLocalVar('isPaused', 1)
         end
     end
@@ -203,16 +203,16 @@ end
 entity.onMobFight = function(mob)
     -- At 25% HP or less, Amemet receives regain.
     if mob:getHPP() <= 25 then
-        mob:setMod(xi.mod.REGAIN, 10)
+        mob:setMod(invaderXim.mod.REGAIN, 10)
     end
 end
 
 entity.onMobDisengage = function(mob)
-    mob:setMod(xi.mod.REGAIN, 0)
+    mob:setMod(invaderXim.mod.REGAIN, 0)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 418)
+    invaderXim.hunts.checkHunt(mob, player, 418)
 end
 
 return entity

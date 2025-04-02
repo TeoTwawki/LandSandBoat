@@ -4,7 +4,7 @@
 -- Involved in Quest: Too Many Chefs
 -- !pos -56.896 -5 -134.267 235
 -----------------------------------
-local ID = zones[xi.zone.BASTOK_MARKETS]
+local ID = zones[invaderXim.zone.BASTOK_MARKETS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -18,13 +18,13 @@ end
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 473 then
         if player:getFreeSlotsCount() == 0 then
-            player:messageSpecial(ID.text.ITEM_CANNOT_BE_OBTAINED, xi.item.AILEENS_DELIGHT)
+            player:messageSpecial(ID.text.ITEM_CANNOT_BE_OBTAINED, invaderXim.item.AILEENS_DELIGHT)
         else
-            player:addItem(xi.item.AILEENS_DELIGHT)
-            player:messageSpecial(ID.text.ITEM_OBTAINED, xi.item.AILEENS_DELIGHT)
-            player:addFame(xi.fameArea.BASTOK, 30)
+            player:addItem(invaderXim.item.AILEENS_DELIGHT)
+            player:messageSpecial(ID.text.ITEM_OBTAINED, invaderXim.item.AILEENS_DELIGHT)
+            player:addFame(invaderXim.fameArea.BASTOK, 30)
             player:setCharVar('TOO_MANY_CHEFS', 0)
-            player:completeQuest(xi.questLog.BASTOK, xi.quest.id.bastok.TOO_MANY_CHEFS)
+            player:completeQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.TOO_MANY_CHEFS)
         end
     end
 end

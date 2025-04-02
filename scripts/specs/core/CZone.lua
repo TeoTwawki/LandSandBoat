@@ -52,7 +52,7 @@ function CZone:getMobs()
 end
 
 ---@nodiscard
----@return xi.zone
+---@return invaderXim.zone
 function CZone:getID()
 end
 
@@ -62,7 +62,7 @@ function CZone:getName()
 end
 
 ---@nodiscard
----@return xi.region
+---@return invaderXim.region
 function CZone:getRegionID()
 end
 
@@ -78,7 +78,7 @@ function CZone:getBattlefieldByInitiator(charID) -- Unused
 end
 
 ---@nodiscard
----@return xi.weather
+---@return invaderXim.weather
 function CZone:getWeather()
 end
 

@@ -3,7 +3,7 @@
 --  NPC: ??? Used to spawn Edacious Opo-opo
 -- !pos 545.7346 0.1819 -433.2258
 -----------------------------------
-local ID = zones[xi.zone.YHOATOR_JUNGLE]
+local ID = zones[invaderXim.zone.YHOATOR_JUNGLE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -12,9 +12,9 @@ entity.onTrade = function(player, npc, trade)
     local spawnChance = 0
     local timer = GetMobByID(ID.mob.EDACIOUS_OPO_OPO):getLocalVar('cooldown')
 
-    if npcUtil.tradeHas(trade, xi.item.BUNCH_OF_PAMAMAS) then
+    if npcUtil.tradeHas(trade, invaderXim.item.BUNCH_OF_PAMAMAS) then
         spawnChance = 5
-    elseif npcUtil.tradeHas(trade, xi.item.BUNCH_OF_WILD_PAMAMAS) then
+    elseif npcUtil.tradeHas(trade, invaderXim.item.BUNCH_OF_WILD_PAMAMAS) then
         spawnChance = 50
     end
 

@@ -11,14 +11,14 @@
 -- qm5        : !pos -29.195 -22.159 -183.716 174
 -- qm6        : !pos -27.964 -10.358 -185.768 174
 -----------------------------------
-local bastokMarketsID = zones[xi.zone.BASTOK_MARKETS]
-local bastokMinesID   = zones[xi.zone.BASTOK_MINES]
-local metalworksID    = zones[xi.zone.METALWORKS]
-local portBastokID    = zones[xi.zone.PORT_BASTOK]
-local kuftalID        = zones[xi.zone.KUFTAL_TUNNEL]
+local bastokMarketsID = zones[invaderXim.zone.BASTOK_MARKETS]
+local bastokMinesID   = zones[invaderXim.zone.BASTOK_MINES]
+local metalworksID    = zones[invaderXim.zone.METALWORKS]
+local portBastokID    = zones[invaderXim.zone.PORT_BASTOK]
+local kuftalID        = zones[invaderXim.zone.KUFTAL_TUNNEL]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.BASTOK, xi.mission.id.bastok.ENTER_THE_TALEKEEPER)
+local mission = Mission:new(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.ENTER_THE_TALEKEEPER)
 
 mission.reward =
 {
@@ -52,11 +52,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             onEventFinish =
             {
@@ -64,7 +64,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             onEventFinish =
             {
@@ -72,7 +72,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             onEventFinish =
             {
@@ -80,7 +80,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             onEventFinish =
             {
@@ -94,12 +94,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Cleades'] = mission:messageSpecial(bastokMarketsID.text.EXTENDED_MISSION_OFFSET + 12),
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Rashid'] = mission:messageSpecial(bastokMinesID.text.EXTENDED_MISSION_OFFSET + 12),
 
@@ -108,7 +108,7 @@ mission.sections =
                 -- here automatically, and this event will finish the sequence and complete the
                 -- mission.
                 if
-                    prevZone == xi.zone.ZERUHN_MINES and
+                    prevZone == invaderXim.zone.ZERUHN_MINES and
                     player:getMissionStatus(mission.areaId) == 5
                 then
                     return 176
@@ -119,23 +119,23 @@ mission.sections =
             {
                 [176] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.OLD_PIECE_OF_WOOD)
+                        player:delKeyItem(invaderXim.ki.OLD_PIECE_OF_WOOD)
                     end
                 end,
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Malduc'] = mission:messageSpecial(metalworksID.text.EXTENDED_MISSION_OFFSET + 12),
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Argus'] = mission:messageSpecial(portBastokID.text.EXTENDED_MISSION_OFFSET + 12),
         },
 
-        [xi.zone.ZERUHN_MINES] =
+        [invaderXim.zone.ZERUHN_MINES] =
         {
             ['Drake_Fang'] =
             {
@@ -165,7 +165,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.KUFTAL_TUNNEL] =
+        [invaderXim.zone.KUFTAL_TUNNEL] =
         {
             ['qm5'] =
             {
@@ -246,7 +246,7 @@ mission.sections =
 
                 [13] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 4)
-                    npcUtil.giveKeyItem(player, xi.ki.OLD_PIECE_OF_WOOD)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.OLD_PIECE_OF_WOOD)
                 end,
             },
         },
@@ -254,20 +254,20 @@ mission.sections =
 
     {
         check = function(player, currentMission, missionStatus, vars)
-            return player:getNation() == xi.nation.BASTOK and
-                player:getCurrentMission(mission.areaId) == xi.mission.id.bastok.NONE and
+            return player:getNation() == invaderXim.nation.BASTOK and
+                player:getCurrentMission(mission.areaId) == invaderXim.mission.id.bastok.NONE and
                 player:hasCompletedMission(mission.areaId, mission.missionId) and
-                not player:hasCompletedMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_SALT_OF_THE_EARTH)
+                not player:hasCompletedMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_SALT_OF_THE_EARTH)
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Detzo']  = mission:event(184):importantOnce(),
             ['Gumbah'] = mission:event(183):importantOnce(),
             ['Pavvke'] = mission:event(76, 1):importantOnce(),
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Iron_Eater'] = mission:event(769):importantOnce(),
         },

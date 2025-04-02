@@ -1,7 +1,7 @@
 ﻿/*
 ===========================================================================
 
-  Copyright (c) 2025 LandSandBoat Dev Teams
+  Copyright (c) 2025 InvaderXim Dev Teams
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 
 #include <vector>
 
-// Update xi.treasurePool accordingly when making changes
+// Update invaderXim.treasurePool accordingly when making changes
 enum class TreasurePoolType : uint8
 {
     Solo     = 1,

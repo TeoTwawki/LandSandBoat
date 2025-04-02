@@ -28,10 +28,10 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.BEASTMEN
-    params.attackType = xi.attackType.MAGICAL
-    params.damageType = xi.damageType.LIGHT
-    params.attribute = xi.mod.MND
+    params.ecosystem = invaderXim.ecosystem.BEASTMEN
+    params.attackType = invaderXim.attackType.MAGICAL
+    params.damageType = invaderXim.damageType.LIGHT
+    params.attribute = invaderXim.mod.MND
     params.multiplier = 1.5
     params.azureBonus = 0.5
     params.tMultiplier = 1.0
@@ -46,18 +46,18 @@ spellObject.onSpellCast = function(caster, target, spell)
 
     local damage = 0
     if target:isUndead() then
-        spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
     else
-        damage = xi.spells.blue.useMagicalSpell(caster, target, spell, params)
+        damage = invaderXim.spells.blue.useMagicalSpell(caster, target, spell, params)
 
         local mpDrained = utils.clamp(damage, 0, target:getMP())
         if mpDrained == 0 then
-            spell:setMsg(xi.msg.basic.MAGIC_DMG)
+            spell:setMsg(invaderXim.msg.basic.MAGIC_DMG)
         else
             damage = mpDrained
             caster:addMP(damage)
             target:delMP(damage)
-            spell:setMsg(xi.msg.basic.MAGIC_DRAIN_MP)
+            spell:setMsg(invaderXim.msg.basic.MAGIC_DRAIN_MP)
         end
     end
 

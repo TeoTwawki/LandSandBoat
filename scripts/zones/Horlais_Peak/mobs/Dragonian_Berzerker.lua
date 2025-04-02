@@ -11,13 +11,13 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
             {
-                id = xi.jsa.MIGHTY_STRIKES,
+                id = invaderXim.jsa.MIGHTY_STRIKES,
                 endCode = function(mobArg)
-                    mobArg:addMod(xi.mod.ATT, 200)
+                    mobArg:addMod(invaderXim.mod.ATT, 200)
                 end,
             },
         },

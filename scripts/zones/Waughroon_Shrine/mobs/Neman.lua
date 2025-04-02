@@ -7,11 +7,11 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMod(xi.mod.SLEEP_MEVA, 50)
+    mob:setMod(invaderXim.mod.SLEEP_MEVA, 50)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.CHARMABLE, 1)
+    mob:setMobMod(invaderXim.mobMod.CHARMABLE, 1)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

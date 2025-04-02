@@ -3,7 +3,7 @@
 --  Mob: Explosure
 -- Note: PH for Hazmat
 -----------------------------------
-local ID = zones[xi.zone.GARLAIGE_CITADEL]
+local ID = zones[invaderXim.zone.GARLAIGE_CITADEL]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -14,11 +14,11 @@ local hazmatPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 706, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 706, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, hazmatPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, hazmatPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

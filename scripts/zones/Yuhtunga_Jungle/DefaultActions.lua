@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.YUHTUNGA_JUNGLE]
+local ID = zones[invaderXim.zone.YUHTUNGA_JUNGLE]
 
 return {
     ['qm11']             = { messageSpecial = ID.text.NOTHING_OUT_OF_ORDINARY },

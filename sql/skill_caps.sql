@@ -7,7 +7,7 @@
 -- Table structure for table `skill_caps`
 --
 
-DROP TABLE IF EXISTS `skill_caps`;
+DROP TABLE IF IXIMSTS `skill_caps`;
 CREATE TABLE `skill_caps` (
   `level` tinyint(2) unsigned NOT NULL,
   `r0` smallint(3) unsigned NOT NULL DEFAULT '0',

@@ -2,7 +2,7 @@
 -- Area: Al'Taieu
 --  NPC: Auroral Updraft
 -----------------------------------
-local ID = zones[xi.zone.ALTAIEU]
+local ID = zones[invaderXim.zone.ALTAIEU]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

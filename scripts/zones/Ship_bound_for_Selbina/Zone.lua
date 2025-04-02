@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Ship_bound_for_Selbina (220)
 -----------------------------------
-local ID = zones[xi.zone.SHIP_BOUND_FOR_SELBINA]
+local ID = zones[invaderXim.zone.SHIP_BOUND_FOR_SELBINA]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -22,7 +22,7 @@ zoneObject.onZoneIn = function(player, prevZone)
     end
 
     if
-        player:hasKeyItem(xi.ki.SEANCE_STAFF) and
+        player:hasKeyItem(invaderXim.ki.SEANCE_STAFF) and
         player:getCharVar('Enagakure_Killed') == 0 and
         not GetMobByID(ID.mob.ENAGAKURE):isSpawned()
     then

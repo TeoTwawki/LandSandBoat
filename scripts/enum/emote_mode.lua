@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.emoteMode
-xi.emoteMode =
+---@enum invaderXim.emoteMode
+invaderXim.emoteMode =
 {
     ALL    = 0,
     TEXT   = 1,

@@ -11,15 +11,15 @@
 -- Chalvatot        : !pos -105 0.1 72 233
 -- Dreamrose        : !pos -262.403 -10.155 49.164 125
 -----------------------------------
-local westernAltepaID = zones[xi.zone.WESTERN_ALTEPA_DESERT]
+local westernAltepaID = zones[invaderXim.zone.WESTERN_ALTEPA_DESERT]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.LEAUTES_LAST_WISHES)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.LEAUTES_LAST_WISHES)
 
 mission.reward =
 {
     rankPoints = 600,
-    keyItem    = xi.ki.PIECE_OF_PAPER,
+    keyItem    = invaderXim.ki.PIECE_OF_PAPER,
 }
 
 local handleAcceptMission = function(player, csid, option, npc)
@@ -33,11 +33,11 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -46,7 +46,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -61,7 +61,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Arsha'] =
             {
@@ -112,7 +112,7 @@ mission.sections =
                 [2] = function(player, triggerArea)
                     if
                         player:getMissionStatus(mission.areaId) == 4 and
-                        player:hasKeyItem(xi.ki.DREAMROSE)
+                        player:hasKeyItem(invaderXim.ki.DREAMROSE)
                     then
                         return mission:progressEvent(111)
                     end
@@ -135,13 +135,13 @@ mission.sections =
 
                 [111] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.DREAMROSE)
+                        player:delKeyItem(invaderXim.ki.DREAMROSE)
                     end
                 end,
             },
         },
 
-        [xi.zone.WESTERN_ALTEPA_DESERT] =
+        [invaderXim.zone.WESTERN_ALTEPA_DESERT] =
         {
             ['Dreamrose'] =
             {
@@ -154,7 +154,7 @@ mission.sections =
                         if mission:getVar(player, 'Progress') == 1 then
                             mission:setVar(player, 'Progress', 0)
                             player:setMissionStatus(mission.areaId, 3)
-                            return mission:keyItem(xi.ki.DREAMROSE)
+                            return mission:keyItem(invaderXim.ki.DREAMROSE)
                         else
                             SpawnMob(westernAltepaID.mob.SABOTENDER_ENAMORADO):updateClaim(player)
                             return mission:messageSpecial(westernAltepaID.text.FEEL_SOMETHING_PRICKLY)

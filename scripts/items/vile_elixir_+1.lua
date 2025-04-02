@@ -14,7 +14,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
     local cMP = target:getMP()
 
     if mHP == cHP and mMP == cMP then
-        result = xi.msg.basic.ITEM_UNABLE_TO_USE -- Does not let player use item if their hp and mp are full
+        result = invaderXim.msg.basic.ITEM_UNABLE_TO_USE -- Does not let player use item if their hp and mp are full
     end
 
     return result
@@ -23,7 +23,7 @@ end
 itemObject.onItemUse = function(target)
     target:addHP((target:getMaxHP() / 100) * 55)
     target:addMP((target:getMaxMP() / 100) * 55)
-    target:messageBasic(xi.msg.basic.RECOVERS_HP_AND_MP)
+    target:messageBasic(invaderXim.msg.basic.RECOVERS_HP_AND_MP)
 end
 
 return itemObject

@@ -5,27 +5,27 @@
 -- Radeivepart : !pos 5 9 -39 243
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.NORTHWARD)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.NORTHWARD)
 
 quest.reward =
 {
     exp      = 2000,
     fame     = 30,
-    fameArea = xi.fameArea.JEUNO,
+    fameArea = invaderXim.fameArea.JEUNO,
     gil      = 2000,
-    keyItem  = xi.ki.MAP_OF_CASTLE_ZVAHL,
-    title    = xi.title.ENVOY_TO_THE_NORTH,
+    keyItem  = invaderXim.ki.MAP_OF_CASTLE_ZVAHL,
+    title    = invaderXim.title.ENVOY_TO_THE_NORTH,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.JEUNO) >= 4
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.JEUNO) >= 4
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Radeivepart'] = quest:progressEvent(159, { [0] = 1, [7] = 8 }),
 
@@ -42,15 +42,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Radeivepart'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.FLAME_DEGEN) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.FLAME_DEGEN) then
                         return quest:progressEvent(61)
                     end
                 end,
@@ -71,10 +71,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Radeivepart'] = quest:event(159, { [0] = 3, [7] = 8 }):replaceDefault(),
         },

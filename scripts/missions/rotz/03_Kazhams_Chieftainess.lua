@@ -7,12 +7,12 @@
 -- Jakoh Wahcondalo : !pos 101 -16 -115 250
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ZILART, xi.mission.id.zilart.KAZHAMS_CHIEFTAINESS)
+local mission = Mission:new(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.KAZHAMS_CHIEFTAINESS)
 
 mission.reward =
 {
-    keyItem     = xi.ki.SACRIFICIAL_CHAMBER_KEY,
-    nextMission = { xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_TEMPLE_OF_UGGALEPIH },
+    keyItem     = invaderXim.ki.SACRIFICIAL_CHAMBER_KEY,
+    nextMission = { invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_TEMPLE_OF_UGGALEPIH },
 }
 
 mission.sections =
@@ -22,12 +22,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Gilgamesh']  = mission:event(7),
         },
 
-        [xi.zone.KAZHAM] =
+        [invaderXim.zone.KAZHAM] =
         {
             ['Jakoh_Wahcondalo'] = mission:progressEvent(114),
 

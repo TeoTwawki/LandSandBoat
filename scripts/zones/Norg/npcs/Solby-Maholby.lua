@@ -2,7 +2,7 @@
 -- Area: Norg
 --  NPC: Solby-Maholby
 -----------------------------------
-local ID = zones[xi.zone.NORG]
+local ID = zones[invaderXim.zone.NORG]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -28,7 +28,7 @@ entity.onTrigger = function(player, npc)
     }
 
     player:showText(npc, ID.text.SOLBYMAHOLBY_SHOP_DIALOG)
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 return entity

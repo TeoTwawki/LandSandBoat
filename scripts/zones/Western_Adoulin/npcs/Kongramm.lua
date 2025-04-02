@@ -8,8 +8,8 @@ local entity = {}
 
 entity.onTrigger = function(player, npc)
     if
-        player:getCurrentMission(xi.mission.log_id.SOA) == xi.mission.id.soa.A_CURSE_FROM_THE_PAST and
-        not player:hasKeyItem(xi.ki.PIECE_OF_A_STONE_WALL)
+        player:getCurrentMission(invaderXim.mission.log_id.SOA) == invaderXim.mission.id.soa.A_CURSE_FROM_THE_PAST and
+        not player:hasKeyItem(invaderXim.ki.PIECE_OF_A_STONE_WALL)
     then
         if player:getCharVar('SOA_ACFTP_Kongramm') < 1 then
             -- Gives hint for SOA Mission: 'A Curse From the Past'

@@ -3,7 +3,7 @@
 -- 7th Floor Beginning Door
 -- !pos -340 -2 480
 -----------------------------------
-local ID = zones[xi.zone.ZHAYOLM_REMNANTS]
+local ID = zones[invaderXim.zone.ZHAYOLM_REMNANTS]
 -----------------------------------
 
 ---@type TNpcEntity
@@ -15,7 +15,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 300 and option == 1 then
-        if not xi.salvage.onDoorOpen(npc) then
+        if not invaderXim.salvage.onDoorOpen(npc) then
             player:messageSpecial(ID.text.DOOR_IS_SEALED)
         end
     end

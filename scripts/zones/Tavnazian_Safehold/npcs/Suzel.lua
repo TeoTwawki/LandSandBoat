@@ -4,7 +4,7 @@
 -- Type: Item Deliverer
 -- !pos -72.701 -20.25 -64.058 26
 -----------------------------------
-local ID = zones[xi.zone.TAVNAZIAN_SAFEHOLD]
+local ID = zones[invaderXim.zone.TAVNAZIAN_SAFEHOLD]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

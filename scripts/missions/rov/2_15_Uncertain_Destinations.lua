@@ -5,11 +5,11 @@
 -- !addmission 13 78
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.UNCERTAIN_DESTINATIONS)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.UNCERTAIN_DESTINATIONS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.GANGED_UP_ON },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.GANGED_UP_ON },
 }
 
 mission.sections =

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.FOCALIZATION
+-- invaderXim.effect.FOCALIZATION
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

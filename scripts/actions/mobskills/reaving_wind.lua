@@ -17,16 +17,16 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local damage = mob:getWeaponDmg() * 3
 
-    damage = xi.mobskills.mobMagicalMove(mob, target, skill, damage, xi.element.NONE, 1, xi.mobskills.magicalTpBonus.NO_EFFECT)
-    damage = xi.mobskills.mobFinalAdjustments(damage, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.NONE, xi.mobskills.shadowBehavior.WIPE_SHADOWS)
+    damage = invaderXim.mobskills.mobMagicalMove(mob, target, skill, damage, invaderXim.element.NONE, 1, invaderXim.mobskills.magicalTpBonus.NO_EFFECT)
+    damage = invaderXim.mobskills.mobFinalAdjustments(damage, mob, skill, target, invaderXim.attackType.MAGICAL, invaderXim.damageType.NONE, invaderXim.mobskills.shadowBehavior.WIPE_SHADOWS)
 
     if target:getTP() == 0 then
-        skill:setMsg(xi.msg.basic.SKILL_NO_EFFECT)
+        skill:setMsg(invaderXim.msg.basic.SKILL_NO_EFFECT)
     else
         target:setTP(target:getTP() - 1000)
     end
 
-    target:takeDamage(damage, mob, xi.attackType.MAGICAL, xi.damageType.NONE)
+    target:takeDamage(damage, mob, invaderXim.attackType.MAGICAL, invaderXim.damageType.NONE)
 
     return damage
 end

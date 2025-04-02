@@ -4,16 +4,16 @@
 -- Involved In Quest: Pieuje's Decision
 -- !pos -55 -16 69 204
 -----------------------------------
-local ID = zones[xi.zone.FEIYIN]
+local ID = zones[invaderXim.zone.FEIYIN]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.PIEUJES_DECISION) == xi.questStatus.QUEST_ACCEPTED and
-        npcUtil.tradeHas(trade, xi.item.TAVNAZIA_BELL) and
-        not player:hasItem(xi.item.TAVNAZIAN_MASK) and
+        player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.PIEUJES_DECISION) == invaderXim.questStatus.QUEST_ACCEPTED and
+        npcUtil.tradeHas(trade, invaderXim.item.TAVNAZIA_BELL) and
+        not player:hasItem(invaderXim.item.TAVNAZIAN_MASK) and
         not GetMobByID(ID.mob.ALTEDOUR_I_TAVNAZIA):isSpawned()
     then
         player:confirmTrade()

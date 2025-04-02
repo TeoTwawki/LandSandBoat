@@ -5,14 +5,14 @@
 -- Clarion Star : !pos 81.478 7.500 -24.169 236
 -- Naji         : !pos 64 -14 -4 237
 -----------------------------------
-local metalworksID = zones[xi.zone.METALWORKS]
+local metalworksID = zones[invaderXim.zone.METALWORKS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.TRUST_BASTOK)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.TRUST_BASTOK)
 
 quest.reward =
 {
-    keyItem = xi.ki.BASTOK_TRUST_PERMIT,
+    keyItem = invaderXim.ki.BASTOK_TRUST_PERMIT,
 }
 
 local function trustMemoryAyame(player)
@@ -20,34 +20,34 @@ local function trustMemoryAyame(player)
 
     -- 2 - The Three Kingdoms
     if
-        player:hasCompletedMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_TO_BASTOK2) or
-        player:hasCompletedMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_THREE_KINGDOMS_BASTOK2)
+        player:hasCompletedMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_TO_BASTOK2) or
+        player:hasCompletedMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_THREE_KINGDOMS_BASTOK2)
     then
         memories = memories + 2
     end
 
     -- 4 - Where Two Paths Converge
-    if player:hasCompletedMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.WHERE_TWO_PATHS_CONVERGE) then
+    if player:hasCompletedMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.WHERE_TWO_PATHS_CONVERGE) then
         memories = memories + 4
     end
 
     -- 8 - The Pirate's Cove
-    if player:hasCompletedMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_PIRATES_COVE) then
+    if player:hasCompletedMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_PIRATES_COVE) then
         memories = memories + 8
     end
 
     -- 16 - Ayame and Kaede
-    if player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.AYAME_AND_KAEDE) then
+    if player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.AYAME_AND_KAEDE) then
         memories = memories + 16
     end
 
     -- 32 - Light of Judgement
-    if player:hasCompletedMission(xi.mission.log_id.TOAU, xi.mission.id.toau.LIGHT_OF_JUDGMENT) then
+    if player:hasCompletedMission(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.LIGHT_OF_JUDGMENT) then
         memories = memories + 32
     end
 
     -- 64 - True Strength
-    if player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.TRUE_STRENGTH) then
+    if player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.TRUE_STRENGTH) then
         memories = memories + 64
     end
 
@@ -58,27 +58,27 @@ local function trustMemoryIronEater(player)
     local memories = 0
     --[[ TODO
     -- 2 - The Three Kingdoms
-    if player:hasCompletedMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_TO_BASTOK2) or player:hasCompletedMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_THREE_KINGDOMS_BASTOK2) then
+    if player:hasCompletedMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_TO_BASTOK2) or player:hasCompletedMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_THREE_KINGDOMS_BASTOK2) then
         memories = memories + 2
     end
     -- 4 - Where Two Paths Converge
-    if player:hasCompletedMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.WHERE_TWO_PATHS_CONVERGE) then
+    if player:hasCompletedMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.WHERE_TWO_PATHS_CONVERGE) then
         memories = memories + 4
     end
     -- 8 - The Pirate's Cove
-    if player:hasCompletedMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_PIRATES_COVE) then
+    if player:hasCompletedMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_PIRATES_COVE) then
         memories = memories + 8
     end
     -- 16 - Ayame and Kaede
-    if player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.AYAME_AND_KAEDE) then
+    if player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.AYAME_AND_KAEDE) then
         memories = memories + 16
     end
     -- 32 - Light of Judgement
-    if player:hasCompletedMission(xi.mission.log_id.TOAU, xi.mission.id.toau.LIGHT_OF_JUDGMENT) then
+    if player:hasCompletedMission(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.LIGHT_OF_JUDGMENT) then
         memories = memories + 32
     end
     -- 64 - True Strength
-    if player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.TRUE_STRENGTH) then
+    if player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.TRUE_STRENGTH) then
         memories = memories + 64
     end
     ]]--
@@ -99,15 +99,15 @@ end
 local function trustMemoryNaji(player)
     local memories = 0
 
-    if player:hasCompletedMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY) then
+    if player:hasCompletedMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY) then
         memories = memories + 2
     end
 
-    if player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.THE_DOORMAN) then
+    if player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_DOORMAN) then
         memories = memories + 4
     end
 
-    if player:hasCompletedMission(xi.mission.log_id.TOAU, xi.mission.id.toau.LIGHT_OF_JUDGMENT) then
+    if player:hasCompletedMission(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.LIGHT_OF_JUDGMENT) then
         memories = memories + 8
     end
 
@@ -121,17 +121,17 @@ local function trustMemoryVolker(player)
     local memories = 0
 
     -- 2 - Darkness Rising (Bastok Mission)
-    if player:hasCompletedMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.DARKNESS_RISING) then
+    if player:hasCompletedMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.DARKNESS_RISING) then
         memories = memories + 2
     end
 
     -- 4 - Where Two Paths Converge (Bastok Mission)
-    if player:hasCompletedMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.WHERE_TWO_PATHS_CONVERGE) then
+    if player:hasCompletedMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.WHERE_TWO_PATHS_CONVERGE) then
         memories = memories + 4
     end
 
     -- 8 - Light of Judgment (Aht Urhgan Mission)
-    if player:hasCompletedMission(xi.mission.log_id.TOAU, xi.mission.id.toau.LIGHT_OF_JUDGMENT) then
+    if player:hasCompletedMission(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.LIGHT_OF_JUDGMENT) then
         memories = memories + 8
     end
 
@@ -148,30 +148,30 @@ quest.sections =
     -- Section: Quest available
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
                 player:getMainLvl() >= 5 and
-                xi.settings.main.ENABLE_TRUST_QUESTS == 1
+                invaderXim.settings.main.ENABLE_TRUST_QUESTS == 1
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Clarion_Star'] =
             {
                 onTrigger = function(player, npc)
-                    local trustSandoria = player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.TRUST_SANDORIA)
-                    local trustWindurst = player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.TRUST_WINDURST)
+                    local trustSandoria = player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.TRUST_SANDORIA)
+                    local trustWindurst = player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.TRUST_WINDURST)
 
                     -- Haven't started any other trust tutorial quest.
                     if
-                        trustWindurst == xi.questStatus.QUEST_AVAILABLE and
-                        trustSandoria == xi.questStatus.QUEST_AVAILABLE
+                        trustWindurst == invaderXim.questStatus.QUEST_AVAILABLE and
+                        trustSandoria == invaderXim.questStatus.QUEST_AVAILABLE
                     then
                         return quest:progressEvent(434)
 
                     -- Has finished other trust quest.
                     elseif
-                        trustWindurst == xi.questStatus.QUEST_COMPLETED or
-                        trustSandoria == xi.questStatus.QUEST_COMPLETED
+                        trustWindurst == invaderXim.questStatus.QUEST_COMPLETED or
+                        trustSandoria == invaderXim.questStatus.QUEST_COMPLETED
                     then
                         return quest:progressEvent(438)
                     end
@@ -183,14 +183,14 @@ quest.sections =
                 [434] = function(player, csid, option, npc)
                     if option == 2 then
                         quest:begin(player)
-                        npcUtil.giveKeyItem(player, xi.ki.BLUE_INSTITUTE_CARD)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.BLUE_INSTITUTE_CARD)
                     end
                 end,
 
                 [438] = function(player, csid, option, npc)
                     if option == 2 then
                         quest:begin(player)
-                        npcUtil.giveKeyItem(player, xi.ki.BLUE_INSTITUTE_CARD)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.BLUE_INSTITUTE_CARD)
                     end
                 end,
             },
@@ -200,10 +200,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Naji'] =
             {
@@ -212,8 +212,8 @@ quest.sections =
                     local bastokFirstTrust = quest:getVar(player, 'Prog')
 
                     if
-                        player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.TRUST_SANDORIA) == xi.questStatus.QUEST_COMPLETED or
-                        player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.TRUST_WINDURST) == xi.questStatus.QUEST_COMPLETED
+                        player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.TRUST_SANDORIA) == invaderXim.questStatus.QUEST_COMPLETED or
+                        player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.TRUST_WINDURST) == invaderXim.questStatus.QUEST_COMPLETED
                     then
                         return quest:progressEvent(984, 0, 0, 0, trustMemoryNaji(player), 0, 0, 0, rank3)
                     elseif bastokFirstTrust == 0 then
@@ -229,37 +229,37 @@ quest.sections =
             onEventFinish =
             {
                 [980] = function(player, csid, option, npc)
-                    player:addSpell(xi.magic.spell.NAJI, true, true)
-                    player:messageSpecial(metalworksID.text.YOU_LEARNED_TRUST, 0, xi.magic.spell.NAJI)
+                    player:addSpell(invaderXim.magic.spell.NAJI, true, true)
+                    player:messageSpecial(metalworksID.text.YOU_LEARNED_TRUST, 0, invaderXim.magic.spell.NAJI)
                     quest:setVar(player, 'Prog', 1)
                 end,
 
                 [982] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:addTitle(xi.title.THE_TRUSTWORTHY)
-                        player:delKeyItem(xi.ki.BLUE_INSTITUTE_CARD)
-                        player:messageSpecial(metalworksID.text.KEYITEM_LOST, xi.ki.BLUE_INSTITUTE_CARD)
+                        player:addTitle(invaderXim.title.THE_TRUSTWORTHY)
+                        player:delKeyItem(invaderXim.ki.BLUE_INSTITUTE_CARD)
+                        player:messageSpecial(metalworksID.text.KEYITEM_LOST, invaderXim.ki.BLUE_INSTITUTE_CARD)
                         player:messageSpecial(metalworksID.text.CALL_MULTIPLE_ALTER_EGO)
                     end
                 end,
 
                 [984] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:addSpell(xi.magic.spell.NAJI, true, true)
-                        player:messageSpecial(metalworksID.text.YOU_LEARNED_TRUST, 0, xi.magic.spell.NAJI)
-                        player:delKeyItem(xi.ki.BLUE_INSTITUTE_CARD)
-                        player:messageSpecial(metalworksID.text.KEYITEM_LOST, xi.ki.BLUE_INSTITUTE_CARD)
+                        player:addSpell(invaderXim.magic.spell.NAJI, true, true)
+                        player:messageSpecial(metalworksID.text.YOU_LEARNED_TRUST, 0, invaderXim.magic.spell.NAJI)
+                        player:delKeyItem(invaderXim.ki.BLUE_INSTITUTE_CARD)
+                        player:messageSpecial(metalworksID.text.KEYITEM_LOST, invaderXim.ki.BLUE_INSTITUTE_CARD)
                     end
                 end,
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Clarion_Star'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.BLUE_INSTITUTE_CARD) then
+                    if player:hasKeyItem(invaderXim.ki.BLUE_INSTITUTE_CARD) then
                         return quest:progressEvent(435)
                     end
                 end,
@@ -270,17 +270,17 @@ quest.sections =
     -- Section: Quest completed
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Ayame'] =
             {
                 onTrigger = function(player, npc)
                     local rank3 = player:getRank(player:getNation()) >= 3 and 1 or 0
 
-                    if not player:hasSpell(xi.magic.spell.AYAME) then
+                    if not player:hasSpell(invaderXim.magic.spell.AYAME) then
                         return quest:event(985, 0, 0, 0, trustMemoryAyame(player), 0, 0, 0, rank3)
                     end
                 end,
@@ -290,10 +290,10 @@ quest.sections =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:hasSpell(xi.magic.spell.NAJI) and
-                        player:hasSpell(xi.magic.spell.AYAME) and
-                        player:hasSpell(xi.magic.spell.VOLKER) and
-                        not player:hasSpell(xi.magic.spell.IRON_EATER)
+                        player:hasSpell(invaderXim.magic.spell.NAJI) and
+                        player:hasSpell(invaderXim.magic.spell.AYAME) and
+                        player:hasSpell(invaderXim.magic.spell.VOLKER) and
+                        not player:hasSpell(invaderXim.magic.spell.IRON_EATER)
                     then
                         return quest:progressEvent(988, 0, 0, 0, trustMemoryIronEater(player)):oncePerZone()
                     end
@@ -305,7 +305,7 @@ quest.sections =
                 onTrigger = function(player, npc)
                     local rank6 = player:getRank(player:getNation()) >= 6 and 1 or 0
 
-                    if not player:hasSpell(xi.magic.spell.VOLKER) then
+                    if not player:hasSpell(invaderXim.magic.spell.VOLKER) then
                         return quest:event(986, 0, 0, 0, trustMemoryVolker(player), 0, 0, 0, rank6)
                     end
                 end,
@@ -316,7 +316,7 @@ quest.sections =
                 onTrigger = function(player, npc)
                     local rank3 = player:getRank(player:getNation()) >= 3 and 1 or 0
 
-                    if not player:hasSpell(xi.magic.spell.AYAME) then
+                    if not player:hasSpell(invaderXim.magic.spell.AYAME) then
                         return quest:progressEvent(983, 0, 0, 0, 0, 0, 0, 0, rank3):oncePerZone()
                     end
                 end,
@@ -326,28 +326,28 @@ quest.sections =
             {
                 [985] = function(player, csid, option, npc)
                     if option == 2 then
-                        player:addSpell(xi.magic.spell.AYAME, true, true)
-                        player:messageSpecial(metalworksID.text.YOU_LEARNED_TRUST, 0, xi.magic.spell.AYAME)
+                        player:addSpell(invaderXim.magic.spell.AYAME, true, true)
+                        player:messageSpecial(metalworksID.text.YOU_LEARNED_TRUST, 0, invaderXim.magic.spell.AYAME)
                     end
                 end,
 
                 [986] = function(player, csid, option, npc)
                     if option == 2 then
-                        player:addSpell(xi.magic.spell.VOLKER, true, true)
-                        player:messageSpecial(metalworksID.text.YOU_LEARNED_TRUST, 0, xi.magic.spell.VOLKER)
+                        player:addSpell(invaderXim.magic.spell.VOLKER, true, true)
+                        player:messageSpecial(metalworksID.text.YOU_LEARNED_TRUST, 0, invaderXim.magic.spell.VOLKER)
                     end
                 end,
 
                 [988] = function(player, csid, option, npc)
                     if option == 2 then
-                        player:addSpell(xi.magic.spell.IRON_EATER, true, true)
-                        player:messageSpecial(metalworksID.text.YOU_LEARNED_TRUST, 0, xi.magic.spell.IRON_EATER)
+                        player:addSpell(invaderXim.magic.spell.IRON_EATER, true, true)
+                        player:messageSpecial(metalworksID.text.YOU_LEARNED_TRUST, 0, invaderXim.magic.spell.IRON_EATER)
                     end
                 end,
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Clarion_Star'] = quest:progressEvent(436),
         },

@@ -5,11 +5,11 @@
 -- and the drops are level dependant.
 -----------------------------------
 xi = xi or {}
-xi.casket_loot = xi.casket_loot or {}
+invaderXim.casket_loot = invaderXim.casket_loot or {}
 
-xi.casket_loot.casketItems =
+invaderXim.casket_loot.casketItems =
 {
-    [xi.zone.WEST_RONFAURE] =
+    [invaderXim.zone.WEST_RONFAURE] =
     {
         regionalItems = { 15834 }, -- Blind Ring
         temps =
@@ -80,7 +80,7 @@ xi.casket_loot.casketItems =
             {  320, 17050 }, -- Willow Wand
         }
     },
-    [xi.zone.EAST_RONFAURE] =
+    [invaderXim.zone.EAST_RONFAURE] =
     {
         regionalItems = { 19157 }, -- Surviver
         temps =
@@ -151,7 +151,7 @@ xi.casket_loot.casketItems =
             {  320, 17050 }, -- Willow Wand
         }
     },
-    [xi.zone.LA_THEINE_PLATEAU] =
+    [invaderXim.zone.LA_THEINE_PLATEAU] =
     {
         regionalItems = { 15835 }, -- Desperado Ring
         temps =
@@ -222,7 +222,7 @@ xi.casket_loot.casketItems =
             { 2320, 17316 }, -- Bomb Arm
         }
     },
-    [xi.zone.VALKURM_DUNES] =
+    [invaderXim.zone.VALKURM_DUNES] =
     {
         regionalItems = { 16367 }, -- Phlegethon's Trousers
         temps =
@@ -296,7 +296,7 @@ xi.casket_loot.casketItems =
             { 2165, 12737 }, -- White Mitts
         }
     },
-    [xi.zone.JUGNER_FOREST] =
+    [invaderXim.zone.JUGNER_FOREST] =
     {
         regionalItems = { 15927 }, -- Pinwheel Belt
         temps =
@@ -371,7 +371,7 @@ xi.casket_loot.casketItems =
             { 2165, 12737 }, -- White Mitts
         }
     },
-    [xi.zone.BATALLIA_DOWNS] =
+    [invaderXim.zone.BATALLIA_DOWNS] =
     {
         regionalItems = { 18451 }, -- Mokusa
         temps =
@@ -446,7 +446,7 @@ xi.casket_loot.casketItems =
             {  350, 17284 }, -- Chakram
         }
     },
-    [xi.zone.NORTH_GUSTABERG] =
+    [invaderXim.zone.NORTH_GUSTABERG] =
     {
         regionalItems = { 11312 }, -- Rambler's Cloak
         temps =
@@ -519,7 +519,7 @@ xi.casket_loot.casketItems =
             {  320, 17050 }, -- Willow Wand
         }
     },
-    [xi.zone.SOUTH_GUSTABERG] =
+    [invaderXim.zone.SOUTH_GUSTABERG] =
     {
         regionalItems = { 15926 }, -- Bronze Bandolier
         temps =
@@ -592,7 +592,7 @@ xi.casket_loot.casketItems =
             {  320, 17050 }, -- Willow Wand
         }
     },
-    [xi.zone.KONSCHTAT_HIGHLANDS] =
+    [invaderXim.zone.KONSCHTAT_HIGHLANDS] =
     {
         regionalItems = { 19223 }, -- Attar Of Roses
         temps =
@@ -664,7 +664,7 @@ xi.casket_loot.casketItems =
             { 1465, 17316 }, -- Bomb Arm
         }
     },
-    [xi.zone.PASHHOW_MARSHLANDS] =
+    [invaderXim.zone.PASHHOW_MARSHLANDS] =
     {
         regionalItems = { 19222 }, -- Wurger
         temps =
@@ -739,7 +739,7 @@ xi.casket_loot.casketItems =
             {  350, 17090 }, -- Elm Staff
         }
     },
-    [xi.zone.ROLANBERRY_FIELDS] =
+    [invaderXim.zone.ROLANBERRY_FIELDS] =
     {
         regionalItems = { 11401 }, -- Rambler's Gaiters
         temps =
@@ -815,7 +815,7 @@ xi.casket_loot.casketItems =
             {  350, 17090 }, -- Elm Staff
         }
     },
-    [xi.zone.BEAUCEDINE_GLACIER] =
+    [invaderXim.zone.BEAUCEDINE_GLACIER] =
     {
         regionalItems = { 16280 }, -- Haraldr's Muffler
         temps =
@@ -874,7 +874,7 @@ xi.casket_loot.casketItems =
             {  390, 12987 }, -- Ebony Sabots
         }
     },
-    [xi.zone.XARCABARD] =
+    [invaderXim.zone.XARCABARD] =
     {
         regionalItems = { 15042, 17267 }, -- Gothic Gauntlets / Negoroshiki
         temps =
@@ -934,7 +934,7 @@ xi.casket_loot.casketItems =
             {   80, 18207 }, -- Kheten
         }
     },
-    [xi.zone.CAPE_TERIGGAN] =
+    [invaderXim.zone.CAPE_TERIGGAN] =
     {
         regionalItems = { 17965 }, -- Sirocco Axe
         temps =
@@ -991,7 +991,7 @@ xi.casket_loot.casketItems =
             {  470, 13702 }, -- Beak Ledelsens
         }
     },
-    [xi.zone.EASTERN_ALTEPA_DESERT] =
+    [invaderXim.zone.EASTERN_ALTEPA_DESERT] =
     {
         regionalItems = { 16251 }, -- Casaba Melon Tank
         temps =
@@ -1050,7 +1050,7 @@ xi.casket_loot.casketItems =
             {  390, 12987 }, -- Ebony Sabots
         }
     },
-    [xi.zone.QUICKSAND_CAVES] =
+    [invaderXim.zone.QUICKSAND_CAVES] =
     {
         regionalItems = { 10952 }, -- Tanner's Torque
         temps =
@@ -1110,7 +1110,7 @@ xi.casket_loot.casketItems =
             {  470, 13702 }, -- Beak Ledelsens
         }
     },
-    [xi.zone.WEST_SARUTABARUTA] =
+    [invaderXim.zone.WEST_SARUTABARUTA] =
     {
         regionalItems = { 19221 }, -- Firefly
         temps =
@@ -1183,7 +1183,7 @@ xi.casket_loot.casketItems =
             {  320, 17050 }, -- Willow Wand
         }
     },
-    [xi.zone.EAST_SARUTABARUTA] =
+    [invaderXim.zone.EAST_SARUTABARUTA] =
     {
         regionalItems = { 16279 }, -- Pile Chain
         temps =
@@ -1256,7 +1256,7 @@ xi.casket_loot.casketItems =
             {  320, 17050 }, -- Willow Wand
         }
     },
-    [xi.zone.TAHRONGI_CANYON] =
+    [invaderXim.zone.TAHRONGI_CANYON] =
     {
         regionalItems = { 16007 }, -- Protect Earring
         temps =
@@ -1328,7 +1328,7 @@ xi.casket_loot.casketItems =
             { 2320, 17316 }, -- Bomb Arm
         }
     },
-    [xi.zone.BUBURIMU_PENINSULA] =
+    [invaderXim.zone.BUBURIMU_PENINSULA] =
     {
         regionalItems = { 18599 }, -- Pestle
         temps =
@@ -1400,7 +1400,7 @@ xi.casket_loot.casketItems =
             {  345, 16643 }, -- Battleaxe
         }
     },
-    [xi.zone.MERIPHATAUD_MOUNTAINS] =
+    [invaderXim.zone.MERIPHATAUD_MOUNTAINS] =
     {
         regionalItems = { 18503 }, -- Mammut
         temps =
@@ -1475,7 +1475,7 @@ xi.casket_loot.casketItems =
             {  350, 17090 }, -- Elm Staff
         }
     },
-    [xi.zone.SAUROMUGUE_CHAMPAIGN] =
+    [invaderXim.zone.SAUROMUGUE_CHAMPAIGN] =
     {
         regionalItems = { 16368 }, -- Herder's Subligar
         temps =
@@ -1550,7 +1550,7 @@ xi.casket_loot.casketItems =
             {  350, 17284 }, -- Chakram
         }
     },
-    [xi.zone.THE_SANCTUARY_OF_ZITAH] =
+    [invaderXim.zone.THE_SANCTUARY_OF_ZITAH] =
     {
         regionalItems = { 18075 }, -- Rossignol
         temps =
@@ -1609,7 +1609,7 @@ xi.casket_loot.casketItems =
             {  390, 12987 }, -- Ebony Sabots
         }
     },
-    [xi.zone.ROMAEVE] =
+    [invaderXim.zone.ROMAEVE] =
     {
         regionalItems = { 11486 }, -- Diana Corona
         temps =
@@ -1666,7 +1666,7 @@ xi.casket_loot.casketItems =
             {  470, 13702 }, -- Beak Ledelsens
         }
     },
-    [xi.zone.YUHTUNGA_JUNGLE] =
+    [invaderXim.zone.YUHTUNGA_JUNGLE] =
     {
         regionalItems = { 17760 }, -- Buccaneer's Scimitar
         temps =
@@ -1722,7 +1722,7 @@ xi.casket_loot.casketItems =
             {  390, 12986 }, -- Chestnut Sabots
         }
     },
-    [xi.zone.YHOATOR_JUNGLE] =
+    [invaderXim.zone.YHOATOR_JUNGLE] =
     {
         regionalItems = { 18953 }, -- Beluga
         temps =
@@ -1783,7 +1783,7 @@ xi.casket_loot.casketItems =
             {  230, 12987 }, -- Ebony Sabots
         }
     },
-    [xi.zone.WESTERN_ALTEPA_DESERT] =
+    [invaderXim.zone.WESTERN_ALTEPA_DESERT] =
     {
         regionalItems = { 19114 }, -- Galkan Dagger
         temps =
@@ -1843,7 +1843,7 @@ xi.casket_loot.casketItems =
             {   80, 18207 }, -- Kheten
         }
     },
-    [xi.zone.QUFIM_ISLAND] =
+    [invaderXim.zone.QUFIM_ISLAND] =
     {
         regionalItems = { 18762 }, -- Custodes
         temps =
@@ -1917,7 +1917,7 @@ xi.casket_loot.casketItems =
             {  350, 17284 }, -- Chakram
         }
     },
-    [xi.zone.BEHEMOTHS_DOMINION] =
+    [invaderXim.zone.BEHEMOTHS_DOMINION] =
     {
         regionalItems = { 11402 }, -- Gothic Sabatons
         temps =
@@ -1979,7 +1979,7 @@ xi.casket_loot.casketItems =
             {  230, 12987 }, -- Ebony Sabots
         }
     },
-    [xi.zone.VALLEY_OF_SORROWS] =
+    [invaderXim.zone.VALLEY_OF_SORROWS] =
     {
         regionalItems = { 18867 }, -- Daedalus Hammer
         temps =
@@ -2037,7 +2037,7 @@ xi.casket_loot.casketItems =
             {  470, 13702 }, -- Beak Ledelsens
         }
     },
-    [xi.zone.RUAUN_GARDENS] =
+    [invaderXim.zone.RUAUN_GARDENS] =
     {
         regionalItems = { 16284 }, -- Caract Choker
         temps =
@@ -2093,7 +2093,7 @@ xi.casket_loot.casketItems =
             {  725, 16265 }, -- Wivre Gorget
         }
     },
-    [xi.zone.THE_BOYAHDA_TREE] =
+    [invaderXim.zone.THE_BOYAHDA_TREE] =
     {
         regionalItems = { 11038, 10948 }, -- Dragonkin Earring | Carver's Torque
         temps =
@@ -2163,7 +2163,7 @@ xi.casket_loot.casketItems =
             {  400, 17899 }, -- Svg. Mole Broth
         }
     },
-    [xi.zone.MIDDLE_DELKFUTTS_TOWER] =
+    [invaderXim.zone.MIDDLE_DELKFUTTS_TOWER] =
     {
         regionalItems = { 651 }, -- Iron Ingot
         temps =
@@ -2221,7 +2221,7 @@ xi.casket_loot.casketItems =
             {  390, 12986 }, -- Chestnut Sabots
         }
     },
-    [xi.zone.UPPER_DELKFUTTS_TOWER] =
+    [invaderXim.zone.UPPER_DELKFUTTS_TOWER] =
     {
         regionalItems = { 19779 }, -- Potestas Bomblet
         temps =
@@ -2266,7 +2266,7 @@ xi.casket_loot.casketItems =
             {  440, 12996 }, -- Silk Pumps
         }
     },
-    [xi.zone.TEMPLE_OF_UGGALEPIH] =
+    [invaderXim.zone.TEMPLE_OF_UGGALEPIH] =
     {
         regionalItems = { 10953 }, -- Boneworker's Torque
         temps =
@@ -2321,7 +2321,7 @@ xi.casket_loot.casketItems =
             {  610, 12996 }, -- Silk Pumps
         }
     },
-    [xi.zone.DEN_OF_RANCOR] =
+    [invaderXim.zone.DEN_OF_RANCOR] =
     {
         regionalItems = { 10950, 10991 }, -- Goldsm. Torque | Rancorous Mantle
         temps =
@@ -2387,7 +2387,7 @@ xi.casket_loot.casketItems =
             {  695, 16128 }, -- Wivre Hairpin
         }
     },
-    [xi.zone.RANGUEMONT_PASS] =
+    [invaderXim.zone.RANGUEMONT_PASS] =
     {
         regionalItems = { 11575 }, -- Grapevine Cape
         temps =
@@ -2429,7 +2429,7 @@ xi.casket_loot.casketItems =
             {  500, 17898 }, -- C. Grass. Broth
         }
     },
-    [xi.zone.BOSTAUNIEUX_OUBLIETTE] =
+    [invaderXim.zone.BOSTAUNIEUX_OUBLIETTE] =
     {
         regionalItems = { 11920 }, -- Melaco Mittens
         temps =
@@ -2498,7 +2498,7 @@ xi.casket_loot.casketItems =
             {  110, 16520 }, -- Verdun
         }
     },
-    [xi.zone.TORAIMARAI_CANAL] =
+    [invaderXim.zone.TORAIMARAI_CANAL] =
     {
         regionalItems = { 11576 }, -- Bond Cape
         temps =
@@ -2567,7 +2567,7 @@ xi.casket_loot.casketItems =
             {  110, 16520 }, -- Verdun
         }
     },
-    [xi.zone.ZERUHN_MINES] =
+    [invaderXim.zone.ZERUHN_MINES] =
     {
         regionalItems = { 11677 }, -- Prouesse Ring
         tempsLow =
@@ -2703,7 +2703,7 @@ xi.casket_loot.casketItems =
             { 1070, 17894 }, -- Vermihumus
         }
     },
-    [xi.zone.KORROLOKA_TUNNEL] =
+    [invaderXim.zone.KORROLOKA_TUNNEL] =
     {
         regionalItems = { 11039 }, -- Brachyura Earring
         tempsLow =
@@ -2815,7 +2815,7 @@ xi.casket_loot.casketItems =
             {  110, 13704 }, -- Ogre Mask
         }
     },
-    [xi.zone.KUFTAL_TUNNEL] =
+    [invaderXim.zone.KUFTAL_TUNNEL] =
     {
         regionalItems = { 18816 }, -- Wizzan Grip
         temps =
@@ -2884,7 +2884,7 @@ xi.casket_loot.casketItems =
             {  420,  5872 }, -- D.A. Bolt Quiver
         }
     },
-    [xi.zone.SEA_SERPENT_GROTTO] =
+    [invaderXim.zone.SEA_SERPENT_GROTTO] =
     {
         regionalItems = { 19780 }, -- Mana Ampulla
         temps =
@@ -2944,7 +2944,7 @@ xi.casket_loot.casketItems =
             {  525, 13702 }, -- Beak Ledelsens
         }
     },
-    [xi.zone.VELUGANNON_PALACE] =
+    [invaderXim.zone.VELUGANNON_PALACE] =
     {
         regionalItems = { 13467, 10954 }, -- Dragon Ring | Alchemist's Torque
         temps =
@@ -3024,7 +3024,7 @@ xi.casket_loot.casketItems =
             { 1070, 17894 }, -- Vermihumus
         }
     },
-    [xi.zone.THE_SHRINE_OF_RUAVITAU] =
+    [invaderXim.zone.THE_SHRINE_OF_RUAVITAU] =
     {
         regionalItems = { 11040, 10951 }, -- Terminus Earring | Weaver's Torque
         temps =
@@ -3095,7 +3095,7 @@ xi.casket_loot.casketItems =
             {  400, 17899 }, -- Svg. Mole Broth
         }
     },
-    [xi.zone.LOWER_DELKFUTTS_TOWER] =
+    [invaderXim.zone.LOWER_DELKFUTTS_TOWER] =
     {
         regionalItems = { 11043 }, -- Giant's Earring
         temps =
@@ -3153,7 +3153,7 @@ xi.casket_loot.casketItems =
             {  390, 12986 }, -- Chestnut Sabots
         }
     },
-    [xi.zone.KING_RANPERRES_TOMB] =
+    [invaderXim.zone.KING_RANPERRES_TOMB] =
     {
         regionalItems = { 10924 }, -- Chocobo Torque
         tempsLow =
@@ -3281,7 +3281,7 @@ xi.casket_loot.casketItems =
             { 3810, 17316 }, -- Bomb Arm
         }
     },
-    [xi.zone.DANGRUF_WADI] =
+    [invaderXim.zone.DANGRUF_WADI] =
     {
         regionalItems = { 11769 }, -- Field Rope
         tempsLow =
@@ -3389,7 +3389,7 @@ xi.casket_loot.casketItems =
             {  245, 12437 }, -- Gavial Mask
         }
     },
-    [xi.zone.INNER_HORUTOTO_RUINS] =
+    [invaderXim.zone.INNER_HORUTOTO_RUINS] =
     {
         regionalItems = { 18624 }, -- Numen Staff
         temps =
@@ -3470,7 +3470,7 @@ xi.casket_loot.casketItems =
             { 3810, 17316 }, -- Bomb Arm
         }
     },
-    [xi.zone.ORDELLES_CAVES] =
+    [invaderXim.zone.ORDELLES_CAVES] =
     {
         regionalItems = { 11767 }, -- Chocobo Rope
         tempsLow =
@@ -3594,7 +3594,7 @@ xi.casket_loot.casketItems =
             {  150, 13708 }, -- Ogre Ledelsens
         }
     },
-    [xi.zone.OUTER_HORUTOTO_RUINS] =
+    [invaderXim.zone.OUTER_HORUTOTO_RUINS] =
     {
         regionalItems = { 10925 }, -- Fisher's Torque
         tempsLow =
@@ -3730,7 +3730,7 @@ xi.casket_loot.casketItems =
             { 1070, 17894 }, -- Vermihumus
         }
     },
-    [xi.zone.THE_ELDIEME_NECROPOLIS] =
+    [invaderXim.zone.THE_ELDIEME_NECROPOLIS] =
     {
         regionalItems = { 18812 }, -- Ossa Grip
         temps =
@@ -3797,7 +3797,7 @@ xi.casket_loot.casketItems =
             { 3100, 18259 }, -- Angon
         }
     },
-    [xi.zone.GUSGEN_MINES] =
+    [invaderXim.zone.GUSGEN_MINES] =
     {
         regionalItems = { 10926 }, -- Field Torque
         tempsLow =
@@ -3922,7 +3922,7 @@ xi.casket_loot.casketItems =
             {  150, 13708 }, -- Ogre Ledelsens
         }
     },
-    [xi.zone.CRAWLERS_NEST] =
+    [invaderXim.zone.CRAWLERS_NEST] =
     {
         regionalItems = { 11823 }, -- Cocoon Band
         temps =
@@ -3989,7 +3989,7 @@ xi.casket_loot.casketItems =
             { 3100, 18259 }, -- Angon
         }
     },
-    [xi.zone.MAZE_OF_SHAKHRAMI] =
+    [invaderXim.zone.MAZE_OF_SHAKHRAMI] =
     {
         regionalItems = { 11768 }, -- Fisher's Rope
         tempsLow =
@@ -4114,7 +4114,7 @@ xi.casket_loot.casketItems =
             {  150, 13708 }, -- Ogre Ledelsens
         }
     },
-    [xi.zone.GARLAIGE_CITADEL] =
+    [invaderXim.zone.GARLAIGE_CITADEL] =
     {
         regionalItems = { 18784 }, -- Metasoma Katars
         temps =
@@ -4184,7 +4184,7 @@ xi.casket_loot.casketItems =
             { 3100, 18259 }, -- Angon
         }
     },
-    [xi.zone.FEIYIN] =
+    [invaderXim.zone.FEIYIN] =
     {
         regionalItems = { 16202 }, -- Dagda's Shield
         temps =
@@ -4260,7 +4260,7 @@ xi.casket_loot.casketItems =
             { 2150, 18258 }, -- Thr. Tomahawk
         }
     },
-    [xi.zone.IFRITS_CAULDRON] =
+    [invaderXim.zone.IFRITS_CAULDRON] =
     {
         regionalItems = { 10949 }, -- Smithy's Torque
         temps =
@@ -4332,7 +4332,7 @@ xi.casket_loot.casketItems =
             {  725, 16265 }, -- Wivre Gorget
         }
     },
-    [xi.zone.GUSTAV_TUNNEL] =
+    [invaderXim.zone.GUSTAV_TUNNEL] =
     {
         regionalItems = { 10955, 11041 }, -- Culinarian's Torque | Liminus Earring
         temps =
@@ -4404,7 +4404,7 @@ xi.casket_loot.casketItems =
             {  400, 17899 }, -- Svg. Mole Broth
         }
     },
-    [xi.zone.LABYRINTH_OF_ONZOZO] =
+    [invaderXim.zone.LABYRINTH_OF_ONZOZO] =
     {
         regionalItems = { 18817 }, -- Furtive Grip
         temps =

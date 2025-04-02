@@ -7,11 +7,11 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return target:canLearnAbility(xi.jobAbility.CORSAIRS_ROLL)
+    return target:canLearnAbility(invaderXim.jobAbility.CORSAIRS_ROLL)
 end
 
 itemObject.onItemUse = function(target)
-    target:addLearnedAbility(xi.jobAbility.CORSAIRS_ROLL)
+    target:addLearnedAbility(invaderXim.jobAbility.CORSAIRS_ROLL)
 end
 
 return itemObject

@@ -10,10 +10,10 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     --duration = 1800
-    target:delStatusEffect(xi.effect.RERAISE)
-    target:addStatusEffect(xi.effect.RERAISE, 2, 0, 3600) --reraise 2, 30min duration
+    target:delStatusEffect(invaderXim.effect.RERAISE)
+    target:addStatusEffect(invaderXim.effect.RERAISE, 2, 0, 3600) --reraise 2, 30min duration
 
-    return xi.effect.RERAISE
+    return invaderXim.effect.RERAISE
 end
 
 return spellObject

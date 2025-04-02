@@ -4,7 +4,7 @@
 -- Notes: Used to spawn Bomb Queen
 -- !pos 18 20 -104 205
 -----------------------------------
-local ID = zones[xi.zone.IFRITS_CAULDRON]
+local ID = zones[invaderXim.zone.IFRITS_CAULDRON]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

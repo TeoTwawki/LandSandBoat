@@ -3,16 +3,16 @@
 -- NM: Para
 -- Quest: Elderly Pursuits
 -----------------------------------
-local ID = zones[xi.zone.CARPENTERS_LANDING]
+local ID = zones[invaderXim.zone.CARPENTERS_LANDING]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 local checkIfShouldClone = function(hpp, skillId)
     if
-        (skillId == xi.mobSkill.QUEASYSHROOM_1 or
-        skillId == xi.mobSkill.NUMBSHROOM_1 or
-        skillId == xi.mobSkill.SHAKESHROOM_1) and
+        (skillId == invaderXim.mobSkill.QUEASYSHROOM_1 or
+        skillId == invaderXim.mobSkill.NUMBSHROOM_1 or
+        skillId == invaderXim.mobSkill.SHAKESHROOM_1) and
         hpp < 50
     then
         return true
@@ -22,9 +22,9 @@ local checkIfShouldClone = function(hpp, skillId)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180) -- 3 minutes
-    mob:setMod(xi.mod.UDMGMAGIC, -4000)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180) -- 3 minutes
+    mob:setMod(invaderXim.mod.UDMGMAGIC, -4000)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
 
     local para = GetMobByID(ID.mob.PARA)
 

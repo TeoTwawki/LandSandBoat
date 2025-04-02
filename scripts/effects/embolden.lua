@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.EMBOLDEN
+-- invaderXim.effect.EMBOLDEN
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

@@ -10,11 +10,11 @@
 -----------------------------------
 -- Orcish Axe : ItemID 16656
 -----------------------------------
-local southernSandoriaID = zones[xi.zone.SOUTHERN_SAN_DORIA]
-local northernSandoriaID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local southernSandoriaID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
+local northernSandoriaID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.SMASH_THE_ORCISH_SCOUTS)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.SMASH_THE_ORCISH_SCOUTS)
 
 mission.reward =
 {
@@ -22,7 +22,7 @@ mission.reward =
 }
 
 local function handleTradeEvent(player, trade, firstId, repeatId)
-    if npcUtil.tradeHasExactly(trade, xi.item.ORCISH_AXE) then
+    if npcUtil.tradeHasExactly(trade, invaderXim.item.ORCISH_AXE) then
         if not player:hasCompletedMission(mission.areaId, mission.missionId) then
             return mission:progressEvent(firstId)
         else
@@ -49,12 +49,12 @@ mission.sections =
     -- Player is offered this mission for the first time
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId and
                 not player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] = mission:progressEvent(2000),
             ['Endracion'] = mission:progressEvent(1000),
@@ -66,7 +66,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Grilau'] = mission:progressEvent(1000),
 
@@ -80,12 +80,12 @@ mission.sections =
     -- Player is repeating this Mission
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId and
                 player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -94,7 +94,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -110,7 +110,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] =
             {
@@ -139,7 +139,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Grilau'] =
             {

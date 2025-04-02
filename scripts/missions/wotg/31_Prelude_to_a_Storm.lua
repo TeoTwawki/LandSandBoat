@@ -6,21 +6,21 @@
 -- Rally Point: Green : !pos 54.013 -23.402 -203.103 137
 -- Spell-worked Snow  : !pos 75.989 -24.249 -248.089 137
 -----------------------------------
-local pastXarcabardID = zones[xi.zone.XARCABARD_S]
+local pastXarcabardID = zones[invaderXim.zone.XARCABARD_S]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.PRELUDE_TO_A_STORM)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.PRELUDE_TO_A_STORM)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.STORMS_CRESCENDO },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.STORMS_CRESCENDO },
 }
 
 local rewardItems =
 {
-    xi.item.ELIXIR,
-    xi.item.VILE_ELIXIR,
-    xi.item.VILE_ELIXIR_P1,
+    invaderXim.item.ELIXIR,
+    invaderXim.item.VILE_ELIXIR,
+    invaderXim.item.VILE_ELIXIR_P1,
 }
 
 -- NOTE: Instance is triggered at the Spell-Worked Snow behind the Green Rally point, and
@@ -33,7 +33,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.XARCABARD_S] =
+        [invaderXim.zone.XARCABARD_S] =
         {
             ['Rally_Point_Red'] =
             {
@@ -52,7 +52,7 @@ mission.sections =
                     if missionStatus == 0 then
                         return mission:progressEvent(21, 137, 300, 200, 100, 0, 6553620, 0, 0)
                     elseif missionStatus == 1 then
-                        if player:hasKeyItem(xi.ki.MAGELIGHT_SIGNAL_FLARE) then
+                        if player:hasKeyItem(invaderXim.ki.MAGELIGHT_SIGNAL_FLARE) then
                             player:messageName(pastXarcabardID.text.HELP_FEDERATION_PREPARE, nil)
 
                             return mission:noAction()
@@ -81,7 +81,7 @@ mission.sections =
             onEventFinish =
             {
                 [21] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.MAGELIGHT_SIGNAL_FLARE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.MAGELIGHT_SIGNAL_FLARE)
                     mission:setVar(player, 'Status', 1)
                 end,
 
@@ -94,12 +94,12 @@ mission.sections =
                 end,
 
                 [25] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.MAGELIGHT_SIGNAL_FLARE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.MAGELIGHT_SIGNAL_FLARE)
                 end,
             },
         },
 
-        [xi.zone.GHOYUS_REVERIE] =
+        [invaderXim.zone.GHOYUS_REVERIE] =
         {
             onEventFinish =
             {
@@ -113,7 +113,7 @@ mission.sections =
                     -- highest tier reward: math.floor(minRemaining / 10) + 1
 
                     mission:setVar(player, 'Status', 2)
-                    player:setPos(96.77, -23.943, -277.87, 253, xi.zone.XARCABARD_S)
+                    player:setPos(96.77, -23.943, -277.87, 253, invaderXim.zone.XARCABARD_S)
                 end,
             },
         },

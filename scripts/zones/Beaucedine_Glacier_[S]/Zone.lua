@@ -5,7 +5,7 @@
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.voidwalker.zoneOnInit(zone)
+    invaderXim.voidwalker.zoneOnInit(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)

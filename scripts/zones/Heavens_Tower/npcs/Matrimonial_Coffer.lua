@@ -7,11 +7,11 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.matrimonialcoffer.startEvent(player)
+    invaderXim.matrimonialcoffer.startEvent(player)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.matrimonialcoffer.finishEvent(player, csid, option, npc)
+    invaderXim.matrimonialcoffer.finishEvent(player, csid, option, npc)
 end
 
 return entity

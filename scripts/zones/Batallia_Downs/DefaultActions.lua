@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.BATALLIA_DOWNS]
+local ID = zones[invaderXim.zone.BATALLIA_DOWNS]
 
 return {
     ['Luck_Rune']            = { messageSpecial = ID.text.NOTHING_OUT_OF_ORDINARY },

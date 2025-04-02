@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.GRAND_PAS
+-- invaderXim.effect.GRAND_PAS
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

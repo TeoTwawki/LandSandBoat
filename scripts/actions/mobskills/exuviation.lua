@@ -16,14 +16,14 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local effectCount = 0
     local dispel = mob:eraseStatusEffect()
 
-    while (dispel ~= xi.effect.NONE)
+    while (dispel ~= invaderXim.effect.NONE)
     do
         effectCount = effectCount + 1
         dispel = mob:eraseStatusEffect()
     end
 
-    skill:setMsg(xi.msg.basic.SELF_HEAL)
-    return xi.mobskills.mobHealMove(mob, (699 + (mob:getMainLvl() - 70) * 10) * effectCount)
+    skill:setMsg(invaderXim.msg.basic.SELF_HEAL)
+    return invaderXim.mobskills.mobHealMove(mob, (699 + (mob:getMainLvl() - 70) * 10) * effectCount)
 end
 
 return mobskillObject

@@ -1,4 +1,4 @@
--- local ID = zones[xi.zone.VELUGANNON_PALACE]
+-- local ID = zones[invaderXim.zone.VELUGANNON_PALACE]
 
 return {
     ['_4x0'] = { messageSpecial = -1 }, -- [Cermet Door] Prevent from opening on click.

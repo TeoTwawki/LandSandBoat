@@ -11,7 +11,7 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     mob:timer(4000, function(mobArg)
-        mobArg:setStatus(xi.status.INVISIBLE)
+        mobArg:setStatus(invaderXim.status.INVISIBLE)
         local mobID = mobArg:getID()
         DespawnMob(mobID)
         DisallowRespawn(mobID, true)
@@ -30,7 +30,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
         end)
     end)
 
-    skill:setMsg(xi.msg.basic.NONE)
+    skill:setMsg(invaderXim.msg.basic.NONE)
 
     return 0
 end

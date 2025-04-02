@@ -6,19 +6,19 @@
 -- Qm1 !pos 260 40 79 148
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.MIXED_SIGNALS)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.MIXED_SIGNALS)
 
 quest.sections = {
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
-                and player:getQuestStatus(xi.questLog.JEUNO, BLESSED_RADIANCE) == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
+                and player:getQuestStatus(invaderXim.questLog.JEUNO, BLESSED_RADIANCE) == invaderXim.questStatus.QUEST_COMPLETED
                 and player:getFellowValue('level') >= 56
                 and player:getFellowValue('bond') >= 80
         end,
 
-        [xi.zone.UPPER_JEUNO] = {
+        [invaderXim.zone.UPPER_JEUNO] = {
             ['Ratoto'] = {
                 onTrigger = function(player, npc)
                     return quest:progressEvent(10078, {[7] = getFellowParam(player)})
@@ -35,10 +35,10 @@ quest.sections = {
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.UPPER_JEUNO] = {
+        [invaderXim.zone.UPPER_JEUNO] = {
             ['Luto_Mewrilah'] = {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 0 then
@@ -68,7 +68,7 @@ quest.sections = {
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] = {
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] = {
             ['Raimbroy'] = {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 1 then
@@ -84,7 +84,7 @@ quest.sections = {
             },
         },
 
-        [xi.zone.QULUN_DOME] = {
+        [invaderXim.zone.QULUN_DOME] = {
             ['qm1'] = {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 3 then
@@ -106,18 +106,18 @@ quest.foodItem = function(player)
     local item = player:getFellowValue('personality')
     local foodTable =
     {
-        [4]  = xi.item.CHUNK_OF_HOMEMADE_CHEESE,
-        [8]  = xi.item.HOMEMADE_STEAK,
-        [12] = xi.item.CONE_OF_HOMEMADE_GELATO,
-        [16] = xi.item.LOAF_OF_HOMEMADE_BREAD,
-        [40] = xi.item.HOMEMADE_SALISBURY_STEAK,
-        [44] = xi.item.HOMEMADE_OMELETTE,
-        [20] = xi.item.PLATE_OF_HOMEMADE_RISOTTO,
-        [24] = xi.item.HOMEMADE_RICE_BALL,
-        [28] = xi.item.PITCHER_OF_HOMEMADE_HERBAL_TEA,
-        [32] = xi.item.BOWL_OF_HOMEMADE_STEW,
-        [36] = xi.item.PLATE_OF_HOMEMADE_SALAD,
-        [48] = xi.item.DISH_OF_HOMEMADE_CARBONARA,
+        [4]  = invaderXim.item.CHUNK_OF_HOMEMADE_CHEESE,
+        [8]  = invaderXim.item.HOMEMADE_STEAK,
+        [12] = invaderXim.item.CONE_OF_HOMEMADE_GELATO,
+        [16] = invaderXim.item.LOAF_OF_HOMEMADE_BREAD,
+        [40] = invaderXim.item.HOMEMADE_SALISBURY_STEAK,
+        [44] = invaderXim.item.HOMEMADE_OMELETTE,
+        [20] = invaderXim.item.PLATE_OF_HOMEMADE_RISOTTO,
+        [24] = invaderXim.item.HOMEMADE_RICE_BALL,
+        [28] = invaderXim.item.PITCHER_OF_HOMEMADE_HERBAL_TEA,
+        [32] = invaderXim.item.BOWL_OF_HOMEMADE_STEW,
+        [36] = invaderXim.item.PLATE_OF_HOMEMADE_SALAD,
+        [48] = invaderXim.item.DISH_OF_HOMEMADE_CARBONARA,
     }
 
     return foodTable[item]

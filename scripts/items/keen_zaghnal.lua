@@ -9,16 +9,16 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    if target:getStatusEffectBySource(xi.effect.ACCURACY_BOOST, xi.effectSourceType.EQUIPPED_ITEM, xi.item.KEEN_ZAGHNAL) ~= nil then
-        target:delStatusEffect(xi.effect.ACCURACY_BOOST, nil, xi.effectSourceType.EQUIPPED_ITEM, xi.item.KEEN_ZAGHNAL)
+    if target:getStatusEffectBySource(invaderXim.effect.ACCURACY_BOOST, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.KEEN_ZAGHNAL) ~= nil then
+        target:delStatusEffect(invaderXim.effect.ACCURACY_BOOST, nil, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.KEEN_ZAGHNAL)
     end
 
     return 0
 end
 
 itemObject.onItemUse = function(target)
-    if target:hasEquipped(xi.item.KEEN_ZAGHNAL) then
-        target:addStatusEffect(xi.effect.ACCURACY_BOOST, 3, 0, 1800, 0, 0, 0, xi.effectSourceType.EQUIPPED_ITEM, xi.item.KEEN_ZAGHNAL)
+    if target:hasEquipped(invaderXim.item.KEEN_ZAGHNAL) then
+        target:addStatusEffect(invaderXim.effect.ACCURACY_BOOST, 3, 0, 1800, 0, 0, 0, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.KEEN_ZAGHNAL)
     end
 end
 

@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.immunity
-xi.immunity =
+---@enum invaderXim.immunity
+invaderXim.immunity =
 {
     NONE        = 0x00000000, --      0
     ADDLE       = 0x00000001, --      1

@@ -2,7 +2,7 @@
 -- Area: The Garden of Ru'Hmet
 --   NM: Jailer of Fortitude
 -----------------------------------
-local ID = zones[xi.zone.THE_GARDEN_OF_RUHMET]
+local ID = zones[invaderXim.zone.THE_GARDEN_OF_RUHMET]
 local gardenGlobal = require('scripts/zones/The_Garden_of_RuHmet/globals')
 mixins = { require('scripts/mixins/job_special') }
 -----------------------------------
@@ -10,22 +10,22 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180)
 end
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
-            { id = xi.jsa.INVINCIBLE, cooldown = 180, hpp = math.random(90, 95) }, -- "Has access to Invincible, which it may use several times."
+            { id = invaderXim.jsa.INVINCIBLE, cooldown = 180, hpp = math.random(90, 95) }, -- "Has access to Invincible, which it may use several times."
         },
     })
 
     -- Change animation to humanoid w/ prismatic core
     mob:setAnimationSub(1)
     mob:setModelId(1169)
-    mob:setMod(xi.mod.UDMGPHYS, -9500)
-    mob:setMod(xi.mod.UDMGRANGE, -9500)
+    mob:setMod(invaderXim.mod.UDMGPHYS, -9500)
+    mob:setMod(invaderXim.mod.UDMGRANGE, -9500)
 end
 
 entity.onMobFight = function(mob, target)
@@ -43,7 +43,7 @@ entity.onMobFight = function(mob, target)
         not GetMobByID(ID.mob.KFGHRAH_BLM):isDead()
     then
         -- check for kf'ghrah
-        if spell > 0 and not mob:hasStatusEffect(xi.effect.SILENCE) then
+        if spell > 0 and not mob:hasStatusEffect(invaderXim.effect.SILENCE) then
             if delay >= 3 then
                 mob:castSpell(spell)
                 mob:setLocalVar('COPY_SPELL', 0)
@@ -59,7 +59,7 @@ entity.onMagicHit = function(caster, target, spell)
     if
         spell:tookEffect() and
         (caster:isPC() or caster:isPet()) and
-        spell:getSpellGroup() ~= xi.magic.spellGroup.BLUE
+        spell:getSpellGroup() ~= invaderXim.magic.spellGroup.BLUE
     then
         -- Handle mimicked spells
         target:setLocalVar('COPY_SPELL', spell:getID())

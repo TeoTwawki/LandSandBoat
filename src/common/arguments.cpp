@@ -1,7 +1,7 @@
 /*
 ===========================================================================
 
-  Copyright (c) 2025 LandSandBoat Dev Teams
+  Copyright (c) 2025 InvaderXim Dev Teams
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ Arguments::Arguments(std::string const& serverName, int argc, char** argv)
     // Defaults
     //
 
-    const auto description = fmt::format("xi_{}: part of LandSandBoat - a server emulator for Final Fantasy XI\n\nBranch: {}",
+    const auto description = fmt::format("xi_{}: part of InvaderXim - a server emulator for Final Fantasy XI\n\nBranch: {}",
                                          serverName, version::GetVersionString());
 
     args_->add_description(description);

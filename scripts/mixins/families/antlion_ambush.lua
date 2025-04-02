@@ -17,11 +17,11 @@ g_mixins.families.antlion_ambush = function(antlionAmbushMob)
 
     antlionAmbushMob:addListener('ENGAGE', 'ANTLION_AMBUSH_ENGAGE', function(mob, target)
         mob:useMobAbility(pitAmbush)
-        mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+        mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
     end)
 
     -- Ensures an interupted pit ambush doesn't let the mob stay hidden underground
-    antlionAmbushMob:addListener('WEAPONSKILL_STATE_EXIT', 'ANTLION_AMBUSH_FINISH', function(mob, skillID)
+    antlionAmbushMob:addListener('WEAPONSKILL_STATE_IXIMT', 'ANTLION_AMBUSH_FINISH', function(mob, skillID)
         if skillID == pitAmbush then
             -- ensure name doesn't show up until mobskill completes
             mob:setAnimationSub(1)

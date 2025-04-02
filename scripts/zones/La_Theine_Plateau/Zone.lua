@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: La_Theine_Plateau (102)
 -----------------------------------
-local ID = zones[xi.zone.LA_THEINE_PLATEAU]
+local ID = zones[invaderXim.zone.LA_THEINE_PLATEAU]
 local laTheineGlobal = require('scripts/zones/La_Theine_Plateau/globals')
 require('scripts/quests/i_can_hear_a_rainbow')
 -----------------------------------
@@ -10,8 +10,8 @@ local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
     laTheineGlobal.moveFallenEgg()
-    xi.chocobo.initZone(zone)
-    xi.voidwalker.zoneOnInit(zone)
+    invaderXim.chocobo.initZone(zone)
+    invaderXim.voidwalker.zoneOnInit(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -33,11 +33,11 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.afterZoneIn = function(player)
-    xi.chocoboGame.handleMessage(player)
+    invaderXim.chocoboGame.handleMessage(player)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
@@ -62,18 +62,18 @@ zoneObject.onZoneWeatherChange = function(weather)
     local setRainbow   = rainbow:getLocalVar('setRainbow')
     if
         setRainbow == 1 and
-        weather ~= xi.weather.RAIN and
-        timeOfTheDay >= xi.time.DAWN and
-        timeOfTheDay <= xi.time.EVENING and
-        rainbow:getAnimation() == xi.anim.CLOSE_DOOR
+        weather ~= invaderXim.weather.RAIN and
+        timeOfTheDay >= invaderXim.time.DAWN and
+        timeOfTheDay <= invaderXim.time.EVENING and
+        rainbow:getAnimation() == invaderXim.anim.CLOSE_DOOR
     then
-        rainbow:setAnimation(xi.anim.OPEN_DOOR)
+        rainbow:setAnimation(invaderXim.anim.OPEN_DOOR)
     elseif
         setRainbow == 1 and
-        weather == xi.weather.RAIN and
-        rainbow:getAnimation() == xi.anim.OPEN_DOOR
+        weather == invaderXim.weather.RAIN and
+        rainbow:getAnimation() == invaderXim.anim.OPEN_DOOR
     then
-        rainbow:setAnimation(xi.anim.CLOSE_DOOR)
+        rainbow:setAnimation(invaderXim.anim.CLOSE_DOOR)
         rainbow:setLocalVar('setRainbow', 0)
     end
 end
@@ -88,18 +88,18 @@ zoneObject.onTOTDChange = function(timeOfTheDay)
 
     if
         setRainbow == 1 and
-        timeOfTheDay >= xi.time.DAWN and
-        timeOfTheDay <= xi.time.EVENING and
-        rainbow:getAnimation() == xi.anim.CLOSE_DOOR
+        timeOfTheDay >= invaderXim.time.DAWN and
+        timeOfTheDay <= invaderXim.time.EVENING and
+        rainbow:getAnimation() == invaderXim.anim.CLOSE_DOOR
     then
-        rainbow:setAnimation(xi.anim.OPEN_DOOR)
+        rainbow:setAnimation(invaderXim.anim.OPEN_DOOR)
     elseif
         setRainbow == 1 and
-        timeOfTheDay < xi.time.DAWN or
-        timeOfTheDay > xi.time.EVENING and
-        rainbow:getAnimation() == xi.anim.OPEN_DOOR
+        timeOfTheDay < invaderXim.time.DAWN or
+        timeOfTheDay > invaderXim.time.EVENING and
+        rainbow:getAnimation() == invaderXim.anim.OPEN_DOOR
     then
-        rainbow:setAnimation(xi.anim.CLOSE_DOOR)
+        rainbow:setAnimation(invaderXim.anim.CLOSE_DOOR)
         rainbow:setLocalVar('setRainbow', 0)
     end
 end

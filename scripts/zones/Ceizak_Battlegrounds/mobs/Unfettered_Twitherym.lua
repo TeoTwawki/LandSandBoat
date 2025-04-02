@@ -11,18 +11,18 @@ local phaseDTApplied = { ['74_49'] = false, ['49_24'] = false, ['24_0'] = false 
 
 local skillchainAffinities =
 {
-    [xi.element.FIRE   ] = { xi.skillchainType.FUSION,        xi.skillchainType.LIQUEFACTION,  xi.skillchainType.LIGHT,      xi.skillchainType.LIGHT_II    },
-    [xi.element.WATER  ] = { xi.skillchainType.REVERBERATION, xi.skillchainType.DISTORTION,    xi.skillchainType.DARKNESS,   xi.skillchainType.DARKNESS_II },
-    [xi.element.THUNDER] = { xi.skillchainType.IMPACTION,     xi.skillchainType.FRAGMENTATION, xi.skillchainType.LIGHT,      xi.skillchainType.LIGHT_II    },
-    [xi.element.WIND   ] = { xi.skillchainType.DETONATION,    xi.skillchainType.FRAGMENTATION, xi.skillchainType.LIGHT,      xi.skillchainType.LIGHT_II    },
-    [xi.element.ICE    ] = { xi.skillchainType.INDURATION,    xi.skillchainType.DISTORTION,    xi.skillchainType.DARKNESS,   xi.skillchainType.DARKNESS_II },
-    [xi.element.EARTH  ] = { xi.skillchainType.SCISSION,      xi.skillchainType.GRAVITATION,   xi.skillchainType.DARKNESS,   xi.skillchainType.DARKNESS_II },
-    [xi.element.DARK   ] = { xi.skillchainType.COMPRESSION,   xi.skillchainType.DARKNESS,      xi.skillchainType.DARKNESS_II                               },
-    [xi.element.LIGHT  ] = { xi.skillchainType.TRANSFIXION,   xi.skillchainType.LIGHT,         xi.skillchainType.LIGHT_II                                  },
+    [invaderXim.element.FIRE   ] = { invaderXim.skillchainType.FUSION,        invaderXim.skillchainType.LIQUEFACTION,  invaderXim.skillchainType.LIGHT,      invaderXim.skillchainType.LIGHT_II    },
+    [invaderXim.element.WATER  ] = { invaderXim.skillchainType.REVERBERATION, invaderXim.skillchainType.DISTORTION,    invaderXim.skillchainType.DARKNESS,   invaderXim.skillchainType.DARKNESS_II },
+    [invaderXim.element.THUNDER] = { invaderXim.skillchainType.IMPACTION,     invaderXim.skillchainType.FRAGMENTATION, invaderXim.skillchainType.LIGHT,      invaderXim.skillchainType.LIGHT_II    },
+    [invaderXim.element.WIND   ] = { invaderXim.skillchainType.DETONATION,    invaderXim.skillchainType.FRAGMENTATION, invaderXim.skillchainType.LIGHT,      invaderXim.skillchainType.LIGHT_II    },
+    [invaderXim.element.ICE    ] = { invaderXim.skillchainType.INDURATION,    invaderXim.skillchainType.DISTORTION,    invaderXim.skillchainType.DARKNESS,   invaderXim.skillchainType.DARKNESS_II },
+    [invaderXim.element.EARTH  ] = { invaderXim.skillchainType.SCISSION,      invaderXim.skillchainType.GRAVITATION,   invaderXim.skillchainType.DARKNESS,   invaderXim.skillchainType.DARKNESS_II },
+    [invaderXim.element.DARK   ] = { invaderXim.skillchainType.COMPRESSION,   invaderXim.skillchainType.DARKNESS,      invaderXim.skillchainType.DARKNESS_II                               },
+    [invaderXim.element.LIGHT  ] = { invaderXim.skillchainType.TRANSFIXION,   invaderXim.skillchainType.LIGHT,         invaderXim.skillchainType.LIGHT_II                                  },
 }
 
 local function chooseAffinity(mob)
-    local chosenElement = math.random(xi.element.FIRE, xi.element.DARK)
+    local chosenElement = math.random(invaderXim.element.FIRE, invaderXim.element.DARK)
     mob:setLocalVar('chosenElement', chosenElement)
 end
 
@@ -41,16 +41,16 @@ end
 
 local function applyDamageReduction(mob, phase)
     if not phaseDTApplied[phase] then
-        mob:setMod(xi.mod.UDMGPHYS, -9000)
-        mob:setMod(xi.mod.UDMGMAGIC, -9000)
-        mob:setMod(xi.mod.UDMGRANGE, -9000)
-        mob:setMod(xi.mod.UDMGBREATH, -9000)
+        mob:setMod(invaderXim.mod.UDMGPHYS, -9000)
+        mob:setMod(invaderXim.mod.UDMGMAGIC, -9000)
+        mob:setMod(invaderXim.mod.UDMGRANGE, -9000)
+        mob:setMod(invaderXim.mod.UDMGBREATH, -9000)
         phaseDTApplied[phase] = true
     end
 end
 
 local function resetDamageModifiers(mob)
-    for _, mod in ipairs({ xi.mod.UDMGPHYS, xi.mod.UDMGMAGIC, xi.mod.UDMGRANGE, xi.mod.UDMGBREATH }) do
+    for _, mod in ipairs({ invaderXim.mod.UDMGPHYS, invaderXim.mod.UDMGMAGIC, invaderXim.mod.UDMGRANGE, invaderXim.mod.UDMGBREATH }) do
         mob:setMod(mod, 0)
     end
 end
@@ -70,9 +70,9 @@ end
 
 entity.onMobFight = function(mob)
     if mob:getHPP() <= 50 then
-        mob:setMobMod(xi.mobMod.SKILL_LIST, 2018)
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 2018)
     else
-        mob:setMobMod(xi.mobMod.SKILL_LIST, 2017)
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 2017)
     end
 end
 
@@ -95,9 +95,9 @@ entity.onMobSpawn = function(mob)
     end)
 
     mob:addListener('WEAPONSKILL_TAKE', 'SKILLCHAIN_DETECT', function(mobArg, _, skillID)
-        if mobArg:hasStatusEffect(xi.effect.SKILLCHAIN) then
+        if mobArg:hasStatusEffect(invaderXim.effect.SKILLCHAIN) then
             if mobArg:getLocalVar('chosenElement') ~= 0 then
-                local skillchainEffect = mobArg:getStatusEffect(xi.effect.SKILLCHAIN)
+                local skillchainEffect = mobArg:getStatusEffect(invaderXim.effect.SKILLCHAIN)
                 local power            = skillchainEffect:getPower()
 
                 if isSkillchainCorrect(mobArg, power) then

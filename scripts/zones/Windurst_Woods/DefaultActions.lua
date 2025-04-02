@@ -1,4 +1,4 @@
--- local ID = zones[xi.zone.WINDURST_WOODS]
+-- local ID = zones[invaderXim.zone.WINDURST_WOODS]
 
 return {
     ['Abby_Jalunshi']      = { event = 798 },

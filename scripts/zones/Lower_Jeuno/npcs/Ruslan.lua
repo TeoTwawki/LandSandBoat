@@ -8,9 +8,9 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local wonderingstatus = player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.WONDERING_MINSTREL)
+    local wonderingstatus = player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.WONDERING_MINSTREL)
 
-    if wonderingstatus == xi.questStatus.QUEST_ACCEPTED then
+    if wonderingstatus == invaderXim.questStatus.QUEST_ACCEPTED then
         local prog = player:getCharVar('QuestWonderingMin_var')
         if prog == 0 then -- WONDERING_MINSTREL + Rosewood Lumber: During Quest / Progression
             player:startEvent(10009, 0, 718)
@@ -18,7 +18,7 @@ entity.onTrigger = function(player, npc)
         elseif prog == 1 then -- WONDERING_MINSTREL + Rosewood Lumber: Quest Objective Reminder
             player:startEvent(10010, 0, 718)
         end
-    elseif wonderingstatus == xi.questStatus.QUEST_COMPLETED then
+    elseif wonderingstatus == invaderXim.questStatus.QUEST_COMPLETED then
         local rand = math.random(1, 3)
         if rand == 1 then
             player:startEvent(10011) -- WONDERING_MINSTREL: After Quest

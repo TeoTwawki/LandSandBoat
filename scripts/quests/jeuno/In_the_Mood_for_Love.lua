@@ -6,27 +6,27 @@
 -- Matoaka !pos -37 -6 -122 245
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.IN_THE_MOOD_FOR_LOVE)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.IN_THE_MOOD_FOR_LOVE)
 
 quest.reward =
 {
     gil = 4800,
     fame = 30,
-    fameArea = xi.fameArea.JEUNO,
-    title = xi.title.PICK_UP_ARTIST,
+    fameArea = invaderXim.fameArea.JEUNO,
+    title = invaderXim.title.PICK_UP_ARTIST,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-            player:getCurrentMission(xi.mission.log_id.COP) > xi.mission.id.cop.A_VESSEL_WITHOUT_A_CAPTAIN
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+            player:getCurrentMission(invaderXim.mission.log_id.COP) > invaderXim.mission.id.cop.A_VESSEL_WITHOUT_A_CAPTAIN
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
-            ['Odasel'] = quest:progressEvent(10035, 0, xi.item.CHAMELEON_DIAMOND),
+            ['Odasel'] = quest:progressEvent(10035, 0, invaderXim.item.CHAMELEON_DIAMOND),
 
             onEventFinish =
             {
@@ -39,20 +39,20 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Odasel'] =
             {
                 onTrigger = function(player, npc)
-                    return quest:event(10037, 0, xi.item.CHAMELEON_DIAMOND)
+                    return quest:event(10037, 0, invaderXim.item.CHAMELEON_DIAMOND)
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.CHAMELEON_DIAMOND) then
-                        return quest:progressEvent(10036, 0, xi.item.CHAMELEON_DIAMOND)
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.CHAMELEON_DIAMOND) then
+                        return quest:progressEvent(10036, 0, invaderXim.item.CHAMELEON_DIAMOND)
                     end
                 end,
             },
@@ -70,10 +70,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Odasel'] = quest:event(10038):replaceDefault(),
 

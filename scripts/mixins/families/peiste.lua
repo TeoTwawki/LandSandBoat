@@ -21,7 +21,7 @@ local gazeEffects =
     -- red eyes
     [1] =
     {
-        [xi.effect.PETRIFICATION] =
+        [invaderXim.effect.PETRIFICATION] =
         {
             duration = 15,
         },
@@ -31,12 +31,12 @@ local gazeEffects =
     -- TODO verify this data for Oppressive Glare when skill is coded
     [5] =
     {
-        [xi.effect.CURSE_II] =
+        [invaderXim.effect.CURSE_II] =
         {
             power = 0,
             duration = 30,
         },
-        [xi.effect.TERROR] =
+        [invaderXim.effect.TERROR] =
         {
             duration = 30,
         },
@@ -46,7 +46,7 @@ local gazeEffects =
 g_mixins.families.peiste = function(peisteMob)
     peisteMob:addListener('WEAPONSKILL_USE', 'PEISTE_MIXIN_WS_USE', function(mob, target, skillID)
         local gazeAnimSub = gazeAnimationSubs[skillID]
-        if gazeAnimSub and not mob:getStatusEffect(xi.effect.BLINDNESS) then
+        if gazeAnimSub and not mob:getStatusEffect(invaderXim.effect.BLINDNESS) then
             -- Sets glowy eyes, which triggers the combat tick aura gaze
             mob:setAnimationSub(gazeAnimSub)
             mob:timer(math.random(30, 45) * 1000, function(mobArg)
@@ -58,7 +58,7 @@ g_mixins.families.peiste = function(peisteMob)
     peisteMob:addListener('COMBAT_TICK', 'PEISTE_MIXIN_CTICK', function(mob, target)
         local gazeData = gazeEffects[mob:getAnimationSub()]
         if gazeData then
-            if mob:getStatusEffect(xi.effect.BLINDNESS) then
+            if mob:getStatusEffect(invaderXim.effect.BLINDNESS) then
                 -- Note that testing this manually will break the animation for the game client
                 -- (i.e. setAnimationSub(1) with blindness up will correctly remove the animation sub immediately, but the game won't get updated)
                 mob:setAnimationSub(0)
@@ -71,7 +71,7 @@ g_mixins.families.peiste = function(peisteMob)
                             if not entity:getStatusEffect(gazeEffect) then
                                 local power = gazeEffectInfo.power or 1
                                 local duration = gazeEffectInfo.duration or 15
-                                xi.mobskills.mobGazeMove(mob, entity, gazeEffect, power, 3, duration)
+                                invaderXim.mobskills.mobGazeMove(mob, entity, gazeEffect, power, 3, duration)
                             end
                         end
                     end

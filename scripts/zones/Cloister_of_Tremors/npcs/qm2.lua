@@ -9,7 +9,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    npcUtil.giveItem(player, xi.item.TREMORSTONE)
+    npcUtil.giveItem(player, invaderXim.item.TREMORSTONE)
 end
 
 return entity

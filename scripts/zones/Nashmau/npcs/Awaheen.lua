@@ -2,7 +2,7 @@
 -- Area: Nashmau
 --  NPC: Awaheen
 -----------------------------------
-local ID = zones[xi.zone.NASHMAU]
+local ID = zones[invaderXim.zone.NASHMAU]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -15,15 +15,15 @@ entity.onTrade = function(player, npc, trade)
     local nbr = 0
     local reward = 0
     if trade:getItemCount() == 1 then
-        if trade:hasItemQty(xi.item.IMPERIAL_GOLD_PIECE, 1) then
+        if trade:hasItemQty(invaderXim.item.IMPERIAL_GOLD_PIECE, 1) then
             nbr = 5
-            reward = xi.item.IMPERIAL_MYTHRIL_PIECE
-        elseif trade:hasItemQty(xi.item.IMPERIAL_MYTHRIL_PIECE, 1) then
+            reward = invaderXim.item.IMPERIAL_MYTHRIL_PIECE
+        elseif trade:hasItemQty(invaderXim.item.IMPERIAL_MYTHRIL_PIECE, 1) then
             nbr = 2
-            reward = xi.item.IMPERIAL_SILVER_PIECE
-        elseif trade:hasItemQty(xi.item.IMPERIAL_SILVER_PIECE, 1) then
+            reward = invaderXim.item.IMPERIAL_SILVER_PIECE
+        elseif trade:hasItemQty(invaderXim.item.IMPERIAL_SILVER_PIECE, 1) then
             nbr = 5
-            reward = xi.item.IMPERIAL_BRONZE_PIECE
+            reward = invaderXim.item.IMPERIAL_BRONZE_PIECE
         end
     end
 

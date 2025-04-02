@@ -4,7 +4,7 @@
 -- Type: Item Deliverer
 -- !pos -323.673 -16.001 -49.930 235
 -----------------------------------
-local ID = zones[xi.zone.BASTOK_MARKETS]
+local ID = zones[invaderXim.zone.BASTOK_MARKETS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

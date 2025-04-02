@@ -21,25 +21,25 @@ local spawnPoints =
 }
 
 entity.onMobInitialize = function(mob)
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(math.random(3600, 4200)) -- 60 to 70 min
 
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
-    mob:addMod(xi.mod.SLEEP_MEVA, 20)
-    mob:addMod(xi.mod.BIND_MEVA, 20)
-    mob:addMod(xi.mod.EARTH_MEVA, 100)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
+    mob:addMod(invaderXim.mod.SLEEP_MEVA, 20)
+    mob:addMod(invaderXim.mod.BIND_MEVA, 20)
+    mob:addMod(invaderXim.mod.EARTH_MEVA, 100)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.SLOW, { power = 1500, duration = math.random(15, 25) })
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.SLOW, { power = 1500, duration = math.random(15, 25) })
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 159)
+    invaderXim.hunts.checkHunt(mob, player, 159)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(math.random(3600, 4200)) -- 60 to 70 min
 end
 

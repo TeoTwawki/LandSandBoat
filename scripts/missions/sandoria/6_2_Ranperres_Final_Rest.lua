@@ -11,10 +11,10 @@
 -- _5a0: Heavy Stone Dr : !pos -39 4.823 20 190
 -- Tombstone            : !pos -73.594 7.585 20.130 190
 -----------------------------------
-local krtID = zones[xi.zone.KING_RANPERRES_TOMB]
+local krtID = zones[invaderXim.zone.KING_RANPERRES_TOMB]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.RANPERRES_FINAL_REST)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.RANPERRES_FINAL_REST)
 
 local ranparresRestTable =
 {
@@ -40,11 +40,11 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -53,7 +53,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -68,7 +68,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['_6h0'] =
             {
@@ -91,7 +91,7 @@ mission.sections =
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
                     if
-                        player:hasKeyItem(xi.ki.ANCIENT_SAN_DORIAN_BOOK) and
+                        player:hasKeyItem(invaderXim.ki.ANCIENT_SAN_DORIAN_BOOK) and
                         missionStatus > 2 and
                         missionStatus < 6
                     then
@@ -116,7 +116,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.KING_RANPERRES_TOMB] =
+        [invaderXim.zone.KING_RANPERRES_TOMB] =
         {
             ['_5a0'] =
             {
@@ -185,10 +185,10 @@ mission.sections =
                 onTrigger = function(player, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 3 and
-                        not player:hasKeyItem(xi.ki.ANCIENT_SAN_DORIAN_BOOK)
+                        not player:hasKeyItem(invaderXim.ki.ANCIENT_SAN_DORIAN_BOOK)
                     then
                         return mission:progressEvent(8)
-                    elseif player:hasKeyItem(xi.ki.ANCIENT_SAN_DORIAN_BOOK) then
+                    elseif player:hasKeyItem(invaderXim.ki.ANCIENT_SAN_DORIAN_BOOK) then
                         return mission:messageSpecial(krtID.text.FINAL_RESTING_PLACE)
                     end
                 end,
@@ -212,19 +212,19 @@ mission.sections =
                 end,
 
                 [8] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.ANCIENT_SAN_DORIAN_BOOK)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ANCIENT_SAN_DORIAN_BOOK)
                 end,
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] =
             {
                 onTrigger = function(player, npc)
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
-                    if player:hasKeyItem(xi.ki.ANCIENT_SAN_DORIAN_BOOK) then
+                    if player:hasKeyItem(invaderXim.ki.ANCIENT_SAN_DORIAN_BOOK) then
                         return mission:progressEvent(1036)
                     elseif missionStatus == 4 then
                         if player:getLocalVar('Mission[0][17]requiredToZone') == 1 then
@@ -243,7 +243,7 @@ mission.sections =
                 onTrigger = function(player, npc)
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
-                    if player:hasKeyItem(xi.ki.ANCIENT_SAN_DORIAN_BOOK) then
+                    if player:hasKeyItem(invaderXim.ki.ANCIENT_SAN_DORIAN_BOOK) then
                         return mission:progressEvent(1035)
                     elseif missionStatus == 4 then
                         if player:getLocalVar('Mission[0][17]requiredToZone') == 1 then
@@ -268,13 +268,13 @@ mission.sections =
                 end,
 
                 [1035] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.ANCIENT_SAN_DORIAN_BOOK)
+                    player:delKeyItem(invaderXim.ki.ANCIENT_SAN_DORIAN_BOOK)
                     player:setLocalVar('Mission[0][17]requiredToZone', 1)
                     player:setMissionStatus(mission.areaId, 4)
                 end,
 
                 [1036] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.ANCIENT_SAN_DORIAN_BOOK)
+                    player:delKeyItem(invaderXim.ki.ANCIENT_SAN_DORIAN_BOOK)
                     player:setLocalVar('Mission[0][17]requiredToZone', 1)
                     player:setMissionStatus(mission.areaId, 4)
                 end,
@@ -289,14 +289,14 @@ mission.sections =
             }
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Grilau'] =
             {
                 onTrigger = function(player, npc)
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
-                    if player:hasKeyItem(xi.ki.ANCIENT_SAN_DORIAN_BOOK) then
+                    if player:hasKeyItem(invaderXim.ki.ANCIENT_SAN_DORIAN_BOOK) then
                         return mission:progressEvent(1035)
                     elseif missionStatus == 4 then
                         if player:getLocalVar('Mission[0][17]requiredToZone') == 1 then
@@ -317,7 +317,7 @@ mission.sections =
                 end,
 
                 [1035] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.ANCIENT_SAN_DORIAN_BOOK)
+                    player:delKeyItem(invaderXim.ki.ANCIENT_SAN_DORIAN_BOOK)
                     player:setLocalVar('Mission[0][17]requiredToZone', 1)
                     player:setMissionStatus(mission.areaId, 4)
                 end,

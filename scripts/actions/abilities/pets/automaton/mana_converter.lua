@@ -9,19 +9,19 @@ abilityObject.onAutomatonAbilityCheck = function(target, automaton, skill)
 end
 
 abilityObject.onAutomatonAbility = function(target, automaton, skill, master, action)
-    automaton:addRecast(xi.recast.ABILITY, skill:getID(), 180)
+    automaton:addRecast(invaderXim.recast.ABILITY, skill:getID(), 180)
     local hp = target:getHP()
     local duration = 30
     local amount = math.floor((hp / 2) / 10)
     local difference = math.ceil(hp / 2 - (amount * 10))
-    skill:setMsg(xi.msg.basic.SKILL_GAIN_EFFECT)
+    skill:setMsg(invaderXim.msg.basic.SKILL_GAIN_EFFECT)
 
     target:addMP(difference) -- To prevent possible loss of MP from flooring the refresh
     target:setHP(math.floor(hp / 2))
-    target:delStatusEffect(xi.effect.REFRESH)
-    target:addStatusEffect(xi.effect.REFRESH, amount, 3, duration)
+    target:delStatusEffect(invaderXim.effect.REFRESH)
+    target:addStatusEffect(invaderXim.effect.REFRESH, amount, 3, duration)
 
-    return xi.effect.REFRESH
+    return invaderXim.effect.REFRESH
 end
 
 return abilityObject

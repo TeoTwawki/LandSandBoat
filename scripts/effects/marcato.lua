@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.MARCATO
+-- invaderXim.effect.MARCATO
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

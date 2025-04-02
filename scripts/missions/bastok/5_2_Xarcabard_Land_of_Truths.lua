@@ -10,13 +10,13 @@
 -- _6ld    : !pos 92 -19 0.1 237
 -- Karst   : !pos 106 -21 0 237
 -----------------------------------
-local bastokMarketsID = zones[xi.zone.BASTOK_MARKETS]
-local bastokMinesID   = zones[xi.zone.BASTOK_MINES]
-local metalworksID    = zones[xi.zone.METALWORKS]
-local portBastokID    = zones[xi.zone.PORT_BASTOK]
+local bastokMarketsID = zones[invaderXim.zone.BASTOK_MARKETS]
+local bastokMinesID   = zones[invaderXim.zone.BASTOK_MINES]
+local metalworksID    = zones[invaderXim.zone.METALWORKS]
+local portBastokID    = zones[invaderXim.zone.PORT_BASTOK]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.BASTOK, xi.mission.id.bastok.XARCABARD_LAND_OF_TRUTHS)
+local mission = Mission:new(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.XARCABARD_LAND_OF_TRUTHS)
 
 mission.reward =
 {
@@ -35,11 +35,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             onEventFinish =
             {
@@ -47,7 +47,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             onEventFinish =
             {
@@ -55,7 +55,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             onEventFinish =
             {
@@ -63,7 +63,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             onEventFinish =
             {
@@ -77,22 +77,22 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Cleades'] = mission:messageSpecial(bastokMarketsID.text.ORIGINAL_MISSION_OFFSET + 39),
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Rashid'] = mission:messageSpecial(bastokMinesID.text.ORIGINAL_MISSION_OFFSET + 39),
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['_6ld'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.SHADOW_FRAGMENT) then
+                    if player:hasKeyItem(invaderXim.ki.SHADOW_FRAGMENT) then
                         return mission:progressEvent(603)
                     end
                 end,
@@ -117,18 +117,18 @@ mission.sections =
 
                 [603] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.SHADOW_FRAGMENT)
+                        player:delKeyItem(invaderXim.ki.SHADOW_FRAGMENT)
                     end
                 end,
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Argus'] = mission:messageSpecial(portBastokID.text.ORIGINAL_MISSION_OFFSET + 39),
         },
 
-        [xi.zone.THRONE_ROOM] =
+        [invaderXim.zone.THRONE_ROOM] =
         {
             ['_4l1'] =
             {
@@ -144,14 +144,14 @@ mission.sections =
                 [32001] = function(player, csid, option, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 3 and
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.SHADOW_LORD_BATTLE
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.SHADOW_LORD_BATTLE
                     then
                         if
-                            player:getCurrentMission(xi.mission.log_id.ZILART) ~= xi.mission.id.zilart.THE_NEW_FRONTIER and
-                            not player:hasCompletedMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_NEW_FRONTIER)
+                            player:getCurrentMission(invaderXim.mission.log_id.ZILART) ~= invaderXim.mission.id.zilart.THE_NEW_FRONTIER and
+                            not player:hasCompletedMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_NEW_FRONTIER)
                         then
                             -- Don't add missions we already completed. Players who change nation will hit this.
-                            player:addMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_NEW_FRONTIER)
+                            player:addMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_NEW_FRONTIER)
                         end
 
                         -- TODO: This is most likely a pos change followed by onZoneIn event
@@ -164,7 +164,7 @@ mission.sections =
                 end,
 
                 [7] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.SHADOW_FRAGMENT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.SHADOW_FRAGMENT)
                     player:setMissionStatus(mission.areaId, 4)
                     player:setPos(378, -12, -20, 125, 161)
                 end,
@@ -174,13 +174,13 @@ mission.sections =
 
     {
         check = function(player, currentMission, missionStatus, vars)
-            return player:getNation() == xi.nation.BASTOK and
-                player:getCurrentMission(mission.areaId) == xi.mission.id.bastok.NONE and
+            return player:getNation() == invaderXim.nation.BASTOK and
+                player:getCurrentMission(mission.areaId) == invaderXim.mission.id.bastok.NONE and
                 player:hasCompletedMission(mission.areaId, mission.missionId) and
-                not player:hasCompletedMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.RETURN_OF_THE_TALEKEEPER)
+                not player:hasCompletedMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.RETURN_OF_THE_TALEKEEPER)
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Pavvke'] = mission:event(76):importantOnce(),
         },

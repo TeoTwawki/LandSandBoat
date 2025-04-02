@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.TROUBADOUR
+-- invaderXim.effect.TROUBADOUR
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

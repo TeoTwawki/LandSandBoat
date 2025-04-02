@@ -1,7 +1,7 @@
 -----------------------------------
 -- Salvage: Arrapago Remnants
 -----------------------------------
-local ID = zones[xi.zone.ARRAPAGO_REMNANTS]
+local ID = zones[invaderXim.zone.ARRAPAGO_REMNANTS]
 -----------------------------------
 local instanceObject = {}
 
@@ -9,11 +9,11 @@ instanceObject.afterInstanceRegister = function(player)
     local instance = player:getInstance()
     player:messageSpecial(ID.text.TIME_TO_COMPLETE, instance:getTimeLimit())
     player:messageSpecial(ID.text.SALVAGE_START, 1)
-    player:addStatusEffectEx(xi.effect.ENCUMBRANCE_I, xi.effect.ENCUMBRANCE_I, 0xFFFF, 0, 6000)
-    player:addStatusEffectEx(xi.effect.OBLIVISCENCE, xi.effect.OBLIVISCENCE, 0, 0, 6000)
-    player:addStatusEffectEx(xi.effect.OMERTA, xi.effect.OMERTA, 0x3F, 0, 6000)
-    player:addStatusEffectEx(xi.effect.IMPAIRMENT, xi.effect.IMPAIRMENT, 3, 0, 6000)
-    player:addStatusEffectEx(xi.effect.DEBILITATION, xi.effect.DEBILITATION, 0x1FF, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.ENCUMBRANCE_I, invaderXim.effect.ENCUMBRANCE_I, 0xFFFF, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.OBLIVISCENCE, invaderXim.effect.OBLIVISCENCE, 0, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.OMERTA, invaderXim.effect.OMERTA, 0x3F, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.IMPAIRMENT, invaderXim.effect.IMPAIRMENT, 3, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.DEBILITATION, invaderXim.effect.DEBILITATION, 0x1FF, 0, 6000)
     for i = 0, 15 do
         player:unequipItem(i)
     end
@@ -24,7 +24,7 @@ instanceObject.onInstanceCreated = function(instance)
         local npc = GetNPCByID(v, instance)
 
         if npc then
-            npc:setStatus(xi.status.NORMAL)
+            npc:setStatus(invaderXim.status.NORMAL)
         end
     end
 
@@ -40,7 +40,7 @@ instanceObject.onInstanceCreatedCallback = function(player, instance)
 end
 
 instanceObject.onInstanceTimeUpdate = function(instance, elapsed)
-    xi.instance.updateInstanceTime(instance, elapsed, ID.text)
+    invaderXim.instance.updateInstanceTime(instance, elapsed, ID.text)
 end
 
 instanceObject.onInstanceFailure = function(instance)
@@ -65,9 +65,9 @@ instanceObject.onInstanceProgressUpdate = function(instance, progress, elapsed)
     if instance:getStage() == 1 and progress == 10 then
         SpawnMob(ID.mob[1][2].rampart, instance)
     elseif instance:getStage() == 2 and progress == 2 then -- attempt to spawn slot
-        GetNPCByID(ID.npc[2][2].SLOT, instance):setStatus(xi.status.NORMAL)
+        GetNPCByID(ID.npc[2][2].SLOT, instance):setStatus(invaderXim.status.NORMAL)
     elseif instance:getStage() == 2 and progress == 3 then -- attempt to spawn socket
-        GetNPCByID(ID.npc[2][2].SOCKET, instance):setStatus(xi.status.NORMAL)
+        GetNPCByID(ID.npc[2][2].SOCKET, instance):setStatus(invaderXim.status.NORMAL)
     elseif instance:getStage() == 3 and progress == 1 then
         SpawnMob(ID.mob[2][0].astrologer, instance)
     elseif instance:getStage() == 6 and progress == 1 then

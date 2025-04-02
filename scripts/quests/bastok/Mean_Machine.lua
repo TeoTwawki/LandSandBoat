@@ -5,24 +5,24 @@
 -- Unlucky Rat : -59.724 1.999 30.179 237
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.MEAN_MACHINE)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.MEAN_MACHINE)
 
 quest.reward =
 {
     fame     = 120,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.SCROLL_OF_WARP,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.SCROLL_OF_WARP,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 2
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 2
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Unlucky_Rat'] = quest:progressEvent(556),
 
@@ -37,15 +37,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Unlucky_Rat'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.VIAL_OF_SLIME_OIL) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.VIAL_OF_SLIME_OIL) then
                         return quest:progressEvent(557)
                     end
                 end,

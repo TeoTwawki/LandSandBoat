@@ -4,14 +4,14 @@
 -- Allows players to spawn the HNM Genbu with a Gem of the North and a Winterstone.
 -- !pos 257 -70 517 130
 -----------------------------------
-local ID = zones[xi.zone.RUAUN_GARDENS]
+local ID = zones[invaderXim.zone.RUAUN_GARDENS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHasExactly(trade, { xi.item.GEM_OF_THE_NORTH, xi.item.WINTERSTONE }) and
+        npcUtil.tradeHasExactly(trade, { invaderXim.item.GEM_OF_THE_NORTH, invaderXim.item.WINTERSTONE }) and
         npcUtil.popFromQM(player, npc, ID.mob.GENBU)
     then -- Gem of the North and Winterstone
         player:showText(npc, ID.text.SKY_GOD_OFFSET + 5)

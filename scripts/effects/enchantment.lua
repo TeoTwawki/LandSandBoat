@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.ENCHANTMENT
+-- invaderXim.effect.ENCHANTMENT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

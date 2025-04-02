@@ -9,7 +9,7 @@ local entity = {}
 -- Todo: Apkallu hate, Hundred Fists, Movement and TP pattern
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
 end
 
 entity.onMobSpawn = function(mob)

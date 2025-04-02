@@ -6,11 +6,11 @@
 -- Masad : !pos -28.182 -0.650 -91.991 256
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.BUDDING_PROSPECTS)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.BUDDING_PROSPECTS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.THE_LIGHT_SHINING_IN_YOUR_EYES },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_LIGHT_SHINING_IN_YOUR_EYES },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(102),
 
@@ -30,11 +30,11 @@ mission.sections =
                     local waitTimer = mission:getVar(player, 'Timer')
 
                     if
-                        player:hasCompletedQuest(xi.questLog.ADOULIN, xi.quest.id.adoulin.FLAVORS_OF_OUR_LIVES) or
+                        player:hasCompletedQuest(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.FLAVORS_OF_OUR_LIVES) or
                         (
                             waitTimer ~= 0 and
                             waitTimer <= VanadielUniqueDay() and
-                            xi.quest.getVar(player, xi.questLog.ADOULIN, xi.quest.id.adoulin.FLAVORS_OF_OUR_LIVES, 'Prog') >= 2
+                            invaderXim.quest.getVar(player, invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.FLAVORS_OF_OUR_LIVES, 'Prog') >= 2
                         )
                     then
                         return mission:progressEvent(8)

@@ -7,38 +7,38 @@
 -- Chef Nonberry : !pos -136 0.0 -91 159
 -- Pula Rhatti   : !pos -18.5 -4 -38 250
 -----------------------------------
-local templeID = zones[xi.zone.TEMPLE_OF_UGGALEPIH]
+local templeID = zones[invaderXim.zone.TEMPLE_OF_UGGALEPIH]
 -----------------------------------
 
 ---@type TQuest
-local quest = Quest:new(xi.questLog.OUTLANDS, xi.quest.id.outlands.YOU_CALL_THAT_A_KNIFE)
+local quest = Quest:new(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.YOU_CALL_THAT_A_KNIFE)
 
 quest.reward =
 {
     fame     = 75,
-    fameArea = xi.fameArea.WINDURST,
+    fameArea = invaderXim.fameArea.WINDURST,
     gil      = 7200,
-    title    = xi.title.YA_DONE_GOOD
+    title    = invaderXim.title.YA_DONE_GOOD
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.WINDURST) >= 6
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.WINDURST) >= 6
         end,
 
-        [xi.zone.KAZHAM] =
+        [invaderXim.zone.KAZHAM] =
         {
             ['Mhebi_Juhbily'] =
             {
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'Prog') == 0 and
-                        npcUtil.tradeHasExactly(trade, { xi.item.SANDFISH })
+                        npcUtil.tradeHasExactly(trade, { invaderXim.item.SANDFISH })
                     then
-                        return quest:progressEvent(127, 0, xi.item.SANDFISH)
+                        return quest:progressEvent(127, 0, invaderXim.item.SANDFISH)
                     end
                 end,
 
@@ -49,7 +49,7 @@ quest.sections =
                 end
             },
 
-            ['Pula_Rhatti'] = quest:event(269, 0, xi.item.SANDFISH),
+            ['Pula_Rhatti'] = quest:event(269, 0, invaderXim.item.SANDFISH),
 
             ['_6y9'] =
             {
@@ -80,15 +80,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
-                not player:hasKeyItem(xi.ki.NONBERRYS_KNIFE)
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
+                not player:hasKeyItem(invaderXim.ki.NONBERRYS_KNIFE)
         end,
 
-        [xi.zone.KAZHAM] =
+        [invaderXim.zone.KAZHAM] =
         {
             ['Mhebi_Juhbily'] = quest:event(129),
 
-            ['Pula_Rhatti'] = quest:event(269, 0, xi.item.SANDFISH),
+            ['Pula_Rhatti'] = quest:event(269, 0, invaderXim.item.SANDFISH),
 
             ['Vah_Keshura'] =
             {
@@ -109,12 +109,12 @@ quest.sections =
             },
         },
 
-        [xi.zone.TEMPLE_OF_UGGALEPIH] =
+        [invaderXim.zone.TEMPLE_OF_UGGALEPIH] =
         {
             ['Chef_Nonberry'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.TONBERRY_BOARD }) then
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.TONBERRY_BOARD }) then
                         return quest:progressEvent(27)
                     else
                         return quest:progressEvent(28)
@@ -126,7 +126,7 @@ quest.sections =
             {
                 [27] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    npcUtil.giveKeyItem(player, xi.ki.NONBERRYS_KNIFE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.NONBERRYS_KNIFE)
                 end,
 
                 [28] = function(player, csid, option, npc)
@@ -150,11 +150,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
-                player:hasKeyItem(xi.ki.NONBERRYS_KNIFE)
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
+                player:hasKeyItem(invaderXim.ki.NONBERRYS_KNIFE)
         end,
 
-        [xi.zone.KAZHAM] =
+        [invaderXim.zone.KAZHAM] =
         {
             ['Mhebi_Juhbily'] = quest:progressEvent(133),
 
@@ -164,7 +164,7 @@ quest.sections =
             {
                 [133] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.NONBERRYS_KNIFE)
+                        player:delKeyItem(invaderXim.ki.NONBERRYS_KNIFE)
                         quest:setMustZone(player)
                     end
                 end
@@ -174,11 +174,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
                 quest:getMustZone(player)
         end,
 
-        [xi.zone.KAZHAM] =
+        [invaderXim.zone.KAZHAM] =
         {
             ['Mhebi_Juhbily'] = quest:event(134),
         },
@@ -186,11 +186,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
                 not quest:getMustZone(player)
         end,
 
-        [xi.zone.KAZHAM] =
+        [invaderXim.zone.KAZHAM] =
         {
             ['Mhebi_Juhbily'] = quest:event(135),
         },

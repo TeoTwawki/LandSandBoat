@@ -3,7 +3,7 @@
 --  Mob: Ghast
 -- Note: PH for Namtar
 -----------------------------------
-local ID = zones[xi.zone.SEA_SERPENT_GROTTO]
+local ID = zones[invaderXim.zone.SEA_SERPENT_GROTTO]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -15,11 +15,11 @@ local namtarPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 805, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 805, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, namtarPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, namtarPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

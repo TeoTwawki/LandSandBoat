@@ -31,7 +31,7 @@ entity.onMobSpawn = function(mob)
 end
 
 entity.onMobRoam = function(mob)
-    local ID = zones[xi.zone.ABYSSEA_KONSCHTAT]
+    local ID = zones[invaderXim.zone.ABYSSEA_KONSCHTAT]
     local mobToAbsorb =
     {
         [ID.mob.BLOODGUZZLER] = GetMobByID(ID.mob.BLOODGUZZLER),
@@ -43,7 +43,7 @@ entity.onMobRoam = function(mob)
     if nearestMob and nearestMob.distance <= 10 then
         local nearestMobToAbsorb = mobToAbsorb[nearestMob.mobId]
         if nearestMobToAbsorb then
-            mob:useMobAbility(xi.mob.skills.DISSOLVE, nearestMobToAbsorb)
+            mob:useMobAbility(invaderXim.mob.skills.DISSOLVE, nearestMobToAbsorb)
             mob:setLocalVar('[ClaimedBy]', nearestMobToAbsorb:getLocalVar('[ClaimedBy]'))
             mob:setUntargetable(false)
             nearestMobToAbsorb:timer(10000, function(nMob)
@@ -54,8 +54,8 @@ entity.onMobRoam = function(mob)
 end
 
 entity.onMobDeath = function(mob, player, isKiller)
-    if player ~= nil and not player:hasTitle(xi.title.FISTULE_DRAINER) then
-        player:addTitle(xi.title.FISTULE_DRAINER)
+    if player ~= nil and not player:hasTitle(invaderXim.title.FISTULE_DRAINER) then
+        player:addTitle(invaderXim.title.FISTULE_DRAINER)
     end
 end
 

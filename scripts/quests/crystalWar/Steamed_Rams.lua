@@ -8,31 +8,31 @@
 -- qm4         : !pos 541.425 -49.83 178.563
 -- qm5         : !pos 380.015 -26.5 -22.525
 -----------------------------------
-local southernSandoriaSID = zones[xi.zone.SOUTHERN_SAN_DORIA_S]
+local southernSandoriaSID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA_S]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.STEAMED_RAMS)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.STEAMED_RAMS)
 
 quest.reward =
 {
-    title = xi.title.KNIGHT_OF_THE_IRON_RAM,
+    title = invaderXim.title.KNIGHT_OF_THE_IRON_RAM,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.GARLAIGE_CITADEL_S] =
+        [invaderXim.zone.GARLAIGE_CITADEL_S] =
         {
             ['Randecque'] =
             {
                 onTrigger = function(player, npc)
                     if player:getCampaignAllegiance() > 0 then
                         return quest:event(12)
-                    elseif not player:hasKeyItem(xi.ki.RED_RECOMMENDATION_LETTER) then
+                    elseif not player:hasKeyItem(invaderXim.ki.RED_RECOMMENDATION_LETTER) then
                         local hasDeclined = quest:getVar(player, 'Option')
 
                         return quest:progressEvent(1, { [7] = hasDeclined })
@@ -46,25 +46,25 @@ quest.sections =
             {
                 [1] = function(player, csid, option, npc)
                     if option == 0 then
-                        npcUtil.giveKeyItem(player, xi.ki.RED_RECOMMENDATION_LETTER)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.RED_RECOMMENDATION_LETTER)
                         quest:setVar(player, 'Option', 0)
                     end
                 end,
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Mainchelite'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.THE_FIGHTING_FOURTH) == xi.questStatus.QUEST_ACCEPTED or
-                        player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.SNAKE_ON_THE_PLAINS) == xi.questStatus.QUEST_ACCEPTED
+                        player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.THE_FIGHTING_FOURTH) == invaderXim.questStatus.QUEST_ACCEPTED or
+                        player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.SNAKE_ON_THE_PLAINS) == invaderXim.questStatus.QUEST_ACCEPTED
                     then
                         return quest:event(9)
                     elseif
-                        player:hasKeyItem(xi.ki.RED_RECOMMENDATION_LETTER) or
+                        player:hasKeyItem(invaderXim.ki.RED_RECOMMENDATION_LETTER) or
                         player:getCampaignAllegiance() > 0
                     then
                         local hasDeclined = quest:getVar(player, 'Option')
@@ -82,7 +82,7 @@ quest.sections =
                 [7] = function(player, csid, option, npc)
                     if option == 0 then
                         quest:begin(player)
-                        player:delKeyItem(xi.ki.RED_RECOMMENDATION_LETTER)
+                        player:delKeyItem(invaderXim.ki.RED_RECOMMENDATION_LETTER)
                     else
                         quest:setVar(player, 'Option', 1)
                     end
@@ -91,7 +91,7 @@ quest.sections =
                 [8] = function(player, csid, option, npc)
                     if option == 0 then
                         quest:begin(player)
-                        player:delKeyItem(xi.ki.RED_RECOMMENDATION_LETTER)
+                        player:delKeyItem(invaderXim.ki.RED_RECOMMENDATION_LETTER)
                     end
                 end,
 
@@ -114,18 +114,18 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Mainchelite'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:hasKeyItem(xi.ki.CHARRED_PROPELLER) and
-                        player:hasKeyItem(xi.ki.OXIDIZED_PLATE) and
-                        player:hasKeyItem(xi.ki.PIECE_OF_SHATTERED_LUMBER)
+                        player:hasKeyItem(invaderXim.ki.CHARRED_PROPELLER) and
+                        player:hasKeyItem(invaderXim.ki.OXIDIZED_PLATE) and
+                        player:hasKeyItem(invaderXim.ki.PIECE_OF_SHATTERED_LUMBER)
                     then
                         if player:getCampaignAllegiance() == 0 then
                             return quest:progressEvent(12)
@@ -145,13 +145,13 @@ quest.sections =
                 [12] = function(player, csid, option, npc)
                     if quest:complete(player) then
                         player:setCampaignAllegiance(1)
-                        npcUtil.giveKeyItem(player, xi.ki.BRONZE_RIBBON_OF_SERVICE)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.BRONZE_RIBBON_OF_SERVICE)
 
-                        player:delKeyItem(xi.ki.CHARRED_PROPELLER)
-                        player:delKeyItem(xi.ki.OXIDIZED_PLATE)
-                        player:delKeyItem(xi.ki.PIECE_OF_SHATTERED_LUMBER)
+                        player:delKeyItem(invaderXim.ki.CHARRED_PROPELLER)
+                        player:delKeyItem(invaderXim.ki.OXIDIZED_PLATE)
+                        player:delKeyItem(invaderXim.ki.PIECE_OF_SHATTERED_LUMBER)
 
-                        npcUtil.giveItem(player, xi.item.SPRINTERS_SHOES)
+                        npcUtil.giveItem(player, invaderXim.item.SPRINTERS_SHOES)
 
                         player:messageSpecial(southernSandoriaSID.text.NOW_ALLIED_WITH, 1)
                     end
@@ -159,7 +159,7 @@ quest.sections =
 
                 [13] = function(player, csid, option, npc)
                     if option == 1 then
-                        npcUtil.giveKeyItem(player, xi.ki.RED_RECOMMENDATION_LETTER)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.RED_RECOMMENDATION_LETTER)
                         player:delQuest(quest.areaId, quest.questId)
                     end
                 end,
@@ -176,9 +176,9 @@ quest.sections =
 
                         player:setCampaignAllegiance(1)
 
-                        player:delKeyItem(xi.ki.CHARRED_PROPELLER)
-                        player:delKeyItem(xi.ki.OXIDIZED_PLATE)
-                        player:delKeyItem(xi.ki.PIECE_OF_SHATTERED_LUMBER)
+                        player:delKeyItem(invaderXim.ki.CHARRED_PROPELLER)
+                        player:delKeyItem(invaderXim.ki.OXIDIZED_PLATE)
+                        player:delKeyItem(invaderXim.ki.PIECE_OF_SHATTERED_LUMBER)
 
                         player:messageSpecial(southernSandoriaSID.text.NOW_ALLIED_WITH, 1)
                     end
@@ -186,12 +186,12 @@ quest.sections =
             },
         },
 
-        [xi.zone.EAST_RONFAURE_S] =
+        [invaderXim.zone.EAST_RONFAURE_S] =
         {
             ['qm3'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.CHARRED_PROPELLER) then
+                    if not player:hasKeyItem(invaderXim.ki.CHARRED_PROPELLER) then
                         return quest:progressEvent(1)
                     end
                 end,
@@ -200,7 +200,7 @@ quest.sections =
             ['qm4'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.PIECE_OF_SHATTERED_LUMBER) then
+                    if not player:hasKeyItem(invaderXim.ki.PIECE_OF_SHATTERED_LUMBER) then
                         return quest:progressEvent(2)
                     end
                 end,
@@ -209,7 +209,7 @@ quest.sections =
             ['qm5'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.OXIDIZED_PLATE) then
+                    if not player:hasKeyItem(invaderXim.ki.OXIDIZED_PLATE) then
                         return quest:progressEvent(3)
                     end
                 end,
@@ -218,15 +218,15 @@ quest.sections =
             onEventFinish =
             {
                 [1] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.CHARRED_PROPELLER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.CHARRED_PROPELLER)
                 end,
 
                 [2] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.PIECE_OF_SHATTERED_LUMBER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.PIECE_OF_SHATTERED_LUMBER)
                 end,
 
                 [3] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.OXIDIZED_PLATE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.OXIDIZED_PLATE)
                 end,
             },
 
@@ -235,10 +235,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Mainchelite'] = quest:event(5):replaceDefault(),
         },

@@ -2,13 +2,13 @@
 -- Area: Arrapago Remnants
 --  Mob: Qiqirn Astrologer
 -----------------------------------
-local ID = zones[xi.zone.ARRAPAGO_REMNANTS]
+local ID = zones[invaderXim.zone.ARRAPAGO_REMNANTS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.HP_STANDBACK, -1)
+    mob:setMobMod(invaderXim.mobMod.HP_STANDBACK, -1)
 end
 
 entity.onMobDisengage = function(mob)
@@ -59,12 +59,12 @@ entity.onMobFight = function(mob, target)
     local prog    = instance:getProgress()
 
     if
-        act == xi.act.MOBABILITY_START or
-        act == xi.act.MOBABILITY_USING or
-        act == xi.act.MOBABILITY_FINISH or
-        act == xi.act.MAGIC_START or
-        act == xi.act.MAGIC_CASTING or
-        act == xi.act.MAGIC_START
+        act == invaderXim.act.MOBABILITY_START or
+        act == invaderXim.act.MOBABILITY_USING or
+        act == invaderXim.act.MOBABILITY_FINISH or
+        act == invaderXim.act.MAGIC_START or
+        act == invaderXim.act.MAGIC_CASTING or
+        act == invaderXim.act.MAGIC_START
     then
         isBusy = true -- is set to true if mob is in any stage of using a mobskill or casting a spell
     end

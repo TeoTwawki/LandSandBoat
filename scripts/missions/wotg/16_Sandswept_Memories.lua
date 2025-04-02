@@ -6,11 +6,11 @@
 -- Lion Springs Door : !pos 96 0 106 80
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.SANDSWEPT_MEMORIES)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.SANDSWEPT_MEMORIES)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.NORTHLAND_EXPOSURE },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.NORTHLAND_EXPOSURE },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Lion_Springs'] =
             {

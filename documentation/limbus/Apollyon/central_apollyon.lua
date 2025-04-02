@@ -9,19 +9,19 @@
 -- !additem 1988
 -- !pos 600 -0.5 -600 38
 -----------------------------------
-local ID = zones[xi.zone.APOLLYON]
+local ID = zones[invaderXim.zone.APOLLYON]
 -----------------------------------
 
 local content = Limbus:new({
-    zoneId           = xi.zone.APOLLYON,
-    battlefieldId    = xi.battlefield.id.CENTRAL_APOLLYON,
+    zoneId           = invaderXim.zone.APOLLYON,
+    battlefieldId    = invaderXim.battlefield.id.CENTRAL_APOLLYON,
     maxPlayers       = 18,
     timeLimit        = utils.minutes(30),
     index            = 4,
     area             = 5,
     entryNpcs        = { '_12i', '_127' },
-    requiredKeyItems = { xi.ki.COSMO_CLEANSE, { xi.ki.RED_CARD, xi.ki.BLACK_CARD }, message = ID.text.YOU_INSERT_THE_CARD_POLISHED },
-    requiredItems    = { xi.item.SMALT_CHIP, xi.item.SMOKY_CHIP, xi.item.CHARCOAL_CHIP, xi.item.MAGENTA_CHIP },
+    requiredKeyItems = { invaderXim.ki.COSMO_CLEANSE, { invaderXim.ki.RED_CARD, invaderXim.ki.BLACK_CARD }, message = ID.text.YOU_INSERT_THE_CARD_POLISHED },
+    requiredItems    = { invaderXim.item.SMALT_CHIP, invaderXim.item.SMOKY_CHIP, invaderXim.item.CHARCOAL_CHIP, invaderXim.item.MAGENTA_CHIP },
     name             = 'CENTRAL_APOLLYON',
     lootCrateId      = ID.npc.CENTRAL_LOOT_CRATE,
 })
@@ -60,20 +60,20 @@ content.loot =
     {
         {
             quantity = 5,
-            { item = xi.item.ANCIENT_BEASTCOIN, weight = xi.loot.weight.NORMAL },
+            { item = invaderXim.item.ANCIENT_BEASTCOIN, weight = invaderXim.loot.weight.NORMAL },
         },
 
         {
             quantity = 2,
-            { item = xi.item.PIECE_OF_OMEGAS_EYE,        weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SEGMENT_OF_OMEGAS_FORELEG,  weight = xi.loot.weight.LOW    },
-            { item = xi.item.SEGMENT_OF_OMEGAS_HIND_LEG, weight = xi.loot.weight.LOW    },
-            { item = xi.item.SEGMENT_OF_OMEGAS_TAIL,     weight = xi.loot.weight.LOW    },
+            { item = invaderXim.item.PIECE_OF_OMEGAS_EYE,        weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SEGMENT_OF_OMEGAS_FORELEG,  weight = invaderXim.loot.weight.LOW    },
+            { item = invaderXim.item.SEGMENT_OF_OMEGAS_HIND_LEG, weight = invaderXim.loot.weight.LOW    },
+            { item = invaderXim.item.SEGMENT_OF_OMEGAS_TAIL,     weight = invaderXim.loot.weight.LOW    },
         },
 
         {
-            { item = xi.item.NONE,                  weight = xi.loot.weight.EXTREMELY_HIGH },
-            { item = xi.item.PIECE_OF_OMEGAS_HEART, weight = xi.loot.weight.NORMAL         },
+            { item = invaderXim.item.NONE,                  weight = invaderXim.loot.weight.EXTREMELY_HIGH },
+            { item = invaderXim.item.PIECE_OF_OMEGAS_HEART, weight = invaderXim.loot.weight.NORMAL         },
         },
     },
 }

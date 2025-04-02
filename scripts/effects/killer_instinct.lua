@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.KILLER_INSTINCT
+-- invaderXim.effect.KILLER_INSTINCT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

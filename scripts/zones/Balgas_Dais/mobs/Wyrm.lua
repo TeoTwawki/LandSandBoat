@@ -17,16 +17,16 @@ entity.onMobSpawn = function(mob)
 end
 
 entity.onMobEngage = function(mob, target)
-    mob:setMod(xi.mod.REGAIN, 100) -- very close to the capture by comparing stop watch measures
-    mob:setMod(xi.mod.REGEN, 100) -- might be higher: capture showed no change in HP with Poison II and Bio III procced
+    mob:setMod(invaderXim.mod.REGAIN, 100) -- very close to the capture by comparing stop watch measures
+    mob:setMod(invaderXim.mod.REGEN, 100) -- might be higher: capture showed no change in HP with Poison II and Bio III procced
 end
 
 local function notBusy(mob)
     local action = mob:getCurrentAction()
     if
-        action == xi.act.MOBABILITY_START or
-        action == xi.act.MOBABILITY_USING or
-        action == xi.act.MOBABILITY_FINISH
+        action == invaderXim.act.MOBABILITY_START or
+        action == invaderXim.act.MOBABILITY_USING or
+        action == invaderXim.act.MOBABILITY_FINISH
     then
         return false -- when the Wyrm is in any stage of using a mobskill
     else
@@ -45,11 +45,11 @@ entity.onMobFight = function(mob, target)
         -- Touchdown will set the following for us in the skill script:
         -- lifted wings model stance: mob:setAnimationSub(2)
         -- reset default attack:      mob:setMobSkillAttack(0)
-        -- reset melee attacks:       mob:delStatusEffect(xi.effect.ALL_MISS)
-        mob:addStatusEffect(xi.effect.EVASION_BOOST, 75, 0, 0)
-        mob:addStatusEffect(xi.effect.DEFENSE_BOOST, 75, 0, 0)
-        mob:addStatusEffect(xi.effect.MAGIC_DEF_BOOST, 75, 0, 0)
-        mob:setMobMod(xi.mobMod.SKILL_LIST, 262) -- restore standard ground skill set
+        -- reset melee attacks:       mob:delStatusEffect(invaderXim.effect.ALL_MISS)
+        mob:addStatusEffect(invaderXim.effect.EVASION_BOOST, 75, 0, 0)
+        mob:addStatusEffect(invaderXim.effect.DEFENSE_BOOST, 75, 0, 0)
+        mob:addStatusEffect(invaderXim.effect.MAGIC_DEF_BOOST, 75, 0, 0)
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 262) -- restore standard ground skill set
         mob:setBehavior(1024) -- reset behavior to not face target
 
     -- Go airborne at 66% HP, gets only called once
@@ -61,9 +61,9 @@ entity.onMobFight = function(mob, target)
         notBusy(mob)
     then
         mob:setAnimationSub(1) -- flying model stance
-        mob:addStatusEffectEx(xi.effect.ALL_MISS, 0, 1, 0, 0) -- melee attacks miss now
+        mob:addStatusEffectEx(invaderXim.effect.ALL_MISS, 0, 1, 0, 0) -- melee attacks miss now
         mob:setMobSkillAttack(1146) -- change default attack to ranged fire magic damage
-        mob:setMobMod(xi.mobMod.SKILL_LIST, 1147) -- change skill set to flying moves
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 1147) -- change skill set to flying moves
         mob:setBehavior(0) -- face target while flying
     end
 end

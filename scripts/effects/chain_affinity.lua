@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.CHAIN_AFFINITY
+-- invaderXim.effect.CHAIN_AFFINITY
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

@@ -7,15 +7,15 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.instance.onTrigger(player, npc, xi.zones.RUHOTZ_SILVERMINES)
+    invaderXim.instance.onTrigger(player, npc, invaderXim.zones.RUHOTZ_SILVERMINES)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.instance.onEventUpdate(player, csid, option, npc)
+    invaderXim.instance.onEventUpdate(player, csid, option, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.instance.onEventFinish(player, csid, option, npc)
+    invaderXim.instance.onEventFinish(player, csid, option, npc)
 end
 
 return entity

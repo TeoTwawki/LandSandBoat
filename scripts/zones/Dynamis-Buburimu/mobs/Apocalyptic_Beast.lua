@@ -7,11 +7,11 @@
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:addImmunity(xi.immunity.GRAVITY)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.dynamis.megaBossOnDeath(mob, player, optParams)
+    invaderXim.dynamis.megaBossOnDeath(mob, player, optParams)
 end
 
 return entity

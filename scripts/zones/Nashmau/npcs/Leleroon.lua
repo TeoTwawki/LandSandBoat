@@ -9,11 +9,11 @@ local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.NAVIGATING_THE_UNFRIENDLY_SEAS) == xi.questStatus.QUEST_ACCEPTED and
+        player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.NAVIGATING_THE_UNFRIENDLY_SEAS) == invaderXim.questStatus.QUEST_ACCEPTED and
         player:getCharVar('NavigatingtheUnfriendlySeas') <= 2
     then
         if
-            trade:hasItemQty(xi.item.HYDROGAUGE, 1) and
+            trade:hasItemQty(invaderXim.item.HYDROGAUGE, 1) and
             trade:getItemCount() == 1
         then
             player:startEvent(283)
@@ -23,7 +23,7 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    if player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AGAINST_ALL_ODDS) >= xi.questStatus.QUEST_ACCEPTED then
+    if player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AGAINST_ALL_ODDS) >= invaderXim.questStatus.QUEST_ACCEPTED then
         local letterGreen = player:getCharVar('LeleroonsLetterGreen')
         local letterBlue = player:getCharVar('LeleroonsLetterBlue')
         local letterRed = player:getCharVar('LeleroonsLetterRed')
@@ -60,13 +60,13 @@ end
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 282 then
         if option == 1 then
-            npcUtil.giveKeyItem(player, xi.ki.LELEROONS_LETTER_GREEN)
+            npcUtil.giveKeyItem(player, invaderXim.ki.LELEROONS_LETTER_GREEN)
             player:setCharVar('LeleroonsLetterGreen', 1)
         elseif option == 2 then
-            npcUtil.giveKeyItem(player, xi.ki.LELEROONS_LETTER_BLUE)
+            npcUtil.giveKeyItem(player, invaderXim.ki.LELEROONS_LETTER_BLUE)
             player:setCharVar('LeleroonsLetterBlue', 1)
         elseif option == 3 then
-            npcUtil.giveKeyItem(player, xi.ki.LELEROONS_LETTER_RED)
+            npcUtil.giveKeyItem(player, invaderXim.ki.LELEROONS_LETTER_RED)
             player:setCharVar('LeleroonsLetterRed', 1)
         end
     end

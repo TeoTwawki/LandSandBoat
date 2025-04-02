@@ -3,7 +3,7 @@
 --  NPC: Signpost
 -- !zone 100
 -----------------------------------
-local ID = zones[xi.zone.WEST_RONFAURE]
+local ID = zones[invaderXim.zone.WEST_RONFAURE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

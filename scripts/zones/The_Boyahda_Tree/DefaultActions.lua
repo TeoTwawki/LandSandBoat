@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.THE_BOYAHDA_TREE]
+local ID = zones[invaderXim.zone.THE_BOYAHDA_TREE]
 
 return {
     ['Mandragora_Warden']       = { event = 10 },

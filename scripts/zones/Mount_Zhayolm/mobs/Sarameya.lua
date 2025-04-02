@@ -12,17 +12,17 @@ mixins = { require('scripts/mixins/rage') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.GA_CHANCE, 50)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
+    mob:setMobMod(invaderXim.mobMod.GA_CHANCE, 50)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:addMod(xi.mod.MEVA, 95)
-    mob:addMod(xi.mod.MDEF, 30)
-    mob:addMod(xi.mod.SILENCE_MEVA, 20)
-    mob:addMod(xi.mod.GRAVITY_MEVA, 20)
-    mob:addMod(xi.mod.LULLABY_MEVA, 30)
+    mob:addMod(invaderXim.mod.MEVA, 95)
+    mob:addMod(invaderXim.mod.MDEF, 30)
+    mob:addMod(invaderXim.mod.SILENCE_MEVA, 20)
+    mob:addMod(invaderXim.mod.GRAVITY_MEVA, 20)
+    mob:addMod(invaderXim.mod.LULLABY_MEVA, 30)
     mob:setLocalVar('[rage]timer', 3600) -- 60 minutes
 end
 
@@ -52,30 +52,30 @@ entity.onMobFight = function(mob, target)
 
     if useChainspell then
         mob:useMobAbility(692) -- Chainspell
-        mob:setMobMod(xi.mobMod.GA_CHANCE, 100)
+        mob:setMobMod(invaderXim.mobMod.GA_CHANCE, 100)
     end
 
     -- Spams TP moves and -ga spells
-    if mob:hasStatusEffect(xi.effect.CHAINSPELL) then
+    if mob:hasStatusEffect(invaderXim.effect.CHAINSPELL) then
         mob:setTP(2000)
     else
-        if mob:getMobMod(xi.mobMod.GA_CHANCE) == 100 then
-            mob:setMobMod(xi.mobMod.GA_CHANCE, 50)
+        if mob:getMobMod(invaderXim.mobMod.GA_CHANCE) == 100 then
+            mob:setMobMod(invaderXim.mobMod.GA_CHANCE, 50)
         end
     end
 
     -- Regens 1% of his HP a tick with Blaze Spikes on
-    if mob:hasStatusEffect(xi.effect.BLAZE_SPIKES) then
-        mob:setMod(xi.mod.REGEN, math.floor(mob:getMaxHP() / 100))
+    if mob:hasStatusEffect(invaderXim.effect.BLAZE_SPIKES) then
+        mob:setMod(invaderXim.mod.REGEN, math.floor(mob:getMaxHP() / 100))
     else
-        if mob:getMod(xi.mod.REGEN) > 0 then
-            mob:setMod(xi.mod.REGEN, 0)
+        if mob:getMod(invaderXim.mod.REGEN) > 0 then
+            mob:setMod(invaderXim.mod.REGEN, 0)
         end
     end
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.POISON, { chance = 40, power = 50 })
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.POISON, { chance = 40, power = 50 })
 end
 
 entity.onMobDeath = function(mob, player, optParams)

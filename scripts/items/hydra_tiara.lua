@@ -8,16 +8,16 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target)
-    if target:getStatusEffectBySource(xi.effect.POTENCY, xi.effectSourceType.EQUIPPED_ITEM, xi.item.HYDRA_TIARA) ~= nil then
-        target:delStatusEffect(xi.effect.POTENCY, nil, xi.effectSourceType.EQUIPPED_ITEM, xi.item.HYDRA_TIARA)
+    if target:getStatusEffectBySource(invaderXim.effect.POTENCY, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.HYDRA_TIARA) ~= nil then
+        target:delStatusEffect(invaderXim.effect.POTENCY, nil, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.HYDRA_TIARA)
     end
 
     return 0
 end
 
 itemObject.onItemUse = function(target)
-    if target:hasEquipped(xi.item.HYDRA_TIARA) then
-        target:addStatusEffect(xi.effect.POTENCY, 7, 0, 180, 0, 0, 0, xi.effectSourceType.EQUIPPED_ITEM, xi.item.HYDRA_TIARA)
+    if target:hasEquipped(invaderXim.item.HYDRA_TIARA) then
+        target:addStatusEffect(invaderXim.effect.POTENCY, 7, 0, 180, 0, 0, 0, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.HYDRA_TIARA)
     end
 end
 

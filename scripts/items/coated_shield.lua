@@ -14,15 +14,15 @@ itemObject.onItemUse = function(target)
     local power = 1055 -- Shell I   (27/256)
     local tier = 1
     local bonus = 0
-    if target:getMod(xi.mod.ENHANCES_PROT_SHELL_RCVD) > 0 then
+    if target:getMod(invaderXim.mod.ENHANCES_PROT_SHELL_RCVD) > 0 then
         bonus = 39 -- (1/256 bonus buff per tier)
     end
 
     power = power + (bonus * tier)
-    if target:addStatusEffect(xi.effect.SHELL, power, 0, 1800, 0, 0, tier) then
-        target:messageBasic(xi.msg.basic.GAINS_EFFECT_OF_STATUS, xi.effect.SHELL)
+    if target:addStatusEffect(invaderXim.effect.SHELL, power, 0, 1800, 0, 0, tier) then
+        target:messageBasic(invaderXim.msg.basic.GAINS_EFFECT_OF_STATUS, invaderXim.effect.SHELL)
     else
-        target:messageBasic(xi.msg.basic.NO_EFFECT)
+        target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
     end
 end
 

@@ -7,16 +7,16 @@ local commandObj = {}
 
 local bagparam =
 {
-    { bagsize = 30, questid = xi.quest.id.jeuno.THE_GOBBIEBAG_PART_I    },
-    { bagsize = 35, questid = xi.quest.id.jeuno.THE_GOBBIEBAG_PART_II   },
-    { bagsize = 40, questid = xi.quest.id.jeuno.THE_GOBBIEBAG_PART_III  },
-    { bagsize = 45, questid = xi.quest.id.jeuno.THE_GOBBIEBAG_PART_IV   },
-    { bagsize = 50, questid = xi.quest.id.jeuno.THE_GOBBIEBAG_PART_V    },
-    { bagsize = 55, questid = xi.quest.id.jeuno.THE_GOBBIEBAG_PART_VI   },
-    { bagsize = 60, questid = xi.quest.id.jeuno.THE_GOBBIEBAG_PART_VII  },
-    { bagsize = 65, questid = xi.quest.id.jeuno.THE_GOBBIEBAG_PART_VIII },
-    { bagsize = 70, questid = xi.quest.id.jeuno.THE_GOBBIEBAG_PART_IX   },
-    { bagsize = 75, questid = xi.quest.id.jeuno.THE_GOBBIEBAG_PART_X    },
+    { bagsize = 30, questid = invaderXim.quest.id.jeuno.THE_GOBBIEBAG_PART_I    },
+    { bagsize = 35, questid = invaderXim.quest.id.jeuno.THE_GOBBIEBAG_PART_II   },
+    { bagsize = 40, questid = invaderXim.quest.id.jeuno.THE_GOBBIEBAG_PART_III  },
+    { bagsize = 45, questid = invaderXim.quest.id.jeuno.THE_GOBBIEBAG_PART_IV   },
+    { bagsize = 50, questid = invaderXim.quest.id.jeuno.THE_GOBBIEBAG_PART_V    },
+    { bagsize = 55, questid = invaderXim.quest.id.jeuno.THE_GOBBIEBAG_PART_VI   },
+    { bagsize = 60, questid = invaderXim.quest.id.jeuno.THE_GOBBIEBAG_PART_VII  },
+    { bagsize = 65, questid = invaderXim.quest.id.jeuno.THE_GOBBIEBAG_PART_VIII },
+    { bagsize = 70, questid = invaderXim.quest.id.jeuno.THE_GOBBIEBAG_PART_IX   },
+    { bagsize = 75, questid = invaderXim.quest.id.jeuno.THE_GOBBIEBAG_PART_X    },
     { bagsize = 80, questid = nil                                       },
 }
 
@@ -38,22 +38,22 @@ commandObj.onTrigger = function(player, bagsize)
         return
     end
 
-    local currentBagSize = player:getContainerSize(xi.inv.INVENTORY)
+    local currentBagSize = player:getContainerSize(invaderXim.inv.INVENTORY)
     local adjustment = bagsize - currentBagSize
 
     for i = 1, 10 do
         if bagsize > bagparam[i].bagsize then
-            player:completeQuest(xi.questLog.JEUNO, bagparam[i].questid)
+            player:completeQuest(invaderXim.questLog.JEUNO, bagparam[i].questid)
         else
-            player:delQuest(xi.questLog.JEUNO, bagparam[i].questid)
+            player:delQuest(invaderXim.questLog.JEUNO, bagparam[i].questid)
         end
     end
 
     -- Inform player and set bag size
     player:printToPlayer(string.format('Old Bag Size: %u', currentBagSize))
     player:printToPlayer(string.format('New Bag Size: %u', bagsize))
-    player:changeContainerSize(xi.inv.INVENTORY, adjustment)
-    player:changeContainerSize(xi.inv.MOGSATCHEL, adjustment)
+    player:changeContainerSize(invaderXim.inv.INVENTORY, adjustment)
+    player:changeContainerSize(invaderXim.inv.MOGSATCHEL, adjustment)
 end
 
 return commandObj

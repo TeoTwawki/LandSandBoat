@@ -4,8 +4,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.findFlag
-xi.findFlag =
+---@enum invaderXim.findFlag
+invaderXim.findFlag =
 {
     NONE            = 0,
     DEAD            = 1,  -- target dead

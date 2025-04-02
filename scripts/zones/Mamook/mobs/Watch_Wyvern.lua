@@ -3,7 +3,7 @@
 --  Mob: Watch Wyvern
 -- Note: PH for Firedance Magmaal Ja
 -----------------------------------
-local ID = zones[xi.zone.MAMOOK]
+local ID = zones[invaderXim.zone.MAMOOK]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -18,7 +18,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, firedancePHTable, 5, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, firedancePHTable, 5, 3600) -- 1 hour
 end
 
 return entity

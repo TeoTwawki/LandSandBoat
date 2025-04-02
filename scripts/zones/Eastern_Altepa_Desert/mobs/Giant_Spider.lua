@@ -3,7 +3,7 @@
 --  Mob: Giant Spider
 -- Note: PH for Dune Widow
 -----------------------------------
-local ID = zones[xi.zone.EASTERN_ALTEPA_DESERT]
+local ID = zones[invaderXim.zone.EASTERN_ALTEPA_DESERT]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -14,11 +14,11 @@ local duneWidowPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 109, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 109, 1, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, duneWidowPHTable, 10, math.random(3600, 18000)) -- 1 to 5 hours
+    invaderXim.mob.phOnDespawn(mob, duneWidowPHTable, 10, math.random(3600, 18000)) -- 1 to 5 hours
 end
 
 return entity

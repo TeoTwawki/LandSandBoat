@@ -7,8 +7,8 @@ local itemObject = {}
 
 itemObject.onItemEquip = function(target, item)
     target:addListener('MELEE_SWING_HIT', 'TREDECIM_MELEE_SWING_HIT', function(playerArg, targetArg, attackArg)
-        local mainWeapon = playerArg:getEquippedItem(xi.slot.MAIN)
-        if mainWeapon and mainWeapon:getID() == xi.item.TREDECIM_SCYTHE then
+        local mainWeapon = playerArg:getEquippedItem(invaderXim.slot.MAIN)
+        if mainWeapon and mainWeapon:getID() == invaderXim.item.TREDECIM_SCYTHE then
             local exData = mainWeapon:getExData()
             local count  = exData[0]
 

@@ -2,7 +2,7 @@
 -- Area: Abyssea - Grauberg
 --  NPC: Dominion Tactician
 -----------------------------------
-local ID = zones[xi.zone.ABYSSEA_GRAUBERG]
+local ID = zones[invaderXim.zone.ABYSSEA_GRAUBERG]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -19,35 +19,35 @@ local tacticianItems =
     [itemType.ITEM] =
     {
     --  Sel      Item                       Cost
-        [ 1] = { xi.item.UNKAI_DOMARU,     1500 },
-        [ 2] = { xi.item.IGA_NINGI,        1500 },
-        [ 3] = { xi.item.LANCERS_PLACKART, 1500 },
-        [ 4] = { xi.item.CALLERS_DOUBLET,  1500 },
-        [ 5] = { xi.item.MAVI_MINTAN,      1500 },
-        [ 6] = { xi.item.NAVARCHS_FRAC,    1500 },
-        [ 7] = { xi.item.CIRQUE_FARSETTO,  1500 },
-        [ 8] = { xi.item.CHARIS_CASAQUE,   1500 },
-        [ 9] = { xi.item.SAVANTS_GOWN,     1500 },
-        [10] = { xi.item.INCRESCENT_SHADE,  300 },
-        [11] = { xi.item.DECRESCENT_SHADE,  300 },
+        [ 1] = { invaderXim.item.UNKAI_DOMARU,     1500 },
+        [ 2] = { invaderXim.item.IGA_NINGI,        1500 },
+        [ 3] = { invaderXim.item.LANCERS_PLACKART, 1500 },
+        [ 4] = { invaderXim.item.CALLERS_DOUBLET,  1500 },
+        [ 5] = { invaderXim.item.MAVI_MINTAN,      1500 },
+        [ 6] = { invaderXim.item.NAVARCHS_FRAC,    1500 },
+        [ 7] = { invaderXim.item.CIRQUE_FARSETTO,  1500 },
+        [ 8] = { invaderXim.item.CHARIS_CASAQUE,   1500 },
+        [ 9] = { invaderXim.item.SAVANTS_GOWN,     1500 },
+        [10] = { invaderXim.item.INCRESCENT_SHADE,  300 },
+        [11] = { invaderXim.item.DECRESCENT_SHADE,  300 },
     },
 
     [itemType.TEMP] =
     {
     --  Sel      Item                    Cost
-        [1] = { xi.item.PETRIFY_SCREEN, 300 },
-        [2] = { xi.item.TERROR_SCREEN,  300 },
-        [3] = { xi.item.AMNESIA_SCREEN, 300 },
-        [4] = { xi.item.DOOM_SCREEN,    300 },
-        [5] = { xi.item.POISON_SCREEN,  300 },
+        [1] = { invaderXim.item.PETRIFY_SCREEN, 300 },
+        [2] = { invaderXim.item.TERROR_SCREEN,  300 },
+        [3] = { invaderXim.item.AMNESIA_SCREEN, 300 },
+        [4] = { invaderXim.item.DOOM_SCREEN,    300 },
+        [5] = { invaderXim.item.POISON_SCREEN,  300 },
     },
 
     [itemType.AUGMENTED] =
     {
     --  Sel     Item                 Cost  Possible Augments { Augment ID, Minimum, Maximum }
-        [1] = { xi.item.YATAGHAN,   2500, { { 45, 1,  8 }, { 328, 2, 6 }, { 187, 2, 6 }, { 787, 3, 8 }, { 1028, 2, 6 } } }, -- TODO: Should Aug 45 (DMG+) also apply Sub DMG?
-        [2] = { xi.item.DOOM_TABAR, 2500, { { 45, 4, 12 }, { 786, 3, 7 }, { 512, 3, 8 }, { 250, 3, 6 }, { 1040, 2, 8 } } },
-        [3] = { xi.item.YUKITSUGU,  2500, { { 45, 5, 14 }, { 177, 3, 6 }, { 332, 2, 6 }, { 788, 3, 7 }, { 1060, 2, 8 } } },
+        [1] = { invaderXim.item.YATAGHAN,   2500, { { 45, 1,  8 }, { 328, 2, 6 }, { 187, 2, 6 }, { 787, 3, 8 }, { 1028, 2, 6 } } }, -- TODO: Should Aug 45 (DMG+) also apply Sub DMG?
+        [2] = { invaderXim.item.DOOM_TABAR, 2500, { { 45, 4, 12 }, { 786, 3, 7 }, { 512, 3, 8 }, { 250, 3, 6 }, { 1040, 2, 8 } } },
+        [3] = { invaderXim.item.YUKITSUGU,  2500, { { 45, 5, 14 }, { 177, 3, 6 }, { 332, 2, 6 }, { 788, 3, 7 }, { 1060, 2, 8 } } },
     },
 }
 

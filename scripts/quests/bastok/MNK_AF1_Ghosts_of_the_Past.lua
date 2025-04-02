@@ -5,28 +5,28 @@
 -- Oggbi : !pos -159 -7 5 236
 -- qm4   : !pos -174 0 369 196
 -----------------------------------
-local gusgenMinesID = zones[xi.zone.GUSGEN_MINES]
+local gusgenMinesID = zones[invaderXim.zone.GUSGEN_MINES]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.GHOSTS_OF_THE_PAST)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.GHOSTS_OF_THE_PAST)
 
 quest.reward =
 {
     fame     = 20,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.BEAT_CESTI,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.BEAT_CESTI,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getMainJob() == xi.job.MNK and
-                player:getMainLvl() >= xi.settings.main.AF1_QUEST_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getMainJob() == invaderXim.job.MNK and
+                player:getMainLvl() >= invaderXim.settings.main.AF1_QUEST_LEVEL
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Oggbi'] = quest:progressEvent(231),
 
@@ -41,17 +41,17 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.GUSGEN_MINES] =
+        [invaderXim.zone.GUSGEN_MINES] =
         {
             ['qm4'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.PICKAXE) and
-                        not player:hasItem(xi.item.MINERS_PENDANT) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.PICKAXE) and
+                        not player:hasItem(invaderXim.item.MINERS_PENDANT) and
                         not GetMobByID(gusgenMinesID.mob.WANDERING_GHOST):isSpawned()
                     then
                         player:confirmTrade()
@@ -64,12 +64,12 @@ quest.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Oggbi'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.MINERS_PENDANT) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.MINERS_PENDANT) then
                         return quest:progressEvent(232)
                     end
                 end,
@@ -81,7 +81,7 @@ quest.sections =
                     if quest:complete(player) then
                         player:confirmTrade()
 
-                        xi.quest.setMustZone(player, xi.questLog.BASTOK, xi.quest.id.bastok.THE_FIRST_MEETING)
+                        invaderXim.quest.setMustZone(player, invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_FIRST_MEETING)
                     end
                 end,
             },

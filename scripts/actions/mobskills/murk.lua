@@ -14,18 +14,18 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local typeEffect = nil
-    local slowed     = xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.SLOW, 1250, 0, 60)
-    local weight     = xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.WEIGHT, 40, 0, 60)
+    local slowed     = invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.SLOW, 1250, 0, 60)
+    local weight     = invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.WEIGHT, 40, 0, 60)
 
-    skill:setMsg(xi.msg.basic.SKILL_ENFEEB_IS)
+    skill:setMsg(invaderXim.msg.basic.SKILL_ENFEEB_IS)
 
     -- display slow first, else weight
-    if slowed == xi.msg.basic.SKILL_ENFEEB_IS then
-        typeEffect = xi.effect.SLOW
-    elseif weight == xi.msg.basic.SKILL_ENFEEB_IS then
-        typeEffect = xi.effect.WEIGHT
+    if slowed == invaderXim.msg.basic.SKILL_ENFEEB_IS then
+        typeEffect = invaderXim.effect.SLOW
+    elseif weight == invaderXim.msg.basic.SKILL_ENFEEB_IS then
+        typeEffect = invaderXim.effect.WEIGHT
     else
-        skill:setMsg(xi.msg.basic.SKILL_MISS)
+        skill:setMsg(invaderXim.msg.basic.SKILL_MISS)
     end
 
     return typeEffect

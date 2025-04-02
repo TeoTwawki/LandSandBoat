@@ -6,24 +6,24 @@
 -- Hilda : !pos -163 -8 13 236
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.CIDS_SECRET)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.CIDS_SECRET)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.RAM_MANTLE,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.RAM_MANTLE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 4
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 4
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Cid'] = quest:progressEvent(507),
 
@@ -38,15 +38,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Cid'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.UNFINISHED_LETTER) then
+                    if player:hasKeyItem(invaderXim.ki.UNFINISHED_LETTER) then
                         return quest:progressEvent(509)
                     elseif quest:getVar(player, 'Prog') == 1 then
                         return quest:event(508):importantEvent()
@@ -60,19 +60,19 @@ quest.sections =
             {
                 [509] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.UNFINISHED_LETTER)
+                        player:delKeyItem(invaderXim.ki.UNFINISHED_LETTER)
                     end
                 end,
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Hilda'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.ROLANBERRY_874_CE) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.ROLANBERRY_874_CE) and
                         quest:getVar(player, 'Prog') == 1
                     then
                         return quest:progressEvent(133)
@@ -93,7 +93,7 @@ quest.sections =
                 [133] = function(player, csid, option, npc)
                     player:confirmTrade()
 
-                    npcUtil.giveKeyItem(player, xi.ki.UNFINISHED_LETTER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.UNFINISHED_LETTER)
                 end,
             },
         },
@@ -101,10 +101,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Hilda'] = quest:event(49):replaceDefault(),
         },

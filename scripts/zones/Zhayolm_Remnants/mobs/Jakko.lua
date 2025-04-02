@@ -12,7 +12,7 @@ local entity = {}
 entity.onMobSpawn = function(mob)
     local instance = mob:getInstance()
 
-    mob:addImmunity(xi.immunity.SILENCE)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
     if instance then
         instance:setLocalVar('killedNMs', instance:getLocalVar('killedNMs') + 1)
     end

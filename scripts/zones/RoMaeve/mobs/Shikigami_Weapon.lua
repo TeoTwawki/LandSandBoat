@@ -43,25 +43,25 @@ local pathNodes =
 }
 
 entity.onMobInitialize = function(mob)
-    mob:addImmunity(xi.immunity.SILENCE)
-    mob:setMod(xi.mod.REGEN, 5) -- "Has a minor Auto Regen effect"
+    mob:addImmunity(invaderXim.immunity.SILENCE)
+    mob:setMod(invaderXim.mod.REGEN, 5) -- "Has a minor Auto Regen effect"
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setStatus(xi.status.INVISIBLE)
-    mob:pathThrough(pathNodes, bit.bor(xi.path.flag.PATROL, xi.path.flag.RUN))
+    mob:setStatus(invaderXim.status.INVISIBLE)
+    mob:pathThrough(pathNodes, bit.bor(invaderXim.path.flag.PATROL, invaderXim.path.flag.RUN))
 end
 
 entity.onMobEngage = function(mob, target)
-    mob:setStatus(xi.status.UPDATE)
+    mob:setStatus(invaderXim.status.UPDATE)
 end
 
 entity.onMobDisengage = function(mob)
-    mob:setStatus(xi.status.INVISIBLE)
+    mob:setStatus(invaderXim.status.INVISIBLE)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 119, 2, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 119, 2, invaderXim.regime.type.FIELDS)
 end
 
 return entity

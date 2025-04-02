@@ -17,32 +17,32 @@ local spawnPoints =
 }
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
-    mob:addImmunity(xi.immunity.BIND)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.GRAVITY)
-    mob:addImmunity(xi.immunity.PLAGUE)
-    mob:addImmunity(xi.immunity.TERROR)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
+    mob:addImmunity(invaderXim.immunity.BIND)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
+    mob:addImmunity(invaderXim.immunity.PLAGUE)
+    mob:addImmunity(invaderXim.immunity.TERROR)
 
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(7200)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMod(xi.mod.STORETP, 135)
+    mob:setMod(invaderXim.mod.STORETP, 135)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.STUN)
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.STUN)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 330)
+    invaderXim.hunts.checkHunt(mob, player, 330)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(7200)
 end
 

@@ -12,14 +12,14 @@
 -- qm2 (W.Altepa) : !pos -325 0 -111 125
 -- Tall Mountain  : !pos 71 7 -7 234
 -----------------------------------
-local bastokMarketsID = zones[xi.zone.BASTOK_MARKETS]
-local bastokMinesID   = zones[xi.zone.BASTOK_MINES]
-local metalworksID    = zones[xi.zone.METALWORKS]
-local portBastokID    = zones[xi.zone.PORT_BASTOK]
-local westernAltepaID = zones[xi.zone.WESTERN_ALTEPA_DESERT]
+local bastokMarketsID = zones[invaderXim.zone.BASTOK_MARKETS]
+local bastokMinesID   = zones[invaderXim.zone.BASTOK_MINES]
+local metalworksID    = zones[invaderXim.zone.METALWORKS]
+local portBastokID    = zones[invaderXim.zone.PORT_BASTOK]
+local westernAltepaID = zones[invaderXim.zone.WESTERN_ALTEPA_DESERT]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.BASTOK, xi.mission.id.bastok.RETURN_OF_THE_TALEKEEPER)
+local mission = Mission:new(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.RETURN_OF_THE_TALEKEEPER)
 
 mission.reward =
 {
@@ -37,11 +37,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             onEventFinish =
             {
@@ -49,7 +49,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             onEventFinish =
             {
@@ -57,7 +57,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             onEventFinish =
             {
@@ -65,7 +65,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             onEventFinish =
             {
@@ -79,12 +79,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Cleades'] = mission:messageSpecial(bastokMarketsID.text.EXTENDED_MISSION_OFFSET),
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Medicine_Eagle'] =
             {
@@ -116,23 +116,23 @@ mission.sections =
 
                 [182] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.ALTEPA_MOONPEBBLE)
+                        player:delKeyItem(invaderXim.ki.ALTEPA_MOONPEBBLE)
                     end
                 end,
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Malduc'] = mission:messageSpecial(metalworksID.text.EXTENDED_MISSION_OFFSET),
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Argus'] = mission:messageSpecial(portBastokID.text.EXTENDED_MISSION_OFFSET),
         },
 
-        [xi.zone.ZERUHN_MINES] =
+        [invaderXim.zone.ZERUHN_MINES] =
         {
             ['Drake_Fang'] =
             {
@@ -155,7 +155,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WESTERN_ALTEPA_DESERT] =
+        [invaderXim.zone.WESTERN_ALTEPA_DESERT] =
         {
             ['qm2'] =
             {
@@ -165,7 +165,7 @@ mission.sections =
 
                     if mission:getLocalVar(player, 'nmDefeated') == 1 then
                         player:setMissionStatus(mission.areaId, 3)
-                        return mission:keyItem(xi.ki.ALTEPA_MOONPEBBLE)
+                        return mission:keyItem(invaderXim.ki.ALTEPA_MOONPEBBLE)
                     elseif
                         mobEasternSphinx and
                         mobWesternSphinx and

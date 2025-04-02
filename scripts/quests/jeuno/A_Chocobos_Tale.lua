@@ -7,17 +7,17 @@
 -- Outpost Gate : !pos 473.566 23.421 413.134 109
 -- qm           : !pos -39.370 -11.093 307.285 105
 -----------------------------------
-local batalliaID = zones[xi.zone.BATALLIA_DOWNS]
+local batalliaID = zones[invaderXim.zone.BATALLIA_DOWNS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.A_CHOCOBOS_TALE)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.A_CHOCOBOS_TALE)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.JEUNO,
+    fameArea = invaderXim.fameArea.JEUNO,
     gil      = 5200,
-    title    = xi.title.CHOCOBO_LOVE_GURU,
+    title    = invaderXim.title.CHOCOBO_LOVE_GURU,
 }
 
 local function isNMSpawned()
@@ -50,11 +50,11 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.A_VESSEL_WITHOUT_A_CAPTAIN)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.A_VESSEL_WITHOUT_A_CAPTAIN)
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Nevela'] = quest:progressEvent(10015),
 
@@ -69,10 +69,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Nevela'] =
             {
@@ -89,13 +89,13 @@ quest.sections =
             {
                 [10017] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.SILVER_COMETS_COLLAR)
+                        player:delKeyItem(invaderXim.ki.SILVER_COMETS_COLLAR)
                     end
                 end,
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Wobke'] =
             {
@@ -107,7 +107,7 @@ quest.sections =
                     elseif questProgress <= 2 then
                         return quest:event(246)
                     elseif questProgress == 3 then
-                        return quest:progressEvent(247, 0, xi.item.BOTTLE_OF_WARDING_OIL)
+                        return quest:progressEvent(247, 0, invaderXim.item.BOTTLE_OF_WARDING_OIL)
                     else
                         return quest:event(248)
                     end
@@ -126,13 +126,13 @@ quest.sections =
             },
         },
 
-        [xi.zone.PASHHOW_MARSHLANDS] =
+        [invaderXim.zone.PASHHOW_MARSHLANDS] =
         {
             ['Outpost_Gate'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, { { xi.item.BOTTLE_OF_WARDING_OIL, 3 } }) and
+                        npcUtil.tradeHasExactly(trade, { { invaderXim.item.BOTTLE_OF_WARDING_OIL, 3 } }) and
                         quest:getVar(player, 'Prog') == 2
                     then
                         return quest:progressEvent(22)
@@ -143,7 +143,7 @@ quest.sections =
                     -- TODO: The followup after CS 21 may be different, and needs capture.
 
                     if quest:getVar(player, 'Prog') == 1 then
-                        return quest:progressEvent(21, 0, xi.item.BOTTLE_OF_WARDING_OIL)
+                        return quest:progressEvent(21, 0, invaderXim.item.BOTTLE_OF_WARDING_OIL)
                     end
                 end,
             },
@@ -160,7 +160,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.BATALLIA_DOWNS] =
+        [invaderXim.zone.BATALLIA_DOWNS] =
         {
             ['qm_chocobotale'] =
             {
@@ -172,7 +172,7 @@ quest.sections =
                         if quest:getLocalVar(player, 'nmDefeated') == 1 then
                             quest:setVar(player, 'Prog', 5)
 
-                            return quest:keyItem(xi.ki.SILVER_COMETS_COLLAR)
+                            return quest:keyItem(invaderXim.ki.SILVER_COMETS_COLLAR)
                         else
                             for nmId = batalliaID.mob.BADSHAH_OFFSET, batalliaID.mob.BADSHAH_OFFSET + 4 do
                                 SpawnMob(nmId):updateClaim(player)
@@ -200,10 +200,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Nevela'] = quest:event(10018):replaceDefault(),
         },

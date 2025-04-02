@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.ARRAPAGO_REMNANTS]
+local ID = zones[invaderXim.zone.ARRAPAGO_REMNANTS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -21,7 +21,7 @@ entity.onEventFinish = function(player, csid, option, door)
             local npc = GetNPCByID(v, instance)
 
             if npc then
-                npc:setStatus(xi.status.NORMAL)
+                npc:setStatus(invaderXim.status.NORMAL)
             end
         end
 

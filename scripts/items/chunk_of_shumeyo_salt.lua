@@ -3,7 +3,7 @@
 -- Item: Chunk Of Shu'Meyo Salt
 -- Effect: Adds 20 seconds to the Snoll Tzar fight
 -----------------------------------
-local ID = zones[xi.zone.BEARCLAW_PINNACLE]
+local ID = zones[invaderXim.zone.BEARCLAW_PINNACLE]
 -----------------------------------
 ---@type TItem
 local itemObject = {}
@@ -20,9 +20,9 @@ itemObject.onItemCheck = function(target, item, param, caster)
     end
 
     if checkID then -- snoll tzar
-        result = xi.msg.basic.ITEM_UNABLE_TO_USE
+        result = invaderXim.msg.basic.ITEM_UNABLE_TO_USE
     elseif target:checkDistance(caster) > 10 then
-        result = xi.msg.basic.TOO_FAR_AWAY
+        result = invaderXim.msg.basic.TOO_FAR_AWAY
     end
 
     return result

@@ -13,7 +13,7 @@
 -- Trap Door        : !pos 22.310 -1.087 -14.320 151
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.TO_EACH_HIS_OWN_RIGHT)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.TO_EACH_HIS_OWN_RIGHT)
 
 mission.reward =
 {
@@ -31,11 +31,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onEventFinish =
             {
@@ -43,7 +43,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onEventFinish =
             {
@@ -51,7 +51,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onEventFinish =
             {
@@ -59,7 +59,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onEventFinish =
             {
@@ -73,7 +73,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.HEAVENS_TOWER] =
+        [invaderXim.zone.HEAVENS_TOWER] =
         {
             ['Kupipi'] =
             {
@@ -81,7 +81,7 @@ mission.sections =
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
                     if missionStatus == 0 then
-                        return mission:progressEvent(103, 0, 0, xi.ki.STARWAY_STAIRWAY_BAUBLE)
+                        return mission:progressEvent(103, 0, 0, invaderXim.ki.STARWAY_STAIRWAY_BAUBLE)
                     elseif missionStatus == 1 then
                         return mission:progressEvent(104)
                     end
@@ -107,7 +107,7 @@ mission.sections =
             {
                 [103] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 1)
-                    npcUtil.giveKeyItem(player, xi.ki.STARWAY_STAIRWAY_BAUBLE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.STARWAY_STAIRWAY_BAUBLE)
                 end,
 
                 [107] = function(player, csid, option, npc)
@@ -120,7 +120,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Hakkuru-Rinkuru'] =
             {
@@ -139,7 +139,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.CASTLE_OZTROJA] =
+        [invaderXim.zone.CASTLE_OZTROJA] =
         {
             onEventFinish =
             {

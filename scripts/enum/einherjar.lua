@@ -2,10 +2,10 @@
 -- Einherjar chambers
 -----------------------------------
 xi = xi or {}
-xi.einherjar = xi.einherjar or {}
+invaderXim.einherjar = invaderXim.einherjar or {}
 
----@enum xi.einherjar.chamber
-xi.einherjar.chamber =
+---@enum invaderXim.einherjar.chamber
+invaderXim.einherjar.chamber =
 {
     ROSSWEISSE   = 1,
     GRIMGERDE    = 2,
@@ -20,8 +20,8 @@ xi.einherjar.chamber =
     ODIN_II      = 11,
 }
 
----@enum xi.einherjar.wing
-xi.einherjar.wing =
+---@enum invaderXim.einherjar.wing
+invaderXim.einherjar.wing =
 {
     WING_1     = 1,
     WING_2     = 2,

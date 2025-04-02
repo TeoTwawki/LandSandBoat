@@ -5,11 +5,11 @@
 -- Zabahf !pos -90.070 -1 10.140 50
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.GOT_IT_ALL)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.GOT_IT_ALL)
 
 quest.reward =
 {
-    item = xi.item.BIBIKI_SEASHELL,
+    item = invaderXim.item.BIBIKI_SEASHELL,
 }
 
 quest.sections =
@@ -17,10 +17,10 @@ quest.sections =
     -- Section: Begin quest
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Tehf_Kimasnahya'] = quest:progressEvent(520),
             ['Ekhu_Pesshyadha'] = quest:event(532),
@@ -39,10 +39,10 @@ quest.sections =
     -- Section: Questing
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Tehf_Kimasnahya'] =
             {
@@ -123,7 +123,7 @@ quest.sections =
                 end,
 
                 [524] = function(player, csid, option, npc)
-                    if npcUtil.giveKeyItem(player, xi.ki.VIAL_OF_LUMINOUS_WATER) then
+                    if npcUtil.giveKeyItem(player, invaderXim.ki.VIAL_OF_LUMINOUS_WATER) then
                         quest:setVar(player, 'Prog', 4)
                     end
                 end,
@@ -131,7 +131,7 @@ quest.sections =
                 [525] = function(player, csid, option, npc)
                     if option == 0 then
                         quest:setVar(player, 'Prog', 5)
-                        player:delKeyItem(xi.ki.VIAL_OF_LUMINOUS_WATER)
+                        player:delKeyItem(invaderXim.ki.VIAL_OF_LUMINOUS_WATER)
                     end
                 end,
 
@@ -156,10 +156,10 @@ quest.sections =
     -- Section: After completion
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Ekhu_Pesshyadha'] =
             {

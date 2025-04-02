@@ -6,11 +6,11 @@
 -- Levil           : !pos -87.204 3.350 12.655 256
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.BALAMORS_RUSE)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.BALAMORS_RUSE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.THE_CHARLATAN },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_CHARLATAN },
 }
 
 local keyItemOnMobDeath =
@@ -27,9 +27,9 @@ local keyItemOnMobDeath =
             for _, partyMember in ipairs(player:getParty()) do
                 if
                     partyMember:getZoneID() == zoneID and
-                    partyMember:getCurrentMission(xi.mission.log_id.SOA) == xi.mission.id.soa.BALAMORS_RUSE
+                    partyMember:getCurrentMission(invaderXim.mission.log_id.SOA) == invaderXim.mission.id.soa.BALAMORS_RUSE
                 then
-                    npcUtil.giveKeyItem(partyMember, xi.ki.CONSUMMATE_SIMULACRUM)
+                    npcUtil.giveKeyItem(partyMember, invaderXim.ki.CONSUMMATE_SIMULACRUM)
                 end
             end
         end
@@ -43,12 +43,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(40, 256, 0, 255, 0, 61110144, 4640962, 3903, 131181),
         },
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             -- TODO: This might apply to all mobs in zone, but currently only implements mobs that
             -- were specifically mentioned in sources.
@@ -73,7 +73,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.RALA_WATERWAYS_U] =
+        [invaderXim.zone.RALA_WATERWAYS_U] =
         {
             onEventFinish =
             {
@@ -82,7 +82,7 @@ mission.sections =
                 -- implementation of the instance.
                 [1000] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 1)
-                    player:setPos(309.98, -5.768, -299.833, 128, xi.zone.RALA_WATERWAYS)
+                    player:setPos(309.98, -5.768, -299.833, 128, invaderXim.zone.RALA_WATERWAYS)
                 end,
             },
         },

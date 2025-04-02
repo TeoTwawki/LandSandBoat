@@ -4,23 +4,23 @@
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId           = xi.zone.CLOISTER_OF_GALES,
-    battlefieldId    = xi.battlefield.id.TRIAL_BY_WIND,
+    zoneId           = invaderXim.zone.CLOISTER_OF_GALES,
+    battlefieldId    = invaderXim.battlefield.id.TRIAL_BY_WIND,
     canLoseExp       = false,
     maxPlayers       = 6,
     timeLimit        = utils.minutes(30),
     index            = 0,
     entryNpc         = 'WP_Entrance',
     exitNpc          = 'Wind_Protocrystal',
-    requiredKeyItems = { xi.ki.TUNING_FORK_OF_WIND },
+    requiredKeyItems = { invaderXim.ki.TUNING_FORK_OF_WIND },
 
-    questArea = xi.questLog.OUTLANDS,
-    quest     = xi.quest.id.outlands.TRIAL_BY_WIND,
+    questArea = invaderXim.questLog.OUTLANDS,
+    quest     = invaderXim.quest.id.outlands.TRIAL_BY_WIND,
 })
 
 function content:onEventFinishWin(player, csid, option, npc)
-    player:addTitle(xi.title.HEIR_OF_THE_GREAT_WIND)
-    npcUtil.giveKeyItem(player, xi.ki.WHISPER_OF_GALES)
+    player:addTitle(invaderXim.title.HEIR_OF_THE_GREAT_WIND)
+    npcUtil.giveKeyItem(player, invaderXim.ki.WHISPER_OF_GALES)
 end
 
 content.groups =
@@ -28,7 +28,7 @@ content.groups =
     {
         mobs = { 'Garuda_Prime_TBW' },
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

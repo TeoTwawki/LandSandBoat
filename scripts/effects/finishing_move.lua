@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.FINISHING_MOVE
+-- invaderXim.effect.FINISHING_MOVE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

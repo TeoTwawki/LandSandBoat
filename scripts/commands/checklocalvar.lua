@@ -32,7 +32,7 @@ commandObj.onTrigger = function(player, arg1, arg2, arg3)
         local entityType = string.upper(arg2)
         if entityType == 'NPC' or entityType == 'MOB' then
             arg3 = tonumber(arg3)
-            if zone and zone:getTypeMask() == xi.zoneType.INSTANCED then
+            if zone and zone:getTypeMask() == invaderXim.zoneType.INSTANCED then
                 local instance = player:getInstance()
                 if not instance then
                     return
@@ -40,7 +40,7 @@ commandObj.onTrigger = function(player, arg1, arg2, arg3)
 
                 -- TODO: Solve param type mismatch from number? to integer
                 ---@diagnostic disable-next-line: param-type-mismatch
-                targ = instance:getEntity(bit.band(arg3, 0xFFF), xi.objType[entityType])
+                targ = instance:getEntity(bit.band(arg3, 0xFFF), invaderXim.objType[entityType])
             elseif entityType == 'NPC' then
                 ---@diagnostic disable-next-line param-type-mismatch
                 targ = GetNPCByID(arg3)

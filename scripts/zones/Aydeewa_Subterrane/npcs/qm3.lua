@@ -3,14 +3,14 @@
 --  NPC: ??? (Spawn Chigre(ZNM T1))
 -- !pos -217 35 12 68
 -----------------------------------
-local ID = zones[xi.zone.AYDEEWA_SUBTERRANE]
+local ID = zones[invaderXim.zone.AYDEEWA_SUBTERRANE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHas(trade, xi.item.BOTTLE_OF_SPOILT_BLOOD) and
+        npcUtil.tradeHas(trade, invaderXim.item.BOTTLE_OF_SPOILT_BLOOD) and
         npcUtil.popFromQM(player, npc, ID.mob.CHIGRE)
     then
         -- Trade Spoilt Blood

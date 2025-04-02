@@ -3,7 +3,7 @@
 --  Mob: Tonberry Harrier
 -- Note: PH for Sozu Terberry
 -----------------------------------
-local ID = zones[xi.zone.TEMPLE_OF_UGGALEPIH]
+local ID = zones[invaderXim.zone.TEMPLE_OF_UGGALEPIH]
 mixins = { require('scripts/mixins/families/tonberry') }
 -----------------------------------
 ---@type TMobEntity
@@ -15,16 +15,16 @@ local terberryPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 790, 1, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 791, 1, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 792, 1, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 793, 1, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 794, 1, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 795, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 790, 1, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 791, 1, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 792, 1, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 793, 1, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 794, 1, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 795, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, terberryPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, terberryPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

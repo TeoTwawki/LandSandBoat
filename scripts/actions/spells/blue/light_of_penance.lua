@@ -21,39 +21,39 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.BEASTMEN
-    params.effect = xi.effect.BLINDNESS
-    params.attribute = xi.mod.INT
-    params.skillType = xi.skill.BLUE_MAGIC
+    params.ecosystem = invaderXim.ecosystem.BEASTMEN
+    params.effect = invaderXim.effect.BLINDNESS
+    params.attribute = invaderXim.mod.INT
+    params.skillType = invaderXim.skill.BLUE_MAGIC
     local duration = 30
-    local returnEffect = xi.effect.BLINDNESS
+    local returnEffect = invaderXim.effect.BLINDNESS
 
     local resist = applyResistanceEffect(caster, target, spell, params)
     if resist >= 0.5 then
 
-        spell:setMsg(xi.msg.basic.MAGIC_TP_REDUCE) -- this doesn't seem to do much
+        spell:setMsg(invaderXim.msg.basic.MAGIC_TP_REDUCE) -- this doesn't seem to do much
         target:delTP(100)
-        local actionOne = target:addStatusEffect(xi.effect.BLINDNESS, 10, 0, duration * resist)
-        local actionTwo = target:addStatusEffect(xi.effect.BIND, 1, 0, duration * resist)
+        local actionOne = target:addStatusEffect(invaderXim.effect.BLINDNESS, 10, 0, duration * resist)
+        local actionTwo = target:addStatusEffect(invaderXim.effect.BIND, 1, 0, duration * resist)
 
         -- Gaze move
         if target:isFacing(caster) and caster:isFacing(target) then
 
             -- If at least one of effects got applied, set the message type
             if actionOne or actionTwo then
-                spell:setMsg(xi.msg.basic.MAGIC_ENFEEB_IS)
+                spell:setMsg(invaderXim.msg.basic.MAGIC_ENFEEB_IS)
             end
 
             -- Set the returnEffect to effectTwo if the first one failed
             if not actionOne and actionTwo then
-                returnEffect = xi.effect.BIND
+                returnEffect = invaderXim.effect.BIND
             end
 
         else
-            spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+            spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
         end
     else
-        spell:setMsg(xi.msg.basic.MAGIC_RESIST)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_RESIST)
     end
 
     return returnEffect

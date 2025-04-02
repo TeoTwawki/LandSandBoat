@@ -30,7 +30,7 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
 end
 
 zoneObject.onInstanceLoadFailed = function()
-    return xi.zone.YORCIA_WEALD
+    return invaderXim.zone.YORCIA_WEALD
 end
 
 return zoneObject

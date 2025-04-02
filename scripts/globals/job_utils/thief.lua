@@ -5,8 +5,8 @@ require('scripts/globals/quests')
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.job_utils = xi.job_utils or {}
-xi.job_utils.thief = xi.job_utils.thief or {}
+invaderXim.job_utils = invaderXim.job_utils or {}
+invaderXim.job_utils.thief = invaderXim.job_utils.thief or {}
 
 -----------------------------------
 -- Variable Definitions
@@ -14,21 +14,21 @@ xi.job_utils.thief = xi.job_utils.thief or {}
 
 local despoilDebuffs =
 {
-    xi.effect.EVASION_DOWN,
-    xi.effect.DEFENSE_DOWN,
-    xi.effect.ACCURACY_DOWN,
-    xi.effect.ATTACK_DOWN,
-    xi.effect.MAGIC_ATK_DOWN,
-    xi.effect.MAGIC_DEF_DOWN,
-    xi.effect.SLOW
+    invaderXim.effect.EVASION_DOWN,
+    invaderXim.effect.DEFENSE_DOWN,
+    invaderXim.effect.ACCURACY_DOWN,
+    invaderXim.effect.ATTACK_DOWN,
+    invaderXim.effect.MAGIC_ATK_DOWN,
+    invaderXim.effect.MAGIC_DEF_DOWN,
+    invaderXim.effect.SLOW
 }
 
 local stealableSPEffects =
 {
-    xi.effect.MIGHTY_STRIKES,   xi.effect.HUNDRED_FISTS, xi.effect.MANAFONT,     xi.effect.CHAINSPELL,
-    xi.effect.PERFECT_DODGE,    xi.effect.INVINCIBLE,    xi.effect.BLOOD_WEAPON, xi.effect.SOUL_VOICE,
-    xi.effect.MEIKYO_SHISUI,    xi.effect.AZURE_LORE,    xi.effect.TRANCE,       xi.effect.BOLSTER,
-    xi.effect.ELEMENTAL_SFORZO
+    invaderXim.effect.MIGHTY_STRIKES,   invaderXim.effect.HUNDRED_FISTS, invaderXim.effect.MANAFONT,     invaderXim.effect.CHAINSPELL,
+    invaderXim.effect.PERFECT_DODGE,    invaderXim.effect.INVINCIBLE,    invaderXim.effect.BLOOD_WEAPON, invaderXim.effect.SOUL_VOICE,
+    invaderXim.effect.MEIKYO_SHISUI,    invaderXim.effect.AZURE_LORE,    invaderXim.effect.TRANCE,       invaderXim.effect.BOLSTER,
+    invaderXim.effect.ELEMENTAL_SFORZO
 }
 
 -----------------------------------
@@ -37,27 +37,27 @@ local stealableSPEffects =
 local function processDebuff(player, target, ability, debuff)
     local power = 10
 
-    if debuff == xi.effect.ATTACK_DOWN then
-        ability:setMsg(xi.msg.basic.DESPOIL_ATT_DOWN)
+    if debuff == invaderXim.effect.ATTACK_DOWN then
+        ability:setMsg(invaderXim.msg.basic.DESPOIL_ATT_DOWN)
         power = 20
-    elseif debuff == xi.effect.DEFENSE_DOWN then
-        ability:setMsg(xi.msg.basic.DESPOIL_DEF_DOWN)
+    elseif debuff == invaderXim.effect.DEFENSE_DOWN then
+        ability:setMsg(invaderXim.msg.basic.DESPOIL_DEF_DOWN)
         power = 30
-    elseif debuff == xi.effect.MAGIC_ATK_DOWN then
-        ability:setMsg(xi.msg.basic.DESPOIL_MATT_DOWN)
-    elseif debuff == xi.effect.MAGIC_DEF_DOWN then
-        ability:setMsg(xi.msg.basic.DESPOIL_MDEF_DOWN)
+    elseif debuff == invaderXim.effect.MAGIC_ATK_DOWN then
+        ability:setMsg(invaderXim.msg.basic.DESPOIL_MATT_DOWN)
+    elseif debuff == invaderXim.effect.MAGIC_DEF_DOWN then
+        ability:setMsg(invaderXim.msg.basic.DESPOIL_MDEF_DOWN)
         power = 20
-    elseif debuff == xi.effect.EVASION_DOWN then
-        ability:setMsg(xi.msg.basic.DESPOIL_EVA_DOWN)
+    elseif debuff == invaderXim.effect.EVASION_DOWN then
+        ability:setMsg(invaderXim.msg.basic.DESPOIL_EVA_DOWN)
         power = 30
-    elseif debuff == xi.effect.ACCURACY_DOWN then
-        ability:setMsg(xi.msg.basic.DESPOIL_ACC_DOWN)
+    elseif debuff == invaderXim.effect.ACCURACY_DOWN then
+        ability:setMsg(invaderXim.msg.basic.DESPOIL_ACC_DOWN)
         power = 20
-    elseif debuff == xi.effect.SLOW then
-        ability:setMsg(xi.msg.basic.DESPOIL_SLOW)
+    elseif debuff == invaderXim.effect.SLOW then
+        ability:setMsg(invaderXim.msg.basic.DESPOIL_SLOW)
 
-        local dMND = player:getStat(xi.mod.MND) - target:getStat(xi.mod.MND)
+        local dMND = player:getStat(invaderXim.mod.MND) - target:getStat(invaderXim.mod.MND)
 
         if dMND >= 0 then
             power = 2 * dMND + 1500
@@ -74,24 +74,24 @@ end
 -----------------------------------
 -- Ability Check Functions
 -----------------------------------
-xi.job_utils.thief.checkAccomplice = function(player, target, ability)
+invaderXim.job_utils.thief.checkAccomplice = function(player, target, ability)
     if target == nil or target:getID() == player:getID() or not target:isPC() then
-        return xi.msg.basic.CANNOT_ON_THAT_TARG, 0
+        return invaderXim.msg.basic.CANNOT_ON_THAT_TARG, 0
     else
         return 0, 0
     end
 end
 
-xi.job_utils.thief.checkCollaborator = function(player, target, ability)
+invaderXim.job_utils.thief.checkCollaborator = function(player, target, ability)
     if target == nil or target:getID() == player:getID() or not target:isPC() then
-        return xi.msg.basic.CANNOT_ON_THAT_TARG, 0
+        return invaderXim.msg.basic.CANNOT_ON_THAT_TARG, 0
     else
         return 0, 0
     end
 end
 
-xi.job_utils.thief.checkDespoil = function(player, target, ability)
-    if player:getObjType() == xi.objType.TRUST then -- Trust
+invaderXim.job_utils.thief.checkDespoil = function(player, target, ability)
+    if player:getObjType() == invaderXim.objType.TRUST then -- Trust
         if
             player:getMaster():getFreeSlotsCount() == 0 or
             not target:getDespoilItem()
@@ -100,31 +100,31 @@ xi.job_utils.thief.checkDespoil = function(player, target, ability)
         end
     else -- Player
         if player:getFreeSlotsCount() == 0 then
-            return xi.msg.basic.FULL_INVENTORY, 0
+            return invaderXim.msg.basic.FULL_INVENTORY, 0
         end
     end
 
     return 0, 0
 end
 
-xi.job_utils.thief.checkLarceny = function(player, target, ability)
-    ability:setRecast(math.max(0, ability:getRecast() - player:getMod(xi.mod.ONE_HOUR_RECAST) * 60))
+invaderXim.job_utils.thief.checkLarceny = function(player, target, ability)
+    ability:setRecast(math.max(0, ability:getRecast() - player:getMod(invaderXim.mod.ONE_HOUR_RECAST) * 60))
 
     return 0, 0
 end
 
-xi.job_utils.thief.checkPerfectDodge = function(player, target, ability)
-    ability:setRecast(math.max(0, ability:getRecast() - player:getMod(xi.mod.ONE_HOUR_RECAST) * 60))
+invaderXim.job_utils.thief.checkPerfectDodge = function(player, target, ability)
+    ability:setRecast(math.max(0, ability:getRecast() - player:getMod(invaderXim.mod.ONE_HOUR_RECAST) * 60))
 
     return 0, 0
 end
 
-xi.job_utils.thief.checkSteal = function(player, target, ability)
+invaderXim.job_utils.thief.checkSteal = function(player, target, ability)
     if player:getFreeSlotsCount() == 0 then
-        return xi.msg.basic.FULL_INVENTORY, 0
+        return invaderXim.msg.basic.FULL_INVENTORY, 0
     else
         -- JP Recast Reduction
-        local jpValue = player:getJobPointLevel(xi.jp.STEAL_RECAST)
+        local jpValue = player:getJobPointLevel(invaderXim.jp.STEAL_RECAST)
 
         ability:setRecast(ability:getRecast() - 2 * jpValue)
 
@@ -135,34 +135,34 @@ end
 -----------------------------------
 -- Ability Use Functions
 -----------------------------------
-xi.job_utils.thief.useAccomplice = function(player, target, ability)
-    target:transferEnmity(player, 50 + player:getMod(xi.mod.ACC_COLLAB_EFFECT), 20.6)
+invaderXim.job_utils.thief.useAccomplice = function(player, target, ability)
+    target:transferEnmity(player, 50 + player:getMod(invaderXim.mod.ACC_COLLAB_EFFECT), 20.6)
 end
 
-xi.job_utils.thief.useAssassinsCharge = function(player, target, ability)
-    local merits = player:getMerit(xi.merit.ASSASSINS_CHARGE)
+invaderXim.job_utils.thief.useAssassinsCharge = function(player, target, ability)
+    local merits = player:getMerit(invaderXim.merit.ASSASSINS_CHARGE)
     local crit   = 0
 
-    if player:getMod(xi.mod.AUGMENTS_ASSASSINS_CHARGE) > 0 then
+    if player:getMod(invaderXim.mod.AUGMENTS_ASSASSINS_CHARGE) > 0 then
         crit = merits / 5
     end
 
-    player:addStatusEffect(xi.effect.ASSASSINS_CHARGE, merits - 5, 0, 60, 0, crit)
+    player:addStatusEffect(invaderXim.effect.ASSASSINS_CHARGE, merits - 5, 0, 60, 0, crit)
 end
 
-xi.job_utils.thief.useBully = function(player, target, ability)
-    local jpValue = player:getJobPointLevel(xi.jp.BULLY_EFFECT)
+invaderXim.job_utils.thief.useBully = function(player, target, ability)
+    local jpValue = player:getJobPointLevel(invaderXim.jp.BULLY_EFFECT)
 
-    target:addStatusEffectEx(xi.effect.DOUBT, xi.effect.INTIMIDATE, 15 + jpValue, 0, 30)
+    target:addStatusEffectEx(invaderXim.effect.DOUBT, invaderXim.effect.INTIMIDATE, 15 + jpValue, 0, 30)
 
-    return xi.effect.INTIMIDATE
+    return invaderXim.effect.INTIMIDATE
 end
 
-xi.job_utils.thief.useCollaborator = function(player, target, ability)
-    target:transferEnmity(player, 25 + player:getMod(xi.mod.ACC_COLLAB_EFFECT), 20.6)
+invaderXim.job_utils.thief.useCollaborator = function(player, target, ability)
+    target:transferEnmity(player, 25 + player:getMod(invaderXim.mod.ACC_COLLAB_EFFECT), 20.6)
 end
 
-xi.job_utils.thief.useConspirator = function(player, target, ability)
+invaderXim.job_utils.thief.useConspirator = function(player, target, ability)
     local subtleBlow = 0
     local accuracy   = 0
     local scale      = 1
@@ -186,22 +186,22 @@ xi.job_utils.thief.useConspirator = function(player, target, ability)
 
         -- See if we should apply the effects to the player at the top of the hate list
         if mob:getTarget() == target then
-            scale = player:getMod(xi.mod.AUGMENTS_CONSPIRATOR)
+            scale = player:getMod(invaderXim.mod.AUGMENTS_CONSPIRATOR)
         end
     end
 
-    target:addStatusEffect(xi.effect.CONSPIRATOR, subtleBlow * scale, 0, 60, 0, accuracy * scale)
+    target:addStatusEffect(invaderXim.effect.CONSPIRATOR, subtleBlow * scale, 0, 60, 0, accuracy * scale)
 end
 
-xi.job_utils.thief.useDespoil = function(player, target, ability, action)
-    local level         = utils.getActiveJobLevel(player, xi.job.THF)
-    local despoilMod    = player:getMod(xi.mod.DESPOIL)
+invaderXim.job_utils.thief.useDespoil = function(player, target, ability, action)
+    local level         = utils.getActiveJobLevel(player, invaderXim.job.THF)
+    local despoilMod    = player:getMod(invaderXim.mod.DESPOIL)
     local despoilChance = 50 + despoilMod * 2 + level - target:getMainLvl() -- Same math as Steal
 
     -- TODO: Need to verify if there's a message associated with this
-    local jpValue = player:getJobPointLevel(xi.jp.DESPOIL_EFFECT)
+    local jpValue = player:getJobPointLevel(invaderXim.jp.DESPOIL_EFFECT)
 
-    if jpValue > 0 and player:getMainJob() == xi.job.THF then
+    if jpValue > 0 and player:getMainJob() == invaderXim.job.THF then
         local tpSteal = jpValue * 0.02
         local mobTP = target:getTP()
 
@@ -220,7 +220,7 @@ xi.job_utils.thief.useDespoil = function(player, target, ability, action)
         math.random(1, 100) <= despoilChance and
         stolen ~= 0
     then
-        if player:getObjType() == xi.objType.TRUST then
+        if player:getObjType() == invaderXim.objType.TRUST then
             player:getMaster():addItem(stolen)
         else
             player:addItem(stolen)
@@ -241,42 +241,42 @@ xi.job_utils.thief.useDespoil = function(player, target, ability, action)
         target:addStatusEffect(debuff, power, 0, 90)
     else
         action:setAnimation(target:getID(), 182)
-        ability:setMsg(xi.msg.basic.STEAL_FAIL) -- Failed
+        ability:setMsg(invaderXim.msg.basic.STEAL_FAIL) -- Failed
     end
 
     return stolen
 end
 
-xi.job_utils.thief.useFeint = function(player, target, ability)
-    local bonus = player:getMod(xi.mod.AUGMENTS_FEINT) * player:getMerit(xi.merit.FEINT) / 25 -- Divide by the merit value (feint is 25) to get the number of merit points
+invaderXim.job_utils.thief.useFeint = function(player, target, ability)
+    local bonus = player:getMod(invaderXim.mod.AUGMENTS_FEINT) * player:getMerit(invaderXim.merit.FEINT) / 25 -- Divide by the merit value (feint is 25) to get the number of merit points
 
     -- Subpower is the proc rate bonus for TH procs
-    player:addStatusEffect(xi.effect.FEINT, 150 + bonus, 0, 60, 0, player:getMerit(xi.merit.FEINT) - 25) -- -150 Evasion base, 0% base TREASURE_HUNTER_PROC, every merit past 1 gives 25%
+    player:addStatusEffect(invaderXim.effect.FEINT, 150 + bonus, 0, 60, 0, player:getMerit(invaderXim.merit.FEINT) - 25) -- -150 Evasion base, 0% base TREASURE_HUNTER_PROC, every merit past 1 gives 25%
 end
 
-xi.job_utils.thief.useFlee = function(player, target, ability)
-    local duration = 30 + player:getMod(xi.mod.FLEE_DURATION)
+invaderXim.job_utils.thief.useFlee = function(player, target, ability)
+    local duration = 30 + player:getMod(invaderXim.mod.FLEE_DURATION)
 
     -- TODO: Flee will not override all types of weight effect. Find out which aren't overriden.
-    if player:hasStatusEffect(xi.effect.WEIGHT) then
-        player:delStatusEffect(xi.effect.WEIGHT)
+    if player:hasStatusEffect(invaderXim.effect.WEIGHT) then
+        player:delStatusEffect(invaderXim.effect.WEIGHT)
     end
 
-    player:addStatusEffect(xi.effect.FLEE, 10000, 0, duration)
+    player:addStatusEffect(invaderXim.effect.FLEE, 10000, 0, duration)
 end
 
-xi.job_utils.thief.useHide = function(player, target, ability)
+invaderXim.job_utils.thief.useHide = function(player, target, ability)
     local duration = math.random(30, 300)
 
-    duration = duration * (1 + player:getMod(xi.mod.HIDE_DURATION) / 100)
+    duration = duration * (1 + player:getMod(invaderXim.mod.HIDE_DURATION) / 100)
 
-    player:addStatusEffect(xi.effect.HIDE, 1, 0, math.floor(duration * xi.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER))
+    player:addStatusEffect(invaderXim.effect.HIDE, 1, 0, math.floor(duration * invaderXim.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER))
 end
 
-xi.job_utils.thief.useLarceny = function(player, target, ability, action)
+invaderXim.job_utils.thief.useLarceny = function(player, target, ability, action)
     local effectStolen
     local effectID = 0
-    local jpValue  = player:getJobPointLevel(xi.jp.LARCENY_EFFECT)
+    local jpValue  = player:getJobPointLevel(invaderXim.jp.LARCENY_EFFECT)
 
     -- SP Abilities have priority, check if one is present first
     for i = 1, #stealableSPEffects do
@@ -315,7 +315,7 @@ xi.job_utils.thief.useLarceny = function(player, target, ability, action)
 
     if effectID == 0 then
         action:setAnimation(target:getID(), 182)
-        ability:setMsg(xi.msg.basic.STEAL_FAIL)
+        ability:setMsg(invaderXim.msg.basic.STEAL_FAIL)
     end
 
     target:updateClaim(player)
@@ -323,14 +323,14 @@ xi.job_utils.thief.useLarceny = function(player, target, ability, action)
     return effectID
 end
 
-xi.job_utils.thief.useMug = function(player, target, ability, action)
-    local thfLevel = utils.getActiveJobLevel(player, xi.job.THF)
+invaderXim.job_utils.thief.useMug = function(player, target, ability, action)
+    local thfLevel = utils.getActiveJobLevel(player, invaderXim.job.THF)
     local gil      = 0
     -- TODO: Need to verify if there's a message associated with this
-    local jpValue = player:getJobPointLevel(xi.jp.MUG_EFFECT)
+    local jpValue = player:getJobPointLevel(invaderXim.jp.MUG_EFFECT)
 
-    if jpValue > 0 and player:getMainJob() == xi.job.THF then
-        local hpSteal = ((player:getStat(xi.mod.AGI) + player:getStat(xi.mod.DEX)) * jpValue) * 0.05
+    if jpValue > 0 and player:getMainJob() == invaderXim.job.THF then
+        local hpSteal = ((player:getStat(invaderXim.mod.AGI) + player:getStat(invaderXim.mod.DEX)) * jpValue) * 0.05
         local mobHP = target:getHP()
 
         if hpSteal > mobHP then
@@ -346,9 +346,9 @@ xi.job_utils.thief.useMug = function(player, target, ability, action)
     if
         target:isMob() and
         math.random(1, 100) <= mugChance and
-        target:getMobMod(xi.mobMod.MUG_GIL) > 0
+        target:getMobMod(invaderXim.mobMod.MUG_GIL) > 0
     then
-        local purse    = target:getMobMod(xi.mobMod.MUG_GIL)
+        local purse    = target:getMobMod(invaderXim.mobMod.MUG_GIL)
         local fatpurse = target:getGil()
 
         gil = fatpurse / (8 + math.random(0, 8))
@@ -366,36 +366,36 @@ xi.job_utils.thief.useMug = function(player, target, ability, action)
         end
 
         if gil <= 0 then
-            ability:setMsg(xi.msg.basic.MUG_FAIL)
+            ability:setMsg(invaderXim.msg.basic.MUG_FAIL)
         else
-            gil = gil * (1 + player:getMod(xi.mod.MUG_EFFECT))
+            gil = gil * (1 + player:getMod(invaderXim.mod.MUG_EFFECT))
 
             player:addGil(gil)
-            target:setMobMod(xi.mobMod.MUG_GIL, target:getMobMod(xi.mobMod.MUG_GIL) - gil)
-            ability:setMsg(xi.msg.basic.MUG_SUCCESS)
+            target:setMobMod(invaderXim.mobMod.MUG_GIL, target:getMobMod(invaderXim.mobMod.MUG_GIL) - gil)
+            ability:setMsg(invaderXim.msg.basic.MUG_SUCCESS)
         end
     else
-        ability:setMsg(xi.msg.basic.MUG_FAIL)
+        ability:setMsg(invaderXim.msg.basic.MUG_FAIL)
         action:setAnimation(target:getID(), 184)
     end
 
     return gil
 end
 
-xi.job_utils.thief.usePerfectDodge = function(player, target, ability)
-    local duration = 30 + player:getMod(xi.mod.PERFECT_DODGE)
+invaderXim.job_utils.thief.usePerfectDodge = function(player, target, ability)
+    local duration = 30 + player:getMod(invaderXim.mod.PERFECT_DODGE)
 
-    player:addStatusEffect(xi.effect.PERFECT_DODGE, 1, 0, duration)
+    player:addStatusEffect(invaderXim.effect.PERFECT_DODGE, 1, 0, duration)
 end
 
-xi.job_utils.thief.useSneakAttack = function(player, target, ability)
-    player:addStatusEffect(xi.effect.SNEAK_ATTACK, 1, 0, 60)
+invaderXim.job_utils.thief.useSneakAttack = function(player, target, ability)
+    player:addStatusEffect(invaderXim.effect.SNEAK_ATTACK, 1, 0, 60)
 end
 
-xi.job_utils.thief.useSteal = function(player, target, ability, action)
-    local thfLevel    = utils.getActiveJobLevel(player, xi.job.THF)
+invaderXim.job_utils.thief.useSteal = function(player, target, ability, action)
+    local thfLevel    = utils.getActiveJobLevel(player, invaderXim.job.THF)
     local stolen      = action:getParam(target:getID())
-    local stealMod    = player:getMod(xi.mod.STEAL)
+    local stealMod    = player:getMod(invaderXim.mod.STEAL)
     local stealChance = 50 + stealMod * 2 + thfLevel - target:getMainLvl()
 
     if stolen == 0 then
@@ -405,33 +405,33 @@ xi.job_utils.thief.useSteal = function(player, target, ability, action)
     if target:isMob() and math.random(1, 100) <= stealChance and stolen ~= 0 then
         player:addItem(stolen)
         target:itemStolen()
-        ability:setMsg(xi.msg.basic.STEAL_SUCCESS) -- Item stolen successfully
+        ability:setMsg(invaderXim.msg.basic.STEAL_SUCCESS) -- Item stolen successfully
         target:triggerListener('ITEM_STOLEN', target, player, stolen)
         -- Aura Steal does not trigger on successful item steal
         return stolen
     else
-        ability:setMsg(xi.msg.basic.STEAL_FAIL) -- Failed to steal
+        ability:setMsg(invaderXim.msg.basic.STEAL_FAIL) -- Failed to steal
         action:setAnimation(target:getID(), 182)
     end
 
     -- Attempt Aura steal
-    -- local effect = xi.effect.NONE
-    if player:hasTrait(xi.trait.AURA_STEAL) then
-        local resist = applyResistanceAbility(player, target, xi.element.NONE, 0, 0)
+    -- local effect = invaderXim.effect.NONE
+    if player:hasTrait(invaderXim.trait.AURA_STEAL) then
+        local resist = applyResistanceAbility(player, target, invaderXim.element.NONE, 0, 0)
         -- local effectStealSuccess = false
         if resist > 0.0625 then
-            local auraStealChance = math.min(player:getMerit(xi.merit.AURA_STEAL), 95)
+            local auraStealChance = math.min(player:getMerit(invaderXim.merit.AURA_STEAL), 95)
             if math.random(1, 100) <= auraStealChance then
-                local targetShadows = target:getMod(xi.mod.UTSUSEMI)
+                local targetShadows = target:getMod(invaderXim.mod.UTSUSEMI)
 
                 stolen = player:stealStatusEffect(target)
                 if stolen ~= 0 then
-                    ability:setMsg(xi.msg.basic.STEAL_EFFECT)
+                    ability:setMsg(invaderXim.msg.basic.STEAL_EFFECT)
                     action:setAnimation(target:getID(), 181)
 
-                    if stolen == xi.effect.COPY_IMAGE then
+                    if stolen == invaderXim.effect.COPY_IMAGE then
                         if targetShadows > 0 then
-                            player:setMod(xi.mod.UTSUSEMI, targetShadows)
+                            player:setMod(invaderXim.mod.UTSUSEMI, targetShadows)
                         end
                     end
                 end
@@ -444,7 +444,7 @@ xi.job_utils.thief.useSteal = function(player, target, ability, action)
             TODO: This implementation is currently broken and inaccurate.  20% chance of a second aura being
             stolen per merit.
 
-            if (effect ~= xi.effect.NONE or stolen ~= 0) and player:getMod(xi.mod.AUGMENTS_AURA_STEAL) > 0 then
+            if (effect ~= invaderXim.effect.NONE or stolen ~= 0) and player:getMod(invaderXim.mod.AUGMENTS_AURA_STEAL) > 0 then
                 if math.random(1, 100) <= auraStealChance then
                     if stolenEffect2 ~= nil and math.random(1, 100) <= auraStealChance then
                         player:stealStatusEffect(target)
@@ -460,6 +460,6 @@ xi.job_utils.thief.useSteal = function(player, target, ability, action)
     return stolen
 end
 
-xi.job_utils.thief.useTrickAttack = function(player, target, ability)
-    player:addStatusEffect(xi.effect.TRICK_ATTACK, 1, 0, 60)
+invaderXim.job_utils.thief.useTrickAttack = function(player, target, ability)
+    player:addStatusEffect(invaderXim.effect.TRICK_ATTACK, 1, 0, 60)
 end

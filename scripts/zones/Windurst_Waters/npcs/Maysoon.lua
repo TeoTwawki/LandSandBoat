@@ -9,9 +9,9 @@
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    if player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.HOIST_THE_JELLY_ROGER) == xi.questStatus.QUEST_ACCEPTED then
+    if player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.HOIST_THE_JELLY_ROGER) == invaderXim.questStatus.QUEST_ACCEPTED then
         if
-            trade:hasItemQty(xi.item.SERVING_OF_ROYAL_JELLY, 1) and
+            trade:hasItemQty(invaderXim.item.SERVING_OF_ROYAL_JELLY, 1) and
             trade:getGil() == 0 and
             trade:getItemCount() == 1
         then
@@ -21,12 +21,12 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    local cooksPride = player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.COOKS_PRIDE)
-    local hoistTheJelly = player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.HOIST_THE_JELLY_ROGER)
+    local cooksPride = player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.COOKS_PRIDE)
+    local hoistTheJelly = player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.HOIST_THE_JELLY_ROGER)
 
     if
-        cooksPride == xi.questStatus.QUEST_ACCEPTED and
-        hoistTheJelly == xi.questStatus.QUEST_AVAILABLE
+        cooksPride == invaderXim.questStatus.QUEST_ACCEPTED and
+        hoistTheJelly == invaderXim.questStatus.QUEST_AVAILABLE
     then
         player:startEvent(10000) -- Start quest "Hoist the Jelly, Roger"
     else
@@ -36,11 +36,11 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 10000 then
-        player:addQuest(xi.questLog.WINDURST, xi.quest.id.windurst.HOIST_THE_JELLY_ROGER)
+        player:addQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.HOIST_THE_JELLY_ROGER)
     elseif csid == 10001 then
-        player:completeQuest(xi.questLog.WINDURST, xi.quest.id.windurst.HOIST_THE_JELLY_ROGER)
-        npcUtil.giveKeyItem(player, xi.ki.SUPER_SOUP_POT)
-        player:addFame(xi.fameArea.WINDURST, 30)
+        player:completeQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.HOIST_THE_JELLY_ROGER)
+        npcUtil.giveKeyItem(player, invaderXim.ki.SUPER_SOUP_POT)
+        player:addFame(invaderXim.fameArea.WINDURST, 30)
         player:tradeComplete()
     end
 end

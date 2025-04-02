@@ -3,19 +3,19 @@
 -- Boneyard Gully ENM, Miasma Filter
 -- !addkeyitem MIASMA_FILTER
 -----------------------------------
-local boneyardGullyID = zones[xi.zone.BONEYARD_GULLY]
+local boneyardGullyID = zones[invaderXim.zone.BONEYARD_GULLY]
 -----------------------------------
 
 local content = Battlefield:new({
-    zoneId           = xi.zone.BONEYARD_GULLY,
-    battlefieldId    = xi.battlefield.id.SHEEP_IN_ANTLIONS_CLOTHING,
+    zoneId           = invaderXim.zone.BONEYARD_GULLY,
+    battlefieldId    = invaderXim.battlefield.id.SHEEP_IN_ANTLIONS_CLOTHING,
     maxPlayers       = 18,
     levelCap         = 75,
     timeLimit        = utils.minutes(15),
     index            = 2,
     entryNpc         = '_081',
     exitNpcs         = { '_082', '_084', '_086' },
-    requiredKeyItems = { xi.ki.MIASMA_FILTER },
+    requiredKeyItems = { invaderXim.ki.MIASMA_FILTER },
     armouryCrates    =
     {
         boneyardGullyID.mob.TUCHULCHA + 4,
@@ -131,22 +131,22 @@ content.groups =
 content.loot =
 {
     {
-        { item = xi.item.SQUARE_OF_GALATEIA,     weight = 268 },  -- Square of Galateia (26.8% Drop Rate)
-        { item = xi.item.SQUARE_OF_KEJUSU_SATIN, weight = 266 },  -- Kejusu Satin
-        { item = xi.item.POT_OF_VIRIDIAN_URUSHI, weight = 342 },  -- Viridian Urushi
+        { item = invaderXim.item.SQUARE_OF_GALATEIA,     weight = 268 },  -- Square of Galateia (26.8% Drop Rate)
+        { item = invaderXim.item.SQUARE_OF_KEJUSU_SATIN, weight = 266 },  -- Kejusu Satin
+        { item = invaderXim.item.POT_OF_VIRIDIAN_URUSHI, weight = 342 },  -- Viridian Urushi
     },
 
     {
-        { item = xi.item.NONE,         weight = 944 }, -- nothing
-        { item = xi.item.CLOUD_EVOKER, weight =  56 }, -- Cloud Evoker
+        { item = invaderXim.item.NONE,         weight = 944 }, -- nothing
+        { item = invaderXim.item.CLOUD_EVOKER, weight =  56 }, -- Cloud Evoker
     },
 
     {
-        { item = xi.item.HAGUN,            weight =  82 }, -- Hagun
-        { item = xi.item.MARTIAL_AXE,      weight =  92 }, -- Martial Axe
-        { item = xi.item.MARTIAL_WAND,     weight =  63 }, -- Martial Wand
-        { item = xi.item.FORAGERS_MANTLE,  weight = 105 }, -- Forager's Mantle
-        { item = xi.item.HARMONIAS_TORQUE, weight = 121 }, -- Harmonia's Torque
+        { item = invaderXim.item.HAGUN,            weight =  82 }, -- Hagun
+        { item = invaderXim.item.MARTIAL_AXE,      weight =  92 }, -- Martial Axe
+        { item = invaderXim.item.MARTIAL_WAND,     weight =  63 }, -- Martial Wand
+        { item = invaderXim.item.FORAGERS_MANTLE,  weight = 105 }, -- Forager's Mantle
+        { item = invaderXim.item.HARMONIAS_TORQUE, weight = 121 }, -- Harmonia's Torque
     },
 }
 

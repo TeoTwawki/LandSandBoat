@@ -8,17 +8,17 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local wingsOfGold = player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.WINGS_OF_GOLD)
-    local scatteredIntoShadow = player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.SCATTERED_INTO_SHADOW)
+    local wingsOfGold = player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.WINGS_OF_GOLD)
+    local scatteredIntoShadow = player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.SCATTERED_INTO_SHADOW)
 
     local mLvl = player:getMainLvl()
 
     -- STANDARD DIALOGS
-    if scatteredIntoShadow == xi.questStatus.QUEST_COMPLETED then
+    if scatteredIntoShadow == invaderXim.questStatus.QUEST_COMPLETED then
         player:startEvent(151)
-    elseif wingsOfGold == xi.questStatus.QUEST_COMPLETED then
+    elseif wingsOfGold == invaderXim.questStatus.QUEST_COMPLETED then
         player:startEvent(134)
-    elseif not player:hasCompletedQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.CHOCOBOS_WOUNDS) then
+    elseif not player:hasCompletedQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.CHOCOBOS_WOUNDS) then
         player:startEvent(66, mLvl)
     end
 end

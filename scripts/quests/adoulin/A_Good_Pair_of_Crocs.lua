@@ -9,7 +9,7 @@
 -- Felmsy         : !pos -53.111 -0.150 88.456 257
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.ADOULIN, xi.quest.id.adoulin.A_GOOD_PAIR_OF_CROCS)
+local quest = Quest:new(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.A_GOOD_PAIR_OF_CROCS)
 
 -- NOTE:
 -- It is reported that to reach max fame (~610) you must complete this cycle of quests
@@ -18,7 +18,7 @@ local quest = Quest:new(xi.questLog.ADOULIN, xi.quest.id.adoulin.A_GOOD_PAIR_OF_
 quest.reward =
 {
     fame     = 6,
-    fameArea = xi.fameArea.ADOULIN,
+    fameArea = invaderXim.fameArea.ADOULIN,
     bayld    = 200,
     exp      = 500,
 }
@@ -28,10 +28,10 @@ quest.sections =
     -- Section: Begin quest (First time)
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Felmsy'] =
             {
@@ -54,13 +54,13 @@ quest.sections =
     -- Section: Begin quest (Repeated)
     {
         check = function(player, status, vars)
-            return player:hasCompletedQuest(xi.questLog.ADOULIN, xi.quest.id.adoulin.IT_SETS_MY_HEART_AFLUTTER) and
-                player:hasCompletedQuest(xi.questLog.ADOULIN, xi.quest.id.adoulin.A_GOOD_PAIR_OF_CROCS) and
-                player:hasCompletedQuest(xi.questLog.ADOULIN, xi.quest.id.adoulin.A_SHOT_IN_THE_DARK) and
+            return player:hasCompletedQuest(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.IT_SETS_MY_HEART_AFLUTTER) and
+                player:hasCompletedQuest(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.A_GOOD_PAIR_OF_CROCS) and
+                player:hasCompletedQuest(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.A_SHOT_IN_THE_DARK) and
                 player:getCharVar('ADOULIN_FAME_QUEST_TRACKER') == 1
         end,
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Felmsy'] =
             {
@@ -72,7 +72,7 @@ quest.sections =
             onEventFinish =
             {
                 [3003] = function(player, csid, option, npc)
-                    player:delQuest(xi.questLog.ADOULIN, xi.quest.id.adoulin.A_GOOD_PAIR_OF_CROCS)
+                    player:delQuest(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.A_GOOD_PAIR_OF_CROCS)
                     quest:begin(player)
                 end,
             },
@@ -82,10 +82,10 @@ quest.sections =
     -- Section: Questing
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Felmsy'] =
             {
@@ -95,8 +95,8 @@ quest.sections =
 
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.VELKK_NECKLACE) or
-                        npcUtil.tradeHasExactly(trade, xi.item.VELKK_MASK)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.VELKK_NECKLACE) or
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.VELKK_MASK)
                     then
                         return quest:progressEvent(3002)
                     end
@@ -118,10 +118,10 @@ quest.sections =
     -- Section: Completed quest
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Felmsy'] =
             {

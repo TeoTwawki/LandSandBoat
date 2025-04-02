@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `exp_base`
 --
 
-DROP TABLE IF EXISTS `exp_base`;
-CREATE TABLE IF NOT EXISTS `exp_base` (
+DROP TABLE IF IXIMSTS `exp_base`;
+CREATE TABLE IF NOT IXIMSTS `exp_base` (
   `level` tinyint(2) unsigned NOT NULL DEFAULT '0',
   `exp` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`level`)

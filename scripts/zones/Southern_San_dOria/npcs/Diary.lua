@@ -8,9 +8,9 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local aSquiresTestII = player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.A_SQUIRES_TEST_II)
-    local medicineWoman = player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.THE_MEDICINE_WOMAN)
-    local toCureaCough = player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.TO_CURE_A_COUGH)
+    local aSquiresTestII = player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.A_SQUIRES_TEST_II)
+    local medicineWoman = player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.THE_MEDICINE_WOMAN)
+    local toCureaCough = player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.TO_CURE_A_COUGH)
     local diaryPage = player:getCharVar('DiaryPage')
 
     if diaryPage == 0 then
@@ -19,17 +19,17 @@ entity.onTrigger = function(player, npc)
         player:startEvent(640)          -- reads page 2
     elseif diaryPage == 2 then
         if
-            medicineWoman == xi.questStatus.QUEST_COMPLETED and
-            aSquiresTestII == xi.questStatus.QUEST_COMPLETED
+            medicineWoman == invaderXim.questStatus.QUEST_COMPLETED and
+            aSquiresTestII == invaderXim.questStatus.QUEST_COMPLETED
         then
-            if toCureaCough == xi.questStatus.QUEST_ACCEPTED then
+            if toCureaCough == invaderXim.questStatus.QUEST_ACCEPTED then
                 player:startEvent(641)  -- reads page 3
             else
                 player:startEvent(640)  -- reads page 2
             end
         elseif
-            medicineWoman == xi.questStatus.QUEST_AVAILABLE and
-            aSquiresTestII == xi.questStatus.QUEST_AVAILABLE
+            medicineWoman == invaderXim.questStatus.QUEST_AVAILABLE and
+            aSquiresTestII == invaderXim.questStatus.QUEST_AVAILABLE
         then
             player:startEvent(641)      -- reads page 3
         else

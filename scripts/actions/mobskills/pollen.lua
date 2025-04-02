@@ -18,9 +18,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
 
     potency = potency - math.random(0, potency / 4)
 
-    skill:setMsg(xi.msg.basic.SELF_HEAL)
+    skill:setMsg(invaderXim.msg.basic.SELF_HEAL)
 
-    return xi.mobskills.mobHealMove(mob, mob:getMaxHP() * potency / 100)
+    return invaderXim.mobskills.mobHealMove(mob, mob:getMaxHP() * potency / 100)
 end
 
 return mobskillObject

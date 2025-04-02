@@ -8,7 +8,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if player:hasCompletedQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.TENSHODO_MEMBERSHIP) then
+    if player:hasCompletedQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.TENSHODO_MEMBERSHIP) then
         player:startEvent(211)
     end
 end

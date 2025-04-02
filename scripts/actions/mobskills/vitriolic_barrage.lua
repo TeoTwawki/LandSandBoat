@@ -17,11 +17,11 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local needles = 1000 / skill:getTotalTargets()
 
-    xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.POISON, 20, 3, 60)
+    invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.POISON, 20, 3, 60)
 
-    local dmg = xi.mobskills.mobFinalAdjustments(needles, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.WATER, xi.mobskills.shadowBehavior.WIPE_SHADOWS)
+    local dmg = invaderXim.mobskills.mobFinalAdjustments(needles, mob, skill, target, invaderXim.attackType.PHYSICAL, invaderXim.damageType.WATER, invaderXim.mobskills.shadowBehavior.WIPE_SHADOWS)
 
-    target:takeDamage(dmg, mob, xi.attackType.PHYSICAL, xi.damageType.WATER)
+    target:takeDamage(dmg, mob, invaderXim.attackType.PHYSICAL, invaderXim.damageType.WATER)
 
     return dmg
 end

@@ -4,8 +4,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.targetType
-xi.targetType =
+---@enum invaderXim.targetType
+invaderXim.targetType =
 {
     NONE                    = 0x00,
     SELF                    = 0x01,

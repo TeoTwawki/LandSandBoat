@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.MANACLIPPER] =
+zones[invaderXim.zone.MANACLIPPER] =
 {
     text =
     {
@@ -28,4 +28,4 @@ zones[xi.zone.MANACLIPPER] =
     },
 }
 
-return zones[xi.zone.MANACLIPPER]
+return zones[invaderXim.zone.MANACLIPPER]

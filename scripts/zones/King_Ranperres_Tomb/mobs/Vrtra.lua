@@ -60,17 +60,17 @@ local spawnPointTable =
 }
 
 local spawnUndead = function(vrtra, undead, vrtraPos)
-    vrtra:entityAnimationPacket(xi.animationString.CAST_SUMMONER_START)
+    vrtra:entityAnimationPacket(invaderXim.animationString.CAST_SUMMONER_START)
     vrtra:setAutoAttackEnabled(false)
     vrtra:setMagicCastingEnabled(false)
     vrtra:setMobAbilityEnabled(false)
-    vrtra:setMobMod(xi.mobMod.NO_MOVE, 1)
+    vrtra:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
     vrtra:timer(3000, function(vrtraArg)
-        vrtraArg:entityAnimationPacket(xi.animationString.CAST_SUMMONER_STOP)
+        vrtraArg:entityAnimationPacket(invaderXim.animationString.CAST_SUMMONER_STOP)
         vrtraArg:setAutoAttackEnabled(true)
         vrtraArg:setMagicCastingEnabled(true)
         vrtraArg:setMobAbilityEnabled(true)
-        vrtraArg:setMobMod(xi.mobMod.NO_MOVE, 0)
+        vrtraArg:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
         undead:setSpawn(vrtraPos.x, vrtraPos.y, vrtraPos.z, vrtraPos.rot)
         undead:spawn()
         if vrtraArg:isEngaged() then
@@ -81,39 +81,39 @@ end
 
 entity.onMobInitialize = function(mob)
     mob:setCarefulPathing(true)
-    xi.mob.updateNMSpawnPoint(mob, spawnPointTable)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPointTable)
     mob:setRespawnTime(math.random(144, 240) * 1800) -- 3 to 5 days in 30 minute windows
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMod(xi.mod.ACC, 442)
-    mob:setMod(xi.mod.ATT, 305)
-    mob:setMod(xi.mod.CURSE_MEVA, 1000)
-    mob:setMod(xi.mod.DEF, 466)
-    mob:setMod(xi.mod.EVA, 401)
-    mob:setMod(xi.mod.REGEN, 50)
-    mob:setMod(xi.mod.REFRESH, 100)
-    mob:setMod(xi.mod.UDMGMAGIC, -5000)
-    mob:setMod(xi.mod.UDMGRANGE, -5000)
-    mob:setMod(xi.mod.UDMGBREATH, -5000)
-    mob:setMod(xi.mod.UFASTCAST, 50)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
-    mob:setMobMod(xi.mobMod.NO_STANDBACK, 1)
-    mob:setMobMod(xi.mobMod.ROAM_COOL, 55)
-    mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 5)
-    mob:setMobMod(xi.mobMod.SIGHT_RANGE, 30)
-    mob:setMobMod(xi.mobMod.WEAPON_BONUS, 148) -- 245 total weapon damage
-    mob:addImmunity(xi.immunity.BIND)
-    mob:addImmunity(xi.immunity.BLIND)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.PLAGUE)
-    mob:addImmunity(xi.immunity.PETRIFY)
-    mob:addImmunity(xi.immunity.TERROR)
+    mob:setMod(invaderXim.mod.ACC, 442)
+    mob:setMod(invaderXim.mod.ATT, 305)
+    mob:setMod(invaderXim.mod.CURSE_MEVA, 1000)
+    mob:setMod(invaderXim.mod.DEF, 466)
+    mob:setMod(invaderXim.mod.EVA, 401)
+    mob:setMod(invaderXim.mod.REGEN, 50)
+    mob:setMod(invaderXim.mod.REFRESH, 100)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, -5000)
+    mob:setMod(invaderXim.mod.UDMGRANGE, -5000)
+    mob:setMod(invaderXim.mod.UDMGBREATH, -5000)
+    mob:setMod(invaderXim.mod.UFASTCAST, 50)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_STANDBACK, 1)
+    mob:setMobMod(invaderXim.mobMod.ROAM_COOL, 55)
+    mob:setMobMod(invaderXim.mobMod.ROAM_DISTANCE, 5)
+    mob:setMobMod(invaderXim.mobMod.SIGHT_RANGE, 30)
+    mob:setMobMod(invaderXim.mobMod.WEAPON_BONUS, 148) -- 245 total weapon damage
+    mob:addImmunity(invaderXim.immunity.BIND)
+    mob:addImmunity(invaderXim.immunity.BLIND)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.PLAGUE)
+    mob:addImmunity(invaderXim.immunity.PETRIFY)
+    mob:addImmunity(invaderXim.immunity.TERROR)
 end
 
 entity.onMobRoam = function(mob)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
 end
 
 entity.onMobEngage = function(mob, target)
@@ -164,7 +164,7 @@ entity.onMobFight = function(mob, target)
     -- Keep pets linked
     for i = 1, 6 do
         local pet = GetMobByID(mob:getID() + i)
-        if pet and pet:getCurrentAction() == xi.act.ROAMING then
+        if pet and pet:getCurrentAction() == invaderXim.act.ROAMING then
             pet:updateEnmity(target)
         end
     end
@@ -180,10 +180,10 @@ entity.onMobFight = function(mob, target)
         wait = 3,
     }
     if drawInTable.conditions[1] then
-        mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+        mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
         utils.drawIn(target, drawInTable)
     else
-        mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+        mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
     end
 end
 
@@ -196,7 +196,7 @@ entity.onMobWeaponSkill = function(target, mob, skill)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.ENDARK, { power = math.random(55, 90), chance = 25 })
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.ENDARK, { power = math.random(55, 90), chance = 25 })
 end
 
 entity.onMobDisengage = function(mob)
@@ -207,12 +207,12 @@ entity.onMobDisengage = function(mob)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.VRTRA_VANQUISHER)
+    player:addTitle(invaderXim.title.VRTRA_VANQUISHER)
 end
 
 entity.onMobDespawn = function(mob)
     -- Set Vrtra's spawnpoint and respawn time (3-5 days)
-    xi.mob.updateNMSpawnPoint(mob, spawnPointTable)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPointTable)
     mob:setRespawnTime(math.random(144, 240) * 1800) -- 3 to 5 days in 30 minute windows
 end
 

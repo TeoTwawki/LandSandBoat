@@ -4,7 +4,7 @@
 -- Guild Merchant NPC: Cooking Guild
 -- !pos -103.935 -2.875 74.304 238
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WATERS]
+local ID = zones[invaderXim.zone.WINDURST_WATERS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

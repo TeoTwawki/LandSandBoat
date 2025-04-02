@@ -6,13 +6,13 @@
 -- qm1 (for KI) : !pos -58.873 1.026 -116.665 147
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.BEADEAUX_SMOG)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.BEADEAUX_SMOG)
 
 quest.reward =
 {
     fame = 30,
-    fameArea = xi.fameArea.BASTOK,
-    title = xi.title.BEADEAUX_SURVEYOR,
+    fameArea = invaderXim.fameArea.BASTOK,
+    title = invaderXim.title.BEADEAUX_SURVEYOR,
 }
 
 quest.sections =
@@ -20,10 +20,10 @@ quest.sections =
     -- Section: Quest available
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and player:getFameLevel(xi.fameArea.BASTOK) >= 4
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and player:getFameLevel(invaderXim.fameArea.BASTOK) >= 4
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['High_Bear'] = quest:progressEvent(731),
 
@@ -39,17 +39,17 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and not player:hasKeyItem(xi.keyItem.CORRUPTED_DIRT)
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and not player:hasKeyItem(invaderXim.keyItem.CORRUPTED_DIRT)
         end,
 
         -- While the quest is accepted, High Bear uses his default text
 
-        [xi.zone.BEADEAUX] =
+        [invaderXim.zone.BEADEAUX] =
         {
             ['qm1'] =
             {
                 onTrigger = function(player, npc)
-                    return quest:keyItem(xi.ki.CORRUPTED_DIRT)
+                    return quest:keyItem(invaderXim.ki.CORRUPTED_DIRT)
                 end,
             },
         },
@@ -58,17 +58,17 @@ quest.sections =
     -- Section: Hand in quest
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and player:hasKeyItem(xi.keyItem.CORRUPTED_DIRT)
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and player:hasKeyItem(invaderXim.keyItem.CORRUPTED_DIRT)
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['High_Bear'] = quest:progressEvent(732),
 
             onEventFinish =
             {
                 [732] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.CHAKRAM) then
+                    if npcUtil.giveItem(player, invaderXim.item.CHAKRAM) then
                         quest:complete(player)
                     end
                 end,

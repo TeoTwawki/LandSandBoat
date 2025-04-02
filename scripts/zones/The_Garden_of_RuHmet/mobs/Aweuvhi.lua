@@ -28,10 +28,10 @@ entity.onMobFight = function(mob)
         mob:setLocalVar('changeTime', mob:getBattleTime())
 
         -- Set physical SDT modifiers.
-        mob:setMod(xi.mod.HTH_SDT, sdtPower)
-        mob:setMod(xi.mod.SLASH_SDT, sdtPower)
-        mob:setMod(xi.mod.PIERCE_SDT, sdtPower)
-        mob:setMod(xi.mod.IMPACT_SDT, sdtPower)
+        mob:setMod(invaderXim.mod.HTH_SDT, sdtPower)
+        mob:setMod(invaderXim.mod.SLASH_SDT, sdtPower)
+        mob:setMod(invaderXim.mod.PIERCE_SDT, sdtPower)
+        mob:setMod(invaderXim.mod.IMPACT_SDT, sdtPower)
     end
 end
 

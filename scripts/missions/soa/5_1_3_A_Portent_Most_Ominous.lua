@@ -7,12 +7,12 @@
 -- Aged Stump : !pos -27.233 -2 33.508 281
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.A_PORTENT_MOST_OMINOUS)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.A_PORTENT_MOST_OMINOUS)
 
 mission.reward =
 {
-    keyItem     = { xi.ki.SKY_BLUE_POME, xi.ki.SUN_YELLOW_POME },
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.YGGDRASIL_BECKONS },
+    keyItem     = { invaderXim.ki.SKY_BLUE_POME, invaderXim.ki.SUN_YELLOW_POME },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.YGGDRASIL_BECKONS },
 }
 
 mission.sections =
@@ -22,12 +22,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(40, 256, 0, 256),
         },
 
-        [xi.zone.LEAFALLIA] =
+        [invaderXim.zone.LEAFALLIA] =
         {
             ['Aged_Stump'] = mission:progressEvent(10, 281, 3447009, 1756, 0, 13991935, 5668390, 4095, 131184),
 

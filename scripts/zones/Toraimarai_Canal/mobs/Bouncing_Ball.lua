@@ -3,7 +3,7 @@
 --  Mob: Bouncing Ball
 -- Note: PH for Canal Moocher
 -----------------------------------
-local ID = zones[xi.zone.TORAIMARAI_CANAL]
+local ID = zones[invaderXim.zone.TORAIMARAI_CANAL]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -19,7 +19,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, canalMoocherPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, canalMoocherPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

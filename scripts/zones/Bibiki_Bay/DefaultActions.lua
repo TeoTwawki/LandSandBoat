@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.BIBIKI_BAY]
+local ID = zones[invaderXim.zone.BIBIKI_BAY]
 
 return {
     ['qm_dalham']     = { messageSpecial = ID.text.NOTHING_LEFT_INTEREST },

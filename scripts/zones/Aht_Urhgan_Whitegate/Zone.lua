@@ -27,17 +27,17 @@ zoneObject.onZoneIn = function(player, prevZone)
         player:getYPos() == 0 and
         player:getZPos() == 0
     then
-        if prevZone == xi.zone.OPEN_SEA_ROUTE_TO_AL_ZAHBI then
+        if prevZone == invaderXim.zone.OPEN_SEA_ROUTE_TO_AL_ZAHBI then
             player:setPos(-11, 5, -142, 192)
             cs = 201
         elseif
-            prevZone == xi.zone.SILVER_SEA_ROUTE_TO_AL_ZAHBI or
-            prevZone == xi.zone.SILVER_SEA_ROUTE_TO_NASHMAU
+            prevZone == invaderXim.zone.SILVER_SEA_ROUTE_TO_AL_ZAHBI or
+            prevZone == invaderXim.zone.SILVER_SEA_ROUTE_TO_NASHMAU
         then
             player:setPos(11, 5, 142, 64)
             cs = 204
         else
-            -- MOG HOUSE EXIT
+            -- MOG HOUSE IXIMT
             local position = math.random(1, 5) - 83
             player:setPos(-100, 0, position, 0)
         end
@@ -67,10 +67,10 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
 
         [5] = function() -- AH mission
             if
-                player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.NAVIGATING_THE_UNFRIENDLY_SEAS) == xi.questStatus.QUEST_COMPLETED and
-                player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AGAINST_ALL_ODDS) == xi.questStatus.QUEST_AVAILABLE and
-                player:getMainJob() == xi.job.COR and
-                player:getMainLvl() >= xi.settings.main.AF3_QUEST_LEVEL
+                player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.NAVIGATING_THE_UNFRIENDLY_SEAS) == invaderXim.questStatus.QUEST_COMPLETED and
+                player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AGAINST_ALL_ODDS) == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getMainJob() == invaderXim.job.COR and
+                player:getMainLvl() >= invaderXim.settings.main.AF3_QUEST_LEVEL
             then
                 player:startEvent(797)
             end
@@ -109,8 +109,8 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
         player:setPos(60, 0, -71, 38)
     elseif csid == 797 then
         player:setCharVar('AgainstAllOdds', 1) -- Set For Corsair BCNM
-        player:addQuest(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AGAINST_ALL_ODDS) -- Start of af 3 not completed yet
-        npcUtil.giveKeyItem(player, xi.ki.LIFE_FLOAT)
+        player:addQuest(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AGAINST_ALL_ODDS) -- Start of af 3 not completed yet
+        npcUtil.giveKeyItem(player, invaderXim.ki.LIFE_FLOAT)
         player:setCharVar('AgainstAllOddsTimer', getMidnight())
     end
 end

@@ -17,7 +17,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    xi.teleport.to(target, xi.teleport.id.PURGONORGO)
+    invaderXim.teleport.to(target, invaderXim.teleport.id.PURGONORGO)
 end
 
 return itemObject

@@ -6,22 +6,22 @@
 -- Nogelle : !pos -70 -5.5 -33 232
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.LUFETS_LAKE_SALT)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.LUFETS_LAKE_SALT)
 
 quest.reward =
 {
     gil   = 600,
-    title = xi.title.BEAN_CUISINE_SALTER,
+    title = invaderXim.title.BEAN_CUISINE_SALTER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.PORT_SAN_DORIA] =
+        [invaderXim.zone.PORT_SAN_DORIA] =
         {
             ['Nogelle'] = quest:progressEvent(12),
 
@@ -37,15 +37,15 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_SAN_DORIA] =
+        [invaderXim.zone.PORT_SAN_DORIA] =
         {
             ['Nogelle'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHas(trade, { { xi.item.CHUNK_OF_LUFET_SALT, 3 } }) then
+                    if npcUtil.tradeHas(trade, { { invaderXim.item.CHUNK_OF_LUFET_SALT, 3 } }) then
                         return quest:progressEvent(11)
                     end
                 end,
@@ -65,10 +65,10 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.PORT_SAN_DORIA] =
+        [invaderXim.zone.PORT_SAN_DORIA] =
         {
             ['Nogelle'] = quest:event(522):replaceDefault(),
         },

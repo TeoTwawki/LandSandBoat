@@ -13,9 +13,9 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobGazeMove(mob, target, xi.effect.PETRIFICATION, 1, 0, 60))
+    skill:setMsg(invaderXim.mobskills.mobGazeMove(mob, target, invaderXim.effect.PETRIFICATION, 1, 0, 60))
 
-    return xi.effect.PETRIFICATION
+    return invaderXim.effect.PETRIFICATION
 end
 
 return mobskillObject

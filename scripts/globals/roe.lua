@@ -6,7 +6,7 @@ require('scripts/globals/quests')
 require('scripts/globals/roe_records')
 -----------------------------------
 xi = xi or {}
-xi.roe = xi.roe or {}
+invaderXim.roe = invaderXim.roe or {}
 
 -----------------------------------
 -- Checks
@@ -71,7 +71,7 @@ local checks =
     end,
 
     questComplete = function(self, player, params) -- Player has { KINGDOM, QUEST } marked complete
-        return player:getQuestStatus(self.reqs.questComplete[1], self.reqs.questComplete[2]) == xi.questStatus.QUEST_COMPLETED
+        return player:getQuestStatus(self.reqs.questComplete[1], self.reqs.questComplete[2]) == invaderXim.questStatus.QUEST_COMPLETED
     end,
 
     missionComplete = function(self, player, params) -- Player has { NATION, MISSION } marked complete
@@ -136,28 +136,28 @@ local defaults =
     reward = {},                -- Reward parameters give on completion. (See completeRecord directly below.)
 }
 
-xi.roe.initialize = function()
+invaderXim.roe.initialize = function()
     -- Apply defaults for records.  Since this table may already exist in the global state,
     -- check for missing entries first.
-    for recordId, _ in pairs(xi.roe.records) do
+    for recordId, _ in pairs(invaderXim.roe.records) do
         for defaultKey, defaultValue in pairs(defaults) do
-            if not xi.roe.records[recordId][defaultKey] then
-                xi.roe.records[recordId][defaultKey] = defaultValue
+            if not invaderXim.roe.records[recordId][defaultKey] then
+                invaderXim.roe.records[recordId][defaultKey] = defaultValue
             end
         end
     end
 
     -- Build global map of implemented records.
     -- This is used to deny taking records which aren't implemented in the above table.
-    RoeParseRecords(xi.roe.records)
+    RoeParseRecords(invaderXim.roe.records)
 
     -- Load timetable for timed records
-    if xi.settings.main.ENABLE_ROE and xi.settings.main.ENABLE_ROE_TIMED > 0 then
+    if invaderXim.settings.main.ENABLE_ROE and invaderXim.settings.main.ENABLE_ROE_TIMED > 0 then
         RoeParseTimed(timedSchedule)
     end
 end
 
-xi.roe.initialize()
+invaderXim.roe.initialize()
 
 --[[ --------------------------------------------------------------------------
     Complete a record of eminence. This is for internal roe use only.
@@ -170,7 +170,7 @@ xi.roe.initialize()
     reward =
     {
         item = { { 640, 2 }, 641 },      -- see npcUtil.giveItem for formats (Only given on first completion)
-        keyItem = xi.ki.ZERUHN_REPORT,   -- see npcUtil.giveKeyItem for formats
+        keyItem = invaderXim.ki.ZERUHN_REPORT,   -- see npcUtil.giveKeyItem for formats
         sparks = 500,
         xp = 1000,
         accolades = 300,
@@ -178,33 +178,33 @@ xi.roe.initialize()
     })
 --------------------------------------------------------------------------- --]]
 local function completeRecord(player, record)
-    local recordEntry = xi.roe.records[record]
+    local recordEntry = invaderXim.roe.records[record]
     local recordFlags = recordEntry.flags
     local rewards = recordEntry.reward
 
     if not player:getEminenceCompleted(record) and rewards['item'] then
         if not npcUtil.giveItem(player, rewards['item'], { silent = true }) then
-            player:messageBasic(xi.msg.basic.ROE_UNABLE_BONUS_ITEM)
+            player:messageBasic(invaderXim.msg.basic.ROE_UNABLE_BONUS_ITEM)
             return false
         end
     end
 
-    player:messageBasic(xi.msg.basic.ROE_COMPLETE, record)
+    player:messageBasic(invaderXim.msg.basic.ROE_COMPLETE, record)
 
     if rewards['sparks'] ~= nil and type(rewards['sparks']) == 'number' then
         local bonus = 1
         if player:getEminenceCompleted(record) then
-            player:addCurrency('spark_of_eminence', rewards['sparks'] * bonus * xi.settings.main.SPARKS_RATE, xi.settings.main.CAP_CURRENCY_SPARKS)
-            player:messageBasic(xi.msg.basic.ROE_RECEIVE_SPARKS, rewards['sparks'] * xi.settings.main.SPARKS_RATE, player:getCurrency('spark_of_eminence'))
+            player:addCurrency('spark_of_eminence', rewards['sparks'] * bonus * invaderXim.settings.main.SPARKS_RATE, invaderXim.settings.main.CAP_CURRENCY_SPARKS)
+            player:messageBasic(invaderXim.msg.basic.ROE_RECEIVE_SPARKS, rewards['sparks'] * invaderXim.settings.main.SPARKS_RATE, player:getCurrency('spark_of_eminence'))
         else
             bonus = 3
-            player:addCurrency('spark_of_eminence', rewards['sparks'] * bonus * xi.settings.main.SPARKS_RATE, xi.settings.main.CAP_CURRENCY_SPARKS)
-            player:messageBasic(xi.msg.basic.ROE_FIRST_TIME_SPARKS, rewards['sparks'] * bonus * xi.settings.main.SPARKS_RATE, player:getCurrency('spark_of_eminence'))
+            player:addCurrency('spark_of_eminence', rewards['sparks'] * bonus * invaderXim.settings.main.SPARKS_RATE, invaderXim.settings.main.CAP_CURRENCY_SPARKS)
+            player:messageBasic(invaderXim.msg.basic.ROE_FIRST_TIME_SPARKS, rewards['sparks'] * bonus * invaderXim.settings.main.SPARKS_RATE, player:getCurrency('spark_of_eminence'))
         end
     end
 
     if rewards['exp'] ~= nil and type(rewards['exp']) == 'number' then
-        player:addExp(rewards['exp'] * xi.settings.main.ROE_EXP_RATE)
+        player:addExp(rewards['exp'] * invaderXim.settings.main.ROE_EXP_RATE)
     end
 
     if rewards['capacity'] ~= nil and type(rewards['capacity']) == 'number' then
@@ -216,16 +216,16 @@ local function completeRecord(player, record)
     if rewards['item'] then
         local itemQty   = type(rewards['item'][1]) == 'table' and rewards['item'][1][2] or 1
         local itemId    = type(rewards['item'][1]) == 'table' and rewards['item'][1][1] or rewards['item'][1]
-        local messageId = itemQty > 1 and xi.msg.basic.ROE_BONUS_ITEM_PLURAL or xi.msg.basic.ROE_BONUS_ITEM
+        local messageId = itemQty > 1 and invaderXim.msg.basic.ROE_BONUS_ITEM_PLURAL or invaderXim.msg.basic.ROE_BONUS_ITEM
 
         player:messageBasic(messageId, itemId, itemQty)
     end
 
     if recordFlags['repeat'] then
         if recordFlags['timed'] then
-            player:messageBasic(xi.msg.basic.ROE_TIMED_CLEAR)
+            player:messageBasic(invaderXim.msg.basic.ROE_TIMED_CLEAR)
         else
-            player:messageBasic(xi.msg.basic.ROE_REPEAT_OR_CANCEL)
+            player:messageBasic(invaderXim.msg.basic.ROE_REPEAT_OR_CANCEL)
         end
 
         player:setEminenceCompleted(record, true)
@@ -244,8 +244,8 @@ local function completeRecord(player, record)
         end
 
         local accoladePayout = math.floor(rewards['accolades'] * bonusAccoladeRate)
-        player:addCurrency('unity_accolades', accoladePayout, xi.settings.main.CAP_CURRENCY_ACCOLADES)
-        player:messageBasic(xi.msg.basic.ROE_RECEIVED_ACCOLADES, accoladePayout, player:getCurrency('unity_accolades'))
+        player:addCurrency('unity_accolades', accoladePayout, invaderXim.settings.main.CAP_CURRENCY_ACCOLADES)
+        player:messageBasic(invaderXim.msg.basic.ROE_RECEIVED_ACCOLADES, accoladePayout, player:getCurrency('unity_accolades'))
     end
 
     if rewards['keyItem'] ~= nil then
@@ -267,18 +267,18 @@ end
 -- Even records which are completed through Lua scripts should point here and
 -- have record information entered in records. This keeps everything neat.
 
-function xi.roe.onRecordTrigger(player, recordID, params)
+function invaderXim.roe.onRecordTrigger(player, recordID, params)
     params = params or {}
     params.progress = params.progress or player:getEminenceProgress(recordID)
 
-    local entry = xi.roe.records[recordID]
+    local entry = invaderXim.roe.records[recordID]
     local isClaiming = params.claim
 
     if entry and params.progress then
         local awaitingClaim = params.progress >= entry.goal
 
         if awaitingClaim and not isClaiming then
-            player:messageBasic(xi.msg.basic.ROE_YET_TO_RECEIVE)
+            player:messageBasic(invaderXim.msg.basic.ROE_YET_TO_RECEIVE)
             return
         elseif isClaiming or entry:check(player, params) then
             params.progress = params.progress + (isClaiming and 0 or entry.increment)

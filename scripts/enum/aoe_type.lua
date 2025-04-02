@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.aoeType
-xi.aoeType =
+---@enum invaderXim.aoeType
+invaderXim.aoeType =
 {
     NONE      = 0,
     ROUND     = 1,  -- Normal AoE type

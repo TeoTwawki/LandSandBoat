@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.BRAZEN_STRENGTH
+-- invaderXim.effect.BRAZEN_STRENGTH
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

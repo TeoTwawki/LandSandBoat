@@ -12,7 +12,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffectEx(xi.effect.TELEPORT, 0, xi.teleport.id.WINDY_WOODS_GLYPH, 0, 3)
+    target:addStatusEffectEx(invaderXim.effect.TELEPORT, 0, invaderXim.teleport.id.WINDY_WOODS_GLYPH, 0, 3)
 end
 
 return itemObject

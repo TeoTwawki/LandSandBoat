@@ -7,11 +7,11 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local circleOfTime   = player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_CIRCLE_OF_TIME)
+    local circleOfTime   = player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_CIRCLE_OF_TIME)
     local circleProgress = player:getCharVar('circleTime')
 
     -- CIRCLE OF TIME
-    if circleOfTime == xi.questStatus.QUEST_ACCEPTED then
+    if circleOfTime == invaderXim.questStatus.QUEST_ACCEPTED then
         if circleProgress == 1 then
             player:startEvent(30)
         elseif circleProgress == 2 then

@@ -9,11 +9,11 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.red_mage.checkStymie(player, target, ability)
+    return invaderXim.job_utils.red_mage.checkStymie(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    xi.job_utils.red_mage.useStymie(player, target, ability)
+    invaderXim.job_utils.red_mage.useStymie(player, target, ability)
 end
 
 return abilityObject

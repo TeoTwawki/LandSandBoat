@@ -1,4 +1,4 @@
--- local ID = zones[xi.zone.SACRIFICIAL_CHAMBER]
+-- local ID = zones[invaderXim.zone.SACRIFICIAL_CHAMBER]
 
 return {
     ['_4j0'] = { messageSpecial = -1 }, -- Battlefield entrance.

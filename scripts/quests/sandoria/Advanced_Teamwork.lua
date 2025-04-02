@@ -6,30 +6,30 @@
 -- Vilatroire : !pos -260 -70 423 100
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.ADVANCED_TEAMWORK)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.ADVANCED_TEAMWORK)
 
 quest.reward =
 {
-    item  = xi.item.HORN_RING,
+    item  = invaderXim.item.HORN_RING,
     fame  = 80,
-    title = xi.title.FIRST_RATE_ORGANIZER,
+    title = invaderXim.title.FIRST_RATE_ORGANIZER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.INTERMEDIATE_TEAMWORK) == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.INTERMEDIATE_TEAMWORK) == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.WEST_RONFAURE] =
+        [invaderXim.zone.WEST_RONFAURE] =
         {
             ['Vilatroire'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:getFameLevel(xi.fameArea.SANDORIA) >= 4 and
+                        player:getFameLevel(invaderXim.fameArea.SANDORIA) >= 4 and
                         player:getMainLvl() >= 10
                     then
                         return quest:progressEvent(131)
@@ -51,10 +51,10 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.WEST_RONFAURE] =
+        [invaderXim.zone.WEST_RONFAURE] =
         {
             ['Vilatroire'] =
             {
@@ -118,10 +118,10 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.WEST_RONFAURE] =
+        [invaderXim.zone.WEST_RONFAURE] =
         {
             ['Vilatroire'] = quest:event(130),
         },

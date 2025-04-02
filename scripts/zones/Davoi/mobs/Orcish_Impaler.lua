@@ -3,7 +3,7 @@
 --  Mob: Orcish Impaler
 -- Note: PH for Poisonhand Gnadgad and Steelbiter Gudrud
 -----------------------------------
-local ID = zones[xi.zone.DAVOI]
+local ID = zones[invaderXim.zone.DAVOI]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -23,8 +23,8 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, poisonhandPHTable, 10, 3600) -- 1 hour
-    xi.mob.phOnDespawn(mob, steelbiterPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, poisonhandPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, steelbiterPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

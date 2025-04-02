@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.trait
-xi.trait =
+---@enum invaderXim.trait
+invaderXim.trait =
 {
     -- Offset by 1536 from ROM\181\72.dat
 

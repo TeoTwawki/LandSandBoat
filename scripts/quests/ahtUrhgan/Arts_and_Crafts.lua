@@ -10,11 +10,11 @@
 -- Mhasbaf !pos 54 -7 11 50
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.ARTS_AND_CRAFTS)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.ARTS_AND_CRAFTS)
 
 quest.reward =
 {
-    item = xi.item.IMPERIAL_SILVER_PIECE,
+    item = invaderXim.item.IMPERIAL_SILVER_PIECE,
 }
 
 quest.sections =
@@ -22,10 +22,10 @@ quest.sections =
     -- Section: Begin quest
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Hadahda'] = quest:progressEvent(508),
 
@@ -43,10 +43,10 @@ quest.sections =
     -- Section: Questing
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Hadahda'] =
             {
@@ -61,7 +61,7 @@ quest.sections =
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'Stage') == 1 and
-                        npcUtil.tradeHasExactly(trade, xi.item.BOWL_OF_SUTLAC)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.BOWL_OF_SUTLAC)
                     then
                         return quest:progressEvent(573)
                     end
@@ -162,7 +162,7 @@ quest.sections =
                 end,
 
                 [517] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.BOWL_OF_SUTLAC) then
+                    if npcUtil.giveItem(player, invaderXim.item.BOWL_OF_SUTLAC) then
                         quest:setVar(player, 'Prog', 0)
                         quest:setVar(player, 'Stage', 1)
                     end

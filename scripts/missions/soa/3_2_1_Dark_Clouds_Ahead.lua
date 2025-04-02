@@ -6,11 +6,11 @@
 -- Levil : !pos -87.204 3.350 12.655 256
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.DARK_CLOUDS_AHEAD)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.DARK_CLOUDS_AHEAD)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.THE_SMALLEST_OF_FAVORS },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_SMALLEST_OF_FAVORS },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:progressEvent(132),
 
@@ -28,7 +28,7 @@ mission.sections =
             {
                 [132] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        xi.mission.setVar(player, xi.mission.log_id.SOA, xi.mission.id.soa.THE_SMALLEST_OF_FAVORS, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.mission.setVar(player, invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_SMALLEST_OF_FAVORS, 'Timer', VanadielUniqueDay() + 1)
                     end
                 end,
             },

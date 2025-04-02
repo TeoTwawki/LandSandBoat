@@ -10,9 +10,9 @@ end
 
 local statii =
 {
-    xi.effect.CURSE_I,
-    xi.effect.CURSE_II, -- AKA "Zombie"
-    xi.effect.DOOM,
+    invaderXim.effect.CURSE_I,
+    invaderXim.effect.CURSE_II, -- AKA "Zombie"
+    invaderXim.effect.DOOM,
 }
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)

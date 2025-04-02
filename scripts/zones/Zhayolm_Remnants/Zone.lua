@@ -28,7 +28,7 @@ end
 
 zoneObject.onInstanceZoneIn = function(player, instance)
     if player:getInstance() == nil then
-        player:setPos(-580, 0, -433, 64, xi.zone.ALZADAAL_UNDERSEA_RUINS)
+        player:setPos(-580, 0, -433, 64, invaderXim.zone.ALZADAAL_UNDERSEA_RUINS)
         return
     end
 
@@ -50,7 +50,7 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
 end
 
 zoneObject.onInstanceLoadFailed = function()
-    return xi.zone.ALZADAAL_UNDERSEA_RUINS
+    return invaderXim.zone.ALZADAAL_UNDERSEA_RUINS
 end
 
 return zoneObject

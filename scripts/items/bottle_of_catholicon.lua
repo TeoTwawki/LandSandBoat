@@ -11,10 +11,10 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    local effects = xi.itemUtils.removableEffects
+    local effects = invaderXim.itemUtils.removableEffects
     local count = 3
 
-    xi.itemUtils.removeMultipleEffects(target, effects, count)
+    invaderXim.itemUtils.removeMultipleEffects(target, effects, count)
 end
 
 return itemObject

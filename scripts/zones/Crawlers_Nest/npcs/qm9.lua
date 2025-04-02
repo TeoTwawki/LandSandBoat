@@ -4,14 +4,14 @@
 -- Used In Quest: A Boy's Dream
 -- !pos -18 -8 124 197
 -----------------------------------
-local ID = zones[xi.zone.CRAWLERS_NEST]
+local ID = zones[invaderXim.zone.CRAWLERS_NEST]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
     if
-        player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.A_BOYS_DREAM) == xi.questStatus.QUEST_ACCEPTED and
+        player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.A_BOYS_DREAM) == invaderXim.questStatus.QUEST_ACCEPTED and
         VanadielDayOfTheYear() ~= player:getCharVar('DreadbugNM_Day')
     then
         if

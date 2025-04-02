@@ -2,7 +2,7 @@
 -- Area: Temenos E T
 --  Mob: Light Elemental
 -----------------------------------
-local ID = zones[xi.zone.TEMENOS]
+local ID = zones[invaderXim.zone.TEMENOS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -27,7 +27,7 @@ entity.onMobDeath = function(mob, player, optParams)
                     GetMobByID(ID.mob.TEMENOS_C_MOB[2]):isDead() and
                     GetMobByID(ID.mob.TEMENOS_C_MOB[2] + 2):isDead()
                 then
-                    GetNPCByID(ID.npc.TEMENOS_C_CRATE[2]):setStatus(xi.status.NORMAL)
+                    GetNPCByID(ID.npc.TEMENOS_C_CRATE[2]):setStatus(invaderXim.status.NORMAL)
                 end
             end,
 
@@ -36,7 +36,7 @@ entity.onMobDeath = function(mob, player, optParams)
                     GetMobByID(ID.mob.TEMENOS_C_MOB[2]):isDead() and
                     GetMobByID(ID.mob.TEMENOS_C_MOB[2] + 1):isDead()
                 then
-                    GetNPCByID(ID.npc.TEMENOS_C_CRATE[2]):setStatus(xi.status.NORMAL)
+                    GetNPCByID(ID.npc.TEMENOS_C_CRATE[2]):setStatus(invaderXim.status.NORMAL)
                 end
             end,
         }

@@ -45,7 +45,7 @@ namespace
         //     : All of the positive values are taken for the ranged movement range.
         // NOTE: You can use any positive value as a distance, and it will act as MID_RANGE or LONG_RANGE, but with the value you've provided.
         //     : For example:
-        //     :     mob:setMobMod(xi.mobMod.TRUST_DISTANCE, 20)
+        //     :     mob:setMobMod(invaderXim.mobMod.TRUST_DISTANCE, 20)
         //     : Will set the combat distance the trust tries to stick to to 20'
         // NOTE: If a Trust doesn't immediately sprint to a certain distance at the start of battle, it's probably NO_MOVE or MELEE.
         NO_MOVE    = -1, // Will stand still providing they're within casting distance of their master and target when the fight starts. Otherwise will reposition to be within 9.0' of both

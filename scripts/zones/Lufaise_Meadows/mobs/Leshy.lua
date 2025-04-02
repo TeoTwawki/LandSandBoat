@@ -2,7 +2,7 @@
 -- Area: Lufaise Meadows
 --  Mob: Leshy
 -----------------------------------
-local ID = zones[xi.zone.LUFAISE_MEADOWS]
+local ID = zones[invaderXim.zone.LUFAISE_MEADOWS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

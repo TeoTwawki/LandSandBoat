@@ -4,9 +4,9 @@
 require('scripts/globals/npc_util')
 -----------------------------------
 xi = xi or {}
-xi.extravaganza = {}
+invaderXim.extravaganza = {}
 
-xi.extravaganza.campaign =
+invaderXim.extravaganza.campaign =
 {
     NONE        =   0,
     SUMMER_NY   =   1,
@@ -14,20 +14,20 @@ xi.extravaganza.campaign =
     BOTH        =   3,
 }
 
-xi.extravaganza.campaignActive = function()
-    return xi.settings.main.ENABLE_TRUST_ALTER_EGO_EXTRAVAGANZA
+invaderXim.extravaganza.campaignActive = function()
+    return invaderXim.settings.main.ENABLE_TRUST_ALTER_EGO_EXTRAVAGANZA
 end
 
 -----------------------------------
 -- Determine Which Ciphers to Grant by NPC Name
 -----------------------------------
 
-xi.extravaganza.getShadowEraCiphers = function(npc)
+invaderXim.extravaganza.getShadowEraCiphers = function(npc)
     local cipherNpcs =
     {
-        ['Shixo']   =   { xi.item.CIPHER_OF_NOILLURIES_ALTER_EGO, xi.item.CIPHER_OF_LEONOYNES_ALTER_EGO },
-        ['Shenni']  =   { xi.item.CIPHER_OF_ELIVIRAS_ALTER_EGO, xi.item.CIPHER_OF_MAXIMILIANS_ALTER_EGO },
-        ['Shuvo']   =   { xi.item.CIPHER_OF_LHUS_ALTER_EGO, xi.item.CIPHER_OF_KAYEELS_ALTER_EGO },
+        ['Shixo']   =   { invaderXim.item.CIPHER_OF_NOILLURIES_ALTER_EGO, invaderXim.item.CIPHER_OF_LEONOYNES_ALTER_EGO },
+        ['Shenni']  =   { invaderXim.item.CIPHER_OF_ELIVIRAS_ALTER_EGO, invaderXim.item.CIPHER_OF_MAXIMILIANS_ALTER_EGO },
+        ['Shuvo']   =   { invaderXim.item.CIPHER_OF_LHUS_ALTER_EGO, invaderXim.item.CIPHER_OF_KAYEELS_ALTER_EGO },
     }
     return cipherNpcs[npc:getName()]
 end
@@ -36,15 +36,15 @@ end
 -- Check if Extravaganza is active, hide [S] vendors if inactive
 -----------------------------------
 
-xi.extravaganza.shadowEraHide = function(npc)
-    local active = xi.extravaganza.campaignActive()
+invaderXim.extravaganza.shadowEraHide = function(npc)
+    local active = invaderXim.extravaganza.campaignActive()
 
     if
-        (active == xi.extravaganza.campaign.NONE or
-        active == xi.extravaganza.campaign.SPRING_FALL) and
-        xi.settings.main.ENABLE_WOTG == 1
+        (active == invaderXim.extravaganza.campaign.NONE or
+        active == invaderXim.extravaganza.campaign.SPRING_FALL) and
+        invaderXim.settings.main.ENABLE_WOTG == 1
     then
-        GetNPCByID(npc):setStatus(xi.status.DISAPPEAR)
+        GetNPCByID(npc):setStatus(invaderXim.status.DISAPPEAR)
     end
 end
 
@@ -52,13 +52,13 @@ end
 -- Check if Extravaganza is Active, set Ciphers, Launch CS
 -----------------------------------
 
-xi.extravaganza.shadowEraTrigger = function(player, npc, notes)
-    local active = xi.extravaganza.campaignActive()
+invaderXim.extravaganza.shadowEraTrigger = function(player, npc, notes)
+    local active = invaderXim.extravaganza.campaignActive()
     if
-        active == xi.extravaganza.campaign.SUMMER_NY or
-        active == xi.extravaganza.campaign.BOTH
+        active == invaderXim.extravaganza.campaign.SUMMER_NY or
+        active == invaderXim.extravaganza.campaign.BOTH
     then
-        local cipherids = xi.extravaganza.getShadowEraCiphers(npc)
+        local cipherids = invaderXim.extravaganza.getShadowEraCiphers(npc)
         player:setLocalVar('ShadowCipher1', cipherids[1])
         player:setLocalVar('ShadowCipher2', cipherids[2])
         player:startEvent(7300, 0, notes, 6)
@@ -70,7 +70,7 @@ end
 -- Choose the right cipher depending on Menu Option
 -----------------------------------
 
-xi.extravaganza.shadowEraFinish = function(player, csid, option, npc)
+invaderXim.extravaganza.shadowEraFinish = function(player, csid, option, npc)
     local ID = zones[player:getZoneID()]
     local notes = player:getCurrency('allied_notes')
     local cipherid = { player:getLocalVar('ShadowCipher1'), player:getLocalVar('ShadowCipher2') }

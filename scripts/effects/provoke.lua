@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.PROVOKE
+-- invaderXim.effect.PROVOKE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

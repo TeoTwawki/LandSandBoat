@@ -2,13 +2,13 @@
 -- Area: The Garden of Ru'Hmet
 --  Mob: Ix'aern DRG
 -----------------------------------
-local ID = zones[xi.zone.THE_GARDEN_OF_RUHMET]
+local ID = zones[invaderXim.zone.THE_GARDEN_OF_RUHMET]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
 end
 
 entity.onMobFight = function(mob, target)

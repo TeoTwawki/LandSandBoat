@@ -9,15 +9,15 @@
 -- Kyokyoroon     : !pos 18.020 -6.000 10.467 53
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.RAT_RACE)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.RAT_RACE)
 
 quest.reward =
 {
     item =
     {
-        { xi.item.IMPERIAL_GOLD_PIECE,    2 },
-        { xi.item.IMPERIAL_MYTHRIL_PIECE, 2 },
-        { xi.item.IMPERIAL_SILVER_PIECE,  3 },
+        { invaderXim.item.IMPERIAL_GOLD_PIECE,    2 },
+        { invaderXim.item.IMPERIAL_MYTHRIL_PIECE, 2 },
+        { invaderXim.item.IMPERIAL_SILVER_PIECE,  3 },
     },
 }
 
@@ -26,10 +26,10 @@ quest.sections =
     -- Section: Quest available
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             ['Kakkaroon'] =
             {
@@ -49,10 +49,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Nadee_Periyaha'] =
             {
@@ -74,7 +74,7 @@ quest.sections =
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'Prog') == 2 and
-                        npcUtil.tradeHas(trade, xi.item.IMPERIAL_BRONZE_PIECE)
+                        npcUtil.tradeHas(trade, invaderXim.item.IMPERIAL_BRONZE_PIECE)
                     then
                         return quest:progressEvent(850)
                     end
@@ -104,7 +104,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             ['Kakkaroon'] =
             {
@@ -122,7 +122,7 @@ quest.sections =
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'Prog') == 5 and
-                        npcUtil.tradeHasExactly(trade, xi.item.BOWL_OF_NASHMAU_STEW)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.BOWL_OF_NASHMAU_STEW)
                     then
                         return quest:progressEvent(311)
                     end
@@ -142,7 +142,7 @@ quest.sections =
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'Prog') == 4 and
-                        npcUtil.tradeHasExactly(trade, { xi.item.AHTAPOT, xi.item.ISTAKOZ, xi.item.ISTAVRIT, xi.item.ISTIRIDYE, xi.item.MERCANBALIGI })
+                        npcUtil.tradeHasExactly(trade, { invaderXim.item.AHTAPOT, invaderXim.item.ISTAKOZ, invaderXim.item.ISTAVRIT, invaderXim.item.ISTIRIDYE, invaderXim.item.MERCANBALIGI })
                     then
                         return quest:progressEvent(310)
                     end
@@ -168,7 +168,7 @@ quest.sections =
                 end,
 
                 [310] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.BOWL_OF_NASHMAU_STEW) then
+                    if npcUtil.giveItem(player, invaderXim.item.BOWL_OF_NASHMAU_STEW) then
                         player:confirmTrade()
                         quest:setVar(player, 'Prog', 5)
                     end
@@ -189,10 +189,10 @@ quest.sections =
     -- Section: Quest completed
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             ['Kakkaroon']  = quest:event(314),
             ['Kyokyoroon'] = quest:event(317),

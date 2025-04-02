@@ -8,11 +8,11 @@ mixins = { require('scripts/mixins/families/gear') }
 local entity = {}
 
 entity.onMobEngage = function(mob, target)
-    xi.nyzul.onGearEngage(mob, target)
+    invaderXim.nyzul.onGearEngage(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.nyzul.onGearDeath(mob, player, optParams)
+    invaderXim.nyzul.onGearDeath(mob, player, optParams)
 end
 
 return entity

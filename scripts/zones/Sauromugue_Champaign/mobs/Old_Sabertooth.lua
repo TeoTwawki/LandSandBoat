@@ -23,12 +23,12 @@ local pathNodes =
 }
 
 entity.onMobSpawn = function(mob)
-    mob:setBehavior(bit.bor(mob:getBehavior(), xi.behavior.STANDBACK))
-    mob:setBehavior(bit.bor(mob:getBehavior(), xi.behavior.NO_TURN))
+    mob:setBehavior(bit.bor(mob:getBehavior(), invaderXim.behavior.STANDBACK))
+    mob:setBehavior(bit.bor(mob:getBehavior(), invaderXim.behavior.NO_TURN))
     mob:setMobAbilityEnabled(false)
     mob:setAutoAttackEnabled(false)
-    mob:setRoamFlags(bit.bor(xi.roamFlag.IGNORE, xi.roamFlag.SCRIPTED))
-    mob:pathThrough(pathNodes, xi.path.flag.PATROL)
+    mob:setRoamFlags(bit.bor(invaderXim.roamFlag.IGNORE, invaderXim.roamFlag.SCRIPTED))
+    mob:pathThrough(pathNodes, invaderXim.path.flag.PATROL)
 
     mob:addListener('TAKE_DAMAGE', 'PRIME_TAKE_DAMAGE', function(tiger, amount, attacker)
         if attacker then
@@ -55,7 +55,7 @@ entity.onMobDeath = function(mob, player, optParams)-- TODO: We currently can't 
     local players = mob:getZone():getPlayers()
         for i, person in pairs(players) do -- can't use the variable name "player" because it's already being used
             if
-                person:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.THE_FANGED_ONE) == xi.questStatus.QUEST_ACCEPTED and
+                person:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.THE_FANGED_ONE) == invaderXim.questStatus.QUEST_ACCEPTED and
                 person:checkDistance(mob) < 32
         then
             if mob:getLocalVar('tookDamage') == 0 then

@@ -5,7 +5,7 @@
 -- Type: Magical
 -- Utsusemi/Blink absorb: Ignores shadows
 -- Range: Unknown
--- Notes: Used only by certain Notorious Monsters. Strong xi.effect.
+-- Notes: Used only by certain Notorious Monsters. Strong invaderXim.effect.
 -----------------------------------
 ---@type TMobSkill
 local mobskillObject = {}
@@ -16,18 +16,18 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local typeEffect = nil
-    local defDown    = xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.DEFENSE_DOWN, 50, 0, 120)
-    local mDefDown   = xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.MAGIC_DEF_DOWN, 50, 0, 120)
+    local defDown    = invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.DEFENSE_DOWN, 50, 0, 120)
+    local mDefDown   = invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.MAGIC_DEF_DOWN, 50, 0, 120)
 
-    skill:setMsg(xi.msg.basic.SKILL_ENFEEB_IS)
+    skill:setMsg(invaderXim.msg.basic.SKILL_ENFEEB_IS)
 
     -- display defense down first, else magic defense down
-    if defDown == xi.msg.basic.SKILL_ENFEEB_IS then
-        typeEffect = xi.effect.DEFENSE_DOWN
-    elseif mDefDown == xi.msg.basic.SKILL_ENFEEB_IS then
-        typeEffect = xi.effect.MAGIC_DEF_DOWN
+    if defDown == invaderXim.msg.basic.SKILL_ENFEEB_IS then
+        typeEffect = invaderXim.effect.DEFENSE_DOWN
+    elseif mDefDown == invaderXim.msg.basic.SKILL_ENFEEB_IS then
+        typeEffect = invaderXim.effect.MAGIC_DEF_DOWN
     else
-        skill:setMsg(xi.msg.basic.SKILL_MISS)
+        skill:setMsg(invaderXim.msg.basic.SKILL_MISS)
     end
 
     return typeEffect

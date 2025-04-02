@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `accounts_banned`
 --
 
-DROP TABLE IF EXISTS `accounts_banned`;
-CREATE TABLE IF NOT EXISTS `accounts_banned` (
+DROP TABLE IF IXIMSTS `accounts_banned`;
+CREATE TABLE IF NOT IXIMSTS `accounts_banned` (
   `accid` int(10) unsigned NOT NULL DEFAULT '0',
   `timebann` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `timeunbann` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',

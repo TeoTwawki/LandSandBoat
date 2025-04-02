@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.CONFRONTATION
+-- invaderXim.effect.CONFRONTATION
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -15,7 +15,7 @@ end
 
 effectObject.onEffectLose = function(target, effect)
     if target:getPet() then
-        target:getPet():delStatusEffect(xi.effect.CONFRONTATION)
+        target:getPet():delStatusEffect(invaderXim.effect.CONFRONTATION)
     end
 end
 

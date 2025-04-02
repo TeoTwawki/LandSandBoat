@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.IMMANENCE
+-- invaderXim.effect.IMMANENCE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

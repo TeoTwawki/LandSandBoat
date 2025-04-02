@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.effect
-xi.effect =
+---@enum invaderXim.effect
+invaderXim.effect =
 {
     KO                       = 0,
     WEAKNESS                 = 1,

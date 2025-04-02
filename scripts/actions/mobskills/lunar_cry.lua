@@ -27,9 +27,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
         buffvalue = 6
     end
 
-    target:addStatusEffect(xi.effect.ACCURACY_DOWN, buffvalue, 0, 180)
-    target:addStatusEffect(xi.effect.EVASION_DOWN, 32-buffvalue, 0, 180)
-    skill:setMsg(xi.msg.basic.SKILL_ENFEEB_2)
+    target:addStatusEffect(invaderXim.effect.ACCURACY_DOWN, buffvalue, 0, 180)
+    target:addStatusEffect(invaderXim.effect.EVASION_DOWN, 32-buffvalue, 0, 180)
+    skill:setMsg(invaderXim.msg.basic.SKILL_ENFEEB_2)
     return 0
 end
 

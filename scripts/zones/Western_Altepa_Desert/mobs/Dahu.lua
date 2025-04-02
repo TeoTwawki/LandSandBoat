@@ -8,26 +8,26 @@ local entity = {}
 
 local validWeather =
 {
-    xi.weather.DUST_STORM,
-    xi.weather.SAND_STORM,
-    xi.weather.HOT_SPELL,
-    xi.weather.HEAT_WAVE,
+    invaderXim.weather.DUST_STORM,
+    invaderXim.weather.SAND_STORM,
+    invaderXim.weather.HOT_SPELL,
+    invaderXim.weather.HEAT_WAVE,
 }
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.GRAVITY)
-    mob:addImmunity(xi.immunity.BIND)
-    mob:setMod(xi.mod.STORETP, 30)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
+    mob:addImmunity(invaderXim.immunity.BIND)
+    mob:setMod(invaderXim.mod.STORETP, 30)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.ENSTONE)
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.ENSTONE)
 end
 
 entity.onMobRoam = function(mob)
@@ -39,7 +39,7 @@ entity.onMobRoam = function(mob)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 413)
+    invaderXim.hunts.checkHunt(mob, player, 413)
 end
 
 entity.onMobDespawn = function(mob)

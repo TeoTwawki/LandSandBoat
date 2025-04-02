@@ -3,7 +3,7 @@
 --  NPC: Tateeya
 -- Automaton Attachment Unlocks
 -----------------------------------
-local ID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local ID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -35,7 +35,7 @@ entity.onTrigger = function(player, npc)
     local tradeStatus = player:getCharVar('TateeyaTradeStatus')
     local automatonName = player:getAutomatonName()
     if tradeStatus == 0 then
-        if player:getMainJob() == xi.job.PUP then
+        if player:getMainJob() == invaderXim.job.PUP then
             player:startEventString(650, automatonName, automatonName, automatonName, automatonName) --trade me to unlock attachments
         else
             player:startEvent(258) --default no PUP CS

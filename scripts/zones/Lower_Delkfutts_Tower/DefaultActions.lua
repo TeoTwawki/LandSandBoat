@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.LOWER_DELKFUTTS_TOWER]
+local ID = zones[invaderXim.zone.LOWER_DELKFUTTS_TOWER]
 
 return {
     ['_540'] = { messageSpecial = ID.text.DOOR_FIRMLY_SHUT },

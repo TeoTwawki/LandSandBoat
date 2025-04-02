@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.KLIMAFORM
+-- invaderXim.effect.KLIMAFORM
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

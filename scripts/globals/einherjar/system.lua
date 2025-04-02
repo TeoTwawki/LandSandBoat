@@ -2,9 +2,9 @@
 -- Einherjar
 -----------------------------------
 xi = xi or {}
-xi.einherjar = xi.einherjar or {}
+invaderXim.einherjar = invaderXim.einherjar or {}
 
-local ID = zones[xi.zone.HAZHALM_TESTING_GROUNDS]
+local ID = zones[invaderXim.zone.HAZHALM_TESTING_GROUNDS]
 
 local mobType =
 {
@@ -33,7 +33,7 @@ end
 
 local function log(chamberId, msg)
     local function getChamberNameById(id)
-        for name, value in pairs(xi.einherjar.chamber) do
+        for name, value in pairs(invaderXim.einherjar.chamber) do
             if value == id then
                 return name
             end
@@ -50,30 +50,30 @@ end
 -----------------------------------
 local chambersInstances =
 {
-    [xi.einherjar.chamber.ROSSWEISSE]   = nil,
-    [xi.einherjar.chamber.GRIMGERDE]    = nil,
-    [xi.einherjar.chamber.SIEGRUNE]     = nil,
-    [xi.einherjar.chamber.HELMWIGE]     = nil,
-    [xi.einherjar.chamber.SCHWERTLEITE] = nil,
-    [xi.einherjar.chamber.WALTRAUTE]    = nil,
-    [xi.einherjar.chamber.ORTLINDE]     = nil,
-    [xi.einherjar.chamber.GERHILDE]     = nil,
-    [xi.einherjar.chamber.BRUNNHILDE]   = nil,
-    -- [xi.einherjar.chamber.ODIN]         = nil, -- ODIN_II shares the same chamber -- Not implemented
+    [invaderXim.einherjar.chamber.ROSSWEISSE]   = nil,
+    [invaderXim.einherjar.chamber.GRIMGERDE]    = nil,
+    [invaderXim.einherjar.chamber.SIEGRUNE]     = nil,
+    [invaderXim.einherjar.chamber.HELMWIGE]     = nil,
+    [invaderXim.einherjar.chamber.SCHWERTLEITE] = nil,
+    [invaderXim.einherjar.chamber.WALTRAUTE]    = nil,
+    [invaderXim.einherjar.chamber.ORTLINDE]     = nil,
+    [invaderXim.einherjar.chamber.GERHILDE]     = nil,
+    [invaderXim.einherjar.chamber.BRUNNHILDE]   = nil,
+    -- [invaderXim.einherjar.chamber.ODIN]         = nil, -- ODIN_II shares the same chamber -- Not implemented
 }
 
 -- Get the chamber instance by ID
-xi.einherjar.getChamber = function(id)
+invaderXim.einherjar.getChamber = function(id)
     return chambersInstances[id]
 end
 
 -- Create a new chamber instance
-xi.einherjar.createNewChamber = function(chamberId, leader)
+invaderXim.einherjar.createNewChamber = function(chamberId, leader)
     log(chamberId, 'Creating chamber ' .. chamberId)
-    local newInstance = xi.einherjar.new(chamberId, leader)
+    local newInstance = invaderXim.einherjar.new(chamberId, leader)
     chambersInstances[chamberId] = newInstance
     if newInstance then
-        xi.einherjar.cycleWave(newInstance)
+        invaderXim.einherjar.cycleWave(newInstance)
     end
 
     return chambersInstances[chamberId]
@@ -89,21 +89,21 @@ local function cleanChamber(chamberData)
             DespawnMob(mob:getID())
         end
 
-        xi.einherjar.unlockMob(mob:getID())
+        invaderXim.einherjar.unlockMob(mob:getID())
     end
 
     for _, mob in pairs(chamberData.deadMobs) do
-        xi.einherjar.unlockMob(mob:getID())
+        invaderXim.einherjar.unlockMob(mob:getID())
     end
 
-    xi.einherjar.unlockMob(chamberData.encounters.boss)
+    invaderXim.einherjar.unlockMob(chamberData.encounters.boss)
 
     if chamberData.lootCrate then
-        xi.einherjar.hideCrate(chamberData.lootCrate)
+        invaderXim.einherjar.hideCrate(chamberData.lootCrate)
     end
 
     if chamberData.tempCrate then
-        xi.einherjar.hideCrate(chamberData.tempCrate)
+        invaderXim.einherjar.hideCrate(chamberData.tempCrate)
     end
 
     log(chamberData.id, 'Chamber cleaned.')
@@ -120,7 +120,7 @@ local function expelAllFromChamber(chamberData)
 
     forEachPlayer(chamberData.players, function(player)
         log(chamberData.id, 'Expelling player: ' .. player:getName() .. ' (' .. player:getID() .. ')')
-        xi.einherjar.onChamberExit(chamberData, player)
+        invaderXim.einherjar.onChamberExit(chamberData, player)
     end)
 end
 
@@ -129,10 +129,10 @@ local function onWin(chamberData)
         player:setCharVar('[ein]chamber', 0)
         player:messageSpecial(
                 ID.text.CHAMBER_CLEARED,
-                xi.einherjar.settings.EINHERJAR_CLEAR_EXTRA_TIME,
+                invaderXim.einherjar.settings.EINHERJAR_CLEAR_EXTRA_TIME,
                 chamberData.id - 1
         )
-        xi.einherjar.giveChamberFeather(player, chamberData.id)
+        invaderXim.einherjar.giveChamberFeather(player, chamberData.id)
     end)
 
     -- Cancel all pending events
@@ -140,7 +140,7 @@ local function onWin(chamberData)
         chamberData.eventsQueue[k] = nil
     end
 
-    chamberData.eventsQueue[os.time() + (xi.einherjar.settings.EINHERJAR_CLEAR_EXTRA_TIME * 60)] = function()
+    chamberData.eventsQueue[os.time() + (invaderXim.einherjar.settings.EINHERJAR_CLEAR_EXTRA_TIME * 60)] = function()
         log(chamberData.id, 'Post-win timeout, expelling players and cleaning chamber.')
         expelAllFromChamber(chamberData)
         cleanChamber(chamberData)
@@ -157,7 +157,7 @@ local function onArmouryCrateTrigger(chamberData, chestOpener, armouryCrate)
         onWin(chamberData)
 
         -- TODO: Rewards are supposed to go in a chamber-scoped treasure pool
-        for _, reward in ipairs(xi.einherjar.getArmouryCrateRewards(chamberData.encounters.boss, chamberData.id)) do
+        for _, reward in ipairs(invaderXim.einherjar.getArmouryCrateRewards(chamberData.encounters.boss, chamberData.id)) do
             chestOpener:addTreasure(reward, armouryCrate)
         end
 
@@ -171,10 +171,10 @@ local function onSpecialMobDespawn(chamberData, mob)
         ['Saehrimnir'] = function()
             -- TODO: The exact value is unknown but it appears to provide a certain amount of regain to all mobs
             -- Future mobs will have 30% regain
-            chamberData.mods[xi.mod.REGAIN] = 30
+            chamberData.mods[invaderXim.mod.REGAIN] = 30
             -- Apply regain to mobs already spawned
             for _, spawnedMob in pairs(chamberData.mobs) do
-                spawnedMob:setMod(xi.mod.REGAIN, 30)
+                spawnedMob:setMod(invaderXim.mod.REGAIN, 30)
             end
 
             forEachPlayer(chamberData.players, function(player)
@@ -201,9 +201,9 @@ local function onSpecialMobDeath(chamberData, mob)
         end,
 
         ['Muninn'] = function()
-            chamberData.mods[xi.mod.HPP] = -10
+            chamberData.mods[invaderXim.mod.HPP] = -10
             for _, spawnedMob in pairs(chamberData.mobs) do
-                spawnedMob:setMod(xi.mod.HPP, -10)
+                spawnedMob:setMod(invaderXim.mod.HPP, -10)
                 spawnedMob:updateHealth()
             end
 
@@ -248,7 +248,7 @@ local function onMobDespawn(chamberData, mob)
     end
 
     if #chamberData.mobs <= 0 then
-        xi.einherjar.cycleWave(chamberData)
+        invaderXim.einherjar.cycleWave(chamberData)
     end
 end
 
@@ -261,11 +261,11 @@ local function onMobEngage(chamberData, mob)
             -- Unknown if that's the actual trigger for countdown
             -- Captures show special spawn as early as 1.5 minutes from engaging mobs
             chamberData.eventsQueue[os.time() + math.random(90, 300)] = function()
-                local x, y, z    = unpack(xi.einherjar.getRandomPosForMobGroup(chamberData.id, 10, 30))
+                local x, y, z    = unpack(invaderXim.einherjar.getRandomPosForMobGroup(chamberData.id, 10, 30))
                 local specialMob = GetMobByID(chamberData.encounters.special)
                 if specialMob then
                     specialMob:setSpawn(x, y, z, math.random(0, 255))
-                    xi.einherjar.spawnMob(specialMob, mobType.SPECIAL, chamberData)
+                    invaderXim.einherjar.spawnMob(specialMob, mobType.SPECIAL, chamberData)
                 end
             end
         end
@@ -278,11 +278,11 @@ local function onPlayerDeath(chamberData, player)
         return
     end
 
-    log(chamberData.id, string.format('All players dead, queueing emergency teleportation in %d minutes.', xi.einherjar.settings.EINHERJAR_KO_EXPEL_TIME))
+    log(chamberData.id, string.format('All players dead, queueing emergency teleportation in %d minutes.', invaderXim.einherjar.settings.EINHERJAR_KO_EXPEL_TIME))
 
-    local expelTime = os.time() + (xi.einherjar.settings.EINHERJAR_KO_EXPEL_TIME * 60)
+    local expelTime = os.time() + (invaderXim.einherjar.settings.EINHERJAR_KO_EXPEL_TIME * 60)
     forEachPlayer(chamberData.players, function(chamberPlayer)
-        chamberPlayer:messageSpecial(ID.text.EXPEDITION_INCAPACITATED_WARN, xi.einherjar.settings.EINHERJAR_KO_EXPEL_TIME)
+        chamberPlayer:messageSpecial(ID.text.EXPEDITION_INCAPACITATED_WARN, invaderXim.einherjar.settings.EINHERJAR_KO_EXPEL_TIME)
     end)
 
     local function checkExpel()
@@ -308,7 +308,7 @@ local function onPlayerDeath(chamberData, player)
     chamberData.eventsQueue[os.time() + 5] = checkExpel
 end
 
-xi.einherjar.new = function(chamberId, leader)
+invaderXim.einherjar.new = function(chamberId, leader)
     local leaderId  = leader:getID()
     local startTime = os.time()
 
@@ -319,23 +319,23 @@ xi.einherjar.new = function(chamberId, leader)
         -- TODO: Create a chamber-scoped shared treasure pool
         pool        = leader:getTreasurePool(),
         startTime   = startTime,
-        endTime     = startTime + (xi.einherjar.settings.EINHERJAR_TIME_LIMIT * 60),
+        endTime     = startTime + (invaderXim.einherjar.settings.EINHERJAR_TIME_LIMIT * 60),
         locked      = false,
         players     = {},
 
-        encounters  = xi.einherjar.makeChamberPlan(chamberId),
+        encounters  = invaderXim.einherjar.makeChamberPlan(chamberId),
         mobs        = {},
         deadMobs    = {},
         plannedMobs = 0,
         mobMods     =
         {
-            [xi.mobMod.ALLI_HATE]      = 100,
-            [xi.mobMod.CHECK_AS_NM]    = 1,
-            [xi.mobMod.CHARMABLE]      = 0,
-            [xi.mobMod.DONT_ROAM_HOME] = 1,
-            [xi.mobMod.CLAIM_TYPE]     = xi.claimType.NON_EXCLUSIVE,
-            [xi.mobMod.EXP_BONUS]      = -100,
-            [xi.mobMod.GIL_BONUS]      = -100,
+            [invaderXim.mobMod.ALLI_HATE]      = 100,
+            [invaderXim.mobMod.CHECK_AS_NM]    = 1,
+            [invaderXim.mobMod.CHARMABLE]      = 0,
+            [invaderXim.mobMod.DONT_ROAM_HOME] = 1,
+            [invaderXim.mobMod.CLAIM_TYPE]     = invaderXim.claimType.NON_EXCLUSIVE,
+            [invaderXim.mobMod.EXP_BONUS]      = -100,
+            [invaderXim.mobMod.GIL_BONUS]      = -100,
         },
         mods        = {},
         waveIndex   = 0,
@@ -357,22 +357,22 @@ xi.einherjar.new = function(chamberId, leader)
 
     if chamberData.lootCrate then
         chamberData.lootCrate:setPos(
-            xi.einherjar.chambers[chamberData.id].center[1],
-            xi.einherjar.chambers[chamberData.id].center[2],
-            xi.einherjar.chambers[chamberData.id].center[3],
-            xi.einherjar.chambers[chamberData.id].center[4]
+            invaderXim.einherjar.chambers[chamberData.id].center[1],
+            invaderXim.einherjar.chambers[chamberData.id].center[2],
+            invaderXim.einherjar.chambers[chamberData.id].center[3],
+            invaderXim.einherjar.chambers[chamberData.id].center[4]
         )
-        xi.einherjar.hideCrate(chamberData.lootCrate)
+        invaderXim.einherjar.hideCrate(chamberData.lootCrate)
         chamberData.lootCrate:addListener('ON_TRIGGER', 'TRIGGER_ITEM_CRATE', utils.bind(onArmouryCrateTrigger, chamberData))
     end
 
     if chamberData.tempCrate then
-        xi.einherjar.hideCrate(chamberData.tempCrate)
+        invaderXim.einherjar.hideCrate(chamberData.tempCrate)
     end
 
     chamberData.eventsQueue =
     {
-        [chamberData.startTime + (xi.einherjar.settings.EINHERJAR_RESERVATION_TIMEOUT * 60)] = function()
+        [chamberData.startTime + (invaderXim.einherjar.settings.EINHERJAR_RESERVATION_TIMEOUT * 60)] = function()
             if not chamberData.players[chamberData.leaderId] then
                 log(chamberId, 'Leader never entered chamber, cancelling reservation.')
                 cleanChamber(chamberData)
@@ -409,7 +409,7 @@ xi.einherjar.new = function(chamberId, leader)
     return chamberData
 end
 
-xi.einherjar.onChamberEnter = function(chamberData, player, reconnecting)
+invaderXim.einherjar.onChamberEnter = function(chamberData, player, reconnecting)
     local playerId = player:getID()
     log(chamberData.id, 'Player entered: ' .. player:getName() .. ' (' .. playerId .. ')')
 
@@ -424,12 +424,12 @@ xi.einherjar.onChamberEnter = function(chamberData, player, reconnecting)
     chamberData.players[playerId] = player
 
     if not reconnecting then
-        xi.einherjar.recordLockout(player)
+        invaderXim.einherjar.recordLockout(player)
     end
 end
 
-xi.einherjar.onChamberExit = function(chamberData, player)
-    player:delContainerItems(xi.inv.TEMPITEMS)
+invaderXim.einherjar.onChamberExit = function(chamberData, player)
+    player:delContainerItems(invaderXim.inv.TEMPITEMS)
     if not chamberData.players[player:getID()] then -- player dropped glass without entering
         return
     end
@@ -441,10 +441,10 @@ xi.einherjar.onChamberExit = function(chamberData, player)
     -- Expel player from chamber
     player:startEvent(4)
 
-    player:messageSpecial(ID.text.LAMP_POWER_FADED, xi.item.GLOWING_LAMP)
+    player:messageSpecial(ID.text.LAMP_POWER_FADED, invaderXim.item.GLOWING_LAMP)
 
     -- Award Therion Ichor
-    local ampoulesReward = xi.einherjar.getAmpoulesReward(chamberData.id, #chamberData.deadMobs, chamberData.plannedMobs)
+    local ampoulesReward = invaderXim.einherjar.getAmpoulesReward(chamberData.id, #chamberData.deadMobs, chamberData.plannedMobs)
     player:messageSpecial(ID.text.AMPOULES_OBTAINED, ampoulesReward)
 
     if ampoulesReward ~= 0 then
@@ -461,7 +461,7 @@ xi.einherjar.onChamberExit = function(chamberData, player)
 
     chamberData.players[player:getID()] = nil
 
-    xi.einherjar.voidAllLamps(player, chamberData.id)
+    invaderXim.einherjar.voidAllLamps(player, chamberData.id)
 
     -- Release chamber if no players are left without waiting for the timeout
     if #chamberData.players == 0 then
@@ -470,7 +470,7 @@ xi.einherjar.onChamberExit = function(chamberData, player)
     end
 end
 
-xi.einherjar.spawnMob = function(mob, newMobType, chamberData)
+invaderXim.einherjar.spawnMob = function(mob, newMobType, chamberData)
     mob:setCallForHelpBlocked(true)
 
     if newMobType == mobType.SPECIAL then
@@ -498,11 +498,11 @@ xi.einherjar.spawnMob = function(mob, newMobType, chamberData)
 
     if newMobType == mobType.SPECIAL then
         -- Special mobs have unique roaming properties
-        mob:setMobMod(xi.mobMod.ROAM_COOL, 8)
-        mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 60)
-        mob:setMobMod(xi.mobMod.ROAM_RATE, 5)
+        mob:setMobMod(invaderXim.mobMod.ROAM_COOL, 8)
+        mob:setMobMod(invaderXim.mobMod.ROAM_DISTANCE, 60)
+        mob:setMobMod(invaderXim.mobMod.ROAM_RATE, 5)
     elseif newMobType == mobType.REGULAR then
-        mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 20)
+        mob:setMobMod(invaderXim.mobMod.ROAM_DISTANCE, 20)
     end
 
     for mod, value in pairs(chamberData.mods) do
@@ -521,14 +521,14 @@ xi.einherjar.spawnMob = function(mob, newMobType, chamberData)
                 mob:getZPos(),
                 mob:getRotPos()
             )
-            xi.einherjar.spawnMob(clone, mobType.BOSS, chamberData)
+            invaderXim.einherjar.spawnMob(clone, mobType.BOSS, chamberData)
         end
     end
 end
 
 -- Spawn mobs for the next wave, including the boss on the last wave
 -- Mobs are grouped randomly and spawned in a random position within a range
-xi.einherjar.cycleWave = function(chamberData)
+invaderXim.einherjar.cycleWave = function(chamberData)
     if not chamberData.encounters.waves[chamberData.waveIndex + 1] then
         log(chamberData.id, 'All waves cleared! Showing armoury crate.')
         npcUtil.showCrate(chamberData.lootCrate)
@@ -540,12 +540,12 @@ xi.einherjar.cycleWave = function(chamberData)
     log(chamberData.id, string.format('Cycling to next wave %d -> %d', chamberData.waveIndex, chamberData.waveIndex + 1))
     chamberData.waveIndex = chamberData.waveIndex + 1
 
-    local waveMobs = xi.einherjar.subDivideMobs(chamberData.encounters.waves[chamberData.waveIndex])
+    local waveMobs = invaderXim.einherjar.subDivideMobs(chamberData.encounters.waves[chamberData.waveIndex])
 
     -- Spawn mobs with group-based and individual random variation
     for _, subGroup in ipairs(waveMobs) do
         -- Group center position relative to the chamber center
-        local groupCenterX, groupCenterY, groupCenterZ = unpack(xi.einherjar.getRandomPosForMobGroup(chamberData.id, 3, 15))
+        local groupCenterX, groupCenterY, groupCenterZ = unpack(invaderXim.einherjar.getRandomPosForMobGroup(chamberData.id, 3, 15))
 
         for _, mobId in ipairs(subGroup) do
             local newMob = GetMobByID(mobId)
@@ -557,7 +557,7 @@ xi.einherjar.cycleWave = function(chamberData)
                     groupCenterZ + math.random(-7, 7),
                     math.random(0, 255)
                 )
-                xi.einherjar.spawnMob(newMob, mobType.REGULAR, chamberData)
+                invaderXim.einherjar.spawnMob(newMob, mobType.REGULAR, chamberData)
             end
         end
     end
@@ -569,8 +569,8 @@ xi.einherjar.cycleWave = function(chamberData)
     then
         local newBoss = GetMobByID(chamberData.encounters.boss)
         if newBoss then
-            newBoss:setSpawn(unpack(xi.einherjar.getRandomPosForMobGroup(chamberData.id, 0, 0)))
-            xi.einherjar.spawnMob(newBoss, mobType.BOSS, chamberData)
+            newBoss:setSpawn(unpack(invaderXim.einherjar.getRandomPosForMobGroup(chamberData.id, 0, 0)))
+            invaderXim.einherjar.spawnMob(newBoss, mobType.BOSS, chamberData)
         end
     end
 end
@@ -595,7 +595,7 @@ local function onChamberTick(chamberData)
 end
 
 -- On every zone tick, check if chambers have events to process
-xi.einherjar.onZoneTick = function(zone)
+invaderXim.einherjar.onZoneTick = function(zone)
     for _, chamberData in pairs(chambersInstances) do
         if chamberData then
             onChamberTick(chamberData)
@@ -604,19 +604,19 @@ xi.einherjar.onZoneTick = function(zone)
 end
 
 -- Zoning out without dropping glass forfeits ichor rewards
-xi.einherjar.onZoneOut = function(chamberData, player)
+invaderXim.einherjar.onZoneOut = function(chamberData, player)
     if chamberData.players[player:getID()] then
-        player:delContainerItems(xi.inv.TEMPITEMS)
+        player:delContainerItems(invaderXim.inv.TEMPITEMS)
         log(chamberData.id, 'Player zoned out: ' .. player:getName() .. ' (' .. player:getID() .. ')')
         chamberData.players[player:getID()] = nil
     end
 end
 
 -- Check if player has a matching lamp, else they get warped to entrance
-xi.einherjar.onReconnection = function(chamberData, player)
+invaderXim.einherjar.onReconnection = function(chamberData, player)
     local playerId = player:getID()
 
-    if #xi.einherjar.getMatchingLamps(player, chamberData.id, chamberData.startTime) == 0 then
+    if #invaderXim.einherjar.getMatchingLamps(player, chamberData.id, chamberData.startTime) == 0 then
         return false
     end
 
@@ -625,7 +625,7 @@ xi.einherjar.onReconnection = function(chamberData, player)
 
     -- Delay the event to ensure the player is fully loaded, else the music packets are not processed
     player:timer(5000, function()
-        xi.einherjar.onChamberEnter(chamberData, player, true)
+        invaderXim.einherjar.onChamberEnter(chamberData, player, true)
     end)
 
     return true

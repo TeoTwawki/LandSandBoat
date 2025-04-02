@@ -3,13 +3,13 @@
 --  NPC: Takiyah
 -- Type: Regional Merchant
 -----------------------------------
-local ID = zones[xi.zone.METALWORKS]
+local ID = zones[invaderXim.zone.METALWORKS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if GetRegionOwner(xi.region.QUFIMISLAND) ~= xi.nation.BASTOK then
+    if GetRegionOwner(invaderXim.region.QUFIMISLAND) ~= invaderXim.nation.BASTOK then
         player:showText(npc, ID.text.TAKIYAH_CLOSED_DIALOG)
     else
         local stock =
@@ -18,7 +18,7 @@ entity.onTrigger = function(player, npc)
         }
 
         player:showText(npc, ID.text.TAKIYAH_OPEN_DIALOG)
-        xi.shop.general(player, stock, xi.fameArea.BASTOK)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.BASTOK)
     end
 end
 

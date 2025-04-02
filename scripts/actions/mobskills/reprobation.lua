@@ -13,11 +13,11 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    local dispel =  target:dispelAllStatusEffect(bit.bor(xi.effectFlag.DISPELABLE, xi.effectFlag.FOOD))
-    local msg = xi.msg.basic.SKILL_NO_EFFECT
+    local dispel =  target:dispelAllStatusEffect(bit.bor(invaderXim.effectFlag.DISPELABLE, invaderXim.effectFlag.FOOD))
+    local msg = invaderXim.msg.basic.SKILL_NO_EFFECT
 
     if dispel > 0 then
-        msg = xi.msg.basic.DISAPPEAR_NUM
+        msg = invaderXim.msg.basic.DISAPPEAR_NUM
     end
 
     skill:setMsg(msg)

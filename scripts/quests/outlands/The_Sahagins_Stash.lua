@@ -6,26 +6,26 @@
 -- qm2      : !pos 295.276 27.129 213.043 176
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OUTLANDS, xi.quest.id.outlands.THE_SAHAGINS_STASH)
+local quest = Quest:new(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.THE_SAHAGINS_STASH)
 
 quest.reward =
 {
     fame     = 75,
-    fameArea = xi.fameArea.NORG,
-    item     = xi.item.SCROLL_OF_UTSUSEMI_ICHI,
-    title    = xi.title.TREASURE_HOUSE_RANSACKER,
+    fameArea = invaderXim.fameArea.NORG,
+    item     = invaderXim.item.SCROLL_OF_UTSUSEMI_ICHI,
+    title    = invaderXim.title.TREASURE_HOUSE_RANSACKER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.NORG) >= 4 and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.NORG) >= 4 and
                 player:getMainLvl() >= 5
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Laisrean'] =
             {
@@ -51,16 +51,16 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Laisrean'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.SEA_SERPENT_STATUE) then
-                        return quest:progressEvent(35, xi.ki.SEA_SERPENT_STATUE)
+                    if player:hasKeyItem(invaderXim.ki.SEA_SERPENT_STATUE) then
+                        return quest:progressEvent(35, invaderXim.ki.SEA_SERPENT_STATUE)
                     else
                         return quest:event(34)
                     end
@@ -71,18 +71,18 @@ quest.sections =
             {
                 [35] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.SEA_SERPENT_STATUE)
+                        player:delKeyItem(invaderXim.ki.SEA_SERPENT_STATUE)
                     end
                 end,
             },
         },
 
-        [xi.zone.SEA_SERPENT_GROTTO] =
+        [invaderXim.zone.SEA_SERPENT_GROTTO] =
         {
             ['qm2'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.SEA_SERPENT_STATUE) then
+                    if not player:hasKeyItem(invaderXim.ki.SEA_SERPENT_STATUE) then
                         return quest:progressEvent(1)
                     end
                 end,
@@ -91,7 +91,7 @@ quest.sections =
             onEventFinish =
             {
                 [1] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.SEA_SERPENT_STATUE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.SEA_SERPENT_STATUE)
                 end,
             },
         },

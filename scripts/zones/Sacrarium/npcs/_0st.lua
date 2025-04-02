@@ -4,7 +4,7 @@
 -- Notes: Opens _0su (Gate)
 -- !pos 103.478 -1.563 50.181 28
 -----------------------------------
-local ID = zones[xi.zone.SACRARIUM]
+local ID = zones[invaderXim.zone.SACRARIUM]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

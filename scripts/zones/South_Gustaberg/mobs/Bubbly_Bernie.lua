@@ -6,11 +6,11 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 80, 2, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 80, 2, invaderXim.regime.type.FIELDS)
 end
 
 return entity

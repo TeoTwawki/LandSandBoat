@@ -1,5 +1,5 @@
 xi = xi or {}
-xi.magicburst = xi.magicburst or {}
+invaderXim.magicburst = invaderXim.magicburst or {}
 
 local matches = -- [element id][resonance id]
 {
@@ -27,8 +27,8 @@ local function doesSpellElementMatchResonance(ele, resonance)
     return (isMatch ~= nil and isMatch > 0)
 end
 
-xi.magicburst.formMagicBurst = function(element, target)
-    local resonance = target:getStatusEffect(xi.effect.SKILLCHAIN)
+invaderXim.magicburst.formMagicBurst = function(element, target)
+    local resonance = target:getStatusEffect(invaderXim.effect.SKILLCHAIN)
 
     if
         resonance ~= nil and
@@ -43,7 +43,7 @@ xi.magicburst.formMagicBurst = function(element, target)
 end
 
 -- Returns a boolean if the element matches the skillchain property given
-xi.magicburst.doesElementMatchWeaponskill = function(ele, SCProp)
+invaderXim.magicburst.doesElementMatchWeaponskill = function(ele, SCProp)
     local isMatch = matches[ele + 1][SCProp + 1]
     return (isMatch ~= nil and isMatch > 0)
 end

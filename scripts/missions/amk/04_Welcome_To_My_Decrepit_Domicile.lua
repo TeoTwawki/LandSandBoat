@@ -12,11 +12,11 @@
 -- Like in: scripts\quests\adoulin\Flavors_of_Our_Lives.lua
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.AMK, xi.mission.id.amk.WELCOME_TO_MY_DECREPIT_DOMICILE)
+local mission = Mission:new(invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.WELCOME_TO_MY_DECREPIT_DOMICILE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.AMK, xi.mission.id.amk.CURSES_A_HORRIFICALLY_HARROWING_HEX },
+    nextMission = { invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.CURSES_A_HORRIFICALLY_HARROWING_HEX },
 }
 
 mission.sections =
@@ -27,12 +27,12 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 0
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Inconspicuous_Door'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.STURDY_METAL_STRIP) then
+                    if player:hasKeyItem(invaderXim.ki.STURDY_METAL_STRIP) then
                         return mission:progressEvent(10179)
                     else
                         return mission:progressEvent(10186) -- Reminder
@@ -43,8 +43,8 @@ mission.sections =
             onEventFinish =
             {
                 [10179] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.STURDY_METAL_STRIP)
-                    player:setMissionStatus(xi.mission.log_id.AMK, 1)
+                    player:delKeyItem(invaderXim.ki.STURDY_METAL_STRIP)
+                    player:setMissionStatus(invaderXim.mission.log_id.AMK, 1)
                 end,
             },
         },
@@ -56,12 +56,12 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 1
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Inconspicuous_Door'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.PIECE_OF_RUGGED_TREE_BARK) then
+                    if player:hasKeyItem(invaderXim.ki.PIECE_OF_RUGGED_TREE_BARK) then
                         return mission:progressEvent(10180)
                     else
                         return mission:progressEvent(10187) -- Reminder
@@ -72,8 +72,8 @@ mission.sections =
             onEventFinish =
             {
                 [10180] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.PIECE_OF_RUGGED_TREE_BARK)
-                    player:setMissionStatus(xi.mission.log_id.AMK, 2)
+                    player:delKeyItem(invaderXim.ki.PIECE_OF_RUGGED_TREE_BARK)
+                    player:setMissionStatus(invaderXim.mission.log_id.AMK, 2)
                 end,
             },
         },
@@ -85,12 +85,12 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 2
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Inconspicuous_Door'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.SAVORY_LAMB_ROAST) then
+                    if player:hasKeyItem(invaderXim.ki.SAVORY_LAMB_ROAST) then
                         return mission:progressEvent(10181)
                     else
                         return mission:progressEvent(10188) -- Reminder
@@ -102,7 +102,7 @@ mission.sections =
             {
                 [10181] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.SAVORY_LAMB_ROAST)
+                        player:delKeyItem(invaderXim.ki.SAVORY_LAMB_ROAST)
                     end
                 end,
             },

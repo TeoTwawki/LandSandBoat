@@ -6,7 +6,7 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 5)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 5)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

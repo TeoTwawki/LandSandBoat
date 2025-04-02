@@ -21,8 +21,8 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.DEMON
-    params.effect = xi.effect.DEFENSE_DOWN
+    params.ecosystem = invaderXim.ecosystem.DEMON
+    params.effect = invaderXim.effect.DEFENSE_DOWN
     local power = 10
     local tick = 0
     local duration = 180
@@ -30,7 +30,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     local isGaze = false
     local isConal = false
 
-    return xi.spells.blue.useEnfeeblingSpell(caster, target, spell, params, power, tick, duration, resistThreshold, isGaze, isConal)
+    return invaderXim.spells.blue.useEnfeeblingSpell(caster, target, spell, params, power, tick, duration, resistThreshold, isGaze, isConal)
 end
 
 return spellObject

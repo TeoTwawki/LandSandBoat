@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.EBULLIENCE
+-- invaderXim.effect.EBULLIENCE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

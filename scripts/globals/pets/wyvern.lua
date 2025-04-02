@@ -5,8 +5,8 @@ require('scripts/globals/ability')
 require('scripts/globals/job_utils/dragoon')
 -----------------------------------
 xi = xi or {}
-xi.pets = xi.pets or {}
-xi.pets.wyvern = {}
+invaderXim.pets = invaderXim.pets or {}
+invaderXim.pets.wyvern = {}
 
 local wyvernCapabilities =
 {
@@ -17,44 +17,44 @@ local wyvernCapabilities =
 
 local wyvernTypes =
 {
-    [xi.job.NONE] = wyvernCapabilities.OFFENSIVE,
-    [xi.job.WAR]  = wyvernCapabilities.OFFENSIVE,
-    [xi.job.MNK]  = wyvernCapabilities.OFFENSIVE,
-    [xi.job.WHM]  = wyvernCapabilities.DEFENSIVE,
-    [xi.job.BLM]  = wyvernCapabilities.DEFENSIVE,
-    [xi.job.RDM]  = wyvernCapabilities.DEFENSIVE,
-    [xi.job.THF]  = wyvernCapabilities.OFFENSIVE,
-    [xi.job.PLD]  = wyvernCapabilities.MULTI,
-    [xi.job.DRK]  = wyvernCapabilities.MULTI,
-    [xi.job.BST]  = wyvernCapabilities.OFFENSIVE,
-    [xi.job.BRD]  = wyvernCapabilities.MULTI,
-    [xi.job.RNG]  = wyvernCapabilities.OFFENSIVE,
-    [xi.job.SAM]  = wyvernCapabilities.OFFENSIVE,
-    [xi.job.NIN]  = wyvernCapabilities.MULTI,
-    [xi.job.DRG]  = wyvernCapabilities.OFFENSIVE,
-    [xi.job.SMN]  = wyvernCapabilities.DEFENSIVE,
-    [xi.job.BLU]  = wyvernCapabilities.DEFENSIVE,
-    [xi.job.COR]  = wyvernCapabilities.OFFENSIVE,
-    [xi.job.PUP]  = wyvernCapabilities.OFFENSIVE,
-    [xi.job.DNC]  = wyvernCapabilities.OFFENSIVE,
-    [xi.job.SCH]  = wyvernCapabilities.DEFENSIVE,
-    [xi.job.GEO]  = wyvernCapabilities.DEFENSIVE,
-    [xi.job.RUN]  = wyvernCapabilities.MULTI,
+    [invaderXim.job.NONE] = wyvernCapabilities.OFFENSIVE,
+    [invaderXim.job.WAR]  = wyvernCapabilities.OFFENSIVE,
+    [invaderXim.job.MNK]  = wyvernCapabilities.OFFENSIVE,
+    [invaderXim.job.WHM]  = wyvernCapabilities.DEFENSIVE,
+    [invaderXim.job.BLM]  = wyvernCapabilities.DEFENSIVE,
+    [invaderXim.job.RDM]  = wyvernCapabilities.DEFENSIVE,
+    [invaderXim.job.THF]  = wyvernCapabilities.OFFENSIVE,
+    [invaderXim.job.PLD]  = wyvernCapabilities.MULTI,
+    [invaderXim.job.DRK]  = wyvernCapabilities.MULTI,
+    [invaderXim.job.BST]  = wyvernCapabilities.OFFENSIVE,
+    [invaderXim.job.BRD]  = wyvernCapabilities.MULTI,
+    [invaderXim.job.RNG]  = wyvernCapabilities.OFFENSIVE,
+    [invaderXim.job.SAM]  = wyvernCapabilities.OFFENSIVE,
+    [invaderXim.job.NIN]  = wyvernCapabilities.MULTI,
+    [invaderXim.job.DRG]  = wyvernCapabilities.OFFENSIVE,
+    [invaderXim.job.SMN]  = wyvernCapabilities.DEFENSIVE,
+    [invaderXim.job.BLU]  = wyvernCapabilities.DEFENSIVE,
+    [invaderXim.job.COR]  = wyvernCapabilities.OFFENSIVE,
+    [invaderXim.job.PUP]  = wyvernCapabilities.OFFENSIVE,
+    [invaderXim.job.DNC]  = wyvernCapabilities.OFFENSIVE,
+    [invaderXim.job.SCH]  = wyvernCapabilities.DEFENSIVE,
+    [invaderXim.job.GEO]  = wyvernCapabilities.DEFENSIVE,
+    [invaderXim.job.RUN]  = wyvernCapabilities.MULTI,
 }
 
 -- healing breath uses ratios, so use a divisor as input
 local function doHealingBreath(player, divisor)
     local breathHealRange = 14
 
-    local healingbreath = xi.jobAbility.HEALING_BREATH
+    local healingbreath = invaderXim.jobAbility.HEALING_BREATH
     local wyvernType    = wyvernTypes[player:getSubJob()]
 
     if player:getMainLvl() >= 80 then
-        healingbreath = xi.jobAbility.HEALING_BREATH_IV
+        healingbreath = invaderXim.jobAbility.HEALING_BREATH_IV
     elseif player:getMainLvl() >= 40 then
-        healingbreath = xi.jobAbility.HEALING_BREATH_III
+        healingbreath = invaderXim.jobAbility.HEALING_BREATH_III
     elseif player:getMainLvl() >= 20 then
-        healingbreath = xi.jobAbility.HEALING_BREATH_II
+        healingbreath = invaderXim.jobAbility.HEALING_BREATH_II
     end
 
     -- zone ID check? is this some strange master zoning but pet hasn't despawned in the other zone check?
@@ -88,11 +88,11 @@ local function doStatusBreath(target, player)
     local removeBreathTable =
     {
     --  { lvl, ability                      , { statuses            } },
-        { 40, xi.jobAbility.REMOVE_PARALYSIS, { xi.effect.PARALYSIS } },
-        { 60, xi.jobAbility.REMOVE_CURSE    , { xi.effect.CURSE_I, xi.effect.BANE, xi.effect.DOOM } },
-        { 80, xi.jobAbility.REMOVE_DISEASE  , { xi.effect.DISEASE, xi.effect.PLAGUE } },
-        { 20, xi.jobAbility.REMOVE_BLINDNESS, { xi.effect.BLINDNESS } },
-        {  1, xi.jobAbility.REMOVE_POISON   , { xi.effect.POISON    } },
+        { 40, invaderXim.jobAbility.REMOVE_PARALYSIS, { invaderXim.effect.PARALYSIS } },
+        { 60, invaderXim.jobAbility.REMOVE_CURSE    , { invaderXim.effect.CURSE_I, invaderXim.effect.BANE, invaderXim.effect.DOOM } },
+        { 80, invaderXim.jobAbility.REMOVE_DISEASE  , { invaderXim.effect.DISEASE, invaderXim.effect.PLAGUE } },
+        { 20, invaderXim.jobAbility.REMOVE_BLINDNESS, { invaderXim.effect.BLINDNESS } },
+        {  1, invaderXim.jobAbility.REMOVE_POISON   , { invaderXim.effect.POISON    } },
     }
 
     local breathRange = 14
@@ -118,10 +118,10 @@ local function doStatusBreath(target, player)
     return false
 end
 
-xi.pets.wyvern.onMobSpawn = function(mob)
+invaderXim.pets.wyvern.onMobSpawn = function(mob)
     local master = mob:getMaster()
 
-    if master:getMod(xi.mod.WYVERN_SUBJOB_TRAITS) > 0 then
+    if master:getMod(invaderXim.mod.WYVERN_SUBJOB_TRAITS) > 0 then
         mob:addJobTraits(master:getSubJob(), master:getSubLvl())
     end
 
@@ -142,7 +142,7 @@ xi.pets.wyvern.onMobSpawn = function(mob)
         -- 1/3 and 1/2 divisor for healing breath
         master:addListener('MAGIC_USE', 'PET_WYVERN_MAGIC', function(player, target, spell, action)
             local divisor = 3
-            if player:getMod(xi.mod.WYVERN_EFFECTIVE_BREATH) > 0 then
+            if player:getMod(invaderXim.mod.WYVERN_EFFECTIVE_BREATH) > 0 then
                 divisor = 2
             end
 
@@ -153,7 +153,7 @@ xi.pets.wyvern.onMobSpawn = function(mob)
         wyvernType == wyvernCapabilities.MULTI
     then
         master:addListener('WEAPONSKILL_USE', 'PET_WYVERN_WS', function(player, target, skillid)
-            xi.job_utils.dragoon.pickAndUseDamageBreath(player, target)
+            invaderXim.job_utils.dragoon.pickAndUseDamageBreath(player, target)
         end)
     end
 
@@ -161,7 +161,7 @@ xi.pets.wyvern.onMobSpawn = function(mob)
     if wyvernType == wyvernCapabilities.MULTI then
         master:addListener('MAGIC_USE', 'PET_WYVERN_MAGIC', function(player, target, spell, action)
             local divisor = 4
-            if player:getMod(xi.mod.WYVERN_EFFECTIVE_BREATH) > 0 then
+            if player:getMod(invaderXim.mod.WYVERN_EFFECTIVE_BREATH) > 0 then
                 divisor = 3
             end
 
@@ -182,7 +182,7 @@ xi.pets.wyvern.onMobSpawn = function(mob)
 
     -- https://www.bg-wiki.com/ffxi/Wyvern_(Dragoon_Pet)#Parameter_Increase
     master:addListener('EXPERIENCE_POINTS', 'PET_WYVERN_EXP', function(playerObj, mobObj, exp)
-        xi.job_utils.dragoon.addWyvernExp(playerObj, exp)
+        invaderXim.job_utils.dragoon.addWyvernExp(playerObj, exp)
     end)
 end
 
@@ -191,20 +191,20 @@ local function removeWyvernLevels(mob)
     local numLvls = mob:getLocalVar('level_Ups')
 
     if numLvls ~= 0 then
-        local wyvernAttributeIncreaseEffectJP = master:getJobPointLevel(xi.jp.WYVERN_ATTR_BONUS)
-        local wyvernBonusDA = master:getMod(xi.mod.WYVERN_ATTRIBUTE_DA)
+        local wyvernAttributeIncreaseEffectJP = master:getJobPointLevel(invaderXim.jp.WYVERN_ATTR_BONUS)
+        local wyvernBonusDA = master:getMod(invaderXim.mod.WYVERN_ATTRIBUTE_DA)
 
-        master:delMod(xi.mod.ATT, wyvernAttributeIncreaseEffectJP * numLvls)
-        master:delMod(xi.mod.DEF, wyvernAttributeIncreaseEffectJP * numLvls)
-        master:delMod(xi.mod.ATTP, 4 * numLvls)
-        master:delMod(xi.mod.DEFP, 4 * numLvls)
-        master:delMod(xi.mod.HASTE_ABILITY, 200 * numLvls)
-        master:delMod(xi.mod.DOUBLE_ATTACK, wyvernBonusDA * numLvls)
-        master:delMod(xi.mod.ALL_WSDMG_ALL_HITS, 2 * numLvls)
+        master:delMod(invaderXim.mod.ATT, wyvernAttributeIncreaseEffectJP * numLvls)
+        master:delMod(invaderXim.mod.DEF, wyvernAttributeIncreaseEffectJP * numLvls)
+        master:delMod(invaderXim.mod.ATTP, 4 * numLvls)
+        master:delMod(invaderXim.mod.DEFP, 4 * numLvls)
+        master:delMod(invaderXim.mod.HASTE_ABILITY, 200 * numLvls)
+        master:delMod(invaderXim.mod.DOUBLE_ATTACK, wyvernBonusDA * numLvls)
+        master:delMod(invaderXim.mod.ALL_WSDMG_ALL_HITS, 2 * numLvls)
     end
 end
 
-xi.pets.wyvern.onMobDeath = function(mob, player)
+invaderXim.pets.wyvern.onMobDeath = function(mob, player)
     removeWyvernLevels(mob)
 
     local master  = mob:getMaster()
@@ -215,7 +215,7 @@ xi.pets.wyvern.onMobDeath = function(mob, player)
     master:removeListener('PET_WYVERN_EXP')
 end
 
-xi.pets.wyvern.onPetLevelRestriction = function(pet)
+invaderXim.pets.wyvern.onPetLevelRestriction = function(pet)
     removeWyvernLevels(pet)
     pet:setLocalVar('wyvern_exp', 0)
     pet:setLocalVar('level_Ups', 0)

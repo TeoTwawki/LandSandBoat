@@ -11,11 +11,11 @@
 -- qm0                   - !pos -141 1 -9 99
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.THE_LOST_BOOK)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.THE_LOST_BOOK)
 
 quest.reward =
 {
-    item = xi.item.SCROLL_OF_RETRACE,
+    item = invaderXim.item.SCROLL_OF_RETRACE,
 }
 
 quest.sections =
@@ -23,11 +23,11 @@ quest.sections =
     -- Examine the right Rhinostery door (J-9 of the second map) for a cutscene.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and player:getMainLvl() >= 30 and
-                player:hasKeyItem(xi.ki.BRONZE_RIBBON_OF_SERVICE)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and player:getMainLvl() >= 30 and
+                player:hasKeyItem(invaderXim.ki.BRONZE_RIBBON_OF_SERVICE)
         end,
 
-        [xi.zone.WINDURST_WATERS_S] =
+        [invaderXim.zone.WINDURST_WATERS_S] =
         {
             ['Door_Rhinostery_South'] = quest:progressEvent(143),
 
@@ -45,20 +45,20 @@ quest.sections =
     -- a Mythril Beastcoin to obtain a Leather-bound Book.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 1
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 1
         end,
 
-        [xi.zone.WINDURST_WATERS_S] =
+        [invaderXim.zone.WINDURST_WATERS_S] =
         {
             ['Door_Rhinostery_South'] = quest:progressEvent(148), -- Optional dialogue
         },
 
-        [xi.zone.GIDDEUS] =
+        [invaderXim.zone.GIDDEUS] =
         {
             ['Quu_Bokye'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.MYTHRIL_BEASTCOIN) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.MYTHRIL_BEASTCOIN) then
                         return quest:progressEvent(65)
                     end
                 end,
@@ -72,7 +72,7 @@ quest.sections =
             {
                 [65] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    npcUtil.giveKeyItem(player, xi.ki.LEATHER_BOUND_BOOK)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LEATHER_BOUND_BOOK)
                     quest:setVar(player, 'Prog', 2)
                 end,
             },
@@ -82,10 +82,10 @@ quest.sections =
     -- Return to the Rhinostery in Windurst (S), and click the southern door for another cutscene.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 2
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 2
         end,
 
-        [xi.zone.WINDURST_WATERS_S] =
+        [invaderXim.zone.WINDURST_WATERS_S] =
         {
             ['Door_Rhinostery_South'] = quest:progressEvent(144),
 
@@ -101,10 +101,10 @@ quest.sections =
     -- Go to the Optistery (F-8 on the first map) of Windurst (S) and examine the door for a cutscene.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 3
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 3
         end,
 
-        [xi.zone.WINDURST_WATERS_S] =
+        [invaderXim.zone.WINDURST_WATERS_S] =
         {
             ['Door_Optistery']        = quest:progressEvent(145),
             ['Door_Rhinostery_South'] = quest:event(150), -- Optional dialogue
@@ -112,7 +112,7 @@ quest.sections =
             onEventFinish =
             {
                 [145] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.LEATHER_BOUND_BOOK)
+                    player:delKeyItem(invaderXim.ki.LEATHER_BOUND_BOOK)
                     quest:setVar(player, 'Prog', 4)
                 end,
             },
@@ -122,16 +122,16 @@ quest.sections =
     -- Head to Castle Oztroja (S) and examine the ??? at (G-8) on the first map.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 4 and
-                not player:hasKeyItem(xi.ki.LYNX_PELT)
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 4 and
+                not player:hasKeyItem(invaderXim.ki.LYNX_PELT)
         end,
 
-        [xi.zone.CASTLE_OZTROJA_S] =
+        [invaderXim.zone.CASTLE_OZTROJA_S] =
         {
             ['_qm0'] =
             {
                 onTrigger = function(player, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.LYNX_PELT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LYNX_PELT)
                 end,
             },
         },
@@ -140,16 +140,16 @@ quest.sections =
     -- Trade a sheet of Vellum to the Optistery door in Windurst Waters (S).
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 4 and
-                player:hasKeyItem(xi.ki.LYNX_PELT)
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 4 and
+                player:hasKeyItem(invaderXim.ki.LYNX_PELT)
         end,
 
-        [xi.zone.WINDURST_WATERS_S] =
+        [invaderXim.zone.WINDURST_WATERS_S] =
         {
             ['Door_Optistery'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.SHEET_OF_VELLUM) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.SHEET_OF_VELLUM) then
                         return quest:progressEvent(146)
                     end
                 end,
@@ -159,7 +159,7 @@ quest.sections =
             {
                 [146] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    player:delKeyItem(xi.ki.LYNX_PELT)
+                    player:delKeyItem(invaderXim.ki.LYNX_PELT)
                     quest:setVar(player, 'Prog', 5)
                     quest:setVar(player, 'Timer', VanadielUniqueDay() + 1)
                 end,
@@ -170,11 +170,11 @@ quest.sections =
     -- Waited game day
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 5 and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 5 and
                 quest:getVar(player, 'Timer') <= VanadielUniqueDay()
         end,
 
-        [xi.zone.WINDURST_WATERS_S] =
+        [invaderXim.zone.WINDURST_WATERS_S] =
         {
             ['Door_Optistery'] = quest:progressEvent(147),
 

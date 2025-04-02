@@ -5,18 +5,18 @@
 -- Raimbroy : !pos -141 -3 34.6 230
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.THE_SWEETEST_THINGS)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.THE_SWEETEST_THINGS)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.SANDORIA,
-    title    = xi.title.APIARIST,
+    fameArea = invaderXim.fameArea.SANDORIA,
+    title    = invaderXim.title.APIARIST,
 }
 
 local raimbroyOnTrade = function(player, npc, trade)
-    if npcUtil.tradeHasExactly(trade, { { xi.item.POT_OF_HONEY, 5 } }) then
-        return quest:progressEvent(535, 400 * xi.settings.main.GIL_RATE)
+    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.POT_OF_HONEY, 5 } }) then
+        return quest:progressEvent(535, 400 * invaderXim.settings.main.GIL_RATE)
     else
         return quest:event(522)
     end
@@ -26,11 +26,11 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.SANDORIA) >= 2
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.SANDORIA) >= 2
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Raimbroy'] =
             {
@@ -72,10 +72,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Raimbroy'] =
             {
@@ -92,7 +92,7 @@ quest.sections =
                         -- we need to implement a latch, since both event finishes will trigger
                         -- after the complete.
 
-                        player:addGil(400 * xi.settings.main.GIL_RATE)
+                        player:addGil(400 * invaderXim.settings.main.GIL_RATE)
                         quest:setLocalVar(player, 'firstComplete', 1)
                     end
                 end,
@@ -102,10 +102,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Raimbroy'] =
             {
@@ -119,9 +119,9 @@ quest.sections =
                     if quest:getLocalVar(player, 'firstComplete') == 0 then
                         player:confirmTrade()
 
-                        player:addTitle(xi.title.APIARIST)
-                        player:addGil(400 * xi.settings.main.GIL_RATE)
-                        player:addFame(xi.fameArea.SANDORIA, 5)
+                        player:addTitle(invaderXim.title.APIARIST)
+                        player:addGil(400 * invaderXim.settings.main.GIL_RATE)
+                        player:addFame(invaderXim.fameArea.SANDORIA, 5)
                     else
                         quest:setLocalVar(player, 'firstComplete', 0)
                     end

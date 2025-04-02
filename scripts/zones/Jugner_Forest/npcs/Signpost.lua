@@ -3,7 +3,7 @@
 --  NPC: Signpost
 -- Involved in Quest: Grimy Signposts
 -----------------------------------
-local ID = zones[xi.zone.JUGNER_FOREST]
+local ID = zones[invaderXim.zone.JUGNER_FOREST]
 -----------------------------------
 
 ---@type TNpcEntity

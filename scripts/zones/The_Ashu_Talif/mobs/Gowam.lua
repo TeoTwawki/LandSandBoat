@@ -2,22 +2,22 @@
 -- Area: The Ashu Talif (Against All Odds)
 --  Mob: Gowam
 -----------------------------------
-local ID = zones[xi.zone.THE_ASHU_TALIF]
+local ID = zones[invaderXim.zone.THE_ASHU_TALIF]
 mixins = { require('scripts/mixins/job_special') }
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:addMod(xi.mod.SLEEP_MEVA, 150)
-    mob:addMod(xi.mod.SILENCE_MEVA, 150)
+    mob:addMod(invaderXim.mod.SLEEP_MEVA, 150)
+    mob:addMod(invaderXim.mod.SILENCE_MEVA, 150)
 end
 
 entity.onMobFight = function(mob, target)
-    if mob:hasStatusEffect(xi.effect.AZURE_LORE) then
-        mob:setMobMod(xi.mobMod.MAGIC_COOL, 0)
+    if mob:hasStatusEffect(invaderXim.effect.AZURE_LORE) then
+        mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 0)
     else
-        mob:setMobMod(xi.mobMod.MAGIC_COOL, 20)
+        mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 20)
     end
 end
 

@@ -25,7 +25,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
         realDmg = realDmg * 10 -- sets the multiplier to 50 for NM's
     end
 
-    target:takeDamage(realDmg, mob, xi.attackType.MAGICAL, xi.damageType.ELEMENTAL)
+    target:takeDamage(realDmg, mob, invaderXim.attackType.MAGICAL, invaderXim.damageType.ELEMENTAL)
 
     return realDmg
 end

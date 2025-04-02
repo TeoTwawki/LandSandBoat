@@ -8,27 +8,27 @@
 -- Alois    : !pos 96 -20 14 237
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.FADED_PROMISES)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.FADED_PROMISES)
 
 quest.reward =
 {
     fame     = 10,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.FUKURO,
-    title    = xi.title.ASSASSIN_REJECT,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.FUKURO,
+    title    = invaderXim.title.ASSASSIN_REJECT,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getMainJob() == xi.job.NIN and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getMainJob() == invaderXim.job.NIN and
                 player:getMainLvl() >= 20 and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 4
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 4
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Romualdo'] = quest:progressEvent(802),
 
@@ -43,10 +43,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Alois'] =
             {
@@ -85,18 +85,18 @@ quest.sections =
 
                 [805] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.DIARY_OF_MUKUNDA)
+                        player:delKeyItem(invaderXim.ki.DIARY_OF_MUKUNDA)
                     end
                 end,
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Kagetora'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.DIARY_OF_MUKUNDA) then
+                    if player:hasKeyItem(invaderXim.ki.DIARY_OF_MUKUNDA) then
                         return quest:progressEvent(296)
                     end
                 end,

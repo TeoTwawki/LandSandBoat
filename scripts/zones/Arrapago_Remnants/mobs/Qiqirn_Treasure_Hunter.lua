@@ -2,7 +2,7 @@
 -- Area: Arrapago Remnants
 --  Mob: Qiqirn Treasure Hunter
 -----------------------------------
-local ID = zones[xi.zone.ARRAPAGO_REMNANTS]
+local ID = zones[invaderXim.zone.ARRAPAGO_REMNANTS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -39,7 +39,7 @@ entity.onMobFight = function(mob, target)
     local mobPos  = mob:getPos()
     local mobPet  = GetMobByID((mob:getID() + 1), instance)
 
-    -- if act == xi.act.MOBABILITY_START or act == xi.act.MOBABILITY_USING or act == xi.act.MOBABILITY_FINISH or act == xi.act.MAGIC_START or act == xi.act.MAGIC_CASTING or act == xi.act.MAGIC_START then
+    -- if act == invaderXim.act.MOBABILITY_START or act == invaderXim.act.MOBABILITY_USING or act == invaderXim.act.MOBABILITY_FINISH or act == invaderXim.act.MAGIC_START or act == invaderXim.act.MAGIC_CASTING or act == invaderXim.act.MAGIC_START then
     --    isBusy = true -- is set to true if mob is in any stage of using a mobskill or casting a spell
     -- end
 
@@ -54,13 +54,13 @@ entity.onMobFight = function(mob, target)
             mobPet:updateEnmity(target)
             mobPet:setPos(mobPos.x, mobPos.y, mobPos.z, mobPos.rot)
             mob:setLocalVar('popTime', os.time())
-            mobPet:setStatus(xi.status.UPDATE)
+            mobPet:setStatus(invaderXim.status.UPDATE)
             mobPet:timer(1000, function(mobArg)
                 mobArg:useMobAbility(1838)
             end)
 
             mobPet:timer(4000, function(mobArg)
-                mobArg:setStatus(xi.status.DISAPPEAR)
+                mobArg:setStatus(invaderXim.status.DISAPPEAR)
             end)
         end
     end

@@ -7,11 +7,11 @@
 -- require('cripts/globals/weather')
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.GIVE_PEACE_A_CHANCE)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.GIVE_PEACE_A_CHANCE)
 
 quest.reward =
 {
-    item = xi.item.IMPERIAL_SILVER_PIECE,
+    item = invaderXim.item.IMPERIAL_SILVER_PIECE,
 }
 
 quest.sections =
@@ -19,10 +19,10 @@ quest.sections =
     -- Section: Quest available
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Mishhar'] =
             {
@@ -43,10 +43,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Mishhar'] =
             {
@@ -78,12 +78,12 @@ quest.sections =
             },
         },
 
-        [xi.zone.WAJAOM_WOODLANDS] =
+        [invaderXim.zone.WAJAOM_WOODLANDS] =
         {
             ['qm8'] =
             {
                 onTrigger = function(player, npc)
-                    if VanadielTOTD() == xi.time.NIGHT and quest:getVar(player, 'Prog') == 0 then
+                    if VanadielTOTD() == invaderXim.time.NIGHT and quest:getVar(player, 'Prog') == 0 then
                         return quest:progressCutscene(504)
                     end
                 end,
@@ -97,7 +97,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.MAMOOK] =
+        [invaderXim.zone.MAMOOK] =
         {
             ['qm4'] =
             {

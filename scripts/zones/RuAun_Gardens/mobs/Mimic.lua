@@ -8,7 +8,7 @@ mixins = { require('scripts/mixins/families/mimic') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180)
 end
 
 return entity

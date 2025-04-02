@@ -5,11 +5,11 @@
 -- Qutiba, Whitegate, !pos 92 -7.5 -130 50
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.VANISHING_ACT)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.VANISHING_ACT)
 
 quest.reward =
 {
-    item = xi.item.IMPERIAL_SILVER_PIECE
+    item = invaderXim.item.IMPERIAL_SILVER_PIECE
 }
 
 quest.sections =
@@ -17,11 +17,11 @@ quest.sections =
     -- Section: Quest available
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.DELIVERING_THE_GOODS)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.DELIVERING_THE_GOODS)
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Qutiba'] =
             {
@@ -67,10 +67,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Fochacha'] =
             {
@@ -86,7 +86,7 @@ quest.sections =
             ['Ulamaal'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.RAINBOW_BERRY) then
+                    if player:hasKeyItem(invaderXim.ki.RAINBOW_BERRY) then
                         return quest:progressEvent(45)
                     else
                         return quest:progressEvent(54)
@@ -97,7 +97,7 @@ quest.sections =
             ['Qutiba'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.RAINBOW_BERRY) then
+                    if player:hasKeyItem(invaderXim.ki.RAINBOW_BERRY) then
                         return quest:progressEvent(45)
                     else
                         return quest:progressEvent(54)
@@ -128,7 +128,7 @@ quest.sections =
                 [45] = function(player, csid, option, npc)
                     if quest:complete(player) then
                         player:needToZone(true)
-                        player:delKeyItem(xi.ki.RAINBOW_BERRY)
+                        player:delKeyItem(invaderXim.ki.RAINBOW_BERRY)
                         -- Set variable for 'A taste of Honey' ToAU quest.
                         player:setVar('Quest[6][12]Stage', getMidnight())
                     end
@@ -136,15 +136,15 @@ quest.sections =
             },
         },
 
-        [xi.zone.WAJAOM_WOODLANDS] =
+        [invaderXim.zone.WAJAOM_WOODLANDS] =
         {
             ['Harvesting_Point'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.SICKLE) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.SICKLE) and
                         quest:getVar(player, 'Prog') == 2 and
-                        not player:hasKeyItem(xi.ki.RAINBOW_BERRY)
+                        not player:hasKeyItem(invaderXim.ki.RAINBOW_BERRY)
                     then
                         player:setLocalVar('questItem', 1)
                         return quest:progressEvent(507, { [0] = 4294966520 })
@@ -156,7 +156,7 @@ quest.sections =
             {
                 [507] = function(player, csid, option, npc)
                     if player:getLocalVar('questItem') == 1 then
-                        npcUtil.giveKeyItem(player, xi.ki.RAINBOW_BERRY)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.RAINBOW_BERRY)
                         player:setLocalVar('questItem', 0)
                     end
                 end,
@@ -167,10 +167,10 @@ quest.sections =
     -- Section: Quest completed
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Ulamaal'] =
             {

@@ -6,11 +6,11 @@
 -- qm7 : !pos 110.909 -0.095 -6.851 176
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.THE_TIES_THAT_BIND)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.THE_TIES_THAT_BIND)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.IMPURITY },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.IMPURITY },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.SEA_SERPENT_GROTTO] =
+        [invaderXim.zone.SEA_SERPENT_GROTTO] =
         {
             ['qm7'] = mission:progressEvent(34),
 

@@ -29,7 +29,7 @@ commandObj.onTrigger = function(player, target)
         end
     end
 
-    xi.monstrosity.unlockAll(targ)
+    invaderXim.monstrosity.unlockAll(targ)
 
     player:printToPlayer(string.format('%s now has all monstrosity data.', targ:getName()))
 end

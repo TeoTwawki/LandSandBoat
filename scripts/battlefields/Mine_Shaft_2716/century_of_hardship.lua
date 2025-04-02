@@ -2,12 +2,12 @@
 -- A Century of Hardship
 -- Mine Shaft #2716 mission battlefield
 -----------------------------------
-local mineshaftID = zones[xi.zone.MINE_SHAFT_2716]
+local mineshaftID = zones[invaderXim.zone.MINE_SHAFT_2716]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId                = xi.zone.MINE_SHAFT_2716,
-    battlefieldId         = xi.battlefield.id.CENTURY_OF_HARDSHIP,
+    zoneId                = invaderXim.zone.MINE_SHAFT_2716,
+    battlefieldId         = invaderXim.battlefield.id.CENTURY_OF_HARDSHIP,
     canLoseExp            = false,
     isMission             = true,
     allowTrusts           = true,
@@ -17,10 +17,10 @@ local content = BattlefieldMission:new({
     index                 = 0,
     entryNpc              = '_0d0',
     exitNpcs              = { '_0d1', '_0d2', '_0d3' },
-    missionArea           = xi.mission.log_id.COP,
-    mission               = xi.mission.id.cop.THREE_PATHS,
-    missionStatus         = xi.mission.status.COP.LOUVERANCE,
-    missionStatusArea     = xi.mission.log_id.COP,
+    missionArea           = invaderXim.mission.log_id.COP,
+    mission               = invaderXim.mission.id.cop.THREE_PATHS,
+    missionStatus         = invaderXim.mission.status.COP.LOUVERANCE,
+    missionStatusArea     = invaderXim.mission.log_id.COP,
     requiredMissionStatus = 8,
     grantXP               = 1000,
 })
@@ -56,7 +56,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

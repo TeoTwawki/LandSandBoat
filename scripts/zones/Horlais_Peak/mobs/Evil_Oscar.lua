@@ -22,7 +22,7 @@
 --     },
 -- },
 -----------------------------------
-local ID = zones[xi.zone.HORLAIS_PEAK]
+local ID = zones[invaderXim.zone.HORLAIS_PEAK]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -69,11 +69,11 @@ end
 
 entity.onMobInitialize = function(mob)
     -- Melee attacks have Additional effect: Weight.
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.WEIGHT)
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.WEIGHT)
 end
 
 entity.onMobSpawn = function(mob)

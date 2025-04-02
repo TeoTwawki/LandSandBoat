@@ -2,7 +2,7 @@
 -- Area: East Sarutabaruta
 --  NPC: Signpost
 -----------------------------------
-local ID = zones[xi.zone.EAST_SARUTABARUTA]
+local ID = zones[invaderXim.zone.EAST_SARUTABARUTA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

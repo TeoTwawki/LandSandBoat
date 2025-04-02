@@ -11,10 +11,10 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    if not target:hasStatusEffect(xi.effect.BLINDNESS) then
-        target:addStatusEffect(xi.effect.BLINDNESS, 25, 0, 180)
+    if not target:hasStatusEffect(invaderXim.effect.BLINDNESS) then
+        target:addStatusEffect(invaderXim.effect.BLINDNESS, 25, 0, 180)
     else
-        target:messageBasic(xi.msg.basic.NO_EFFECT)
+        target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
     end
 end
 

@@ -6,23 +6,23 @@
 -- Rakula-Motakula : !pos -316.786 -12.448 -118.721 91
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.THE_WEEKLY_ADVENTURER)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.THE_WEEKLY_ADVENTURER)
 
 quest.reward =
 {
     exp     = 2000,
     gil     = 2000,
-    keyItem = xi.keyItem.MAP_OF_FORT_KARUGO_NARUGO,
+    keyItem = invaderXim.keyItem.MAP_OF_FORT_KARUGO_NARUGO,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.CRAWLERS_NEST_S] =
+        [invaderXim.zone.CRAWLERS_NEST_S] =
         {
             ['Naiko-Paneiko'] =
             {
@@ -35,7 +35,7 @@ quest.sections =
             onEventFinish =
             {
                 [16] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.keyItem.SCOOP_DEDICATED_LINKPEARL)
+                    npcUtil.giveKeyItem(player, invaderXim.keyItem.SCOOP_DEDICATED_LINKPEARL)
                     quest:begin(player)
                 end,
             },
@@ -44,10 +44,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.CRAWLERS_NEST_S] =
+        [invaderXim.zone.CRAWLERS_NEST_S] =
         {
             ['Naiko-Paneiko'] =
             {
@@ -77,13 +77,13 @@ quest.sections =
             {
                 [19] = function(player, csid, option, npc)
                     -- SCOOP_DEDICATED_LINKPEARL is removed silently
-                    player:delKeyItem(xi.keyItem.SCOOP_DEDICATED_LINKPEARL)
+                    player:delKeyItem(invaderXim.keyItem.SCOOP_DEDICATED_LINKPEARL)
                     quest:complete(player)
                 end,
             },
         },
 
-        [xi.zone.ROLANBERRY_FIELDS_S] =
+        [invaderXim.zone.ROLANBERRY_FIELDS_S] =
         {
             -- NOTE: Merim-Kurim never interacts with you, despite looking like he does in the CS
 
@@ -120,10 +120,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.CRAWLERS_NEST_S] =
+        [invaderXim.zone.CRAWLERS_NEST_S] =
         {
             -- Alll rightaru! Let's make the news!
             ['Naiko-Paneiko'] = quest:event(20):replaceDefault(),

@@ -2,7 +2,7 @@
 -- Area: Tavnazian Safehold
 --  NPC: Misseulieu
 -----------------------------------
-local ID = zones[xi.zone.TAVNAZIAN_SAFEHOLD]
+local ID = zones[invaderXim.zone.TAVNAZIAN_SAFEHOLD]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -14,7 +14,7 @@ entity.onTrigger = function(player, npc)
         12985, 1625, -- Holly Clogs
     }
 
-    if player:getCurrentMission(xi.mission.log_id.COP) >= xi.mission.id.cop.SHELTERING_DOUBT then
+    if player:getCurrentMission(invaderXim.mission.log_id.COP) >= invaderXim.mission.id.cop.SHELTERING_DOUBT then
         stock =
         {
             14317, 101055,  -- Barone Cosciales
@@ -29,7 +29,7 @@ entity.onTrigger = function(player, npc)
     end
 
     player:showText(npc, ID.text.MISSEULIEU_SHOP_DIALOG) -- 10912 at least with 2 items available
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 return entity

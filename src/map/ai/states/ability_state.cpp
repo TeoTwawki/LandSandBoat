@@ -168,7 +168,7 @@ bool CAbilityState::Update(time_point tick)
             CCharEntity* PChar = static_cast<CCharEntity*>(m_PEntity);
             PChar->m_charHistory.abilitiesUsed++;
         }
-        m_PEntity->PAI->EventHandler.triggerListener("ABILITY_STATE_EXIT", m_PEntity, m_PAbility.get());
+        m_PEntity->PAI->EventHandler.triggerListener("ABILITY_STATE_IXIMT", m_PEntity, m_PAbility.get());
         return true;
     }
 

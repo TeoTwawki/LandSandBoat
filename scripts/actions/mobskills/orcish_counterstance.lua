@@ -1,13 +1,13 @@
 -----------------------------------
 -- Orcish Counterstance
 -- Used only by Orcs in Wings of the Goddess Areas.
--- Certain NMs may have a higher power version of the xi.effect.
+-- Certain NMs may have a higher power version of the invaderXim.effect.
 -----------------------------------
 ---@type TMobSkill
 local mobskillObject = {}
 
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
-    if mob:getContinentID() == xi.continent.THE_SHADOWREIGN_ERA then
+    if mob:getContinentID() == invaderXim.continent.THE_SHADOWREIGN_ERA then
         return 0
     else
         return 1
@@ -22,9 +22,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
         -- power = 50? He's not implemented yet anyway :P
     -- end
 
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.COUNTERSTANCE, 10, 0, 60))
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.COUNTERSTANCE, 10, 0, 60))
 
-    return xi.effect.COUNTERSTANCE
+    return invaderXim.effect.COUNTERSTANCE
 end
 
 return mobskillObject

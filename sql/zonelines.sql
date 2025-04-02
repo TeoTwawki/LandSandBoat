@@ -3,7 +3,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for zonelines
 -- ----------------------------
-DROP TABLE IF EXISTS `zonelines`;
+DROP TABLE IF IXIMSTS `zonelines`;
 CREATE TABLE `zonelines` (
   `zoneline` int(10) unsigned NOT NULL,
   `fromzone` smallint(3) unsigned NOT NULL DEFAULT'0',

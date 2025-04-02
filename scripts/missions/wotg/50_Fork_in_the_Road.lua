@@ -12,24 +12,24 @@
 -- Walk of Echoes          : !pos -702.325 0.399 -481.664
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.FORK_IN_THE_ROAD)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.FORK_IN_THE_ROAD)
 
 mission.reward =
 {
-    keyItem     = xi.ki.PRIMAL_GLOW,
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.MAIDEN_OF_THE_DUSK },
+    keyItem     = invaderXim.ki.PRIMAL_GLOW,
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.MAIDEN_OF_THE_DUSK },
 }
 
 local zoneEventInfo =
 {
 --  Zone                               Rewarded KI                      Event #, Parameters
-    [xi.zone.JUGNER_FOREST_S]      = { xi.ki.JUGNER_DAWNDROP,         {   7,  82,     0,    0,    0,        0, 7340037,    0, 0 } },
-    [xi.zone.LA_VAULE_S]           = { xi.ki.LA_VAULE_DAWNDROP,       {   5,  85,    23, 1756,    0,       85,       1,    0, 0 } },
-    [xi.zone.SOUTHERN_SAN_DORIA_S] = { xi.ki.SAN_DORIA_DAWNDROP,      { 176,  80,    23, 1756, 2000,        0,       0,    0, 0 } },
-    [xi.zone.BEAUCEDINE_GLACIER_S] = { xi.ki.BEAUCEDINE_DAWNDROP,     {  29, 136,    23, 1756,    0,        0, 6357002,    0, 0 } },
-    [xi.zone.XARCABARD_S]          = { xi.ki.XARCABARD_DAWNDROP,      {  42, 137,    23, 2964, 2000, 66584575, 5941395, 4095, 0 } },
-    [xi.zone.THRONE_ROOM_S]        = { xi.ki.THRONE_ROOM_DAWNDROP,    {  15, 156,    23, 1756,    0,      156,       2,    0, 0 } },
-    [xi.zone.WALK_OF_ECHOES]       = { xi.ki.WALK_OF_ECHOES_DAWNDROP, {  10, 182,    23, 1756,    0,        0,       0, 1984, 1 } },
+    [invaderXim.zone.JUGNER_FOREST_S]      = { invaderXim.ki.JUGNER_DAWNDROP,         {   7,  82,     0,    0,    0,        0, 7340037,    0, 0 } },
+    [invaderXim.zone.LA_VAULE_S]           = { invaderXim.ki.LA_VAULE_DAWNDROP,       {   5,  85,    23, 1756,    0,       85,       1,    0, 0 } },
+    [invaderXim.zone.SOUTHERN_SAN_DORIA_S] = { invaderXim.ki.SAN_DORIA_DAWNDROP,      { 176,  80,    23, 1756, 2000,        0,       0,    0, 0 } },
+    [invaderXim.zone.BEAUCEDINE_GLACIER_S] = { invaderXim.ki.BEAUCEDINE_DAWNDROP,     {  29, 136,    23, 1756,    0,        0, 6357002,    0, 0 } },
+    [invaderXim.zone.XARCABARD_S]          = { invaderXim.ki.XARCABARD_DAWNDROP,      {  42, 137,    23, 2964, 2000, 66584575, 5941395, 4095, 0 } },
+    [invaderXim.zone.THRONE_ROOM_S]        = { invaderXim.ki.THRONE_ROOM_DAWNDROP,    {  15, 156,    23, 1756,    0,      156,       2,    0, 0 } },
+    [invaderXim.zone.WALK_OF_ECHOES]       = { invaderXim.ki.WALK_OF_ECHOES_DAWNDROP, {  10, 182,    23, 1756,    0,        0,       0, 1984, 1 } },
 }
 
 local dawndropOnTrigger = function(player, npc)
@@ -54,7 +54,7 @@ local dawndropOnEventFinish = function(player, csid, option, npc)
     if numDawndrops == 6 then
         local ID = zones[player:getZoneID()]
 
-        player:messageSpecial(ID.text.GATHERED_DAWNDROPS_LIGHT, xi.ki.PRIMAL_GLOW)
+        player:messageSpecial(ID.text.GATHERED_DAWNDROPS_LIGHT, invaderXim.ki.PRIMAL_GLOW)
         player:messageName(ID.text.RETRACED_ALL_JUNCTIONS, nil)
 
         for _, zoneInfoTable in pairs(zoneEventInfo) do
@@ -63,7 +63,7 @@ local dawndropOnEventFinish = function(player, csid, option, npc)
             end
         end
 
-        player:delKeyItem(xi.ki.RONFAURE_DAWNDROP)
+        player:delKeyItem(invaderXim.ki.RONFAURE_DAWNDROP)
 
         mission:complete(player)
     end
@@ -76,7 +76,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.JUGNER_FOREST_S] =
+        [invaderXim.zone.JUGNER_FOREST_S] =
         {
             ['blank_fork'] =
             {
@@ -89,7 +89,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.LA_VAULE_S] =
+        [invaderXim.zone.LA_VAULE_S] =
         {
             ['blank_fork'] =
             {
@@ -102,7 +102,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['blank_fork'] =
             {
@@ -115,7 +115,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BEAUCEDINE_GLACIER_S] =
+        [invaderXim.zone.BEAUCEDINE_GLACIER_S] =
         {
             ['blank_fork'] =
             {
@@ -128,7 +128,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.XARCABARD_S] =
+        [invaderXim.zone.XARCABARD_S] =
         {
             ['blank_fork'] =
             {
@@ -141,7 +141,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.THRONE_ROOM_S] =
+        [invaderXim.zone.THRONE_ROOM_S] =
         {
             ['blank_fork'] =
             {
@@ -154,7 +154,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WALK_OF_ECHOES] =
+        [invaderXim.zone.WALK_OF_ECHOES] =
         {
             ['blank_fork'] =
             {

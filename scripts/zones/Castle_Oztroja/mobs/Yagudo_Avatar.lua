@@ -5,7 +5,7 @@
 -- TODO: messages should be zone-wide
 -----------------------------------
 mixins = { require('scripts/mixins/job_special') }
-local ID = zones[xi.zone.CASTLE_OZTROJA]
+local ID = zones[invaderXim.zone.CASTLE_OZTROJA]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

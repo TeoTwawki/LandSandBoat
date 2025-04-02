@@ -3,7 +3,7 @@
 --  MOB: White Coney
 -- Note: exclusively uses Wild Carrot
 -----------------------------------
-local ID = zones[xi.zone.ULEGUERAND_RANGE]
+local ID = zones[invaderXim.zone.ULEGUERAND_RANGE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -18,8 +18,8 @@ local entity = {}
 --(based on above, going to assume it has regain...)
 
 entity.onMobSpawn = function(mob)
-    mob:setMod(xi.mod.REGAIN, 30) -- unassisted by combat TP, will give a base of 1 wild carrot move approx every 100 sec while above 25% hp
-    mob:setMod(xi.mod.ICE_MEVA, 150) -- Todo: Move to mob_resists.sql
+    mob:setMod(invaderXim.mod.REGAIN, 30) -- unassisted by combat TP, will give a base of 1 wild carrot move approx every 100 sec while above 25% hp
+    mob:setMod(invaderXim.mod.ICE_MEVA, 150) -- Todo: Move to mob_resists.sql
 end
 
 entity.onMobDeath = function(mob, player, optParams)

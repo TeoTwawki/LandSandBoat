@@ -1,8 +1,8 @@
 xi = xi or {}
-xi.dynamis = xi.dynamis or {}
+invaderXim.dynamis = invaderXim.dynamis or {}
 
----@enum xi.eye
-xi.dynamis.eye =
+---@enum invaderXim.eye
+invaderXim.dynamis.eye =
 {
     NONE    = 0,
     RED     = 1,

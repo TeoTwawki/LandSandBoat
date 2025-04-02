@@ -12,18 +12,18 @@ quest.sections =
 {
     {
         check = function(player, questVars, vars)
-            return quest:getVar(player, 'notSeen') == 1 and xi.settings.main.NEW_CHARACTER_CUTSCENE == 1
+            return quest:getVar(player, 'notSeen') == 1 and invaderXim.settings.main.NEW_CHARACTER_CUTSCENE == 1
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             onZoneIn =
             {
                 function(player, prevZone)
                     local cutsceneFlags = bit.bor(
-                        xi.cutsceneFlag.UNKNOWN_1,
-                        xi.cutsceneFlag.NO_PCS,
-                        xi.cutsceneFlag.UNKNOWN_2
+                        invaderXim.cutsceneFlag.UNKNOWN_1,
+                        invaderXim.cutsceneFlag.NO_PCS,
+                        invaderXim.cutsceneFlag.UNKNOWN_2
                     )
 
                     return { 0, -1, cutsceneFlags } -- CS 0 is not a typo.
@@ -38,9 +38,9 @@ quest.sections =
                     -- TODO: research if there was some purpose to the zoning.
 
                     local cutsceneFlags = bit.bor(
-                        xi.cutsceneFlag.UNKNOWN_1,
-                        xi.cutsceneFlag.NO_PCS,
-                        xi.cutsceneFlag.UNKNOWN_2
+                        invaderXim.cutsceneFlag.UNKNOWN_1,
+                        invaderXim.cutsceneFlag.NO_PCS,
+                        invaderXim.cutsceneFlag.UNKNOWN_2
                     )
 
                     player:startEvent(7, { flags = cutsceneFlags })
@@ -49,7 +49,7 @@ quest.sections =
                 [7] = function(player, csid, option, npc)
                     local ID = zones[player:getZoneID()]
                     -- If you don't get the coupon, tough luck. Retail doesn't give you a chance to get it again.
-                    npcUtil.giveItem(player, xi.item.ADVENTURER_COUPON)
+                    npcUtil.giveItem(player, invaderXim.item.ADVENTURER_COUPON)
                     player:messageText(player, ID.text.MAP_MARKER_TUTORIAL)
 
                     player:setPos(-280, -12, -90, 0)
@@ -60,15 +60,15 @@ quest.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             onZoneIn =
             {
                 function(player, prevZone)
                     local cutsceneFlags = bit.bor(
-                        xi.cutsceneFlag.UNKNOWN_1,
-                        xi.cutsceneFlag.NO_PCS,
-                        xi.cutsceneFlag.UNKNOWN_2
+                        invaderXim.cutsceneFlag.UNKNOWN_1,
+                        invaderXim.cutsceneFlag.NO_PCS,
+                        invaderXim.cutsceneFlag.UNKNOWN_2
                     )
                     return { 1, -1, cutsceneFlags }
                 end
@@ -79,7 +79,7 @@ quest.sections =
                 [1] = function(player, csid, option, npc)
                     local ID = zones[player:getZoneID()]
                     -- If you don't get the coupon, tough luck. Retail doesn't give you a chance to get it again.
-                    npcUtil.giveItem(player, xi.item.ADVENTURER_COUPON)
+                    npcUtil.giveItem(player, invaderXim.item.ADVENTURER_COUPON)
                     player:messageText(player, ID.text.MAP_MARKER_TUTORIAL)
 
                     player:setPos(-45, -0, 25, 192)
@@ -90,15 +90,15 @@ quest.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             onZoneIn =
             {
                 function(player, prevZone)
                     local cutsceneFlags = bit.bor(
-                        xi.cutsceneFlag.UNKNOWN_1,
-                        xi.cutsceneFlag.NO_PCS,
-                        xi.cutsceneFlag.UNKNOWN_2
+                        invaderXim.cutsceneFlag.UNKNOWN_1,
+                        invaderXim.cutsceneFlag.NO_PCS,
+                        invaderXim.cutsceneFlag.UNKNOWN_2
                     )
                     return { 1, -1, cutsceneFlags }
                 end
@@ -110,7 +110,7 @@ quest.sections =
                     local ID = zones[player:getZoneID()]
                     player:messageText(player, ID.text.MAP_MARKER_TUTORIAL)
                     -- If you don't get the coupon, tough luck. Retail doesn't give you a chance to get it again.
-                    npcUtil.giveItem(player, xi.item.ADVENTURER_COUPON)
+                    npcUtil.giveItem(player, invaderXim.item.ADVENTURER_COUPON)
 
                     player:setPos(134, 8.5, -11, 96)
                     player:setHomePoint()
@@ -120,15 +120,15 @@ quest.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onZoneIn =
             {
                 function(player, prevZone)
                     local cutsceneFlags = bit.bor(
-                        xi.cutsceneFlag.UNKNOWN_1,
-                        xi.cutsceneFlag.NO_PCS,
-                        xi.cutsceneFlag.UNKNOWN_2
+                        invaderXim.cutsceneFlag.UNKNOWN_1,
+                        invaderXim.cutsceneFlag.NO_PCS,
+                        invaderXim.cutsceneFlag.UNKNOWN_2
                     )
 
                     return { 535, -1, cutsceneFlags }
@@ -141,7 +141,7 @@ quest.sections =
                     local ID = zones[player:getZoneID()]
                     player:messageText(player, ID.text.MAP_MARKER_TUTORIAL)
                     -- If you don't get the coupon, tough luck. Retail doesn't give you a chance to get it again.
-                    npcUtil.giveItem(player, xi.item.ADVENTURER_COUPON)
+                    npcUtil.giveItem(player, invaderXim.item.ADVENTURER_COUPON)
 
                     player:setPos(0, 0, -12, 192)
                     player:setHomePoint()
@@ -151,15 +151,15 @@ quest.sections =
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onZoneIn =
             {
                 function(player, prevZone)
                     local cutsceneFlags = bit.bor(
-                        xi.cutsceneFlag.UNKNOWN_1,
-                        xi.cutsceneFlag.NO_PCS,
-                        xi.cutsceneFlag.UNKNOWN_2
+                        invaderXim.cutsceneFlag.UNKNOWN_1,
+                        invaderXim.cutsceneFlag.NO_PCS,
+                        invaderXim.cutsceneFlag.UNKNOWN_2
                     )
 
                     return { 503, -1, cutsceneFlags }
@@ -172,7 +172,7 @@ quest.sections =
                     local ID = zones[player:getZoneID()]
                     player:messageText(player, ID.text.MAP_MARKER_TUTORIAL)
                     -- If you don't get the coupon, tough luck. Retail doesn't give you a chance to get it again.
-                    npcUtil.giveItem(player, xi.item.ADVENTURER_COUPON)
+                    npcUtil.giveItem(player, invaderXim.item.ADVENTURER_COUPON)
 
                     player:setPos(-100, 1, -40, 224) --cs exit
                     player:setHomePoint()
@@ -182,15 +182,15 @@ quest.sections =
             },
         },
 
-        [xi.zone.PORT_SAN_DORIA] =
+        [invaderXim.zone.PORT_SAN_DORIA] =
         {
             onZoneIn =
             {
                 function(player, prevZone)
                     local cutsceneFlags = bit.bor(
-                        xi.cutsceneFlag.UNKNOWN_1,
-                        xi.cutsceneFlag.NO_PCS,
-                        xi.cutsceneFlag.UNKNOWN_2
+                        invaderXim.cutsceneFlag.UNKNOWN_1,
+                        invaderXim.cutsceneFlag.NO_PCS,
+                        invaderXim.cutsceneFlag.UNKNOWN_2
                     )
 
                     return { 500, -1, cutsceneFlags }
@@ -202,7 +202,7 @@ quest.sections =
                 [500] = function(player, csid, option, npc)
                     local ID = zones[player:getZoneID()]
                     -- If you don't get the coupon, tough luck. Retail doesn't give you a chance to get it again.
-                    npcUtil.giveItem(player, xi.item.ADVENTURER_COUPON)
+                    npcUtil.giveItem(player, invaderXim.item.ADVENTURER_COUPON)
                     player:messageText(player, ID.text.MAP_MARKER_TUTORIAL)
 
                     player:setPos(-100, -8, -125, 224)
@@ -213,16 +213,16 @@ quest.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onZoneIn =
             {
                 function(player, prevZone)
                     local cutsceneFlags = bit.bor(
-                        xi.cutsceneFlag.UNKNOWN_1,
-                        xi.cutsceneFlag.NO_PCS,
-                        xi.cutsceneFlag.NO_NPCS,
-                        xi.cutsceneFlag.UNKNOWN_2
+                        invaderXim.cutsceneFlag.UNKNOWN_1,
+                        invaderXim.cutsceneFlag.NO_PCS,
+                        invaderXim.cutsceneFlag.NO_NPCS,
+                        invaderXim.cutsceneFlag.UNKNOWN_2
                     )
 
                     return { 531, -1, cutsceneFlags }
@@ -244,7 +244,7 @@ quest.sections =
                     local ID = zones[player:getZoneID()]
                     player:messageText(player, ID.text.MAP_MARKER_TUTORIAL)
                     -- If you don't get the coupon, tough luck. Retail doesn't give you a chance to get it again.
-                    npcUtil.giveItem(player, xi.item.ADVENTURER_COUPON)
+                    npcUtil.giveItem(player, invaderXim.item.ADVENTURER_COUPON)
 
                     -- The HP position is slightly different than the CS exit.
                     player:setPos(-40.0, -5, 100, 64)
@@ -256,16 +256,16 @@ quest.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onZoneIn =
             {
                 function(player, prevZone)
                     local cutsceneFlags = bit.bor(
-                        xi.cutsceneFlag.UNKNOWN_1,
-                        xi.cutsceneFlag.NO_PCS,
-                        xi.cutsceneFlag.NO_NPCS,
-                        xi.cutsceneFlag.UNKNOWN_2
+                        invaderXim.cutsceneFlag.UNKNOWN_1,
+                        invaderXim.cutsceneFlag.NO_PCS,
+                        invaderXim.cutsceneFlag.NO_NPCS,
+                        invaderXim.cutsceneFlag.UNKNOWN_2
                     )
                     return { 367, -1, cutsceneFlags }
                 end
@@ -277,7 +277,7 @@ quest.sections =
                     local ID = zones[player:getZoneID()]
                     player:messageText(player, ID.text.MAP_MARKER_TUTORIAL)
                     -- If you don't get the coupon, tough luck. Retail doesn't give you a chance to get it again.
-                    npcUtil.giveItem(player, xi.item.ADVENTURER_COUPON)
+                    npcUtil.giveItem(player, invaderXim.item.ADVENTURER_COUPON)
 
                     player:setPos(30, 2, -40, 128)
                     player:setHomePoint()
@@ -287,15 +287,15 @@ quest.sections =
             },
         },
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onZoneIn =
             {
                 function(player, prevZone)
                     local cutsceneFlags = bit.bor(
-                        xi.cutsceneFlag.UNKNOWN_1,
-                        xi.cutsceneFlag.NO_PCS,
-                        xi.cutsceneFlag.UNKNOWN_2
+                        invaderXim.cutsceneFlag.UNKNOWN_1,
+                        invaderXim.cutsceneFlag.NO_PCS,
+                        invaderXim.cutsceneFlag.UNKNOWN_2
                     )
 
                     return { 305, -1, cutsceneFlags }
@@ -308,7 +308,7 @@ quest.sections =
                     local ID = zones[player:getZoneID()]
                     player:messageText(player, ID.text.MAP_MARKER_TUTORIAL)
                     -- If you don't get the coupon, tough luck. Retail doesn't give you a chance to get it again.
-                    npcUtil.giveItem(player, xi.item.ADVENTURER_COUPON)
+                    npcUtil.giveItem(player, invaderXim.item.ADVENTURER_COUPON)
 
                     player:setPos(-120, -5.5, 175, 48)
                     player:setHomePoint()

@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Ranguemont Pass (166)
 -----------------------------------
-local ID = zones[xi.zone.RANGUEMONT_PASS]
+local ID = zones[invaderXim.zone.RANGUEMONT_PASS]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -18,7 +18,7 @@ zoneObject.onInitialize = function(zone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)

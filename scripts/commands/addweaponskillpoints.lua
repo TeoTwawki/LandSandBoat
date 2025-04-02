@@ -18,7 +18,7 @@ end
 
 commandObj.onTrigger = function(player, slot, points, target)
     -- validate slot
-    if slot < xi.slot.MAIN or slot > xi.slot.RANGED then
+    if slot < invaderXim.slot.MAIN or slot > invaderXim.slot.RANGED then
         error(player, 'Slot out of range.')
         return
     end

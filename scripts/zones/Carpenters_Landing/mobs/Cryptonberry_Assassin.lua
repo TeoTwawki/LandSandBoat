@@ -3,26 +3,26 @@
 --   NM: Cryptonberry Assassin
 -- !pos 120.615 -5.457 -390.133 2
 -----------------------------------
-local ID = zones[xi.zone.CARPENTERS_LANDING]
+local ID = zones[invaderXim.zone.CARPENTERS_LANDING]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 local cryptonberrySpecials =
 {
-    [xi.job.SMN] = xi.jsa.ASTRAL_FLOW,
-    [xi.job.BLM] = xi.jsa.MANAFONT,
-    [xi.job.THF] = xi.jsa.PERFECT_DODGE,
+    [invaderXim.job.SMN] = invaderXim.jsa.ASTRAL_FLOW,
+    [invaderXim.job.BLM] = invaderXim.jsa.MANAFONT,
+    [invaderXim.job.THF] = invaderXim.jsa.PERFECT_DODGE,
 }
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180) -- 3 minutes
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180) -- 3 minutes
 end
 
 entity.onMobSpawn = function(mob)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:setMod(xi.mod.SLEEP_MEVA, 90)
-    mob:addImmunity(xi.immunity.SILENCE)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:setMod(invaderXim.mod.SLEEP_MEVA, 90)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
     -- assassins and executor have special 2hr logic thus use local vars to track
     mob:setLocalVar('twoHourThreshold', math.random(20, 75))
 end

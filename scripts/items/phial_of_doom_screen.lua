@@ -7,7 +7,7 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    if target:hasStatusEffect(xi.effect.NEGATE_DOOM) then
+    if target:hasStatusEffect(invaderXim.effect.NEGATE_DOOM) then
         return 56
     end
 
@@ -15,7 +15,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffect(xi.effect.NEGATE_DOOM, 1, 0, 120)
+    target:addStatusEffect(invaderXim.effect.NEGATE_DOOM, 1, 0, 120)
 end
 
 return itemObject

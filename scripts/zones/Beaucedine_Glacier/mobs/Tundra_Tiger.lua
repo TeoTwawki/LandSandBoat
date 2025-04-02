@@ -3,7 +3,7 @@
 --  Mob: Tundra Tiger
 -- Note: PH for Nue, Kirata
 -----------------------------------
-local ID = zones[xi.zone.BEAUCEDINE_GLACIER]
+local ID = zones[invaderXim.zone.BEAUCEDINE_GLACIER]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -21,13 +21,13 @@ local kirataPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 46, 1, xi.regime.type.FIELDS)
-    xi.regime.checkRegime(player, mob, 47, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 46, 1, invaderXim.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 47, 1, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, kirataPHTable, 7, math.random(3600, 28800)) -- 1 to 8 hours
-    xi.mob.phOnDespawn(mob, nuePHTable, 7, math.random(3600, 7200)) -- 1 to 2 hours
+    invaderXim.mob.phOnDespawn(mob, kirataPHTable, 7, math.random(3600, 28800)) -- 1 to 8 hours
+    invaderXim.mob.phOnDespawn(mob, nuePHTable, 7, math.random(3600, 7200)) -- 1 to 2 hours
 end
 
 return entity

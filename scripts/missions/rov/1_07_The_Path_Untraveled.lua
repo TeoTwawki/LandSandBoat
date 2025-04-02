@@ -8,14 +8,14 @@
 -- Shattered Telepoint (Tahrongi)  : !pos 179 35 255 117
 -- Gilgamesh                       : !pos 122.452 -9.009 -12.052 252
 -----------------------------------
-local norgID = zones[xi.zone.NORG]
+local norgID = zones[invaderXim.zone.NORG]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.THE_PATH_UNTRAVELED)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.THE_PATH_UNTRAVELED)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.AT_THE_HEAVENS_DOOR },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.AT_THE_HEAVENS_DOOR },
 }
 
 mission.sections =
@@ -25,7 +25,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.KONSCHTAT_HIGHLANDS] =
+        [invaderXim.zone.KONSCHTAT_HIGHLANDS] =
         {
             ['Shattered_Telepoint'] =
             {
@@ -34,7 +34,7 @@ mission.sections =
                     -- from the crystal.  This could impact this parameter, along with several successive missions.
                     -- All successive missions use the isLionGhost variable, and can be used to replace should this
                     -- be verified.
-                    local isLionGhost = player:hasCompletedMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_CELESTIAL_NEXUS) and 1 or 0
+                    local isLionGhost = player:hasCompletedMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_CELESTIAL_NEXUS) and 1 or 0
 
                     return mission:event(3, { [7] = isLionGhost }):setPriority(1005)
                 end,
@@ -48,12 +48,12 @@ mission.sections =
             },
         },
 
-        [xi.zone.LA_THEINE_PLATEAU] =
+        [invaderXim.zone.LA_THEINE_PLATEAU] =
         {
             ['Shattered_Telepoint'] =
             {
                 onTrigger = function(player, npc)
-                    local isLionGhost = player:hasCompletedMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_CELESTIAL_NEXUS) and 1 or 0
+                    local isLionGhost = player:hasCompletedMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_CELESTIAL_NEXUS) and 1 or 0
 
                     return mission:event(14, { [7] = isLionGhost }):setPriority(1005)
                 end,
@@ -67,12 +67,12 @@ mission.sections =
             },
         },
 
-        [xi.zone.TAHRONGI_CANYON] =
+        [invaderXim.zone.TAHRONGI_CANYON] =
         {
             ['Shattered_Telepoint'] =
             {
                 onTrigger = function(player, npc)
-                    local isLionGhost = player:hasCompletedMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_CELESTIAL_NEXUS) and 1 or 0
+                    local isLionGhost = player:hasCompletedMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_CELESTIAL_NEXUS) and 1 or 0
 
                     return mission:event(41, { [7] = isLionGhost }):setPriority(1005)
                 end,
@@ -93,7 +93,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['_700']      = mission:messageSpecial(norgID.text.DOOR_IS_LOCKED),
             ['Gilgamesh'] = mission:event(263), -- NOTE: This might not be accessible

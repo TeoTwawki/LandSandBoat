@@ -8,7 +8,7 @@ require('scripts/quests/tutorial')
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
 end
 
 entity.onMobRoam = function(mob)
@@ -19,11 +19,11 @@ entity.onMobRoam = function(mob)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.EVA_DOWN)
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.EVA_DOWN)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.tutorial.onMobDeath(player)
+    invaderXim.tutorial.onMobDeath(player)
 end
 
 entity.onMobDespawn = function(mob)

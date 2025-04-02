@@ -6,7 +6,7 @@
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    xi.assault.adjustMobLevel(mob)
+    invaderXim.assault.adjustMobLevel(mob)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

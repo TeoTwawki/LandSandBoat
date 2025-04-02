@@ -7,10 +7,10 @@
 -- Mourices  : !pos -50.646 -0.501 -27.642 241
 -- Uu Zhoumo : !pos -179 16 155 145
 -----------------------------------
-local giddeusID = zones[xi.zone.GIDDEUS]
+local giddeusID = zones[invaderXim.zone.GIDDEUS]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_TO_WINDURST)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_TO_WINDURST)
 
 mission.reward = {}
 
@@ -21,12 +21,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.GIDDEUS] =
+        [invaderXim.zone.GIDDEUS] =
         {
             ['Uu_Zhoumo'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.SHIELD_OFFERING) then
+                    if player:hasKeyItem(invaderXim.ki.SHIELD_OFFERING) then
                         return mission:progressEvent(42)
                     end
                 end,
@@ -36,13 +36,13 @@ mission.sections =
             {
                 [42] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 6)
-                    player:messageSpecial(giddeusID.text.OFFERED_UP_KEY_ITEM, xi.ki.SHIELD_OFFERING)
-                    player:delKeyItem(xi.ki.SHIELD_OFFERING)
+                    player:messageSpecial(giddeusID.text.OFFERED_UP_KEY_ITEM, invaderXim.ki.SHIELD_OFFERING)
+                    player:delKeyItem(invaderXim.ki.SHIELD_OFFERING)
                 end,
             },
         },
 
-        [xi.zone.HEAVENS_TOWER] =
+        [invaderXim.zone.HEAVENS_TOWER] =
         {
             ['Kupipi'] =
             {
@@ -50,10 +50,10 @@ mission.sections =
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
                     if missionStatus == 4 then
-                        if xi.settings.main.ENABLE_TRUST_QUESTS == 1 then
-                            local needsSemihTrust = (not player:hasSpell(xi.magic.spell.SEMIH_LAFIHNA) and not player:findItem(xi.item.CIPHER_OF_SEMIHS_ALTER_EGO)) and 1 or 0
+                        if invaderXim.settings.main.ENABLE_TRUST_QUESTS == 1 then
+                            local needsSemihTrust = (not player:hasSpell(invaderXim.magic.spell.SEMIH_LAFIHNA) and not player:findItem(invaderXim.item.CIPHER_OF_SEMIHS_ALTER_EGO)) and 1 or 0
 
-                            return mission:progressEvent(238, 1, 1, 1, 1, xi.nation.SANDORIA, 0, 0, needsSemihTrust)
+                            return mission:progressEvent(238, 1, 1, 1, 1, invaderXim.nation.SANDORIA, 0, 0, needsSemihTrust)
                         else
                             return mission:progressEvent(238)
                         end
@@ -74,7 +74,7 @@ mission.sections =
             onEventUpdate =
             {
                 [42] = function(player, csid, option, npc)
-                    local onPathUntraveled = player:getCurrentMission(xi.mission.log_id.ROV) == xi.mission.id.rov.THE_PATH_UNTRAVELED and 1 or 0
+                    local onPathUntraveled = player:getCurrentMission(invaderXim.mission.log_id.ROV) == invaderXim.mission.id.rov.THE_PATH_UNTRAVELED and 1 or 0
 
                     player:updateEvent(0, 0, 0, 0, 0, 0, 0, onPathUntraveled)
                 end,
@@ -88,20 +88,20 @@ mission.sections =
 
                 [238] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 5)
-                    npcUtil.giveKeyItem(player, xi.ki.SHIELD_OFFERING)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.SHIELD_OFFERING)
 
                     if
-                        xi.settings.main.ENABLE_TRUST_QUESTS == 1 and
-                        not player:hasSpell(xi.magic.spell.SEMIH_LAFIHNA) and
-                        not player:findItem(xi.item.CIPHER_OF_SEMIHS_ALTER_EGO)
+                        invaderXim.settings.main.ENABLE_TRUST_QUESTS == 1 and
+                        not player:hasSpell(invaderXim.magic.spell.SEMIH_LAFIHNA) and
+                        not player:findItem(invaderXim.item.CIPHER_OF_SEMIHS_ALTER_EGO)
                     then
-                        npcUtil.giveItem(player, xi.item.CIPHER_OF_SEMIHS_ALTER_EGO)
+                        npcUtil.giveItem(player, invaderXim.item.CIPHER_OF_SEMIHS_ALTER_EGO)
                     end
                 end,
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Catalia'] =
             {
@@ -134,7 +134,7 @@ mission.sections =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, { { xi.item.PARANA_SHIELD, 2 } }) and
+                        npcUtil.tradeHasExactly(trade, { { invaderXim.item.PARANA_SHIELD, 2 } }) and
                         player:getMissionStatus(mission.areaId) == 6
                     then
                         return mission:progressEvent(457) -- Has delivered shield
@@ -157,7 +157,7 @@ mission.sections =
                 [457] = function(player, csid, option, npc)
                     if mission:complete(player) then
                         player:confirmTrade()
-                        player:addMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_ABROAD)
+                        player:addMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_ABROAD)
                         player:setMissionStatus(mission.areaId, 7)
                     end
                 end,

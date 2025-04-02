@@ -3,19 +3,19 @@
 -- Waughroon Shrine BCNM40, Star Orb
 -- !additem 1131
 -----------------------------------
-local waughroonID = zones[xi.zone.WAUGHROON_SHRINE]
+local waughroonID = zones[invaderXim.zone.WAUGHROON_SHRINE]
 -----------------------------------
 
 local content = Battlefield:new({
-    zoneId           = xi.zone.WAUGHROON_SHRINE,
-    battlefieldId    = xi.battlefield.id.WORMS_TURN,
+    zoneId           = invaderXim.zone.WAUGHROON_SHRINE,
+    battlefieldId    = invaderXim.battlefield.id.WORMS_TURN,
     maxPlayers       = 6,
     levelCap         = 40,
     timeLimit        = utils.minutes(30),
     index            = 1,
     entryNpc         = 'BC_Entrance',
     exitNpc          = 'Burning_Circle',
-    requiredItems    = { xi.item.STAR_ORB, wearMessage = waughroonID.text.A_CRACK_HAS_FORMED, wornMessage = waughroonID.text.ORB_IS_CRACKED },
+    requiredItems    = { invaderXim.item.STAR_ORB, wearMessage = waughroonID.text.A_CRACK_HAS_FORMED, wornMessage = waughroonID.text.ORB_IS_CRACKED },
     armouryCrates    =
     {
         waughroonID.mob.FLAYER_FRANZ + 16,
@@ -94,48 +94,48 @@ content.groups =
 content.loot =
 {
     {
-        { item = xi.item.NONE,                  weight = 125 }, -- nothing
-        { item = xi.item.FIRE_SPIRIT_PACT,      weight = 125 }, -- fire_spirit_pact
-        { item = xi.item.SCROLL_OF_PHALANX,     weight = 125 }, -- scroll_of_phalanx
-        { item = xi.item.SCROLL_OF_UTSUSEMI_NI, weight = 125 }, -- scroll_of_utsusemi_ni
-        { item = xi.item.SCROLL_OF_ERASE,       weight = 125 }, -- scroll_of_erase
-        { item = xi.item.SCROLL_OF_ICE_SPIKES,  weight = 125 }, -- scroll_of_ice_spikes
-        { item = xi.item.SCROLL_OF_ABSORB_STR,  weight = 125 }, -- scroll_of_absorb-str
-        { item = xi.item.SCROLL_OF_REFRESH,     weight = 125 }, -- scroll_of_refresh
+        { item = invaderXim.item.NONE,                  weight = 125 }, -- nothing
+        { item = invaderXim.item.FIRE_SPIRIT_PACT,      weight = 125 }, -- fire_spirit_pact
+        { item = invaderXim.item.SCROLL_OF_PHALANX,     weight = 125 }, -- scroll_of_phalanx
+        { item = invaderXim.item.SCROLL_OF_UTSUSEMI_NI, weight = 125 }, -- scroll_of_utsusemi_ni
+        { item = invaderXim.item.SCROLL_OF_ERASE,       weight = 125 }, -- scroll_of_erase
+        { item = invaderXim.item.SCROLL_OF_ICE_SPIKES,  weight = 125 }, -- scroll_of_ice_spikes
+        { item = invaderXim.item.SCROLL_OF_ABSORB_STR,  weight = 125 }, -- scroll_of_absorb-str
+        { item = invaderXim.item.SCROLL_OF_REFRESH,     weight = 125 }, -- scroll_of_refresh
     },
 
     {
-        { item = xi.item.NONE,              weight = 125 }, -- nothing
-        { item = xi.item.ENHANCING_EARRING, weight = 125 }, -- enhancing_earring
-        { item = xi.item.SPIRIT_TORQUE,     weight = 125 }, -- spirit_torque
-        { item = xi.item.GUARDING_GORGET,   weight = 125 }, -- guarding_gorget
-        { item = xi.item.NEMESIS_EARRING,   weight = 125 }, -- nemesis_earring
-        { item = xi.item.EARTH_MANTLE,      weight = 125 }, -- earth_mantle
-        { item = xi.item.STRIKE_SHIELD,     weight = 125 }, -- strike_shield
-        { item = xi.item.SHIKAR_BOW,        weight = 125 }, -- shikar_bow
+        { item = invaderXim.item.NONE,              weight = 125 }, -- nothing
+        { item = invaderXim.item.ENHANCING_EARRING, weight = 125 }, -- enhancing_earring
+        { item = invaderXim.item.SPIRIT_TORQUE,     weight = 125 }, -- spirit_torque
+        { item = invaderXim.item.GUARDING_GORGET,   weight = 125 }, -- guarding_gorget
+        { item = invaderXim.item.NEMESIS_EARRING,   weight = 125 }, -- nemesis_earring
+        { item = invaderXim.item.EARTH_MANTLE,      weight = 125 }, -- earth_mantle
+        { item = invaderXim.item.STRIKE_SHIELD,     weight = 125 }, -- strike_shield
+        { item = invaderXim.item.SHIKAR_BOW,        weight = 125 }, -- shikar_bow
     },
 
     {
-        { item = xi.item.OAK_LOG,      weight = 500 }, -- oak_log
-        { item = xi.item.ROSEWOOD_LOG, weight = 500 }, -- rosewood_log
+        { item = invaderXim.item.OAK_LOG,      weight = 500 }, -- oak_log
+        { item = invaderXim.item.ROSEWOOD_LOG, weight = 500 }, -- rosewood_log
     },
 
     {
-        { item = xi.item.GOLD_BEASTCOIN,    weight = 500 }, -- gold_beastcoin
-        { item = xi.item.MYTHRIL_BEASTCOIN, weight = 500 }, -- mythril_beastcoin
+        { item = invaderXim.item.GOLD_BEASTCOIN,    weight = 500 }, -- gold_beastcoin
+        { item = invaderXim.item.MYTHRIL_BEASTCOIN, weight = 500 }, -- mythril_beastcoin
     },
 
     {
-        { item = xi.item.BLACK_PEARL, weight = 200 }, -- black_pearl
-        { item = xi.item.AMETRINE,    weight = 200 }, -- ametrine
-        { item = xi.item.YELLOW_ROCK, weight = 200 }, -- yellow_rock
-        { item = xi.item.PERIDOT,     weight = 200 }, -- peridot
-        { item = xi.item.TURQUOISE,   weight = 200 }, -- turquoise
+        { item = invaderXim.item.BLACK_PEARL, weight = 200 }, -- black_pearl
+        { item = invaderXim.item.AMETRINE,    weight = 200 }, -- ametrine
+        { item = invaderXim.item.YELLOW_ROCK, weight = 200 }, -- yellow_rock
+        { item = invaderXim.item.PERIDOT,     weight = 200 }, -- peridot
+        { item = invaderXim.item.TURQUOISE,   weight = 200 }, -- turquoise
     },
 
     {
-        { item = xi.item.NONE,     weight = 800 }, -- nothing
-        { item = xi.item.RERAISER, weight = 200 }, -- reraiser
+        { item = invaderXim.item.NONE,     weight = 800 }, -- nothing
+        { item = invaderXim.item.RERAISER, weight = 200 }, -- reraiser
     },
 }
 

@@ -7,10 +7,10 @@ require('modules/module_utils')
 -----------------------------------
 local m = Module:new('era_effect_composure')
 
-m:addOverride('xi.effects.composure.onEffectGain', function(target, effect)
+m:addOverride('invaderXim.effects.composure.onEffectGain', function(target, effect)
     local power = math.floor(target:getMainLvl() / 5)
 
-    effect:addMod(xi.mod.ACC, power)
+    effect:addMod(invaderXim.mod.ACC, power)
 end)
 
 return m

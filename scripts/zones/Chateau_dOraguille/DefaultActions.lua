@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.CHATEAU_DORAGUILLE]
+local ID = zones[invaderXim.zone.CHATEAU_DORAGUILLE]
 
 return {
     ['_6h0']        = { special = ID.text.ITS_LOCKED },

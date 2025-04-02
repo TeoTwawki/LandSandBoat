@@ -11,9 +11,9 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local duration = math.random(60, 120)
-    skill:setMsg(xi.mobskills.mobGazeMove(mob, target, xi.effect.SLEEP_I, 1, 0, duration))
+    skill:setMsg(invaderXim.mobskills.mobGazeMove(mob, target, invaderXim.effect.SLEEP_I, 1, 0, duration))
 
-    return xi.effect.SLEEP_I
+    return invaderXim.effect.SLEEP_I
 end
 
 return mobskillObject

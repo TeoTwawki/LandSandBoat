@@ -11,23 +11,23 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.foodOnItemCheck(target, xi.foodType.BASIC)
+    return invaderXim.itemUtils.foodOnItemCheck(target, invaderXim.foodType.BASIC)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffect(xi.effect.FOOD, 0, 0, 300, 4280)
+    target:addStatusEffect(invaderXim.effect.FOOD, 0, 0, 300, 4280)
 end
 
 itemObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.HPHEAL, 8)
-    target:addMod(xi.mod.UNDEAD_KILLER, 12)
-    target:addMod(xi.mod.BLINDRES, 12)
+    target:addMod(invaderXim.mod.HPHEAL, 8)
+    target:addMod(invaderXim.mod.UNDEAD_KILLER, 12)
+    target:addMod(invaderXim.mod.BLINDRES, 12)
 end
 
 itemObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.HPHEAL, 8)
-    target:delMod(xi.mod.UNDEAD_KILLER, 12)
-    target:delMod(xi.mod.BLINDRES, 12)
+    target:delMod(invaderXim.mod.HPHEAL, 8)
+    target:delMod(invaderXim.mod.UNDEAD_KILLER, 12)
+    target:delMod(invaderXim.mod.BLINDRES, 12)
 end
 
 return itemObject

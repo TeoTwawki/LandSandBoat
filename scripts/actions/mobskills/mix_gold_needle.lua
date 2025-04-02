@@ -9,12 +9,12 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    if target:hasStatusEffect(xi.effect.PETRIFICATION) then
-        skill:setMsg(xi.msg.basic.SKILL_ERASE)
-        target:delStatusEffect(xi.effect.PETRIFICATION)
-        return xi.effect.PETRIFICATION
+    if target:hasStatusEffect(invaderXim.effect.PETRIFICATION) then
+        skill:setMsg(invaderXim.msg.basic.SKILL_ERASE)
+        target:delStatusEffect(invaderXim.effect.PETRIFICATION)
+        return invaderXim.effect.PETRIFICATION
     else
-        skill:setMsg(xi.msg.basic.NO_EFFECT)
+        skill:setMsg(invaderXim.msg.basic.NO_EFFECT)
     end
 end
 

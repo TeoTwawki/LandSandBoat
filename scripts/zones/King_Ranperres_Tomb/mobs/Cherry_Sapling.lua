@@ -3,7 +3,7 @@
 --  Mob: Cherry Sapling
 -- Note: PH for Cemetery Cherry
 -----------------------------------
-local ID = zones[xi.zone.KING_RANPERRES_TOMB]
+local ID = zones[invaderXim.zone.KING_RANPERRES_TOMB]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

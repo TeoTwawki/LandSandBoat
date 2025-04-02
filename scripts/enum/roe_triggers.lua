@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.roeTrigger
-xi.roeTrigger =
+---@enum invaderXim.roeTrigger
+invaderXim.roeTrigger =
 {
     DEFEAT_MOB           = 1,  -- Player kills a Mob (Counts for mobs killed by partymembers)
     USE_WEAPONSKILL      = 2,  -- Player Weapon skill used

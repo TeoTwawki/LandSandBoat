@@ -15,20 +15,20 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local mabTotal = 10
     local mdbTotal = 10
 
-    local mabEffect = mob:getStatusEffect(xi.effect.MAGIC_ATK_BOOST)
+    local mabEffect = mob:getStatusEffect(invaderXim.effect.MAGIC_ATK_BOOST)
     if mabEffect then
         mabTotal = mabEffect:getPower() + 10
     end
 
-    local mdbEffect = mob:getStatusEffect(xi.effect.MAGIC_DEF_BOOST)
+    local mdbEffect = mob:getStatusEffect(invaderXim.effect.MAGIC_DEF_BOOST)
     if mdbEffect then
         mdbTotal = mdbEffect:getPower() + 10
     end
 
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.MAGIC_ATK_BOOST, mabTotal, 0, 180))
-    xi.mobskills.mobBuffMove(mob, xi.effect.MAGIC_DEF_BOOST, mdbTotal, 0, 180)
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.MAGIC_ATK_BOOST, mabTotal, 0, 180))
+    invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.MAGIC_DEF_BOOST, mdbTotal, 0, 180)
 
-    return xi.effect.MAGIC_ATK_BOOST
+    return invaderXim.effect.MAGIC_ATK_BOOST
 end
 
 return mobskillObject

@@ -4,13 +4,13 @@
 -- Type: Tenshodo Merchant
 -- !pos 28.149 2.899 -44.780 245
 -----------------------------------
-local ID = zones[xi.zone.LOWER_JEUNO]
+local ID = zones[invaderXim.zone.LOWER_JEUNO]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if player:hasKeyItem(xi.ki.TENSHODO_MEMBERS_CARD) then
+    if player:hasKeyItem(invaderXim.ki.TENSHODO_MEMBERS_CARD) then
         local stock =
         {
             704,    144, -- Bamboo Stick
@@ -72,7 +72,7 @@ entity.onTrigger = function(player, npc)
         }
 
         player:showText(npc, ID.text.AMALASANDA_SHOP_DIALOG)
-        xi.shop.general(player, stock)
+        invaderXim.shop.general(player, stock)
     end
 end
 

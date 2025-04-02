@@ -11,7 +11,7 @@
 local mobskillObject = {}
 
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
-    if mob:hasStatusEffect(xi.effect.BLOOD_WEAPON) then
+    if mob:hasStatusEffect(invaderXim.effect.BLOOD_WEAPON) then
         return 1
     elseif not target:isInfront(mob, 128) then
         return 1
@@ -23,12 +23,12 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    local dmgmod = xi.mobskills.mobBreathMove(mob, target, skill, 0.2, 1.25, xi.element.ICE, 1400)
+    local dmgmod = invaderXim.mobskills.mobBreathMove(mob, target, skill, 0.2, 1.25, invaderXim.element.ICE, 1400)
     dmgmod = utils.conalDamageAdjustment(mob, target, skill, dmgmod, 0.2)
 
-    local dmg = xi.mobskills.mobFinalAdjustments(dmgmod, mob, skill, target, xi.attackType.BREATH, xi.damageType.ICE, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
+    local dmg = invaderXim.mobskills.mobFinalAdjustments(dmgmod, mob, skill, target, invaderXim.attackType.BREATH, invaderXim.damageType.ICE, invaderXim.mobskills.shadowBehavior.IGNORE_SHADOWS)
 
-    target:takeDamage(dmg, mob, xi.attackType.BREATH, xi.damageType.ICE)
+    target:takeDamage(dmg, mob, invaderXim.attackType.BREATH, invaderXim.damageType.ICE)
     return dmg
 end
 

@@ -7,15 +7,15 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.voidwalker.npcOnTrigger(player, npc)
+    invaderXim.voidwalker.npcOnTrigger(player, npc)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.voidwalker.npcOnEventUpdate(player, csid, option, npc)
+    invaderXim.voidwalker.npcOnEventUpdate(player, csid, option, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.voidwalker.npcOnEventFinish(player, csid, option, npc)
+    invaderXim.voidwalker.npcOnEventFinish(player, csid, option, npc)
 end
 
 return entity

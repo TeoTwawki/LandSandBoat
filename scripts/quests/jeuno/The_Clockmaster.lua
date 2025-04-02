@@ -6,26 +6,26 @@
 -- Collet : !pos -44 0 107 244
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_CLOCKMASTER)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_CLOCKMASTER)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.JEUNO,
-    item     = xi.item.TIME_HAMMER,
-    title    = xi.title.TIMEKEEPER,
+    fameArea = invaderXim.fameArea.JEUNO,
+    item     = invaderXim.item.TIME_HAMMER,
+    title    = invaderXim.title.TIMEKEEPER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.SAVE_THE_CLOCK_TOWER) and
-                player:getFameLevel(xi.fameArea.JEUNO) >= 5
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.SAVE_THE_CLOCK_TOWER) and
+                player:getFameLevel(invaderXim.fameArea.JEUNO) >= 5
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['_6s2'] =
             {
@@ -45,10 +45,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['_6s2']   = quest:event(110):replaceDefault(),
             ['Collet'] = quest:event(163):replaceDefault(),

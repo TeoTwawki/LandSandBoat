@@ -1,15 +1,15 @@
 -----------------------------------
--- xi.effect.AGI_DOWN
+-- invaderXim.effect.AGI_DOWN
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    if (target:getStat(xi.mod.AGI) - effect:getPower()) < 0 then
-        effect:setPower(target:getStat(xi.mod.AGI))
+    if (target:getStat(invaderXim.mod.AGI) - effect:getPower()) < 0 then
+        effect:setPower(target:getStat(invaderXim.mod.AGI))
     end
 
-    target:addMod(xi.mod.AGI, -effect:getPower())
+    target:addMod(invaderXim.mod.AGI, -effect:getPower())
 end
 
 effectObject.onEffectTick = function(target, effect)
@@ -17,14 +17,14 @@ effectObject.onEffectTick = function(target, effect)
     local downAGIEffectSize = effect:getPower()
     if downAGIEffectSize > 0 then
         effect:setPower(downAGIEffectSize - 1)
-        target:delMod(xi.mod.AGI, -1)
+        target:delMod(invaderXim.mod.AGI, -1)
     end
 end
 
 effectObject.onEffectLose = function(target, effect)
     local downAGIEffectSize = effect:getPower()
     if downAGIEffectSize > 0 then
-        target:delMod(xi.mod.AGI, -downAGIEffectSize)
+        target:delMod(invaderXim.mod.AGI, -downAGIEffectSize)
     end
 end
 

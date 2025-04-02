@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.BASTOK_MARKETS] =
+zones[invaderXim.zone.BASTOK_MARKETS] =
 {
     text =
     {
@@ -90,4 +90,4 @@ zones[xi.zone.BASTOK_MARKETS] =
     },
 }
 
-return zones[xi.zone.BASTOK_MARKETS]
+return zones[invaderXim.zone.BASTOK_MARKETS]

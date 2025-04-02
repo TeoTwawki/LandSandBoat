@@ -1,7 +1,7 @@
 --[[
 https://ffxiclopedia.fandom.com/wiki/Category:Crawlers
 
-Eruca mobs can optionally be modified by calling xi.mix.eruca.config(mob, params) from within onMobSpawn.
+Eruca mobs can optionally be modified by calling invaderXim.mix.eruca.config(mob, params) from within onMobSpawn.
 
 params is a table that can contain the following keys:
     sleepHour : changes hour at which eruca crawlers naturally fall asleep (default: 18)
@@ -9,7 +9,7 @@ params is a table that can contain the following keys:
 
 Example:
 
-xi.mix.eruca.config(mob, {
+invaderXim.mix.eruca.config(mob, {
     sleepHour = 20,
     wakeHour = 4,
 })
@@ -19,31 +19,31 @@ require('scripts/globals/mixins')
 require('scripts/globals/magic')
 -----------------------------------
 xi = xi or {}
-xi.mix = xi.mix or {}
-xi.mix.eruca = xi.mix.eruca or {}
+invaderXim.mix = invaderXim.mix or {}
+invaderXim.mix.eruca = invaderXim.mix.eruca or {}
 
 g_mixins = g_mixins or {}
 g_mixins.families = g_mixins.families or {}
 
 local function bedTime(mob)
     mob:setAnimationSub(mob:getAnimationSub() + 1)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 1)
-    mob:setMobMod(xi.mobMod.NO_AGGRO, 1)
-    mob:setMobMod(xi.mobMod.NO_LINK, 1)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
+    mob:setMobMod(invaderXim.mobMod.NO_AGGRO, 1)
+    mob:setMobMod(invaderXim.mobMod.NO_LINK, 1)
     mob:setMagicCastingEnabled(false)
     mob:setLocalVar('ResleepTime', 0)
 end
 
 local function wakeUp(mob)
     mob:setAnimationSub(mob:getAnimationSub() - 1)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
-    mob:setMobMod(xi.mobMod.NO_AGGRO, 0)
-    mob:setMobMod(xi.mobMod.NO_LINK, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_AGGRO, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_LINK, 0)
     mob:setMagicCastingEnabled(true)
     mob:setLocalVar('ResleepTime', 0)
 end
 
-xi.mix.eruca.config = function(mob, params)
+invaderXim.mix.eruca.config = function(mob, params)
     if params.sleepHour and type(params.sleepHour) == 'number' then
         mob:setLocalVar('[eruca]sleepHour', params.sleepHour)
     end
@@ -54,7 +54,7 @@ xi.mix.eruca.config = function(mob, params)
 end
 
 g_mixins.families.eruca = function(erucaMob)
-    -- these defaults can be overwritten by using xi.mix.eruca.config() in onMobSpawn.  sleepHour must be > wakeHour to function properly.
+    -- these defaults can be overwritten by using invaderXim.mix.eruca.config() in onMobSpawn.  sleepHour must be > wakeHour to function properly.
     erucaMob:addListener('SPAWN', 'ERUCA_SPAWN', function(mob)
         mob:setLocalVar('[eruca]sleepHour', 18)
         mob:setLocalVar('[eruca]wakeHour', 6)
@@ -86,15 +86,15 @@ g_mixins.families.eruca = function(erucaMob)
         end
 
         if
-            VanadielDayElement() == xi.element.FIRE and
-            mob:getMod(xi.mod.REGAIN) == 0
+            VanadielDayElement() == invaderXim.element.FIRE and
+            mob:getMod(invaderXim.mod.REGAIN) == 0
         then
-            mob:setMod(xi.mod.REGAIN, 30)
+            mob:setMod(invaderXim.mod.REGAIN, 30)
         elseif
-            VanadielDayElement() ~= xi.element.FIRE and
-            mob:getMod(xi.mod.REGAIN) ~= 0
+            VanadielDayElement() ~= invaderXim.element.FIRE and
+            mob:getMod(invaderXim.mod.REGAIN) ~= 0
         then
-            mob:setMod(xi.mod.REGAIN, 0)
+            mob:setMod(invaderXim.mod.REGAIN, 0)
         end
     end)
 

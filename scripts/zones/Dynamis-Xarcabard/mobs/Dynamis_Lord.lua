@@ -4,21 +4,21 @@
 -- Note: Mega Boss
 -- Spawned by trading a Shrouded Bijou to the ??? in front of Castle Zvahl.
 -----------------------------------
-local ID = zones[xi.zone.DYNAMIS_XARCABARD]
+local ID = zones[invaderXim.zone.DYNAMIS_XARCABARD]
 mixins = { require('scripts/mixins/job_special') }
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         between = 60,
         specials =
         {
-            { id = xi.jsa.HUNDRED_FISTS,  hpp = 95 },
-            { id = xi.jsa.MIGHTY_STRIKES, hpp = 95 },
-            { id = xi.jsa.BLOOD_WEAPON,   hpp = 95 },
-            { id = xi.jsa.CHAINSPELL,     hpp = 95 },
+            { id = invaderXim.jsa.HUNDRED_FISTS,  hpp = 95 },
+            { id = invaderXim.jsa.MIGHTY_STRIKES, hpp = 95 },
+            { id = invaderXim.jsa.BLOOD_WEAPON,   hpp = 95 },
+            { id = invaderXim.jsa.CHAINSPELL,     hpp = 95 },
         },
     })
 end
@@ -41,7 +41,7 @@ entity.onMobFight = function(mob, target)
                 pet:updateEnmity(target)
             end
 
-            if pet:getCurrentAction() == xi.act.ROAMING then
+            if pet:getCurrentAction() == invaderXim.act.ROAMING then
                 pet:updateEnmity(target)
             end
         end
@@ -49,8 +49,8 @@ entity.onMobFight = function(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.dynamis.megaBossOnDeath(mob, player, optParams)
-    player:addTitle(xi.title.LIFTER_OF_SHADOWS)
+    invaderXim.dynamis.megaBossOnDeath(mob, player, optParams)
+    player:addTitle(invaderXim.title.LIFTER_OF_SHADOWS)
     if optParams.isKiller then
         DespawnMob(ID.mob.YING)
         DespawnMob(ID.mob.YING + 1)

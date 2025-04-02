@@ -31,18 +31,18 @@ local function surface(mob)
 end
 
 local function openMouth(mob)
-    mob:addMod(xi.mod.ATTP, 100)
-    mob:addMod(xi.mod.DEFP, -50)
-    mob:addMod(xi.mod.DMGMAGIC, -5000)
+    mob:addMod(invaderXim.mod.ATTP, 100)
+    mob:addMod(invaderXim.mod.DEFP, -50)
+    mob:addMod(invaderXim.mod.DMGMAGIC, -5000)
     mob:setLocalVar('[hpemde]closeMouthHP', mob:getHP() - math.ceil(mob:getMaxHP() / 3))
     mob:setAnimationSub(3)
     mob:wait(2000)
 end
 
 local function closeMouth(mob)
-    mob:delMod(xi.mod.ATTP, 100)
-    mob:delMod(xi.mod.DEFP, -50)
-    mob:delMod(xi.mod.DMGMAGIC, -5000)
+    mob:delMod(invaderXim.mod.ATTP, 100)
+    mob:delMod(invaderXim.mod.DEFP, -50)
+    mob:delMod(invaderXim.mod.DMGMAGIC, -5000)
     mob:setLocalVar('[hpemde]changeTime', mob:getBattleTime() + 30)
     mob:setAnimationSub(6)
     mob:wait(2000)
@@ -50,7 +50,7 @@ end
 
 g_mixins.families.hpemde = function(hpemdeMob)
     hpemdeMob:addListener('SPAWN', 'HPEMDE_SPAWN', function(mob)
-        mob:setMod(xi.mod.REGEN, 10)
+        mob:setMod(invaderXim.mod.REGEN, 10)
         dive(mob)
     end)
 

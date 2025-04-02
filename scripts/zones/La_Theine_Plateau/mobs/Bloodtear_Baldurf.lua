@@ -13,21 +13,21 @@ require('scripts/quests/tutorial')
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.ALWAYS_AGGRO, 1)
+    mob:setMobMod(invaderXim.mobMod.ALWAYS_AGGRO, 1)
 end
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
-            { id = xi.jsa.MIGHTY_STRIKES, hpp = math.random(90, 95), cooldown = 120 } -- "Special Attacks: ... Mighty Strikes (multiple times)"
+            { id = invaderXim.jsa.MIGHTY_STRIKES, hpp = math.random(90, 95), cooldown = 120 } -- "Special Attacks: ... Mighty Strikes (multiple times)"
         }
     })
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.THE_HORNSPLITTER)
-    xi.tutorial.onMobDeath(player)
+    player:addTitle(invaderXim.title.THE_HORNSPLITTER)
+    invaderXim.tutorial.onMobDeath(player)
 end
 
 return entity

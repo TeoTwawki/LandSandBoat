@@ -7,8 +7,8 @@
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.dynamis.megaBossOnDeath(mob, player, optParams)
-    player:addTitle(xi.title.NIGHTMARE_AWAKENER)
+    invaderXim.dynamis.megaBossOnDeath(mob, player, optParams)
+    player:addTitle(invaderXim.title.NIGHTMARE_AWAKENER)
 end
 
 return entity

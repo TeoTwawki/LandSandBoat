@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.MOUNTED
+-- invaderXim.effect.MOUNTED
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -11,10 +11,10 @@ effectObject.onEffectGain = function(target, effect)
     -- seem to be off-by-one.
     if effect:getPower() < 2 then
         target:changeMusic(4, 212)
-        target:setAnimation(xi.anim.CHOCOBO)
+        target:setAnimation(invaderXim.anim.CHOCOBO)
     else
         target:changeMusic(4, 84)
-        target:setAnimation(xi.anim.MOUNT)
+        target:setAnimation(invaderXim.anim.MOUNT)
     end
 end
 
@@ -22,11 +22,11 @@ effectObject.onEffectTick = function(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    target:setAnimation(xi.anim.NONE)
+    target:setAnimation(invaderXim.anim.NONE)
 
     -- Remove CharVars from player participating in chocobo riding game
     if target:isPC() then
-        xi.chocoboGame.dismountChoco(target)
+        invaderXim.chocoboGame.dismountChoco(target)
     end
 end
 

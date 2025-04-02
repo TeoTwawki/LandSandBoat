@@ -12,17 +12,17 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    if not target:hasStatusEffect(xi.effect.ENCHANTMENT) then
-        target:addStatusEffect(xi.effect.ENCHANTMENT, 0, 0, 3600, 17592)
+    if not target:hasStatusEffect(invaderXim.effect.ENCHANTMENT) then
+        target:addStatusEffect(invaderXim.effect.ENCHANTMENT, 0, 0, 3600, 17592)
     end
 end
 
 itemObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.SUBTLE_BLOW, 20)
+    target:addMod(invaderXim.mod.SUBTLE_BLOW, 20)
 end
 
 itemObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.SUBTLE_BLOW, 20)
+    target:delMod(invaderXim.mod.SUBTLE_BLOW, 20)
 end
 
 return itemObject

@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.CLOISTER_OF_GALES] =
+zones[invaderXim.zone.CLOISTER_OF_GALES] =
 {
     text =
     {
@@ -38,4 +38,4 @@ zones[xi.zone.CLOISTER_OF_GALES] =
     },
 }
 
-return zones[xi.zone.CLOISTER_OF_GALES]
+return zones[invaderXim.zone.CLOISTER_OF_GALES]

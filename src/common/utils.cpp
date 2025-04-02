@@ -123,7 +123,7 @@ uint8 radianToRotation(float radian)
  * Functions for entity-to-entity world angles, and facing differences.      *
  * Highly recommended to read our wiki page to understand these.             *
  *****************************************************************************/
-// https://github.com/LandSandBoat/server/wiki/Spatial-Orientation-and-Relative-Positions
+// https://github.com/InvaderXim/server/wiki/Spatial-Orientation-and-Relative-Positions
 
 uint8 worldAngle(const position_t& A, const position_t& B)
 {

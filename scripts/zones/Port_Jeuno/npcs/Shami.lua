@@ -8,32 +8,32 @@
 local entity = {}
 
 ---@class shamiOrbItems
----@field [xi.item] { [integer]: integer, [integer]: integer, [integer]: integer, [integer]: integer } }
+---@field [invaderXim.item] { [integer]: integer, [integer]: integer, [integer]: integer, [integer]: integer } }
 local shamiOrbItems =
 {
     -- Item ID                    CS, PO, SealID, Cost
-    [xi.item.CLOUDY_ORB     ] = {  5,  1,      0,   20 },
-    [xi.item.SKY_ORB        ] = {  9,  2,      0,   30 },
-    [xi.item.STAR_ORB       ] = {  9,  3,      0,   40 },
-    [xi.item.COMET_ORB      ] = {  9,  4,      0,   50 },
-    [xi.item.MOON_ORB       ] = {  9,  5,      0,   60 },
-    [xi.item.CLOTHO_ORB     ] = {  9,  6,      1,   30 },
-    [xi.item.LACHESIS_ORB   ] = {  9,  7,      1,   30 },
-    [xi.item.ATROPOS_ORB    ] = {  9,  8,      1,   30 },
-    [xi.item.THEMIS_ORB     ] = { 11,  9,      1,   99 },
-    [xi.item.PHOBOS_ORB     ] = { 11, 10,      2,   30 },
-    [xi.item.DEIMOS_ORB     ] = { 11, 11,      2,   50 },
-    [xi.item.ZELOS_ORB      ] = { 11, 12,      3,   30 },
-    [xi.item.BIA_ORB        ] = { 11, 13,      3,   50 },
-    [xi.item.MICROCOSMIC_ORB] = { 11, 14,      4,   10 },
-    [xi.item.MACROCOSMIC_ORB] = { 11, 15,      4,   20 },
+    [invaderXim.item.CLOUDY_ORB     ] = {  5,  1,      0,   20 },
+    [invaderXim.item.SKY_ORB        ] = {  9,  2,      0,   30 },
+    [invaderXim.item.STAR_ORB       ] = {  9,  3,      0,   40 },
+    [invaderXim.item.COMET_ORB      ] = {  9,  4,      0,   50 },
+    [invaderXim.item.MOON_ORB       ] = {  9,  5,      0,   60 },
+    [invaderXim.item.CLOTHO_ORB     ] = {  9,  6,      1,   30 },
+    [invaderXim.item.LACHESIS_ORB   ] = {  9,  7,      1,   30 },
+    [invaderXim.item.ATROPOS_ORB    ] = {  9,  8,      1,   30 },
+    [invaderXim.item.THEMIS_ORB     ] = { 11,  9,      1,   99 },
+    [invaderXim.item.PHOBOS_ORB     ] = { 11, 10,      2,   30 },
+    [invaderXim.item.DEIMOS_ORB     ] = { 11, 11,      2,   50 },
+    [invaderXim.item.ZELOS_ORB      ] = { 11, 12,      3,   30 },
+    [invaderXim.item.BIA_ORB        ] = { 11, 13,      3,   50 },
+    [invaderXim.item.MICROCOSMIC_ORB] = { 11, 14,      4,   10 },
+    [invaderXim.item.MACROCOSMIC_ORB] = { 11, 15,      4,   20 },
 }
 
 ---@nodiscard
 ---@param option integer
----@return xi.item?, integer?, integer?
+---@return invaderXim.item?, integer?, integer?
 local function convertSealRetrieveOption(option)
-    for itemID, sealData in pairs(xi.seals.sealItems) do
+    for itemID, sealData in pairs(invaderXim.seals.sealItems) do
         if (option + sealData[2]) % 256 == 0 then
             local sealCount = (option + sealData[2]) / 256 - 1
 
@@ -66,7 +66,7 @@ end
 
 ---@nodiscard
 ---@param option integer
----@return xi.item?, integer?, integer?
+---@return invaderXim.item?, integer?, integer?
 local function getOrbDataFromOption(option)
     for itemID, orbData in pairs(shamiOrbItems) do
         if orbData[2] == option then
@@ -80,7 +80,7 @@ end
 entity.onTrade = function(player, npc, trade)
     local eventParams = { 321, 0, 0, 0, 0, 0 }
 
-    if xi.seals.onTrade(player, npc, trade, eventParams) then
+    if invaderXim.seals.onTrade(player, npc, trade, eventParams) then
         return
     end
 

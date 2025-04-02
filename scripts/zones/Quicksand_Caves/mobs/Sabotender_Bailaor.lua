@@ -2,7 +2,7 @@
 -- Area: Quicksand Caves
 --  Mob: Sabotender Bailaor
 -----------------------------------
-local ID = zones[xi.zone.QUICKSAND_CAVES]
+local ID = zones[invaderXim.zone.QUICKSAND_CAVES]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -14,11 +14,11 @@ local bailarinPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 816, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 816, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, bailarinPHTable, 100, 9000) -- 2.5 hours
+    invaderXim.mob.phOnDespawn(mob, bailarinPHTable, 100, 9000) -- 2.5 hours
 end
 
 return entity

@@ -14,16 +14,16 @@
 require('scripts/missions/wotg/helpers')
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.FORGET_ME_NOT)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.FORGET_ME_NOT)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.PILLAR_OF_HOPE },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.PILLAR_OF_HOPE },
 }
 
 local completeMissionOnZoneIn = function(player, prevZone)
     if mission:complete(player) then
-        xi.wotg.helpers.removeMemoryFragments(player)
+        invaderXim.wotg.helpers.removeMemoryFragments(player)
     end
 end
 
@@ -31,7 +31,7 @@ local mawOnEventFinish = function(player, csid, option, npc)
     mission:setVar(player, 'Status', 1)
     mission:setVar(player, 'Option', player:getZoneID())
 
-    player:setPos(800, 71.839, 770, 63, xi.zone.GRAUBERG_S)
+    player:setPos(800, 71.839, 770, 63, invaderXim.zone.GRAUBERG_S)
 end
 
 mission.sections =
@@ -41,7 +41,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BATALLIA_DOWNS] =
+        [invaderXim.zone.BATALLIA_DOWNS] =
         {
             ['Cavernous_Maw'] = mission:progressEvent(4, 0, 1, 2964, 1700, 43, 0, 0, 0),
 
@@ -53,7 +53,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.ROLANBERRY_FIELDS] =
+        [invaderXim.zone.ROLANBERRY_FIELDS] =
         {
             ['Cavernous_Maw'] = mission:progressEvent(503, 1, 26, 0, 6912, 235686, 1205, 183377, 1),
 
@@ -65,7 +65,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SAUROMUGUE_CHAMPAIGN] =
+        [invaderXim.zone.SAUROMUGUE_CHAMPAIGN] =
         {
             ['Cavernous_Maw'] = mission:progressEvent(503, 2, 0, 0, 0, 0, 651, 636808, 1),
 
@@ -77,7 +77,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BATALLIA_DOWNS_S] =
+        [invaderXim.zone.BATALLIA_DOWNS_S] =
         {
             ['Cavernous_Maw'] = mission:progressEvent(8, 0, 0, 0, 0, 0, 6553607, 0, 1),
 
@@ -89,7 +89,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.ROLANBERRY_FIELDS_S] =
+        [invaderXim.zone.ROLANBERRY_FIELDS_S] =
         {
             ['Cavernous_Maw'] = mission:progressEvent(703, 1, 0, 0, 0, 0, 0, 3, 1),
 
@@ -101,7 +101,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SAUROMUGUE_CHAMPAIGN_S] =
+        [invaderXim.zone.SAUROMUGUE_CHAMPAIGN_S] =
         {
             ['Cavernous_Maw'] = mission:progressEvent(703, 2, 300, 200, 100, 0, 5439495, 0, 1),
 
@@ -113,7 +113,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.GRAUBERG_S] =
+        [invaderXim.zone.GRAUBERG_S] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 1 then
@@ -135,7 +135,7 @@ mission.sections =
                 [33] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 2)
 
-                    xi.maws.goToMaw(player, mission:getVar(player, 'Option'))
+                    invaderXim.maws.goToMaw(player, mission:getVar(player, 'Option'))
                 end,
             },
         },

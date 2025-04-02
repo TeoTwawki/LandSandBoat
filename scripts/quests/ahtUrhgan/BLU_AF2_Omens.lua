@@ -6,33 +6,33 @@
 -- Lathuya         : !pos -95.081 -6 31.638 50
 -- Aydeewa (Blank) : !pos 342.129 36.509 -24.856 68
 -----------------------------------
-local whitegateID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local whitegateID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.OMENS)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.OMENS)
 
 quest.reward =
 {
-    item = xi.item.MAGUS_CHARUQS,
-    title = xi.title.IMMORTAL_LION,
+    item = invaderXim.item.MAGUS_CHARUQS,
+    title = invaderXim.title.IMMORTAL_LION,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.BEGINNINGS) and
-                player:getMainJob() == xi.job.BLU and
-                player:getMainLvl() >= xi.settings.main.AF2_QUEST_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.BEGINNINGS) and
+                player:getMainJob() == invaderXim.job.BLU and
+                player:getMainLvl() >= invaderXim.settings.main.AF2_QUEST_LEVEL
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Waoud'] =
             {
                 onTrigger = function(player, npc)
-                    local lastDivination = xi.quest.getVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer')
+                    local lastDivination = invaderXim.quest.getVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer')
 
                     if
                         lastDivination <= VanadielUniqueDay() and
@@ -48,7 +48,7 @@ quest.sections =
                 [710] = function(player, csid, option, npc)
                     quest:begin(player)
 
-                    xi.quest.setVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.BEGINNINGS, 'Timer', VanadielUniqueDay() + 1)
+                    invaderXim.quest.setVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.BEGINNINGS, 'Timer', VanadielUniqueDay() + 1)
                 end,
             },
         },
@@ -56,16 +56,16 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Waoud'] =
             {
                 onTrigger = function(player, npc)
                     local questProgress = quest:getVar(player, 'Prog')
-                    local lastDivination = xi.quest.getVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer')
+                    local lastDivination = invaderXim.quest.getVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer')
 
                     if questProgress == 1 then
                         return quest:progressEvent(712)
@@ -104,12 +104,12 @@ quest.sections =
                         player:delGil(1000)
                         player:messageSpecial(whitegateID.text.PAY_DIVINATION)
 
-                        xi.quest.setVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.quest.setVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer', VanadielUniqueDay() + 1)
                     end
                 end,
 
                 [712] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.SEALED_IMMORTAL_ENVELOPE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.SEALED_IMMORTAL_ENVELOPE)
                     quest:setVar(player, 'Prog', 2)
                 end,
 
@@ -121,7 +121,7 @@ quest.sections =
                         player:delGil(1000)
                         player:messageSpecial(whitegateID.text.PAY_DIVINATION)
 
-                        xi.quest.setVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.quest.setVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer', VanadielUniqueDay() + 1)
                     end
                 end,
 
@@ -131,22 +131,22 @@ quest.sections =
 
                 [716] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.SEALED_IMMORTAL_ENVELOPE)
+                        player:delKeyItem(invaderXim.ki.SEALED_IMMORTAL_ENVELOPE)
 
-                        xi.quest.setVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer', VanadielUniqueDay() + 1)
-                        xi.quest.setMustZone(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.TRANSFORMATIONS)
+                        invaderXim.quest.setVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.quest.setMustZone(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.TRANSFORMATIONS)
                     end
                 end,
             },
         },
 
-        [xi.zone.NAVUKGO_EXECUTION_CHAMBER] =
+        [invaderXim.zone.NAVUKGO_EXECUTION_CHAMBER] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
                     if
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.OMENS and
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.OMENS and
                         quest:getVar(player, 'Prog') == 0
                     then
                         quest:setVar(player, 'Prog', 1)
@@ -155,7 +155,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.AYDEEWA_SUBTERRANE] =
+        [invaderXim.zone.AYDEEWA_SUBTERRANE] =
         {
             ['blank_omens'] =
             {
@@ -177,10 +177,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Lathuya'] = quest:event(718):replaceDefault(),
         },

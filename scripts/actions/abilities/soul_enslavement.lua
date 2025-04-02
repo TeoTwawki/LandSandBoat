@@ -9,11 +9,11 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.dark_knight.checkSoulEnslavement(player, target, ability)
+    return invaderXim.job_utils.dark_knight.checkSoulEnslavement(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    xi.job_utils.dark_knight.useSoulEnslavement(player, target, ability)
+    invaderXim.job_utils.dark_knight.useSoulEnslavement(player, target, ability)
 end
 
 return abilityObject

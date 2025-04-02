@@ -10,24 +10,24 @@
 -- RIPE_STARFRUIT : !addkeyitem 1143
 -- Shantotto      : !pos 122 -2 112 239
 -----------------------------------
-local horutotoID = zones[xi.zone.OUTER_HORUTOTO_RUINS]
+local horutotoID = zones[invaderXim.zone.OUTER_HORUTOTO_RUINS]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.AMK, xi.mission.id.amk.AN_ERRAND_THE_PROFESSORS_PRICE)
+local mission = Mission:new(invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.AN_ERRAND_THE_PROFESSORS_PRICE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.AMK, xi.mission.id.amk.SHOCK_ARRANT_ABUSE_OF_AUTHORITY },
+    nextMission = { invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.SHOCK_ARRANT_ABUSE_OF_AUTHORITY },
 }
 
 -- TODO: Test and make sure this works
 local orbKeyItems =
 {
     -- keyItem, mod, immune value, vulnerable value
-    { xi.ki.ORB_OF_SWORDS, xi.mod.SLASH_SDT  },
-    { xi.ki.ORB_OF_CUPS,   xi.mod.IMPACT_SDT },
-    { xi.ki.ORB_OF_BATONS, xi.mod.PIERCE_SDT },
-    { xi.ki.ORB_OF_COINS,  xi.mod.UDMGMAGIC  },
+    { invaderXim.ki.ORB_OF_SWORDS, invaderXim.mod.SLASH_SDT  },
+    { invaderXim.ki.ORB_OF_CUPS,   invaderXim.mod.IMPACT_SDT },
+    { invaderXim.ki.ORB_OF_BATONS, invaderXim.mod.PIERCE_SDT },
+    { invaderXim.ki.ORB_OF_COINS,  invaderXim.mod.UDMGMAGIC  },
 }
 
 local beginCardianFight = function(player, npc)
@@ -64,12 +64,12 @@ local beginCardianFight = function(player, npc)
 
     local params = {}
     params.winFunc = function(wPlayer)
-        npcUtil.giveKeyItem(wPlayer, xi.keyItem.RIPE_STARFRUIT)
-        npcUtil.giveKeyItem(wPlayer, xi.keyItem.PEACH_CORAL_KEY)
+        npcUtil.giveKeyItem(wPlayer, invaderXim.keyItem.RIPE_STARFRUIT)
+        npcUtil.giveKeyItem(wPlayer, invaderXim.keyItem.PEACH_CORAL_KEY)
     end
 
     -- Spawn mobs and start battle
-    xi.confrontation.start(player, npc, cardianIds, params)
+    invaderXim.confrontation.start(player, npc, cardianIds, params)
 
     -- Apply mods
     for _, mobId in pairs(cardianIds) do
@@ -91,10 +91,10 @@ mission.sections =
         check = function(player, currentMission, missionStatus, vars)
             return currentMission >= mission.missionId and
                 missionStatus == 0 and
-                not player:hasKeyItem(xi.ki.RIPE_STARFRUIT)
+                not player:hasKeyItem(invaderXim.ki.RIPE_STARFRUIT)
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Shantotto'] =
             {
@@ -104,23 +104,23 @@ mission.sections =
             },
         },
 
-        [xi.zone.OUTER_HORUTOTO_RUINS] =
+        [invaderXim.zone.OUTER_HORUTOTO_RUINS] =
         {
             ['qm1'] =
             {
                 -- Only need one KI orb to start fight
                 onTrigger = function(player, npc)
                     if
-                        player:hasKeyItem(xi.ki.ORB_OF_SWORDS) or
-                        player:hasKeyItem(xi.ki.ORB_OF_CUPS) or
-                        player:hasKeyItem(xi.ki.ORB_OF_BATONS) or
-                        player:hasKeyItem(xi.ki.ORB_OF_COINS)
+                        player:hasKeyItem(invaderXim.ki.ORB_OF_SWORDS) or
+                        player:hasKeyItem(invaderXim.ki.ORB_OF_CUPS) or
+                        player:hasKeyItem(invaderXim.ki.ORB_OF_BATONS) or
+                        player:hasKeyItem(invaderXim.ki.ORB_OF_COINS)
                     then
                         -- Prompt to start the fight
                         return mission:progressEvent(100)
                     else
                         -- Remind that orbs are needed
-                        return mission:messageSpecial(horutotoID.text.IF_HAD_ORBS, xi.ki.ORB_OF_SWORDS, xi.ki.ORB_OF_CUPS, xi.ki.ORB_OF_BATONS, xi.ki.ORB_OF_COINS)
+                        return mission:messageSpecial(horutotoID.text.IF_HAD_ORBS, invaderXim.ki.ORB_OF_SWORDS, invaderXim.ki.ORB_OF_CUPS, invaderXim.ki.ORB_OF_BATONS, invaderXim.ki.ORB_OF_COINS)
                     end
                 end,
             },
@@ -142,11 +142,11 @@ mission.sections =
         check = function(player, currentMission, missionStatus, vars)
             return currentMission >= mission.missionId and
                 missionStatus == 0 and
-                player:hasKeyItem(xi.ki.RIPE_STARFRUIT) and
+                player:hasKeyItem(invaderXim.ki.RIPE_STARFRUIT) and
                 not player:needToZone()
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Shantotto'] =
             {
@@ -163,19 +163,19 @@ mission.sections =
                         player:needToZone(true)
                     elseif option == 1 then -- Pay
                         player:delGil(5000)
-                        player:delKeyItem(xi.ki.RIPE_STARFRUIT)
-                        player:setMissionStatus(xi.mission.log_id.AMK, 1)
+                        player:delKeyItem(invaderXim.ki.RIPE_STARFRUIT)
+                        player:setMissionStatus(invaderXim.mission.log_id.AMK, 1)
                     end
                 end,
             },
         },
 
-        [xi.zone.OUTER_HORUTOTO_RUINS] =
+        [invaderXim.zone.OUTER_HORUTOTO_RUINS] =
         {
             ['qm1'] =
             {
                 onTrigger = function(player, npc)
-                    return mission:messageSpecial(horutotoID.text.CANNOT_ENTER_BATTLEFIELD, xi.ki.RIPE_STARFRUIT):setPriority(1000)
+                    return mission:messageSpecial(horutotoID.text.CANNOT_ENTER_BATTLEFIELD, invaderXim.ki.RIPE_STARFRUIT):setPriority(1000)
                 end,
             },
         },
@@ -187,7 +187,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 1
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Shantotto'] =
             {
@@ -197,13 +197,13 @@ mission.sections =
             },
         },
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Inconspicuous_Door'] =
             {
                 onTrigger = function(player, npc)
-                    local diggingZone = xi.amk.helpers.getDiggingZone(player)
-                    local diggingZoneCsId = xi.amk.helpers.digSites[diggingZone].eventID
+                    local diggingZone = invaderXim.amk.helpers.getDiggingZone(player)
+                    local diggingZoneCsId = invaderXim.amk.helpers.digSites[diggingZone].eventID
                     return mission:progressEvent(10182, diggingZoneCsId)
                 end,
             },

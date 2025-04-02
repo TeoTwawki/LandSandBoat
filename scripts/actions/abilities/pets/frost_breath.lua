@@ -9,7 +9,7 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(pet, target, skill, action)
-    return xi.job_utils.dragoon.useDamageBreath(pet, target, skill, action, xi.damageType.ICE)
+    return invaderXim.job_utils.dragoon.useDamageBreath(pet, target, skill, action, invaderXim.damageType.ICE)
 end
 
 return abilityObject

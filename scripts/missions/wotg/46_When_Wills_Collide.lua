@@ -6,11 +6,11 @@
 -- Veridical Conflux : !pos -142.279 -6.749 585.239 89
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.WHEN_WILLS_COLLIDE)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.WHEN_WILLS_COLLIDE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.WHISPERS_OF_DAWN },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.WHISPERS_OF_DAWN },
 }
 
 mission.sections =
@@ -20,21 +20,21 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.GRAUBERG_S] =
+        [invaderXim.zone.GRAUBERG_S] =
         {
             ['Veridical_Conflux'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        not player:hasKeyItem(xi.ki.BOTTLED_PUNCH_BUG) and
-                        npcUtil.tradeHasExactly(trade, xi.item.PUNCH_BUG)
+                        not player:hasKeyItem(invaderXim.ki.BOTTLED_PUNCH_BUG) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.PUNCH_BUG)
                     then
                         return mission:progressEvent(42, 76, 0, 1267351, 120, 0, 8323092, 0, 0)
                     end
                 end,
 
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.BOTTLED_PUNCH_BUG) then
+                    if player:hasKeyItem(invaderXim.ki.BOTTLED_PUNCH_BUG) then
                         return mission:event(29, 89, 6)
                     else
                         return mission:event(41, 89, 23, 1756)
@@ -46,17 +46,17 @@ mission.sections =
             {
                 [29] = function(player, csid, option, npc)
                     if option == 99 then
-                        player:setPos(-700.042, 0.4, -441.301, 192, xi.zone.WALK_OF_ECHOES)
+                        player:setPos(-700.042, 0.4, -441.301, 192, invaderXim.zone.WALK_OF_ECHOES)
                     end
                 end,
 
                 [42] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.BOTTLED_PUNCH_BUG)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.BOTTLED_PUNCH_BUG)
                 end,
             },
         },
 
-        [xi.zone.WALK_OF_ECHOES] =
+        [invaderXim.zone.WALK_OF_ECHOES] =
         {
             ['_521'] =
             {
@@ -107,7 +107,7 @@ mission.sections =
                     -- implemented.
 
                     mission:setVar(player, 'Status', 2)
-                    player:setPos(-700.063, -17.6, -331.903, 64, xi.zone.WALK_OF_ECHOES)
+                    player:setPos(-700.063, -17.6, -331.903, 64, invaderXim.zone.WALK_OF_ECHOES)
                 end,
             },
         },
@@ -118,7 +118,7 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.GRAUBERG_S] =
+        [invaderXim.zone.GRAUBERG_S] =
         {
             ['Veridical_Conflux'] = mission:event(29, 89, 12354, 59449, 120, 0, 8323089, 0, 0),
 
@@ -126,7 +126,7 @@ mission.sections =
             {
                 [29] = function(player, csid, option, npc)
                     if option == 99 then
-                        player:setPos(-700.042, 0.4, -441.301, 192, xi.zone.WALK_OF_ECHOES)
+                        player:setPos(-700.042, 0.4, -441.301, 192, invaderXim.zone.WALK_OF_ECHOES)
                     end
                 end,
             },

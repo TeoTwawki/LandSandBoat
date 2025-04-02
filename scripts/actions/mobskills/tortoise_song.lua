@@ -13,12 +13,12 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    local count = target:dispelAllStatusEffect(bit.bor(xi.effectFlag.SONG, xi.effectFlag.ROLL))
+    local count = target:dispelAllStatusEffect(bit.bor(invaderXim.effectFlag.SONG, invaderXim.effectFlag.ROLL))
 
     if count == 0 then
-        skill:setMsg(xi.msg.basic.SKILL_NO_EFFECT)
+        skill:setMsg(invaderXim.msg.basic.SKILL_NO_EFFECT)
     else
-        skill:setMsg(xi.msg.basic.DISAPPEAR_NUM)
+        skill:setMsg(invaderXim.msg.basic.DISAPPEAR_NUM)
     end
 
     return count

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.CLIMACTIC_FLOURISH
+-- invaderXim.effect.CLIMACTIC_FLOURISH
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

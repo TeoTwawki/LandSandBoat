@@ -9,8 +9,8 @@ mixins = { require('scripts/mixins/families/maat') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 0)
-    mob:setMobMod(xi.mobMod.ROAM_TURNS, 0)
+    mob:setMobMod(invaderXim.mobMod.ROAM_DISTANCE, 0)
+    mob:setMobMod(invaderXim.mobMod.ROAM_TURNS, 0)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

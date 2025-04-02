@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.TRANQUILITY
+-- invaderXim.effect.TRANQUILITY
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

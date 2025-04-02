@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.DIA
+-- invaderXim.effect.DIA
 -----------------------------------
 -- Quick Explanation of Algorithm:
 -- Dia 1: Power of 1. Results in reduced defense of ~5.27%  (27/512) and 1 hp/tick damage.
@@ -10,8 +10,8 @@
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    effect:addMod(xi.mod.REGEN_DOWN, effect:getPower())
-    effect:addMod(xi.mod.DEFP, -effect:getSubPower())
+    effect:addMod(invaderXim.mod.REGEN_DOWN, effect:getPower())
+    effect:addMod(invaderXim.mod.DEFP, -effect:getSubPower())
 end
 
 effectObject.onEffectTick = function(target, effect)

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.CONTRADANCE
+-- invaderXim.effect.CONTRADANCE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

@@ -8,7 +8,7 @@ local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
     local result = 0
-    if not target:hasVisitedZone(xi.zone.BIBIKI_BAY) then
+    if not target:hasVisitedZone(invaderXim.zone.BIBIKI_BAY) then
         result = 56
     end
 
@@ -16,7 +16,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    xi.teleport.to(target, xi.teleport.id.PURGONORGO)
+    invaderXim.teleport.to(target, invaderXim.teleport.id.PURGONORGO)
 end
 
 return itemObject

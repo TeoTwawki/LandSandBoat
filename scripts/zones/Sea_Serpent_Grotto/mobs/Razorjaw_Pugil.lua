@@ -3,7 +3,7 @@
 --  Mob: Razorjaw Pugil
 -- Note: PH for Sea Hog
 -----------------------------------
-local ID = zones[xi.zone.SEA_SERPENT_GROTTO]
+local ID = zones[invaderXim.zone.SEA_SERPENT_GROTTO]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -18,7 +18,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, seaHogPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, seaHogPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

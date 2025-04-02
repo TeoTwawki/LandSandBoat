@@ -3,7 +3,7 @@
 --  NPC: Nightflowers
 -- !pos -264.775 -3.718 28.767 126
 -----------------------------------
-local ID = zones[xi.zone.QUFIM_ISLAND]
+local ID = zones[invaderXim.zone.QUFIM_ISLAND]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

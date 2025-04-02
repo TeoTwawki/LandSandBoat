@@ -3,13 +3,13 @@
 --  NPC: Rodellieux
 -- Fauregandi Regional Merchant
 -----------------------------------
-local ID = zones[xi.zone.BASTOK_MINES]
+local ID = zones[invaderXim.zone.BASTOK_MINES]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if GetRegionOwner(xi.region.FAUREGANDI) ~= xi.nation.BASTOK then
+    if GetRegionOwner(invaderXim.region.FAUREGANDI) ~= invaderXim.nation.BASTOK then
         player:showText(npc, ID.text.RODELLIEUX_CLOSED_DIALOG)
     else
         local stock =
@@ -20,7 +20,7 @@ entity.onTrigger = function(player, npc)
         }
 
         player:showText(npc, ID.text.RODELLIEUX_OPEN_DIALOG)
-        xi.shop.general(player, stock, xi.fameArea.BASTOK)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.BASTOK)
     end
 end
 

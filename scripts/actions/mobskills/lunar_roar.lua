@@ -14,10 +14,10 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local num = 0
 
     for i, effect in pairs(effects) do
-        -- check mask bit for xi.effectFlag.DISPELABLE
+        -- check mask bit for invaderXim.effectFlag.DISPELABLE
         if
             utils.mask.getBit(effect:getFlag(), 0) and
-            effect:getEffectType() ~= xi.effect.RERAISE and
+            effect:getEffectType() ~= invaderXim.effect.RERAISE and
             num < 10
         then
             target:delStatusEffect(effect:getEffectType())
@@ -25,9 +25,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
         end
     end
 
-    skill:setMsg(xi.msg.basic.DISAPPEAR_NUM)
+    skill:setMsg(invaderXim.msg.basic.DISAPPEAR_NUM)
     if num == 0 then
-        skill:setMsg(xi.msg.basic.SKILL_NO_EFFECT)
+        skill:setMsg(invaderXim.msg.basic.SKILL_NO_EFFECT)
     end
 
     return num

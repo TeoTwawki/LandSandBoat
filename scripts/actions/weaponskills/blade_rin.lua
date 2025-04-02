@@ -23,11 +23,11 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     -- https://www.bg-wiki.com/ffxi/Blade:_Rin
     params.critVaries = { 0.3, 0.6, 0.9 }
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         params.str_wsc = 0.6 params.dex_wsc = 0.6
     end
 
-    local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doPhysicalWeaponskill(player, target, wsID, params, tp, action, primary, taChar)
+    local damage, criticalHit, tpHits, extraHits = invaderXim.weaponskills.doPhysicalWeaponskill(player, target, wsID, params, tp, action, primary, taChar)
     return tpHits, extraHits, criticalHit, damage
 end
 

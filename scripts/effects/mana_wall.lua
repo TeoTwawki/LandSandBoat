@@ -1,11 +1,11 @@
 -----------------------------------
--- xi.effect.MANA_WALL
+-- invaderXim.effect.MANA_WALL
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    effect:addMod(xi.mod.DMG, -5000)
+    effect:addMod(invaderXim.mod.DMG, -5000)
 end
 
 effectObject.onEffectTick = function(target, effect)

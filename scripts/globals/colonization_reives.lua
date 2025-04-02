@@ -6,7 +6,7 @@
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.reives = xi.reives or {}
+invaderXim.reives = invaderXim.reives or {}
 
 -- NOTE: Reives collision blockers act like doors and blockers in other parts of the game.
 --       One NPC acts as the visual element and another acts as the collision
@@ -17,9 +17,9 @@ xi.reives = xi.reives or {}
 -- Fetches the the mob ID of obstacles and returns the reive table number they belong to.
 -- Used to track which obstacle IDs belong to which reives in the mob script.
 -----------------------------------
-xi.reives.findReiveNumByObstacle = function(zoneID, obstacleId)
+invaderXim.reives.findReiveNumByObstacle = function(zoneID, obstacleId)
     -- Access the zone data based on the zoneID
-    local zoneData = xi.reives.zoneData[zoneID]
+    local zoneData = invaderXim.reives.zoneData[zoneID]
 
     if zoneData then
         -- Iterate through each reive in the zone's reive table.
@@ -44,9 +44,9 @@ end
 -- Used to track reive progress before triggering battle end/cleanup.
 -- Note: "Would using a listener to handle incremental counting be better?"
 -----------------------------------
-xi.reives.checkObjectiveStatus = function(zoneID, reiveNum)
+invaderXim.reives.checkObjectiveStatus = function(zoneID, reiveNum)
     -- Check if zoneID and reiveNum exist in the zoneData.
-    local zoneData = xi.reives.zoneData[zoneID]
+    local zoneData = invaderXim.reives.zoneData[zoneID]
     if not zoneData or not zoneData.reive[reiveNum] then
         -- print('Invalid zoneID or reiveNum.')
         return false
@@ -72,12 +72,12 @@ end
 -----------------------------------
 -- Added to a reive obstacle's spawn script. Handles spawning and respawning of reives.
 -----------------------------------
-xi.reives.onMobSpawn = function(mob)
+invaderXim.reives.onMobSpawn = function(mob)
     local mobID  = mob:getID()
     local zoneID = mob:getZoneID()
 
     -- Iterate through each zone in zoneData
-    for zone, data in pairs(xi.reives.zoneData) do
+    for zone, data in pairs(invaderXim.reives.zoneData) do
         if zone == zoneID then
             -- Iterate through each reive in the zone's reive table
             for i, reiveData in pairs(data.reive) do
@@ -85,7 +85,7 @@ xi.reives.onMobSpawn = function(mob)
                 for _, obstacleID in pairs(reiveData.obstacles) do
                     if mobID == obstacleID then
                         -- Call enableReive if the mobID matches an obstacleID
-                        xi.reives.enableReive(zoneID, i)
+                        invaderXim.reives.enableReive(zoneID, i)
                     end
                 end
             end
@@ -96,17 +96,17 @@ end
 -----------------------------------
 -- Added to a reive obstacle's onMobDeath script. Handles disabling of reives.
 -----------------------------------
-xi.reives.onMobDeath = function(mob)
+invaderXim.reives.onMobDeath = function(mob)
     -- Find the reive number based on the mob ID (which is an obstacle ID)
     local obstacleId = mob:getID()
     local zoneID     = mob:getZoneID()
-    local reiveNum   = xi.reives.findReiveNumByObstacle(zoneID, obstacleId)
+    local reiveNum   = invaderXim.reives.findReiveNumByObstacle(zoneID, obstacleId)
 
     if reiveNum then
 
         -- If no obstacles remain, or remaining obstacles match initial count, disable the reive
-        if xi.reives.checkObjectiveStatus(zoneID, reiveNum) then
-            xi.reives.disableReive(zoneID, reiveNum)
+        if invaderXim.reives.checkObjectiveStatus(zoneID, reiveNum) then
+            invaderXim.reives.disableReive(zoneID, reiveNum)
         end
     end
 end
@@ -114,24 +114,24 @@ end
 -----------------------------------
 -- Set up the initial enableReive on zone start up.
 -----------------------------------
-xi.reives.setupZone = function(zone)
+invaderXim.reives.setupZone = function(zone)
     local zoneID = zone:getID()
 
-    if xi.settings.main.ENABLE_SOA == 1 then -- If SOA is enabled, spawn the zone's reives on zone initialize.
-        for reiveNum, _ in ipairs(xi.reives.zoneData[zoneID].reive) do
-            xi.reives.enableReive(zoneID, reiveNum)
+    if invaderXim.settings.main.ENABLE_SOA == 1 then -- If SOA is enabled, spawn the zone's reives on zone initialize.
+        for reiveNum, _ in ipairs(invaderXim.reives.zoneData[zoneID].reive) do
+            invaderXim.reives.enableReive(zoneID, reiveNum)
         end
     end
 end
 
 -----------------------------------
--- xi.reives.enableReive = function(zoneID, reiveNum)
+-- invaderXim.reives.enableReive = function(zoneID, reiveNum)
 -- Contains functions used to start a reive.
 -- zoneID:   Which zone this reive is located in (Data stored in globals/colonization_reive_data.lua)
--- reiveNum: Reive number passed from mob's onMobSpawn script using the xi.reives.onMobSpawn helper function.
+-- reiveNum: Reive number passed from mob's onMobSpawn script using the invaderXim.reives.onMobSpawn helper function.
 -----------------------------------
-xi.reives.enableReive = function(zoneID, reiveNum)
-    local zoneData            = xi.reives.zoneData[zoneID]
+invaderXim.reives.enableReive = function(zoneID, reiveNum)
+    local zoneData            = invaderXim.reives.zoneData[zoneID]
     local reiveObjRespawnTime = 0
     local reiveMobRespawnTime = zoneData.reiveMobRespawnTime
 
@@ -162,13 +162,13 @@ xi.reives.enableReive = function(zoneID, reiveNum)
         if mob then
             if not mob:isAlive() then
                 SpawnMob(entryId)  -- Spawn the reive obstacles
-                mob:setAnimation(xi.animation.CLOSE_DOOR)
+                mob:setAnimation(invaderXim.animation.CLOSE_DOOR)
             end
 
             mob:setAutoAttackEnabled(false)         -- Obstacles do not auto attack.
             mob:setMobAbilityEnabled(false)         -- Obstacles should not use mobskills.
-            mob:setMobMod(xi.mobMod.NO_MOVE, 1)     -- Obstacles do not move.
-            mob:setMobMod(xi.mobMod.NO_REST, 1)     -- Obstacles do not recover HP when not in combat.
+            mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)     -- Obstacles do not move.
+            mob:setMobMod(invaderXim.mobMod.NO_REST, 1)     -- Obstacles do not recover HP when not in combat.
             mob:setRespawnTime(reiveObjRespawnTime) -- Set the respawn time of obstacles to 0 while reive is active.
             -- TODO: Handle mob damage reduction based on keyitems the player has or doesn't have.
             -- TODO: Defender mobs should not aggro by default unless players are already in combat with the objectives.
@@ -179,7 +179,7 @@ xi.reives.enableReive = function(zoneID, reiveNum)
     for _, entryId in pairs(reiveData.collision) do
         local npc = GetNPCByID(entryId)
         if npc then
-            npc:setAnimation(xi.animation.CLOSE_DOOR)  -- Close the collision blocker
+            npc:setAnimation(invaderXim.animation.CLOSE_DOOR)  -- Close the collision blocker
         end
     end
 
@@ -191,14 +191,14 @@ xi.reives.enableReive = function(zoneID, reiveNum)
 end
 
 -----------------------------------
--- xi.reives.disableReive = function(ID, reiveNum, respawnTime)
+-- invaderXim.reives.disableReive = function(ID, reiveNum, respawnTime)
 -- Contains functions to end a reive.
 -- zoneID      : Zone the reive is located in.
 -- reiveNum    : Reive number defined.
 -----------------------------------
-xi.reives.disableReive = function(zoneID, reiveNum)
+invaderXim.reives.disableReive = function(zoneID, reiveNum)
     -- Access the zone data and reive data
-    local zoneData = xi.reives.zoneData[zoneID]
+    local zoneData = invaderXim.reives.zoneData[zoneID]
     if not zoneData or not zoneData.reive[reiveNum] then
         -- print('Invalid zoneID or reiveNum.')
         return
@@ -226,7 +226,7 @@ xi.reives.disableReive = function(zoneID, reiveNum)
     for _, entryId in pairs(reiveData.obstacles) do
         local mob = GetMobByID(entryId)
         if mob then
-            mob:setAnimation(xi.animation.OPEN_DOOR)
+            mob:setAnimation(invaderXim.animation.OPEN_DOOR)
             mob:setRespawnTime(reiveObjRespawnTime) -- Set the time for the next reive spawn
             if mob:isSpawned() then
                 DespawnMob(entryId)
@@ -238,7 +238,7 @@ xi.reives.disableReive = function(zoneID, reiveNum)
     for _, entryId in pairs(reiveData.collision) do
         local npc = GetNPCByID(entryId)
         if npc then
-            npc:setAnimation(xi.animation.OPEN_DOOR) -- Open the collision blocker until the next reive spawns
+            npc:setAnimation(invaderXim.animation.OPEN_DOOR) -- Open the collision blocker until the next reive spawns
             -- print('collision open', reiveNum)
         end
     end

@@ -40,7 +40,7 @@ commandObj.onTrigger = function(player, amount, target)
     end
 
     local jobNameByNum = {}
-    for k, v in pairs(xi.job) do
+    for k, v in pairs(invaderXim.job) do
         jobNameByNum[v] = k
     end
 

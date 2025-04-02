@@ -4,14 +4,14 @@
 -- LogID: 6 QuestID: 98
 -- Abquhbah: !pos 35.5 -6.6 -58 50
 -----------------------------------
-local ID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local ID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.PROMOTION_FIRST_LIEUTENANT)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.PROMOTION_FIRST_LIEUTENANT)
 
 quest.reward =
 {
-    keyItem = xi.ki.FL_WILDCAT_BADGE,
-    title   = xi.title.FIRST_LIEUTENANT,
+    keyItem = invaderXim.ki.FL_WILDCAT_BADGE,
+    title   = invaderXim.title.FIRST_LIEUTENANT,
 }
 
 quest.sections =
@@ -19,12 +19,12 @@ quest.sections =
     -- Trigger to start quest
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
             player:getCharVar('AssaultPromotion') >= 25 and
-            player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.PROMOTION_SECOND_LIEUTENANT) == xi.questStatus.QUEST_COMPLETED
+            player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.PROMOTION_SECOND_LIEUTENANT) == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             onTriggerAreaEnter =
             {
@@ -44,17 +44,17 @@ quest.sections =
     -- Trigger to give reminder, trade coins to give academy tuition
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 0 and
             vars.Wait == 0
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHas(trade, { { xi.item.IMPERIAL_GOLD_PIECE, 5 } }) then
+                    if npcUtil.tradeHas(trade, { { invaderXim.item.IMPERIAL_GOLD_PIECE, 5 } }) then
                         return quest:progressEvent(5081, { text_table = 0 })
                     end
                 end,
@@ -74,12 +74,12 @@ quest.sections =
     -- Minigame Counterespionage
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 0 and
             vars.Wait > 0
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] =
             {
@@ -113,11 +113,11 @@ quest.sections =
     -- Minigame Cipher
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 1
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] =
             {
@@ -151,11 +151,11 @@ quest.sections =
     -- Minigame rock, paper, scissors
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 2
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] =
             {
@@ -189,11 +189,11 @@ quest.sections =
     -- Graduation setup
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 3
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] =
             {
@@ -219,11 +219,11 @@ quest.sections =
     -- Graduation setup after zone
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 4
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] =
             {
@@ -242,7 +242,7 @@ quest.sections =
             {
                 [5085] = function(player, csid, option, npc)
                     quest:complete(player)
-                    player:delKeyItem(xi.ki.SL_WILDCAT_BADGE)
+                    player:delKeyItem(invaderXim.ki.SL_WILDCAT_BADGE)
                     quest:messageSpecial(ID.text.FIRST_LIEUTENANT)
                     player:setCharVar('AssaultPromotion', 0)
                 end,

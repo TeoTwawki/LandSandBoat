@@ -6,32 +6,32 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.AUTO_SPIKES, 1)
-    mob:addStatusEffect(xi.effect.BLAZE_SPIKES, 15, 0, 0)
-    mob:getStatusEffect(xi.effect.BLAZE_SPIKES):setEffectFlags(xi.effectFlag.DEATH)
+    mob:setMobMod(invaderXim.mobMod.AUTO_SPIKES, 1)
+    mob:addStatusEffect(invaderXim.effect.BLAZE_SPIKES, 15, 0, 0)
+    mob:getStatusEffect(invaderXim.effect.BLAZE_SPIKES):setEffectFlags(invaderXim.effectFlag.DEATH)
 end
 
 entity.onSpikesDamage = function(mob, target, damage)
     -- "Damage" is the power of the status effect up in onMobinitialize.
-    local intDiff = mob:getStat(xi.mod.INT) - target:getStat(xi.mod.INT)
+    local intDiff = mob:getStat(invaderXim.mod.INT) - target:getStat(invaderXim.mod.INT)
     local dmg = damage + intDiff
     local params = {}
     params.bonusmab = 0
     params.includemab = false
-    dmg = addBonusesAbility(mob, xi.element.FIRE, target, dmg, params)
-    dmg = dmg * applyResistanceAddEffect(mob, target, xi.element.FIRE, 0)
-    dmg = dmg * xi.spells.damage.calculateNukeAbsorbOrNullify(target, xi.element.FIRE)
-    dmg = finalMagicNonSpellAdjustments(mob, target, xi.element.FIRE, dmg)
+    dmg = addBonusesAbility(mob, invaderXim.element.FIRE, target, dmg, params)
+    dmg = dmg * applyResistanceAddEffect(mob, target, invaderXim.element.FIRE, 0)
+    dmg = dmg * invaderXim.spells.damage.calculateNukeAbsorbOrNullify(target, invaderXim.element.FIRE)
+    dmg = finalMagicNonSpellAdjustments(mob, target, invaderXim.element.FIRE, dmg)
 
     if dmg < 0 then
         dmg = 0
     end
 
-    return xi.subEffect.BLAZE_SPIKES, xi.msg.basic.SPIKES_EFFECT_DMG, dmg
+    return invaderXim.subEffect.BLAZE_SPIKES, invaderXim.msg.basic.SPIKES_EFFECT_DMG, dmg
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 182)
+    invaderXim.hunts.checkHunt(mob, player, 182)
 end
 
 return entity

@@ -5,25 +5,25 @@
 -- Karl : !pos -60 0.1 -8 246
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.CHILDS_PLAY)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.CHILDS_PLAY)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.JEUNO,
-    keyItem  = xi.ki.WONDER_MAGIC_SET,
-    title    = xi.title.TRADER_OF_MYSTERIES,
+    fameArea = invaderXim.fameArea.JEUNO,
+    keyItem  = invaderXim.ki.WONDER_MAGIC_SET,
+    title    = invaderXim.title.TRADER_OF_MYSTERIES,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_WONDER_MAGIC_SET) == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_WONDER_MAGIC_SET) == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_JEUNO] =
+        [invaderXim.zone.PORT_JEUNO] =
         {
             ['Karl'] = quest:progressEvent(0),
 
@@ -38,15 +38,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_JEUNO] =
+        [invaderXim.zone.PORT_JEUNO] =
         {
             ['Karl'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.WHITE_ROCK) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.WHITE_ROCK) then
                         return quest:progressEvent(1)
                     end
                 end,

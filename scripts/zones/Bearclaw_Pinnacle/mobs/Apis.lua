@@ -10,10 +10,10 @@ entity.onMobInitialize = function(mob)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMod(xi.mod.UDMGRANGE, -10000)
-    mob:setMod(xi.mod.UDMGMAGIC, -10000)
-    mob:setMod(xi.mod.UDMGPHYS, -10000)
-    mob:setMobMod(xi.mobMod.SIGHT_RANGE, 35)
+    mob:setMod(invaderXim.mod.UDMGRANGE, -10000)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, -10000)
+    mob:setMod(invaderXim.mod.UDMGPHYS, -10000)
+    mob:setMobMod(invaderXim.mobMod.SIGHT_RANGE, 35)
 end
 
 entity.onMobEngage = function(mob, target)
@@ -38,34 +38,34 @@ end
 
 entity.onMobWeaponSkill = function(target, mob, skill)
     if skill:getID() == 624 then -- blue: High ATK, double and triple attack. High magic immunity
-        mob:setMod(xi.mod.DOUBLE_ATTACK, 35)
-        mob:setMod(xi.mod.TRIPLE_ATTACK, 35)
-        mob:setMod(xi.mod.ATT, 2000)
-        mob:setMod(xi.mod.UDMGRANGE, 0)
-        mob:setMod(xi.mod.UDMGMAGIC, -9800)
-        mob:setMod(xi.mod.UDMGPHYS, 0)
+        mob:setMod(invaderXim.mod.DOUBLE_ATTACK, 35)
+        mob:setMod(invaderXim.mod.TRIPLE_ATTACK, 35)
+        mob:setMod(invaderXim.mod.ATT, 2000)
+        mob:setMod(invaderXim.mod.UDMGRANGE, 0)
+        mob:setMod(invaderXim.mod.UDMGMAGIC, -9800)
+        mob:setMod(invaderXim.mod.UDMGPHYS, 0)
         mob:addTP(mob:getLocalVar('twohour_tp'))
         mob:setLocalVar('twohour_tp', 0)
     end
 
     if skill:getID() == 625 then -- yellow: Moderate ATK, takes lowered phys and magic damage
-        mob:setMod(xi.mod.DOUBLE_ATTACK, 0)
-        mob:setMod(xi.mod.TRIPLE_ATTACK, 0)
-        mob:setMod(xi.mod.ATT, 1000)
-        mob:setMod(xi.mod.UDMGRANGE, -3000)
-        mob:setMod(xi.mod.UDMGMAGIC, 0)
-        mob:setMod(xi.mod.UDMGPHYS, -3000)
+        mob:setMod(invaderXim.mod.DOUBLE_ATTACK, 0)
+        mob:setMod(invaderXim.mod.TRIPLE_ATTACK, 0)
+        mob:setMod(invaderXim.mod.ATT, 1000)
+        mob:setMod(invaderXim.mod.UDMGRANGE, -3000)
+        mob:setMod(invaderXim.mod.UDMGMAGIC, 0)
+        mob:setMod(invaderXim.mod.UDMGPHYS, -3000)
         mob:addTP(mob:getLocalVar('twohour_tp'))
         mob:setLocalVar('twohour_tp', 0)
     end
 
     if skill:getID() == 627 then -- green: Low ATK, High physical immune.
-        mob:setMod(xi.mod.DOUBLE_ATTACK, 0)
-        mob:setMod(xi.mod.TRIPLE_ATTACK, 0)
-        mob:setMod(xi.mod.ATT, 500)
-        mob:setMod(xi.mod.UDMGRANGE, -9800)
-        mob:setMod(xi.mod.UDMGMAGIC, 4000)
-        mob:setMod(xi.mod.UDMGPHYS, -9800)
+        mob:setMod(invaderXim.mod.DOUBLE_ATTACK, 0)
+        mob:setMod(invaderXim.mod.TRIPLE_ATTACK, 0)
+        mob:setMod(invaderXim.mod.ATT, 500)
+        mob:setMod(invaderXim.mod.UDMGRANGE, -9800)
+        mob:setMod(invaderXim.mod.UDMGMAGIC, 4000)
+        mob:setMod(invaderXim.mod.UDMGPHYS, -9800)
         mob:addTP(mob:getLocalVar('twohour_tp'))
         mob:setLocalVar('twohour_tp', 0)
     end

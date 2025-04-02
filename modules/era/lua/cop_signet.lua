@@ -7,39 +7,39 @@ require('modules/module_utils')
 -----------------------------------
 local m = Module:new('cop_signet')
 
-m:addOverride('xi.effects.signet.onEffectGain', function(target, effect)
-    target:addLatent(xi.latent.SIGNET_BONUS, 0, xi.mod.DEF, 0)
-    target:addLatent(xi.latent.SIGNET_BONUS, 0, xi.mod.EVA, 0)
+m:addOverride('invaderXim.effects.signet.onEffectGain', function(target, effect)
+    target:addLatent(invaderXim.latent.SIGNET_BONUS, 0, invaderXim.mod.DEF, 0)
+    target:addLatent(invaderXim.latent.SIGNET_BONUS, 0, invaderXim.mod.EVA, 0)
 end)
 
-m:addOverride('xi.effects.healing.onEffectTick', function(target, effect)
+m:addOverride('invaderXim.effects.healing.onEffectTick', function(target, effect)
     local healtime = effect:getTickCount()
 
     if healtime > 2 then
         -- curse II also known as "zombie"
         if
-            not target:hasStatusEffect(xi.effect.DISEASE) and
-            not target:hasStatusEffect(xi.effect.PLAGUE) and
-            not target:hasStatusEffect(xi.effect.CURSE_II)
+            not target:hasStatusEffect(invaderXim.effect.DISEASE) and
+            not target:hasStatusEffect(invaderXim.effect.PLAGUE) and
+            not target:hasStatusEffect(invaderXim.effect.CURSE_II)
         then
             local healHP = 0
 
-            target:addTP(xi.settings.main.HEALING_TP_CHANGE)
-            healHP = 10 + (healtime - 2) + target:getMod(xi.mod.HPHEAL)
+            target:addTP(invaderXim.settings.main.HEALING_TP_CHANGE)
+            healHP = 10 + (healtime - 2) + target:getMod(invaderXim.mod.HPHEAL)
 
             -- Records of Eminence: Heal Without Using Magic
             if
-                target:getObjType() == xi.objType.PC and
+                target:getObjType() == invaderXim.objType.PC and
                 target:getEminenceProgress(4) and
                 healHP > 0 and
                 target:getHPP() < 100
             then
-                xi.roe.onRecordTrigger(target, 4)
+                invaderXim.roe.onRecordTrigger(target, 4)
             end
 
             target:addHPLeaveSleeping(healHP)
             target:updateEnmityFromCure(target, healHP)
-            target:addMP(12 + ((healtime - 2) * (1 + target:getMod(xi.mod.CLEAR_MIND))) + target:getMod(xi.mod.MPHEAL))
+            target:addMP(12 + ((healtime - 2) * (1 + target:getMod(invaderXim.mod.CLEAR_MIND))) + target:getMod(invaderXim.mod.MPHEAL))
         end
     end
 end)

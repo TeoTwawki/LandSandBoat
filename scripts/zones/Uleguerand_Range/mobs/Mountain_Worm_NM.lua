@@ -8,11 +8,11 @@
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMod(xi.mod.REGEN, mob:getMaxHP() / 100)
+    mob:setMod(invaderXim.mod.REGEN, mob:getMaxHP() / 100)
 end
 
 entity.onMobFight = function(mob, target)
-    -- TODO should only cast if out of melee range, but this PR should resolve that https://github.com/LandSandBoat/server/pull/5313
+    -- TODO should only cast if out of melee range, but this PR should resolve that https://github.com/InvaderXim/server/pull/5313
 end
 
 entity.onMobDeath = function(mob, player, optParams)

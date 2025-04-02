@@ -9,12 +9,12 @@ local itemObject = {}
 itemObject.onItemCheck = function(target, item, param, caster)
     local result = 0
     if
-        target:getEcosystem() ~= xi.ecosystem.EMPTY and
-        caster:getZone():getRegionID() == xi.region.PROMYVION
+        target:getEcosystem() ~= invaderXim.ecosystem.EMPTY and
+        caster:getZone():getRegionID() == invaderXim.region.PROMYVION
     then
-        result = xi.msg.basic.ITEM_UNABLE_TO_USE
+        result = invaderXim.msg.basic.ITEM_UNABLE_TO_USE
     elseif target:checkDistance(caster) > 10 then
-        result = xi.msg.basic.TOO_FAR_AWAY
+        result = invaderXim.msg.basic.TOO_FAR_AWAY
     end
 
     return result

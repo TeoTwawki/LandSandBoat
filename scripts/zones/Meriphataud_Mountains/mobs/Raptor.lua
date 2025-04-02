@@ -3,7 +3,7 @@
 --  Mob: Raptor
 -- Note: PH for Daggerclaw Dracos
 -----------------------------------
-local ID = zones[xi.zone.MERIPHATAUD_MOUNTAINS]
+local ID = zones[invaderXim.zone.MERIPHATAUD_MOUNTAINS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -14,11 +14,11 @@ local daggerclawPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 39, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 39, 1, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, daggerclawPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, daggerclawPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

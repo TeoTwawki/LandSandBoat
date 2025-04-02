@@ -5,13 +5,13 @@
 --
 -- Even if the particular mod is not completely (or at all) implemented yet, you can still script the effects using these codes.
 --
--- Example: target:getMod(xi.mod.STR) will get the sum of STR bonuses/penalties from gear, food, STR Etude, Absorb-STR, and any other STR-related buff/debuff.
+-- Example: target:getMod(invaderXim.mod.STR) will get the sum of STR bonuses/penalties from gear, food, STR Etude, Absorb-STR, and any other STR-related buff/debuff.
 -- Note that the above will ignore base statistics, and that getStat() should be used for stats, Attack, and Defense, while getACC(), getRACC(), and getEVA() also exist.
 -----------------------------------
 xi = xi or {}
 
----@enum xi.mod
-xi.mod =
+---@enum invaderXim.mod
+invaderXim.mod =
 {
     -- IF YOU ADD ANY NEW MODIFIER HERE, ADD IT IN src/map/modifier.h ASWELL!
 

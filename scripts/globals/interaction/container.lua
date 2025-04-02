@@ -78,7 +78,7 @@ function Container:replaceEvent(eventid, ...)
     return Event:new(eventid, ...):replaceDefault()
 end
 
----@param keyItemId xi.keyItem
+---@param keyItemId invaderXim.keyItem
 ---@return TKeyItem
 function Container:keyItem(keyItemId)
     return KeyItemAction:new(keyItemId)

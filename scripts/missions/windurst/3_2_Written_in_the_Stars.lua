@@ -11,7 +11,7 @@
 -- Gate of Light    : !pos -331 0 139 192
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.WRITTEN_IN_THE_STARS)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.WRITTEN_IN_THE_STARS)
 
 mission.reward =
 {
@@ -30,11 +30,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onEventFinish =
             {
@@ -42,7 +42,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onEventFinish =
             {
@@ -50,7 +50,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onEventFinish =
             {
@@ -58,7 +58,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onEventFinish =
             {
@@ -75,7 +75,7 @@ mission.sections =
                 not player:hasCompletedMission(mission.areaId, mission.missionId + 1)
         end,
 
-        [xi.zone.HEAVENS_TOWER] =
+        [invaderXim.zone.HEAVENS_TOWER] =
         {
             ['Zubaba'] =
             {
@@ -95,7 +95,7 @@ mission.sections =
             onEventFinish =
             {
                 [121] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.CHARM_OF_LIGHT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.CHARM_OF_LIGHT)
                     player:setMissionStatus(mission.areaId, 1)
                 end,
 
@@ -107,13 +107,13 @@ mission.sections =
             },
         },
 
-        [xi.zone.INNER_HORUTOTO_RUINS] =
+        [invaderXim.zone.INNER_HORUTOTO_RUINS] =
         {
             ['_5ci'] =
             {
                 onTrigger = function(player, npc)
                     if player:getMissionStatus(mission.areaId) == 1 then
-                        return mission:progressEvent(41, 0, xi.ki.CHARM_OF_LIGHT)
+                        return mission:progressEvent(41, 0, invaderXim.ki.CHARM_OF_LIGHT)
                     end
                 end,
             },
@@ -122,7 +122,7 @@ mission.sections =
             {
                 [41] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 2)
-                    player:delKeyItem(xi.ki.CHARM_OF_LIGHT)
+                    player:delKeyItem(invaderXim.ki.CHARM_OF_LIGHT)
                 end,
             }
         },
@@ -136,14 +136,14 @@ mission.sections =
                 player:hasCompletedMission(mission.areaId, mission.missionId + 1))
         end,
 
-        [xi.zone.HEAVENS_TOWER] =
+        [invaderXim.zone.HEAVENS_TOWER] =
         {
             ['Zubaba'] =
             {
                 onTrade = function(player, npc, trade)
                     if
                         player:getMissionStatus(mission.areaId) == 3 and
-                        npcUtil.tradeHasExactly(trade, { { xi.item.RUSTY_DAGGER, 3 } })
+                        npcUtil.tradeHasExactly(trade, { { invaderXim.item.RUSTY_DAGGER, 3 } })
                     then
                         return mission:progressEvent(151)
                     end
@@ -153,9 +153,9 @@ mission.sections =
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
                     if missionStatus == 0 then
-                        return mission:progressEvent(257, 0, xi.item.RUSTY_DAGGER)
+                        return mission:progressEvent(257, 0, invaderXim.item.RUSTY_DAGGER)
                     elseif missionStatus == 3 then
-                        return mission:progressEvent(150, 0, xi.item.RUSTY_DAGGER)
+                        return mission:progressEvent(150, 0, invaderXim.item.RUSTY_DAGGER)
                     end
                 end,
             },

@@ -12,7 +12,7 @@
 -- Thone Room Door  : !pos -111 -6 0 165
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_SHADOW_AWAITS)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_SHADOW_AWAITS)
 
 mission.reward =
 {
@@ -24,7 +24,7 @@ local handleAcceptMission = function(player, csid, option, npc)
     if option == 15 then
         mission:begin(player)
         player:messageSpecial(zones[player:getZoneID()].text.YOU_ACCEPT_THE_MISSION)
-        npcUtil.giveKeyItem(player, xi.ki.STAR_CRESTED_SUMMONS_1)
+        npcUtil.giveKeyItem(player, invaderXim.ki.STAR_CRESTED_SUMMONS_1)
     end
 end
 
@@ -33,11 +33,11 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onEventFinish =
             {
@@ -45,7 +45,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onEventFinish =
             {
@@ -53,7 +53,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onEventFinish =
             {
@@ -61,7 +61,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onEventFinish =
             {
@@ -76,14 +76,14 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.HEAVENS_TOWER] =
+        [invaderXim.zone.HEAVENS_TOWER] =
         {
             ['_6q2'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.STAR_CRESTED_SUMMONS_1) then
+                    if player:hasKeyItem(invaderXim.ki.STAR_CRESTED_SUMMONS_1) then
                         return mission:progressEvent(214)
-                    elseif player:hasKeyItem(xi.ki.SHADOW_FRAGMENT) then
+                    elseif player:hasKeyItem(invaderXim.ki.SHADOW_FRAGMENT) then
                         return mission:progressEvent(216)
                     end
                 end,
@@ -92,9 +92,9 @@ mission.sections =
             ['Zubaba'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.STAR_CRESTED_SUMMONS_1) then
+                    if player:hasKeyItem(invaderXim.ki.STAR_CRESTED_SUMMONS_1) then
                         return mission:progressEvent(157)
-                    elseif player:hasKeyItem(xi.ki.SHADOW_FRAGMENT) then
+                    elseif player:hasKeyItem(invaderXim.ki.SHADOW_FRAGMENT) then
                         return mission:progressEvent(194)
                     end
                 end,
@@ -104,19 +104,19 @@ mission.sections =
             {
                 [214] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 2)
-                    player:addTitle(xi.title.STAR_ORDAINED_WARRIOR)
-                    player:delKeyItem(xi.ki.STAR_CRESTED_SUMMONS_1)
+                    player:addTitle(invaderXim.title.STAR_ORDAINED_WARRIOR)
+                    player:delKeyItem(invaderXim.ki.STAR_CRESTED_SUMMONS_1)
                 end,
 
                 [216] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.SHADOW_FRAGMENT)
+                        player:delKeyItem(invaderXim.ki.SHADOW_FRAGMENT)
                     end
                 end,
             },
         },
 
-        [xi.zone.THRONE_ROOM] =
+        [invaderXim.zone.THRONE_ROOM] =
         {
             ['_4l1'] =
             {
@@ -132,14 +132,14 @@ mission.sections =
                 [32001] = function(player, csid, option, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 3 and
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.SHADOW_LORD_BATTLE
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.SHADOW_LORD_BATTLE
                     then
                         if
-                            player:getCurrentMission(xi.mission.log_id.ZILART) ~= xi.mission.id.zilart.THE_NEW_FRONTIER and
-                            not player:hasCompletedMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_NEW_FRONTIER)
+                            player:getCurrentMission(invaderXim.mission.log_id.ZILART) ~= invaderXim.mission.id.zilart.THE_NEW_FRONTIER and
+                            not player:hasCompletedMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_NEW_FRONTIER)
                         then
                             -- Don't add missions we already completed. Players who change nation will hit this.
-                            player:addMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_NEW_FRONTIER)
+                            player:addMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_NEW_FRONTIER)
                         end
 
                         -- TODO: Check captures, the player is most likely zoned and this even triggered via onZoneIn
@@ -158,14 +158,14 @@ mission.sections =
             },
         },
 
-        [xi.zone.CASTLE_ZVAHL_BAILEYS] =
+        [invaderXim.zone.CASTLE_ZVAHL_BAILEYS] =
         {
             afterZoneIn = function(player)
                 if
                     player:getMissionStatus(mission.areaId) == 4 and
-                    not player:hasKeyItem(xi.ki.SHADOW_FRAGMENT)
+                    not player:hasKeyItem(invaderXim.ki.SHADOW_FRAGMENT)
                 then
-                    npcUtil.giveKeyItem(player, xi.ki.SHADOW_FRAGMENT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.SHADOW_FRAGMENT)
                 end
             end,
         },

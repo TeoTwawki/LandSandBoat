@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.CASTLE_OZTROJA]
+local ID = zones[invaderXim.zone.CASTLE_OZTROJA]
 
 return {
     ['_47r']              = { messageSpecial = ID.text.PROBABLY_WORKS_WITH_SOMETHING_ELSE },

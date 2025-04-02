@@ -9,9 +9,9 @@ mixins = { require('scripts/mixins/families/mimic') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMod(xi.mod.ATTP, -25)
-    mob:setMod(xi.mod.DEFP, -25)
-    mob:setMod(xi.mod.EVA, 50)
+    mob:setMod(invaderXim.mod.ATTP, -25)
+    mob:setMod(invaderXim.mod.DEFP, -25)
+    mob:setMod(invaderXim.mod.EVA, 50)
 end
 
 entity.onMobEngage = function(mob, target)
@@ -24,7 +24,7 @@ entity.onMobEngage = function(mob, target)
         DespawnMob(mobId + 2)
 
         if math.random(1, 3) == 1 then
-            mob:setStatus(xi.status.INVISIBLE)
+            mob:setStatus(invaderXim.status.INVISIBLE)
             mob:setHP(0)
         else
             mob:setAnimationSub(1)

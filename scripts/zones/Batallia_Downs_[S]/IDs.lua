@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.BATALLIA_DOWNS_S] =
+zones[invaderXim.zone.BATALLIA_DOWNS_S] =
 {
     text =
     {
@@ -43,7 +43,7 @@ zones[xi.zone.BATALLIA_DOWNS_S] =
 
         VOIDWALKER =
         {
-            [xi.keyItem.CLEAR_ABYSSITE] =
+            [invaderXim.keyItem.CLEAR_ABYSSITE] =
             {
                 17121722,  -- Lacus
                 17121721,  -- Thunor
@@ -55,18 +55,18 @@ zones[xi.zone.BATALLIA_DOWNS_S] =
                 17121715, -- Aither
             },
 
-            [xi.keyItem.COLORFUL_ABYSSITE] =
+            [invaderXim.keyItem.COLORFUL_ABYSSITE] =
             {
                 17121714, -- Skuld
                 17121713  -- Urd
             },
 
-            [xi.keyItem.YELLOW_ABYSSITE] =
+            [invaderXim.keyItem.YELLOW_ABYSSITE] =
             {
                 17121712  -- Verthandi
             },
 
-            [xi.keyItem.BLACK_ABYSSITE] =
+            [invaderXim.keyItem.BLACK_ABYSSITE] =
             {
                 17121711  -- Yilbegan
             }
@@ -79,4 +79,4 @@ zones[xi.zone.BATALLIA_DOWNS_S] =
     },
 }
 
-return zones[xi.zone.BATALLIA_DOWNS_S]
+return zones[invaderXim.zone.BATALLIA_DOWNS_S]

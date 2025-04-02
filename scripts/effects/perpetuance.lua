@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.PERPETUANCE
+-- invaderXim.effect.PERPETUANCE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

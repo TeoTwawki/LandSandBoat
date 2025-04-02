@@ -12,12 +12,12 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    local effect    = xi.effect.POTENCY
+    local effect    = invaderXim.effect.POTENCY
     local power     = 1800  --haste
     local subpower  = 5     --crit
     local duration  = 60
 
-    xi.itemUtils.addItemEffect(target, effect, power, duration, subpower)
+    invaderXim.itemUtils.addItemEffect(target, effect, power, duration, subpower)
 end
 
 return itemObject

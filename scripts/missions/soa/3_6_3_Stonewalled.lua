@@ -6,12 +6,12 @@
 -- Hollowed Pathway : !pos 215.371 39.025 -446.368 267
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.STONEWALLED)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.STONEWALLED)
 
 mission.reward =
 {
-    keyItem     = xi.ki.SOUL_SIPHON,
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.SALVATION },
+    keyItem     = invaderXim.ki.SOUL_SIPHON,
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.SALVATION },
 }
 
 mission.sections =
@@ -21,18 +21,18 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(152),
         },
 
-        [xi.zone.KAMIHR_DRIFTS] =
+        [invaderXim.zone.KAMIHR_DRIFTS] =
         {
             ['Crawling_Cave'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.AUREATE_BALL_OF_FUR) then
-                        npcUtil.giveKeyItem(player, xi.ki.AUREATE_BALL_OF_FUR)
+                    if not player:hasKeyItem(invaderXim.ki.AUREATE_BALL_OF_FUR) then
+                        npcUtil.giveKeyItem(player, invaderXim.ki.AUREATE_BALL_OF_FUR)
 
                         return mission:noAction()
                     end
@@ -40,7 +40,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.CIRDAS_CAVERNS_U] =
+        [invaderXim.zone.CIRDAS_CAVERNS_U] =
         {
             onEventFinish =
             {
@@ -49,12 +49,12 @@ mission.sections =
                 -- implementation of the instance.
                 [1000] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 1)
-                    player:setPos(-100.727, 29.696, 216.184, 64, xi.zone.CIRDAS_CAVERNS)
+                    player:setPos(-100.727, 29.696, 216.184, 64, invaderXim.zone.CIRDAS_CAVERNS)
                 end,
             },
         },
 
-        [xi.zone.CIRDAS_CAVERNS] =
+        [invaderXim.zone.CIRDAS_CAVERNS] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 1 then
@@ -76,7 +76,7 @@ mission.sections =
             {
                 [30] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:setPos(-210.208, 40.218, -447.346, 243, xi.zone.KAMIHR_DRIFTS)
+                        player:setPos(-210.208, 40.218, -447.346, 243, invaderXim.zone.KAMIHR_DRIFTS)
                     end
                 end,
             },

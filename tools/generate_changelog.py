@@ -6,10 +6,10 @@
 # NOTE: If you don't populate the optional changelog title, the repo owner name will be used
 #
 # Examples:
-# .\tools\generate_changelog.py ci LandSandBoat/server
-# => ## LandSandBoat Changelog
+# .\tools\generate_changelog.py ci InvaderXim/server
+# => ## InvaderXim Changelog
 #
-# .\tools\generate_changelog.py 7 LandSandBoat/server YourServerName
+# .\tools\generate_changelog.py 7 InvaderXim/server YourServerName
 # => ## YourServerName Changelog
 
 import sys

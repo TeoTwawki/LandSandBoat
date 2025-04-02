@@ -20,15 +20,15 @@ require('scripts/globals/magic') -- For resist functions
 require('scripts/globals/utils') -- For clamping function
 -----------------------------------
 xi = xi or {}
-xi.additionalEffect = xi.additionalEffect or {}
-xi.additionalEffect.procFunctions = xi.additionalEffect.procFunctions or {}
+invaderXim.additionalEffect = invaderXim.additionalEffect or {}
+invaderXim.additionalEffect.procFunctions = invaderXim.additionalEffect.procFunctions or {}
 
-xi.additionalEffect.dStatBonus = function(attacker, defender, dStat, damage)
+invaderXim.additionalEffect.dStatBonus = function(attacker, defender, dStat, damage)
     local statTable =
     {
         -- [attacker stat] = {counter stat, softcap},
-        [xi.mod.MND] = { cStat = xi.mod.MND, softcap = 40 },
-        [xi.mod.INT] = { cStat = xi.mod.INT, softcap = 20 },
+        [invaderXim.mod.MND] = { cStat = invaderXim.mod.MND, softcap = 40 },
+        [invaderXim.mod.INT] = { cStat = invaderXim.mod.INT, softcap = 20 },
         -- Can use pretty much any modifier and the pairs don't have to math (in case of SE shenanigans..)
     }
 
@@ -37,7 +37,7 @@ xi.additionalEffect.dStatBonus = function(attacker, defender, dStat, damage)
     local bonus = 0
 
     -- Check if this is base stat or other modifier
-    if dStat >= xi.mod.STR and dStat <= xi.mod.CHR then
+    if dStat >= invaderXim.mod.STR and dStat <= invaderXim.mod.CHR then
         bonus = attacker:getStat(dStat) - defender:getStat(tableRow.cStat)
     else
         -- See table note above
@@ -57,7 +57,7 @@ xi.additionalEffect.dStatBonus = function(attacker, defender, dStat, damage)
     return damage
 end
 
-xi.additionalEffect.levelCorrectRates = function(dLV, aLV, chance, lvCorrect)
+invaderXim.additionalEffect.levelCorrectRates = function(dLV, aLV, chance, lvCorrect)
     -- Do not alter 100% proc rates
     if chance < 100 then
         if dLV > aLV then
@@ -68,14 +68,14 @@ xi.additionalEffect.levelCorrectRates = function(dLV, aLV, chance, lvCorrect)
     return chance
 end
 
-xi.additionalEffect.statusAttack = function(addStatus, defender)
+invaderXim.additionalEffect.statusAttack = function(addStatus, defender)
     local effectList =
     {
-        [xi.effect.DEFENSE_DOWN] = { tick = 0, strip = xi.effect.DEFENSE_BOOST },
-        [xi.effect.EVASION_DOWN] = { tick = 0, strip = xi.effect.EVASION_BOOST },
-        [xi.effect.ATTACK_DOWN]  = { tick = 0, strip = xi.effect.ATTACK_BOOST },
-        [xi.effect.POISON]       = { tick = 3, strip = nil },
-        [xi.effect.CHOKE]        = { tick = 3, strip = nil },
+        [invaderXim.effect.DEFENSE_DOWN] = { tick = 0, strip = invaderXim.effect.DEFENSE_BOOST },
+        [invaderXim.effect.EVASION_DOWN] = { tick = 0, strip = invaderXim.effect.EVASION_BOOST },
+        [invaderXim.effect.ATTACK_DOWN]  = { tick = 0, strip = invaderXim.effect.ATTACK_BOOST },
+        [invaderXim.effect.POISON]       = { tick = 3, strip = nil },
+        [invaderXim.effect.CHOKE]        = { tick = 3, strip = nil },
     }
 
     local effect = effectList[addStatus]
@@ -91,14 +91,14 @@ xi.additionalEffect.statusAttack = function(addStatus, defender)
 end
 
 -- Todo: swap from using element to damageType enum, so Excalibur etc. can happen.
-xi.additionalEffect.calcDamage = function(attacker, element, defender, damage)
+invaderXim.additionalEffect.calcDamage = function(attacker, element, defender, damage)
     local params = {}
 
     params.bonusmab   = 0
     params.includemab = false -- May possibly need to include mab on case by case basis, further tests needed
     damage            = addBonusesAbility(attacker, element, defender, damage, params)
     damage            = damage * applyResistanceAddEffect(attacker, defender, element, 0)
-    damage            = damage * xi.spells.damage.calculateNukeAbsorbOrNullify(defender, element)
+    damage            = damage * invaderXim.spells.damage.calculateNukeAbsorbOrNullify(defender, element)
     -- Todo: make sure day/weather/affinity bonuses tie in right here
     damage            = finalMagicNonSpellAdjustments(attacker, defender, element, damage)
 
@@ -111,7 +111,7 @@ xi.additionalEffect.calcDamage = function(attacker, element, defender, damage)
     return damage
 end
 
-xi.additionalEffect.procType =
+invaderXim.additionalEffect.procType =
 {
     -- These are arbitrary, make up new ones as needed.
     DAMAGE        = 1,
@@ -130,16 +130,16 @@ xi.additionalEffect.procType =
 }
 
 -- TODO: add resistance check for params.element
-xi.additionalEffect.procFunctions[xi.additionalEffect.procType.DAMAGE] = function(attacker, defender, item, params)
+invaderXim.additionalEffect.procFunctions[invaderXim.additionalEffect.procType.DAMAGE] = function(attacker, defender, item, params)
     local subEffect = params.subEffect
     local msgID     = 0
     local msgParam  = 0
 
-    local damage = xi.additionalEffect.calcDamage(attacker, params.element, defender, params.damage)
-    msgID  = xi.msg.basic.ADD_EFFECT_DMG
+    local damage = invaderXim.additionalEffect.calcDamage(attacker, params.element, defender, params.damage)
+    msgID  = invaderXim.msg.basic.ADD_EFFECT_DMG
 
     if damage < 0 then
-        msgID = xi.msg.basic.ADD_EFFECT_HEAL
+        msgID = invaderXim.msg.basic.ADD_EFFECT_HEAL
     end
 
     msgParam = damage
@@ -150,14 +150,14 @@ end
 -- TODO: add resistance check for params.element
 -- TODO: add 1/2 duration or full duration only
 -- TODO: verify how macc works with this
-xi.additionalEffect.procFunctions[xi.additionalEffect.procType.DEBUFF] =  function(attacker, defender, item, params)
+invaderXim.additionalEffect.procFunctions[invaderXim.additionalEffect.procType.DEBUFF] =  function(attacker, defender, item, params)
     local subEffect = params.subEffect
     local msgID     = 0
     local msgParam  = 0
 
     if params.addStatus and params.addStatus > 0 then
-        local tick = xi.additionalEffect.statusAttack(params.addStatus, defender)
-        msgID      = xi.msg.basic.ADD_EFFECT_STATUS_2 -- TODO: does anything use ADD_EFFECT_STATUS? STatus bolts are observed on retail to use _2.
+        local tick = invaderXim.additionalEffect.statusAttack(params.addStatus, defender)
+        msgID      = invaderXim.msg.basic.ADD_EFFECT_STATUS_2 -- TODO: does anything use ADD_EFFECT_STATUS? STatus bolts are observed on retail to use _2.
 
         defender:addStatusEffect(params.addStatus, params.power, tick, params.duration)
         msgParam = params.addStatus
@@ -166,28 +166,28 @@ xi.additionalEffect.procFunctions[xi.additionalEffect.procType.DEBUFF] =  functi
     return subEffect, msgID, msgParam
 end
 
-xi.additionalEffect.procFunctions[xi.additionalEffect.procType.HP_HEAL] =  function(attacker, defender, item, params)
+invaderXim.additionalEffect.procFunctions[invaderXim.additionalEffect.procType.HP_HEAL] =  function(attacker, defender, item, params)
     local subEffect = params.subEffect
     local msgID     = 0
     local msgParam  = 0
     -- Its not a drain and works vs undead. https://www.bg-wiki.com/bg/Dominion_Mace
     local hitPoints = params.damage -- Note: not actually damage, if you wanted damage see HP_DRAIN instead
     -- Unknown what modifies the HP, using power directly for now
-    msgID = xi.msg.basic.ADD_EFFECT_HP_HEAL
+    msgID = invaderXim.msg.basic.ADD_EFFECT_HP_HEAL
     attacker:addHP(hitPoints)
     msgParam = hitPoints
 
     return subEffect, msgID, msgParam
 end
 
-xi.additionalEffect.procFunctions[xi.additionalEffect.procType.MP_HEAL] =  function(attacker, defender, item, params)
+invaderXim.additionalEffect.procFunctions[invaderXim.additionalEffect.procType.MP_HEAL] =  function(attacker, defender, item, params)
     local subEffect = params.subEffect
     local msgID     = 0
     local msgParam  = 0
 
     local magicPoints = params.damage
     -- Unknown what modifies this, using power directly for now
-    msgID = xi.msg.basic.ADD_EFFECT_MP_HEAL
+    msgID = invaderXim.msg.basic.ADD_EFFECT_MP_HEAL
     attacker:addMP(magicPoints)
     msgParam = magicPoints
 
@@ -195,20 +195,20 @@ xi.additionalEffect.procFunctions[xi.additionalEffect.procType.MP_HEAL] =  funct
 end
 
 -- TODO: add resistance check for params.element
-xi.additionalEffect.procFunctions[xi.additionalEffect.procType.HP_DRAIN] =  function(attacker, defender, item, params)
+invaderXim.additionalEffect.procFunctions[invaderXim.additionalEffect.procType.HP_DRAIN] =  function(attacker, defender, item, params)
     local subEffect = params.subEffect
     local msgID     = 0
     local msgParam  = 0
 
     -- Hardcoded for now
-    params.element = xi.element.DARK
-    local damage = xi.additionalEffect.calcDamage(attacker, params.element, defender, params.damage)
+    params.element = invaderXim.element.DARK
+    local damage = invaderXim.additionalEffect.calcDamage(attacker, params.element, defender, params.damage)
 
     if damage > defender:getHP() then
         damage = defender:getHP()
     end
 
-    msgID    = xi.msg.basic.ADD_EFFECT_HP_DRAIN
+    msgID    = invaderXim.msg.basic.ADD_EFFECT_HP_DRAIN
     msgParam = damage
     attacker:addHP(damage)
 
@@ -216,20 +216,20 @@ xi.additionalEffect.procFunctions[xi.additionalEffect.procType.HP_DRAIN] =  func
 end
 
 -- TODO: add resistance check for params.element
-xi.additionalEffect.procFunctions[xi.additionalEffect.procType.MP_DRAIN] =  function(attacker, defender, item, params)
+invaderXim.additionalEffect.procFunctions[invaderXim.additionalEffect.procType.MP_DRAIN] =  function(attacker, defender, item, params)
     local subEffect = params.subEffect
     local msgID     = 0
     local msgParam  = 0
 
     -- Hardcoded for now
-    params.element = xi.element.DARK
-    local damage = xi.additionalEffect.calcDamage(attacker, params.element, defender, params.damage)
+    params.element = invaderXim.element.DARK
+    local damage = invaderXim.additionalEffect.calcDamage(attacker, params.element, defender, params.damage)
 
     if damage > defender:getMP() then
         damage = defender:getMP()
     end
 
-    msgID    = xi.msg.basic.ADD_EFFECT_MP_DRAIN
+    msgID    = invaderXim.msg.basic.ADD_EFFECT_MP_DRAIN
     msgParam = damage
     defender:addMP(-damage)
     attacker:addMP(damage)
@@ -238,21 +238,21 @@ xi.additionalEffect.procFunctions[xi.additionalEffect.procType.MP_DRAIN] =  func
 end
 
 -- TODO: add resistance check for params.element
-xi.additionalEffect.procFunctions[xi.additionalEffect.procType.TP_DRAIN] =  function(attacker, defender, item, params)
+invaderXim.additionalEffect.procFunctions[invaderXim.additionalEffect.procType.TP_DRAIN] =  function(attacker, defender, item, params)
     local subEffect = params.subEffect
     local msgID     = 0
     local msgParam  = 0
 
     -- Hardcoded for now
-    params.element = xi.element.DARK
+    params.element = invaderXim.element.DARK
 
-    local damage = xi.additionalEffect.calcDamage(attacker, params.element, defender, params.damage)
+    local damage = invaderXim.additionalEffect.calcDamage(attacker, params.element, defender, params.damage)
 
     if damage > defender:getTP() then
         damage = defender:getTP()
     end
 
-    msgID    = xi.msg.basic.ADD_EFFECT_TP_DRAIN
+    msgID    = invaderXim.msg.basic.ADD_EFFECT_TP_DRAIN
     msgParam = damage
     defender:addTP(-damage)
     attacker:addTP(damage)
@@ -261,24 +261,24 @@ xi.additionalEffect.procFunctions[xi.additionalEffect.procType.TP_DRAIN] =  func
 end
 
 -- TODO: add resistance check for params.element
-xi.additionalEffect.procFunctions[xi.additionalEffect.procType.DISPEL] =  function(attacker, defender, item, params)
+invaderXim.additionalEffect.procFunctions[invaderXim.additionalEffect.procType.DISPEL] =  function(attacker, defender, item, params)
     local subEffect = params.subEffect
     local msgID     = 0
     local msgParam  = 0
 
     local dispel = defender:dispelStatusEffect()
 
-    if dispel == xi.effect.NONE then
+    if dispel == invaderXim.effect.NONE then
         return 0, 0, 0
     else
-        msgID = xi.msg.basic.ADD_EFFECT_DISPEL
+        msgID = invaderXim.msg.basic.ADD_EFFECT_DISPEL
         msgParam = dispel
     end
 
     return subEffect, msgID, msgParam
 end
 
-xi.additionalEffect.procFunctions[xi.additionalEffect.procType.ABSORB_STATUS] =  function(attacker, defender, item, params)
+invaderXim.additionalEffect.procFunctions[invaderXim.additionalEffect.procType.ABSORB_STATUS] =  function(attacker, defender, item, params)
     local subEffect = params.subEffect
     local msgID     = 0
     local msgParam  = 0
@@ -287,35 +287,35 @@ xi.additionalEffect.procFunctions[xi.additionalEffect.procType.ABSORB_STATUS] = 
     local resist = applyResistanceAddEffect(attacker, defender, params.element, 0)
     if resist > 0.0625 then
         local stolen = attacker:stealStatusEffect(defender)
-        msgID        = xi.msg.basic.STEAL_EFFECT
+        msgID        = invaderXim.msg.basic.STEAL_EFFECT
         msgParam     = stolen
     end
 
     return subEffect, msgID, msgParam
 end
 
-xi.additionalEffect.procFunctions[xi.additionalEffect.procType.SELF_BUFF] =  function(attacker, defender, item, params)
+invaderXim.additionalEffect.procFunctions[invaderXim.additionalEffect.procType.SELF_BUFF] =  function(attacker, defender, item, params)
     local subEffect = params.subEffect
     local msgID     = 0
     local msgParam  = 0
 
-    if params.addStatus == xi.effect.BLINK then -- BLINK http://www.ffxiah.com/item/18830/gusterion
+    if params.addStatus == invaderXim.effect.BLINK then -- BLINK http://www.ffxiah.com/item/18830/gusterion
         -- Does not stack with or replace other shadows
         if
-            attacker:hasStatusEffect(xi.effect.BLINK) or
-            attacker:hasStatusEffect(xi.effect.COPY_IMAGE)
+            attacker:hasStatusEffect(invaderXim.effect.BLINK) or
+            attacker:hasStatusEffect(invaderXim.effect.COPY_IMAGE)
         then
             return 0, 0, 0
         else
-            attacker:addStatusEffect(xi.effect.BLINK, params.power, 0, params.duration)
-            msgID    = xi.msg.basic.ADD_EFFECT_SELFBUFF
-            msgParam = xi.effect.BLINK
+            attacker:addStatusEffect(invaderXim.effect.BLINK, params.power, 0, params.duration)
+            msgID    = invaderXim.msg.basic.ADD_EFFECT_SELFBUFF
+            msgParam = invaderXim.effect.BLINK
         end
-    elseif params.addStatus == xi.effect.HASTE then
-        attacker:addStatusEffect(xi.effect.HASTE, params.power, 0, params.duration, 0, 0)
+    elseif params.addStatus == invaderXim.effect.HASTE then
+        attacker:addStatusEffect(invaderXim.effect.HASTE, params.power, 0, params.duration, 0, 0)
         -- Todo: verify power/duration/tier/overwrite etc
-        msgID    = xi.msg.basic.ADD_EFFECT_SELFBUFF
-        msgParam = xi.effect.HASTE
+        msgID    = invaderXim.msg.basic.ADD_EFFECT_SELFBUFF
+        msgParam = invaderXim.effect.HASTE
     else
         print('scripts/globals/additional_effects.lua : unhandled additional effect selfbuff! Effect ID: ' .. params.addStatus)
     end
@@ -323,7 +323,7 @@ xi.additionalEffect.procFunctions[xi.additionalEffect.procType.SELF_BUFF] =  fun
     return subEffect, msgID, msgParam
 end
 
-xi.additionalEffect.procFunctions[xi.additionalEffect.procType.DEATH] = function(attacker, defender, item, params)
+invaderXim.additionalEffect.procFunctions[invaderXim.additionalEffect.procType.DEATH] = function(attacker, defender, item, params)
     local subEffect = params.subEffect
     local msgID     = 0
     local msgParam  = 0
@@ -332,56 +332,56 @@ xi.additionalEffect.procFunctions[xi.additionalEffect.procType.DEATH] = function
         defender:isNM() or
         defender:isUndead() or
         -- Todo: DeathRes has no place in the resistance functions so far..
-        math.random(1, 100) > defender:getMod(xi.mod.DEATHRES) -- We are checking for a fail, not a success.
+        math.random(1, 100) > defender:getMod(invaderXim.mod.DEATHRES) -- We are checking for a fail, not a success.
     then
         return 0, 0, 0 -- NMs immune or roll failed so return out
     else
-        msgID = xi.msg.basic.ADD_EFFECT_STATUS
-        msgParam = xi.effect.KO
+        msgID = invaderXim.msg.basic.ADD_EFFECT_STATUS
+        msgParam = invaderXim.effect.KO
         defender:setHP(0)
     end
 
     return subEffect, msgID, msgParam
 end
 
-xi.additionalEffect.procFunctions[xi.additionalEffect.procType.HPMP_DRAIN] = function(attacker, defender, item, params)
+invaderXim.additionalEffect.procFunctions[invaderXim.additionalEffect.procType.HPMP_DRAIN] = function(attacker, defender, item, params)
     local drainRoll = math.random(1, 2) -- This is wrong and needs retail verification. Current theory is that it rolls one after another until one doesn't resist or they all resist.
 
     local drainFuncs =
     {
-        [1] = xi.additionalEffect.procType.HP_DRAIN,
-        [2] = xi.additionalEffect.procType.MP_DRAIN
+        [1] = invaderXim.additionalEffect.procType.HP_DRAIN,
+        [2] = invaderXim.additionalEffect.procType.MP_DRAIN
     }
 
-    return xi.additionalEffect.procFunctions[drainFuncs[drainRoll]](attacker, defender, item, params)
+    return invaderXim.additionalEffect.procFunctions[drainFuncs[drainRoll]](attacker, defender, item, params)
 end
 
-xi.additionalEffect.procFunctions[xi.additionalEffect.procType.HPMPTP_DRAIN] = function(attacker, defender, item, params)
+invaderXim.additionalEffect.procFunctions[invaderXim.additionalEffect.procType.HPMPTP_DRAIN] = function(attacker, defender, item, params)
     local drainRoll = math.random(1, 3) -- This is wrong and needs retail verification. Current theory is that it rolls one after another until one doesn't resist or they all resist.
 
     local drainFuncs =
     {
-        [1] = xi.additionalEffect.procType.HP_DRAIN,
-        [2] = xi.additionalEffect.procType.MP_DRAIN,
-        [3] = xi.additionalEffect.procType.TP_DRAIN
+        [1] = invaderXim.additionalEffect.procType.HP_DRAIN,
+        [2] = invaderXim.additionalEffect.procType.MP_DRAIN,
+        [3] = invaderXim.additionalEffect.procType.TP_DRAIN
     }
 
-    return xi.additionalEffect.procFunctions[drainFuncs[drainRoll]](attacker, defender, item, params)
+    return invaderXim.additionalEffect.procFunctions[drainFuncs[drainRoll]](attacker, defender, item, params)
 end
 
 -- paralyze on hit, fire damage on hit, etc.
-xi.additionalEffect.attack = function(attacker, defender, baseAttackDamage, item)
+invaderXim.additionalEffect.attack = function(attacker, defender, baseAttackDamage, item)
     local params     = {}
-    params.lvCorrect = item:getMod(xi.mod.ITEM_ADDEFFECT_LVADJUST)
-    params.dStat     = item:getMod(xi.mod.ITEM_ADDEFFECT_DSTAT)
-    params.addType   = item:getMod(xi.mod.ITEM_ADDEFFECT_TYPE)
-    params.subEffect = item:getMod(xi.mod.ITEM_SUBEFFECT)
-    params.damage    = item:getMod(xi.mod.ITEM_ADDEFFECT_DMG)
-    params.chance    = item:getMod(xi.mod.ITEM_ADDEFFECT_CHANCE)
-    params.element   = item:getMod(xi.mod.ITEM_ADDEFFECT_ELEMENT)
-    params.addStatus = item:getMod(xi.mod.ITEM_ADDEFFECT_STATUS)
-    params.power     = item:getMod(xi.mod.ITEM_ADDEFFECT_POWER)
-    params.duration  = item:getMod(xi.mod.ITEM_ADDEFFECT_DURATION)
+    params.lvCorrect = item:getMod(invaderXim.mod.ITEM_ADDEFFECT_LVADJUST)
+    params.dStat     = item:getMod(invaderXim.mod.ITEM_ADDEFFECT_DSTAT)
+    params.addType   = item:getMod(invaderXim.mod.ITEM_ADDEFFECT_TYPE)
+    params.subEffect = item:getMod(invaderXim.mod.ITEM_SUBEFFECT)
+    params.damage    = item:getMod(invaderXim.mod.ITEM_ADDEFFECT_DMG)
+    params.chance    = item:getMod(invaderXim.mod.ITEM_ADDEFFECT_CHANCE)
+    params.element   = item:getMod(invaderXim.mod.ITEM_ADDEFFECT_ELEMENT)
+    params.addStatus = item:getMod(invaderXim.mod.ITEM_ADDEFFECT_STATUS)
+    params.power     = item:getMod(invaderXim.mod.ITEM_ADDEFFECT_POWER)
+    params.duration  = item:getMod(invaderXim.mod.ITEM_ADDEFFECT_DURATION)
 
     -- This is the  damage of the auto attack that generated this function call (swing did 5 damage, base attack damage is 5)
     params.baseAttackDamage = baseAttackDamage
@@ -398,19 +398,19 @@ xi.additionalEffect.attack = function(attacker, defender, baseAttackDamage, item
 
     -- Archery/marksmanship use this, most other items -usually- do not (See notes at top of script).
     if params.dStat > 0 then
-        params.damage = xi.additionalEffect.dStatBonus(attacker, defender, params.dStat, params.damage)
+        params.damage = invaderXim.additionalEffect.dStatBonus(attacker, defender, params.dStat, params.damage)
     end
 
-    if xi.additionalEffect.procFunctions[params.addType] then
-        return xi.additionalEffect.procFunctions[params.addType](attacker, defender, item, params)
+    if invaderXim.additionalEffect.procFunctions[params.addType] then
+        return invaderXim.additionalEffect.procFunctions[params.addType](attacker, defender, item, params)
     else
-        print('ERR: xi.additionalEffect.attack passed invalid/unimplemented addType of ' .. tostring(params.addType))
+        print('ERR: invaderXim.additionalEffect.attack passed invalid/unimplemented addType of ' .. tostring(params.addType))
     end
 
     return 0, 0, 0
 end
 
-xi.additionalEffect.spikes = function(attacker, defender, damage, spikeEffect, power, chance)
+invaderXim.additionalEffect.spikes = function(attacker, defender, damage, spikeEffect, power, chance)
     --[[ Todo..
     local procType =
     {

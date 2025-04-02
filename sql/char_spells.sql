@@ -2,7 +2,7 @@
 -- Table structure for table `char_spells`
 --
 
-DROP TABLE IF EXISTS `char_spells`;
+DROP TABLE IF IXIMSTS `char_spells`;
 CREATE TABLE `char_spells` (
   `charid` int(10) unsigned NOT NULL,
   `spellid` smallint(5) unsigned NOT NULL,

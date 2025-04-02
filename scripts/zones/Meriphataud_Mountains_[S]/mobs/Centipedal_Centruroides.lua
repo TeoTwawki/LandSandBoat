@@ -6,17 +6,17 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
-    mob:setMod(xi.mod.DOUBLE_ATTACK, 100)
-    mob:setMod(xi.mod.MOVE_SPEED_STACKABLE, 13)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
+    mob:setMod(invaderXim.mod.DOUBLE_ATTACK, 100)
+    mob:setMod(invaderXim.mod.MOVE_SPEED_STACKABLE, 13)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.POISON, { power = 30 })
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.POISON, { power = 30 })
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 528)
+    invaderXim.hunts.checkHunt(mob, player, 528)
 end
 
 return entity

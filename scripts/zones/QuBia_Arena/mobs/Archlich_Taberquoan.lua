@@ -9,7 +9,7 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.SOUND_RANGE, 32)
+    mob:setMobMod(invaderXim.mobMod.SOUND_RANGE, 32)
 end
 
 entity.onMobEngage = function(mob, player)

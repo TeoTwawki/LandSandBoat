@@ -3,7 +3,7 @@
 --  NPC: _0s9 (Wooden Gate)
 -- !pos 20.000 0.500 19.500 28
 -----------------------------------
-local ID = zones[xi.zone.SACRARIUM]
+local ID = zones[invaderXim.zone.SACRARIUM]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

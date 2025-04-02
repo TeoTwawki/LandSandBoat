@@ -6,12 +6,12 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMod(xi.mod.TRIPLE_ATTACK, 90) -- "Triple Attacks almost every round"
-    mob:addMod(xi.mod.REGAIN, 75) -- "appears to have a high rate of Regain"
+    mob:setMod(invaderXim.mod.TRIPLE_ATTACK, 90) -- "Triple Attacks almost every round"
+    mob:addMod(invaderXim.mod.REGAIN, 75) -- "appears to have a high rate of Regain"
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 531)
+    invaderXim.hunts.checkHunt(mob, player, 531)
 end
 
 entity.onMobDespawn = function(mob)

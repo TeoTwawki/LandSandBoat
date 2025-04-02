@@ -2,10 +2,10 @@
 -- Garrison Data
 -----------------------------------
 xi = xi or {}
-xi.garrison = xi.garrison or {}
+invaderXim.garrison = invaderXim.garrison or {}
 
 -- Garrison Progression
-xi.garrison.state =
+invaderXim.garrison.state =
 {
     SPAWN_NPCS          = 0,
     BATTLE              = 1,
@@ -17,19 +17,19 @@ xi.garrison.state =
 }
 
 -- Name is Determined by Nation and LevelCap (sandoria, bastok, windurst)
-xi.garrison.allyNames =
+invaderXim.garrison.allyNames =
 {
-    [20] = { [xi.nation.SANDORIA] = 'Patrician',       [xi.nation.BASTOK] = 'Recruit',         [xi.nation.WINDURST] = 'Candidate'       },
-    [30] = { [xi.nation.SANDORIA] = 'Trader',          [xi.nation.BASTOK] = 'Mariner',         [xi.nation.WINDURST] = 'Scholar'         },
-    [40] = { [xi.nation.SANDORIA] = 'TempleKnight',    [xi.nation.BASTOK] = 'GoldMusketeer',   [xi.nation.WINDURST] = 'WiseWizard'      },
-    [50] = { [xi.nation.SANDORIA] = 'RoyalGuard',      [xi.nation.BASTOK] = 'Commander',       [xi.nation.WINDURST] = 'Patriarch'       },
-    [99] = { [xi.nation.SANDORIA] = 'MilitaryAttache', [xi.nation.BASTOK] = 'MilitaryAttache', [xi.nation.WINDURST] = 'MilitaryAttache' },
+    [20] = { [invaderXim.nation.SANDORIA] = 'Patrician',       [invaderXim.nation.BASTOK] = 'Recruit',         [invaderXim.nation.WINDURST] = 'Candidate'       },
+    [30] = { [invaderXim.nation.SANDORIA] = 'Trader',          [invaderXim.nation.BASTOK] = 'Mariner',         [invaderXim.nation.WINDURST] = 'Scholar'         },
+    [40] = { [invaderXim.nation.SANDORIA] = 'TempleKnight',    [invaderXim.nation.BASTOK] = 'GoldMusketeer',   [invaderXim.nation.WINDURST] = 'WiseWizard'      },
+    [50] = { [invaderXim.nation.SANDORIA] = 'RoyalGuard',      [invaderXim.nation.BASTOK] = 'Commander',       [invaderXim.nation.WINDURST] = 'Patriarch'       },
+    [99] = { [invaderXim.nation.SANDORIA] = 'MilitaryAttache', [invaderXim.nation.BASTOK] = 'MilitaryAttache', [invaderXim.nation.WINDURST] = 'MilitaryAttache' },
 }
 
 -- Group Ids are different per cap due to min / max level requirements
 -- They all use the same pool at the moment, but we could also change families
 -- based on cap, which would change base stats
-xi.garrison.allyGroupIds =
+invaderXim.garrison.allyGroupIds =
 {
     [20] = 1,
     [30] = 2,
@@ -39,17 +39,17 @@ xi.garrison.allyGroupIds =
 }
 
 -- Look is Determined by Nation and LevelCap (Appears to be 4 for each outpost - More data needed)
-xi.garrison.allyLooks =
+invaderXim.garrison.allyLooks =
 {
     [20] =
     {
-        [xi.nation.SANDORIA] =
+        [invaderXim.nation.SANDORIA] =
         {
             '0x01000C030010262000303A403A5008611B700000',
             '0x01000A040010262019303A40195008611C700000',
         },
 
-        [xi.nation.BASTOK] =
+        [invaderXim.nation.BASTOK] =
         {
             -- These commented out entries appear to be missing body and leg pieces
             -- '0x010001017D000000150015001500B70000000000',
@@ -60,7 +60,7 @@ xi.garrison.allyLooks =
             '0x01000402740014000000000003002C0100000000',
         },
 
-        [xi.nation.WINDURST] =
+        [invaderXim.nation.WINDURST] =
         {
             '0x010007070110322032300E401550AC6000700000',
             '0x01000E0718101820183015401850B76024700000',
@@ -69,7 +69,7 @@ xi.garrison.allyLooks =
     },
     [30] =
     {
-        [xi.nation.SANDORIA] =
+        [invaderXim.nation.SANDORIA] =
         {
             '0x010006030010762076303A400650736000700000',
             '0x01000F0300101520153015401550006000700000',
@@ -77,14 +77,14 @@ xi.garrison.allyLooks =
             '0x01000E0400101520003015401550006000700000',
         },
 
-        [xi.nation.BASTOK] =
+        [invaderXim.nation.BASTOK] =
         {
             '0x0100040873100020003000400050006000700000',
             '0x01000B0841100F200F300F400F50D86000700000',
             '0x01000F0120100F2000300F407A50AC6000700000',
         },
 
-        [xi.nation.WINDURST] =
+        [invaderXim.nation.WINDURST] =
         {
             '0x01000B051C1073201430144014506C6000700000',
             '0x0100010777106920693066406950B46000700000',
@@ -94,13 +94,13 @@ xi.garrison.allyLooks =
     },
     [40] =
     {
-        [xi.nation.SANDORIA] =
+        [invaderXim.nation.SANDORIA] =
         {
             '0x01000E04191019201930194019506B601C700000',
             '0x01000903191019201930194019506B601C700000',
         },
 
-        [xi.nation.BASTOK] =
+        [invaderXim.nation.BASTOK] =
         {
             '0x0100020260102420603060406050B56000700000',
             '0x010008083D1024203D3010401050756075700000',
@@ -108,7 +108,7 @@ xi.garrison.allyLooks =
             '0x0100040105102420053005400550BB6000700000',
         },
 
-        [xi.nation.WINDURST] =
+        [invaderXim.nation.WINDURST] =
         {
             '0x0100050700104A20003000400650396127700000',
             '0x01000D0634106D206D306D406D501A6123700000',
@@ -116,7 +116,7 @@ xi.garrison.allyLooks =
     },
     [50] =
     {
-        [xi.nation.SANDORIA] =
+        [invaderXim.nation.SANDORIA] =
         {
             '0x010008037210722072301C401C50616000700000',
             '0x01000E03421025204230394042508F608F700000',
@@ -124,13 +124,13 @@ xi.garrison.allyLooks =
             '0x01000304401022204030404040504A6000700000',
         },
 
-        [xi.nation.BASTOK] =
+        [invaderXim.nation.BASTOK] =
         {
             '0x01000C0133106420433064404350866086700000',
             '0x0100010216104120413041404150CA6000700000',
         },
 
-        [xi.nation.WINDURST] =
+        [invaderXim.nation.WINDURST] =
         {
             '0x0100020600106320633063406350056122700000',
             '0x010004067C102D20193019401950506100700000',
@@ -139,18 +139,18 @@ xi.garrison.allyLooks =
     },
     [99] =
     {
-        [xi.nation.SANDORIA] =
+        [invaderXim.nation.SANDORIA] =
         {
             '0x010005011D1071201D301D401D50206130700000',
             '0x0100020841107120413041404150036130700000',
         },
 
-        [xi.nation.BASTOK] =
+        [invaderXim.nation.BASTOK] =
         {
             '0x010002071C1070201C301C401C50C46000700000',
         },
 
-        [xi.nation.WINDURST] =
+        [invaderXim.nation.WINDURST] =
         {
             '0x010009043E106F203E303E403E501C611B700000',
             '0x0100020349106F204930494049501F611B700000',
@@ -159,73 +159,73 @@ xi.garrison.allyLooks =
 }
 
 -- Loot is determined by LevelCap
-xi.garrison.loot =
+invaderXim.garrison.loot =
 {
     [20] =
     {
-        { itemid = xi.item.DRAGON_CHRONICLES, droprate = 1000 },
-        { itemid = xi.item.GARRISON_TUNICA,   droprate =  350 },
-        { itemid = xi.item.GARRISON_BOOTS,    droprate =  350 },
-        { itemid = xi.item.GARRISON_HOSE,     droprate =  350 },
-        { itemid = xi.item.GARRISON_GLOVES,   droprate =  350 },
-        { itemid = xi.item.GARRISON_SALLET,   droprate =  350 },
+        { itemid = invaderXim.item.DRAGON_CHRONICLES, droprate = 1000 },
+        { itemid = invaderXim.item.GARRISON_TUNICA,   droprate =  350 },
+        { itemid = invaderXim.item.GARRISON_BOOTS,    droprate =  350 },
+        { itemid = invaderXim.item.GARRISON_HOSE,     droprate =  350 },
+        { itemid = invaderXim.item.GARRISON_GLOVES,   droprate =  350 },
+        { itemid = invaderXim.item.GARRISON_SALLET,   droprate =  350 },
     },
     [30] =
     {
-        { itemid = xi.item.DRAGON_CHRONICLES, droprate = 1000 },
-        { itemid = xi.item.MILITARY_GUN,      droprate =  350 },
-        { itemid = xi.item.MILITARY_POLE,     droprate =  350 },
-        { itemid = xi.item.MILITARY_HARP,     droprate =  350 },
-        { itemid = xi.item.MILITARY_PICK,     droprate =  350 },
-        { itemid = xi.item.MILITARY_SPEAR,    droprate =  350 },
-        { itemid = xi.item.MILITARY_AXE,      droprate =  350 },
+        { itemid = invaderXim.item.DRAGON_CHRONICLES, droprate = 1000 },
+        { itemid = invaderXim.item.MILITARY_GUN,      droprate =  350 },
+        { itemid = invaderXim.item.MILITARY_POLE,     droprate =  350 },
+        { itemid = invaderXim.item.MILITARY_HARP,     droprate =  350 },
+        { itemid = invaderXim.item.MILITARY_PICK,     droprate =  350 },
+        { itemid = invaderXim.item.MILITARY_SPEAR,    droprate =  350 },
+        { itemid = invaderXim.item.MILITARY_AXE,      droprate =  350 },
     },
     [40] =
     {
-        { itemid = xi.item.DRAGON_CHRONICLES, droprate = 1000 },
-        { itemid = xi.item.VARIABLE_MANTLE,   droprate =  350 },
-        { itemid = xi.item.VARIABLE_CAPE,     droprate =  350 },
-        { itemid = xi.item.PROTEAN_RING,      droprate =  350 },
-        { itemid = xi.item.VARIABLE_RING,     droprate =  350 },
-        { itemid = xi.item.MECURIAL_EARRING,  droprate =  350 },
+        { itemid = invaderXim.item.DRAGON_CHRONICLES, droprate = 1000 },
+        { itemid = invaderXim.item.VARIABLE_MANTLE,   droprate =  350 },
+        { itemid = invaderXim.item.VARIABLE_CAPE,     droprate =  350 },
+        { itemid = invaderXim.item.PROTEAN_RING,      droprate =  350 },
+        { itemid = invaderXim.item.VARIABLE_RING,     droprate =  350 },
+        { itemid = invaderXim.item.MECURIAL_EARRING,  droprate =  350 },
     },
     [50] =
     {
-        { itemid = xi.item.DRAGON_CHRONICLES, droprate = 1000 },
-        { itemid = xi.item.UNDEAD_EARRING,    droprate =  350 },
-        { itemid = xi.item.ARCANA_EARRING,    droprate =  350 },
-        { itemid = xi.item.VERMIN_EARRING,    droprate =  350 },
-        { itemid = xi.item.BIRD_EARRING,      droprate =  350 },
-        { itemid = xi.item.AMORPH_EARRING,    droprate =  350 },
-        { itemid = xi.item.LIZARD_EARRING,    droprate =  350 },
-        { itemid = xi.item.AQUAN_EARRING,     droprate =  350 },
-        { itemid = xi.item.PLANTOID_EARRING,  droprate =  350 },
-        { itemid = xi.item.BEAST_EARRING,     droprate =  350 },
-        { itemid = xi.item.DEMON_EARRING,     droprate =  350 },
-        { itemid = xi.item.DRAGON_EARRING,    droprate =  350 },
-        { itemid = xi.item.REFRESH_EARRING,   droprate =  350 },
-        { itemid = xi.item.ACCURATE_EARRING,  droprate =  350 },
+        { itemid = invaderXim.item.DRAGON_CHRONICLES, droprate = 1000 },
+        { itemid = invaderXim.item.UNDEAD_EARRING,    droprate =  350 },
+        { itemid = invaderXim.item.ARCANA_EARRING,    droprate =  350 },
+        { itemid = invaderXim.item.VERMIN_EARRING,    droprate =  350 },
+        { itemid = invaderXim.item.BIRD_EARRING,      droprate =  350 },
+        { itemid = invaderXim.item.AMORPH_EARRING,    droprate =  350 },
+        { itemid = invaderXim.item.LIZARD_EARRING,    droprate =  350 },
+        { itemid = invaderXim.item.AQUAN_EARRING,     droprate =  350 },
+        { itemid = invaderXim.item.PLANTOID_EARRING,  droprate =  350 },
+        { itemid = invaderXim.item.BEAST_EARRING,     droprate =  350 },
+        { itemid = invaderXim.item.DEMON_EARRING,     droprate =  350 },
+        { itemid = invaderXim.item.DRAGON_EARRING,    droprate =  350 },
+        { itemid = invaderXim.item.REFRESH_EARRING,   droprate =  350 },
+        { itemid = invaderXim.item.ACCURATE_EARRING,  droprate =  350 },
     },
     [99] =
     {
-        { itemid = xi.item.MIRATETES_MEMOIRS, droprate = 1000 },
-        { itemid = xi.item.MIGHTY_BOW,        droprate =  350 },
-        { itemid = xi.item.MIGHTY_CUDGEL,     droprate =  350 },
-        { itemid = xi.item.MIGHTY_POLE,       droprate =  350 },
-        { itemid = xi.item.MIGHTY_TALWAR,     droprate =  350 },
-        { itemid = xi.item.RAI_KUNIMITSU,     droprate =  350 },
-        { itemid = xi.item.NUKEMARU,          droprate =  350 },
-        { itemid = xi.item.MIGHTY_PICK,       droprate =  350 },
-        { itemid = xi.item.MIGHTY_KNIFE,      droprate =  350 },
-        { itemid = xi.item.MIGHTY_ZAGHNAL,    droprate =  350 },
-        { itemid = xi.item.MIGHTY_LANCE,      droprate =  350 },
-        { itemid = xi.item.MIGHTY_AXE,        droprate =  350 },
-        { itemid = xi.item.MIGHTY_PATAS,      droprate =  350 },
-        { itemid = xi.item.MIGHTY_SWORD,      droprate =  350 },
+        { itemid = invaderXim.item.MIRATETES_MEMOIRS, droprate = 1000 },
+        { itemid = invaderXim.item.MIGHTY_BOW,        droprate =  350 },
+        { itemid = invaderXim.item.MIGHTY_CUDGEL,     droprate =  350 },
+        { itemid = invaderXim.item.MIGHTY_POLE,       droprate =  350 },
+        { itemid = invaderXim.item.MIGHTY_TALWAR,     droprate =  350 },
+        { itemid = invaderXim.item.RAI_KUNIMITSU,     droprate =  350 },
+        { itemid = invaderXim.item.NUKEMARU,          droprate =  350 },
+        { itemid = invaderXim.item.MIGHTY_PICK,       droprate =  350 },
+        { itemid = invaderXim.item.MIGHTY_KNIFE,      droprate =  350 },
+        { itemid = invaderXim.item.MIGHTY_ZAGHNAL,    droprate =  350 },
+        { itemid = invaderXim.item.MIGHTY_LANCE,      droprate =  350 },
+        { itemid = invaderXim.item.MIGHTY_AXE,        droprate =  350 },
+        { itemid = invaderXim.item.MIGHTY_PATAS,      droprate =  350 },
+        { itemid = invaderXim.item.MIGHTY_SWORD,      droprate =  350 },
     },
 }
 
-xi.garrison.waves =
+invaderXim.garrison.waves =
 {
     -- Each wave consists of different 'mini waves' or spawn groups,
     -- which are separated from each other by a certain interval of time.
@@ -271,11 +271,11 @@ xi.garrison.waves =
 }
 
 --Zone Data
-xi.garrison.zoneData =
+invaderXim.garrison.zoneData =
 {
-    [xi.zone.WEST_RONFAURE] =
+    [invaderXim.zone.WEST_RONFAURE] =
     {
-        itemReq     = xi.item.RED_CRYPTEX,
+        itemReq     = invaderXim.item.RED_CRYPTEX,
         textRegion  = 0,
         levelCap    = 20,
         mobBoss     = 'Orcish_Fighterchief',
@@ -287,9 +287,9 @@ xi.garrison.zoneData =
         xThirdLine  = 4,
         zThirdLine  = 0,
     },
-    [xi.zone.NORTH_GUSTABERG] =
+    [invaderXim.zone.NORTH_GUSTABERG] =
     {
-        itemReq     = xi.item.DARKSTEEL_ENGRAVING,
+        itemReq     = invaderXim.item.DARKSTEEL_ENGRAVING,
         textRegion  = 1,
         levelCap    = 20,
         mobBoss     = 'Lead_Quadav',
@@ -301,9 +301,9 @@ xi.garrison.zoneData =
         xThirdLine  = 4,
         zThirdLine  = 0,
     },
-    [xi.zone.WEST_SARUTABARUTA] =
+    [invaderXim.zone.WEST_SARUTABARUTA] =
     {
-        itemReq     = xi.item.SEVEN_KNOT_QUIPU,
+        itemReq     = invaderXim.item.SEVEN_KNOT_QUIPU,
         textRegion  = 2,
         levelCap    = 20,
         mobBoss     = 'Yagudo_Condottiere',
@@ -315,9 +315,9 @@ xi.garrison.zoneData =
         xThirdLine  = 4,
         zThirdLine  = 0,
     },
-    [xi.zone.VALKURM_DUNES] =
+    [invaderXim.zone.VALKURM_DUNES] =
     {
-        itemReq     = xi.item.GALKA_FANG_SACK,
+        itemReq     = invaderXim.item.GALKA_FANG_SACK,
         textRegion  = 3,
         levelCap    = 30,
         mobBoss     = 'Goblin_Swindler',
@@ -329,9 +329,9 @@ xi.garrison.zoneData =
         xThirdLine  = 4,
         zThirdLine  = 0,
     },
-    [xi.zone.JUGNER_FOREST] =
+    [invaderXim.zone.JUGNER_FOREST] =
     {
-        itemReq     = xi.item.JADE_CRYPTEX,
+        itemReq     = invaderXim.item.JADE_CRYPTEX,
         textRegion  = 4,
         levelCap    = 30,
         mobBoss     = 'Orcish_Colonel',
@@ -343,9 +343,9 @@ xi.garrison.zoneData =
         xThirdLine  = 0,
         zThirdLine  = 4,
     },
-    [xi.zone.PASHHOW_MARSHLANDS] =
+    [invaderXim.zone.PASHHOW_MARSHLANDS] =
     {
-        itemReq     = xi.item.SILVER_ENGRAVING,
+        itemReq     = invaderXim.item.SILVER_ENGRAVING,
         textRegion  = 5,
         levelCap    = 30,
         mobBoss     = 'Cobalt_Quadav',
@@ -357,9 +357,9 @@ xi.garrison.zoneData =
         xThirdLine  = 4,
         zThirdLine  = 0,
     },
-    [xi.zone.BUBURIMU_PENINSULA] =
+    [invaderXim.zone.BUBURIMU_PENINSULA] =
     {
-        itemReq     = xi.item.MITHRA_FANG_SACK,
+        itemReq     = invaderXim.item.MITHRA_FANG_SACK,
         textRegion  = 6,
         levelCap    = 30,
         mobBoss     = 'Goblin_Guide',
@@ -371,9 +371,9 @@ xi.garrison.zoneData =
         xThirdLine  = 0,
         zThirdLine  = -4,
     },
-    [xi.zone.MERIPHATAUD_MOUNTAINS] =
+    [invaderXim.zone.MERIPHATAUD_MOUNTAINS] =
     {
-        itemReq     = xi.item.THIRTEEN_KNOT_QUIPU,
+        itemReq     = invaderXim.item.THIRTEEN_KNOT_QUIPU,
         textRegion  = 7,
         levelCap    = 30,
         mobBoss     = 'Yagudo_Missionary',
@@ -385,9 +385,9 @@ xi.garrison.zoneData =
         xThirdLine  = 0,
         zThirdLine  = 4,
     },
-    [xi.zone.QUFIM_ISLAND] =
+    [invaderXim.zone.QUFIM_ISLAND] =
     {
-        itemReq     = xi.item.RAM_LEATHER_MISSIVE,
+        itemReq     = invaderXim.item.RAM_LEATHER_MISSIVE,
         textRegion  = 10,
         levelCap    = 30,
         mobBoss     = 'Hunting_Chief',
@@ -399,9 +399,9 @@ xi.garrison.zoneData =
         xThirdLine  = 0,
         zThirdLine  = -4,
     },
-    [xi.zone.BEAUCEDINE_GLACIER] =
+    [invaderXim.zone.BEAUCEDINE_GLACIER] =
     {
-        itemReq     = xi.item.TIGER_LEATHER_MISSIVE,
+        itemReq     = invaderXim.item.TIGER_LEATHER_MISSIVE,
         textRegion  = 8,
         levelCap    = 40,
         mobBoss     = 'Gigas_Overseer',
@@ -413,9 +413,9 @@ xi.garrison.zoneData =
         xThirdLine  = 0,
         zThirdLine  = -2,
     },
-    [xi.zone.THE_SANCTUARY_OF_ZITAH] =
+    [invaderXim.zone.THE_SANCTUARY_OF_ZITAH] =
     {
-        itemReq     = xi.item.HOUND_FANG_SACK,
+        itemReq     = invaderXim.item.HOUND_FANG_SACK,
         textRegion  = 11,
         levelCap    = 40,
         mobBoss     = 'Goblin_Doyen',
@@ -427,9 +427,9 @@ xi.garrison.zoneData =
         xThirdLine  = 0,
         zThirdLine  = 4,
     },
-    [xi.zone.YUHTUNGA_JUNGLE] =
+    [invaderXim.zone.YUHTUNGA_JUNGLE] =
     {
-        itemReq     = xi.item.SHEEP_LEATHER_MISSIVE,
+        itemReq     = invaderXim.item.SHEEP_LEATHER_MISSIVE,
         textRegion  = 14,
         levelCap    = 40,
         mobBoss     = 'Sahagin_Patriarch',
@@ -441,9 +441,9 @@ xi.garrison.zoneData =
         xThirdLine  = 0,
         zThirdLine  = 4,
     },
-    [xi.zone.XARCABARD] =
+    [invaderXim.zone.XARCABARD] =
     {
-        itemReq     = xi.item.BEHEMOTH_LEATHER_MISSIVE,
+        itemReq     = invaderXim.item.BEHEMOTH_LEATHER_MISSIVE,
         textRegion  = 9,
         levelCap    = 50,
         mobBoss     = 'Demon_Aristocrat',
@@ -455,9 +455,9 @@ xi.garrison.zoneData =
         xThirdLine  = 0,
         zThirdLine  = 4,
     },
-    [xi.zone.EASTERN_ALTEPA_DESERT] =
+    [invaderXim.zone.EASTERN_ALTEPA_DESERT] =
     {
-        itemReq = xi.item.DHALMEL_LEATHER_MISSIVE,
+        itemReq = invaderXim.item.DHALMEL_LEATHER_MISSIVE,
         textRegion  = 12,
         levelCap    = 50,
         mobBoss     = 'Centurio_XIII-V',
@@ -469,9 +469,9 @@ xi.garrison.zoneData =
         xThirdLine  = 4,
         zThirdLine  = 0,
     },
-    [xi.zone.YHOATOR_JUNGLE] =
+    [invaderXim.zone.YHOATOR_JUNGLE] =
     {
-        itemReq     = xi.item.COEURL_LEATHER_MISSIVE,
+        itemReq     = invaderXim.item.COEURL_LEATHER_MISSIVE,
         textRegion  = 15,
         levelCap    = 50,
         mobBoss     = 'Tonberry_Decimator',
@@ -483,9 +483,9 @@ xi.garrison.zoneData =
         xThirdLine  = 4,
         zThirdLine  = -2,
     },
-    [xi.zone.CAPE_TERIGGAN] =
+    [invaderXim.zone.CAPE_TERIGGAN] =
     {
-        itemReq     = xi.item.BUNNY_FANG_SACK,
+        itemReq     = invaderXim.item.BUNNY_FANG_SACK,
         textRegion  = 13,
         levelCap    = 99,
         mobBoss     = 'Goblin_Boss',

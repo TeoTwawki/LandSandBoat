@@ -6,34 +6,34 @@
 -- Imperial Whitegate : !pos 152 -2 0 50
 -- Alzadaal (Blank)   : !pos -529.704 0 649.682 72
 -----------------------------------
-local alzadaalID  = zones[xi.zone.ALZADAAL_UNDERSEA_RUINS]
-local whitegateID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local alzadaalID  = zones[invaderXim.zone.ALZADAAL_UNDERSEA_RUINS]
+local whitegateID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.TRANSFORMATIONS)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.TRANSFORMATIONS)
 
 quest.reward =
 {
-    item  = xi.item.MAGUS_KEFFIYEH,
-    title = xi.title.PARAGON_OF_BLUE_MAGE_EXCELLENCE,
+    item  = invaderXim.item.MAGUS_KEFFIYEH,
+    title = invaderXim.title.PARAGON_OF_BLUE_MAGE_EXCELLENCE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.OMENS) and
-                player:getMainJob() == xi.job.BLU and
-                player:getMainLvl() >= xi.settings.main.AF3_QUEST_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.OMENS) and
+                player:getMainJob() == invaderXim.job.BLU and
+                player:getMainLvl() >= invaderXim.settings.main.AF3_QUEST_LEVEL
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Waoud'] =
             {
                 onTrigger = function(player, npc)
-                    local lastDivination = xi.quest.getVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer')
+                    local lastDivination = invaderXim.quest.getVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer')
 
                     if
                         lastDivination <= VanadielUniqueDay() and
@@ -68,7 +68,7 @@ quest.sections =
                         player:messageSpecial(whitegateID.text.PAY_DIVINATION)
 
                         quest:setVar(player, 'Prog', 1)
-                        xi.quest.setVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.quest.setVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer', VanadielUniqueDay() + 1)
                     end
                 end,
 
@@ -80,7 +80,7 @@ quest.sections =
                         player:delGil(1000)
                         player:messageSpecial(whitegateID.text.PAY_DIVINATION)
 
-                        xi.quest.setVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.quest.setVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer', VanadielUniqueDay() + 1)
                     end
                 end,
 
@@ -94,15 +94,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Waoud'] =
             {
                 onTrigger = function(player, npc)
-                    local lastDivination = xi.quest.getVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer')
+                    local lastDivination = invaderXim.quest.getVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer')
 
                     if lastDivination <= VanadielUniqueDay() then
                         return quest:progressEvent(723, player:getGil())
@@ -120,13 +120,13 @@ quest.sections =
                         player:delGil(1000)
                         player:messageSpecial(whitegateID.text.PAY_DIVINATION)
 
-                        xi.quest.setVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.BEGINNINGS, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.quest.setVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.BEGINNINGS, 'Timer', VanadielUniqueDay() + 1)
                     end
                 end,
             },
         },
 
-        [xi.zone.ALZADAAL_UNDERSEA_RUINS] =
+        [invaderXim.zone.ALZADAAL_UNDERSEA_RUINS] =
         {
             ['blank_transformations'] =
             {

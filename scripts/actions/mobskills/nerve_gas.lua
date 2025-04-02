@@ -1,7 +1,7 @@
 -----------------------------------
 -- Nerve Gas
 --
--- Description: Inflicts curse and powerful poison xi.effect.
+-- Description: Inflicts curse and powerful poison invaderXim.effect.
 -- Type: Magical
 -- Wipes Shadows
 -- Range: 10' Radial
@@ -29,9 +29,9 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.CURSE_I, 50, 0, 420))
-    xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.POISON, 20, 3, 60)
-    return xi.effect.CURSE_I
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.CURSE_I, 50, 0, 420))
+    invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.POISON, 20, 3, 60)
+    return invaderXim.effect.CURSE_I
 end
 
 return mobskillObject

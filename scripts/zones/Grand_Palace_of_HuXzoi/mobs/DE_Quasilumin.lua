@@ -4,7 +4,7 @@
 -- Note: Escort Quest / Map Quest
 --   DE: Dynamic Entity created by Cermet Alcoves
 -----------------------------------
-local ID = zones[xi.zone.GRAND_PALACE_OF_HUXZOI]
+local ID = zones[invaderXim.zone.GRAND_PALACE_OF_HUXZOI]
 -----------------------------------
 
 local escorts =
@@ -181,7 +181,7 @@ local escortProgress =
 local entity = {}
 
 entity.shouldMove = function(mob, progress)
-    return not mob:isFollowingPath() and mob:getStatus() == xi.status.NORMAL and progress ~= escortProgress.COMPLETE
+    return not mob:isFollowingPath() and mob:getStatus() == invaderXim.status.NORMAL and progress ~= escortProgress.COMPLETE
 end
 
 entity.closeDoor = function(mob)
@@ -189,28 +189,28 @@ entity.closeDoor = function(mob)
     if openedDoor ~= 0 then
         local npc = GetNPCByID(openedDoor)
         if npc then
-            npc:setAnimation(xi.animation.CLOSE_DOOR)
+            npc:setAnimation(invaderXim.animation.CLOSE_DOOR)
             mob:setLocalVar('opened_door', 0)
         end
     end
 end
 
 entity.onMobInitialize = function(mob)
-    -- mob:addStatusEffect(xi.effect.NO_REST, 1, 0, 0)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 1)
-    mob:setMobMod(xi.mobMod.NO_DESPAWN, 1)
+    -- mob:addStatusEffect(invaderXim.effect.NO_REST, 1, 0, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
+    mob:setMobMod(invaderXim.mobMod.NO_DESPAWN, 1)
     mob:setAutoAttackEnabled(false)
 end
 
 entity.onMobRoam = function(mob)
-    mob:setStatus(xi.status.NORMAL)
+    mob:setStatus(invaderXim.status.NORMAL)
     local progress = mob:getLocalVar('progress')
     local escort = escorts[mob:getLocalVar('escort')]
     if progress == escortProgress.NONE then
         mob:setLocalVar('progress', escortProgress.ENROUTE)
         local point = 1
         mob:setLocalVar('point', point)
-        mob:pathThrough(escort.path[point], xi.path.flag.WALK)
+        mob:pathThrough(escort.path[point], invaderXim.path.flag.WALK)
     end
 
     local now = os.time()
@@ -220,7 +220,7 @@ entity.onMobRoam = function(mob)
             mob:showText(mob, ID.text.TIME_EXCEEDED)
         end
 
-        mob:setStatus(xi.status.INVISIBLE)
+        mob:setStatus(invaderXim.status.INVISIBLE)
         DespawnMob(mob:getID())
         entity.closeDoor(mob)
         return
@@ -231,10 +231,10 @@ entity.onMobRoam = function(mob)
         local npc = GetNPCByID(openedDoor)
         if npc then
             if mob:checkDistance(npc) > 15 then
-                npc:setAnimation(xi.animation.CLOSE_DOOR)
+                npc:setAnimation(invaderXim.animation.CLOSE_DOOR)
                 mob:setLocalVar('opened_door', 0)
-            elseif npc:getAnimation() ~= xi.animation.OPEN_DOOR then
-                npc:setAnimation(xi.animation.OPEN_DOOR)
+            elseif npc:getAnimation() ~= invaderXim.animation.OPEN_DOOR then
+                npc:setAnimation(invaderXim.animation.OPEN_DOOR)
             end
         end
     end
@@ -246,7 +246,7 @@ entity.onMobRoam = function(mob)
             doorID ~= openedDoor and
             mob:checkDistance(npc) <= 8
         then
-            npc:setAnimation(xi.animation.OPEN_DOOR)
+            npc:setAnimation(invaderXim.animation.OPEN_DOOR)
             mob:setLocalVar('opened_door', doorID)
         end
     end
@@ -266,7 +266,7 @@ entity.onPath = function(mob)
         elseif progress ~= escortProgress.COMPLETE then
             point = point + 1
             mob:setLocalVar('point', point)
-            mob:pathThrough(data.path[point], xi.path.flag.WALK)
+            mob:pathThrough(data.path[point], invaderXim.path.flag.WALK)
         end
     end
 end
@@ -279,19 +279,19 @@ entity.onTrigger = function(player, mob)
 
     if data ~= nil then
         if progress == escortProgress.ENROUTE then
-            mob:pathThrough(mob:getPos(), xi.path.flag.NONE)
+            mob:pathThrough(mob:getPos(), invaderXim.path.flag.NONE)
             mob:showText(mob, ID.text.PATROL_SUSPENDED)
             mob:setLocalVar('progress', escortProgress.PAUSED)
         elseif progress == escortProgress.PAUSED then
             mob:showText(mob, ID.text.RECOMMENCING_PATROL)
             mob:setLocalVar('progress', escortProgress.ENROUTE)
-            mob:pathThrough(data.path[point], xi.path.flag.WALK)
+            mob:pathThrough(data.path[point], invaderXim.path.flag.WALK)
         elseif progress == escortProgress.COMPLETE then
             mob:showText(mob, ID.text.DUTY_COMPLETE)
             player:messageSpecial(data.direction)
             -- TODO: display animation and NPC is not pushing update packet to players in range
             mob:timer(60000, function(quasilumin)
-                quasilumin:setStatus(xi.status.INVISIBLE)
+                quasilumin:setStatus(invaderXim.status.INVISIBLE)
                 DespawnMob(quasilumin:getID())
             end)
 
@@ -306,7 +306,7 @@ entity.onMobEngage = function(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    mob:setStatus(xi.status.INVISIBLE)
+    mob:setStatus(invaderXim.status.INVISIBLE)
 end
 
 entity.onMobDespawn = function(mob)

@@ -1,13 +1,13 @@
 -----------------------------------
 -- Zone: The Eldieme Necropolis (195)
 -----------------------------------
-local eldiemeID = zones[xi.zone.THE_ELDIEME_NECROPOLIS]
+local eldiemeID = zones[invaderXim.zone.THE_ELDIEME_NECROPOLIS]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.treasure.initZone(zone)
+    invaderXim.treasure.initZone(zone)
 
     -- Give the Acting in Good Faith ??? a random spawn
     local qm1 = GetNPCByID(eldiemeID.npc.QM1)
@@ -36,7 +36,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

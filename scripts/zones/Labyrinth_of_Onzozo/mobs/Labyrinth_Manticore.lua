@@ -3,7 +3,7 @@
 --  Mob: Labyrinth Manticore
 -- Note: Place holder Narasimha
 -----------------------------------
-local ID = zones[xi.zone.LABYRINTH_OF_ONZOZO]
+local ID = zones[invaderXim.zone.LABYRINTH_OF_ONZOZO]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -14,11 +14,11 @@ local narasimhaPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 775, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 775, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, narasimhaPHTable, 10, 21600) -- 6 hours
+    invaderXim.mob.phOnDespawn(mob, narasimhaPHTable, 10, 21600) -- 6 hours
 end
 
 return entity

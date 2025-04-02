@@ -3,14 +3,14 @@
 --  NPC: Mythril Beastcoin Door
 -- !pos 40 8.6 20.012 176
 -----------------------------------
-local ID = zones[xi.zone.SEA_SERPENT_GROTTO]
+local ID = zones[invaderXim.zone.SEA_SERPENT_GROTTO]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     -- The coin isn't consumed, so we only need to know if one was in the trade window
-    if trade:getItemQty(xi.item.MYTHRIL_BEASTCOIN) > 0 then
+    if trade:getItemQty(invaderXim.item.MYTHRIL_BEASTCOIN) > 0 then
         if player:getCharVar('SSG_MythrilDoor') == 7 then
             npc:openDoor(5) -- Open the door if a mythril beastcoin has been traded after checking the door the required number of times
         end
@@ -42,7 +42,7 @@ entity.onTrigger = function(player, npc)
             player:messageSpecial(ID.text.MYTHRIL_CHECK)
             player:setCharVar('SSG_MythrilDoor', 6)
         elseif mythrilDoorCheck == 6 or mythrilDoorCheck == 7 then -- Door has been checked six or more times
-            player:messageSpecial(ID.text.COMPLETED_CHECK, xi.item.MYTHRIL_BEASTCOIN)
+            player:messageSpecial(ID.text.COMPLETED_CHECK, invaderXim.item.MYTHRIL_BEASTCOIN)
             player:setCharVar('SSG_MythrilDoor', 7)
         end
     elseif xPos < 40 and zPos < 24 then

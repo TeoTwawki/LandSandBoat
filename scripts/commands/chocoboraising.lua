@@ -28,17 +28,17 @@ commandObj.onTrigger = function(player)
     }
 
     local settingStr = 'Enable'
-    if xi.settings.main.ENABLE_CHOCOBO_RAISING then
+    if invaderXim.settings.main.ENABLE_CHOCOBO_RAISING then
         settingStr = 'Disable'
     end
 
     table.insert(menu.options, {
         settingStr,
         function(playerArg)
-            xi.settings.main.ENABLE_CHOCOBO_RAISING = not xi.settings.main.ENABLE_CHOCOBO_RAISING
-            xi.settings.main.DEBUG_CHOCOBO_RAISING  = not xi.settings.main.DEBUG_CHOCOBO_RAISING
-            playerArg:printToPlayer(string.format('Chocobo Raising setting: %s', xi.settings.main.ENABLE_CHOCOBO_RAISING),
-                xi.msg.channel.SYSTEM_3, '')
+            invaderXim.settings.main.ENABLE_CHOCOBO_RAISING = not invaderXim.settings.main.ENABLE_CHOCOBO_RAISING
+            invaderXim.settings.main.DEBUG_CHOCOBO_RAISING  = not invaderXim.settings.main.DEBUG_CHOCOBO_RAISING
+            playerArg:printToPlayer(string.format('Chocobo Raising setting: %s', invaderXim.settings.main.ENABLE_CHOCOBO_RAISING),
+                invaderXim.msg.channel.SYSTEM_3, '')
         end,
     })
 
@@ -56,7 +56,7 @@ commandObj.onTrigger = function(player)
                 local info = playerArg:getChocoboRaisingInfo()
                 info['created'] = info['created'] - epochDay
                 playerArg:setChocoboRaisingInfo(info)
-                playerArg:printToPlayer('Adding 1 day to state.created', xi.msg.channel.SYSTEM_3, '')
+                playerArg:printToPlayer('Adding 1 day to state.created', invaderXim.msg.channel.SYSTEM_3, '')
             end,
         })
 
@@ -66,7 +66,7 @@ commandObj.onTrigger = function(player)
                 local info = playerArg:getChocoboRaisingInfo()
                 info['created'] = info['created'] - (epochDay * 10)
                 playerArg:setChocoboRaisingInfo(info)
-                playerArg:printToPlayer('Adding 10 days to state.created', xi.msg.channel.SYSTEM_3, '')
+                playerArg:printToPlayer('Adding 10 days to state.created', invaderXim.msg.channel.SYSTEM_3, '')
             end,
         })
 
@@ -76,14 +76,14 @@ commandObj.onTrigger = function(player)
                 playerArg:deleteRaisedChocobo()
 
                 local egg = {}
-                local newChoco = xi.chocoboRaising.newChocobo(playerArg, egg)
+                local newChoco = invaderXim.chocoboRaising.newChocobo(playerArg, egg)
                 player:setChocoboRaisingInfo(newChoco)
 
                 local info = playerArg:getChocoboRaisingInfo()
                 info['created'] = info['created'] - (epochDay * 10)
                 playerArg:setChocoboRaisingInfo(info)
 
-                playerArg:printToPlayer('Setting up debug scenario 1 (10d update)', xi.msg.channel.SYSTEM_3, '')
+                playerArg:printToPlayer('Setting up debug scenario 1 (10d update)', invaderXim.msg.channel.SYSTEM_3, '')
             end,
         })
 
@@ -93,7 +93,7 @@ commandObj.onTrigger = function(player)
                 local info = playerArg:getChocoboRaisingInfo()
                 info['sex'] = (info['sex'] + 1) % 2
                 playerArg:setChocoboRaisingInfo(info)
-                playerArg:printToPlayer('Changed sex to ' .. sex[info['sex']], xi.msg.channel.SYSTEM_3, '')
+                playerArg:printToPlayer('Changed sex to ' .. sex[info['sex']], invaderXim.msg.channel.SYSTEM_3, '')
             end,
         })
 
@@ -101,9 +101,9 @@ commandObj.onTrigger = function(player)
             'Dump chocoState',
             function(playerArg)
                 local info = playerArg:getChocoboRaisingInfo()
-                playerArg:printToPlayer('created ' .. os.date('%Y %m %d %H %M %S', info['created']), xi.msg.channel.SYSTEM_3, '')
+                playerArg:printToPlayer('created ' .. os.date('%Y %m %d %H %M %S', info['created']), invaderXim.msg.channel.SYSTEM_3, '')
                 for k, v in pairs(info) do
-                    playerArg:printToPlayer(string.format('%s %s', k, v), xi.msg.channel.SYSTEM_3, '')
+                    playerArg:printToPlayer(string.format('%s %s', k, v), invaderXim.msg.channel.SYSTEM_3, '')
                 end
             end,
         })
@@ -112,7 +112,7 @@ commandObj.onTrigger = function(player)
             'Delete chocoState',
             function(playerArg)
                 playerArg:deleteRaisedChocobo()
-                playerArg:printToPlayer('Deleted chocoState', xi.msg.channel.SYSTEM_3, '')
+                playerArg:printToPlayer('Deleted chocoState', invaderXim.msg.channel.SYSTEM_3, '')
             end,
         })
     else
@@ -122,16 +122,16 @@ commandObj.onTrigger = function(player)
             'Create default chocoState',
             function(playerArg)
                 local egg = {}
-                local newChoco = xi.chocoboRaising.newChocobo(playerArg, egg)
+                local newChoco = invaderXim.chocoboRaising.newChocobo(playerArg, egg)
                 player:setChocoboRaisingInfo(newChoco)
-                playerArg:printToPlayer('Created default chocoState', xi.msg.channel.SYSTEM_3, '')
+                playerArg:printToPlayer('Created default chocoState', invaderXim.msg.channel.SYSTEM_3, '')
             end,
         })
 
         table.insert(menu.options, {
             'Give Egg',
             function(playerArg)
-                npcUtil.giveItem(playerArg, xi.item.CHOCOBO_EGG_SLIGHTLY_WARM)
+                npcUtil.giveItem(playerArg, invaderXim.item.CHOCOBO_EGG_SLIGHTLY_WARM)
             end,
         })
 
@@ -141,14 +141,14 @@ commandObj.onTrigger = function(player)
                 playerArg:deleteRaisedChocobo()
 
                 local egg = {}
-                local newChoco = xi.chocoboRaising.newChocobo(playerArg, egg)
+                local newChoco = invaderXim.chocoboRaising.newChocobo(playerArg, egg)
                 player:setChocoboRaisingInfo(newChoco)
 
                 local info = playerArg:getChocoboRaisingInfo()
                 info['created'] = info['created'] - (epochDay * 10)
                 playerArg:setChocoboRaisingInfo(info)
 
-                playerArg:printToPlayer('Setting up debug scenario 1 (10d update)', xi.msg.channel.SYSTEM_3, '')
+                playerArg:printToPlayer('Setting up debug scenario 1 (10d update)', invaderXim.msg.channel.SYSTEM_3, '')
             end,
         })
     end

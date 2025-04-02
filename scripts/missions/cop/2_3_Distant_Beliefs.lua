@@ -9,11 +9,11 @@
 -- Justinius   : !pos 76 -34 68 26
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.DISTANT_BELIEFS)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.DISTANT_BELIEFS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.AN_ETERNAL_MELODY },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.AN_ETERNAL_MELODY },
 }
 
 mission.sections =
@@ -23,7 +23,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Justinius'] =
             {
@@ -48,7 +48,7 @@ mission.sections =
 
         -- TODO: Wooden Ladder event is handled withing the NPC Script to prevent duplicating logic.  Move to this
         -- script once the NPCs for those have been named uniquely.
-        [xi.zone.PHOMIUNA_AQUEDUCTS] =
+        [invaderXim.zone.PHOMIUNA_AQUEDUCTS] =
         {
             ['_0r5'] =
             {
@@ -82,7 +82,7 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Chemioue']    = mission:event(281):replaceDefault(), -- Carries over up to beginning of Ancient Vows
             ['Mengrenaux']  = mission:event(271):replaceDefault(), -- Carries over up to beginning of Ancient Vows

@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.sendToDBoxReturnCode
-xi.sendToDBoxReturnCode =
+---@enum invaderXim.sendToDBoxReturnCode
+invaderXim.sendToDBoxReturnCode =
 {
     -- Successfully delivered the requested quantity
     SUCCESS                       = 0,

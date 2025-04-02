@@ -18,17 +18,17 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    if player:hasStatusEffect(xi.effect.ACCESSION) then
-        return xi.msg.basic.EFFECT_ALREADY_ACTIVE, 0
+    if player:hasStatusEffect(invaderXim.effect.ACCESSION) then
+        return invaderXim.msg.basic.EFFECT_ALREADY_ACTIVE, 0
     end
 
     return 0, 0
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    player:addStatusEffect(xi.effect.ACCESSION, 1, 0, 60)
+    player:addStatusEffect(invaderXim.effect.ACCESSION, 1, 0, 60)
 
-    return xi.effect.ACCESSION
+    return invaderXim.effect.ACCESSION
 end
 
 return abilityObject

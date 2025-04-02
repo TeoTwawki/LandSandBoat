@@ -1,7 +1,7 @@
 -- Zone: Lower Jeuno (245)
 -- Desc: this file contains functions that are shared by multiple luas in this zone's directory
 -----------------------------------
-local ID = zones[xi.zone.LOWER_JEUNO]
+local ID = zones[invaderXim.zone.LOWER_JEUNO]
 -----------------------------------
 
 local lowerJeunoGlobal =
@@ -19,7 +19,7 @@ local lowerJeunoGlobal =
             if hour >= 20 and hour < 21 then
                 player:startEvent(lampCs, 4) -- It is too early to light it.  You must wait until nine o'clock.
             elseif hour >= 21 or hour < 1 then
-                if npc:getAnimation() == xi.anim.OPEN_DOOR then
+                if npc:getAnimation() == invaderXim.anim.OPEN_DOOR then
                     player:startEvent(lampCs, 2) -- The lamp is already lit.
                 else
                     player:startEvent(lampCs, 1, lampNum) -- Light the lamp? Yes/No
@@ -29,7 +29,7 @@ local lowerJeunoGlobal =
             end
 
         else
-            if npc:getAnimation() == xi.anim.OPEN_DOOR then
+            if npc:getAnimation() == invaderXim.anim.OPEN_DOOR then
                 player:startEvent(lampCs, 5) -- The lamp is lit.
             else
                 player:startEvent(lampCs, 6) -- You examine the lamp. It seems that it must be lit manually.
@@ -45,12 +45,12 @@ local lowerJeunoGlobal =
         local lampCs = 120 + lampNum
 
         if csid == lampCs and option == 1 then
-            GetNPCByID(lampId):setAnimation(xi.anim.OPEN_DOOR)
+            GetNPCByID(lampId):setAnimation(invaderXim.anim.OPEN_DOOR)
 
             local lampsRemaining = 12
             for i = 0, 11 do
                 local lamp = GetNPCByID(ID.npc.STREETLAMP_OFFSET + i)
-                if lamp and lamp:getAnimation() == xi.anim.OPEN_DOOR then
+                if lamp and lamp:getAnimation() == invaderXim.anim.OPEN_DOOR then
                     lampsRemaining = lampsRemaining - 1
                 end
             end

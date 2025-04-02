@@ -6,12 +6,12 @@ local attachmentObject = {}
 
 attachmentObject.onEquip = function(automaton)
     automaton:addListener('MAGIC_START', 'AUTO_ICE_MAKER_START', function(pet, spell, action)
-        if spell:getSkillType() ~= xi.skill.ELEMENTAL_MAGIC then
+        if spell:getSkillType() ~= invaderXim.skill.ELEMENTAL_MAGIC then
             return
         end
 
         local master    = pet:getMaster()
-        local maneuvers = utils.clamp(master:countEffect(xi.effect.ICE_MANEUVER), 0, 3)
+        local maneuvers = utils.clamp(master:countEffect(invaderXim.effect.ICE_MANEUVER), 0, 3)
         local amount    = 0
 
         -- Values updated in https://wiki.ffo.jp/html/34039.html version update.
@@ -19,11 +19,11 @@ attachmentObject.onEquip = function(automaton)
             amount = 25 + 25 * maneuvers
         end
 
-        pet:setMod(xi.mod.AUTO_MAB_COEFFICIENT, amount)
+        pet:setMod(invaderXim.mod.AUTO_MAB_COEFFICIENT, amount)
         pet:setLocalVar('iceMakerManeuvers', maneuvers)
     end)
 
-    automaton:addListener('MAGIC_STATE_EXIT', 'AUTO_ICE_MAKER_END', function(pet, spell)
+    automaton:addListener('MAGIC_STATE_IXIMT', 'AUTO_ICE_MAKER_END', function(pet, spell)
         local master   = pet:getMaster()
         local toRemove = pet:getLocalVar('iceMakerManeuvers')
 
@@ -32,10 +32,10 @@ attachmentObject.onEquip = function(automaton)
         end
 
         for i = 1, toRemove do
-            master:delStatusEffectSilent(xi.effect.ICE_MANEUVER)
+            master:delStatusEffectSilent(invaderXim.effect.ICE_MANEUVER)
         end
 
-        pet:setMod(xi.mod.AUTO_MAB_COEFFICIENT, 0)
+        pet:setMod(invaderXim.mod.AUTO_MAB_COEFFICIENT, 0)
         pet:setLocalVar('iceMakerManeuvers', 0)
     end)
 end

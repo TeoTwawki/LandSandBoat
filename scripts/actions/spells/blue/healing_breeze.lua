@@ -31,7 +31,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.divisor2 = 6.5
     params.constant2 = 144.6666
 
-    return xi.spells.blue.useCuringSpell(caster, target, spell, params)
+    return invaderXim.spells.blue.useCuringSpell(caster, target, spell, params)
 end
 
 return spellObject

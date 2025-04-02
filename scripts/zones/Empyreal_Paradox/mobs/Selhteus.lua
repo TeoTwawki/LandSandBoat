@@ -3,14 +3,14 @@
 --  Mob: Selh'teus
 -- Chains of Promathia 8-4 BCNM Fight
 -----------------------------------
-local ID = zones[xi.zone.EMPYREAL_PARADOX]
+local ID = zones[invaderXim.zone.EMPYREAL_PARADOX]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addMod(xi.mod.REGAIN, 50)
-    mob:addMod(xi.mod.CURE_POTENCY_RCVD, -100)
+    mob:addMod(invaderXim.mod.REGAIN, 50)
+    mob:addMod(invaderXim.mod.CURE_POTENCY_RCVD, -100)
     mob:setAutoAttackEnabled(false)
 end
 
@@ -29,7 +29,7 @@ entity.onMobFight = function(mob, target)
         mob:useMobAbility(1509)
         mob:setLocalVar('rejuv', 1)
     elseif lanceTime + 50 < mob:getBattleTime() and lanceOut == 0 then
-        mob:entityAnimationPacket(xi.animationString.SPECIAL_00)
+        mob:entityAnimationPacket(invaderXim.animationString.SPECIAL_00)
         mob:setLocalVar('lanceOut', 1)
     end
 end

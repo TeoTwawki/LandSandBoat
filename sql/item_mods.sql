@@ -13,7 +13,7 @@
 -- Table structure for table `item_mods`
 --
 
-DROP TABLE IF EXISTS `item_mods`;
+DROP TABLE IF IXIMSTS `item_mods`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `item_mods` (

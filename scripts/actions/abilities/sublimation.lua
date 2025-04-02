@@ -14,8 +14,8 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    local sublimationComplete = player:getStatusEffect(xi.effect.SUBLIMATION_COMPLETE)
-    local sublimationCharging = player:getStatusEffect(xi.effect.SUBLIMATION_ACTIVATED)
+    local sublimationComplete = player:getStatusEffect(invaderXim.effect.SUBLIMATION_COMPLETE)
+    local sublimationCharging = player:getStatusEffect(invaderXim.effect.SUBLIMATION_ACTIVATED)
     local mp                  = 0
 
     if sublimationComplete ~= nil then
@@ -28,8 +28,8 @@ abilityObject.onUseAbility = function(player, target, ability)
         end
 
         player:addMP(mp)
-        player:delStatusEffectSilent(xi.effect.SUBLIMATION_COMPLETE)
-        ability:setMsg(xi.msg.basic.JA_RECOVERS_MP)
+        player:delStatusEffectSilent(invaderXim.effect.SUBLIMATION_COMPLETE)
+        ability:setMsg(invaderXim.msg.basic.JA_RECOVERS_MP)
     elseif sublimationCharging ~= nil then
         mp           = sublimationCharging:getPower()
         local maxmp  = player:getMaxMP()
@@ -40,16 +40,16 @@ abilityObject.onUseAbility = function(player, target, ability)
         end
 
         player:addMP(mp)
-        player:delStatusEffectSilent(xi.effect.SUBLIMATION_ACTIVATED)
-        ability:setMsg(xi.msg.basic.JA_RECOVERS_MP)
+        player:delStatusEffectSilent(invaderXim.effect.SUBLIMATION_ACTIVATED)
+        ability:setMsg(invaderXim.msg.basic.JA_RECOVERS_MP)
     else
-        local refresh = player:getStatusEffect(xi.effect.REFRESH)
+        local refresh = player:getStatusEffect(invaderXim.effect.REFRESH)
 
         if refresh == nil or refresh:getSubPower() < 3 then
-            player:delStatusEffect(xi.effect.REFRESH)
-            player:addStatusEffect(xi.effect.SUBLIMATION_ACTIVATED, 0, 3, 7200)
+            player:delStatusEffect(invaderXim.effect.REFRESH)
+            player:addStatusEffect(invaderXim.effect.SUBLIMATION_ACTIVATED, 0, 3, 7200)
         else
-            ability:setMsg(xi.msg.basic.JA_NO_EFFECT_2)
+            ability:setMsg(invaderXim.msg.basic.JA_NO_EFFECT_2)
         end
     end
 

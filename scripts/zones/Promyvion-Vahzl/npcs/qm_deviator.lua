@@ -4,14 +4,14 @@
 -- Notes: Spawn Deviator Floor 3
 -- !pos 302.756 -2.244 -179.892 22
 -----------------------------------
-local ID = zones[xi.zone.PROMYVION_VAHZL]
+local ID = zones[invaderXim.zone.PROMYVION_VAHZL]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHas(trade, xi.item.REMNANT_OF_A_CEREBRATOR) and
+        npcUtil.tradeHas(trade, invaderXim.item.REMNANT_OF_A_CEREBRATOR) and
         npcUtil.popFromQM(player, npc, ID.mob.DEVIATOR)
     then
         player:messageSpecial(ID.text.ON_NM_SPAWN)

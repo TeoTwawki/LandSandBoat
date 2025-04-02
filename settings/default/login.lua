@@ -1,15 +1,15 @@
 -----------------------------------
 -- LOGIN SERVER SETTINGS
 -----------------------------------
--- All settings are attached to the `xi.settings` object. This is published globally, and be accessed from C++ and any script.
+-- All settings are attached to the `invaderXim.settings` object. This is published globally, and be accessed from C++ and any script.
 --
 -- This file is concerned mainly with logging into the game, and managing login sessions.
 -----------------------------------
 
 xi = xi or {}
-xi.settings = xi.settings or {}
+invaderXim.settings = invaderXim.settings or {}
 
-xi.settings.login =
+invaderXim.settings.login =
 {
     -- Expected Client version (wrong version cannot log in)
     CLIENT_VER = "30250304_1",

@@ -3,12 +3,12 @@
 -- Name: Saintly Invitation
 -- !pos 299 -123 345 146
 -----------------------------------
-local balgasID = zones[xi.zone.BALGAS_DAIS]
+local balgasID = zones[invaderXim.zone.BALGAS_DAIS]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId                = xi.zone.BALGAS_DAIS,
-    battlefieldId         = xi.battlefield.id.SAINTLY_INVITATION,
+    zoneId                = invaderXim.zone.BALGAS_DAIS,
+    battlefieldId         = invaderXim.battlefield.id.SAINTLY_INVITATION,
     canLoseExp            = false,
     isMission             = true,
     allowTrusts           = true,
@@ -18,9 +18,9 @@ local content = BattlefieldMission:new({
     index                 = 3,
     entryNpc              = 'BC_Entrance',
     exitNpc               = 'Burning_Circle',
-    missionArea           = xi.mission.log_id.WINDURST,
-    mission               = xi.mission.id.windurst.SAINTLY_INVITATION,
-    missionStatusArea     = xi.mission.log_id.WINDURST,
+    missionArea           = invaderXim.mission.log_id.WINDURST,
+    mission               = invaderXim.mission.id.windurst.SAINTLY_INVITATION,
+    missionStatusArea     = invaderXim.mission.log_id.WINDURST,
     requiredMissionStatus = 1,
 })
 
@@ -52,7 +52,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 

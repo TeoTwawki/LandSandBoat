@@ -4,15 +4,15 @@
 -----------------------------------
 -- !addmission 13 62
 -----------------------------------
-local whitegateID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local whitegateID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.APHMAUS_LIGHT)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.APHMAUS_LIGHT)
 
 mission.reward =
 {
-    item = xi.item.CIPHER_OF_NASHMEIRAS_ALTER_EGO_II,
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.REUNITED },
+    item = invaderXim.item.CIPHER_OF_NASHMEIRAS_ALTER_EGO_II,
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.REUNITED },
 }
 
 mission.sections =
@@ -22,13 +22,13 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Imperial_Whitegate'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:getCurrentMission(xi.mission.log_id.TOAU) >= xi.mission.id.toau.ROYAL_PUPPETEER
+                        player:getCurrentMission(invaderXim.mission.log_id.TOAU) >= invaderXim.mission.id.toau.ROYAL_PUPPETEER
                     then
                         -- NOTE: The first 4 parameters for this event change the available dialogue.  This remains all zeroes
                         -- until the player has progressed at least past TOAU21.  No changes are implemented at this time until

@@ -11,9 +11,9 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:delStatusEffect(xi.effect.RERAISE)
-    target:addStatusEffect(xi.effect.RERAISE, 3, 0, 7200)
-    target:messageBasic(xi.msg.basic.GAINS_EFFECT_OF_STATUS, xi.effect.RERAISE)
+    target:delStatusEffect(invaderXim.effect.RERAISE)
+    target:addStatusEffect(invaderXim.effect.RERAISE, 3, 0, 7200)
+    target:messageBasic(invaderXim.msg.basic.GAINS_EFFECT_OF_STATUS, invaderXim.effect.RERAISE)
 end
 
 return itemObject

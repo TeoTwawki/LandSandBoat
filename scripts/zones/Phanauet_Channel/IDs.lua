@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.PHANAUET_CHANNEL] =
+zones[invaderXim.zone.PHANAUET_CHANNEL] =
 {
     text =
     {
@@ -27,4 +27,4 @@ zones[xi.zone.PHANAUET_CHANNEL] =
     },
 }
 
-return zones[xi.zone.PHANAUET_CHANNEL]
+return zones[invaderXim.zone.PHANAUET_CHANNEL]

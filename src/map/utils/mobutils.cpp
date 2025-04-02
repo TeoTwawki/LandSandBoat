@@ -333,8 +333,8 @@ namespace mobutils
                             zoneId == ZONE_BEHEMOTHS_DOMINION ||
                             zoneId == ZONE_VALLEY_OF_SORROWS ||
                             zoneId == ZONE_HORLAIS_PEAK ||
-                            zoneId == ZONE_GHELSBA_OUTPOST ||
-                            zoneId == ZONE_FORT_GHELSBA ||
+                            zoneId == ZONE_GHEIXIMA_OUTPOST ||
+                            zoneId == ZONE_FORT_GHEIXIMA ||
                             zoneId == ZONE_YUGHOTT_GROTTO ||
                             zoneId == ZONE_PALBOROUGH_MINES ||
                             zoneId == ZONE_WAUGHROON_SHRINE ||

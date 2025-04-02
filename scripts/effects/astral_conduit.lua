@@ -1,12 +1,12 @@
 -----------------------------------
--- xi.effect.ASTRAL_CONDUIT
+-- invaderXim.effect.ASTRAL_CONDUIT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    effect:addMod(xi.mod.BP_DELAY, 99)
-    effect:addMod(xi.mod.MPP, 100)
+    effect:addMod(invaderXim.mod.BP_DELAY, 99)
+    effect:addMod(invaderXim.mod.MPP, 100)
 end
 
 effectObject.onEffectTick = function(target, effect)

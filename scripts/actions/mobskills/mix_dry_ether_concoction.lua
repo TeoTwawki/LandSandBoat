@@ -9,7 +9,7 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.msg.basic.SKILL_RECOVERS_MP)
+    skill:setMsg(invaderXim.msg.basic.SKILL_RECOVERS_MP)
     target:addMP(160)
     return 0
 end

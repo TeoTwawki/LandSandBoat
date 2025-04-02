@@ -11,7 +11,7 @@ Tools
 
 This tool creates or connects to the database defined in `../settings/network.lua`. It 
 allows the user to backup or restore the database, import any `custom.sql` 
-stored in `../sql/backups/`, and import the latest SQL files provided by LandSandBoat 
+stored in `../sql/backups/`, and import the latest SQL files provided by InvaderXim 
 Development. This tool also handles data migrations for character data.
 
 ## Price Checker

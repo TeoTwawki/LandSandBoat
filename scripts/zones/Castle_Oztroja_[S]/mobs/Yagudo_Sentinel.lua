@@ -3,7 +3,7 @@
 --  Mob: Yagudo Sentinel
 -- Note: PH for Aa Xalmo the Savage and Zhuu Buxu the Silent
 -----------------------------------
-local ID = zones[xi.zone.CASTLE_OZTROJA_S]
+local ID = zones[invaderXim.zone.CASTLE_OZTROJA_S]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -23,8 +23,8 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, aaXalmoPHTable, 10, 7200) -- 2 hour
-    xi.mob.phOnDespawn(mob, zhuuBuxuPHTable, 10, 7200) -- 2 hour
+    invaderXim.mob.phOnDespawn(mob, aaXalmoPHTable, 10, 7200) -- 2 hour
+    invaderXim.mob.phOnDespawn(mob, zhuuBuxuPHTable, 10, 7200) -- 2 hour
 end
 
 return entity

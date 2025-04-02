@@ -4,7 +4,7 @@
 -- Type: Quest
 -- !pos -63 -75 4 96
 -----------------------------------
-local ID = zones[xi.zone.FORT_KARUGO_NARUGO_S]
+local ID = zones[invaderXim.zone.FORT_KARUGO_NARUGO_S]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -12,15 +12,15 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     local loafersQuestProgress = player:getCharVar('AF_SCH_BOOTS')
 
-    player:delStatusEffect(xi.effect.SNEAK)
+    player:delStatusEffect(invaderXim.effect.SNEAK)
 
     -- SCH AF Quest - Boots
     if
         loafersQuestProgress > 0 and
         loafersQuestProgress < 3 and
-        not player:hasKeyItem(xi.ki.RAFFLESIA_DREAMSPIT)
+        not player:hasKeyItem(invaderXim.ki.RAFFLESIA_DREAMSPIT)
     then
-        npcUtil.giveKeyItem(player, xi.ki.RAFFLESIA_DREAMSPIT)
+        npcUtil.giveKeyItem(player, invaderXim.ki.RAFFLESIA_DREAMSPIT)
         player:setCharVar('AF_SCH_BOOTS', loafersQuestProgress + 1)
 
         -- Move the markings around

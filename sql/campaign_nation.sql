@@ -8,7 +8,7 @@
 -- Table structure for table `campaign_nation`
 --
 
-DROP TABLE IF EXISTS `campaign_nation`;
+DROP TABLE IF IXIMSTS `campaign_nation`;
 CREATE TABLE `campaign_nation` (
   `id` tinyint(2) unsigned NOT NULL,
   `reconnaissance` tinyint(2) unsigned NOT NULL DEFAULT 0,

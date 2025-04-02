@@ -8,25 +8,25 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local sandyQuests = xi.quest.id.sandoria
-    local whmAf2 = player:getQuestStatus(xi.questLog.SANDORIA, sandyQuests.PRELUDE_OF_BLACK_AND_WHITE)
-    local whmAf3 = player:getQuestStatus(xi.questLog.SANDORIA, sandyQuests.PIEUJES_DECISION)
+    local sandyQuests = invaderXim.quest.id.sandoria
+    local whmAf2 = player:getQuestStatus(invaderXim.questLog.SANDORIA, sandyQuests.PRELUDE_OF_BLACK_AND_WHITE)
+    local whmAf3 = player:getQuestStatus(invaderXim.questLog.SANDORIA, sandyQuests.PIEUJES_DECISION)
 
     -- WHM AF quests
     if
-        player:getMainJob() == xi.job.WHM and
-        player:getMainLvl() >= xi.settings.main.AF2_QUEST_LEVEL
+        player:getMainJob() == invaderXim.job.WHM and
+        player:getMainLvl() >= invaderXim.settings.main.AF2_QUEST_LEVEL
     then
         if
-            whmAf2 == xi.questStatus.QUEST_COMPLETED and
-            whmAf3 == xi.questStatus.QUEST_AVAILABLE
+            whmAf2 == invaderXim.questStatus.QUEST_COMPLETED and
+            whmAf3 == invaderXim.questStatus.QUEST_AVAILABLE
         then
             player:startEvent(552) -- Start Quest "Pieuje's Decision"
         end
 
     -- San d'Oria Rank 10 (new default)
     elseif
-        player:getNation() == xi.nation.SANDORIA and
+        player:getNation() == invaderXim.nation.SANDORIA and
         player:getRank(player:getNation()) == 10
     then
         player:startEvent(73)
@@ -39,7 +39,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 552 then
-        player:addQuest(xi.questLog.SANDORIA, xi.quest.id.sandoria.PIEUJES_DECISION)
+        player:addQuest(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.PIEUJES_DECISION)
     end
 end
 

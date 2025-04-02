@@ -5,14 +5,14 @@
 -- !addmission 13 86
 -- qm_cetus : !pos -127.055 -7.849 600.22 89
 -----------------------------------
-local graubergID = zones[xi.zone.GRAUBERG_S]
+local graubergID = zones[invaderXim.zone.GRAUBERG_S]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.SOMBER_DREAMS)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.SOMBER_DREAMS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.OF_LIGHT_AND_DARKNESS },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.OF_LIGHT_AND_DARKNESS },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.GRAUBERG_S] =
+        [invaderXim.zone.GRAUBERG_S] =
         {
             ['qm_cetus'] =
             {
@@ -64,7 +64,7 @@ mission.sections =
                     -- does not stop this timer.
 
                     mission:setVar(player, 'Status', 1)
-                    player:setTitle(xi.title.ABYSSAL_PURVEYOR)
+                    player:setTitle(invaderXim.title.ABYSSAL_PURVEYOR)
                 end,
             },
 
@@ -76,22 +76,22 @@ mission.sections =
 
                 [49] = function(player, csid, option, npc)
                     if option == 99 then
-                        player:setPos(-700.042, 0.4, -441.301, 192, xi.zone.WALK_OF_ECHOES)
+                        player:setPos(-700.042, 0.4, -441.301, 192, invaderXim.zone.WALK_OF_ECHOES)
                     end
                 end,
             },
         },
 
-        [xi.zone.WALK_OF_ECHOES] =
+        [invaderXim.zone.WALK_OF_ECHOES] =
         {
             onZoneIn = function(player, prevZone)
                 -- TODO: Find if there's a message displayed if not charactersAvailable.  At this time, the event
                 -- will not trigger, and mission will not be completed.
 
                 if
-                    prevZone == xi.zone.GRAUBERG_S and
+                    prevZone == invaderXim.zone.GRAUBERG_S and
                     mission:getVar(player, 'Status') == 2 and
-                    xi.rhapsodies.charactersAvailable(player)
+                    invaderXim.rhapsodies.charactersAvailable(player)
                 then
                     return 28
                 end
@@ -101,7 +101,7 @@ mission.sections =
             {
                 [28] = function(player, csid, option, npc)
                     if option == 1 then
-                        local wotgProgress = player:hasCompletedMission(xi.mission.log_id.WOTG, xi.mission.id.wotg.MAIDEN_OF_THE_DUSK) and 3 or 0
+                        local wotgProgress = player:hasCompletedMission(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.MAIDEN_OF_THE_DUSK) and 3 or 0
 
                         -- NOTE: There are two impacted lines that depend on the below update parameter.  First is "Come off it!" where if parameter
                         -- is 0, it will not display Cait Sith's name, and if non-zero it will.  The last change is if 3, Lilisette disappears back

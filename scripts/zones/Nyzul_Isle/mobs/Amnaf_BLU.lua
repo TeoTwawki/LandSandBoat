@@ -2,7 +2,7 @@
 -- Area: Nyzul Isle (Path of Darkness)
 --  Mob: Amnaf BLU
 -----------------------------------
-local ID = zones[xi.zone.NYZUL_ISLE]
+local ID = zones[invaderXim.zone.NYZUL_ISLE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -16,7 +16,7 @@ entity.onMobSpawn = function(mob)
     -- Stage 2 Adjustments
     if instance:getProgress() >= 10 then
         -- Don't let Amnaf wander back to the original spawn position
-        mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+        mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
 
         -- Stage 2 starts at 50%
         local hp = mob:getHP()
@@ -44,7 +44,7 @@ entity.onMobEngage = function(mob, target)
     local instance = mob:getInstance()
 
     -- Relax movement lock
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
 
     -- Stage AI flags
     local form       = mob:getLocalVar('SegmentChanged')

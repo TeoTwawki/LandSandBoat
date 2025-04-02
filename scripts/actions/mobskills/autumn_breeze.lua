@@ -23,9 +23,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     ]]
     local heal = math.random(100, 400)
 
-    skill:setMsg(xi.msg.basic.SELF_HEAL)
+    skill:setMsg(invaderXim.msg.basic.SELF_HEAL)
 
-    return xi.mobskills.mobHealMove(mob, heal)
+    return invaderXim.mobskills.mobHealMove(mob, heal)
 end
 
 return mobskillObject

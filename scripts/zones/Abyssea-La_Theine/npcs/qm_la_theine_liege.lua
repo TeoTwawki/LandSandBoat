@@ -4,17 +4,17 @@
 -- Spawns La Theine Liege
 -- !pos 80 15 199 132
 -----------------------------------
-local ID = zones[xi.zone.ABYSSEA_LA_THEINE]
+local ID = zones[invaderXim.zone.ABYSSEA_LA_THEINE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.abyssea.qmOnTrade(player, npc, trade, ID.mob.LA_THEINE_LIEGE, { xi.item.TRANSPARENT_INSECT_WING })
+    invaderXim.abyssea.qmOnTrade(player, npc, trade, ID.mob.LA_THEINE_LIEGE, { invaderXim.item.TRANSPARENT_INSECT_WING })
 end
 
 entity.onTrigger = function(player, npc)
-    xi.abyssea.qmOnTrigger(player, npc, 0, 0, { xi.item.TRANSPARENT_INSECT_WING })
+    invaderXim.abyssea.qmOnTrigger(player, npc, 0, 0, { invaderXim.item.TRANSPARENT_INSECT_WING })
 end
 
 return entity

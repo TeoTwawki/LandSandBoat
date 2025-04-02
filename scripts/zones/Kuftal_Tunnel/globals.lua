@@ -1,7 +1,7 @@
 -- Zone: Kuftal Tunnel (174)
 -- Desc: this file contains functions that are shared by multiple luas in this zone's directory
 -----------------------------------
-local ID = zones[xi.zone.KUFTAL_TUNNEL]
+local ID = zones[invaderXim.zone.KUFTAL_TUNNEL]
 -----------------------------------
 
 -- Move Phantom Worm
@@ -24,10 +24,10 @@ movePhantomWormQM = function()
         [6] = { 59.404, 26.753, 141.246 },
     }
 
-    npc:setStatus(xi.status.DISAPPEAR)
+    npc:setStatus(invaderXim.status.DISAPPEAR)
     npc:timer(1000, function(npcArg)
         npcArg:setPos(unpack(phantomQmPoints[math.random(1, 6)]))
-        npcArg:setStatus(xi.status.NORMAL)
+        npcArg:setStatus(invaderXim.status.NORMAL)
     end)
 
     npc:timer(8000, function()

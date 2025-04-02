@@ -7,15 +7,15 @@
 -- Ghatsad      : !pos 34.325 -7.804 57.511 50
 -- qm10         : !pos 457.128 -8.249 60.795 54
 -----------------------------------
-local ahtUrhganID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local ahtUrhganID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.NO_STRINGS_ATTACHED)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.NO_STRINGS_ATTACHED)
 
 quest.reward =
 {
-    item = xi.item.ANIMATOR,
-    title = xi.title.PROUD_AUTOMATON_OWNER,
+    item = invaderXim.item.ANIMATOR,
+    title = invaderXim.title.PROUD_AUTOMATON_OWNER,
 }
 
 quest.sections =
@@ -23,11 +23,11 @@ quest.sections =
     -- Section: Quest available
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getMainLvl() >= xi.settings.main.ADVANCED_JOB_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getMainLvl() >= invaderXim.settings.main.ADVANCED_JOB_LEVEL
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Shamarhaan'] = quest:progressEvent(434),
 
@@ -39,7 +39,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Iruki-Waraki'] = quest:progressEvent(259),
         },
@@ -48,10 +48,10 @@ quest.sections =
     -- Section: Quest Accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Shamarhaan'] =
             {
@@ -63,7 +63,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Iruki-Waraki'] =
             {
@@ -91,7 +91,7 @@ quest.sections =
                         return quest:progressEvent(263)
                     elseif
                         questProgress == 3 and
-                        player:hasKeyItem(xi.ki.ANTIQUE_AUTOMATON)
+                        player:hasKeyItem(invaderXim.ki.ANTIQUE_AUTOMATON)
                     then
                         return quest:progressEvent(264)
                     elseif
@@ -116,7 +116,7 @@ quest.sections =
                 [264] = function(player, csid, option, npc)
                     quest:setVar(player, 'Prog', 4)
                     quest:setVar(player, 'Timer', VanadielUniqueDay() + 1)
-                    player:delKeyItem(xi.ki.ANTIQUE_AUTOMATON)
+                    player:delKeyItem(invaderXim.ki.ANTIQUE_AUTOMATON)
                 end,
 
                 [265] = function(player, csid, option, npc)
@@ -125,17 +125,17 @@ quest.sections =
 
                 [266] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:unlockJob(xi.job.PUP)
+                        player:unlockJob(invaderXim.job.PUP)
                         player:messageSpecial(ahtUrhganID.text.YOU_CAN_BECOME_PUP)
-                        player:setPetName(xi.petType.AUTOMATON, option + 118)
-                        player:unlockAttachment(xi.item.HARLEQUIN_FRAME)
-                        player:unlockAttachment(xi.item.HARLEQUIN_HEAD)
+                        player:setPetName(invaderXim.petType.AUTOMATON, option + 118)
+                        player:unlockAttachment(invaderXim.item.HARLEQUIN_FRAME)
+                        player:unlockAttachment(invaderXim.item.HARLEQUIN_HEAD)
                     end
                 end,
             },
         },
 
-        [xi.zone.ARRAPAGO_REEF] =
+        [invaderXim.zone.ARRAPAGO_REEF] =
         {
             ['qm10'] =
             {
@@ -149,7 +149,7 @@ quest.sections =
             onEventFinish =
             {
                 [214] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.ANTIQUE_AUTOMATON)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ANTIQUE_AUTOMATON)
                     quest:setVar(player, 'Prog', 3)
                 end,
             },
@@ -159,27 +159,27 @@ quest.sections =
     -- Section: Quest Completed
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Iruki-Waraki'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        not player:findItem(xi.item.ANIMATOR) and
+                        not player:findItem(invaderXim.item.ANIMATOR) and
                         npcUtil.tradeHasExactly(trade, { { 'gil', 10000 } })
                     then
                         player:confirmTrade()
-                        npcUtil.giveItem(player, xi.item.ANIMATOR)
+                        npcUtil.giveItem(player, invaderXim.item.ANIMATOR)
                     end
                 end,
 
                 onTrigger = function(player, npc)
                     if
-                        player:getMainLvl() < xi.settings.main.AF1_QUEST_LEVEL and
-                        player:getMainJob() == xi.job.PUP
+                        player:getMainLvl() < invaderXim.settings.main.AF1_QUEST_LEVEL and
+                        player:getMainJob() == invaderXim.job.PUP
                     then
                         return quest:progressEvent(267)
                     end

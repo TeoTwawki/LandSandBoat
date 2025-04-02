@@ -1,11 +1,11 @@
 -----------------------------------
--- xi.effect.FOIL
+-- invaderXim.effect.FOIL
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.SPECIAL_ATTACK_EVASION, effect:getPower())
+    target:addMod(invaderXim.mod.SPECIAL_ATTACK_EVASION, effect:getPower())
 end
 
 -- https://www.ffxiah.com/forum/topic/56696/foil-potency-and-decay-testing/#3625559
@@ -18,12 +18,12 @@ effectObject.onEffectTick = function(target, effect)
         local powerDecay = 3
 
         effect:setPower(power-powerDecay)
-        target:delMod(xi.mod.SPECIAL_ATTACK_EVASION, powerDecay)
+        target:delMod(invaderXim.mod.SPECIAL_ATTACK_EVASION, powerDecay)
     end
 end
 
 effectObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.SPECIAL_ATTACK_EVASION, effect:getPower())
+    target:delMod(invaderXim.mod.SPECIAL_ATTACK_EVASION, effect:getPower())
 end
 
 return effectObject

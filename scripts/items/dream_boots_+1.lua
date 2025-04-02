@@ -13,8 +13,8 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    if not target:hasStatusEffect(xi.effect.SNEAK) then
-        target:addStatusEffect(xi.effect.SNEAK, 1, 10, math.floor(200 * xi.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER))
+    if not target:hasStatusEffect(invaderXim.effect.SNEAK) then
+        target:addStatusEffect(invaderXim.effect.SNEAK, 1, 10, math.floor(200 * invaderXim.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER))
     end
 end
 

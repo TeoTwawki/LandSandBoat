@@ -2,7 +2,7 @@
 -- Area: The Ashu Talif (The Black Coffin)
 --   NM: Ashu Talif Captain
 -----------------------------------
-local ID = zones[xi.zone.THE_ASHU_TALIF]
+local ID = zones[invaderXim.zone.THE_ASHU_TALIF]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -16,10 +16,10 @@ local captainEngageSequence = function(mob)
         mob:setLocalVar('jump', 1)
         mob:showText(mob, ID.text.OVERPOWERED_CREW)
         mob:hideName(true)
-        mob:entityAnimationPacket(xi.animationString.JUMP_0)
+        mob:entityAnimationPacket(invaderXim.animationString.JUMP_0)
         mob:timer(2000, function(m)
             m:setPos(0, -22, 13, 192)
-            m:entityAnimationPacket(xi.animationString.JUMP_1)
+            m:entityAnimationPacket(invaderXim.animationString.JUMP_1)
             m:showText(mob, ID.text.TEST_YOUR_BLADES)
             m:timer(2000, function(mAnimation)
                 mAnimation:hideName(false)

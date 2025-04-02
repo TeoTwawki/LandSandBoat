@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.FORMLESS_STRIKES
+-- invaderXim.effect.FORMLESS_STRIKES
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

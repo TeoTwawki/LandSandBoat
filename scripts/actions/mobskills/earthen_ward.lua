@@ -12,9 +12,9 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local base = mob:getMainLvl() * 2 + 50
 
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.STONESKIN, base, 0, 180))
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.STONESKIN, base, 0, 180))
 
-    return xi.effect.STONESKIN
+    return invaderXim.effect.STONESKIN
 end
 
 return mobskillObject

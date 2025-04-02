@@ -10,15 +10,15 @@ abilityObject.onAbilityCheck = function(player, target, ability)
     --ranged weapon/ammo: You do not have an appropriate ranged weapon equipped.
     --no card: <name> cannot perform that action.
     if
-        player:getWeaponSkillType(xi.slot.RANGED) ~= xi.skill.MARKSMANSHIP or
-        player:getWeaponSkillType(xi.slot.AMMO) ~= xi.skill.MARKSMANSHIP
+        player:getWeaponSkillType(invaderXim.slot.RANGED) ~= invaderXim.skill.MARKSMANSHIP or
+        player:getWeaponSkillType(invaderXim.slot.AMMO) ~= invaderXim.skill.MARKSMANSHIP
     then
         return 216, 0
     end
 
     if
-        player:hasItem(xi.item.DARK_CARD, 0) or
-        player:hasItem(xi.item.TRUMP_CARD, 0)
+        player:hasItem(invaderXim.item.DARK_CARD, 0) or
+        player:hasItem(invaderXim.item.TRUMP_CARD, 0)
     then
         return 0, 0
     else
@@ -27,13 +27,13 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability, action)
-    action:setRecast(math.max(0, action:getRecast() - player:getMod(xi.mod.QUICK_DRAW_RECAST)))
+    action:setRecast(math.max(0, action:getRecast() - player:getMod(invaderXim.mod.QUICK_DRAW_RECAST)))
     local duration = 60
-    local bonusAcc = player:getStat(xi.mod.AGI) / 2 + player:getMerit(xi.merit.QUICK_DRAW_ACCURACY) + player:getMod(xi.mod.QUICK_DRAW_MACC)
-    local resist   = applyResistanceAbility(player, target, xi.element.DARK, xi.skill.NONE, bonusAcc)
+    local bonusAcc = player:getStat(invaderXim.mod.AGI) / 2 + player:getMerit(invaderXim.merit.QUICK_DRAW_ACCURACY) + player:getMod(invaderXim.mod.QUICK_DRAW_MACC)
+    local resist   = applyResistanceAbility(player, target, invaderXim.element.DARK, invaderXim.skill.NONE, bonusAcc)
 
     if resist < 0.25 then
-        ability:setMsg(xi.msg.basic.JA_MISS_2) -- resist message
+        ability:setMsg(invaderXim.msg.basic.JA_MISS_2) -- resist message
         return 0
     end
 
@@ -41,18 +41,18 @@ abilityObject.onUseAbility = function(player, target, ability, action)
 
     local effects = {}
 
-    local bio = target:getStatusEffect(xi.effect.BIO)
+    local bio = target:getStatusEffect(invaderXim.effect.BIO)
     if bio ~= nil then
         table.insert(effects, bio)
     end
 
-    local blind = target:getStatusEffect(xi.effect.BLINDNESS)
+    local blind = target:getStatusEffect(invaderXim.effect.BLINDNESS)
     if blind ~= nil then
         table.insert(effects, blind)
     end
 
-    local threnody = target:getStatusEffect(xi.effect.THRENODY)
-    if threnody ~= nil and threnody:getSubPower() == xi.mod.LIGHT_MEVA then
+    local threnody = target:getStatusEffect(invaderXim.effect.THRENODY)
+    if threnody ~= nil and threnody:getSubPower() == invaderXim.mod.LIGHT_MEVA then
         table.insert(effects, threnody)
     end
 
@@ -78,15 +78,15 @@ abilityObject.onUseAbility = function(player, target, ability, action)
         end
     end
 
-    ability:setMsg(xi.msg.basic.JA_REMOVE_EFFECT_2)
+    ability:setMsg(invaderXim.msg.basic.JA_REMOVE_EFFECT_2)
 
     local dispelledEffect = target:dispelStatusEffect()
-    if dispelledEffect == xi.effect.NONE then
+    if dispelledEffect == invaderXim.effect.NONE then
         -- no effect
-        ability:setMsg(xi.msg.basic.JA_NO_EFFECT_2)
+        ability:setMsg(invaderXim.msg.basic.JA_NO_EFFECT_2)
     end
 
-    local _ = player:delItem(xi.item.DARK_CARD, 1) or player:delItem(xi.item.TRUMP_CARD, 1)
+    local _ = player:delItem(invaderXim.item.DARK_CARD, 1) or player:delItem(invaderXim.item.TRUMP_CARD, 1)
     target:updateClaim(player)
 
     return dispelledEffect

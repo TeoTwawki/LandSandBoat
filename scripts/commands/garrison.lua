@@ -53,17 +53,17 @@ commandObj.onTrigger = function(player, command, target)
     switch(command): caseof
     {
         ['start'] = function()
-            xi.garrison.start(targ, targ)
+            invaderXim.garrison.start(targ, targ)
             targ:printToPlayer(string.format('%s garrison started', zone:getName()))
         end,
 
         ['stop'] = function()
-            xi.garrison.stop(targ:getZone())
+            invaderXim.garrison.stop(targ:getZone())
             targ:printToPlayer(string.format('%s garrison stopped', zone:getName()))
         end,
 
         ['win'] = function()
-            xi.garrison.win(targ:getZone())
+            invaderXim.garrison.win(targ:getZone())
         end,
     }
 end

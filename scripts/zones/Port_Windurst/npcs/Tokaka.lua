@@ -12,44 +12,44 @@ entity.onTrade = function(player, npc, trade)
 
     if tokakaSpokenTo == 1 and not needToZone then
         if
-            trade:hasItemQty(xi.item.BASTORE_SARDINE, 1) and
+            trade:hasItemQty(invaderXim.item.BASTORE_SARDINE, 1) and
             trade:getItemCount() == 1
         then
-            player:startEvent(210, xi.settings.main.GIL_RATE * 70, xi.item.BASTORE_SARDINE)
+            player:startEvent(210, invaderXim.settings.main.GIL_RATE * 70, invaderXim.item.BASTORE_SARDINE)
         end
     end
 end
 
 entity.onTrigger = function(player, npc)
-    local somethingFishy = player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.SOMETHING_FISHY)
+    local somethingFishy = player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.SOMETHING_FISHY)
 
-    if somethingFishy >= xi.questStatus.QUEST_ACCEPTED then
+    if somethingFishy >= invaderXim.questStatus.QUEST_ACCEPTED then
         if player:needToZone() then
             player:startEvent(211)
         else
-            player:startEvent(209, 0, xi.item.BASTORE_SARDINE)
+            player:startEvent(209, 0, invaderXim.item.BASTORE_SARDINE)
         end
-    elseif somethingFishy == xi.questStatus.QUEST_AVAILABLE then
-        player:startEvent(208, 0, xi.item.BASTORE_SARDINE)
+    elseif somethingFishy == invaderXim.questStatus.QUEST_AVAILABLE then
+        player:startEvent(208, 0, invaderXim.item.BASTORE_SARDINE)
     end
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 208 then
-        player:addQuest(xi.questLog.WINDURST, xi.quest.id.windurst.SOMETHING_FISHY)
+        player:addQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.SOMETHING_FISHY)
         player:setCharVar('TokakaSpokenTo', 1)
     elseif csid == 210 then
-        local somethingFishy = player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.SOMETHING_FISHY)
+        local somethingFishy = player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.SOMETHING_FISHY)
 
-        if somethingFishy == xi.questStatus.QUEST_ACCEPTED then
-            player:completeQuest(xi.questLog.WINDURST, xi.quest.id.windurst.SOMETHING_FISHY)
-            player:addFame(xi.fameArea.WINDURST, 60)
+        if somethingFishy == invaderXim.questStatus.QUEST_ACCEPTED then
+            player:completeQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.SOMETHING_FISHY)
+            player:addFame(invaderXim.fameArea.WINDURST, 60)
         else
-            player:addFame(xi.fameArea.WINDURST, 10)
+            player:addFame(invaderXim.fameArea.WINDURST, 10)
         end
 
         player:tradeComplete()
-        player:addGil(xi.settings.main.GIL_RATE * 70)
+        player:addGil(invaderXim.settings.main.GIL_RATE * 70)
         player:setCharVar('TokakaSpokenTo', 0)
         player:needToZone(true)
     elseif csid == 209 then

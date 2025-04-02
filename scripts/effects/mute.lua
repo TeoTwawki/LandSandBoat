@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.MUTE
+-- invaderXim.effect.MUTE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

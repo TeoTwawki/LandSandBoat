@@ -12,15 +12,15 @@ commandObj.cmdprops =
 }
 
 commandObj.onTrigger = function(player)
-    if xi.settings.main.ENABLE_MONSTROSITY ~= 1 then
+    if invaderXim.settings.main.ENABLE_MONSTROSITY ~= 1 then
         player:printToPlayer('Setting main.ENABLE_MONSTROSITY is not enabled.')
         return
     end
 
-    if player:getMainJob() ~= xi.job.MON then
+    if player:getMainJob() ~= invaderXim.job.MON then
         local pos = player:getPos()
         player:setMonstrosityEntryData(pos.x, pos.y, pos.z, pos.rot, player:getZoneID(), player:getMainJob(), player:getSubJob())
-        player:changeJob(xi.job.MON)
+        player:changeJob(invaderXim.job.MON)
     else
         local data = player:getMonstrosityData()
         player:changeJob(data.entry_mjob)

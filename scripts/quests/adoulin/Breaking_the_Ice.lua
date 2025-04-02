@@ -4,31 +4,31 @@
 -- !addquest 9 54
 -- Traiffeaux : !pos 437.451 63 -290.512 267
 -----------------------------------
-local kamihrID = zones[xi.zone.KAMIHR_DRIFTS]
+local kamihrID = zones[invaderXim.zone.KAMIHR_DRIFTS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.ADOULIN, xi.quest.id.adoulin.BREAKING_THE_ICE)
+local quest = Quest:new(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.BREAKING_THE_ICE)
 
 quest.reward =
 {
-    fameArea = xi.fameArea.ADOULIN,
+    fameArea = invaderXim.fameArea.ADOULIN,
     bayld    = 500,
 }
 
 local requiredTradeItems =
 {
-    { xi.item.RABBIT_HIDE, 3 },
-    { xi.item.RAAZ_TUSK,   1 },
+    { invaderXim.item.RABBIT_HIDE, 3 },
+    { invaderXim.item.RAAZ_TUSK,   1 },
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.KAMIHR_DRIFTS] =
+        [invaderXim.zone.KAMIHR_DRIFTS] =
         {
             ['Traiffeaux'] = quest:progressEvent(24),
 
@@ -45,10 +45,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.KAMIHR_DRIFTS] =
+        [invaderXim.zone.KAMIHR_DRIFTS] =
         {
             ['Traiffeaux'] =
             {
@@ -66,12 +66,12 @@ quest.sections =
             onEventFinish =
             {
                 [26] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.PAIR_OF_FUZZY_EARMUFFS)
-                    player:messageSpecial(kamihrID.text.YOU_HAVE_LEARNED, xi.ki.FRAGMENTING)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.PAIR_OF_FUZZY_EARMUFFS)
+                    player:messageSpecial(kamihrID.text.YOU_HAVE_LEARNED, invaderXim.ki.FRAGMENTING)
 
                     if quest:complete(player) then
                         player:confirmTrade()
-                        player:addKeyItem(xi.ki.FRAGMENTING)
+                        player:addKeyItem(invaderXim.ki.FRAGMENTING)
                     end
                 end,
             },

@@ -2,12 +2,12 @@
 -- Rank 2 Final Mission
 -- Horlais Peak mission battlefield
 -----------------------------------
-local horlaisID = zones[xi.zone.HORLAIS_PEAK]
+local horlaisID = zones[invaderXim.zone.HORLAIS_PEAK]
 -----------------------------------
 
 local content = Battlefield:new({
-    zoneId        = xi.zone.HORLAIS_PEAK,
-    battlefieldId = xi.battlefield.id.RANK_2_MISSION_1,
+    zoneId        = invaderXim.zone.HORLAIS_PEAK,
+    battlefieldId = invaderXim.battlefield.id.RANK_2_MISSION_1,
     canLoseExp    = false,
     isMission     = true,
     allowTrusts   = true,
@@ -20,8 +20,8 @@ local content = Battlefield:new({
 })
 
 function content:entryRequirement(player, npc, isRegistrant, trade)
-    local isCurrentMission    = player:getCurrentMission(xi.mission.log_id.WINDURST) == xi.mission.id.windurst.THE_THREE_KINGDOMS_SANDORIA2 or
-        player:getCurrentMission(xi.mission.log_id.BASTOK) == xi.mission.id.bastok.THE_EMISSARY_SANDORIA2
+    local isCurrentMission    = player:getCurrentMission(invaderXim.mission.log_id.WINDURST) == invaderXim.mission.id.windurst.THE_THREE_KINGDOMS_SANDORIA2 or
+        player:getCurrentMission(invaderXim.mission.log_id.BASTOK) == invaderXim.mission.id.bastok.THE_EMISSARY_SANDORIA2
     local currentRequirements = isCurrentMission
     local nonRegistrantReqs   = player:hasCompletedMission(player:getNation(), 5) or currentRequirements
 
@@ -29,12 +29,12 @@ function content:entryRequirement(player, npc, isRegistrant, trade)
 end
 
 function content:checkSkipCutscene(player)
-    return player:hasCompletedMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_THREE_KINGDOMS_SANDORIA2) or
-        player:hasCompletedMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY_SANDORIA2) or
+    return player:hasCompletedMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_THREE_KINGDOMS_SANDORIA2) or
+        player:hasCompletedMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY_SANDORIA2) or
         (player:getMissionStatus(player:getNation()) > 9 and
         (
-            player:getCurrentMission(xi.mission.log_id.WINDURST) == xi.mission.id.windurst.THE_THREE_KINGDOMS_SANDORIA2 or
-            player:getCurrentMission(xi.mission.log_id.BASTOK) == xi.mission.id.bastok.THE_EMISSARY_SANDORIA2
+            player:getCurrentMission(invaderXim.mission.log_id.WINDURST) == invaderXim.mission.id.windurst.THE_THREE_KINGDOMS_SANDORIA2 or
+            player:getCurrentMission(invaderXim.mission.log_id.BASTOK) == invaderXim.mission.id.bastok.THE_EMISSARY_SANDORIA2
         ))
 end
 
@@ -49,7 +49,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

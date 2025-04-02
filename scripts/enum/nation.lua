@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.nation
-xi.nation =
+---@enum invaderXim.nation
+invaderXim.nation =
 {
     SANDORIA = 0,
     BASTOK   = 1,

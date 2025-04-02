@@ -8,11 +8,11 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.crafting.ahtUhrganImageSupportOnTrigger(player, npc)
+    invaderXim.crafting.ahtUhrganImageSupportOnTrigger(player, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.crafting.ahtUhrganImageSupportOnEventFinish(player, csid, option, npc)
+    invaderXim.crafting.ahtUhrganImageSupportOnEventFinish(player, csid, option, npc)
 end
 
 return entity

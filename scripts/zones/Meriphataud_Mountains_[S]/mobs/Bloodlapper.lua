@@ -6,15 +6,15 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 1800)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 1800)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:addImmunity(xi.immunity.SILENCE)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 526)
+    invaderXim.hunts.checkHunt(mob, player, 526)
 end
 
 return entity

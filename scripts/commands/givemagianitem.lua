@@ -33,9 +33,9 @@ commandObj.onTrigger = function(player, target, trialId, isRewardItem)
         player:printToPlayer(string.format('Player \'%s\' does not have free space for that item!', target))
     else
         if giveRewardItem then
-            xi.magian.giveRewardItem(target, trialId)
+            invaderXim.magian.giveRewardItem(target, trialId)
         else
-            xi.magian.giveRequiredItem(target, trialId)
+            invaderXim.magian.giveRequiredItem(target, trialId)
         end
 
         player:printToPlayer(string.format('Gave player \'%s\' Item for Trial ID \'%u\' ', target, trialId))

@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if xi.settings.main.ENABLE_MONSTROSITY ~= 1 then
+    if invaderXim.settings.main.ENABLE_MONSTROSITY ~= 1 then
         return
     end
 

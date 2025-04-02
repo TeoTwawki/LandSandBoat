@@ -6,11 +6,11 @@
 -- Levil : !pos -87.204 3.350 12.655 256
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.THE_PRINCESSS_DILEMMA)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_PRINCESSS_DILEMMA)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.DARK_CLOUDS_AHEAD },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.DARK_CLOUDS_AHEAD },
 }
 
 mission.sections =
@@ -20,12 +20,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(140),
         },
 
-        [xi.zone.CELENNIA_MEMORIAL_LIBRARY] =
+        [invaderXim.zone.CELENNIA_MEMORIAL_LIBRARY] =
         {
             onZoneIn = function(player, prevZone)
                 return 2

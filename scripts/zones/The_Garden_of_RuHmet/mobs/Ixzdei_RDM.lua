@@ -3,7 +3,7 @@
 --  Mob: Ix'zdei (Black Mage)
 -- Note: CoP Mission 8-3
 -----------------------------------
-local ID = zones[xi.zone.THE_GARDEN_OF_RUHMET]
+local ID = zones[invaderXim.zone.THE_GARDEN_OF_RUHMET]
 mixins = { require('scripts/mixins/job_special') }
 -----------------------------------
 ---@type TMobEntity
@@ -26,15 +26,15 @@ local chargeOptic = function(mob)
 end
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
-            { id = xi.jsa.MANAFONT, hpp = math.random(50, 80) },
+            { id = invaderXim.jsa.MANAFONT, hpp = math.random(50, 80) },
         },
     })
 
-    mob:setMobMod(xi.mobMod.NO_MOVE, 1)
-    mob:addImmunity(xi.immunity.SILENCE)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
     mob:setAnimationSub(0)
     mob:setAutoAttackEnabled(true)
     mob:setMobAbilityEnabled(true)
@@ -55,7 +55,7 @@ entity.onMobEngage = function(mob, target)
         end,
     }
 
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
     mob:setLocalVar('changeTime', 0)
     local firstCast = { 144, 149, 154, 164, 169 }
     mob:castSpell(firstCast[math.random(1, #firstCast)])
@@ -68,9 +68,9 @@ entity.onMobFight = function(mob, target)
     local isBusy = false
     local act = mob:getCurrentAction()
     if
-        act == xi.act.MOBABILITY_START or
-        act == xi.act.MOBABILITY_USING or
-        act == xi.act.MOBABILITY_FINISH
+        act == invaderXim.act.MOBABILITY_START or
+        act == invaderXim.act.MOBABILITY_USING or
+        act == invaderXim.act.MOBABILITY_FINISH
     then
         isBusy = true
     end
@@ -133,7 +133,7 @@ entity.onMobFight = function(mob, target)
                 local spawnPos = zdeiOne:getSpawnPos()
                 mob:setMagicCastingEnabled(false)
                 mob:pathTo(spawnPos.x, spawnPos.y, spawnPos.z) -- go back to pedastal to heal
-                mob:setBehavior(bit.bor(mob:getBehavior(), xi.behavior.STANDBACK))
+                mob:setBehavior(bit.bor(mob:getBehavior(), invaderXim.behavior.STANDBACK))
                 mob:timer(8000, function(mobArg)
                     if
                         mob:checkDistance(spawnPos.x, spawnPos.y, spawnPos.z) < 2 and
@@ -156,7 +156,7 @@ entity.onMobFight = function(mob, target)
                 local spawnPos = zdeiTwo:getSpawnPos()
                 mob:setMagicCastingEnabled(false)
                 mob:pathTo(spawnPos.x, spawnPos.y, spawnPos.z)
-                mob:setBehavior(bit.bor(mob:getBehavior(), xi.behavior.STANDBACK))
+                mob:setBehavior(bit.bor(mob:getBehavior(), invaderXim.behavior.STANDBACK))
                 mob:timer(8000, function(mobArg)
                     if
                         mob:checkDistance(spawnPos.x, spawnPos.y, spawnPos.z) < 2 and

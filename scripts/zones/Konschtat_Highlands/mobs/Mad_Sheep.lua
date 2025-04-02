@@ -3,7 +3,7 @@
 --  Mob: Mad Sheep
 -- Note: Place holder Stray Mary
 -----------------------------------
-local ID = zones[xi.zone.KONSCHTAT_HIGHLANDS]
+local ID = zones[invaderXim.zone.KONSCHTAT_HIGHLANDS]
 require('scripts/quests/tutorial')
 -----------------------------------
 ---@type TMobEntity
@@ -16,11 +16,11 @@ local strayMaryPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.tutorial.onMobDeath(player)
+    invaderXim.tutorial.onMobDeath(player)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, strayMaryPHTable, 5, 300) -- 5 minute minimum
+    invaderXim.mob.phOnDespawn(mob, strayMaryPHTable, 5, 300) -- 5 minute minimum
 end
 
 return entity

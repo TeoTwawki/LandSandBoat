@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.attackType
-xi.attackType =
+---@enum invaderXim.attackType
+invaderXim.attackType =
 {
     NONE     = 0,
     PHYSICAL = 1,

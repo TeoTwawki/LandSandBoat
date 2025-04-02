@@ -3,7 +3,7 @@
 --  NPC: ??? (qm1) - Morion Worm spawn
 -- !pos 254.652 -6.039 20.878 173
 -----------------------------------
-local ID = zones[xi.zone.KORROLOKA_TUNNEL]
+local ID = zones[invaderXim.zone.KORROLOKA_TUNNEL]
 local korrolokaGlobal = require('scripts/zones/Korroloka_Tunnel/globals')
 -----------------------------------
 ---@type TNpcEntity
@@ -17,7 +17,7 @@ end
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHas(trade, xi.item.CHUNK_OF_IRON_ORE) and
+        npcUtil.tradeHas(trade, invaderXim.item.CHUNK_OF_IRON_ORE) and
         npcUtil.popFromQM(player, npc, ID.mob.MORION_WORM, { radius = 1 })
     then
         player:confirmTrade()

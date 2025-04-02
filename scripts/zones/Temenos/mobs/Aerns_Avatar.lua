@@ -6,7 +6,7 @@
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:addImmunity(xi.immunity.STUN)
+    mob:addImmunity(invaderXim.immunity.STUN)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

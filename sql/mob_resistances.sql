@@ -1,6 +1,6 @@
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-DROP TABLE IF EXISTS `mob_resistances`;
+DROP TABLE IF IXIMSTS `mob_resistances`;
 CREATE TABLE `mob_resistances` (
   `resist_id` smallint(4) unsigned NOT NULL,
   `name` tinytext, -- Purely for human readability

@@ -9,24 +9,24 @@
 -- !zone 65       = Mamook
 -- Viscous Liquid = !pos -262.437 5.130 -141.241
 -----------------------------------
-local ID = zones[xi.zone.MAMOOK]
+local ID = zones[invaderXim.zone.MAMOOK]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.TWO_HORN_THE_SAVAGE)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.TWO_HORN_THE_SAVAGE)
 
 quest.reward =
 {
-    item = xi.item.IMPERIAL_MYTHRIL_PIECE,
+    item = invaderXim.item.IMPERIAL_MYTHRIL_PIECE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Milazahn'] = quest:progressEvent(594),
 
@@ -43,10 +43,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Cacaroon'] =
             {
@@ -87,7 +87,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.MAMOOK] =
+        [invaderXim.zone.MAMOOK] =
         {
             ['Viscous_Liquid'] =
             {

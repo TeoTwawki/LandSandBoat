@@ -21,11 +21,11 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.BEASTMEN
-    params.tpmod = xi.spells.blue.tpMod.EFFECT_CHANCE
-    params.attackType = xi.attackType.PHYSICAL
-    params.damageType = xi.damageType.HTH
-    params.scattr = xi.skillchainType.REVERBERATION
+    params.ecosystem = invaderXim.ecosystem.BEASTMEN
+    params.tpmod = invaderXim.spells.blue.tpMod.EFFECT_CHANCE
+    params.attackType = invaderXim.attackType.PHYSICAL
+    params.damageType = invaderXim.damageType.HTH
+    params.scattr = invaderXim.skillchainType.REVERBERATION
     params.numhits = 1
     params.multiplier = 1.25
     params.tp150 = 1.25
@@ -43,7 +43,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     -- Enmity Down amount is trivial, not worth implementing
     -- Sources: https://www.applySpellDamagethreads/37619-Blue-Mage-Best-thread-ever?p=4845494&viewfull=1#post4845494 and https://www.bg-wiki.com/ffxi/Hydro_Shot
 
-    return xi.spells.blue.usePhysicalSpell(caster, target, spell, params)
+    return invaderXim.spells.blue.usePhysicalSpell(caster, target, spell, params)
 end
 
 return spellObject

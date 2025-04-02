@@ -22,13 +22,13 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local power = 20
-    local duration = xi.spells.blue.calculateDurationWithDiffusion(caster, 30)
+    local duration = invaderXim.spells.blue.calculateDurationWithDiffusion(caster, 30)
 
-    if not target:addStatusEffect(xi.effect.EVASION_BOOST, power, 0, duration) then
-        spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+    if not target:addStatusEffect(invaderXim.effect.EVASION_BOOST, power, 0, duration) then
+        spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
     end
 
-    return xi.effect.EVASION_BOOST
+    return invaderXim.effect.EVASION_BOOST
 end
 
 return spellObject

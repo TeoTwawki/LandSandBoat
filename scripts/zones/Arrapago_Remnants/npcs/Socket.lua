@@ -4,7 +4,7 @@
 -- Trade Slavage Cells to pop Wahzil
 -- Wahzil drops 2x the Cells traded
 -----------------------------------
-local ID = zones[xi.zone.ARRAPAGO_REMNANTS]
+local ID = zones[invaderXim.zone.ARRAPAGO_REMNANTS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

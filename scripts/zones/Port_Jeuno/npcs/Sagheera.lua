@@ -3,7 +3,7 @@
 --  NPC: Sagheera
 -- !pos -3 0.1 -9 246
 -----------------------------------
-local ID = zones[xi.zone.PORT_JEUNO]
+local ID = zones[invaderXim.zone.PORT_JEUNO]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -252,20 +252,20 @@ local abcShop =
 -----------------------------------
 local tier1Chips =
 {
-    xi.item.IVORY_CHIP,
-    xi.item.SCARLET_CHIP,
-    xi.item.EMERALD_CHIP,
-    xi.item.SMALT_CHIP,
-    xi.item.SMOKY_CHIP,
-    xi.item.CHARCOAL_CHIP,
-    xi.item.MAGENTA_CHIP,
+    invaderXim.item.IVORY_CHIP,
+    invaderXim.item.SCARLET_CHIP,
+    invaderXim.item.EMERALD_CHIP,
+    invaderXim.item.SMALT_CHIP,
+    invaderXim.item.SMOKY_CHIP,
+    invaderXim.item.CHARCOAL_CHIP,
+    invaderXim.item.MAGENTA_CHIP,
 }
 
 local tier2Chips =
 {
-    xi.item.ORCHID_CHIP,
-    xi.item.CERULEAN_CHIP,
-    xi.item.SILVER_CHIP,
+    invaderXim.item.ORCHID_CHIP,
+    invaderXim.item.CERULEAN_CHIP,
+    invaderXim.item.SILVER_CHIP,
 }
 
 local tier1ChipValue = 5
@@ -274,7 +274,7 @@ local tier2ChipValue = 10
 local cosmoReady = 2147483649 -- BITMASK for the purchase
 
 local function getCosmoCleanseTime(player)
-    local cosmoWaitTime = player:hasKeyItem(xi.ki.RHAPSODY_IN_MAUVE) and 3600 or 72000
+    local cosmoWaitTime = player:hasKeyItem(invaderXim.ki.RHAPSODY_IN_MAUVE) and 3600 or 72000
     local lastCosmoTime = player:getCharVar('Cosmo_Cleanse_TIME')
 
     if lastCosmoTime ~= 0 then
@@ -289,7 +289,7 @@ local function getCosmoCleanseTime(player)
 end
 
 entity.onTrade = function(player, npc, trade)
-    if player:getCurrentMission(xi.mission.log_id.COP) < xi.mission.id.cop.GARDEN_OF_ANTIQUITY then
+    if player:getCurrentMission(invaderXim.mission.log_id.COP) < invaderXim.mission.id.cop.GARDEN_OF_ANTIQUITY then
         return
     end
 
@@ -297,7 +297,7 @@ entity.onTrade = function(player, npc, trade)
     local afUpgrade = player:getCharVar('AFupgrade')
 
     -- store ancient beastcoins
-    if trade:hasItemQty(xi.item.ANCIENT_BEASTCOIN, count) then
+    if trade:hasItemQty(invaderXim.item.ANCIENT_BEASTCOIN, count) then
         local total = player:getCurrency('ancient_beastcoin') + count
 
         if total < 9999 then -- store max 9999 ancient beastcoins
@@ -310,9 +310,9 @@ entity.onTrade = function(player, npc, trade)
 
     -- Trade chips for ancient beastcoins
     elseif npcUtil.tradeSetInList(trade, tier1Chips) then
-        player:startEvent(361, xi.item.ANCIENT_BEASTCOIN, tier1ChipValue)
+        player:startEvent(361, invaderXim.item.ANCIENT_BEASTCOIN, tier1ChipValue)
     elseif npcUtil.tradeSetInList(trade, tier2Chips) then
-        player:startEvent(361, xi.item.ANCIENT_BEASTCOIN, tier2ChipValue)
+        player:startEvent(361, invaderXim.item.ANCIENT_BEASTCOIN, tier2ChipValue)
 
     -- af and relic upgrade trades
     elseif afUpgrade == 0 then
@@ -355,7 +355,7 @@ end
 
 entity.onTrigger = function(player, npc)
     -- Prevent interaction until player has progressed through COP enough
-    if player:getCurrentMission(xi.mission.log_id.COP) < xi.mission.id.cop.GARDEN_OF_ANTIQUITY then
+    if player:getCurrentMission(invaderXim.mission.log_id.COP) < invaderXim.mission.id.cop.GARDEN_OF_ANTIQUITY then
         player:showText(npc, ID.text.SAGHEERA_NO_LIMBUS_ACCESS)
 
         -- DEFAULT DIALOG (menu)
@@ -399,7 +399,7 @@ entity.onTrigger = function(player, npc)
         end
 
         -- bit 13 - player has RHAPSODY_IN_MAUVE (lowers Cosmo Cleanse cost)
-        if player:hasKeyItem(xi.ki.RHAPSODY_IN_MAUVE) then
+        if player:hasKeyItem(invaderXim.ki.RHAPSODY_IN_MAUVE) then
             menu = utils.mask.setBit(menu, 13, true)
         end
 
@@ -420,7 +420,7 @@ entity.onTrigger = function(player, npc)
         -- calculate COSMO_CLEANSE parameters
         local cosmoTime = 0
 
-        if player:hasKeyItem(xi.ki.COSMO_CLEANSE) then
+        if player:hasKeyItem(invaderXim.ki.COSMO_CLEANSE) then
             hasCosmoCleanse = 1
         else
             cosmoTime = getCosmoCleanseTime(player)
@@ -455,18 +455,18 @@ local handleMainEvent = function(player, option, coinAmount)
     -- purchase COSMO_CLEANSE
     elseif option == 3 then
         local cosmoTime = getCosmoCleanseTime(player)
-        local cost      = player:hasKeyItem(xi.ki.RHAPSODY_IN_MAUVE) and 1000 or xi.settings.main.COSMO_CLEANSE_BASE_COST
+        local cost      = player:hasKeyItem(invaderXim.ki.RHAPSODY_IN_MAUVE) and 1000 or invaderXim.settings.main.COSMO_CLEANSE_BASE_COST
 
         if cosmoTime == cosmoReady and player:delGil(cost) then
             player:setCharVar('SagheeraInteractions', utils.mask.setBit(player:getCharVar('SagheeraInteractions'), 0, false))
-            npcUtil.giveKeyItem(player, xi.ki.COSMO_CLEANSE)
+            npcUtil.giveKeyItem(player, invaderXim.ki.COSMO_CLEANSE)
         end
 
     -- retrieve stored ABCs
     elseif option == 4 then
         if
             player:getCurrency('ancient_beastcoin') >= coinAmount and
-            npcUtil.giveItem(player, { { xi.item.ANCIENT_BEASTCOIN, coinAmount } })
+            npcUtil.giveItem(player, { { invaderXim.item.ANCIENT_BEASTCOIN, coinAmount } })
         then
             player:delCurrency('ancient_beastcoin', coinAmount)
         end
@@ -508,12 +508,12 @@ local handleTradeChipEvent = function(player, option)
 
     if
         npcUtil.tradeSetInList(trade, tier1Chips) and
-        npcUtil.giveItem(player, { { xi.item.ANCIENT_BEASTCOIN, tier1ChipValue } })
+        npcUtil.giveItem(player, { { invaderXim.item.ANCIENT_BEASTCOIN, tier1ChipValue } })
     then
         player:confirmTrade()
     elseif
         npcUtil.tradeSetInList(trade, tier2Chips) and
-        npcUtil.giveItem(player, { { xi.item.ANCIENT_BEASTCOIN, tier2ChipValue } })
+        npcUtil.giveItem(player, { { invaderXim.item.ANCIENT_BEASTCOIN, tier2ChipValue } })
     then
         player:confirmTrade()
     end

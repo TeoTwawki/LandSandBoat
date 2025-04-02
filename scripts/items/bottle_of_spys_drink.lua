@@ -11,14 +11,14 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    local effect   = xi.effect.HASTE
+    local effect   = invaderXim.effect.HASTE
     local power    = 3000
     local duration = 90
 
-    if not target:hasStatusEffect(xi.effect.HASTE) then
-        xi.itemUtils.addItemEffect(target, effect, power, duration)
+    if not target:hasStatusEffect(invaderXim.effect.HASTE) then
+        invaderXim.itemUtils.addItemEffect(target, effect, power, duration)
     else
-        target:messageBasic(xi.msg.basic.NO_EFFECT)
+        target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
     end
 end
 

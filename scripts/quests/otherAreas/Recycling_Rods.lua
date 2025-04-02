@@ -5,7 +5,7 @@
 -- Keshab-Menjab : !pos -15.6 -8 52 249
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.RECYCLING_RODS)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.RECYCLING_RODS)
 
 quest.reward =
 {
@@ -16,10 +16,10 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Keshab-Menjab'] = quest:progressEvent(313),
 
@@ -36,10 +36,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Keshab-Menjab'] =
             {
@@ -48,7 +48,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.CLEAN_SNAP_ROD) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.CLEAN_SNAP_ROD) then
                         return quest:progressEvent(317)
                     else
                         return quest:event(316)
@@ -69,10 +69,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Keshab-Menjab'] = quest:event(314),
         },

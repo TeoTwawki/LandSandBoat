@@ -8,11 +8,11 @@
 -- Ru'Avitau Main Entrance : !pos -0.2171 -45.013 -119.7575
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_SEALED_SHRINE)
+local mission = Mission:new(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_SEALED_SHRINE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_CELESTIAL_NEXUS },
+    nextMission = { invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_CELESTIAL_NEXUS },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['_700'] =
             {
@@ -45,7 +45,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Aldo'] =
             {
@@ -66,7 +66,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.THE_SHRINE_OF_RUAVITAU] =
+        [invaderXim.zone.THE_SHRINE_OF_RUAVITAU] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then

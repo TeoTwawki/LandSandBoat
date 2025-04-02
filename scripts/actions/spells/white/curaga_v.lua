@@ -22,10 +22,10 @@ spellObject.onSpellCast = function(caster, target, spell)
 
     local final = getCureFinal(caster, spell, getBaseCureOld(power, divisor, constant), minCure, false)
 
-    final = final + (final * (target:getMod(xi.mod.CURE_POTENCY_RCVD) / 100))
+    final = final + (final * (target:getMod(invaderXim.mod.CURE_POTENCY_RCVD) / 100))
 
     --Applying server mods
-    final = final * xi.settings.main.CURE_POWER
+    final = final * invaderXim.settings.main.CURE_POWER
 
     local diff = (target:getMaxHP() - target:getHP())
     if final > diff then
@@ -38,12 +38,12 @@ spellObject.onSpellCast = function(caster, target, spell)
     caster:updateEnmityFromCure(target, final)
 
     if target:getID() == spell:getPrimaryTargetID() then
-        spell:setMsg(xi.msg.basic.MAGIC_RECOVERS_HP)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_RECOVERS_HP)
     else
-        spell:setMsg(xi.msg.basic.SELF_HEAL_SECONDARY)
+        spell:setMsg(invaderXim.msg.basic.SELF_HEAL_SECONDARY)
     end
 
-    local mpBonusPercent = (final * caster:getMod(xi.mod.CURE2MP_PERCENT)) / 100
+    local mpBonusPercent = (final * caster:getMod(invaderXim.mod.CURE2MP_PERCENT)) / 100
     if mpBonusPercent > 0 then
         caster:addMP(mpBonusPercent)
     end

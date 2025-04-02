@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.skill
-xi.skill =
+---@enum invaderXim.skill
+invaderXim.skill =
 {
     -- Combat Skills
     NONE = 0,

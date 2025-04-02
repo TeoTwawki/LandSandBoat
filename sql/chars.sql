@@ -2,7 +2,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for chars
 -- ----------------------------
-DROP TABLE IF EXISTS `chars`;
+DROP TABLE IF IXIMSTS `chars`;
 CREATE TABLE `chars` (
   `charid` int(10) unsigned NOT NULL,
   `accid` int(10) unsigned NOT NULL,

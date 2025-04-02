@@ -4,13 +4,13 @@
 -- Warp NPC
 -- !pos 62.768 -1.98 -51.299 48
 -----------------------------------
-local ID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local ID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if xi.besieged.getAstralCandescence() == 1 then
+    if invaderXim.besieged.getAstralCandescence() == 1 then
         player:startEvent(103)
     else
         player:messageSpecial(ID.text.NEED_CANDESCENCE_BACK) -- Missing the denied due to lack of Astral Candescence message.

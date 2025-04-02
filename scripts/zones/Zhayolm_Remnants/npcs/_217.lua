@@ -3,7 +3,7 @@
 -- 2nd Floor North West Room Exit
 -- !pos 320 -2 20
 -----------------------------------
-local ID = zones[xi.zone.ZHAYOLM_REMNANTS]
+local ID = zones[invaderXim.zone.ZHAYOLM_REMNANTS]
 -----------------------------------
 
 ---@type TNpcEntity
@@ -25,7 +25,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 300 and option == 1 then
-        npc:setAnimation(xi.animation.OPEN_DOOR)
+        npc:setAnimation(invaderXim.animation.OPEN_DOOR)
         npc:setUntargetable(true)
         player:getInstance():setLocalVar('stageComplete', 2)
     end

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.mod.COVER_EFFECT
+-- invaderXim.mod.COVER_EFFECT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

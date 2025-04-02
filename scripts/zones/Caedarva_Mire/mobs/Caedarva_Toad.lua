@@ -7,11 +7,11 @@
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    local theWaywardAutomaton = player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.THE_WAYWARD_AUTOMATON)
+    local theWaywardAutomaton = player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.THE_WAYWARD_AUTOMATON)
     local theWaywardAutomatonProgress = player:getCharVar('TheWaywardAutomatonProgress')
 
     if
-        theWaywardAutomaton == xi.questStatus.QUEST_ACCEPTED and
+        theWaywardAutomaton == invaderXim.questStatus.QUEST_ACCEPTED and
         theWaywardAutomatonProgress == 2 and
         player:getCharVar('TheWaywardAutomatonNM') == 0
     then

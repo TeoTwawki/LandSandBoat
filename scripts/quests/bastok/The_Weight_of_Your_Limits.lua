@@ -3,16 +3,16 @@
 -- Iron Eater !pos 92 -19.6 2 237
 -- qm1 !pos -324 1 474 121
 -----------------------------------
-local metalworksID = zones[xi.zone.METALWORKS]
-local ziTahID      = zones[xi.zone.THE_SANCTUARY_OF_ZITAH]
+local metalworksID = zones[invaderXim.zone.METALWORKS]
+local ziTahID      = zones[invaderXim.zone.THE_SANCTUARY_OF_ZITAH]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.THE_WEIGHT_OF_YOUR_LIMITS)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_WEIGHT_OF_YOUR_LIMITS)
 
 quest.reward =
 {
     fame = 30,
-    fameArea = xi.fameArea.BASTOK,
+    fameArea = invaderXim.fameArea.BASTOK,
 }
 
 quest.sections =
@@ -20,13 +20,13 @@ quest.sections =
     -- Section: Quest available
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:canEquipItem(xi.item.AXE_OF_TRIALS, true) and
-                player:getCharSkillLevel(xi.skill.GREAT_AXE) / 10 >= 240 and
-                not player:hasKeyItem(xi.keyItem.WEAPON_TRAINING_GUIDE)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:canEquipItem(invaderXim.item.AXE_OF_TRIALS, true) and
+                player:getCharSkillLevel(invaderXim.skill.GREAT_AXE) / 10 >= 240 and
+                not player:hasKeyItem(invaderXim.keyItem.WEAPON_TRAINING_GUIDE)
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Iron_Eater'] =
             {
@@ -39,10 +39,10 @@ quest.sections =
             {
                 [790] = function(player, csid, option, npc)
                     if
-                        player:hasItem(xi.item.AXE_OF_TRIALS) or
-                        npcUtil.giveItem(player, xi.item.AXE_OF_TRIALS)
+                        player:hasItem(invaderXim.item.AXE_OF_TRIALS) or
+                        npcUtil.giveItem(player, invaderXim.item.AXE_OF_TRIALS)
                     then
-                        npcUtil.giveKeyItem(player, xi.keyItem.WEAPON_TRAINING_GUIDE)
+                        npcUtil.giveKeyItem(player, invaderXim.keyItem.WEAPON_TRAINING_GUIDE)
                         quest:begin(player)
                     end
                 end,
@@ -53,24 +53,24 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Iron_Eater'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.ANNALS_OF_TRUTH) then
+                    if player:hasKeyItem(invaderXim.ki.ANNALS_OF_TRUTH) then
                         return quest:progressEvent(794) -- complete
                     else
-                        local hideReacquireMenuItem = (player:hasItem(xi.item.AXE_OF_TRIALS) or player:hasKeyItem(xi.ki.MAP_TO_THE_ANNALS_OF_TRUTH)) and 1 or 0
+                        local hideReacquireMenuItem = (player:hasItem(invaderXim.item.AXE_OF_TRIALS) or player:hasKeyItem(invaderXim.ki.MAP_TO_THE_ANNALS_OF_TRUTH)) and 1 or 0
                         return quest:event(791, hideReacquireMenuItem) -- cont 1
                     end
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.AXE_OF_TRIALS) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.AXE_OF_TRIALS) then
                         local wsPoints = trade:getItem(0):getWeaponskillPoints()
 
                         if wsPoints < 300 then
@@ -85,43 +85,43 @@ quest.sections =
             onEventFinish =
             {
                 [791] = function(player, csid, option, npc)
-                    if option == 1 and not player:hasItem(xi.item.AXE_OF_TRIALS) then
-                        npcUtil.giveItem(player, xi.item.AXE_OF_TRIALS)
+                    if option == 1 and not player:hasItem(invaderXim.item.AXE_OF_TRIALS) then
+                        npcUtil.giveItem(player, invaderXim.item.AXE_OF_TRIALS)
                     elseif option == 2 then
-                        player:delQuest(xi.questLog.BASTOK, xi.quest.id.bastok.THE_WEIGHT_OF_YOUR_LIMITS)
-                        player:delKeyItem(xi.ki.WEAPON_TRAINING_GUIDE)
-                        player:delKeyItem(xi.ki.MAP_TO_THE_ANNALS_OF_TRUTH)
+                        player:delQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_WEIGHT_OF_YOUR_LIMITS)
+                        player:delKeyItem(invaderXim.ki.WEAPON_TRAINING_GUIDE)
+                        player:delKeyItem(invaderXim.ki.MAP_TO_THE_ANNALS_OF_TRUTH)
                     end
                 end,
 
                 [793] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    npcUtil.giveKeyItem(player, xi.ki.MAP_TO_THE_ANNALS_OF_TRUTH)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.MAP_TO_THE_ANNALS_OF_TRUTH)
                 end,
 
                 [794] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.MAP_TO_THE_ANNALS_OF_TRUTH)
-                        player:delKeyItem(xi.ki.ANNALS_OF_TRUTH)
-                        player:delKeyItem(xi.ki.WEAPON_TRAINING_GUIDE)
-                        player:addLearnedWeaponskill(xi.wsUnlock.STEEL_CYCLONE)
+                        player:delKeyItem(invaderXim.ki.MAP_TO_THE_ANNALS_OF_TRUTH)
+                        player:delKeyItem(invaderXim.ki.ANNALS_OF_TRUTH)
+                        player:delKeyItem(invaderXim.ki.WEAPON_TRAINING_GUIDE)
+                        player:addLearnedWeaponskill(invaderXim.wsUnlock.STEEL_CYCLONE)
                         player:messageSpecial(metalworksID.text.STEEL_CYCLONE_LEARNED)
                     end
                 end,
             },
         },
 
-        [xi.zone.THE_SANCTUARY_OF_ZITAH] =
+        [invaderXim.zone.THE_SANCTUARY_OF_ZITAH] =
         {
             ['qm1'] =
             {
                 onTrigger = function(player, npc)
                     if player:getLocalVar('killed_wsnm') == 1 then
                         player:setLocalVar('killed_wsnm', 0)
-                        return quest:keyItem(xi.ki.ANNALS_OF_TRUTH)
+                        return quest:keyItem(invaderXim.ki.ANNALS_OF_TRUTH)
                     elseif
-                        player:hasKeyItem(xi.ki.MAP_TO_THE_ANNALS_OF_TRUTH) and
-                        not player:hasKeyItem(xi.keyItem.ANNALS_OF_TRUTH) and
+                        player:hasKeyItem(invaderXim.ki.MAP_TO_THE_ANNALS_OF_TRUTH) and
+                        not player:hasKeyItem(invaderXim.keyItem.ANNALS_OF_TRUTH) and
                         npcUtil.popFromQM(player, npc, ziTahID.mob.GREENMAN, { hide = 0 })
                     then
                         return quest:messageSpecial(ziTahID.text.SENSE_OMINOUS_PRESENCE)
@@ -132,7 +132,7 @@ quest.sections =
             ['Greenman'] =
             {
                 onMobDeath = function(mob, player, optParams)
-                    if player:hasKeyItem(xi.ki.MAP_TO_THE_ANNALS_OF_TRUTH) then
+                    if player:hasKeyItem(invaderXim.ki.MAP_TO_THE_ANNALS_OF_TRUTH) then
                         player:setLocalVar('killed_wsnm', 1)
                     end
                 end,

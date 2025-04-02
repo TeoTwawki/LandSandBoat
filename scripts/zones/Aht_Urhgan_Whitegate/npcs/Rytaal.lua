@@ -3,7 +3,7 @@
 --  NPC: Rytaal
 -- !pos 112.002 -1.338 -45.038 50
 -----------------------------------
-local ID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local ID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -12,7 +12,7 @@ entity.onTrigger = function(player, npc)
     local currentAssault = player:getCurrentAssault()
 
     if
-        player:getCurrentMission(xi.mission.log_id.TOAU) <= xi.mission.id.toau.IMMORTAL_SENTRIES or
+        player:getCurrentMission(invaderXim.mission.log_id.TOAU) <= invaderXim.mission.id.toau.IMMORTAL_SENTRIES or
         player:getMainLvl() <= 49
     then
         player:startEvent(270)
@@ -24,7 +24,7 @@ entity.onTrigger = function(player, npc)
             player:messageText(player, ID.text.NYZUL_FAIL)
             player:delAssault(currentAssault)
         else
-            player:addAssaultPoint(xi.assault.getAssaultArea(player), 100)
+            player:addAssaultPoint(invaderXim.assault.getAssaultArea(player), 100)
             player:messageText(player, ID.text.ASSAULT_FAILED)
             player:delAssault(currentAssault)
         end
@@ -33,27 +33,27 @@ entity.onTrigger = function(player, npc)
         player:setCharVar('assaultEntered', 0)
         player:setCharVar('Assault_Armband', 0)
 
-        for _, orders in pairs(xi.assault.assaultOrders) do
+        for _, orders in pairs(invaderXim.assault.assaultOrders) do
             if player:hasKeyItem(orders) then
                 player:delKeyItem(orders)
             end
         end
 
-        for maps = xi.ki.MAP_OF_LEUJAOAM_SANCTUM, xi.ki.MAP_OF_NYZUL_ISLE do
+        for maps = invaderXim.ki.MAP_OF_LEUJAOAM_SANCTUM, invaderXim.ki.MAP_OF_NYZUL_ISLE do
             if player:hasKeyItem(maps) then
                 player:delKeyItem(maps)
             end
         end
     elseif
-        player:getCurrentMission(xi.mission.log_id.TOAU) > xi.mission.id.toau.PRESIDENT_SALAHEEM or
-        (player:getCurrentMission(xi.mission.log_id.TOAU) == xi.mission.id.toau.PRESIDENT_SALAHEEM and
+        player:getCurrentMission(invaderXim.mission.log_id.TOAU) > invaderXim.mission.id.toau.PRESIDENT_SALAHEEM or
+        (player:getCurrentMission(invaderXim.mission.log_id.TOAU) == invaderXim.mission.id.toau.PRESIDENT_SALAHEEM and
         player:getCharVar('ToAU3Progress') >= 1)
     then
         local currentTime = os.time()
         local refreshTime = player:getCharVar('nextTagTime')
         local idTagPeriod = 86400
 
-        if player:hasKeyItem(xi.ki.RHAPSODY_IN_AZURE) then
+        if player:hasKeyItem(invaderXim.ki.RHAPSODY_IN_AZURE) then
             idTagPeriod = 600
         end
 
@@ -71,7 +71,7 @@ entity.onTrigger = function(player, npc)
         player:setCurrency('id_tags', tagStock)
         player:setCharVar('nextTagTime', refreshTime)
 
-        if player:hasKeyItem(xi.ki.IMPERIAL_ARMY_ID_TAG) then
+        if player:hasKeyItem(invaderXim.ki.IMPERIAL_ARMY_ID_TAG) then
             haveimperialIDtag = 1
         end
 
@@ -86,7 +86,7 @@ entity.onTrigger = function(player, npc)
         player:setCharVar('assaultEntered', 0)
         player:setCharVar('Assault_Armband', 0)
         player:delAssault(currentAssault)
-        for _, orders in pairs(xi.assault.assaultOrders) do
+        for _, orders in pairs(invaderXim.assault.assaultOrders) do
             if player:hasKeyItem(orders) then
                 player:delKeyItem(orders)
             end
@@ -100,19 +100,19 @@ entity.onEventFinish = function(player, csid, option, npc)
     if
         csid == 268 and
         option == 1 and
-        not player:hasKeyItem(xi.ki.IMPERIAL_ARMY_ID_TAG) and
+        not player:hasKeyItem(invaderXim.ki.IMPERIAL_ARMY_ID_TAG) and
         tagStock > 0
     then
         if player:getCurrentAssault() ~= 0 then
-            player:messageSpecial(ID.text.CANNOT_ISSUE_TAG, xi.ki.IMPERIAL_ARMY_ID_TAG)
+            player:messageSpecial(ID.text.CANNOT_ISSUE_TAG, invaderXim.ki.IMPERIAL_ARMY_ID_TAG)
             return
         end
 
-        npcUtil.giveKeyItem(player, xi.ki.IMPERIAL_ARMY_ID_TAG)
+        npcUtil.giveKeyItem(player, invaderXim.ki.IMPERIAL_ARMY_ID_TAG)
 
         local idTagPeriod = 86400
 
-        if player:hasKeyItem(xi.ki.RHAPSODY_IN_AZURE) then
+        if player:hasKeyItem(invaderXim.ki.RHAPSODY_IN_AZURE) then
             idTagPeriod = 600
         end
 
@@ -124,18 +124,18 @@ entity.onEventFinish = function(player, csid, option, npc)
     elseif
         csid == 268 and
         option == 2 and
-        xi.assault.hasOrders(player) and
-        not player:hasKeyItem(xi.ki.IMPERIAL_ARMY_ID_TAG)
+        invaderXim.assault.hasOrders(player) and
+        not player:hasKeyItem(invaderXim.ki.IMPERIAL_ARMY_ID_TAG)
     then
         local currentAssault = player:getCurrentAssault()
 
-        for _, orders in pairs(xi.assault.assaultOrders) do
+        for _, orders in pairs(invaderXim.assault.assaultOrders) do
             if player:hasKeyItem(orders) then
                 player:delKeyItem(orders)
             end
         end
 
-        npcUtil.giveKeyItem(player, xi.ki.IMPERIAL_ARMY_ID_TAG)
+        npcUtil.giveKeyItem(player, invaderXim.ki.IMPERIAL_ARMY_ID_TAG)
         player:delAssault(currentAssault)
     end
 end

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.COOLDOWN
+-- invaderXim.effect.COOLDOWN
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

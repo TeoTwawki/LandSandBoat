@@ -7,18 +7,18 @@
 -- Ploh Trishbahk : !pos 100.580 -40.150 -63.830 257
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.ANAGNORISIS)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.ANAGNORISIS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.JUST_THE_THING },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.JUST_THE_THING },
 }
 
 local rewardItems =
 {
-    xi.item.ADOULINS_REFUGE,
-    xi.item.YGNASS_RESOLVE,
-    xi.item.ARCIELAS_GRACE,
+    invaderXim.item.ADOULINS_REFUGE,
+    invaderXim.item.YGNASS_RESOLVE,
+    invaderXim.item.ARCIELAS_GRACE,
 }
 
 local function findRewardItem(player)
@@ -38,12 +38,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(40, 256, 0, 0, 0, 4063, 1999, 4480, 0),
         },
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Ploh_Trishbahk'] =
             {

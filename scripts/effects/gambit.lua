@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.GAMBIT
+-- invaderXim.effect.GAMBIT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

@@ -8,14 +8,14 @@ local entity = {}
 
 entity.onTrigger = function(player, npc)
     -- player:startEvent(5511, 0, 8)
-    if not xi.instance.onTrigger(player, npc, xi.zone.RALA_WATERWAYS_U) then
+    if not invaderXim.instance.onTrigger(player, npc, invaderXim.zone.RALA_WATERWAYS_U) then
         --player:messageSpecial(ID.text.NOTHING_OUT_OF_ORDINARY) -- TODO: confirm this
     end
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
     -- TODO if instance creation fails, the player will be stuck in a cutscene
-    if xi.instance.onEventUpdate(player, csid, option, npc) then
+    if invaderXim.instance.onEventUpdate(player, csid, option, npc) then
         if csid == 5511 and option == 843 then
             print(1)
             player:updateEvent(258, 8, 0, 1, 0, 0, 0, 1)
@@ -27,7 +27,7 @@ entity.onEventUpdate = function(player, csid, option, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.instance.onEventFinish(player, csid, option, npc)
+    invaderXim.instance.onEventFinish(player, csid, option, npc)
 end
 
 return entity

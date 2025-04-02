@@ -11,10 +11,10 @@
 -- Curilla   : !pos 27 0.1 0.1 233
 -- Rahal     : !pos -28 0.1 -6 233
 -----------------------------------
-local chateauID = zones[xi.zone.CHATEAU_DORAGUILLE]
+local chateauID = zones[invaderXim.zone.CHATEAU_DORAGUILLE]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.THE_RUINS_OF_FEI_YIN)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.THE_RUINS_OF_FEI_YIN)
 
 mission.reward =
 {
@@ -28,7 +28,7 @@ local handleAcceptMission = function(player, csid, option, npc)
     if option == 14 then
         mission:begin(player)
         player:setMissionStatus(mission.areaId, 9)
-        player:delKeyItem(xi.ki.MESSAGE_TO_JEUNO_SANDORIA)
+        player:delKeyItem(invaderXim.ki.MESSAGE_TO_JEUNO_SANDORIA)
         player:messageSpecial(zones[player:getZoneID()].text.YOU_ACCEPT_THE_MISSION)
     end
 end
@@ -38,13 +38,13 @@ mission.sections =
     -- Player meets requirements, but has not started the mission
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId and
                 player:getRank(player:getNation()) == 5 and
                 not player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] =
             {
@@ -71,7 +71,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Grilau'] =
             {
@@ -88,7 +88,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Halver'] =
             {
@@ -99,7 +99,7 @@ mission.sections =
 
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.NORTHERN_SAN_DORIA and
+                    prevZone == invaderXim.zone.NORTHERN_SAN_DORIA and
                     player:getMissionStatus(mission.areaId) == 0
                 then
                     return 509
@@ -121,7 +121,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Halver'] =
             {
@@ -132,7 +132,7 @@ mission.sections =
                         return mission:progressEvent(533)
                     elseif missionStatus == 10 then
                         return mission:messageText(chateauID.text.FEI_YIN_NORTHEAST)
-                    elseif missionStatus == 12 and player:hasKeyItem(xi.ki.BURNT_SEAL) then
+                    elseif missionStatus == 12 and player:hasKeyItem(invaderXim.ki.BURNT_SEAL) then
                         return mission:progressEvent(534)
                     end
                 end,
@@ -141,19 +141,19 @@ mission.sections =
             onEventFinish =
             {
                 [533] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.NEW_FEIYIN_SEAL)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.NEW_FEIYIN_SEAL)
                     player:setMissionStatus(mission.areaId, 10)
                 end,
 
                 [534] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.BURNT_SEAL)
+                        player:delKeyItem(invaderXim.ki.BURNT_SEAL)
                     end
                 end,
             },
         },
 
-        [xi.zone.FEIYIN] =
+        [invaderXim.zone.FEIYIN] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 10 then
@@ -169,18 +169,18 @@ mission.sections =
             },
         },
 
-        [xi.zone.QUBIA_ARENA] =
+        [invaderXim.zone.QUBIA_ARENA] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 11 and
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.RANK_5_MISSION
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.RANK_5_MISSION
                     then
-                        npcUtil.giveKeyItem(player, xi.ki.BURNT_SEAL)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.BURNT_SEAL)
                         player:setMissionStatus(mission.areaId, 12)
-                        player:delKeyItem(xi.ki.NEW_FEIYIN_SEAL)
+                        player:delKeyItem(invaderXim.ki.NEW_FEIYIN_SEAL)
                     end
                 end,
             },
@@ -191,11 +191,11 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return player:hasCompletedMission(mission.areaId, mission.missionId) and
-                currentMission ~= xi.mission.id.sandoria.THE_SHADOW_LORD and
+                currentMission ~= invaderXim.mission.id.sandoria.THE_SHADOW_LORD and
                 player:getRank(mission.areaId) == 5
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['_6h0']    = mission:event(115),
             ['Curilla'] = mission:event(545),

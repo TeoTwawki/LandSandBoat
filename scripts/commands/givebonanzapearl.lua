@@ -31,7 +31,7 @@ commandObj.onTrigger = function(player, target, selectedNum, eventNum)
     if targ:getFreeSlotsCount() == 0 then
         player:printToPlayer(string.format('Player \'%s\' does not have free space for that item!', target))
     else
-        targ:addItem({ id = xi.item.BONANZA_PEARL,
+        targ:addItem({ id = invaderXim.item.BONANZA_PEARL,
             exdata =
             {
                 [0] = bit.band(selectedNum, 0xFF),
@@ -41,7 +41,7 @@ commandObj.onTrigger = function(player, target, selectedNum, eventNum)
             }
         })
 
-        player:printToPlayer(string.format('Gave player \'%s\' Item with ID of \'%u\'', target, xi.item.BONANZA_PEARL))
+        player:printToPlayer(string.format('Gave player \'%s\' Item with ID of \'%u\'', target, invaderXim.item.BONANZA_PEARL))
     end
 end
 

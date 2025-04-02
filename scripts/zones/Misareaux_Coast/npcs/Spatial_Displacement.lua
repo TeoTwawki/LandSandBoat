@@ -8,7 +8,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.SHELTERING_DOUBT) then
+    if player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.SHELTERING_DOUBT) then
         player:startEvent(551) -- Access to Sites A & B
     else
         player:startEvent(550) -- Access to Site A Only

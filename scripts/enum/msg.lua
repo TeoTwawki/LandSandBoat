@@ -2,14 +2,14 @@
 -- This file holds all global (not zone specific) text references
 -----------------------------------
 xi = xi or {}
-xi.msg = xi.msg or {}
+invaderXim.msg = invaderXim.msg or {}
 
 -----------------------------------
 -- Message Channels
 -----------------------------------
 
----@enum xi.channel
-xi.msg.channel =
+---@enum invaderXim.channel
+invaderXim.msg.channel =
 {
     SAY            = 0,
     SHOUT          = 1,
@@ -47,8 +47,8 @@ xi.msg.channel =
 }
 
 -- used by player:printToArea
----@enum xi.area
-xi.msg.area =
+---@enum invaderXim.area
+invaderXim.msg.area =
 {
     SYSTEM      = 0, -- Server wide like the purple stuff :)
     SAY         = 1, -- Will display in small area around player
@@ -62,8 +62,8 @@ xi.msg.area =
 -- Basic Messages
 -----------------------------------
 
----@enum xi.basic
-xi.msg.basic =
+---@enum invaderXim.basic
+invaderXim.msg.basic =
 {
     NONE    = 0, -- Display nothing
     HIT_DMG = 1, -- <actor> hits <target> for <amount> points of damage.
@@ -426,8 +426,8 @@ xi.msg.basic =
 }
 
 -- Used to modify certain basic messages.
----@enum xi.actionModifier
-xi.msg.actionModifier =
+---@enum invaderXim.actionModifier
+invaderXim.msg.actionModifier =
 {
     NONE        = 0x00,
     COVER       = 0x01,
@@ -440,8 +440,8 @@ xi.msg.actionModifier =
 -- System Messages
 -----------------------------------
 
----@enum xi.system
-xi.msg.system =
+---@enum invaderXim.system
+invaderXim.msg.system =
 {
     GLOBAL_TRUST_OFFSET          = 0,
     TRUST_NO_SEEKING_PARTY       = 296, -- You cannot use Trust magic while seeking a party.
@@ -456,8 +456,8 @@ xi.msg.system =
 -- Combat/Action Messages (used with CMessageCombatPacket/:messageCombat())
 -----------------------------------
 
----@enum xi.combat
-xi.msg.combat =
+---@enum invaderXim.combat
+invaderXim.msg.combat =
 {
     USE_OBTAIN_ESCHA_SILT = 765, -- <name> uses <item>. <name> obtains <n> escha silt.
     USE_OBTAIN_ESCHA_BEAD = 766, -- <name> uses <item>. <name> obtains <n> escha beads.

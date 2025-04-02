@@ -11,10 +11,10 @@
 -- qm5 (Xarcabard)       : !pos 179 -33 82 112
 -- qm3 (Batallia Downs)  : !pos 210 17 -615 105
 -----------------------------------
-local batalliaID = zones[xi.zone.BATALLIA_DOWNS]
+local batalliaID = zones[invaderXim.zone.BATALLIA_DOWNS]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.BREAKING_BARRIERS)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.BREAKING_BARRIERS)
 
 mission.reward =
 {
@@ -36,11 +36,11 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -49,7 +49,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -64,7 +64,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['_6h4'] =
             {
@@ -75,9 +75,9 @@ mission.sections =
                         return mission:progressEvent(32)
                     elseif
                         missionStatus == 4 and
-                        player:hasKeyItem(xi.ki.FIGURE_OF_LEVIATHAN) and
-                        player:hasKeyItem(xi.ki.FIGURE_OF_GARUDA) and
-                        player:hasKeyItem(xi.ki.FIGURE_OF_TITAN)
+                        player:hasKeyItem(invaderXim.ki.FIGURE_OF_LEVIATHAN) and
+                        player:hasKeyItem(invaderXim.ki.FIGURE_OF_GARUDA) and
+                        player:hasKeyItem(invaderXim.ki.FIGURE_OF_TITAN)
                     then
                         return mission:progressEvent(76)
                     end
@@ -105,41 +105,41 @@ mission.sections =
 
                 [76] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.FIGURE_OF_LEVIATHAN)
-                        player:delKeyItem(xi.ki.FIGURE_OF_GARUDA)
-                        player:delKeyItem(xi.ki.FIGURE_OF_TITAN)
+                        player:delKeyItem(invaderXim.ki.FIGURE_OF_LEVIATHAN)
+                        player:delKeyItem(invaderXim.ki.FIGURE_OF_GARUDA)
+                        player:delKeyItem(invaderXim.ki.FIGURE_OF_TITAN)
                     end
                 end,
             },
         },
 
-        [xi.zone.VALLEY_OF_SORROWS] =
+        [invaderXim.zone.VALLEY_OF_SORROWS] =
         {
             ['qm2'] =
             {
                 onTrigger = function(player, npc)
                     if player:getMissionStatus(mission.areaId) == 1 then
                         player:setMissionStatus(mission.areaId, 2)
-                        return mission:keyItem(xi.ki.FIGURE_OF_TITAN)
+                        return mission:keyItem(invaderXim.ki.FIGURE_OF_TITAN)
                     end
                 end,
             },
         },
 
-        [xi.zone.XARCABARD] =
+        [invaderXim.zone.XARCABARD] =
         {
             ['qm5'] =
             {
                 onTrigger = function(player, npc)
                     if player:getMissionStatus(mission.areaId) == 2 then
                         player:setMissionStatus(mission.areaId, 3)
-                        return mission:keyItem(xi.ki.FIGURE_OF_GARUDA)
+                        return mission:keyItem(invaderXim.ki.FIGURE_OF_GARUDA)
                     end
                 end,
             },
         },
 
-        [xi.zone.BATALLIA_DOWNS] =
+        [invaderXim.zone.BATALLIA_DOWNS] =
         {
             ['qm3'] =
             {
@@ -198,7 +198,7 @@ mission.sections =
             onEventFinish =
             {
                 [904] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.FIGURE_OF_LEVIATHAN)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.FIGURE_OF_LEVIATHAN)
                     player:setMissionStatus(mission.areaId, 4)
                 end,
             },
@@ -209,7 +209,7 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return player:hasCompletedMission(mission.areaId, mission.missionId) and
-                currentMission ~= xi.mission.id.sandoria.THE_HEIR_TO_THE_LIGHT
+                currentMission ~= invaderXim.mission.id.sandoria.THE_HEIR_TO_THE_LIGHT
         end,
 
         ['Curilla'] = mission:event(16):replaceDefault(),

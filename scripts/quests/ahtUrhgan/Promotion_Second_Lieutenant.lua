@@ -2,15 +2,15 @@
 -- Promotion Second Lieutenant
 -- Abquhbah: !pos 35.5 -6.6 -58 50
 -----------------------------------
-local ID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local ID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.PROMOTION_SECOND_LIEUTENANT)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.PROMOTION_SECOND_LIEUTENANT)
 
 quest.reward =
 {
-    keyItem = xi.ki.SL_WILDCAT_BADGE,
-    title   = xi.title.SECOND_LIEUTENANT,
+    keyItem = invaderXim.ki.SL_WILDCAT_BADGE,
+    title   = invaderXim.title.SECOND_LIEUTENANT,
 }
 
 quest.sections =
@@ -18,12 +18,12 @@ quest.sections =
     -- Trigger to start quest
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
             player:getCharVar('AssaultPromotion') >= 25 and
-            player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.PROMOTION_CHIEF_SERGEANT) == xi.questStatus.QUEST_COMPLETED
+            player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.PROMOTION_CHIEF_SERGEANT) == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] = quest:progressEvent(5071),
 
@@ -45,16 +45,16 @@ quest.sections =
     -- Trigger to give reminder, trade coins to give academy tuition
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 0
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.IMPERIAL_GOLD_PIECE, 3 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.IMPERIAL_GOLD_PIECE, 3 } }) then
                         return quest:progressEvent(5073)
                     end
                 end,
@@ -69,7 +69,7 @@ quest.sections =
                 [5073] = function(player, csid, option, npc)
                     player:confirmTrade()
                     quest:setVar(player, 'Prog', 1)
-                    npcUtil.giveKeyItem(player, xi.ki.OFFICER_ACADEMY_MANUAL)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.OFFICER_ACADEMY_MANUAL)
                 end,
             },
         },
@@ -77,16 +77,16 @@ quest.sections =
     -- Begin 1st game, Trigger for reminder, trade coins to start
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 1
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.IMPERIAL_MYTHRIL_PIECE, 2 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.IMPERIAL_MYTHRIL_PIECE, 2 } }) then
                         return quest:progressEvent(5075)
                     end
                 end,
@@ -117,16 +117,16 @@ quest.sections =
     -- starts 2nd game: trigger for reminder, trade coins to progress
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 2
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.IMPERIAL_MYTHRIL_PIECE, 2 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.IMPERIAL_MYTHRIL_PIECE, 2 } }) then
                         return quest:progressEvent(5076)
                     end
                 end,
@@ -154,21 +154,21 @@ quest.sections =
     -- completes 2nd game: trigger for reminder, trade item to progress
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 3
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] =
             {
                 onTrade = function(player, npc, trade)
                     local beastmenItems =
                     {
-                        xi.item.MACUAHUITL_M1, xi.item.MAMOOL_JA_COLLAR, xi.item.MAMOOL_JA_HELM,
-                        xi.item.JADAGNA_M1, xi.item.JANUWIYAH_M1, xi.item.TARIQAH_M1,
-                        xi.item.TROLL_PAULDRON, xi.item.TROLL_VAMBRACE, xi.item.LAMIAN_ARMLET,
-                        xi.item.LAMIAN_KAMAN_M1, xi.item.QUTRUB_GORGET
+                        invaderXim.item.MACUAHUITL_M1, invaderXim.item.MAMOOL_JA_COLLAR, invaderXim.item.MAMOOL_JA_HELM,
+                        invaderXim.item.JADAGNA_M1, invaderXim.item.JANUWIYAH_M1, invaderXim.item.TARIQAH_M1,
+                        invaderXim.item.TROLL_PAULDRON, invaderXim.item.TROLL_VAMBRACE, invaderXim.item.LAMIAN_ARMLET,
+                        invaderXim.item.LAMIAN_KAMAN_M1, invaderXim.item.QUTRUB_GORGET
                     }
 
                     for _, requiredTrade in pairs(beastmenItems) do
@@ -196,16 +196,16 @@ quest.sections =
     -- 3rd game: trigger for reminder, trade coins to play
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 4
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.IMPERIAL_MYTHRIL_PIECE, 2 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.IMPERIAL_MYTHRIL_PIECE, 2 } }) then
                         return quest:progressEvent(5078)
                     end
                 end,
@@ -229,7 +229,7 @@ quest.sections =
                     if option == 1 then
                         if quest:complete(player) then
                             player:setCharVar('AssaultPromotion', 0)
-                            player:delKeyItem(xi.ki.CS_WILDCAT_BADGE)
+                            player:delKeyItem(invaderXim.ki.CS_WILDCAT_BADGE)
                             quest:messageSpecial(ID.text.SECOND_LIEUTENANT)
                         end
                     end

@@ -10,14 +10,14 @@ g_mixins.abyssea_weakness = function(mob)
     if mob:isNM() then
         mob:addListener('SPAWN', 'ABYSSEA_WEAKNESS_SPAWN', function(mobArg)
             mobArg:setLocalVar('[CanProc]', 1)
-            mobArg:setLocalVar('[RedWeakness]', xi.abyssea.getNewRedWeakness(mobArg))
+            mobArg:setLocalVar('[RedWeakness]', invaderXim.abyssea.getNewRedWeakness(mobArg))
             mobArg:setLocalVar('[AbysseaRedProc]', 0)
-            mobArg:setLocalVar('[BlueWeakness]', xi.abyssea.getNewBlueWeakness(mobArg))
+            mobArg:setLocalVar('[BlueWeakness]', invaderXim.abyssea.getNewBlueWeakness(mobArg))
             mobArg:setLocalVar('[AbysseaBlueProc]', 0)
         end)
 
         mob:addListener('ENGAGE', 'ABYSSEA_WEAKNESS_ENGAGE', function(mobArg, target)
-            mobArg:setLocalVar('[YellowWeakness]', xi.abyssea.getNewYellowWeakness(mobArg))
+            mobArg:setLocalVar('[YellowWeakness]', invaderXim.abyssea.getNewYellowWeakness(mobArg))
             mobArg:setLocalVar('[AbysseaYellowProc]', 0)
         end)
 
@@ -31,7 +31,7 @@ g_mixins.abyssea_weakness = function(mob)
         mob:addListener('MAGIC_TAKE', 'ABYSSEA_MAGIC_PROC_CHECK', function(target, caster, spell)
             if target:canChangeState() then
                 if spell:getID() == target:getLocalVar('[YellowWeakness]') then
-                    xi.abyssea.procMonster(target, caster, xi.abyssea.triggerType.YELLOW)
+                    invaderXim.abyssea.procMonster(target, caster, invaderXim.abyssea.triggerType.YELLOW)
                 end
             end
         end)
@@ -39,16 +39,16 @@ g_mixins.abyssea_weakness = function(mob)
         mob:addListener('WEAPONSKILL_TAKE', 'ABYSSEA_WS_PROC_CHECK', function(target, user, wsid)
             if target:canChangeState() then
                 if wsid == target:getLocalVar('[RedWeakness]') then
-                    xi.abyssea.procMonster(target, user, xi.abyssea.triggerType.RED)
+                    invaderXim.abyssea.procMonster(target, user, invaderXim.abyssea.triggerType.RED)
                 elseif wsid == target:getLocalVar('[BlueWeakness]') then
-                    xi.abyssea.procMonster(target, user, xi.abyssea.triggerType.BLUE)
+                    invaderXim.abyssea.procMonster(target, user, invaderXim.abyssea.triggerType.BLUE)
                 end
             end
         end)
 
         mob:addListener('DEATH', 'ABYSSEA_DEATH_NM_KI_DROPCHECK', function(mobArg, player)
             if player ~= nil then
-                xi.abyssea.giveNMDrops(mobArg, player, zones[player:getZoneID()])
+                invaderXim.abyssea.giveNMDrops(mobArg, player, zones[player:getZoneID()])
             end
         end)
     end

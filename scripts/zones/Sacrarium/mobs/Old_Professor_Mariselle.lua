@@ -2,14 +2,14 @@
 -- Area: Sacrarium
 --  Mob: Old Professor Mariselle
 -----------------------------------
-local ID = zones[xi.zone.SACRARIUM]
+local ID = zones[invaderXim.zone.SACRARIUM]
 local professorTables = require('scripts/zones/Sacrarium/globals')
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
 end
 
 entity.onMobSpawn = function(mob)

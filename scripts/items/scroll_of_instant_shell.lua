@@ -14,7 +14,7 @@ itemObject.onItemUse = function(target)
     local power = 1900 -- shell_iii base power
     local duration = 1800
 
-    target:addStatusEffect(xi.effect.SHELL, power, duration)
+    target:addStatusEffect(invaderXim.effect.SHELL, power, duration)
 end
 
 return itemObject

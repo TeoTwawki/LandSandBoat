@@ -9,13 +9,13 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    local removables = { xi.effect.FLASH, xi.effect.BLINDNESS, xi.effect.PARALYSIS, xi.effect.POISON, xi.effect.CURSE_I, xi.effect.CURSE_II, xi.effect.DISEASE, xi.effect.PLAGUE }
+    local removables = { invaderXim.effect.FLASH, invaderXim.effect.BLINDNESS, invaderXim.effect.PARALYSIS, invaderXim.effect.POISON, invaderXim.effect.CURSE_I, invaderXim.effect.CURSE_II, invaderXim.effect.DISEASE, invaderXim.effect.PLAGUE }
 
     -- remove one effect and add it to me
     for i, effect in ipairs(removables) do
         local statusEffect = target:getStatusEffect(effect)
         if statusEffect then
-            spell:setMsg(xi.msg.basic.MAGIC_ABSORB_AILMENT)
+            spell:setMsg(invaderXim.msg.basic.MAGIC_ABSORB_AILMENT)
 
             -- only add it to me if I don't have it
             if not caster:hasStatusEffect(effect) then
@@ -27,7 +27,7 @@ spellObject.onSpellCast = function(caster, target, spell)
         end
     end
 
-    spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT) -- no effect
+    spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT) -- no effect
     return 0
 end
 

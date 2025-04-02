@@ -3,7 +3,7 @@
 --  Mob: Sea Puk
 -- Note: Place holder Nis Puk
 -----------------------------------
-local ID = zones[xi.zone.BHAFLAU_THICKETS]
+local ID = zones[invaderXim.zone.BHAFLAU_THICKETS]
 mixins = { require('scripts/mixins/families/puk') }
 -----------------------------------
 ---@type TMobEntity
@@ -76,7 +76,7 @@ local nisPukSpawnPoints =
 }
 
 entity.onMobInitialize = function(mob)
-    mob:setMod(xi.mod.WIND_ABSORB, 100)
+    mob:setMod(invaderXim.mod.WIND_ABSORB, 100)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
@@ -85,7 +85,7 @@ end
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = nisPukSpawnPoints
-    xi.mob.phOnDespawn(mob, nisPukPHTable, 5, 43200, params) -- 12 hours
+    invaderXim.mob.phOnDespawn(mob, nisPukPHTable, 5, 43200, params) -- 12 hours
 end
 
 return entity

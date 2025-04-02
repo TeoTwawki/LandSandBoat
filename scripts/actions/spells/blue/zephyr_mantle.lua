@@ -23,13 +23,13 @@ end
 spellObject.onSpellCast = function(caster, target, spell)
     local power = 4
     local tick = 0
-    local duration = xi.spells.blue.calculateDurationWithDiffusion(caster, 300)
+    local duration = invaderXim.spells.blue.calculateDurationWithDiffusion(caster, 300)
 
-    if not target:addStatusEffect(xi.effect.BLINK, power, tick, duration) then
-        spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+    if not target:addStatusEffect(invaderXim.effect.BLINK, power, tick, duration) then
+        spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
     end
 
-    return xi.effect.BLINK
+    return invaderXim.effect.BLINK
 end
 
 return spellObject

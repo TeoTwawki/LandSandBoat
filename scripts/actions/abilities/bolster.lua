@@ -14,7 +14,7 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    xi.job_utils.geomancer.bolster(player, target, ability)
+    invaderXim.job_utils.geomancer.bolster(player, target, ability)
 end
 
 return abilityObject

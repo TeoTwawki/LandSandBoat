@@ -1,7 +1,7 @@
 -----------------------------------
 --  Luminous Lance
 -----------------------------------
-local ID = zones[xi.zone.EMPYREAL_PARADOX]
+local ID = zones[invaderXim.zone.EMPYREAL_PARADOX]
 -----------------------------------
 ---@type TMobSkill
 local mobskillObject = {}
@@ -11,9 +11,9 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
     local lanceOut = mob:getLocalVar('lanceOut')
 
     if
-        not (target:hasStatusEffect(xi.effect.PHYSICAL_SHIELD) and target:hasStatusEffect(xi.effect.MAGIC_SHIELD)) and
+        not (target:hasStatusEffect(invaderXim.effect.PHYSICAL_SHIELD) and target:hasStatusEffect(invaderXim.effect.MAGIC_SHIELD)) and
         lanceTime + 60 < mob:getBattleTime() and
-        target:getCurrentAction() ~= xi.act.MOBABILITY_USING and
+        target:getCurrentAction() ~= invaderXim.act.MOBABILITY_USING and
         lanceOut == 1
     then
         return 0
@@ -29,9 +29,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local accmod = 1
     local dmgmod = 1.6
 
-    local info = xi.mobskills.mobRangedMove(mob, target, skill, numhits, accmod, dmgmod, xi.mobskills.magicalTpBonus.NO_EFFECT)
+    local info = invaderXim.mobskills.mobRangedMove(mob, target, skill, numhits, accmod, dmgmod, invaderXim.mobskills.magicalTpBonus.NO_EFFECT)
 
-    local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.RANGED, xi.damageType.PIERCING, info.hitslanded)
+    local dmg = invaderXim.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, invaderXim.attackType.RANGED, invaderXim.damageType.PIERCING, info.hitslanded)
 
     mob:entityAnimationPacket('ids0')
     mob:setLocalVar('lanceTime', mob:getBattleTime())
@@ -39,9 +39,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     target:setAnimationSub(3)
 
     -- Cannot be resisted
-    target:addStatusEffect(xi.effect.TERROR, 0, 0, 20)
+    target:addStatusEffect(invaderXim.effect.TERROR, 0, 0, 20)
 
-    target:takeDamage(dmg, mob, xi.attackType.RANGED, xi.damageType.PIERCING)
+    target:takeDamage(dmg, mob, invaderXim.attackType.RANGED, invaderXim.damageType.PIERCING)
     return dmg
 end
 

@@ -8,27 +8,27 @@ local quest = HiddenQuest:new('portalCharm')
 
 quest.reward =
 {
-    keyItem = xi.ki.PORTAL_CHARM,
+    keyItem = invaderXim.ki.PORTAL_CHARM,
 }
 
 quest.sections =
 {
     {
         check = function(player, questVars, vars)
-            return player:getNation() == xi.nation.WINDURST and
-                player:getRank(xi.nation.WINDURST) >= 3
+            return player:getNation() == invaderXim.nation.WINDURST and
+                player:getRank(invaderXim.nation.WINDURST) >= 3
         end,
 
-        [xi.zone.HEAVENS_TOWER] =
+        [invaderXim.zone.HEAVENS_TOWER] =
         {
             ['Kupipi'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.ROLANBERRY) and
-                        not player:hasKeyItem(xi.ki.PORTAL_CHARM)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.ROLANBERRY) and
+                        not player:hasKeyItem(invaderXim.ki.PORTAL_CHARM)
                     then
-                        if player:hasCompletedMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.WRITTEN_IN_THE_STARS) then
+                        if player:hasCompletedMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.WRITTEN_IN_THE_STARS) then
                             return quest:progressEvent(291)
                         else
                             return quest:progressEvent(292)
@@ -38,7 +38,7 @@ quest.sections =
 
                 onTrigger = function(player, npc, trade)
                     if
-                        player:hasCompletedMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.WRITTEN_IN_THE_STARS) and
+                        player:hasCompletedMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.WRITTEN_IN_THE_STARS) and
                         quest:getVar(player, 'Prog') == 1
                     then
                         return quest:progressEvent(293)

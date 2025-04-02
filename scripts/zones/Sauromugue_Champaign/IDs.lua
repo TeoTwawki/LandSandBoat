@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.SAUROMUGUE_CHAMPAIGN] =
+zones[invaderXim.zone.SAUROMUGUE_CHAMPAIGN] =
 {
     text =
     {
@@ -62,7 +62,7 @@ zones[xi.zone.SAUROMUGUE_CHAMPAIGN] =
 
         VOIDWALKER =
         {
-            [xi.keyItem.CLEAR_ABYSSITE] =
+            [invaderXim.keyItem.CLEAR_ABYSSITE] =
             {
                 17269126,  -- Lacus
                 17269125,  -- Thunor
@@ -74,18 +74,18 @@ zones[xi.zone.SAUROMUGUE_CHAMPAIGN] =
                 17269119, -- Aither
             },
 
-            [xi.keyItem.COLORFUL_ABYSSITE] =
+            [invaderXim.keyItem.COLORFUL_ABYSSITE] =
             {
                 17269118, -- Skuld
                 17269117, -- Urd
             },
 
-            [xi.keyItem.YELLOW_ABYSSITE] =
+            [invaderXim.keyItem.YELLOW_ABYSSITE] =
             {
                 17269116, -- Verthandi
             },
 
-            [xi.keyItem.BLACK_ABYSSITE] =
+            [invaderXim.keyItem.BLACK_ABYSSITE] =
             {
                 17269115, -- Yilbegan
             }
@@ -98,4 +98,4 @@ zones[xi.zone.SAUROMUGUE_CHAMPAIGN] =
     },
 }
 
-return zones[xi.zone.SAUROMUGUE_CHAMPAIGN]
+return zones[invaderXim.zone.SAUROMUGUE_CHAMPAIGN]

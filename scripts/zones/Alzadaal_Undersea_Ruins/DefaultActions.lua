@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.ALZADAAL_UNDERSEA_RUINS]
+local ID = zones[invaderXim.zone.ALZADAAL_UNDERSEA_RUINS]
 
 return {
     ['blank_lamp']            = { messageSpecial = ID.text.DEVICE_MALFUNCTIONING },

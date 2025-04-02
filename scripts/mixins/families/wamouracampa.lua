@@ -15,31 +15,31 @@ g_mixins.families = g_mixins.families or {}
 local function curlUpRoaming(mob)
     mob:setAnimationSub(5) -- Curl
     mob:setLocalVar('formTimeRoam', os.time() + math.random(43, 47))
-    mob:setMobMod(xi.mobMod.SKILL_LIST, 1162) -- Set Curled Skill List. ('Cannonball' and 'Heat Barrier' only)
-    mob:addMod(xi.mod.DMGPHYS, -2500)
-    mob:delMod(xi.mod.DMGMAGIC, -2500)
+    mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 1162) -- Set Curled Skill List. ('Cannonball' and 'Heat Barrier' only)
+    mob:addMod(invaderXim.mod.DMGPHYS, -2500)
+    mob:delMod(invaderXim.mod.DMGMAGIC, -2500)
 end
 
 local function strechUpRoaming(mob)
     mob:setAnimationSub(4) -- Strech
     mob:setLocalVar('formTimeRoam', os.time() + math.random(43, 47))
-    mob:setMobMod(xi.mobMod.SKILL_LIST, 254) -- Set streched Skill List. (All TP moves except 'Cannonball')
-    mob:delMod(xi.mod.DMGPHYS, -2500)
-    mob:addMod(xi.mod.DMGMAGIC, -2500)
+    mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 254) -- Set streched Skill List. (All TP moves except 'Cannonball')
+    mob:delMod(invaderXim.mod.DMGPHYS, -2500)
+    mob:addMod(invaderXim.mod.DMGMAGIC, -2500)
 end
 
 local function curlUpEngaged(mob)
     mob:setAnimationSub(5) -- Curl
-    mob:setMobMod(xi.mobMod.SKILL_LIST, 1162) -- Set Curled Skill List. ('Cannonball' and 'Heat Barrier' only)
-    mob:addMod(xi.mod.DMGPHYS, -2500)
-    mob:delMod(xi.mod.DMGMAGIC, -2500)
+    mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 1162) -- Set Curled Skill List. ('Cannonball' and 'Heat Barrier' only)
+    mob:addMod(invaderXim.mod.DMGPHYS, -2500)
+    mob:delMod(invaderXim.mod.DMGMAGIC, -2500)
 end
 
 local function strechUpEngaged(mob)
     mob:setAnimationSub(4) -- Strech
-    mob:setMobMod(xi.mobMod.SKILL_LIST, 254) -- Set streched Skill List. (All TP moves except 'Cannonball')
-    mob:delMod(xi.mod.DMGPHYS, -2500)
-    mob:addMod(xi.mod.DMGMAGIC, -2500)
+    mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 254) -- Set streched Skill List. (All TP moves except 'Cannonball')
+    mob:delMod(invaderXim.mod.DMGPHYS, -2500)
+    mob:addMod(invaderXim.mod.DMGMAGIC, -2500)
 end
 
 local function resetCount(mob)
@@ -63,8 +63,8 @@ g_mixins.families.wamouracampa = function(wamouracampaMob)
     -- Set spawn.
     wamouracampaMob:addListener('SPAWN', 'WAMOURACAMPA_SPAWN', function(mob)
         mob:setAnimationSub(4)
-        mob:setMobMod(xi.mobMod.SKILL_LIST, 254)
-        mob:addMod(xi.mod.DMGMAGIC, -2500)
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 254)
+        mob:addMod(invaderXim.mod.DMGMAGIC, -2500)
         mob:setLocalVar('hitPoints', mob:getHP())
         mob:setLocalVar('formTimeRoam', os.time() + math.random(30, 90))
         mob:setLocalVar('formTimeEngaged', os.time())
@@ -87,7 +87,7 @@ g_mixins.families.wamouracampa = function(wamouracampaMob)
         if canUseEclosion then
             local eclosionTime = mob:getLocalVar('eclosionTime')
             if eclosionTime ~= 0 and os.time() >= eclosionTime then
-                mob:useMobAbility(xi.mobSkill.ECLOSION, mob)
+                mob:useMobAbility(invaderXim.mobSkill.ECLOSION, mob)
             end
         end
     end)

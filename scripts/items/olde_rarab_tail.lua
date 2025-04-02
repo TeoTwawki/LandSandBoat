@@ -14,14 +14,14 @@ itemObject.onItemUse = function(target)
     local ID = zones[target:getZoneID()]
 
     if
-        not target:hasStatusEffect(xi.effect.TERROR) and
+        not target:hasStatusEffect(invaderXim.effect.TERROR) and
         (target:getID() == ID.mob.ATORI_TUTORI or
         target:getID() == ID.mob.ATORI_TUTORI + 1 or
         target:getID() == ID.mob.ATORI_TUTORI + 2)
     then
-        target:addStatusEffect(xi.effect.TERROR, 1, 3, 90)
+        target:addStatusEffect(invaderXim.effect.TERROR, 1, 3, 90)
     else
-        target:messageBasic(xi.msg.basic.NO_EFFECT)
+        target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
     end
 end
 

@@ -3,7 +3,7 @@
 --  Mob: Bladmall
 --  ENM: Shell We Dance?
 -----------------------------------
-local ID = zones[xi.zone.BONEYARD_GULLY]
+local ID = zones[invaderXim.zone.BONEYARD_GULLY]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

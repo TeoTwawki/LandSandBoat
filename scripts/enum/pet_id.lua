@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.petId
-xi.petId =
+---@enum invaderXim.petId
+invaderXim.petId =
 {
     --  Summoner
     FIRE_SPIRIT           =  0,

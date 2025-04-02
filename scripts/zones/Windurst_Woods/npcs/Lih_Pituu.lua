@@ -16,16 +16,16 @@ local pathNodes =
 
 entity.onSpawn = function(npc)
     npc:initNpcAi()
-    npc:setPos(xi.path.first(pathNodes))
-    npc:pathThrough(pathNodes, xi.path.flag.PATROL)
+    npc:setPos(invaderXim.path.first(pathNodes))
+    npc:pathThrough(pathNodes, invaderXim.path.flag.PATROL)
 end
 
 entity.onTrigger = function(player, npc)
-    xi.crafting.oldImageSupportOnTrigger(player, npc)
+    invaderXim.crafting.oldImageSupportOnTrigger(player, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.crafting.oldImageSupportOnEventFinish(player, csid, option, npc)
+    invaderXim.crafting.oldImageSupportOnEventFinish(player, csid, option, npc)
 end
 
 return entity

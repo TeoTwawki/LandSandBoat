@@ -6,7 +6,7 @@
 -- Involved in Missions: Windurst 2-1/7-1/8-2, CoP 3-3
 -- !pos -26 -6 103 238
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WATERS]
+local ID = zones[invaderXim.zone.WINDURST_WATERS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -14,16 +14,16 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     -- Hat in Hand
     if
-        player:hasKeyItem(xi.ki.NEW_MODEL_HAT) and
+        player:hasKeyItem(invaderXim.ki.NEW_MODEL_HAT) and
         not utils.mask.getBit(player:getCharVar('QuestHatInHand_var'), 5)
     then
-        player:messageSpecial(ID.text.YOU_SHOW_OFF_THE, 0, xi.ki.NEW_MODEL_HAT)
+        player:messageSpecial(ID.text.YOU_SHOW_OFF_THE, 0, invaderXim.ki.NEW_MODEL_HAT)
         player:startEvent(55)
 
     -- Standard dialogues
-    elseif player:hasCompletedMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_SIXTH_MINISTRY) then
+    elseif player:hasCompletedMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_SIXTH_MINISTRY) then
         player:startEvent(379) -- 'Hey, you're the adventurer from the other day!'
-    elseif player:hasCompletedMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.LOST_FOR_WORDS) then
+    elseif player:hasCompletedMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.LOST_FOR_WORDS) then
         player:startEvent(169) -- 'You must not frighten the others with rumors that the Book of the Gods has gone blank...'
     elseif player:getLocalVar('TosukaDialogueToggle') == 1 then
         player:startEvent(881) -- He toggles this event with 370 when player has no other mission/quest dialogue.

@@ -5,23 +5,23 @@
 -- Talib : !pos -101.133 4.649 28.803 236
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.BEAUTY_AND_THE_GALKA)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.BEAUTY_AND_THE_GALKA)
 
 quest.reward =
 {
     fame     = 75,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.BRONZE_KNIFE,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.BRONZE_KNIFE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Talib'] =
             {
@@ -46,7 +46,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Parraggoh'] =
             {
@@ -70,10 +70,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Talib'] =
             {
@@ -83,8 +83,8 @@ quest.sections =
 
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.CHUNK_OF_ZINC_ORE) and
-                        not player:hasKeyItem(xi.ki.PALBOROUGH_MINES_LOGS)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.CHUNK_OF_ZINC_ORE) and
+                        not player:hasKeyItem(invaderXim.ki.PALBOROUGH_MINES_LOGS)
                     then
                         return quest:progressEvent(3)
                     end
@@ -95,17 +95,17 @@ quest.sections =
             {
                 [3] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    npcUtil.giveKeyItem(player, xi.ki.PALBOROUGH_MINES_LOGS)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.PALBOROUGH_MINES_LOGS)
                 end,
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Parraggoh'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.PALBOROUGH_MINES_LOGS) then
+                    if player:hasKeyItem(invaderXim.ki.PALBOROUGH_MINES_LOGS) then
                         return quest:progressEvent(10)
                     elseif math.random(1, 100) <= 50 then
                         return quest:event(8)
@@ -119,7 +119,7 @@ quest.sections =
             {
                 [10] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.PALBOROUGH_MINES_LOGS)
+                        player:delKeyItem(invaderXim.ki.PALBOROUGH_MINES_LOGS)
                     end
                 end,
             },
@@ -128,10 +128,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             -- New default texts.
             ['Parraggoh'] = quest:event(12):replaceDefault(),

@@ -5,7 +5,7 @@ require('scripts/globals/npc_util')
 -----------------------------------
 xi = xi or {}
 
-xi.ephemeral = {}
+invaderXim.ephemeral = {}
 
 -- Cap per crystal type that can be stored. Retail/Default is 5000
 local crystalCap = 5000
@@ -33,7 +33,7 @@ local getCrystalTotals = function(player)
     return params
 end
 
-xi.ephemeral.onTrade = function(player, trade, successEvent, failEvent)
+invaderXim.ephemeral.onTrade = function(player, trade, successEvent, failEvent)
     local params = { 0, 0, 0, 0, 0, 0, 0, 0 }
     local success = false
     for _, v in pairs(crystalData) do
@@ -81,15 +81,15 @@ xi.ephemeral.onTrade = function(player, trade, successEvent, failEvent)
     end
 end
 
-xi.ephemeral.onTrigger = function(player, event)
+invaderXim.ephemeral.onTrigger = function(player, event)
     player:startEvent(event, unpack(getCrystalTotals(player)))
 end
 
-xi.ephemeral.onEventUpdate = function(player)
+invaderXim.ephemeral.onEventUpdate = function(player)
     player:updateEvent(unpack(getCrystalTotals(player)))
 end
 
-xi.ephemeral.onEventFinish = function(player, option, wasTrade)
+invaderXim.ephemeral.onEventFinish = function(player, option, wasTrade)
     -- Early out if the player cancelled the menu
     if not wasTrade and bit.band(option, 0xFFFF) == 0 then
         return

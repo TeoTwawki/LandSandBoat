@@ -13,7 +13,7 @@
 -- Table structure for table `mob_pools`
 --
 
-DROP TABLE IF EXISTS `mob_pools`;
+DROP TABLE IF IXIMSTS `mob_pools`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mob_pools` (

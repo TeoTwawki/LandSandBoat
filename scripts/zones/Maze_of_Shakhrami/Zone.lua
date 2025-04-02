@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Maze of Shakhrami (198)
 -----------------------------------
-local ID = zones[xi.zone.MAZE_OF_SHAKHRAMI]
+local ID = zones[invaderXim.zone.MAZE_OF_SHAKHRAMI]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -19,8 +19,8 @@ zoneObject.onInitialize = function(zone)
         GetMobByID(ID.mob.LEECH_KING):setRespawnTime(math.random(900, 7200))
     end
 
-    xi.treasure.initZone(zone)
-    xi.helm.initZone(zone, xi.helmType.EXCAVATION)
+    invaderXim.treasure.initZone(zone)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.EXCAVATION)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -38,7 +38,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

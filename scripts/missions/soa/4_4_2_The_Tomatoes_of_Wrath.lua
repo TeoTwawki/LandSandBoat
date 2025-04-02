@@ -8,11 +8,11 @@
 -- Chalvava       : !pos -318.000 -1.000 -318.000 258
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.THE_TOMATOES_OF_WRATH)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_TOMATOES_OF_WRATH)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.A_GRAVE_MISTAKE },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.A_GRAVE_MISTAKE },
 }
 
 mission.sections =
@@ -22,12 +22,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(40, 256, 0, 255, 255, 255, 255, 255, 4),
         },
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Ploh_Trishbahk'] = mission:progressEvent(1533, 257, 935, 127, 0, 4063, 1999, 1989, 0),
 
@@ -39,7 +39,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['Chalvava'] =
             {

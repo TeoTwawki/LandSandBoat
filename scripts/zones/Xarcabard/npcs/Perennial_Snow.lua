@@ -4,17 +4,17 @@
 -- Involved in Quests: The Circle of Time
 -- !pos 339 0 -379 112
 -----------------------------------
-local ID = zones[xi.zone.XARCABARD]
+local ID = zones[invaderXim.zone.XARCABARD]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local circleOfTime = player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_CIRCLE_OF_TIME)
+    local circleOfTime = player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_CIRCLE_OF_TIME)
 
     -- CIRCLE OF TIME (Bard AF3)
     if
-        circleOfTime == xi.questStatus.QUEST_ACCEPTED and
+        circleOfTime == invaderXim.questStatus.QUEST_ACCEPTED and
         player:getCharVar('circleTime') == 3
     then
         if player:getCharVar('star_ringburied') == 0 then

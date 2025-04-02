@@ -7,11 +7,11 @@
 -- Helaku  : !pos 49 -2 -12 231
 -- Halver  : !pos 2 0.1 0.1 233
 -----------------------------------
-local chateauID          = zones[xi.zone.CHATEAU_DORAGUILLE]
-local northernSandoriaID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local chateauID          = zones[invaderXim.zone.CHATEAU_DORAGUILLE]
+local northernSandoriaID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY_SANDORIA)
+local mission = Mission:new(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY_SANDORIA)
 
 mission.reward = {}
 
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Halver'] =
             {
@@ -30,8 +30,8 @@ mission.sections =
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
                     if missionStatus == 3 then
-                        if xi.settings.main.ENABLE_TRUST_QUESTS == 1 then
-                            local needsHalverTrust = (not player:hasSpell(xi.magic.spell.HALVER) and not player:findItem(xi.item.CIPHER_OF_HALVERS_ALTER_EGO)) and 1 or 0
+                        if invaderXim.settings.main.ENABLE_TRUST_QUESTS == 1 then
+                            local needsHalverTrust = (not player:hasSpell(invaderXim.magic.spell.HALVER) and not player:findItem(invaderXim.item.CIPHER_OF_HALVERS_ALTER_EGO)) and 1 or 0
 
                             return mission:progressEvent(501, { [7] = needsHalverTrust })
                         else
@@ -49,17 +49,17 @@ mission.sections =
                     player:setMissionStatus(mission.areaId, 4)
 
                     if
-                        xi.settings.main.ENABLE_TRUST_QUESTS == 1 and
-                        not player:hasSpell(xi.magic.spell.HALVER) and
-                        not player:findItem(xi.item.CIPHER_OF_HALVERS_ALTER_EGO)
+                        invaderXim.settings.main.ENABLE_TRUST_QUESTS == 1 and
+                        not player:hasSpell(invaderXim.magic.spell.HALVER) and
+                        not player:findItem(invaderXim.item.CIPHER_OF_HALVERS_ALTER_EGO)
                     then
-                        npcUtil.giveItem(player, xi.item.CIPHER_OF_HALVERS_ALTER_EGO)
+                        npcUtil.giveItem(player, invaderXim.item.CIPHER_OF_HALVERS_ALTER_EGO)
                     end
                 end,
             },
         },
 
-        [xi.zone.GHELSBA_OUTPOST] =
+        [invaderXim.zone.GHEIXIMA_OUTPOST] =
         {
             ['Warchief_Vatgit'] =
             {
@@ -71,7 +71,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Baraka'] =
             {
@@ -122,7 +122,7 @@ mission.sections =
                 [543] = function(player, csid, option, npc)
                     if mission:complete(player) then
                         player:setMissionStatus(mission.areaId, 6)
-                        player:addMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY)
+                        player:addMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY)
                     end
                 end,
             },

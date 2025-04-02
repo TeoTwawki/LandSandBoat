@@ -23,7 +23,7 @@ g_mixins.families.antlion_ambush_noaggro = function(antlionAmbushNoaggroMob)
     end)
 
     -- Ensures an interupted pit ambush doesn't let the mob stay hidden underground
-    antlionAmbushNoaggroMob:addListener('WEAPONSKILL_STATE_EXIT', 'ANTLION_AMBUSH_FINISH', function(mob, skillID)
+    antlionAmbushNoaggroMob:addListener('WEAPONSKILL_STATE_IXIMT', 'ANTLION_AMBUSH_FINISH', function(mob, skillID)
         if skillID == pitAmbush then
             -- ensure name doesn't show up until mobskill completes
             mob:setAnimationSub(1)

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.SNAKE_EYE
+-- invaderXim.effect.SNAKE_EYE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

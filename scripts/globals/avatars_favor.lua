@@ -4,9 +4,9 @@
 require('scripts/globals/pets')
 -----------------------------------
 xi = xi or {}
-xi.avatarsFavor = xi.avatarsFavor or {}
+invaderXim.avatarsFavor = invaderXim.avatarsFavor or {}
 
-xi.avatarsFavor.skillLevels =
+invaderXim.avatarsFavor.skillLevels =
 {
     [1] = 316,
     [2] = 381,
@@ -21,70 +21,70 @@ xi.avatarsFavor.skillLevels =
 -- Avatar Favor buffs scale per tick (~9 seconds) to a max value based on current summoning skill
 local avatarsFavorEffect =
 {
-    [xi.petId.CARBUNCLE] = -- Regen
+    [invaderXim.petId.CARBUNCLE] = -- Regen
     {
         scaling = { 12, 14, 16, 18, 20, 21, 24, 26, 27, 28, 29 },
-        effect = xi.effect.CARBUNCLES_FAVOR
+        effect = invaderXim.effect.CARBUNCLES_FAVOR
     },
 
-    [xi.petId.FENRIR] = -- Magic Eva
+    [invaderXim.petId.FENRIR] = -- Magic Eva
     {
         scaling = { 1, 2, 3, 4, 5, 7, 9, 12, 15, 18, 21 },
-        effect = xi.effect.FENRIRS_FAVOR
+        effect = invaderXim.effect.FENRIRS_FAVOR
     },
 
-    [xi.petId.IFRIT] = -- Double Attack
+    [invaderXim.petId.IFRIT] = -- Double Attack
     {
         scaling = { 12, 12, 15, 15, 23, 23, 24, 24, 25, 25, 26 },
-        effect = xi.effect.IFRITS_FAVOR
+        effect = invaderXim.effect.IFRITS_FAVOR
     },
 
-    [xi.petId.TITAN] = -- Defense
+    [invaderXim.petId.TITAN] = -- Defense
     {
         scaling = { 57, 62, 67, 72, 77, 82, 87, 92, 97, 102, 107 },
-        effect = xi.effect.TITANS_FAVOR
+        effect = invaderXim.effect.TITANS_FAVOR
     },
 
-    [xi.petId.LEVIATHAN] = -- Magic Accuracy
+    [invaderXim.petId.LEVIATHAN] = -- Magic Accuracy
     {
         scaling = { 1, 2, 3, 4, 5, 7, 9, 12, 15, 18, 21 },
-        effect = xi.effect.LEVIATHANS_FAVOR
+        effect = invaderXim.effect.LEVIATHANS_FAVOR
     },
 
-    [xi.petId.GARUDA] = -- Evasion
+    [invaderXim.petId.GARUDA] = -- Evasion
     {
         scaling = { 12, 15, 18, 22, 25, 28, 31, 34, 37, 40, 43 },
-        effect = xi.effect.GARUDAS_FAVOR
+        effect = invaderXim.effect.GARUDAS_FAVOR
     },
 
-    [xi.petId.SHIVA] = -- Magic Attack
+    [invaderXim.petId.SHIVA] = -- Magic Attack
     {
         scaling = { 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45 },
-        effect = xi.effect.SHIVAS_FAVOR
+        effect = invaderXim.effect.SHIVAS_FAVOR
     },
 
-    [xi.petId.RAMUH] = -- Potency (Critical Hit+%)
+    [invaderXim.petId.RAMUH] = -- Potency (Critical Hit+%)
     {
         scaling = { 12, 14, 16, 18, 19, 21, 21, 23, 23, 24, 24 },
-        effect = xi.effect.RAMUHS_FAVOR
+        effect = invaderXim.effect.RAMUHS_FAVOR
     },
 
-    [xi.petId.DIABOLOS] = -- Refresh
+    [invaderXim.petId.DIABOLOS] = -- Refresh
     {
         scaling = { 3, 4, 4, 5, 5, 5, 6, 7, 7, 8, 8 },
-        effect = xi.effect.DIABOLOSS_FAVOR
+        effect = invaderXim.effect.DIABOLOSS_FAVOR
     },
 
-    [xi.petId.CAIT_SITH] = -- Magic Defense
+    [invaderXim.petId.CAIT_SITH] = -- Magic Defense
     {
         scaling = { 10, 12, 14, 16, 18, 20, 22, 24, 26, 27, 28 },
-        effect = xi.effect.CAIT_SITHS_FAVOR
+        effect = invaderXim.effect.CAIT_SITHS_FAVOR
     },
 
-    [xi.petId.SIREN] = -- Subtle Blow
+    [invaderXim.petId.SIREN] = -- Subtle Blow
     {
         scaling = { 9, 11, 13, 15, 17, 19, 20, 21, 22, 23 },
-        effect = xi.effect.SIRENS_FAVOR
+        effect = invaderXim.effect.SIRENS_FAVOR
     },
 }
 -----------------------------------
@@ -96,11 +96,11 @@ local avatarsFavorEffect =
 local shouldAvatarsFavorBeApplied = function(petId)
     local shouldApply = false
 
-    if petId and petId >= xi.petId.CARBUNCLE and petId <= xi.petId.DIABOLOS then
+    if petId and petId >= invaderXim.petId.CARBUNCLE and petId <= invaderXim.petId.DIABOLOS then
         shouldApply = true
     end
 
-    if petId and (petId == xi.petId.CAIT_SITH or petId == xi.petId.SIREN) then
+    if petId and (petId == invaderXim.petId.CAIT_SITH or petId == invaderXim.petId.SIREN) then
         shouldApply = true
     end
 
@@ -113,17 +113,17 @@ local removeAvatarsFavorDebuffsFromPet = function(target)
         local petId = pet:getPetID()
         if  -- Different pet states for in and out of retail / eras
             shouldAvatarsFavorBeApplied(petId) and
-            xi.settings.main.ENABLE_SOA == 0
+            invaderXim.settings.main.ENABLE_SOA == 0
         then
-            pet:addMod(xi.mod.MATT, 20)
-            pet:addMod(xi.mod.ATTP, 20)
-            pet:addMod(xi.mod.ACC, 10)
-            pet:addMod(xi.mod.DEFP, 10)
+            pet:addMod(invaderXim.mod.MATT, 20)
+            pet:addMod(invaderXim.mod.ATTP, 20)
+            pet:addMod(invaderXim.mod.ACC, 10)
+            pet:addMod(invaderXim.mod.DEFP, 10)
         end
     end
 end
 
-xi.avatarsFavor.applyAvatarsFavorAuraToPet = function(target, effect)
+invaderXim.avatarsFavor.applyAvatarsFavorAuraToPet = function(target, effect)
     local pet = target:getPet()
     if pet then
         local petId = pet:getPetID()
@@ -134,12 +134,12 @@ xi.avatarsFavor.applyAvatarsFavorAuraToPet = function(target, effect)
             --Useful debug message
             --printf('Power %d, Effect %d', effect:getPower(), power)
 
-            pet:addStatusEffectEx(avatarEffect, avatarEffect, 6, 3, 15, avatarEffect, power, xi.auraTarget.ALLIES, bit.bor(xi.effectFlag.NO_LOSS_MESSAGE, xi.effectFlag.AURA))
+            pet:addStatusEffectEx(avatarEffect, avatarEffect, 6, 3, 15, avatarEffect, power, invaderXim.auraTarget.ALLIES, bit.bor(invaderXim.effectFlag.NO_LOSS_MESSAGE, invaderXim.effectFlag.AURA))
         end
     end
 end
 
-xi.avatarsFavor.removeAvatarsFavorAuraFromPet = function(target)
+invaderXim.avatarsFavor.removeAvatarsFavorAuraFromPet = function(target)
     local pet = target:getPet()
     if pet then
         local petId = pet:getPetID()
@@ -153,18 +153,18 @@ xi.avatarsFavor.removeAvatarsFavorAuraFromPet = function(target)
     end
 end
 
-xi.avatarsFavor.applyAvatarsFavorDebuffsToPet = function(target)
+invaderXim.avatarsFavor.applyAvatarsFavorDebuffsToPet = function(target)
     local pet = target:getPet()
     if pet then
         local petId = pet:getPetID()
         if  -- Different pet states for in and out of retail / eras
             shouldAvatarsFavorBeApplied(petId) and
-            xi.settings.main.ENABLE_SOA == 0
+            invaderXim.settings.main.ENABLE_SOA == 0
         then
-            pet:delMod(xi.mod.MATT, 20) -- Other than MATT most of these values are myth and guesses from multiple sources
-            pet:delMod(xi.mod.ATTP, 20)
-            pet:delMod(xi.mod.ACC, 10)
-            pet:delMod(xi.mod.DEFP, 10)
+            pet:delMod(invaderXim.mod.MATT, 20) -- Other than MATT most of these values are myth and guesses from multiple sources
+            pet:delMod(invaderXim.mod.ATTP, 20)
+            pet:delMod(invaderXim.mod.ACC, 10)
+            pet:delMod(invaderXim.mod.DEFP, 10)
         end
     end
 end

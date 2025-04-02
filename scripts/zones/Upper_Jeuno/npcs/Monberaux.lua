@@ -27,14 +27,14 @@ entity.onTrade = function(player, npc, trade)
     -- Check trade for elixir/hi-elixir
     -- TODO: add logic to trade more than 1 at a time, or more than 1 type at a time.
     if
-        (trade:hasItemQty(xi.item.ELIXIR, 1) or
-            trade:hasItemQty(xi.item.HI_ELIXIR, 1)) and
+        (trade:hasItemQty(invaderXim.item.ELIXIR, 1) or
+            trade:hasItemQty(invaderXim.item.HI_ELIXIR, 1)) and
         finalElixir < elixirTotal
     then
         player:startEvent(10243, elixirType, 1, 2, 0, 59615134, 7271819, 4095, 128)
     elseif
-        (trade:hasItemQty(xi.item.ELIXIR, 1) or
-        trade:hasItemQty(xi.item.HI_ELIXIR, 1)) and
+        (trade:hasItemQty(invaderXim.item.ELIXIR, 1) or
+        trade:hasItemQty(invaderXim.item.HI_ELIXIR, 1)) and
         finalElixir >= elixirTotal
     then
         player:startEvent(10246, elixirType)
@@ -54,8 +54,8 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    local theLostCardien = player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_LOST_CARDIAN)
-    local cooksPride = player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.COOKS_PRIDE)
+    local theLostCardien = player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_LOST_CARDIAN)
+    local cooksPride = player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.COOKS_PRIDE)
     local elixirTotal = 2
     local minimumGil = player:getGil() * 0.1
 
@@ -66,22 +66,22 @@ entity.onTrigger = function(player, npc)
     end
 
     if
-        cooksPride == xi.questStatus.QUEST_COMPLETED and
-        theLostCardien == xi.questStatus.QUEST_AVAILABLE and
+        cooksPride == invaderXim.questStatus.QUEST_COMPLETED and
+        theLostCardien == invaderXim.questStatus.QUEST_AVAILABLE and
         player:getCharVar('theLostCardianVar') == 2
     then
         player:startEvent(33) -- Long CS & Finish Quest "The Lost Cardian"
 
     elseif
-        cooksPride == xi.questStatus.QUEST_COMPLETED and
-        theLostCardien == xi.questStatus.QUEST_AVAILABLE and
+        cooksPride == invaderXim.questStatus.QUEST_COMPLETED and
+        theLostCardien == invaderXim.questStatus.QUEST_AVAILABLE and
         player:getCharVar('theLostCardianVar') == 3
     then
         player:startEvent(34) -- Shot CS & Finish Quest "The Lost Cardian"
 
     elseif
-        theLostCardien == xi.questStatus.QUEST_COMPLETED and
-        player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_KIND_CARDIAN) == xi.questStatus.QUEST_ACCEPTED
+        theLostCardien == invaderXim.questStatus.QUEST_COMPLETED and
+        player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_KIND_CARDIAN) == invaderXim.questStatus.QUEST_ACCEPTED
     then
         player:startEvent(32)
     end
@@ -109,13 +109,13 @@ entity.onEventFinish = function(player, csid, option, npc)
         (csid == 33 and option == 0) or
         (csid == 34 and option == 0)
     then
-        player:addTitle(xi.title.TWOS_COMPANY)
+        player:addTitle(invaderXim.title.TWOS_COMPANY)
         player:setCharVar('theLostCardianVar', 0)
         npcUtil.giveCurrency(player, 'gil', 2100)
-        npcUtil.giveKeyItem(player, xi.ki.TWO_OF_SWORDS)
-        player:addFame(xi.fameArea.JEUNO, 30)
-        player:completeQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_LOST_CARDIAN)
-        player:addQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_KIND_CARDIAN) -- Start next quest "THE_KING_CARDIAN"
+        npcUtil.giveKeyItem(player, invaderXim.ki.TWO_OF_SWORDS)
+        player:addFame(invaderXim.fameArea.JEUNO, 30)
+        player:completeQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_LOST_CARDIAN)
+        player:addQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_KIND_CARDIAN) -- Start next quest "THE_KING_CARDIAN"
     elseif csid == 33 and option == 1 then
         player:setCharVar('theLostCardianVar', 3)
     end

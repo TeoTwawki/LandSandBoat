@@ -24,8 +24,8 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
         multiplier = basefTP + multPerTP
     end
 
-    local skill = player:getSkillLevel(xi.skill.DAGGER)
-    local wsc   = player:getStat(xi.mod.MND) * 1.0
+    local skill = player:getSkillLevel(invaderXim.skill.DAGGER)
+    local wsc   = player:getStat(invaderXim.mod.MND) * 1.0
 
     local mpRestored = math.floor((math.floor(skill * 0.11) + wsc) * multiplier)
 
@@ -40,7 +40,7 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     end
 
     -- Display MP actually given to player
-    action:messageID(target:getID(), xi.msg.basic.SKILL_DRAIN_MP)
+    action:messageID(target:getID(), invaderXim.msg.basic.SKILL_DRAIN_MP)
     action:param(target:getID(), mpRestored)
 
     return 1, 0, false, mpRestored

@@ -6,7 +6,7 @@
 -- Unstable_Displacement : !pos -612.800 1.750 693.190 29
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.STORMS_OF_FATE)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.STORMS_OF_FATE)
 
 quest.reward = {}
 
@@ -14,13 +14,13 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getCurrentMission(xi.mission.log_id.COP) == xi.mission.id.cop.DAWN and
-                xi.mission.getVar(player, xi.mission.log_id.COP, xi.mission.id.cop.DAWN, 'Status') == 8 and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getCurrentMission(invaderXim.mission.log_id.COP) == invaderXim.mission.id.cop.DAWN and
+                invaderXim.mission.getVar(player, invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.DAWN, 'Status') == 8 and
                 not quest:getMustZone(player)
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             onTriggerAreaEnter =
             {
@@ -47,10 +47,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.MISAREAUX_COAST] =
+        [invaderXim.zone.MISAREAUX_COAST] =
         {
             ['_0p2'] =
             {
@@ -69,7 +69,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.RIVERNE_SITE_B01] =
+        [invaderXim.zone.RIVERNE_SITE_B01] =
         {
             ['Unstable_Displacement'] =
             {
@@ -88,17 +88,17 @@ quest.sections =
 
                 [32001] = function(player, csid, option, npc)
                     if
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.STORMS_OF_FATE and
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.STORMS_OF_FATE and
                         quest:getVar(player, 'Prog') == 2
                     then
-                        npcUtil.giveKeyItem(player, xi.ki.WHISPER_OF_THE_WYRMKING)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.WHISPER_OF_THE_WYRMKING)
                         quest:setVar(player, 'Prog', 3)
                     end
                 end,
             },
         },
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             onTriggerAreaEnter =
             {
@@ -113,7 +113,7 @@ quest.sections =
             {
                 [143] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        xi.quest.setVar(player, xi.questLog.JEUNO, xi.quest.id.jeuno.SHADOWS_OF_THE_DEPARTED, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.quest.setVar(player, invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.SHADOWS_OF_THE_DEPARTED, 'Timer', VanadielUniqueDay() + 1)
                     end
                 end,
             },

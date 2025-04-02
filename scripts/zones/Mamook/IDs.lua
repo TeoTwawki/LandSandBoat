@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.MAMOOK] =
+zones[invaderXim.zone.MAMOOK] =
 {
     text =
     {
@@ -49,4 +49,4 @@ zones[xi.zone.MAMOOK] =
     },
 }
 
-return zones[xi.zone.MAMOOK]
+return zones[invaderXim.zone.MAMOOK]

@@ -3,7 +3,7 @@
 -----------------------------------
 -- Taillegeas : !pos 31.000 1.995 57.971 243
 -----------------------------------
-local ruludeID = zones[xi.zone.RULUDE_GARDENS]
+local ruludeID = zones[invaderXim.zone.RULUDE_GARDENS]
 -----------------------------------
 
 local quest = HiddenQuest:new('TrustCherukiki')
@@ -20,23 +20,23 @@ quest.sections =
 {
     {
         check = function(player, questVars, vars)
-            return xi.trust.hasPermit(player) and
-            not player:hasSpell(xi.magic.spell.CHERUKIKI) and
+            return invaderXim.trust.hasPermit(player) and
+            not player:hasSpell(invaderXim.magic.spell.CHERUKIKI) and
             (
                 -- Between these missions
-                (player:getCurrentMission(xi.mission.log_id.COP) > xi.mission.id.cop.CHAINS_AND_BONDS and
-                player:getCurrentMission(xi.mission.log_id.COP) < xi.mission.id.cop.THE_WARRIORS_PATH)
+                (player:getCurrentMission(invaderXim.mission.log_id.COP) > invaderXim.mission.id.cop.CHAINS_AND_BONDS and
+                player:getCurrentMission(invaderXim.mission.log_id.COP) < invaderXim.mission.id.cop.THE_WARRIORS_PATH)
                 or
                 -- On Dawn, but past "the boss"
-                (player:getCurrentMission(xi.mission.log_id.COP) == xi.mission.id.cop.DAWN and
-                xi.mission.getVar(player, xi.mission.log_id.COP, xi.mission.id.cop.DAWN, 'Status') >= 2)
+                (player:getCurrentMission(invaderXim.mission.log_id.COP) == invaderXim.mission.id.cop.DAWN and
+                invaderXim.mission.getVar(player, invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.DAWN, 'Status') >= 2)
                 or
                 -- Past Dawn
-                player:getCurrentMission(xi.mission.log_id.COP) > xi.mission.id.cop.DAWN
+                player:getCurrentMission(invaderXim.mission.log_id.COP) > invaderXim.mission.id.cop.DAWN
             )
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Taillegeas'] =
             {
@@ -49,8 +49,8 @@ quest.sections =
             {
                 [10235] = function(player, csid, option, npc)
                     if option == 2 and quest:complete(player) then
-                        player:addSpell(xi.magic.spell.CHERUKIKI, true, true)
-                        player:messageSpecial(ruludeID.text.YOU_LEARNED_TRUST, 0, xi.magic.spell.CHERUKIKI)
+                        player:addSpell(invaderXim.magic.spell.CHERUKIKI, true, true)
+                        player:messageSpecial(ruludeID.text.YOU_LEARNED_TRUST, 0, invaderXim.magic.spell.CHERUKIKI)
                     end
                 end,
             },

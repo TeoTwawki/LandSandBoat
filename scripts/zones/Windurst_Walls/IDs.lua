@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.WINDURST_WALLS] =
+zones[invaderXim.zone.WINDURST_WALLS] =
 {
     text =
     {
@@ -30,7 +30,7 @@ zones[xi.zone.WINDURST_WALLS] =
         FISHING_MESSAGE_OFFSET         = 7094,  -- You can't fish here.
         RECEIVE_BAYLD                  = 7192,  -- You receive <number> bayld!
         DOORS_SEALED_SHUT              = 7769,  -- The doors are firmly sealed shut.
-        MOGHOUSE_EXIT                  = 8226,  -- You have learned your way through the back alleys of Windurst! Now you can exit to any area from your residence.
+        MOGHOUSE_IXIMT                  = 8226,  -- You have learned your way through the back alleys of Windurst! Now you can exit to any area from your residence.
         RECEIVED_CONQUEST_POINTS       = 8454,  -- You received <number> conquest points!
         SCAVNIX_SHOP_DIALOG            = 8710,  -- <Pshoooooowaaaaa> I'm goood Goblin from underwooorld.  I find lotshhh of gooodieshhh.  You want try shhhome chipshhh? Cheap for yooou.
         RETRIBUTION_LEARNED            = 9098,  -- You have learned the weapon skill Retribution!
@@ -50,4 +50,4 @@ zones[xi.zone.WINDURST_WALLS] =
     },
 }
 
-return zones[xi.zone.WINDURST_WALLS]
+return zones[invaderXim.zone.WINDURST_WALLS]

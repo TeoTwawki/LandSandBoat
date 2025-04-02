@@ -8,11 +8,11 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.geomanticReservoir.onTrigger(player, npc, xi.magic.spell.GEO_MALAISE)
+    invaderXim.geomanticReservoir.onTrigger(player, npc, invaderXim.magic.spell.GEO_MALAISE)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.geomanticReservoir.onEventFinish(player, csid, xi.magic.spell.GEO_MALAISE)
+    invaderXim.geomanticReservoir.onEventFinish(player, csid, invaderXim.magic.spell.GEO_MALAISE)
 end
 
 return entity

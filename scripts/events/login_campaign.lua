@@ -6,8 +6,8 @@ require('scripts/globals/npc_util')
 local prizes = require('scripts/events/login_campaign_data')
 -----------------------------------
 xi = xi or {}
-xi.events = xi.events or {}
-xi.events.loginCampaign = xi.events.loginCampaign or {}
+invaderXim.events = invaderXim.events or {}
+invaderXim.events.loginCampaign = invaderXim.events.loginCampaign or {}
 
 -- Change vars below to modify settings for current login campaign
 -- NOTE: the year and month values are used in the Moogle's Event!
@@ -17,8 +17,8 @@ local loginCampaignDay = 25
 local loginCampaignDuration = 23 -- Duration is set in Earth days (Average is 23 days)
 
 -- Checks if a Login Campaign is active.
-xi.events.loginCampaign.isCampaignActive = function()
-    if xi.settings.main.ENABLE_LOGIN_CAMPAIGN == 1 then
+invaderXim.events.loginCampaign.isCampaignActive = function()
+    if invaderXim.settings.main.ENABLE_LOGIN_CAMPAIGN == 1 then
 
         --- TODO: Find common way to handle string|osdate return to be allowed to osdateparam?
         ---@diagnostic disable-next-line: param-type-mismatch
@@ -42,8 +42,8 @@ xi.events.loginCampaign.isCampaignActive = function()
 end
 
 -- Gives Login Points once a day.
-xi.events.loginCampaign.onGameIn = function(player)
-    if not xi.events.loginCampaign.isCampaignActive()  then
+invaderXim.events.loginCampaign.onGameIn = function(player)
+    if not invaderXim.events.loginCampaign.isCampaignActive()  then
         return
     end
 
@@ -97,8 +97,8 @@ end
 
 -- Beginning of CS with Greeter Moogle.
 -- Handles showing the correct list of prices and hiding the options that are not available
-xi.events.loginCampaign.onTrigger = function(player, csid)
-    if not xi.events.loginCampaign.isCampaignActive() then
+invaderXim.events.loginCampaign.onTrigger = function(player, csid)
+    if not invaderXim.events.loginCampaign.isCampaignActive() then
         -- TODO: What do the moogles do when the campaign isn't active?
         return
     end
@@ -144,8 +144,8 @@ end
 
 -- Shows list of items depending on option selected.
 -- It also is in charge of purchasing selected item.
-xi.events.loginCampaign.onEventUpdate = function(player, csid, option, npc)
-    if not xi.events.loginCampaign.isCampaignActive() then
+invaderXim.events.loginCampaign.onEventUpdate = function(player, csid, option, npc)
+    if not invaderXim.events.loginCampaign.isCampaignActive() then
         return
     end
 

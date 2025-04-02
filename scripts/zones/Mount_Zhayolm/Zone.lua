@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Mount_Zhayolm (61)
 -----------------------------------
-local ID = zones[xi.zone.MOUNT_ZHAYOLM]
+local ID = zones[invaderXim.zone.MOUNT_ZHAYOLM]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -9,14 +9,14 @@ local zoneObject = {}
 zoneObject.onInitialize = function(zone)
     GetMobByID(ID.mob.CERBERUS):setRespawnTime(math.random(12, 36) * 3600)
 
-    xi.helm.initZone(zone, xi.helmType.MINING)
-    xi.darkRider.addHoofprints(zone)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.MINING)
+    invaderXim.darkRider.addHoofprints(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
     local cs = -1
 
-    if prevZone == xi.zone.LEBROS_CAVERN then
+    if prevZone == invaderXim.zone.LEBROS_CAVERN then
         player:setPos(681.950, -24.00, 369.936, 40)
     elseif
         player:getXPos() == 0 and
@@ -38,14 +38,14 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
 end
 
 zoneObject.onGameDay = function()
-    xi.apkallu.updateHate(xi.zone.MOUNT_ZHAYOLM, -3)
+    invaderXim.apkallu.updateHate(invaderXim.zone.MOUNT_ZHAYOLM, -3)
 end
 
 zoneObject.onGameHour = function(zone)
-    xi.darkRider.onGameHour(zone)
+    invaderXim.darkRider.onGameHour(zone)
 
     if VanadielHour() == 0 then
-        xi.darkRider.addHoofprints(zone)
+        invaderXim.darkRider.addHoofprints(zone)
     end
 end
 

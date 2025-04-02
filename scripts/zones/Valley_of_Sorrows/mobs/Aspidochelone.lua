@@ -2,7 +2,7 @@
 -- Area: Valley of Sorrows
 --  HNM: Aspidochelone
 -----------------------------------
-local ID = zones[xi.zone.VALLEY_OF_SORROWS]
+local ID = zones[invaderXim.zone.VALLEY_OF_SORROWS]
 mixins =
 {
     require('scripts/mixins/rage'),
@@ -17,38 +17,38 @@ local intoShell = function(mob)
     mob:setAnimationSub(1)
     mob:setMobAbilityEnabled(false)
     mob:setAutoAttackEnabled(false)
-    mob:setMod(xi.mod.REGEN, 130)
-    mob:setMod(xi.mod.UDMGRANGE, -9500)
-    mob:setMod(xi.mod.UDMGPHYS, -9500)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+    mob:setMod(invaderXim.mod.REGEN, 130)
+    mob:setMod(invaderXim.mod.UDMGRANGE, -9500)
+    mob:setMod(invaderXim.mod.UDMGPHYS, -9500)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
 end
 
 local outOfShell = function(mob)
     mob:setMobAbilityEnabled(true)
     mob:setAutoAttackEnabled(true)
-    mob:setMod(xi.mod.REGEN, 0)
-    mob:setMod(xi.mod.UDMGRANGE, 0)
-    mob:setMod(xi.mod.UDMGPHYS, 0)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:setMod(invaderXim.mod.REGEN, 0)
+    mob:setMod(invaderXim.mod.UDMGRANGE, 0)
+    mob:setMod(invaderXim.mod.UDMGPHYS, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
 end
 
 entity.onMobSpawn = function(mob)
     -- Despawn the ???
-    GetNPCByID(ID.npc.ADAMANTOISE_QM):setStatus(xi.status.DISAPPEAR)
+    GetNPCByID(ID.npc.ADAMANTOISE_QM):setStatus(invaderXim.status.DISAPPEAR)
 
     outOfShell(mob) -- Ensure out of shell mods are set on spawn
 
     mob:setLocalVar('[rage]timer', 3600) -- 60 minutes
     mob:setLocalVar('dmgToChange', mob:getHP() - 1000)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addMod(xi.mod.DOUBLE_ATTACK, 20)
-    mob:setMod(xi.mod.UDMGMAGIC, -3000)
-    mob:setMod(xi.mod.CURSERES, 100)
-    mob:setMobMod(xi.mobMod.WEAPON_BONUS, 45) -- 130 total weapon damage
-    mob:setMod(xi.mod.DEF, 702)
-    mob:setMod(xi.mod.ATT, 395)
-    mob:setMod(xi.mod.EVA, 310)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addMod(invaderXim.mod.DOUBLE_ATTACK, 20)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, -3000)
+    mob:setMod(invaderXim.mod.CURSERES, 100)
+    mob:setMobMod(invaderXim.mobMod.WEAPON_BONUS, 45) -- 130 total weapon damage
+    mob:setMod(invaderXim.mod.DEF, 702)
+    mob:setMod(invaderXim.mod.ATT, 395)
+    mob:setMod(invaderXim.mod.EVA, 310)
     mob:setAnimationSub(0)
 end
 
@@ -92,12 +92,12 @@ entity.onMobFight = function(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.ASPIDOCHELONE_SINKER)
+    player:addTitle(invaderXim.title.ASPIDOCHELONE_SINKER)
 end
 
 entity.onMobDespawn = function(mob)
     -- Respawn the ???
-    GetNPCByID(ID.npc.ADAMANTOISE_QM):updateNPCHideTime(xi.settings.main.FORCE_SPAWN_QM_RESET_TIME)
+    GetNPCByID(ID.npc.ADAMANTOISE_QM):updateNPCHideTime(invaderXim.settings.main.FORCE_SPAWN_QM_RESET_TIME)
 end
 
 return entity

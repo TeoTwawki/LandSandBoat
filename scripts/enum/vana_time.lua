@@ -4,8 +4,8 @@ xi = xi or {}
 -- See: https://www.bg-wiki.com/ffxi/Vana%27diel_Time
 local secondsPerTick = 2.4
 
----@enum xi.vanaTime
-xi.vanaTime =
+---@enum invaderXim.vanaTime
+invaderXim.vanaTime =
 {
     YEAR  = 518400 * secondsPerTick,
     MONTH = 43200 * secondsPerTick,

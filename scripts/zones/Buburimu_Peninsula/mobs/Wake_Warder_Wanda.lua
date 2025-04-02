@@ -6,19 +6,19 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.MAGIC_COOL, 50) -- just one spell to spam
+    mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 50) -- just one spell to spam
 end
 
 entity.onMobEngage = function(mob, target)
-    mob:setMod(xi.mod.REGAIN, 25)
+    mob:setMod(invaderXim.mod.REGAIN, 25)
 end
 
 entity.onMobDisengage = function(mob)
-    mob:setMod(xi.mod.REGAIN, 0)
+    mob:setMod(invaderXim.mod.REGAIN, 0)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 260)
+    invaderXim.hunts.checkHunt(mob, player, 260)
 end
 
 entity.onMobDespawn = function(mob)

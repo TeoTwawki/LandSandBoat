@@ -2,76 +2,76 @@
 -- Abyssea Sturdy Pyxis - Augmented item
 -----------------------------------
 xi = xi or {}
-xi.pyxis = xi.pyxis or {}
+invaderXim.pyxis = invaderXim.pyxis or {}
 
-xi.pyxis.augItem = {}
+invaderXim.pyxis.augItem = {}
 -----------------------------------
 -- drop id's for augmented items
 -- uses zone id as the key
 -----------------------------------
 local augdrops =
 {
-    [xi.zone.ABYSSEA_KONSCHTAT] =
+    [invaderXim.zone.ABYSSEA_KONSCHTAT] =
     {
-        xi.item.DARK_RING,
-        xi.item.TOWER_SHIELD,
-        xi.item.WIVRE_HAIRPIN,
+        invaderXim.item.DARK_RING,
+        invaderXim.item.TOWER_SHIELD,
+        invaderXim.item.WIVRE_HAIRPIN,
     },
 
-    [xi.zone.ABYSSEA_TAHRONGI] =
+    [invaderXim.zone.ABYSSEA_TAHRONGI] =
     {
-        xi.item.ADAMAN_BARBUTA,
-        xi.item.DEMONS_RING,
-        xi.item.WIVRE_GORGET,
+        invaderXim.item.ADAMAN_BARBUTA,
+        invaderXim.item.DEMONS_RING,
+        invaderXim.item.WIVRE_GORGET,
     },
 
-    [xi.zone.ABYSSEA_LA_THEINE] =
+    [invaderXim.zone.ABYSSEA_LA_THEINE] =
     {
-        xi.item.JEWELED_COLLAR,
-        xi.item.RASETSU_JINPACHI,
-        xi.item.TARUTARU_SASH,
+        invaderXim.item.JEWELED_COLLAR,
+        invaderXim.item.RASETSU_JINPACHI,
+        invaderXim.item.TARUTARU_SASH,
     },
 
-    [xi.zone.ABYSSEA_ATTOHWA] =
+    [invaderXim.zone.ABYSSEA_ATTOHWA] =
     {
-        xi.item.GLEAMING_SPEAR,
-        xi.item.LORE_SLOPS,
-        xi.item.VERSA_MUFFLERS,
+        invaderXim.item.GLEAMING_SPEAR,
+        invaderXim.item.LORE_SLOPS,
+        invaderXim.item.VERSA_MUFFLERS,
     },
 
-    [xi.zone.ABYSSEA_MISAREAUX] =
+    [invaderXim.zone.ABYSSEA_MISAREAUX] =
     {
-        xi.item.GULES_LEGGINGS,
-        xi.item.GLEAMING_ZAGHNAL,
-        xi.item.LIGHT_EARRING,
+        invaderXim.item.GULES_LEGGINGS,
+        invaderXim.item.GLEAMING_ZAGHNAL,
+        invaderXim.item.LIGHT_EARRING,
     },
 
-    [xi.zone.ABYSSEA_VUNKERL] =
+    [invaderXim.zone.ABYSSEA_VUNKERL] =
     {
-        xi.item.DIAMOND_RING,
-        xi.item.GULES_MITTENS,
-        xi.item.LORE_SABOTS,
+        invaderXim.item.DIAMOND_RING,
+        invaderXim.item.GULES_MITTENS,
+        invaderXim.item.LORE_SABOTS,
     },
 
-    [xi.zone.ABYSSEA_ALTEPA] =
+    [invaderXim.zone.ABYSSEA_ALTEPA] =
     {
-        xi.item.FIRMAMENT,
-        xi.item.GUISARME,
-        xi.item.RIBAULDEQUIN,
+        invaderXim.item.FIRMAMENT,
+        invaderXim.item.GUISARME,
+        invaderXim.item.RIBAULDEQUIN,
     },
 
-    [xi.zone.ABYSSEA_ULEGUERAND] =
+    [invaderXim.zone.ABYSSEA_ULEGUERAND] =
     {
-        xi.item.DIRE_SCYTHE,
-        xi.item.SAVATE_FISTS,
-        xi.item.VODUN_MACE,
+        invaderXim.item.DIRE_SCYTHE,
+        invaderXim.item.SAVATE_FISTS,
+        invaderXim.item.VODUN_MACE,
     },
 
-    [xi.zone.ABYSSEA_GRAUBERG] =
+    [invaderXim.zone.ABYSSEA_GRAUBERG] =
     {
-        xi.item.DOOM_TABAR,
-        xi.item.YATAGHAN,
-        xi.item.YUKITSUGU,
+        invaderXim.item.DOOM_TABAR,
+        invaderXim.item.YATAGHAN,
+        invaderXim.item.YUKITSUGU,
     },
 }
 
@@ -81,7 +81,7 @@ local augdrops =
 -----------------------------------
 local augs =
 {
-    [xi.item.DARK_RING] =
+    [invaderXim.item.DARK_RING] =
     {
         augments =
         {
@@ -94,7 +94,7 @@ local augs =
         },
     },
 
-    [xi.item.TOWER_SHIELD] =
+    [invaderXim.item.TOWER_SHIELD] =
     {
         augments =
         {
@@ -107,7 +107,7 @@ local augs =
         },
     },
 
-    [xi.item.WIVRE_HAIRPIN] =
+    [invaderXim.item.WIVRE_HAIRPIN] =
     {
         augments =
         {
@@ -120,7 +120,7 @@ local augs =
         },
     },
 
-    [xi.item.ADAMAN_BARBUTA] =
+    [invaderXim.item.ADAMAN_BARBUTA] =
     {
         augments =
         {
@@ -134,7 +134,7 @@ local augs =
         },
     },
 
-    [xi.item.DEMONS_RING] =
+    [invaderXim.item.DEMONS_RING] =
     {
         augments =
         {
@@ -148,7 +148,7 @@ local augs =
         },
     },
 
-    [xi.item.WIVRE_GORGET] =
+    [invaderXim.item.WIVRE_GORGET] =
     {
         augments =
         {
@@ -161,7 +161,7 @@ local augs =
         },
     },
 
-    [xi.item.JEWELED_COLLAR] =
+    [invaderXim.item.JEWELED_COLLAR] =
     {
         augments =
         {
@@ -177,7 +177,7 @@ local augs =
         },
     },
 
-    [xi.item.RASETSU_JINPACHI] =
+    [invaderXim.item.RASETSU_JINPACHI] =
     {
         augments =
         {
@@ -189,7 +189,7 @@ local augs =
         },
     },
 
-    [xi.item.TARUTARU_SASH] =
+    [invaderXim.item.TARUTARU_SASH] =
     {
         augments =
         {
@@ -202,7 +202,7 @@ local augs =
         },
     },
 
-    [xi.item.GLEAMING_SPEAR] =
+    [invaderXim.item.GLEAMING_SPEAR] =
     {
         augments =
         {
@@ -219,7 +219,7 @@ local augs =
         },
     },
 
-    [xi.item.LORE_SLOPS] =
+    [invaderXim.item.LORE_SLOPS] =
     {
         augments =
         {
@@ -231,7 +231,7 @@ local augs =
         },
     },
 
-    [xi.item.VERSA_MUFFLERS] =
+    [invaderXim.item.VERSA_MUFFLERS] =
     {
         augments =
         {
@@ -244,7 +244,7 @@ local augs =
         },
     },
 
-    [xi.item.GULES_LEGGINGS] =
+    [invaderXim.item.GULES_LEGGINGS] =
     {
         augments =
         {
@@ -257,7 +257,7 @@ local augs =
         },
     },
 
-    [xi.item.GLEAMING_ZAGHNAL] =
+    [invaderXim.item.GLEAMING_ZAGHNAL] =
     {
         augments =
         {
@@ -269,7 +269,7 @@ local augs =
         },
     },
 
-    [xi.item.LIGHT_EARRING] =
+    [invaderXim.item.LIGHT_EARRING] =
     {
         augments =
         {
@@ -282,7 +282,7 @@ local augs =
         },
     },
 
-    [xi.item.DIAMOND_RING] =
+    [invaderXim.item.DIAMOND_RING] =
     {
         augments =
         {
@@ -294,7 +294,7 @@ local augs =
         },
     },
 
-    [xi.item.GULES_MITTENS] =
+    [invaderXim.item.GULES_MITTENS] =
     {
         augments =
         {
@@ -306,7 +306,7 @@ local augs =
         },
     },
 
-    [xi.item.LORE_SABOTS] =
+    [invaderXim.item.LORE_SABOTS] =
     {
         augments =
         {
@@ -318,7 +318,7 @@ local augs =
         },
     },
 
-    [xi.item.FIRMAMENT] =
+    [invaderXim.item.FIRMAMENT] =
     {
         augments =
         {
@@ -330,7 +330,7 @@ local augs =
         },
     },
 
-    [xi.item.GUISARME] =
+    [invaderXim.item.GUISARME] =
     {
         augments =
         {
@@ -343,7 +343,7 @@ local augs =
         },
     },
 
-    [xi.item.RIBAULDEQUIN] =
+    [invaderXim.item.RIBAULDEQUIN] =
     {
         augments =
         {
@@ -356,7 +356,7 @@ local augs =
         },
     },
 
-    [xi.item.DIRE_SCYTHE] =
+    [invaderXim.item.DIRE_SCYTHE] =
     {
         augments =
         {
@@ -371,7 +371,7 @@ local augs =
         },
     },
 
-    [xi.item.SAVATE_FISTS] =
+    [invaderXim.item.SAVATE_FISTS] =
     {
         augments =
         {
@@ -383,7 +383,7 @@ local augs =
         },
     },
 
-    [xi.item.VODUN_MACE] =
+    [invaderXim.item.VODUN_MACE] =
     {
         augments =
         {
@@ -396,7 +396,7 @@ local augs =
         },
     },
 
-    [xi.item.DOOM_TABAR] =
+    [invaderXim.item.DOOM_TABAR] =
     {
         augments =
         {
@@ -408,7 +408,7 @@ local augs =
         },
     },
 
-    [xi.item.YATAGHAN] =
+    [invaderXim.item.YATAGHAN] =
     {
         augments =
         {
@@ -421,7 +421,7 @@ local augs =
         },
     },
 
-    [xi.item.YUKITSUGU] =
+    [invaderXim.item.YUKITSUGU] =
     {
         augments =
         {
@@ -443,33 +443,33 @@ local augs =
 -----------------------------------
 local augTierDeduction =
 {
-    [xi.item.DARK_RING       ] = { 3, 3, 3, 2, 0 },
-    [xi.item.TOWER_SHIELD    ] = { 5, 2, 2, 0, 0 },
-    [xi.item.WIVRE_HAIRPIN   ] = { 3, 3, 3, 2, 0 },
-    [xi.item.ADAMAN_BARBUTA  ] = { 6, 6, 6, 4, 0 },
-    [xi.item.DEMONS_RING     ] = { 4, 4, 4, 3, 0 },
-    [xi.item.WIVRE_GORGET    ] = { 3, 3, 3, 0, 0 },
-    [xi.item.JEWELED_COLLAR  ] = { 7, 7, 3, 2, 0 },
-    [xi.item.RASETSU_JINPACHI] = { 2, 2, 2, 0, 0 },
-    [xi.item.TARUTARU_SASH   ] = { 5, 5, 3, 2, 0 },
-    [xi.item.GLEAMING_SPEAR  ] = { 6, 5, 4, 3, 0 },
-    [xi.item.LORE_SLOPS      ] = { 3, 3, 2, 0, 0 },
-    [xi.item.VERSA_MUFFLERS  ] = { 2, 2, 2, 0, 0 },
-    [xi.item.GULES_LEGGINGS  ] = { 4, 4, 3, 0, 0 },
-    [xi.item.GLEAMING_ZAGHNAL] = { 4, 4, 2, 0, 0 },
-    [xi.item.LIGHT_EARRING   ] = { 3, 3, 3, 0, 0 },
-    [xi.item.DIAMOND_RING    ] = { 4, 4, 2, 0, 0 },
-    [xi.item.GULES_MITTENS   ] = { 3, 3, 2, 0, 0 },
-    [xi.item.LORE_SABOTS     ] = { 2, 2, 2, 1, 0 },
-    [xi.item.FIRMAMENT       ] = { 4, 4, 3, 2, 0 },
-    [xi.item.GUISARME        ] = { 4, 4, 3, 2, 0 },
-    [xi.item.RIBAULDEQUIN    ] = { 4, 4, 3, 2, 0 },
-    [xi.item.DIRE_SCYTHE     ] = { 6, 6, 4, 2, 0 },
-    [xi.item.SAVATE_FISTS    ] = { 3, 3, 2, 0, 0 },
-    [xi.item.VODUN_MACE      ] = { 4, 4, 3, 2, 0 },
-    [xi.item.DOOM_TABAR      ] = { 3, 3, 2, 0, 0 },
-    [xi.item.YATAGHAN        ] = { 4, 4, 3, 2, 0 },
-    [xi.item.YUKITSUGU       ] = { 3, 3, 2, 0, 0 },
+    [invaderXim.item.DARK_RING       ] = { 3, 3, 3, 2, 0 },
+    [invaderXim.item.TOWER_SHIELD    ] = { 5, 2, 2, 0, 0 },
+    [invaderXim.item.WIVRE_HAIRPIN   ] = { 3, 3, 3, 2, 0 },
+    [invaderXim.item.ADAMAN_BARBUTA  ] = { 6, 6, 6, 4, 0 },
+    [invaderXim.item.DEMONS_RING     ] = { 4, 4, 4, 3, 0 },
+    [invaderXim.item.WIVRE_GORGET    ] = { 3, 3, 3, 0, 0 },
+    [invaderXim.item.JEWELED_COLLAR  ] = { 7, 7, 3, 2, 0 },
+    [invaderXim.item.RASETSU_JINPACHI] = { 2, 2, 2, 0, 0 },
+    [invaderXim.item.TARUTARU_SASH   ] = { 5, 5, 3, 2, 0 },
+    [invaderXim.item.GLEAMING_SPEAR  ] = { 6, 5, 4, 3, 0 },
+    [invaderXim.item.LORE_SLOPS      ] = { 3, 3, 2, 0, 0 },
+    [invaderXim.item.VERSA_MUFFLERS  ] = { 2, 2, 2, 0, 0 },
+    [invaderXim.item.GULES_LEGGINGS  ] = { 4, 4, 3, 0, 0 },
+    [invaderXim.item.GLEAMING_ZAGHNAL] = { 4, 4, 2, 0, 0 },
+    [invaderXim.item.LIGHT_EARRING   ] = { 3, 3, 3, 0, 0 },
+    [invaderXim.item.DIAMOND_RING    ] = { 4, 4, 2, 0, 0 },
+    [invaderXim.item.GULES_MITTENS   ] = { 3, 3, 2, 0, 0 },
+    [invaderXim.item.LORE_SABOTS     ] = { 2, 2, 2, 1, 0 },
+    [invaderXim.item.FIRMAMENT       ] = { 4, 4, 3, 2, 0 },
+    [invaderXim.item.GUISARME        ] = { 4, 4, 3, 2, 0 },
+    [invaderXim.item.RIBAULDEQUIN    ] = { 4, 4, 3, 2, 0 },
+    [invaderXim.item.DIRE_SCYTHE     ] = { 6, 6, 4, 2, 0 },
+    [invaderXim.item.SAVATE_FISTS    ] = { 3, 3, 2, 0, 0 },
+    [invaderXim.item.VODUN_MACE      ] = { 4, 4, 3, 2, 0 },
+    [invaderXim.item.DOOM_TABAR      ] = { 3, 3, 2, 0, 0 },
+    [invaderXim.item.YATAGHAN        ] = { 4, 4, 3, 2, 0 },
+    [invaderXim.item.YUKITSUGU       ] = { 3, 3, 2, 0, 0 },
 }
 
 local function GetAugItemID(npc, slot)
@@ -586,7 +586,7 @@ local function GiveAugItem(player, npc, slot)
             elseif player:getFreeSlotsCount() > 0 then
                     if GetAugItemID(npc, 1) ~= 0 then
                     player:addItem(item1, 1, item1aug1, item1aug1val, item1aug2, item1aug2val)
-                    xi.pyxis.messageChest(player, zones[zoneId].text.OBTAINS_ITEM, item1, 0, 0, 0)
+                    invaderXim.pyxis.messageChest(player, zones[zoneId].text.OBTAINS_ITEM, item1, 0, 0, 0)
                     npc:setLocalVar('ITEM1ID', 0)
                 end
             end
@@ -602,7 +602,7 @@ local function GiveAugItem(player, npc, slot)
             elseif player:getFreeSlotsCount() > 0 then
                     if GetAugItemID(npc, 2) ~= 0 then
                     player:addItem(item2, 1, item2aug1, item2aug1val, item2aug2, item2aug2val)
-                    xi.pyxis.messageChest(player, zones[zoneId].text.OBTAINS_ITEM, item2, 0, 0, 0)
+                    invaderXim.pyxis.messageChest(player, zones[zoneId].text.OBTAINS_ITEM, item2, 0, 0, 0)
                     npc:setLocalVar('ITEM2ID', 0)
                 end
             end
@@ -610,11 +610,11 @@ local function GiveAugItem(player, npc, slot)
     end
 
     if npc:getLocalVar('ITEM1ID') == 0 and npc:getLocalVar('ITEM2ID') == 0 then
-        xi.pyxis.removeChest(player, npc, 0, 3)
+        invaderXim.pyxis.removeChest(player, npc, 0, 3)
     end
 end
 
-xi.pyxis.augItem.setAugmentItems = function(npc, tier)
+invaderXim.pyxis.augItem.setAugmentItems = function(npc, tier)
     local zoneId = npc:getZoneID()
     local item1 = augdrops[zoneId][math.random(1, 3)]
     local item2 = 0
@@ -638,12 +638,12 @@ xi.pyxis.augItem.setAugmentItems = function(npc, tier)
     end
 end
 
-xi.pyxis.augItem.updateEvent = function(player, npc)
+invaderXim.pyxis.augItem.updateEvent = function(player, npc)
     local augmentFlag    = 0x0202
     player:updateEvent(GetAugItemID(npc, 1), augmentFlag, GetAugID(npc, 1, 1), GetAugID(npc, 1, 2), GetAugItemID(npc, 2), augmentFlag, GetAugID(npc, 2, 1), GetAugID(npc, 2, 2))
 end
 
-xi.pyxis.augItem.giveAugItem = function(player, npc, option)
+invaderXim.pyxis.augItem.giveAugItem = function(player, npc, option)
     local itemSelected = bit.rshift(option, 16)
     if itemSelected > 0 and itemSelected <= 2 then
         GiveAugItem(player, npc, itemSelected)

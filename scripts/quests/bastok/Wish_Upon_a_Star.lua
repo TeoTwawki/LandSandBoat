@@ -7,24 +7,24 @@
 -- Enu    : !pos -253.673 -13 -92.326 235
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.WISH_UPON_A_STAR)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.WISH_UPON_A_STAR)
 
 quest.reward =
 {
     fame     = 50,
-    fameArea = xi.fameArea.BASTOK,
-    item     = { { xi.item.BAG_OF_CACTUS_STEMS, 4 } },
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = { { invaderXim.item.BAG_OF_CACTUS_STEMS, 4 } },
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 5
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 5
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Enu'] =
             {
@@ -72,55 +72,55 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.YUHTUNGA_JUNGLE] =
+        [invaderXim.zone.YUHTUNGA_JUNGLE] =
         {
             ['Logging_Point'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        not player:hasItem(xi.item.FALLEN_STAR) and
-                        npcUtil.tradeHas(trade, xi.item.HATCHET)
+                        not player:hasItem(invaderXim.item.FALLEN_STAR) and
+                        npcUtil.tradeHas(trade, invaderXim.item.HATCHET)
                     then
-                        if npcUtil.giveItem(player, xi.item.FALLEN_STAR, { silent = true, fromTrade = true }) then
+                        if npcUtil.giveItem(player, invaderXim.item.FALLEN_STAR, { silent = true, fromTrade = true }) then
                             player:confirmTrade()
-                            return quest:progressEvent(205, xi.item.FALLEN_STAR)
+                            return quest:progressEvent(205, invaderXim.item.FALLEN_STAR)
                         end
                     end
                 end
             },
         },
 
-        [xi.zone.YHOATOR_JUNGLE] =
+        [invaderXim.zone.YHOATOR_JUNGLE] =
         {
             ['Logging_Point'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        not player:hasItem(xi.item.FALLEN_STAR) and
-                        npcUtil.tradeHas(trade, xi.item.HATCHET)
+                        not player:hasItem(invaderXim.item.FALLEN_STAR) and
+                        npcUtil.tradeHas(trade, invaderXim.item.HATCHET)
                     then
-                        if npcUtil.giveItem(player, xi.item.FALLEN_STAR, { silent = true, fromTrade = true }) then
+                        if npcUtil.giveItem(player, invaderXim.item.FALLEN_STAR, { silent = true, fromTrade = true }) then
                             player:confirmTrade()
-                            return quest:progressEvent(10, xi.item.FALLEN_STAR)
+                            return quest:progressEvent(10, invaderXim.item.FALLEN_STAR)
                         end
                     end
                 end
             },
         },
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Enu'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.FALLEN_STAR) then
-                        local isNight = VanadielTOTD() == xi.time.NIGHT or VanadielTOTD() == xi.time.MIDNIGHT
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.FALLEN_STAR) then
+                        local isNight = VanadielTOTD() == invaderXim.time.NIGHT or VanadielTOTD() == invaderXim.time.MIDNIGHT
 
                         if
-                            player:getWeather() == xi.weather.NONE and
+                            player:getWeather() == invaderXim.weather.NONE and
                             isNight
                         then
                             return quest:progressEvent(334)
@@ -146,10 +146,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Enu']  = quest:event(335):replaceDefault(),
             ['Zacc'] = quest:event(336):replaceDefault(),

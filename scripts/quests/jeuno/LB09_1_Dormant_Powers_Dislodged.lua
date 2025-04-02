@@ -4,10 +4,10 @@
 -- Log ID: 3, Quest ID: 136
 -- Nomad Moogle : !pos 10.012 1.453 121.883 243
 -----------------------------------
-local ruludeID = zones[xi.zone.RULUDE_GARDENS]
+local ruludeID = zones[invaderXim.zone.RULUDE_GARDENS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.DORMANT_POWERS_DISLODGED)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.DORMANT_POWERS_DISLODGED)
 
 -- NOTE: Timing minigame was guesstimated! No capture available.
 -- The event seems to handle the actual timing. As in, it counts for us.
@@ -16,24 +16,24 @@ local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.DORMANT_POWERS_DISL
 
 local itemWantedTable =
 {
-    [0] = { xi.item.PINCH_OF_VALKURM_SUNSAND },
-    [1] = { xi.item.FADED_CRYSTAL            },
-    [2] = { xi.item.ORCISH_PLATE_ARMOR       },
-    [3] = { xi.item.MAGICKED_SKULL           },
-    [4] = { xi.item.CUP_OF_DHALMEL_SALIVA    },
-    [5] = { xi.item.YAGUDO_CAULK             },
-    [6] = { xi.item.SIRENS_TEAR              },
-    [7] = { xi.item.DANGRUF_STONE            },
-    [8] = { xi.item.ORCISH_AXE               },
-    [9] = { xi.item.QUADAV_BACKSCALE         },
+    [0] = { invaderXim.item.PINCH_OF_VALKURM_SUNSAND },
+    [1] = { invaderXim.item.FADED_CRYSTAL            },
+    [2] = { invaderXim.item.ORCISH_PLATE_ARMOR       },
+    [3] = { invaderXim.item.MAGICKED_SKULL           },
+    [4] = { invaderXim.item.CUP_OF_DHALMEL_SALIVA    },
+    [5] = { invaderXim.item.YAGUDO_CAULK             },
+    [6] = { invaderXim.item.SIRENS_TEAR              },
+    [7] = { invaderXim.item.DANGRUF_STONE            },
+    [8] = { invaderXim.item.ORCISH_AXE               },
+    [9] = { invaderXim.item.QUADAV_BACKSCALE         },
     -- 10+ = It repeats the pattern ad nauseam. Supposedly, it can request more items, but I cannot figure them out without a cap.
 }
 
 quest.reward =
 {
     fame = 50,
-    fameArea = xi.fameArea.JEUNO,
-    keyItem = xi.ki.SOUL_GEM,
+    fameArea = invaderXim.fameArea.JEUNO,
+    keyItem = invaderXim.ki.SOUL_GEM,
 }
 
 quest.sections =
@@ -41,13 +41,13 @@ quest.sections =
     -- Section: Quest available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
                 player:getMainLvl() >= 86 and
                 player:getLevelCap() == 90 and
-                xi.settings.main.MAX_LEVEL >= 95
+                invaderXim.settings.main.MAX_LEVEL >= 95
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Nomad_Moogle'] =
             {
@@ -73,10 +73,10 @@ quest.sections =
     -- Section: Quest accepted.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Nomad_Moogle'] =
             {
@@ -94,7 +94,7 @@ quest.sections =
                     local itemToTrade = itemWantedTable[itemWanted][1]
 
                     if
-                        npcUtil.tradeHasExactly(trade, { { xi.item.KINDREDS_CREST, 1 }, { itemToTrade, 1 } }) and
+                        npcUtil.tradeHasExactly(trade, { { invaderXim.item.KINDREDS_CREST, 1 }, { itemToTrade, 1 } }) and
                         player:getMeritCount() > 9
                     then
                         return quest:progressEvent(10191)

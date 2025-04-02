@@ -3,7 +3,7 @@
 --  Mob: Giant Bat
 --  PH for Golden Bat
 -----------------------------------
-local ID = zones[xi.zone.VALKURM_DUNES]
+local ID = zones[invaderXim.zone.VALKURM_DUNES]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -47,7 +47,7 @@ end
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = goldenBatSpawnPoints
-    xi.mob.phOnDespawn(mob, goldenBatPHTable, 5, 3600, params) -- 1 hour minimum
+    invaderXim.mob.phOnDespawn(mob, goldenBatPHTable, 5, 3600, params) -- 1 hour minimum
 end
 
 return entity

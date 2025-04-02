@@ -34,7 +34,7 @@ local checkWorldFirstServerVar = function(player, varName, worldMessage)
         local decoratedMessage = string.format('%s %s %s', openingDecoration, worldMessage, closingDecoration)
 
         -- Sends announcement via ZMQ to all processes and zones
-        player:printToArea(decoratedMessage, xi.msg.channel.SYSTEM_3, xi.msg.area.SYSTEM, '', false)
+        player:printToArea(decoratedMessage, invaderXim.msg.channel.SYSTEM_3, invaderXim.msg.area.SYSTEM, '', false)
 
         -- Write out World First (WF) and World First Time (WT) to server vars)
         SetVolatileServerVariable(worldFirst, player:getID())
@@ -47,7 +47,7 @@ local checkWorldFirstServerVar = function(player, varName, worldMessage)
     end
 end
 
-m:addOverride('xi.player.onPlayerDeath', function(player)
+m:addOverride('invaderXim.player.onPlayerDeath', function(player)
     super(player)
 
     checkWorldFirstServerVar(player,
@@ -55,7 +55,7 @@ m:addOverride('xi.player.onPlayerDeath', function(player)
         string.format('%s has been the first player to die!', player:getName()))
 end)
 
-m:addOverride('xi.player.onPlayerLevelUp', function(player)
+m:addOverride('invaderXim.player.onPlayerLevelUp', function(player)
     super(player)
 
     checkWorldFirstServerVar(player,
@@ -66,13 +66,13 @@ m:addOverride('xi.player.onPlayerLevelUp', function(player)
     for _, level in pairs(levelMilestones) do
         if player:getMainLvl() == level then
             checkWorldFirstServerVar(player,
-                string.format('JOB_%u_%s', level, xi.jobNames[player:getMainJob()][1]),
-                string.format('%s has been the first player to reach level %u on %s!', player:getName(), level, xi.jobNames[player:getMainJob()][2]))
+                string.format('JOB_%u_%s', level, invaderXim.jobNames[player:getMainJob()][1]),
+                string.format('%s has been the first player to reach level %u on %s!', player:getName(), level, invaderXim.jobNames[player:getMainJob()][2]))
         end
     end
 end)
 
-m:addOverride('xi.player.onPlayerLevelDown', function(player)
+m:addOverride('invaderXim.player.onPlayerLevelDown', function(player)
     super(player)
 
     checkWorldFirstServerVar(player,
@@ -80,7 +80,7 @@ m:addOverride('xi.player.onPlayerLevelDown', function(player)
         string.format('%s has been the first player to level down!', player:getName()))
 end)
 
-m:addOverride('xi.mob.onMobDeathEx', function(mob, player, isKiller, isWeaponSkillKill)
+m:addOverride('invaderXim.mob.onMobDeathEx', function(mob, player, isKiller, isWeaponSkillKill)
     super(mob, player, isKiller, isWeaponSkillKill)
 
     if mob:isNM() and isKiller then
@@ -98,7 +98,7 @@ end)
 m:addOverride('npcUtil.completeQuest', function(player, area, quest, params)
     local result = super(player, area, quest, params)
 
-    if result and area == xi.quest.log_id.OTHER_AREAS and quest == xi.quest.id.otherAreas.ELDER_MEMORIES then
+    if result and area == invaderXim.quest.log_id.OTHER_AREAS and quest == invaderXim.quest.id.otherAreas.ELDER_MEMORIES then
         checkWorldFirstServerVar(player,
             'UNLOCK_SJ',
             string.format('%s has been the first player to unlock their subjob!', player:getName()))

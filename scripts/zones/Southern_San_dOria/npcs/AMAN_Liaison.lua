@@ -29,7 +29,7 @@ end
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 3619 then
         if player:getEminenceProgress(1448) ~= nil then
-            xi.roe.onRecordTrigger(player, 1448)
+            invaderXim.roe.onRecordTrigger(player, 1448)
         end
     end
 end

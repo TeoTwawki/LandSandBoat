@@ -7,28 +7,28 @@
 -- Forbidding Portal : !pos 320 -10.835 158.699 137
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.BLOOD_OF_HEROES)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.BLOOD_OF_HEROES)
 
 quest.reward =
 {
-    item  = xi.item.RAM_STAFF,
-    title = xi.title.HOUSE_AURCHIAT_RETAINER,
+    item  = invaderXim.item.RAM_STAFF,
+    title = invaderXim.title.HOUSE_AURCHIAT_RETAINER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.SONGBIRDS_IN_A_SNOWSTORM)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.SONGBIRDS_IN_A_SNOWSTORM)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Rholont'] = quest:event(656),
         },
 
-        [xi.zone.XARCABARD_S] =
+        [invaderXim.zone.XARCABARD_S] =
         {
             ['Animal_Spoor'] = quest:progressEvent(1),
 
@@ -43,10 +43,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.XARCABARD_S] =
+        [invaderXim.zone.XARCABARD_S] =
         {
             ['Animal_Spoor'] =
             {
@@ -57,7 +57,7 @@ quest.sections =
                         return quest:progressEvent(3)
                     elseif
                         questProgress == 3 and
-                        not player:hasKeyItem(xi.ki.VIAL_OF_MILITARY_PRISM_POWDER)
+                        not player:hasKeyItem(invaderXim.ki.VIAL_OF_MILITARY_PRISM_POWDER)
                     then
                         -- NOTE: Upon implementation of the instance for this quest, on instance failure will
                         -- need to set the 'Timer' charVar to VanadielUniqueDay() + 1
@@ -109,7 +109,7 @@ quest.sections =
                 end,
 
                 [3] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.VIAL_OF_MILITARY_PRISM_POWDER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.VIAL_OF_MILITARY_PRISM_POWDER)
                     quest:setVar(player, 'Prog', 2)
                 end,
 
@@ -123,17 +123,17 @@ quest.sections =
 
                 [7] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        xi.quest.setVar(player, xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.CHASING_SHADOWS, VanadielUniqueDay() + 1)
+                        invaderXim.quest.setVar(player, invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.CHASING_SHADOWS, VanadielUniqueDay() + 1)
                     end
                 end,
 
                 [13] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.VIAL_OF_MILITARY_PRISM_POWDER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.VIAL_OF_MILITARY_PRISM_POWDER)
                 end,
             },
         },
 
-        [xi.zone.GHOYUS_REVERIE] =
+        [invaderXim.zone.GHOYUS_REVERIE] =
         {
             onEventFinish =
             {
@@ -143,7 +143,7 @@ quest.sections =
                     -- implementation of the instance.
 
                     quest:setVar(player, 'Prog', 4)
-                    player:setPos(319.8, -7.887, 153.741, 65, xi.zone.XARCABARD_S)
+                    player:setPos(319.8, -7.887, 153.741, 65, invaderXim.zone.XARCABARD_S)
                 end,
             },
         },

@@ -4,7 +4,7 @@
 -- Type: Patrol
 -- !pos -349.796 -45.345 344.733 100
 -----------------------------------
-local ID = zones[xi.zone.WEST_RONFAURE]
+local ID = zones[invaderXim.zone.WEST_RONFAURE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -305,18 +305,18 @@ local pathNodes =
 
 entity.onSpawn = function(npc)
     npc:initNpcAi()
-    npc:setPos(xi.path.first(pathNodes))
-    npc:pathThrough(pathNodes, xi.path.flag.PATROL)
+    npc:setPos(invaderXim.path.first(pathNodes))
+    npc:pathThrough(pathNodes, invaderXim.path.flag.PATROL)
 end
 
 entity.onPath = function(npc)
     if
         npc:getLocalVar('reported') ~= 1 and
-        npc:atPoint(xi.path.get(pathNodes, 45))
+        npc:atPoint(invaderXim.path.get(pathNodes, 45))
     then
         GetNPCByID(npc:getID() + 3):showText(npc, ID.text.PALCOMONDAU_REPORT)
         npc:setLocalVar('reported', 1)
-    elseif npc:atPoint(xi.path.last(pathNodes)) then
+    elseif npc:atPoint(invaderXim.path.last(pathNodes)) then
         npc:setLocalVar('reported', 0)
     end
 end

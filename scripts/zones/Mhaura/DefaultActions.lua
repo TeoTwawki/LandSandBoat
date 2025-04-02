@@ -1,4 +1,4 @@
--- local ID = zones[xi.zone.MHAURA]
+-- local ID = zones[invaderXim.zone.MHAURA]
 
 return {
     ['Amalanbraux']      = { event = 700 },

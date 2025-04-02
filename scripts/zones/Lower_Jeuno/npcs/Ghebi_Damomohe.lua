@@ -17,7 +17,7 @@ entity.onEventFinish = function(player, csid, option, npc)
             4467,    3, -- Garlic Cracker
         }
 
-        xi.shop.general(player, stock, xi.fameArea.NORG)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.NORG)
     end
 end
 

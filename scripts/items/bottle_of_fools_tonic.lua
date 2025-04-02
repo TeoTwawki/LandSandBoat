@@ -12,12 +12,12 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    local effect        = xi.effect.MAGIC_SHIELD
+    local effect        = invaderXim.effect.MAGIC_SHIELD
     local duration      = 60
     local power         = 0
     local nospellimmune = 1
 
-    xi.itemUtils.addItemShield(target, power, duration, effect, nospellimmune)
+    invaderXim.itemUtils.addItemShield(target, power, duration, effect, nospellimmune)
 end
 
 return itemObject

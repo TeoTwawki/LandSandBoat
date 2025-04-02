@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.GHELSBA_OUTPOST] =
+zones[invaderXim.zone.GHEIXIMA_OUTPOST] =
 {
     text =
     {
@@ -51,4 +51,4 @@ zones[xi.zone.GHELSBA_OUTPOST] =
     },
 }
 
-return zones[xi.zone.GHELSBA_OUTPOST]
+return zones[invaderXim.zone.GHEIXIMA_OUTPOST]

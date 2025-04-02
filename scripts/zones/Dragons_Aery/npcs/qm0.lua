@@ -4,7 +4,7 @@
 -- Spawns Fafnir or Nidhogg
 -- !pos -81 32 2 178
 -----------------------------------
-local ID = zones[xi.zone.DRAGONS_AERY]
+local ID = zones[invaderXim.zone.DRAGONS_AERY]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -15,12 +15,12 @@ entity.onTrade = function(player, npc, trade)
         not GetMobByID(ID.mob.NIDHOGG):isSpawned()
     then
         if
-            npcUtil.tradeHasExactly(trade, xi.item.JUG_OF_HONEY_WINE) and
+            npcUtil.tradeHasExactly(trade, invaderXim.item.JUG_OF_HONEY_WINE) and
             npcUtil.popFromQM(player, npc, ID.mob.FAFNIR)
         then
             player:confirmTrade()
         elseif
-            npcUtil.tradeHasExactly(trade, xi.item.CUP_OF_SWEET_TEA) and
+            npcUtil.tradeHasExactly(trade, invaderXim.item.CUP_OF_SWEET_TEA) and
             npcUtil.popFromQM(player, npc, ID.mob.NIDHOGG)
         then
             player:confirmTrade()

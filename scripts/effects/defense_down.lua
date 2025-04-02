@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.DEFENSE_DOWN
+-- invaderXim.effect.DEFENSE_DOWN
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -9,14 +9,14 @@ effectObject.onEffectGain = function(target, effect)
         effect:setPower(50)
     end
 
-    target:addMod(xi.mod.DEFP, -effect:getPower())
+    target:addMod(invaderXim.mod.DEFP, -effect:getPower())
 end
 
 effectObject.onEffectTick = function(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.DEFP, -effect:getPower())
+    target:delMod(invaderXim.mod.DEFP, -effect:getPower())
 end
 
 return effectObject

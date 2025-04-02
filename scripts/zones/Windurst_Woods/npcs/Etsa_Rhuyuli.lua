@@ -16,15 +16,15 @@ local pathNodes =
 
 entity.onSpawn = function(npc)
     npc:initNpcAi()
-    npc:setPos(xi.path.first(pathNodes))
-    npc:pathThrough(pathNodes, xi.path.flag.PATROL)
+    npc:setPos(invaderXim.path.first(pathNodes))
+    npc:pathThrough(pathNodes, invaderXim.path.flag.PATROL)
 end
 
 entity.onTrigger = function(player, npc)
     local wildcatWindurst = player:getCharVar('WildcatWindurst')
 
     if
-        player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.LURE_OF_THE_WILDCAT) == xi.questStatus.QUEST_ACCEPTED and
+        player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.LURE_OF_THE_WILDCAT) == invaderXim.questStatus.QUEST_ACCEPTED and
         not utils.mask.getBit(wildcatWindurst, 1)
     then
         player:startEvent(734)

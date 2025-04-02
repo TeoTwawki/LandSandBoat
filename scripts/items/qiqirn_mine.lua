@@ -8,7 +8,7 @@ local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
     local result = 0
-    if target:getZoneID() ~= xi.zone.LEBROS_CAVERN then
+    if target:getZoneID() ~= invaderXim.zone.LEBROS_CAVERN then
         result = 55
     end
 

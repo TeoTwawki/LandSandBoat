@@ -2,7 +2,7 @@
 -- Table structure for table `abilities`
 --
 
-DROP TABLE IF EXISTS `abilities`;
+DROP TABLE IF IXIMSTS `abilities`;
 CREATE TABLE `abilities` (
   `abilityId` smallint(5) unsigned NOT NULL,
   `name` tinytext,

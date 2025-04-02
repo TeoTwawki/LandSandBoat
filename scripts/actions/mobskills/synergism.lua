@@ -26,11 +26,11 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
                 end
             end
 
-            xi.mobskills.mobHealMove(mob, absorbed)
+            invaderXim.mobskills.mobHealMove(mob, absorbed)
         end
     end
 
-    skill:setMsg(xi.msg.basic.NONE)
+    skill:setMsg(invaderXim.msg.basic.NONE)
     return 0
 end
 

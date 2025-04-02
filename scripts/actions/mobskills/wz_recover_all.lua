@@ -17,7 +17,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     target:addHP(recoverHP)
     target:addMP(recoverMP)
     target:resetRecasts()
-    skill:setMsg(xi.msg.basic.RECOVERS_HP_AND_MP)
+    skill:setMsg(invaderXim.msg.basic.RECOVERS_HP_AND_MP)
     return 0
 end
 

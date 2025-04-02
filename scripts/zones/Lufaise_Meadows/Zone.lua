@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Lufaise_Meadows (24)
 -----------------------------------
-local ID = zones[xi.zone.LUFAISE_MEADOWS]
+local ID = zones[invaderXim.zone.LUFAISE_MEADOWS]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -14,15 +14,15 @@ zoneObject.onInitialize = function(zone)
         SpawnMob(v)
     end
 
-    xi.conquest.setRegionalConquestOverseers(zone:getRegionID())
+    invaderXim.conquest.setRegionalConquestOverseers(zone:getRegionID())
 
     GetMobByID(ID.mob.FLOCKBOCK):setRespawnTime(math.random(3600, 7200))
 
-    xi.helm.initZone(zone, xi.helmType.LOGGING)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.LOGGING)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)

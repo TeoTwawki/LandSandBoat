@@ -21,11 +21,11 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.ARCANA
-    params.tpmod = xi.spells.blue.tpMod.DAMAGE
-    params.attackType = xi.attackType.PHYSICAL
-    params.damageType = xi.damageType.SLASHING
-    params.scattr = xi.skillchainType.DETONATION
+    params.ecosystem = invaderXim.ecosystem.ARCANA
+    params.tpmod = invaderXim.spells.blue.tpMod.DAMAGE
+    params.attackType = invaderXim.attackType.PHYSICAL
+    params.damageType = invaderXim.damageType.SLASHING
+    params.scattr = invaderXim.skillchainType.DETONATION
     params.numhits = 1
     params.multiplier = 1.5
     params.tp150 = 2.25
@@ -41,7 +41,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.chr_wsc = 0.0
     params.ignorefstrcap = true -- Smite of Rage doesn't have an fSTR cap
 
-    return xi.spells.blue.usePhysicalSpell(caster, target, spell, params)
+    return invaderXim.spells.blue.usePhysicalSpell(caster, target, spell, params)
 end
 
 return spellObject

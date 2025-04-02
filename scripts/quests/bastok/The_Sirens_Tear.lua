@@ -9,14 +9,14 @@
 -- qm1 (moves) : !pos 309.6 2.6 324 106
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.THE_SIRENS_TEAR)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_SIRENS_TEAR)
 
 quest.reward =
 {
     fame = 120,
-    fameArea = xi.fameArea.BASTOK,
+    fameArea = invaderXim.fameArea.BASTOK,
     gil = 150,
-    title = xi.title.TEARJERKER,
+    title = invaderXim.title.TEARJERKER,
 }
 
 quest.sections =
@@ -24,10 +24,10 @@ quest.sections =
     -- Section: Quest available
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Wahid']     = quest:progressEvent(81),
             ['Echo_Hawk'] = quest:event(5),
@@ -44,10 +44,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Otto'] =
             {
@@ -72,17 +72,17 @@ quest.sections =
     -- Section: Quest completed
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Carmelo'] =
             {
                 onTrigger = function(player, npc)
                     if
                         quest:getVar(player, 'Prog') < 2 and
-                        not player:findItem(xi.item.SIRENS_TEAR)
+                        not player:findItem(invaderXim.item.SIRENS_TEAR)
                     then
                         return quest:progressEvent(19)
                     end
@@ -101,15 +101,15 @@ quest.sections =
     -- Section accepted or completed
     {
         check = function(player, status, vars)
-            return status ~= xi.questStatus.QUEST_AVAILABLE
+            return status ~= invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Wahid'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.SIRENS_TEAR) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.SIRENS_TEAR) then
                         return quest:progressEvent(82)
                     end
                 end,

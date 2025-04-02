@@ -10,15 +10,15 @@ abilityObject.onAbilityCheck = function(player, target, ability)
     --ranged weapon/ammo: You do not have an appropriate ranged weapon equipped.
     --no card: <name> cannot perform that action.
     if
-        player:getWeaponSkillType(xi.slot.RANGED) ~= xi.skill.MARKSMANSHIP or
-        player:getWeaponSkillType(xi.slot.AMMO) ~= xi.skill.MARKSMANSHIP
+        player:getWeaponSkillType(invaderXim.slot.RANGED) ~= invaderXim.skill.MARKSMANSHIP or
+        player:getWeaponSkillType(invaderXim.slot.AMMO) ~= invaderXim.skill.MARKSMANSHIP
     then
         return 216, 0
     end
 
     if
-        player:hasItem(xi.item.FIRE_CARD, 0) or
-        player:hasItem(xi.item.TRUMP_CARD, 0)
+        player:hasItem(invaderXim.item.FIRE_CARD, 0) or
+        player:hasItem(invaderXim.item.TRUMP_CARD, 0)
     then
         return 0, 0
     else
@@ -27,31 +27,31 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability, action)
-    action:setRecast(math.max(0, action:getRecast() - player:getMod(xi.mod.QUICK_DRAW_RECAST)))
+    action:setRecast(math.max(0, action:getRecast() - player:getMod(invaderXim.mod.QUICK_DRAW_RECAST)))
     local params = {}
     params.includemab = true
 
-    local dmg = (2 * (player:getRangedDmg() + player:getAmmoDmg()) + player:getMod(xi.mod.QUICK_DRAW_DMG)) * (1 + player:getMod(xi.mod.QUICK_DRAW_DMG_PERCENT) / 100)
-    dmg       = dmg + 2 * player:getJobPointLevel(xi.jp.QUICK_DRAW_EFFECT)
-    dmg       = addBonusesAbility(player, xi.element.FIRE, target, dmg, params)
+    local dmg = (2 * (player:getRangedDmg() + player:getAmmoDmg()) + player:getMod(invaderXim.mod.QUICK_DRAW_DMG)) * (1 + player:getMod(invaderXim.mod.QUICK_DRAW_DMG_PERCENT) / 100)
+    dmg       = dmg + 2 * player:getJobPointLevel(invaderXim.jp.QUICK_DRAW_EFFECT)
+    dmg       = addBonusesAbility(player, invaderXim.element.FIRE, target, dmg, params)
 
-    local bonusAcc = player:getStat(xi.mod.AGI) / 2 + player:getMerit(xi.merit.QUICK_DRAW_ACCURACY) + player:getMod(xi.mod.QUICK_DRAW_MACC)
-    dmg            = dmg * applyResistanceAbility(player, target, xi.element.FIRE, xi.skill.NONE, bonusAcc)
-    dmg            = dmg * xi.spells.damage.calculateNukeAbsorbOrNullify(target, xi.element.FIRE)
+    local bonusAcc = player:getStat(invaderXim.mod.AGI) / 2 + player:getMerit(invaderXim.merit.QUICK_DRAW_ACCURACY) + player:getMod(invaderXim.mod.QUICK_DRAW_MACC)
+    dmg            = dmg * applyResistanceAbility(player, target, invaderXim.element.FIRE, invaderXim.skill.NONE, bonusAcc)
+    dmg            = dmg * invaderXim.spells.damage.calculateNukeAbsorbOrNullify(target, invaderXim.element.FIRE)
 
     params.targetTPMult = 0 -- Quick Draw does not feed TP
-    dmg                 = xi.ability.takeDamage(target, player, params, true, dmg, xi.attackType.MAGICAL, xi.damageType.FIRE, xi.slot.RANGED, 1, 0, 0, 0, action, nil)
+    dmg                 = invaderXim.ability.takeDamage(target, player, params, true, dmg, invaderXim.attackType.MAGICAL, invaderXim.damageType.FIRE, invaderXim.slot.RANGED, 1, 0, 0, 0, action, nil)
 
     if dmg > 0 then
         local effects = {}
 
-        local burn = target:getStatusEffect(xi.effect.BURN)
+        local burn = target:getStatusEffect(invaderXim.effect.BURN)
         if burn ~= nil then
             table.insert(effects, burn)
         end
 
-        local threnody = target:getStatusEffect(xi.effect.THRENODY)
-        if threnody ~= nil and threnody:getSubPower() == xi.mod.ICE_MEVA then
+        local threnody = target:getStatusEffect(invaderXim.effect.THRENODY)
+        if threnody ~= nil and threnody:getSubPower() == invaderXim.mod.ICE_MEVA then
             table.insert(effects, threnody)
         end
 
@@ -77,7 +77,7 @@ abilityObject.onUseAbility = function(player, target, ability, action)
         end
     end
 
-    local _ = player:delItem(xi.item.FIRE_CARD, 1) or player:delItem(xi.item.TRUMP_CARD, 1)
+    local _ = player:delItem(invaderXim.item.FIRE_CARD, 1) or player:delItem(invaderXim.item.TRUMP_CARD, 1)
     target:updateClaim(player)
 
     return dmg

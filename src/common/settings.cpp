@@ -1,7 +1,7 @@
 /*
 ===========================================================================
 
-  Copyright (c) 2022 LandSandBoat Dev Teams
+  Copyright (c) 2022 InvaderXim Dev Teams
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -184,7 +184,7 @@ namespace settings
                 }
 
                 // Apply any environment variables over the default/user settings.
-                auto envKey = fmt::format("XI_{}_{}", to_upper(outerKey), to_upper(innerKey));
+                auto envKey = fmt::format("IXIM_{}_{}", to_upper(outerKey), to_upper(innerKey));
 
                 // If we try to assign this value in the if() statement, it will
                 // come back as a bool, so we have to check only then assign in the
@@ -209,7 +209,7 @@ namespace settings
             }
         }
 
-        // Push the consolidated defaults + user settings back up into xi.settings
+        // Push the consolidated defaults + user settings back up into invaderXim.settings
         for (const auto& [key, value] : settingsMap)
         {
             auto parts                          = split(key, ".");
@@ -223,7 +223,7 @@ namespace settings
         // Test to ensure requires aren't trampling changes, and that the user's settings aren't reverting
         // to the defaults:
         //
-        // lua.safe_script("require('settings/main'); require('settings/default/main'); print(xi.settings)");
+        // lua.safe_script("require('settings/main'); require('settings/default/main'); print(invaderXim.settings)");
     }
 
     void visit(const std::function<void(std::string, SettingsVariant_t)>& visitor)

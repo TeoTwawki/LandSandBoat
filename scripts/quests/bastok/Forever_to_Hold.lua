@@ -6,25 +6,25 @@
 -- Romilda : !pos 5.424 4.898 -18.699 236
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.FOREVER_TO_HOLD)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.FOREVER_TO_HOLD)
 
 quest.reward =
 {
     fame     = 80,
-    fameArea = xi.fameArea.BASTOK,
+    fameArea = invaderXim.fameArea.BASTOK,
     gil      = 300,
-    title    = xi.title.QIJIS_FRIEND,
+    title    = invaderXim.title.QIJIS_FRIEND,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 2
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 2
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Qiji'] = quest:progressEvent(123),
 
@@ -39,15 +39,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Qiji'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.BRASS_HAIRPIN) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.BRASS_HAIRPIN) then
                         return quest:event(124)
                     end
                 end,
@@ -62,7 +62,7 @@ quest.sections =
             ['Romilda'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.BRASS_HAIRPIN) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.BRASS_HAIRPIN) then
                         return quest:progressEvent(125)
                     end
                 end,

@@ -18,11 +18,11 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local duration = math.random(15, 90)
     local damage = mob:getWeaponDmg()
 
-    damage = xi.mobskills.mobMagicalMove(mob, target, skill, damage, xi.element.FIRE, dmgmod, xi.mobskills.magicalTpBonus.MAB_BONUS, 1)
-    damage = xi.mobskills.mobFinalAdjustments(damage, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.FIRE, xi.mobskills.shadowBehavior.WIPE_SHADOWS)
+    damage = invaderXim.mobskills.mobMagicalMove(mob, target, skill, damage, invaderXim.element.FIRE, dmgmod, invaderXim.mobskills.magicalTpBonus.MAB_BONUS, 1)
+    damage = invaderXim.mobskills.mobFinalAdjustments(damage, mob, skill, target, invaderXim.attackType.MAGICAL, invaderXim.damageType.FIRE, invaderXim.mobskills.shadowBehavior.WIPE_SHADOWS)
 
-    target:takeDamage(damage, mob, xi.attackType.MAGICAL, xi.damageType.FIRE)
-    target:addStatusEffect(xi.effect.BURN, 10, 3, duration)
+    target:takeDamage(damage, mob, invaderXim.attackType.MAGICAL, invaderXim.damageType.FIRE)
+    target:addStatusEffect(invaderXim.effect.BURN, 10, 3, duration)
     return damage
 end
 

@@ -1,7 +1,7 @@
 -----------------------------------
 -- Salvage : Zhayolm Remnants
 -----------------------------------
-local ID = zones[xi.zone.ZHAYOLM_REMNANTS]
+local ID = zones[invaderXim.zone.ZHAYOLM_REMNANTS]
 -----------------------------------
 
 local mobTable =
@@ -209,11 +209,11 @@ local removedPathos = function(instance)
 
     for _, players in pairs(chars) do
         if
-            not players:hasStatusEffect(xi.effect.ENCUMBRANCE_I) and
-            not players:hasStatusEffect(xi.effect.OBLIVISCENCE) and
-            not players:hasStatusEffect(xi.effect.OMERTA) and
-            not players:hasStatusEffect(xi.effect.IMPAIRMENT) and
-            not players:hasStatusEffect(xi.effect.DEBILITATION)
+            not players:hasStatusEffect(invaderXim.effect.ENCUMBRANCE_I) and
+            not players:hasStatusEffect(invaderXim.effect.OBLIVISCENCE) and
+            not players:hasStatusEffect(invaderXim.effect.OMERTA) and
+            not players:hasStatusEffect(invaderXim.effect.IMPAIRMENT) and
+            not players:hasStatusEffect(invaderXim.effect.DEBILITATION)
         then
             count = count + 1
         end
@@ -226,12 +226,12 @@ local instanceObject = {}
 
 -- Requirements for the first player registering the instance
 instanceObject.registryRequirements = function(player)
-    return player:getMainLvl() >= 65 and player:hasKeyItem(xi.ki.REMNANTS_PERMIT)
+    return player:getMainLvl() >= 65 and player:hasKeyItem(invaderXim.ki.REMNANTS_PERMIT)
 end
 
 -- Requirements for further players entering an already-registered instance
 instanceObject.entryRequirements = function(player)
-    return player:getMainLvl() >= 65 and player:hasKeyItem(xi.ki.REMNANTS_PERMIT)
+    return player:getMainLvl() >= 65 and player:hasKeyItem(invaderXim.ki.REMNANTS_PERMIT)
 end
 
 -- Called on the instance once it is created and ready
@@ -240,23 +240,23 @@ instanceObject.onInstanceCreated = function(instance)
     instance:setProgress(1)
     instance:setLocalVar('dayElement', VanadielDayOfTheWeek() + 1) -- have to +1 due to firesday (0)
     instance:setLocalVar('timeEntered', GetSystemTime())
-    xi.salvage.spawnGroup(instance, mobTable[1][1].STAGE_START)
+    invaderXim.salvage.spawnGroup(instance, mobTable[1][1].STAGE_START)
     GetNPCByID(ID.npc.DOOR_1_0, instance):setLocalVar('unSealed', 1)
 end
 
 -- Once the instance is ready inform the requester that it's ready
 instanceObject.onInstanceCreatedCallback = function(player, instance)
-    xi.instance.onInstanceCreatedCallback(player, instance)
+    invaderXim.instance.onInstanceCreatedCallback(player, instance)
 end
 
 -- When the player zones into the instance
 instanceObject.afterInstanceRegister = function(player)
-    xi.salvage.instanceRegister(player, xi.item.CAGE_OF_Z_REMNANTS_FIREFLIES)
+    invaderXim.salvage.instanceRegister(player, invaderXim.item.CAGE_OF_Z_REMNANTS_FIREFLIES)
 end
 
 -- Instance 'tick'
 instanceObject.onInstanceTimeUpdate = function(instance, elapsed)
-    xi.instance.updateInstanceTime(instance, elapsed, ID.text)
+    invaderXim.instance.updateInstanceTime(instance, elapsed, ID.text)
 
     if instance:getStage() == 5 then
         if instance:getLocalVar('spawned5th') == 0 then
@@ -275,7 +275,7 @@ instanceObject.onInstanceTimeUpdate = function(instance, elapsed)
 end
 
 instanceObject.onInstanceFailure = function(instance)
-    xi.salvage.onFailure(instance)
+    invaderXim.salvage.onFailure(instance)
 end
 
 instanceObject.onTriggerAreaEnter = function(player, triggerArea)
@@ -329,7 +329,7 @@ instanceObject.onEventUpdate = function(player, csid, option, npc)
 
     if option == 1 and instance:getLocalVar('stageComplete') == instance:getStage() then
         if csid ~= 3 or csid ~= 211 then
-            xi.salvage.onTransportUpdate(player, instance)
+            invaderXim.salvage.onTransportUpdate(player, instance)
         end
 
         if csid >= 200 and csid <= 203 then
@@ -338,15 +338,15 @@ instanceObject.onEventUpdate = function(player, csid, option, npc)
         elseif csid == 204 then
             instance:setStage(3)
             instance:setProgress(0)
-            xi.salvage.unsealDoors(instance, { ID.npc.DOOR_3_1, ID.npc.DOOR_3_2 })
+            invaderXim.salvage.unsealDoors(instance, { ID.npc.DOOR_3_1, ID.npc.DOOR_3_2 })
         elseif csid == 205 then -- south path
             instance:setStage(4)
             instance:setProgress(1)
-            xi.salvage.unsealDoors(instance, ID.npc.DOOR_4_1)
+            invaderXim.salvage.unsealDoors(instance, ID.npc.DOOR_4_1)
         elseif csid == 206 then -- north path
             instance:setStage(4)
             instance:setProgress(math.random(2, 3))
-            xi.salvage.unsealDoors(instance, ID.npc.DOOR_4_2)
+            invaderXim.salvage.unsealDoors(instance, ID.npc.DOOR_4_2)
         elseif csid == 207 then
             instance:setStage(5)
             instance:setProgress(2)
@@ -362,14 +362,14 @@ instanceObject.onEventUpdate = function(player, csid, option, npc)
         elseif csid == 210 then
             instance:setStage(7)
             instance:setProgress(1)
-            xi.salvage.unsealDoors(instance, ID.npc.DOOR_7_1)
+            invaderXim.salvage.unsealDoors(instance, ID.npc.DOOR_7_1)
         end
     -- 4th Floor return mechanics
     elseif option == 1 and csid == 206 and instance:getLocalVar('notComplete') == 1 then
-        xi.salvage.onTransportUpdate(player, instance)
-        GetNPCByID(ID.npc.DOOR_4_2, instance):setAnimation(xi.animation.CLOSE_DOOR)
+        invaderXim.salvage.onTransportUpdate(player, instance)
+        GetNPCByID(ID.npc.DOOR_4_2, instance):setAnimation(invaderXim.animation.CLOSE_DOOR)
         GetNPCByID(ID.npc.DOOR_4_2, instance):setUntargetable(false)
-        xi.salvage.unsealDoors(instance, ID.npc.DOOR_4_2)
+        invaderXim.salvage.unsealDoors(instance, ID.npc.DOOR_4_2)
         instance:setLocalVar('notComplete', 0)
         -- set progess to other
         if instance:getProgress() == 2 then
@@ -386,7 +386,7 @@ instanceObject.onEventFinish = function(player, csid, option, npc)
 
     if csid == 1 then
         for _, players in ipairs(chars) do
-            players:setPos(-580, 0, -433, 64, xi.zone.ALZADAAL_UNDERSEA_RUINS)
+            players:setPos(-580, 0, -433, 64, invaderXim.zone.ALZADAAL_UNDERSEA_RUINS)
         end
     elseif csid == 101 then
         player:messageSpecial(ID.text.TIME_TO_COMPLETE, 100)
@@ -399,13 +399,13 @@ instanceObject.onEventFinish = function(player, csid, option, npc)
 
     if option == 1 and instance:getLocalVar('transportUser') == player:getID() then
         if csid >= 200 and csid <= 210 then
-            xi.salvage.teleportGroup(player)
-            xi.salvage.spawnGroup(instance, mobTable[instance:getStage()][instance:getProgress()].STAGE_START)
+            invaderXim.salvage.teleportGroup(player)
+            invaderXim.salvage.spawnGroup(instance, mobTable[instance:getStage()][instance:getProgress()].STAGE_START)
             -- 2nd floor
             if csid == 200 then
-                GetNPCByID(ID.npc.SOCKET, instance):setStatus(xi.status.NORMAL)
+                GetNPCByID(ID.npc.SOCKET, instance):setStatus(invaderXim.status.NORMAL)
             elseif csid == 203 then
-                GetNPCByID(ID.npc.SLOT, instance):setStatus(xi.status.NORMAL)
+                GetNPCByID(ID.npc.SLOT, instance):setStatus(invaderXim.status.NORMAL)
             -- to 4th floor
             elseif csid == 205 or csid == 206 then
                 local currentTime = GetSystemTime()
@@ -431,9 +431,9 @@ instanceObject.onEventFinish = function(player, csid, option, npc)
                 end
             -- to 5th floor
             elseif csid == 207 then
-                xi.salvage.unsealDoors(instance, ID.npc.DOOR_5_2)
+                invaderXim.salvage.unsealDoors(instance, ID.npc.DOOR_5_2)
             elseif csid == 208 then
-                xi.salvage.unsealDoors(instance, ID.npc.DOOR_5_1)
+                invaderXim.salvage.unsealDoors(instance, ID.npc.DOOR_5_1)
             elseif csid == 210 then
                 instance:setLocalVar('exitPoint', math.random(12, 13))
             end

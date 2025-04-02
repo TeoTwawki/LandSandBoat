@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.COMPOSURE
+-- invaderXim.effect.COMPOSURE
 -- Increases accuracy and lengthens recast time. Enhancement effects gained through white
 -- and black magic you cast on yourself last longer.
 -----------------------------------
@@ -7,9 +7,9 @@
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    local power = math.floor((24 * target:getMainLvl() + 74) / 49) + target:getJobPointLevel(xi.jp.COMPOSURE_EFFECT)
+    local power = math.floor((24 * target:getMainLvl() + 74) / 49) + target:getJobPointLevel(invaderXim.jp.COMPOSURE_EFFECT)
 
-    effect:addMod(xi.mod.ACC, power)
+    effect:addMod(invaderXim.mod.ACC, power)
 end
 
 effectObject.onEffectTick = function(target, effect)

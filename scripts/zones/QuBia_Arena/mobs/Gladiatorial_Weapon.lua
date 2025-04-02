@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addMod(xi.mod.UDMGMAGIC, -10000)
+    mob:addMod(invaderXim.mod.UDMGMAGIC, -10000)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

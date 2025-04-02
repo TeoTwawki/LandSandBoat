@@ -3,7 +3,7 @@
 --  NPC: Raqtibahl
 -- (Corsair's Frac) !pos -59 -4 -39 232
 -----------------------------------
-local ID = zones[xi.zone.PORT_SAN_DORIA]
+local ID = zones[invaderXim.zone.PORT_SAN_DORIA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -15,10 +15,10 @@ entity.onTrade = function(player, npc, trade)
     if
         letterRed == 2 and
         trade:getItemCount() == 4 and
-        trade:hasItemQty(xi.item.GOLD_CHAIN, 1) and
-        trade:hasItemQty(xi.item.SQUARE_OF_VELVET_CLOTH, 1) and
-        trade:hasItemQty(xi.item.SQUARE_OF_RED_GRASS_CLOTH, 1) and
-        trade:hasItemQty(xi.item.SQUARE_OF_SAILCLOTH, 1)
+        trade:hasItemQty(invaderXim.item.GOLD_CHAIN, 1) and
+        trade:hasItemQty(invaderXim.item.SQUARE_OF_VELVET_CLOTH, 1) and
+        trade:hasItemQty(invaderXim.item.SQUARE_OF_RED_GRASS_CLOTH, 1) and
+        trade:hasItemQty(invaderXim.item.SQUARE_OF_SAILCLOTH, 1)
     then
         player:startEvent(755) -- accepts materials, now bring me imperial gold piece
 
@@ -26,7 +26,7 @@ entity.onTrade = function(player, npc, trade)
     elseif
         letterRed == 3 and
         trade:getItemCount() == 1 and
-        trade:hasItemQty(xi.item.IMPERIAL_GOLD_PIECE, 1)
+        trade:hasItemQty(invaderXim.item.IMPERIAL_GOLD_PIECE, 1)
     then
         player:startEvent(760) -- accepts gold piece, now wait for next vana'diel day
     end
@@ -34,7 +34,7 @@ end
 
 entity.onTrigger = function(player, npc)
     local letterRed = player:getCharVar('LeleroonsLetterRed')
-    if player:hasKeyItem(xi.ki.LELEROONS_LETTER_RED) then
+    if player:hasKeyItem(invaderXim.ki.LELEROONS_LETTER_RED) then
         player:startEvent(753) -- accept letter, now bring me four items
     elseif letterRed == 2 then
         player:startEvent(754) -- i'm waiting for four items
@@ -56,7 +56,7 @@ end
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 753 then
         player:setCharVar('LeleroonsLetterRed', 2)
-        player:delKeyItem(xi.ki.LELEROONS_LETTER_RED)
+        player:delKeyItem(invaderXim.ki.LELEROONS_LETTER_RED)
     elseif csid == 755 then
         player:tradeComplete()
         player:setCharVar('LeleroonsLetterRed', 3)
@@ -66,8 +66,8 @@ entity.onEventFinish = function(player, csid, option, npc)
         player:setCharVar('corAfSubmitDay', VanadielUniqueDay())
     elseif csid == 756 then
         player:setCharVar('LeleroonsLetterRed', 5)
-        player:addItem(xi.item.CORSAIRS_FRAC)
-        player:messageSpecial(ID.text.ITEM_OBTAINED, xi.item.CORSAIRS_FRAC)
+        player:addItem(invaderXim.item.CORSAIRS_FRAC)
+        player:messageSpecial(ID.text.ITEM_OBTAINED, invaderXim.item.CORSAIRS_FRAC)
     end
 end
 

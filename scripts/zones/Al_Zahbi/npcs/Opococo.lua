@@ -4,7 +4,7 @@
 -- Type: Item Deliverer
 -- !pos -24.702 0 -139.982 48
 -----------------------------------
-local ID = zones[xi.zone.AL_ZAHBI]
+local ID = zones[invaderXim.zone.AL_ZAHBI]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

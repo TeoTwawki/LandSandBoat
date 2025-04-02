@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Jugner_Forest (104)
 -----------------------------------
-local ID = zones[xi.zone.JUGNER_FOREST]
+local ID = zones[invaderXim.zone.JUGNER_FOREST]
 require('scripts/quests/i_can_hear_a_rainbow')
 require('scripts/missions/amk/helpers')
 -----------------------------------
@@ -19,11 +19,11 @@ zoneObject.onInitialize = function(zone)
         GetMobByID(ID.mob.KING_ARTHRO - offset):setRespawnTime(respawnTime)
     end
 
-    xi.conquest.setRegionalConquestOverseers(zone:getRegionID())
+    invaderXim.conquest.setRegionalConquestOverseers(zone:getRegionID())
 
-    xi.helm.initZone(zone, xi.helmType.LOGGING)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.LOGGING)
 
-    xi.voidwalker.zoneOnInit(zone)
+    invaderXim.voidwalker.zoneOnInit(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -42,19 +42,19 @@ zoneObject.onZoneIn = function(player, prevZone)
     end
 
     -- AMK06/AMK07
-    if xi.settings.main.ENABLE_AMK == 1 then
-        xi.amk.helpers.tryRandomlyPlaceDiggingLocation(player)
+    if invaderXim.settings.main.ENABLE_AMK == 1 then
+        invaderXim.amk.helpers.tryRandomlyPlaceDiggingLocation(player)
     end
 
     return cs
 end
 
 zoneObject.afterZoneIn = function(player)
-    xi.chocoboGame.handleMessage(player)
+    invaderXim.chocoboGame.handleMessage(player)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

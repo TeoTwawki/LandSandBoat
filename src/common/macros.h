@@ -1,7 +1,7 @@
 /*
 ===========================================================================
 
-  Copyright (c) 2025 LandSandBoat Dev Teams
+  Copyright (c) 2025 InvaderXim Dev Teams
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -41,8 +41,8 @@
 #endif
 
 // define a break macro for debugging
-#define XI_DEBUG_BREAK_IF(_CONDITION_) \
-    static_assert(false, "Use of XI_DEBUG_BREAK_IF is deprecated. Check your conditions and log appropriately instead.")
+#define IXIM_DEBUG_BREAK_IF(_CONDITION_) \
+    static_assert(false, "Use of IXIM_DEBUG_BREAK_IF is deprecated. Check your conditions and log appropriately instead.")
 
 #define DISALLOW_COPY(TypeName)                    \
     TypeName(const TypeName&)            = delete; \
@@ -70,7 +70,7 @@
 //
 // Both the original and macro version produce identical assembly output.
 //
-// Assembly Analysis: https://github.com/LandSandBoat/server/pull/6751
+// Assembly Analysis: https://github.com/InvaderXim/server/pull/6751
 //
 #define FOR_EACH_PAIR_CAST_SECOND(_type, _var, _collection) \
     for (const auto& [_key, _value] : _collection)          \

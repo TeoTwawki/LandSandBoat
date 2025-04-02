@@ -6,12 +6,12 @@
 -- Biyaada:   !pos -65.802 -6.999 69.273 48
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.SAGA_OF_THE_SKYSERPENT)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.SAGA_OF_THE_SKYSERPENT)
 
 quest.reward =
 {
-    item = xi.item.IMPERIAL_GOLD_PIECE,
-    title = xi.title.SKYSERPENT_AGGRANDIZER
+    item = invaderXim.item.IMPERIAL_GOLD_PIECE,
+    title = invaderXim.title.SKYSERPENT_AGGRANDIZER
 }
 
 quest.sections =
@@ -19,10 +19,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Fari-Wari'] = quest:progressEvent(823, { text_table = 0 }),
 
@@ -37,26 +37,26 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 0
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 0
         end,
 
-        [xi.zone.AL_ZAHBI] =
+        [invaderXim.zone.AL_ZAHBI] =
         {
             ['Biyaada'] = quest:event(278),
         },
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Fari-Wari'] = quest:event(829),
         },
 
-        [xi.zone.HALVUNG] =
+        [invaderXim.zone.HALVUNG] =
         {
             ['qm7'] =
             {
                 onTrigger = function(player, npc)
                     quest:setVar(player, 'Prog', 1)
-                    return quest:keyItem(xi.ki.LILAC_RIBBON)
+                    return quest:keyItem(invaderXim.ki.LILAC_RIBBON)
                 end,
             },
         },
@@ -64,27 +64,27 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 1
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 1
         end,
 
-        [xi.zone.AL_ZAHBI] =
+        [invaderXim.zone.AL_ZAHBI] =
         {
             ['Biyaada'] = quest:event(278),
         },
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Fari-Wari'] = quest:progressEvent(953, { text_table = 0 }),
 
             onEventFinish =
             {
                 [953] = function(player, csid, option, npc)
-                    player:setPos(0, 0, 0, 0, xi.zone.WAJAOM_WOODLANDS)
+                    player:setPos(0, 0, 0, 0, invaderXim.zone.WAJAOM_WOODLANDS)
                 end,
             },
         },
 
-        [xi.zone.WAJAOM_WOODLANDS] =
+        [invaderXim.zone.WAJAOM_WOODLANDS] =
         {
             onZoneIn = function(player, prevZone)
                 if quest:getVar(player, 'Prog') == 1 then
@@ -101,8 +101,8 @@ quest.sections =
                 [13] = function(player, csid, option, npc)
                     quest:setVar(player, 'Prog', 2)
                     quest:setVar(player, 'Stage', VanadielUniqueDay())
-                    player:delKeyItem(xi.keyItem.LILAC_RIBBON)
-                    player:setPos(80, -6, -123, 65, xi.zone.AHT_URHGAN_WHITEGATE)
+                    player:delKeyItem(invaderXim.keyItem.LILAC_RIBBON)
+                    player:setPos(80, -6, -123, 65, invaderXim.zone.AHT_URHGAN_WHITEGATE)
                 end,
             },
         },
@@ -110,15 +110,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 2
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 2
         end,
 
-        [xi.zone.AL_ZAHBI] =
+        [invaderXim.zone.AL_ZAHBI] =
         {
             ['Biyaada'] = quest:event(279),
         },
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Fari-Wari'] = quest:progressEvent(825, { text_table = 0 }),
             {

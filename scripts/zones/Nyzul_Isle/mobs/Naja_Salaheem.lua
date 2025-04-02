@@ -2,7 +2,7 @@
 -- Area: Nyzul Isle (Path of Darkness)
 --  Mob: Naja Salaheem
 -----------------------------------
-local ID = zones[xi.zone.NYZUL_ISLE]
+local ID = zones[invaderXim.zone.NYZUL_ISLE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -57,7 +57,7 @@ entity.onMobDisengage = function(mob)
     local ready = mob:getLocalVar('ready')
 
     if ready == 1 then
-        xi.ally.startAssist(mob, xi.ally.ASSIST_RANDOM)
+        invaderXim.ally.startAssist(mob, invaderXim.ally.ASSIST_RANDOM)
     end
 end
 
@@ -65,13 +65,13 @@ entity.onMobRoam = function(mob)
     -- Advance to Stage 2 area
     if mob:getLocalVar('Stage') == 2 then
         mob:showText(mob, ID.text.OH_ARE_WE_DONE)
-        mob:pathThrough(stage2Position, xi.pathflag.SCRIPT)
-        mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+        mob:pathThrough(stage2Position, invaderXim.pathflag.SCRIPT)
+        mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
     -- Advance to Stage 3 area
     elseif mob:getLocalVar('Stage') == 3 then
         mob:showText(mob, ID.text.NOW_WERE_TALKIN)
-        mob:pathThrough(stage3Position, xi.pathflag.SCRIPT)
-        mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+        mob:pathThrough(stage3Position, invaderXim.pathflag.SCRIPT)
+        mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
     end
 
     -- Ally Assist Check
@@ -82,8 +82,8 @@ entity.onMobRoam = function(mob)
         mob:setLocalVar('Stage', 0)
     -- Path must finish before Ally Asisst (no wallhacking!)
     elseif ready == 1 then
-        mob:setMobMod(xi.mobMod.NO_MOVE, 0)
-        xi.ally.startAssist(mob, xi.ally.ASSIST_RANDOM)
+        mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
+        invaderXim.ally.startAssist(mob, invaderXim.ally.ASSIST_RANDOM)
     end
 end
 

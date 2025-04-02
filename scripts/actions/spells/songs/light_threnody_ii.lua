@@ -1,5 +1,5 @@
 -----------------------------------
--- Spell: Threnody II - xi.mod.LIGHT_MEVA
+-- Spell: Threnody II - invaderXim.mod.LIGHT_MEVA
 -----------------------------------
 ---@type TSpell
 local spellObject = {}
@@ -9,7 +9,7 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    return xi.spells.enfeebling.useEnfeeblingSong(caster, target, spell)
+    return invaderXim.spells.enfeebling.useEnfeeblingSong(caster, target, spell)
 end
 
 return spellObject

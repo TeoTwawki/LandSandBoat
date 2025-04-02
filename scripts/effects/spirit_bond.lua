@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.SPIRIT_BOND
+-- invaderXim.effect.SPIRIT_BOND
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

@@ -14,59 +14,59 @@ spellObject.onSpellCast = function(caster, target, spell)
         local statusNum = -1
         local removables =
         {
-            xi.effect.FLASH,
-            xi.effect.BLINDNESS,
-            xi.effect.PARALYSIS,
-            xi.effect.POISON,
-            xi.effect.CURSE_I,
-            xi.effect.CURSE_II,
-            xi.effect.DISEASE,
-            xi.effect.PLAGUE,
+            invaderXim.effect.FLASH,
+            invaderXim.effect.BLINDNESS,
+            invaderXim.effect.PARALYSIS,
+            invaderXim.effect.POISON,
+            invaderXim.effect.CURSE_I,
+            invaderXim.effect.CURSE_II,
+            invaderXim.effect.DISEASE,
+            invaderXim.effect.PLAGUE,
         }
 
         -- add extra statuses to the list of removables. Elegy and Requiem are specifically absent.
-        if caster:hasStatusEffect(xi.effect.AFFLATUS_MISERY) then
+        if caster:hasStatusEffect(invaderXim.effect.AFFLATUS_MISERY) then
             removables =
             {
-                xi.effect.FLASH,
-                xi.effect.BLINDNESS,
-                xi.effect.PARALYSIS,
-                xi.effect.POISON,
-                xi.effect.CURSE_I,
-                xi.effect.CURSE_II,
-                xi.effect.DISEASE,
-                xi.effect.PLAGUE,
-                xi.effect.WEIGHT,
-                xi.effect.BIND,
-                xi.effect.BIO,
-                xi.effect.DIA,
-                xi.effect.BURN,
-                xi.effect.FROST,
-                xi.effect.CHOKE,
-                xi.effect.RASP,
-                xi.effect.SHOCK,
-                xi.effect.DROWN,
-                xi.effect.STR_DOWN,
-                xi.effect.DEX_DOWN,
-                xi.effect.VIT_DOWN,
-                xi.effect.AGI_DOWN,
-                xi.effect.INT_DOWN,
-                xi.effect.MND_DOWN,
-                xi.effect.CHR_DOWN,
-                xi.effect.ADDLE,
-                xi.effect.SLOW,
-                xi.effect.HELIX,
-                xi.effect.ACCURACY_DOWN,
-                xi.effect.ATTACK_DOWN,
-                xi.effect.EVASION_DOWN,
-                xi.effect.DEFENSE_DOWN,
-                xi.effect.MAGIC_ACC_DOWN,
-                xi.effect.MAGIC_ATK_DOWN,
-                xi.effect.MAGIC_EVASION_DOWN,
-                xi.effect.MAGIC_DEF_DOWN,
-                xi.effect.MAX_TP_DOWN,
-                xi.effect.MAX_MP_DOWN,
-                xi.effect.MAX_HP_DOWN,
+                invaderXim.effect.FLASH,
+                invaderXim.effect.BLINDNESS,
+                invaderXim.effect.PARALYSIS,
+                invaderXim.effect.POISON,
+                invaderXim.effect.CURSE_I,
+                invaderXim.effect.CURSE_II,
+                invaderXim.effect.DISEASE,
+                invaderXim.effect.PLAGUE,
+                invaderXim.effect.WEIGHT,
+                invaderXim.effect.BIND,
+                invaderXim.effect.BIO,
+                invaderXim.effect.DIA,
+                invaderXim.effect.BURN,
+                invaderXim.effect.FROST,
+                invaderXim.effect.CHOKE,
+                invaderXim.effect.RASP,
+                invaderXim.effect.SHOCK,
+                invaderXim.effect.DROWN,
+                invaderXim.effect.STR_DOWN,
+                invaderXim.effect.DEX_DOWN,
+                invaderXim.effect.VIT_DOWN,
+                invaderXim.effect.AGI_DOWN,
+                invaderXim.effect.INT_DOWN,
+                invaderXim.effect.MND_DOWN,
+                invaderXim.effect.CHR_DOWN,
+                invaderXim.effect.ADDLE,
+                invaderXim.effect.SLOW,
+                invaderXim.effect.HELIX,
+                invaderXim.effect.ACCURACY_DOWN,
+                invaderXim.effect.ATTACK_DOWN,
+                invaderXim.effect.EVASION_DOWN,
+                invaderXim.effect.DEFENSE_DOWN,
+                invaderXim.effect.MAGIC_ACC_DOWN,
+                invaderXim.effect.MAGIC_ATK_DOWN,
+                invaderXim.effect.MAGIC_EVASION_DOWN,
+                invaderXim.effect.MAGIC_DEF_DOWN,
+                invaderXim.effect.MAX_TP_DOWN,
+                invaderXim.effect.MAX_MP_DOWN,
+                invaderXim.effect.MAX_HP_DOWN,
             }
         end
 
@@ -89,7 +89,7 @@ spellObject.onSpellCast = function(caster, target, spell)
             caster:setLocalVar('esunaDelEffMis', 0)  -- again, this can't be a local because it would only delete from the caster if it were. For extra status deletion under Misery
         end
 
-        if statusNum >= 1 and caster:hasStatusEffect(xi.effect.AFFLATUS_MISERY) then -- Misery second status removal.
+        if statusNum >= 1 and caster:hasStatusEffect(invaderXim.effect.AFFLATUS_MISERY) then -- Misery second status removal.
             caster:delStatusEffect(has[delEff]) -- delete the first selected effect so it doesn't get selected again. Won't impact the ability to delete it from others at this point.
             local statusNumMis =  - 1 -- need a new var to track the amount of debuffs for the array
 
@@ -113,7 +113,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     local statusDelMis = caster:getLocalVar('esunaDelEffMis')
 
     if statusDel == 0 then -- this gets set to 0 if there's no status to delete.
-        spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT) -- no effect
+        spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT) -- no effect
     elseif statusDelMis ~= 0 then -- no need to check for statusDelMis because it can't be 0 if this isn't
         target:delStatusEffect(statusDel)
         target:delStatusEffect(statusDelMis)

@@ -10,8 +10,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `cheat_types`
 --
 
-DROP TABLE IF EXISTS `cheat_types`;
-CREATE TABLE IF NOT EXISTS `cheat_types` (
+DROP TABLE IF IXIMSTS `cheat_types`;
+CREATE TABLE IF NOT IXIMSTS `cheat_types` (
   `cheatid` int(10) unsigned NOT NULL,
   `name` varchar(15) NOT NULL,
   `description` varchar(128) NOT NULL,

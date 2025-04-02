@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.CAPE_TERIGGAN]
+local ID = zones[invaderXim.zone.CAPE_TERIGGAN]
 
 return {
     ['Beastmens_Banner'] = { messageSpecial = ID.text.BEASTMEN_BANNER },

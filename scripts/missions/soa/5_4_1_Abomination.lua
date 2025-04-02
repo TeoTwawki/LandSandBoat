@@ -6,11 +6,11 @@
 -- Ominous Postern : !pos 118 37.5 20 277
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.ABOMINATION)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.ABOMINATION)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.UNDYING_LIGHT },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.UNDYING_LIGHT },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.RAKAZNAR_TURRIS] =
+        [invaderXim.zone.RAKAZNAR_TURRIS] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 1 then
@@ -32,19 +32,19 @@ mission.sections =
             {
                 [4] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 2)
-                    player:setPos(273.43, 0.071, -233.61, 168, xi.zone.CEIZAK_BATTLEGROUNDS)
+                    player:setPos(273.43, 0.071, -233.61, 168, invaderXim.zone.CEIZAK_BATTLEGROUNDS)
                 end,
 
                 [32001] = function(player, csid, option, npc)
                     -- TODO: In the BCNM script, check that the appropriate Battlefield ID
                     -- is set as a condition for the below two lines.
                     mission:setVar(player, 'Status', 1)
-                    player:setPos(132.2, 39.75, 20, 0, xi.zone.RAKAZNAR_TURRIS)
+                    player:setPos(132.2, 39.75, 20, 0, invaderXim.zone.RAKAZNAR_TURRIS)
                 end,
             },
         },
 
-        [xi.zone.CEIZAK_BATTLEGROUNDS] =
+        [invaderXim.zone.CEIZAK_BATTLEGROUNDS] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 2 then
@@ -60,16 +60,16 @@ mission.sections =
             },
         },
 
-        [xi.zone.RAKAZNAR_INNER_COURT] =
+        [invaderXim.zone.RAKAZNAR_INNER_COURT] =
         {
             afterZoneIn = function(player)
                 if
-                    not player:hasKeyItem(xi.ki.AWAKENED_CRYSTALLIZED_PSYCHE) and
+                    not player:hasKeyItem(invaderXim.ki.AWAKENED_CRYSTALLIZED_PSYCHE) and
                     mission:getVar(player, 'Status') == 0
                 then
                     -- TODO: This message needs verification, and need to determine if there
                     -- is a unique event or message.
-                    npcUtil.giveKeyItem(player, xi.ki.AWAKENED_CRYSTALLIZED_PSYCHE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.AWAKENED_CRYSTALLIZED_PSYCHE)
                 end
             end,
         },

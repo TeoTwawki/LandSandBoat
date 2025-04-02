@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.RIVERNE_SITE_A01]
+local ID = zones[invaderXim.zone.RIVERNE_SITE_A01]
 
 return {
     ['qm_rivernewort']        = { messageSpecial = ID.text.NOTHING_OUT_OF_THE_ORDINARY },

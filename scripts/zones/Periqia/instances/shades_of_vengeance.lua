@@ -2,29 +2,29 @@
 -- TOAU-31: Shades of Vengeance
 -- !instance 5600
 -----------------------------------
-local ID = zones[xi.zone.PERIQIA]
+local ID = zones[invaderXim.zone.PERIQIA]
 -----------------------------------
 local instanceObject = {}
 
 instanceObject.registryRequirements = function(player)
-    return player:getCurrentMission(xi.mission.log_id.TOAU) == xi.mission.id.toau.SHADES_OF_VENGEANCE and
-        player:hasKeyItem(xi.ki.PERIQIA_ASSAULT_AREA_ENTRY_PERMIT)
+    return player:getCurrentMission(invaderXim.mission.log_id.TOAU) == invaderXim.mission.id.toau.SHADES_OF_VENGEANCE and
+        player:hasKeyItem(invaderXim.ki.PERIQIA_ASSAULT_AREA_ENTRY_PERMIT)
 end
 
 instanceObject.entryRequirements = function(player)
-    return player:getCurrentMission(xi.mission.log_id.TOAU) > xi.mission.id.toau.SHADES_OF_VENGEANCE or
-        player:hasKeyItem(xi.ki.PERIQIA_ASSAULT_AREA_ENTRY_PERMIT)
+    return player:getCurrentMission(invaderXim.mission.log_id.TOAU) > invaderXim.mission.id.toau.SHADES_OF_VENGEANCE or
+        player:hasKeyItem(invaderXim.ki.PERIQIA_ASSAULT_AREA_ENTRY_PERMIT)
 end
 
 instanceObject.afterInstanceRegister = function(player)
     local instance = player:getInstance()
 
-    if player:hasKeyItem(xi.ki.PERIQIA_ASSAULT_AREA_ENTRY_PERMIT) then
-        player:messageSpecial(ID.text.FADES_INTO_NOTHINGNESS, xi.ki.PERIQIA_ASSAULT_AREA_ENTRY_PERMIT)
-        player:delKeyItem(xi.ki.PERIQIA_ASSAULT_AREA_ENTRY_PERMIT)
+    if player:hasKeyItem(invaderXim.ki.PERIQIA_ASSAULT_AREA_ENTRY_PERMIT) then
+        player:messageSpecial(ID.text.FADES_INTO_NOTHINGNESS, invaderXim.ki.PERIQIA_ASSAULT_AREA_ENTRY_PERMIT)
+        player:delKeyItem(invaderXim.ki.PERIQIA_ASSAULT_AREA_ENTRY_PERMIT)
     end
 
-    player:addTempItem(xi.item.CAGE_OF_DVUCCA_FIREFLIES)
+    player:addTempItem(invaderXim.item.CAGE_OF_DVUCCA_FIREFLIES)
     player:messageSpecial(ID.text.TIME_TO_COMPLETE, instance:getTimeLimit())
 end
 
@@ -35,18 +35,18 @@ instanceObject.onInstanceCreated = function(instance)
 end
 
 instanceObject.onInstanceCreatedCallback = function(player, instance)
-    xi.instance.onInstanceCreatedCallback(player, instance)
+    invaderXim.instance.onInstanceCreatedCallback(player, instance)
 end
 
 instanceObject.onInstanceTimeUpdate = function(instance, elapsed)
-    xi.instance.updateInstanceTime(instance, elapsed, ID.text)
+    invaderXim.instance.updateInstanceTime(instance, elapsed, ID.text)
 end
 
 instanceObject.onInstanceFailure = function(instance)
     local chars = instance:getChars()
 
     for i, v in pairs(chars) do
-        if v:getCurrentMission(xi.mission.log_id.TOAU) == xi.mission.id.toau.SHADES_OF_VENGEANCE then
+        if v:getCurrentMission(invaderXim.mission.log_id.TOAU) == invaderXim.mission.id.toau.SHADES_OF_VENGEANCE then
             v:setCharVar('Mission[4][30]Timer', VanadielUniqueDay() + 1)
         end
 
@@ -65,8 +65,8 @@ instanceObject.onInstanceComplete = function(instance)
     local chars = instance:getChars()
 
     for i, v in pairs(chars) do
-        if v:getCurrentMission(xi.mission.log_id.TOAU) == xi.mission.id.toau.SHADES_OF_VENGEANCE then
-            v:setMissionStatus(xi.mission.log_id.TOAU, 1)
+        if v:getCurrentMission(invaderXim.mission.log_id.TOAU) == invaderXim.mission.id.toau.SHADES_OF_VENGEANCE then
+            v:setMissionStatus(invaderXim.mission.log_id.TOAU, 1)
         end
 
         v:startEvent(102)

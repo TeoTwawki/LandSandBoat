@@ -5,7 +5,7 @@
 -- Involved in Quest: Lure of the Wildcat (San d'Oria)
 -- !pos 2 0.1 0.1 233
 -----------------------------------
-local ID = zones[xi.zone.CHATEAU_DORAGUILLE]
+local ID = zones[invaderXim.zone.CHATEAU_DORAGUILLE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -16,11 +16,11 @@ entity.onTrigger = function(player, npc)
 
     -- Lure of the Wildcat San d'Oria
     if
-        player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.LURE_OF_THE_WILDCAT) == xi.questStatus.QUEST_ACCEPTED and
+        player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.LURE_OF_THE_WILDCAT) == invaderXim.questStatus.QUEST_ACCEPTED and
         not utils.mask.getBit(wildcatSandy, 16)
     then
         player:startEvent(558)
-    elseif pNation == xi.nation.SANDORIA then
+    elseif pNation == invaderXim.nation.SANDORIA then
         -- Rank 10 default dialogue
         if player:getRank(player:getNation()) == 10 then
             player:startEvent(31)
@@ -28,7 +28,7 @@ entity.onTrigger = function(player, npc)
         else
             player:startEvent(577)
         end
-    elseif pNation == xi.nation.BASTOK then
+    elseif pNation == invaderXim.nation.BASTOK then
         player:showText(npc, ID.text.HALVER_OFFSET + 1092)
     end
 end

@@ -10,16 +10,16 @@ end
 
 local removableStatus =
 {
-    xi.effect.PETRIFICATION,
-    xi.effect.SILENCE,
-    xi.effect.BANE,
-    xi.effect.CURSE_II,
-    xi.effect.CURSE_I,
-    xi.effect.PARALYSIS,
-    xi.effect.PLAGUE,
-    xi.effect.POISON,
-    xi.effect.DISEASE,
-    xi.effect.BLINDNESS,
+    invaderXim.effect.PETRIFICATION,
+    invaderXim.effect.SILENCE,
+    invaderXim.effect.BANE,
+    invaderXim.effect.CURSE_II,
+    invaderXim.effect.CURSE_I,
+    invaderXim.effect.PARALYSIS,
+    invaderXim.effect.PLAGUE,
+    invaderXim.effect.POISON,
+    invaderXim.effect.DISEASE,
+    invaderXim.effect.BLINDNESS,
 }
 
 local function removeStatus(target)
@@ -29,7 +29,7 @@ local function removeStatus(target)
         end
     end
 
-    if target:eraseStatusEffect() ~= xi.effect.NONE then
+    if target:eraseStatusEffect() ~= invaderXim.effect.NONE then
         return true
     end
 
@@ -37,9 +37,9 @@ local function removeStatus(target)
 end
 
 abilityObject.onAutomatonAbility = function(target, automaton, skill, master, action)
-    automaton:addRecast(xi.recast.ABILITY, skill:getID(), 30)
-    local maneuvers = master:countEffect(xi.effect.LIGHT_MANEUVER)
-    skill:setMsg(xi.msg.basic.USES)
+    automaton:addRecast(invaderXim.recast.ABILITY, skill:getID(), 30)
+    local maneuvers = master:countEffect(invaderXim.effect.LIGHT_MANEUVER)
+    skill:setMsg(invaderXim.msg.basic.USES)
 
     local toremove = maneuvers
     local removed = 0
@@ -54,7 +54,7 @@ abilityObject.onAutomatonAbility = function(target, automaton, skill, master, ac
     until toremove <= 0
 
     for i = 1, maneuvers do
-        master:delStatusEffectSilent(xi.effect.LIGHT_MANEUVER)
+        master:delStatusEffectSilent(invaderXim.effect.LIGHT_MANEUVER)
     end
 
     return removed

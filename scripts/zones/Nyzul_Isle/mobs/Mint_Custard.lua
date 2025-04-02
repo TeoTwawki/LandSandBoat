@@ -9,13 +9,13 @@ mixins = { require('scripts/mixins/families/flan') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMod(xi.mod.LTNG_ABSORB, 100)
+    mob:setMod(invaderXim.mod.LTNG_ABSORB, 100)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
     if optParams.isKiller or optParams.noKiller then
-        xi.nyzul.spawnChest(mob, player)
-        xi.nyzul.enemyLeaderKill(mob)
+        invaderXim.nyzul.spawnChest(mob, player)
+        invaderXim.nyzul.enemyLeaderKill(mob)
     end
 end
 

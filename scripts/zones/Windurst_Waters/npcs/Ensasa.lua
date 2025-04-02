@@ -2,13 +2,13 @@
 -- Area: Windurst Waters
 --  NPC: Ensasa
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WATERS]
+local ID = zones[invaderXim.zone.WINDURST_WATERS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.events.harvestFestival.onHalloweenTrade(player, trade, npc)
+    invaderXim.events.harvestFestival.onHalloweenTrade(player, trade, npc)
 end
 
 entity.onTrigger = function(player, npc)
@@ -32,7 +32,7 @@ entity.onTrigger = function(player, npc)
         110,   4744, 3, -- White Jar
     }
 
-    xi.shop.nation(player, stock, xi.nation.WINDURST)
+    invaderXim.shop.nation(player, stock, invaderXim.nation.WINDURST)
 end
 
 return entity

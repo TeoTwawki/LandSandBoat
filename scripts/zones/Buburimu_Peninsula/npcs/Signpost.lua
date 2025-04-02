@@ -2,7 +2,7 @@
 -- Area: Buburimu Peninsula
 --  NPC: Signpost
 -----------------------------------
-local ID = zones[xi.zone.BUBURIMU_PENINSULA]
+local ID = zones[invaderXim.zone.BUBURIMU_PENINSULA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

@@ -27,13 +27,13 @@ g_mixins.families.aern = function(aernMob)
             currReraise >= reraises or
             math.random(1, 100) <= 60
         then
-            mob:setMobMod(xi.mobMod.NO_DROPS, 0)
+            mob:setMobMod(invaderXim.mobMod.NO_DROPS, 0)
 
             return
         end
 
         if mob:getLocalVar('ALLOW_DROPS') == 0 then
-            mob:setMobMod(xi.mobMod.NO_DROPS, 1)
+            mob:setMobMod(invaderXim.mobMod.NO_DROPS, 1)
         end
 
         local target   = mob:getTarget()

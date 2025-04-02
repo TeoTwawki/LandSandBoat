@@ -3,7 +3,7 @@
 --  Mob: Orcish Stonechucker
 -- Note: PH for Thousandarm Deshglesh
 -----------------------------------
-local ID = zones[xi.zone.GHELSBA_OUTPOST]
+local ID = zones[invaderXim.zone.GHEIXIMA_OUTPOST]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -16,7 +16,7 @@ local thousandarmPHTable =
 }
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, thousandarmPHTable, 5, 3600) -- 1 hour minimum
+    invaderXim.mob.phOnDespawn(mob, thousandarmPHTable, 5, 3600) -- 1 hour minimum
 end
 
 return entity

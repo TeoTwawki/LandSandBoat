@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Beadeaux (147)
 -----------------------------------
-local ID = zones[xi.zone.BEADEAUX]
+local ID = zones[invaderXim.zone.BEADEAUX]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -22,7 +22,7 @@ zoneObject.onInitialize = function(zone)
     zone:registerCylindricalTriggerArea(11, 340, 100, 30) -- The Afflictor, Map 2, M-7, north-west
     zone:registerCylindricalTriggerArea(12, 380, 60, 30) -- The Afflictor, Map 2, M-7, south-east
 
-    xi.treasure.initZone(zone)
+    invaderXim.treasure.initZone(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -40,7 +40,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
@@ -60,18 +60,18 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
         ((triggerAreaID == 3 or triggerAreaID == 5 or triggerAreaID == 6) and yPos > 20) or
         (triggerAreaID == 4 and yPos > 35)
     then
-        if not player:hasStatusEffect(xi.effect.CURSE_I) then
-            if not player:hasStatusEffect(xi.effect.SILENCE) then
+        if not player:hasStatusEffect(invaderXim.effect.CURSE_I) then
+            if not player:hasStatusEffect(invaderXim.effect.SILENCE) then
                 GetNPCByID(ID.npc.AFFLICTOR_BASE + (triggerArea:getTriggerAreaID() -1)):entityAnimationPacket('main', player)
                 player:setLocalVar('inRegion', time + 11) -- Start timer. We set it here to prevent double message.
-                player:addStatusEffect(xi.effect.CURSE_I, 75, 0, 120)
+                player:addStatusEffect(invaderXim.effect.CURSE_I, 75, 0, 120)
                 player:messageSpecial(ID.text.FEEL_NUMB)
             elseif player:getLocalVar('inRegion1') <= time then
                 player:messageSpecial(ID.text.LIGHT_HEADED)
                 player:setLocalVar('inRegion1', time + 11) -- Display message and set timer.
             end
         elseif
-            player:hasStatusEffect(xi.effect.CURSE_I) and
+            player:hasStatusEffect(invaderXim.effect.CURSE_I) and
             player:getLocalVar('inRegion') <= time
         then
             player:messageSpecial(ID.text.TOO_HEAVY)
@@ -110,10 +110,10 @@ zoneObject.onZoneWeatherChange = function(weather)
     local qm1 = GetNPCByID(ID.npc.QM1) -- Quest: Beaudeaux Smog
 
     if qm1 then
-        if weather == xi.weather.RAIN or weather == xi.weather.SQUALL then
-            qm1:setStatus(xi.status.NORMAL)
+        if weather == invaderXim.weather.RAIN or weather == invaderXim.weather.SQUALL then
+            qm1:setStatus(invaderXim.status.NORMAL)
         else
-            qm1:setStatus(xi.status.DISAPPEAR)
+            qm1:setStatus(invaderXim.status.DISAPPEAR)
         end
     end
 end

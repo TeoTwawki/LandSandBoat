@@ -1,22 +1,22 @@
 -----------------------------------
--- xi.effect.DOUBLE_SHOT
+-- invaderXim.effect.DOUBLE_SHOT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    local jpValue = target:getJobPointLevel(xi.jp.DOUBLE_SHOT_EFFECT)
+    local jpValue = target:getJobPointLevel(invaderXim.jp.DOUBLE_SHOT_EFFECT)
 
-    target:addMod(xi.mod.DOUBLE_SHOT_RATE, effect:getPower() + jpValue)
+    target:addMod(invaderXim.mod.DOUBLE_SHOT_RATE, effect:getPower() + jpValue)
 end
 
 effectObject.onEffectTick = function(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    local jpValue = target:getJobPointLevel(xi.jp.DOUBLE_SHOT_EFFECT)
+    local jpValue = target:getJobPointLevel(invaderXim.jp.DOUBLE_SHOT_EFFECT)
 
-    target:delMod(xi.mod.DOUBLE_SHOT_RATE, effect:getPower() + jpValue)
+    target:delMod(invaderXim.mod.DOUBLE_SHOT_RATE, effect:getPower() + jpValue)
 end
 
 return effectObject

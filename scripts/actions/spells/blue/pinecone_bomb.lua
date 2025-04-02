@@ -21,11 +21,11 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.PLANTOID
-    params.tpmod = xi.spells.blue.tpMod.DURATION
-    params.attackType = xi.attackType.RANGED
-    params.damageType = xi.damageType.PIERCING
-    params.scattr = xi.skillchainType.LIQUEFACTION
+    params.ecosystem = invaderXim.ecosystem.PLANTOID
+    params.tpmod = invaderXim.spells.blue.tpMod.DURATION
+    params.attackType = invaderXim.attackType.RANGED
+    params.damageType = invaderXim.damageType.PIERCING
+    params.scattr = invaderXim.skillchainType.LIQUEFACTION
 
     params.numhits = 1
     params.multiplier = 2.25
@@ -41,13 +41,13 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
 
-    params.effect = xi.effect.SLEEP_I
+    params.effect = invaderXim.effect.SLEEP_I
     local power = 1
     local tick = 0
     local duration = 60
 
-    local damage = xi.spells.blue.usePhysicalSpell(caster, target, spell, params)
-    xi.spells.blue.usePhysicalSpellAddedEffect(caster, target, spell, params, damage, power, tick, duration)
+    local damage = invaderXim.spells.blue.usePhysicalSpell(caster, target, spell, params)
+    invaderXim.spells.blue.usePhysicalSpellAddedEffect(caster, target, spell, params, damage, power, tick, duration)
 
     return damage
 end

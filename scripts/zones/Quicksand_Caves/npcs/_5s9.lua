@@ -4,7 +4,7 @@
 -- Door blocked by Weight system
 -- !pos -345 0 820 208
 -----------------------------------
-local ID = zones[xi.zone.QUICKSAND_CAVES]
+local ID = zones[invaderXim.zone.QUICKSAND_CAVES]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

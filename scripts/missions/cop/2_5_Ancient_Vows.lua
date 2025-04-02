@@ -6,11 +6,11 @@
 -- Dilapidated Gate : !pos -259 -30 276 25
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.ANCIENT_VOWS)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.ANCIENT_VOWS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.THE_CALL_OF_THE_WYRMKING },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_CALL_OF_THE_WYRMKING },
 }
 
 mission.sections =
@@ -20,12 +20,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Justinius'] = mission:event(128):replaceDefault(),
         },
 
-        [xi.zone.MISAREAUX_COAST] =
+        [invaderXim.zone.MISAREAUX_COAST] =
         {
             ['_0p2'] =
             {
@@ -44,7 +44,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.RIVERNE_SITE_A01] =
+        [invaderXim.zone.RIVERNE_SITE_A01] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 1 then
@@ -60,14 +60,14 @@ mission.sections =
             },
         },
 
-        [xi.zone.MONARCH_LINN] =
+        [invaderXim.zone.MONARCH_LINN] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
                     if
                         mission:getVar(player, 'Status') == 2 and
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.ANCIENT_VOWS
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.ANCIENT_VOWS
                     then
                         mission:complete(player)
                         player:setPos(694, -5.5, -619, 74, 107) -- South Gustaberg

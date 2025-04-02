@@ -3,13 +3,13 @@
 --  NPC: ??? - Guardian Crawler (Spawn area 1)
 -- !pos 124.335 -34.609 -75.373 197
 -----------------------------------
-local ID = zones[xi.zone.CRAWLERS_NEST]
+local ID = zones[invaderXim.zone.CRAWLERS_NEST]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    if npcUtil.tradeHas(trade, xi.item.ROLANBERRY) then -- Rolanberry
+    if npcUtil.tradeHas(trade, invaderXim.item.ROLANBERRY) then -- Rolanberry
         player:confirmTrade()
         if
             math.random(1, 100) > 38 or

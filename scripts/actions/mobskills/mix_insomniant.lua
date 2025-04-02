@@ -13,11 +13,11 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     skill:setMsg(194)
 
-    if not target:hasStatusEffect(xi.effect.NEGATE_SLEEP) then
-        target:addStatusEffect(xi.effect.NEGATE_SLEEP, 10, 0, 60)
+    if not target:hasStatusEffect(invaderXim.effect.NEGATE_SLEEP) then
+        target:addStatusEffect(invaderXim.effect.NEGATE_SLEEP, 10, 0, 60)
     end
 
-    return xi.effect.NEGATE_SLEEP
+    return invaderXim.effect.NEGATE_SLEEP
 end
 
 return mobskillObject

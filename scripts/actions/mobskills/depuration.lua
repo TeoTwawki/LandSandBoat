@@ -14,7 +14,7 @@ local mobskillObject = {}
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
     local dispel = target:eraseStatusEffect()
 
-    if dispel ~= xi.effect.NONE then
+    if dispel ~= invaderXim.effect.NONE then
         return 0
     end
 

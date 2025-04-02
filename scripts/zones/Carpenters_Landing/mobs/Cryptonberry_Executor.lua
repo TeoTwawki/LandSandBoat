@@ -3,7 +3,7 @@
 --   NM: Cryptonberry Executor
 -- !pos 120.615 -5.457 -390.133 2
 -----------------------------------
-local ID = zones[xi.zone.CARPENTERS_LANDING]
+local ID = zones[invaderXim.zone.CARPENTERS_LANDING]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -20,15 +20,15 @@ local function unlockAssassinTwoHours()
 end
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180) -- 3 minutes
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180) -- 3 minutes
 end
 
 entity.onMobSpawn = function(mob)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.SILENCE)
-    mob:addImmunity(xi.immunity.TERROR)
-    mob:setMod(xi.mod.REGAIN, 100)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
+    mob:addImmunity(invaderXim.immunity.TERROR)
+    mob:setMod(invaderXim.mod.REGAIN, 100)
 end
 
 entity.onMobFight = function(mob, target)

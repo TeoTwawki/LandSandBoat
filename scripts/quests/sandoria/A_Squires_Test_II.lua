@@ -6,28 +6,28 @@
 -- qm2      : !pos -94 1 273 193
 -- qm3      : !pos -139 0.1 264 193
 -----------------------------------
-local ordellesCavesID = zones[xi.zone.ORDELLES_CAVES]
+local ordellesCavesID = zones[invaderXim.zone.ORDELLES_CAVES]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.A_SQUIRES_TEST_II)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.A_SQUIRES_TEST_II)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.SANDORIA,
-    keyItem  = xi.ki.SQUIRE_CERTIFICATE,
-    title    = xi.title.SPELUNKER,
+    fameArea = invaderXim.fameArea.SANDORIA,
+    keyItem  = invaderXim.ki.SQUIRE_CERTIFICATE,
+    title    = invaderXim.title.SPELUNKER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.SANDORIA, xi.quest.id.sandoria.A_SQUIRES_TEST)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.A_SQUIRES_TEST)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Balasiel'] =
             {
@@ -51,15 +51,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Balasiel'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.STALACTITE_DEW) then
+                    if player:hasKeyItem(invaderXim.ki.STALACTITE_DEW) then
                         return quest:progressEvent(626)
                     else
                         return quest:event(630)
@@ -73,7 +73,7 @@ quest.sections =
             {
                 [626] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.STALACTITE_DEW)
+                        player:delKeyItem(invaderXim.ki.STALACTITE_DEW)
                     end
                 end,
 
@@ -83,7 +83,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Morjean'] =
             {
@@ -95,12 +95,12 @@ quest.sections =
             },
         },
 
-        [xi.zone.ORDELLES_CAVES] =
+        [invaderXim.zone.ORDELLES_CAVES] =
         {
             ['qm2'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.STALACTITE_DEW) then
+                    if not player:hasKeyItem(invaderXim.ki.STALACTITE_DEW) then
                         quest:setVar(player, 'Timer', os.time() + 30)
                     end
 
@@ -111,9 +111,9 @@ quest.sections =
             ['qm3'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.STALACTITE_DEW) then
+                    if not player:hasKeyItem(invaderXim.ki.STALACTITE_DEW) then
                         if os.time() <= quest:getVar(player, 'Timer') then
-                            return quest:keyItem(xi.ki.STALACTITE_DEW)
+                            return quest:keyItem(invaderXim.ki.STALACTITE_DEW)
                         else
                             return quest:messageSpecial(ordellesCavesID.text.DEW_SLIPS_THROUGH_FINGERS)
                         end

@@ -8,7 +8,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.THE_BRUGAIRE_CONSORTIUM) == xi.questStatus.QUEST_COMPLETED then
+    if player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.THE_BRUGAIRE_CONSORTIUM) == invaderXim.questStatus.QUEST_COMPLETED then
         local fired = player:getCharVar('Fired')
 
         if fired == 1 then

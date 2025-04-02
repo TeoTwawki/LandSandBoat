@@ -4,7 +4,7 @@
 -- 1st Floor Door Exit to Portal
 -- !pos 340 -2 -400
 -----------------------------------
-local ID = zones[xi.zone.BHAFLAU_REMNANTS]
+local ID = zones[invaderXim.zone.BHAFLAU_REMNANTS]
 -----------------------------------
 
 ---@type TNpcEntity
@@ -20,7 +20,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 300 and option == 1 then
-        if xi.salvage.onDoorOpen(npc) then
+        if invaderXim.salvage.onDoorOpen(npc) then
             player:getInstance():setLocalVar('stageComplete', 1)
         else
             player:messageSpecial(ID.text.DOOR_IS_SEALED)

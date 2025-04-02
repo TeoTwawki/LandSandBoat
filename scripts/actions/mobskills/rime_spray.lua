@@ -15,18 +15,18 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local damage = mob:getWeaponDmg() * 5
 
-    damage = xi.mobskills.mobMagicalMove(mob, target, skill, damage, xi.element.ICE, 1, xi.mobskills.magicalTpBonus.NO_EFFECT)
-    damage = xi.mobskills.mobFinalAdjustments(damage, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.ICE, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
+    damage = invaderXim.mobskills.mobMagicalMove(mob, target, skill, damage, invaderXim.element.ICE, 1, invaderXim.mobskills.magicalTpBonus.NO_EFFECT)
+    damage = invaderXim.mobskills.mobFinalAdjustments(damage, mob, skill, target, invaderXim.attackType.MAGICAL, invaderXim.damageType.ICE, invaderXim.mobskills.shadowBehavior.IGNORE_SHADOWS)
 
-    target:takeDamage(damage, mob, xi.attackType.MAGICAL, xi.damageType.ICE)
-    xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.FROST, 15, 3, 120)
-    xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.STR_DOWN, 20, 3, 60)
-    xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.VIT_DOWN, 20, 3, 60)
-    xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.DEX_DOWN, 20, 3, 60)
-    xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.AGI_DOWN, 20, 3, 60)
-    xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.MND_DOWN, 20, 3, 60)
-    xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.INT_DOWN, 20, 3, 60)
-    xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.CHR_DOWN, 20, 3, 60)
+    target:takeDamage(damage, mob, invaderXim.attackType.MAGICAL, invaderXim.damageType.ICE)
+    invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.FROST, 15, 3, 120)
+    invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.STR_DOWN, 20, 3, 60)
+    invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.VIT_DOWN, 20, 3, 60)
+    invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.DEX_DOWN, 20, 3, 60)
+    invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.AGI_DOWN, 20, 3, 60)
+    invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.MND_DOWN, 20, 3, 60)
+    invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.INT_DOWN, 20, 3, 60)
+    invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.CHR_DOWN, 20, 3, 60)
 
     return damage
 end

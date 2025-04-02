@@ -6,15 +6,15 @@
 -- Mhaura, Rycharde, !pos 17.451 -16.000 88.815 249
 -----------------------------------
 
-local quest          = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.WAY_OF_THE_COOK)
+local quest          = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.WAY_OF_THE_COOK)
 local daysPassed     = 0
 local totalHoursLeft = 0
 
 quest.reward =
 {
     fame     = 120,
-    fameArea = xi.fameArea.WINDURST,
-    title    = xi.title.ONE_STAR_PURVEYOR,
+    fameArea = invaderXim.fameArea.WINDURST,
+    title    = invaderXim.title.ONE_STAR_PURVEYOR,
 }
 
 quest.sections =
@@ -22,20 +22,20 @@ quest.sections =
     -- Section: Check if quest is available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.RYCHARDE_THE_CHEF) == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.RYCHARDE_THE_CHEF) == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Rycharde'] =
             {
                 onTrigger = function(player, npc)
                     if
                         player:getCharVar('Quest[4][0]DayCompleted') + 7 < VanadielUniqueDay() and
-                        player:getFameLevel(xi.fameArea.WINDURST) > 2
+                        player:getFameLevel(invaderXim.fameArea.WINDURST) > 2
                     then
-                        return quest:progressEvent(76, xi.item.BEEHIVE_CHIP, xi.item.SLICE_OF_DHALMEL_MEAT) -- Way of the Cook starting event.
+                        return quest:progressEvent(76, invaderXim.item.BEEHIVE_CHIP, invaderXim.item.SLICE_OF_DHALMEL_MEAT) -- Way of the Cook starting event.
                     else
                         return quest:event(75) -- Default dialog after completing previous quest.
                     end
@@ -61,10 +61,10 @@ quest.sections =
     -- Section: Quest accepted. Handle trade and time limit
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Rycharde'] =
             {
@@ -80,7 +80,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.SLICE_OF_DHALMEL_MEAT, xi.item.BEEHIVE_CHIP }) then
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.SLICE_OF_DHALMEL_MEAT, invaderXim.item.BEEHIVE_CHIP }) then
                         daysPassed     = VanadielDayOfTheYear() - quest:getVar(player, 'DayStarted')
                         totalHoursLeft = 72 - (VanadielHour() + daysPassed * 24) + quest:getVar(player, 'HourStarted')
 
@@ -90,8 +90,8 @@ quest.sections =
                             return quest:progressEvent(81) -- Quest completed late.
                         end
                     elseif
-                        npcUtil.tradeHasExactly(trade, { xi.item.SLICE_OF_DHALMEL_MEAT }) or
-                        npcUtil.tradeHasExactly(trade, { xi.item.BEEHIVE_CHIP })
+                        npcUtil.tradeHasExactly(trade, { invaderXim.item.SLICE_OF_DHALMEL_MEAT }) or
+                        npcUtil.tradeHasExactly(trade, { invaderXim.item.BEEHIVE_CHIP })
                     then
                         return quest:event(73) -- Incomplete trade.
                     end

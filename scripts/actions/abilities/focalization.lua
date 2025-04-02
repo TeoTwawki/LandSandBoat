@@ -17,17 +17,17 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    if player:hasStatusEffect(xi.effect.FOCALIZATION) then
-        return xi.msg.basic.EFFECT_ALREADY_ACTIVE, 0
+    if player:hasStatusEffect(invaderXim.effect.FOCALIZATION) then
+        return invaderXim.msg.basic.EFFECT_ALREADY_ACTIVE, 0
     end
 
     return 0, 0
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    player:addStatusEffect(xi.effect.FOCALIZATION, player:getMerit(xi.merit.FOCALIZATION), 0, 60)
+    player:addStatusEffect(invaderXim.effect.FOCALIZATION, player:getMerit(invaderXim.merit.FOCALIZATION), 0, 60)
 
-    return xi.effect.FOCALIZATION
+    return invaderXim.effect.FOCALIZATION
 end
 
 return abilityObject

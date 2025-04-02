@@ -3,18 +3,18 @@
 --  NPC: <this space intentionally left blank>
 -- !pos -99 -0 -514 2
 -----------------------------------
-local ID = zones[xi.zone.CARPENTERS_LANDING]
+local ID = zones[invaderXim.zone.CARPENTERS_LANDING]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        player:getCharVar('RELIC_IN_PROGRESS') == xi.item.ANCILE and
-        npcUtil.tradeHas(trade, { xi.item.RANPERRE_GOLDPIECE, xi.item.SUPERNAL_FRAGMENT, xi.item.SHARD_OF_NECROPSYCHE, xi.item.ANCILE })
+        player:getCharVar('RELIC_IN_PROGRESS') == invaderXim.item.ANCILE and
+        npcUtil.tradeHas(trade, { invaderXim.item.RANPERRE_GOLDPIECE, invaderXim.item.SUPERNAL_FRAGMENT, invaderXim.item.SHARD_OF_NECROPSYCHE, invaderXim.item.ANCILE })
     then
         -- currency, shard, necropsyche, stage 4
-        player:startEvent(44, xi.item.AEGIS_75)
+        player:startEvent(44, invaderXim.item.AEGIS_75)
     end
 end
 
@@ -25,7 +25,7 @@ end
 entity.onEventFinish = function(player, csid, option, npc)
     if
         csid == 44 and
-        npcUtil.giveItem(player, { xi.item.AEGIS_75, { xi.item.MONTIONT_SILVERPIECE, 30 } })
+        npcUtil.giveItem(player, { invaderXim.item.AEGIS_75, { invaderXim.item.MONTIONT_SILVERPIECE, 30 } })
     then
         player:confirmTrade()
         player:setCharVar('RELIC_IN_PROGRESS', 0)

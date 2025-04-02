@@ -2,12 +2,12 @@
 -- Area: Bibiki Bay
 --  NPC: Clamming Point
 -----------------------------------
-local ID = zones[xi.zone.BIBIKI_BAY]
+local ID = zones[invaderXim.zone.BIBIKI_BAY]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
--- TODO: Use xi.item enum for data, subtables for each row
+-- TODO: Use invaderXim.item enum for data, subtables for each row
 -- clammingItems = item id, weight, drop rate, improved drop rate
 local clammingItems =
 {
@@ -54,7 +54,7 @@ entity.onSpawn = function(npc)
 end
 
 local function giveImprovedResults(player)
-    if player:getMod(xi.mod.CLAMMING_IMPROVED_RESULTS) > 0 then
+    if player:getMod(invaderXim.mod.CLAMMING_IMPROVED_RESULTS) > 0 then
         return 1
     end
 
@@ -62,7 +62,7 @@ local function giveImprovedResults(player)
 end
 
 local function giveReducedIncidents(player)
-    if player:getMod(xi.mod.CLAMMING_REDUCED_INCIDENTS) > 0 then
+    if player:getMod(invaderXim.mod.CLAMMING_REDUCED_INCIDENTS) > 0 then
         return 5
     end
 
@@ -76,7 +76,7 @@ entity.onTrigger = function(player, npc)
         return
     end
 
-    if player:hasKeyItem(xi.ki.CLAMMING_KIT) then
+    if player:hasKeyItem(invaderXim.ki.CLAMMING_KIT) then
         local delay = player:getLocalVar('ClammingPointDelay')
 
         if delay > 0 and delay > os.time() then

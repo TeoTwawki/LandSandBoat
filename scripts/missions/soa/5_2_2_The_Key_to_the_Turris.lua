@@ -6,11 +6,11 @@
 -- Levil : !pos -87.204 3.350 12.655 256
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.THE_KEY_TO_THE_TURRIS)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_KEY_TO_THE_TURRIS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.TEODORS_SUMMONS },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.TEODORS_SUMMONS },
 }
 
 mission.sections =
@@ -20,12 +20,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(40, 256, 0, 5, 0, 0, 0, 0, 4),
         },
 
-        [xi.zone.RAKAZNAR_TURRIS] =
+        [invaderXim.zone.RAKAZNAR_TURRIS] =
         {
             ['Ominous_Postern'] = mission:progressEvent(1, 0, 3530831, 2964, 627, 277, 1, 0, 0),
 
@@ -33,12 +33,12 @@ mission.sections =
             {
                 [1] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 1)
-                    player:setPos(-277.5, 19.999, 59.9, 0, xi.zone.KAMIHR_DRIFTS)
+                    player:setPos(-277.5, 19.999, 59.9, 0, invaderXim.zone.KAMIHR_DRIFTS)
                 end,
             },
         },
 
-        [xi.zone.KAMIHR_DRIFTS] =
+        [invaderXim.zone.KAMIHR_DRIFTS] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 1 then

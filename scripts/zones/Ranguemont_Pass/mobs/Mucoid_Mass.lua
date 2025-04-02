@@ -6,11 +6,11 @@
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:addImmunity(xi.immunity.SILENCE)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 345)
+    invaderXim.hunts.checkHunt(mob, player, 345)
 end
 
 entity.onMobDespawn = function(mob)

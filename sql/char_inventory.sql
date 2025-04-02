@@ -2,7 +2,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for `char_inventory`
 -- ----------------------------
-DROP TABLE IF EXISTS `char_inventory`;
+DROP TABLE IF IXIMSTS `char_inventory`;
 CREATE TABLE `char_inventory` (
   `charid` int(10) unsigned NOT NULL,
   `location` tinyint(1) unsigned NOT NULL DEFAULT '0',

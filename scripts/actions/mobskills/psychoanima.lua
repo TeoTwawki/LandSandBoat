@@ -11,11 +11,11 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    xi.mobskills.mobBuffMove(mob, xi.effect.PHYSICAL_SHIELD, 1, 0, 10)
+    invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.PHYSICAL_SHIELD, 1, 0, 10)
 
-    skill:setMsg(xi.msg.basic.USES)
+    skill:setMsg(invaderXim.msg.basic.USES)
 
-    return xi.effect.PHYSICAL_SHIELD
+    return invaderXim.effect.PHYSICAL_SHIELD
 end
 
 return mobskillObject

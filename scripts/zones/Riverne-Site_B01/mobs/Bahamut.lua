@@ -2,20 +2,20 @@
 -- Area: Riverne - Site B01 (BCNM)
 --   NM: Bahamut
 -----------------------------------
-local ID = zones[xi.zone.RIVERNE_SITE_B01]
+local ID = zones[invaderXim.zone.RIVERNE_SITE_B01]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.HP_STANDBACK, -1)
+    mob:setMobMod(invaderXim.mobMod.HP_STANDBACK, -1)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:addStatusEffect(xi.effect.PHALANX, 35, 0, 180)
-    mob:addStatusEffect(xi.effect.STONESKIN, 350, 0, 300)
-    mob:addStatusEffect(xi.effect.PROTECT, 175, 0, 1800)
-    mob:addStatusEffect(xi.effect.SHELL, 24, 0, 1800)
+    mob:addStatusEffect(invaderXim.effect.PHALANX, 35, 0, 180)
+    mob:addStatusEffect(invaderXim.effect.STONESKIN, 350, 0, 300)
+    mob:addStatusEffect(invaderXim.effect.PROTECT, 175, 0, 1800)
+    mob:addStatusEffect(invaderXim.effect.SHELL, 24, 0, 1800)
 end
 
 local megaflareHPP =
@@ -35,12 +35,12 @@ entity.onMobFight = function(mob, target)
     local act = mob:getCurrentAction()
 
     if
-        act == xi.act.MOBABILITY_START or
-        act == xi.act.MOBABILITY_USING or
-        act == xi.act.MOBABILITY_FINISH or
-        act == xi.act.MAGIC_START or
-        act == xi.act.MAGIC_CASTING or
-        act == xi.act.MAGIC_START
+        act == invaderXim.act.MOBABILITY_START or
+        act == invaderXim.act.MOBABILITY_USING or
+        act == invaderXim.act.MOBABILITY_FINISH or
+        act == invaderXim.act.MAGIC_START or
+        act == invaderXim.act.MAGIC_CASTING or
+        act == invaderXim.act.MAGIC_START
     then
         isBusy = true -- is set to true if Bahamut is in any stage of using a mobskill or casting a spell
     end
@@ -71,8 +71,8 @@ entity.onMobFight = function(mob, target)
                 end
 
                 if mob:checkDistance(target) <= 15 then -- without this check if the target is out of range it will keep attemping and failing to use Megaflare. Both Megaflare and Gigaflare have range 15.
-                    if bit.band(mob:getBehavior(), xi.behavior.NO_TURN) > 0 then -- default behavior
-                        mob:setBehavior(bit.band(mob:getBehavior(), bit.bnot(xi.behavior.NO_TURN)))
+                    if bit.band(mob:getBehavior(), invaderXim.behavior.NO_TURN) > 0 then -- default behavior
+                        mob:setBehavior(bit.band(mob:getBehavior(), bit.bnot(invaderXim.behavior.NO_TURN)))
                     end
 
                     mob:useMobAbility(1551)
@@ -90,8 +90,8 @@ entity.onMobFight = function(mob, target)
                 mob:setLocalVar('tauntShown', 3) -- again, taunt won't show again until the move is successfully used.
             end
 
-            if bit.band(mob:getBehavior(), xi.behavior.NO_TURN) > 0 then -- default behavior
-                mob:setBehavior(bit.band(mob:getBehavior(), bit.bnot(xi.behavior.NO_TURN)))
+            if bit.band(mob:getBehavior(), invaderXim.behavior.NO_TURN) > 0 then -- default behavior
+                mob:setBehavior(bit.band(mob:getBehavior(), bit.bnot(invaderXim.behavior.NO_TURN)))
             end
 
             mob:useMobAbility(1552)

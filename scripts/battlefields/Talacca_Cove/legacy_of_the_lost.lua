@@ -2,12 +2,12 @@
 -- Area: Talacca Cove
 -- BCNM: TOAU-34 Legacy of the Lost
 -----------------------------------
-local talaccaCoveID = zones[xi.zone.TALACCA_COVE]
+local talaccaCoveID = zones[invaderXim.zone.TALACCA_COVE]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId                = xi.zone.TALACCA_COVE,
-    battlefieldId         = xi.battlefield.id.LEGACY_OF_THE_LOST,
+    zoneId                = invaderXim.zone.TALACCA_COVE,
+    battlefieldId         = invaderXim.battlefield.id.LEGACY_OF_THE_LOST,
     canLoseExp            = false,
     isMission             = true,
     allowTrusts           = true,
@@ -18,11 +18,11 @@ local content = BattlefieldMission:new({
     allowedAreas          = set{ 1 },
     entryNpc              = '_1l0',
     exitNpcs              = { '_1l1', '_1l2', '_1l3' },
-    missionArea           = xi.mission.log_id.TOAU,
-    mission               = xi.mission.id.toau.LEGACY_OF_THE_LOST,
+    missionArea           = invaderXim.mission.log_id.TOAU,
+    mission               = invaderXim.mission.id.toau.LEGACY_OF_THE_LOST,
     requiredMissionStatus = 0,
 
-    title = xi.title.GESSHOS_MERCY,
+    title = invaderXim.title.GESSHOS_MERCY,
 })
 
 content.groups =
@@ -41,7 +41,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 

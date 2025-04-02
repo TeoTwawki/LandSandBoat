@@ -6,11 +6,11 @@
 -- blank_toau20 : !pos -298 36 -38 68
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.TEAHOUSE_TUMULT)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.TEAHOUSE_TUMULT)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.FINDERS_KEEPERS },
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.FINDERS_KEEPERS },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AYDEEWA_SUBTERRANE] =
+        [invaderXim.zone.AYDEEWA_SUBTERRANE] =
         {
             ['blank_toau20'] =
             {

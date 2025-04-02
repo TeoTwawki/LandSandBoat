@@ -38,17 +38,17 @@ entity.onMobInitialize = function(mob)
     -- Slow effect on any player who physically strikes the Breadwinner.
     -- The Slow effect is strong enough to overwite Haste II.
     mob:addListener('TAKE_DAMAGE', 'BREADWINNDER_TAKE_DAMAGE', function(mobArg, amount, attacker, attackType, damageType)
-        if mobArg:hasStatusEffect(xi.effect.HUNDRED_FISTS) then
-            attacker:addStatusEffect(xi.effect.SLOW, 30 * 100, 0, 60)
+        if mobArg:hasStatusEffect(invaderXim.effect.HUNDRED_FISTS) then
+            attacker:addStatusEffect(invaderXim.effect.SLOW, 30 * 100, 0, 60)
         end
     end)
 end
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
-            { id = xi.jsa.HUNDRED_FISTS, hpp = 50, duration = 45 },
+            { id = invaderXim.jsa.HUNDRED_FISTS, hpp = 50, duration = 45 },
         },
     })
 end

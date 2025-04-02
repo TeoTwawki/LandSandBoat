@@ -8,7 +8,7 @@ mixins = { require('scripts/mixins/families/empty_terroanima') }
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    xi.promyvion.emptyOnMobSpawn(mob, xi.promyvion.mobType.WEEPER)
+    invaderXim.promyvion.emptyOnMobSpawn(mob, invaderXim.promyvion.mobType.WEEPER)
 end
 
 return entity

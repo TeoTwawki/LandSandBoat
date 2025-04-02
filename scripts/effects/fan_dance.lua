@@ -1,23 +1,23 @@
 -----------------------------------
--- xi.effect.FAN_DANCE
+-- invaderXim.effect.FAN_DANCE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
     -- Waltz recast effect is handled in the waltz scripts
-    target:delStatusEffect(xi.effect.HASTE_SAMBA)
-    target:delStatusEffect(xi.effect.ASPIR_SAMBA)
-    target:delStatusEffect(xi.effect.DRAIN_SAMBA)
-    target:delStatusEffect(xi.effect.SABER_DANCE)
-    target:addMod(xi.mod.ENMITY, 15)
+    target:delStatusEffect(invaderXim.effect.HASTE_SAMBA)
+    target:delStatusEffect(invaderXim.effect.ASPIR_SAMBA)
+    target:delStatusEffect(invaderXim.effect.DRAIN_SAMBA)
+    target:delStatusEffect(invaderXim.effect.SABER_DANCE)
+    target:addMod(invaderXim.mod.ENMITY, 15)
 end
 
 effectObject.onEffectTick = function(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.ENMITY, 15)
+    target:delMod(invaderXim.mod.ENMITY, 15)
 end
 
 return effectObject

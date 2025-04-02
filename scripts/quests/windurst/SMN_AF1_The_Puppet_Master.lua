@@ -7,26 +7,26 @@
 -- Koru-Moru                : !pos -120 -6 124 239
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.THE_PUPPET_MASTER)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.THE_PUPPET_MASTER)
 
 quest.reward =
 {
     fame     = 20,
-    fameArea = xi.fameArea.WINDURST,
-    item     = xi.item.KUKULCANS_STAFF,
+    fameArea = invaderXim.fameArea.WINDURST,
+    item     = invaderXim.item.KUKULCANS_STAFF,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getMainLvl() >= xi.settings.main.AF1_QUEST_LEVEL and
-                player:getMainJob() == xi.job.SMN and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getMainLvl() >= invaderXim.settings.main.AF1_QUEST_LEVEL and
+                player:getMainJob() == invaderXim.job.SMN and
                 not quest:getMustZone(player)
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['_6n2'] = quest:progressEvent(402),
 
@@ -41,10 +41,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['_6n2'] =
             {
@@ -68,13 +68,13 @@ quest.sections =
             {
                 [404] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        xi.quest.setMustZone(player, xi.questLog.WINDURST, xi.quest.id.windurst.CLASS_REUNION)
+                        invaderXim.quest.setMustZone(player, invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.CLASS_REUNION)
                     end
                 end,
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Juroro'] =
             {
@@ -82,12 +82,12 @@ quest.sections =
                     local questProgress = quest:getVar(player, 'Prog')
 
                     if questProgress == 0 then
-                        return quest:progressEvent(256, 0, 329, 0, xi.item.EARTH_PENDULUM)
+                        return quest:progressEvent(256, 0, 329, 0, invaderXim.item.EARTH_PENDULUM)
                     elseif
                         questProgress == 1 and
-                        not player:hasItem(xi.item.EARTH_PENDULUM)
+                        not player:hasItem(invaderXim.item.EARTH_PENDULUM)
                     then
-                        return quest:progressEvent(257, 0, xi.item.EARTH_PENDULUM)
+                        return quest:progressEvent(257, 0, invaderXim.item.EARTH_PENDULUM)
                     elseif questProgress == 2 then
                         return quest:progressEvent(258)
                     end
@@ -97,13 +97,13 @@ quest.sections =
             onEventFinish =
             {
                 [256] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.EARTH_PENDULUM) then
+                    if npcUtil.giveItem(player, invaderXim.item.EARTH_PENDULUM) then
                         quest:setVar(player, 'Prog', 1)
                     end
                 end,
 
                 [257] = function(player, csid, option, npc)
-                    npcUtil.giveItem(player, xi.item.EARTH_PENDULUM)
+                    npcUtil.giveItem(player, invaderXim.item.EARTH_PENDULUM)
                 end,
 
                 [258] = function(player, csid, option, npc)
@@ -112,13 +112,13 @@ quest.sections =
             },
         },
 
-        [xi.zone.CLOISTER_OF_TREMORS] =
+        [invaderXim.zone.CLOISTER_OF_TREMORS] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
                     if
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.PUPPET_MASTER and
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.PUPPET_MASTER and
                         quest:getVar(player, 'Prog') == 1
                     then
                         quest:setVar(player, 'Prog', 2)
@@ -130,11 +130,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                not player:hasCompletedQuest(xi.questLog.WINDURST, xi.quest.id.windurst.CLASS_REUNION)
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                not player:hasCompletedQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.CLASS_REUNION)
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Koru-Moru'] = quest:event(405):replaceDefault(),
         },

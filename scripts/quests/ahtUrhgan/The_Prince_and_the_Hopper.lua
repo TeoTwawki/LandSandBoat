@@ -6,10 +6,10 @@
 -- Toads Footprint2 : !pos 216.1 -23.818 -102.464 65
 -- Toads Footprint1 : !pos -42.9248 5.9847 -100.2972 65
 -----------------------------------
-local mamookID = zones[xi.zone.MAMOOK]
+local mamookID = zones[invaderXim.zone.MAMOOK]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.THE_PRINCE_AND_THE_HOPPER)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.THE_PRINCE_AND_THE_HOPPER)
 
 local spawnedMobs =
 {
@@ -23,7 +23,7 @@ local spawnedMobs =
 
 quest.reward =
 {
-    item = xi.item.CHANOIXS_GORGET
+    item = invaderXim.item.CHANOIXS_GORGET
 }
 
 quest.sections =
@@ -31,10 +31,10 @@ quest.sections =
     -- Section: Quest available
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Maudaal'] = quest:progressEvent(889),
 
@@ -52,10 +52,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.WAJAOM_WOODLANDS] =
+        [invaderXim.zone.WAJAOM_WOODLANDS] =
         {
             onZoneIn = function(player, prevZone)
                 if quest:getVar(player, 'Prog') == 0 then
@@ -88,7 +88,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.MAMOOK] =
+        [invaderXim.zone.MAMOOK] =
         {
             ['Toads_Footprint2'] =
             {
@@ -141,7 +141,7 @@ quest.sections =
                 [222] = function(player, csid, option, npc)
                     quest:setVar(player, 'Prog', 2)
                     -- Zone the person to Wajaom for second part of cs
-                    player:setPos(610.542, -28.547, 356.247, 0, xi.zone.WAJAOM_WOODLANDS)
+                    player:setPos(610.542, -28.547, 356.247, 0, invaderXim.zone.WAJAOM_WOODLANDS)
                 end,
 
                 [223] = function(player, csid, option, npc)
@@ -158,7 +158,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Maudaal'] =
             {

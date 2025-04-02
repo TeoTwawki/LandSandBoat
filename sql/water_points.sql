@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `water_points`
 --
 
-DROP TABLE IF EXISTS `water_points`;
-CREATE TABLE IF NOT EXISTS `water_points` (
+DROP TABLE IF IXIMSTS `water_points`;
+CREATE TABLE IF NOT IXIMSTS `water_points` (
   `waterid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `zoneid` smallint(3) unsigned NOT NULL,
   `type` tinyint(3) unsigned NOT NULL DEFAULT '0',

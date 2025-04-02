@@ -33,7 +33,7 @@ commandObj.onTrigger = function(player, famezone, level, target)
     end
 
     local fameZoneNames = {}
-    for name, value in pairs(xi.fameArea) do
+    for name, value in pairs(invaderXim.fameArea) do
         fameZoneNames[value] = name
     end
 
@@ -55,7 +55,7 @@ commandObj.onTrigger = function(player, famezone, level, target)
     end
 
     local fameBaseValues = { 0, 50, 125, 225, 325, 425, 488, 550, 613 }
-    local fameMultiplier = xi.settings.map.FAME_MULTIPLIER
+    local fameMultiplier = invaderXim.settings.map.FAME_MULTIPLIER
 
     if level > 6 and (famezone >= 6 and famezone <= 14) then -- Abyssea fame caps at level 6
         level = 6

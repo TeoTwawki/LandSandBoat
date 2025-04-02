@@ -3,8 +3,8 @@ xi = xi or {}
 -- NOTE: These values align with the optParam in the event update for a trial, and are the
 -- only groupings supported by the message.  These enum is to be used in the dayWeather
 -- condition for trial data.
----@enum xi.magianElement
-xi.magianElement =
+---@enum invaderXim.magianElement
+invaderXim.magianElement =
 {
     FIRE      = 0,
     ICE       = 1,

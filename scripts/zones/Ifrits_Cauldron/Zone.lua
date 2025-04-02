@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Ifrits_Cauldron (205)
 -----------------------------------
-local ID = zones[xi.zone.IFRITS_CAULDRON]
+local ID = zones[invaderXim.zone.IFRITS_CAULDRON]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -10,12 +10,12 @@ zoneObject.onInitialize = function(zone)
     UpdateNMSpawnPoint(ID.mob.ASH_DRAGON)
     GetMobByID(ID.mob.ASH_DRAGON):setRespawnTime(math.random(900, 10800))
 
-    xi.treasure.initZone(zone)
-    xi.helm.initZone(zone, xi.helmType.MINING)
+    invaderXim.treasure.initZone(zone)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.MINING)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)

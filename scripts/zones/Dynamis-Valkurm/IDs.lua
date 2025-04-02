@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.DYNAMIS_VALKURM] =
+zones[invaderXim.zone.DYNAMIS_VALKURM] =
 {
     text =
     {
@@ -28,109 +28,109 @@ zones[xi.zone.DYNAMIS_VALKURM] =
     {
         TIME_EXTENSION =
         {
-            { minutes = 10, ki = xi.ki.CRIMSON_GRANULES_OF_TIME,   mob = 16937214 },
-            { minutes = 10, ki = xi.ki.AZURE_GRANULES_OF_TIME,     mob = 16937239 },
-            { minutes = 10, ki = xi.ki.AMBER_GRANULES_OF_TIME,     mob = 16937264 },
-            { minutes = 10, ki = xi.ki.ALABASTER_GRANULES_OF_TIME, mob = 16937289 },
-            { minutes = 20, ki = xi.ki.OBSIDIAN_GRANULES_OF_TIME,  mob = { 16937500, 16937525, 16937550, 16937575 } },
+            { minutes = 10, ki = invaderXim.ki.CRIMSON_GRANULES_OF_TIME,   mob = 16937214 },
+            { minutes = 10, ki = invaderXim.ki.AZURE_GRANULES_OF_TIME,     mob = 16937239 },
+            { minutes = 10, ki = invaderXim.ki.AMBER_GRANULES_OF_TIME,     mob = 16937264 },
+            { minutes = 10, ki = invaderXim.ki.ALABASTER_GRANULES_OF_TIME, mob = 16937289 },
+            { minutes = 20, ki = invaderXim.ki.OBSIDIAN_GRANULES_OF_TIME,  mob = { 16937500, 16937525, 16937550, 16937575 } },
         },
 
         REFILL_STATUE =
         {
             {
-                { mob = 16937208, eye = xi.dynamis.eye.RED   }, -- Serjeant_Tombstone
-                { mob = 16937209, eye = xi.dynamis.eye.BLUE  },
-                { mob = 16937210, eye = xi.dynamis.eye.GREEN },
+                { mob = 16937208, eye = invaderXim.dynamis.eye.RED   }, -- Serjeant_Tombstone
+                { mob = 16937209, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 16937210, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 16937211, eye = xi.dynamis.eye.RED   }, -- Serjeant_Tombstone
-                { mob = 16937212, eye = xi.dynamis.eye.BLUE  },
-                { mob = 16937213, eye = xi.dynamis.eye.GREEN },
+                { mob = 16937211, eye = invaderXim.dynamis.eye.RED   }, -- Serjeant_Tombstone
+                { mob = 16937212, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 16937213, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 16937233, eye = xi.dynamis.eye.RED   }, -- Adamantking_Effigy
-                { mob = 16937234, eye = xi.dynamis.eye.BLUE  },
-                { mob = 16937235, eye = xi.dynamis.eye.GREEN },
+                { mob = 16937233, eye = invaderXim.dynamis.eye.RED   }, -- Adamantking_Effigy
+                { mob = 16937234, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 16937235, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 16937236, eye = xi.dynamis.eye.RED   }, -- Adamantking_Effigy
-                { mob = 16937237, eye = xi.dynamis.eye.BLUE  },
-                { mob = 16937238, eye = xi.dynamis.eye.GREEN },
+                { mob = 16937236, eye = invaderXim.dynamis.eye.RED   }, -- Adamantking_Effigy
+                { mob = 16937237, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 16937238, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 16937258, eye = xi.dynamis.eye.RED   }, -- Manifest_Icon
-                { mob = 16937259, eye = xi.dynamis.eye.BLUE  },
-                { mob = 16937260, eye = xi.dynamis.eye.GREEN },
+                { mob = 16937258, eye = invaderXim.dynamis.eye.RED   }, -- Manifest_Icon
+                { mob = 16937259, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 16937260, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 16937261, eye = xi.dynamis.eye.RED   }, -- Manifest_Icon
-                { mob = 16937262, eye = xi.dynamis.eye.BLUE  },
-                { mob = 16937263, eye = xi.dynamis.eye.GREEN },
+                { mob = 16937261, eye = invaderXim.dynamis.eye.RED   }, -- Manifest_Icon
+                { mob = 16937262, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 16937263, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 16937283, eye = xi.dynamis.eye.RED   }, -- Goblin_Replica
-                { mob = 16937284, eye = xi.dynamis.eye.BLUE  },
-                { mob = 16937285, eye = xi.dynamis.eye.GREEN },
+                { mob = 16937283, eye = invaderXim.dynamis.eye.RED   }, -- Goblin_Replica
+                { mob = 16937284, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 16937285, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 16937286, eye = xi.dynamis.eye.RED   }, -- Goblin_Replica
-                { mob = 16937287, eye = xi.dynamis.eye.BLUE  },
-                { mob = 16937288, eye = xi.dynamis.eye.GREEN },
+                { mob = 16937286, eye = invaderXim.dynamis.eye.RED   }, -- Goblin_Replica
+                { mob = 16937287, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 16937288, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 16937494, eye = xi.dynamis.eye.RED   }, -- Serjeant_Tombstone
-                { mob = 16937495, eye = xi.dynamis.eye.BLUE  },
-                { mob = 16937496, eye = xi.dynamis.eye.GREEN },
+                { mob = 16937494, eye = invaderXim.dynamis.eye.RED   }, -- Serjeant_Tombstone
+                { mob = 16937495, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 16937496, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 16937497, eye = xi.dynamis.eye.RED   }, -- Serjeant_Tombstone
-                { mob = 16937498, eye = xi.dynamis.eye.BLUE  },
-                { mob = 16937499, eye = xi.dynamis.eye.GREEN },
+                { mob = 16937497, eye = invaderXim.dynamis.eye.RED   }, -- Serjeant_Tombstone
+                { mob = 16937498, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 16937499, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 16937519, eye = xi.dynamis.eye.RED   }, -- Adamantking_Effigy
-                { mob = 16937520, eye = xi.dynamis.eye.BLUE  },
-                { mob = 16937521, eye = xi.dynamis.eye.GREEN },
+                { mob = 16937519, eye = invaderXim.dynamis.eye.RED   }, -- Adamantking_Effigy
+                { mob = 16937520, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 16937521, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 16937522, eye = xi.dynamis.eye.RED   }, -- Adamantking_Effigy
-                { mob = 16937523, eye = xi.dynamis.eye.BLUE  },
-                { mob = 16937524, eye = xi.dynamis.eye.GREEN },
+                { mob = 16937522, eye = invaderXim.dynamis.eye.RED   }, -- Adamantking_Effigy
+                { mob = 16937523, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 16937524, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 16937544, eye = xi.dynamis.eye.RED   }, -- Manifest_Icon
-                { mob = 16937545, eye = xi.dynamis.eye.BLUE  },
-                { mob = 16937546, eye = xi.dynamis.eye.GREEN },
+                { mob = 16937544, eye = invaderXim.dynamis.eye.RED   }, -- Manifest_Icon
+                { mob = 16937545, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 16937546, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 16937547, eye = xi.dynamis.eye.RED   }, -- Manifest_Icon
-                { mob = 16937548, eye = xi.dynamis.eye.BLUE  },
-                { mob = 16937549, eye = xi.dynamis.eye.GREEN },
+                { mob = 16937547, eye = invaderXim.dynamis.eye.RED   }, -- Manifest_Icon
+                { mob = 16937548, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 16937549, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 16937569, eye = xi.dynamis.eye.RED   }, -- Goblin_Replica
-                { mob = 16937570, eye = xi.dynamis.eye.BLUE  },
-                { mob = 16937571, eye = xi.dynamis.eye.GREEN },
+                { mob = 16937569, eye = invaderXim.dynamis.eye.RED   }, -- Goblin_Replica
+                { mob = 16937570, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 16937571, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 16937572, eye = xi.dynamis.eye.RED   }, -- Goblin_Replica
-                { mob = 16937573, eye = xi.dynamis.eye.BLUE  },
-                { mob = 16937574, eye = xi.dynamis.eye.GREEN },
+                { mob = 16937572, eye = invaderXim.dynamis.eye.RED   }, -- Goblin_Replica
+                { mob = 16937573, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 16937574, eye = invaderXim.dynamis.eye.GREEN },
             },
         },
     },
@@ -155,4 +155,4 @@ zones[xi.zone.DYNAMIS_VALKURM] =
     },
 }
 
-return zones[xi.zone.DYNAMIS_VALKURM]
+return zones[invaderXim.zone.DYNAMIS_VALKURM]

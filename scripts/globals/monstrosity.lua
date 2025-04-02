@@ -29,13 +29,13 @@ require('scripts/globals/npc_util')
 require('scripts/globals/quests')
 -----------------------------------
 xi = xi or {}
-xi.monstrosity = xi.monstrosity or {}
+invaderXim.monstrosity = invaderXim.monstrosity or {}
 
 -----------------------------------
 -- Enums
 -----------------------------------
 
-xi.monstrosity.species =
+invaderXim.monstrosity.species =
 {
     RABBIT    = 1,
     BEHEMOTH  = 2,
@@ -110,7 +110,7 @@ xi.monstrosity.species =
     EORZEAN_SPRIGGAN = 127,
 }
 
-xi.monstrosity.variants =
+invaderXim.monstrosity.variants =
 {
     -- Rabbit
     ONYX_RABBIT      = 0,
@@ -315,7 +315,7 @@ xi.monstrosity.variants =
     SPRIGGAN_G = 255,
 }
 
-xi.monstrosity.purchasableInstincts =
+invaderXim.monstrosity.purchasableInstincts =
 {
     -- Default (0x1F)
     HUME_I   = 0,
@@ -356,13 +356,13 @@ xi.monstrosity.purchasableInstincts =
 
 local limitBreakQuests =
 {
-    [xi.job.BLU] = { xi.questLog.AHT_URHGAN,  xi.quest.id.ahtUrhgan.THE_BEAST_WITHIN           },
-    [xi.job.COR] = { xi.questLog.AHT_URHGAN,  xi.quest.id.ahtUrhgan.BREAKING_THE_BONDS_OF_FATE },
-    [xi.job.PUP] = { xi.questLog.BASTOK,      xi.quest.id.bastok.ACHIEVING_TRUE_POWER          },
-    [xi.job.DNC] = { xi.questLog.JEUNO,       xi.quest.id.jeuno.A_FURIOUS_FINALE               },
-    [xi.job.SCH] = { xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.SURVIVAL_OF_THE_WISEST    },
-    [xi.job.GEO] = { xi.questLog.ADOULIN,     xi.quest.id.adoulin.ELEMENTARY_MY_DEAR_SYLVIE    },
-    [xi.job.RUN] = { xi.questLog.ADOULIN,     xi.quest.id.adoulin.ENDEAVORING_TO_AWAKEN        },
+    [invaderXim.job.BLU] = { invaderXim.questLog.AHT_URHGAN,  invaderXim.quest.id.ahtUrhgan.THE_BEAST_WITHIN           },
+    [invaderXim.job.COR] = { invaderXim.questLog.AHT_URHGAN,  invaderXim.quest.id.ahtUrhgan.BREAKING_THE_BONDS_OF_FATE },
+    [invaderXim.job.PUP] = { invaderXim.questLog.BASTOK,      invaderXim.quest.id.bastok.ACHIEVING_TRUE_POWER          },
+    [invaderXim.job.DNC] = { invaderXim.questLog.JEUNO,       invaderXim.quest.id.jeuno.A_FURIOUS_FINALE               },
+    [invaderXim.job.SCH] = { invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.SURVIVAL_OF_THE_WISEST    },
+    [invaderXim.job.GEO] = { invaderXim.questLog.ADOULIN,     invaderXim.quest.id.adoulin.ELEMENTARY_MY_DEAR_SYLVIE    },
+    [invaderXim.job.RUN] = { invaderXim.questLog.ADOULIN,     invaderXim.quest.id.adoulin.ENDEAVORING_TO_AWAKEN        },
 }
 
 -- NOTE: Cost and granted species/variant are hardcoded into Terynon's event; however, the requirements
@@ -374,63 +374,63 @@ local terynonMonData =
     {
         [0] =
         {
-            monVariant   = xi.monstrosity.variants.LAPINION,
+            monVariant   = invaderXim.monstrosity.variants.LAPINION,
             infamyCost   = 7500,
             requirements =
             {
-                { xi.monstrosity.species.RABBIT, 90 },
+                { invaderXim.monstrosity.species.RABBIT, 90 },
             },
         },
 
         [1] =
         {
-            monSpecies = xi.monstrosity.species.SHEEP,
+            monSpecies = invaderXim.monstrosity.species.SHEEP,
             infamyCost = 3000,
         },
 
         [2] =
         {
-            monSpecies   = xi.monstrosity.species.BEHEMOTH,
+            monSpecies   = invaderXim.monstrosity.species.BEHEMOTH,
             infamyCost   = 10000,
             requirements =
             {
-                { xi.monstrosity.species.RABBIT,  75 },
-                { xi.monstrosity.species.OPO_OPO, 75 },
-                { xi.monstrosity.species.GNOLE,   75 },
+                { invaderXim.monstrosity.species.RABBIT,  75 },
+                { invaderXim.monstrosity.species.OPO_OPO, 75 },
+                { invaderXim.monstrosity.species.GNOLE,   75 },
             },
         },
 
         [3] =
         {
-            monVariant   = xi.monstrosity.variants.ELASMOTH,
+            monVariant   = invaderXim.monstrosity.variants.ELASMOTH,
             infamyCost   = 25000,
             requirements =
             {
-                { xi.monstrosity.species.BEHEMOTH, 50 },
+                { invaderXim.monstrosity.species.BEHEMOTH, 50 },
             },
         },
 
         [4] =
         {
-            monSpecies   = xi.monstrosity.species.CERBERUS,
+            monSpecies   = invaderXim.monstrosity.species.CERBERUS,
             infamyCost   = 10000,
             requirements =
             {
-                { xi.monstrosity.species.BUFFALO,   60 },
-                { xi.monstrosity.species.MANTICORE, 60 },
-                { xi.monstrosity.species.MARID,     60 },
-                { xi.monstrosity.species.SHEEP,     60 },
-                { xi.monstrosity.species.DHALMEL,   60 },
+                { invaderXim.monstrosity.species.BUFFALO,   60 },
+                { invaderXim.monstrosity.species.MANTICORE, 60 },
+                { invaderXim.monstrosity.species.MARID,     60 },
+                { invaderXim.monstrosity.species.SHEEP,     60 },
+                { invaderXim.monstrosity.species.DHALMEL,   60 },
             },
         },
 
         [5] =
         {
-            monVariant   = xi.monstrosity.variants.ORTHRUS,
+            monVariant   = invaderXim.monstrosity.variants.ORTHRUS,
             infamyCost   = 25000,
             requirements =
             {
-                { xi.monstrosity.species.CERBERUS, 50 },
+                { invaderXim.monstrosity.species.CERBERUS, 50 },
             },
         },
     },
@@ -439,37 +439,37 @@ local terynonMonData =
     {
         [0] =
         {
-            monVariant   = xi.monstrosity.variants.PYGMY_MANDRAGORA,
+            monVariant   = invaderXim.monstrosity.variants.PYGMY_MANDRAGORA,
             infamyCost   = 7500,
             requirements =
             {
-                { xi.monstrosity.species.MANDRAGORA, 45 },
+                { invaderXim.monstrosity.species.MANDRAGORA, 45 },
             },
         },
 
         [1] =
         {
-            monSpecies = xi.monstrosity.species.TREANT,
+            monSpecies = invaderXim.monstrosity.species.TREANT,
             infamyCost = 3000,
         },
 
         [2] =
         {
-            monVariant   = xi.monstrosity.variants.PYGMY_MORBOL,
+            monVariant   = invaderXim.monstrosity.variants.PYGMY_MORBOL,
             infamyCost   = 7500,
             requirements =
             {
-                { xi.monstrosity.species.MORBOL, 1 },
+                { invaderXim.monstrosity.species.MORBOL, 1 },
             },
         },
 
         [3] =
         {
-            monVariant   = xi.monstrosity.variants.PURBOL,
+            monVariant   = invaderXim.monstrosity.variants.PURBOL,
             infamyCost   = 15000,
             requirements =
             {
-                { xi.monstrosity.species.MORBOL, 75 },
+                { invaderXim.monstrosity.species.MORBOL, 75 },
             },
         },
     },
@@ -478,78 +478,78 @@ local terynonMonData =
     {
         [0] =
         {
-            monVariant   = xi.monstrosity.variants.GOLD_LADYBUG,
+            monVariant   = invaderXim.monstrosity.variants.GOLD_LADYBUG,
             infamyCost   = 7500,
             requirements =
             {
-                { xi.monstrosity.species.LADYBUG, 50 },
+                { invaderXim.monstrosity.species.LADYBUG, 50 },
             },
         },
 
         [1] =
         {
-            monSpecies = xi.monstrosity.species.BEETLE,
+            monSpecies = invaderXim.monstrosity.species.BEETLE,
             infamyCost = 3000,
         },
 
         [2] =
         {
-            monVariant   = xi.monstrosity.variants.UNUSUAL_SCOLOPENDRID,
+            monVariant   = invaderXim.monstrosity.variants.UNUSUAL_SCOLOPENDRID,
             infamyCost   = 10000,
             requirements =
             {
-                { xi.monstrosity.species.SCORPION, 60 },
+                { invaderXim.monstrosity.species.SCORPION, 60 },
             },
         },
 
         [3] =
         {
-            monSpecies   = xi.monstrosity.species.ANTLION,
+            monSpecies   = invaderXim.monstrosity.species.ANTLION,
             infamyCost   = 7500,
             requirements =
             {
-                { xi.monstrosity.species.SCORPION, 60 },
+                { invaderXim.monstrosity.species.SCORPION, 60 },
             },
         },
 
         [4] =
         {
-            monVariant   = xi.monstrosity.variants.FORMICEROS,
+            monVariant   = invaderXim.monstrosity.variants.FORMICEROS,
             infamyCost   = 15000,
             requirements =
             {
-                { xi.monstrosity.species.ANTLION, 60 },
+                { invaderXim.monstrosity.species.ANTLION, 60 },
             },
         },
 
         [5] =
         {
-            monVariant   = xi.monstrosity.variants.PYGMY_EMERALD_CRAWLER,
+            monVariant   = invaderXim.monstrosity.variants.PYGMY_EMERALD_CRAWLER,
             infamyCost   = 6000,
             requirements =
             {
-                { xi.monstrosity.species.CRAWLER, 60 },
+                { invaderXim.monstrosity.species.CRAWLER, 60 },
             },
         },
 
         [6] =
         {
-            monVariant   = xi.monstrosity.variants.CORAL_WAMOURA,
+            monVariant   = invaderXim.monstrosity.variants.CORAL_WAMOURA,
             infamyCost   = 15000,
             requirements =
             {
-                { xi.monstrosity.species.WAMOURACAMPA, 60 },
+                { invaderXim.monstrosity.species.WAMOURACAMPA, 60 },
             },
         },
 
         [7] =
         {
-            monSpecies   = xi.monstrosity.species.GNAT,
+            monSpecies   = invaderXim.monstrosity.species.GNAT,
             infamyCost   = 5000,
             requirements =
             {
-                { xi.monstrosity.species.LADYBUG,      50 },
-                { xi.monstrosity.species.WAMOURACAMPA, 50 },
+                { invaderXim.monstrosity.species.LADYBUG,      50 },
+                { invaderXim.monstrosity.species.WAMOURACAMPA, 50 },
             },
         },
     },
@@ -558,60 +558,60 @@ local terynonMonData =
     {
         [0] =
         {
-            monVariant   = xi.monstrosity.species.UNUSUAL_WIVRE,
+            monVariant   = invaderXim.monstrosity.species.UNUSUAL_WIVRE,
             infamyCost   = 7500,
             requirements =
             {
-                { xi.monstrosity.species.WIVRE, 60 },
+                { invaderXim.monstrosity.species.WIVRE, 60 },
             },
         },
 
         [1] =
         {
-            monSpecies   = xi.monstrosity.species.ADAMANTOISE,
+            monSpecies   = invaderXim.monstrosity.species.ADAMANTOISE,
             infamyCost   = 10000,
             requirements =
             {
-                { xi.monstrosity.species.BUGARD, 60 },
-                { xi.monstrosity.species.LIZARD, 60 },
-                { xi.monstrosity.species.WIVRE,  60 },
+                { invaderXim.monstrosity.species.BUGARD, 60 },
+                { invaderXim.monstrosity.species.LIZARD, 60 },
+                { invaderXim.monstrosity.species.WIVRE,  60 },
             },
         },
 
         [2] =
         {
-            monVariant   = xi.monstrosity.variants.FERROMANTOISE,
+            monVariant   = invaderXim.monstrosity.variants.FERROMANTOISE,
             infamyCost   = 20000,
             requirements =
             {
-                { xi.monstrosity.species.ADAMANTOISE, 70 },
+                { invaderXim.monstrosity.species.ADAMANTOISE, 70 },
             },
         },
 
         [3] =
         {
-            monSpecies = xi.monstrosity.species.RAPTOR,
+            monSpecies = invaderXim.monstrosity.species.RAPTOR,
             infamyCost = 3000,
         },
 
         [4] =
         {
-            monSpecies   = xi.monstrosity.species.PEISTE,
+            monSpecies   = invaderXim.monstrosity.species.PEISTE,
             infamyCost   = 8000,
             requirements =
             {
-                { xi.monstrosity.species.EFT,    50 },
-                { xi.monstrosity.species.RAPTOR, 50 },
+                { invaderXim.monstrosity.species.EFT,    50 },
+                { invaderXim.monstrosity.species.RAPTOR, 50 },
             },
         },
 
         [5] =
         {
-            monVariant   = xi.monstrosity.variants.SIBILUS,
+            monVariant   = invaderXim.monstrosity.variants.SIBILUS,
             infamyCost   = 15000,
             requirements =
             {
-                { xi.monstrosity.species.PEISTE, 50 },
+                { invaderXim.monstrosity.species.PEISTE, 50 },
             },
         },
     },
@@ -620,43 +620,43 @@ local terynonMonData =
     {
         [0] =
         {
-            monSpecies = xi.monstrosity.species.SLIME,
+            monSpecies = invaderXim.monstrosity.species.SLIME,
             infamyCost = 3000,
         },
 
         [1] =
         {
-            monVariant   = xi.monstrosity.variants.BOIL,
+            monVariant   = invaderXim.monstrosity.variants.BOIL,
             infamyCost   = 25000,
             requirements =
             {
-                { xi.monstrosity.species.SLIME, 50 },
+                { invaderXim.monstrosity.species.SLIME, 50 },
             },
         },
 
         [2] =
         {
-            monVariant   = xi.monstrosity.variants.PYGMY_SANDWORM,
+            monVariant   = invaderXim.monstrosity.variants.PYGMY_SANDWORM,
             infamyCost   = 10000,
             requirements =
             {
-                { xi.monstrosity.species.SANDWORM, 1 },
+                { invaderXim.monstrosity.species.SANDWORM, 1 },
             },
         },
 
         [3] =
         {
-            monVariant   = xi.monstrosity.variants.GIGAWORM,
+            monVariant   = invaderXim.monstrosity.variants.GIGAWORM,
             infamyCost   = 25000,
             requirements =
             {
-                { xi.monstrosity.species.SANDWORM, 60 },
+                { invaderXim.monstrosity.species.SANDWORM, 60 },
             },
         },
 
         [4] =
         {
-            monSpecies = xi.monstrosity.species.LEECH,
+            monSpecies = invaderXim.monstrosity.species.LEECH,
             infamyCost = 2000,
         },
     },
@@ -665,84 +665,84 @@ local terynonMonData =
     {
         [0] =
         {
-            monSpecies = xi.monstrosity.species.CRAB,
+            monSpecies = invaderXim.monstrosity.species.CRAB,
             infamyCost = 2000,
         },
 
         [1] =
         {
-            monVariant   = xi.monstrosity.variants.BASKET_BURDENED_CRAB,
+            monVariant   = invaderXim.monstrosity.variants.BASKET_BURDENED_CRAB,
             infamyCost   = 20000,
             requirements =
             {
-                { xi.monstrosity.species.CRAB, 1 },
+                { invaderXim.monstrosity.species.CRAB, 1 },
             },
         },
 
         [2] =
         {
-            monVariant   = xi.monstrosity.variants.VERMILLION_BASKET_BURDENED_CRAB,
+            monVariant   = invaderXim.monstrosity.variants.VERMILLION_BASKET_BURDENED_CRAB,
             infamyCost   = 20000,
             requirements =
             {
-                { xi.monstrosity.species.CRAB, 15 },
+                { invaderXim.monstrosity.species.CRAB, 15 },
             },
         },
 
         [3] =
         {
-            monVariant   = xi.monstrosity.variants.PORTER_CRAB,
+            monVariant   = invaderXim.monstrosity.variants.PORTER_CRAB,
             infamyCost   = 15000,
             requirements =
             {
-                { xi.monstrosity.species.CRAB, 60 },
+                { invaderXim.monstrosity.species.CRAB, 60 },
             },
         },
 
         [4] =
         {
-            monSpecies = xi.monstrosity.species.PUGIL,
+            monSpecies = invaderXim.monstrosity.species.PUGIL,
             infamyCost = 3000,
         },
 
         [5] =
         {
-            monVariant   = xi.monstrosity.variants.LIMASCABRA,
+            monVariant   = invaderXim.monstrosity.variants.LIMASCABRA,
             infamyCost   = 15000,
             requirements =
             {
-                { xi.monstrosity.species.URAGNITE, 50 },
+                { invaderXim.monstrosity.species.URAGNITE, 50 },
             },
         },
 
         [6] =
         {
-            monVariant   = xi.monstrosity.variants.PYGMY_OROBON,
+            monVariant   = invaderXim.monstrosity.variants.PYGMY_OROBON,
             infamyCost   = 10000,
             requirements =
             {
-                { xi.monstrosity.species.OROBON, 1 },
+                { invaderXim.monstrosity.species.OROBON, 1 },
             },
         },
 
         [7] =
         {
-            monVariant   = xi.monstrosity.variants.OGREBON,
+            monVariant   = invaderXim.monstrosity.variants.OGREBON,
             infamyCost   = 18000,
             requirements =
             {
-                { xi.monstrosity.species.OROBON, 50 },
+                { invaderXim.monstrosity.species.OROBON, 50 },
             },
         },
 
         [8] =
         {
-            monSpecies   = xi.monstrosity.species.RUSZOR,
+            monSpecies   = invaderXim.monstrosity.species.RUSZOR,
             infamyCost   = 10000,
             requirements =
             {
-                { xi.monstrosity.species.OROBON,   75 },
-                { xi.monstrosity.species.URAGNITE, 75 },
+                { invaderXim.monstrosity.species.OROBON,   75 },
+                { invaderXim.monstrosity.species.URAGNITE, 75 },
             },
         },
     },
@@ -751,124 +751,124 @@ local terynonMonData =
     {
         [0] =
         {
-            monSpecies = xi.monstrosity.species.COCKATRICE,
+            monSpecies = invaderXim.monstrosity.species.COCKATRICE,
             infamyCost = 3000,
         },
 
         [1] =
         {
-            monVariant   = xi.monstrosity.variants.GAGANA,
+            monVariant   = invaderXim.monstrosity.variants.GAGANA,
             infamyCost   = 15000,
             requirements =
             {
-                { xi.monstrosity.species.ROC, 75 },
+                { invaderXim.monstrosity.species.ROC, 75 },
             },
         },
 
         [2] =
         {
-            monSpecies = xi.monstrosity.species.BAT,
+            monSpecies = invaderXim.monstrosity.species.BAT,
             infamyCost = 2000,
         },
 
         [3] =
         {
-            monVariant   = xi.monstrosity.variants.INGUZA,
+            monVariant   = invaderXim.monstrosity.variants.INGUZA,
             infamyCost   = 15000,
             requirements =
             {
-                { xi.monstrosity.species.APKALLU, 50 },
+                { invaderXim.monstrosity.species.APKALLU, 50 },
             },
         },
 
         [4] =
         {
-            monSpecies = xi.monstrosity.species.COLIBRI,
+            monSpecies = invaderXim.monstrosity.species.COLIBRI,
             infamyCost = 5000,
             requirements =
             {
-                { xi.monstrosity.species.BAT,  50 },
-                { xi.monstrosity.species.BIRD, 45 },
+                { invaderXim.monstrosity.species.BAT,  50 },
+                { invaderXim.monstrosity.species.BIRD, 45 },
             },
         },
 
         [5] =
         {
-            monVariant   = xi.monstrosity.variants.TOUCALIBRI,
+            monVariant   = invaderXim.monstrosity.variants.TOUCALIBRI,
             infamyCost   = 15000,
             requirements =
             {
-                { xi.monstrosity.species.COLIBRI, 50 },
+                { invaderXim.monstrosity.species.COLIBRI, 50 },
             },
         },
 
         [6] =
         {
-            monSpecies   = xi.monstrosity.species.AMPHIPTERE,
+            monSpecies   = invaderXim.monstrosity.species.AMPHIPTERE,
             infamyCost   = 10000,
             requirements =
             {
-                { xi.monstrosity.species.COCKATRICE, 75 },
-                { xi.monstrosity.species.ROC,        75 },
-                { xi.monstrosity.species.HIPPOGRYPH, 75 },
+                { invaderXim.monstrosity.species.COCKATRICE, 75 },
+                { invaderXim.monstrosity.species.ROC,        75 },
+                { invaderXim.monstrosity.species.HIPPOGRYPH, 75 },
             },
         },
 
         [7] =
         {
-            monVariant   = xi.monstrosity.variants.SANGUIPTERE,
+            monVariant   = invaderXim.monstrosity.variants.SANGUIPTERE,
             infamyCost   = 20000,
             requirements =
             {
-                { xi.monstrosity.species.AMPHIPTERE, 50 },
+                { invaderXim.monstrosity.species.AMPHIPTERE, 50 },
             },
         },
     },
 }
 
-xi.monstrosity.teleports =
+invaderXim.monstrosity.teleports =
 {
-    [xi.zone.EAST_RONFAURE] =
+    [invaderXim.zone.EAST_RONFAURE] =
     {
         { 120,     0.5, -530, 192 },
         { 115, -59.684,  247,  16 },
     },
 
-    [xi.zone.QUFIM_ISLAND] =
+    [invaderXim.zone.QUFIM_ISLAND] =
     {
         {  -2, -20.001, 324,  64 },
         { 161,     -20,  37, 192 },
     },
 
-    [xi.zone.SOUTH_GUSTABERG] =
+    [invaderXim.zone.SOUTH_GUSTABERG] =
     {
         { -115, -0.136, -165, 64 },
     },
 
-    [xi.zone.VALKURM_DUNES] =
+    [invaderXim.zone.VALKURM_DUNES] =
     {
         { 838, 0, -162, 64 },
     },
 
-    [xi.zone.WESTERN_ALTEPA_DESERT] =
+    [invaderXim.zone.WESTERN_ALTEPA_DESERT] =
     {
         { 685.548, -1.744, -50.395, 128 },
     },
 }
 
 -- NOTE: The zones in this list are not customisable, but the level caps are!
-xi.monstrosity.belligerencyCaps =
+invaderXim.monstrosity.belligerencyCaps =
 {
-    [xi.zone.BUBURIMU_PENINSULA] = 30,
-    [xi.zone.XARCABARD]          = 60,
-    [xi.zone.ULEGUERAND_RANGE]   = 90,
+    [invaderXim.zone.BUBURIMU_PENINSULA] = 30,
+    [invaderXim.zone.XARCABARD]          = 60,
+    [invaderXim.zone.ULEGUERAND_RANGE]   = 90,
 }
 
 -----------------------------------
 -- Helpers
 -----------------------------------
--- Use xi.monstrosity.species
-xi.monstrosity.unlockStartingMONs = function(player, choice)
+-- Use invaderXim.monstrosity.species
+invaderXim.monstrosity.unlockStartingMONs = function(player, choice)
     local data =
     {
         monstrosityId = choice,
@@ -878,33 +878,33 @@ xi.monstrosity.unlockStartingMONs = function(player, choice)
     player:setMonstrosityData(data)
 end
 
--- Use xi.monstrosity.species
-xi.monstrosity.getSpeciesLevel = function(player, species)
+-- Use invaderXim.monstrosity.species
+invaderXim.monstrosity.getSpeciesLevel = function(player, species)
     local data = player:getMonstrosityData()
     return data['levels'][species]
 end
 
--- Use xi.monstrosity.species
-xi.monstrosity.hasUnlockedSpecies = function(player, species)
-    return xi.monstrosity.getSpeciesLevel(player, species) > 0
+-- Use invaderXim.monstrosity.species
+invaderXim.monstrosity.hasUnlockedSpecies = function(player, species)
+    return invaderXim.monstrosity.getSpeciesLevel(player, species) > 0
 end
 
--- Use xi.monstrosity.species
-xi.monstrosity.setSpeciesLevel = function(player, species, level)
+-- Use invaderXim.monstrosity.species
+invaderXim.monstrosity.setSpeciesLevel = function(player, species, level)
     local data = player:getMonstrosityData()
     data.levels[species] = level
     player:setMonstrosityData(data)
 end
 
--- Use xi.monstrosity.species
-xi.monstrosity.unlockSpecies = function(player, species)
-    if not xi.monstrosity.hasUnlockedSpecies(player, species) then
-        xi.monstrosity.setSpeciesLevel(player, species, 1)
+-- Use invaderXim.monstrosity.species
+invaderXim.monstrosity.unlockSpecies = function(player, species)
+    if not invaderXim.monstrosity.hasUnlockedSpecies(player, species) then
+        invaderXim.monstrosity.setSpeciesLevel(player, species, 1)
     end
 end
 
--- Use xi.monstrosity.variants
-xi.monstrosity.hasUnlockedVariant = function(player, variant)
+-- Use invaderXim.monstrosity.variants
+invaderXim.monstrosity.hasUnlockedVariant = function(player, variant)
     local data = player:getMonstrosityData()
 
     local byteOffset  = math.floor(variant / 8)
@@ -917,9 +917,9 @@ xi.monstrosity.hasUnlockedVariant = function(player, variant)
     return false
 end
 
--- Use xi.monstrosity.variants
-xi.monstrosity.unlockVariant = function(player, variant)
-    if not xi.monstrosity.hasUnlockedVariant(player, variant) then
+-- Use invaderXim.monstrosity.variants
+invaderXim.monstrosity.unlockVariant = function(player, variant)
+    if not invaderXim.monstrosity.hasUnlockedVariant(player, variant) then
         local data = player:getMonstrosityData()
 
         local byteOffset   = math.floor(variant / 8)
@@ -950,12 +950,12 @@ end
 local function getPurchasedInstinctsMask(player)
     local instinctMask = 0
 
-    for _, purchasableInstinctId in pairs(xi.monstrosity.purchasableInstincts) do
+    for _, purchasableInstinctId in pairs(invaderXim.monstrosity.purchasableInstincts) do
         if
-            purchasableInstinctId >= xi.monstrosity.purchasableInstincts.HUME_II and
+            purchasableInstinctId >= invaderXim.monstrosity.purchasableInstincts.HUME_II and
             hasPurchasedInstinct(player, purchasableInstinctId)
         then
-            instinctMask = utils.mask.setBit(instinctMask, purchasableInstinctId - xi.monstrosity.purchasableInstincts.HUME_II, true)
+            instinctMask = utils.mask.setBit(instinctMask, purchasableInstinctId - invaderXim.monstrosity.purchasableInstincts.HUME_II, true)
         end
     end
 
@@ -980,7 +980,7 @@ end
 -- specific jobs.  Since only one quest exists for pre-ToAU jobs, use
 -- Maat's Cap tracking for those.
 local function hasCompletedLimitBreak(player, jobId)
-    if jobId <= xi.job.SMN then
+    if jobId <= invaderXim.job.SMN then
         local maatsCap = player:getCharVar('maatsCap')
 
         return utils.mask.getBit(maatsCap, jobId - 1)
@@ -992,7 +992,7 @@ end
 local function getLimitBreakMask(player)
     local limitMask = 0
 
-    for jobId = xi.job.WAR, xi.job.RUN do
+    for jobId = invaderXim.job.WAR, invaderXim.job.RUN do
         if hasCompletedLimitBreak(player, jobId) then
             limitMask = utils.mask.setBit(limitMask, jobId - 1, true)
         end
@@ -1003,8 +1003,8 @@ end
 
 local function hasPurchaseRequirements(player, monCategory, selectedMon)
     local selectedMonData = terynonMonData[monCategory][selectedMon]
-    local eligibleSpecies = selectedMonData.monSpecies and xi.monstrosity.getSpeciesLevel(player, selectedMonData.monSpecies) == 0
-    local eligibleVariant = selectedMonData.monVariant and not xi.monstrosity.hasUnlockedVariant(player, selectedMonData.monVariant)
+    local eligibleSpecies = selectedMonData.monSpecies and invaderXim.monstrosity.getSpeciesLevel(player, selectedMonData.monSpecies) == 0
+    local eligibleVariant = selectedMonData.monVariant and not invaderXim.monstrosity.hasUnlockedVariant(player, selectedMonData.monVariant)
 
     if
         eligibleSpecies or
@@ -1012,7 +1012,7 @@ local function hasPurchaseRequirements(player, monCategory, selectedMon)
     then
         if selectedMonData.requirements then
             for _, reqTable in ipairs(selectedMonData.requirements) do
-                if xi.monstrosity.getSpeciesLevel(player, reqTable[1]) < reqTable[2] then
+                if invaderXim.monstrosity.getSpeciesLevel(player, reqTable[1]) < reqTable[2] then
                     return false
                 end
             end
@@ -1044,12 +1044,12 @@ end
 -- Bound by C++ (DO NOT CHANGE SIGNATURE)
 -----------------------------------
 
-xi.monstrosity.onMonstrosityUpdate = function(player, data)
+invaderXim.monstrosity.onMonstrosityUpdate = function(player, data)
     -- Tap level-based unlocks
 
     -- Instincts by MON level
     -- NOTE: Since this is a bitfield, it's zero-indexed!
-    for _, val in pairs(xi.monstrosity.species) do
+    for _, val in pairs(invaderXim.monstrosity.species) do
         local speciesKey   = val
         local speciesLevel = data.levels[val]
         local byteOffset   = math.floor(speciesKey / 4)
@@ -1071,7 +1071,7 @@ xi.monstrosity.onMonstrosityUpdate = function(player, data)
     -- TODO: Handle level-based variants here
 end
 
-xi.monstrosity.onMonstrosityReturnToEntrance = function(player)
+invaderXim.monstrosity.onMonstrosityReturnToEntrance = function(player)
     local data = player:getMonstrosityData()
 
     local x      = data.entry_x
@@ -1088,9 +1088,9 @@ xi.monstrosity.onMonstrosityReturnToEntrance = function(player)
         player:delStatusEffectSilent(effect:getEffectType())
     end
 
-    if xi.settings.main.MONSTROSITY_TELEPORT_TO_FERETORY == 1 then
-        if player:getZoneID() ~= xi.zone.FERETORY then
-            player:setPos(-358, -3.4, -440, 64, xi.zone.FERETORY)
+    if invaderXim.settings.main.MONSTROSITY_TELEPORT_TO_FERETORY == 1 then
+        if player:getZoneID() ~= invaderXim.zone.FERETORY then
+            player:setPos(-358, -3.4, -440, 64, invaderXim.zone.FERETORY)
             return
         end
 
@@ -1106,65 +1106,65 @@ end
 -- Relinquish
 -----------------------------------
 
-xi.monstrosity.relinquishSteps =
+invaderXim.monstrosity.relinquishSteps =
 {
     [0] = function(player)
-        player:messageBasic(xi.msg.basic.FERETORY_COUNTDOWN, 0, 4)
+        player:messageBasic(invaderXim.msg.basic.FERETORY_COUNTDOWN, 0, 4)
     end,
 
     [1] = function(player)
-        player:messageBasic(xi.msg.basic.FERETORY_COUNTDOWN, 0, 3)
+        player:messageBasic(invaderXim.msg.basic.FERETORY_COUNTDOWN, 0, 3)
     end,
 
     [2] = function(player)
-        player:messageBasic(xi.msg.basic.FERETORY_COUNTDOWN, 0, 2)
+        player:messageBasic(invaderXim.msg.basic.FERETORY_COUNTDOWN, 0, 2)
     end,
 
     [3] = function(player)
-        player:messageBasic(xi.msg.basic.FERETORY_COUNTDOWN, 0, 1)
+        player:messageBasic(invaderXim.msg.basic.FERETORY_COUNTDOWN, 0, 1)
     end,
 
     [4] = function(player)
-        xi.monstrosity.onMonstrosityReturnToEntrance(player)
+        invaderXim.monstrosity.onMonstrosityReturnToEntrance(player)
     end,
 }
 
-xi.monstrosity.relinquishFuncBody = function(player)
+invaderXim.monstrosity.relinquishFuncBody = function(player)
     -- TODO: Make this countdown interruptable
     player:timer(1000, function(playerArg)
         local step = utils.clamp(playerArg:getLocalVar('RELINQUISH_COUNTDOWN'), 0, 4)
-        xi.monstrosity.relinquishSteps[step](playerArg)
+        invaderXim.monstrosity.relinquishSteps[step](playerArg)
         playerArg:setLocalVar('RELINQUISH_COUNTDOWN', step + 1)
-        xi.monstrosity.relinquishFuncBody(playerArg)
+        invaderXim.monstrosity.relinquishFuncBody(playerArg)
     end)
 end
 
-xi.monstrosity.relinquishOnAbility = function(player, target, ability)
-    xi.monstrosity.relinquishFuncBody(player)
+invaderXim.monstrosity.relinquishOnAbility = function(player, target, ability)
+    invaderXim.monstrosity.relinquishFuncBody(player)
 end
 
 -----------------------------------
 -- Debug
 -----------------------------------
 
-xi.monstrosity.unlockAll = function(player)
+invaderXim.monstrosity.unlockAll = function(player)
     -- Complete quest
-    local logId = xi.questLog.OTHER_AREAS
-    player:completeQuest(logId, xi.quest.id[xi.quest.area[logId]].MONSTROSITY)
+    local logId = invaderXim.questLog.OTHER_AREAS
+    player:completeQuest(logId, invaderXim.quest.id[invaderXim.quest.area[logId]].MONSTROSITY)
 
     -- Add Monstrosity key item
-    player:addKeyItem(xi.keyItem.RING_OF_SUPERNAL_DISJUNCTION)
+    player:addKeyItem(invaderXim.keyItem.RING_OF_SUPERNAL_DISJUNCTION)
 
     local data = player:getMonstrosityData()
 
     -- Set all levels to 99
-    for _, val in pairs(xi.monstrosity.species) do
+    for _, val in pairs(invaderXim.monstrosity.species) do
         data.levels[val] = 99
     end
 
     -- Instincts by MON level
     -- NOTE: Since this is a bitfield, it's zero-indexed!
-    for _, val in pairs(xi.monstrosity.species) do
+    for _, val in pairs(invaderXim.monstrosity.species) do
         local speciesKey   = val
         local speciesLevel = data.levels[val]
         local byteOffset   = math.floor(speciesKey / 4)
@@ -1184,7 +1184,7 @@ xi.monstrosity.unlockAll = function(player)
     end
 
     -- Instincts (Purchasable)
-    for _, val in pairs(xi.monstrosity.purchasableInstincts) do
+    for _, val in pairs(invaderXim.monstrosity.purchasableInstincts) do
         local byteOffset   = 20 + math.floor(val / 8)
         local shiftAmount  = val % 8
 
@@ -1197,7 +1197,7 @@ xi.monstrosity.unlockAll = function(player)
 
     -- Variants
     -- Force unlock all
-    for _, val in pairs(xi.monstrosity.variants) do
+    for _, val in pairs(invaderXim.monstrosity.variants) do
         local speciesKey   = val
         local byteOffset   = math.floor(speciesKey / 8)
         local shiftAmount  = speciesKey % 8
@@ -1217,11 +1217,11 @@ end
 -- Odyssean Passage (Feretory Only)
 -----------------------------------
 
-xi.monstrosity.odysseanPassageOnTrade = function(player, npc, trade)
+invaderXim.monstrosity.odysseanPassageOnTrade = function(player, npc, trade)
 end
 
-xi.monstrosity.odysseanPassageOnTrigger = function(player, npc)
-    if xi.settings.main.ENABLE_MONSTROSITY ~= 1 then
+invaderXim.monstrosity.odysseanPassageOnTrigger = function(player, npc)
+    if invaderXim.settings.main.ENABLE_MONSTROSITY ~= 1 then
         return
     end
 
@@ -1229,7 +1229,7 @@ xi.monstrosity.odysseanPassageOnTrigger = function(player, npc)
     local hasBelligerency = player:getBelligerencyFlag() and 1 or 0
 
     -- Show the full menu, not the restricted one
-    if xi.settings.main.MONSTROSITY_PVP_ZONE_BYPASS == 1 then
+    if invaderXim.settings.main.MONSTROSITY_PVP_ZONE_BYPASS == 1 then
         hasBelligerency = 0
     end
 
@@ -1241,21 +1241,21 @@ xi.monstrosity.odysseanPassageOnTrigger = function(player, npc)
     player:startEvent(5, 0, monSize, hasBelligerency, 0, 0, 0, 0, 0)
 end
 
-xi.monstrosity.odysseanPassageOnEventUpdate = function(player, csid, option, npc)
+invaderXim.monstrosity.odysseanPassageOnEventUpdate = function(player, csid, option, npc)
     local zoneSelected = bit.rshift(option, 4)
-    player:updateEvent(xi.monstrosity.belligerencyCaps[zoneSelected], 0, 0, 0, 1, 0, 0, 0)
+    player:updateEvent(invaderXim.monstrosity.belligerencyCaps[zoneSelected], 0, 0, 0, 1, 0, 0, 0)
 end
 
-xi.monstrosity.odysseanPassageOnEventFinish = function(player, csid, option, npc)
+invaderXim.monstrosity.odysseanPassageOnEventFinish = function(player, csid, option, npc)
     local eventOption  = bit.band(option, 0xF)
     local zoneSelected = bit.rshift(option, 4)
 
     if eventOption == 1 then
         if zoneSelected == 0 then
-            xi.monstrosity.onMonstrosityReturnToEntrance(player)
+            invaderXim.monstrosity.onMonstrosityReturnToEntrance(player)
         else
-            if xi.monstrosity.teleports[zoneSelected] then
-                local teleportPos = xi.monstrosity.teleports[zoneSelected][math.random(1, #xi.monstrosity.teleports[zoneSelected])]
+            if invaderXim.monstrosity.teleports[zoneSelected] then
+                local teleportPos = invaderXim.monstrosity.teleports[zoneSelected][math.random(1, #invaderXim.monstrosity.teleports[zoneSelected])]
 
                 player:setPos(teleportPos[1],
                     teleportPos[2],
@@ -1275,7 +1275,7 @@ end
 -- Feretory
 -----------------------------------
 
-xi.monstrosity.feretoryOnZoneIn = function(player, prevZone)
+invaderXim.monstrosity.feretoryOnZoneIn = function(player, prevZone)
     local cs = -1
 
     if
@@ -1286,12 +1286,12 @@ xi.monstrosity.feretoryOnZoneIn = function(player, prevZone)
         player:setPos(-358.000, -3.400, -440.00, 63)
     end
 
-    if xi.settings.main.ENABLE_MONSTROSITY ~= 1 then
+    if invaderXim.settings.main.ENABLE_MONSTROSITY ~= 1 then
         return cs
     end
 
-    if player:getMainJob() ~= xi.job.MON then
-        player:changeJob(xi.job.MON)
+    if player:getMainJob() ~= invaderXim.job.MON then
+        player:changeJob(invaderXim.job.MON)
     end
 
     for _, effect in pairs(player:getStatusEffects()) do
@@ -1301,34 +1301,34 @@ xi.monstrosity.feretoryOnZoneIn = function(player, prevZone)
     return cs
 end
 
-xi.monstrosity.feretoryOnZoneOut = function(player)
-    if xi.settings.main.ENABLE_MONSTROSITY ~= 1 then
+invaderXim.monstrosity.feretoryOnZoneOut = function(player)
+    if invaderXim.settings.main.ENABLE_MONSTROSITY ~= 1 then
         return
     end
 
     -- Mark all status effects so they'll survive zoning
     -- (there are some routines that will force them off anyway)
     for _, effect in pairs(player:getStatusEffects()) do
-        effect:delEffectFlag(xi.effectFlag.ON_ZONE)
-        effect:delEffectFlag(xi.effectFlag.LOGOUT)
+        effect:delEffectFlag(invaderXim.effectFlag.ON_ZONE)
+        effect:delEffectFlag(invaderXim.effectFlag.LOGOUT)
     end
 end
 
-xi.monstrosity.feretoryOnEventUpdate = function(player, csid, option, npc)
+invaderXim.monstrosity.feretoryOnEventUpdate = function(player, csid, option, npc)
 end
 
-xi.monstrosity.feretoryOnEventFinish = function(player, csid, option, npc)
+invaderXim.monstrosity.feretoryOnEventFinish = function(player, csid, option, npc)
 end
 
 -----------------------------------
 -- Aengus (Feretory NPC)
 -----------------------------------
 
-xi.monstrosity.aengusOnTrade = function(player, npc, trade)
+invaderXim.monstrosity.aengusOnTrade = function(player, npc, trade)
 end
 
-xi.monstrosity.aengusOnTrigger = function(player, npc)
-    if xi.settings.main.ENABLE_MONSTROSITY ~= 1 then
+invaderXim.monstrosity.aengusOnTrigger = function(player, npc)
+    if invaderXim.settings.main.ENABLE_MONSTROSITY ~= 1 then
         return
     end
 
@@ -1336,10 +1336,10 @@ xi.monstrosity.aengusOnTrigger = function(player, npc)
     player:startEvent(13, inBelligerency, player:getCurrency('infamy'), 0, 0, 0, 0, 0, 0)
 end
 
-xi.monstrosity.aengusOnEventUpdate = function(player, csid, option, npc)
+invaderXim.monstrosity.aengusOnEventUpdate = function(player, csid, option, npc)
 end
 
-xi.monstrosity.aengusOnEventFinish = function(player, csid, option, npc)
+invaderXim.monstrosity.aengusOnEventFinish = function(player, csid, option, npc)
     if csid == 13 and option == 1 then
         -- Toggle
         player:setBelligerencyFlag(not player:getBelligerencyFlag())
@@ -1350,18 +1350,18 @@ end
 -- Teyrnon (Feretory NPC)
 -----------------------------------
 
-xi.monstrosity.teyrnonOnTrade = function(player, npc, trade)
+invaderXim.monstrosity.teyrnonOnTrade = function(player, npc, trade)
 end
 
-xi.monstrosity.teyrnonOnTrigger = function(player, npc)
-    if xi.settings.main.ENABLE_MONSTROSITY ~= 1 then
+invaderXim.monstrosity.teyrnonOnTrigger = function(player, npc)
+    if invaderXim.settings.main.ENABLE_MONSTROSITY ~= 1 then
         return
     end
 
     player:startEvent(7, player:getCurrency('infamy'), 0, 0, 0, 0, 0, 0, 0)
 end
 
-xi.monstrosity.teyrnonOnEventUpdate = function(player, csid, option, npc)
+invaderXim.monstrosity.teyrnonOnEventUpdate = function(player, csid, option, npc)
     if csid == 7 then
         local optionType = bit.band(option, 0xFF)
 
@@ -1383,7 +1383,7 @@ xi.monstrosity.teyrnonOnEventUpdate = function(player, csid, option, npc)
     end
 end
 
-xi.monstrosity.teyrnonOnEventFinish = function(player, csid, option, npc)
+invaderXim.monstrosity.teyrnonOnEventFinish = function(player, csid, option, npc)
     local optionType = bit.band(option, 0xFF)
 
     if optionType == 1 then
@@ -1400,14 +1400,14 @@ xi.monstrosity.teyrnonOnEventFinish = function(player, csid, option, npc)
             player:delCurrency('infamy', monData.infamyCost)
 
             if monData.monSpecies then
-                xi.monstrosity.unlockSpecies(player, monData.monSpecies)
+                invaderXim.monstrosity.unlockSpecies(player, monData.monSpecies)
             elseif monData.monVariant then
-                xi.monstrosity.unlockVariant(player, monData.monVariant)
+                invaderXim.monstrosity.unlockVariant(player, monData.monVariant)
             end
 
-            player:messageSpecial(zones[xi.zone.FERETORY].text.MAY_POSSESS_BEASTS + 3 * selectedCategory, 0, selectedMon)
+            player:messageSpecial(zones[invaderXim.zone.FERETORY].text.MAY_POSSESS_BEASTS + 3 * selectedCategory, 0, selectedMon)
         else
-            player:messageSpecial(zones[xi.zone.FERETORY].text.THY_BRAZEN_DISREGARD)
+            player:messageSpecial(zones[invaderXim.zone.FERETORY].text.THY_BRAZEN_DISREGARD)
         end
 
     elseif optionType == 2 then
@@ -1415,7 +1415,7 @@ xi.monstrosity.teyrnonOnEventFinish = function(player, csid, option, npc)
         -- prerequisites.  This data is not tabled with Terynon, as it cannot be controlled.
 
         local selectedInstinct = bit.band(bit.rshift(option, 8), 0xFF)
-        local instinctPrice    = selectedInstinct > xi.monstrosity.purchasableInstincts.GALKA_II and 10000 or 500
+        local instinctPrice    = selectedInstinct > invaderXim.monstrosity.purchasableInstincts.GALKA_II and 10000 or 500
         local checkValue       = bit.rshift(option, 16)
 
         if checkValue ~= 119 then
@@ -1424,8 +1424,8 @@ xi.monstrosity.teyrnonOnEventFinish = function(player, csid, option, npc)
         end
 
         if
-            selectedInstinct > xi.monstrosity.purchasableInstincts.GALKA_II and
-            hasCompletedLimitBreak(player, selectedInstinct - xi.monstrosity.purchasableInstincts.GALKA_II)
+            selectedInstinct > invaderXim.monstrosity.purchasableInstincts.GALKA_II and
+            hasCompletedLimitBreak(player, selectedInstinct - invaderXim.monstrosity.purchasableInstincts.GALKA_II)
         then
             instinctPrice = instinctPrice / 2
         end
@@ -1437,9 +1437,9 @@ xi.monstrosity.teyrnonOnEventFinish = function(player, csid, option, npc)
             -- NOTE: The offset below is the beginning parameter for purchased instincts used by this message, and
             -- lower values will result in an item being placed in the message.  Base offset for all instincts
             -- is 29696 (29696 + 3 -> Rabbit Instinct I)
-            player:messageSpecial(zones[xi.zone.FERETORY].text.YOU_LEARNED_INSTINCT, 30464 + selectedInstinct)
+            player:messageSpecial(zones[invaderXim.zone.FERETORY].text.YOU_LEARNED_INSTINCT, 30464 + selectedInstinct)
         else
-            player:messageSpecial(zones[xi.zone.FERETORY].text.THY_BRAZEN_DISREGARD)
+            player:messageSpecial(zones[invaderXim.zone.FERETORY].text.THY_BRAZEN_DISREGARD)
         end
 
     elseif optionType == 3 then
@@ -1447,7 +1447,7 @@ xi.monstrosity.teyrnonOnEventFinish = function(player, csid, option, npc)
 
         local tryPayCost = function(playerArg, cost)
             if playerArg:getCurrency('infamy') < cost then
-                playerArg:messageSpecial(zones[xi.zone.FERETORY].text.THY_BRAZEN_DISREGARD)
+                playerArg:messageSpecial(zones[invaderXim.zone.FERETORY].text.THY_BRAZEN_DISREGARD)
                 return false
             end
 
@@ -1465,12 +1465,12 @@ xi.monstrosity.teyrnonOnEventFinish = function(player, csid, option, npc)
                     return
                 end
 
-                local effect   = xi.effect.DEDICATION
+                local effect   = invaderXim.effect.DEDICATION
                 local power    = 50
                 local duration = utils.minutes(60)
                 local subpower = 10000
                 player:delStatusEffectSilent(power)
-                xi.itemUtils.addItemExpEffect(player, effect, power, duration, subpower)
+                invaderXim.itemUtils.addItemExpEffect(player, effect, power, duration, subpower)
             end,
 
             -- 1: Dedication 2
@@ -1480,12 +1480,12 @@ xi.monstrosity.teyrnonOnEventFinish = function(player, csid, option, npc)
                     return
                 end
 
-                local effect   = xi.effect.DEDICATION
+                local effect   = invaderXim.effect.DEDICATION
                 local power    = 100
                 local duration = utils.minutes(60)
                 local subpower = 2000
                 player:delStatusEffectSilent(power)
-                xi.itemUtils.addItemExpEffect(player, effect, power, duration, subpower)
+                invaderXim.itemUtils.addItemExpEffect(player, effect, power, duration, subpower)
             end,
 
             -- 2: Regen
@@ -1494,8 +1494,8 @@ xi.monstrosity.teyrnonOnEventFinish = function(player, csid, option, npc)
                     return
                 end
 
-                player:delStatusEffectSilent(xi.effect.REGEN)
-                player:addStatusEffect(xi.effect.REGEN, 1, 3, 3600)
+                player:delStatusEffectSilent(invaderXim.effect.REGEN)
+                player:addStatusEffect(invaderXim.effect.REGEN, 1, 3, 3600)
             end,
 
             -- 3: Refresh
@@ -1504,10 +1504,10 @@ xi.monstrosity.teyrnonOnEventFinish = function(player, csid, option, npc)
                     return
                 end
 
-                player:delStatusEffectSilent(xi.effect.REFRESH)
-                player:delStatusEffect(xi.effect.SUBLIMATION_COMPLETE)
-                player:delStatusEffect(xi.effect.SUBLIMATION_ACTIVATED)
-                player:addStatusEffect(xi.effect.REFRESH, 1, 3, 3600, 0, 3)
+                player:delStatusEffectSilent(invaderXim.effect.REFRESH)
+                player:delStatusEffect(invaderXim.effect.SUBLIMATION_COMPLETE)
+                player:delStatusEffect(invaderXim.effect.SUBLIMATION_ACTIVATED)
+                player:addStatusEffect(invaderXim.effect.REFRESH, 1, 3, 3600, 0, 3)
             end,
 
             -- 4: Protect
@@ -1535,13 +1535,13 @@ xi.monstrosity.teyrnonOnEventFinish = function(player, csid, option, npc)
                 end
 
                 local bonus = 0
-                if player:getMod(xi.mod.ENHANCES_PROT_SHELL_RCVD) > 0 then
+                if player:getMod(invaderXim.mod.ENHANCES_PROT_SHELL_RCVD) > 0 then
                     bonus = 2 -- 2x Tier from MOD
                 end
 
                 power = power + (bonus * tier)
-                player:delStatusEffectSilent(xi.effect.PROTECT)
-                player:addStatusEffect(xi.effect.PROTECT, power, 0, 1800, 0, 0, tier)
+                player:delStatusEffectSilent(invaderXim.effect.PROTECT)
+                player:addStatusEffect(invaderXim.effect.PROTECT, power, 0, 1800, 0, 0, tier)
             end,
 
             -- 5: Shell
@@ -1571,19 +1571,19 @@ xi.monstrosity.teyrnonOnEventFinish = function(player, csid, option, npc)
                 end
 
                 local bonus = 0
-                if player:getMod(xi.mod.ENHANCES_PROT_SHELL_RCVD) > 0 then
+                if player:getMod(invaderXim.mod.ENHANCES_PROT_SHELL_RCVD) > 0 then
                     bonus = 39   -- (1/256 bonus buff per tier of spell)
                 end
 
                 power = power + (bonus * tier)
-                player:delStatusEffectSilent(xi.effect.SHELL)
-                player:addStatusEffect(xi.effect.SHELL, power, 0, 1800, 0, 0, tier)
+                player:delStatusEffectSilent(invaderXim.effect.SHELL)
+                player:addStatusEffect(invaderXim.effect.SHELL, power, 0, 1800, 0, 0, tier)
             end,
 
             -- 6: Haste
             [6] = function()
-                player:delStatusEffectSilent(xi.effect.HASTE)
-                player:addStatusEffect(xi.effect.HASTE, 1000, 0, 600)
+                player:delStatusEffectSilent(invaderXim.effect.HASTE)
+                player:addStatusEffect(invaderXim.effect.HASTE, 1000, 0, 600)
             end,
         }
     end
@@ -1593,21 +1593,21 @@ end
 -- Maccus (Feretory NPC)
 -----------------------------------
 
-xi.monstrosity.maccusOnTrade = function(player, npc, trade)
+invaderXim.monstrosity.maccusOnTrade = function(player, npc, trade)
 end
 
-xi.monstrosity.maccusOnTrigger = function(player, npc)
-    if xi.settings.main.ENABLE_MONSTROSITY ~= 1 then
+invaderXim.monstrosity.maccusOnTrigger = function(player, npc)
+    if invaderXim.settings.main.ENABLE_MONSTROSITY ~= 1 then
         return
     end
 
     player:startEvent(9, 285, 2, 2, 0, 0, 0, 0, 0)
 end
 
-xi.monstrosity.maccusOnEventUpdate = function(player, csid, option, npc)
+invaderXim.monstrosity.maccusOnEventUpdate = function(player, csid, option, npc)
     -- print('update', csid, option)
 end
 
-xi.monstrosity.maccusOnEventFinish = function(player, csid, option, npc)
+invaderXim.monstrosity.maccusOnEventFinish = function(player, csid, option, npc)
     -- print('finish', csid, option)
 end

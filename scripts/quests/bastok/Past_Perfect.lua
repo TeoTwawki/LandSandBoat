@@ -6,24 +6,24 @@
 -- qm1 : !pos -201 16 80 108
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.PAST_PERFECT)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.PAST_PERFECT)
 
 quest.reward =
 {
-    item     = xi.item.SCALE_MAIL,
+    item     = invaderXim.item.SCALE_MAIL,
     fame     = 110,
-    fameArea = xi.fameArea.BASTOK,
+    fameArea = invaderXim.fameArea.BASTOK,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 2
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 2
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Evi'] =
             {
@@ -57,27 +57,27 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.KONSCHTAT_HIGHLANDS] =
+        [invaderXim.zone.KONSCHTAT_HIGHLANDS] =
         {
             ['qm1'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.TATTERED_MISSION_ORDERS) then
-                        return quest:keyItem(xi.ki.TATTERED_MISSION_ORDERS)
+                    if not player:hasKeyItem(invaderXim.ki.TATTERED_MISSION_ORDERS) then
+                        return quest:keyItem(invaderXim.ki.TATTERED_MISSION_ORDERS)
                     end
                 end,
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Evi'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.TATTERED_MISSION_ORDERS) then
+                    if player:hasKeyItem(invaderXim.ki.TATTERED_MISSION_ORDERS) then
                         return quest:progressEvent(131)
                     end
                 end,
@@ -87,7 +87,7 @@ quest.sections =
             {
                 [131] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.TATTERED_MISSION_ORDERS)
+                        player:delKeyItem(invaderXim.ki.TATTERED_MISSION_ORDERS)
                     end
                 end,
             },

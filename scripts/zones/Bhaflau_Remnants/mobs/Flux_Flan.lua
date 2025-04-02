@@ -2,7 +2,7 @@
 -- Area: Bhaflau Remnants
 -- MOB: Flux Flan
 -----------------------------------
-local ID = zones[xi.zone.BHAFLAU_REMNANTS]
+local ID = zones[invaderXim.zone.BHAFLAU_REMNANTS]
 mixins = { require('scripts/mixins/families/flan') }
 -----------------------------------
 
@@ -13,7 +13,7 @@ entity.onMobSpawn = function(mob)
     local instance = mob:getInstance()
 
     if instance then
-        GetNPCByID(ID.npc.SOCKET, instance):setStatus(xi.status.DISAPPEAR)
+        GetNPCByID(ID.npc.SOCKET, instance):setStatus(invaderXim.status.DISAPPEAR)
         if instance:getProgress() == 1 then
             mob:setMaxHP(5150)
         end
@@ -25,7 +25,7 @@ entity.onMobDeath = function(mob, player, optParams)
         optParams.isKiller or
         optParams.noKiller
     then
-        xi.salvage.handleSocketCells(mob, player)
+        invaderXim.salvage.handleSocketCells(mob, player)
     end
 end
 

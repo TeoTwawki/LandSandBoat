@@ -1,4 +1,4 @@
--- local ID = zones[xi.zone.BASTOK_MARKETS_S]
+-- local ID = zones[invaderXim.zone.BASTOK_MARKETS_S]
 
 return {
     ['Adelinde']         = { event = 103 },

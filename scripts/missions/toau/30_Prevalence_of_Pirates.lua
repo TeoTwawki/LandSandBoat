@@ -5,12 +5,12 @@
 -- !addmission 4 29
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.PREVALENCE_OF_PIRATES)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.PREVALENCE_OF_PIRATES)
 
 mission.reward =
 {
-    keyItem     = xi.ki.PERIQIA_ASSAULT_AREA_ENTRY_PERMIT,
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.SHADES_OF_VENGEANCE },
+    keyItem     = invaderXim.ki.PERIQIA_ASSAULT_AREA_ENTRY_PERMIT,
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.SHADES_OF_VENGEANCE },
 }
 
 mission.sections =
@@ -20,11 +20,11 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.ARRAPAGO_REEF] =
+        [invaderXim.zone.ARRAPAGO_REEF] =
         {
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.CAEDARVA_MIRE and
+                    prevZone == invaderXim.zone.CAEDARVA_MIRE and
                     player:getMissionStatus(mission.areaId) == 0
                 then
                     return 13

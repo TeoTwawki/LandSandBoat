@@ -4,17 +4,17 @@
 -- Spawns Ironclad Sunderer
 -- !pos 501 25 503 254
 -----------------------------------
-local ID = zones[xi.zone.ABYSSEA_GRAUBERG]
+local ID = zones[invaderXim.zone.ABYSSEA_GRAUBERG]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.abyssea.qmOnTrade(player, npc, trade, ID.mob.IRONCLAD_SUNDERER, { xi.item.TEEKESSELCHEN_FRAGMENT, xi.item.DARKFLAME_ARM })
+    invaderXim.abyssea.qmOnTrade(player, npc, trade, ID.mob.IRONCLAD_SUNDERER, { invaderXim.item.TEEKESSELCHEN_FRAGMENT, invaderXim.item.DARKFLAME_ARM })
 end
 
 entity.onTrigger = function(player, npc)
-    xi.abyssea.qmOnTrigger(player, npc, 0, 0, { xi.item.TEEKESSELCHEN_FRAGMENT, xi.item.DARKFLAME_ARM })
+    invaderXim.abyssea.qmOnTrigger(player, npc, 0, 0, { invaderXim.item.TEEKESSELCHEN_FRAGMENT, invaderXim.item.DARKFLAME_ARM })
 end
 
 return entity

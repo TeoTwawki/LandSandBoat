@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.FEINT
+-- invaderXim.effect.FEINT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

@@ -7,11 +7,11 @@
 -- Yeggha_Dolashi : !pos 260 -5.768 60 258
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.THE_SEVENTH_GUARDIAN)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_SEVENTH_GUARDIAN)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.WATERY_GRAVE },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.WATERY_GRAVE },
 }
 
 mission.sections =
@@ -21,12 +21,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(40, 256, 0, 5, 0, 0, 0, 0, 4),
         },
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['Yeggha_Dolashi'] = mission:progressEvent(374, 258, 3642015, 1756, 0, utils.MAX_UINT32 - 133696, utils.MAX_UINT32 - 796, 433102, 8),
 

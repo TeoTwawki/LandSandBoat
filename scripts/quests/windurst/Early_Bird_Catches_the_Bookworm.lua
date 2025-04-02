@@ -8,27 +8,27 @@
 -- Quu Bokye       : !pos -159 16 181 145
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.EARLY_BIRD_CATCHES_THE_BOOKWORM)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.EARLY_BIRD_CATCHES_THE_BOOKWORM)
 
 quest.reward =
 {
     fame = 120,
-    fameArea = xi.fameArea.WINDURST,
+    fameArea = invaderXim.fameArea.WINDURST,
     gil = 1500,
-    title = xi.title.SAVIOR_OF_KNOWLEDGE,
+    title = invaderXim.title.SAVIOR_OF_KNOWLEDGE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.WINDURST, xi.quest.id.windurst.GLYPH_HANGER) and
-                player:getFameLevel(xi.fameArea.WINDURST) >= 2 and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.GLYPH_HANGER) and
+                player:getFameLevel(invaderXim.fameArea.WINDURST) >= 2 and
                 not quest:getMustZone(player)
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Tosuka-Porika'] =
             {
@@ -37,9 +37,9 @@ quest.sections =
                     -- in this block to make it easier to remove if it turns out to be inaccurate.
                     -- https://ffxiclopedia.fandom.com/wiki/Early_Bird_Catches_the_Bookworm
                     if
-                        player:getNation() ~= xi.nation.WINDURST or
-                        (player:getCurrentMission(xi.mission.log_id.WINDURST) ~= xi.mission.id.windurst.LOST_FOR_WORDS and
-                        player:getCurrentMission(xi.mission.log_id.WINDURST) ~= xi.mission.id.windurst.THE_SIXTH_MINISTRY)
+                        player:getNation() ~= invaderXim.nation.WINDURST or
+                        (player:getCurrentMission(invaderXim.mission.log_id.WINDURST) ~= invaderXim.mission.id.windurst.LOST_FOR_WORDS and
+                        player:getCurrentMission(invaderXim.mission.log_id.WINDURST) ~= invaderXim.mission.id.windurst.THE_SIXTH_MINISTRY)
                     then
                         return quest:progressEvent(387)
                     end
@@ -59,10 +59,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Furakku-Norakku'] =
             {
@@ -70,13 +70,13 @@ quest.sections =
                     local questProgress = quest:getVar(player, 'Prog')
 
                     if questProgress == 0 then
-                        if not player:hasKeyItem(xi.ki.OVERDUE_BOOK_NOTIFICATIONS_EARLY_BIRD) then
-                            return quest:progressEvent(389, 0, xi.ki.ART_FOR_EVERYONE)
+                        if not player:hasKeyItem(invaderXim.ki.OVERDUE_BOOK_NOTIFICATIONS_EARLY_BIRD) then
+                            return quest:progressEvent(389, 0, invaderXim.ki.ART_FOR_EVERYONE)
                         else
-                            return quest:progressEvent(390, 0, xi.ki.ART_FOR_EVERYONE)
+                            return quest:progressEvent(390, 0, invaderXim.ki.ART_FOR_EVERYONE)
                         end
                     elseif questProgress == 1 then
-                        return quest:progressEvent(397, 0, xi.ki.ART_FOR_EVERYONE)
+                        return quest:progressEvent(397, 0, invaderXim.ki.ART_FOR_EVERYONE)
                     elseif questProgress >= 2 then
                         return quest:progressEvent(400)
                     end
@@ -90,9 +90,9 @@ quest.sections =
 
                     if
                         questProgress == 0 and
-                        player:hasKeyItem(xi.ki.OVERDUE_BOOK_NOTIFICATIONS_EARLY_BIRD)
+                        player:hasKeyItem(invaderXim.ki.OVERDUE_BOOK_NOTIFICATIONS_EARLY_BIRD)
                     then
-                        return quest:progressEvent(395, 0, xi.ki.ART_FOR_EVERYONE)
+                        return quest:progressEvent(395, 0, invaderXim.ki.ART_FOR_EVERYONE)
                     elseif questProgress == 1 then
                         return quest:progressEvent(396)
                     elseif questProgress == 2 then
@@ -108,7 +108,7 @@ quest.sections =
             onEventFinish =
             {
                 [389] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.OVERDUE_BOOK_NOTIFICATIONS_EARLY_BIRD)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.OVERDUE_BOOK_NOTIFICATIONS_EARLY_BIRD)
                 end,
 
                 [395] = function(player, csid, option, npc)
@@ -122,20 +122,20 @@ quest.sections =
                 [400] = function(player, csid, option, npc)
                     if quest:complete(player) then
                         player:setLocalVar('Quest[2][13]mustZone', 1)
-                        player:delKeyItem(xi.ki.OVERDUE_BOOK_NOTIFICATIONS_EARLY_BIRD)
+                        player:delKeyItem(invaderXim.ki.OVERDUE_BOOK_NOTIFICATIONS_EARLY_BIRD)
                     end
                 end,
             },
         },
 
-        [xi.zone.GIDDEUS] =
+        [invaderXim.zone.GIDDEUS] =
         {
             ['Quu_Bokye'] =
             {
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'Prog') == 1 and
-                        npcUtil.tradeHasExactly(trade, xi.item.SILVER_BEASTCOIN)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.SILVER_BEASTCOIN)
                     then
                         return quest:progressEvent(58)
                     end
@@ -156,7 +156,7 @@ quest.sections =
             {
                 [58] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    npcUtil.giveKeyItem(player, xi.ki.ART_FOR_EVERYONE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ART_FOR_EVERYONE)
                     quest:setVar(player, 'Prog', 2)
                 end,
             },
@@ -165,11 +165,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
                 player:getLocalVar('Quest[2][13]mustZone') == 1
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Furakku-Norakku'] = quest:event(401):replaceDefault()
         },

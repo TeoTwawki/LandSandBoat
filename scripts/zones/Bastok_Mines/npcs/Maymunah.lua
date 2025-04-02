@@ -4,7 +4,7 @@
 -- Guild Merchant NPC: Alchemy Guild
 -- !pos 108.738 5.017 -3.129 234
 -----------------------------------
-local ID = zones[xi.zone.BASTOK_MINES]
+local ID = zones[invaderXim.zone.BASTOK_MINES]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

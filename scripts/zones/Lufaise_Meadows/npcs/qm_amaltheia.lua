@@ -3,14 +3,14 @@
 --  NPC: ??? - Amaltheia spawn
 -- !pos 347.897 -10.895 264.382 24
 -----------------------------------
-local ID = zones[xi.zone.LUFAISE_MEADOWS]
+local ID = zones[invaderXim.zone.LUFAISE_MEADOWS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHas(trade, xi.item.RELIC_SHIELD) and
+        npcUtil.tradeHas(trade, invaderXim.item.RELIC_SHIELD) and
         npcUtil.popFromQM(player, npc, ID.mob.AMALTHEIA)
     then
         player:confirmTrade()

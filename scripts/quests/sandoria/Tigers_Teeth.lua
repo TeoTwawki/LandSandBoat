@@ -5,12 +5,12 @@
 -- Taukila : !pos -140 -6 -8 230
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.TIGERS_TEETH)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.TIGERS_TEETH)
 
 quest.reward =
 {
     gil   = 2100,
-    title = xi.title.FANG_FINDER,
+    title = invaderXim.title.FANG_FINDER,
     fame  = 30,
 }
 
@@ -18,11 +18,11 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.SANDORIA) >= 3
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.SANDORIA) >= 3
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Taumila'] = quest:progressEvent(574),
 
@@ -38,17 +38,17 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Taumila'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.BLACK_TIGER_FANG, 3 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.BLACK_TIGER_FANG, 3 } }) then
                         return quest:progressEvent(572)
-                    elseif npcUtil.tradeHas(trade, xi.item.BLACK_TIGER_FANG) then
+                    elseif npcUtil.tradeHas(trade, invaderXim.item.BLACK_TIGER_FANG) then
                         return quest:event(573)
                     end
                 end,
@@ -68,18 +68,18 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Taumila'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.BLACK_TIGER_FANG, 3 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.BLACK_TIGER_FANG, 3 } }) then
                         quest:setLocalVar(player, 'Option', 1)
                         return quest:progressEvent(572)
-                    elseif npcUtil.tradeHas(trade, xi.item.BLACK_TIGER_FANG) then
+                    elseif npcUtil.tradeHas(trade, invaderXim.item.BLACK_TIGER_FANG) then
                         return quest:event(573)
                     end
                 end,
@@ -96,7 +96,7 @@ quest.sections =
                     then
                         quest:setLocalVar(player, 'Option', 0)
                         player:confirmTrade()
-                        player:addFame(xi.fameArea.SANDORIA, 5)
+                        player:addFame(invaderXim.fameArea.SANDORIA, 5)
                     end
                 end,
             },

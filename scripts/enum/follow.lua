@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.followType
-xi.followType =
+---@enum invaderXim.followType
+invaderXim.followType =
 {
     NONE     = 0,
     ROAM     = 1, -- Mob will follow the target while roaming

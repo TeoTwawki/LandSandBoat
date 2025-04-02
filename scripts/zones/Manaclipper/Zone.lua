@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Manaclipper
 -----------------------------------
-local ID = zones[xi.zone.MANACLIPPER]
+local ID = zones[invaderXim.zone.MANACLIPPER]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -12,7 +12,7 @@ end
 zoneObject.onZoneIn = function(player, prevZone)
     local cs = -1
 
-    xi.manaclipper.onZoneIn(player)
+    invaderXim.manaclipper.onZoneIn(player)
 
     if
         player:getXPos() == 0 and
@@ -47,7 +47,7 @@ zoneObject.onTransportEvent = function(player, transport)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onEventUpdate = function(player, csid, option, npc)
@@ -55,7 +55,7 @@ end
 
 zoneObject.onEventFinish = function(player, csid, option, npc)
     if csid == 100 then
-        player:setPos(0, 0, 0, 0, xi.zone.BIBIKI_BAY)
+        player:setPos(0, 0, 0, 0, invaderXim.zone.BIBIKI_BAY)
     end
 end
 

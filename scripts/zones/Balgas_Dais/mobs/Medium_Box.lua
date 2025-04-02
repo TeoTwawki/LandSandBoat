@@ -22,7 +22,7 @@ entity.onMobEngage = function(mob, target)
         DespawnMob(mobId + 1)
 
         if math.random(1, 3) == 1 then
-            mob:setStatus(xi.status.INVISIBLE)
+            mob:setStatus(invaderXim.status.INVISIBLE)
             mob:setHP(0)
         else
             mob:setAnimationSub(1)

@@ -1,7 +1,7 @@
 ﻿/*
 ===========================================================================
 
-  Copyright (c) 2023 LandSandBoat Dev Teams
+  Copyright (c) 2023 InvaderXim Dev Teams
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -58,7 +58,7 @@ void auth_session::start()
                 if (errStr.find("wrong version number (SSL routines)") != std::string::npos)
                 {
                     ShowWarning("This is likely due to the client using an outdated/incompatible version of xiloader.");
-                    ShowWarning("Please make sure you're using the latest release: https://github.com/LandSandBoat/xiloader/releases");
+                    ShowWarning("Please make sure you're using the latest release: https://github.com/InvaderXim/xiloader/releases");
                 }
                 socket_.next_layer().close();
             }

@@ -12,9 +12,9 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local power = math.random(15, 20) + mob:getMainLvl() / 4
 
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.SLEEP_I, 1, 0, power))
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.SLEEP_I, 1, 0, power))
 
-    return xi.effect.SLEEP_I
+    return invaderXim.effect.SLEEP_I
 end
 
 return mobskillObject

@@ -18,14 +18,14 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local damage     = mob:getWeaponDmg() * 5
 
     -- Choose element and damage type
-    local possibleElement = { xi.element.FIRE, xi.element.EARTH, xi.element.WIND, xi.element.WATER }
+    local possibleElement = { invaderXim.element.FIRE, invaderXim.element.EARTH, invaderXim.element.WIND, invaderXim.element.WATER }
     local skillElement    = possibleElement[math.random(1, 4)]
-    local damageType      = xi.damageType.ELEMENTAL + skillElement
+    local damageType      = invaderXim.damageType.ELEMENTAL + skillElement
 
-    damage = xi.mobskills.mobMagicalMove(mob, target, skill, damage, skillElement, 1, xi.mobskills.magicalTpBonus.MAB_BONUS, 1)
-    damage = xi.mobskills.mobFinalAdjustments(damage, mob, skill, target, xi.attackType.MAGICAL, damageType, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
+    damage = invaderXim.mobskills.mobMagicalMove(mob, target, skill, damage, skillElement, 1, invaderXim.mobskills.magicalTpBonus.MAB_BONUS, 1)
+    damage = invaderXim.mobskills.mobFinalAdjustments(damage, mob, skill, target, invaderXim.attackType.MAGICAL, damageType, invaderXim.mobskills.shadowBehavior.IGNORE_SHADOWS)
 
-    target:takeDamage(damage, mob, xi.attackType.MAGICAL, damageType)
+    target:takeDamage(damage, mob, invaderXim.attackType.MAGICAL, damageType)
 
     return damage
 end

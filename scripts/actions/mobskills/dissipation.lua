@@ -10,14 +10,14 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.TERROR, 1, 0, 10)
+    invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.TERROR, 1, 0, 10)
 
     local count = target:dispelAllStatusEffect()
 
     if count == 0 then
-        skill:setMsg(xi.msg.basic.SKILL_NO_EFFECT)
+        skill:setMsg(invaderXim.msg.basic.SKILL_NO_EFFECT)
     else
-        skill:setMsg(xi.msg.basic.DISAPPEAR_NUM)
+        skill:setMsg(invaderXim.msg.basic.DISAPPEAR_NUM)
     end
 
     return count

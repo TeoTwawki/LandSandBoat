@@ -3,12 +3,12 @@
 -- Name: A Moogle Kupo d'Etat Mission 14
 -- !pos -111 -6 0.1 165
 -----------------------------------
-local throneRoomID = zones[xi.zone.THRONE_ROOM]
+local throneRoomID = zones[invaderXim.zone.THRONE_ROOM]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId           = xi.zone.THRONE_ROOM,
-    battlefieldId    = xi.battlefield.id.SMASH_A_MALEVOLENT_MENACE,
+    zoneId           = invaderXim.zone.THRONE_ROOM,
+    battlefieldId    = invaderXim.battlefield.id.SMASH_A_MALEVOLENT_MENACE,
     canLoseExp       = false,
     isMission        = true,
     allowTrusts      = true,
@@ -19,13 +19,13 @@ local content = BattlefieldMission:new({
     allowedAreas     = set{ 1 },
     entryNpc         = '_4l1',
     exitNpcs         = { '_4l2', '_4l3', '_4l4' },
-    requiredKeyItems = { xi.ki.MEGA_BONANZA_KUPON, onlyInitiator = true },
+    requiredKeyItems = { invaderXim.ki.MEGA_BONANZA_KUPON, onlyInitiator = true },
 
     -- TODO: Currently AMK does not depend on this fight in mission scripts.  Verify
     -- that this mission status is updated/correct once doing so.
-    missionArea           = xi.mission.log_id.AMK,
-    mission               = xi.mission.id.amk.SMASH_A_MALEVOLENT_MENACE,
-    missionStatusArea     = xi.mission.log_id.AMK,
+    missionArea           = invaderXim.mission.log_id.AMK,
+    mission               = invaderXim.mission.id.amk.SMASH_A_MALEVOLENT_MENACE,
+    missionStatusArea     = invaderXim.mission.log_id.AMK,
     requiredMissionStatus = 0,
 
     experimental = true,
@@ -43,7 +43,7 @@ content.groups =
 
         superlinkGroup = 1,
         allDeath       = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 

@@ -11,8 +11,8 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local amount = 9999 * skill:getTotalTargets()
-    local dmg = xi.mobskills.mobFinalAdjustments(amount, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.FIRE, xi.mobskills.shadowBehavior.WIPE_SHADOWS)
-    target:takeDamage(dmg, mob, xi.attackType.PHYSICAL, xi.damageType.FIRE)
+    local dmg = invaderXim.mobskills.mobFinalAdjustments(amount, mob, skill, target, invaderXim.attackType.PHYSICAL, invaderXim.damageType.FIRE, invaderXim.mobskills.shadowBehavior.WIPE_SHADOWS)
+    target:takeDamage(dmg, mob, invaderXim.attackType.PHYSICAL, invaderXim.damageType.FIRE)
     return dmg
 end
 

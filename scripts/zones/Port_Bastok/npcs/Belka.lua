@@ -3,13 +3,13 @@
 --  NPC: Belka
 -- Derfland Regional Merchant
 -----------------------------------
-local ID = zones[xi.zone.PORT_BASTOK]
+local ID = zones[invaderXim.zone.PORT_BASTOK]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if GetRegionOwner(xi.region.DERFLAND) ~= xi.nation.BASTOK then
+    if GetRegionOwner(invaderXim.region.DERFLAND) ~= invaderXim.nation.BASTOK then
         player:showText(npc, ID.text.BELKA_CLOSED_DIALOG)
     else
         local stock =
@@ -23,7 +23,7 @@ entity.onTrigger = function(player, npc)
         }
 
         player:showText(npc, ID.text.BELKA_OPEN_DIALOG)
-        xi.shop.general(player, stock, xi.fameArea.BASTOK)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.BASTOK)
     end
 end
 

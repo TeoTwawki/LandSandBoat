@@ -5,27 +5,27 @@
 -- Laila : !pos -54.045 -1 100.996 244
 -- qm1   : !pos -157.16 -8 596.9 89
 -----------------------------------
-local graubergID = zones[xi.zone.GRAUBERG_S]
+local graubergID = zones[invaderXim.zone.GRAUBERG_S]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_UNFINISHED_WALTZ)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_UNFINISHED_WALTZ)
 
 quest.reward =
 {
-    item  = xi.item.WAR_HOOP,
-    title = xi.title.PROMISING_DANCER,
+    item  = invaderXim.item.WAR_HOOP,
+    title = invaderXim.title.PROMISING_DANCER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getMainJob() == xi.job.DNC and
-                player:getMainLvl() >= xi.settings.main.AF1_QUEST_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getMainJob() == invaderXim.job.DNC and
+                player:getMainLvl() >= invaderXim.settings.main.AF1_QUEST_LEVEL
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Laila'] = quest:progressEvent(10129),
 
@@ -40,15 +40,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Laila'] =
             {
                 onTrigger = function(player, npc)
-                    if player:seenKeyItem(xi.ki.THE_ESSENCE_OF_DANCE) then
+                    if player:seenKeyItem(invaderXim.ki.THE_ESSENCE_OF_DANCE) then
                         return quest:progressEvent(10133)
                     else
                         return quest:progressEvent(10130)
@@ -84,20 +84,20 @@ quest.sections =
             },
         },
 
-        [xi.zone.GRAUBERG_S] =
+        [invaderXim.zone.GRAUBERG_S] =
         {
             ['qm1'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.THE_ESSENCE_OF_DANCE) and
+                        not player:hasKeyItem(invaderXim.ki.THE_ESSENCE_OF_DANCE) and
                         quest:getVar(player, 'Prog') == 1
                     then
                         local hippoEvent = quest:getLocalVar(player, 'hippoEvent')
 
                         if
                             hippoEvent == 0 and
-                            player:getMainJob() == xi.job.DNC
+                            player:getMainJob() == invaderXim.job.DNC
                         then
                             return quest:progressEvent(12)
                         elseif
@@ -133,7 +133,7 @@ quest.sections =
                 end,
 
                 [13] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.THE_ESSENCE_OF_DANCE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.THE_ESSENCE_OF_DANCE)
                 end,
             },
         },
@@ -141,11 +141,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                not player:hasCompletedQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_ROAD_TO_DIVADOM)
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                not player:hasCompletedQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_ROAD_TO_DIVADOM)
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Laila']        = quest:event(10134):replaceDefault(),
             ['Rhea_Myuliah'] = quest:event(10135):replaceDefault(),

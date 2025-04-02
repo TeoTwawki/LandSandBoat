@@ -1,4 +1,4 @@
--- local ID = zones[xi.zone.CHOCOBO_CIRCUIT]
+-- local ID = zones[invaderXim.zone.CHOCOBO_CIRCUIT]
 
 return {
     ['Adrian']             = { event = 1 },

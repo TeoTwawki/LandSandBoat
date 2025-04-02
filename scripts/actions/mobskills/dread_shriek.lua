@@ -27,9 +27,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
         power = 100 -- yes, really
     end
 
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.PARALYSIS, power, 0, 60))
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.PARALYSIS, power, 0, 60))
 
-    return xi.effect.PARALYSIS
+    return invaderXim.effect.PARALYSIS
 end
 
 return mobskillObject

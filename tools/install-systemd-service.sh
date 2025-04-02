@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check if exists
-if [ -e /etc/systemd/system/xi.service ]
+if [ -e /etc/systemd/system/invaderXim.service ]
 then
     echo "xi service already exists!"
     exit
@@ -27,25 +27,25 @@ ARCH="^arch|[[:space:]]arch"
 # Try to create new user
 echo "Create a user to run the xi service, leave blank for default. (default: xi)"
 echo "WARNING! This user will need access to the current directory."
-read -r -p "User: " XI_USER
-if [ -z "$XI_USER" ]
+read -r -p "User: " IXIM_USER
+if [ -z "$IXIM_USER" ]
 then
-    XI_USER="xi"
+    IXIM_USER="xi"
 fi
 if [ $OS = "debian" ] || [[ $OS_LIKE =~ $DEBIAN ]]
 then
-    adduser --system --no-create-home --group --quiet $XI_USER || true
+    adduser --system --no-create-home --group --quiet $IXIM_USER || true
 elif [ $OS = "arch" ] || [[ $OS_LIKE =~ $ARCH ]]
 then
-    useradd -r -s /usr/bin/nologin $XI_USER || true
+    useradd -r -s /usr/bin/nologin $IXIM_USER || true
 else
     echo "Sorry, this OS is unsupported at this time." && exit
 fi
 # Give user permission to start and stop the service
-cat > /etc/sudoers.d/$XI_USER << SUDO
-$XI_USER ALL= NOPASSWD: /bin/systemctl restart xi.service
-$XI_USER ALL= NOPASSWD: /bin/systemctl stop xi.service
-$XI_USER ALL= NOPASSWD: /bin/systemctl start xi.service
+cat > /etc/sudoers.d/$IXIM_USER << SUDO
+$IXIM_USER ALL= NOPASSWD: /bin/systemctl restart invaderXim.service
+$IXIM_USER ALL= NOPASSWD: /bin/systemctl stop invaderXim.service
+$IXIM_USER ALL= NOPASSWD: /bin/systemctl start invaderXim.service
 SUDO
 # Systemd combined service
 SYSTEMD_xi="""
@@ -68,15 +68,15 @@ Description=xi Game Server
 Wants=network.target
 StartLimitIntervalSec=120
 StartLimitBurst=5
-PartOf=xi.service
-After=xi.service
+PartOf=invaderXim.service
+After=invaderXim.service
 
 [Service]
 Type=simple
 Restart=always
 RestartSec=5
-User=$XI_USER
-Group=$XI_USER
+User=$IXIM_USER
+Group=$IXIM_USER
 WorkingDirectory=$PPWD
 # For multiple map servers:
 # - Make a copy of this file for each server. Rename appropriately, e.g. xi_map-cities.service
@@ -90,7 +90,7 @@ WorkingDirectory=$PPWD
 ExecStart=$PPWD/xi_map
 
 [Install]
-WantedBy=xi.service
+WantedBy=invaderXim.service
 """
 # Systemd connect server service
 SYSTEMD_CONNECT="""
@@ -99,20 +99,20 @@ Description=xi Connect Server
 Wants=network.target
 StartLimitIntervalSec=120
 StartLimitBurst=5
-PartOf=xi.service
-After=xi.service
+PartOf=invaderXim.service
+After=invaderXim.service
 
 [Service]
 Type=simple
 Restart=always
 RestartSec=5
-User=$XI_USER
-Group=$XI_USER
+User=$IXIM_USER
+Group=$IXIM_USER
 WorkingDirectory=$PPWD
 ExecStart=$PPWD/xi_connect
 
 [Install]
-WantedBy=xi.service
+WantedBy=invaderXim.service
 """
 # Systemd search server service
 SYSTEMD_SEARCH="""
@@ -121,20 +121,20 @@ Description=xi Search Server
 Wants=network.target
 StartLimitIntervalSec=120
 StartLimitBurst=5
-PartOf=xi.service
-After=xi.service
+PartOf=invaderXim.service
+After=invaderXim.service
 
 [Service]
 Type=simple
 Restart=always
 RestartSec=5
-User=$XI_USER
-Group=$XI_USER
+User=$IXIM_USER
+Group=$IXIM_USER
 WorkingDirectory=$PPWD
 ExecStart=$PPWD/xi_search
 
 [Install]
-WantedBy=xi.service
+WantedBy=invaderXim.service
 """
 
 SYSTEMD_WORLD="""
@@ -143,26 +143,26 @@ Description=xi World Server
 Wants=network.target
 StartLimitIntervalSec=120
 StartLimitBurst=5
-PartOf=xi.service
-After=xi.service
+PartOf=invaderXim.service
+After=invaderXim.service
 
 [Service]
 Type=simple
 Restart=always
 RestartSec=5
-User=$XI_USER
-Group=$XI_USER
+User=$IXIM_USER
+Group=$IXIM_USER
 WorkingDirectory=$PPWD
 ExecStart=$PPWD/xi_world
 
 [Install]
-WantedBy=xi.service
+WantedBy=invaderXim.service
 """
 # Create services and enable child services
-usermod -aG $XI_USER $SUDO_USER
-chown -R $XI_USER:$XI_USER $PPWD
+usermod -aG $IXIM_USER $SUDO_USER
+chown -R $IXIM_USER:$IXIM_USER $PPWD
 chmod -R g=u $PPWD 2>/dev/null
-echo "$SYSTEMD_xi" > /etc/systemd/system/xi.service
+echo "$SYSTEMD_xi" > /etc/systemd/system/invaderXim.service
 echo "$SYSTEMD_GAME" > /etc/systemd/system/xi_map.service
 echo "$SYSTEMD_CONNECT" > /etc/systemd/system/xi_connect.service
 echo "$SYSTEMD_SEARCH" > /etc/systemd/system/xi_search.service

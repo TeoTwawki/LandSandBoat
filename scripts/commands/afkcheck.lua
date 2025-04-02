@@ -23,7 +23,7 @@ commandObj.onTrigger = function(player)
         target = player
     end
 
-    if target:getObjType() ~= xi.objType.PC then
+    if target:getObjType() ~= invaderXim.objType.PC then
         player:printToPlayer('Invalid target')
     end
 
@@ -37,7 +37,7 @@ commandObj.onTrigger = function(player)
         {
             string.format('%2i + %2i = %2i', a, b, c),
             function(playerArg)
-                playerArg:printToPlayer('AFK Check passed', xi.msg.channel.NS_SAY)
+                playerArg:printToPlayer('AFK Check passed', invaderXim.msg.channel.NS_SAY)
                 playerArg:setLocalVar('CAPTCHA', 0)
             end,
         }
@@ -57,7 +57,7 @@ commandObj.onTrigger = function(player)
         {
             string.format('%2i + %2i = %2i', a, b, c),
             function(playerArg)
-                playerArg:printToPlayer('AFK Check failed', xi.msg.channel.NS_SAY)
+                playerArg:printToPlayer('AFK Check failed', invaderXim.msg.channel.NS_SAY)
                 playerArg:setHP(0)
             end,
         }
@@ -80,7 +80,7 @@ commandObj.onTrigger = function(player)
 
         options = options,
         onCancelled = function(playerArg)
-            playerArg:printToPlayer('AFK Check failed!', xi.msg.channel.NS_SAY)
+            playerArg:printToPlayer('AFK Check failed!', invaderXim.msg.channel.NS_SAY)
         end,
     }
     target:customMenu(menu)

@@ -27,7 +27,7 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     mob:spawnPet()
 
-    skill:setMsg(xi.msg.basic.NONE)
+    skill:setMsg(invaderXim.msg.basic.NONE)
     mob:addListener('DEATH', 'BEASTMASTER_DEATH', onMasterDeath)
     mob:addListener('DESPAWN', 'BEASTMASTER_DESPAWN', onMasterDeath)
 

@@ -13,7 +13,7 @@
 -- Bat Fang          : ItemID 891
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.BAT_HUNT)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.BAT_HUNT)
 
 mission.reward =
 {
@@ -31,12 +31,12 @@ local function handleTradeEvent(player, trade, firstId, repeatId)
 
     if
         not isRepeated and
-        npcUtil.tradeHasExactly(trade, xi.item.ORCISH_MAIL_SCALES)
+        npcUtil.tradeHasExactly(trade, invaderXim.item.ORCISH_MAIL_SCALES)
     then
         return mission:progressEvent(firstId)
     elseif
         isRepeated and
-        npcUtil.tradeHasExactly(trade, xi.item.BAT_FANG)
+        npcUtil.tradeHasExactly(trade, invaderXim.item.BAT_FANG)
     then
         return mission:progressEvent(repeatId)
     end
@@ -53,11 +53,11 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -66,7 +66,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -81,18 +81,18 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus < 2
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] = mission:progressEvent(2021),
             ['Endracion'] = mission:progressEvent(1021),
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Grilau'] = mission:progressEvent(1021),
         },
 
-        [xi.zone.KING_RANPERRES_TOMB] =
+        [invaderXim.zone.KING_RANPERRES_TOMB] =
         {
             ['Tombstone_Upper'] =
             {
@@ -104,7 +104,7 @@ mission.sections =
             onEventFinish =
             {
                 [4] = function(player, csid, option, npc)
-                    player:setMissionStatus(xi.mission.log_id.SANDORIA, 2)
+                    player:setMissionStatus(invaderXim.mission.log_id.SANDORIA, 2)
                 end,
             },
         }
@@ -115,7 +115,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 2
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] =
             {
@@ -144,7 +144,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Grilau'] =
             {

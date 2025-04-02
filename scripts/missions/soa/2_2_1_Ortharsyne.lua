@@ -6,11 +6,11 @@
 -- YORCIA_WEALD : !zone 264
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.ORTHARSYNE)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.ORTHARSYNE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.IN_THE_PRESENCE_OF_ROYALTY },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.IN_THE_PRESENCE_OF_ROYALTY },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.YORCIA_WEALD] =
+        [invaderXim.zone.YORCIA_WEALD] =
         {
             onZoneIn = function(player, prevZone)
                 return 1

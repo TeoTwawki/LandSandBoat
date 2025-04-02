@@ -8,11 +8,11 @@
 -- qm3          - !pos 439 -40 79 89
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.MESSAGE_ON_THE_WINDS)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.MESSAGE_ON_THE_WINDS)
 
 quest.reward =
 {
-    item = xi.item.SMART_GRENADE,
+    item = invaderXim.item.SMART_GRENADE,
 }
 
 quest.sections =
@@ -20,11 +20,11 @@ quest.sections =
     -- Section: Talk to Romualdo at the Cannonry in the Metalworks (second floor, K-9).
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
                 player:getMainLvl() >= 20
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Romualdo'] = quest:progressEvent(952),
 
@@ -43,7 +43,7 @@ quest.sections =
             return vars.Prog == 1
         end,
 
-        [xi.zone.BATALLIA_DOWNS_S] =
+        [invaderXim.zone.BATALLIA_DOWNS_S] =
         {
             ['Romualdo'] = quest:progressEvent(109),
 
@@ -60,15 +60,15 @@ quest.sections =
     -- Section: Speak with Childerich in Grauberg (S) at the west side of the house at (E-12).
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 2
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 2
         end,
 
-        [xi.zone.BATALLIA_DOWNS_S] =
+        [invaderXim.zone.BATALLIA_DOWNS_S] =
         {
             ['Romualdo'] = quest:progressEvent(110), -- Optional dialogue
         },
 
-        [xi.zone.GRAUBERG_S] =
+        [invaderXim.zone.GRAUBERG_S] =
         {
             ['Childerich'] = quest:progressEvent(1),
 
@@ -84,10 +84,10 @@ quest.sections =
     -- Check the ??? at J-9.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 3
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 3
         end,
 
-        [xi.zone.GRAUBERG_S] =
+        [invaderXim.zone.GRAUBERG_S] =
         {
             ['Childerich'] = quest:progressEvent(2), -- Optional dialogue
 
@@ -105,10 +105,10 @@ quest.sections =
     -- Speak with Childerich.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 4
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 4
         end,
 
-        [xi.zone.GRAUBERG_S] =
+        [invaderXim.zone.GRAUBERG_S] =
         {
             ['Childerich'] = quest:progressEvent(4),
 
@@ -124,15 +124,15 @@ quest.sections =
     -- New default text for Childerich
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 5
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 5
         end,
 
-        [xi.zone.GRAUBERG_S] =
+        [invaderXim.zone.GRAUBERG_S] =
         {
             ['Childerich'] = quest:progressEvent(5),
         },
 
-        [xi.zone.BATALLIA_DOWNS_S] =
+        [invaderXim.zone.BATALLIA_DOWNS_S] =
         {
             ['Romualdo'] = quest:progressEvent(111),
 
@@ -150,10 +150,10 @@ quest.sections =
     -- Section: Post quest cutscene with Romualdo
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and quest:getVar(player, 'PostCS') == 1
+            return status == invaderXim.questStatus.QUEST_COMPLETED and quest:getVar(player, 'PostCS') == 1
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Romualdo'] = quest:progressEvent(953),
 
@@ -169,10 +169,10 @@ quest.sections =
     -- Post quest cutscene with Childerich
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and quest:getVar(player, 'PostCS') == 2
+            return status == invaderXim.questStatus.QUEST_COMPLETED and quest:getVar(player, 'PostCS') == 2
         end,
 
-        [xi.zone.GRAUBERG_S] =
+        [invaderXim.zone.GRAUBERG_S] =
         {
             ['Childerich'] = quest:progressEvent(6),
 
@@ -180,7 +180,7 @@ quest.sections =
             {
                 [6] = function(player, csid, option, npc)
                     quest:setVar(player, 'PostCS', 0)
-                    player:addTitle(xi.title.WINDTALKER)
+                    player:addTitle(invaderXim.title.WINDTALKER)
                 end,
             },
         },
@@ -189,10 +189,10 @@ quest.sections =
     -- New default text for Romualdo (S)
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.BATALLIA_DOWNS_S] =
+        [invaderXim.zone.BATALLIA_DOWNS_S] =
         {
             ['Romualdo'] = quest:event(112):replaceDefault(),
         },
@@ -201,10 +201,10 @@ quest.sections =
     -- New default text for Childerich
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and player:hasTitle(xi.title.WINDTALKER)
+            return status == invaderXim.questStatus.QUEST_COMPLETED and player:hasTitle(invaderXim.title.WINDTALKER)
         end,
 
-        [xi.zone.GRAUBERG_S] =
+        [invaderXim.zone.GRAUBERG_S] =
         {
             ['Childerich'] = quest:event(7):replaceDefault(),
         },

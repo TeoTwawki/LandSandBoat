@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `char_vars`
 --
 
-DROP TABLE IF EXISTS `char_vars`;
-CREATE TABLE IF NOT EXISTS `char_vars` (
+DROP TABLE IF IXIMSTS `char_vars`;
+CREATE TABLE IF NOT IXIMSTS `char_vars` (
   `charid` int(10) unsigned NOT NULL,
   `varname` varchar(30) NOT NULL,
   `value` int(11) NOT NULL,

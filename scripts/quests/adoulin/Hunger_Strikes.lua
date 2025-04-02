@@ -5,11 +5,11 @@
 -- Westerly Breeze : !pos 62 32 123 256
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.ADOULIN, xi.quest.id.adoulin.HUNGER_STRIKES)
+local quest = Quest:new(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.HUNGER_STRIKES)
 
 quest.reward =
 {
-    fameArea = xi.fameArea.ADOULIN,
+    fameArea = invaderXim.fameArea.ADOULIN,
     bayld    = 500,
     exp      = 1000,
 }
@@ -18,10 +18,10 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Westerly_Breeze'] = quest:progressEvent(2530),
 
@@ -36,13 +36,13 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
         ['Westerly_Breeze'] =
         {
             onTrade = function(player, npc, trade)
-                if npcUtil.tradeHasExactly(trade, xi.item.BOWL_OF_WISDOM_SOUP) then
+                if npcUtil.tradeHasExactly(trade, invaderXim.item.BOWL_OF_WISDOM_SOUP) then
                     return quest:progressEvent(2532)
                 elseif
                     trade:getItemCount() == 1 and
@@ -69,7 +69,7 @@ quest.sections =
                 if quest:complete(player) then
                     player:confirmTrade()
 
-                    xi.quest.setVar(player, xi.questLog.ADOULIN, xi.quest.id.adoulin.THE_STARVING, 'Timer', VanadielUniqueDay() + 1)
+                    invaderXim.quest.setVar(player, invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.THE_STARVING, 'Timer', VanadielUniqueDay() + 1)
                 end
             end,
 

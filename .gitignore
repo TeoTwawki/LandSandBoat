@@ -162,7 +162,7 @@ src/common/stamp-h1
 
 navmeshes/*.nav
 tags
-log/xi.leaks
+log/invaderXim.leaks
 log/leaks.txt
 
 # Lua Developement Tools project files

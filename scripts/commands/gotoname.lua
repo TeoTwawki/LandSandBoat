@@ -99,9 +99,9 @@ commandObj.onTrigger = function(player, pattern, index)
         return
     end
 
-    player:printToPlayer('Multiple entities found. Use !goto name <mob or npc name> <index> to choose:', xi.msg.channel.SYSTEM_3)
+    player:printToPlayer('Multiple entities found. Use !goto name <mob or npc name> <index> to choose:', invaderXim.msg.channel.SYSTEM_3)
     for i, entity in pairs(entities) do
-        player:printToPlayer(string.format('[%d] %s %s (%s)', i, entity:getName(), entity:getZoneName(), entity:getID()), xi.msg.channel.SYSTEM_3)
+        player:printToPlayer(string.format('[%d] %s %s (%s)', i, entity:getName(), entity:getZoneName(), entity:getID()), invaderXim.msg.channel.SYSTEM_3)
     end
 end
 

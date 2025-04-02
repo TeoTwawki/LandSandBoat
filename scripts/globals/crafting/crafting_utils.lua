@@ -4,7 +4,7 @@
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.crafting = xi.crafting or {}
+invaderXim.crafting = invaderXim.crafting or {}
 -----------------------------------
 -- Document the "Guild_Member" bitmask.
 -- Bit  0: Has joined Fishing guild.
@@ -25,52 +25,52 @@ xi.crafting = xi.crafting or {}
 -- Bit 29: Unknown, but this bits are used. Captured them on a lvl 110 Alchemist with a stage 2 Escutcheon completed.
 -- Bit 30: Unknown, but this bits are used. Captured them on a lvl 110 Alchemist with a stage 2 Escutcheon completed.
 
-xi.crafting.guildTable =
+invaderXim.crafting.guildTable =
 {
     --           [guild ID] = { skill used,            'currency used'      },
-    [xi.guild.FISHING     ] = { xi.skill.FISHING,      'guild_fishing'      },
-    [xi.guild.WOODWORKING ] = { xi.skill.WOODWORKING,  'guild_woodworking'  },
-    [xi.guild.SMITHING    ] = { xi.skill.SMITHING,     'guild_smithing'     },
-    [xi.guild.GOLDSMITHING] = { xi.skill.GOLDSMITHING, 'guild_goldsmithing' },
-    [xi.guild.CLOTHCRAFT  ] = { xi.skill.CLOTHCRAFT,   'guild_weaving'      },
-    [xi.guild.LEATHERCRAFT] = { xi.skill.LEATHERCRAFT, 'guild_leathercraft' },
-    [xi.guild.BONECRAFT   ] = { xi.skill.BONECRAFT,    'guild_bonecraft'    },
-    [xi.guild.ALCHEMY     ] = { xi.skill.ALCHEMY,      'guild_alchemy'      },
-    [xi.guild.COOKING     ] = { xi.skill.COOKING,      'guild_cooking'      },
+    [invaderXim.guild.FISHING     ] = { invaderXim.skill.FISHING,      'guild_fishing'      },
+    [invaderXim.guild.WOODWORKING ] = { invaderXim.skill.WOODWORKING,  'guild_woodworking'  },
+    [invaderXim.guild.SMITHING    ] = { invaderXim.skill.SMITHING,     'guild_smithing'     },
+    [invaderXim.guild.GOLDSMITHING] = { invaderXim.skill.GOLDSMITHING, 'guild_goldsmithing' },
+    [invaderXim.guild.CLOTHCRAFT  ] = { invaderXim.skill.CLOTHCRAFT,   'guild_weaving'      },
+    [invaderXim.guild.LEATHERCRAFT] = { invaderXim.skill.LEATHERCRAFT, 'guild_leathercraft' },
+    [invaderXim.guild.BONECRAFT   ] = { invaderXim.skill.BONECRAFT,    'guild_bonecraft'    },
+    [invaderXim.guild.ALCHEMY     ] = { invaderXim.skill.ALCHEMY,      'guild_alchemy'      },
+    [invaderXim.guild.COOKING     ] = { invaderXim.skill.COOKING,      'guild_cooking'      },
 }
 
-xi.crafting.craftMod =
+invaderXim.crafting.craftMod =
 {
-    [xi.skill.FISHING     ] = xi.mod.FISH,
-    [xi.skill.WOODWORKING ] = xi.mod.WOOD,
-    [xi.skill.SMITHING    ] = xi.mod.SMITH,
-    [xi.skill.GOLDSMITHING] = xi.mod.GOLDSMITH,
-    [xi.skill.CLOTHCRAFT  ] = xi.mod.CLOTH,
-    [xi.skill.LEATHERCRAFT] = xi.mod.LEATHER,
-    [xi.skill.BONECRAFT   ] = xi.mod.BONE,
-    [xi.skill.ALCHEMY     ] = xi.mod.ALCHEMY,
-    [xi.skill.COOKING     ] = xi.mod.COOK,
+    [invaderXim.skill.FISHING     ] = invaderXim.mod.FISH,
+    [invaderXim.skill.WOODWORKING ] = invaderXim.mod.WOOD,
+    [invaderXim.skill.SMITHING    ] = invaderXim.mod.SMITH,
+    [invaderXim.skill.GOLDSMITHING] = invaderXim.mod.GOLDSMITH,
+    [invaderXim.skill.CLOTHCRAFT  ] = invaderXim.mod.CLOTH,
+    [invaderXim.skill.LEATHERCRAFT] = invaderXim.mod.LEATHER,
+    [invaderXim.skill.BONECRAFT   ] = invaderXim.mod.BONE,
+    [invaderXim.skill.ALCHEMY     ] = invaderXim.mod.ALCHEMY,
+    [invaderXim.skill.COOKING     ] = invaderXim.mod.COOK,
 }
 
-xi.crafting.hasJoinedGuild = function(player, guildId)
+invaderXim.crafting.hasJoinedGuild = function(player, guildId)
     local joinedGuildMask = player:getCharVar('Guild_Member')
 
     return utils.mask.getBit(joinedGuildMask, guildId)
 end
 
-xi.crafting.getCraftSkillCap = function(player, skillId)
+invaderXim.crafting.getCraftSkillCap = function(player, skillId)
     local rank = player:getSkillRank(skillId)
 
     return (rank + 1) * 10
 end
 
-xi.crafting.getRealSkill = function(player, skillId)
+invaderXim.crafting.getRealSkill = function(player, skillId)
     return math.floor(player:getCharSkillLevel(skillId) / 10)
 end
 
-xi.crafting.getTotalSkill = function(player, skillId)
-    local skill = xi.crafting.getRealSkill(player, skillId)
-    local mod   = player:getMod(xi.crafting.craftMod[skillId])
+invaderXim.crafting.getTotalSkill = function(player, skillId)
+    local skill = invaderXim.crafting.getRealSkill(player, skillId)
+    local mod   = player:getMod(invaderXim.crafting.craftMod[skillId])
 
     return skill + mod
 end

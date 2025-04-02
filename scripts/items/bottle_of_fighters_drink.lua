@@ -11,11 +11,11 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    local effect    = xi.effect.ACCURACY_BOOST
+    local effect    = invaderXim.effect.ACCURACY_BOOST
     local power     = 100 --Accuracy
     local duration  =  90
 
-    xi.itemUtils.addItemEffect(target, effect, power, duration)
+    invaderXim.itemUtils.addItemEffect(target, effect, power, duration)
 end
 
 return itemObject

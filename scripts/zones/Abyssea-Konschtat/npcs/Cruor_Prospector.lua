@@ -7,33 +7,33 @@
 ---@type TNpcEntity
 local entity = {}
 
-local itemType = xi.abyssea.itemType
+local itemType = invaderXim.abyssea.itemType
 
 local localProspectorItems =
 {
-    [itemType.ITEM] = xi.abyssea.visionsCruorProspectorItems,
+    [itemType.ITEM] = invaderXim.abyssea.visionsCruorProspectorItems,
 
-    [itemType.TEMP] = xi.abyssea.visionsCruorProspectorTemps,
+    [itemType.TEMP] = invaderXim.abyssea.visionsCruorProspectorTemps,
 
     [itemType.KEYITEM] =
     {
     --  Sel     Item                                Cost
-        [1] = { xi.ki.MAP_OF_ABYSSEA_KONSCHTAT,     3500 },
-        [2] = { xi.ki.IVORY_ABYSSITE_OF_SOJOURN,    6000 },
-        [3] = { xi.ki.IVORY_ABYSSITE_OF_CONFLUENCE, 4800 },
-        [4] = { xi.ki.IVORY_ABYSSITE_OF_EXPERTISE,  4800 },
-        [5] = { xi.ki.CLEAR_DEMILUNE_ABYSSITE,       300 },
+        [1] = { invaderXim.ki.MAP_OF_ABYSSEA_KONSCHTAT,     3500 },
+        [2] = { invaderXim.ki.IVORY_ABYSSITE_OF_SOJOURN,    6000 },
+        [3] = { invaderXim.ki.IVORY_ABYSSITE_OF_CONFLUENCE, 4800 },
+        [4] = { invaderXim.ki.IVORY_ABYSSITE_OF_EXPERTISE,  4800 },
+        [5] = { invaderXim.ki.CLEAR_DEMILUNE_ABYSSITE,       300 },
     },
 
-    [itemType.ENHANCEMENT] = xi.abyssea.visionsCruorProspectorBuffs,
+    [itemType.ENHANCEMENT] = invaderXim.abyssea.visionsCruorProspectorBuffs,
 }
 
 entity.onTrigger = function(player, npc)
-    xi.abyssea.visionsCruorProspectorOnTrigger(player, npc)
+    invaderXim.abyssea.visionsCruorProspectorOnTrigger(player, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.abyssea.visionsCruorProspectorOnEventFinish(player, csid, option, localProspectorItems)
+    invaderXim.abyssea.visionsCruorProspectorOnEventFinish(player, csid, option, localProspectorItems)
 end
 
 return entity

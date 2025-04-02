@@ -8,8 +8,8 @@ local mobskillObject = {}
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
     -- can only used if not silenced
     if
-        mob:getMainJob() == xi.job.BRD and
-        not mob:hasStatusEffect(xi.effect.SILENCE)
+        mob:getMainJob() == invaderXim.job.BRD and
+        not mob:hasStatusEffect(invaderXim.effect.SILENCE)
     then
         return 0
     end
@@ -18,7 +18,7 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.WEIGHT, 50, 0, 50))
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.WEIGHT, 50, 0, 50))
 
     return nil
 end

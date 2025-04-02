@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.WINDURST_WATERS] =
+zones[invaderXim.zone.WINDURST_WATERS] =
 {
     text =
     {
@@ -84,4 +84,4 @@ zones[xi.zone.WINDURST_WATERS] =
     },
 }
 
-return zones[xi.zone.WINDURST_WATERS]
+return zones[invaderXim.zone.WINDURST_WATERS]

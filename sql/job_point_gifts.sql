@@ -4,8 +4,8 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-DROP TABLE IF EXISTS `job_point_gifts`;
-CREATE TABLE IF NOT EXISTS `job_point_gifts` (
+DROP TABLE IF IXIMSTS `job_point_gifts`;
+CREATE TABLE IF NOT IXIMSTS `job_point_gifts` (
   `jobid` tinyint(4) NOT NULL,
   `jp_needed` smallint(6) NOT NULL DEFAULT 0,
   `modid` smallint(6) NOT NULL DEFAULT 0,

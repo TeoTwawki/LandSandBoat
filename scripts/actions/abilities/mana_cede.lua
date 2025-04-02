@@ -17,15 +17,15 @@ abilityObject.onAbilityCheck = function(player, target, ability)
     if avatar ~= nil then
         local avatarTP = avatar:getTP()
         if avatarTP == 3000 or playerMP < 100 then
-            return xi.msg.basic.UNABLE_TO_USE_JA, 0
+            return invaderXim.msg.basic.UNABLE_TO_USE_JA, 0
         end
     elseif avatar == nil then
-        return xi.msg.basic.REQUIRES_A_PET, 0
+        return invaderXim.msg.basic.REQUIRES_A_PET, 0
     end
 end
 
 abilityObject.onUseAbility = function(player, target, ability, action)
-    xi.job_utils.summoner.useManaCede(player, ability, action)
+    invaderXim.job_utils.summoner.useManaCede(player, ability, action)
 end
 
 return abilityObject

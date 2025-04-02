@@ -17,39 +17,39 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.foodOnItemCheck(target, xi.foodType.BASIC)
+    return invaderXim.itemUtils.foodOnItemCheck(target, invaderXim.foodType.BASIC)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffect(xi.effect.FOOD, 0, 0, 10800, 6464)
+    target:addStatusEffect(invaderXim.effect.FOOD, 0, 0, 10800, 6464)
 end
 
 itemObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.FOOD_HP, 40)
-    target:addMod(xi.mod.STR, 7)
-    target:addMod(xi.mod.DEX, 7)
-    target:addMod(xi.mod.INT, -3)
-    target:addMod(xi.mod.FOOD_ATTP, 23)
-    target:addMod(xi.mod.FOOD_ATT_CAP, 160)
-    target:addMod(xi.mod.FOOD_RATTP, 23)
-    target:addMod(xi.mod.FOOD_RATT_CAP, 160)
-    target:addMod(xi.mod.TRIPLE_ATTACK, 1)
-    target:addMod(xi.mod.LIZARD_KILLER, 4)
-    target:addMod(xi.mod.HPHEAL, 4)
+    target:addMod(invaderXim.mod.FOOD_HP, 40)
+    target:addMod(invaderXim.mod.STR, 7)
+    target:addMod(invaderXim.mod.DEX, 7)
+    target:addMod(invaderXim.mod.INT, -3)
+    target:addMod(invaderXim.mod.FOOD_ATTP, 23)
+    target:addMod(invaderXim.mod.FOOD_ATT_CAP, 160)
+    target:addMod(invaderXim.mod.FOOD_RATTP, 23)
+    target:addMod(invaderXim.mod.FOOD_RATT_CAP, 160)
+    target:addMod(invaderXim.mod.TRIPLE_ATTACK, 1)
+    target:addMod(invaderXim.mod.LIZARD_KILLER, 4)
+    target:addMod(invaderXim.mod.HPHEAL, 4)
 end
 
 itemObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.FOOD_HP, 40)
-    target:delMod(xi.mod.STR, 7)
-    target:delMod(xi.mod.DEX, 7)
-    target:delMod(xi.mod.INT, -3)
-    target:delMod(xi.mod.FOOD_ATTP, 23)
-    target:delMod(xi.mod.FOOD_ATT_CAP, 160)
-    target:delMod(xi.mod.FOOD_RATTP, 23)
-    target:delMod(xi.mod.FOOD_RATT_CAP, 160)
-    target:delMod(xi.mod.TRIPLE_ATTACK, 1)
-    target:delMod(xi.mod.LIZARD_KILLER, 4)
-    target:delMod(xi.mod.HPHEAL, 4)
+    target:delMod(invaderXim.mod.FOOD_HP, 40)
+    target:delMod(invaderXim.mod.STR, 7)
+    target:delMod(invaderXim.mod.DEX, 7)
+    target:delMod(invaderXim.mod.INT, -3)
+    target:delMod(invaderXim.mod.FOOD_ATTP, 23)
+    target:delMod(invaderXim.mod.FOOD_ATT_CAP, 160)
+    target:delMod(invaderXim.mod.FOOD_RATTP, 23)
+    target:delMod(invaderXim.mod.FOOD_RATT_CAP, 160)
+    target:delMod(invaderXim.mod.TRIPLE_ATTACK, 1)
+    target:delMod(invaderXim.mod.LIZARD_KILLER, 4)
+    target:delMod(invaderXim.mod.HPHEAL, 4)
 end
 
 return itemObject

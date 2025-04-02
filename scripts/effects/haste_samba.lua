@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.HASTE_SAMBA
+-- invaderXim.effect.HASTE_SAMBA
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

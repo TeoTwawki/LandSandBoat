@@ -7,19 +7,19 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    if target:getZoneID() == xi.zone.SILVER_SEA_REMNANTS then
+    if target:getZoneID() == invaderXim.zone.SILVER_SEA_REMNANTS then
         return 0
     end
 
-    return xi.msg.basic.ITEM_UNABLE_TO_USE_2
+    return invaderXim.msg.basic.ITEM_UNABLE_TO_USE_2
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffectEx(xi.effect.TELEPORT, 0, xi.teleport.id.S_REM, 0, 1)
+    target:addStatusEffectEx(invaderXim.effect.TELEPORT, 0, invaderXim.teleport.id.S_REM, 0, 1)
 end
 
 itemObject.onItemDrop = function(target, item)
-    target:addTempItem(xi.item.CAGE_OF_S_REMNANTS_FIREFLIES)
+    target:addTempItem(invaderXim.item.CAGE_OF_S_REMNANTS_FIREFLIES)
 end
 
 return itemObject

@@ -10,14 +10,14 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     -- DANCES WITH LUOPANS
     if
-        player:getQuestStatus(xi.questLog.ADOULIN, xi.quest.id.adoulin.DANCES_WITH_LUOPANS) == xi.questStatus.QUEST_ACCEPTED and
-        player:getNation() == xi.nation.WINDURST
+        player:getQuestStatus(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.DANCES_WITH_LUOPANS) == invaderXim.questStatus.QUEST_ACCEPTED and
+        player:getNation() == invaderXim.nation.WINDURST
     then
         if
-            not player:hasKeyItem(xi.ki.FISTFUL_OF_HOMELAND_SOIL) and
-            not player:hasKeyItem(xi.ki.LUOPAN)
+            not player:hasKeyItem(invaderXim.ki.FISTFUL_OF_HOMELAND_SOIL) and
+            not player:hasKeyItem(invaderXim.ki.LUOPAN)
         then
-            npcUtil.giveKeyItem(player, xi.ki.FISTFUL_OF_HOMELAND_SOIL)
+            npcUtil.giveKeyItem(player, invaderXim.ki.FISTFUL_OF_HOMELAND_SOIL)
         end
     end
 end

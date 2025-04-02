@@ -6,11 +6,11 @@
 -- Levil : !pos -87.204 3.350 12.655 256
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.RETURNING_TO_THE_TREES)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.RETURNING_TO_THE_TREES)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.THE_KEY_TO_THE_TURRIS },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_KEY_TO_THE_TURRIS },
 }
 
 mission.sections =
@@ -20,12 +20,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(40, 256, 0, 5, 0, 0, 0, 0, 4),
         },
 
-        [xi.zone.LEAFALLIA] =
+        [invaderXim.zone.LEAFALLIA] =
         {
             onZoneIn = function(player, prevZone)
                 return 11

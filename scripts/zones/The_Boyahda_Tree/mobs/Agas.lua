@@ -6,13 +6,13 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
     if
-        player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.SEARCHING_FOR_THE_RIGHT_WORDS) == xi.questStatus.QUEST_ACCEPTED and
-        not player:hasKeyItem(xi.ki.MOONDROP)
+        player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.SEARCHING_FOR_THE_RIGHT_WORDS) == invaderXim.questStatus.QUEST_ACCEPTED and
+        not player:hasKeyItem(invaderXim.ki.MOONDROP)
     then
         player:setCharVar('Searching_AgasKilled', 1)
     end

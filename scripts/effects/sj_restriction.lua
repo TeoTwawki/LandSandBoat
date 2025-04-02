@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.SJ_RESTRICTION
+-- invaderXim.effect.SJ_RESTRICTION
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

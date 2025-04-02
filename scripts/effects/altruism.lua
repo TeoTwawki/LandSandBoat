@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.ALTRUISM
+-- invaderXim.effect.ALTRUISM
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

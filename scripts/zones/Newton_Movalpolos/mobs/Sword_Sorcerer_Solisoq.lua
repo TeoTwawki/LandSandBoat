@@ -17,7 +17,7 @@ entity.onMobFight = function(mob, player)
         if
             mob:getHPP() <= v and
             chainCount == k and
-            not mob:hasStatusEffect(xi.effect.CHAINSPELL)
+            not mob:hasStatusEffect(invaderXim.effect.CHAINSPELL)
         then
             mob:useMobAbility(692)
             mob:setLocalVar('chainCount', chainCount + 1)
@@ -26,7 +26,7 @@ entity.onMobFight = function(mob, player)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 249)
+    invaderXim.hunts.checkHunt(mob, player, 249)
 end
 
 return entity

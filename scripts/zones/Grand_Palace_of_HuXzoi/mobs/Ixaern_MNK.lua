@@ -2,34 +2,34 @@
 -- Area: Grand Palace of HuXzoi
 --  Mob: Ix'aern MNK
 -----------------------------------
-local ID = zones[xi.zone.GRAND_PALACE_OF_HUXZOI]
+local ID = zones[invaderXim.zone.GRAND_PALACE_OF_HUXZOI]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 local bracerMode = function(mob, qnAern1, qnAern2)
     -- Hundred Fists
-    mob:useMobAbility(xi.jsa.HUNDRED_FISTS)
-    mob:addMod(xi.mod.ATT, 200)
+    mob:useMobAbility(invaderXim.jsa.HUNDRED_FISTS)
+    mob:addMod(invaderXim.mod.ATT, 200)
     -- captures show delay reduction from 280 -> 120
     -- note this is actual delay reduction with change in tp gained and imparted
     -- note lvl 83 mnk with martial arts vii
-    mob:setMod(xi.mod.DELAY, 2600)
+    mob:setMod(invaderXim.mod.DELAY, 2600)
 
     if qnAern1 and qnAern1:isAlive() then
         qnAern1:setAnimationSub(2)
-        qnAern1:addMod(xi.mod.ATT, 200)
+        qnAern1:addMod(invaderXim.mod.ATT, 200)
         -- captures show delay reduction from 240 -> 120
         -- note this is actual delay reduction with change in tp gained and imparted
-        qnAern1:setMod(xi.mod.DELAY, 2000)
+        qnAern1:setMod(invaderXim.mod.DELAY, 2000)
     end
 
     if qnAern2 and qnAern2:isAlive() then
         qnAern2:setAnimationSub(2)
-        qnAern2:addMod(xi.mod.ATT, 200)
+        qnAern2:addMod(invaderXim.mod.ATT, 200)
         -- captures show delay reduction from 240 -> 120
         -- note this is actual delay reduction with change in tp gained and imparted
-        qnAern2:setMod(xi.mod.DELAY, 2000)
+        qnAern2:setMod(invaderXim.mod.DELAY, 2000)
     end
 
     -- slightly delay adding local var to avoid adding bracers to Ix'Mnk
@@ -40,14 +40,14 @@ local bracerMode = function(mob, qnAern1, qnAern2)
 end
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
 
     mob:addListener('ITEM_DROPS', 'ITEM_DROPS_IXAERN_MNK', function(mobArg, loot)
         local rate = mob:getLocalVar('[SEA]IxAern_DropRate')
         loot:addGroupFixed(rate,
         {
-            { item = xi.item.DEED_OF_PLACIDITY, weight = 750 },
-            { item = xi.item.VICE_OF_ANTIPATHY, weight = 250 },
+            { item = invaderXim.item.DEED_OF_PLACIDITY, weight = 750 },
+            { item = invaderXim.item.VICE_OF_ANTIPATHY, weight = 250 },
         })
     end)
 end
@@ -56,14 +56,14 @@ entity.onMobSpawn = function(mob)
     -- reset the subanim otherwise it will respawn with bracers on
     -- note that Aerns are never actually supposed to be in subanim 0
     mob:setAnimationSub(1)
-    mob:addImmunity(xi.immunity.GRAVITY)
-    mob:addImmunity(xi.immunity.BIND)
-    mob:addImmunity(xi.immunity.STUN)
-    mob:addImmunity(xi.immunity.PARALYZE)
-    mob:addImmunity(xi.immunity.BLIND)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.TERROR)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
+    mob:addImmunity(invaderXim.immunity.BIND)
+    mob:addImmunity(invaderXim.immunity.STUN)
+    mob:addImmunity(invaderXim.immunity.PARALYZE)
+    mob:addImmunity(invaderXim.immunity.BLIND)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.TERROR)
 end
 
 entity.onMobFight = function(mob, target)
@@ -85,7 +85,7 @@ entity.onMobFight = function(mob, target)
 
     -- only give bracer animation after Hundred Fists
     if
-        not mob:hasStatusEffect(xi.effect.HUNDRED_FISTS) and
+        not mob:hasStatusEffect(invaderXim.effect.HUNDRED_FISTS) and
         mob:getLocalVar('enableBracerAnimation') == 1
     then
         mob:setAnimationSub(2) -- Bracers
@@ -100,7 +100,7 @@ entity.onMobEngage = function(mob, target)
         if
             qnAern and
             qnAern:isAlive() and
-            qnAern:getCurrentAction() == xi.act.ROAMING
+            qnAern:getCurrentAction() == invaderXim.act.ROAMING
         then
             qnAern:updateEnmity(target)
         end
@@ -142,7 +142,7 @@ entity.onMobDespawn = function(mob)
             qm:setPos(460, 0, 540, 0) -- I-7
         end
 
-        qm:updateNPCHideTime(xi.settings.main.FORCE_SPAWN_QM_RESET_TIME)
+        qm:updateNPCHideTime(invaderXim.settings.main.FORCE_SPAWN_QM_RESET_TIME)
     end
 end
 

@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.SELBINA]
+local ID = zones[invaderXim.zone.SELBINA]
 
 return {
     ['Abelard']      = { text = ID.text.ABELARD_DIALOG },

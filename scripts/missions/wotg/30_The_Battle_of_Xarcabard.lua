@@ -6,11 +6,11 @@
 -- Rally Point: Red : !pos -106.071 -25.5 -52.841 137
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.THE_BATTLE_OF_XARCABARD)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.THE_BATTLE_OF_XARCABARD)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.PRELUDE_TO_A_STORM },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.PRELUDE_TO_A_STORM },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.XARCABARD_S] =
+        [invaderXim.zone.XARCABARD_S] =
         {
             ['Rally_Point_Red'] =
             {

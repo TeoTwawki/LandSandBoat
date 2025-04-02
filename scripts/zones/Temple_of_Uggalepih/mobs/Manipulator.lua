@@ -64,11 +64,11 @@ local pathNodes =
 }
 
 entity.onMobSpawn = function(mob)
-    mob:pathThrough(pathNodes, xi.path.flag.PATROL)
+    mob:pathThrough(pathNodes, invaderXim.path.flag.PATROL)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 383)
+    invaderXim.hunts.checkHunt(mob, player, 383)
 end
 
 entity.onMobDespawn = function(mob)

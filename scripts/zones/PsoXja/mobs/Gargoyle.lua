@@ -2,13 +2,13 @@
 -- Area: Pso'Xja
 --  Mob: Gargoyle
 -----------------------------------
-local ID = zones[xi.zone.PSOXJA]
+local ID = zones[invaderXim.zone.PSOXJA]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 120)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 120)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

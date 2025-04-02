@@ -11,15 +11,15 @@ local entity = {}
 
 entity.onMobSpawn = function(mob)
     -- retail captures show these mods are not dependent on region control
-    mob:setMod(xi.mod.UDMGPHYS, -5000)
-    mob:setMod(xi.mod.UDMGRANGE, -5000)
-    mob:setMod(xi.mod.UDMGBREATH, -5000)
-    mob:setMod(xi.mod.UDMGMAGIC, -5000)
+    mob:setMod(invaderXim.mod.UDMGPHYS, -5000)
+    mob:setMod(invaderXim.mod.UDMGRANGE, -5000)
+    mob:setMod(invaderXim.mod.UDMGBREATH, -5000)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, -5000)
 
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
-            { id = xi.jsa.MIJIN_GAKURE, hpp = math.random(10, 15) },
+            { id = invaderXim.jsa.MIJIN_GAKURE, hpp = math.random(10, 15) },
         },
     })
 end

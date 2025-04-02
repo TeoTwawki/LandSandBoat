@@ -3,21 +3,21 @@
 -- Waughroon Shrine quest battlefield
 -- !pos -345 104 -260 144
 -----------------------------------
-local waughroonID = zones[xi.zone.WAUGHROON_SHRINE]
+local waughroonID = zones[invaderXim.zone.WAUGHROON_SHRINE]
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId           = xi.zone.WAUGHROON_SHRINE,
-    battlefieldId    = xi.battlefield.id.THIEF_IN_NORG,
+    zoneId           = invaderXim.zone.WAUGHROON_SHRINE,
+    battlefieldId    = invaderXim.battlefield.id.THIEF_IN_NORG,
     maxPlayers       = 6,
     timeLimit        = utils.minutes(30),
     index            = 4,
     entryNpc         = 'BC_Entrance',
     exitNpc          = 'Burning_Circle',
-    requiredItems    = { xi.item.BANISHING_CHARM },
+    requiredItems    = { invaderXim.item.BANISHING_CHARM },
 
-    questArea     = xi.questLog.OUTLANDS,
-    quest         = xi.quest.id.outlands.A_THIEF_IN_NORG,
+    questArea     = invaderXim.questLog.OUTLANDS,
+    quest         = invaderXim.quest.id.outlands.A_THIEF_IN_NORG,
     requiredVar   = 'Quest[5][142]Prog',
     requiredValue = 6,
 })
@@ -47,7 +47,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 

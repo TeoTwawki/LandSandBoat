@@ -6,12 +6,12 @@
 -- Naja Salaheem : !pos 22.700 -8.804 -45.591 50
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.UNDERSEA_SCOUTING)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.UNDERSEA_SCOUTING)
 
 mission.reward =
 {
-    keyItem     = xi.ki.ASTRAL_COMPASS,
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.ASTRAL_WAVES },
+    keyItem     = invaderXim.ki.ASTRAL_COMPASS,
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.ASTRAL_WAVES },
 }
 
 mission.sections =
@@ -21,17 +21,17 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = mission:progressEvent(3051, { text_table = 0 })
         },
 
-        [xi.zone.ALZADAAL_UNDERSEA_RUINS] =
+        [invaderXim.zone.ALZADAAL_UNDERSEA_RUINS] =
         {
             onTriggerAreaEnter =
             {
                 [23] = function(player, triggerArea)
-                    return mission:progressEvent(1, xi.besieged.getMercenaryRank(player))
+                    return mission:progressEvent(1, invaderXim.besieged.getMercenaryRank(player))
                 end,
             },
 

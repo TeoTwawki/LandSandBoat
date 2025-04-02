@@ -3,7 +3,7 @@
 --  Mob: Wespe
 -- Note: PH for Demonic Tiphia
 -----------------------------------
-local ID = zones[xi.zone.CRAWLERS_NEST]
+local ID = zones[invaderXim.zone.CRAWLERS_NEST]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -17,11 +17,11 @@ local tiphiaPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 691, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 691, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, tiphiaPHTable, 5, math.random(7200, 28800)) -- 2 to 8 hours
+    invaderXim.mob.phOnDespawn(mob, tiphiaPHTable, 5, math.random(7200, 28800)) -- 2 to 8 hours
 end
 
 return entity

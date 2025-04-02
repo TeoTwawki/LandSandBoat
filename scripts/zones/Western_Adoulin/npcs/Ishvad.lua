@@ -4,7 +4,7 @@
 -- Type: Shop NPC
 -- !pos 44 32 125 256
 -----------------------------------
-local ID = zones[xi.zone.WESTERN_ADOULIN]
+local ID = zones[invaderXim.zone.WESTERN_ADOULIN]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -31,7 +31,7 @@ entity.onTrigger = function(player, npc)
         6078, 43740,  -- Scroll of Indi-VIT
         6077, 46440,  -- Scroll of Indi-DEX
     }
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 return entity

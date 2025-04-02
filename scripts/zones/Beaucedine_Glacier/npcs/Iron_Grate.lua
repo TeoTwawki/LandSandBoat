@@ -52,7 +52,7 @@ entity.onEventFinish = function(player, csid, option, npc)
             player:setPos(-300, -8, 203, 191, 9)
         end
 
-        if xi.settings.main.ENABLE_COP_ZONE_CAP == 1 then
+        if invaderXim.settings.main.ENABLE_COP_ZONE_CAP == 1 then
             player:setCharVar('PSOXJA_RESTRICTION_LVL', lvlCap)
         end
     end

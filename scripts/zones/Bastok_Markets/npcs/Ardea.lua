@@ -8,13 +8,13 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local rockRacketeer = player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.ROCK_RACKETEER)
+    local rockRacketeer = player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.ROCK_RACKETEER)
     local chasingQuotasStatus = player:getCharVar('ChasingQuotas_Progress')
 
     -- Rock Racketeer
     if
-        rockRacketeer == xi.questStatus.QUEST_ACCEPTED and
-        player:hasKeyItem(xi.ki.SHARP_GRAY_STONE)
+        rockRacketeer == invaderXim.questStatus.QUEST_ACCEPTED and
+        player:hasKeyItem(invaderXim.ki.SHARP_GRAY_STONE)
     then
         player:startEvent(261)
 
@@ -28,8 +28,8 @@ end
 entity.onEventFinish = function(player, csid, option, npc)
     -- Rock Racketeer
     if csid == 261 and option ~= 1 then
-        player:delKeyItem(xi.ki.SHARP_GRAY_STONE)
-        player:addGil(xi.settings.main.GIL_RATE * 10)
+        player:delKeyItem(invaderXim.ki.SHARP_GRAY_STONE)
+        player:addGil(invaderXim.settings.main.GIL_RATE * 10)
         player:setCharVar('rockracketeer_sold', 1)
     elseif csid == 261 and option ~= 2 then
         player:setCharVar('rockracketeer_sold', 2)

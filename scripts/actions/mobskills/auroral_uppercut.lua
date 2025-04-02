@@ -1,15 +1,15 @@
 -----------------------------------
 --  Auroral Uppercut
 -----------------------------------
-local ID = zones[xi.zone.EMPYREAL_PARADOX]
+local ID = zones[invaderXim.zone.EMPYREAL_PARADOX]
 -----------------------------------
 ---@type TMobSkill
 local mobskillObject = {}
 
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
     if
-        target:hasStatusEffect(xi.effect.PHYSICAL_SHIELD) or
-        target:hasStatusEffect(xi.effect.MAGIC_SHIELD)
+        target:hasStatusEffect(invaderXim.effect.PHYSICAL_SHIELD) or
+        target:hasStatusEffect(invaderXim.effect.MAGIC_SHIELD)
     then
         return 1
     end
@@ -22,10 +22,10 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local damage = mob:getWeaponDmg()
 
-    damage = xi.mobskills.mobMagicalMove(mob, target, skill, damage, xi.element.LIGHT, 1, xi.mobskills.magicalTpBonus.NO_EFFECT)
-    damage = xi.mobskills.mobFinalAdjustments(damage, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.LIGHT, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
+    damage = invaderXim.mobskills.mobMagicalMove(mob, target, skill, damage, invaderXim.element.LIGHT, 1, invaderXim.mobskills.magicalTpBonus.NO_EFFECT)
+    damage = invaderXim.mobskills.mobFinalAdjustments(damage, mob, skill, target, invaderXim.attackType.MAGICAL, invaderXim.damageType.LIGHT, invaderXim.mobskills.shadowBehavior.IGNORE_SHADOWS)
 
-    target:takeDamage(damage, mob, xi.attackType.MAGICAL, xi.damageType.LIGHT)
+    target:takeDamage(damage, mob, invaderXim.attackType.MAGICAL, invaderXim.damageType.LIGHT)
 
     return damage
 end

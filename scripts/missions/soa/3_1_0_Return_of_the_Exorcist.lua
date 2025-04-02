@@ -6,11 +6,11 @@
 -- Levil : !pos -87.204 3.350 12.655 256
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.RETURN_OF_THE_EXORCIST)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.RETURN_OF_THE_EXORCIST)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.THE_MERCILESS_ONE },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_MERCILESS_ONE },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(138),
 

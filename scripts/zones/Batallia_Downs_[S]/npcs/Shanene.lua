@@ -7,8 +7,8 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local hasScrollsBundle = player:hasKeyItem(xi.ki.BUNDLE_OF_HALF_INSCRIBED_SCROLLS)
-    local hasRainemard = player:hasItem(xi.item.CIPHER_OF_RAINEMARDS_ALTER_EGO) or player:hasSpell(xi.magic.spell.RAINEMARD)
+    local hasScrollsBundle = player:hasKeyItem(invaderXim.ki.BUNDLE_OF_HALF_INSCRIBED_SCROLLS)
+    local hasRainemard = player:hasItem(invaderXim.item.CIPHER_OF_RAINEMARDS_ALTER_EGO) or player:hasSpell(invaderXim.magic.spell.RAINEMARD)
 
     if hasScrollsBundle and not hasRainemard then
         player:startEvent(36)
@@ -19,7 +19,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 36 and option == 2 then
-        npcUtil.giveItem(player, xi.item.CIPHER_OF_RAINEMARDS_ALTER_EGO)
+        npcUtil.giveItem(player, invaderXim.item.CIPHER_OF_RAINEMARDS_ALTER_EGO)
     end
 end
 

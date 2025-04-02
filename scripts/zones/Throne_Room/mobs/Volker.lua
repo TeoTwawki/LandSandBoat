@@ -3,7 +3,7 @@
 --  Mob: Volker
 -- Ally during Bastok Mission 9-2
 -----------------------------------
-local ID = zones[xi.zone.THRONE_ROOM]
+local ID = zones[invaderXim.zone.THRONE_ROOM]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

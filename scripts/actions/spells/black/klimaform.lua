@@ -10,9 +10,9 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    target:addStatusEffect(xi.effect.KLIMAFORM, 1, 0, 180)
+    target:addStatusEffect(invaderXim.effect.KLIMAFORM, 1, 0, 180)
 
-    return xi.effect.KLIMAFORM
+    return invaderXim.effect.KLIMAFORM
 end
 
 return spellObject

@@ -3,7 +3,7 @@
 --  NPC: Oil Lamp - Fire (East)
 -- !pos 104 -26 43
 -----------------------------------
-local ID = zones[xi.zone.PHOMIUNA_AQUEDUCTS]
+local ID = zones[invaderXim.zone.PHOMIUNA_AQUEDUCTS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -16,11 +16,11 @@ entity.onTrigger = function(player, npc)
 
     local day = VanadielDayOfTheWeek()
 
-    if day == xi.day.FIRESDAY then
+    if day == invaderXim.day.FIRESDAY then
         if GetNPCByID(DoorOffset-6):getAnimation() == 8 then -- ice lamp open?
             GetNPCByID(DoorOffset-9):openDoor(15) -- Door _0rl
         end
-    elseif day == xi.day.WATERSDAY then
+    elseif day == invaderXim.day.WATERSDAY then
         if GetNPCByID(DoorOffset-5):getAnimation() == 8 then -- water lamp open?
             GetNPCByID(DoorOffset-9):openDoor(15) -- Door _0rl
         end

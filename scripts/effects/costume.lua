@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.COSTUME
+-- invaderXim.effect.COSTUME
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

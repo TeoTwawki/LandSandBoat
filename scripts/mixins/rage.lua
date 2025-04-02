@@ -29,7 +29,7 @@ g_mixins.rage = function(rageMob)
             mob:setLocalVar('[rage]started', 1)
 
             -- boost stats
-            for i = xi.mod.STR, xi.mod.CHR do
+            for i = invaderXim.mod.STR, invaderXim.mod.CHR do
                 local amt = math.ceil(mob:getStat(i) * 9)
                 mob:setLocalVar('[rage]mod_' .. i, amt)
                 mob:addMod(i, amt)
@@ -45,7 +45,7 @@ g_mixins.rage = function(rageMob)
             mob:setLocalVar('[rage]started', 0)
 
             -- unboost stats
-            for i = xi.mod.STR, xi.mod.CHR do
+            for i = invaderXim.mod.STR, invaderXim.mod.CHR do
                 local amt = mob:getLocalVar('[rage]mod_' .. i)
                 mob:delMod(i, amt)
             end

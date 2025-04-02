@@ -4,17 +4,17 @@
 -- !pos 340 -0.5 -680
 -- Teleports Players to Abyssea - Altepa
 -----------------------------------
-local ID = zones[xi.zone.SOUTH_GUSTABERG]
+local ID = zones[invaderXim.zone.SOUTH_GUSTABERG]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if xi.settings.main.ENABLE_ABYSSEA == 1 and player:getMainLvl() >= 30 then
+    if invaderXim.settings.main.ENABLE_ABYSSEA == 1 and player:getMainLvl() >= 30 then
         if
-            player:getQuestStatus(xi.questLog.ABYSSEA, xi.quest.id.abyssea.DAWN_OF_DEATH) == xi.questStatus.QUEST_ACCEPTED and
-            player:getQuestStatus(xi.questLog.ABYSSEA, xi.quest.id.abyssea.A_BEAKED_BLUSTERER) == xi.questStatus.QUEST_AVAILABLE and
-            xi.abyssea.getHeldTraverserStones(player) >= 1
+            player:getQuestStatus(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.DAWN_OF_DEATH) == invaderXim.questStatus.QUEST_ACCEPTED and
+            player:getQuestStatus(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.A_BEAKED_BLUSTERER) == invaderXim.questStatus.QUEST_AVAILABLE and
+            invaderXim.abyssea.getHeldTraverserStones(player) >= 1
         then
             player:startEvent(0)
         else
@@ -27,7 +27,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 0 then
-        player:addQuest(xi.questLog.ABYSSEA, xi.quest.id.abyssea.A_BEAKED_BLUSTERER)
+        player:addQuest(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.A_BEAKED_BLUSTERER)
     elseif csid == 1 then
         -- Killed Bennu
     elseif csid == 914 and option == 1 then

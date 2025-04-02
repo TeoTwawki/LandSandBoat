@@ -2,12 +2,12 @@
 -- Area: The_Garden_of_RuHmet
 -- Name: When Angels Fall
 -----------------------------------
-local ruHmetID = zones[xi.zone.THE_GARDEN_OF_RUHMET]
+local ruHmetID = zones[invaderXim.zone.THE_GARDEN_OF_RUHMET]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId        = xi.zone.THE_GARDEN_OF_RUHMET,
-    battlefieldId = xi.battlefield.id.WHEN_ANGELS_FALL,
+    zoneId        = invaderXim.zone.THE_GARDEN_OF_RUHMET,
+    battlefieldId = invaderXim.battlefield.id.WHEN_ANGELS_FALL,
     canLoseExp    = false,
     isMission     = true,
     allowTrusts   = true,
@@ -17,8 +17,8 @@ local content = BattlefieldMission:new({
     index         = 0,
     area          = 1,
     entryNpc      = '_0z0',
-    missionArea   = xi.mission.log_id.COP,
-    mission       = xi.mission.id.cop.WHEN_ANGELS_FALL,
+    missionArea   = invaderXim.mission.log_id.COP,
+    mission       = invaderXim.mission.id.cop.WHEN_ANGELS_FALL,
     requiredVar   = 'Mission[6][828]Status',
     requiredValue = 4,
 
@@ -42,7 +42,7 @@ content.groups =
 
         superlink = true,
         allDeath  = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

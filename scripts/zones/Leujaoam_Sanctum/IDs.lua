@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.LEUJAOAM_SANCTUM] =
+zones[invaderXim.zone.LEUJAOAM_SANCTUM] =
 {
     text =
     {
@@ -32,7 +32,7 @@ zones[xi.zone.LEUJAOAM_SANCTUM] =
 
     mob =
     {
-        [xi.assault.mission.LEUJAOAM_CLEANSING] =
+        [invaderXim.assault.mission.LEUJAOAM_CLEANSING] =
         {
             MOBS_START =
             {
@@ -40,7 +40,7 @@ zones[xi.zone.LEUJAOAM_SANCTUM] =
                 17059849, 17059850, 17059851, 17059852, 17059853, 17059854, 17059855,
             },
         },
-        [xi.assault.mission.ORICHALCUM_SURVEY] =
+        [invaderXim.assault.mission.ORICHALCUM_SURVEY] =
         {
             MOBS_START =
             {
@@ -61,4 +61,4 @@ zones[xi.zone.LEUJAOAM_SANCTUM] =
     }
 }
 
-return zones[xi.zone.LEUJAOAM_SANCTUM]
+return zones[invaderXim.zone.LEUJAOAM_SANCTUM]

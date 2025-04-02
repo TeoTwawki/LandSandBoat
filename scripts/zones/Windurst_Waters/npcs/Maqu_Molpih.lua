@@ -4,19 +4,19 @@
 -- Only sells when Windurst controlls Aragoneu Region
 -- Confirmed shop stock, August 2013
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WATERS]
+local ID = zones[invaderXim.zone.WINDURST_WATERS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.events.harvestFestival.onHalloweenTrade(player, trade, npc)
+    invaderXim.events.harvestFestival.onHalloweenTrade(player, trade, npc)
 end
 
 entity.onTrigger = function(player, npc)
-    local regionOwner = GetRegionOwner(xi.region.ARAGONEU)
+    local regionOwner = GetRegionOwner(invaderXim.region.ARAGONEU)
 
-    if regionOwner ~= xi.nation.WINDURST then
+    if regionOwner ~= invaderXim.nation.WINDURST then
         player:showText(npc, ID.text.MAQUMOLPIH_CLOSED_DIALOG)
     else
         player:showText(npc, ID.text.MAQUMOLPIH_OPEN_DIALOG)
@@ -29,7 +29,7 @@ entity.onTrigger = function(player, npc)
             4505,   92,  -- Sunflower Seeds
             841,    36   -- Yagudo Feather
         }
-        xi.shop.general(player, stock, xi.fameArea.WINDURST)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.WINDURST)
     end
 end
 

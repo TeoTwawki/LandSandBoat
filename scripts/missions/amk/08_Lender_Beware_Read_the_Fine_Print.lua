@@ -7,11 +7,11 @@
 -- Inconspicuous Door : !pos -15 1.300 68 244
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.AMK, xi.mission.id.amk.LENDER_BEWARE_READ_THE_FINE_PRINT)
+local mission = Mission:new(invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.LENDER_BEWARE_READ_THE_FINE_PRINT)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.AMK, xi.mission.id.amk.RESCUE_A_MOOGLES_LABOR_OF_LOVE },
+    nextMission = { invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.RESCUE_A_MOOGLES_LABOR_OF_LOVE },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 0
         end,
 
-        [xi.zone.SEA_SERPENT_GROTTO] =
+        [invaderXim.zone.SEA_SERPENT_GROTTO] =
         {
             ['Shady_Sconce'] =
             {
@@ -35,7 +35,7 @@ mission.sections =
             {
                 [19] = function(player, csid, option, npc)
                     if option == 1 then
-                        player:setMissionStatus(xi.mission.log_id.AMK, 1)
+                        player:setMissionStatus(invaderXim.mission.log_id.AMK, 1)
                     end
                 end,
             },
@@ -48,7 +48,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 1
         end,
 
-        [xi.zone.SEA_SERPENT_GROTTO] =
+        [invaderXim.zone.SEA_SERPENT_GROTTO] =
         {
             ['Shady_Sconce'] =
             {
@@ -67,7 +67,7 @@ mission.sections =
             onEventFinish =
             {
                 [20] = function(player, csid, option, npc)
-                    player:setMissionStatus(xi.mission.log_id.AMK, 2)
+                    player:setMissionStatus(invaderXim.mission.log_id.AMK, 2)
                 end,
             },
         },
@@ -79,7 +79,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 2
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Inconspicuous_Door'] =
             {

@@ -7,15 +7,15 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.unity.onTrigger(player, npc)
+    invaderXim.unity.onTrigger(player, npc)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.unity.onEventUpdate(player, csid, option, npc)
+    invaderXim.unity.onEventUpdate(player, csid, option, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.unity.onEventFinish(player, csid, option, npc)
+    invaderXim.unity.onEventFinish(player, csid, option, npc)
 end
 
 return entity

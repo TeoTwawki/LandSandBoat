@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.petType
-xi.petType =
+---@enum invaderXim.petType
+invaderXim.petType =
 {
     AVATAR             = 0,
     WYVERN             = 1,

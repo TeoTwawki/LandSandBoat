@@ -4,7 +4,7 @@
 -- Standard merchant, though he acts like a guild merchant
 -- !pos -147.593 11.999 222.550 231
 -----------------------------------
-local ID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local ID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

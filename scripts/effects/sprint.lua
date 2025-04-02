@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.SPRINT
+-- invaderXim.effect.SPRINT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

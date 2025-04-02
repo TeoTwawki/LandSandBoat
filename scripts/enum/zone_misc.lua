@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.zoneMisc
-xi.zoneMisc =
+---@enum invaderXim.zoneMisc
+invaderXim.zoneMisc =
 {
     NONE                  = 0x0000, -- Able to be used in any area
     ESCAPE                = 0x0001, -- Ability to use Escape Spell

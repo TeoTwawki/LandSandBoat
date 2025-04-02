@@ -2,7 +2,7 @@
 -- Table structure for table `char_job_points`
 --
 
-DROP TABLE IF EXISTS `char_job_points`;
+DROP TABLE IF IXIMSTS `char_job_points`;
 CREATE TABLE `char_job_points` (
   `charid` int(10) unsigned NOT NULL,
   `jobid` tinyint(2) unsigned NOT NULL,

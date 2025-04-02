@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Eastern_Altepa_Desert (114)
 -----------------------------------
-local ID = zones[xi.zone.EASTERN_ALTEPA_DESERT]
+local ID = zones[invaderXim.zone.EASTERN_ALTEPA_DESERT]
 require('scripts/quests/i_can_hear_a_rainbow')
 require('scripts/missions/amk/helpers')
 -----------------------------------
@@ -18,12 +18,12 @@ zoneObject.onInitialize = function(zone)
     UpdateNMSpawnPoint(ID.mob.CENTURIO_XII_I)
     GetMobByID(ID.mob.CENTURIO_XII_I):setRespawnTime(math.random(900, 10800))
 
-    xi.conquest.setRegionalConquestOverseers(zone:getRegionID())
-    xi.chocobo.initZone(zone)
+    invaderXim.conquest.setRegionalConquestOverseers(zone:getRegionID())
+    invaderXim.chocobo.initZone(zone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -42,8 +42,8 @@ zoneObject.onZoneIn = function(player, prevZone)
     end
 
     -- AMK06/AMK07
-    if xi.settings.main.ENABLE_AMK == 1 then
-        xi.amk.helpers.tryRandomlyPlaceDiggingLocation(player)
+    if invaderXim.settings.main.ENABLE_AMK == 1 then
+        invaderXim.amk.helpers.tryRandomlyPlaceDiggingLocation(player)
     end
 
     return cs

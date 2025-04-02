@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.PORT_JEUNO] =
+zones[invaderXim.zone.PORT_JEUNO] =
 {
     text =
     {
@@ -32,7 +32,7 @@ zones[xi.zone.PORT_JEUNO] =
         ARRIVAL_NPC                   = 7095, -- Enjoy your stay in Jeuno!
         DAPOL_DIALOG                  = 7108, -- Welcome to Port Jeuno, the busiest airship hub anywhere! You can't miss the awe-inspiring view of airships in flight!
         SECURITY_DIALOG               = 7111, -- Port Jeuno must remain secure. After all, if anything happened to the archduke, it would change the world!
-        MOGHOUSE_EXIT                 = 7192, -- You have learned your way through the back alleys of Jeuno! Now you can exit to any area from your residence.
+        MOGHOUSE_IXIMT                 = 7192, -- You have learned your way through the back alleys of Jeuno! Now you can exit to any area from your residence.
         CHOCOBO_DIALOG                = 7214, -- ...
         OLD_BOX                       = 7312, -- You find a grimy old box.
         GAVIN_DIALOG                  = 7382, -- You will need <keyitem> to travel to the Outlands by air. You may apply for one at the designated counter.
@@ -60,4 +60,4 @@ zones[xi.zone.PORT_JEUNO] =
     },
 }
 
-return zones[xi.zone.PORT_JEUNO]
+return zones[invaderXim.zone.PORT_JEUNO]

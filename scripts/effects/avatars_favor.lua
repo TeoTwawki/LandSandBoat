@@ -1,12 +1,12 @@
 -----------------------------------
--- xi.effect.AVATARS_FAVOR
+-- invaderXim.effect.AVATARS_FAVOR
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    xi.avatarsFavor.applyAvatarsFavorAuraToPet(target, effect)
-    xi.avatarsFavor.applyAvatarsFavorDebuffsToPet(target)
+    invaderXim.avatarsFavor.applyAvatarsFavorAuraToPet(target, effect)
+    invaderXim.avatarsFavor.applyAvatarsFavorDebuffsToPet(target)
 end
 
 effectObject.onEffectTick = function(target, effect)
@@ -15,11 +15,11 @@ effectObject.onEffectTick = function(target, effect)
         effect:setPower(effect:getPower() + 1)
     end
 
-    local summoningSkill = target:getSkillLevel(xi.skill.SUMMONING_MAGIC)
+    local summoningSkill = target:getSkillLevel(invaderXim.skill.SUMMONING_MAGIC)
 
     for i = 1, 7 do
         if
-            summoningSkill <= xi.avatarsFavor.skillLevels[i] and
+            summoningSkill <= invaderXim.avatarsFavor.skillLevels[i] and
             effect:getPower() > i
         then
             effect:setPower(i)
@@ -33,18 +33,18 @@ effectObject.onEffectTick = function(target, effect)
     end
 
     -- Applying gear bonus
-    effect:setPower(effect:getPower() + target:getMaxGearMod(xi.mod.AVATARS_FAVOR_ENHANCE))
+    effect:setPower(effect:getPower() + target:getMaxGearMod(invaderXim.mod.AVATARS_FAVOR_ENHANCE))
 
     -- TODO add Job Point Gift Bonus
     -- if GET PLAYERS JP TOTAL >= 550 then
     --    effect:setPower(effect:getPower() + 1)
     -- end
 
-    xi.avatarsFavor.applyAvatarsFavorAuraToPet(target, effect)
+    invaderXim.avatarsFavor.applyAvatarsFavorAuraToPet(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    xi.avatarsFavor.removeAvatarsFavorAuraFromPet(target)
+    invaderXim.avatarsFavor.removeAvatarsFavorAuraFromPet(target)
 end
 
 return effectObject

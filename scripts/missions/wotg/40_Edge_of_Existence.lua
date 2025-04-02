@@ -12,11 +12,11 @@
 -- Sauromugue Champaign [S] : !pos 369 8 -227 98
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.EDGE_OF_EXISTENCE)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.EDGE_OF_IXIMSTENCE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.HER_MEMORIES },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.HER_MEMORIES },
 }
 
 mission.sections =
@@ -26,7 +26,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BATALLIA_DOWNS] =
+        [invaderXim.zone.BATALLIA_DOWNS] =
         {
             ['Cavernous_Maw'] = mission:progressEvent(3, 0, 0, 0, 0, 0, 0, 0, 1),
 
@@ -34,13 +34,13 @@ mission.sections =
             {
                 [3] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        xi.maws.goToMaw(player, xi.zone.BATALLIA_DOWNS)
+                        invaderXim.maws.goToMaw(player, invaderXim.zone.BATALLIA_DOWNS)
                     end
                 end,
             },
         },
 
-        [xi.zone.ROLANBERRY_FIELDS] =
+        [invaderXim.zone.ROLANBERRY_FIELDS] =
         {
             ['Cavernous_Maw'] = mission:progressEvent(502, 1, 26, 83764, 22093, 466180, 1822, 648024, 0),
 
@@ -48,13 +48,13 @@ mission.sections =
             {
                 [502] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        xi.maws.goToMaw(player, xi.zone.ROLANBERRY_FIELDS)
+                        invaderXim.maws.goToMaw(player, invaderXim.zone.ROLANBERRY_FIELDS)
                     end
                 end,
             },
         },
 
-        [xi.zone.SAUROMUGUE_CHAMPAIGN] =
+        [invaderXim.zone.SAUROMUGUE_CHAMPAIGN] =
         {
             ['Cavernous_Maw'] = mission:progressEvent(502, 2, 0, 0, 0, 0, 0, 0, 1),
 
@@ -62,13 +62,13 @@ mission.sections =
             {
                 [502] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        xi.maws.goToMaw(player, xi.zone.SAUROMUGUE_CHAMPAIGN)
+                        invaderXim.maws.goToMaw(player, invaderXim.zone.SAUROMUGUE_CHAMPAIGN)
                     end
                 end,
             },
         },
 
-        [xi.zone.BATALLIA_DOWNS_S] =
+        [invaderXim.zone.BATALLIA_DOWNS_S] =
         {
             ['Cavernous_Maw'] = mission:progressEvent(7, 0, 0, 0, 0, 0, 0, 3, 1),
 
@@ -76,13 +76,13 @@ mission.sections =
             {
                 [7] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        xi.maws.goToMaw(player, xi.zone.BATALLIA_DOWNS_S)
+                        invaderXim.maws.goToMaw(player, invaderXim.zone.BATALLIA_DOWNS_S)
                     end
                 end,
             },
         },
 
-        [xi.zone.ROLANBERRY_FIELDS_S] =
+        [invaderXim.zone.ROLANBERRY_FIELDS_S] =
         {
             ['Cavernous_Maw'] = mission:progressEvent(702, 1, 0, 0, 0, 0, 0, 3, 1),
 
@@ -90,13 +90,13 @@ mission.sections =
             {
                 [702] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        xi.maws.goToMaw(player, xi.zone.ROLANBERRY_FIELDS_S)
+                        invaderXim.maws.goToMaw(player, invaderXim.zone.ROLANBERRY_FIELDS_S)
                     end
                 end,
             },
         },
 
-        [xi.zone.SAUROMUGUE_CHAMPAIGN_S] =
+        [invaderXim.zone.SAUROMUGUE_CHAMPAIGN_S] =
         {
             ['Cavernous_Maw'] = mission:progressEvent(702, 2, utils.MAX_UINT32 - 7, utils.MAX_UINT32 - 1, utils.MAX_UINT32 - 1, 0, 0, 0, 1),
 
@@ -104,7 +104,7 @@ mission.sections =
             {
                 [702] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        xi.maws.goToMaw(player, xi.zone.SAUROMUGUE_CHAMPAIGN_S)
+                        invaderXim.maws.goToMaw(player, invaderXim.zone.SAUROMUGUE_CHAMPAIGN_S)
                     end
                 end,
             },

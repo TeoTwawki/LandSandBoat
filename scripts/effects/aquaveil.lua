@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.AQUAVEIL
+-- invaderXim.effect.AQUAVEIL
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

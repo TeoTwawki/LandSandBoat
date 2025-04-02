@@ -5,9 +5,9 @@ require('modules/module_utils')
 -----------------------------------
 -- ID Requires
 -----------------------------------
-local dragonsAeryID   = zones[xi.zone.DRAGONS_AERY]
-local valleySorrowsID = zones[xi.zone.VALLEY_OF_SORROWS]
-local behemothDomID   = zones[xi.zone.BEHEMOTHS_DOMINION]
+local dragonsAeryID   = zones[invaderXim.zone.DRAGONS_AERY]
+local valleySorrowsID = zones[invaderXim.zone.VALLEY_OF_SORROWS]
+local behemothDomID   = zones[invaderXim.zone.BEHEMOTHS_DOMINION]
 
 -----------------------------------
 -- Module definition
@@ -25,7 +25,7 @@ hnmSystem:setEnabled(false)
 -----------------------------------
 -- Dragon's Aery: Fafnir, Nidhogg
 -----------------------------------
-hnmSystem:addOverride('xi.zones.Dragons_Aery.Zone.onInitialize', function(zone)
+hnmSystem:addOverride('invaderXim.zones.Dragons_Aery.Zone.onInitialize', function(zone)
     super(zone)
 
     local hnmPopTime   = GetServerVariable('[HNM]Fafnir')   -- Time the NM will spawn at.
@@ -60,10 +60,10 @@ hnmSystem:addOverride('xi.zones.Dragons_Aery.Zone.onInitialize', function(zone)
     end
 
     -- Hide ??? NPC.
-    GetNPCByID(dragonsAeryID.npc.FAFNIR_QM):setStatus(xi.status.DISAPPEAR)
+    GetNPCByID(dragonsAeryID.npc.FAFNIR_QM):setStatus(invaderXim.status.DISAPPEAR)
 end)
 
-hnmSystem:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDespawn', function(mob)
+hnmSystem:addOverride('invaderXim.zones.Dragons_Aery.mobs.Fafnir.onMobDespawn', function(mob)
     super(mob)
 
     -- Server Variable work.
@@ -87,7 +87,7 @@ hnmSystem:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDespawn', function
     GetMobByID(monster):setRespawnTime(randomPopTime)
 end)
 
-hnmSystem:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDespawn', function(mob)
+hnmSystem:addOverride('invaderXim.zones.Dragons_Aery.mobs.Nidhogg.onMobDespawn', function(mob)
     super(mob)
 
     -- Server Variable work.
@@ -104,7 +104,7 @@ end)
 -----------------------------------
 -- Valley of Sorrows: Adamantoise, Aspidochelone
 -----------------------------------
-hnmSystem:addOverride('xi.zones.Valley_of_Sorrows.Zone.onInitialize', function(zone)
+hnmSystem:addOverride('invaderXim.zones.Valley_of_Sorrows.Zone.onInitialize', function(zone)
     super(zone)
 
     local hnmPopTime   = GetServerVariable('[HNM]Adamantoise')   -- Time the NM will spawn at.
@@ -139,10 +139,10 @@ hnmSystem:addOverride('xi.zones.Valley_of_Sorrows.Zone.onInitialize', function(z
     end
 
     -- Hide ??? NPC.
-    GetNPCByID(valleySorrowsID.npc.ADAMANTOISE_QM):setStatus(xi.status.DISAPPEAR)
+    GetNPCByID(valleySorrowsID.npc.ADAMANTOISE_QM):setStatus(invaderXim.status.DISAPPEAR)
 end)
 
-hnmSystem:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDespawn', function(mob)
+hnmSystem:addOverride('invaderXim.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDespawn', function(mob)
     super(mob)
 
     -- Server Variable work.
@@ -166,7 +166,7 @@ hnmSystem:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDespawn'
     GetMobByID(monster):setRespawnTime(randomPopTime)
 end)
 
-hnmSystem:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDespawn', function(mob)
+hnmSystem:addOverride('invaderXim.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDespawn', function(mob)
     super(mob)
 
     -- Server Variable work.
@@ -183,7 +183,7 @@ end)
 -----------------------------------
 -- Behemoth's Dominion: Behemoth, King Behemoth
 -----------------------------------
-hnmSystem:addOverride('xi.zones.Behemoths_Dominion.Zone.onInitialize', function(zone)
+hnmSystem:addOverride('invaderXim.zones.Behemoths_Dominion.Zone.onInitialize', function(zone)
     super(zone)
 
     local hnmPopTime   = GetServerVariable('[HNM]Behemoth')   -- Time the NM will spawn at.
@@ -218,10 +218,10 @@ hnmSystem:addOverride('xi.zones.Behemoths_Dominion.Zone.onInitialize', function(
     end
 
     -- Hide ??? NPC.
-    GetNPCByID(behemothDomID.npc.BEHEMOTH_QM):setStatus(xi.status.DISAPPEAR)
+    GetNPCByID(behemothDomID.npc.BEHEMOTH_QM):setStatus(invaderXim.status.DISAPPEAR)
 end)
 
-hnmSystem:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDespawn', function(mob)
+hnmSystem:addOverride('invaderXim.zones.Behemoths_Dominion.mobs.Behemoth.onMobDespawn', function(mob)
     super(mob)
 
     -- Server Variable work.
@@ -245,7 +245,7 @@ hnmSystem:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDespawn', 
     GetMobByID(monster):setRespawnTime(randomPopTime)
 end)
 
-hnmSystem:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDespawn', function(mob)
+hnmSystem:addOverride('invaderXim.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDespawn', function(mob)
     super(mob)
 
     -- Server Variable work.

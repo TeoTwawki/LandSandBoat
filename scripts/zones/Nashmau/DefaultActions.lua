@@ -1,4 +1,4 @@
--- local ID = zones[xi.zone.NASHMAU]
+-- local ID = zones[invaderXim.zone.NASHMAU]
 
 return {
     ['Awaheen']           = { event = 240 },

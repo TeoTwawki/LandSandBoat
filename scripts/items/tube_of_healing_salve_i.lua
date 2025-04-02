@@ -8,7 +8,7 @@ local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
     if not target:hasPet() then
-        return xi.msg.basic.REQUIRES_A_PET
+        return invaderXim.msg.basic.REQUIRES_A_PET
     end
 
     return 0
@@ -22,7 +22,7 @@ itemObject.onItemUse = function(target)
 
     local totalHP = pet:getMaxHP() / 2
     pet:addHP(totalHP)
-    pet:messageBasic(xi.msg.basic.RECOVERS_HP, 0, totalHP)
+    pet:messageBasic(invaderXim.msg.basic.RECOVERS_HP, 0, totalHP)
 end
 
 return itemObject

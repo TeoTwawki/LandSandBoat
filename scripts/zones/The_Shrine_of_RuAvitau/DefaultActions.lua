@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.THE_SHRINE_OF_RUAVITAU]
+local ID = zones[invaderXim.zone.THE_SHRINE_OF_RUAVITAU]
 
 return {
     ['_4y0']               = { messageSpecial = -1 }, -- [Cermet Door] Prevent from opening on click.

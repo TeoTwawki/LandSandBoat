@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.SUPERLINK, 32)
+    mob:setMobMod(invaderXim.mobMod.SUPERLINK, 32)
 end
 
 return entity

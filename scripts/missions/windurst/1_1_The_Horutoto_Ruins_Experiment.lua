@@ -17,20 +17,20 @@
 -- _5ct (Gizmo #5)  : !pos 353 -3 60 192
 -- _5cu (Gizmo #6)  : !pos 295 -3 100 192
 -----------------------------------
-local innerHorutotoRuinsID = zones[xi.zone.INNER_HORUTOTO_RUINS]
-local eastSarutabarutaID   = zones[xi.zone.EAST_SARUTABARUTA]
+local innerHorutotoRuinsID = zones[invaderXim.zone.INNER_HORUTOTO_RUINS]
+local eastSarutabarutaID   = zones[invaderXim.zone.EAST_SARUTABARUTA]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_HORUTOTO_RUINS_EXPERIMENT)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_HORUTOTO_RUINS_EXPERIMENT)
 
 -- A unique title is awarded from accepting the mission at each gate guard
 -- This is handled by zone ID and used in handleAcceptMission below
 local zoneTitle =
 {
-    [238] = xi.title.FRESH_NORTH_WINDS_RECRUIT,       -- Windurst Waters
-    [239] = xi.title.HEAVENS_TOWER_GATEHOUSE_RECRUIT, -- Windurst Walls
-    [240] = xi.title.NEW_BEST_OF_THE_WEST_RECRUIT,    -- Port Windurst
-    [241] = xi.title.NEW_BUUMAS_BOOMERS_RECRUIT,      -- Windurst Woods
+    [238] = invaderXim.title.FRESH_NORTH_WINDS_RECRUIT,       -- Windurst Waters
+    [239] = invaderXim.title.HEAVENS_TOWER_GATEHOUSE_RECRUIT, -- Windurst Walls
+    [240] = invaderXim.title.NEW_BEST_OF_THE_WEST_RECRUIT,    -- Port Windurst
+    [241] = invaderXim.title.NEW_BUUMAS_BOOMERS_RECRUIT,      -- Windurst Woods
 }
 
 mission.reward =
@@ -63,7 +63,7 @@ local examineGizmo = function(player, gizmoIndex, successCS, failCS)
 end
 
 local gizmoSuccess = function(player, csid, option, npc)
-    npcUtil.giveKeyItem(player, xi.ki.CRACKED_MANA_ORB)
+    npcUtil.giveKeyItem(player, invaderXim.ki.CRACKED_MANA_ORB)
     player:setMissionStatus(mission.areaId, 4)
     mission:setVar(player, 'GizmoExamined', 0)
     mission:setVar(player, 'RandomGizmo', 0)
@@ -78,12 +78,12 @@ mission.sections =
     -- Player is offered mission from a gate guard
     {
         check = function(player, currentMission)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId and
                 not player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Janshura-Rashura'] = mission:progressEvent(83),
 
@@ -93,7 +93,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Zokima-Rokima'] = mission:progressEvent(96),
 
@@ -103,7 +103,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Mokyokyo'] = mission:progressEvent(118),
 
@@ -113,7 +113,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Rakoh_Buuma'] = mission:progressEvent(121),
 
@@ -130,7 +130,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Janshura-Rashura'] = mission:event(89),
             ['Nine_of_Clubs']    = mission:event(86),
@@ -138,14 +138,14 @@ mission.sections =
             ['Ten_of_Clubs']     = mission:event(87),
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Keo-Koruo']     = mission:event(100),
             ['Pakke-Pokke']   = mission:event(101),
             ['Zokima-Rokima'] = mission:event(99),
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Dagoza-Beruza'] = mission:event(121),
             -- Official server fires 109 for Mokyokyo, cannot accept more than one mission
@@ -155,7 +155,7 @@ mission.sections =
             ['Ten_of_Hearts'] = mission:event(124),
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Miiri-Wohri'] = mission:event(124),
             ['Rakoh_Buuma'] = mission:event(127),
@@ -170,7 +170,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 1
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Hakkuru-Rinkuru'] = mission:progressEvent(90),
 
@@ -189,18 +189,18 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 2
         end,
 
-        [xi.zone.EAST_SARUTABARUTA] =
+        [invaderXim.zone.EAST_SARUTABARUTA] =
         {
             ['Sama_Gohjima'] = mission:event(53),
         },
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Hakkuru-Rinkuru'] = mission:event(91),
             ['Kuroido-Moido']   = mission:event(92):importantOnce(),
         },
 
-        [xi.zone.INNER_HORUTOTO_RUINS] =
+        [invaderXim.zone.INNER_HORUTOTO_RUINS] =
         {
             -- Gate: Magical Gizmo
             ['_5c5'] = mission:progressEvent(42),
@@ -221,7 +221,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 3
         end,
 
-        [xi.zone.INNER_HORUTOTO_RUINS] =
+        [invaderXim.zone.INNER_HORUTOTO_RUINS] =
         {
             ['_5cp'] = -- Magical Gizmo #1
             {
@@ -301,21 +301,21 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 4
         end,
 
-        [xi.zone.EAST_SARUTABARUTA] =
+        [invaderXim.zone.EAST_SARUTABARUTA] =
         {
             ['Sama_Gohjima'] = mission:messageText(eastSarutabarutaID.text.SAMA_GOHJIMA_POSTDIALOG):setPriority(1000),
         },
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
-            ['Hakkuru-Rinkuru'] = mission:progressEvent(94, 0, xi.ki.CRACKED_MANA_ORB),
+            ['Hakkuru-Rinkuru'] = mission:progressEvent(94, 0, invaderXim.ki.CRACKED_MANA_ORB),
             ['Kuroido-Moido']   = mission:event(98),
 
             onEventFinish =
             {
                 [94] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.CRACKED_MANA_ORB)
+                        player:delKeyItem(invaderXim.ki.CRACKED_MANA_ORB)
                     end
                 end,
             },
@@ -330,10 +330,10 @@ mission.sections =
         check = function(player)
             return player:getNation() == mission.areaId and
                 player:hasCompletedMission(mission.areaId, mission.missionId) and
-                not player:hasCompletedMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_HEART_OF_THE_MATTER)
+                not player:hasCompletedMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_HEART_OF_THE_MATTER)
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Hakkuru-Rinkuru'] = mission:event(96):importantOnce(),
             ['Kuroido-Moido']   = mission:event(100):importantOnce(),
@@ -342,20 +342,20 @@ mission.sections =
             ['Ten_of_Clubs']    = mission:event(103),
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Keo-Koruo']   = mission:event(105),
             ['Pakke-Pokke'] = mission:event(104),
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Dagoza-Beruza'] = mission:event(128),
             ['Panna-Donna']   = mission:event(127),
             ['Ten_of_Hearts'] = mission:event(129),
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Miiri-Wohri'] = mission:event(115),
             ['Sola_Jaab']   = mission:event(130),

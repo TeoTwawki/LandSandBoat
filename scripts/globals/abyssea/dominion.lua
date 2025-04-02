@@ -4,27 +4,27 @@
 require('scripts/globals/quests')
 -----------------------------------
 xi = xi or {}
-xi.abyssea = xi.abyssea or {}
+invaderXim.abyssea = invaderXim.abyssea or {}
 
 local sergeantData =
 {
 --  NPC Name                Zone                        CSID OpMask
-    ['DSgt_Excenmille'] = { xi.zone.ABYSSEA_ALTEPA,     500, 30846 }, -- !pos -330.655 -2.120 -612.885 218
-    ['DSgt_Nanaa']      = { xi.zone.ABYSSEA_ALTEPA,     501,  8176 }, -- !pos -848.093 -9.813 -605.970 218
-    ['DSgt_Volker']     = { xi.zone.ABYSSEA_ALTEPA,     502, 26510 }, -- !pos -319.894 -0.736 -167.842 218
-    ['DSgt_Maat']       = { xi.zone.ABYSSEA_ULEGUERAND, 500, 32270 },
-    ['DSgt_Romaa']      = { xi.zone.ABYSSEA_ULEGUERAND, 501,  6654 },
-    ['DSgt_Zazarg']     = { xi.zone.ABYSSEA_ULEGUERAND, 502, 26608 },
-    ['DSgt_Wolfgang']   = { xi.zone.ABYSSEA_GRAUBERG,   500, 32688 },
-    ['DSgt_Cornelia']   = { xi.zone.ABYSSEA_GRAUBERG,   501,  6606 }, -- !pos -15.513 0.64 -482.04 254
-    ['DSgt_Tosuka']     = { xi.zone.ABYSSEA_GRAUBERG,   502, 26238 },
+    ['DSgt_Excenmille'] = { invaderXim.zone.ABYSSEA_ALTEPA,     500, 30846 }, -- !pos -330.655 -2.120 -612.885 218
+    ['DSgt_Nanaa']      = { invaderXim.zone.ABYSSEA_ALTEPA,     501,  8176 }, -- !pos -848.093 -9.813 -605.970 218
+    ['DSgt_Volker']     = { invaderXim.zone.ABYSSEA_ALTEPA,     502, 26510 }, -- !pos -319.894 -0.736 -167.842 218
+    ['DSgt_Maat']       = { invaderXim.zone.ABYSSEA_ULEGUERAND, 500, 32270 },
+    ['DSgt_Romaa']      = { invaderXim.zone.ABYSSEA_ULEGUERAND, 501,  6654 },
+    ['DSgt_Zazarg']     = { invaderXim.zone.ABYSSEA_ULEGUERAND, 502, 26608 },
+    ['DSgt_Wolfgang']   = { invaderXim.zone.ABYSSEA_GRAUBERG,   500, 32688 },
+    ['DSgt_Cornelia']   = { invaderXim.zone.ABYSSEA_GRAUBERG,   501,  6606 }, -- !pos -15.513 0.64 -482.04 254
+    ['DSgt_Tosuka']     = { invaderXim.zone.ABYSSEA_GRAUBERG,   502, 26238 },
 }
 
 local opZone =
 {
-    [xi.zone.ABYSSEA_ALTEPA    ] = 0,
-    [xi.zone.ABYSSEA_ULEGUERAND] = 1,
-    [xi.zone.ABYSSEA_GRAUBERG  ] = 2,
+    [invaderXim.zone.ABYSSEA_ALTEPA    ] = 0,
+    [invaderXim.zone.ABYSSEA_ULEGUERAND] = 1,
+    [invaderXim.zone.ABYSSEA_GRAUBERG  ] = 2,
 }
 
 -- Dominion Op XP Range is listed as 600~4950, which is up to an 8x even multiplier
@@ -35,52 +35,52 @@ local baseRewardValue = 1000
 local dominionOpQuests =
 {
     -- Abyssea - Altepa
-    [560] = { xi.quest.id.abyssea.DOMINION_OP_01_ALTEPA, 5, baseRewardValue },
-    [561] = { xi.quest.id.abyssea.DOMINION_OP_02_ALTEPA, 5, baseRewardValue },
-    [562] = { xi.quest.id.abyssea.DOMINION_OP_03_ALTEPA, 5, baseRewardValue },
-    [563] = { xi.quest.id.abyssea.DOMINION_OP_04_ALTEPA, 5, baseRewardValue },
-    [564] = { xi.quest.id.abyssea.DOMINION_OP_05_ALTEPA, 5, baseRewardValue },
-    [565] = { xi.quest.id.abyssea.DOMINION_OP_06_ALTEPA, 5, baseRewardValue },
-    [566] = { xi.quest.id.abyssea.DOMINION_OP_07_ALTEPA, 5, baseRewardValue },
-    [567] = { xi.quest.id.abyssea.DOMINION_OP_08_ALTEPA, 5, baseRewardValue },
-    [568] = { xi.quest.id.abyssea.DOMINION_OP_09_ALTEPA, 5, baseRewardValue },
-    [569] = { xi.quest.id.abyssea.DOMINION_OP_10_ALTEPA, 5, baseRewardValue },
-    [570] = { xi.quest.id.abyssea.DOMINION_OP_11_ALTEPA, 5, baseRewardValue },
-    [571] = { xi.quest.id.abyssea.DOMINION_OP_12_ALTEPA, 5, baseRewardValue },
-    [572] = { xi.quest.id.abyssea.DOMINION_OP_13_ALTEPA, 5, baseRewardValue },
-    [573] = { xi.quest.id.abyssea.DOMINION_OP_14_ALTEPA, 5, baseRewardValue },
+    [560] = { invaderXim.quest.id.abyssea.DOMINION_OP_01_ALTEPA, 5, baseRewardValue },
+    [561] = { invaderXim.quest.id.abyssea.DOMINION_OP_02_ALTEPA, 5, baseRewardValue },
+    [562] = { invaderXim.quest.id.abyssea.DOMINION_OP_03_ALTEPA, 5, baseRewardValue },
+    [563] = { invaderXim.quest.id.abyssea.DOMINION_OP_04_ALTEPA, 5, baseRewardValue },
+    [564] = { invaderXim.quest.id.abyssea.DOMINION_OP_05_ALTEPA, 5, baseRewardValue },
+    [565] = { invaderXim.quest.id.abyssea.DOMINION_OP_06_ALTEPA, 5, baseRewardValue },
+    [566] = { invaderXim.quest.id.abyssea.DOMINION_OP_07_ALTEPA, 5, baseRewardValue },
+    [567] = { invaderXim.quest.id.abyssea.DOMINION_OP_08_ALTEPA, 5, baseRewardValue },
+    [568] = { invaderXim.quest.id.abyssea.DOMINION_OP_09_ALTEPA, 5, baseRewardValue },
+    [569] = { invaderXim.quest.id.abyssea.DOMINION_OP_10_ALTEPA, 5, baseRewardValue },
+    [570] = { invaderXim.quest.id.abyssea.DOMINION_OP_11_ALTEPA, 5, baseRewardValue },
+    [571] = { invaderXim.quest.id.abyssea.DOMINION_OP_12_ALTEPA, 5, baseRewardValue },
+    [572] = { invaderXim.quest.id.abyssea.DOMINION_OP_13_ALTEPA, 5, baseRewardValue },
+    [573] = { invaderXim.quest.id.abyssea.DOMINION_OP_14_ALTEPA, 5, baseRewardValue },
 
     -- Abyssea - Uleguerand
-    [574] = { xi.quest.id.abyssea.DOMINION_OP_01_ULEGUERAND, 5, baseRewardValue },
-    [575] = { xi.quest.id.abyssea.DOMINION_OP_02_ULEGUERAND, 5, baseRewardValue },
-    [576] = { xi.quest.id.abyssea.DOMINION_OP_03_ULEGUERAND, 5, baseRewardValue },
-    [577] = { xi.quest.id.abyssea.DOMINION_OP_04_ULEGUERAND, 5, baseRewardValue },
-    [578] = { xi.quest.id.abyssea.DOMINION_OP_05_ULEGUERAND, 5, baseRewardValue },
-    [579] = { xi.quest.id.abyssea.DOMINION_OP_06_ULEGUERAND, 5, baseRewardValue },
-    [580] = { xi.quest.id.abyssea.DOMINION_OP_07_ULEGUERAND, 5, baseRewardValue },
-    [581] = { xi.quest.id.abyssea.DOMINION_OP_08_ULEGUERAND, 5, baseRewardValue },
-    [582] = { xi.quest.id.abyssea.DOMINION_OP_09_ULEGUERAND, 5, baseRewardValue },
-    [583] = { xi.quest.id.abyssea.DOMINION_OP_10_ULEGUERAND, 5, baseRewardValue },
-    [584] = { xi.quest.id.abyssea.DOMINION_OP_11_ULEGUERAND, 5, baseRewardValue },
-    [585] = { xi.quest.id.abyssea.DOMINION_OP_12_ULEGUERAND, 5, baseRewardValue },
-    [586] = { xi.quest.id.abyssea.DOMINION_OP_13_ULEGUERAND, 5, baseRewardValue },
-    [587] = { xi.quest.id.abyssea.DOMINION_OP_14_ULEGUERAND, 5, baseRewardValue },
+    [574] = { invaderXim.quest.id.abyssea.DOMINION_OP_01_ULEGUERAND, 5, baseRewardValue },
+    [575] = { invaderXim.quest.id.abyssea.DOMINION_OP_02_ULEGUERAND, 5, baseRewardValue },
+    [576] = { invaderXim.quest.id.abyssea.DOMINION_OP_03_ULEGUERAND, 5, baseRewardValue },
+    [577] = { invaderXim.quest.id.abyssea.DOMINION_OP_04_ULEGUERAND, 5, baseRewardValue },
+    [578] = { invaderXim.quest.id.abyssea.DOMINION_OP_05_ULEGUERAND, 5, baseRewardValue },
+    [579] = { invaderXim.quest.id.abyssea.DOMINION_OP_06_ULEGUERAND, 5, baseRewardValue },
+    [580] = { invaderXim.quest.id.abyssea.DOMINION_OP_07_ULEGUERAND, 5, baseRewardValue },
+    [581] = { invaderXim.quest.id.abyssea.DOMINION_OP_08_ULEGUERAND, 5, baseRewardValue },
+    [582] = { invaderXim.quest.id.abyssea.DOMINION_OP_09_ULEGUERAND, 5, baseRewardValue },
+    [583] = { invaderXim.quest.id.abyssea.DOMINION_OP_10_ULEGUERAND, 5, baseRewardValue },
+    [584] = { invaderXim.quest.id.abyssea.DOMINION_OP_11_ULEGUERAND, 5, baseRewardValue },
+    [585] = { invaderXim.quest.id.abyssea.DOMINION_OP_12_ULEGUERAND, 5, baseRewardValue },
+    [586] = { invaderXim.quest.id.abyssea.DOMINION_OP_13_ULEGUERAND, 5, baseRewardValue },
+    [587] = { invaderXim.quest.id.abyssea.DOMINION_OP_14_ULEGUERAND, 5, baseRewardValue },
 
     -- Abyssea - Grauberg
-    [588] = { xi.quest.id.abyssea.DOMINION_OP_01_GRAUBERG, 5, baseRewardValue },
-    [589] = { xi.quest.id.abyssea.DOMINION_OP_02_GRAUBERG, 5, baseRewardValue },
-    [590] = { xi.quest.id.abyssea.DOMINION_OP_03_GRAUBERG, 5, baseRewardValue },
-    [591] = { xi.quest.id.abyssea.DOMINION_OP_04_GRAUBERG, 5, baseRewardValue },
-    [592] = { xi.quest.id.abyssea.DOMINION_OP_05_GRAUBERG, 5, baseRewardValue },
-    [593] = { xi.quest.id.abyssea.DOMINION_OP_06_GRAUBERG, 5, baseRewardValue },
-    [594] = { xi.quest.id.abyssea.DOMINION_OP_07_GRAUBERG, 5, baseRewardValue },
-    [595] = { xi.quest.id.abyssea.DOMINION_OP_08_GRAUBERG, 5, baseRewardValue },
-    [596] = { xi.quest.id.abyssea.DOMINION_OP_09_GRAUBERG, 5, baseRewardValue },
-    [597] = { xi.quest.id.abyssea.DOMINION_OP_10_GRAUBERG, 5, baseRewardValue },
-    [598] = { xi.quest.id.abyssea.DOMINION_OP_11_GRAUBERG, 5, baseRewardValue },
-    [599] = { xi.quest.id.abyssea.DOMINION_OP_12_GRAUBERG, 5, baseRewardValue },
-    [600] = { xi.quest.id.abyssea.DOMINION_OP_13_GRAUBERG, 5, baseRewardValue },
-    [601] = { xi.quest.id.abyssea.DOMINION_OP_14_GRAUBERG, 5, baseRewardValue },
+    [588] = { invaderXim.quest.id.abyssea.DOMINION_OP_01_GRAUBERG, 5, baseRewardValue },
+    [589] = { invaderXim.quest.id.abyssea.DOMINION_OP_02_GRAUBERG, 5, baseRewardValue },
+    [590] = { invaderXim.quest.id.abyssea.DOMINION_OP_03_GRAUBERG, 5, baseRewardValue },
+    [591] = { invaderXim.quest.id.abyssea.DOMINION_OP_04_GRAUBERG, 5, baseRewardValue },
+    [592] = { invaderXim.quest.id.abyssea.DOMINION_OP_05_GRAUBERG, 5, baseRewardValue },
+    [593] = { invaderXim.quest.id.abyssea.DOMINION_OP_06_GRAUBERG, 5, baseRewardValue },
+    [594] = { invaderXim.quest.id.abyssea.DOMINION_OP_07_GRAUBERG, 5, baseRewardValue },
+    [595] = { invaderXim.quest.id.abyssea.DOMINION_OP_08_GRAUBERG, 5, baseRewardValue },
+    [596] = { invaderXim.quest.id.abyssea.DOMINION_OP_09_GRAUBERG, 5, baseRewardValue },
+    [597] = { invaderXim.quest.id.abyssea.DOMINION_OP_10_GRAUBERG, 5, baseRewardValue },
+    [598] = { invaderXim.quest.id.abyssea.DOMINION_OP_11_GRAUBERG, 5, baseRewardValue },
+    [599] = { invaderXim.quest.id.abyssea.DOMINION_OP_12_GRAUBERG, 5, baseRewardValue },
+    [600] = { invaderXim.quest.id.abyssea.DOMINION_OP_13_GRAUBERG, 5, baseRewardValue },
+    [601] = { invaderXim.quest.id.abyssea.DOMINION_OP_14_GRAUBERG, 5, baseRewardValue },
 }
 
 local function getPackedInfluenceList(zoneID)
@@ -144,7 +144,7 @@ local function completeDominionOp(player, opID)
         xpMultiplier = xpMultiplier - (75 - player:getMainLvl()) * .02
     end
 
-    player:completeQuest(xi.questLog.ABYSSEA, dominionOpQuests[opID][1])
+    player:completeQuest(invaderXim.questLog.ABYSSEA, dominionOpQuests[opID][1])
     player:addExp(dominionOpQuests[opID][3] * xpMultiplier)
     player:addCurrency('cruor', dominionOpQuests[opID][3] / 5)
     player:messageSpecial(ID.text.CRUOR_TOTAL, dominionOpQuests[opID][3] / 5, player:getCurrency('cruor'))
@@ -154,18 +154,18 @@ local function completeDominionOp(player, opID)
     clearOpVars(player, opID)
 end
 
-xi.abyssea.dominionOnMobDeath = function(mob, player, dominionOpID)
+invaderXim.abyssea.dominionOnMobDeath = function(mob, player, dominionOpID)
     local progVarName = getProgressVar(dominionOpID)
     local numDefeated = player:getCharVar(progVarName)
 
     if numDefeated < dominionOpQuests[dominionOpID][2] then
         numDefeated = numDefeated + 1
-        player:messageBasic(xi.msg.basic.FOV_DEFEATED_TARGET, numDefeated, dominionOpQuests[dominionOpID][2])
+        player:messageBasic(invaderXim.msg.basic.FOV_DEFEATED_TARGET, numDefeated, dominionOpQuests[dominionOpID][2])
         player:setCharVar(progVarName, numDefeated)
     end
 end
 
-xi.abyssea.sergeantOnTrigger = function(player, npc)
+invaderXim.abyssea.sergeantOnTrigger = function(player, npc)
     local sergeantInfo  = sergeantData[npc:getName()]
     local activeOp      = player:getCharVar('activeDominionOp')
     local dominionNotes = player:getCurrency('dominion_note')
@@ -188,7 +188,7 @@ xi.abyssea.sergeantOnTrigger = function(player, npc)
     end
 end
 
-xi.abyssea.sergeantOnEventUpdate = function(player, csid, option, npc)
+invaderXim.abyssea.sergeantOnEventUpdate = function(player, csid, option, npc)
     local updateType = bit.band(option, 0xF)
 
     if updateType == 2 then
@@ -207,7 +207,7 @@ xi.abyssea.sergeantOnEventUpdate = function(player, csid, option, npc)
     end
 end
 
-xi.abyssea.sergeantOnEventFinish = function(player, csid, option, npc)
+invaderXim.abyssea.sergeantOnEventFinish = function(player, csid, option, npc)
     local finishType    = bit.band(option, 0xF)
     local zoneID        = player:getZoneID()
     local ID            = zones[zoneID]
@@ -218,7 +218,7 @@ xi.abyssea.sergeantOnEventFinish = function(player, csid, option, npc)
         local selectedOp = bit.rshift(option, 4)
         local opID       = 559 + opZone[player:getZoneID()] * 14 + selectedOp
 
-        player:addQuest(xi.questLog.ABYSSEA, dominionOpQuests[opID][1])
+        player:addQuest(invaderXim.questLog.ABYSSEA, dominionOpQuests[opID][1])
         player:setCharVar('activeDominionOp', opID)
         player:messageSpecial(ID.text.DOMINION_SIGNED_ON)
 
@@ -226,7 +226,7 @@ xi.abyssea.sergeantOnEventFinish = function(player, csid, option, npc)
     elseif finishType == 3 then
         local activeOp = player:getCharVar('activeDominionOp')
 
-        player:delQuest(xi.questLog.ABYSSEA, dominionOpQuests[activeOp][1])
+        player:delQuest(invaderXim.questLog.ABYSSEA, dominionOpQuests[activeOp][1])
         clearOpVars(player, activeOp)
         player:messageSpecial(ID.text.CANCELED_OBJECTIVE)
 

@@ -3,7 +3,7 @@
 --  NPC: Pyropox
 -- !pos -17.580 4.000 24.600 246
 -----------------------------------
-local ID = zones[xi.zone.PORT_JEUNO]
+local ID = zones[invaderXim.zone.PORT_JEUNO]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -31,13 +31,13 @@ entity.onTrigger = function(player, npc)
         player:startEvent(349)
     else
         player:showText(npc, ID.text.PYROPOX_SHOP_DIALOG)
-        xi.shop.general(player, stock)
+        invaderXim.shop.general(player, stock)
     end
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 349 and option == 0 then
-        xi.shop.general(player, stock)
+        invaderXim.shop.general(player, stock)
         player:setCharVar('spokePyropox', 0)
     end
 end

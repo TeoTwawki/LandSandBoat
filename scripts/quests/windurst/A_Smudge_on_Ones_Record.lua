@@ -5,12 +5,12 @@
 -- Hariga-Origa : !pos -62 -6 105 238
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.A_SMUDGE_ON_ONES_RECORD)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.A_SMUDGE_ON_ONES_RECORD)
 
 quest.reward =
 {
-    keyItem  = xi.ki.MAP_OF_FEIYIN,
-    fameArea = xi.fameArea.WINDURST,
+    keyItem  = invaderXim.ki.MAP_OF_FEIYIN,
+    fameArea = invaderXim.fameArea.WINDURST,
     fame     = 120,
     gil      = 5000,
     exp      = 2000,
@@ -20,15 +20,15 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.WINDURST, xi.quest.id.windurst.CHASING_TALES) and
-                player:getFameLevel(xi.fameArea.WINDURST) >= 4 and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.CHASING_TALES) and
+                player:getFameLevel(invaderXim.fameArea.WINDURST) >= 4 and
                 not quest:getMustZone(player)
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
-            ['Hariga-Origa'] = quest:progressEvent(413, 0, xi.item.VIAL_OF_SLIME_OIL, xi.item.FROST_TURNIP),
+            ['Hariga-Origa'] = quest:progressEvent(413, 0, invaderXim.item.VIAL_OF_SLIME_OIL, invaderXim.item.FROST_TURNIP),
 
             onEventFinish =
             {
@@ -43,25 +43,25 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Hariga-Origa'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.VIAL_OF_SLIME_OIL, xi.item.FROST_TURNIP }) then
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.VIAL_OF_SLIME_OIL, invaderXim.item.FROST_TURNIP }) then
                         return quest:progressEvent(417, quest.reward.gil)
                     end
                 end,
 
                 onTrigger = function(player, npc)
-                    return quest:progressEvent(414, 0, xi.item.VIAL_OF_SLIME_OIL, xi.item.FROST_TURNIP)
+                    return quest:progressEvent(414, 0, invaderXim.item.VIAL_OF_SLIME_OIL, invaderXim.item.FROST_TURNIP)
                 end,
             },
 
-            ['Serukoko'] = quest:progressEvent(415, 0, xi.item.VIAL_OF_SLIME_OIL, xi.item.FROST_TURNIP),
+            ['Serukoko'] = quest:progressEvent(415, 0, invaderXim.item.VIAL_OF_SLIME_OIL, invaderXim.item.FROST_TURNIP),
 
             onEventFinish =
             {
@@ -77,11 +77,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
                 quest:getMustZone(player)
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Hariga-Origa'] = quest:event(418):importantOnce(),
             ['Serukoko']     = quest:event(419):importantOnce(),

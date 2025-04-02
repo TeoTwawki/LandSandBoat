@@ -5,11 +5,11 @@ g_mixins = g_mixins or {}
 g_mixins.families = g_mixins.families or {}
 
 g_mixins.families.apkallu = function(apkalluMob)
-    xi.apkallu.track(apkalluMob)
+    invaderXim.apkallu.track(apkalluMob)
 
     apkalluMob:addListener('SPAWN', 'APKALLU_SPAWN', function(mob)
-        xi.apkallu.initialize(apkalluMob)
-        if xi.apkallu.canRunAway(mob) then
+        invaderXim.apkallu.initialize(apkalluMob)
+        if invaderXim.apkallu.canRunAway(mob) then
             mob:setLocalVar('RunAway', 1)
         end
     end)
@@ -26,7 +26,7 @@ g_mixins.families.apkallu = function(apkalluMob)
             if member:getID() ~= 0 and mob:getID() ~= member:getID() then
                 local memberDistance = mob:checkDistance(member)
                 if
-                    member:getCurrentAction() == xi.action.ROAMING and
+                    member:getCurrentAction() == invaderXim.action.ROAMING and
                     memberDistance <= distance
                 then
                     closest = member
@@ -36,7 +36,7 @@ g_mixins.families.apkallu = function(apkalluMob)
         end
 
         if closest ~= nil then
-            mob:follow(closest, xi.follow.RUN_AWAY)
+            mob:follow(closest, invaderXim.follow.RUN_AWAY)
             mob:setLocalVar('RunAway', 2)
         end
     end)
@@ -46,7 +46,7 @@ g_mixins.families.apkallu = function(apkalluMob)
     end)
 
     apkalluMob:addListener('DEATH', 'APKALLU_DEATH', function(mob)
-        xi.apkallu.updateHate(mob:getZoneID(), 1)
+        invaderXim.apkallu.updateHate(mob:getZoneID(), 1)
     end)
 end
 

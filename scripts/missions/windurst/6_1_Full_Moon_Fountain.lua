@@ -10,10 +10,10 @@
 -- Hakkuru-Rinkuru     : !pos -111 -4 101 240
 -- Gate: Magical Gizmo : !pos -291 0 -659 194
 -----------------------------------
-local outerHorutotoID = zones[xi.zone.OUTER_HORUTOTO_RUINS]
+local outerHorutotoID = zones[invaderXim.zone.OUTER_HORUTOTO_RUINS]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.FULL_MOON_FOUNTAIN)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.FULL_MOON_FOUNTAIN)
 
 mission.reward =
 {
@@ -67,11 +67,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onEventFinish =
             {
@@ -79,7 +79,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onEventFinish =
             {
@@ -87,7 +87,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onEventFinish =
             {
@@ -95,7 +95,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onEventFinish =
             {
@@ -109,7 +109,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Hakkuru-Rinkuru'] =
             {
@@ -117,7 +117,7 @@ mission.sections =
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
                     if missionStatus == 0 then
-                        return mission:progressEvent(456, 0, xi.ki.SOUTHWESTERN_STAR_CHARM)
+                        return mission:progressEvent(456, 0, invaderXim.ki.SOUTHWESTERN_STAR_CHARM)
                     elseif missionStatus == 3 then
                         return mission:progressEvent(457)
                     end
@@ -128,12 +128,12 @@ mission.sections =
             {
                 [456] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 1)
-                    npcUtil.giveKeyItem(player, xi.ki.SOUTHWESTERN_STAR_CHARM)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.SOUTHWESTERN_STAR_CHARM)
                 end,
             },
         },
 
-        [xi.zone.OUTER_HORUTOTO_RUINS] =
+        [invaderXim.zone.OUTER_HORUTOTO_RUINS] =
         {
             ['_5eb'] =
             {
@@ -178,12 +178,12 @@ mission.sections =
             {
                 [68] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 3)
-                    player:delKeyItem(xi.ki.SOUTHWESTERN_STAR_CHARM)
+                    player:delKeyItem(invaderXim.ki.SOUTHWESTERN_STAR_CHARM)
                 end,
             },
         },
 
-        [xi.zone.FULL_MOON_FOUNTAIN] =
+        [invaderXim.zone.FULL_MOON_FOUNTAIN] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 3 then

@@ -3,13 +3,13 @@
 --  NPC: Sheia Pohrichamaha
 -- Fauregandi Regional Merchant
 -----------------------------------
-local ID = zones[xi.zone.PORT_WINDURST]
+local ID = zones[invaderXim.zone.PORT_WINDURST]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if GetRegionOwner(xi.region.FAUREGANDI) ~= xi.nation.WINDURST then
+    if GetRegionOwner(invaderXim.region.FAUREGANDI) ~= invaderXim.nation.WINDURST then
         player:showText(npc, ID.text.SHEIAPOHRICHAMAHA_CLOSED_DIALOG)
     else
         local stock =
@@ -20,7 +20,7 @@ entity.onTrigger = function(player, npc)
         }
 
         player:showText(npc, ID.text.SHEIAPOHRICHAMAHA_OPEN_DIALOG)
-        xi.shop.general(player, stock, xi.fameArea.WINDURST)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.WINDURST)
     end
 end
 

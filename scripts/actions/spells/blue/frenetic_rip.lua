@@ -21,11 +21,11 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.DEMON
-    params.tpmod = xi.spells.blue.tpMod.DAMAGE
-    params.attackType = xi.attackType.PHYSICAL
-    params.damageType = xi.damageType.HTH
-    params.scattr = xi.skillchainType.INDURATION
+    params.ecosystem = invaderXim.ecosystem.DEMON
+    params.tpmod = invaderXim.spells.blue.tpMod.DAMAGE
+    params.attackType = invaderXim.attackType.PHYSICAL
+    params.damageType = invaderXim.damageType.HTH
+    params.scattr = invaderXim.skillchainType.INDURATION
     params.numhits = 3
     params.multiplier = 1.36
     params.tp150 = 2.08
@@ -40,7 +40,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
 
-    return xi.spells.blue.usePhysicalSpell(caster, target, spell, params)
+    return invaderXim.spells.blue.usePhysicalSpell(caster, target, spell, params)
 end
 
 return spellObject

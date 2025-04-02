@@ -7,23 +7,23 @@
 -- Novalmauge  : !pos 70 -24 21 167
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.TROUBLE_AT_THE_SLUICE)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.TROUBLE_AT_THE_SLUICE)
 
 quest.reward =
 {
-    item = xi.item.HEAVY_AXE,
+    item = invaderXim.item.HEAVY_AXE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.THE_RUMOR) == xi.questStatus.QUEST_COMPLETED and
-                player:getFameLevel(xi.fameArea.SANDORIA) >= 3
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.THE_RUMOR) == invaderXim.questStatus.QUEST_COMPLETED and
+                player:getFameLevel(invaderXim.fameArea.SANDORIA) >= 3
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Belgidiveau'] = quest:progressEvent(57),
 
@@ -39,17 +39,17 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
-                not player:hasKeyItem(xi.ki.NEUTRALIZER) and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
+                not player:hasKeyItem(invaderXim.ki.NEUTRALIZER) and
                 vars.Prog == 0
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Belgidiveau'] = quest:event(55),
         },
 
-        [xi.zone.BOSTAUNIEUX_OUBLIETTE] =
+        [invaderXim.zone.BOSTAUNIEUX_OUBLIETTE] =
         {
             ['Novalmauge'] = quest:progressEvent(15),
 
@@ -63,22 +63,22 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
-                not player:hasKeyItem(xi.ki.NEUTRALIZER) and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
+                not player:hasKeyItem(invaderXim.ki.NEUTRALIZER) and
                 vars.Prog == 1
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Belgidiveau'] = quest:event(55),
         },
 
-        [xi.zone.BOSTAUNIEUX_OUBLIETTE] =
+        [invaderXim.zone.BOSTAUNIEUX_OUBLIETTE] =
         {
             ['Novalmauge'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHas(trade, xi.item.DAHLIA) then
+                    if npcUtil.tradeHas(trade, invaderXim.item.DAHLIA) then
                         return quest:progressEvent(17)
                     end
                 end,
@@ -89,7 +89,7 @@ quest.sections =
             onEventFinish =
             {
                 [17] = function(player, csid, option, npc)
-                    if npcUtil.giveKeyItem(player, xi.ki.NEUTRALIZER) then
+                    if npcUtil.giveKeyItem(player, invaderXim.ki.NEUTRALIZER) then
                         player:confirmTrade()
                     end
                 end,
@@ -98,11 +98,11 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
-                player:hasKeyItem(xi.ki.NEUTRALIZER)
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
+                player:hasKeyItem(invaderXim.ki.NEUTRALIZER)
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Belgidiveau'] = quest:progressEvent(56),
 
@@ -110,7 +110,7 @@ quest.sections =
             {
                 [56] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.NEUTRALIZER)
+                        player:delKeyItem(invaderXim.ki.NEUTRALIZER)
                     end
                 end,
             },

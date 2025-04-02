@@ -18,17 +18,17 @@ local spawnPoints =
 }
 
 entity.onMobInitialize = function(mob)
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(3600) -- 20 min
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMod(xi.mod.REGAIN, 33)
+    mob:setMod(invaderXim.mod.REGAIN, 33)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 155)
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.hunts.checkHunt(mob, player, 155)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(3600) -- 20 min
 end
 

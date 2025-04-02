@@ -8,13 +8,13 @@
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    if player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.CARGO) ~= xi.questStatus.QUEST_AVAILABLE then
+    if player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.CARGO) ~= invaderXim.questStatus.QUEST_AVAILABLE then
         if os.time() > player:getCharVar('VuntarCanBuyItem_date') then
-            if npcUtil.tradeHas(trade, xi.item.ROLANBERRY_881_CE) then
+            if npcUtil.tradeHas(trade, invaderXim.item.ROLANBERRY_881_CE) then
                 player:startEvent(52, 1) -- Can Buy rolanberry (881 ce)
-            elseif npcUtil.tradeHas(trade, xi.item.ROLANBERRY_874_CE) then
+            elseif npcUtil.tradeHas(trade, invaderXim.item.ROLANBERRY_874_CE) then
                 player:startEvent(52, 2) -- Can Buy rolanberry (874 ce)
-            elseif npcUtil.tradeHas(trade, xi.item.ROLANBERRY_864_CE) then
+            elseif npcUtil.tradeHas(trade, invaderXim.item.ROLANBERRY_864_CE) then
                 player:startEvent(52, 3) -- Can Buy rolanberry (864 ce)
             end
         else
@@ -26,7 +26,7 @@ end
 entity.onTrigger = function(player, npc)
     if
         player:getMainLvl() >= 20 and
-        player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.CARGO) == xi.questStatus.QUEST_AVAILABLE
+        player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.CARGO) == invaderXim.questStatus.QUEST_AVAILABLE
     then
         player:startEvent(50, 4365) -- Start quest "Cargo"
     elseif player:getMainLvl() < 20 then
@@ -38,13 +38,13 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 50 then
-        player:addQuest(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.CARGO)
+        player:addQuest(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.CARGO)
     elseif csid == 52 then
         player:setCharVar('VuntarCanBuyItem_date', getMidnight())
 
-        if player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.CARGO) == xi.questStatus.QUEST_ACCEPTED then
-            player:completeQuest(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.CARGO)
-            player:addFame(xi.fameArea.SELBINA_RABAO, 30)
+        if player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.CARGO) == invaderXim.questStatus.QUEST_ACCEPTED then
+            player:completeQuest(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.CARGO)
+            player:addFame(invaderXim.fameArea.SELBINA_RABAO, 30)
         end
 
         if option == 1 then

@@ -4,7 +4,7 @@
 -- Type: Ninjutsu Toolbag Maker
 -- !pos -20.632 -3.939 -40.554 241
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WOODS]
+local ID = zones[invaderXim.zone.WINDURST_WOODS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -56,13 +56,13 @@ entity.onTrade = function(player, npc, trade)
     -- check for invalid items
     for i = 0, 8, 1 do
         local itemId = trade:getItemId(i)
-        if itemId > 0 and itemId ~= xi.item.WIJNRUIT then
+        if itemId > 0 and itemId ~= invaderXim.item.WIJNRUIT then
             local validSlot = false
             for k, v in pairs(toolList) do
                 if v[1] == itemId then
                     local itemQty = trade:getSlotQty(i)
                     if itemQty % 99 ~= 0 then
-                        player:messageSpecial(ID.text.CLOUD_BAD_COUNT, xi.item.WIJNRUIT)
+                        player:messageSpecial(ID.text.CLOUD_BAD_COUNT, invaderXim.item.WIJNRUIT)
                         return
                     end
 
@@ -82,8 +82,8 @@ entity.onTrade = function(player, npc, trade)
     end
 
     -- check for correct number of wijnfruit
-    if fruitNeeded == 0 or trade:getItemQty(xi.item.WIJNRUIT) ~= fruitNeeded then
-        player:messageSpecial(ID.text.CLOUD_BAD_COUNT, xi.item.WIJNRUIT)
+    if fruitNeeded == 0 or trade:getItemQty(invaderXim.item.WIJNRUIT) ~= fruitNeeded then
+        player:messageSpecial(ID.text.CLOUD_BAD_COUNT, invaderXim.item.WIJNRUIT)
         return
     end
 

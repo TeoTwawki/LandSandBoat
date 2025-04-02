@@ -13,7 +13,7 @@ require('scripts/missions/amk/helpers')
 require('scripts/missions/wotg/helpers')
 -----------------------------------
 xi = xi or {}
-xi.helm = xi.helm or {}
+invaderXim.helm = invaderXim.helm or {}
 
 -----------------------------------
 -- drops are { weight, itemId }
@@ -22,33 +22,33 @@ xi.helm = xi.helm or {}
 
 local helmInfo =
 {
-    [xi.helmType.HARVESTING] =
+    [invaderXim.helmType.HARVESTING] =
     {
         id           = 'HARVESTING',
-        animation    = xi.emote.HARVESTING,
-        mod          = xi.mod.HARVESTING_RESULT,
-        settingRate  = xi.settings.main.HARVESTING_RATE,
-        settingBreak = xi.settings.main.HARVESTING_BREAK_CHANCE,
+        animation    = invaderXim.emote.HARVESTING,
+        mod          = invaderXim.mod.HARVESTING_RESULT,
+        settingRate  = invaderXim.settings.main.HARVESTING_RATE,
+        settingBreak = invaderXim.settings.main.HARVESTING_BREAK_CHANCE,
         message      = 'HARVESTING_IS_POSSIBLE_HERE',
-        tool         = xi.item.SICKLE,
+        tool         = invaderXim.item.SICKLE,
 
         zone =
         {
-            [xi.zone.WAJAOM_WOODLANDS] =
+            [invaderXim.zone.WAJAOM_WOODLANDS] =
             {
                 drops =
                 {
-                    { 1880, xi.item.SPRIG_OF_FRESH_MARJORAM      },
-                    { 1060, xi.item.BAG_OF_SIMSIM                },
-                    { 1310, xi.item.CLUMP_OF_MOHBWA_GRASS        },
-                    { 1760, xi.item.PEPHREDO_HIVE_CHIP           },
-                    {  590, xi.item.EGGPLANT                     },
-                    {  960, xi.item.BAG_OF_COFFEE_CHERRIES       },
-                    {  450, xi.item.EASTERN_GINGER_ROOT          },
-                    {  860, xi.item.CLUMP_OF_IMPERIAL_TEA_LEAVES },
-                    {  470, xi.item.CLUMP_OF_RED_MOKO_GRASS      },
-                    {  430, xi.item.SPRIG_OF_FRESH_MUGWORT       },
-                    {  240, xi.item.WIJNRUIT                     },
+                    { 1880, invaderXim.item.SPRIG_OF_FRESH_MARJORAM      },
+                    { 1060, invaderXim.item.BAG_OF_SIMSIM                },
+                    { 1310, invaderXim.item.CLUMP_OF_MOHBWA_GRASS        },
+                    { 1760, invaderXim.item.PEPHREDO_HIVE_CHIP           },
+                    {  590, invaderXim.item.EGGPLANT                     },
+                    {  960, invaderXim.item.BAG_OF_COFFEE_CHERRIES       },
+                    {  450, invaderXim.item.EASTERN_GINGER_ROOT          },
+                    {  860, invaderXim.item.CLUMP_OF_IMPERIAL_TEA_LEAVES },
+                    {  470, invaderXim.item.CLUMP_OF_RED_MOKO_GRASS      },
+                    {  430, invaderXim.item.SPRIG_OF_FRESH_MUGWORT       },
+                    {  240, invaderXim.item.WIJNRUIT                     },
                 },
 
                 points =
@@ -74,21 +74,21 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.BHAFLAU_THICKETS] =
+            [invaderXim.zone.BHAFLAU_THICKETS] =
             {
                 drops =
                 {
-                    { 1510, xi.item.CLUMP_OF_MOHBWA_GRASS        },
-                    { 1470, xi.item.SPRIG_OF_FRESH_MARJORAM      },
-                    { 1480, xi.item.PEPHREDO_HIVE_CHIP           },
-                    { 1170, xi.item.BAG_OF_SIMSIM                },
-                    { 1100, xi.item.CLUMP_OF_IMPERIAL_TEA_LEAVES },
-                    { 1000, xi.item.BAG_OF_COFFEE_CHERRIES       },
-                    {  510, xi.item.EGGPLANT                     },
-                    {  580, xi.item.CLUMP_OF_RED_MOKO_GRASS      },
-                    {  460, xi.item.SPRIG_OF_FRESH_MUGWORT       },
-                    {  370, xi.item.WIJNRUIT                     },
-                    {  360, xi.item.EASTERN_GINGER_ROOT          },
+                    { 1510, invaderXim.item.CLUMP_OF_MOHBWA_GRASS        },
+                    { 1470, invaderXim.item.SPRIG_OF_FRESH_MARJORAM      },
+                    { 1480, invaderXim.item.PEPHREDO_HIVE_CHIP           },
+                    { 1170, invaderXim.item.BAG_OF_SIMSIM                },
+                    { 1100, invaderXim.item.CLUMP_OF_IMPERIAL_TEA_LEAVES },
+                    { 1000, invaderXim.item.BAG_OF_COFFEE_CHERRIES       },
+                    {  510, invaderXim.item.EGGPLANT                     },
+                    {  580, invaderXim.item.CLUMP_OF_RED_MOKO_GRASS      },
+                    {  460, invaderXim.item.SPRIG_OF_FRESH_MUGWORT       },
+                    {  370, invaderXim.item.WIJNRUIT                     },
+                    {  360, invaderXim.item.EASTERN_GINGER_ROOT          },
                 },
 
                 points =
@@ -106,18 +106,18 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.GRAUBERG_S] =
+            [invaderXim.zone.GRAUBERG_S] =
             {
                 drops =
                 {
-                    { 1830, xi.item.CLUMP_OF_MOKO_GRASS     },
-                    { 1850, xi.item.CLUMP_OF_RED_MOKO_GRASS },
-                    { 1250, xi.item.BAG_OF_VEGETABLE_SEEDS  },
-                    { 1560, xi.item.BURDOCK_ROOT            },
-                    { 1060, xi.item.BAG_OF_GRAIN_SEEDS      },
-                    { 1200, xi.item.BAG_OF_HERB_SEEDS       },
-                    { 1270, xi.item.LESSER_CHIGOE           },
-                    { 1160, xi.item.WINTERFLOWER            },
+                    { 1830, invaderXim.item.CLUMP_OF_MOKO_GRASS     },
+                    { 1850, invaderXim.item.CLUMP_OF_RED_MOKO_GRASS },
+                    { 1250, invaderXim.item.BAG_OF_VEGETABLE_SEEDS  },
+                    { 1560, invaderXim.item.BURDOCK_ROOT            },
+                    { 1060, invaderXim.item.BAG_OF_GRAIN_SEEDS      },
+                    { 1200, invaderXim.item.BAG_OF_HERB_SEEDS       },
+                    { 1270, invaderXim.item.LESSER_CHIGOE           },
+                    { 1160, invaderXim.item.WINTERFLOWER            },
                 },
 
                 points =
@@ -131,22 +131,22 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.WEST_SARUTABARUTA_S] =
+            [invaderXim.zone.WEST_SARUTABARUTA_S] =
             {
                 drops =
                 {
-                    { 1630, xi.item.SPRIG_OF_FRESH_MARJORAM },
-                    { 1580, xi.item.CLUMP_OF_MOKO_GRASS     },
-                    { 1680, xi.item.BALL_OF_SARUTA_COTTON   },
-                    {  890, xi.item.BURDOCK_ROOT            },
-                    {  830, xi.item.CLUMP_OF_RED_MOKO_GRASS },
-                    {  910, xi.item.FLAX_FLOWER             },
-                    {  540, xi.item.BAG_OF_VEGETABLE_SEEDS  },
-                    {  550, xi.item.SKULL_LOCUST            },
-                    {  390, xi.item.SPRIG_OF_FRESH_MUGWORT  },
-                    {  350, xi.item.KING_LOCUST             },
-                    {  280, xi.item.BAG_OF_HERB_SEEDS       },
-                    {  370, xi.item.BAG_OF_GRAIN_SEEDS      },
+                    { 1630, invaderXim.item.SPRIG_OF_FRESH_MARJORAM },
+                    { 1580, invaderXim.item.CLUMP_OF_MOKO_GRASS     },
+                    { 1680, invaderXim.item.BALL_OF_SARUTA_COTTON   },
+                    {  890, invaderXim.item.BURDOCK_ROOT            },
+                    {  830, invaderXim.item.CLUMP_OF_RED_MOKO_GRASS },
+                    {  910, invaderXim.item.FLAX_FLOWER             },
+                    {  540, invaderXim.item.BAG_OF_VEGETABLE_SEEDS  },
+                    {  550, invaderXim.item.SKULL_LOCUST            },
+                    {  390, invaderXim.item.SPRIG_OF_FRESH_MUGWORT  },
+                    {  350, invaderXim.item.KING_LOCUST             },
+                    {  280, invaderXim.item.BAG_OF_HERB_SEEDS       },
+                    {  370, invaderXim.item.BAG_OF_GRAIN_SEEDS      },
                 },
 
                 points =
@@ -160,25 +160,25 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.WEST_SARUTABARUTA] =
+            [invaderXim.zone.WEST_SARUTABARUTA] =
             {
                 drops =
                 {
-                    { 1680, xi.item.CLUMP_OF_MOKO_GRASS             },
-                    { 1290, xi.item.BALL_OF_SARUTA_COTTON           },
-                    { 1180, xi.item.SPRIG_OF_FRESH_MARJORAM         },
-                    { 1090, xi.item.CLUMP_OF_RED_MOKO_GRASS         },
-                    {  920, xi.item.FLAX_FLOWER                     },
-                    {  880, xi.item.SPRIG_OF_DYERS_WOAD             },
-                    {  670, xi.item.BUNCH_OF_GYSAHL_GREENS          },
-                    {  650, xi.item.CLUMP_OF_WINDURSTIAN_TEA_LEAVES },
-                    {  480, xi.item.SKULL_LOCUST                    },
-                    {  360, xi.item.WIJNRUIT                        },
-                    {  320, xi.item.BAG_OF_VEGETABLE_SEEDS          },
-                    {  210, xi.item.BAG_OF_HERB_SEEDS               },
-                    {  190, xi.item.BAG_OF_GRAIN_SEEDS              },
-                    {  160, xi.item.PIECE_OF_CRAWLER_COCOON         },
-                    {   10, xi.item.SPRIG_OF_FRESH_MUGWORT          },
+                    { 1680, invaderXim.item.CLUMP_OF_MOKO_GRASS             },
+                    { 1290, invaderXim.item.BALL_OF_SARUTA_COTTON           },
+                    { 1180, invaderXim.item.SPRIG_OF_FRESH_MARJORAM         },
+                    { 1090, invaderXim.item.CLUMP_OF_RED_MOKO_GRASS         },
+                    {  920, invaderXim.item.FLAX_FLOWER                     },
+                    {  880, invaderXim.item.SPRIG_OF_DYERS_WOAD             },
+                    {  670, invaderXim.item.BUNCH_OF_GYSAHL_GREENS          },
+                    {  650, invaderXim.item.CLUMP_OF_WINDURSTIAN_TEA_LEAVES },
+                    {  480, invaderXim.item.SKULL_LOCUST                    },
+                    {  360, invaderXim.item.WIJNRUIT                        },
+                    {  320, invaderXim.item.BAG_OF_VEGETABLE_SEEDS          },
+                    {  210, invaderXim.item.BAG_OF_HERB_SEEDS               },
+                    {  190, invaderXim.item.BAG_OF_GRAIN_SEEDS              },
+                    {  160, invaderXim.item.PIECE_OF_CRAWLER_COCOON         },
+                    {   10, invaderXim.item.SPRIG_OF_FRESH_MUGWORT          },
                 },
 
                 points =
@@ -192,17 +192,17 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.YUHTUNGA_JUNGLE] =
+            [invaderXim.zone.YUHTUNGA_JUNGLE] =
             {
                 drops =
                 {
-                    { 4000, xi.item.WOOZYSHROOM     },
-                    { 2000, xi.item.DANCESHROOM     },
-                    { 2000, xi.item.SLEEPSHROOM     },
-                    {  700, xi.item.SCREAM_FUNGUS   },
-                    {  700, xi.item.PUFFBALL        },
-                    {  300, xi.item.KING_TRUFFLE    },
-                    {  300, xi.item.MUSHROOM_LOCUST },
+                    { 4000, invaderXim.item.WOOZYSHROOM     },
+                    { 2000, invaderXim.item.DANCESHROOM     },
+                    { 2000, invaderXim.item.SLEEPSHROOM     },
+                    {  700, invaderXim.item.SCREAM_FUNGUS   },
+                    {  700, invaderXim.item.PUFFBALL        },
+                    {  300, invaderXim.item.KING_TRUFFLE    },
+                    {  300, invaderXim.item.MUSHROOM_LOCUST },
                 },
 
                 points =
@@ -215,17 +215,17 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.YHOATOR_JUNGLE] =
+            [invaderXim.zone.YHOATOR_JUNGLE] =
             {
                 drops =
                 {
-                    { 4000, xi.item.WOOZYSHROOM     },
-                    { 2000, xi.item.DANCESHROOM     },
-                    { 2000, xi.item.SLEEPSHROOM     },
-                    {  700, xi.item.SCREAM_FUNGUS   },
-                    {  700, xi.item.CORAL_FUNGUS    },
-                    {  300, xi.item.REISHI_MUSHROOM },
-                    {  300, xi.item.MUSHROOM_LOCUST },
+                    { 4000, invaderXim.item.WOOZYSHROOM     },
+                    { 2000, invaderXim.item.DANCESHROOM     },
+                    { 2000, invaderXim.item.SLEEPSHROOM     },
+                    {  700, invaderXim.item.SCREAM_FUNGUS   },
+                    {  700, invaderXim.item.CORAL_FUNGUS    },
+                    {  300, invaderXim.item.REISHI_MUSHROOM },
+                    {  300, invaderXim.item.MUSHROOM_LOCUST },
                 },
 
                 points =
@@ -237,25 +237,25 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.GIDDEUS] =
+            [invaderXim.zone.GIDDEUS] =
             {
                 drops =
                 {
-                    { 1500, xi.item.CLUMP_OF_RED_MOKO_GRASS         },
-                    { 1430, xi.item.SPRIG_OF_DYERS_WOAD             },
-                    { 1430, xi.item.FLAX_FLOWER                     },
-                    { 1400, xi.item.BALL_OF_SARUTA_COTTON           },
-                    { 1210, xi.item.SPRIG_OF_FRESH_MARJORAM         },
-                    { 1030, xi.item.CLUMP_OF_MOKO_GRASS             },
-                    {  570, xi.item.CLUMP_OF_WINDURSTIAN_TEA_LEAVES },
-                    {  520, xi.item.BUNCH_OF_GYSAHL_GREENS          },
-                    {  440, xi.item.KING_LOCUST                     },
-                    {  370, xi.item.WIJNRUIT                        },
-                    {  230, xi.item.BAG_OF_GRAIN_SEEDS              },
-                    {  210, xi.item.BAG_OF_HERB_SEEDS               },
-                    {  200, xi.item.SPRIG_OF_FRESH_MUGWORT          },
-                    {  190, xi.item.PIECE_OF_CRAWLER_COCOON         },
-                    {  160, xi.item.BAG_OF_VEGETABLE_SEEDS          },
+                    { 1500, invaderXim.item.CLUMP_OF_RED_MOKO_GRASS         },
+                    { 1430, invaderXim.item.SPRIG_OF_DYERS_WOAD             },
+                    { 1430, invaderXim.item.FLAX_FLOWER                     },
+                    { 1400, invaderXim.item.BALL_OF_SARUTA_COTTON           },
+                    { 1210, invaderXim.item.SPRIG_OF_FRESH_MARJORAM         },
+                    { 1030, invaderXim.item.CLUMP_OF_MOKO_GRASS             },
+                    {  570, invaderXim.item.CLUMP_OF_WINDURSTIAN_TEA_LEAVES },
+                    {  520, invaderXim.item.BUNCH_OF_GYSAHL_GREENS          },
+                    {  440, invaderXim.item.KING_LOCUST                     },
+                    {  370, invaderXim.item.WIJNRUIT                        },
+                    {  230, invaderXim.item.BAG_OF_GRAIN_SEEDS              },
+                    {  210, invaderXim.item.BAG_OF_HERB_SEEDS               },
+                    {  200, invaderXim.item.SPRIG_OF_FRESH_MUGWORT          },
+                    {  190, invaderXim.item.PIECE_OF_CRAWLER_COCOON         },
+                    {  160, invaderXim.item.BAG_OF_VEGETABLE_SEEDS          },
                 },
 
                 points =
@@ -295,18 +295,18 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.ABYSSEA_GRAUBERG] =
+            [invaderXim.zone.ABYSSEA_GRAUBERG] =
             {
                 drops =
                 {
-                    {  970, xi.item.BAG_OF_HERB_SEEDS        },
-                    { 1330, xi.item.CLUMP_OF_MOKO_GRASS      },
-                    {  880, xi.item.LESSER_CHIGOE            },
-                    {  880, xi.item.BAG_OF_GRAIN_SEEDS       },
-                    { 1180, xi.item.CLUMP_OF_RED_MOKO_GRASS  },
-                    { 1000, xi.item.BURDOCK_ROOT             },
-                    {  790, xi.item.BAG_OF_VEGETABLE_SEEDS   },
-                    {  940, xi.item.BUNCH_OF_GRAUBERG_GREENS },
+                    {  970, invaderXim.item.BAG_OF_HERB_SEEDS        },
+                    { 1330, invaderXim.item.CLUMP_OF_MOKO_GRASS      },
+                    {  880, invaderXim.item.LESSER_CHIGOE            },
+                    {  880, invaderXim.item.BAG_OF_GRAIN_SEEDS       },
+                    { 1180, invaderXim.item.CLUMP_OF_RED_MOKO_GRASS  },
+                    { 1000, invaderXim.item.BURDOCK_ROOT             },
+                    {  790, invaderXim.item.BAG_OF_VEGETABLE_SEEDS   },
+                    {  940, invaderXim.item.BUNCH_OF_GRAUBERG_GREENS },
                 },
 
                 points =
@@ -320,7 +320,7 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.YAHSE_HUNTING_GROUNDS] =
+            [invaderXim.zone.YAHSE_HUNTING_GROUNDS] =
             {
                 drops =
                 {
@@ -336,32 +336,32 @@ local helmInfo =
 
     -----------------------------------
 
-    [xi.helmType.EXCAVATION] =
+    [invaderXim.helmType.EXCAVATION] =
     {
         id           = 'EXCAVATION',
-        animation    = xi.emote.EXCAVATION,
+        animation    = invaderXim.emote.EXCAVATION,
         mod          = nil,
-        settingRate  = xi.settings.main.EXCAVATION_RATE,
-        settingBreak = xi.settings.main.EXCAVATION_BREAK_CHANCE,
+        settingRate  = invaderXim.settings.main.EXCAVATION_RATE,
+        settingBreak = invaderXim.settings.main.EXCAVATION_BREAK_CHANCE,
         message      = 'MINING_IS_POSSIBLE_HERE',
-        tool         = xi.item.PICKAXE,
+        tool         = invaderXim.item.PICKAXE,
 
         zone =
         {
-            [xi.zone.ATTOHWA_CHASM] =
+            [invaderXim.zone.ATTOHWA_CHASM] =
             {
                 drops =
                 {
-                    { 2220, xi.item.BONE_CHIP                   },
-                    { 2220, xi.item.CHICKEN_BONE                },
-                    { 1220, xi.item.BAT_FANG                    },
-                    { 1220, xi.item.LITTLE_WORM                 },
-                    {  720, xi.item.SCORPION_CLAW               },
-                    {  720, xi.item.SCORPION_SHELL              },
-                    {  420, xi.item.ANTLION_JAW                 },
-                    {  420, xi.item.BAG_OF_CACTUS_STEMS         },
-                    {  420, xi.item.HIGH_QUALITY_SCORPION_SHELL },
-                    {  420, xi.item.RED_ROCK                    },
+                    { 2220, invaderXim.item.BONE_CHIP                   },
+                    { 2220, invaderXim.item.CHICKEN_BONE                },
+                    { 1220, invaderXim.item.BAT_FANG                    },
+                    { 1220, invaderXim.item.LITTLE_WORM                 },
+                    {  720, invaderXim.item.SCORPION_CLAW               },
+                    {  720, invaderXim.item.SCORPION_SHELL              },
+                    {  420, invaderXim.item.ANTLION_JAW                 },
+                    {  420, invaderXim.item.BAG_OF_CACTUS_STEMS         },
+                    {  420, invaderXim.item.HIGH_QUALITY_SCORPION_SHELL },
+                    {  420, invaderXim.item.RED_ROCK                    },
                 },
 
                 points =
@@ -374,19 +374,19 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.TAHRONGI_CANYON] =
+            [invaderXim.zone.TAHRONGI_CANYON] =
             {
                 drops =
                 {
-                    { 2690, xi.item.BONE_CHIP      },
-                    { 1830, xi.item.CHICKEN_BONE   },
-                    { 1300, xi.item.BAT_FANG       },
-                    { 1440, xi.item.GIANT_FEMUR    },
-                    { 1250, xi.item.LITTLE_WORM    },
-                    {   50, xi.item.SCORPION_CLAW  },
-                    {  290, xi.item.SCORPION_SHELL },
-                    {  240, xi.item.TURTLE_SHELL   },
-                    {  190, xi.item.SACK_OF_SILICA },
+                    { 2690, invaderXim.item.BONE_CHIP      },
+                    { 1830, invaderXim.item.CHICKEN_BONE   },
+                    { 1300, invaderXim.item.BAT_FANG       },
+                    { 1440, invaderXim.item.GIANT_FEMUR    },
+                    { 1250, invaderXim.item.LITTLE_WORM    },
+                    {   50, invaderXim.item.SCORPION_CLAW  },
+                    {  290, invaderXim.item.SCORPION_SHELL },
+                    {  240, invaderXim.item.TURTLE_SHELL   },
+                    {  190, invaderXim.item.SACK_OF_SILICA },
                 },
 
                 points =
@@ -410,21 +410,21 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.KORROLOKA_TUNNEL] =
+            [invaderXim.zone.KORROLOKA_TUNNEL] =
             {
                 drops =
                 {
-                    { 2130, xi.item.CHUNK_OF_ROCK_SALT     },
-                    { 1700, xi.item.SEASHELL               },
-                    {  430, xi.item.CRAB_SHELL             },
-                    { 1490, xi.item.HANDFUL_OF_FISH_SCALES },
-                    { 2130, xi.item.LUGWORM                },
-                    { 1060, xi.item.SHELL_BUG              },
-                    {  100, xi.item.CORAL_FRAGMENT         },
-                    {  100, xi.item.BAG_OF_VEGETABLE_SEEDS },
-                    {  430, xi.item.TURTLE_SHELL           },
-                    {  100, xi.item.BAG_OF_GRAIN_SEEDS     },
-                    {  640, xi.item.HELMET_MOLE            },
+                    { 2130, invaderXim.item.CHUNK_OF_ROCK_SALT     },
+                    { 1700, invaderXim.item.SEASHELL               },
+                    {  430, invaderXim.item.CRAB_SHELL             },
+                    { 1490, invaderXim.item.HANDFUL_OF_FISH_SCALES },
+                    { 2130, invaderXim.item.LUGWORM                },
+                    { 1060, invaderXim.item.SHELL_BUG              },
+                    {  100, invaderXim.item.CORAL_FRAGMENT         },
+                    {  100, invaderXim.item.BAG_OF_VEGETABLE_SEEDS },
+                    {  430, invaderXim.item.TURTLE_SHELL           },
+                    {  100, invaderXim.item.BAG_OF_GRAIN_SEEDS     },
+                    {  640, invaderXim.item.HELMET_MOLE            },
                 },
 
                 points =
@@ -441,19 +441,19 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.MAZE_OF_SHAKHRAMI] =
+            [invaderXim.zone.MAZE_OF_SHAKHRAMI] =
             {
                 drops =
                 {
-                    { 2560, xi.item.BONE_CHIP      },
-                    { 2560, xi.item.BAT_FANG       },
-                    { 2330, xi.item.LITTLE_WORM    },
-                    {  930, xi.item.GIANT_FEMUR    },
-                    {  700, xi.item.SCORPION_CLAW  },
-                    {  230, xi.item.SCORPION_SHELL },
-                    {  230, xi.item.PETRIFIED_LOG  },
-                    {  100, xi.item.RED_ROCK       },
-                    {  470, xi.item.SACK_OF_SILICA },
+                    { 2560, invaderXim.item.BONE_CHIP      },
+                    { 2560, invaderXim.item.BAT_FANG       },
+                    { 2330, invaderXim.item.LITTLE_WORM    },
+                    {  930, invaderXim.item.GIANT_FEMUR    },
+                    {  700, invaderXim.item.SCORPION_CLAW  },
+                    {  230, invaderXim.item.SCORPION_SHELL },
+                    {  230, invaderXim.item.PETRIFIED_LOG  },
+                    {  100, invaderXim.item.RED_ROCK       },
+                    {  470, invaderXim.item.SACK_OF_SILICA },
                 },
 
                 points =
@@ -478,30 +478,30 @@ local helmInfo =
 
     -----------------------------------
 
-    [xi.helmType.LOGGING] =
+    [invaderXim.helmType.LOGGING] =
     {
         id = 'LOGGING',
-        animation    = xi.emote.LOGGING,
-        mod          = xi.mod.LOGGING_RESULT,
-        settingRate  = xi.settings.main.LOGGING_RATE,
-        settingBreak = xi.settings.main.LOGGING_BREAK_CHANCE,
+        animation    = invaderXim.emote.LOGGING,
+        mod          = invaderXim.mod.LOGGING_RESULT,
+        settingRate  = invaderXim.settings.main.LOGGING_RATE,
+        settingBreak = invaderXim.settings.main.LOGGING_BREAK_CHANCE,
         message      = 'LOGGING_IS_POSSIBLE_HERE',
-        tool         = xi.item.HATCHET,
+        tool         = invaderXim.item.HATCHET,
 
         zone =
         {
-            [xi.zone.CARPENTERS_LANDING] =
+            [invaderXim.zone.CARPENTERS_LANDING] =
             {
                 drops =
                 {
-                    { 1750, xi.item.WALNUT_LOG    },
-                    { 1750, xi.item.WILLOW_LOG    },
-                    { 1000, xi.item.YEW_LOG       },
-                    {  750, xi.item.ARROWWOOD_LOG },
-                    {  500, xi.item.ASH_LOG       },
-                    {  500, xi.item.DRYAD_ROOT    },
-                    {  250, xi.item.ACORN         },
-                    {  100, xi.item.OAK_LOG       },
+                    { 1750, invaderXim.item.WALNUT_LOG    },
+                    { 1750, invaderXim.item.WILLOW_LOG    },
+                    { 1000, invaderXim.item.YEW_LOG       },
+                    {  750, invaderXim.item.ARROWWOOD_LOG },
+                    {  500, invaderXim.item.ASH_LOG       },
+                    {  500, invaderXim.item.DRYAD_ROOT    },
+                    {  250, invaderXim.item.ACORN         },
+                    {  100, invaderXim.item.OAK_LOG       },
                 },
 
                 points =
@@ -512,18 +512,18 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.LUFAISE_MEADOWS] =
+            [invaderXim.zone.LUFAISE_MEADOWS] =
             {
                 drops =
                 {
-                    { 3330, xi.item.ARROWWOOD_LOG },
-                    { 1750, xi.item.ASH_LOG       },
-                    { 2000, xi.item.MAPLE_LOG     },
-                    { 1420, xi.item.FAERIE_APPLE  },
-                    {  830, xi.item.WALNUT_LOG    },
-                    {  170, xi.item.ACORN         },
-                    {  330, xi.item.ELM_LOG       },
-                    {  170, xi.item.OAK_LOG       },
+                    { 3330, invaderXim.item.ARROWWOOD_LOG },
+                    { 1750, invaderXim.item.ASH_LOG       },
+                    { 2000, invaderXim.item.MAPLE_LOG     },
+                    { 1420, invaderXim.item.FAERIE_APPLE  },
+                    {  830, invaderXim.item.WALNUT_LOG    },
+                    {  170, invaderXim.item.ACORN         },
+                    {  330, invaderXim.item.ELM_LOG       },
+                    {  170, invaderXim.item.OAK_LOG       },
                 },
 
                 points =
@@ -535,18 +535,18 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.MISAREAUX_COAST] =
+            [invaderXim.zone.MISAREAUX_COAST] =
             {
                 drops =
                 {
-                    { 2220, xi.item.ARROWWOOD_LOG },
-                    { 2220, xi.item.FAERIE_APPLE  },
-                    { 2220, xi.item.ASH_LOG       },
-                    { 2220, xi.item.MAPLE_LOG     },
-                    {  100, xi.item.WALNUT_LOG    },
-                    {  100, xi.item.ACORN         },
-                    { 1110, xi.item.ELM_LOG       },
-                    {  100, xi.item.OAK_LOG       },
+                    { 2220, invaderXim.item.ARROWWOOD_LOG },
+                    { 2220, invaderXim.item.FAERIE_APPLE  },
+                    { 2220, invaderXim.item.ASH_LOG       },
+                    { 2220, invaderXim.item.MAPLE_LOG     },
+                    {  100, invaderXim.item.WALNUT_LOG    },
+                    {  100, invaderXim.item.ACORN         },
+                    { 1110, invaderXim.item.ELM_LOG       },
+                    {  100, invaderXim.item.OAK_LOG       },
                 },
 
                 points =
@@ -558,20 +558,20 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.MAMOOK] =
+            [invaderXim.zone.MAMOOK] =
             {
                 drops =
                 {
-                    { 1070, xi.item.ARROWWOOD_LOG        },
-                    { 1070, xi.item.DOGWOOD_LOG          },
-                    { 2300, xi.item.HANDFUL_OF_PINE_NUTS },
-                    { 1070, xi.item.HANDFUL_OF_ALMONDS   },
-                    {  500, xi.item.CHESTNUT_LOG         },
-                    { 2300, xi.item.DATE                 },
-                    {  500, xi.item.EBONY_LOG            },
-                    {  500, xi.item.LAUAN_LOG            },
-                    {  490, xi.item.ROSEWOOD_LOG         },
-                    {  200, xi.item.BLOODWOOD_LOG        },
+                    { 1070, invaderXim.item.ARROWWOOD_LOG        },
+                    { 1070, invaderXim.item.DOGWOOD_LOG          },
+                    { 2300, invaderXim.item.HANDFUL_OF_PINE_NUTS },
+                    { 1070, invaderXim.item.HANDFUL_OF_ALMONDS   },
+                    {  500, invaderXim.item.CHESTNUT_LOG         },
+                    { 2300, invaderXim.item.DATE                 },
+                    {  500, invaderXim.item.EBONY_LOG            },
+                    {  500, invaderXim.item.LAUAN_LOG            },
+                    {  490, invaderXim.item.ROSEWOOD_LOG         },
+                    {  200, invaderXim.item.BLOODWOOD_LOG        },
                 },
 
                 points =
@@ -584,20 +584,20 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.CAEDARVA_MIRE] =
+            [invaderXim.zone.CAEDARVA_MIRE] =
             {
                 drops =
                 {
-                    { 2200, xi.item.DOGWOOD_LOG          },
-                    { 1520, xi.item.HANDFUL_OF_ALMONDS   },
-                    { 1260, xi.item.ARROWWOOD_LOG        },
-                    {  470, xi.item.CHESTNUT_LOG         },
-                    {  680, xi.item.DATE                 },
-                    {  940, xi.item.LAUAN_LOG            },
-                    { 1150, xi.item.HANDFUL_OF_PINE_NUTS },
-                    {  680, xi.item.ROSEWOOD_LOG         },
-                    {  260, xi.item.BLOODWOOD_LOG        },
-                    {  310, xi.item.EBONY_LOG            },
+                    { 2200, invaderXim.item.DOGWOOD_LOG          },
+                    { 1520, invaderXim.item.HANDFUL_OF_ALMONDS   },
+                    { 1260, invaderXim.item.ARROWWOOD_LOG        },
+                    {  470, invaderXim.item.CHESTNUT_LOG         },
+                    {  680, invaderXim.item.DATE                 },
+                    {  940, invaderXim.item.LAUAN_LOG            },
+                    { 1150, invaderXim.item.HANDFUL_OF_PINE_NUTS },
+                    {  680, invaderXim.item.ROSEWOOD_LOG         },
+                    {  260, invaderXim.item.BLOODWOOD_LOG        },
+                    {  310, invaderXim.item.EBONY_LOG            },
                 },
 
                 points =
@@ -610,21 +610,21 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.EAST_RONFAURE_S] =
+            [invaderXim.zone.EAST_RONFAURE_S] =
             {
                 drops =
                 {
-                    { 1890, xi.item.ARROWWOOD_LOG      },
-                    { 1400, xi.item.ASH_LOG            },
-                    { 1430, xi.item.MAPLE_LOG          },
-                    { 1270, xi.item.WALNUT             },
-                    {  850, xi.item.CHESTNUT_LOG       },
-                    { 1000, xi.item.RONFAURE_CHESTNUT  },
-                    {  760, xi.item.WALNUT_LOG         },
-                    {  490, xi.item.BAG_OF_FRUIT_SEEDS },
-                    {   40, xi.item.JACARANDA_LOG      },
-                    {  400, xi.item.OAK_LOG            },
-                    {  290, xi.item.TEAK_LOG           },
+                    { 1890, invaderXim.item.ARROWWOOD_LOG      },
+                    { 1400, invaderXim.item.ASH_LOG            },
+                    { 1430, invaderXim.item.MAPLE_LOG          },
+                    { 1270, invaderXim.item.WALNUT             },
+                    {  850, invaderXim.item.CHESTNUT_LOG       },
+                    { 1000, invaderXim.item.RONFAURE_CHESTNUT  },
+                    {  760, invaderXim.item.WALNUT_LOG         },
+                    {  490, invaderXim.item.BAG_OF_FRUIT_SEEDS },
+                    {   40, invaderXim.item.JACARANDA_LOG      },
+                    {  400, invaderXim.item.OAK_LOG            },
+                    {  290, invaderXim.item.TEAK_LOG           },
                 },
 
                 points =
@@ -638,19 +638,19 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.JUGNER_FOREST_S] =
+            [invaderXim.zone.JUGNER_FOREST_S] =
             {
                 drops =
                 {
-                    { 2000, xi.item.WALNUT        },
-                    { 1540, xi.item.WALNUT_LOG    },
-                    { 1140, xi.item.ARROWWOOD_LOG },
-                    { 1090, xi.item.ASH_LOG       },
-                    {  860, xi.item.OAK_LOG       },
-                    {  860, xi.item.WILLOW_LOG    },
-                    {  510, xi.item.ACORN         },
-                    {  170, xi.item.JACARANDA_LOG },
-                    {  230, xi.item.TEAK_LOG      },
+                    { 2000, invaderXim.item.WALNUT        },
+                    { 1540, invaderXim.item.WALNUT_LOG    },
+                    { 1140, invaderXim.item.ARROWWOOD_LOG },
+                    { 1090, invaderXim.item.ASH_LOG       },
+                    {  860, invaderXim.item.OAK_LOG       },
+                    {  860, invaderXim.item.WILLOW_LOG    },
+                    {  510, invaderXim.item.ACORN         },
+                    {  170, invaderXim.item.JACARANDA_LOG },
+                    {  230, invaderXim.item.TEAK_LOG      },
                 },
 
                 points =
@@ -664,17 +664,17 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.FORT_KARUGO_NARUGO_S] =
+            [invaderXim.zone.FORT_KARUGO_NARUGO_S] =
             {
                 drops =
                 {
-                    { 2910, xi.item.FLASK_OF_HOLY_WATER },
-                    { 2230, xi.item.PAIR_OF_NOPALES     },
-                    { 1650, xi.item.DRAGON_FRUIT        },
-                    { 1490, xi.item.BIRD_FEATHER        },
-                    { 1250, xi.item.BIRD_EGG            },
-                    {  170, xi.item.BAG_OF_CACTUS_STEMS },
-                    {   50, xi.item.OPTICAL_NEEDLE      },
+                    { 2910, invaderXim.item.FLASK_OF_HOLY_WATER },
+                    { 2230, invaderXim.item.PAIR_OF_NOPALES     },
+                    { 1650, invaderXim.item.DRAGON_FRUIT        },
+                    { 1490, invaderXim.item.BIRD_FEATHER        },
+                    { 1250, invaderXim.item.BIRD_EGG            },
+                    {  170, invaderXim.item.BAG_OF_CACTUS_STEMS },
+                    {   50, invaderXim.item.OPTICAL_NEEDLE      },
                 },
 
                 points =
@@ -688,17 +688,17 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.EAST_RONFAURE] =
+            [invaderXim.zone.EAST_RONFAURE] =
             {
                 drops =
                 {
-                    { 2610, xi.item.ARROWWOOD_LOG      },
-                    { 2030, xi.item.ASH_LOG            },
-                    { 2570, xi.item.MAPLE_LOG          },
-                    {  540, xi.item.CHESTNUT_LOG       },
-                    {  580, xi.item.BAG_OF_FRUIT_SEEDS },
-                    {  910, xi.item.YEW_LOG            },
-                    {  410, xi.item.RONFAURE_CHESTNUT  },
+                    { 2610, invaderXim.item.ARROWWOOD_LOG      },
+                    { 2030, invaderXim.item.ASH_LOG            },
+                    { 2570, invaderXim.item.MAPLE_LOG          },
+                    {  540, invaderXim.item.CHESTNUT_LOG       },
+                    {  580, invaderXim.item.BAG_OF_FRUIT_SEEDS },
+                    {  910, invaderXim.item.YEW_LOG            },
+                    {  410, invaderXim.item.RONFAURE_CHESTNUT  },
                 },
 
                 points =
@@ -731,18 +731,18 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.JUGNER_FOREST] =
+            [invaderXim.zone.JUGNER_FOREST] =
             {
                 drops =
                 {
-                    { 2040, xi.item.WALNUT_LOG    },
-                    { 1850, xi.item.WILLOW_LOG    },
-                    { 1790, xi.item.YEW_LOG       },
-                    { 1460, xi.item.ARROWWOOD_LOG },
-                    { 1430, xi.item.ASH_LOG       },
-                    {  580, xi.item.ACORN         },
-                    {  550, xi.item.DRYAD_ROOT    },
-                    {   60, xi.item.OAK_LOG       },
+                    { 2040, invaderXim.item.WALNUT_LOG    },
+                    { 1850, invaderXim.item.WILLOW_LOG    },
+                    { 1790, invaderXim.item.YEW_LOG       },
+                    { 1460, invaderXim.item.ARROWWOOD_LOG },
+                    { 1430, invaderXim.item.ASH_LOG       },
+                    {  580, invaderXim.item.ACORN         },
+                    {  550, invaderXim.item.DRYAD_ROOT    },
+                    {   60, invaderXim.item.OAK_LOG       },
                 },
 
                 points =
@@ -776,20 +776,20 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.BUBURIMU_PENINSULA] =
+            [invaderXim.zone.BUBURIMU_PENINSULA] =
             {
                 drops =
                 {
-                    { 2410, xi.item.LAUAN_LOG                },
-                    { 1980, xi.item.ARROWWOOD_LOG            },
-                    { 1550, xi.item.YAGUDO_CHERRY            },
-                    { 1030, xi.item.BUNCH_OF_BUBURIMU_GRAPES },
-                    {  780, xi.item.DRYAD_ROOT               },
-                    {  520, xi.item.BAG_OF_FRUIT_SEEDS       },
-                    {  950, xi.item.HOLLY_LOG                },
-                    {  340, xi.item.EBONY_LOG                },
-                    {  170, xi.item.MAHOGANY_LOG             },
-                    {  260, xi.item.ROSEWOOD_LOG             },
+                    { 2410, invaderXim.item.LAUAN_LOG                },
+                    { 1980, invaderXim.item.ARROWWOOD_LOG            },
+                    { 1550, invaderXim.item.YAGUDO_CHERRY            },
+                    { 1030, invaderXim.item.BUNCH_OF_BUBURIMU_GRAPES },
+                    {  780, invaderXim.item.DRYAD_ROOT               },
+                    {  520, invaderXim.item.BAG_OF_FRUIT_SEEDS       },
+                    {  950, invaderXim.item.HOLLY_LOG                },
+                    {  340, invaderXim.item.EBONY_LOG                },
+                    {  170, invaderXim.item.MAHOGANY_LOG             },
+                    {  260, invaderXim.item.ROSEWOOD_LOG             },
                 },
 
                 points =
@@ -829,21 +829,21 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.YUHTUNGA_JUNGLE] =
+            [invaderXim.zone.YUHTUNGA_JUNGLE] =
             {
                 drops =
                 {
-                    { 1900, xi.item.ARROWWOOD_LOG          },
-                    { 1430, xi.item.PIECE_OF_RATTAN_LUMBER },
-                    { 1190, xi.item.LAUAN_LOG              },
-                    { 1190, xi.item.REVIVAL_TREE_ROOT      },
-                    {  950, xi.item.AQUILARIA_LOG          },
-                    {  480, xi.item.BEEHIVE_CHIP           },
-                    {  480, xi.item.BAG_OF_TREE_CUTTINGS   },
-                    {  100, xi.item.DRAGON_FRUIT           },
-                    {  240, xi.item.EBONY_LOG              },
-                    {  100, xi.item.HOLLY_LOG              },
-                    {  100, xi.item.ROSEWOOD_LOG           },
+                    { 1900, invaderXim.item.ARROWWOOD_LOG          },
+                    { 1430, invaderXim.item.PIECE_OF_RATTAN_LUMBER },
+                    { 1190, invaderXim.item.LAUAN_LOG              },
+                    { 1190, invaderXim.item.REVIVAL_TREE_ROOT      },
+                    {  950, invaderXim.item.AQUILARIA_LOG          },
+                    {  480, invaderXim.item.BEEHIVE_CHIP           },
+                    {  480, invaderXim.item.BAG_OF_TREE_CUTTINGS   },
+                    {  100, invaderXim.item.DRAGON_FRUIT           },
+                    {  240, invaderXim.item.EBONY_LOG              },
+                    {  100, invaderXim.item.HOLLY_LOG              },
+                    {  100, invaderXim.item.ROSEWOOD_LOG           },
                 },
 
                 points =
@@ -856,22 +856,22 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.YHOATOR_JUNGLE] =
+            [invaderXim.zone.YHOATOR_JUNGLE] =
             {
                 drops =
                 {
-                    { 2220, xi.item.ARROWWOOD_LOG          },
-                    { 2220, xi.item.PIECE_OF_RATTAN_LUMBER },
-                    { 1130, xi.item.LAUAN_LOG              },
-                    {  780, xi.item.BEEHIVE_CHIP           },
-                    {  650, xi.item.DRYAD_ROOT             },
-                    {  650, xi.item.BUTTERPEAR             },
-                    {  610, xi.item.REVIVAL_TREE_ROOT      },
-                    {  610, xi.item.AQUILARIA_LOG          },
-                    {  570, xi.item.KAPOR_LOG              },
-                    {  350, xi.item.MAHOGANY_LOG           },
-                    {  170, xi.item.EBONY_LOG              },
-                    {   90, xi.item.BAG_OF_TREE_CUTTINGS   },
+                    { 2220, invaderXim.item.ARROWWOOD_LOG          },
+                    { 2220, invaderXim.item.PIECE_OF_RATTAN_LUMBER },
+                    { 1130, invaderXim.item.LAUAN_LOG              },
+                    {  780, invaderXim.item.BEEHIVE_CHIP           },
+                    {  650, invaderXim.item.DRYAD_ROOT             },
+                    {  650, invaderXim.item.BUTTERPEAR             },
+                    {  610, invaderXim.item.REVIVAL_TREE_ROOT      },
+                    {  610, invaderXim.item.AQUILARIA_LOG          },
+                    {  570, invaderXim.item.KAPOR_LOG              },
+                    {  350, invaderXim.item.MAHOGANY_LOG           },
+                    {  170, invaderXim.item.EBONY_LOG              },
+                    {   90, invaderXim.item.BAG_OF_TREE_CUTTINGS   },
                 },
 
                 points =
@@ -899,16 +899,16 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.GHELSBA_OUTPOST] =
+            [invaderXim.zone.GHEIXIMA_OUTPOST] =
             {
                 drops =
                 {
-                    { 2950, xi.item.ARROWWOOD_LOG },
-                    { 2230, xi.item.ASH_LOG       },
-                    { 2120, xi.item.MAPLE_LOG     },
-                    { 1000, xi.item.WILLOW_LOG    },
-                    {  620, xi.item.ELM_LOG       },
-                    {  650, xi.item.HOLLY_LOG     },
+                    { 2950, invaderXim.item.ARROWWOOD_LOG },
+                    { 2230, invaderXim.item.ASH_LOG       },
+                    { 2120, invaderXim.item.MAPLE_LOG     },
+                    { 1000, invaderXim.item.WILLOW_LOG    },
+                    {  620, invaderXim.item.ELM_LOG       },
+                    {  650, invaderXim.item.HOLLY_LOG     },
                 },
 
                 points =
@@ -933,37 +933,37 @@ local helmInfo =
 
     -----------------------------------
 
-    [xi.helmType.MINING] =
+    [invaderXim.helmType.MINING] =
     {
         id           = 'MINING',
-        animation    = xi.emote.EXCAVATION,
-        mod          = xi.mod.MINING_RESULT,
-        settingRate  = xi.settings.main.MINING_RATE,
-        settingBreak = xi.settings.main.MINING_BREAK_CHANCE,
+        animation    = invaderXim.emote.EXCAVATION,
+        mod          = invaderXim.mod.MINING_RESULT,
+        settingRate  = invaderXim.settings.main.MINING_RATE,
+        settingBreak = invaderXim.settings.main.MINING_BREAK_CHANCE,
         message      = 'MINING_IS_POSSIBLE_HERE',
-        tool         = xi.item.PICKAXE,
+        tool         = invaderXim.item.PICKAXE,
 
         zone =
         {
-            [xi.zone.OLDTON_MOVALPOLOS] =
+            [invaderXim.zone.OLDTON_MOVALPOLOS] =
             {
                 drops =
                 {
-                    { 1150, xi.item.IGNEOUS_ROCK           },
-                    { 1130, xi.item.CHUNK_OF_ZINC_ORE      },
-                    { 1100, xi.item.CHUNK_OF_COPPER_ORE    },
-                    { 1080, xi.item.CHUNK_OF_TIN_ORE       },
-                    { 1050, xi.item.CHUNK_OF_SILVER_ORE    },
-                    {  970, xi.item.CHUNK_OF_IRON_ORE      },
-                    {  680, xi.item.SUIT_OF_MOBLIN_MAIL    },
-                    {  630, xi.item.MOBLIN_HELM            },
-                    {  600, xi.item.MOBLIN_MASK            },
-                    {  570, xi.item.GOBLIN_DIE             },
-                    {  570, xi.item.SUIT_OF_MOBLIN_ARMOR   },
-                    {   80, xi.item.CHUNK_OF_DARKSTEEL_ORE },
-                    {   80, xi.item.CHUNK_OF_MYTHRIL_ORE   },
-                    {   70, xi.item.CHUNK_OF_GOLD_ORE      },
-                    {   70, xi.item.CHUNK_OF_PLATINUM_ORE  },
+                    { 1150, invaderXim.item.IGNEOUS_ROCK           },
+                    { 1130, invaderXim.item.CHUNK_OF_ZINC_ORE      },
+                    { 1100, invaderXim.item.CHUNK_OF_COPPER_ORE    },
+                    { 1080, invaderXim.item.CHUNK_OF_TIN_ORE       },
+                    { 1050, invaderXim.item.CHUNK_OF_SILVER_ORE    },
+                    {  970, invaderXim.item.CHUNK_OF_IRON_ORE      },
+                    {  680, invaderXim.item.SUIT_OF_MOBLIN_MAIL    },
+                    {  630, invaderXim.item.MOBLIN_HELM            },
+                    {  600, invaderXim.item.MOBLIN_MASK            },
+                    {  570, invaderXim.item.GOBLIN_DIE             },
+                    {  570, invaderXim.item.SUIT_OF_MOBLIN_ARMOR   },
+                    {   80, invaderXim.item.CHUNK_OF_DARKSTEEL_ORE },
+                    {   80, invaderXim.item.CHUNK_OF_MYTHRIL_ORE   },
+                    {   70, invaderXim.item.CHUNK_OF_GOLD_ORE      },
+                    {   70, invaderXim.item.CHUNK_OF_PLATINUM_ORE  },
                 },
 
                 points =
@@ -984,22 +984,22 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.NEWTON_MOVALPOLOS] =
+            [invaderXim.zone.NEWTON_MOVALPOLOS] =
             {
                 drops =
                 {
-                    { 1660, xi.item.CHUNK_OF_COPPER_ORE    },
-                    { 1100, xi.item.CHUNK_OF_TIN_ORE       },
-                    { 1450, xi.item.CHUNK_OF_ZINC_ORE      },
-                    { 1790, xi.item.IGNEOUS_ROCK           },
-                    { 1450, xi.item.CHUNK_OF_SILVER_ORE    },
-                    {  140, xi.item.CHUNK_OF_ALUMINUM_ORE  },
-                    { 1720, xi.item.CHUNK_OF_IRON_ORE      },
-                    {   70, xi.item.CHUNK_OF_DARKSTEEL_ORE },
-                    {  210, xi.item.CHUNK_OF_MYTHRIL_ORE   },
-                    {  140, xi.item.CHUNK_OF_GOLD_ORE      },
-                    {  340, xi.item.CHUNK_OF_PLATINUM_ORE  },
-                    {   70, xi.item.RED_ROCK               },
+                    { 1660, invaderXim.item.CHUNK_OF_COPPER_ORE    },
+                    { 1100, invaderXim.item.CHUNK_OF_TIN_ORE       },
+                    { 1450, invaderXim.item.CHUNK_OF_ZINC_ORE      },
+                    { 1790, invaderXim.item.IGNEOUS_ROCK           },
+                    { 1450, invaderXim.item.CHUNK_OF_SILVER_ORE    },
+                    {  140, invaderXim.item.CHUNK_OF_ALUMINUM_ORE  },
+                    { 1720, invaderXim.item.CHUNK_OF_IRON_ORE      },
+                    {   70, invaderXim.item.CHUNK_OF_DARKSTEEL_ORE },
+                    {  210, invaderXim.item.CHUNK_OF_MYTHRIL_ORE   },
+                    {  140, invaderXim.item.CHUNK_OF_GOLD_ORE      },
+                    {  340, invaderXim.item.CHUNK_OF_PLATINUM_ORE  },
+                    {   70, invaderXim.item.RED_ROCK               },
                 },
 
                 points =
@@ -1017,24 +1017,24 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.MOUNT_ZHAYOLM] =
+            [invaderXim.zone.MOUNT_ZHAYOLM] =
             {
                 drops =
                 {
-                    { 2250, xi.item.PINCH_OF_SULFUR      },
-                    { 2990, xi.item.CHUNK_OF_IRON_ORE    },
-                    { 1590, xi.item.HANDFUL_OF_IRON_SAND },
-                    { 1540, xi.item.FLINT_STONE          },
-                    { 1340, xi.item.PINCH_OF_BOMB_ASH    },
-                    {  960, xi.item.SUIT_OF_MOBLIN_MAIL  },
-                    { 1150, xi.item.MOBLIN_HELM          },
-                    {  450, xi.item.SUIT_OF_MOBLIN_ARMOR },
-                    {  380, xi.item.TROLL_PAULDRON       },
-                    {  450, xi.item.TROLL_VAMBRACE       },
-                    {  430, xi.item.MOBLIN_MASK          },
-                    {  210, xi.item.DEMON_HORN           },
-                    {  140, xi.item.CHUNK_OF_ADAMAN_ORE  },
-                    {   30, xi.item.CHUNK_OF_KHROMA_ORE  },
+                    { 2250, invaderXim.item.PINCH_OF_SULFUR      },
+                    { 2990, invaderXim.item.CHUNK_OF_IRON_ORE    },
+                    { 1590, invaderXim.item.HANDFUL_OF_IRON_SAND },
+                    { 1540, invaderXim.item.FLINT_STONE          },
+                    { 1340, invaderXim.item.PINCH_OF_BOMB_ASH    },
+                    {  960, invaderXim.item.SUIT_OF_MOBLIN_MAIL  },
+                    { 1150, invaderXim.item.MOBLIN_HELM          },
+                    {  450, invaderXim.item.SUIT_OF_MOBLIN_ARMOR },
+                    {  380, invaderXim.item.TROLL_PAULDRON       },
+                    {  450, invaderXim.item.TROLL_VAMBRACE       },
+                    {  430, invaderXim.item.MOBLIN_MASK          },
+                    {  210, invaderXim.item.DEMON_HORN           },
+                    {  140, invaderXim.item.CHUNK_OF_ADAMAN_ORE  },
+                    {   30, invaderXim.item.CHUNK_OF_KHROMA_ORE  },
                 },
 
                 points =
@@ -1064,24 +1064,24 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.HALVUNG] =
+            [invaderXim.zone.HALVUNG] =
             {
                 drops =
                 {
-                    { 2010, xi.item.CHUNK_OF_AHT_URHGAN_BRASS },
-                    { 1000, xi.item.PINCH_OF_BOMB_ASH         },
-                    { 1720, xi.item.FLINT_STONE               },
-                    {  290, xi.item.CHUNK_OF_GOLD_ORE         },
-                    { 1440, xi.item.HANDFUL_OF_IRON_SAND      },
-                    {   50, xi.item.CHUNK_OF_LUMINIUM_ORE     },
-                    {  430, xi.item.SUIT_OF_MOBLIN_ARMOR      },
-                    {  430, xi.item.MOBLIN_HELM               },
-                    {  480, xi.item.SUIT_OF_MOBLIN_MAIL       },
-                    {  290, xi.item.MOBLIN_MASK               },
-                    {  100, xi.item.CHUNK_OF_ORICHALCUM_ORE   },
-                    { 1200, xi.item.PINCH_OF_SULFUR           },
-                    {  480, xi.item.TROLL_PAULDRON            },
-                    {  330, xi.item.TROLL_VAMBRACE            },
+                    { 2010, invaderXim.item.CHUNK_OF_AHT_URHGAN_BRASS },
+                    { 1000, invaderXim.item.PINCH_OF_BOMB_ASH         },
+                    { 1720, invaderXim.item.FLINT_STONE               },
+                    {  290, invaderXim.item.CHUNK_OF_GOLD_ORE         },
+                    { 1440, invaderXim.item.HANDFUL_OF_IRON_SAND      },
+                    {   50, invaderXim.item.CHUNK_OF_LUMINIUM_ORE     },
+                    {  430, invaderXim.item.SUIT_OF_MOBLIN_ARMOR      },
+                    {  430, invaderXim.item.MOBLIN_HELM               },
+                    {  480, invaderXim.item.SUIT_OF_MOBLIN_MAIL       },
+                    {  290, invaderXim.item.MOBLIN_MASK               },
+                    {  100, invaderXim.item.CHUNK_OF_ORICHALCUM_ORE   },
+                    { 1200, invaderXim.item.PINCH_OF_SULFUR           },
+                    {  480, invaderXim.item.TROLL_PAULDRON            },
+                    {  330, invaderXim.item.TROLL_VAMBRACE            },
                 },
 
                 points =
@@ -1109,22 +1109,22 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.NORTH_GUSTABERG_S] =
+            [invaderXim.zone.NORTH_GUSTABERG_S] =
             {
                 drops =
                 {
-                    { 1870, xi.item.CHUNK_OF_COPPER_ORE   },
-                    { 1930, xi.item.CHUNK_OF_ZINC_ORE     },
-                    { 1500, xi.item.CHUNK_OF_TIN_ORE      },
-                    { 1340, xi.item.PEBBLE                },
-                    {  860, xi.item.CHUNK_OF_SILVER_ORE   },
-                    { 1180, xi.item.CHUNK_OF_IRON_ORE     },
-                    {  750, xi.item.CHUNK_OF_MYTHRIL_ORE  },
-                    {  210, xi.item.MOBLIN_MASK           },
-                    {  110, xi.item.MOBLIN_HELM           },
-                    {  110, xi.item.SUIT_OF_MOBLIN_MAIL   },
-                    {   50, xi.item.SUIT_OF_MOBLIN_ARMOR  },
-                    {  160, xi.item.CHUNK_OF_PLATINUM_ORE },
+                    { 1870, invaderXim.item.CHUNK_OF_COPPER_ORE   },
+                    { 1930, invaderXim.item.CHUNK_OF_ZINC_ORE     },
+                    { 1500, invaderXim.item.CHUNK_OF_TIN_ORE      },
+                    { 1340, invaderXim.item.PEBBLE                },
+                    {  860, invaderXim.item.CHUNK_OF_SILVER_ORE   },
+                    { 1180, invaderXim.item.CHUNK_OF_IRON_ORE     },
+                    {  750, invaderXim.item.CHUNK_OF_MYTHRIL_ORE  },
+                    {  210, invaderXim.item.MOBLIN_MASK           },
+                    {  110, invaderXim.item.MOBLIN_HELM           },
+                    {  110, invaderXim.item.SUIT_OF_MOBLIN_MAIL   },
+                    {   50, invaderXim.item.SUIT_OF_MOBLIN_ARMOR  },
+                    {  160, invaderXim.item.CHUNK_OF_PLATINUM_ORE },
                 },
 
                 points =
@@ -1161,20 +1161,20 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.YUGHOTT_GROTTO] =
+            [invaderXim.zone.YUGHOTT_GROTTO] =
             {
                 drops =
                 {
-                    { 1460, xi.item.CHUNK_OF_COPPER_ORE    },
-                    { 1650, xi.item.CHUNK_OF_IRON_ORE      },
-                    { 1300, xi.item.CHUNK_OF_TIN_ORE       },
-                    { 1140, xi.item.PEBBLE                 },
-                    { 1320, xi.item.CHUNK_OF_ZINC_ORE      },
-                    {  840, xi.item.FLINT_STONE            },
-                    {  360, xi.item.CHUNK_OF_SILVER_ORE    },
-                    {  170, xi.item.RED_ROCK               },
-                    {  150, xi.item.CHUNK_OF_DARKSTEEL_ORE },
-                    {  110, xi.item.CHUNK_OF_GOLD_ORE      },
+                    { 1460, invaderXim.item.CHUNK_OF_COPPER_ORE    },
+                    { 1650, invaderXim.item.CHUNK_OF_IRON_ORE      },
+                    { 1300, invaderXim.item.CHUNK_OF_TIN_ORE       },
+                    { 1140, invaderXim.item.PEBBLE                 },
+                    { 1320, invaderXim.item.CHUNK_OF_ZINC_ORE      },
+                    {  840, invaderXim.item.FLINT_STONE            },
+                    {  360, invaderXim.item.CHUNK_OF_SILVER_ORE    },
+                    {  170, invaderXim.item.RED_ROCK               },
+                    {  150, invaderXim.item.CHUNK_OF_DARKSTEEL_ORE },
+                    {  110, invaderXim.item.CHUNK_OF_GOLD_ORE      },
                 },
 
                 points =
@@ -1216,18 +1216,18 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.PALBOROUGH_MINES] =
+            [invaderXim.zone.PALBOROUGH_MINES] =
             {
                 drops =
                 {
-                    { 1130, xi.item.CHUNK_OF_ZINC_ORE     },
-                    {  940, xi.item.CHUNK_OF_IRON_ORE     },
-                    { 1040, xi.item.PEBBLE                },
-                    {  970, xi.item.CHUNK_OF_TIN_ORE      },
-                    {  900, xi.item.CHUNK_OF_MYTHRIL_ORE  },
-                    {  900, xi.item.CHUNK_OF_SILVER_ORE   },
-                    {  800, xi.item.CHUNK_OF_COPPER_ORE   },
-                    {  100, xi.item.CHUNK_OF_PLATINUM_ORE },
+                    { 1130, invaderXim.item.CHUNK_OF_ZINC_ORE     },
+                    {  940, invaderXim.item.CHUNK_OF_IRON_ORE     },
+                    { 1040, invaderXim.item.PEBBLE                },
+                    {  970, invaderXim.item.CHUNK_OF_TIN_ORE      },
+                    {  900, invaderXim.item.CHUNK_OF_MYTHRIL_ORE  },
+                    {  900, invaderXim.item.CHUNK_OF_SILVER_ORE   },
+                    {  800, invaderXim.item.CHUNK_OF_COPPER_ORE   },
+                    {  100, invaderXim.item.CHUNK_OF_PLATINUM_ORE },
                 },
 
                 points =
@@ -1256,18 +1256,18 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.ZERUHN_MINES] =
+            [invaderXim.zone.ZERUHN_MINES] =
             {
                 drops =
                 {
-                    { 2450, xi.item.CHUNK_OF_IRON_ORE      },
-                    { 1800, xi.item.PEBBLE                 },
-                    { 1850, xi.item.CHUNK_OF_COPPER_ORE    },
-                    { 1330, xi.item.CHUNK_OF_ZINC_ORE      },
-                    { 1120, xi.item.CHUNK_OF_TIN_ORE       },
-                    {  550, xi.item.SNAPPING_MOLE          },
-                    {  180, xi.item.CHUNK_OF_SILVER_ORE    },
-                    {   40, xi.item.CHUNK_OF_DARKSTEEL_ORE },
+                    { 2450, invaderXim.item.CHUNK_OF_IRON_ORE      },
+                    { 1800, invaderXim.item.PEBBLE                 },
+                    { 1850, invaderXim.item.CHUNK_OF_COPPER_ORE    },
+                    { 1330, invaderXim.item.CHUNK_OF_ZINC_ORE      },
+                    { 1120, invaderXim.item.CHUNK_OF_TIN_ORE       },
+                    {  550, invaderXim.item.SNAPPING_MOLE          },
+                    {  180, invaderXim.item.CHUNK_OF_SILVER_ORE    },
+                    {   40, invaderXim.item.CHUNK_OF_DARKSTEEL_ORE },
                 },
 
                 points =
@@ -1299,19 +1299,19 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.GUSGEN_MINES] =
+            [invaderXim.zone.GUSGEN_MINES] =
             {
                 drops =
                 {
-                    { 1890, xi.item.PEBBLE                 },
-                    { 1670, xi.item.CHUNK_OF_ZINC_ORE      },
-                    { 1510, xi.item.CHUNK_OF_COPPER_ORE    },
-                    { 1470, xi.item.CHUNK_OF_TIN_ORE       },
-                    { 1450, xi.item.CHUNK_OF_IRON_ORE      },
-                    {  810, xi.item.CHUNK_OF_SILVER_ORE    },
-                    {  590, xi.item.CHUNK_OF_DARKSTEEL_ORE },
-                    {  400, xi.item.RED_ROCK               },
-                    {   80, xi.item.CHUNK_OF_GOLD_ORE      },
+                    { 1890, invaderXim.item.PEBBLE                 },
+                    { 1670, invaderXim.item.CHUNK_OF_ZINC_ORE      },
+                    { 1510, invaderXim.item.CHUNK_OF_COPPER_ORE    },
+                    { 1470, invaderXim.item.CHUNK_OF_TIN_ORE       },
+                    { 1450, invaderXim.item.CHUNK_OF_IRON_ORE      },
+                    {  810, invaderXim.item.CHUNK_OF_SILVER_ORE    },
+                    {  590, invaderXim.item.CHUNK_OF_DARKSTEEL_ORE },
+                    {  400, invaderXim.item.RED_ROCK               },
+                    {   80, invaderXim.item.CHUNK_OF_GOLD_ORE      },
                 },
 
                 points =
@@ -1337,21 +1337,21 @@ local helmInfo =
                 },
             },
 
-            [xi.zone.IFRITS_CAULDRON] =
+            [invaderXim.zone.IFRITS_CAULDRON] =
             {
                 drops =
                 {
-                    { 3260, xi.item.FLINT_STONE             },
-                    { 1520, xi.item.CHUNK_OF_IRON_ORE       },
-                    {  430, xi.item.PINCH_OF_SULFUR         },
-                    {  650, xi.item.BOMB_ARM                },
-                    {  870, xi.item.PINCH_OF_BOMB_ASH       },
-                    { 1300, xi.item.HANDFUL_OF_IRON_SAND    },
-                    {  250, xi.item.CHUNK_OF_ADAMAN_ORE     },
-                    {  600, xi.item.CHUNK_OF_DARKSTEEL_ORE  },
-                    { 1520, xi.item.CHUNK_OF_ORPIMENT       },
-                    {  100, xi.item.CHUNK_OF_ORICHALCUM_ORE },
-                    {  220, xi.item.RED_ROCK                },
+                    { 3260, invaderXim.item.FLINT_STONE             },
+                    { 1520, invaderXim.item.CHUNK_OF_IRON_ORE       },
+                    {  430, invaderXim.item.PINCH_OF_SULFUR         },
+                    {  650, invaderXim.item.BOMB_ARM                },
+                    {  870, invaderXim.item.PINCH_OF_BOMB_ASH       },
+                    { 1300, invaderXim.item.HANDFUL_OF_IRON_SAND    },
+                    {  250, invaderXim.item.CHUNK_OF_ADAMAN_ORE     },
+                    {  600, invaderXim.item.CHUNK_OF_DARKSTEEL_ORE  },
+                    { 1520, invaderXim.item.CHUNK_OF_ORPIMENT       },
+                    {  100, invaderXim.item.CHUNK_OF_ORICHALCUM_ORE },
+                    {  220, invaderXim.item.RED_ROCK                },
                 },
 
                 points =
@@ -1388,14 +1388,14 @@ local helmInfo =
 
 local rocks =
 {
-    [xi.element.FIRE   ] = xi.item.RED_ROCK,
-    [xi.element.ICE    ] = xi.item.TRANSLUCENT_ROCK,
-    [xi.element.WIND   ] = xi.item.GREEN_ROCK,
-    [xi.element.EARTH  ] = xi.item.YELLOW_ROCK,
-    [xi.element.THUNDER] = xi.item.PURPLE_ROCK,
-    [xi.element.WATER  ] = xi.item.BLUE_ROCK,
-    [xi.element.LIGHT  ] = xi.item.WHITE_ROCK,
-    [xi.element.DARK   ] = xi.item.BLACK_ROCK,
+    [invaderXim.element.FIRE   ] = invaderXim.item.RED_ROCK,
+    [invaderXim.element.ICE    ] = invaderXim.item.TRANSLUCENT_ROCK,
+    [invaderXim.element.WIND   ] = invaderXim.item.GREEN_ROCK,
+    [invaderXim.element.EARTH  ] = invaderXim.item.YELLOW_ROCK,
+    [invaderXim.element.THUNDER] = invaderXim.item.PURPLE_ROCK,
+    [invaderXim.element.WATER  ] = invaderXim.item.BLUE_ROCK,
+    [invaderXim.element.LIGHT  ] = invaderXim.item.WHITE_ROCK,
+    [invaderXim.element.DARK   ] = invaderXim.item.BLACK_ROCK,
 }
 
 -----------------------------------
@@ -1449,7 +1449,7 @@ local function pickItem(player, info)
     end
 
     -- if we picked a colored rock, change it to the day's element
-    if item == xi.item.RED_ROCK then
+    if item == invaderXim.item.RED_ROCK then
         item = rocks[VanadielDayElement()]
     end
 
@@ -1474,7 +1474,7 @@ end
 -- public functions
 -----------------------------------
 
-xi.helm.initZone = function(zone, helmType)
+invaderXim.helm.initZone = function(zone, helmType)
     local zoneId = zone:getID()
     local info   = helmInfo[helmType]
     local npcs   = zones[zoneId].npc[info.id]
@@ -1482,49 +1482,49 @@ xi.helm.initZone = function(zone, helmType)
     for _, npcId in ipairs(npcs) do
         local npc = GetNPCByID(npcId)
         if npc then
-            npc:setStatus(xi.status.NORMAL)
+            npc:setStatus(invaderXim.status.NORMAL)
             movePoint(nil, npc, zoneId, info)
         end
     end
 end
 
-xi.helm.result = function(player, helmType, broke, itemID)
+invaderXim.helm.result = function(player, helmType, broke, itemID)
     local zoneId = player:getZoneID()
 
     -- Quest: Vanishing Act
     if
-        helmType == xi.helmType.HARVESTING and
-        player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.VANISHING_ACT) == xi.questStatus.QUEST_ACCEPTED and
-        not player:hasKeyItem(xi.ki.RAINBOW_BERRY) and
+        helmType == invaderXim.helmType.HARVESTING and
+        player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.VANISHING_ACT) == invaderXim.questStatus.QUEST_ACCEPTED and
+        not player:hasKeyItem(invaderXim.ki.RAINBOW_BERRY) and
         broke ~= 1 and
-        zoneId == xi.zone.WAJAOM_WOODLANDS
+        zoneId == invaderXim.zone.WAJAOM_WOODLANDS
     then
-        npcUtil.giveKeyItem(player, xi.ki.RAINBOW_BERRY)
+        npcUtil.giveKeyItem(player, invaderXim.ki.RAINBOW_BERRY)
     end
 
     -- AMK mission 4 (index 3)
-    if xi.settings.main.ENABLE_AMK == 1 then
-        xi.amk.helpers.helmTrade(player, helmType, broke)
+    if invaderXim.settings.main.ENABLE_AMK == 1 then
+        invaderXim.amk.helpers.helmTrade(player, helmType, broke)
     end
 
     -- Item results
     if itemID > 0 then
         -- Egg-Hunt Extravaganza Event
-        if xi.events and xi.events.eggHunt then
-            xi.events.eggHunt.helmResult(player)
+        if invaderXim.events and invaderXim.events.eggHunt then
+            invaderXim.events.eggHunt.helmResult(player)
         end
 
         -- Records of Eminence
-        player:triggerRoeEvent(xi.roeTrigger.HELM_SUCCESS, { ['skillType'] = helmType })
+        player:triggerRoeEvent(invaderXim.roeTrigger.HELM_SUCCESS, { ['skillType'] = helmType })
     end
 end
 
-xi.helm.onTrade = function(player, npc, trade, helmType, csid, func)
+invaderXim.helm.onTrade = function(player, npc, trade, helmType, csid, func)
     local info   = helmInfo[helmType]
     local zoneId = player:getZoneID()
 
     -- HELM should remove invisible
-    player:delStatusEffect(xi.effect.INVISIBLE)
+    player:delStatusEffect(invaderXim.effect.INVISIBLE)
 
     if trade:hasItemQty(info.tool, 1) and trade:getItemCount() == 1 then
         -- start event
@@ -1536,10 +1536,10 @@ xi.helm.onTrade = function(player, npc, trade, helmType, csid, func)
             player:startEvent(csid, itemID, broke, full)
         end
 
-        player:sendEmote(npc, info.animation, xi.emoteMode.MOTION)
+        player:sendEmote(npc, info.animation, invaderXim.emoteMode.MOTION)
 
         -- WotG : The Price of Valor; Success does not award an item, but only KI.
-        if xi.wotg.helpers.helmTrade(player, helmType, broke) then
+        if invaderXim.wotg.helpers.helmTrade(player, helmType, broke) then
             return
         end
 
@@ -1560,7 +1560,7 @@ xi.helm.onTrade = function(player, npc, trade, helmType, csid, func)
             end
         end
 
-        xi.helm.result(player, helmType, broke, itemID)
+        invaderXim.helm.result(player, helmType, broke, itemID)
 
         if type(func) == 'function' then
             func(player)
@@ -1570,16 +1570,16 @@ xi.helm.onTrade = function(player, npc, trade, helmType, csid, func)
     end
 end
 
-xi.helm.onTrigger = function(player, helmType)
+invaderXim.helm.onTrigger = function(player, helmType)
     local zoneId = player:getZoneID()
     local info = helmInfo[helmType]
     player:messageSpecial(zones[zoneId].text[info.message], info.tool)
 end
 
-xi.helm.weatherChange = function(currentWeather, neededWeather, pointTable)
-    local status = xi.status.DISAPPEAR
+invaderXim.helm.weatherChange = function(currentWeather, neededWeather, pointTable)
+    local status = invaderXim.status.DISAPPEAR
     if utils.contains(currentWeather, neededWeather) then
-        status = xi.status.NORMAL
+        status = invaderXim.status.NORMAL
     end
 
     for point = 1, #pointTable do

@@ -7,14 +7,14 @@
 -- Selbina, Valgeir,  !pos 57.496 -15.273 20.229 248
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.HIS_NAME_IS_VALGEIR)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.HIS_NAME_IS_VALGEIR)
 
 quest.reward =
 {
     fame     = 120,
-    fameArea = xi.fameArea.WINDURST,
+    fameArea = invaderXim.fameArea.WINDURST,
     gil      = 2000,
-    keyItem  = xi.ki.MAP_OF_THE_TORAIMARAI_CANAL,
+    keyItem  = invaderXim.ki.MAP_OF_THE_TORAIMARAI_CANAL,
 }
 
 quest.sections =
@@ -22,18 +22,18 @@ quest.sections =
     -- Section: Quest is available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.UNENDING_CHASE) == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.UNENDING_CHASE) == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Rycharde'] =
             {
                 onTrigger = function(player, npc)
                     if
                         player:getCharVar('Quest[4][2]DayCompleted') + 2 < VanadielUniqueDay() and
-                        player:getFameLevel(xi.fameArea.WINDURST) > 2
+                        player:getFameLevel(invaderXim.fameArea.WINDURST) > 2
                     then
                         return quest:progressEvent(86) -- His Name is Valgeir starting event.
                     else
@@ -49,7 +49,7 @@ quest.sections =
                 [86] = function(player, csid, option, npc)
                     if option == 80 or option == 81 then -- Accept quest option.
                         player:setCharVar('Quest[4][2]DayCompleted', 0)   -- Delete previous quest (Unending Chase) variables
-                        npcUtil.giveKeyItem(player, xi.ki.ARAGONEU_PIZZA) -- Give pizza to player
+                        npcUtil.giveKeyItem(player, invaderXim.ki.ARAGONEU_PIZZA) -- Give pizza to player
                         quest:begin(player)
                     end
                 end,
@@ -60,16 +60,16 @@ quest.sections =
     -- Section: Quest accepeted.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Felisa'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:hasKeyItem(xi.ki.ARAGONEU_PIZZA) and -- No free ride after delivering Pizza.
+                        player:hasKeyItem(invaderXim.ki.ARAGONEU_PIZZA) and -- No free ride after delivering Pizza.
                         player:getZPos() > 38.5 and -- Pos check.
                         quest:getVar(player, 'Prog') == 0 -- Hasn't taken the free ride.
                     then
@@ -81,7 +81,7 @@ quest.sections =
             ['Rycharde'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.ARAGONEU_PIZZA) then
+                    if not player:hasKeyItem(invaderXim.ki.ARAGONEU_PIZZA) then
                         return quest:progressEvent(88) -- Finish quest.
                     else
                         return quest:event(87) -- Not delivered the pizza yet.
@@ -106,12 +106,12 @@ quest.sections =
             },
         },
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Valgeir'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.ARAGONEU_PIZZA) then
+                    if player:hasKeyItem(invaderXim.ki.ARAGONEU_PIZZA) then
                         return quest:progressEvent(100) -- Deliver Pizza.
                     else
                         return quest:event(101) -- Pizza delivered.
@@ -122,7 +122,7 @@ quest.sections =
             onEventFinish =
             {
                 [100] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.ARAGONEU_PIZZA)
+                    player:delKeyItem(invaderXim.ki.ARAGONEU_PIZZA)
                 end,
             },
         },

@@ -4,15 +4,15 @@
 -- Getting "Old Rusty Key (keyitem)"
 -- !pos 59 0 19 159
 -----------------------------------
-local ID = zones[xi.zone.TEMPLE_OF_UGGALEPIH]
+local ID = zones[invaderXim.zone.TEMPLE_OF_UGGALEPIH]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
     if
-        player:hasKeyItem(xi.ki.OLD_RUSTY_KEY) or
-        player:hasKeyItem(xi.ki.PAINTBRUSH_OF_SOULS)
+        player:hasKeyItem(invaderXim.ki.OLD_RUSTY_KEY) or
+        player:hasKeyItem(invaderXim.ki.PAINTBRUSH_OF_SOULS)
     then
         player:messageSpecial(ID.text.NO_REASON_TO_INVESTIGATE)
     else
@@ -45,8 +45,8 @@ entity.onEventFinish = function(player, csid, option, npc)
     end
 
     if player:getCharVar('paintbrushOfSouls_book') == 7 then
-        player:messageSpecial(ID.text.FALLS_FROM_THE_BOOK, xi.ki.OLD_RUSTY_KEY)
-        npcUtil.giveKeyItem(player, xi.ki.OLD_RUSTY_KEY)
+        player:messageSpecial(ID.text.FALLS_FROM_THE_BOOK, invaderXim.ki.OLD_RUSTY_KEY)
+        npcUtil.giveKeyItem(player, invaderXim.ki.OLD_RUSTY_KEY)
         player:setCharVar('paintbrushOfSouls_book', 0)
     end
 end

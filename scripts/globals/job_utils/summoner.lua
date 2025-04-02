@@ -6,8 +6,8 @@ require('scripts/globals/jobpoints')
 require('scripts/globals/combat/tp')
 -----------------------------------
 xi = xi or {}
-xi.job_utils = xi.job_utils or {}
-xi.job_utils.summoner = xi.job_utils.summoner or {}
+invaderXim.job_utils = invaderXim.job_utils or {}
+invaderXim.job_utils.summoner = invaderXim.job_utils.summoner or {}
 -----------------------------------
 
 -- sort of a misnomer, as if Apogee is up, the 'base' mp cost rises.
@@ -15,122 +15,122 @@ local function getBaseMPCost(player, ability)
     local baseMPCostMap =
     {
         -- Carbuncle
-        [xi.jobAbility.HEALING_RUBY]     =   6,
-        [xi.jobAbility.POISON_NAILS]     =  11,
-        [xi.jobAbility.SHINING_RUBY]     =  44,
-        [xi.jobAbility.GLITTERING_RUBY]  =  62,
-        [xi.jobAbility.SOOTHING_RUBY]    =  74,
-        [xi.jobAbility.PACIFYING_RUBY]   =  83,
-        [xi.jobAbility.METEORITE]        = 108,
-        [xi.jobAbility.HEALING_RUBY_II]  = 124,
-        [xi.jobAbility.HOLY_MIST]        = 152,
+        [invaderXim.jobAbility.HEALING_RUBY]     =   6,
+        [invaderXim.jobAbility.POISON_NAILS]     =  11,
+        [invaderXim.jobAbility.SHINING_RUBY]     =  44,
+        [invaderXim.jobAbility.GLITTERING_RUBY]  =  62,
+        [invaderXim.jobAbility.SOOTHING_RUBY]    =  74,
+        [invaderXim.jobAbility.PACIFYING_RUBY]   =  83,
+        [invaderXim.jobAbility.METEORITE]        = 108,
+        [invaderXim.jobAbility.HEALING_RUBY_II]  = 124,
+        [invaderXim.jobAbility.HOLY_MIST]        = 152,
         -- Leviathan
-        [xi.jobAbility.BARRACUDA_DIVE]   =   8,
-        [xi.jobAbility.WATER_II]         =  24,
-        [xi.jobAbility.SLOWGA]           =  48,
-        [xi.jobAbility.TAIL_WHIP]        =  49,
-        [xi.jobAbility.SOOTHING_CURRENT] =  95,
-        [xi.jobAbility.SPRING_WATER]     =  99,
-        [xi.jobAbility.WATER_IV]         = 118,
-        [xi.jobAbility.TIDAL_ROAR]       = 138,
-        [xi.jobAbility.SPINNING_DIVE]    = 164,
-        [xi.jobAbility.GRAND_FALL]       = 182,
+        [invaderXim.jobAbility.BARRACUDA_DIVE]   =   8,
+        [invaderXim.jobAbility.WATER_II]         =  24,
+        [invaderXim.jobAbility.SLOWGA]           =  48,
+        [invaderXim.jobAbility.TAIL_WHIP]        =  49,
+        [invaderXim.jobAbility.SOOTHING_CURRENT] =  95,
+        [invaderXim.jobAbility.SPRING_WATER]     =  99,
+        [invaderXim.jobAbility.WATER_IV]         = 118,
+        [invaderXim.jobAbility.TIDAL_ROAR]       = 138,
+        [invaderXim.jobAbility.SPINNING_DIVE]    = 164,
+        [invaderXim.jobAbility.GRAND_FALL]       = 182,
         -- Garuda
-        [xi.jobAbility.CLAW]             =   7,
-        [xi.jobAbility.AERO_II]          =  24,
-        [xi.jobAbility.AERIAL_ARMOR]     =  92,
-        [xi.jobAbility.FLEET_WIND]       = 114,
-        [xi.jobAbility.AERO_IV]          = 118,
-        [xi.jobAbility.WHISPERING_WIND]  = 119,
-        [xi.jobAbility.HASTEGA]          = 129,
-        [xi.jobAbility.PREDATOR_CLAWS]   = 164,
-        [xi.jobAbility.WIND_BLADE]       = 182,
-        [xi.jobAbility.HASTEGA_II]       = 248,
+        [invaderXim.jobAbility.CLAW]             =   7,
+        [invaderXim.jobAbility.AERO_II]          =  24,
+        [invaderXim.jobAbility.AERIAL_ARMOR]     =  92,
+        [invaderXim.jobAbility.FLEET_WIND]       = 114,
+        [invaderXim.jobAbility.AERO_IV]          = 118,
+        [invaderXim.jobAbility.WHISPERING_WIND]  = 119,
+        [invaderXim.jobAbility.HASTEGA]          = 129,
+        [invaderXim.jobAbility.PREDATOR_CLAWS]   = 164,
+        [invaderXim.jobAbility.WIND_BLADE]       = 182,
+        [invaderXim.jobAbility.HASTEGA_II]       = 248,
         -- Titan
-        [xi.jobAbility.ROCK_THROW]       =  10,
-        [xi.jobAbility.STONE_II]         =  24,
-        [xi.jobAbility.ROCK_BUSTER]      =  39,
-        [xi.jobAbility.MEGALITH_THROW]   =  62,
-        [xi.jobAbility.EARTHEN_WARD]     =  92,
-        [xi.jobAbility.STONE_IV]         = 118,
-        [xi.jobAbility.CRAG_THROW]       = 124,
-        [xi.jobAbility.EARTHEN_ARMOR]    = 156,
-        [xi.jobAbility.MOUNTAIN_BUSTER]  = 164,
-        [xi.jobAbility.GEOCRUSH]         = 182,
+        [invaderXim.jobAbility.ROCK_THROW]       =  10,
+        [invaderXim.jobAbility.STONE_II]         =  24,
+        [invaderXim.jobAbility.ROCK_BUSTER]      =  39,
+        [invaderXim.jobAbility.MEGALITH_THROW]   =  62,
+        [invaderXim.jobAbility.EARTHEN_WARD]     =  92,
+        [invaderXim.jobAbility.STONE_IV]         = 118,
+        [invaderXim.jobAbility.CRAG_THROW]       = 124,
+        [invaderXim.jobAbility.EARTHEN_ARMOR]    = 156,
+        [invaderXim.jobAbility.MOUNTAIN_BUSTER]  = 164,
+        [invaderXim.jobAbility.GEOCRUSH]         = 182,
         -- Titan
-        [xi.jobAbility.PUNCH]            =   9,
-        [xi.jobAbility.FIRE_II]          =  24,
-        [xi.jobAbility.BURNING_STRIKE]   =  48,
-        [xi.jobAbility.DOUBLE_PUNCH]     =  56,
-        [xi.jobAbility.INFERNO_HOWL]     =  72,
-        [xi.jobAbility.CRIMSON_HOWL]     =  84,
-        [xi.jobAbility.FIRE_IV]          = 118,
-        [xi.jobAbility.CONFLAG_STRIKE]   = 141,
-        [xi.jobAbility.FLAMING_CRUSH]    = 164,
-        [xi.jobAbility.METEOR_STRIKE]    = 182,
+        [invaderXim.jobAbility.PUNCH]            =   9,
+        [invaderXim.jobAbility.FIRE_II]          =  24,
+        [invaderXim.jobAbility.BURNING_STRIKE]   =  48,
+        [invaderXim.jobAbility.DOUBLE_PUNCH]     =  56,
+        [invaderXim.jobAbility.INFERNO_HOWL]     =  72,
+        [invaderXim.jobAbility.CRIMSON_HOWL]     =  84,
+        [invaderXim.jobAbility.FIRE_IV]          = 118,
+        [invaderXim.jobAbility.CONFLAG_STRIKE]   = 141,
+        [invaderXim.jobAbility.FLAMING_CRUSH]    = 164,
+        [invaderXim.jobAbility.METEOR_STRIKE]    = 182,
         -- Fenrir
-        [xi.jobAbility.MOONLIT_CHARGE]   =  17,
-        [xi.jobAbility.CRESCENT_FANG]    =  19,
-        [xi.jobAbility.LUNAR_ROAR]       =  27,
-        [xi.jobAbility.LUNAR_CRY]        =  41,
-        [xi.jobAbility.ECLIPTIC_GROWL]   =  46,
-        [xi.jobAbility.ECLIPTIC_HOWL]    =  57,
-        [xi.jobAbility.HEAVENWARD_HOWL]  =  96,
-        [xi.jobAbility.ECLIPSE_BITE]     = 109,
-        [xi.jobAbility.LUNAR_BAY]        = 174,
-        [xi.jobAbility.IMPACT]           = 222,
+        [invaderXim.jobAbility.MOONLIT_CHARGE]   =  17,
+        [invaderXim.jobAbility.CRESCENT_FANG]    =  19,
+        [invaderXim.jobAbility.LUNAR_ROAR]       =  27,
+        [invaderXim.jobAbility.LUNAR_CRY]        =  41,
+        [invaderXim.jobAbility.ECLIPTIC_GROWL]   =  46,
+        [invaderXim.jobAbility.ECLIPTIC_HOWL]    =  57,
+        [invaderXim.jobAbility.HEAVENWARD_HOWL]  =  96,
+        [invaderXim.jobAbility.ECLIPSE_BITE]     = 109,
+        [invaderXim.jobAbility.LUNAR_BAY]        = 174,
+        [invaderXim.jobAbility.IMPACT]           = 222,
         -- Shiva
-        [xi.jobAbility.AXE_KICK]         =  10,
-        [xi.jobAbility.BLIZZARD_II]      =  24,
-        [xi.jobAbility.SLEEPGA]          =  56,
-        [xi.jobAbility.FROST_ARMOR]      =  63,
-        [xi.jobAbility.DOUBLE_SLAP]      =  96,
-        [xi.jobAbility.BLIZZARD_IV]      = 118,
-        [xi.jobAbility.DIAMOND_STORM]    = 138,
-        [xi.jobAbility.RUSH]             = 164,
-        [xi.jobAbility.HEAVENLY_STRIKE]  = 182,
-        [xi.jobAbility.CRYSTAL_BLESSING] = 201,
+        [invaderXim.jobAbility.AXE_KICK]         =  10,
+        [invaderXim.jobAbility.BLIZZARD_II]      =  24,
+        [invaderXim.jobAbility.SLEEPGA]          =  56,
+        [invaderXim.jobAbility.FROST_ARMOR]      =  63,
+        [invaderXim.jobAbility.DOUBLE_SLAP]      =  96,
+        [invaderXim.jobAbility.BLIZZARD_IV]      = 118,
+        [invaderXim.jobAbility.DIAMOND_STORM]    = 138,
+        [invaderXim.jobAbility.RUSH]             = 164,
+        [invaderXim.jobAbility.HEAVENLY_STRIKE]  = 182,
+        [invaderXim.jobAbility.CRYSTAL_BLESSING] = 201,
         -- Ramuh
-        [xi.jobAbility.SHOCK_STRIKE]     =   6,
-        [xi.jobAbility.THUNDER_II]       =  24,
-        [xi.jobAbility.THUNDERSPARK]     =  38,
-        [xi.jobAbility.ROLLING_THUNDER]  =  52,
-        [xi.jobAbility.SHOCK_SQUALL]     =  67,
-        [xi.jobAbility.LIGHTNING_ARMOR]  =  91,
-        [xi.jobAbility.THUNDER_IV]       = 118,
-        [xi.jobAbility.CHAOTIC_STRIKE]   = 164,
-        [xi.jobAbility.THUNDERSTORM]     = 182,
-        [xi.jobAbility.VOLT_STRIKE]      = 229,
+        [invaderXim.jobAbility.SHOCK_STRIKE]     =   6,
+        [invaderXim.jobAbility.THUNDER_II]       =  24,
+        [invaderXim.jobAbility.THUNDERSPARK]     =  38,
+        [invaderXim.jobAbility.ROLLING_THUNDER]  =  52,
+        [invaderXim.jobAbility.SHOCK_SQUALL]     =  67,
+        [invaderXim.jobAbility.LIGHTNING_ARMOR]  =  91,
+        [invaderXim.jobAbility.THUNDER_IV]       = 118,
+        [invaderXim.jobAbility.CHAOTIC_STRIKE]   = 164,
+        [invaderXim.jobAbility.THUNDERSTORM]     = 182,
+        [invaderXim.jobAbility.VOLT_STRIKE]      = 229,
         -- Diabolos
-        [xi.jobAbility.CAMISADO]         =  20,
-        [xi.jobAbility.ULTIMATE_TERROR]  =  27,
-        [xi.jobAbility.SOMNOLENCE]       =  30,
-        [xi.jobAbility.NIGHTMARE]        =  42,
-        [xi.jobAbility.NOCTOSHIELD]      =  92,
-        [xi.jobAbility.NETHER_BLAST]     = 109,
-        [xi.jobAbility.DREAM_SHROUD]     = 121,
-        [xi.jobAbility.BLINDSIDE]        = 147,
-        [xi.jobAbility.NIGHT_TERROR]     = 177,
-        [xi.jobAbility.PAVOR_NOCTURNUS]  = 246,
+        [invaderXim.jobAbility.CAMISADO]         =  20,
+        [invaderXim.jobAbility.ULTIMATE_TERROR]  =  27,
+        [invaderXim.jobAbility.SOMNOLENCE]       =  30,
+        [invaderXim.jobAbility.NIGHTMARE]        =  42,
+        [invaderXim.jobAbility.NOCTOSHIELD]      =  92,
+        [invaderXim.jobAbility.NETHER_BLAST]     = 109,
+        [invaderXim.jobAbility.DREAM_SHROUD]     = 121,
+        [invaderXim.jobAbility.BLINDSIDE]        = 147,
+        [invaderXim.jobAbility.NIGHT_TERROR]     = 177,
+        [invaderXim.jobAbility.PAVOR_NOCTURNUS]  = 246,
         -- Cait Sith
-        [xi.jobAbility.REGAL_SCRATCH]    = 5,
-        [xi.jobAbility.MEWING_LULLABY]   = 61,
-        [xi.jobAbility.EARIE_EYE]        = 134,
-        [xi.jobAbility.LEVEL_QM_HOLY]    = 235,
-        [xi.jobAbility.RAISE_II]         = 160,
-        [xi.jobAbility.RERAISE_II]       = 80,
+        [invaderXim.jobAbility.REGAL_SCRATCH]    = 5,
+        [invaderXim.jobAbility.MEWING_LULLABY]   = 61,
+        [invaderXim.jobAbility.EARIE_EYE]        = 134,
+        [invaderXim.jobAbility.LEVEL_QM_HOLY]    = 235,
+        [invaderXim.jobAbility.RAISE_II]         = 160,
+        [invaderXim.jobAbility.RERAISE_II]       = 80,
         -- Siren
-        [xi.jobAbility.WELT]             =   9,
-        [xi.jobAbility.ROUNDHOUSE]       =  52,
-        [xi.jobAbility.SONIC_BUFFET]     = 164,
-        [xi.jobAbility.TORNADO_II]       = 182,
-        [xi.jobAbility.HYSTERIC_ASSAULT] = 222,
+        [invaderXim.jobAbility.WELT]             =   9,
+        [invaderXim.jobAbility.ROUNDHOUSE]       =  52,
+        [invaderXim.jobAbility.SONIC_BUFFET]     = 164,
+        [invaderXim.jobAbility.TORNADO_II]       = 182,
+        [invaderXim.jobAbility.HYSTERIC_ASSAULT] = 222,
     }
 
     local baseMPCost = nil
 
     if ability then
-        if ability:getAddType() == xi.addType.ADDTYPE_ASTRAL_FLOW then
+        if ability:getAddType() == invaderXim.addType.ADDTYPE_ASTRAL_FLOW then
             baseMPCost = player:getMainLvl() * 2
         else
             baseMPCost = baseMPCostMap[ability:getID()]
@@ -138,13 +138,13 @@ local function getBaseMPCost(player, ability)
     end
 
     if baseMPCost == nil then
-        printf('[warning] scripts/globals/job_utils/summoner.lua::getBaseMPCost(): MP cost for xi.jobAbility with id %d not implemented.', ability:getID())
+        printf('[warning] scripts/globals/job_utils/summoner.lua::getBaseMPCost(): MP cost for invaderXim.jobAbility with id %d not implemented.', ability:getID())
         return 9999
     end
 
     -- https://www.bg-wiki.com/ffxi/Apogee
     -- Apogee, 1.5x MP cost, don't delete effect here because we need to reset BP: Ward/Rage timer upon use
-    if player:hasStatusEffect(xi.effect.APOGEE) then
+    if player:hasStatusEffect(invaderXim.effect.APOGEE) then
         baseMPCost = baseMPCost * 1.5
     end
 
@@ -155,8 +155,8 @@ local function getMPCost(baseMPCost, player, petskill)
     local mpCost = baseMPCost
 
     -- don't proc blood boon on Astral Flow
-    if petskill:getAddType() ~= xi.addType.ADDTYPE_ASTRAL_FLOW then
-        local bloodBoonRate = player:getMod(xi.mod.BLOOD_BOON)
+    if petskill:getAddType() ~= invaderXim.addType.ADDTYPE_ASTRAL_FLOW then
+        local bloodBoonRate = player:getMod(invaderXim.mod.BLOOD_BOON)
         -- assuming it works like Conserve MP... https://www.bg-wiki.com/ffxi/Conserve_MP
         if math.random(1, 100) <= bloodBoonRate then
             mpCost = mpCost * math.random(8, 15) / 16
@@ -167,7 +167,7 @@ local function getMPCost(baseMPCost, player, petskill)
 end
 
 -- Bloodpact Delay is handled in charentity.cpp
-xi.job_utils.summoner.canUseBloodPact = function(player, pet, target, petAbility)
+invaderXim.job_utils.summoner.canUseBloodPact = function(player, pet, target, petAbility)
     -- TODO: verify order of out of MP/range/etc checks.
     if pet ~= nil then
         -- There is some complex interaction here.
@@ -182,44 +182,44 @@ xi.job_utils.summoner.canUseBloodPact = function(player, pet, target, petAbility
 
         -- check if target is too far from pet for ability
         if pet:checkDistance(target) >= petAbility:getRange() then
-            return xi.msg.basic.TARG_OUT_OF_RANGE, 0
+            return invaderXim.msg.basic.TARG_OUT_OF_RANGE, 0
         end
 
         -- check if player is too far from pet
         if pet:checkDistance(player) >= 21 then
-            return xi.msg.basic.TARG_OUT_OF_RANGE, 0
+            return invaderXim.msg.basic.TARG_OUT_OF_RANGE, 0
         end
 
         -- check if player is too far from target
         if target:checkDistance(player) >= 22 then
-            return xi.msg.basic.TARG_OUT_OF_RANGE, 0
+            return invaderXim.msg.basic.TARG_OUT_OF_RANGE, 0
         end
 
         local petAction = pet:getCurrentAction()
 
         -- check if avatar is under status effect
-        if petAction == xi.action.SLEEP or petAction == xi.action.STUN then
-            return xi.msg.basic.PET_CANNOT_DO_ACTION, 0 -- TODO: verify exact message in packet.
+        if petAction == invaderXim.action.SLEEP or petAction == invaderXim.action.STUN then
+            return invaderXim.msg.basic.PET_CANNOT_DO_ACTION, 0 -- TODO: verify exact message in packet.
         end
 
         -- check if avatar is using a move already
-        if petAction == xi.action.PET_MOBABILITY_FINISH then
+        if petAction == invaderXim.action.PET_MOBABILITY_FINISH then
             return 0, 0
         end
 
         local baseMPCost = getBaseMPCost(player, petAbility)
 
         if player:getMP() < baseMPCost then
-            return xi.msg.basic.UNABLE_TO_USE_JA2, 0 -- TODO: verify exact message in packet.
+            return invaderXim.msg.basic.UNABLE_TO_USE_JA2, 0 -- TODO: verify exact message in packet.
         end
 
         return 0, 0
     end
 
-    return xi.msg.basic.UNABLE_TO_USE_JA2, 0 -- TODO: verify exact message in packet.
+    return invaderXim.msg.basic.UNABLE_TO_USE_JA2, 0 -- TODO: verify exact message in packet.
 end
 
-xi.job_utils.summoner.onUseBloodPact = function(target, petskill, summoner, action)
+invaderXim.job_utils.summoner.onUseBloodPact = function(target, petskill, summoner, action)
     local bloodPactAbility = GetAbility(petskill:getID()) -- Player abilities and Avatar abilities are mapped 1:1
     if not bloodPactAbility then
         return
@@ -232,24 +232,24 @@ xi.job_utils.summoner.onUseBloodPact = function(target, petskill, summoner, acti
     if target:getID() == action:getPrimaryTargetID() then
         -- MP and Cooldown is only consumed if the ability goes off
         summoner:delMP(mpCost)
-        if summoner:hasStatusEffect(xi.effect.APOGEE) then
-            summoner:resetRecast(xi.recast.ABILITY, bloodPactAbility:getRecastID())
-            summoner:delStatusEffect(xi.effect.APOGEE)
+        if summoner:hasStatusEffect(invaderXim.effect.APOGEE) then
+            summoner:resetRecast(invaderXim.recast.ABILITY, bloodPactAbility:getRecastID())
+            summoner:delStatusEffect(invaderXim.effect.APOGEE)
         else
-            if xi.settings.map.BLOOD_PACT_SHARED_TIMER then
-                summoner:addRecast(xi.recast.ABILITY, xi.recastID.BLOODPACT_RAGE, bloodPactRecast)
-                summoner:addRecast(xi.recast.ABILITY, xi.recastID.BLOODPACT_WARD, bloodPactRecast)
+            if invaderXim.settings.map.BLOOD_PACT_SHARED_TIMER then
+                summoner:addRecast(invaderXim.recast.ABILITY, invaderXim.recastID.BLOODPACT_RAGE, bloodPactRecast)
+                summoner:addRecast(invaderXim.recast.ABILITY, invaderXim.recastID.BLOODPACT_WARD, bloodPactRecast)
             else
-                summoner:addRecast(xi.recast.ABILITY, bloodPactAbility:getRecastID(), bloodPactRecast)
+                summoner:addRecast(invaderXim.recast.ABILITY, bloodPactAbility:getRecastID(), bloodPactRecast)
             end
         end
     end
 end
 
 -- to be removed once damage is overhauled
-xi.job_utils.summoner.calculateTPReturn = function(avatar, target, damage, numHits)
+invaderXim.job_utils.summoner.calculateTPReturn = function(avatar, target, damage, numHits)
     if damage ~= 0 and numHits > 0 then -- absorbed hits still give TP, though we can't know how many hits actually connected in the current avatar damage formulas
-        local tpReturn = xi.combat.tp.getSingleMeleeHitTPReturn(avatar, target)
+        local tpReturn = invaderXim.combat.tp.getSingleMeleeHitTPReturn(avatar, target)
         tpReturn = tpReturn + 10 * (numHits - 1) -- extra hits give 10 TP each
         avatar:setTP(tpReturn)
     else
@@ -257,13 +257,13 @@ xi.job_utils.summoner.calculateTPReturn = function(avatar, target, damage, numHi
     end
 end
 
-xi.job_utils.summoner.useManaCede = function(player, ability, action)
+invaderXim.job_utils.summoner.useManaCede = function(player, ability, action)
     local avatar = player:getPet()
 
     if avatar ~= nil then
         local avatarTP = avatar:getTP()
-        local bonusTP = 1000 + player:getJobPointLevel(xi.jp.MANA_CEDE_EFFECT) * 50
-        local manaCedeBonus = (100 + player:getMod(xi.mod.ENHANCES_MANA_CEDE)) / 100
+        local bonusTP = 1000 + player:getJobPointLevel(invaderXim.jp.MANA_CEDE_EFFECT) * 50
+        local manaCedeBonus = (100 + player:getMod(invaderXim.mod.ENHANCES_MANA_CEDE)) / 100
         local avatarNewTP = utils.clamp(avatarTP + bonusTP * manaCedeBonus, 1000, 3000)
 
         action:ID(player:getID(), avatar:getID())
@@ -272,26 +272,26 @@ xi.job_utils.summoner.useManaCede = function(player, ability, action)
     end
 end
 
-xi.job_utils.summoner.useSoothingRuby = function(target, pet, petskill, summoner, action)
+invaderXim.job_utils.summoner.useSoothingRuby = function(target, pet, petskill, summoner, action)
     local targetEffectTable = target:getStatusEffects()
 
     -- Generate table with erasable effects from target effect table.
     local erasableEffectTable        = {}
     local additionalRemovableEffects =
     set{
-        xi.effect.POISON,
-        xi.effect.BLINDNESS,
-        xi.effect.PARALYSIS,
-        xi.effect.SILENCE,
-        xi.effect.CURSE_I,
-        xi.effect.PLAGUE,
-        xi.effect.DISEASE
+        invaderXim.effect.POISON,
+        invaderXim.effect.BLINDNESS,
+        invaderXim.effect.PARALYSIS,
+        invaderXim.effect.SILENCE,
+        invaderXim.effect.CURSE_I,
+        invaderXim.effect.PLAGUE,
+        invaderXim.effect.DISEASE
     }
 
     for _, effect in pairs(targetEffectTable) do
         local id = effect:getEffectType()
         if
-            bit.band(effect:getEffectFlags(), xi.effectFlag.ERASABLE) == xi.effectFlag.ERASABLE or
+            bit.band(effect:getEffectFlags(), invaderXim.effectFlag.ERASABLE) == invaderXim.effectFlag.ERASABLE or
             additionalRemovableEffects[id]
         then
             table.insert(erasableEffectTable, id)
@@ -299,7 +299,7 @@ xi.job_utils.summoner.useSoothingRuby = function(target, pet, petskill, summoner
     end
 
     -- Calculate the ammount of effects this skill can potentialy erase.
-    local summoningSkillFactor = math.floor((summoner:getSkillLevel(xi.skill.SUMMONING_MAGIC) + 99) / 100)
+    local summoningSkillFactor = math.floor((summoner:getSkillLevel(invaderXim.skill.SUMMONING_MAGIC) + 99) / 100)
     local soothingRubyPower    = utils.clamp(summoningSkillFactor, 1, 6)
 
     -- Erase effects.
@@ -313,9 +313,9 @@ xi.job_utils.summoner.useSoothingRuby = function(target, pet, petskill, summoner
             table.remove(erasableEffectTable, index)
         end
 
-        petskill:setMsg(xi.msg.basic.MAGIC_REMOVE_EFFECT_2)
+        petskill:setMsg(invaderXim.msg.basic.MAGIC_REMOVE_EFFECT_2)
     else
-        petskill:setMsg(xi.msg.basic.JA_NO_EFFECT_2)
+        petskill:setMsg(invaderXim.msg.basic.JA_NO_EFFECT_2)
     end
 
     return effectsErased

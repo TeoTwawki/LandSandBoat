@@ -26,7 +26,7 @@ g_mixins.families.colibri_mimic = function(colibriMob)
             target:getAnimationSub() ~= openBeak and
             spell:tookEffect() and
             (caster:isPC() or caster:isPet()) and
-            (spell:getSpellGroup() ~= xi.magic.spellGroup.BLUE or target:getLocalVar('[colibri]reflect_blue_magic') == 1)
+            (spell:getSpellGroup() ~= invaderXim.magic.spellGroup.BLUE or target:getLocalVar('[colibri]reflect_blue_magic') == 1)
         then
             target:setLocalVar('[colibri]spellToMimic', spell:getID()) -- which spell to mimic
             target:setLocalVar('[colibri]castWindow', os.time() + 30) -- after thirty seconds, will stop attempting to mimic
@@ -46,7 +46,7 @@ g_mixins.families.colibri_mimic = function(colibriMob)
                 spellToMimic > 0 and
                 osTime > castTime and
                 castWindow > osTime and
-                not mob:hasStatusEffect(xi.effect.SILENCE)
+                not mob:hasStatusEffect(invaderXim.effect.SILENCE)
             then
                 mob:castSpell(spellToMimic)
                 mob:setLocalVar('[colibri]spellToMimic', 0)

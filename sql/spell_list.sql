@@ -13,7 +13,7 @@
 -- Table structure for table `spell_list`
 --
 
-DROP TABLE IF EXISTS `spell_list`;
+DROP TABLE IF IXIMSTS `spell_list`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `spell_list` (

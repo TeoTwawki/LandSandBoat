@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.FLY_HIGH
+-- invaderXim.effect.FLY_HIGH
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

@@ -3,7 +3,7 @@
 --  Mob: Bugbear Bondman
 -- Note: PH for Bugbear Strongman
 -----------------------------------
-local ID = zones[xi.zone.OLDTON_MOVALPOLOS]
+local ID = zones[invaderXim.zone.OLDTON_MOVALPOLOS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -18,7 +18,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, bugbearPHTable, 10, 1) -- no cooldown
+    invaderXim.mob.phOnDespawn(mob, bugbearPHTable, 10, 1) -- no cooldown
 end
 
 return entity

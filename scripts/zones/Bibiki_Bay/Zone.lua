@@ -17,8 +17,8 @@ zoneObject.onZoneIn = function(player, prevZone)
         player:getYPos() == 0 and
         player:getZPos() == 0
     then
-        if prevZone == xi.zone.MANACLIPPER then
-            cs = xi.manaclipper.onZoneIn(player)
+        if prevZone == invaderXim.zone.MANACLIPPER then
+            cs = invaderXim.manaclipper.onZoneIn(player)
         else
             player:setPos(669.917, -23.138, 911.655, 111)
         end
@@ -28,19 +28,19 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
-    xi.manaclipper.aboard(player, triggerArea:getTriggerAreaID(), true)
+    invaderXim.manaclipper.aboard(player, triggerArea:getTriggerAreaID(), true)
 end
 
 zoneObject.onTriggerAreaLeave = function(player, triggerArea)
-    xi.manaclipper.aboard(player, triggerArea:getTriggerAreaID(), false)
+    invaderXim.manaclipper.aboard(player, triggerArea:getTriggerAreaID(), false)
 end
 
 zoneObject.onTransportEvent = function(player, transport)
-    xi.manaclipper.onTransportEvent(player, transport)
+    invaderXim.manaclipper.onTransportEvent(player, transport)
 end
 
 zoneObject.onEventUpdate = function(player, csid, option, npc)
@@ -52,7 +52,7 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
     elseif csid == 13 then
         player:startEvent(11) -- arrive at Purgonorgo Isle CS
     elseif csid == 14 or csid == 16 then
-        player:setPos(0, 0, 0, 0, xi.zone.MANACLIPPER)
+        player:setPos(0, 0, 0, 0, invaderXim.zone.MANACLIPPER)
     end
 end
 

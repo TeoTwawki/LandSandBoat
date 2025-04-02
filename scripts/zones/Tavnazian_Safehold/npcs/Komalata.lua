@@ -2,7 +2,7 @@
 -- Area: Tavnazian Safehold
 --  NPC: Komalata
 -----------------------------------
-local ID = zones[xi.zone.TAVNAZIAN_SAFEHOLD]
+local ID = zones[invaderXim.zone.TAVNAZIAN_SAFEHOLD]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -16,7 +16,7 @@ entity.onTrigger = function(player, npc)
         4509,  10, -- Distilled Water
     }
 
-    if player:getCurrentMission(xi.mission.log_id.COP) >= xi.mission.id.cop.SHELTERING_DOUBT then
+    if player:getCurrentMission(invaderXim.mission.log_id.COP) >= invaderXim.mission.id.cop.SHELTERING_DOUBT then
         stock =
         {
             625,   88, -- Apple Vinegar
@@ -33,7 +33,7 @@ entity.onTrigger = function(player, npc)
     end
 
     player:showText(npc, ID.text.KOMALATA_SHOP_DIALOG)
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 return entity

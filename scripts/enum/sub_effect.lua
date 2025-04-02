@@ -4,8 +4,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.subEffect
-xi.subEffect =
+---@enum invaderXim.subEffect
+invaderXim.subEffect =
 {
     -- ATTACKS
     FIRE_DAMAGE         = 1,   -- 110000        3

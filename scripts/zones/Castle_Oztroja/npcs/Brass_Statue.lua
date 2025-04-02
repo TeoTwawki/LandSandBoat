@@ -7,7 +7,7 @@
 -- !pos -60 22 -100 151            (3)
 -- !pos -100 -72 -19 151           (4)
 -----------------------------------
-local ID = zones[xi.zone.CASTLE_OZTROJA]
+local ID = zones[invaderXim.zone.CASTLE_OZTROJA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

@@ -6,11 +6,11 @@
 -- Yeggha_Dolashi : !pos 260 -5.768 60 258
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.THE_WATERGARDEN_COLISEUM)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_WATERGARDEN_COLISEUM)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.FRICTION_AND_FISSURES },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.FRICTION_AND_FISSURES },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 0
         end,
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['Yeggha_Dolashi'] =
             {
@@ -33,7 +33,7 @@ mission.sections =
             {
                 [0] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        xi.mission.setVar(player, xi.mission.log_id.SOA, xi.mission.id.soa.FRICTION_AND_FISSURES, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.mission.setVar(player, invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.FRICTION_AND_FISSURES, 'Timer', VanadielUniqueDay() + 1)
                     end
                 end,
             },

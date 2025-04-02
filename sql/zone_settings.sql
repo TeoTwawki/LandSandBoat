@@ -13,7 +13,7 @@
 -- Table structure for table `zone_settings`
 --
 
-DROP TABLE IF EXISTS `zone_settings`;
+DROP TABLE IF IXIMSTS `zone_settings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zone_settings` (

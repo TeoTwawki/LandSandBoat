@@ -3,7 +3,7 @@
 --  Mob: Goobbue
 -- Note: PH for Jolly Green
 -----------------------------------
-local ID = zones[xi.zone.PASHHOW_MARSHLANDS]
+local ID = zones[invaderXim.zone.PASHHOW_MARSHLANDS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -14,11 +14,11 @@ local jollyPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 60, 3, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 60, 3, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, jollyPHTable, 5, 1) -- 1 second / no cooldown
+    invaderXim.mob.phOnDespawn(mob, jollyPHTable, 5, 1) -- 1 second / no cooldown
 end
 
 return entity

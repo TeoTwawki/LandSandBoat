@@ -7,11 +7,11 @@
 -- Cid            : !pos -12 -12 1 237
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.THE_CALL_OF_THE_WYRMKING)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_CALL_OF_THE_WYRMKING)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.A_VESSEL_WITHOUT_A_CAPTAIN },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.A_VESSEL_WITHOUT_A_CAPTAIN },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.SOUTH_GUSTABERG] =
+        [invaderXim.zone.SOUTH_GUSTABERG] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 0 then
@@ -37,7 +37,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             onTriggerAreaEnter =
             {
@@ -56,7 +56,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Cid'] =
             {

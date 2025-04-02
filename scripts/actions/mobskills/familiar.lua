@@ -12,7 +12,7 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     mob:familiar()
 
-    skill:setMsg(xi.msg.basic.FAMILIAR_MOB)
+    skill:setMsg(invaderXim.msg.basic.FAMILIAR_MOB)
 
     return 0
 end

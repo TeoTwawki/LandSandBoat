@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Quicksand_Caves (208)
 -----------------------------------
-local ID = zones[xi.zone.QUICKSAND_CAVES]
+local ID = zones[invaderXim.zone.QUICKSAND_CAVES]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -29,13 +29,13 @@ zoneObject.onInitialize = function(zone)
     zone:registerCuboidTriggerArea(33, -297, 6, 415, -295, 8, 417)   -- E-7 (Map 6)
     zone:registerCuboidTriggerArea(34, -137, 6, -177, -135, 8, -175) -- G-7 (Map 8)
 
-    xi.treasure.initZone(zone)
+    invaderXim.treasure.initZone(zone)
 
     npcUtil.UpdateNPCSpawnPoint(ID.npc.ANTICAN_TAG_QM, 60, 120, ID.npc.ANTICAN_TAG_POSITIONS, '[POP]Antican_Tag')
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -55,9 +55,9 @@ end
 local function getWeight(player)
     local race = player:getRace()
 
-    if race == xi.race.GALKA or player:hasKeyItem(xi.ki.LOADSTONE) then
+    if race == invaderXim.race.GALKA or player:hasKeyItem(invaderXim.ki.LOADSTONE) then
         return 3
-    elseif race == xi.race.TARU_M or race == xi.race.TARU_F then
+    elseif race == invaderXim.race.TARU_M or race == invaderXim.race.TARU_F then
         return 1
     else
         return 2
@@ -113,7 +113,7 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
         if
             totalWeight >= 3 and
             plate:getLocalVar('opening') == 0 and
-            door:getAnimation() == xi.anim.CLOSE_DOOR
+            door:getAnimation() == invaderXim.anim.CLOSE_DOOR
         then
             SendEntityVisualPacket(plate:getID(), 'unlc') -- Play the light animation
             plate:setLocalVar('opening', 1)

@@ -9,10 +9,10 @@
 -- Wooden Gate : !pos 45.500 -1.500 10.000 28
 -- ???         : !pos 102.669 -3.111 127.279 28 (Varies in area)
 -----------------------------------
-local sacrariumID = zones[xi.zone.SACRARIUM]
+local sacrariumID = zones[invaderXim.zone.SACRARIUM]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.THE_SECRETS_OF_WORSHIP)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_SECRETS_OF_WORSHIP)
 
 local profQmOnTrigger = function(player, npc)
     local missionStatus = mission:getVar(player, 'Status')
@@ -20,7 +20,7 @@ local profQmOnTrigger = function(player, npc)
 
     if
         missionStatus == 3 and
-        not player:hasKeyItem(xi.ki.RELIQUIARIUM_KEY) and
+        not player:hasKeyItem(invaderXim.ki.RELIQUIARIUM_KEY) and
         isSpawnPoint
     then
         GetMobByID(sacrariumID.mob.OLD_PROFESSOR_MARISELLE):setSpawn(npc:getXPos(), npc:getYPos(), npc:getZPos(), 0)
@@ -32,16 +32,16 @@ local profQmOnTrigger = function(player, npc)
         return mission:messageSpecial(sacrariumID.text.EVIL_PRESENCE)
     elseif
         mission:getLocalVar(player, 'hasKilled') == 1 and
-        not player:hasKeyItem(xi.ki.RELIQUIARIUM_KEY)
+        not player:hasKeyItem(invaderXim.ki.RELIQUIARIUM_KEY)
     then
-        npcUtil.giveKeyItem(player, xi.ki.RELIQUIARIUM_KEY)
+        npcUtil.giveKeyItem(player, invaderXim.ki.RELIQUIARIUM_KEY)
         return mission:noAction()
     end
 end
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.SLANDEROUS_UTTERINGS },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.SLANDEROUS_UTTERINGS },
 }
 
 mission.sections =
@@ -51,7 +51,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['_0qa'] =
             {
@@ -88,7 +88,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.MISAREAUX_COAST] =
+        [invaderXim.zone.MISAREAUX_COAST] =
         {
             ['_0p8'] =
             {
@@ -120,7 +120,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SACRARIUM] =
+        [invaderXim.zone.SACRARIUM] =
         {
             ['_0s8'] =
             {
@@ -129,8 +129,8 @@ mission.sections =
 
                     if player:getXPos() > 45 then
                         if missionStatus == 2 then
-                            return mission:progressEvent(6, 0, xi.ki.RELIQUIARIUM_KEY)
-                        elseif missionStatus == 3 and player:hasKeyItem(xi.ki.RELIQUIARIUM_KEY) then
+                            return mission:progressEvent(6, 0, invaderXim.ki.RELIQUIARIUM_KEY)
+                        elseif missionStatus == 3 and player:hasKeyItem(invaderXim.ki.RELIQUIARIUM_KEY) then
                             return mission:progressEvent(5)
                         end
                     else
@@ -173,13 +173,13 @@ mission.sections =
             return currentMission ~= mission.missionId
         end,
 
-        [xi.zone.SACRARIUM] =
+        [invaderXim.zone.SACRARIUM] =
         {
             ['_0s8'] =
             {
                 onTrigger = function(player, npc)
                     if player:getXPos() > 45 then
-                        if player:hasKeyItem(xi.ki.RELIQUIARIUM_KEY) then
+                        if player:hasKeyItem(invaderXim.ki.RELIQUIARIUM_KEY) then
                             player:startEvent(110)
                         end
                     else

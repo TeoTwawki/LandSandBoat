@@ -11,11 +11,11 @@
 -- Regal Pawprints (Naoi)    : !pos 53.812 0.307 -299.136 136
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.TRAITOR_IN_THE_MIDST)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.TRAITOR_IN_THE_MIDST)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.BETRAYAL_AT_BEAUCEDINE },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.BETRAYAL_AT_BEAUCEDINE },
 }
 
 local gameOnTrigger = function(player, npc)
@@ -61,7 +61,7 @@ mission.sections =
         -- TODO: Jul 2022 Update will change retry conditions for these minigames.  Not implementing the required
         -- zoning logic until that time.  Option 2 on event finish is the failure scenario.
 
-        [xi.zone.BEAUCEDINE_GLACIER_S] =
+        [invaderXim.zone.BEAUCEDINE_GLACIER_S] =
         {
             ['Regal_Pawprints_3'] =
             {

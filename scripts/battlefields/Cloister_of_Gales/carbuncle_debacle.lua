@@ -2,22 +2,22 @@
 -- Area: Cloister of Gales
 -- BCNM: Carbuncle Debacle
 -----------------------------------
-local cloisterOfGalesID = zones[xi.zone.CLOISTER_OF_GALES]
+local cloisterOfGalesID = zones[invaderXim.zone.CLOISTER_OF_GALES]
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId           = xi.zone.CLOISTER_OF_GALES,
-    battlefieldId    = xi.battlefield.id.CARBUNCLE_DEBACLE_CLOISTER_OF_GALES,
+    zoneId           = invaderXim.zone.CLOISTER_OF_GALES,
+    battlefieldId    = invaderXim.battlefield.id.CARBUNCLE_DEBACLE_CLOISTER_OF_GALES,
     canLoseExp       = false,
     maxPlayers       = 18,
     timeLimit        = utils.minutes(30),
     index            = 1,
     entryNpc         = 'WP_Entrance',
     exitNpc          = 'Wind_Protocrystal',
-    requiredItems    = { xi.item.WIND_PENDULUM },
+    requiredItems    = { invaderXim.item.WIND_PENDULUM },
 
-    questArea     = xi.questLog.WINDURST,
-    quest         = xi.quest.id.windurst.CARBUNCLE_DEBACLE,
+    questArea     = invaderXim.questLog.WINDURST,
+    quest         = invaderXim.quest.id.windurst.CARBUNCLE_DEBACLE,
     requiredVar   = 'CarbuncleDebacleProgress',
     requiredValue = 6,
 })
@@ -27,7 +27,7 @@ function content:onEventFinishWin(player, csid, option, npc)
         player:setCharVar('CarbuncleDebacleProgress', 7)
     end
 
-    player:delKeyItem(xi.ki.DAZE_BREAKER_CHARM)
+    player:delKeyItem(invaderXim.ki.DAZE_BREAKER_CHARM)
 end
 
 content.groups =
@@ -41,7 +41,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

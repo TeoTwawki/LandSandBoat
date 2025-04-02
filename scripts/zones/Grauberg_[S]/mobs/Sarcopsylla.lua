@@ -10,26 +10,26 @@ local entity = {}
 
 entity.onMobInitialize = function(mob)
     -- Set immunities.
-    mob:addImmunity(xi.immunity.GRAVITY)
-    mob:addImmunity(xi.immunity.BIND)
-    mob:addImmunity(xi.immunity.SILENCE)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.PETRIFY)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
+    mob:addImmunity(invaderXim.immunity.BIND)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.PETRIFY)
 
     -- Set modifiers.
-    mob:setMod(xi.mod.TRIPLE_ATTACK, 100)
+    mob:setMod(invaderXim.mod.TRIPLE_ATTACK, 100)
 
     -- Set mob modifiers.
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.ENFIRE, { power = math.random(25, 30) })
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.ENFIRE, { power = math.random(25, 30) })
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 502)
+    invaderXim.hunts.checkHunt(mob, player, 502)
 end
 
 return entity

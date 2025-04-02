@@ -12,20 +12,20 @@
 -- Helaku  : !pos 49 -2 -12 231
 -- Melek   : !pos -80.6 -5.5 157.3 240
 -----------------------------------
-local bastokMarketsID = zones[xi.zone.BASTOK_MARKETS]
-local bastokMinesID   = zones[xi.zone.BASTOK_MINES]
-local metalworksID    = zones[xi.zone.METALWORKS]
-local portBastokID    = zones[xi.zone.PORT_BASTOK]
+local bastokMarketsID = zones[invaderXim.zone.BASTOK_MARKETS]
+local bastokMinesID   = zones[invaderXim.zone.BASTOK_MINES]
+local metalworksID    = zones[invaderXim.zone.METALWORKS]
+local portBastokID    = zones[invaderXim.zone.PORT_BASTOK]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY)
+local mission = Mission:new(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY)
 
 mission.reward =
 {
     gil     = 3000,
-    keyItem = xi.ki.ADVENTURERS_CERTIFICATE,
+    keyItem = invaderXim.ki.ADVENTURERS_CERTIFICATE,
     rank    = 3,
-    title   = xi.title.CERTIFIED_ADVENTURER,
+    title   = invaderXim.title.CERTIFIED_ADVENTURER,
 }
 
 local handleAcceptMission = function(player, csid, option, npc)
@@ -39,11 +39,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             onEventFinish =
             {
@@ -51,7 +51,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             onEventFinish =
             {
@@ -59,7 +59,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             onEventFinish =
             {
@@ -67,7 +67,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             onEventFinish =
             {
@@ -81,33 +81,33 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Cleades'] = mission:messageSpecial(bastokMarketsID.text.ORIGINAL_MISSION_OFFSET + 23),
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Rashid'] = mission:messageSpecial(bastokMinesID.text.ORIGINAL_MISSION_OFFSET + 23),
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Malduc'] = mission:messageSpecial(metalworksID.text.ORIGINAL_MISSION_OFFSET + 23),
 
             ['Naji'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.KINDRED_REPORT) then
+                    if player:hasKeyItem(invaderXim.ki.KINDRED_REPORT) then
                         return mission:progressEvent(714)
                     elseif
-                        not player:hasKeyItem(xi.ki.LETTER_TO_THE_CONSULS_BASTOK) and
+                        not player:hasKeyItem(invaderXim.ki.LETTER_TO_THE_CONSULS_BASTOK) and
                         player:getMissionStatus(mission.areaId) == 0
                     then
                         local isFirst23 =
                         (
-                            not player:hasCompletedMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_ABROAD) and
-                            not player:hasCompletedMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_THREE_KINGDOMS)
+                            not player:hasCompletedMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_ABROAD) and
+                            not player:hasCompletedMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_THREE_KINGDOMS)
                         ) and 1 or 0
 
                         return mission:progressEvent(713, 0, 0, 0, 0, 0, 0, 0, isFirst23) -- Contains variation for Lion mention.
@@ -120,24 +120,24 @@ mission.sections =
             onEventFinish =
             {
                 [713] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.LETTER_TO_THE_CONSULS_BASTOK)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LETTER_TO_THE_CONSULS_BASTOK)
                     player:setMissionStatus(mission.areaId, 1)
                 end,
 
                 [714] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.KINDRED_REPORT)
+                        player:delKeyItem(invaderXim.ki.KINDRED_REPORT)
                     end
                 end,
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Argus'] = mission:messageSpecial(portBastokID.text.ORIGINAL_MISSION_OFFSET + 23),
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Baraka'] =
             {
@@ -159,7 +159,7 @@ mission.sections =
                         return mission:progressEvent(537)
                     elseif
                         missionStatus == 11 and
-                        player:hasCompletedMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY_SANDORIA2)
+                        player:hasCompletedMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY_SANDORIA2)
                     then -- Both paths completed, with Sandoria last.
                         return mission:progressEvent(557)
                     end
@@ -185,21 +185,21 @@ mission.sections =
                 [537] = function(player, csid, option, npc)
                     if option == 0 then
                         player:delMission(mission.areaId, mission.missionId)
-                        player:addMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY_SANDORIA2)
-                        player:delKeyItem(xi.ki.LETTER_TO_THE_CONSULS_BASTOK) -- Key item deleted when starting second path.
+                        player:addMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY_SANDORIA2)
+                        player:delKeyItem(invaderXim.ki.LETTER_TO_THE_CONSULS_BASTOK) -- Key item deleted when starting second path.
                         player:setMissionStatus(mission.areaId, 8)
                     end
                 end,
 
                 [581] = function(player, csid, option, npc)
                     player:delMission(mission.areaId, mission.missionId)
-                    player:addMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY_SANDORIA)
+                    player:addMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY_SANDORIA)
                     player:setMissionStatus(mission.areaId, 2)
                 end,
             },
         },
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Ada'] =
             {
@@ -209,8 +209,8 @@ mission.sections =
                     if missionStatus == 7 then -- Windurst path completed. Sandoria path not started.
                         return mission:event(58)
                     elseif
-                        player:hasKeyItem(xi.ki.KINDRED_REPORT) and
-                        player:hasCompletedMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY_WINDURST2)
+                        player:hasKeyItem(invaderXim.ki.KINDRED_REPORT) and
+                        player:hasCompletedMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY_WINDURST2)
                     then -- Both paths completed, with Windurst last.
                         return mission:event(69)
                     end
@@ -223,8 +223,8 @@ mission.sections =
                     if player:getMissionStatus(mission.areaId) == 7 then -- Windurst path completed. Sandoria path not started.
                         return mission:event(57)
                     elseif
-                        player:hasKeyItem(xi.ki.KINDRED_REPORT) and
-                        player:hasCompletedMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY_WINDURST2)
+                        player:hasKeyItem(invaderXim.ki.KINDRED_REPORT) and
+                        player:hasCompletedMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY_WINDURST2)
                     then -- Both paths completed, with Windurst last.
                         return mission:event(68)
                     end
@@ -237,8 +237,8 @@ mission.sections =
                     if player:getMissionStatus(mission.areaId) == 7 then -- Windurst path completed. Sandoria path not started.
                         return mission:event(59)
                     elseif
-                        player:hasKeyItem(xi.ki.KINDRED_REPORT) and
-                        player:hasCompletedMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY_WINDURST2)
+                        player:hasKeyItem(invaderXim.ki.KINDRED_REPORT) and
+                        player:hasCompletedMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY_WINDURST2)
                     then -- Both paths completed, with Windurst last.
                         return mission:event(70)
                     end
@@ -257,8 +257,8 @@ mission.sections =
                     elseif missionStatus == 7 then -- Windurst path completed. Sandoria path not started.
                         return mission:event(56)
                     elseif
-                        player:hasKeyItem(xi.ki.KINDRED_REPORT) and
-                        player:hasCompletedMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY_WINDURST2)
+                        player:hasKeyItem(invaderXim.ki.KINDRED_REPORT) and
+                        player:hasCompletedMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY_WINDURST2)
                     then -- Both paths completed, with Windurst last.
                         return mission:progressEvent(67)
                     end
@@ -269,14 +269,14 @@ mission.sections =
             {
                 [48] = function(player, csid, option, npc)
                     player:delMission(mission.areaId, mission.missionId)
-                    player:addMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY_WINDURST)
+                    player:addMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY_WINDURST)
                     player:setMissionStatus(mission.areaId, 2)
                 end,
 
                 [61] = function(player, csid, option, npc)
                     player:delMission(mission.areaId, mission.missionId)
-                    player:addMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY_WINDURST2)
-                    player:delKeyItem(xi.ki.LETTER_TO_THE_CONSULS_BASTOK) -- Key item deleted when starting second path.
+                    player:addMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY_WINDURST2)
+                    player:delKeyItem(invaderXim.ki.LETTER_TO_THE_CONSULS_BASTOK) -- Key item deleted when starting second path.
                     player:setMissionStatus(mission.areaId, 7)
                 end,
             },

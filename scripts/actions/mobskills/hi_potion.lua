@@ -9,8 +9,8 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.msg.basic.SELF_HEAL)
-    return xi.mobskills.mobHealMove(target, 100)
+    skill:setMsg(invaderXim.msg.basic.SELF_HEAL)
+    return invaderXim.mobskills.mobHealMove(target, 100)
 end
 
 return mobskillObject

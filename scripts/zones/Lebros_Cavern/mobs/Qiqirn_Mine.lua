@@ -2,7 +2,7 @@
 -- Area: Lebros Cavern (Excavation Duty)
 --  Mob: Qiqirn Mine
 -----------------------------------
-local ID = zones[xi.zone.LEBROS_CAVERN]
+local ID = zones[invaderXim.zone.LEBROS_CAVERN]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -14,7 +14,7 @@ entity.onMobSpawn = function(mob)
     end
 
     local chars = instance:getChars()
-    mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
     mob:setAutoAttackEnabled(false)
 
     for _, players in pairs(chars) do

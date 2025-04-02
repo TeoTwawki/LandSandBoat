@@ -6,23 +6,23 @@
 local spellObject = {}
 
 spellObject.onMagicCastingCheck = function(caster, target, spell)
-    if not caster:canUseMisc(xi.zoneMisc.PET) then
-        return xi.msg.basic.CANT_BE_USED_IN_AREA
+    if not caster:canUseMisc(invaderXim.zoneMisc.PET) then
+        return invaderXim.msg.basic.CANT_BE_USED_IN_AREA
     elseif caster:hasPet() then
-        return xi.msg.basic.ALREADY_HAS_A_PET
+        return invaderXim.msg.basic.ALREADY_HAS_A_PET
     else
         return 0
     end
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    xi.pet.spawnPet(caster, xi.petId.CARBUNCLE)
+    invaderXim.pet.spawnPet(caster, invaderXim.petId.CARBUNCLE)
 
-    local effect = caster:getStatusEffect(xi.effect.AVATARS_FAVOR)
+    local effect = caster:getStatusEffect(invaderXim.effect.AVATARS_FAVOR)
     if effect then
         effect:setPower(1) -- resummon resets effect
-        xi.avatarsFavor.applyAvatarsFavorAuraToPet(caster, effect)
-        xi.avatarsFavor.applyAvatarsFavorDebuffsToPet(caster)
+        invaderXim.avatarsFavor.applyAvatarsFavorAuraToPet(caster, effect)
+        invaderXim.avatarsFavor.applyAvatarsFavorDebuffsToPet(caster)
     end
 
     return 0

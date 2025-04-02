@@ -5,12 +5,12 @@
 -- Michea : !pos -298 -16 -157 235
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.FATHER_FIGURE)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.FATHER_FIGURE)
 
 quest.reward =
 {
     fame     = 120,
-    fameArea = xi.fameArea.BASTOK,
+    fameArea = invaderXim.fameArea.BASTOK,
     gil      = 2200,
 }
 
@@ -18,12 +18,12 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.THE_ELVAAN_GOLDSMITH) and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 2
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_ELVAAN_GOLDSMITH) and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 2
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Michea'] = quest:progressEvent(240),
 
@@ -38,15 +38,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Michea'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.SILVER_INGOT) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.SILVER_INGOT) then
                         return quest:progressEvent(241)
                     end
                 end,

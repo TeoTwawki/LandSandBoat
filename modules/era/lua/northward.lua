@@ -6,15 +6,15 @@ require('modules/module_utils')
 -----------------------------------
 local m = Module:new('era_quest_northward')
 
-m:addOverride('xi.server.onServerStart', function()
+m:addOverride('invaderXim.server.onServerStart', function()
     super()
 
-    xi.module.modifyInteractionEntry('scripts/quests/jeuno/Northward', function(quest)
+    invaderXim.module.modifyInteractionEntry('scripts/quests/jeuno/Northward', function(quest)
         quest.reward = {
             fame     = 30,
-            fameArea = xi.fameArea.JEUNO,
-            keyItem  = xi.ki.MAP_OF_CASTLE_ZVAHL,
-            title    = xi.title.ENVOY_TO_THE_NORTH,
+            fameArea = invaderXim.fameArea.JEUNO,
+            keyItem  = invaderXim.ki.MAP_OF_CASTLE_ZVAHL,
+            title    = invaderXim.title.ENVOY_TO_THE_NORTH,
         }
     end)
 end)

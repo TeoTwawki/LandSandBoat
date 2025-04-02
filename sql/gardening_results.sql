@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS `gardening_results`;
-CREATE TABLE IF NOT EXISTS `gardening_results` (
+DROP TABLE IF IXIMSTS `gardening_results`;
+CREATE TABLE IF NOT IXIMSTS `gardening_results` (
   `resultId` smallint(4) unsigned NOT NULL,
   `seed` tinyint(1) unsigned NOT NULL DEFAULT 0,
   `element1` tinyint(1) unsigned NOT NULL DEFAULT 0,

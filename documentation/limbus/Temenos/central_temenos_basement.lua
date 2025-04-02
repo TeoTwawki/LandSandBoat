@@ -5,19 +5,19 @@
 -- !addkeyitem cosmo_cleanse
 -- !pos 580.000 -2.375 104.000 37
 -----------------------------------
-local ID = zones[xi.zone.TEMENOS]
+local ID = zones[invaderXim.zone.TEMENOS]
 -----------------------------------
 
 local content = Limbus:new({
-    zoneId           = xi.zone.TEMENOS,
-    battlefieldId    = xi.battlefield.id.CENTRAL_TEMENOS_BASEMENT,
+    zoneId           = invaderXim.zone.TEMENOS,
+    battlefieldId    = invaderXim.battlefield.id.CENTRAL_TEMENOS_BASEMENT,
     maxPlayers       = 18,
     timeLimit        = utils.minutes(15),
     index            = 7,
     area             = 8,
     entryNpc         = 'Matter_Diffusion_Module',
-    requiredKeyItems = { xi.ki.COSMO_CLEANSE, xi.ki.WHITE_CARD, message = ID.text.YOU_INSERT_THE_CARD_POLISHED },
-    requiredItems    = { xi.item.METAL_CHIP },
+    requiredKeyItems = { invaderXim.ki.COSMO_CLEANSE, invaderXim.ki.WHITE_CARD, message = ID.text.YOU_INSERT_THE_CARD_POLISHED },
+    requiredItems    = { invaderXim.item.METAL_CHIP },
     name             = 'CENTRAL_TEMENOS_BASEMENT',
     lootCrateId      = ID.npc.CB_LOOT_CRATE,
     timeExtension    = 5,
@@ -27,7 +27,7 @@ content.groups =
 {
     {
         mobs    = { 'Temenos_Aern' },
-        mobMods = { [xi.mobMod.DETECTION] = xi.detects.HEARING },
+        mobMods = { [invaderXim.mobMod.DETECTION] = invaderXim.detects.HEARING },
         mixins =
         {
             require('scripts/mixins/families/aern'),
@@ -56,7 +56,7 @@ content.groups =
                 mob:addListener('ITEM_DROPS', 'ITEM_DROPS_AERN', function(mobArg, loot)
                     local quantity = math.min(3, mob:getLocalVar('AERN_RERAISES'))
 
-                    loot:addItem(xi.item.ANCIENT_BEASTCOIN, xi.drop_rate.GUARANTEED, quantity)
+                    loot:addItem(invaderXim.item.ANCIENT_BEASTCOIN, invaderXim.drop_rate.GUARANTEED, quantity)
                 end)
             end
 
@@ -124,12 +124,12 @@ content.loot =
     {
         {
             quantity = 7,
-            { item = xi.item.ANCIENT_BEASTCOIN, weight = 1000 },
+            { item = invaderXim.item.ANCIENT_BEASTCOIN, weight = 1000 },
         },
 
         {
-            { item = xi.item.NONE,       weight = xi.loot.weight.VERY_HIGH },
-            { item = xi.item.METAL_CHIP, weight = xi.loot.weight.NORMAL    },
+            { item = invaderXim.item.NONE,       weight = invaderXim.loot.weight.VERY_HIGH },
+            { item = invaderXim.item.METAL_CHIP, weight = invaderXim.loot.weight.NORMAL    },
         },
     }
 }

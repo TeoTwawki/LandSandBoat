@@ -6,11 +6,11 @@
 -- Levil : !pos -87.204 3.350 12.655 256
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.A_SHROUDED_CANOPY)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.A_SHROUDED_CANOPY)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.LEAFALLIA },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.LEAFALLIA },
 }
 
 mission.sections =
@@ -20,12 +20,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:progressEvent(166),
         },
 
-        [xi.zone.LEAFALLIA] =
+        [invaderXim.zone.LEAFALLIA] =
         {
             onZoneIn = function(player, prevZone)
                 return 2

@@ -20,7 +20,7 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    local skill    = caster:getSkillLevel(xi.skill.BLUE_MAGIC)
+    local skill    = caster:getSkillLevel(invaderXim.skill.BLUE_MAGIC)
     local power    = skill / 50
     local duration = 300
 
@@ -31,21 +31,21 @@ spellObject.onSpellCast = function(caster, target, spell)
         power = 2
     end
 
-    if caster:hasStatusEffect(xi.effect.DIFFUSION) then
-        local diffMerit = caster:getMerit(xi.merit.DIFFUSION)
+    if caster:hasStatusEffect(invaderXim.effect.DIFFUSION) then
+        local diffMerit = caster:getMerit(invaderXim.merit.DIFFUSION)
 
         if diffMerit > 0 then
             duration = duration + (duration / 100) * diffMerit
         end
 
-        caster:delStatusEffect(xi.effect.DIFFUSION)
+        caster:delStatusEffect(invaderXim.effect.DIFFUSION)
     end
 
-    if not target:addStatusEffect(xi.effect.BLINK, power, 0, duration) then
-        spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+    if not target:addStatusEffect(invaderXim.effect.BLINK, power, 0, duration) then
+        spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
     end
 
-    return xi.effect.BLINK
+    return invaderXim.effect.BLINK
 end
 
 return spellObject

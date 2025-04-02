@@ -7,11 +7,11 @@
 -- Grilau               : !pos -241.987 6.999 57.887 231
 -- Endracion            : !pos -110 1 -34 230
 -----------------------------------
-local southernSandoriaID = zones[xi.zone.SOUTHERN_SAN_DORIA]
-local northernSandoriaID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local southernSandoriaID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
+local northernSandoriaID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.THE_CRYSTAL_SPRING)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.THE_CRYSTAL_SPRING)
 
 mission.reward =
 {
@@ -29,11 +29,11 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -42,7 +42,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -57,7 +57,7 @@ mission.sections =
             return currentMission == mission.missionId and not player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Chalvatot'] =
             {
@@ -70,7 +70,7 @@ mission.sections =
 
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.NORTHERN_SAN_DORIA and
+                    prevZone == invaderXim.zone.NORTHERN_SAN_DORIA and
                     player:getMissionStatus(mission.areaId) == 2
                 then
                     return 555
@@ -89,7 +89,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] =
             {
@@ -104,7 +104,7 @@ mission.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.CRYSTAL_BASS) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.CRYSTAL_BASS) then
                         return mission:progressEvent(2030)
                     end
                 end,
@@ -123,7 +123,7 @@ mission.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.CRYSTAL_BASS) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.CRYSTAL_BASS) then
                         return mission:progressEvent(1030)
                     end
                 end,
@@ -143,7 +143,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Grilau'] =
             {
@@ -158,7 +158,7 @@ mission.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.CRYSTAL_BASS) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.CRYSTAL_BASS) then
                         return mission:progressEvent(1030)
                     end
                 end,
@@ -180,7 +180,7 @@ mission.sections =
             return currentMission == mission.missionId and player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] =
             {
@@ -191,7 +191,7 @@ mission.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.CRYSTAL_BASS) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.CRYSTAL_BASS) then
                         return mission:progressEvent(2013)
                     end
                 end,
@@ -206,7 +206,7 @@ mission.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.CRYSTAL_BASS) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.CRYSTAL_BASS) then
                         return mission:progressEvent(1013)
                     end
                 end,
@@ -228,7 +228,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Grilau'] =
             {
@@ -239,7 +239,7 @@ mission.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.CRYSTAL_BASS) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.CRYSTAL_BASS) then
                         return mission:progressEvent(1013)
                     end
                 end,

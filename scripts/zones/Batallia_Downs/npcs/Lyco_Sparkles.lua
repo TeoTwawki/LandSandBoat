@@ -3,7 +3,7 @@
 --  NPC:
 -- !pos -366.262 -16.000 325.967 105
 -----------------------------------
-local ID = zones[xi.zone.BATALLIA_DOWNS]
+local ID = zones[invaderXim.zone.BATALLIA_DOWNS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

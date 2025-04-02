@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.weather
-xi.weather =
+---@enum invaderXim.weather
+invaderXim.weather =
 {
     NONE            =  0,
     SUNSHINE        =  1,

@@ -15,7 +15,7 @@ entity.onEventFinish = function(player, csid, option, npc)
         csid == 103 and
         option == 1
     then
-        player:setPos(-300, -12.08, 157, 64, xi.zone.GARLAIGE_CITADEL_S)
+        player:setPos(-300, -12.08, 157, 64, invaderXim.zone.GARLAIGE_CITADEL_S)
     end
 end
 

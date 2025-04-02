@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.craftRank
-xi.craftRank =
+---@enum invaderXim.craftRank
+invaderXim.craftRank =
 {
     AMATEUR     = 0,
     RECRUIT     = 1,

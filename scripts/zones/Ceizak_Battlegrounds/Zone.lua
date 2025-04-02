@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Ceizak Battlegrounds (261)
 -----------------------------------
-local ID = zones[xi.zone.CEIZAK_BATTLEGROUNDS]
+local ID = zones[invaderXim.zone.CEIZAK_BATTLEGROUNDS]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -13,7 +13,7 @@ zoneObject.onInitialize = function(zone)
     -- Ergon Locus area at I-8
     zone:registerCylindricalTriggerArea(2, 87.2, 72.9, 8)
 
-    xi.reives.setupZone(zone)
+    invaderXim.reives.setupZone(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -33,8 +33,8 @@ end
 -- Cutscene for Dances with Luopans.
 local function triggerUncannySensationMessage(player)
     if
-        player:getQuestStatus(xi.questLog.ADOULIN, xi.quest.id.adoulin.DANCES_WITH_LUOPANS) == xi.questStatus.QUEST_ACCEPTED and
-        player:hasKeyItem(xi.ki.LUOPAN) and
+        player:getQuestStatus(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.DANCES_WITH_LUOPANS) == invaderXim.questStatus.QUEST_ACCEPTED and
+        player:hasKeyItem(invaderXim.ki.LUOPAN) and
         player:getCharVar('GEO_DWL_Luopan') == 0
     then
         player:messageSpecial(ID.text.UNCANNY_SENSATION)

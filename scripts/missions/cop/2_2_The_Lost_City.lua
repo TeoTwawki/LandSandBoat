@@ -7,11 +7,11 @@
 -- Sewer Entrance : !pos 28 -12 44 26
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.THE_LOST_CITY)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_LOST_CITY)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.DISTANT_BELIEFS },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.DISTANT_BELIEFS },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['_0q1'] =
             {
@@ -86,10 +86,10 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return player:hasCompletedMission(mission.areaId, mission.missionId) and
-                not player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.DARKNESS_NAMED)
+                not player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.DARKNESS_NAMED)
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Arquil']       = mission:event(291):replaceDefault(),
             ['Despachiaire'] = mission:event(106):replaceDefault(),

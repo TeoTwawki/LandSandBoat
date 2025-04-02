@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.claimType
-xi.claimType =
+---@enum invaderXim.claimType
+invaderXim.claimType =
 {
     EXCLUSIVE     = 0, -- Regular exclusive claim behavior. Only one entity and related group can attack.
     NON_EXCLUSIVE = 1, -- Regular claim behavior but multiple unrelated entities can attack and compete for claim. Rewards distributed to last claiming entity.

@@ -7,11 +7,11 @@
 -- Harmodios    : !pos -79.928 -4.824 -135.114 235
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.COMEBACK_QUEEN)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.COMEBACK_QUEEN)
 
 quest.reward =
 {
-    title = xi.title.ELEGANT_DANCER,
+    title = invaderXim.title.ELEGANT_DANCER,
 }
 
 -- The final series of events for this quest involve several onZoneIn cutscenes back to back; however,
@@ -21,22 +21,22 @@ local function progressZone(player)
     local currentPos = player:getPos()
 
     quest:incrementVar(player, 'Prog', 1)
-    player:setPos(currentPos['x'], currentPos['y'], currentPos['z'], currentPos['rot'], xi.zone.UPPER_JEUNO)
+    player:setPos(currentPos['x'], currentPos['y'], currentPos['z'], currentPos['rot'], invaderXim.zone.UPPER_JEUNO)
 end
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getMainJob() == xi.job.DNC and
-                player:getMainLvl() >= xi.settings.main.AF3_QUEST_LEVEL and
-                player:hasCompletedQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_ROAD_TO_DIVADOM) and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getMainJob() == invaderXim.job.DNC and
+                player:getMainLvl() >= invaderXim.settings.main.AF3_QUEST_LEVEL and
+                player:hasCompletedQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_ROAD_TO_DIVADOM) and
                 not quest:getMustZone(player) and
                 quest:getVar(player, 'Timer') <= VanadielUniqueDay()
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Laila'] = quest:progressEvent(10143),
 
@@ -44,7 +44,7 @@ quest.sections =
             {
                 [10143] = function(player, csid, option, npc)
                     quest:begin(player)
-                    npcUtil.giveKeyItem(player, xi.ki.WYATTS_PROPOSAL)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.WYATTS_PROPOSAL)
                 end,
             },
         },
@@ -52,10 +52,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Laila'] =
             {
@@ -144,7 +144,7 @@ quest.sections =
                 end,
 
                 [10154] = function(player, csid, option, npc)
-                    local dancersCasaque = xi.item.DANCERS_CASAQUE_F - player:getGender()
+                    local dancersCasaque = invaderXim.item.DANCERS_CASAQUE_F - player:getGender()
 
                     if npcUtil.giveItem(player, dancersCasaque) then
                         quest:complete(player)
@@ -167,7 +167,7 @@ quest.sections =
                 end,
 
                 [10211] = function(player, csid, option, npc)
-                    local dancersCasaque = xi.item.DANCERS_CASAQUE_F - player:getGender()
+                    local dancersCasaque = invaderXim.item.DANCERS_CASAQUE_F - player:getGender()
 
                     if npcUtil.giveItem(player, dancersCasaque) then
                         quest:complete(player)
@@ -181,7 +181,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Harmodios'] =
             {
@@ -199,7 +199,7 @@ quest.sections =
             onEventFinish =
             {
                 [490] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.WYATTS_PROPOSAL)
+                    player:delKeyItem(invaderXim.ki.WYATTS_PROPOSAL)
                     quest:setVar(player, 'Prog', 1)
                 end,
             },
@@ -210,10 +210,10 @@ quest.sections =
         check = function(player, status, vars)
             -- TODO: This condition may change with the implementation of
             -- Dancer Limit Break
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Alfrieda']     = quest:event(10157):replaceDefault(),
             ['Finnela']      = quest:event(10159):replaceDefault(),

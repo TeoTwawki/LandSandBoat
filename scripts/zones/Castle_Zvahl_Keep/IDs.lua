@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.CASTLE_ZVAHL_KEEP] =
+zones[invaderXim.zone.CASTLE_ZVAHL_KEEP] =
 {
     text =
     {
@@ -45,4 +45,4 @@ zones[xi.zone.CASTLE_ZVAHL_KEEP] =
     },
 }
 
-return zones[xi.zone.CASTLE_ZVAHL_KEEP]
+return zones[invaderXim.zone.CASTLE_ZVAHL_KEEP]

@@ -500,8 +500,8 @@ typedef struct x509_purpose_st {
 # define X509V3_ADD_DEFAULT              0L
 # define X509V3_ADD_APPEND               1L
 # define X509V3_ADD_REPLACE              2L
-# define X509V3_ADD_REPLACE_EXISTING     3L
-# define X509V3_ADD_KEEP_EXISTING        4L
+# define X509V3_ADD_REPLACE_IXIMSTING     3L
+# define X509V3_ADD_KEEP_IXIMSTING        4L
 # define X509V3_ADD_DELETE               5L
 # define X509V3_ADD_SILENT               0x10
 

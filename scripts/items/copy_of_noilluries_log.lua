@@ -9,11 +9,11 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.skillBookCheck(target, xi.skill.GREAT_KATANA)
+    return invaderXim.itemUtils.skillBookCheck(target, invaderXim.skill.GREAT_KATANA)
 end
 
 itemObject.onItemUse = function(target)
-    xi.itemUtils.skillBookUse(target, xi.skill.GREAT_KATANA)
+    invaderXim.itemUtils.skillBookUse(target, invaderXim.skill.GREAT_KATANA)
 end
 
 return itemObject

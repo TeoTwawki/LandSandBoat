@@ -10,7 +10,7 @@ abilityObject.onAutomatonAbilityCheck = function(target, automaton, skill)
         return
     end
 
-    return master:countEffect(xi.effect.DARK_MANEUVER)
+    return master:countEffect(invaderXim.effect.DARK_MANEUVER)
 end
 
 abilityObject.onAutomatonAbility = function(target, automaton, skill, master, action)
@@ -24,12 +24,12 @@ abilityObject.onAutomatonAbility = function(target, automaton, skill, master, ac
         dex_wsc = 0.6,
     }
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         params.ftpMod         = { 4.0, 5.5, 7.0 }
         params.ignoredDefense = { 0.5, 0.5, 0.5 }
     end
 
-    local damage = xi.autows.doAutoRangedWeaponskill(automaton, target, 0, params, skill:getTP(), true, skill, action)
+    local damage = invaderXim.autows.doAutoRangedWeaponskill(automaton, target, 0, params, skill:getTP(), true, skill, action)
 
     return damage
 end

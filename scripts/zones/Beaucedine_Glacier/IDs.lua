@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.BEAUCEDINE_GLACIER] =
+zones[invaderXim.zone.BEAUCEDINE_GLACIER] =
 {
     text =
     {
@@ -57,7 +57,7 @@ zones[xi.zone.BEAUCEDINE_GLACIER] =
 
         VOIDWALKER =
         {
-            [xi.keyItem.CLEAR_ABYSSITE] =
+            [invaderXim.keyItem.CLEAR_ABYSSITE] =
             {
                 17232159, -- Gorehound
                 17232158, -- Gorehound
@@ -69,18 +69,18 @@ zones[xi.zone.BEAUCEDINE_GLACIER] =
                 17232152, -- Gjenganger
             },
 
-            [xi.keyItem.COLORFUL_ABYSSITE] =
+            [invaderXim.keyItem.COLORFUL_ABYSSITE] =
             {
                 17232151, -- Erebus
                 17232150, -- Feuerunke
             },
 
-            [xi.keyItem.PURPLE_ABYSSITE] =
+            [invaderXim.keyItem.PURPLE_ABYSSITE] =
             {
                 17232149, -- Lord Ruthven
             },
 
-            [xi.keyItem.BLACK_ABYSSITE] =
+            [invaderXim.keyItem.BLACK_ABYSSITE] =
             {
                 17232148, -- Yilbegan
             }
@@ -94,4 +94,4 @@ zones[xi.zone.BEAUCEDINE_GLACIER] =
     },
 }
 
-return zones[xi.zone.BEAUCEDINE_GLACIER]
+return zones[invaderXim.zone.BEAUCEDINE_GLACIER]

@@ -10,31 +10,31 @@ local entity = {}
 
 local function handleRegen(mob, broken)
     local multiplier = (2 - broken) * 0.75
-    mob:setMod(xi.mod.REGEN, math.floor(25 * multiplier))
-    mob:setMod(xi.mod.REGAIN, math.floor(25 * multiplier))
+    mob:setMod(invaderXim.mod.REGEN, math.floor(25 * multiplier))
+    mob:setMod(invaderXim.mod.REGAIN, math.floor(25 * multiplier))
 end
 
 entity.onMobInitialize = function(mob)
     -- Set Immunities.
-    -- mob:addImmunity(xi.immunity.GRAVITY)
-    -- mob:addImmunity(xi.immunity.BIND)
-    -- mob:addImmunity(xi.immunity.PARALYZE)
+    -- mob:addImmunity(invaderXim.immunity.GRAVITY)
+    -- mob:addImmunity(invaderXim.immunity.BIND)
+    -- mob:addImmunity(invaderXim.immunity.PARALYZE)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMod(xi.mod.DOUBLE_ATTACK, 10)
-    mob:setMod(xi.mod.UDMGMAGIC, -9000)
-    mob:setMod(xi.mod.POISON_MEVA, 100)
-    mob:setMod(xi.mod.BLIND_MEVA, 100)
-    mob:setMod(xi.mod.SILENCE_MEVA, 100)
-    mob:setMod(xi.mod.SLOW_MEVA, 100)
-    mob:setMod(xi.mod.STUN_MEVA, 175)
-    mob:setMod(xi.mod.SLEEP_MEVA, 150)
-    mob:setMod(xi.mod.DEFP, 35)
-    mob:addMod(xi.mod.EVA, 15)
-    mob:setMod(xi.mod.MAIN_DMG_RATING, 40)
+    mob:setMod(invaderXim.mod.DOUBLE_ATTACK, 10)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, -9000)
+    mob:setMod(invaderXim.mod.POISON_MEVA, 100)
+    mob:setMod(invaderXim.mod.BLIND_MEVA, 100)
+    mob:setMod(invaderXim.mod.SILENCE_MEVA, 100)
+    mob:setMod(invaderXim.mod.SLOW_MEVA, 100)
+    mob:setMod(invaderXim.mod.STUN_MEVA, 175)
+    mob:setMod(invaderXim.mod.SLEEP_MEVA, 150)
+    mob:setMod(invaderXim.mod.DEFP, 35)
+    mob:addMod(invaderXim.mod.EVA, 15)
+    mob:setMod(invaderXim.mod.MAIN_DMG_RATING, 40)
 
-    mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 15)
+    mob:setMobMod(invaderXim.mobMod.ROAM_DISTANCE, 15)
 end
 
 entity.onMobEngage = function(mob)
@@ -67,9 +67,9 @@ end
 
 entity.onMobDeath = function(mob, player, optParams)
     if optParams.isKiller or optParams.noKiller then
-        xi.nyzul.enemyLeaderKill(mob)
-        xi.nyzul.vigilWeaponDrop(player, mob)
-        xi.nyzul.handleRunicKey(mob)
+        invaderXim.nyzul.enemyLeaderKill(mob)
+        invaderXim.nyzul.vigilWeaponDrop(player, mob)
+        invaderXim.nyzul.handleRunicKey(mob)
     end
 end
 

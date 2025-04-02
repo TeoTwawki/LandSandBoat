@@ -4,7 +4,7 @@
 -- Notes: Used to spawn Old Prof. Mariselle
 -- !pos 22.669 -3.111 -127.318 28
 -----------------------------------
-local ID = zones[xi.zone.SACRARIUM]
+local ID = zones[invaderXim.zone.SACRARIUM]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

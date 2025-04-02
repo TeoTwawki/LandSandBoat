@@ -8,18 +8,18 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local toCureaCough = player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.TO_CURE_A_COUGH)
+    local toCureaCough = player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.TO_CURE_A_COUGH)
 
     if
         player:getCharVar('DiaryPage') >= 3 or
-        toCureaCough == xi.questStatus.QUEST_ACCEPTED
+        toCureaCough == invaderXim.questStatus.QUEST_ACCEPTED
     then
         if
-            not player:hasKeyItem(xi.ki.THYME_MOSS) and
-            not player:hasKeyItem(xi.ki.COUGH_MEDICINE)
+            not player:hasKeyItem(invaderXim.ki.THYME_MOSS) and
+            not player:hasKeyItem(invaderXim.ki.COUGH_MEDICINE)
         then
             player:startEvent(645) -- need thyme moss for cough med
-        elseif player:hasKeyItem(xi.ki.THYME_MOSS) then
+        elseif player:hasKeyItem(invaderXim.ki.THYME_MOSS) then
             player:startEvent(646) -- receive cough med for Nenne
         end
     end
@@ -27,10 +27,10 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 645 then
-        player:addQuest(xi.questLog.SANDORIA, xi.quest.id.sandoria.TO_CURE_A_COUGH)
+        player:addQuest(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.TO_CURE_A_COUGH)
     elseif csid == 646 then
-        player:delKeyItem(xi.ki.THYME_MOSS)
-        npcUtil.giveKeyItem(player, xi.ki.COUGH_MEDICINE)
+        player:delKeyItem(invaderXim.ki.THYME_MOSS)
+        npcUtil.giveKeyItem(player, invaderXim.ki.COUGH_MEDICINE)
     end
 end
 

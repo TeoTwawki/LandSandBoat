@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.ALLIED_TAGS
+-- invaderXim.effect.ALLIED_TAGS
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -15,7 +15,7 @@ end
 
 effectObject.onEffectLose = function(target, effect)
     if target:getPet() then
-        target:getPet():delStatusEffect(xi.effect.ALLIED_TAGS)
+        target:getPet():delStatusEffect(invaderXim.effect.ALLIED_TAGS)
     end
 end
 

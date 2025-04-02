@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.BARD_SONG_32
+-- invaderXim.effect.BARD_SONG_32
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

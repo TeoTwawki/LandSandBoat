@@ -3,12 +3,12 @@
 -- Name: Mission 5-2
 -- !pos -111 -6 0.1 165
 -----------------------------------
-local ID = zones[xi.zone.THRONE_ROOM]
+local ID = zones[invaderXim.zone.THRONE_ROOM]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId        = xi.zone.THRONE_ROOM,
-    battlefieldId = xi.battlefield.id.SHADOW_LORD_BATTLE,
+    zoneId        = invaderXim.zone.THRONE_ROOM,
+    battlefieldId = invaderXim.battlefield.id.SHADOW_LORD_BATTLE,
     canLoseExp    = false,
     isMission     = true,
     allowTrusts   = true,
@@ -19,9 +19,9 @@ local content = BattlefieldMission:new({
     entryNpc      = '_4l1',
     exitNpcs      = { '_4l2', '_4l3', '_4l4' },
 
-    mission               = xi.mission.id.nation.SHADOW_LORD,
+    mission               = invaderXim.mission.id.nation.SHADOW_LORD,
     requiredMissionStatus = 3,
-    title                 = xi.title.SHADOW_BANISHER,
+    title                 = invaderXim.title.SHADOW_BANISHER,
 })
 
 function content:onEventFinishBattlefield(player, csid, option, npc)
@@ -78,7 +78,7 @@ content.groups =
 
         spawned = false,
         death   = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end
     }
 }

@@ -1,14 +1,14 @@
 -----------------------------------
 -- Zone: Gusgen Mines (196)
 -----------------------------------
-local ID = zones[xi.zone.GUSGEN_MINES]
+local ID = zones[invaderXim.zone.GUSGEN_MINES]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.treasure.initZone(zone)
-    xi.helm.initZone(zone, xi.helmType.MINING)
+    invaderXim.treasure.initZone(zone)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.MINING)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -26,7 +26,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
@@ -41,7 +41,7 @@ end
 zoneObject.onGameHour = function(zone)
     local totd = VanadielTOTD()
 
-    if totd == xi.time.NEW_DAY or totd == xi.time.MIDNIGHT then
+    if totd == invaderXim.time.NEW_DAY or totd == invaderXim.time.MIDNIGHT then
         local ghost
         local ghostTable =
         {

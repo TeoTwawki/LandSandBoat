@@ -6,12 +6,12 @@ require('scripts/globals/conquest')
 -----------------------------------
 local m = Module:new('conquest_regional_npcs_always_up')
 
-m:addOverride('xi.conquest.toggleRegionalNPCs', function(zone)
+m:addOverride('invaderXim.conquest.toggleRegionalNPCs', function(zone)
     local id = zone:getID()
     if
-        id == xi.zone.PORT_BASTOK or
-        id == xi.zone.SOUTHERN_SAN_DORIA or
-        id == xi.zone.WINDURST_WOODS
+        id == invaderXim.zone.PORT_BASTOK or
+        id == invaderXim.zone.SOUTHERN_SAN_DORIA or
+        id == invaderXim.zone.WINDURST_WOODS
     then
         local regionalNPCNames =
         {
@@ -29,7 +29,7 @@ m:addOverride('xi.conquest.toggleRegionalNPCs', function(zone)
             for _, entity in pairs(results) do
                 -- Will be the real entity if it has an X position
                 if math.abs(entity:getXPos()) > 0 then
-                    entity:setStatus(xi.status.NORMAL)
+                    entity:setStatus(invaderXim.status.NORMAL)
                 end
             end
         end

@@ -4,17 +4,17 @@
 -- Involved in quest: The Wayward Automaton
 -- !pos  129 1.396 -631 79
 -----------------------------------
-local ID = zones[xi.zone.CAEDARVA_MIRE]
+local ID = zones[invaderXim.zone.CAEDARVA_MIRE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local theWaywardAutomaton = player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.THE_WAYWARD_AUTOMATON)
+    local theWaywardAutomaton = player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.THE_WAYWARD_AUTOMATON)
     local theWaywardAutomatonProgress = player:getCharVar('TheWaywardAutomatonProgress')
 
     if
-        theWaywardAutomaton == xi.questStatus.QUEST_ACCEPTED and
+        theWaywardAutomaton == invaderXim.questStatus.QUEST_ACCEPTED and
         theWaywardAutomatonProgress == 2
     then
         if player:getCharVar('TheWaywardAutomatonNM') >= 1 then

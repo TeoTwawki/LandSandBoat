@@ -12,20 +12,20 @@ local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
     local result = 0
-    if target:hasStatusEffect(xi.effect.COMMITMENT) then
-        result = xi.msg.basic.ITEM_UNABLE_TO_USE_2
+    if target:hasStatusEffect(invaderXim.effect.COMMITMENT) then
+        result = invaderXim.msg.basic.ITEM_UNABLE_TO_USE_2
     end
 
     return result
 end
 
 itemObject.onItemUse = function(target)
-    local effect    = xi.effect.COMMITMENT
+    local effect    = invaderXim.effect.COMMITMENT
     local power     = 50
     local duration  = 43200
     local subpower  = 30000
 
-    xi.itemUtils.addItemExpEffect(target, effect, power, duration, subpower)
+    invaderXim.itemUtils.addItemExpEffect(target, effect, power, duration, subpower)
 end
 
 return itemObject

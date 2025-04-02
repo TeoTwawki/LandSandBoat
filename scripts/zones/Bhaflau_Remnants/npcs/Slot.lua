@@ -3,14 +3,14 @@
 -- NPC: Slot
 -- trade card to pop NM
 -----------------------------------
-local ID = zones[xi.zone.BHAFLAU_REMNANTS]
+local ID = zones[invaderXim.zone.BHAFLAU_REMNANTS]
 -----------------------------------
 
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.salvage.handleSlot(player, npc, trade, xi.item.ARRAPAGO_CARD, ID.mob.DEMENTED_JALAWAA)
+    invaderXim.salvage.handleSlot(player, npc, trade, invaderXim.item.ARRAPAGO_CARD, ID.mob.DEMENTED_JALAWAA)
 end
 
 entity.onTrigger = function(player, npc)

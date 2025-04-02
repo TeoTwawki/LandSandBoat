@@ -2,7 +2,7 @@
 -- Title Changer NPC Functions
 -----------------------------------
 xi = xi or {}
-xi.titleChanger = xi.titleChanger or {}
+invaderXim.titleChanger = invaderXim.titleChanger or {}
 
 local function titleMask(player, titleGroup)
     local returnValue = 0
@@ -25,7 +25,7 @@ end
 -- public title changer functions
 -----------------------------------
 
-xi.titleChanger.onTrigger = function(player, eventId, titleInfo)
+invaderXim.titleChanger.onTrigger = function(player, eventId, titleInfo)
     player:startEvent(
         eventId,
         titleMask(player, titleInfo[1]),
@@ -39,7 +39,7 @@ xi.titleChanger.onTrigger = function(player, eventId, titleInfo)
     )
 end
 
-xi.titleChanger.onEventFinish = function(player, csid, option, eventId, titleInfo)
+invaderXim.titleChanger.onEventFinish = function(player, csid, option, eventId, titleInfo)
     if csid == eventId then
         local group = titleInfo[bit.rshift(option, 8) + 1]
         if group then

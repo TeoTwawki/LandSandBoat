@@ -31,7 +31,7 @@ end
 
 zoneObject.onEventFinish = function(player, csid, option, npc)
     if csid == 255 then
-        player:setPos(0, 0, 0, 0, xi.zone.SELBINA)
+        player:setPos(0, 0, 0, 0, invaderXim.zone.SELBINA)
     end
 end
 

@@ -6,12 +6,12 @@
 -- BEAUCEDINE_GLACIER_S : !zone 136
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.NORTHLAND_EXPOSURE)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.NORTHLAND_EXPOSURE)
 
 mission.reward =
 {
-    keyItem     = xi.ki.SHADOW_BUG,
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.TRAITOR_IN_THE_MIDST },
+    keyItem     = invaderXim.ki.SHADOW_BUG,
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.TRAITOR_IN_THE_MIDST },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BEAUCEDINE_GLACIER_S] =
+        [invaderXim.zone.BEAUCEDINE_GLACIER_S] =
         {
             onZoneIn = function(player, prevZone)
                 return 13

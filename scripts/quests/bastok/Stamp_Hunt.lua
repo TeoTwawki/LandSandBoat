@@ -12,14 +12,14 @@
 -- Latifah       : !pos 51.241 7.499 -55.407 236
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.STAMP_HUNT)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.STAMP_HUNT)
 
 quest.reward =
 {
     fame = 50,
-    fameArea = xi.fameArea.BASTOK,
-    item = xi.item.LEATHER_GORGET,
-    title = xi.title.STAMPEDER,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item = invaderXim.item.LEATHER_GORGET,
+    title = invaderXim.title.STAMPEDER,
 }
 
 local function progressOnUnsetBit(player, bitValue, eventID)
@@ -33,17 +33,17 @@ quest.sections =
     -- Section: Quest available
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Arawn'] = quest:progressEvent(225),
 
             onEventFinish =
             {
                 [225] = function(player, csid, option, npc)
-                    if npcUtil.giveKeyItem(player, xi.ki.STAMP_SHEET) then
+                    if npcUtil.giveKeyItem(player, invaderXim.ki.STAMP_SHEET) then
                         quest:begin(player)
                     end
                 end,
@@ -54,10 +54,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Arawn'] =
             {
@@ -79,7 +79,7 @@ quest.sections =
             {
                 [226] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.STAMP_SHEET)
+                        player:delKeyItem(invaderXim.ki.STAMP_SHEET)
                     end
                 end,
 
@@ -89,7 +89,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Deadly_Spider'] =
             {
@@ -117,7 +117,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Elayne'] =
             {
@@ -145,7 +145,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Ehrhard'] =
             {

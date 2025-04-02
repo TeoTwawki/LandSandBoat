@@ -17,10 +17,10 @@ local weaponskillObject = {}
 weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary, action, taChar)
     local attack =
     {
-        ['type'] = xi.attackType.BREATH,
-        ['slot'] = xi.slot.MAIN,
-        ['weaponType'] = player:getWeaponSkillType(xi.slot.MAIN),
-        ['damageType'] = xi.damageType.ELEMENTAL
+        ['type'] = invaderXim.attackType.BREATH,
+        ['slot'] = invaderXim.slot.MAIN,
+        ['weaponType'] = player:getWeaponSkillType(invaderXim.slot.MAIN),
+        ['damageType'] = invaderXim.damageType.ELEMENTAL
     }
     local calcParams =
     {
@@ -43,7 +43,7 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
         wsc = math.floor(playerHP * (math.floor(0.016 * tp) + 16) / 256)
     end
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         -- Damage calculations changed based on: http://www.bg-wiki.com/bg/Spirits_Within http://www.bluegartr.com/threads/121610-Rehauled-Weapon-Skills-tier-lists?p=6142188&viewfull=1#post6142188
         if tp == 3000 then
             wsc = playerHP
@@ -63,15 +63,15 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
         end
     end
 
-    if player:getMod(xi.mod.WEAPONSKILL_DAMAGE_BASE + wsID) > 0 then
-        damage = damage * (100 + player:getMod(xi.mod.WEAPONSKILL_DAMAGE_BASE + wsID)) / 100
+    if player:getMod(invaderXim.mod.WEAPONSKILL_DAMAGE_BASE + wsID) > 0 then
+        damage = damage * (100 + player:getMod(invaderXim.mod.WEAPONSKILL_DAMAGE_BASE + wsID)) / 100
     end
 
-    damage = damage * xi.settings.main.WEAPON_SKILL_POWER
+    damage = damage * invaderXim.settings.main.WEAPON_SKILL_POWER
     calcParams.finalDmg = damage
 
-    -- Todo: xi.weaponskills.doBreathWeaponskill() instead of all this.
-    damage = xi.weaponskills.takeWeaponskillDamage(target, player, {}, primary, attack, calcParams, action)
+    -- Todo: invaderXim.weaponskills.doBreathWeaponskill() instead of all this.
+    damage = invaderXim.weaponskills.takeWeaponskillDamage(target, player, {}, primary, attack, calcParams, action)
 
     return calcParams.tpHitsLanded, calcParams.extraHitsLanded, calcParams.criticalHit, damage
 end

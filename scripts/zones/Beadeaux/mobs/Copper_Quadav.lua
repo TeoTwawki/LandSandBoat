@@ -4,7 +4,7 @@
 -- Note: PH for Da'Dha Hundredmask
 -- Involved in Mission 3-1 (Bastok)
 -----------------------------------
-local ID = zones[xi.zone.BEADEAUX]
+local ID = zones[invaderXim.zone.BEADEAUX]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -18,7 +18,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, daDhaPHTable, 10, 5400) -- 90 minutes
+    invaderXim.mob.phOnDespawn(mob, daDhaPHTable, 10, 5400) -- 90 minutes
 end
 
 return entity

@@ -15,9 +15,9 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.REGEN, 25, 3, 180))
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.REGEN, 25, 3, 180))
 
-    return xi.effect.REGEN
+    return invaderXim.effect.REGEN
 end
 
 return mobskillObject

@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.OLDTON_MOVALPOLOS]
+local ID = zones[invaderXim.zone.OLDTON_MOVALPOLOS]
 
 return {
     ['Bartabaq']           = { event = 32756 },

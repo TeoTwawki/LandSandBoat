@@ -10,9 +10,9 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.HASTE, 1000, 0, 300))
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.HASTE, 1000, 0, 300))
 
-    return xi.effect.HASTE
+    return invaderXim.effect.HASTE
 end
 
 return mobskillObject

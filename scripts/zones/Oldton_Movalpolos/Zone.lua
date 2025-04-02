@@ -5,13 +5,13 @@
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.conquest.setRegionalConquestOverseers(zone:getRegionID())
-    xi.treasure.initZone(zone)
-    xi.helm.initZone(zone, xi.helmType.MINING)
+    invaderXim.conquest.setRegionalConquestOverseers(zone:getRegionID())
+    invaderXim.treasure.initZone(zone)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.MINING)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)

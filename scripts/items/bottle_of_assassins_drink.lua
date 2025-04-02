@@ -11,11 +11,11 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    local effect    = xi.effect.INTENSION
+    local effect    = invaderXim.effect.INTENSION
     local power     = 25 --MAcc
     local duration  = 90
 
-    xi.itemUtils.addItemEffect(target, effect, power, duration)
+    invaderXim.itemUtils.addItemEffect(target, effect, power, duration)
 end
 
 return itemObject

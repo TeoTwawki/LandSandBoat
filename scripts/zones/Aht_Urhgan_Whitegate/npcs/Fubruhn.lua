@@ -42,38 +42,38 @@ local function getNumberOfCoinsToUpgradeSize(size)
 end
 
 entity.onTrade = function(player, npc, trade)
-    local numBronze = trade:getItemQty(xi.item.IMPERIAL_BRONZE_PIECE)
-    local numMythril = trade:getItemQty(xi.item.IMPERIAL_MYTHRIL_PIECE)
-    local numGold = trade:getItemQty(xi.item.IMPERIAL_GOLD_PIECE)
-    if player:getCurrentMission(xi.mission.log_id.TOAU) >= xi.mission.id.toau.PRESIDENT_SALAHEEM then
+    local numBronze = trade:getItemQty(invaderXim.item.IMPERIAL_BRONZE_PIECE)
+    local numMythril = trade:getItemQty(invaderXim.item.IMPERIAL_MYTHRIL_PIECE)
+    local numGold = trade:getItemQty(invaderXim.item.IMPERIAL_GOLD_PIECE)
+    if player:getCurrentMission(invaderXim.mission.log_id.TOAU) >= invaderXim.mission.id.toau.PRESIDENT_SALAHEEM then
         if numBronze > 0 and numMythril == 0 and numGold == 0 then
-            if xi.moghouse.addMogLockerExpiryTime(player, numBronze) then
+            if invaderXim.moghouse.addMogLockerExpiryTime(player, numBronze) then
                 -- remove bronze
                 player:tradeComplete()
                 -- send event
-                player:startEvent(601, xi.moghouse.getMogLockerExpiryTimestamp(player))
+                player:startEvent(601, invaderXim.moghouse.getMogLockerExpiryTimestamp(player))
             end
         elseif numGold > 0 or numMythril > 0 then
             -- see if we can expand the size
-            local slotSize = player:getContainerSize(xi.inv.MOGLOCKER)
+            local slotSize = player:getContainerSize(invaderXim.inv.MOGLOCKER)
             if slotSize == 30 and numMythril == 4 and numGold == 0 then
-                player:changeContainerSize(xi.inv.MOGLOCKER, 10)
+                player:changeContainerSize(invaderXim.inv.MOGLOCKER, 10)
                 player:tradeComplete()
                 player:startEvent(602, 0, 0, 0, 40)
             elseif slotSize == 40 and numMythril == 0 and numGold == 2 then
-                player:changeContainerSize(xi.inv.MOGLOCKER, 10)
+                player:changeContainerSize(invaderXim.inv.MOGLOCKER, 10)
                 player:tradeComplete()
                 player:startEvent(602, 0, 0, 0, 50)
             elseif slotSize == 50 and numMythril == 0 and numGold == 3 then
-                player:changeContainerSize(xi.inv.MOGLOCKER, 10)
+                player:changeContainerSize(invaderXim.inv.MOGLOCKER, 10)
                 player:tradeComplete()
                 player:startEvent(602, 0, 0, 0, 60)
             elseif slotSize == 60 and numMythril == 0 and numGold == 5 then
-                player:changeContainerSize(xi.inv.MOGLOCKER, 10)
+                player:changeContainerSize(invaderXim.inv.MOGLOCKER, 10)
                 player:tradeComplete()
                 player:startEvent(602, 0, 0, 0, 70)
             elseif slotSize == 70 and numMythril == 0 and numGold == 10 then
-                player:changeContainerSize(xi.inv.MOGLOCKER, 10)
+                player:changeContainerSize(invaderXim.inv.MOGLOCKER, 10)
                 player:tradeComplete()
                 player:startEvent(602, 0, 0, 0, 80)
             end
@@ -82,18 +82,18 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    if player:getCurrentMission(xi.mission.log_id.TOAU) >= xi.mission.id.toau.PRESIDENT_SALAHEEM then
-        local accessType = xi.moghouse.getMogLockerAccessType(player)
-        local mogLockerExpiryTimestamp = xi.moghouse.getMogLockerExpiryTimestamp(player)
+    if player:getCurrentMission(invaderXim.mission.log_id.TOAU) >= invaderXim.mission.id.toau.PRESIDENT_SALAHEEM then
+        local accessType = invaderXim.moghouse.getMogLockerAccessType(player)
+        local mogLockerExpiryTimestamp = invaderXim.moghouse.getMogLockerExpiryTimestamp(player)
 
         if mogLockerExpiryTimestamp == nil then
             -- a nil timestamp means they haven't unlocked it yet. We're going to unlock it by merely talking to this NPC.
-            mogLockerExpiryTimestamp = xi.moghouse.unlockMogLocker(player)
-            accessType = xi.moghouse.setMogLockerAccessType(player, xi.moghouse.lockerAccessType.ALLAREAS)
+            mogLockerExpiryTimestamp = invaderXim.moghouse.unlockMogLocker(player)
+            accessType = invaderXim.moghouse.setMogLockerAccessType(player, invaderXim.moghouse.lockerAccessType.ALLAREAS)
         end
 
-        player:startEvent(600, mogLockerExpiryTimestamp, accessType, xi.moghouse.MOGLOCKER_ALZAHBI_VALID_DAYS, player:getContainerSize(xi.inv.MOGLOCKER),
-            getNumberOfCoinsToUpgradeSize(player:getContainerSize(xi.inv.MOGLOCKER)), 2, 3, xi.moghouse.MOGLOCKER_ALLAREAS_VALID_DAYS)
+        player:startEvent(600, mogLockerExpiryTimestamp, accessType, invaderXim.moghouse.MOGLOCKER_ALZAHBI_VALID_DAYS, player:getContainerSize(invaderXim.inv.MOGLOCKER),
+            getNumberOfCoinsToUpgradeSize(player:getContainerSize(invaderXim.inv.MOGLOCKER)), 2, 3, invaderXim.moghouse.MOGLOCKER_ALLAREAS_VALID_DAYS)
     else
         player:startEvent(600)
     end
@@ -101,13 +101,13 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 600 and option == 3 then
-        local accessType = player:getCharVar(xi.moghouse.MOGLOCKER_PLAYERVAR_ACCESS_TYPE)
-        if accessType == xi.moghouse.lockerAccessType.ALLAREAS then
+        local accessType = player:getCharVar(invaderXim.moghouse.MOGLOCKER_PLAYERVAR_ACCESS_TYPE)
+        if accessType == invaderXim.moghouse.lockerAccessType.ALLAREAS then
             -- they want to restrict their access to alzahbi only
-            xi.moghouse.setMogLockerAccessType(player, xi.moghouse.lockerAccessType.ALZAHBI)
-        elseif accessType == xi.moghouse.lockerAccessType.ALZAHBI then
+            invaderXim.moghouse.setMogLockerAccessType(player, invaderXim.moghouse.lockerAccessType.ALZAHBI)
+        elseif accessType == invaderXim.moghouse.lockerAccessType.ALZAHBI then
             -- they want to expand their access to all areas.
-            xi.moghouse.setMogLockerAccessType(player, xi.moghouse.lockerAccessType.ALLAREAS)
+            invaderXim.moghouse.setMogLockerAccessType(player, invaderXim.moghouse.lockerAccessType.ALLAREAS)
         else
             print('Unknown mog locker access type: '..accessType)
         end

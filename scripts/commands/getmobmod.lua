@@ -17,9 +17,9 @@ local function error(player, msg)
 end
 
 commandObj.onTrigger = function(player, id)
-    -- invert xi.mobMod table
+    -- invert invaderXim.mobMod table
     local modNameByNum = {}
-    for k, v in pairs(xi.mobMod) do
+    for k, v in pairs(invaderXim.mobMod) do
         modNameByNum[v] = k
     end
 
@@ -32,8 +32,8 @@ commandObj.onTrigger = function(player, id)
         if modNameByNum[modId] then
             modName = modNameByNum[modId]
         end
-    elseif xi.mobMod[id] then
-        modId = xi.mobMod[id]
+    elseif invaderXim.mobMod[id] then
+        modId = invaderXim.mobMod[id]
         modName = id
     end
 

@@ -199,7 +199,7 @@ bool CItemState::Update(time_point tick)
             CCharEntity* PChar = m_PEntity;
             PChar->m_charHistory.itemsUsed++;
         }
-        m_PEntity->PAI->EventHandler.triggerListener("ITEM_STATE_EXIT", m_PEntity, m_PItem);
+        m_PEntity->PAI->EventHandler.triggerListener("ITEM_STATE_IXIMT", m_PEntity, m_PItem);
         return true;
     }
     return false;

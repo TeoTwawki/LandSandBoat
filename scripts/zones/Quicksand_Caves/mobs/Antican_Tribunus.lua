@@ -8,12 +8,12 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.GIL_MIN, 6000)
-    mob:setMobMod(xi.mobMod.GIL_MAX, 9234)
+    mob:setMobMod(invaderXim.mobMod.GIL_MIN, 6000)
+    mob:setMobMod(invaderXim.mobMod.GIL_MAX, 9234)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 432)
+    invaderXim.hunts.checkHunt(mob, player, 432)
 end
 
 return entity

@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.DYNAMIS_SAN_DORIA] =
+zones[invaderXim.zone.DYNAMIS_SAN_DORIA] =
 {
     text =
     {
@@ -28,45 +28,45 @@ zones[xi.zone.DYNAMIS_SAN_DORIA] =
     {
         TIME_EXTENSION =
         {
-            { minutes = 10, ki = xi.ki.CRIMSON_GRANULES_OF_TIME,   mob = 17535026 },
-            { minutes = 10, ki = xi.ki.AZURE_GRANULES_OF_TIME,     mob = 17535057 },
-            { minutes = 10, ki = xi.ki.AMBER_GRANULES_OF_TIME,     mob = 17535139 },
-            { minutes = 15, ki = xi.ki.ALABASTER_GRANULES_OF_TIME, mob = 17535131 },
-            { minutes = 15, ki = xi.ki.OBSIDIAN_GRANULES_OF_TIME,  mob = 17535128 },
+            { minutes = 10, ki = invaderXim.ki.CRIMSON_GRANULES_OF_TIME,   mob = 17535026 },
+            { minutes = 10, ki = invaderXim.ki.AZURE_GRANULES_OF_TIME,     mob = 17535057 },
+            { minutes = 10, ki = invaderXim.ki.AMBER_GRANULES_OF_TIME,     mob = 17535139 },
+            { minutes = 15, ki = invaderXim.ki.ALABASTER_GRANULES_OF_TIME, mob = 17535131 },
+            { minutes = 15, ki = invaderXim.ki.OBSIDIAN_GRANULES_OF_TIME,  mob = 17535128 },
         },
 
         REFILL_STATUE =
         {
             {
-                { mob = 17535003, eye = xi.dynamis.eye.RED   }, -- Serjeant_Tombstone
-                { mob = 17535004, eye = xi.dynamis.eye.BLUE  },
-                { mob = 17535005, eye = xi.dynamis.eye.GREEN },
+                { mob = 17535003, eye = invaderXim.dynamis.eye.RED   }, -- Serjeant_Tombstone
+                { mob = 17535004, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 17535005, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 17535113, eye = xi.dynamis.eye.RED   }, -- Serjeant_Tombstone
-                { mob = 17535114, eye = xi.dynamis.eye.BLUE  },
-                { mob = 17535115, eye = xi.dynamis.eye.GREEN },
+                { mob = 17535113, eye = invaderXim.dynamis.eye.RED   }, -- Serjeant_Tombstone
+                { mob = 17535114, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 17535115, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 17535154, eye = xi.dynamis.eye.RED   }, -- Serjeant_Tombstone
-                { mob = 17535155, eye = xi.dynamis.eye.GREEN },
+                { mob = 17535154, eye = invaderXim.dynamis.eye.RED   }, -- Serjeant_Tombstone
+                { mob = 17535155, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 17535166, eye = xi.dynamis.eye.RED  }, -- Serjeant_Tombstone
-                { mob = 17535167, eye = xi.dynamis.eye.BLUE },
+                { mob = 17535166, eye = invaderXim.dynamis.eye.RED  }, -- Serjeant_Tombstone
+                { mob = 17535167, eye = invaderXim.dynamis.eye.BLUE },
             },
 
             {
-                { mob = 17535193, eye = xi.dynamis.eye.RED   }, -- Serjeant_Tombstone
-                { mob = 17535194, eye = xi.dynamis.eye.GREEN },
+                { mob = 17535193, eye = invaderXim.dynamis.eye.RED   }, -- Serjeant_Tombstone
+                { mob = 17535194, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 17535205, eye = xi.dynamis.eye.RED  }, -- Serjeant_Tombstone
-                { mob = 17535206, eye = xi.dynamis.eye.BLUE },
+                { mob = 17535205, eye = invaderXim.dynamis.eye.RED  }, -- Serjeant_Tombstone
+                { mob = 17535206, eye = invaderXim.dynamis.eye.BLUE },
             },
         },
     },
@@ -92,4 +92,4 @@ zones[xi.zone.DYNAMIS_SAN_DORIA] =
     },
 }
 
-return zones[xi.zone.DYNAMIS_SAN_DORIA]
+return zones[invaderXim.zone.DYNAMIS_SAN_DORIA]

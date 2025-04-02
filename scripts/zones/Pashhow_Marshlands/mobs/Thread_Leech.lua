@@ -3,7 +3,7 @@
 --  Mob: Thread Leech
 -- Note: PH for Bloodpool Vorax
 -----------------------------------
-local ID = zones[xi.zone.PASHHOW_MARSHLANDS]
+local ID = zones[invaderXim.zone.PASHHOW_MARSHLANDS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -14,12 +14,12 @@ local bloodpoolPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 22, 1, xi.regime.type.FIELDS)
-    xi.regime.checkRegime(player, mob, 23, 2, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 22, 1, invaderXim.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 23, 2, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, bloodpoolPHTable, 5, 600) -- 10 minutes
+    invaderXim.mob.phOnDespawn(mob, bloodpoolPHTable, 5, 600) -- 10 minutes
 end
 
 return entity

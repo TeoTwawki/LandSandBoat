@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.status
-xi.status =
+---@enum invaderXim.status
+invaderXim.status =
 {
     NORMAL          =  0,
     UPDATE          =  1,

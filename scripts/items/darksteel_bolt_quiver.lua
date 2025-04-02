@@ -7,11 +7,11 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.itemBoxOnItemCheck(target)
+    return invaderXim.itemUtils.itemBoxOnItemCheck(target)
 end
 
 itemObject.onItemUse = function(target)
-    npcUtil.giveItem(target, { { xi.item.DARKSTEEL_BOLT, 99 } })
+    npcUtil.giveItem(target, { { invaderXim.item.DARKSTEEL_BOLT, 99 } })
 end
 
 return itemObject

@@ -2,7 +2,7 @@
 -- Area: Xarcabard [S]
 --   NM: Zirnitra
 -----------------------------------
-local ID = zones[xi.zone.XARCABARD_S]
+local ID = zones[invaderXim.zone.XARCABARD_S]
 mixins =
 {
     require('scripts/mixins/families/amphiptere'),
@@ -15,9 +15,9 @@ local entity = {}
 entity.onMobSpawn = function(mob)
     -- Precise regen/regain values need retail verification.
     -- Mob uses abilities with high frequency
-    mob:setMod(xi.mod.REGEN, 50)
-    mob:setMod(xi.mod.REGAIN, 100)
-    mob:setMod(xi.mod.WIND_ABSORB, 100)
+    mob:setMod(invaderXim.mod.REGEN, 50)
+    mob:setMod(invaderXim.mod.REGAIN, 100)
+    mob:setMod(invaderXim.mod.WIND_ABSORB, 100)
 end
 
 entity.onMobEngage = function(mob)
@@ -39,8 +39,8 @@ entity.onMobDespawn = function(mob)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:setTitle(xi.title.ZIRNITRA_WINGCLIPPER)
-    xi.hunts.checkHunt(mob, player, 543)
+    player:setTitle(invaderXim.title.ZIRNITRA_WINGCLIPPER)
+    invaderXim.hunts.checkHunt(mob, player, 543)
 end
 
 return entity

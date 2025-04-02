@@ -8,11 +8,11 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 4, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 4, 1, invaderXim.regime.type.FIELDS)
 end
 
 return entity

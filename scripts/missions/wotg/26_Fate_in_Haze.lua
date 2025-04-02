@@ -8,11 +8,11 @@
 require('scripts/missions/wotg/helpers')
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.FATE_IN_HAZE)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.FATE_IN_HAZE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.THE_SCENT_OF_BATTLE },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.THE_SCENT_OF_BATTLE },
 }
 
 mission.sections =
@@ -20,10 +20,10 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
-                xi.wotg.helpers.meetsMission26Reqs(player)
+                invaderXim.wotg.helpers.meetsMission26Reqs(player)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Lion_Springs'] =
             {
@@ -73,12 +73,12 @@ mission.sections =
             {
                 [151] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 1)
-                    player:setPos(100.801, 1, 103.211, 31, xi.zone.SOUTHERN_SAN_DORIA_S)
+                    player:setPos(100.801, 1, 103.211, 31, invaderXim.zone.SOUTHERN_SAN_DORIA_S)
                 end,
 
                 [154] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 2)
-                    player:setPos(100.801, 1, 103.211, 31, xi.zone.SOUTHERN_SAN_DORIA_S)
+                    player:setPos(100.801, 1, 103.211, 31, invaderXim.zone.SOUTHERN_SAN_DORIA_S)
                 end,
 
                 [155] = function(player, csid, option, npc)

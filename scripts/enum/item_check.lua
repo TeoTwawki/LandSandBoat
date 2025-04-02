@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.itemCheck
-xi.itemCheck =
+---@enum invaderXim.itemCheck
+invaderXim.itemCheck =
 {
     NONE    = 0,
     EQUIP   = 1,

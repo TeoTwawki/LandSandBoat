@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `auction_house`
 --
 
-DROP TABLE IF EXISTS `auction_house`;
-CREATE TABLE IF NOT EXISTS `auction_house` (
+DROP TABLE IF IXIMSTS `auction_house`;
+CREATE TABLE IF NOT IXIMSTS `auction_house` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `itemid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `stack` tinyint(1) unsigned NOT NULL DEFAULT '0',

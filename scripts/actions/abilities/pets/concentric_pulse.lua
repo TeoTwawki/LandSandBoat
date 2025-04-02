@@ -14,13 +14,13 @@ abilityObject.onPetAbility = function(target, pet, skill)
         return
     end
 
-    local masterEquippedHead = master:getEquipID(xi.slot.HEAD)
-    local dmgBoost           = master:getJobPointLevel(xi.jp.CONCENTRIC_PULSE_EFFECT)
+    local masterEquippedHead = master:getEquipID(invaderXim.slot.HEAD)
+    local dmgBoost           = master:getJobPointLevel(invaderXim.jp.CONCENTRIC_PULSE_EFFECT)
     local dmg                = pet:getHP()
 
     if
-        masterEquippedHead == xi.item.BAGUA_GALERO_P2 or
-        masterEquippedHead == xi.item.BAGUA_GALERO_P3
+        masterEquippedHead == invaderXim.item.BAGUA_GALERO_P2 or
+        masterEquippedHead == invaderXim.item.BAGUA_GALERO_P3
     then
         dmg = pet:getMaxHP()
     end
@@ -31,7 +31,7 @@ abilityObject.onPetAbility = function(target, pet, skill)
 
     dmg = utils.stoneskin(target, dmg)
 
-    target:takeDamage(dmg, pet, xi.attackType.MAGICAL, xi.damageType.NONE)
+    target:takeDamage(dmg, pet, invaderXim.attackType.MAGICAL, invaderXim.damageType.NONE)
 
     pet:timer(200, function(mobArg)
         mobArg:setHP(0)

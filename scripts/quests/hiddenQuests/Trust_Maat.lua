@@ -1,7 +1,7 @@
 -----------------------------------
 -- Trust: Maat
 -----------------------------------
-local ruludeID = zones[xi.zone.RULUDE_GARDENS]
+local ruludeID = zones[invaderXim.zone.RULUDE_GARDENS]
 -----------------------------------
 
 local quest = HiddenQuest:new('TrustMaat')
@@ -10,11 +10,11 @@ quest.sections =
 {
     {
         check = function(player, questVars, vars)
-            return xi.trust.hasPermit(player) and
-                not player:hasSpell(xi.magic.spell.MAAT)
+            return invaderXim.trust.hasPermit(player) and
+                not player:hasSpell(invaderXim.magic.spell.MAAT)
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Maat'] =
             {
@@ -31,8 +31,8 @@ quest.sections =
             {
                 [10241] = function(player, csid, option, npc)
                     if option == 2 and quest:complete(player) then
-                        player:addSpell(xi.magic.spell.MAAT, true, true)
-                        player:messageSpecial(ruludeID.text.YOU_LEARNED_TRUST, 0, xi.magic.spell.MAAT)
+                        player:addSpell(invaderXim.magic.spell.MAAT, true, true)
+                        player:messageSpecial(ruludeID.text.YOU_LEARNED_TRUST, 0, invaderXim.magic.spell.MAAT)
                     end
                 end,
             },

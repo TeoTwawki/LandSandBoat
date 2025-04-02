@@ -1,12 +1,12 @@
 -----------------------------------
--- xi.effect.PETRIFICATION
+-- invaderXim.effect.PETRIFICATION
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
     -- Immunobreak reset.
-    target:setMod(xi.mod.PETRIFY_IMMUNOBREAK, 0)
+    target:setMod(invaderXim.mod.PETRIFY_IMMUNOBREAK, 0)
 end
 
 effectObject.onEffectTick = function(target, effect)

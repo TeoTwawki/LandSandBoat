@@ -5,14 +5,14 @@
 -- !addmission 5 31
 -- Rally Point: Green : !pos 54.013 -23.402 -203.103 137
 -----------------------------------
-local pastXarcabardID = zones[xi.zone.XARCABARD_S]
+local pastXarcabardID = zones[invaderXim.zone.XARCABARD_S]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.STORMS_CRESCENDO)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.STORMS_CRESCENDO)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.INTO_THE_BEASTS_MAW },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.INTO_THE_BEASTS_MAW },
 }
 
 -- NOTE: Instance entry at Excavated Snow is Event 28, Params 0, 31
@@ -24,7 +24,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.XARCABARD_S] =
+        [invaderXim.zone.XARCABARD_S] =
         {
             ['Rally_Point_Green'] =
             {
@@ -43,7 +43,7 @@ mission.sections =
                     if missionStatus == 0 then
                         return mission:progressEvent(19, player:getCampaignAllegiance(), 23, 1756, 400, 67108863, 659255957, 4905, 0)
                     elseif missionStatus == 1 then
-                        if not player:hasKeyItem(xi.ki.ALCHEMICAL_SIGNAL_FLARE) then
+                        if not player:hasKeyItem(invaderXim.ki.ALCHEMICAL_SIGNAL_FLARE) then
                             if mission:getVar(player, 'Timer') <= VanadielUniqueDay() then
                                 return mission:progressEvent(26, 137, 23, 2964)
                             else
@@ -82,7 +82,7 @@ mission.sections =
             onEventFinish =
             {
                 [19] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.ALCHEMICAL_SIGNAL_FLARE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ALCHEMICAL_SIGNAL_FLARE)
                     mission:setVar(player, 'Status', 1)
                 end,
 
@@ -92,11 +92,11 @@ mission.sections =
 
                 [23] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 4)
-                    player:setPos(-105.798, -25.522, -53.499, 176, xi.zone.XARCABARD_S)
+                    player:setPos(-105.798, -25.522, -53.499, 176, invaderXim.zone.XARCABARD_S)
                 end,
 
                 [26] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.ALCHEMICAL_SIGNAL_FLARE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ALCHEMICAL_SIGNAL_FLARE)
                 end,
 
                 [39] = function(player, csid, option, npc)
@@ -105,7 +105,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.GHOYUS_REVERIE] =
+        [invaderXim.zone.GHOYUS_REVERIE] =
         {
             onEventFinish =
             {
@@ -115,7 +115,7 @@ mission.sections =
                     -- implementation of the instance.
 
                     mission:setVar(player, 'Status', 2)
-                    player:setPos(138.527, -16.197, -30.414, 211, xi.zone.XARCABARD_S)
+                    player:setPos(138.527, -16.197, -30.414, 211, invaderXim.zone.XARCABARD_S)
                 end,
             },
         },

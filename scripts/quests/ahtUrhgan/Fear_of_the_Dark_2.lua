@@ -3,12 +3,12 @@
 -- Suldiran !pos 42 -7 -43 48
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.FEAR_OF_THE_DARK_II)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.FEAR_OF_THE_DARK_II)
 
 quest.reward =
 {
     gil = 200,
-    title = xi.title.DARK_RESISTANT,
+    title = invaderXim.title.DARK_RESISTANT,
 }
 
 quest.sections =
@@ -16,10 +16,10 @@ quest.sections =
     -- Section: Quest available
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.AL_ZAHBI] =
+        [invaderXim.zone.AL_ZAHBI] =
         {
             ['Suldiran'] =
             {
@@ -42,10 +42,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.AL_ZAHBI] =
+        [invaderXim.zone.AL_ZAHBI] =
         {
             ['Suldiran'] =
             {
@@ -54,7 +54,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.IMP_WING, 2 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.IMP_WING, 2 } }) then
                         return quest:progressEvent(16)
                     end
                 end,
@@ -74,10 +74,10 @@ quest.sections =
     -- Section: Quest completed
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AL_ZAHBI] =
+        [invaderXim.zone.AL_ZAHBI] =
         {
             ['Suldiran'] =
             {
@@ -86,7 +86,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.IMP_WING, 2 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.IMP_WING, 2 } }) then
                         return quest:progressEvent(18)
                     end
                 end,

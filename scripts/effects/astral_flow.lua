@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.ASTRAL_FLOW
+-- invaderXim.effect.ASTRAL_FLOW
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -7,15 +7,15 @@ local effectObject = {}
 effectObject.onEffectGain = function(target, effect)
     target:recalculateAbilitiesTable()
     if target:isPC() then
-        local jpBonus = target:getJobPointLevel(xi.jp.ASTRAL_FLOW_EFFECT) * 5
+        local jpBonus = target:getJobPointLevel(invaderXim.jp.ASTRAL_FLOW_EFFECT) * 5
         if jpBonus > 0 then
-            target:addPetMod(xi.mod.STR, jpBonus)
-            target:addPetMod(xi.mod.DEX, jpBonus)
-            target:addPetMod(xi.mod.VIT, jpBonus)
-            target:addPetMod(xi.mod.AGI, jpBonus)
-            target:addPetMod(xi.mod.INT, jpBonus)
-            target:addPetMod(xi.mod.MND, jpBonus)
-            target:addPetMod(xi.mod.CHR, jpBonus)
+            target:addPetMod(invaderXim.mod.STR, jpBonus)
+            target:addPetMod(invaderXim.mod.DEX, jpBonus)
+            target:addPetMod(invaderXim.mod.VIT, jpBonus)
+            target:addPetMod(invaderXim.mod.AGI, jpBonus)
+            target:addPetMod(invaderXim.mod.INT, jpBonus)
+            target:addPetMod(invaderXim.mod.MND, jpBonus)
+            target:addPetMod(invaderXim.mod.CHR, jpBonus)
         end
     end
 end
@@ -26,15 +26,15 @@ end
 effectObject.onEffectLose = function(target, effect)
     target:recalculateAbilitiesTable()
     if target:isPC() then
-        local jpBonus = target:getJobPointLevel(xi.jp.ASTRAL_FLOW_EFFECT) * 5
+        local jpBonus = target:getJobPointLevel(invaderXim.jp.ASTRAL_FLOW_EFFECT) * 5
         if jpBonus > 0 then
-            target:delPetMod(xi.mod.STR, jpBonus)
-            target:delPetMod(xi.mod.DEX, jpBonus)
-            target:delPetMod(xi.mod.VIT, jpBonus)
-            target:delPetMod(xi.mod.AGI, jpBonus)
-            target:delPetMod(xi.mod.INT, jpBonus)
-            target:delPetMod(xi.mod.MND, jpBonus)
-            target:delPetMod(xi.mod.CHR, jpBonus)
+            target:delPetMod(invaderXim.mod.STR, jpBonus)
+            target:delPetMod(invaderXim.mod.DEX, jpBonus)
+            target:delPetMod(invaderXim.mod.VIT, jpBonus)
+            target:delPetMod(invaderXim.mod.AGI, jpBonus)
+            target:delPetMod(invaderXim.mod.INT, jpBonus)
+            target:delPetMod(invaderXim.mod.MND, jpBonus)
+            target:delPetMod(invaderXim.mod.CHR, jpBonus)
         end
     end
 end

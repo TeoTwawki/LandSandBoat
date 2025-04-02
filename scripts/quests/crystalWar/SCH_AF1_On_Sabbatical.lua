@@ -6,26 +6,26 @@
 -- Gentle Tiger          : !pos -203.932 -9.998 2.237 87
 -- Indescript Markings   : !pos -456.707 24.4385 -363.364 90
 -----------------------------------
-local pashhowID = zones[xi.zone.PASHHOW_MARSHLANDS_S]
+local pashhowID = zones[invaderXim.zone.PASHHOW_MARSHLANDS_S]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.ON_SABBATICAL)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.ON_SABBATICAL)
 
 quest.reward =
 {
-    item = xi.item.KLIMAFORM_SCHEMA
+    item = invaderXim.item.KLIMAFORM_SCHEMA
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getMainJob() == xi.job.SCH and
-                player:getMainLvl() >= xi.settings.main.AF1_QUEST_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getMainJob() == invaderXim.job.SCH and
+                player:getMainLvl() >= invaderXim.settings.main.AF1_QUEST_LEVEL
         end,
 
-        [xi.zone.THE_ELDIEME_NECROPOLIS_S] =
+        [invaderXim.zone.THE_ELDIEME_NECROPOLIS_S] =
         {
             ['Erlene'] =
             {
@@ -37,7 +37,7 @@ quest.sections =
             onEventFinish =
             {
                 [18] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.ULBRECHTS_SEALED_LETTER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ULBRECHTS_SEALED_LETTER)
                     quest:begin(player)
                 end,
             }
@@ -45,10 +45,10 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MARKETS_S] =
+        [invaderXim.zone.BASTOK_MARKETS_S] =
         {
             ['Gentle_Tiger'] =
             {
@@ -69,7 +69,7 @@ quest.sections =
             }
         },
 
-        [xi.zone.PASHHOW_MARSHLANDS_S] =
+        [invaderXim.zone.PASHHOW_MARSHLANDS_S] =
         {
             ['Indescript_Markings'] =
             {
@@ -84,13 +84,13 @@ quest.sections =
             onEventFinish =
             {
                 [2] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.SCHULTZS_SEALED_LETTER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.SCHULTZS_SEALED_LETTER)
                     quest:setVar(player, 'Prog', 2)
                 end,
             }
         },
 
-        [xi.zone.THE_ELDIEME_NECROPOLIS_S] =
+        [invaderXim.zone.THE_ELDIEME_NECROPOLIS_S] =
         {
             ['Erlene'] =
             {
@@ -106,10 +106,10 @@ quest.sections =
             {
                 [20] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.ULBRECHTS_SEALED_LETTER)
-                        player:delKeyItem(xi.ki.SCHULTZS_SEALED_LETTER)
-                        xi.quest.setVar(player, xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.ON_SABBATICAL, 'Timer', VanadielUniqueDay() + 1)
-                        xi.quest.setMustZone(player, xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.ON_SABBATICAL)
+                        player:delKeyItem(invaderXim.ki.ULBRECHTS_SEALED_LETTER)
+                        player:delKeyItem(invaderXim.ki.SCHULTZS_SEALED_LETTER)
+                        invaderXim.quest.setVar(player, invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.ON_SABBATICAL, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.quest.setMustZone(player, invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.ON_SABBATICAL)
                     end
                 end,
             }

@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Yuhtunga_Jungle (123)
 -----------------------------------
-local ID = zones[xi.zone.YUHTUNGA_JUNGLE]
+local ID = zones[invaderXim.zone.YUHTUNGA_JUNGLE]
 require('scripts/quests/i_can_hear_a_rainbow')
 require('scripts/missions/amk/helpers')
 -----------------------------------
@@ -12,12 +12,12 @@ zoneObject.onInitialize = function(zone)
     -- A Chocobo Riding Game finish line
     zone:registerCylindricalTriggerArea(1, -485.54, -379.19, 5)
 
-    xi.conquest.setRegionalConquestOverseers(zone:getRegionID())
+    invaderXim.conquest.setRegionalConquestOverseers(zone:getRegionID())
 
-    xi.helm.initZone(zone, xi.helmType.HARVESTING)
-    xi.helm.initZone(zone, xi.helmType.LOGGING)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.HARVESTING)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.LOGGING)
 
-    xi.beastmenTreasure.updatePeddlestox(xi.zone.YUHTUNGA_JUNGLE, ID.npc.PEDDLESTOX)
+    invaderXim.beastmenTreasure.updatePeddlestox(invaderXim.zone.YUHTUNGA_JUNGLE, ID.npc.PEDDLESTOX)
 
     GetMobByID(ID.mob.TURTLERIDER):setRespawnTime(math.random(900, 10800))
 
@@ -25,11 +25,11 @@ zoneObject.onInitialize = function(zone)
 end
 
 zoneObject.onGameDay = function()
-    xi.beastmenTreasure.updatePeddlestox(xi.zone.YUHTUNGA_JUNGLE, ID.npc.PEDDLESTOX)
+    invaderXim.beastmenTreasure.updatePeddlestox(invaderXim.zone.YUHTUNGA_JUNGLE, ID.npc.PEDDLESTOX)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -48,22 +48,22 @@ zoneObject.onZoneIn = function(player, prevZone)
     end
 
     -- AMK06/AMK07
-    if xi.settings.main.ENABLE_AMK == 1 then
-        xi.amk.helpers.tryRandomlyPlaceDiggingLocation(player)
+    if invaderXim.settings.main.ENABLE_AMK == 1 then
+        invaderXim.amk.helpers.tryRandomlyPlaceDiggingLocation(player)
     end
 
     return cs
 end
 
 zoneObject.afterZoneIn = function(player)
-    xi.chocoboGame.handleMessage(player)
+    invaderXim.chocoboGame.handleMessage(player)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
     local triggerAreaID = triggerArea:getTriggerAreaID()
 
-    if triggerAreaID == 1 and player:hasStatusEffect(xi.effect.MOUNTED) then
-        xi.chocoboGame.onTriggerAreaEnter(player)
+    if triggerAreaID == 1 and player:hasStatusEffect(invaderXim.effect.MOUNTED) then
+        invaderXim.chocoboGame.onTriggerAreaEnter(player)
     end
 end
 
@@ -74,17 +74,17 @@ zoneObject.onEventUpdate = function(player, csid, option, npc)
 end
 
 zoneObject.onEventFinish = function(player, csid, option, npc)
-    xi.chocoboGame.onEventFinish(player, csid)
+    invaderXim.chocoboGame.onEventFinish(player, csid)
 end
 
 zoneObject.onZoneWeatherChange = function(weather)
     -- Harvesting points only appear during rainy weather
-    xi.helm.weatherChange(weather, { xi.weather.RAIN, xi.weather.SQUALL }, ID.npc.HARVESTING)
+    invaderXim.helm.weatherChange(weather, { invaderXim.weather.RAIN, invaderXim.weather.SQUALL }, ID.npc.HARVESTING)
 
     -- NM Bayawak only spawns during fire weather
     local bayawak = GetMobByID(ID.mob.BAYAWAK)
     if bayawak then
-        if weather == xi.weather.HOT_SPELL or weather == xi.weather.HEAT_WAVE then
+        if weather == invaderXim.weather.HOT_SPELL or weather == invaderXim.weather.HEAT_WAVE then
             DisallowRespawn(bayawak:getID(), false)
 
             -- Spawn if respawn is up

@@ -12,11 +12,11 @@ zoneObject.onInitialize = function(zone)
     zone:registerCuboidTriggerArea(5, -302.493, 42, -179.995, -297.386, 48, -176.078) -- Uncapped area 2 (G-9 Tower)
     zone:registerCuboidTriggerArea(6,  299.847, 42,  257.716,  303.824, 48,  262.391) -- Uncapped area 3 (I-7 Tower)
 
-    xi.treasure.initZone(zone)
+    invaderXim.treasure.initZone(zone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -53,11 +53,11 @@ zoneObject.afterZoneIn = function(player)
     player:entityVisualPacket('s123')
 
     -- ZONE WIDE LEVEL RESTRICTION
-    if xi.settings.main.ENABLE_COP_ZONE_CAP == 1 then
+    if invaderXim.settings.main.ENABLE_COP_ZONE_CAP == 1 then
         local lvlCap = player:getCharVar('PSOXJA_RESTRICTION_LVL')
 
         if lvlCap > 0 then -- LV cap depends on entrance
-            player:addStatusEffect(xi.effect.LEVEL_RESTRICTION, lvlCap, 0, 0)
+            player:addStatusEffect(invaderXim.effect.LEVEL_RESTRICTION, lvlCap, 0, 0)
         end
     end
 end

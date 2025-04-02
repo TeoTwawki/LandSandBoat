@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.WALK_OF_ECHOES] =
+zones[invaderXim.zone.WALK_OF_ECHOES] =
 {
     text =
     {
@@ -31,4 +31,4 @@ zones[xi.zone.WALK_OF_ECHOES] =
     },
 }
 
-return zones[xi.zone.WALK_OF_ECHOES]
+return zones[invaderXim.zone.WALK_OF_ECHOES]

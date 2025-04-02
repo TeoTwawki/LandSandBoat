@@ -4,7 +4,7 @@
 -- Involved in Quests: RNG AF3 quest - Unbridled Passion
 -- !pos -295.065 -25.054 151.250 112
 -----------------------------------
-local ID = zones[xi.zone.XARCABARD]
+local ID = zones[invaderXim.zone.XARCABARD]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

@@ -6,27 +6,27 @@
 -- Nightflowers                  : !pos -264.775 -3.718 28.767 126
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.SAVE_MY_SON)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.SAVE_MY_SON)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.JEUNO,
+    fameArea = invaderXim.fameArea.JEUNO,
     gil      = 2100,
-    item     = xi.item.BEAST_WHISTLE,
-    title    = xi.title.LIFE_SAVER,
+    item     = invaderXim.item.BEAST_WHISTLE,
+    title    = invaderXim.title.LIFE_SAVER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.CHOCOBOS_WOUNDS) and
-                player:getMainLvl() >= xi.settings.main.ADVANCED_JOB_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.CHOCOBOS_WOUNDS) and
+                player:getMainLvl() >= invaderXim.settings.main.ADVANCED_JOB_LEVEL
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['_6t2'] = quest:progressEvent(164),
 
@@ -43,10 +43,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['_6t2'] =
             {
@@ -67,7 +67,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Shalott'] =
             {
@@ -81,7 +81,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.QUFIM_ISLAND] =
+        [invaderXim.zone.QUFIM_ISLAND] =
         {
             ['Nightflowers'] =
             {
@@ -111,15 +111,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['_6t2'] = quest:event(132):replaceDefault(),
         },
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Shalott'] = quest:event(44):replaceDefault(),
         },
@@ -127,11 +127,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                not player:hasCompletedQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.PATH_OF_THE_BEASTMASTER)
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                not player:hasCompletedQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.PATH_OF_THE_BEASTMASTER)
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Chocobo'] = quest:event(55),
             ['Osker']   = quest:event(55),

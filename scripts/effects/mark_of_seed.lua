@@ -1,8 +1,8 @@
 -----------------------------------
--- xi.effect.MARK_OF_SEED
+-- invaderXim.effect.MARK_OF_SEED
 -- DO NOT try to use this anywhere else but Fei'Yin!
 -----------------------------------
-local ID = zones[xi.zone.FEIYIN]
+local ID = zones[invaderXim.zone.FEIYIN]
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -30,8 +30,8 @@ end
 
 effectObject.onEffectLose = function(target, effect)
     if
-        not target:hasKeyItem(xi.ki.MARK_OF_SEED) and
-        not target:hasKeyItem(xi.ki.AZURE_KEY)
+        not target:hasKeyItem(invaderXim.ki.MARK_OF_SEED) and
+        not target:hasKeyItem(invaderXim.ki.AZURE_KEY)
     then
         target:messageSpecial(ID.text.MARK_OF_SEED_HAS_VANISHED)
     end

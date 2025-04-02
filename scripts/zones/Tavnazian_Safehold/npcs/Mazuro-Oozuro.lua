@@ -2,7 +2,7 @@
 -- Area: Tavnazian Safehold
 --  NPC: Mazuro-Oozuro
 -----------------------------------
-local ID = zones[xi.zone.TAVNAZIAN_SAFEHOLD]
+local ID = zones[invaderXim.zone.TAVNAZIAN_SAFEHOLD]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -19,7 +19,7 @@ entity.onTrigger = function(player, npc)
         4915, 217000,    -- Scroll of Frazzle II
     }
 
-    if player:getCurrentMission(xi.mission.log_id.COP) >= xi.mission.id.cop.SHELTERING_DOUBT then
+    if player:getCurrentMission(invaderXim.mission.log_id.COP) >= invaderXim.mission.id.cop.SHELTERING_DOUBT then
         stock =
         {
             17005,   108,    -- Lufaise Fly
@@ -34,7 +34,7 @@ entity.onTrigger = function(player, npc)
     end
 
     player:showText(npc, ID.text.MAZUROOOZURO_SHOP_DIALOG)
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 return entity

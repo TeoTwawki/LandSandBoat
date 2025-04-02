@@ -10,11 +10,11 @@
 -- Arnau      : !pos 148 0 139 231
 -- Hut_Door   : !pos -165.357 -11.672 77.771 140
 -----------------------------------
-local southernSandoriaID = zones[xi.zone.SOUTHERN_SAN_DORIA]
-local northernSandoriaID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local southernSandoriaID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
+local northernSandoriaID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.SAVE_THE_CHILDREN)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.SAVE_THE_CHILDREN)
 
 mission.reward =
 {
@@ -59,11 +59,11 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -72,7 +72,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -89,7 +89,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus < 3
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Arnau'] =
             {
@@ -119,7 +119,7 @@ mission.sections =
             }
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] =
             {
@@ -144,14 +144,14 @@ mission.sections =
             },
         },
 
-        [xi.zone.GHELSBA_OUTPOST] =
+        [invaderXim.zone.GHEIXIMA_OUTPOST] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
-                    if player:getLocalVar('battlefieldWin') == xi.battlefield.id.SAVE_THE_CHILDREN then
-                        npcUtil.giveKeyItem(player, xi.ki.ORCISH_HUT_KEY)
-                        player:setTitle(xi.title.FODDERCHIEF_FLAYER)
+                    if player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.SAVE_THE_CHILDREN then
+                        npcUtil.giveKeyItem(player, invaderXim.ki.ORCISH_HUT_KEY)
+                        player:setTitle(invaderXim.title.FODDERCHIEF_FLAYER)
                         player:setMissionStatus(mission.areaId, 3)
                     end
                 end,
@@ -162,10 +162,10 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and missionStatus == 3 and
-                player:hasKeyItem(xi.ki.ORCISH_HUT_KEY)
+                player:hasKeyItem(invaderXim.ki.ORCISH_HUT_KEY)
         end,
 
-        [xi.zone.GHELSBA_OUTPOST] =
+        [invaderXim.zone.GHEIXIMA_OUTPOST] =
         {
             ['Hut_Door'] =
             {
@@ -181,12 +181,12 @@ mission.sections =
             onEventFinish =
             {
                 [3] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.ORCISH_HUT_KEY)
+                    player:delKeyItem(invaderXim.ki.ORCISH_HUT_KEY)
                     player:setMissionStatus(mission.areaId, 4)
                 end,
 
                 [55] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.ORCISH_HUT_KEY)
+                    player:delKeyItem(invaderXim.ki.ORCISH_HUT_KEY)
                     player:setMissionStatus(mission.areaId, 4)
                 end,
             },
@@ -199,7 +199,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 4
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] =
             {
@@ -224,7 +224,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Grilau'] =
             {
@@ -249,7 +249,7 @@ mission.sections =
                 mission:getVar(player, 'Option') == 1
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Arnau'] =
             {

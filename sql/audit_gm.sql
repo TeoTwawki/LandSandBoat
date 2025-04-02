@@ -2,7 +2,7 @@
 -- Table structure for table `audit_gm`
 --
 
-DROP TABLE IF EXISTS `audit_gm`;
+DROP TABLE IF IXIMSTS `audit_gm`;
 CREATE TABLE `audit_gm` (
   `date_time` datetime NOT NULL,
   `gm_name` varchar(16) NOT NULL,

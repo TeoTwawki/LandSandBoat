@@ -11,17 +11,17 @@
 -- qm16             : !pos -239.442 -1.000 -18.870 159
 -- Qu'Hau Spring    : !pos 0 -29 64 122
 -----------------------------------
-local heavensTowerID = zones[xi.zone.HEAVENS_TOWER]
+local heavensTowerID = zones[invaderXim.zone.HEAVENS_TOWER]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.MOON_READING)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.MOON_READING)
 
 mission.reward =
 {
     gil   = 100000,
-    item  = xi.item.WINDURSTIAN_FLAG,
+    item  = invaderXim.item.WINDURSTIAN_FLAG,
     rank  = 10,
-    title = xi.title.VESTAL_CHAMBERLAIN,
+    title = invaderXim.title.VESTAL_CHAMBERLAIN,
 }
 
 local handleAcceptMission = function(player, csid, option, npc)
@@ -35,11 +35,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onEventFinish =
             {
@@ -47,7 +47,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onEventFinish =
             {
@@ -55,7 +55,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onEventFinish =
             {
@@ -63,7 +63,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onEventFinish =
             {
@@ -77,11 +77,11 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CHAMBER_OF_ORACLES] =
+        [invaderXim.zone.CHAMBER_OF_ORACLES] =
         {
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.QUICKSAND_CAVES and
+                    prevZone == invaderXim.zone.QUICKSAND_CAVES and
                     player:getMissionStatus(mission.areaId) >= 1
                 then
                     return 3
@@ -91,19 +91,19 @@ mission.sections =
             onEventFinish =
             {
                 [3] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.ANCIENT_VERSE_OF_ALTEPA)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ANCIENT_VERSE_OF_ALTEPA)
                 end,
             },
         },
 
-        [xi.zone.FULL_MOON_FOUNTAIN] =
+        [invaderXim.zone.FULL_MOON_FOUNTAIN] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 2 and
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.MOON_READING
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.MOON_READING
                     then
                         player:setMissionStatus(mission.areaId, 3)
                     end
@@ -111,7 +111,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.HEAVENS_TOWER] =
+        [invaderXim.zone.HEAVENS_TOWER] =
         {
             ['_6q2'] =
             {
@@ -122,19 +122,19 @@ mission.sections =
                         return mission:progressEvent(384)
                     elseif
                         missionStatus == 1 and
-                        player:hasKeyItem(xi.ki.ANCIENT_VERSE_OF_ROMAEVE) and
-                        player:hasKeyItem(xi.ki.ANCIENT_VERSE_OF_ALTEPA) and
-                        player:hasKeyItem(xi.ki.ANCIENT_VERSE_OF_UGGALEPIH)
+                        player:hasKeyItem(invaderXim.ki.ANCIENT_VERSE_OF_ROMAEVE) and
+                        player:hasKeyItem(invaderXim.ki.ANCIENT_VERSE_OF_ALTEPA) and
+                        player:hasKeyItem(invaderXim.ki.ANCIENT_VERSE_OF_UGGALEPIH)
                     then
                         return mission:progressEvent(385)
                     elseif missionStatus == 3 then
-                        return mission:progressEvent(386, 0, 0, xi.ki.ORASTERY_RING)
+                        return mission:progressEvent(386, 0, 0, invaderXim.ki.ORASTERY_RING)
                     elseif missionStatus == 4 then
                         -- This does not use the npcUtil function, as in both cases we need to return
                         -- an appropriate mission function.
 
                         if player:getFreeSlotsCount() == 0 then
-                            return mission:messageSpecial(heavensTowerID.text.ITEM_CANNOT_BE_OBTAINED, xi.item.WINDURSTIAN_FLAG)
+                            return mission:messageSpecial(heavensTowerID.text.ITEM_CANNOT_BE_OBTAINED, invaderXim.item.WINDURSTIAN_FLAG)
                         else
                             return mission:progressEvent(407)
                         end
@@ -171,7 +171,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.ROMAEVE] =
+        [invaderXim.zone.ROMAEVE] =
         {
             ['QuHau_Spring'] =
             {
@@ -185,12 +185,12 @@ mission.sections =
             onEventFinish =
             {
                 [4] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.ANCIENT_VERSE_OF_ROMAEVE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ANCIENT_VERSE_OF_ROMAEVE)
                 end,
             },
         },
 
-        [xi.zone.TEMPLE_OF_UGGALEPIH] =
+        [invaderXim.zone.TEMPLE_OF_UGGALEPIH] =
         {
             ['qm16'] =
             {
@@ -204,12 +204,12 @@ mission.sections =
             onEventFinish =
             {
                 [68] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.ANCIENT_VERSE_OF_UGGALEPIH)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ANCIENT_VERSE_OF_UGGALEPIH)
                 end,
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 4 then
@@ -238,7 +238,7 @@ mission.sections =
                 player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.HEAVENS_TOWER] =
+        [invaderXim.zone.HEAVENS_TOWER] =
         {
             -- NOTE: The replaceDefault behavior is current function from the scripts.  This
             -- may be inconsistent with how San d'Oria optional dialogue is handled, and should
@@ -277,18 +277,18 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Janshura_Rashura'] = mission:event(567):oncePerZone(),
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Mokyoko']       = mission:event(837):oncePerZone(),
             ['Tosuka-Porika'] = mission:event(380):replaceDefault(),
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Rakoh_Buuma'] = mission:event(632):oncePerZone(),
         },

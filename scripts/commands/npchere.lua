@@ -36,10 +36,10 @@ commandObj.onTrigger = function(player, npcId, noDepop)
 
     if player:getZoneID() == targ:getZoneID() then
         targ:setPos(player:getXPos(), player:getYPos(), player:getZPos(), player:getRotPos(), player:getZoneID())
-        targ:setStatus(xi.status.NORMAL)
+        targ:setStatus(invaderXim.status.NORMAL)
     else
         if noDepop == nil or noDepop == 0 then
-            targ:setStatus(xi.status.DISAPPEAR)
+            targ:setStatus(invaderXim.status.DISAPPEAR)
             player:printToPlayer('Despawned the NPC because of an error.')
         end
 

@@ -5,15 +5,15 @@
 local spellObject = {}
 
 spellObject.onMagicCastingCheck = function(caster, target, spell)
-    return xi.trust.canCast(caster, spell)
+    return invaderXim.trust.canCast(caster, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    return xi.trust.spawn(caster, spell)
+    return invaderXim.trust.spawn(caster, spell)
 end
 
 spellObject.onMobSpawn = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.SPAWN)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.SPAWN)
 
     local master = mob:getMaster()
     if not master then
@@ -26,46 +26,46 @@ spellObject.onMobSpawn = function(mob)
     -- Has Regain (50/tick) and uses Nott when MP falls below 66%.
     -- cure IV cures 456 HP @99
 
-    mob:addMod(xi.mod.GEOMANCY_SKILL, 8 * mob:getMainLvl() + 1)
-    mob:addMod(xi.mod.INDI_DURATION, 180)
-    mob:addMod(xi.mod.REGAIN, 50)
+    mob:addMod(invaderXim.mod.GEOMANCY_SKILL, 8 * mob:getMainLvl() + 1)
+    mob:addMod(invaderXim.mod.INDI_DURATION, 180)
+    mob:addMod(invaderXim.mod.REGAIN, 50)
 
     if mob:getMainLvl() >= 99 then
-        mob:addMod(xi.mod.GEOMANCY_BONUS, 3)
+        mob:addMod(invaderXim.mod.GEOMANCY_BONUS, 3)
     end
 
-    mob:addGambit(ai.t.PARTY, { ai.c.HPP_LT, 25 }, { ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.CURE })
+    mob:addGambit(ai.t.PARTY, { ai.c.HPP_LT, 25 }, { ai.r.MA, ai.s.HIGHEST, invaderXim.magic.spellFamily.CURE })
 
-    mob:addGambit(ai.t.PARTY, { ai.c.STATUS, xi.effect.SLEEP_I }, { ai.r.MA, ai.s.SPECIFIC, xi.magic.spell.CURE })
-    mob:addGambit(ai.t.PARTY, { ai.c.STATUS, xi.effect.SLEEP_II }, { ai.r.MA, ai.s.SPECIFIC, xi.magic.spell.CURE })
+    mob:addGambit(ai.t.PARTY, { ai.c.STATUS, invaderXim.effect.SLEEP_I }, { ai.r.MA, ai.s.SPECIFIC, invaderXim.magic.spell.CURE })
+    mob:addGambit(ai.t.PARTY, { ai.c.STATUS, invaderXim.effect.SLEEP_II }, { ai.r.MA, ai.s.SPECIFIC, invaderXim.magic.spell.CURE })
 
-    mob:addGambit(ai.t.PARTY, { ai.c.HPP_LT, 75 }, { ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.CURE })
+    mob:addGambit(ai.t.PARTY, { ai.c.HPP_LT, 75 }, { ai.r.MA, ai.s.HIGHEST, invaderXim.magic.spellFamily.CURE })
 
-    mob:addGambit(ai.t.MASTER, { ai.c.STATUS_FLAG, xi.effectFlag.ERASABLE }, { ai.r.MA, ai.s.SPECIFIC, xi.magic.spell.ERASE })
-    mob:addGambit(ai.t.PARTY, { ai.c.STATUS_FLAG, xi.effectFlag.ERASABLE }, { ai.r.MA, ai.s.SPECIFIC, xi.magic.spell.ERASE })
-    mob:addGambit(ai.t.SELF, { ai.c.STATUS_FLAG, xi.effectFlag.ERASABLE }, { ai.r.MA, ai.s.SPECIFIC, xi.magic.spell.ERASE })
+    mob:addGambit(ai.t.MASTER, { ai.c.STATUS_FLAG, invaderXim.effectFlag.ERASABLE }, { ai.r.MA, ai.s.SPECIFIC, invaderXim.magic.spell.ERASE })
+    mob:addGambit(ai.t.PARTY, { ai.c.STATUS_FLAG, invaderXim.effectFlag.ERASABLE }, { ai.r.MA, ai.s.SPECIFIC, invaderXim.magic.spell.ERASE })
+    mob:addGambit(ai.t.SELF, { ai.c.STATUS_FLAG, invaderXim.effectFlag.ERASABLE }, { ai.r.MA, ai.s.SPECIFIC, invaderXim.magic.spell.ERASE })
 
     if mob:getMainLvl() >= 20 then
-        mob:addGambit(ai.t.SELF, { ai.c.NOT_STATUS, xi.effect.COLURE_ACTIVE }, { ai.r.MA, ai.s.BEST_INDI, xi.magic.spellFamily.NONE })
+        mob:addGambit(ai.t.SELF, { ai.c.NOT_STATUS, invaderXim.effect.COLURE_ACTIVE }, { ai.r.MA, ai.s.BEST_INDI, invaderXim.magic.spellFamily.NONE })
     end
 
-    if mob:getMainLvl() >= 93 and mJob ~= xi.job.GEO then
-        mob:addGambit(ai.t.SELF, { ai.c.NOT_STATUS, xi.effect.ENTRUST }, { ai.r.JA, ai.s.SPECIFIC, xi.jobAbility.ENTRUST })
-        mob:addGambit(ai.t.SELF, { ai.c.STATUS, xi.effect.ENTRUST }, { ai.r.MA, ai.s.ENTRUSTED, xi.magic.spellFamily.INDI_BUFF })
+    if mob:getMainLvl() >= 93 and mJob ~= invaderXim.job.GEO then
+        mob:addGambit(ai.t.SELF, { ai.c.NOT_STATUS, invaderXim.effect.ENTRUST }, { ai.r.JA, ai.s.SPECIFIC, invaderXim.jobAbility.ENTRUST })
+        mob:addGambit(ai.t.SELF, { ai.c.STATUS, invaderXim.effect.ENTRUST }, { ai.r.MA, ai.s.ENTRUSTED, invaderXim.magic.spellFamily.INDI_BUFF })
     end
 
-    mob:addGambit(ai.t.MASTER, { ai.c.NOT_STATUS, xi.effect.HASTE }, { ai.r.MA, ai.s.SPECIFIC, xi.magic.spell.HASTE })
-    mob:addGambit(ai.t.MELEE, { ai.c.NOT_STATUS, xi.effect.HASTE }, { ai.r.MA, ai.s.SPECIFIC, xi.magic.spell.HASTE })
+    mob:addGambit(ai.t.MASTER, { ai.c.NOT_STATUS, invaderXim.effect.HASTE }, { ai.r.MA, ai.s.SPECIFIC, invaderXim.magic.spell.HASTE })
+    mob:addGambit(ai.t.MELEE, { ai.c.NOT_STATUS, invaderXim.effect.HASTE }, { ai.r.MA, ai.s.SPECIFIC, invaderXim.magic.spell.HASTE })
 
     mob:setAutoAttackEnabled(false)
 end
 
 spellObject.onMobDespawn = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.DESPAWN)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.DESPAWN)
 end
 
 spellObject.onMobDeath = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.DEATH)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.DEATH)
 end
 
 return spellObject

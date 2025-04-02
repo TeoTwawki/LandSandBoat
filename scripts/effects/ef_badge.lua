@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.EF_BADGE
+-- invaderXim.effect.EF_BADGE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

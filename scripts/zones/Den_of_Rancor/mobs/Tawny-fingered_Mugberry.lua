@@ -12,7 +12,7 @@ mixins =
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 396)
+    invaderXim.hunts.checkHunt(mob, player, 396)
 end
 
 return entity

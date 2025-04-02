@@ -8,7 +8,7 @@ local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
     local result = 0
-    if not target:hasVisitedZone(xi.zone.RULUDE_GARDENS) then
+    if not target:hasVisitedZone(invaderXim.zone.RULUDE_GARDENS) then
         result = 56
     end
 
@@ -16,7 +16,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffectEx(xi.effect.TELEPORT, 0, xi.teleport.id.DUCALGUARD, 0, 4)
+    target:addStatusEffectEx(invaderXim.effect.TELEPORT, 0, invaderXim.teleport.id.DUCALGUARD, 0, 4)
 end
 
 return itemObject

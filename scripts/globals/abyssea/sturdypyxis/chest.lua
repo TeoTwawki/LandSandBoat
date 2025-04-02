@@ -14,16 +14,16 @@ require('scripts/globals/abyssea/sturdypyxis/time')
 require('scripts/globals/abyssea/sturdypyxis/restore')
 -----------------------------------
 xi = xi or {}
-xi.pyxis = xi.pyxis or {}
+invaderXim.pyxis = invaderXim.pyxis or {}
 
-xi.pyxis.chestType =
+invaderXim.pyxis.chestType =
 {
     BLUE = 1,
     RED  = 2,
     GOLD = 3,
 }
 
-xi.pyxis.chestDropType =
+invaderXim.pyxis.chestDropType =
 {
     TEMPORARY_ITEM      = 1,
     ITEM                = 2,
@@ -41,7 +41,7 @@ xi.pyxis.chestDropType =
 -----------------------------------
 -- Desc: Messages sent to all players in a party in the zone
 -----------------------------------
-xi.pyxis.canOpenChest = function(player, npc)
+invaderXim.pyxis.canOpenChest = function(player, npc)
     local playerOwner = GetPlayerByID(npc:getLocalVar('PLAYERID'))
     local canOpen     = false
 
@@ -71,7 +71,7 @@ end
 -----------------------------------
 -- Desc: Messages sent to all players in a party in the zone
 -----------------------------------
-xi.pyxis.messageChest = function(player, messageid, param1, param2, param3, param4, npc)
+invaderXim.pyxis.messageChest = function(player, messageid, param1, param2, param3, param4, npc)
     local alliance = player:getAlliance()
 
     for _, member in ipairs(alliance) do
@@ -81,7 +81,7 @@ xi.pyxis.messageChest = function(player, messageid, param1, param2, param3, para
     end
 end
 
-xi.pyxis.isChestEmpty = function(contentsTable)
+invaderXim.pyxis.isChestEmpty = function(contentsTable)
     for _, v in ipairs(contentsTable) do
         if v ~= 0 then
             return false
@@ -91,7 +91,7 @@ xi.pyxis.isChestEmpty = function(contentsTable)
     return true
 end
 
-xi.pyxis.removeChest = function(player, npc, addcruor, delay)
+invaderXim.pyxis.removeChest = function(player, npc, addcruor, delay)
     local ID = zones[player:getZoneID()]
     local amount = npc:getLocalVar('TIER') * 10
 
@@ -105,81 +105,81 @@ xi.pyxis.removeChest = function(player, npc, addcruor, delay)
         npcArg:setAnimationSub(16)
         npcArg:setNpcFlags(3203)
         npcArg:setLocalVar('SPAWNSTATUS', 0)
-        npcArg:setStatus(xi.status.DISAPPEAR)
-        npcArg:entityAnimationPacket(xi.animationString.STATUS_DISAPPEAR)
+        npcArg:setStatus(invaderXim.status.DISAPPEAR)
+        npcArg:entityAnimationPacket(invaderXim.animationString.STATUS_DISAPPEAR)
         npc:setUntargetable(false)
     end)
 end
 
-xi.pyxis.getDrops = function(npc, dropType, tier)
+invaderXim.pyxis.getDrops = function(npc, dropType, tier)
     if npc:getLocalVar('ITEMS_SET') == 1 then -- sets this to 1 so can get items once when triggered
         return
     end
 
     switch(dropType): caseof
     {
-        [xi.pyxis.chestDropType.TEMPORARY_ITEM] = function(x)
-            xi.pyxis.tempItem.setTempItems(npc, tier)
+        [invaderXim.pyxis.chestDropType.TEMPORARY_ITEM] = function(x)
+            invaderXim.pyxis.tempItem.setTempItems(npc, tier)
             npc:setLocalVar('ITEMS_SET', 1)
         end,
 
-        [xi.pyxis.chestDropType.KEY_ITEM] = function(x)
-            xi.pyxis.ki.setKeyItems(npc)
+        [invaderXim.pyxis.chestDropType.KEY_ITEM] = function(x)
+            invaderXim.pyxis.ki.setKeyItems(npc)
             npc:setLocalVar('ITEMS_SET', 1)
         end,
 
-        [xi.pyxis.chestDropType.AUGMENTED_ITEM] = function(x)
-            xi.pyxis.augItem.setAugmentItems(npc, tier)
+        [invaderXim.pyxis.chestDropType.AUGMENTED_ITEM] = function(x)
+            invaderXim.pyxis.augItem.setAugmentItems(npc, tier)
             npc:setLocalVar('ITEMS_SET', 1)
         end,
 
-        [xi.pyxis.chestDropType.ITEM] = function(x)
-            xi.pyxis.item.setItems(npc, tier)
+        [invaderXim.pyxis.chestDropType.ITEM] = function(x)
+            invaderXim.pyxis.item.setItems(npc, tier)
             npc:setLocalVar('ITEMS_SET', 1)
         end,
 
-        [xi.pyxis.chestDropType.POPITEM] = function(x)
-            xi.pyxis.popitem.setPopItems(npc)
+        [invaderXim.pyxis.chestDropType.POPITEM] = function(x)
+            invaderXim.pyxis.popitem.setPopItems(npc)
             npc:setLocalVar('ITEMS_SET', 1)
         end
     }
 end
 
-xi.pyxis.openChest = function(player, npc)
+invaderXim.pyxis.openChest = function(player, npc)
     local dropType = npc:getLocalVar('DROPTYPE')
 
     npc:setAnimationSub(13)
 
     switch(dropType) : caseof
     {
-        [xi.pyxis.chestDropType.LIGHT] = function() -- LIGHT
-            xi.pyxis.light.giveLight(npc, player)
-            xi.pyxis.removeChest(player, npc, 0, 3)
+        [invaderXim.pyxis.chestDropType.LIGHT] = function() -- LIGHT
+            invaderXim.pyxis.light.giveLight(npc, player)
+            invaderXim.pyxis.removeChest(player, npc, 0, 3)
         end,
 
-        [xi.pyxis.chestDropType.RESTORE] = function() -- RESTORE HP/MP/JA
-            xi.pyxis.restore.giveRestore(npc, player)
-            xi.pyxis.removeChest(player, npc, 0, 4)
+        [invaderXim.pyxis.chestDropType.RESTORE] = function() -- RESTORE HP/MP/JA
+            invaderXim.pyxis.restore.giveRestore(npc, player)
+            invaderXim.pyxis.removeChest(player, npc, 0, 4)
         end,
 
-        [xi.pyxis.chestDropType.CRUOR] = function() -- CRUOR
-            xi.pyxis.cruor.giveCruor(npc, player)
-            xi.pyxis.removeChest(player, npc, 0, 3)
+        [invaderXim.pyxis.chestDropType.CRUOR] = function() -- CRUOR
+            invaderXim.pyxis.cruor.giveCruor(npc, player)
+            invaderXim.pyxis.removeChest(player, npc, 0, 3)
         end,
 
-        [xi.pyxis.chestDropType.TIME] = function() -- TIME
-            xi.pyxis.time.giveTime(npc, player)
-            xi.pyxis.removeChest(player, npc, 0, 3)
+        [invaderXim.pyxis.chestDropType.TIME] = function() -- TIME
+            invaderXim.pyxis.time.giveTime(npc, player)
+            invaderXim.pyxis.removeChest(player, npc, 0, 3)
         end,
 
-        [xi.pyxis.chestDropType.EXP] = function() -- EXP
-            xi.pyxis.exp.giveExperience(npc, player)
-            xi.pyxis.removeChest(player, npc, 0, 3)
+        [invaderXim.pyxis.chestDropType.EXP] = function() -- EXP
+            invaderXim.pyxis.exp.giveExperience(npc, player)
+            invaderXim.pyxis.removeChest(player, npc, 0, 3)
         end,
 
-        [xi.pyxis.chestDropType.NUMEROUS_TEMPITEMS] = function() -- TEMPORARY ITEM
-            xi.pyxis.tempItem.giveTemporaryItems(npc, player)
-            xi.pyxis.removeChest(player, npc, 0, 3)
+        [invaderXim.pyxis.chestDropType.NUMEROUS_TEMPITEMS] = function() -- TEMPORARY ITEM
+            invaderXim.pyxis.tempItem.giveTemporaryItems(npc, player)
+            invaderXim.pyxis.removeChest(player, npc, 0, 3)
         end,
     }
 end

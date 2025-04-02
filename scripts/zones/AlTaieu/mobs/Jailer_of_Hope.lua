@@ -8,20 +8,20 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180)
-    mob:setMobMod(xi.mobMod.GA_CHANCE, 60)
-    mob:setMod(xi.mod.UFASTCAST, 150)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180)
+    mob:setMobMod(invaderXim.mobMod.GA_CHANCE, 60)
+    mob:setMod(invaderXim.mod.UFASTCAST, 150)
 end
 
 entity.onMobSpawn = function(mob)
     mob:setSpellList(0) -- If it dies with the ability to cast spells, the next spawn would be able to cast from the start.
-    mob:setMobMod(xi.mobMod.MAGIC_COOL, 20) -- This gives around 6 - 15 seconds between casts. Doesn't seem to work anywhere except in this function.
+    mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 20) -- This gives around 6 - 15 seconds between casts. Doesn't seem to work anywhere except in this function.
 
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
-            { id = xi.jsa.MIGHTY_STRIKES, cooldown = 90, hpp = math.random(85, 95) }, -- "May use Mighty Strikes multiple times."
+            { id = invaderXim.jsa.MIGHTY_STRIKES, cooldown = 90, hpp = math.random(85, 95) }, -- "May use Mighty Strikes multiple times."
         },
     })
 end
@@ -45,7 +45,7 @@ entity.onMobWeaponSkill = function(target, mob, skill)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.STUN, { chance = 65, duration = math.random(4, 8) })
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.STUN, { chance = 65, duration = math.random(4, 8) })
 end
 
 entity.onMobDeath = function(mob, player, optParams)

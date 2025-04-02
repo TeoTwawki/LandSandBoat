@@ -568,7 +568,7 @@ static HANDLE epoll__create(void) {
   if (ts_tree_add(&epoll__handle_tree, tree_node, (uintptr_t) ephnd) < 0) {
     /* This should never happen. */
     port_delete(port_state);
-    return_set_error(NULL, ERROR_ALREADY_EXISTS);
+    return_set_error(NULL, ERROR_ALREADY_IXIMSTS);
   }
 
   return ephnd;
@@ -684,7 +684,7 @@ err:
 
 #define ERR__ERRNO_MAPPINGS(X)               \
   X(ERROR_ACCESS_DENIED, EACCES)             \
-  X(ERROR_ALREADY_EXISTS, EEXIST)            \
+  X(ERROR_ALREADY_IXIMSTS, EIXIMST)            \
   X(ERROR_BAD_COMMAND, EACCES)               \
   X(ERROR_BAD_EXE_FORMAT, ENOEXEC)           \
   X(ERROR_BAD_LENGTH, EACCES)                \
@@ -1393,7 +1393,7 @@ int port_register_socket(port_state_t* port_state,
   if (tree_add(&port_state->sock_tree,
                sock_state_to_tree_node(sock_state),
                socket) < 0)
-    return_set_error(-1, ERROR_ALREADY_EXISTS);
+    return_set_error(-1, ERROR_ALREADY_IXIMSTS);
   return 0;
 }
 

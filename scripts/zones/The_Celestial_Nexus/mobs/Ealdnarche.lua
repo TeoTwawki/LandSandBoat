@@ -8,20 +8,20 @@ local entity = {}
 
 entity.onMobInitialize = function(mob)
     --50% fast cast, no standback
-    mob:addMod(xi.mod.UFASTCAST, 50)
-    mob:setMobMod(xi.mobMod.HP_STANDBACK, -1)
+    mob:addMod(invaderXim.mod.UFASTCAST, 50)
+    mob:setMobMod(invaderXim.mobMod.HP_STANDBACK, -1)
 end
 
 entity.onMobSpawn = function(mob)
     mob:setAutoAttackEnabled(false)
-    mob:setMobMod(xi.mobMod.GA_CHANCE, 25)
-    mob:addStatusEffectEx(xi.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
-    mob:addStatusEffectEx(xi.effect.ARROW_SHIELD, 0, 1, 0, 0)
-    mob:addStatusEffectEx(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
+    mob:setMobMod(invaderXim.mobMod.GA_CHANCE, 25)
+    mob:addStatusEffectEx(invaderXim.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
+    mob:addStatusEffectEx(invaderXim.effect.ARROW_SHIELD, 0, 1, 0, 0)
+    mob:addStatusEffectEx(invaderXim.effect.MAGIC_SHIELD, 0, 1, 0, 0)
 end
 
 entity.onMobEngage = function(mob, target)
-    mob:addStatusEffectEx(xi.effect.SILENCE, 0, 1, 0, 5)
+    mob:addStatusEffectEx(invaderXim.effect.SILENCE, 0, 1, 0, 5)
     GetMobByID(mob:getID() + 1):updateEnmity(target)
 end
 

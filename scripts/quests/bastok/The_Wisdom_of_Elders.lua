@@ -6,23 +6,23 @@
 -- Tete   : !pos 15.249 -2.097 43.012 236
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.THE_WISDOM_OF_ELDERS)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_WISDOM_OF_ELDERS)
 
 quest.reward =
 {
     fame     = 120,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.TRAVELERS_HAT,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.TRAVELERS_HAT,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Benita'] = quest:progressEvent(174),
 
@@ -37,15 +37,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Benita'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.PINCH_OF_BOMB_ASH) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.PINCH_OF_BOMB_ASH) then
                         return quest:progressEvent(176)
                     end
                 end,

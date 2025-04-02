@@ -13,13 +13,13 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    local modAcc       = player:getMerit(xi.merit.FERAL_HOWL)
-    local feralHowlMod = player:getMod(xi.mod.FERAL_HOWL_DURATION)
+    local modAcc       = player:getMerit(invaderXim.merit.FERAL_HOWL)
+    local feralHowlMod = player:getMod(invaderXim.mod.FERAL_HOWL_DURATION)
     local duration     = 10
 
     if
-        target:hasStatusEffect(xi.effect.TERROR) or
-        target:hasStatusEffect(xi.effect.STUN)
+        target:hasStatusEffect(invaderXim.effect.TERROR) or
+        target:hasStatusEffect(invaderXim.effect.STUN)
     then
         -- effect already on, or target stunned, do nothing
         -- reserved for miss based on target already having stun or terror effect active
@@ -61,12 +61,12 @@ abilityObject.onUseAbility = function(player, target, ability)
 
     -- execute ability based off of resistance value space reserved for resist message
     if resist <= 90 then -- still experimental. not exactly sure how to calculate hit %
-        target:addStatusEffect(xi.effect.TERROR, potency, 0, duration)
+        target:addStatusEffect(invaderXim.effect.TERROR, potency, 0, duration)
     else
         -- reserved for text related to resist
     end
 
-    return xi.effect.TERROR
+    return invaderXim.effect.TERROR
 end
 
 return abilityObject

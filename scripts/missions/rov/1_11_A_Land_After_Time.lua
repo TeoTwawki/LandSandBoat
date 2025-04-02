@@ -8,13 +8,13 @@
 -- Shattered Telepoint (Tahrongi)  : !pos 179 35 255 117
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.A_LAND_AFTER_TIME)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.A_LAND_AFTER_TIME)
 
 mission.reward =
 {
-    item        = xi.item.CIPHER_OF_LIONS_ALTER_EGO_II,
-    keyItem     = xi.ki.RHAPSODY_IN_UMBER,
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.FATES_CALL },
+    item        = invaderXim.item.CIPHER_OF_LIONS_ALTER_EGO_II,
+    keyItem     = invaderXim.ki.RHAPSODY_IN_UMBER,
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.FATES_CALL },
 }
 
 mission.sections =
@@ -24,14 +24,14 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.KONSCHTAT_HIGHLANDS] =
+        [invaderXim.zone.KONSCHTAT_HIGHLANDS] =
         {
             ['Shattered_Telepoint'] =
             {
                 onTrigger = function(player, npc)
                     if mission:getVar(player, 'hasSeenEvent') == 0 then
                         local rank6 = (player:getRank(player:getNation()) >= 6) and 1 or 0
-                        local isLionGhost = player:hasCompletedMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_CELESTIAL_NEXUS) and 1 or 0
+                        local isLionGhost = player:hasCompletedMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_CELESTIAL_NEXUS) and 1 or 0
 
                         -- We will need to access this for an event in M1-13, store here, as this event displays the blocking
                         -- message.
@@ -59,14 +59,14 @@ mission.sections =
             },
         },
 
-        [xi.zone.LA_THEINE_PLATEAU] =
+        [invaderXim.zone.LA_THEINE_PLATEAU] =
         {
             ['Shattered_Telepoint'] =
             {
                 onTrigger = function(player, npc)
                     if mission:getVar(player, 'hasSeenEvent') == 0 then
                         local rank6 = (player:getRank(player:getNation()) >= 6) and 1 or 0
-                        local isLionGhost = player:hasCompletedMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_CELESTIAL_NEXUS) and 1 or 0
+                        local isLionGhost = player:hasCompletedMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_CELESTIAL_NEXUS) and 1 or 0
 
                         if rank6 == 0 then
                             player:setCharVar('Mission[13][30]wasBlocked', 1)
@@ -90,14 +90,14 @@ mission.sections =
             },
         },
 
-        [xi.zone.TAHRONGI_CANYON] =
+        [invaderXim.zone.TAHRONGI_CANYON] =
         {
             ['Shattered_Telepoint'] =
             {
                 onTrigger = function(player, npc)
                     if mission:getVar(player, 'hasSeenEvent') == 0 then
                         local rank6 = (player:getRank(player:getNation()) >= 6) and 1 or 0
-                        local isLionGhost = player:hasCompletedMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_CELESTIAL_NEXUS) and 1 or 0
+                        local isLionGhost = player:hasCompletedMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_CELESTIAL_NEXUS) and 1 or 0
 
                         if rank6 == 0 then
                             player:setCharVar('Mission[13][30]wasBlocked', 1)

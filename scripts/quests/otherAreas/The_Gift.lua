@@ -7,28 +7,28 @@
 -- Oswald  : !pos 47.119 -15.273 7.989 248
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.THE_GIFT)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.THE_GIFT)
 
 quest.reward =
 {
-    item     = xi.item.SLEEP_DAGGER,
-    title    = xi.title.SAVIOR_OF_LOVE,
-    fameArea = xi.fameArea.SELBINA_RABAO,
+    item     = invaderXim.item.SLEEP_DAGGER,
+    title    = invaderXim.title.SAVIOR_OF_LOVE,
+    fameArea = invaderXim.fameArea.SELBINA_RABAO,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.UNDER_THE_SEA) == xi.questStatus.QUEST_COMPLETED and
-                player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.THE_SAND_CHARM) >= xi.questStatus.QUEST_ACCEPTED and
-                xi.settings.map.FISHING_ENABLE == true
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.UNDER_THE_SEA) == invaderXim.questStatus.QUEST_COMPLETED and
+                player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.THE_SAND_CHARM) >= invaderXim.questStatus.QUEST_ACCEPTED and
+                invaderXim.settings.map.FISHING_ENABLE == true
         end,
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
-            ['Oswald'] = quest:progressEvent(70, xi.item.DANCESHROOM), -- Girlfriend needs a shroom
+            ['Oswald'] = quest:progressEvent(70, invaderXim.item.DANCESHROOM), -- Girlfriend needs a shroom
 
             onEventFinish =
             {
@@ -43,10 +43,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Oswald'] =
             {
@@ -55,8 +55,8 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.DANCESHROOM) then
-                        return quest:progressEvent(72, 0, xi.item.DANCESHROOM) -- You found it! Please take this reward
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.DANCESHROOM) then
+                        return quest:progressEvent(72, 0, invaderXim.item.DANCESHROOM) -- You found it! Please take this reward
                     end
                 end,
             },
@@ -74,11 +74,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.THE_REAL_GIFT) == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.THE_REAL_GIFT) == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Oswald'] = quest:progressEvent(78):replaceDefault(),
             -- I've been all over Vana'diel, but the inn is my favorite.

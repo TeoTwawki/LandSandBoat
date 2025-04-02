@@ -4,14 +4,14 @@
 -- Kohlo-Lakolo, !pos -26.8 -6 190 240
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.INSPECTORS_GADGET)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.INSPECTORS_GADGET)
 
 quest.reward =
 {
     fame     = 10,
-    fameArea = xi.fameArea.WINDURST,
-    item     = xi.item.HEKO_OBI,
-    title    = xi.title.FAKE_MOUSTACHED_INVESTIGATOR,
+    fameArea = invaderXim.fameArea.WINDURST,
+    item     = invaderXim.item.HEKO_OBI,
+    title    = invaderXim.title.FAKE_MOUSTACHED_INVESTIGATOR,
 }
 
 quest.sections =
@@ -19,18 +19,18 @@ quest.sections =
     -- Section: Quest is available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.WINDURST, xi.quest.id.windurst.KNOW_ONES_ONIONS)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.KNOW_ONES_ONIONS)
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Kohlo-Lakolo'] =
             {
                 onTrigger = function(player, npc)
                     if
                         player:getMainLvl() >= 5 and
-                        player:getFameLevel(xi.fameArea.WINDURST) >= 2 and
+                        player:getFameLevel(invaderXim.fameArea.WINDURST) >= 2 and
                         not quest:getMustZone(player)
                     then
                         return quest:progressEvent(413) -- Quest starting event.
@@ -54,15 +54,15 @@ quest.sections =
     -- Section: Quest accepeted.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Kohlo-Lakolo'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.FAKE_MOUSTACHE) then
+                    if player:hasKeyItem(invaderXim.ki.FAKE_MOUSTACHE) then
                         return quest:progressEvent(421)
                     else
                         return quest:event(414)
@@ -73,7 +73,7 @@ quest.sections =
             -- Reminder text.
             ['Gomada-Vulmada'] = quest:event(417),
             ['Papo-Hopo']      = quest:event(416),
-            ['Pichichi']       = quest:event(415, 0, xi.ki.FAKE_MOUSTACHE),
+            ['Pichichi']       = quest:event(415, 0, invaderXim.ki.FAKE_MOUSTACHE),
             ['Pyo_Nzon']       = quest:event(418),
             ['Shanruru']       = quest:event(420),
             ['Yafa_Yaa']       = quest:event(419),
@@ -94,16 +94,16 @@ quest.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Chamama'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.FAKE_MOUSTACHE) then
+                    if player:hasKeyItem(invaderXim.ki.FAKE_MOUSTACHE) then
                         return quest:event(553)
                     else
                         if quest:getVar(player, 'Prog') > 0 then
-                            return quest:progressEvent(551, 0, xi.ki.FAKE_MOUSTACHE)
+                            return quest:progressEvent(551, 0, invaderXim.ki.FAKE_MOUSTACHE)
                         end
                     end
                 end,
@@ -111,8 +111,8 @@ quest.sections =
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'Prog') == 2 and
-                        npcUtil.tradeHasExactly(trade, { { xi.item.BALL_OF_SARUTA_COTTON, 4 } }) and
-                        not player:hasKeyItem(xi.ki.FAKE_MOUSTACHE)
+                        npcUtil.tradeHasExactly(trade, { { invaderXim.item.BALL_OF_SARUTA_COTTON, 4 } }) and
+                        not player:hasKeyItem(invaderXim.ki.FAKE_MOUSTACHE)
                     then
                         return quest:progressEvent(552)
                     end
@@ -129,7 +129,7 @@ quest.sections =
 
                 [552] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    npcUtil.giveKeyItem(player, xi.ki.FAKE_MOUSTACHE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.FAKE_MOUSTACHE)
                 end,
             },
         },
@@ -138,11 +138,11 @@ quest.sections =
     -- Section: Quest completed.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.ONION_RINGS) == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.ONION_RINGS) == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             -- New default texts.
             ['Gomada-Vulmada'] = quest:event(425):replaceDefault(),

@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.itemType
-xi.itemType =
+---@enum invaderXim.itemType
+invaderXim.itemType =
 {
     BASIC       = 0x00,
     GENERAL     = 0x01,

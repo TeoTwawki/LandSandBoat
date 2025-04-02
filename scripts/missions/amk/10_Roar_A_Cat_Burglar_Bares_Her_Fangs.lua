@@ -4,11 +4,11 @@
 -- !addmission 10 9
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.AMK, xi.mission.id.amk.ROAR_A_CAT_BURGLAR_BARES_HER_FANGS)
+local mission = Mission:new(invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.ROAR_A_CAT_BURGLAR_BARES_HER_FANGS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.AMK, xi.mission.id.amk.RELIEF_A_TRIUMPHANT_RETURN },
+    nextMission = { invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.RELIEF_A_TRIUMPHANT_RETURN },
 }
 
 mission.sections =
@@ -19,7 +19,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 0
         end,
 
-        [xi.zone.SEA_SERPENT_GROTTO] =
+        [invaderXim.zone.SEA_SERPENT_GROTTO] =
         {
             ['Shady_Sconce'] =
             {
@@ -32,7 +32,7 @@ mission.sections =
             {
                 [19] = function(player, csid, option, npc)
                     if option == 1 then
-                        player:setMissionStatus(xi.mission.log_id.AMK, 1)
+                        player:setMissionStatus(invaderXim.mission.log_id.AMK, 1)
                     end
                 end,
             },
@@ -45,7 +45,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 1
         end,
 
-        [xi.zone.SEA_SERPENT_GROTTO] =
+        [invaderXim.zone.SEA_SERPENT_GROTTO] =
         {
             ['Shady_Sconce'] =
             {
@@ -64,7 +64,7 @@ mission.sections =
             onEventFinish =
             {
                 [20] = function(player, csid, option, npc)
-                    player:setMissionStatus(xi.mission.log_id.AMK, 2)
+                    player:setMissionStatus(invaderXim.mission.log_id.AMK, 2)
                 end,
             },
         },
@@ -76,7 +76,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 2
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Inconspicuous_Door'] =
             {

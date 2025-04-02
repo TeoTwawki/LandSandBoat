@@ -3,7 +3,7 @@
 --  Mob: Giant Gatekeeper
 -- Note: PH for Epialtes and Hippolytos
 -----------------------------------
-local ID = zones[xi.zone.LOWER_DELKFUTTS_TOWER]
+local ID = zones[invaderXim.zone.LOWER_DELKFUTTS_TOWER]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -20,12 +20,12 @@ local epialtesPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 778, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 778, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, epialtesPHTable, 5, 1) -- no cooldown
-    xi.mob.phOnDespawn(mob, hippolytosPHTable, 5, 1) -- no cooldown
+    invaderXim.mob.phOnDespawn(mob, epialtesPHTable, 5, 1) -- no cooldown
+    invaderXim.mob.phOnDespawn(mob, hippolytosPHTable, 5, 1) -- no cooldown
 end
 
 return entity

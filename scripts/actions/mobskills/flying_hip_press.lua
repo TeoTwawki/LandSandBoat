@@ -21,10 +21,10 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
         cap = math.random(300, 700)
     end
 
-    local dmgmod = xi.mobskills.mobBreathMove(mob, target, skill, 0.333, 1.2, xi.element.WIND, cap)
+    local dmgmod = invaderXim.mobskills.mobBreathMove(mob, target, skill, 0.333, 1.2, invaderXim.element.WIND, cap)
 
-    local dmg = xi.mobskills.mobFinalAdjustments(dmgmod, mob, skill, target, xi.attackType.BREATH, xi.damageType.WIND, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
-    target:takeDamage(dmg, mob, xi.attackType.BREATH, xi.damageType.WIND)
+    local dmg = invaderXim.mobskills.mobFinalAdjustments(dmgmod, mob, skill, target, invaderXim.attackType.BREATH, invaderXim.damageType.WIND, invaderXim.mobskills.shadowBehavior.IGNORE_SHADOWS)
+    target:takeDamage(dmg, mob, invaderXim.attackType.BREATH, invaderXim.damageType.WIND)
     return dmg
 end
 

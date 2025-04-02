@@ -9,7 +9,7 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addMod(xi.mod.SLEEP_MEVA, 50)
+    mob:addMod(invaderXim.mod.SLEEP_MEVA, 50)
 end
 
 entity.onMobSpawn = function(mob)

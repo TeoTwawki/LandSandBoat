@@ -10,11 +10,11 @@
 -- Tataroon:        !pos -25.189 0 -39.022 53
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.LED_ASTRAY)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.LED_ASTRAY)
 
 quest.reward =
 {
-    item = xi.item.IMPERIAL_SILVER_PIECE,
+    item = invaderXim.item.IMPERIAL_SILVER_PIECE,
 }
 
 quest.sections =
@@ -22,10 +22,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Mhasbaf'] = quest:progressEvent(808),
 
@@ -40,10 +40,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 0
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 0
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Mhasbaf'] = quest:event(834):oncePerZone(),
 
@@ -65,10 +65,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 1
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 1
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Mhasbaf'] = quest:event(834):oncePerZone(),
 
@@ -85,10 +85,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 2
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 2
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Mhasbaf'] = quest:event(834):oncePerZone(),
 
@@ -135,10 +135,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 3
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 3
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Mhasbaf'] = quest:event(834),
 
@@ -152,7 +152,7 @@ quest.sections =
             onEventFinish =
             {
                 [813] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.LETTER_FROM_BERNAHN)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LETTER_FROM_BERNAHN)
                     quest:setVar(player, 'Prog', 4)
                 end,
             },
@@ -161,15 +161,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 4
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 4
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Mhasbaf'] = quest:event(834):oncePerZone(),
         },
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             ['Tataroon'] = quest:progressEvent(305),
 
@@ -177,7 +177,7 @@ quest.sections =
             {
                 [305] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.LETTER_FROM_BERNAHN)
+                        player:delKeyItem(invaderXim.ki.LETTER_FROM_BERNAHN)
                     end
                 end,
             },

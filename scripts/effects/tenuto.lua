@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.TENUTO
+-- invaderXim.effect.TENUTO
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.HIDE
+-- invaderXim.effect.HIDE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

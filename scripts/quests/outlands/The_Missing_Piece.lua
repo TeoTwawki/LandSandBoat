@@ -12,10 +12,10 @@
         -- !pos 787, -16, -819
 -- Charlaimagnat : !pos 124.560 6.500 111.787
 -----------------------------------
-local rabaoID = zones[xi.zone.RABAO]
+local rabaoID = zones[invaderXim.zone.RABAO]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OUTLANDS, xi.quest.id.outlands.THE_MISSING_PIECE)
+local quest = Quest:new(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.THE_MISSING_PIECE)
 
 local positionTable =
 {
@@ -28,21 +28,21 @@ local positionTable =
 
 quest.reward =
 {
-    item = xi.item.SCROLL_OF_TELEPORT_ALTEP,
+    item = invaderXim.item.SCROLL_OF_TELEPORT_ALTEP,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.SELBINA_RABAO) >= 4 and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.SELBINA_RABAO) >= 4 and
                 player:getMainLvl() >= 10
         end,
 
-        [xi.zone.RABAO] =
+        [invaderXim.zone.RABAO] =
         {
-            ['Alfesar'] = quest:progressEvent(6, xi.ki.ANCIENT_TABLET_FRAGMENT),
+            ['Alfesar'] = quest:progressEvent(6, invaderXim.ki.ANCIENT_TABLET_FRAGMENT),
 
             onEventFinish =
             {
@@ -55,10 +55,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.RABAO] =
+        [invaderXim.zone.RABAO] =
         {
             ['Alfesar'] =
             {
@@ -66,11 +66,11 @@ quest.sections =
                     local progress = quest:getVar(player, 'Prog')
 
                     if progress == 0 then
-                        return quest:event(7, xi.ki.ANCIENT_TABLET_FRAGMENT) -- Reminder to get KI
+                        return quest:event(7, invaderXim.ki.ANCIENT_TABLET_FRAGMENT) -- Reminder to get KI
                     elseif progress == 1 then
-                        return quest:progressEvent(8, xi.ki.ANCIENT_TABLET_FRAGMENT) -- Player has returned with KI
+                        return quest:progressEvent(8, invaderXim.ki.ANCIENT_TABLET_FRAGMENT) -- Player has returned with KI
                     elseif progress == 2 then
-                        return quest:event(9, 0, xi.ki.ANCIENT_TABLET_FRAGMENT) -- Reminder to go to Sandy
+                        return quest:event(9, 0, invaderXim.ki.ANCIENT_TABLET_FRAGMENT) -- Reminder to go to Sandy
                     end
                 end,
             },
@@ -78,16 +78,16 @@ quest.sections =
             onEventFinish =
             {
                 [8] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.ANCIENT_TABLET_FRAGMENT)
-                    player.addKeyItem(player, xi.ki.TABLET_OF_ANCIENT_MAGIC)
-                    player.addKeyItem(player, xi.ki.LETTER_FROM_ALFESAR)
+                    player:delKeyItem(invaderXim.ki.ANCIENT_TABLET_FRAGMENT)
+                    player.addKeyItem(player, invaderXim.ki.TABLET_OF_ANCIENT_MAGIC)
+                    player.addKeyItem(player, invaderXim.ki.LETTER_FROM_ALFESAR)
                     quest:setVar(player, 'Prog', 2)
-                    player:messageSpecial(rabaoID.text.ACCEPTED_KEYITEM, 0, xi.ki.TABLET_OF_ANCIENT_MAGIC, xi.ki.LETTER_FROM_ALFESAR)
+                    player:messageSpecial(rabaoID.text.ACCEPTED_KEYITEM, 0, invaderXim.ki.TABLET_OF_ANCIENT_MAGIC, invaderXim.ki.LETTER_FROM_ALFESAR)
                 end,
             },
         },
 
-        [xi.zone.QUICKSAND_CAVES] =
+        [invaderXim.zone.QUICKSAND_CAVES] =
         {
             ['qm5'] =
             {
@@ -96,13 +96,13 @@ quest.sections =
                         quest:setVar(player, 'Prog', 1)
                         local newPosition = npcUtil.pickNewPosition(npc:getID(), positionTable)
                         npc:setPos(newPosition.x, newPosition.y, newPosition.z)
-                        return quest:keyItem(xi.ki.ANCIENT_TABLET_FRAGMENT)
+                        return quest:keyItem(invaderXim.ki.ANCIENT_TABLET_FRAGMENT)
                     end
                 end,
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Charlaimagnat'] =
             {
@@ -129,9 +129,9 @@ quest.sections =
             {
                 [703] = function(player, csid, option, npc)
                     quest:setVar(player, 'Wait', os.time() + 60)
-                    player:addTitle(xi.title.ACQUIRER_OF_ANCIENT_ARCANUM)
-                    player:delKeyItem(xi.ki.TABLET_OF_ANCIENT_MAGIC)
-                    player:delKeyItem(xi.ki.LETTER_FROM_ALFESAR)
+                    player:addTitle(invaderXim.title.ACQUIRER_OF_ANCIENT_ARCANUM)
+                    player:delKeyItem(invaderXim.ki.TABLET_OF_ANCIENT_MAGIC)
+                    player:delKeyItem(invaderXim.ki.LETTER_FROM_ALFESAR)
                     quest:setVar(player, 'Prog', 3)
                 end,
 
@@ -144,10 +144,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.RABAO] =
+        [invaderXim.zone.RABAO] =
         {
             ['Alfesar'] = quest:event(11):replaceDefault(),
         },

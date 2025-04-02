@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.direction
-xi.direction =
+---@enum invaderXim.direction
+invaderXim.direction =
 {
     EAST       = 0, -- Angle =   0
     SOUTH_EAST = 1, -- Angle =  32

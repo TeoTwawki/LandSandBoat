@@ -8,29 +8,29 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local anUndyingPledge = player:getQuestStatus(xi.questLog.OUTLANDS, xi.quest.id.outlands.AN_UNDYING_PLEDGE)
+    local anUndyingPledge = player:getQuestStatus(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.AN_UNDYING_PLEDGE)
 
     if
-        anUndyingPledge == xi.questStatus.QUEST_AVAILABLE and
-        player:getFameLevel(xi.fameArea.NORG) >= 4
+        anUndyingPledge == invaderXim.questStatus.QUEST_AVAILABLE and
+        player:getFameLevel(invaderXim.fameArea.NORG) >= 4
     then
         player:startEvent(225) -- Start quest
     elseif
-        anUndyingPledge == xi.questStatus.QUEST_ACCEPTED and
-        player:hasKeyItem(xi.ki.CALIGINOUS_BLADE)
+        anUndyingPledge == invaderXim.questStatus.QUEST_ACCEPTED and
+        player:hasKeyItem(invaderXim.ki.CALIGINOUS_BLADE)
     then
         player:startEvent(227) -- Quest Finish
     elseif
-        anUndyingPledge == xi.questStatus.QUEST_ACCEPTED and
+        anUndyingPledge == invaderXim.questStatus.QUEST_ACCEPTED and
         player:getCharVar('anUndyingPledgeCS') == 1
     then
         player:startEvent(228) -- Extra Dialogue
     elseif
-        anUndyingPledge == xi.questStatus.QUEST_ACCEPTED and
+        anUndyingPledge == invaderXim.questStatus.QUEST_ACCEPTED and
         player:getCharVar('anUndyingPledgeCS') == 2
     then
         player:startEvent(229) -- Extra Dialogue
-    elseif anUndyingPledge == xi.questStatus.QUEST_COMPLETED then
+    elseif anUndyingPledge == invaderXim.questStatus.QUEST_COMPLETED then
         player:startEvent(230)
     else
         player:startEvent(231) -- Standard Conversation
@@ -39,18 +39,18 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 225 then
-        player:addQuest(xi.questLog.OUTLANDS, xi.quest.id.outlands.AN_UNDYING_PLEDGE)
+        player:addQuest(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.AN_UNDYING_PLEDGE)
         player:setCharVar('anUndyingPledgeCS', 1)
     elseif
         csid == 227 and
-        npcUtil.completeQuest(player, xi.questLog.OUTLANDS, xi.quest.id.outlands.AN_UNDYING_PLEDGE, {
-            item = xi.item.LIGHT_BUCKLER,
-            fameArea = xi.fameArea.NORG,
+        npcUtil.completeQuest(player, invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.AN_UNDYING_PLEDGE, {
+            item = invaderXim.item.LIGHT_BUCKLER,
+            fameArea = invaderXim.fameArea.NORG,
             fame = 50,
             var = 'anUndyingPledgeCS',
         })
     then
-        player:delKeyItem(xi.ki.CALIGINOUS_BLADE)
+        player:delKeyItem(invaderXim.ki.CALIGINOUS_BLADE)
     end
 end
 

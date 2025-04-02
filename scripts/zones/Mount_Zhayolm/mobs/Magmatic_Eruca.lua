@@ -3,7 +3,7 @@
 --  Mob: Magmatic Eruca
 -- Note: Place Holder Energetic Eruca
 -----------------------------------
-local ID = zones[xi.zone.MOUNT_ZHAYOLM]
+local ID = zones[invaderXim.zone.MOUNT_ZHAYOLM]
 mixins = { require('scripts/mixins/families/eruca') }
 -----------------------------------
 ---@type TMobEntity
@@ -76,7 +76,7 @@ end
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = erucaSpawnPoints
-    xi.mob.phOnDespawn(mob, erucaPHTable, 10, 86400, params) -- 24 hours
+    invaderXim.mob.phOnDespawn(mob, erucaPHTable, 10, 86400, params) -- 24 hours
 end
 
 return entity

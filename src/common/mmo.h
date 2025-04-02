@@ -22,7 +22,7 @@
 #pragma once
 
 #include "cbasetypes.h"
-#include "xi.h"
+#include "invaderXim.h"
 
 #include <array>
 #include <bitset>
@@ -31,7 +31,7 @@
 #include <ctime>
 #include <string>
 
-#define FFXI_HEADER_SIZE 0x1C // common packet header size
+#define FFIXIM_HEADER_SIZE 0x1C // common packet header size
 
 // For filters1_t, filters2_t and SAVE_CONF:
 // See https://github.com/atom0s/XiPackets/tree/main/world/server/0x00B4

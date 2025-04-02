@@ -9,7 +9,7 @@ end
 
 zoneObject.onInstanceZoneIn = function(player, instance)
     if player:getInstance() == nil then
-        player:setPos(0, 0, 0, 0, xi.zone.BHAFLAU_THICKETS)
+        player:setPos(0, 0, 0, 0, invaderXim.zone.BHAFLAU_THICKETS)
         return
     end
 
@@ -35,13 +35,13 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
 
         local chars = instance:getChars()
         for _, entity in pairs(chars) do
-            entity:setPos(0, 0, 0, 0, xi.zone.BHAFLAU_THICKETS)
+            entity:setPos(0, 0, 0, 0, invaderXim.zone.BHAFLAU_THICKETS)
         end
     end
 end
 
 zoneObject.onInstanceLoadFailed = function()
-    return xi.zone.BHAFLAU_THICKETS
+    return invaderXim.zone.BHAFLAU_THICKETS
 end
 
 return zoneObject

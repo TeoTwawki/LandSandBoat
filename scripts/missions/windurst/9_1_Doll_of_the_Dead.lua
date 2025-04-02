@@ -11,15 +11,15 @@
 -- Yoran-Oran        : !pos -109.987 -14 203.338 239
 -- Mandragora Warden : !pos 81.981 7.593 139.556 153
 -----------------------------------
-local boyahdaTreeID   = zones[xi.zone.THE_BOYAHDA_TREE]
-local windurstWoodsID = zones[xi.zone.WINDURST_WOODS]
+local boyahdaTreeID   = zones[invaderXim.zone.THE_BOYAHDA_TREE]
+local windurstWoodsID = zones[invaderXim.zone.WINDURST_WOODS]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.DOLL_OF_THE_DEAD)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.DOLL_OF_THE_DEAD)
 
 mission.reward =
 {
-    title      = xi.title.GUIDING_STAR,
+    title      = invaderXim.title.GUIDING_STAR,
     rankPoints = 800,
 }
 
@@ -34,11 +34,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onEventFinish =
             {
@@ -46,7 +46,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onEventFinish =
             {
@@ -54,7 +54,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onEventFinish =
             {
@@ -62,7 +62,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onEventFinish =
             {
@@ -76,7 +76,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.FULL_MOON_FOUNTAIN] =
+        [invaderXim.zone.FULL_MOON_FOUNTAIN] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 7 then
@@ -92,7 +92,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.HEAVENS_TOWER] =
+        [invaderXim.zone.HEAVENS_TOWER] =
         {
             -- TODO: Kupipi, Zubaba, and other guards around Star Sybil's Chamber are missing dialogue
             ['_6q2'] =
@@ -122,7 +122,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.THE_BOYAHDA_TREE] =
+        [invaderXim.zone.THE_BOYAHDA_TREE] =
         {
             ['Mandragora_Warden'] =
             {
@@ -131,7 +131,7 @@ mission.sections =
 
                     if
                         (missionStatus == 4 or missionStatus == 5) and
-                        npcUtil.tradeHasExactly(trade, xi.item.CLUMP_OF_GOOBBUE_HUMUS)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.CLUMP_OF_GOOBBUE_HUMUS)
                     then
                         return mission:progressEvent(13)
                     end
@@ -151,18 +151,18 @@ mission.sections =
             {
                 [13] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 6)
-                    npcUtil.giveKeyItem(player, xi.ki.LETTER_FROM_ZONPA_ZIPPA)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LETTER_FROM_ZONPA_ZIPPA)
                 end,
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Yoran-Oran'] =
             {
                 onTrigger = function(player, npc)
                     if player:getMissionStatus(mission.areaId) == 4 then
-                        return mission:progressEvent(439, 0, xi.item.JUG_OF_HUMUS, xi.item.CLUMP_OF_GOOBBUE_HUMUS)
+                        return mission:progressEvent(439, 0, invaderXim.item.JUG_OF_HUMUS, invaderXim.item.CLUMP_OF_GOOBBUE_HUMUS)
                     end
                 end,
             },
@@ -175,7 +175,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Apururu'] =
             {
@@ -204,8 +204,8 @@ mission.sections =
 
                 [621] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 7)
-                    player:messageSpecial(windurstWoodsID.text.KEYITEM_LOST, xi.ki.LETTER_FROM_ZONPA_ZIPPA)
-                    player:delKeyItem(xi.ki.LETTER_FROM_ZONPA_ZIPPA)
+                    player:messageSpecial(windurstWoodsID.text.KEYITEM_LOST, invaderXim.ki.LETTER_FROM_ZONPA_ZIPPA)
+                    player:delKeyItem(invaderXim.ki.LETTER_FROM_ZONPA_ZIPPA)
                 end,
             },
         },

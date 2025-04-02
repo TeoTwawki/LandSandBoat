@@ -3,7 +3,7 @@
 --  Mob: Lesser Colibri
 -- Note: Place holder Zoraal Ja's Pkuucha
 -----------------------------------
-local ID = zones[xi.zone.WAJAOM_WOODLANDS]
+local ID = zones[invaderXim.zone.WAJAOM_WOODLANDS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -33,7 +33,7 @@ end
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = zoraalSpawnPoints
-    xi.mob.phOnDespawn(mob, zoraalPHTable, 5, 1800, params) -- 30 minutes
+    invaderXim.mob.phOnDespawn(mob, zoraalPHTable, 5, 1800, params) -- 30 minutes
 end
 
 return entity

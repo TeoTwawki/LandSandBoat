@@ -8,10 +8,10 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local orderUp = player:getQuestStatus(xi.questLog.ADOULIN, xi.quest.id.adoulin.ORDER_UP)
+    local orderUp = player:getQuestStatus(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.ORDER_UP)
     local orderTerwok = utils.mask.getBit(player:getCharVar('Order_Up_NPCs'), 7)
 
-    if orderUp == xi.questStatus.QUEST_ACCEPTED and not orderTerwok then
+    if orderUp == invaderXim.questStatus.QUEST_ACCEPTED and not orderTerwok then
         -- Progresses Quest: 'Order Up'
         player:startEvent(67)
     end

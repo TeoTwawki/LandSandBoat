@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.BHAFLAU_REMNANTS] =
+zones[invaderXim.zone.BHAFLAU_REMNANTS] =
 {
     text =
     {
@@ -63,33 +63,33 @@ zones[xi.zone.BHAFLAU_REMNANTS] =
         DOOR_1_CENTER_1      = GetFirstID('_239'),
         DOOR_1_CENTER_2      = GetFirstID('_23a'),
         DOOR_1_EAST_ENTRANCE = GetFirstID('_231'),
-        DOOR_1_EAST_EXIT_1   = GetFirstID('_236'),
-        DOOR_1_EAST_EXIT_2   = GetFirstID('_237'),
-        DOOR_1_EAST_EXIT_3   = GetFirstID('_238'),
+        DOOR_1_EAST_IXIMT_1   = GetFirstID('_236'),
+        DOOR_1_EAST_IXIMT_2   = GetFirstID('_237'),
+        DOOR_1_EAST_IXIMT_3   = GetFirstID('_238'),
         DOOR_1_WEST_ENTRANCE = GetFirstID('_232'),
-        DOOR_1_WEST_EXIT_1   = GetFirstID('_233'),
-        DOOR_1_WEST_EXIT_2   = GetFirstID('_234'),
-        DOOR_1_WEST_EXIT_3   = GetFirstID('_235'),
+        DOOR_1_WEST_IXIMT_1   = GetFirstID('_233'),
+        DOOR_1_WEST_IXIMT_2   = GetFirstID('_234'),
+        DOOR_1_WEST_IXIMT_3   = GetFirstID('_235'),
         DOOR_2_EAST_ENTRANCE = GetFirstID('_23c'),
         DOOR_2_NE_ENTRANCE   = GetFirstID('_23f'),
-        DOOR_2_NE_EXIT       = GetFirstID('_23j'),
+        DOOR_2_NE_IXIMT       = GetFirstID('_23j'),
         DOOR_2_NW_ENTRANCE   = GetFirstID('_23d'),
-        DOOR_2_NW_EXIT       = GetFirstID('_23h'),
+        DOOR_2_NW_IXIMT       = GetFirstID('_23h'),
         DOOR_2_SE_ENTRANCE   = GetFirstID('_23g'),
-        DOOR_2_SE_EXIT       = GetFirstID('_23k'),
+        DOOR_2_SE_IXIMT       = GetFirstID('_23k'),
         DOOR_2_SW_ENTRANCE   = GetFirstID('_23e'),
-        DOOR_2_SW_EXIT       = GetFirstID('_23i'),
+        DOOR_2_SW_IXIMT       = GetFirstID('_23i'),
         DOOR_2_WEST_ENTRANCE = GetFirstID('_23b'),
-        DOOR_3_EAST_EXIT     = GetFirstID('_23p'),
+        DOOR_3_EAST_IXIMT     = GetFirstID('_23p'),
         DOOR_3_NE_ENTRANCE   = GetFirstID('_23o'),
         DOOR_3_NORTH_CENTER  = GetFirstID('_23s'),
         DOOR_3_NW_ENTRANCE   = GetFirstID('_23n'),
         DOOR_3_SOUTH_CENTER  = GetFirstID('_23r'),
         DOOR_3_SE_ENTRANCE   = GetFirstID('_23q'),
         DOOR_3_SW_ENTRANCE   = GetFirstID('_23l'),
-        DOOR_3_WEST_EXIT     = GetFirstID('_23m'),
-        DOOR_4_EAST_EXIT     = GetFirstID('_23u'),
-        DOOR_4_WEST_EXIT     = GetFirstID('_23t'),
+        DOOR_3_WEST_IXIMT     = GetFirstID('_23m'),
+        DOOR_4_EAST_IXIMT     = GetFirstID('_23u'),
+        DOOR_4_WEST_IXIMT     = GetFirstID('_23t'),
         DOOR_5_1             = GetFirstID('_23v'),
         DOOR_5_2             = GetFirstID('_23x'),
         DORMANT_RAMPART      = GetTableOfIDs('Dormant_Rampart'),
@@ -203,4 +203,4 @@ zones[xi.zone.BHAFLAU_REMNANTS] =
     },
 }
 
-return zones[xi.zone.BHAFLAU_REMNANTS]
+return zones[invaderXim.zone.BHAFLAU_REMNANTS]

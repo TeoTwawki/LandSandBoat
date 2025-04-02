@@ -14,14 +14,14 @@ local function spawnArkAngelPet(mob, target)
     if battlefield then
         local battlefieldId   = battlefield:getID()
         local battlefieldArea = battlefield:getArea()
-        local content         = xi.battlefield.contents[battlefieldId]
+        local content         = invaderXim.battlefield.contents[battlefieldId]
         local selectedPet     = math.random(1, 2)
 
         mob:setAutoAttackEnabled(false)
-        mob:setMobMod(xi.mobMod.NO_MOVE, 1)
-        mob:entityAnimationPacket(xi.animationString.CAST_SUMMONER_START)
+        mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
+        mob:entityAnimationPacket(invaderXim.animationString.CAST_SUMMONER_START)
         mob:timer(2000, function(mobArg)
-            mobArg:entityAnimationPacket(xi.animationString.CAST_SUMMONER_STOP)
+            mobArg:entityAnimationPacket(invaderXim.animationString.CAST_SUMMONER_STOP)
 
             local pet = SpawnMob(content.groups[selectedPet + 1]['mobIds'][battlefieldArea][1])
             if pet then
@@ -37,16 +37,16 @@ local function spawnArkAngelPet(mob, target)
             end
 
             mobArg:setAutoAttackEnabled(true)
-            mobArg:setMobMod(xi.mobMod.NO_MOVE, 0)
+            mobArg:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
         end)
     end
 end
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
-            { id = xi.jsa.PERFECT_DODGE },
+            { id = invaderXim.jsa.PERFECT_DODGE },
         },
     })
 end

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.COLLIMATED_FERVOR
+-- invaderXim.effect.COLLIMATED_FERVOR
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

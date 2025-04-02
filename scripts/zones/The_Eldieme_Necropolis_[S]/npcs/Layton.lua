@@ -4,7 +4,7 @@
 -- Note: Available during Campaign battles
 -- !pos 382.679 -39.999 3.541 175
 -----------------------------------
-local ID = zones[xi.zone.THE_ELDIEME_NECROPOLIS_S]
+local ID = zones[invaderXim.zone.THE_ELDIEME_NECROPOLIS_S]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -31,7 +31,7 @@ entity.onTrigger = function(player, npc)
     }
 
     player:showText(npc, ID.text.LAYTON_SHOP_DIALOG)
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 return entity

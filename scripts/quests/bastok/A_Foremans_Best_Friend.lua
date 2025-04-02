@@ -5,22 +5,22 @@
 -- Gudav : !pos -3.286 1.407 50.591 236
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.A_FOREMANS_BEST_FRIEND)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.A_FOREMANS_BEST_FRIEND)
 
 quest.reward =
 {
     fame     = 60,
-    fameArea = xi.fameArea.BASTOK,
+    fameArea = invaderXim.fameArea.BASTOK,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Gudav'] = quest:progressEvent(110),
 
@@ -35,17 +35,17 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Dehlner'] = quest:event(111),
 
             ['Gudav'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.DOG_COLLAR) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.DOG_COLLAR) then
                         return quest:progressEvent(112)
                     end
                 end,
@@ -56,10 +56,10 @@ quest.sections =
                 [112] = function(player, csid, option, npc)
                     if quest:complete(player) then
                         player:confirmTrade()
-                        if player:hasKeyItem(xi.ki.MAP_OF_THE_GUSGEN_MINES) then
+                        if player:hasKeyItem(invaderXim.ki.MAP_OF_THE_GUSGEN_MINES) then
                             player:addExp(2000)
                         else
-                            npcUtil.giveKeyItem(player, xi.ki.MAP_OF_THE_GUSGEN_MINES)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.MAP_OF_THE_GUSGEN_MINES)
                         end
                     end
                 end,

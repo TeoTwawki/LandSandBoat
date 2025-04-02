@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.PORT_BASTOK] =
+zones[invaderXim.zone.PORT_BASTOK] =
 {
     text =
     {
@@ -51,7 +51,7 @@ zones[xi.zone.PORT_BASTOK] =
         SUGANDHI_SHOP_DIALOG          = 7673,  -- Traveler! I am sure my wares will prove useful on your journey. Why don't you buy some?
         DENVIHR_SHOP_DIALOG           = 7674,  -- Ah, interested in my wares, are you? You can only buy these in Bastok, my friend.
         PAUJEAN_DIALOG_1              = 7685,  -- Where can you find them? If you're the kind of adventurer I think you are, you should have a pretty good idea. Just don't do anything I wouldn't...heh heh.
-        MOGHOUSE_EXIT                 = 7983,  -- You have learned your way through the back alleys of Bastok! Now you can exit to any area from your residence.
+        MOGHOUSE_IXIMT                 = 7983,  -- You have learned your way through the back alleys of Bastok! Now you can exit to any area from your residence.
         CONQUEST                      = 8039,  -- You've earned conquest points!
         RECEIVED_CONQUEST_POINTS      = 8163,  -- You received <number> conquest points!
         VATTIAN_OPEN_DIALOG           = 8399,  -- Welcome to my humble establishment. I have a wide variety of specialty goods from Kuzotz.
@@ -86,4 +86,4 @@ zones[xi.zone.PORT_BASTOK] =
     },
 }
 
-return zones[xi.zone.PORT_BASTOK]
+return zones[invaderXim.zone.PORT_BASTOK]

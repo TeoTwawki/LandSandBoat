@@ -3,7 +3,7 @@
 --  Mob: Platoon Scorpion
 -- BCNM: Operation Desert Swarm
 -----------------------------------
-local ID = zones[xi.zone.WAUGHROON_SHRINE]
+local ID = zones[invaderXim.zone.WAUGHROON_SHRINE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -43,7 +43,7 @@ entity.onMobInitialize = function(scorpion)
         end
     end)
 
-    scorpion:addListener('WEAPONSKILL_STATE_EXIT', 'SCORP_MIMIC_STOP', function(mob, skillID)
+    scorpion:addListener('WEAPONSKILL_STATE_IXIMT', 'SCORP_MIMIC_STOP', function(mob, skillID)
         -- reset infinite loop flag
         mob:setLocalVar('[ODS]mimic', 0)
 
@@ -53,11 +53,11 @@ entity.onMobInitialize = function(scorpion)
         if skillID == 354 and math.random(1, 100) <= selfStunChance then
             -- Wild Rage
             mob:showText(mob, ID.text.SCORPION_IS_STUNNED)
-            mob:addStatusEffect(xi.effect.STUN, 0, 0, 10)
+            mob:addStatusEffect(invaderXim.effect.STUN, 0, 0, 10)
             -- Earth Pounder
         elseif skillID == 355 and math.random(1, 100) <= selfBindChance then
             mob:showText(mob, ID.text.SCORPION_IS_BOUND)
-            mob:addStatusEffect(xi.effect.BIND, 0, 0, 10)
+            mob:addStatusEffect(invaderXim.effect.BIND, 0, 0, 10)
         end
     end)
 end

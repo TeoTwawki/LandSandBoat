@@ -1,22 +1,22 @@
 -----------------------------------
--- xi.effect.LEVEL_RESTRICTION
+-- invaderXim.effect.LEVEL_RESTRICTION
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    if target:getObjType() == xi.objType.PC then
+    if target:getObjType() == invaderXim.objType.PC then
         target:levelRestriction(effect:getPower())
-        target:messageBasic(xi.msg.basic.LEVEL_IS_RESTRICTED, effect:getPower()) -- <target>'s level is restricted to <param>
+        target:messageBasic(invaderXim.msg.basic.LEVEL_IS_RESTRICTED, effect:getPower()) -- <target>'s level is restricted to <param>
         target:clearTrusts()
 
-        if xi.settings.map.DESPAWN_JUGPETS_BELOW_MINIMUM_LEVEL then
+        if invaderXim.settings.map.DESPAWN_JUGPETS_BELOW_MINIMUM_LEVEL then
             local pet = target:getPet()
             local masterLevel = target:getMainLvl()
 
             if
                 pet and
-                pet:getObjType() == xi.objType.PET and
+                pet:getObjType() == invaderXim.objType.PET and
                 target:hasJugPet() and -- hasJugPet checks m_PBaseEntity->PPet's check type, not the target's pet type.
                 masterLevel < pet:getMinimumPetLevel()
             then
@@ -30,7 +30,7 @@ effectObject.onEffectTick = function(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    if target:getObjType() == xi.objType.PC then
+    if target:getObjType() == invaderXim.objType.PC then
         target:levelRestriction(0)
     end
 end

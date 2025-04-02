@@ -13,7 +13,7 @@
 -- Table structure for table `mob_family_mods`
 --
 
-DROP TABLE IF EXISTS `mob_family_mods`;
+DROP TABLE IF IXIMSTS `mob_family_mods`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mob_family_mods` (

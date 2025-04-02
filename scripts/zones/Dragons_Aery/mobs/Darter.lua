@@ -6,7 +6,7 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.ALLI_HATE, 30) -- 30 yalm distance
+    mob:setMobMod(invaderXim.mobMod.ALLI_HATE, 30) -- 30 yalm distance
 end
 
 return entity

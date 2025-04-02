@@ -6,11 +6,11 @@
 -- Halver : !pos 2 0.1 0.1 233
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.CONFESSIONS_OF_ROYALTY)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.CONFESSIONS_OF_ROYALTY)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.EASTERLY_WINDS },
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.EASTERLY_WINDS },
 }
 
 mission.sections =
@@ -20,12 +20,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Halver'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.RAILLEFALS_LETTER) then
+                    if player:hasKeyItem(invaderXim.ki.RAILLEFALS_LETTER) then
                         return mission:progressEvent(564)
                     end
                 end,
@@ -35,7 +35,7 @@ mission.sections =
             {
                 [564] = function(player, csid, option, npc)
                     if option == 1 then
-                        player:delKeyItem(xi.ki.RAILLEFALS_LETTER)
+                        player:delKeyItem(invaderXim.ki.RAILLEFALS_LETTER)
                         mission:complete(player)
                     end
                 end,

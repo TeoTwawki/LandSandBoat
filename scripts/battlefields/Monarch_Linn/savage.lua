@@ -2,12 +2,12 @@
 -- Area: Monarch Linn
 -- Name: The Savage
 -----------------------------------
-local monarchLinnID = zones[xi.zone.MONARCH_LINN]
+local monarchLinnID = zones[invaderXim.zone.MONARCH_LINN]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId        = xi.zone.MONARCH_LINN,
-    battlefieldId = xi.battlefield.id.SAVAGE,
+    zoneId        = invaderXim.zone.MONARCH_LINN,
+    battlefieldId = invaderXim.battlefield.id.SAVAGE,
     canLoseExp    = false,
     isMission     = true,
     allowTrusts   = true,
@@ -17,13 +17,13 @@ local content = BattlefieldMission:new({
     index         = 1,
     entryNpc      = 'SD_Entrance',
     exitNpcs      = { 'SD_BCNM_Exit_1', 'SD_BCNM_Exit_2', 'SD_BCNM_Exit_3' },
-    missionArea   = xi.mission.log_id.COP,
-    mission       = xi.mission.id.cop.THE_SAVAGE,
+    missionArea   = invaderXim.mission.log_id.COP,
+    mission       = invaderXim.mission.id.cop.THE_SAVAGE,
     requiredVar   = 'Mission[6][418]Status',
     requiredValue = 1,
 
     grantXP = 1500,
-    title   = xi.title.MIST_MELTER,
+    title   = invaderXim.title.MIST_MELTER,
 })
 
 function content:entryRequirement(player, npc, isRegistrant, trade)
@@ -31,7 +31,7 @@ function content:entryRequirement(player, npc, isRegistrant, trade)
     -- prevZone value, ensure we entered the "correct" way by confirming that
     -- they did not enter from Site A01.
 
-    return player:getPreviousZone() ~= xi.zone.RIVERNE_SITE_A01
+    return player:getPreviousZone() ~= invaderXim.zone.RIVERNE_SITE_A01
 end
 
 content.groups =
@@ -45,7 +45,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

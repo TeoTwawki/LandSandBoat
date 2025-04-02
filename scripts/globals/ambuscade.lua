@@ -6,10 +6,10 @@
 -----------------------------------
 require('scripts/globals/utils')
 -- local mhauraID = require('scripts/zones/Mhaura/IDs')
--- local maquetteID = zones[xi.zone.MAQUETTE_ABDHALJS_LEGION_B]
+-- local maquetteID = zones[invaderXim.zone.MAQUETTE_ABDHALJS_LEGION_B]
 -----------------------------------
 xi = xi or {}
-xi.ambuscade = {}
+invaderXim.ambuscade = {}
 
 local startingIntenseDifficulty = 119
 local startingRegularDifficulty = 109
@@ -25,13 +25,13 @@ local intenseGallantry = { 20, 80, 180, 240, 300 }
 -----------------------------------
 -- Gorpa-Masorpa
 -----------------------------------
-xi.ambuscade.onTradeGorpaMasorpa = function(player, npc, trade)
+invaderXim.ambuscade.onTradeGorpaMasorpa = function(player, npc, trade)
     if player:getEminenceCompleted(499) then
         -- TODO
     end
 end
 
-xi.ambuscade.onTriggerGorpaMasorpa = function(player, npc)
+invaderXim.ambuscade.onTriggerGorpaMasorpa = function(player, npc)
     -- RoE Record #499 - Stepping into an Ambuscade
     if player:getEminenceCompleted(499) then
         -- local hideRewards              = 1
@@ -56,7 +56,7 @@ xi.ambuscade.onTriggerGorpaMasorpa = function(player, npc)
     end
 end
 
-xi.ambuscade.onEventUpdateGorpaMasorpa = function(player, csid, option, npc)
+invaderXim.ambuscade.onEventUpdateGorpaMasorpa = function(player, csid, option, npc)
     if csid == 386 then
         -- Present Hallmarks menu
         if option == 1 then
@@ -83,22 +83,22 @@ xi.ambuscade.onEventUpdateGorpaMasorpa = function(player, csid, option, npc)
     end
 end
 
-xi.ambuscade.onEventFinishGorpaMasorpa = function(player, csid, option, npc)
+invaderXim.ambuscade.onEventFinishGorpaMasorpa = function(player, csid, option, npc)
     if csid == 385 then
-        xi.roe.onRecordTrigger(player, 499)
+        invaderXim.roe.onRecordTrigger(player, 499)
     end
 end
 
 -----------------------------------
 -- Ambuscade Tome
 -----------------------------------
-xi.ambuscade.onTradeTome = function(player, npc, trade)
+invaderXim.ambuscade.onTradeTome = function(player, npc, trade)
 end
 
-xi.ambuscade.onTriggerTome = function(player, npc)
+invaderXim.ambuscade.onTriggerTome = function(player, npc)
     -- local hideNoAmbuscadeForNow = 1
-    -- local hideIntenseAmbuscade = not player:hasKeyItem(xi.ki.AMBUSCADE_PRIMER_VOLUME_ONE) and 2 or 0
-    -- local hideRegularAmbuscade = not player:hasKeyItem(xi.ki.AMBUSCADE_PRIMER_VOLUME_TWO) and 4 or 0
+    -- local hideIntenseAmbuscade = not player:hasKeyItem(invaderXim.ki.AMBUSCADE_PRIMER_VOLUME_ONE) and 2 or 0
+    -- local hideRegularAmbuscade = not player:hasKeyItem(invaderXim.ki.AMBUSCADE_PRIMER_VOLUME_TWO) and 4 or 0
     -- local hideLightAmbuscade = 8
     -- local hideToggleAutoTransport = 16
 
@@ -118,7 +118,7 @@ xi.ambuscade.onTriggerTome = function(player, npc)
     --player:startEvent(378)
 end
 
-xi.ambuscade.onEventUpdateTome = function(player, csid, option, npc)
+invaderXim.ambuscade.onEventUpdateTome = function(player, csid, option, npc)
     -- Options
     -- Intense VD : 1
     -- Intense D  : 2
@@ -136,7 +136,7 @@ xi.ambuscade.onEventUpdateTome = function(player, csid, option, npc)
     end
 end
 
-xi.ambuscade.onEventFinishTome = function(player, csid, option, npc)
+invaderXim.ambuscade.onEventFinishTome = function(player, csid, option, npc)
     if csid == 374 and option == 5 then
         player:createInstance(30000)
     elseif csid == 378 then
@@ -147,7 +147,7 @@ end
 -----------------------------------
 -- Ambuscade Tome
 -----------------------------------
-xi.ambuscade.onInstanceComplete = function(instance)
+invaderXim.ambuscade.onInstanceComplete = function(instance)
     local chars    = instance:getChars()
     local numChars = #chars
     local difficulty = 1 -- TODO
@@ -169,20 +169,20 @@ xi.ambuscade.onInstanceComplete = function(instance)
         -- Remove KI
         -- TODO: Message
         if difficulty == 1 then
-            player:delKeyItem(xi.ki.AMBUSCADE_PRIMER_VOLUME_ONE)
+            player:delKeyItem(invaderXim.ki.AMBUSCADE_PRIMER_VOLUME_ONE)
         elseif difficulty == 2 then
-            player:delKeyItem(xi.ki.AMBUSCADE_PRIMER_VOLUME_TWO)
+            player:delKeyItem(invaderXim.ki.AMBUSCADE_PRIMER_VOLUME_TWO)
         end
 
         -- TODO: Remove Abdhaljs Seal
-        --v:delStatusEffect(xi.effect.ABDHALJS_SEAL)
+        --v:delStatusEffect(invaderXim.effect.ABDHALJS_SEAL)
 
         -- Exit event
         player:startEvent(10001)
     end
 end
 
-xi.ambuscade.onInstanceFailure = function(instance)
+invaderXim.ambuscade.onInstanceFailure = function(instance)
     local chars = instance:getChars()
     for _, player in pairs(chars) do
         player:startEvent(10001)

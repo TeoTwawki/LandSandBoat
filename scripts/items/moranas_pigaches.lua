@@ -6,10 +6,10 @@
 ---@type TItem
 local itemObject = {}
 local listenerPrefix = 'PET_MOD_LATENT'
-local latentPetId = xi.petId.SHIVA
+local latentPetId = invaderXim.petId.SHIVA
 local latentMods =
 {
-    { xi.mod.MACC, 6 },
+    { invaderXim.mod.MACC, 6 },
 }
 
 itemObject.onItemCheck = function(target, item, param, caster)
@@ -18,18 +18,18 @@ end
 
 itemObject.onItemEquip  = function(user, item)
     local listenerName = fmt('{}_{}', listenerPrefix, item:getID())
-    xi.itemUtils.handlePetLatentMods(user, latentPetId, latentMods, true)
+    invaderXim.itemUtils.handlePetLatentMods(user, latentPetId, latentMods, true)
 
-    user:addListener('MAGIC_STATE_EXIT', listenerName, function(player, spell)
-        if spell:getSpellGroup() == xi.magic.spellGroup.SUMMONING then
-            xi.itemUtils.handlePetLatentMods(user, latentPetId, latentMods, true)
+    user:addListener('MAGIC_STATE_IXIMT', listenerName, function(player, spell)
+        if spell:getSpellGroup() == invaderXim.magic.spellGroup.SUMMONING then
+            invaderXim.itemUtils.handlePetLatentMods(user, latentPetId, latentMods, true)
         end
     end)
 end
 
 itemObject.onItemUnequip = function(user, item)
     local listenerName = fmt('{}_{}', listenerPrefix, item:getID())
-    xi.itemUtils.handlePetLatentMods(user, latentPetId, latentMods, false)
+    invaderXim.itemUtils.handlePetLatentMods(user, latentPetId, latentMods, false)
 
     user:removeListener(listenerName)
 end

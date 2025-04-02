@@ -11,10 +11,10 @@ itemObject.onItemCheck = function(target, item, param, caster)
     local region = target:getCurrentRegion()
 
     if
-        not xi.conquest.canTeleportToOutpost(target, region) or
+        not invaderXim.conquest.canTeleportToOutpost(target, region) or
         GetRegionOwner(region) ~= target:getNation()
     then
-        result = xi.msg.basic.CANT_BE_USED_IN_AREA
+        result = invaderXim.msg.basic.CANT_BE_USED_IN_AREA
     end
 
     return result
@@ -22,7 +22,7 @@ end
 
 itemObject.onItemUse = function(target)
     local region = target:getCurrentRegion()
-    target:addStatusEffectEx(xi.effect.TELEPORT, 0, xi.teleport.id.OUTPOST, 0, 4, 0, region)
+    target:addStatusEffectEx(invaderXim.effect.TELEPORT, 0, invaderXim.teleport.id.OUTPOST, 0, 4, 0, region)
 end
 
 return itemObject

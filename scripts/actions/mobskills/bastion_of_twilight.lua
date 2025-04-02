@@ -2,15 +2,15 @@
 -- Bastion of Twilight
 -- Magic Shield Effect
 -----------------------------------
-local ID = zones[xi.zone.EMPYREAL_PARADOX]
+local ID = zones[invaderXim.zone.EMPYREAL_PARADOX]
 -----------------------------------
 ---@type TMobSkill
 local mobskillObject = {}
 
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
     if
-        mob:hasStatusEffect(xi.effect.MAGIC_SHIELD) or
-        mob:hasStatusEffect(xi.effect.PHYSICAL_SHIELD)
+        mob:hasStatusEffect(invaderXim.effect.MAGIC_SHIELD) or
+        mob:hasStatusEffect(invaderXim.effect.PHYSICAL_SHIELD)
     then
         return 1
     end
@@ -20,11 +20,11 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    mob:addStatusEffect(xi.effect.MAGIC_SHIELD, 1, 0, 0)
+    mob:addStatusEffect(invaderXim.effect.MAGIC_SHIELD, 1, 0, 0)
     mob:setAnimationSub(2)
 
-    skill:setMsg(xi.msg.basic.SKILL_GAIN_EFFECT)
-    return xi.effect.MAGIC_SHIELD
+    skill:setMsg(invaderXim.msg.basic.SKILL_GAIN_EFFECT)
+    return invaderXim.effect.MAGIC_SHIELD
 end
 
 return mobskillObject

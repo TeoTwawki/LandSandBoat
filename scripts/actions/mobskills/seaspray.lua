@@ -11,12 +11,12 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    local duration = xi.mobskills.calculateDuration(skill:getTP(), 30, 60)
-    xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.SLOW, 3500, 0, duration)
+    local duration = invaderXim.mobskills.calculateDuration(skill:getTP(), 30, 60)
+    invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.SLOW, 3500, 0, duration)
 
-    local dmgmod = xi.mobskills.mobBreathMove(mob, target, skill, 0.125, 1, xi.element.WATER, 500)
-    local dmg = xi.mobskills.mobFinalAdjustments(dmgmod, mob, skill, target, xi.attackType.BREATH, xi.damageType.WATER, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
-    target:takeDamage(dmg, mob, xi.attackType.BREATH, xi.damageType.WATER)
+    local dmgmod = invaderXim.mobskills.mobBreathMove(mob, target, skill, 0.125, 1, invaderXim.element.WATER, 500)
+    local dmg = invaderXim.mobskills.mobFinalAdjustments(dmgmod, mob, skill, target, invaderXim.attackType.BREATH, invaderXim.damageType.WATER, invaderXim.mobskills.shadowBehavior.IGNORE_SHADOWS)
+    target:takeDamage(dmg, mob, invaderXim.attackType.BREATH, invaderXim.damageType.WATER)
 
     return dmg
 end

@@ -16,11 +16,11 @@
 -- qm13                  : !pos -68 -17 -153 159
 -- Granite Door          : !pos -50 -17 -154 159
 -----------------------------------
-local chateauID   = zones[xi.zone.CHATEAU_DORAGUILLE]
-local uggalepihID = zones[xi.zone.TEMPLE_OF_UGGALEPIH]
+local chateauID   = zones[invaderXim.zone.CHATEAU_DORAGUILLE]
+local uggalepihID = zones[invaderXim.zone.TEMPLE_OF_UGGALEPIH]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.LIGHTBRINGER)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.LIGHTBRINGER)
 
 mission.reward =
 {
@@ -42,11 +42,11 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -55,7 +55,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -70,7 +70,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['_6h4'] =
             {
@@ -148,18 +148,18 @@ mission.sections =
 
                 [104] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.CRYSTAL_DOWSER)
+                        player:delKeyItem(invaderXim.ki.CRYSTAL_DOWSER)
                     end
                 end,
 
                 [106] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 2)
-                    npcUtil.giveKeyItem(player, xi.ki.CRYSTAL_DOWSER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.CRYSTAL_DOWSER)
                 end,
             }
         },
 
-        [xi.zone.TEMPLE_OF_UGGALEPIH] =
+        [invaderXim.zone.TEMPLE_OF_UGGALEPIH] =
         {
             ['_4fv'] =
             {
@@ -169,9 +169,9 @@ mission.sections =
 
                     if
                         player:getMissionStatus(mission.areaId) == 5 and
-                        player:hasKeyItem(xi.ki.PIECE_OF_A_BROKEN_KEY1) and
-                        player:hasKeyItem(xi.ki.PIECE_OF_A_BROKEN_KEY2) and
-                        player:hasKeyItem(xi.ki.PIECE_OF_A_BROKEN_KEY3) and
+                        player:hasKeyItem(invaderXim.ki.PIECE_OF_A_BROKEN_KEY1) and
+                        player:hasKeyItem(invaderXim.ki.PIECE_OF_A_BROKEN_KEY2) and
+                        player:hasKeyItem(invaderXim.ki.PIECE_OF_A_BROKEN_KEY3) and
                         nioA and
                         nioHum and
                         (not nioA:isSpawned() or nioA:isDead()) and
@@ -182,7 +182,7 @@ mission.sections =
                         else
                             SpawnMob(uggalepihID.mob.NIO_A)
                             SpawnMob(uggalepihID.mob.NIO_HUM)
-                            return mission:messageSpecial(uggalepihID.text.BEGINS_TO_QUIVER, xi.ki.CRYSTAL_DOWSER)
+                            return mission:messageSpecial(uggalepihID.text.BEGINS_TO_QUIVER, invaderXim.ki.CRYSTAL_DOWSER)
                         end
                     end
                 end,
@@ -224,11 +224,11 @@ mission.sections =
             {
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.PIECE_OF_A_BROKEN_KEY1) and
+                        not player:hasKeyItem(invaderXim.ki.PIECE_OF_A_BROKEN_KEY1) and
                         player:getMissionStatus(mission.areaId) >= 2
                     then
                         player:setMissionStatus(mission.areaId, player:getMissionStatus(mission.areaId) + 1)
-                        return mission:keyItem(xi.ki.PIECE_OF_A_BROKEN_KEY1)
+                        return mission:keyItem(invaderXim.ki.PIECE_OF_A_BROKEN_KEY1)
                     end
                 end,
             },
@@ -237,11 +237,11 @@ mission.sections =
             {
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.PIECE_OF_A_BROKEN_KEY2) and
+                        not player:hasKeyItem(invaderXim.ki.PIECE_OF_A_BROKEN_KEY2) and
                         player:getMissionStatus(mission.areaId) >= 2
                     then
                         player:setMissionStatus(mission.areaId, player:getMissionStatus(mission.areaId) + 1)
-                        return mission:keyItem(xi.ki.PIECE_OF_A_BROKEN_KEY2)
+                        return mission:keyItem(invaderXim.ki.PIECE_OF_A_BROKEN_KEY2)
                     end
                 end,
             },
@@ -250,11 +250,11 @@ mission.sections =
             {
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.PIECE_OF_A_BROKEN_KEY3) and
+                        not player:hasKeyItem(invaderXim.ki.PIECE_OF_A_BROKEN_KEY3) and
                         player:getMissionStatus(mission.areaId) >= 2
                     then
                         player:setMissionStatus(mission.areaId, player:getMissionStatus(mission.areaId) + 1)
-                        return mission:keyItem(xi.ki.PIECE_OF_A_BROKEN_KEY3)
+                        return mission:keyItem(invaderXim.ki.PIECE_OF_A_BROKEN_KEY3)
                     end
                 end,
             },
@@ -278,7 +278,7 @@ mission.sections =
                 player:getRankPoints() == 0
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['_6h0'] =
             {

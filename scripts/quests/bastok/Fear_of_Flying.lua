@@ -5,25 +5,25 @@
 -- Kurando : !pos -23.887 3.898 0.870 236
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.FEAR_OF_FLYING)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.FEAR_OF_FLYING)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.BLACK_SILK_NECKERCHIEF,
-    title    = xi.title.AIRSHIP_DENOUNCER,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.BLACK_SILK_NECKERCHIEF,
+    title    = invaderXim.title.AIRSHIP_DENOUNCER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 3
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 3
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Kurando'] = quest:progressEvent(170),
 
@@ -38,15 +38,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Kurando'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.SILKWORM_EGG) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.SILKWORM_EGG) then
                         return quest:progressEvent(171)
                     end
                 end,
@@ -67,10 +67,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Kurando'] =
             {

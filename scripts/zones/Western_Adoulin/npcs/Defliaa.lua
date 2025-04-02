@@ -4,14 +4,14 @@
 -- Involved with Quest: 'All the Way to the Bank'
 -- !pos 43 2 -113 256
 -----------------------------------
-local ID = zones[xi.zone.WESTERN_ADOULIN]
+local ID = zones[invaderXim.zone.WESTERN_ADOULIN]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     -- ALL THE WAY TO THE BANK
-    if player:hasKeyItem(xi.ki.TARUTARU_SAUCE_INVOICE) then
+    if player:hasKeyItem(invaderXim.ki.TARUTARU_SAUCE_INVOICE) then
         local paidDefliaa = utils.mask.getBit(player:getCharVar('ATWTTB_Payments'), 0)
 
         if not paidDefliaa and npcUtil.tradeHas(trade, { { 'gil', 19440 } }) then
@@ -32,7 +32,7 @@ entity.onTrigger = function(player, npc)
         4356, 200,    -- White Bread
         5686, 800,    -- Cheese Sandwich
     }
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
@@ -41,7 +41,7 @@ entity.onEventFinish = function(player, csid, option, npc)
         player:confirmTrade()
         player:setCharVar('ATWTTB_Payments', utils.mask.setBit(player:getCharVar('ATWTTB_Payments'), 0, true))
         if utils.mask.isFull(player:getCharVar('ATWTTB_Payments'), 5) then
-            npcUtil.giveKeyItem(player, xi.ki.TARUTARU_SAUCE_RECEIPT)
+            npcUtil.giveKeyItem(player, invaderXim.ki.TARUTARU_SAUCE_RECEIPT)
         end
     end
 end

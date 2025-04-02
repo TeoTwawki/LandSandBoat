@@ -2,7 +2,7 @@
 -- COR AF2: Against All Odds
 -- !instance 6001
 -----------------------------------
-local ID = zones[xi.zone.THE_ASHU_TALIF]
+local ID = zones[invaderXim.zone.THE_ASHU_TALIF]
 -----------------------------------
 local instanceObject = {}
 
@@ -13,7 +13,7 @@ local mobTable =
 }
 
 instanceObject.registryRequirements = function(player)
-    return player:hasKeyItem(xi.ki.LIFE_FLOAT) and
+    return player:hasKeyItem(invaderXim.ki.LIFE_FLOAT) and
         player:getCharVar('AgainstAllOdds') == 2
 end
 
@@ -28,18 +28,18 @@ instanceObject.onInstanceCreated = function(instance)
 end
 
 instanceObject.onInstanceCreatedCallback = function(player, instance)
-    xi.instance.onInstanceCreatedCallback(player, instance)
+    invaderXim.instance.onInstanceCreatedCallback(player, instance)
 end
 
 instanceObject.afterInstanceRegister = function(player)
     local instance = player:getInstance()
-    player:messageSpecial(ID.text.FADES_INTO_NOTHINGNESS, xi.ki.LIFE_FLOAT)
-    player:delKeyItem(xi.ki.LIFE_FLOAT)
+    player:messageSpecial(ID.text.FADES_INTO_NOTHINGNESS, invaderXim.ki.LIFE_FLOAT)
+    player:delKeyItem(invaderXim.ki.LIFE_FLOAT)
     player:messageSpecial(ID.text.TIME_TO_COMPLETE, instance:getTimeLimit())
 end
 
 instanceObject.onInstanceTimeUpdate = function(instance, elapsed)
-    xi.instance.updateInstanceTime(instance, elapsed, ID.text)
+    invaderXim.instance.updateInstanceTime(instance, elapsed, ID.text)
 end
 
 instanceObject.onInstanceFailure = function(instance)

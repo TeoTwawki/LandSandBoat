@@ -14,16 +14,16 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    local baseDuration       = 180 + player:getJobPointLevel(xi.jp.JIG_DURATION)
-    local durationMultiplier = 1.0 + utils.clamp(player:getMod(xi.mod.JIG_DURATION), 0, 50) / 100
-    local finalDuration      = math.floor(baseDuration * durationMultiplier * xi.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER)
+    local baseDuration       = 180 + player:getJobPointLevel(invaderXim.jp.JIG_DURATION)
+    local durationMultiplier = 1.0 + utils.clamp(player:getMod(invaderXim.mod.JIG_DURATION), 0, 50) / 100
+    local finalDuration      = math.floor(baseDuration * durationMultiplier * invaderXim.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER)
 
-    if not player:hasStatusEffect(xi.effect.SNEAK) then
-        player:addStatusEffect(xi.effect.SNEAK, 0, 10, finalDuration)
-        player:addStatusEffect(xi.effect.INVISIBLE, 0, 10, finalDuration)
-        ability:setMsg(xi.msg.basic.SPECTRAL_JIG) -- Gains the effect of sneak and invisible
+    if not player:hasStatusEffect(invaderXim.effect.SNEAK) then
+        player:addStatusEffect(invaderXim.effect.SNEAK, 0, 10, finalDuration)
+        player:addStatusEffect(invaderXim.effect.INVISIBLE, 0, 10, finalDuration)
+        ability:setMsg(invaderXim.msg.basic.SPECTRAL_JIG) -- Gains the effect of sneak and invisible
     else
-        ability:setMsg(xi.msg.basic.NO_EFFECT) -- no effect on player.
+        ability:setMsg(invaderXim.msg.basic.NO_EFFECT) -- no effect on player.
     end
 
     return 1

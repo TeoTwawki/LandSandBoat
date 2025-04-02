@@ -12,7 +12,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 14 and option == 1 then
-        xi.teleport.to(player, xi.teleport.id.ESCHA_RUAUN)
+        invaderXim.teleport.to(player, invaderXim.teleport.id.ESCHA_RUAUN)
     end
 end
 

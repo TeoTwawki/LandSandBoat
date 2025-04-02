@@ -2,7 +2,7 @@
 -- Zone: Castle_Oztroja (151)
 -----------------------------------
 local oztrojaGlobal = require('scripts/zones/Castle_Oztroja/globals')
-local ID = zones[xi.zone.CASTLE_OZTROJA]
+local ID = zones[invaderXim.zone.CASTLE_OZTROJA]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -14,7 +14,7 @@ zoneObject.onInitialize = function(zone)
     oztrojaGlobal.pickNewCombo() -- update combination for brass door on floor 2
     oztrojaGlobal.pickNewPassword() -- update password for trap door on floor 4
 
-    xi.treasure.initZone(zone)
+    invaderXim.treasure.initZone(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -32,7 +32,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

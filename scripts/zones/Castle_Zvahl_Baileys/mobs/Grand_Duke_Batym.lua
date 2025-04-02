@@ -62,13 +62,13 @@ local spawnPoints =
 }
 
 entity.onMobInitialize = function(mob)
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(math.random(900, 10800))
 end
 
 entity.onMobDespawn = function(mob)
     -- Set Grand_Duke_Batym's spawnpoint and respawn time (21-24 hours)
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(math.random(75600, 86400))
 end
 

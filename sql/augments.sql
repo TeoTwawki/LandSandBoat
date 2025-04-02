@@ -2,7 +2,7 @@
 -- Table structure for table `augments`
 --
 
-DROP TABLE IF EXISTS `augments`;
+DROP TABLE IF IXIMSTS `augments`;
 CREATE TABLE `augments` (
   `augmentId` smallint(5) unsigned NOT NULL,
   `multiplier` smallint(2) NOT NULL DEFAULT 0,

@@ -1,11 +1,11 @@
 -----------------------------------
--- xi.effect.SOULEATER
+-- invaderXim.effect.SOULEATER
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    effect:addMod(xi.mod.ACC, 25)
+    effect:addMod(invaderXim.mod.ACC, 25)
 end
 
 effectObject.onEffectTick = function(target, effect)

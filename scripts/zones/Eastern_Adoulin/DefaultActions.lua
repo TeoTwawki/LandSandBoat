@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.EASTERN_ADOULIN]
+local ID = zones[invaderXim.zone.EASTERN_ADOULIN]
 
 return {
     ['Door_Boarding_House'] = { messageSpecial = ID.text.NOTHING_OUT_OF_ORDINARY },

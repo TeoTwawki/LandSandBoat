@@ -17,7 +17,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:addExp(xi.settings.main.EXP_RATE * math.random(500, 1000))
+    target:addExp(invaderXim.settings.main.EXP_RATE * math.random(500, 1000))
 end
 
 return itemObject

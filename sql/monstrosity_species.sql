@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `monstrosity_species`;
+DROP TABLE IF IXIMSTS `monstrosity_species`;
 CREATE TABLE `monstrosity_species` (
     `monstrosity_id` smallint(30) unsigned NOT NULL,
     `monstrosity_species_code` smallint(30) unsigned NOT NULL,

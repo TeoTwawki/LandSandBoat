@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.jobName
-xi.jobNames =
+---@enum invaderXim.jobName
+invaderXim.jobNames =
 {
     [ 0] = { 'NONE', 'None' },
     [ 1] = { 'WAR', 'Warrior' },

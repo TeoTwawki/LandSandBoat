@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `synergy_recipes`;
+DROP TABLE IF IXIMSTS `synergy_recipes`;
 CREATE TABLE `synergy_recipes` (
   `id` mediumint(5) unsigned NOT NULL AUTO_INCREMENT,
   `primary_skill` tinyint(2) unsigned NOT NULL,
@@ -65,7 +65,7 @@ SET @RANK_GRANDMASTER = 14;
 SET @RANK_LEGEND      = 15;
 
 DELIMITER $$
-DROP TRIGGER IF EXISTS ensure_synergy_ingredients_are_ordered;
+DROP TRIGGER IF IXIMSTS ensure_synergy_ingredients_are_ordered;
 CREATE TRIGGER ensure_synergy_ingredients_are_ordered
      BEFORE INSERT ON synergy_recipes FOR EACH ROW BEGIN
           IF NEW.ingredient2 > 0 AND NEW.ingredient1 > NEW.ingredient2

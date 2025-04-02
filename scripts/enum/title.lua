@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.title
-xi.title =
+---@enum invaderXim.title
+invaderXim.title =
 {
     FODDERCHIEF_FLAYER                        = 1,
     WARCHIEF_WRECKER                          = 2,
@@ -16,7 +16,7 @@ xi.title =
     MANIFEST_MAULER                           = 8,
     BEHEMOTHS_BANE                            = 9,
     ARCHMAGE_ASSASSIN                         = 10,
-    HELLSBANE                                 = 11,
+    HELIXIMANE                                 = 11,
     GIANT_KILLER                              = 12,
     LICH_BANISHER                             = 13,
     JELLYBANE                                 = 14,

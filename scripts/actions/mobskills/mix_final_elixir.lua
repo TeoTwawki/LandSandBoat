@@ -12,7 +12,7 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     target:addHP(target:getMaxHP())
     target:addMP(target:getMaxMP())
-    skill:setMsg(xi.msg.basic.RECOVERS_HP_AND_MP)
+    skill:setMsg(invaderXim.msg.basic.RECOVERS_HP_AND_MP)
     return
 end
 

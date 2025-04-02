@@ -6,15 +6,15 @@ require('scripts/globals/teleports')
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.escha = xi.escha or {}
-xi.escha.portals = xi.escha.portals or {}
+invaderXim.escha = invaderXim.escha or {}
+invaderXim.escha.portals = invaderXim.escha.portals or {}
 
 local portalOffsets =
 {
 --  [ZoneId] = { First Portal, Last Portal },
-    [xi.zone.ESCHA_ZITAH] = {  0,  7 },
-    [xi.zone.ESCHA_RUAUN] = {  8, 22 },
-    [xi.zone.REISENJIMA ] = { 23, 31 },
+    [invaderXim.zone.ESCHA_ZITAH] = {  0,  7 },
+    [invaderXim.zone.ESCHA_RUAUN] = {  8, 22 },
+    [invaderXim.zone.REISENJIMA ] = { 23, 31 },
 }
 
 -----------------------------------
@@ -35,22 +35,22 @@ local function getPortalCost(player)
     return cost
 end
 
-xi.escha.portals.eschanPortalOnTrigger = function(player, npc, portalGlobalNumber)
-    local portalBitMask       = player:getTeleport(xi.teleport.type.ESCHAN_PORTAL) -- Param 2.
+invaderXim.escha.portals.eschanPortalOnTrigger = function(player, npc, portalGlobalNumber)
+    local portalBitMask       = player:getTeleport(invaderXim.teleport.type.ESCHAN_PORTAL) -- Param 2.
     local zoneId              = player:getZoneID()                                 -- Param 3.
     local lockValue           = 0                                                  -- Param 5.
     local zonePortalsUnlocked = 0
 
     -- Reisenjima only.
-    if zoneId == xi.zone.REISENJIMA then
+    if zoneId == invaderXim.zone.REISENJIMA then
         -- Scintillating Rhapsody. Unlocks Portal #8 and #10.
-        if player:hasKeyItem(xi.ki.SCINTILLATING_RHAPSODY) then
+        if player:hasKeyItem(invaderXim.ki.SCINTILLATING_RHAPSODY) then
             lockValue           = lockValue + 4
             zonePortalsUnlocked = zonePortalsUnlocked + 1
         end
 
         -- Ethereal droplet. Warps you to Portal #1.
-        if player:hasItem(xi.item.ETHEREAL_DROPLET, xi.inv.TEMPITEMS) then
+        if player:hasItem(invaderXim.item.ETHEREAL_DROPLET, invaderXim.inv.TEMPITEMS) then
             lockValue = lockValue + 2
         end
     end
@@ -61,10 +61,10 @@ xi.escha.portals.eschanPortalOnTrigger = function(player, npc, portalGlobalNumbe
         not utils.mask.getBit(portalBitMask, portalGlobalNumber)
     then
         -- Unlock Portal.
-        player:addTeleport(xi.teleport.type.ESCHAN_PORTAL, portalGlobalNumber)
+        player:addTeleport(invaderXim.teleport.type.ESCHAN_PORTAL, portalGlobalNumber)
 
         -- Update Variables.
-        portalBitMask = player:getTeleport(xi.teleport.type.ESCHAN_PORTAL)
+        portalBitMask = player:getTeleport(invaderXim.teleport.type.ESCHAN_PORTAL)
         lockValue     = lockValue + 1 -- We set it to "Locked" even if we JUST unlocked it.
     end
 
@@ -77,9 +77,9 @@ xi.escha.portals.eschanPortalOnTrigger = function(player, npc, portalGlobalNumbe
 
     -- Check if we have other portals to warp to. Do not display menu if not.
     if zonePortalsUnlocked <= 1 then
-        if zoneId == xi.zone.ESCHA_ZITAH then
+        if zoneId == invaderXim.zone.ESCHA_ZITAH then
             portalBitMask = 1
-        elseif zoneId == xi.zone.ESCHA_RUAUN then
+        elseif zoneId == invaderXim.zone.ESCHA_RUAUN then
             portalBitMask = 256 -- 8 "true" bits + 1
         else
             portalBitMask = 8388608 -- 23 "true" bits + 1
@@ -89,17 +89,17 @@ xi.escha.portals.eschanPortalOnTrigger = function(player, npc, portalGlobalNumbe
     player:startEvent(9100, 0, portalBitMask, zoneId, portalGlobalNumber, lockValue, player:getCurrency('escha_silt'), getPortalCost(player), 0)
 end
 
-xi.escha.portals.eschanPortalEventUpdate = function(player, csid, option, npc)
+invaderXim.escha.portals.eschanPortalEventUpdate = function(player, csid, option, npc)
 end
 
-xi.escha.portals.eschanPortalEventFinish = function(player, csid, option, npc)
+invaderXim.escha.portals.eschanPortalEventFinish = function(player, csid, option, npc)
     local portalCost = getPortalCost(player)
 
     if option == 3 then -- Ethereal droplet usage.
         local ID = zones[player:getZoneID()]
 
-        player:delItem(xi.item.ETHEREAL_DROPLET, 1, xi.inv.TEMPITEMS)
-        player:messageSpecial(ID.text.YOU_HAVE_USED, xi.item.ETHEREAL_DROPLET)
+        player:delItem(invaderXim.item.ETHEREAL_DROPLET, 1, invaderXim.inv.TEMPITEMS)
+        player:messageSpecial(ID.text.YOU_HAVE_USED, invaderXim.item.ETHEREAL_DROPLET)
     elseif
         option ~= 0 and
         option ~= 4 and -- Scintillating Rhapsody usage.

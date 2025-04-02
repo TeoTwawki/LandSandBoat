@@ -5,7 +5,7 @@
 -- Sets up mobs spawning, locks opposite side and unlocks exit to West wing
 -- !pos 360 14 -500
 -----------------------------------
-local ID = zones[xi.zone.BHAFLAU_REMNANTS]
+local ID = zones[invaderXim.zone.BHAFLAU_REMNANTS]
 -----------------------------------
 
 ---@type TNpcEntity
@@ -23,24 +23,24 @@ entity.onEventFinish = function(player, csid, option, npc)
     if csid == 300 and option == 1 then
         local instance = npc:getInstance()
 
-        if instance and xi.salvage.onDoorOpen(npc, 1, 2) then
+        if instance and invaderXim.salvage.onDoorOpen(npc, 1, 2) then
             local random = math.random(100)
             local unsealed =
             {
-                ID.npc.DOOR_1_WEST_EXIT_1,
-                ID.npc.DOOR_1_WEST_EXIT_2,
-                ID.npc.DOOR_1_WEST_EXIT_3,
+                ID.npc.DOOR_1_WEST_IXIMT_1,
+                ID.npc.DOOR_1_WEST_IXIMT_2,
+                ID.npc.DOOR_1_WEST_IXIMT_3,
             }
 
-            xi.salvage.unsealDoors(instance, unsealed)
-            xi.salvage.sealDoors(instance, ID.npc.DOOR_1_EAST_ENTRANCE)
+            invaderXim.salvage.unsealDoors(instance, unsealed)
+            invaderXim.salvage.sealDoors(instance, ID.npc.DOOR_1_EAST_ENTRANCE)
             local mobs =
             {
                 ID.mob.WAMOURACAMPA,
                 utils.slice(ID.mob.BIFRONS, 8, 14),
                 utils.slice(ID.mob.TROLL_LAPIDARIST, 1, 2),
             }
-            xi.salvage.spawnGroup(instance, mobs)
+            invaderXim.salvage.spawnGroup(instance, mobs)
             if random >= 50 then
                 if random >= 75 then
                     instance:setLocalVar('dormantArea', 3)

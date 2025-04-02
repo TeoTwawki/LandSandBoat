@@ -4,7 +4,7 @@
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.fishingContest = xi.fishingContest or {}
+invaderXim.fishingContest = invaderXim.fishingContest or {}
 
 local exDataIndex =
 {
@@ -13,51 +13,51 @@ local exDataIndex =
     RANKED = 0x04,
 }
 
-xi.fishingContest.fish =
+invaderXim.fishingContest.fish =
 {
     -- NOTE: If you don't want certain fish included in the contest (era restrictions, or whatever),
     --   then you must comment out the lines containing unwanted fish.  The C++ core calls the
     --   random function in this file to select a fish for each contest, which uses this table.
 
-    { id = xi.item.GRIMMONITE,      name = 'grimmonite'      , realName = 'Grimmonite'      },
-    { id = xi.item.RYUGU_TITAN,     name = 'ryugu_titan'     , realName = 'Ryugu Titan'     },
-    { id = xi.item.GIANT_DONKO,     name = 'giant_donko'     , realName = 'Giant Donko'     },
-    { id = xi.item.JUNGLE_CATFISH,  name = 'jungle_catfish'  , realName = 'Jungle Catfish'  },
-    { id = xi.item.GIANT_CHIRAI,    name = 'giant_chirai'    , realName = 'Giant Chirai'    },
-    { id = xi.item.CAVE_CHERAX,     name = 'cave_cherax'     , realName = 'Cave Cherax'     },
-    { id = xi.item.ARMORED_PISCES,  name = 'armored_pisces'  , realName = 'Armored Pisces'  },
-    { id = xi.item.TRICORN,         name = 'tricorn'         , realName = 'Tricorn'         },
-    { id = xi.item.EMPEROR_FISH,    name = 'emperor_fish'    , realName = 'Emperor Fish'    },
-    { id = xi.item.MONKE_ONKE,      name = 'monke-onke'      , realName = 'Monke-Onke'      },
-    { id = xi.item.TAKITARO,        name = 'takitaro'        , realName = 'Takitaro'        },
-    { id = xi.item.GIANT_CATFISH,   name = 'giant_catfish'   , realName = 'Giant Catfish'   },
-    { id = xi.item.BLADEFISH,       name = 'bladefish'       , realName = 'Bladefish'       },
-    { id = xi.item.GIGANT_SQUID,    name = 'gigant_squid'    , realName = 'Gigant Squid'    },
-    { id = xi.item.SEA_ZOMBIE,      name = 'sea_zombie'      , realName = 'Sea Zombie'      },
-    { id = xi.item.TITANICTUS,      name = 'titanictus'      , realName = 'Titanictus'      },
-    { id = xi.item.GAVIAL_FISH,     name = 'gavial_fish'     , realName = 'Gavial Fish'     },
-    { id = xi.item.THREE_EYED_FISH, name = 'three-eyed_fish' , realName = 'Three-eyed Fish' },
-    { id = xi.item.BHEFHEL_MARLIN,  name = 'bhefhel_marlin'  , realName = 'Bhefhel Marlin'  },
-    { id = xi.item.GUGRU_TUNA,      name = 'gugru_tuna'      , realName = 'Gugru Tuna'      },
-    { id = xi.item.TITANIC_SAWFISH, name = 'titanic_sawfish' , realName = 'Titanic Sawfish' },
-    { id = xi.item.GUGRUSAURUS,     name = 'gugrusaurus'     , realName = 'Gugrusaurus'     },
-    { id = xi.item.LIK,             name = 'lik'             , realName = 'Lik'             },
+    { id = invaderXim.item.GRIMMONITE,      name = 'grimmonite'      , realName = 'Grimmonite'      },
+    { id = invaderXim.item.RYUGU_TITAN,     name = 'ryugu_titan'     , realName = 'Ryugu Titan'     },
+    { id = invaderXim.item.GIANT_DONKO,     name = 'giant_donko'     , realName = 'Giant Donko'     },
+    { id = invaderXim.item.JUNGLE_CATFISH,  name = 'jungle_catfish'  , realName = 'Jungle Catfish'  },
+    { id = invaderXim.item.GIANT_CHIRAI,    name = 'giant_chirai'    , realName = 'Giant Chirai'    },
+    { id = invaderXim.item.CAVE_CHERAX,     name = 'cave_cherax'     , realName = 'Cave Cherax'     },
+    { id = invaderXim.item.ARMORED_PISCES,  name = 'armored_pisces'  , realName = 'Armored Pisces'  },
+    { id = invaderXim.item.TRICORN,         name = 'tricorn'         , realName = 'Tricorn'         },
+    { id = invaderXim.item.EMPEROR_FISH,    name = 'emperor_fish'    , realName = 'Emperor Fish'    },
+    { id = invaderXim.item.MONKE_ONKE,      name = 'monke-onke'      , realName = 'Monke-Onke'      },
+    { id = invaderXim.item.TAKITARO,        name = 'takitaro'        , realName = 'Takitaro'        },
+    { id = invaderXim.item.GIANT_CATFISH,   name = 'giant_catfish'   , realName = 'Giant Catfish'   },
+    { id = invaderXim.item.BLADEFISH,       name = 'bladefish'       , realName = 'Bladefish'       },
+    { id = invaderXim.item.GIGANT_SQUID,    name = 'gigant_squid'    , realName = 'Gigant Squid'    },
+    { id = invaderXim.item.SEA_ZOMBIE,      name = 'sea_zombie'      , realName = 'Sea Zombie'      },
+    { id = invaderXim.item.TITANICTUS,      name = 'titanictus'      , realName = 'Titanictus'      },
+    { id = invaderXim.item.GAVIAL_FISH,     name = 'gavial_fish'     , realName = 'Gavial Fish'     },
+    { id = invaderXim.item.THREE_EYED_FISH, name = 'three-eyed_fish' , realName = 'Three-eyed Fish' },
+    { id = invaderXim.item.BHEFHEL_MARLIN,  name = 'bhefhel_marlin'  , realName = 'Bhefhel Marlin'  },
+    { id = invaderXim.item.GUGRU_TUNA,      name = 'gugru_tuna'      , realName = 'Gugru Tuna'      },
+    { id = invaderXim.item.TITANIC_SAWFISH, name = 'titanic_sawfish' , realName = 'Titanic Sawfish' },
+    { id = invaderXim.item.GUGRUSAURUS,     name = 'gugrusaurus'     , realName = 'Gugrusaurus'     },
+    { id = invaderXim.item.LIK,             name = 'lik'             , realName = 'Lik'             },
 }
 
-xi.fishingContest.criteria =
+invaderXim.fishingContest.criteria =
 {
     SIZE   = 0,
     WEIGHT = 1,
     BOTH   = 2,
 }
 
-xi.fishingContest.measure =
+invaderXim.fishingContest.measure =
 {
     GREATEST = 0,
     SMALLEST = 1,
 }
 
-xi.fishingContest.status =
+invaderXim.fishingContest.status =
 {
     CONTESTING = 0, -- Usually used for building manual contest, but a simple 5 minute buffer
     OPENING    = 1, -- 30 mins, warning to players that contest is opening soon
@@ -68,42 +68,42 @@ xi.fishingContest.status =
     CLOSED     = 6, -- Only used when contest is closed and inactive.  No automatic progression from this stage
 }
 
-xi.fishingContest.reward =
+invaderXim.fishingContest.reward =
 {
     -- Defines the reward at each rank
-    [ 1] = { gil = 50000, item = xi.item.PELICAN_RING, title = xi.title.GOLD_HOOK    },
-    [ 2] = { gil = 25000, item = xi.item.PELICAN_RING, title = xi.title.MYTHRIL_HOOK },
-    [ 3] = { gil = 10000, item = xi.item.PELICAN_RING, title = xi.title.SILVER_HOOK  },
-    [ 4] = { gil = 1000,  item = xi.item.PELICAN_RING, title = xi.title.COPPER_HOOK  },
-    [ 5] = { gil = 1000,  item = xi.item.PELICAN_RING, title = xi.title.COPPER_HOOK  },
-    [ 6] = { gil = 1000,  item = xi.item.PELICAN_RING, title = xi.title.COPPER_HOOK  },
-    [ 7] = { gil = 1000,  item = xi.item.PELICAN_RING, title = xi.title.COPPER_HOOK  },
-    [ 8] = { gil = 1000,  item = xi.item.PELICAN_RING, title = xi.title.COPPER_HOOK  },
-    [ 9] = { gil = 1000,  item = xi.item.PELICAN_RING, title = xi.title.COPPER_HOOK  },
-    [10] = { gil = 1000,  item = xi.item.PELICAN_RING, title = xi.title.COPPER_HOOK  },
-    [11] = {              item = xi.item.PELICAN_RING,                               },
-    [12] = {              item = xi.item.PELICAN_RING,                               },
-    [13] = {              item = xi.item.PELICAN_RING,                               },
-    [14] = {              item = xi.item.PELICAN_RING,                               },
-    [15] = {              item = xi.item.PELICAN_RING,                               },
-    [16] = {              item = xi.item.PELICAN_RING,                               },
-    [17] = {              item = xi.item.PELICAN_RING,                               },
-    [18] = {              item = xi.item.PELICAN_RING,                               },
-    [19] = {              item = xi.item.PELICAN_RING,                               },
-    [20] = {              item = xi.item.PELICAN_RING,                               },
+    [ 1] = { gil = 50000, item = invaderXim.item.PELICAN_RING, title = invaderXim.title.GOLD_HOOK    },
+    [ 2] = { gil = 25000, item = invaderXim.item.PELICAN_RING, title = invaderXim.title.MYTHRIL_HOOK },
+    [ 3] = { gil = 10000, item = invaderXim.item.PELICAN_RING, title = invaderXim.title.SILVER_HOOK  },
+    [ 4] = { gil = 1000,  item = invaderXim.item.PELICAN_RING, title = invaderXim.title.COPPER_HOOK  },
+    [ 5] = { gil = 1000,  item = invaderXim.item.PELICAN_RING, title = invaderXim.title.COPPER_HOOK  },
+    [ 6] = { gil = 1000,  item = invaderXim.item.PELICAN_RING, title = invaderXim.title.COPPER_HOOK  },
+    [ 7] = { gil = 1000,  item = invaderXim.item.PELICAN_RING, title = invaderXim.title.COPPER_HOOK  },
+    [ 8] = { gil = 1000,  item = invaderXim.item.PELICAN_RING, title = invaderXim.title.COPPER_HOOK  },
+    [ 9] = { gil = 1000,  item = invaderXim.item.PELICAN_RING, title = invaderXim.title.COPPER_HOOK  },
+    [10] = { gil = 1000,  item = invaderXim.item.PELICAN_RING, title = invaderXim.title.COPPER_HOOK  },
+    [11] = {              item = invaderXim.item.PELICAN_RING,                               },
+    [12] = {              item = invaderXim.item.PELICAN_RING,                               },
+    [13] = {              item = invaderXim.item.PELICAN_RING,                               },
+    [14] = {              item = invaderXim.item.PELICAN_RING,                               },
+    [15] = {              item = invaderXim.item.PELICAN_RING,                               },
+    [16] = {              item = invaderXim.item.PELICAN_RING,                               },
+    [17] = {              item = invaderXim.item.PELICAN_RING,                               },
+    [18] = {              item = invaderXim.item.PELICAN_RING,                               },
+    [19] = {              item = invaderXim.item.PELICAN_RING,                               },
+    [20] = {              item = invaderXim.item.PELICAN_RING,                               },
 }
 
-xi.fishingContest.interval =
+invaderXim.fishingContest.interval =
 {
     -- These intervals indicate how long each phase lasts before being automatically progressed.
     -- Total cycle is 28 days, 35 minutes based on captures.  May be varied if contest is manually controlled
-    [xi.fishingContest.status.CONTESTING] = 300,        -- 00 days 00 hours 05 mins
-    [xi.fishingContest.status.OPENING]    = 1500,       -- 00 days 00 hours 25 mins
-    [xi.fishingContest.status.ACCEPTING]  = 1209600,    -- 14 days 00 hours 00 mins
-    [xi.fishingContest.status.RELEASING]  = 1800,       -- 00 days 00 hours 30 mins
-    [xi.fishingContest.status.PRESENTING] = 1206000,    -- 13 days 23 hours 00 minutes
-    [xi.fishingContest.status.HIATUS]     = 2100,       -- 00 days 00 hours 35 minutes
-    [xi.fishingContest.status.CLOSED]     = 0xFFFFFFFF, -- Must be manually controlled
+    [invaderXim.fishingContest.status.CONTESTING] = 300,        -- 00 days 00 hours 05 mins
+    [invaderXim.fishingContest.status.OPENING]    = 1500,       -- 00 days 00 hours 25 mins
+    [invaderXim.fishingContest.status.ACCEPTING]  = 1209600,    -- 14 days 00 hours 00 mins
+    [invaderXim.fishingContest.status.RELEASING]  = 1800,       -- 00 days 00 hours 30 mins
+    [invaderXim.fishingContest.status.PRESENTING] = 1206000,    -- 13 days 23 hours 00 minutes
+    [invaderXim.fishingContest.status.HIATUS]     = 2100,       -- 00 days 00 hours 35 minutes
+    [invaderXim.fishingContest.status.CLOSED]     = 0xFFFFFFFF, -- Must be manually controlled
 }
 
 -----------------------------------
@@ -194,9 +194,9 @@ end
 -- Provides the score of the submission
 local function scoreFish(length, weight, criteria)
     local score = 0
-    if criteria == xi.fishingContest.criteria.SIZE then
+    if criteria == invaderXim.fishingContest.criteria.SIZE then
         score = length
-    elseif criteria == xi.fishingContest.criteria.WEIGHT then
+    elseif criteria == invaderXim.fishingContest.criteria.WEIGHT then
         score = weight
     else
         score = length + weight
@@ -216,7 +216,7 @@ local function getPlayerReward(player)
             rank > 0 and
             rank <= 20
         then
-            local reward = xi.fishingContest.reward[rank]
+            local reward = invaderXim.fishingContest.reward[rank]
             if reward.gil then
                 reward.gil = reward.gil / share
             end
@@ -233,7 +233,7 @@ end
 -----------------------------------
 
 -- Create the table of exdata
-xi.fishingContest.createExData = function(length, weight, ranked)
+invaderXim.fishingContest.createExData = function(length, weight, ranked)
     -- If the provided data table has a nil value, the key will not be passed to the setExData function
     -- setExData only accepts one-byte keys and vals so we need to break down the 16-bit vars
     local exData = {}
@@ -255,7 +255,7 @@ xi.fishingContest.createExData = function(length, weight, ranked)
 end
 
 -- Read the necessary data from the exdata
-xi.fishingContest.getFishData = function(fishItem)
+invaderXim.fishingContest.getFishData = function(fishItem)
     local fishData = fishItem:getExData()
     local fishTable = {}
 
@@ -267,7 +267,7 @@ xi.fishingContest.getFishData = function(fishItem)
 end
 
 -- Update the fish exdata
-xi.fishingContest.setFishData = function(fishItem, length, weight, ranked)
+invaderXim.fishingContest.setFishData = function(fishItem, length, weight, ranked)
     -- Data Table should have only three possible options: 'length', 'width', and 'ranked'
     if fishItem == nil then
         return
@@ -275,48 +275,48 @@ xi.fishingContest.setFishData = function(fishItem, length, weight, ranked)
 
     -- If the provided data table has a nil value, the key will not be passed to the setExData function
     -- setExData only accepts one-byte keys and vals so we need to break down the 16-bit vars
-    local newExData = xi.fishingContest.createExData(length, weight, ranked)
+    local newExData = invaderXim.fishingContest.createExData(length, weight, ranked)
 
     if newExData ~= nil then
         fishItem:setExData(newExData)
     end
 end
 
-xi.fishingContest.selectContestFish = function()
-    return utils.randomEntry(xi.fishingContest.fish)['id']
+invaderXim.fishingContest.selectContestFish = function()
+    return utils.randomEntry(invaderXim.fishingContest.fish)['id']
 end
 
-xi.fishingContest.getStageChangeTime = function(stage, stageStartTime)
+invaderXim.fishingContest.getStageChangeTime = function(stage, stageStartTime)
     -- If the value is invalid, send back the 'never change' time
     if
-        stage >= xi.fishingContest.status.CONTESTING and
-        stage < xi.fishingContest.status.CLOSED
+        stage >= invaderXim.fishingContest.status.CONTESTING and
+        stage < invaderXim.fishingContest.status.CLOSED
     then
-        return stageStartTime + xi.fishingContest.interval[stage]
+        return stageStartTime + invaderXim.fishingContest.interval[stage]
     end
 
-    return xi.fishingContest.interval[xi.fishingContest.status.CLOSED]
+    return invaderXim.fishingContest.interval[invaderXim.fishingContest.status.CLOSED]
 end
 
-xi.fishingContest.onStageProgress = function(newStage)
+invaderXim.fishingContest.onStageProgress = function(newStage)
     -- TODO: Capture NPC text on stage progressions
 end
 
-xi.fishingContest.onTrigger = function(player, npc)
+invaderXim.fishingContest.onTrigger = function(player, npc)
     local contest = GetFishingContest()
     if contest == nil then
         return
     end
 
     player:startEvent(10006, {
-        [0] = contest['status'] or xi.fishingContest.status.CLOSED,
+        [0] = contest['status'] or invaderXim.fishingContest.status.CLOSED,
         [1] = contest['fishid'] or 0,   -- Fish ID for the contest
         [2] = contest['criteria'] or 0, -- 0 = Size, 1 = Weight, 2 = Size + Weight
         [3] = contest['measure'] or 0,  -- 0 = greatest, 1 = smallest
     })
 end
 
-xi.fishingContest.onTrade = function(player, npc, trade)
+invaderXim.fishingContest.onTrade = function(player, npc, trade)
     -- Handle fish submission
     local contest = GetFishingContest()
     if contest == nil then
@@ -325,11 +325,11 @@ xi.fishingContest.onTrade = function(player, npc, trade)
 
     -- Check to see if the traded fish is the right one
     if
-        contest['status'] == xi.fishingContest.status.ACCEPTING and
+        contest['status'] == invaderXim.fishingContest.status.ACCEPTING and
         npcUtil.tradeHasExactly(trade, contest['fishid'])
     then
         local fishItem = trade:getItem(findFishSlot(trade, contest['fishid']))
-        local fishData = xi.fishingContest.getFishData(fishItem)
+        local fishData = invaderXim.fishingContest.getFishData(fishItem)
 
         if fishData == nil then
             return
@@ -354,7 +354,7 @@ xi.fishingContest.onTrade = function(player, npc, trade)
     end
 end
 
-xi.fishingContest.onEventUpdate = function(player, csid, option, npc)
+invaderXim.fishingContest.onEventUpdate = function(player, csid, option, npc)
     local contest = GetFishingContest()
     if contest == nil then
         return
@@ -370,14 +370,14 @@ xi.fishingContest.onEventUpdate = function(player, csid, option, npc)
 
         elseif option == 149 then
         -- View Current Rules | Ranking Results | Receive Award
-            if contest['status'] == xi.fishingContest.status.ACCEPTING then
+            if contest['status'] == invaderXim.fishingContest.status.ACCEPTING then
                 player:updateEvent({
                     [0] = contest['status'],
                     [1] = contest['fishid'],
                     [2] = contest['criteria'],
                     [3] = contest['measure'],
                 })
-            elseif contest['status'] == xi.fishingContest.status.PRESENTING then
+            elseif contest['status'] == invaderXim.fishingContest.status.PRESENTING then
                 player:updateEvent({
                     [0] = contest['status'],
                     [1] = contest['fishid'],
@@ -389,7 +389,7 @@ xi.fishingContest.onEventUpdate = function(player, csid, option, npc)
         elseif option == 150 then
         -- Initial option
             local time = getTimeRemaining(contest['changetime'])
-            if contest['status'] == xi.fishingContest.status.ACCEPTING then
+            if contest['status'] == invaderXim.fishingContest.status.ACCEPTING then
                 player:updateEvent({
                     [0] = contest['status'],
                     [1] = contest['fishid'],
@@ -400,7 +400,7 @@ xi.fishingContest.onEventUpdate = function(player, csid, option, npc)
                     [6] = time['hours'],
                     [7] = time['minutes'],
                 })
-            elseif contest['status'] == xi.fishingContest.status.PRESENTING then
+            elseif contest['status'] == invaderXim.fishingContest.status.PRESENTING then
                 player:updateEvent({
                     [0] = contest['status'],
                     [1] = contest['fishid'],
@@ -441,7 +441,7 @@ xi.fishingContest.onEventUpdate = function(player, csid, option, npc)
     end
 end
 
-xi.fishingContest.onEventFinish = function(player, csid, option, npc)
+invaderXim.fishingContest.onEventFinish = function(player, csid, option, npc)
     local contest = GetFishingContest()
     if contest == nil then
         return
@@ -454,7 +454,7 @@ xi.fishingContest.onEventFinish = function(player, csid, option, npc)
             local weight = player:getLocalVar('[FishContest]Weight')
             local obtained = giveFish(player, { id = contest['fishid'],
                                                 quantity = 1,
-                                                exdata = xi.fishingContest.createExData(length, weight, 1) })
+                                                exdata = invaderXim.fishingContest.createExData(length, weight, 1) })
             if obtained then
                 player:confirmTrade()
                 player:delGil(500) -- Pay the registration fee of 500 gil.
@@ -468,7 +468,7 @@ xi.fishingContest.onEventFinish = function(player, csid, option, npc)
         if
             option == 149 and
             isRewardAvailable(player) > 0 and
-            contest['status'] == xi.fishingContest.status.PRESENTING
+            contest['status'] == invaderXim.fishingContest.status.PRESENTING
         then
             -- Issue the player a reward and flag it as awarded.
             local reward = getPlayerReward(player)

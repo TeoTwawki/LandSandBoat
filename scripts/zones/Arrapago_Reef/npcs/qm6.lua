@@ -4,7 +4,7 @@
 -- Involved in Quests: 'Luck of the Draw', 'Equipped for All Occasions', 'Navigating the Unfriendly Seas'
 -- !pos 468.767 -12.292 111.817 54
 -----------------------------------
-local ID = zones[xi.zone.ARRAPAGO_REEF]
+local ID = zones[invaderXim.zone.ARRAPAGO_REEF]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -12,15 +12,15 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     local mJob   = player:getMainJob()
     local mLvl   = player:getMainLvl()
-    local efao   = player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.EQUIPPED_FOR_ALL_OCCASIONS)
-    local ntus   = player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.NAVIGATING_THE_UNFRIENDLY_SEAS)
+    local efao   = player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.EQUIPPED_FOR_ALL_OCCASIONS)
+    local ntus   = player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.NAVIGATING_THE_UNFRIENDLY_SEAS)
 
     -- NAVIGATING THE UNFRIENDLY SEAS
     if
-        efao == xi.questStatus.QUEST_COMPLETED and
-        ntus == xi.questStatus.QUEST_AVAILABLE and
-        mJob == xi.job.COR and
-        mLvl >= xi.settings.main.AF2_QUEST_LEVEL
+        efao == invaderXim.questStatus.QUEST_COMPLETED and
+        ntus == invaderXim.questStatus.QUEST_AVAILABLE and
+        mJob == invaderXim.job.COR and
+        mLvl >= invaderXim.settings.main.AF2_QUEST_LEVEL
     then
         player:startEvent(232)
     elseif player:getCharVar('NavigatingtheUnfriendlySeas') == 4 then
@@ -35,10 +35,10 @@ end
 entity.onEventFinish = function(player, csid, option, npc)
     -- NAVIGATING THE UNFRIENDLY SEAS
     if csid == 232 then
-        player:addQuest(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.NAVIGATING_THE_UNFRIENDLY_SEAS)
+        player:addQuest(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.NAVIGATING_THE_UNFRIENDLY_SEAS)
         player:setCharVar('NavigatingtheUnfriendlySeas', 1)
     elseif csid == 233 then
-        npcUtil.completeQuest(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.NAVIGATING_THE_UNFRIENDLY_SEAS, { item = 15601, var = { 'NavigatingtheUnfriendlySeas', 'HydrogauageTimer' } })
+        npcUtil.completeQuest(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.NAVIGATING_THE_UNFRIENDLY_SEAS, { item = 15601, var = { 'NavigatingtheUnfriendlySeas', 'HydrogauageTimer' } })
     end
 end
 

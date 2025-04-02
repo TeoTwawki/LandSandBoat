@@ -9,11 +9,11 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.puppetmaster.onAbilityCheckMaintenance(player, target, ability)
+    return invaderXim.job_utils.puppetmaster.onAbilityCheckMaintenance(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    return xi.job_utils.puppetmaster.onAbilityUseMaintenance(player, target, ability)
+    return invaderXim.job_utils.puppetmaster.onAbilityUseMaintenance(player, target, ability)
 end
 
 return abilityObject

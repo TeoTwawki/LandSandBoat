@@ -1,2 +1,2 @@
--- Enables the LandSandBoat
+-- Enables the InvaderXim
 UPDATE npc_list SET name=CHAR(4), flag=1 WHERE name=CHAR(10);

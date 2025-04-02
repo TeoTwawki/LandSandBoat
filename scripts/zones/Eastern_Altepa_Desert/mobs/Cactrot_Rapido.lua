@@ -115,10 +115,10 @@ local pathNodes =
 }
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.ONE_WAY_LINKING, 1)
+    mob:setMobMod(invaderXim.mobMod.ONE_WAY_LINKING, 1)
     mob:setBaseSpeed(72)
     mob:setAnimationSpeed(180)
-    mob:pathThrough(pathNodes, bit.bor(xi.path.flag.PATROL, xi.path.flag.RUN))
+    mob:pathThrough(pathNodes, bit.bor(invaderXim.path.flag.PATROL, invaderXim.path.flag.RUN))
 end
 
 entity.onMobDisengage = function(mob)
@@ -130,7 +130,7 @@ entity.onMobEngage = function(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.CACTROT_DESACELERADOR)
+    player:addTitle(invaderXim.title.CACTROT_DESACELERADOR)
 end
 
 entity.onMobDespawn = function(mob)

@@ -278,7 +278,7 @@ LONG WINAPI WheatyExceptionReport::WheatyUnhandledExceptionFilter(
     sprintf_s(crash_folder_path, "%s\\%s", module_folder_name, CrashFolder);
     if (!CreateDirectory(crash_folder_path, nullptr))
     {
-        if (GetLastError() != ERROR_ALREADY_EXISTS)
+        if (GetLastError() != ERROR_ALREADY_IXIMSTS)
         {
             Log(_T("CreateDirectory failed"));
             TerminateProcess(GetCurrentProcess(), 1);

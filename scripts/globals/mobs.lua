@@ -7,10 +7,10 @@ require('scripts/globals/magic')
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.mob = xi.mob or {}
+invaderXim.mob = invaderXim.mob or {}
 
 -- onMobDeathEx is called from the core
-xi.mob.onMobDeathEx = function(mob, player, isKiller, isWeaponSkillKill)
+invaderXim.mob.onMobDeathEx = function(mob, player, isKiller, isWeaponSkillKill)
 end
 
 -----------------------------------
@@ -31,7 +31,7 @@ local function lotteryPrimed(phList)
     return false
 end
 
-xi.mob.updateNMSpawnPoint = function(mob, spawnPoints)
+invaderXim.mob.updateNMSpawnPoint = function(mob, spawnPoints)
     -- This function is used to replace UpdateNMSpawnPoints() inside the Zone.lua files and the NM despawn scripts
     -- Once UpdateNMSpawnPoints() is no longer used, this note can be removed
     -- Spawnpoints is a table of {x = , y = , z = }
@@ -47,7 +47,7 @@ xi.mob.updateNMSpawnPoint = function(mob, spawnPoints)
 end
 
 -- potential lottery placeholder was killed
-xi.mob.phOnDespawn = function(ph, phList, chance, cooldown, params)
+invaderXim.mob.phOnDespawn = function(ph, phList, chance, cooldown, params)
     params = params or {}
     --[[
         params.immediate   = true    pop NM without waiting for next PH pop time
@@ -73,12 +73,12 @@ xi.mob.phOnDespawn = function(ph, phList, chance, cooldown, params)
         params.noPosUpdate = false
     end
 
-    if xi.settings.main.NM_LOTTERY_CHANCE then
-        chance = xi.settings.main.NM_LOTTERY_CHANCE >= 0 and (chance * xi.settings.main.NM_LOTTERY_CHANCE) or 100
+    if invaderXim.settings.main.NM_LOTTERY_CHANCE then
+        chance = invaderXim.settings.main.NM_LOTTERY_CHANCE >= 0 and (chance * invaderXim.settings.main.NM_LOTTERY_CHANCE) or 100
     end
 
-    if xi.settings.main.NM_LOTTERY_COOLDOWN then
-        cooldown = xi.settings.main.NM_LOTTERY_COOLDOWN >= 0 and (cooldown * xi.settings.main.NM_LOTTERY_COOLDOWN) or cooldown
+    if invaderXim.settings.main.NM_LOTTERY_COOLDOWN then
+        cooldown = invaderXim.settings.main.NM_LOTTERY_COOLDOWN >= 0 and (cooldown * invaderXim.settings.main.NM_LOTTERY_COOLDOWN) or cooldown
     end
 
     local phId = ph:getID()
@@ -100,8 +100,8 @@ xi.mob.phOnDespawn = function(ph, phList, chance, cooldown, params)
                 -- That's earth time, subtract SE epoch to get Vanatime
                 nextRepopTime = nextRepopTime - 1009810800
                 -- The enum bakes in a multiplication of 2.4, gotta reverse that to get accurate hour
-                local nextRepopDate = (nextRepopTime / 60 * 25) + 886 * (xi.vanaTime.YEAR / 2.4)
-                local nextRepopHour = (nextRepopDate % (xi.vanaTime.DAY / 2.4)) / (xi.vanaTime.HOUR / 2.4)
+                local nextRepopDate = (nextRepopTime / 60 * 25) + 886 * (invaderXim.vanaTime.YEAR / 2.4)
+                local nextRepopHour = (nextRepopDate % (invaderXim.vanaTime.DAY / 2.4)) / (invaderXim.vanaTime.HOUR / 2.4)
                 -- If the NM is day only and spawn would happen during the night, bail out
                 if
                     params.dayOnly and
@@ -125,9 +125,9 @@ xi.mob.phOnDespawn = function(ph, phList, chance, cooldown, params)
                 -- This is a temporary solution until all NMs have been updated to use params.spawnPoints and moved out of sql
                 if params.spawnPoints then
                     if params.spawnPoints[nmId] then -- Special check for NMs with multiple IDs
-                        xi.mob.updateNMSpawnPoint(nm, params.spawnPoints[nmId])
+                        invaderXim.mob.updateNMSpawnPoint(nm, params.spawnPoints[nmId])
                     else
-                        xi.mob.updateNMSpawnPoint(nm, params.spawnPoints)
+                        invaderXim.mob.updateNMSpawnPoint(nm, params.spawnPoints)
                     end
 
                     params.noPosUpdate = true -- If we have a table of spawn points, we don't need to run UpdateNMSpawnPoint()
@@ -164,7 +164,7 @@ end
 -----------------------------------
 -- Mob skills
 -----------------------------------
-xi.mob.skills =
+invaderXim.mob.skills =
 {
     RECOIL_DIVE = 641,
     CYTOKINESIS = 2514,
@@ -175,7 +175,7 @@ xi.mob.skills =
 -- mob additional melee effects
 -----------------------------------
 
-xi.mob.additionalEffect =
+invaderXim.mob.additionalEffect =
 {
     BLIND      = 0,
     CURSE      = 1,
@@ -202,152 +202,152 @@ xi.mob.additionalEffect =
     WEIGHT     = 22,
     ENAMNESIA  = 23,
 }
-xi.mob.ae = xi.mob.additionalEffect
+invaderXim.mob.ae = invaderXim.mob.additionalEffect
 
 local additionalEffects =
 {
-    [xi.mob.ae.BLIND] =
+    [invaderXim.mob.ae.BLIND] =
     {
         chance = 25,
-        ele         = xi.element.DARK,
-        sub         = xi.subEffect.BLIND,
-        msg         = xi.msg.basic.ADD_EFFECT_STATUS,
+        ele         = invaderXim.element.DARK,
+        sub         = invaderXim.subEffect.BLIND,
+        msg         = invaderXim.msg.basic.ADD_EFFECT_STATUS,
         applyEffect = true,
-        eff         = xi.effect.BLINDNESS,
+        eff         = invaderXim.effect.BLINDNESS,
         power       = 20,
         duration    = 30,
         minDuration = 1,
         maxDuration = 45,
     },
 
-    [xi.mob.ae.CURSE] =
+    [invaderXim.mob.ae.CURSE] =
     {
         chance      = 20,
-        ele         = xi.element.DARK,
-        sub         = xi.subEffect.CURSE,
-        msg         = xi.msg.basic.ADD_EFFECT_STATUS,
+        ele         = invaderXim.element.DARK,
+        sub         = invaderXim.subEffect.CURSE,
+        msg         = invaderXim.msg.basic.ADD_EFFECT_STATUS,
         applyEffect = true,
-        eff         = xi.effect.CURSE_I,
+        eff         = invaderXim.effect.CURSE_I,
         power       = 50,
         duration    = 300,
         minDuration = 1,
         maxDuration = 300,
     },
 
-    [xi.mob.ae.ENAERO] =
+    [invaderXim.mob.ae.ENAERO] =
     {
-        ele                = xi.element.WIND,
-        sub                = xi.subEffect.WIND_DAMAGE,
-        msg                = xi.msg.basic.ADD_EFFECT_DMG,
-        negMsg             = xi.msg.basic.ADD_EFFECT_HEAL,
-        mod                = xi.mod.INT,
+        ele                = invaderXim.element.WIND,
+        sub                = invaderXim.subEffect.WIND_DAMAGE,
+        msg                = invaderXim.msg.basic.ADD_EFFECT_DMG,
+        negMsg             = invaderXim.msg.basic.ADD_EFFECT_HEAL,
+        mod                = invaderXim.mod.INT,
         bonusAbilityParams = { bonusmab = 0, includemab = false },
     },
 
-    [xi.mob.ae.ENBLIZZARD] =
+    [invaderXim.mob.ae.ENBLIZZARD] =
     {
-        ele                = xi.element.ICE,
-        sub                = xi.subEffect.ICE_DAMAGE,
-        msg                = xi.msg.basic.ADD_EFFECT_DMG,
-        negMsg             = xi.msg.basic.ADD_EFFECT_HEAL,
-        mod                = xi.mod.INT,
+        ele                = invaderXim.element.ICE,
+        sub                = invaderXim.subEffect.ICE_DAMAGE,
+        msg                = invaderXim.msg.basic.ADD_EFFECT_DMG,
+        negMsg             = invaderXim.msg.basic.ADD_EFFECT_HEAL,
+        mod                = invaderXim.mod.INT,
         bonusAbilityParams = { bonusmab = 0, includemab = false },
     },
 
-    [xi.mob.ae.ENDARK] =
+    [invaderXim.mob.ae.ENDARK] =
     {
-        ele                = xi.element.DARK,
-        sub                = xi.subEffect.DARKNESS_DAMAGE,
-        msg                = xi.msg.basic.ADD_EFFECT_DMG,
-        negMsg             = xi.msg.basic.ADD_EFFECT_HEAL,
-        mod                = xi.mod.INT,
+        ele                = invaderXim.element.DARK,
+        sub                = invaderXim.subEffect.DARKNESS_DAMAGE,
+        msg                = invaderXim.msg.basic.ADD_EFFECT_DMG,
+        negMsg             = invaderXim.msg.basic.ADD_EFFECT_HEAL,
+        mod                = invaderXim.mod.INT,
         bonusAbilityParams = { bonusmab = 0, includemab = false },
     },
 
-    [xi.mob.ae.ENFIRE] =
+    [invaderXim.mob.ae.ENFIRE] =
     {
-        ele                = xi.element.FIRE,
-        sub                = xi.subEffect.FIRE_DAMAGE,
-        msg                = xi.msg.basic.ADD_EFFECT_DMG,
-        negMsg             = xi.msg.basic.ADD_EFFECT_HEAL,
-        mod                = xi.mod.INT,
+        ele                = invaderXim.element.FIRE,
+        sub                = invaderXim.subEffect.FIRE_DAMAGE,
+        msg                = invaderXim.msg.basic.ADD_EFFECT_DMG,
+        negMsg             = invaderXim.msg.basic.ADD_EFFECT_HEAL,
+        mod                = invaderXim.mod.INT,
         bonusAbilityParams = { bonusmab = 0, includemab = false },
     },
 
-    [xi.mob.ae.ENLIGHT] =
+    [invaderXim.mob.ae.ENLIGHT] =
     {
-        ele                = xi.element.LIGHT,
-        sub                = xi.subEffect.LIGHT_DAMAGE,
-        msg                = xi.msg.basic.ADD_EFFECT_DMG,
-        negMsg             = xi.msg.basic.ADD_EFFECT_HEAL,
-        mod                = xi.mod.INT,
+        ele                = invaderXim.element.LIGHT,
+        sub                = invaderXim.subEffect.LIGHT_DAMAGE,
+        msg                = invaderXim.msg.basic.ADD_EFFECT_DMG,
+        negMsg             = invaderXim.msg.basic.ADD_EFFECT_HEAL,
+        mod                = invaderXim.mod.INT,
         bonusAbilityParams = { bonusmab = 0, includemab = false },
     },
 
-    [xi.mob.ae.ENSTONE] =
+    [invaderXim.mob.ae.ENSTONE] =
     {
-        ele                = xi.element.EARTH,
-        sub                = xi.subEffect.EARTH_DAMAGE,
-        msg                = xi.msg.basic.ADD_EFFECT_DMG,
-        negMsg             = xi.msg.basic.ADD_EFFECT_HEAL,
-        mod                = xi.mod.INT,
+        ele                = invaderXim.element.EARTH,
+        sub                = invaderXim.subEffect.EARTH_DAMAGE,
+        msg                = invaderXim.msg.basic.ADD_EFFECT_DMG,
+        negMsg             = invaderXim.msg.basic.ADD_EFFECT_HEAL,
+        mod                = invaderXim.mod.INT,
         bonusAbilityParams = { bonusmab = 0, includemab = false },
     },
 
-    [xi.mob.ae.ENTHUNDER] =
+    [invaderXim.mob.ae.ENTHUNDER] =
     {
-        ele                = xi.element.THUNDER,
-        sub                = xi.subEffect.LIGHTNING_DAMAGE,
-        msg                = xi.msg.basic.ADD_EFFECT_DMG,
-        negMsg             = xi.msg.basic.ADD_EFFECT_HEAL,
-        mod                = xi.mod.INT,
+        ele                = invaderXim.element.THUNDER,
+        sub                = invaderXim.subEffect.LIGHTNING_DAMAGE,
+        msg                = invaderXim.msg.basic.ADD_EFFECT_DMG,
+        negMsg             = invaderXim.msg.basic.ADD_EFFECT_HEAL,
+        mod                = invaderXim.mod.INT,
         bonusAbilityParams = { bonusmab = 0, includemab = false },
     },
 
-    [xi.mob.ae.ENWATER] =
+    [invaderXim.mob.ae.ENWATER] =
     {
-        ele                = xi.element.WATER,
-        sub                = xi.subEffect.WATER_DAMAGE,
-        msg                = xi.msg.basic.ADD_EFFECT_DMG,
-        negMsg             = xi.msg.basic.ADD_EFFECT_HEAL,
-        mod                = xi.mod.INT,
+        ele                = invaderXim.element.WATER,
+        sub                = invaderXim.subEffect.WATER_DAMAGE,
+        msg                = invaderXim.msg.basic.ADD_EFFECT_DMG,
+        negMsg             = invaderXim.msg.basic.ADD_EFFECT_HEAL,
+        mod                = invaderXim.mod.INT,
         bonusAbilityParams = { bonusmab = 0, includemab = false },
     },
 
-    [xi.mob.ae.EVA_DOWN] =
+    [invaderXim.mob.ae.EVA_DOWN] =
     {
         chance      = 25,
-        ele         = xi.element.ICE,
-        sub         = xi.subEffect.EVASION_DOWN,
-        msg         = xi.msg.basic.ADD_EFFECT_STATUS,
+        ele         = invaderXim.element.ICE,
+        sub         = invaderXim.subEffect.EVASION_DOWN,
+        msg         = invaderXim.msg.basic.ADD_EFFECT_STATUS,
         applyEffect = true,
-        eff         = xi.effect.EVASION_DOWN,
+        eff         = invaderXim.effect.EVASION_DOWN,
         power       = 25,
         duration    = 30,
         minDuration = 1,
         maxDuration = 60,
     },
 
-    [xi.mob.ae.HP_DRAIN] =
+    [invaderXim.mob.ae.HP_DRAIN] =
     {
         chance             = 10,
-        ele                = xi.element.DARK,
-        sub                = xi.subEffect.HP_DRAIN,
-        msg                = xi.msg.basic.ADD_EFFECT_HP_DRAIN,
-        mod                = xi.mod.INT,
+        ele                = invaderXim.element.DARK,
+        sub                = invaderXim.subEffect.HP_DRAIN,
+        msg                = invaderXim.msg.basic.ADD_EFFECT_HP_DRAIN,
+        mod                = invaderXim.mod.INT,
         bonusAbilityParams = { bonusmab = 0, includemab = false },
         code               = function(mob, target, power)
             mob:addHP(power)
         end,
     },
 
-    [xi.mob.ae.MP_DRAIN] =
+    [invaderXim.mob.ae.MP_DRAIN] =
     {
         chance             = 10,
-        ele                = xi.element.DARK,
-        sub                = xi.subEffect.MP_DRAIN,
-        msg                = xi.msg.basic.ADD_EFFECT_MP_DRAIN,
-        mod                = xi.mod.INT,
+        ele                = invaderXim.element.DARK,
+        sub                = invaderXim.subEffect.MP_DRAIN,
+        msg                = invaderXim.msg.basic.ADD_EFFECT_MP_DRAIN,
+        mod                = invaderXim.mod.INT,
         bonusAbilityParams = { bonusmab = 0, includemab = false },
         code               = function(mob, target, power)
             local mp = math.min(power, target:getMP())
@@ -356,56 +356,56 @@ local additionalEffects =
         end,
     },
 
-    [xi.mob.ae.PARALYZE] =
+    [invaderXim.mob.ae.PARALYZE] =
     {
         chance      = 25,
-        ele         = xi.element.ICE,
-        sub         = xi.subEffect.PARALYSIS,
-        msg         = xi.msg.basic.ADD_EFFECT_STATUS,
+        ele         = invaderXim.element.ICE,
+        sub         = invaderXim.subEffect.PARALYSIS,
+        msg         = invaderXim.msg.basic.ADD_EFFECT_STATUS,
         applyEffect = true,
-        eff         = xi.effect.PARALYSIS,
+        eff         = invaderXim.effect.PARALYSIS,
         power       = 20,
         duration    = 30,
         minDuration = 1,
         maxDuration = 60,
     },
 
-    [xi.mob.ae.PETRIFY] =
+    [invaderXim.mob.ae.PETRIFY] =
     {
         chance      = 20,
-        ele         = xi.element.EARTH,
-        sub         = xi.subEffect.PETRIFY,
-        msg         = xi.msg.basic.ADD_EFFECT_STATUS,
+        ele         = invaderXim.element.EARTH,
+        sub         = invaderXim.subEffect.PETRIFY,
+        msg         = invaderXim.msg.basic.ADD_EFFECT_STATUS,
         applyEffect = true,
-        eff         = xi.effect.PETRIFICATION,
+        eff         = invaderXim.effect.PETRIFICATION,
         power       = 1,
         duration    = 30,
         minDuration = 1,
         maxDuration = 45,
     },
 
-    [xi.mob.ae.PLAGUE] =
+    [invaderXim.mob.ae.PLAGUE] =
     {
         chance      = 25,
-        ele         = xi.element.WATER,
-        sub         = xi.subEffect.PLAGUE,
-        msg         = xi.msg.basic.ADD_EFFECT_STATUS,
+        ele         = invaderXim.element.WATER,
+        sub         = invaderXim.subEffect.PLAGUE,
+        msg         = invaderXim.msg.basic.ADD_EFFECT_STATUS,
         applyEffect = true,
-        eff         = xi.effect.PLAGUE,
+        eff         = invaderXim.effect.PLAGUE,
         power       = 1,
         duration    = 60,
         minDuration = 1,
         maxDuration = 60,
     },
 
-    [xi.mob.ae.POISON] =
+    [invaderXim.mob.ae.POISON] =
     {
         chance      = 25,
-        ele         = xi.element.WATER,
-        sub         = xi.subEffect.POISON,
-        msg         = xi.msg.basic.ADD_EFFECT_STATUS,
+        ele         = invaderXim.element.WATER,
+        sub         = invaderXim.subEffect.POISON,
+        msg         = invaderXim.msg.basic.ADD_EFFECT_STATUS,
         applyEffect = true,
-        eff         = xi.effect.POISON,
+        eff         = invaderXim.effect.POISON,
         power       = 1,
         duration    = 30,
         minDuration = 1,
@@ -413,79 +413,79 @@ local additionalEffects =
         tick        = 3,
     },
 
-    [xi.mob.ae.SILENCE] =
+    [invaderXim.mob.ae.SILENCE] =
     {
         chance      = 25,
-        ele         = xi.element.WIND,
-        sub         = xi.subEffect.SILENCE,
-        msg         = xi.msg.basic.ADD_EFFECT_STATUS,
+        ele         = invaderXim.element.WIND,
+        sub         = invaderXim.subEffect.SILENCE,
+        msg         = invaderXim.msg.basic.ADD_EFFECT_STATUS,
         applyEffect = true,
-        eff         = xi.effect.SILENCE,
+        eff         = invaderXim.effect.SILENCE,
         power       = 1,
         duration    = 30,
         minDuration = 1,
         maxDuration = 30,
     },
 
-    [xi.mob.ae.ENAMNESIA] =
+    [invaderXim.mob.ae.ENAMNESIA] =
     {
         chance      = 25,
-        ele         = xi.element.FIRE,
-        sub         = xi.subEffect.AMNESIA,
-        msg         = xi.msg.basic.ADD_EFFECT_STATUS,
+        ele         = invaderXim.element.FIRE,
+        sub         = invaderXim.subEffect.AMNESIA,
+        msg         = invaderXim.msg.basic.ADD_EFFECT_STATUS,
         applyEffect = true,
-        eff         = xi.effect.AMNESIA,
+        eff         = invaderXim.effect.AMNESIA,
         power       = 1,
         duration    = 30,
         minDuration = 1,
         maxDuration = 30,
     },
 
-    [xi.mob.ae.SLOW] =
+    [invaderXim.mob.ae.SLOW] =
     {
         chance      = 25,
-        ele         = xi.element.EARTH,
-        sub         = xi.subEffect.DEFENSE_DOWN,
-        msg         = xi.msg.basic.ADD_EFFECT_STATUS,
+        ele         = invaderXim.element.EARTH,
+        sub         = invaderXim.subEffect.DEFENSE_DOWN,
+        msg         = invaderXim.msg.basic.ADD_EFFECT_STATUS,
         applyEffect = true,
-        eff         = xi.effect.SLOW,
+        eff         = invaderXim.effect.SLOW,
         power       = 1000,
         duration    = 30,
         minDuration = 1,
         maxDuration = 45,
     },
 
-    [xi.mob.ae.STUN] =
+    [invaderXim.mob.ae.STUN] =
     {
         chance      = 20,
-        ele         = xi.element.THUNDER,
-        sub         = xi.subEffect.STUN,
-        msg         = xi.msg.basic.ADD_EFFECT_STATUS,
+        ele         = invaderXim.element.THUNDER,
+        sub         = invaderXim.subEffect.STUN,
+        msg         = invaderXim.msg.basic.ADD_EFFECT_STATUS,
         applyEffect = true,
-        eff         = xi.effect.STUN,
+        eff         = invaderXim.effect.STUN,
         duration    = 5,
     },
 
-    [xi.mob.ae.TERROR] =
+    [invaderXim.mob.ae.TERROR] =
     {
         chance = 20,
-        sub         = xi.subEffect.PARALYSIS,
-        msg         = xi.msg.basic.ADD_EFFECT_STATUS,
+        sub         = invaderXim.subEffect.PARALYSIS,
+        msg         = invaderXim.msg.basic.ADD_EFFECT_STATUS,
         applyEffect = true,
-        eff         = xi.effect.TERROR,
+        eff         = invaderXim.effect.TERROR,
         duration    = 5,
         code        = function(mob, target, power)
             mob:resetEnmity(target)
         end,
     },
 
-    [xi.mob.ae.TP_DRAIN] =
+    [invaderXim.mob.ae.TP_DRAIN] =
     {
         chance             = 25,
-        ele                = xi.element.DARK,
-        sub                = xi.subEffect.TP_DRAIN,
-        msg                = xi.msg.basic.ADD_EFFECT_TP_DRAIN,
-        mod                = xi.mod.INT,
+        ele                = invaderXim.element.DARK,
+        sub                = invaderXim.subEffect.TP_DRAIN,
+        msg                = invaderXim.msg.basic.ADD_EFFECT_TP_DRAIN,
+        mod                = invaderXim.mod.INT,
         bonusAbilityParams = { bonusmab = 0, includemab = false },
         code               = function(mob, target, power)
             local tp = math.min(power, target:getTP())
@@ -494,14 +494,14 @@ local additionalEffects =
         end,
     },
 
-    [xi.mob.ae.WEIGHT] =
+    [invaderXim.mob.ae.WEIGHT] =
     {
         chance      = 25,
-        ele         = xi.element.WIND,
-        sub         = xi.subEffect.BLIND, -- TODO
-        msg         = xi.msg.basic.ADD_EFFECT_STATUS,
+        ele         = invaderXim.element.WIND,
+        sub         = invaderXim.subEffect.BLIND, -- TODO
+        msg         = invaderXim.msg.basic.ADD_EFFECT_STATUS,
         applyEffect = true,
-        eff         = xi.effect.WEIGHT,
+        eff         = invaderXim.effect.WEIGHT,
         power       = 1,
         duration    = 30,
         minDuration = 1,
@@ -511,7 +511,7 @@ local additionalEffects =
 
 --[[
     mob, target, and damage are passed from core into mob script's onAdditionalEffect
-    effect should be of type xi.mob.additionalEffect (see above)
+    effect should be of type invaderXim.mob.additionalEffect (see above)
     params is a table that can contain any of:
         chance: percent chance that effect procs on hit (default 20)
         power: power of effect
@@ -519,7 +519,7 @@ local additionalEffects =
         code: additional code that will run when effect procs, of form function(mob, target, power)
     params will override effect's default settings
 --]]
-xi.mob.onAddEffect = function(mob, target, damage, effect, params)
+invaderXim.mob.onAddEffect = function(mob, target, damage, effect, params)
     if type(params) ~= 'table' then
         params = {}
     end
@@ -590,9 +590,9 @@ xi.mob.onAddEffect = function(mob, target, damage, effect, params)
 
                 power = addBonusesAbility(mob, ae.ele, target, power, ae.bonusAbilityParams)
                 power = power * applyResistanceAddEffect(mob, target, ae.ele, 0)
-                power = power * xi.spells.damage.calculateNukeAbsorbOrNullify(target, ae.ele)
+                power = power * invaderXim.spells.damage.calculateNukeAbsorbOrNullify(target, ae.ele)
 
-                if ae.sub ~= xi.subEffect.TP_DRAIN and ae.sub ~= xi.subEffect.MP_DRAIN then
+                if ae.sub ~= invaderXim.subEffect.TP_DRAIN and ae.sub ~= invaderXim.subEffect.MP_DRAIN then
                     power = finalMagicNonSpellAdjustments(mob, target, ae.ele, power)
                 end
 
@@ -630,7 +630,7 @@ end
 -- mob difficulty enums for checkDifficulty()
 -----------------------------------
 
-xi.mob.difficulty =
+invaderXim.mob.difficulty =
 {
     TOO_WEAK             = 0,
     INCREDIBLY_EASY_PREY = 1,
@@ -642,4 +642,4 @@ xi.mob.difficulty =
     INCREDIBLY_TOUGH     = 7,
     MAX                  = 8,
 }
-xi.mob.diff = xi.mob.difficulty
+invaderXim.mob.diff = invaderXim.mob.difficulty

@@ -4,24 +4,24 @@
 -- Log ID: 3, Quest ID: 137
 -- Nomad Moogle : !pos 10.012 1.453 121.883 243
 -----------------------------------
-local ruludeID = zones[xi.zone.RULUDE_GARDENS]
+local ruludeID = zones[invaderXim.zone.RULUDE_GARDENS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.BEYOND_INFINITY)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.BEYOND_INFINITY)
 
 quest.reward =
 {
     fame = 50,
-    fameArea = xi.fameArea.JEUNO,
-    title = xi.title.BUSHIN_ASPIRANT,
+    fameArea = invaderXim.fameArea.JEUNO,
+    title = invaderXim.title.BUSHIN_ASPIRANT,
 }
 
 local atoriBattlefieldIds =
 {
-    [xi.zone.BALGAS_DAIS]      = xi.battlefield.id.BEYOND_INFINITY_BALGAS_DAIS,
-    [xi.zone.HORLAIS_PEAK]     = xi.battlefield.id.BEYOND_INFINITY_HORLAIS_PEAK,
-    [xi.zone.QUBIA_ARENA]      = xi.battlefield.id.BEYOND_INFINITY,
-    [xi.zone.WAUGHROON_SHRINE] = xi.battlefield.id.BEYOND_INFINITY_WAUGHROON_SHRINE,
+    [invaderXim.zone.BALGAS_DAIS]      = invaderXim.battlefield.id.BEYOND_INFINITY_BALGAS_DAIS,
+    [invaderXim.zone.HORLAIS_PEAK]     = invaderXim.battlefield.id.BEYOND_INFINITY_HORLAIS_PEAK,
+    [invaderXim.zone.QUBIA_ARENA]      = invaderXim.battlefield.id.BEYOND_INFINITY,
+    [invaderXim.zone.WAUGHROON_SHRINE] = invaderXim.battlefield.id.BEYOND_INFINITY_WAUGHROON_SHRINE,
 }
 
 local atoriBattlefieldZone =
@@ -32,7 +32,7 @@ local atoriBattlefieldZone =
             local battlefieldWin = player:getLocalVar('battlefieldWin')
 
             if battlefieldWin == atoriBattlefieldIds[player:getZoneID()] then
-                npcUtil.giveItem(player, xi.item.SCROLL_OF_INSTANT_WARP)
+                npcUtil.giveItem(player, invaderXim.item.SCROLL_OF_INSTANT_WARP)
                 quest:setVar(player, 'Prog', 1)
             end
         end,
@@ -46,11 +46,11 @@ quest.sections =
     -- In most cases, the quest will already be accepted.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.PRELUDE_TO_PUISSANCE)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.PRELUDE_TO_PUISSANCE)
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Nomad_Moogle'] =
             {
@@ -75,13 +75,13 @@ quest.sections =
 
                     -- This options also warp you to a BCNM. Note that the quest "Beyond Infinity" is already activated.
                     if option == 14 then
-                        player:setPos(-511.459, 159.004, -210.543, 10, xi.zone.HORLAIS_PEAK)
+                        player:setPos(-511.459, 159.004, -210.543, 10, invaderXim.zone.HORLAIS_PEAK)
                     elseif option == 19 then
-                        player:setPos(-349.899, 104.213, -260.150, 0, xi.zone.WAUGHROON_SHRINE)
+                        player:setPos(-349.899, 104.213, -260.150, 0, invaderXim.zone.WAUGHROON_SHRINE)
                     elseif option == 20 then
-                        player:setPos(299.316, -123.591, 353.760, 66, xi.zone.BALGAS_DAIS)
+                        player:setPos(299.316, -123.591, 353.760, 66, invaderXim.zone.BALGAS_DAIS)
                     elseif option == 21 then
-                        player:setPos(-225.146, -24.250, 20.057, 255, xi.zone.QUBIA_ARENA)
+                        player:setPos(-225.146, -24.250, 20.057, 255, invaderXim.zone.QUBIA_ARENA)
                     end
                 end,
             },
@@ -91,11 +91,11 @@ quest.sections =
     -- Section: Quest accepted.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 0 and
-                player:hasKeyItem(xi.ki.SOUL_GEM_CLASP)
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 0 and
+                player:hasKeyItem(invaderXim.ki.SOUL_GEM_CLASP)
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Nomad_Moogle'] =
             {
@@ -115,13 +115,13 @@ quest.sections =
             {
                 [10045] = function(player, csid, option, npc)
                     if option == 16 then
-                        player:setPos(-511.459, 159.004, -210.543, 10, xi.zone.HORLAIS_PEAK)
+                        player:setPos(-511.459, 159.004, -210.543, 10, invaderXim.zone.HORLAIS_PEAK)
                     elseif option == 22 then
-                        player:setPos(-349.899, 104.213, -260.150, 0, xi.zone.WAUGHROON_SHRINE)
+                        player:setPos(-349.899, 104.213, -260.150, 0, invaderXim.zone.WAUGHROON_SHRINE)
                     elseif option == 23 then
-                        player:setPos(299.316, -123.591, 353.760, 66, xi.zone.BALGAS_DAIS)
+                        player:setPos(299.316, -123.591, 353.760, 66, invaderXim.zone.BALGAS_DAIS)
                     elseif option == 24 then
-                        player:setPos(-225.146, -24.250, 20.057, 255, xi.zone.QUBIA_ARENA)
+                        player:setPos(-225.146, -24.250, 20.057, 255, invaderXim.zone.QUBIA_ARENA)
                     end
                 end,
             },
@@ -132,24 +132,24 @@ quest.sections =
     -- after.  Separate section to not confuse with the failed event.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 0
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 0
         end,
 
-        [xi.zone.BALGAS_DAIS]      = atoriBattlefieldZone,
-        [xi.zone.HORLAIS_PEAK]     = atoriBattlefieldZone,
-        [xi.zone.QUBIA_ARENA]      = atoriBattlefieldZone,
-        [xi.zone.WAUGHROON_SHRINE] = atoriBattlefieldZone,
+        [invaderXim.zone.BALGAS_DAIS]      = atoriBattlefieldZone,
+        [invaderXim.zone.HORLAIS_PEAK]     = atoriBattlefieldZone,
+        [invaderXim.zone.QUBIA_ARENA]      = atoriBattlefieldZone,
+        [invaderXim.zone.WAUGHROON_SHRINE] = atoriBattlefieldZone,
     },
 
     -- Section: Quest accepted. We failed BCNM.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
                 vars.Prog == 0 and
-                not player:hasKeyItem(xi.ki.SOUL_GEM_CLASP)
+                not player:hasKeyItem(invaderXim.ki.SOUL_GEM_CLASP)
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Nomad_Moogle'] =
             {
@@ -162,7 +162,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.HIGH_KINDREDS_CREST, 5 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.HIGH_KINDREDS_CREST, 5 } }) then
                         return quest:progressEvent(10195, 1)
                     end
                 end,
@@ -185,32 +185,32 @@ quest.sections =
             {
                 [10045] = function(player, csid, option, npc)
                     if option ~= 0 then
-                        npcUtil.giveKeyItem(player, xi.ki.SOUL_GEM_CLASP)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.SOUL_GEM_CLASP)
                     end
 
                     if option == 17 then
-                        player:setPos(-511.459, 159.004, -210.543, 10, xi.zone.HORLAIS_PEAK)
+                        player:setPos(-511.459, 159.004, -210.543, 10, invaderXim.zone.HORLAIS_PEAK)
                     elseif option == 25 then
-                        player:setPos(-349.899, 104.213, -260.150, 0, xi.zone.WAUGHROON_SHRINE)
+                        player:setPos(-349.899, 104.213, -260.150, 0, invaderXim.zone.WAUGHROON_SHRINE)
                     elseif option == 26 then
-                        player:setPos(299.316, -123.591, 353.760, 66, xi.zone.BALGAS_DAIS)
+                        player:setPos(299.316, -123.591, 353.760, 66, invaderXim.zone.BALGAS_DAIS)
                     elseif option == 27 then
-                        player:setPos(-225.146, -24.250, 20.057, 255, xi.zone.QUBIA_ARENA)
+                        player:setPos(-225.146, -24.250, 20.057, 255, invaderXim.zone.QUBIA_ARENA)
                     end
                 end,
 
                 [10195] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    npcUtil.giveKeyItem(player, xi.ki.SOUL_GEM_CLASP)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.SOUL_GEM_CLASP)
 
                     if option == 16 then
-                        player:setPos(-511.459, 159.004, -210.543, 10, xi.zone.HORLAIS_PEAK)
+                        player:setPos(-511.459, 159.004, -210.543, 10, invaderXim.zone.HORLAIS_PEAK)
                     elseif option == 22 then
-                        player:setPos(-349.899, 104.213, -260.150, 0, xi.zone.WAUGHROON_SHRINE)
+                        player:setPos(-349.899, 104.213, -260.150, 0, invaderXim.zone.WAUGHROON_SHRINE)
                     elseif option == 23 then
-                        player:setPos(299.316, -123.591, 353.760, 66, xi.zone.BALGAS_DAIS)
+                        player:setPos(299.316, -123.591, 353.760, 66, invaderXim.zone.BALGAS_DAIS)
                     elseif option == 24 then
-                        player:setPos(-225.146, -24.250, 20.057, 255, xi.zone.QUBIA_ARENA)
+                        player:setPos(-225.146, -24.250, 20.057, 255, invaderXim.zone.QUBIA_ARENA)
                     end
                 end,
             },
@@ -220,11 +220,11 @@ quest.sections =
     -- Section: Quest accepted. We beated the BCNM.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
                 vars.Prog == 1
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Nomad_Moogle'] =
             {
@@ -248,17 +248,17 @@ quest.sections =
     -- Section: Quest completed.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Nomad_Moogle'] =
             {
                 onTrigger = function(player, npc)
                     if
                         player:getMainLvl() >= 99 and
-                        not player:hasKeyItem(xi.ki.JOB_BREAKER)
+                        not player:hasKeyItem(invaderXim.ki.JOB_BREAKER)
                     then
                         return quest:progressEvent(10240, 0, 0, 0, 0)
                     else
@@ -271,7 +271,7 @@ quest.sections =
             {
                 [10240] = function(player, csid, option, npc)
                     if option == 28 then
-                        npcUtil.giveKeyItem(player, xi.ki.JOB_BREAKER)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.JOB_BREAKER)
                     end
                 end,
             },

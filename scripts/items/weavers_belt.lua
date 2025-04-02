@@ -13,7 +13,7 @@ local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
     local result = 0
-    if target:hasStatusEffect(xi.effect.CLOTHCRAFT_IMAGERY) then
+    if target:hasStatusEffect(invaderXim.effect.CLOTHCRAFT_IMAGERY) then
         result = 239
     end
 
@@ -21,15 +21,15 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffect(xi.effect.CLOTHCRAFT_IMAGERY, 3, 0, 480)
+    target:addStatusEffect(invaderXim.effect.CLOTHCRAFT_IMAGERY, 3, 0, 480)
 end
 
 itemObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.CLOTH, 1)
+    target:addMod(invaderXim.mod.CLOTH, 1)
 end
 
 itemObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.CLOTH, 1)
+    target:delMod(invaderXim.mod.CLOTH, 1)
 end
 
 return itemObject

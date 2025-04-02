@@ -2,7 +2,7 @@
 -- Area: Nyzul Isle (Path of Darkness)
 --  Mob: Imperial Gear
 -----------------------------------
-local ID = zones[xi.zone.NYZUL_ISLE]
+local ID = zones[invaderXim.zone.NYZUL_ISLE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

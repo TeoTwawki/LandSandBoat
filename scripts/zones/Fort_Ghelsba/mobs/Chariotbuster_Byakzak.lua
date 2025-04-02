@@ -3,13 +3,13 @@
 --   NM: Chariotbuster Byakzak
 -----------------------------------
 mixins = { require('scripts/mixins/job_special') }
-local ID = zones[xi.zone.FORT_GHELSBA]
+local ID = zones[invaderXim.zone.FORT_GHEIXIMA]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 174)
+    invaderXim.hunts.checkHunt(mob, player, 174)
 end
 
 entity.onMobDespawn = function(mob)

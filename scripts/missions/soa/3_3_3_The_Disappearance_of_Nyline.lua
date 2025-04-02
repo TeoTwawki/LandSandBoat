@@ -7,11 +7,11 @@
 -- Boarding House : !pos -41.693 -0.15 -38.29 257
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.THE_DISAPPEARANCE_OF_NYLINE)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_DISAPPEARANCE_OF_NYLINE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.SHARED_CONSCIOUSNESS },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.SHARED_CONSCIOUSNESS },
 }
 
 mission.sections =
@@ -21,12 +21,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(141),
         },
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Door_Boarding_House'] =
             {
@@ -45,7 +45,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.FORET_DE_HENNETIEL] =
+        [invaderXim.zone.FORET_DE_HENNETIEL] =
         {
             onTriggerAreaEnter =
             {

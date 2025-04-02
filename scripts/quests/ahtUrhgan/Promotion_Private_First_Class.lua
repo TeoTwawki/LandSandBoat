@@ -4,21 +4,21 @@
 -- Naja Salaheem !pos 26 -8 -45.5 50
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.PROMOTION_PRIVATE_FIRST_CLASS)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.PROMOTION_PRIVATE_FIRST_CLASS)
 
 quest.reward =
 {
-    keyItem = xi.ki.PFC_WILDCAT_BADGE,
+    keyItem = invaderXim.ki.PFC_WILDCAT_BADGE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and player:getCharVar('AssaultPromotion') >= 25
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and player:getCharVar('AssaultPromotion') >= 25
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = quest:progressEvent(5000, { text_table = 0 }),
 
@@ -32,10 +32,10 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] =
             {
@@ -44,7 +44,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.IMP_WING) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.IMP_WING) then
                         return quest:progressEvent(5002, { text_table = 0 })
                     end
                 end,
@@ -56,7 +56,7 @@ quest.sections =
                     if quest:complete(player) then
                         player:setCharVar('AssaultPromotion', 0)
                         player:confirmTrade()
-                        player:delKeyItem(xi.ki.PSC_WILDCAT_BADGE)
+                        player:delKeyItem(invaderXim.ki.PSC_WILDCAT_BADGE)
                     end
                 end,
             },

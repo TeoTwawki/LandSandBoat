@@ -7,11 +7,11 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.salvage.onCellItemCheck(target, xi.effect.ENCUMBRANCE_I, 0x000C)
+    return invaderXim.salvage.onCellItemCheck(target, invaderXim.effect.ENCUMBRANCE_I, 0x000C)
 end
 
 itemObject.onItemUse = function(target)
-    return xi.salvage.onCellItemUse(target, xi.effect.ENCUMBRANCE_I, 0x000C, 6)
+    return invaderXim.salvage.onCellItemUse(target, invaderXim.effect.ENCUMBRANCE_I, 0x000C, 6)
 end
 
 return itemObject

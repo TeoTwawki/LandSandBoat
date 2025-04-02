@@ -2,7 +2,7 @@
 -- Area: Bearclaw Pinnacle
 --  Mob: Snoll Tzar
 -----------------------------------
-local ID = zones[xi.zone.BEARCLAW_PINNACLE]
+local ID = zones[invaderXim.zone.BEARCLAW_PINNACLE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

@@ -8,17 +8,17 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
 end
 
 entity.onMobSpawn = function(mob)
-    if VanadielDayOfTheWeek() == xi.day.WATERSDAY then
-        mob:setMod(xi.mod.REGEN, 6)
+    if VanadielDayOfTheWeek() == invaderXim.day.WATERSDAY then
+        mob:setMod(invaderXim.mod.REGEN, 6)
     end
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.HP_DRAIN)
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.HP_DRAIN)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

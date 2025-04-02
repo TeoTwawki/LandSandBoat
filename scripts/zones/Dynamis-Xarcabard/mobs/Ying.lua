@@ -2,7 +2,7 @@
 -- Area: Dynamis - Xarcabard
 --   NM: Ying
 -----------------------------------
-local ID = zones[xi.zone.DYNAMIS_XARCABARD]
+local ID = zones[invaderXim.zone.DYNAMIS_XARCABARD]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -18,8 +18,8 @@ entity.onMobSpawn = function(mob)
         dynaLord:getLocalVar('magImmune') < 2
     then
         -- both dragons have not been killed initially
-        dynaLord:setMod(xi.mod.UDMGMAGIC, -10000)
-        dynaLord:setMod(xi.mod.UDMGBREATH, -10000)
+        dynaLord:setMod(invaderXim.mod.UDMGMAGIC, -10000)
+        dynaLord:setMod(invaderXim.mod.UDMGBREATH, -10000)
         dynaLord:setLocalVar('magImmune', 0)
         mob:setSpawn(-364, -35.661, 17.254) -- Reset Ying's spawn point to initial spot.
     else
@@ -34,7 +34,7 @@ entity.onMobFight = function(mob, target)
 
     if
         yang and
-        yang:getCurrentAction() == xi.act.NONE and
+        yang:getCurrentAction() == invaderXim.act.NONE and
         os.time() > yangToD + 30
     then
         yang:setSpawn(mob:getXPos(), mob:getYPos(), mob:getZPos())
@@ -59,8 +59,8 @@ entity.onMobDespawn = function(mob)
         dynaLord and
         dynaLord:getLocalVar('magImmune') == 0
     then
-        dynaLord:setMod(xi.mod.UDMGMAGIC, 0)
-        dynaLord:setMod(xi.mod.UDMGBREATH, 0)
+        dynaLord:setMod(invaderXim.mod.UDMGMAGIC, 0)
+        dynaLord:setMod(invaderXim.mod.UDMGBREATH, 0)
         if dynaLord:getLocalVar('physImmune') == 1 then -- other dragon is also dead
             dynaLord:setLocalVar('physImmune', 2)
             dynaLord:setLocalVar('magImmune', 2)

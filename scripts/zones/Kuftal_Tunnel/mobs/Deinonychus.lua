@@ -4,7 +4,7 @@
 -- Note: Place Holder for Yowie
 -- TODO: Yowie PHs should be in a spawn group
 -----------------------------------
-local ID = zones[xi.zone.KUFTAL_TUNNEL]
+local ID = zones[invaderXim.zone.KUFTAL_TUNNEL]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -70,13 +70,13 @@ local yowiePHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 740, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 740, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
     local params = {}
     params.spawnPoints = yowieSpawnPoints
-    xi.mob.phOnDespawn(mob, yowiePHTable, 5, 7200, params) -- 2 hours
+    invaderXim.mob.phOnDespawn(mob, yowiePHTable, 5, 7200, params) -- 2 hours
 end
 
 return entity

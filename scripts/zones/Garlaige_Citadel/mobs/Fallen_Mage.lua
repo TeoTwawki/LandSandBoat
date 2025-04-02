@@ -3,7 +3,7 @@
 --  Mob: Fallen Mage
 -- Note: Place holder Hovering Hotpot
 -----------------------------------
-local ID = zones[xi.zone.GARLAIGE_CITADEL]
+local ID = zones[invaderXim.zone.GARLAIGE_CITADEL]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -14,11 +14,11 @@ local hotpotPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 703, 2, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 703, 2, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, hotpotPHTable, 20, math.random(1800, 3600)) -- 30 to 60 minutes
+    invaderXim.mob.phOnDespawn(mob, hotpotPHTable, 20, math.random(1800, 3600)) -- 30 to 60 minutes
 end
 
 return entity

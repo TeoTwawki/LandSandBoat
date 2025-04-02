@@ -15,12 +15,12 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local power = 10
     local duration = math.random(60, 180)
 
-    xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.PLAGUE, power, 0, duration)
-    xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.DEFENSE_DOWN, power, 0, duration)
+    invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.PLAGUE, power, 0, duration)
+    invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.DEFENSE_DOWN, power, 0, duration)
 
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.MAGIC_DEF_DOWN, power, 0, duration))
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.MAGIC_DEF_DOWN, power, 0, duration))
 
-    return xi.effect.MAGIC_DEF_DOWN
+    return invaderXim.effect.MAGIC_DEF_DOWN
 end
 
 return mobskillObject

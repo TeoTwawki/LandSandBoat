@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.VALKURM_DUNES] =
+zones[invaderXim.zone.VALKURM_DUNES] =
 {
     text =
     {
@@ -73,4 +73,4 @@ zones[xi.zone.VALKURM_DUNES] =
     },
 }
 
-return zones[xi.zone.VALKURM_DUNES]
+return zones[invaderXim.zone.VALKURM_DUNES]

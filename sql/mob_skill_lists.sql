@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `mob_skill_lists`
 --
 
-DROP TABLE IF EXISTS `mob_skill_lists`;
-CREATE TABLE IF NOT EXISTS `mob_skill_lists` (
+DROP TABLE IF IXIMSTS `mob_skill_lists`;
+CREATE TABLE IF NOT IXIMSTS `mob_skill_lists` (
   `skill_list_name` varchar(40) DEFAULT NULL,
   `skill_list_id` smallint(5) unsigned NOT NULL,
   `mob_skill_id` smallint(3) unsigned NOT NULL,
@@ -3159,7 +3159,7 @@ INSERT INTO `mob_skill_lists` VALUES ('Rakshas',926,273); -- Claw Cyclone
 -- INSERT INTO `mob_skill_lists` VALUES ('Rakshas',926,2207); -- Disorienting_Waul
 INSERT INTO `mob_skill_lists` VALUES ('Sedna',927,2437); -- Aqua_Blast
 INSERT INTO `mob_skill_lists` VALUES ('Sedna',927,2439); -- Hydro Wave
--- INSERT INTO `mob_skill_lists` VALUES ('Sedna',927,2439); -- Hydro Blast not in Topaz/Custom skill list http://ffxi.gamerescape.com/wiki/Hydro_Blast
+-- INSERT INTO `mob_skill_lists` VALUES ('Sedna',927,2439); -- Hydro Blast not in Topaz/Custom skill list http://ffinvaderXim.gamerescape.com/wiki/Hydro_Blast
 INSERT INTO `mob_skill_lists` VALUES ('Seps',928,1720); -- Wind Shear
 INSERT INTO `mob_skill_lists` VALUES ('Seps',928,1721); -- Obfuscate
 INSERT INTO `mob_skill_lists` VALUES ('Seps',928,1723); -- Ill Wind

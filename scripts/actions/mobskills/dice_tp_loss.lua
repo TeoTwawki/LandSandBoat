@@ -13,10 +13,10 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local reset = 0
     if target:getTP() == 0 then
-        skill:setMsg(xi.msg.basic.SKILL_NO_EFFECT) -- no effect
+        skill:setMsg(invaderXim.msg.basic.SKILL_NO_EFFECT) -- no effect
     else
         target:setTP(reset)
-        skill:setMsg(xi.msg.basic.TP_REDUCED)
+        skill:setMsg(invaderXim.msg.basic.TP_REDUCED)
     end
 
     return reset

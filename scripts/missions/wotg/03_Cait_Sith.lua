@@ -12,12 +12,12 @@
 require('scripts/missions/wotg/helpers')
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.CAIT_SITH)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.CAIT_SITH)
 
 mission.reward =
 {
-    title       = xi.title.CAIT_SITHS_ASSISTANT,
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.THE_QUEEN_OF_THE_DANCE },
+    title       = invaderXim.title.CAIT_SITHS_ASSISTANT,
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.THE_QUEEN_OF_THE_DANCE },
 }
 
 mission.sections =
@@ -25,13 +25,13 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
-                xi.wotg.helpers.meetsMission3Reqs(player)
+                invaderXim.wotg.helpers.meetsMission3Reqs(player)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             onZoneIn = function(player, prevZone)
-                if prevZone == xi.zone.EAST_RONFAURE_S then
+                if prevZone == invaderXim.zone.EAST_RONFAURE_S then
                     return 67
                 end
             end,
@@ -39,8 +39,8 @@ mission.sections =
             onEventFinish =
             {
                 [67] = function(player, csid, option, npc)
-                    if player:getCurrentMission(xi.mission.log_id.ROV) == xi.mission.id.rov.CAUTERIZE then
-                        npcUtil.giveKeyItem(player, xi.ki.LIGHTSWORM)
+                    if player:getCurrentMission(invaderXim.mission.log_id.ROV) == invaderXim.mission.id.rov.CAUTERIZE then
+                        npcUtil.giveKeyItem(player, invaderXim.ki.LIGHTSWORM)
                     end
 
                     mission:complete(player)

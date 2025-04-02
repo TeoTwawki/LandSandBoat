@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.DECOY_SHOT
+-- invaderXim.effect.DECOY_SHOT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

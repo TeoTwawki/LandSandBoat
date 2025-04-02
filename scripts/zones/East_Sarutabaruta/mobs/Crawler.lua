@@ -3,7 +3,7 @@
 --  Mob: Crawler
 -- Note: PH for Spiny Spipi
 -----------------------------------
-local ID = zones[xi.zone.EAST_SARUTABARUTA]
+local ID = zones[invaderXim.zone.EAST_SARUTABARUTA]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -14,12 +14,12 @@ local spinySpipiPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 92, 2, xi.regime.type.FIELDS)
-    xi.regime.checkRegime(player, mob, 93, 2, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 92, 2, invaderXim.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 93, 2, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, spinySpipiPHTable, 10, 2700) -- 45 minute minimum
+    invaderXim.mob.phOnDespawn(mob, spinySpipiPHTable, 10, 2700) -- 45 minute minimum
 end
 
 return entity

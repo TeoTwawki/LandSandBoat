@@ -6,11 +6,11 @@
 -- Bulwark Gate : !pos -447.174 -1.831 342.417 98
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.THE_SCENT_OF_BATTLE)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.THE_SCENT_OF_BATTLE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.ANOTHER_WORLD },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.ANOTHER_WORLD },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.SAUROMUGUE_CHAMPAIGN_S] =
+        [invaderXim.zone.SAUROMUGUE_CHAMPAIGN_S] =
         {
             ['Bulwark_Gate'] = mission:progressEvent(9, 98, 5, 0, 0, utils.MAX_UINT32 - 1611137536, utils.MAX_UINT32 - 41990201, 3, 1),
 

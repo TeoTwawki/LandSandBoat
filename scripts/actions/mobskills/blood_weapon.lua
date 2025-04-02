@@ -9,11 +9,11 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    xi.mobskills.mobBuffMove(mob, xi.effect.BLOOD_WEAPON, 1, 0, 30)
+    invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.BLOOD_WEAPON, 1, 0, 30)
 
-    skill:setMsg(xi.msg.basic.USES)
+    skill:setMsg(invaderXim.msg.basic.USES)
 
-    return xi.effect.BLOOD_WEAPON
+    return invaderXim.effect.BLOOD_WEAPON
 end
 
 return mobskillObject

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.PRESTO
+-- invaderXim.effect.PRESTO
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

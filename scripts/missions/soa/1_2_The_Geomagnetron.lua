@@ -6,11 +6,11 @@
 -- Darcia : !pos -36 -1 -15 245
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.THE_GEOMAGNETRON)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_GEOMAGNETRON)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.ONWARD_TO_ADOULIN },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.ONWARD_TO_ADOULIN },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId and player:getCharVar('SOA') == 0
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Darcia'] =
             {
@@ -53,7 +53,7 @@ mission.sections =
                         -- Paid to skip ahead, handle this manually
                         mission:complete(player)
                         player:delGil(1000000)
-                        npcUtil.giveKeyItem(player, xi.ki.ADOULINIAN_CHARTER_PERMIT)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.ADOULINIAN_CHARTER_PERMIT)
                     end
                 end,
             }
@@ -66,7 +66,7 @@ mission.sections =
             return currentMission == mission.missionId and player:getCharVar('SOA') == 1
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Darcia'] =
             {
@@ -79,9 +79,9 @@ mission.sections =
             {
                 [10118] = function(player, csid, option, npc)
                     mission:complete(player)
-                    player:delKeyItem(xi.ki.GEOMAGNETRON)
-                    npcUtil.giveKeyItem(player, xi.ki.GEOMAGNETRON)
-                    npcUtil.giveKeyItem(player, xi.ki.ADOULINIAN_CHARTER_PERMIT)
+                    player:delKeyItem(invaderXim.ki.GEOMAGNETRON)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.GEOMAGNETRON)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ADOULINIAN_CHARTER_PERMIT)
                     player:setCharVar('SOA', 0)
                 end,
             },

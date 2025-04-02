@@ -8,21 +8,21 @@ g_mixins = g_mixins or {}
 g_mixins.dynamis_beastmen = function(dynamisBeastmenMob)
     local procjobs =
     {
-        [xi.job.WAR] = 'ws',
-        [xi.job.MNK] = 'ja',
-        [xi.job.WHM] = 'ma',
-        [xi.job.BLM] = 'ma',
-        [xi.job.RDM] = 'ma',
-        [xi.job.THF] = 'ja',
-        [xi.job.PLD] = 'ws',
-        [xi.job.DRK] = 'ws',
-        [xi.job.BST] = 'ja',
-        [xi.job.BRD] = 'ma',
-        [xi.job.RNG] = 'ja',
-        [xi.job.SAM] = 'ws',
-        [xi.job.NIN] = 'ja',
-        [xi.job.DRG] = 'ws',
-        [xi.job.SMN] = 'ma'
+        [invaderXim.job.WAR] = 'ws',
+        [invaderXim.job.MNK] = 'ja',
+        [invaderXim.job.WHM] = 'ma',
+        [invaderXim.job.BLM] = 'ma',
+        [invaderXim.job.RDM] = 'ma',
+        [invaderXim.job.THF] = 'ja',
+        [invaderXim.job.PLD] = 'ws',
+        [invaderXim.job.DRK] = 'ws',
+        [invaderXim.job.BST] = 'ja',
+        [invaderXim.job.BRD] = 'ma',
+        [invaderXim.job.RNG] = 'ja',
+        [invaderXim.job.SAM] = 'ws',
+        [invaderXim.job.NIN] = 'ja',
+        [invaderXim.job.DRG] = 'ws',
+        [invaderXim.job.SMN] = 'ma'
     }
 
     local familyCurrency =
@@ -50,7 +50,7 @@ g_mixins.dynamis_beastmen = function(dynamisBeastmenMob)
             math.random(0, 99) < 8 and
             target:getLocalVar('dynamis_proc') == 0
         then
-            xi.dynamis.procMonster(target, caster)
+            invaderXim.dynamis.procMonster(target, caster)
         end
     end)
 
@@ -60,7 +60,7 @@ g_mixins.dynamis_beastmen = function(dynamisBeastmenMob)
             math.random(0, 99) < 25 and
             target:getLocalVar('dynamis_proc') == 0
         then
-            xi.dynamis.procMonster(target, user)
+            invaderXim.dynamis.procMonster(target, user)
         end
     end)
 
@@ -70,7 +70,7 @@ g_mixins.dynamis_beastmen = function(dynamisBeastmenMob)
             math.random(0, 99) < 20 and
             mob:getLocalVar('dynamis_proc') == 0
         then
-            xi.dynamis.procMonster(mob, user)
+            invaderXim.dynamis.procMonster(mob, user)
         end
     end)
 

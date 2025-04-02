@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.PENNANT
+-- invaderXim.effect.PENNANT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -15,7 +15,7 @@ end
 
 effectObject.onEffectLose = function(target, effect)
     if target:getPet() then
-        target:getPet():delStatusEffect(xi.effect.PENNANT)
+        target:getPet():delStatusEffect(invaderXim.effect.PENNANT)
     end
 end
 

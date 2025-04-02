@@ -8,11 +8,11 @@
 require('scripts/missions/soa/helpers')
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.ARCIELA_APPEARS_AGAIN)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.ARCIELA_APPEARS_AGAIN)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.BUDDING_PROSPECTS },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.BUDDING_PROSPECTS },
 }
 
 mission.sections =
@@ -20,10 +20,10 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
-                xi.soa.helpers.imprimaturGate(player, 20)
+                invaderXim.soa.helpers.imprimaturGate(player, 20)
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] =
             {

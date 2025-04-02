@@ -9,26 +9,26 @@
 -- Cid            : !pos -12 -12 1 237
 -- Sueleen        : !pos 612 132 774 32
 -----------------------------------
-local carpentersID = zones[xi.zone.CARPENTERS_LANDING]
-local bibikiBayID  = zones[xi.zone.BIBIKI_BAY]
-local misareauxID  = zones[xi.zone.MISAREAUX_COAST]
+local carpentersID = zones[invaderXim.zone.CARPENTERS_LANDING]
+local bibikiBayID  = zones[invaderXim.zone.BIBIKI_BAY]
+local misareauxID  = zones[invaderXim.zone.MISAREAUX_COAST]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.CALM_BEFORE_THE_STORM)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.CALM_BEFORE_THE_STORM)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.THE_WARRIORS_PATH },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_WARRIORS_PATH },
 }
 
 local function setMissionStatusBit(player, statusBit)
-    local missionStatus = player:getMissionStatus(mission.areaId, xi.mission.status.COP.CID)
+    local missionStatus = player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.CID)
 
-    player:setMissionStatus(mission.areaId, utils.mask.setBit(missionStatus, statusBit, true), xi.mission.status.COP.CID)
+    player:setMissionStatus(mission.areaId, utils.mask.setBit(missionStatus, statusBit, true), invaderXim.mission.status.COP.CID)
 end
 
 local function getMissionStatusBit(player, statusBit)
-    local missionStatus = player:getMissionStatus(mission.areaId, xi.mission.status.COP.CID)
+    local missionStatus = player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.CID)
 
     return utils.mask.getBit(missionStatus, statusBit)
 end
@@ -50,7 +50,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BIBIKI_BAY] =
+        [invaderXim.zone.BIBIKI_BAY] =
         {
             ['qm_dalham'] =
             {
@@ -85,7 +85,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.CARPENTERS_LANDING] =
+        [invaderXim.zone.CARPENTERS_LANDING] =
         {
             ['qm_cryptonberries'] =
             {
@@ -139,14 +139,14 @@ mission.sections =
             },
         },
 
-        [xi.zone.MISAREAUX_COAST] =
+        [invaderXim.zone.MISAREAUX_COAST] =
         {
             ['_0p4'] =
             {
                 onTrigger = function(player, npc)
                     if not getMissionStatusBit(player, 0) then
                         if mission:getLocalVar(player, 'nmMisareaux') == 1 then
-                            return mission:progressEvent(13, { [1] = xi.item.DUCAL_GUARDS_RING })
+                            return mission:progressEvent(13, { [1] = invaderXim.item.DUCAL_GUARDS_RING })
                         elseif not GetMobByID(misareauxID.mob.BOGGELMANN):isSpawned() then
                             SpawnMob(misareauxID.mob.BOGGELMANN):updateClaim(player)
 
@@ -169,18 +169,18 @@ mission.sections =
             {
                 [13] = function(player, csid, option, npc)
                     setMissionStatusBit(player, 0)
-                    npcUtil.giveKeyItem(player, xi.ki.VESSEL_OF_LIGHT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.VESSEL_OF_LIGHT)
                 end,
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Cid'] =
             {
                 onTrigger = function(player, npc)
-                    if player:getMissionStatus(mission.areaId, xi.mission.status.COP.CID) == 7 then
-                        if not player:hasKeyItem(xi.ki.LETTERS_FROM_ULMIA_AND_PRISHE) then
+                    if player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.CID) == 7 then
+                        if not player:hasKeyItem(invaderXim.ki.LETTERS_FROM_ULMIA_AND_PRISHE) then
                             return mission:progressEvent(892)
                         else
                             return mission:progressEvent(895):oncePerZone()
@@ -192,17 +192,17 @@ mission.sections =
             onEventFinish =
             {
                 [892] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.LETTERS_FROM_ULMIA_AND_PRISHE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LETTERS_FROM_ULMIA_AND_PRISHE)
                 end,
             },
         },
 
-        [xi.zone.SEALIONS_DEN] =
+        [invaderXim.zone.SEALIONS_DEN] =
         {
             ['Sueleen'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.LETTERS_FROM_ULMIA_AND_PRISHE) then
+                    if player:hasKeyItem(invaderXim.ki.LETTERS_FROM_ULMIA_AND_PRISHE) then
                         return mission:progressEvent(17)
                     end
                 end,

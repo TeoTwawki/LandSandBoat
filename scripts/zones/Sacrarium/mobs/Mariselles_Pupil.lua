@@ -2,7 +2,7 @@
 -- Area: Sacrarium
 --  Mob: Mariselles' Pupils
 -----------------------------------
-local ID = zones[xi.zone.SACRARIUM]
+local ID = zones[invaderXim.zone.SACRARIUM]
 local professorTables = require('scripts/zones/Sacrarium/globals')
 -----------------------------------
 ---@type TMobEntity

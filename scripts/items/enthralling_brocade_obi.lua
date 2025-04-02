@@ -8,16 +8,16 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    if target:getStatusEffectBySource(xi.effect.ENCHANTMENT, xi.effectSourceType.EQUIPPED_ITEM, xi.item.ENTHRALLING_BROCADE_OBI) ~= nil then
-        target:delStatusEffect(xi.effect.ENCHANTMENT, nil, xi.effectSourceType.EQUIPPED_ITEM, xi.item.ENTHRALLING_BROCADE_OBI)
+    if target:getStatusEffectBySource(invaderXim.effect.ENCHANTMENT, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.ENTHRALLING_BROCADE_OBI) ~= nil then
+        target:delStatusEffect(invaderXim.effect.ENCHANTMENT, nil, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.ENTHRALLING_BROCADE_OBI)
     end
 
     return 0
 end
 
 itemObject.onItemUse = function(target)
-    if target:hasEquipped(xi.item.ENTHRALLING_BROCADE_OBI) then
-        target:addStatusEffect(xi.effect.CHR_BOOST, 10, 0, 180, 0, 0, 0, xi.effectSourceType.EQUIPPED_ITEM, xi.item.ENTHRALLING_BROCADE_OBI)
+    if target:hasEquipped(invaderXim.item.ENTHRALLING_BROCADE_OBI) then
+        target:addStatusEffect(invaderXim.effect.CHR_BOOST, 10, 0, 180, 0, 0, 0, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.ENTHRALLING_BROCADE_OBI)
     end
 end
 

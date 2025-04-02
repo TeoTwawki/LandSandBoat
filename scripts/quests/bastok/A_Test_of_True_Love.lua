@@ -5,20 +5,20 @@
 -- Carmelo : !pos -146.476 -7.48 -10.889 236
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.A_TEST_OF_TRUE_LOVE)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.A_TEST_OF_TRUE_LOVE)
 
 quest.reward =
 {
     fame     = 120,
-    fameArea = xi.fameArea.BASTOK,
+    fameArea = invaderXim.fameArea.BASTOK,
     gil      = 10000,
 }
 
 local pageKeyItems =
 {
-    xi.ki.UN_MOMENT,
-    xi.ki.LEPHEMERE,
-    xi.ki.LANCIENNE,
+    invaderXim.ki.UN_MOMENT,
+    invaderXim.ki.LEPHEMERE,
+    invaderXim.ki.LANCIENNE,
 }
 
 local function getNumPages(player)
@@ -37,13 +37,13 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.LOVE_AND_ICE) and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 6 and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.LOVE_AND_ICE) and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 6 and
                 not quest:getMustZone(player)
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Carmelo'] = quest:progressEvent(270),
 
@@ -58,10 +58,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Carmelo'] =
             {
@@ -93,7 +93,7 @@ quest.sections =
 
                 [274] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        xi.quest.setMustZone(player, xi.questLog.BASTOK, xi.quest.id.bastok.LOVERS_IN_THE_DUSK)
+                        invaderXim.quest.setMustZone(player, invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.LOVERS_IN_THE_DUSK)
 
                         -- TODO: Removing KIs at this step needs to be verified, but given the KI for Lovers in the Dusk
                         -- references they are all arranged, this is most likely correct.

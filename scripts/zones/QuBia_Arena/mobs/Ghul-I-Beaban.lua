@@ -8,7 +8,7 @@ local entity = {}
 
 local function reraiseGhul(mob, numReraises, target)
     mob:setLocalVar('numReraises', numReraises)
-    mob:setMod(xi.mod.ATT, 25 * numReraises)
+    mob:setMod(invaderXim.mod.ATT, 25 * numReraises)
     mob:setHP(mob:getMaxHP() * (1 - (0.10 * numReraises)))
     mob:resetAI()
     mob:stun(3000)
@@ -28,7 +28,7 @@ entity.onMobInitialize = function(GhulIBeabanMob)
             end)
         elseif numReraises == 3 then
             mob:timer(9000, function(mobArg)
-                mobArg:setStatus(xi.status.DISAPPEAR)
+                mobArg:setStatus(invaderXim.status.DISAPPEAR)
                 local blmMobId  = mobArg:getID() + 1
                 local blmMobObj = GetMobByID(blmMobId)
 

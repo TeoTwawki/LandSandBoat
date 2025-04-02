@@ -8,7 +8,7 @@
 -- Savae E Paleade : !pos 23.724 -17.39 -43.360 237
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_TO_BASTOK)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_TO_BASTOK)
 
 mission.reward = {}
 
@@ -19,7 +19,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Grohm'] =
             {
@@ -30,7 +30,7 @@ mission.sections =
                         return mission:progressEvent(425)
                     elseif missionStatus == 4 then
                         return mission:progressEvent(423)
-                    elseif missionStatus == 5 and not player:hasItem(xi.item.ONZ_OF_MYTHRIL_SAND) then
+                    elseif missionStatus == 5 and not player:hasItem(invaderXim.item.ONZ_OF_MYTHRIL_SAND) then
                         return mission:progressEvent(424)
                     else
                         return mission:progressEvent(422)
@@ -56,7 +56,7 @@ mission.sections =
                 onTrade = function(player, npc, trade)
                     if
                         player:getMissionStatus(mission.areaId) == 5 and
-                        npcUtil.tradeHasExactly(trade, xi.item.ONZ_OF_MYTHRIL_SAND)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.ONZ_OF_MYTHRIL_SAND)
                     then
                         return mission:progressEvent(205)
                     end
@@ -69,7 +69,7 @@ mission.sections =
                     if mission:complete(player) then
                         player:confirmTrade()
                         player:setMissionStatus(mission.areaId, 6)
-                        player:addMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_ABROAD)
+                        player:addMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_ABROAD)
                     end
                 end,
 
@@ -78,7 +78,7 @@ mission.sections =
                 end,
 
                 [423] = function(player, csid, option, npc)
-                    if not npcUtil.giveItem(player, { { xi.item.PICKAXE, 3 } }) then
+                    if not npcUtil.giveItem(player, { { invaderXim.item.PICKAXE, 3 } }) then
                         mission:setVar(player, 'Option', 1)
                     else
                         player:setMissionStatus(mission.areaId, 5)
@@ -86,7 +86,7 @@ mission.sections =
                 end,
 
                 [425] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, { { xi.item.PICKAXE, 3 } }) then
+                    if npcUtil.giveItem(player, { { invaderXim.item.PICKAXE, 3 } }) then
                         player:setMissionStatus(mission.areaId, 5)
                         mission:setVar(player, 'Option', 0)
                     end

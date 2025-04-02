@@ -2,13 +2,13 @@
 -- Area: Nyzul Isle (Nashmeira's Plea)
 --  Mob: Alexander
 -----------------------------------
-local ID = zones[xi.zone.NYZUL_ISLE]
+local ID = zones[invaderXim.zone.NYZUL_ISLE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
 
     mob:addListener('WEAPONSKILL_STATE_ENTER', 'WS_START_MSG', function(mobArg, skillID)
         -- Radiant Sacrament
@@ -55,9 +55,9 @@ entity.onMobFight = function(mob, target)
 
     -- ffxiclopedia: 'In addition to this, it's possible he'll use it several times again at low (5%?) HP.'
     -- Per same wiki, may use Perfect Defense as a regular skill at 10%..Assuming same % for both skills.
-    local skillList = mob:getMobMod(xi.mobMod.SKILL_LIST)
+    local skillList = mob:getMobMod(invaderXim.mobMod.SKILL_LIST)
     if mob:getHPP() <= 10 and skillList == 784 then
-        mob:setMobMod(xi.mobMod.SKILL_LIST, 785)
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 785)
     end
 
     local drawInTable =

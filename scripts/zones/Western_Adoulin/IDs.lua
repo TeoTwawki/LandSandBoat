@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.WESTERN_ADOULIN] =
+zones[invaderXim.zone.WESTERN_ADOULIN] =
 {
     text =
     {
@@ -62,4 +62,4 @@ zones[xi.zone.WESTERN_ADOULIN] =
     },
 }
 
-return zones[xi.zone.WESTERN_ADOULIN]
+return zones[invaderXim.zone.WESTERN_ADOULIN]

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.SCARLET_DELIRIUM
+-- invaderXim.effect.SCARLET_DELIRIUM
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

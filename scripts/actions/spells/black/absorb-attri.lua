@@ -12,23 +12,23 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local count = 0
-    local effectFirst = caster:stealStatusEffect(target, xi.effectFlag.DISPELABLE)
+    local effectFirst = caster:stealStatusEffect(target, invaderXim.effectFlag.DISPELABLE)
 
     if effectFirst ~= 0 then
         count = 1
 
-        if caster:hasStatusEffect(xi.effect.NETHER_VOID) then
-            local effectSecond = caster:stealStatusEffect(target, xi.effectFlag.DISPELABLE)
+        if caster:hasStatusEffect(invaderXim.effect.NETHER_VOID) then
+            local effectSecond = caster:stealStatusEffect(target, invaderXim.effectFlag.DISPELABLE)
             if effectSecond ~= 0 then
                 count = count + 1
             end
         end
 
-        spell:setMsg(xi.msg.basic.MAGIC_STEAL)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_STEAL)
 
         return count
     else
-        spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT) -- no effect
+        spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT) -- no effect
     end
 
     return count

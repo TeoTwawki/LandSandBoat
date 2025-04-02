@@ -44,7 +44,7 @@ entity.onMobRoam = function(mob)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 247)
+    invaderXim.hunts.checkHunt(mob, player, 247)
 end
 
 entity.onMobDespawn = function(mob)

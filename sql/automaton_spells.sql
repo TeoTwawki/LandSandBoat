@@ -13,7 +13,7 @@
 -- Table structure for table `automaton_spells`
 --
 
-DROP TABLE IF EXISTS `automaton_spells`;
+DROP TABLE IF IXIMSTS `automaton_spells`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `automaton_spells` (

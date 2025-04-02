@@ -13,8 +13,8 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local damage = math.floor(target:getHP() * (math.random(45, 55) / 100))
-    damage = xi.mobskills.mobFinalAdjustments(damage, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.PIERCING, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
-    target:takeDamage(damage, mob, xi.attackType.PHYSICAL, xi.damageType.PIERCING)
+    damage = invaderXim.mobskills.mobFinalAdjustments(damage, mob, skill, target, invaderXim.attackType.PHYSICAL, invaderXim.damageType.PIERCING, invaderXim.mobskills.shadowBehavior.IGNORE_SHADOWS)
+    target:takeDamage(damage, mob, invaderXim.attackType.PHYSICAL, invaderXim.damageType.PIERCING)
     mob:resetEnmity(target)
 
     return damage

@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.skillRank
-xi.skillRank =
+---@enum invaderXim.skillRank
+invaderXim.skillRank =
 {
     A_PLUS  =  1,
     A       =  2,

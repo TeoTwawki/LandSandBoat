@@ -4,7 +4,7 @@
 -- Log ID [3] - Quest ID [68]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.DUCAL_HOSPITALITY)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.DUCAL_HOSPITALITY)
 
 local questItemSets =
 {
@@ -12,11 +12,11 @@ local questItemSets =
     {
         items =
         {
-            xi.item.HANDFUL_OF_COUNTERFEIT_GIL,
-            xi.item.LOAF_OF_GOBLIN_BREAD,
-            xi.item.GOBLIN_DOLL,
-            xi.item.GOBLIN_MUSHPOT,
-            xi.item.GOBLIN_PIE,
+            invaderXim.item.HANDFUL_OF_COUNTERFEIT_GIL,
+            invaderXim.item.LOAF_OF_GOBLIN_BREAD,
+            invaderXim.item.GOBLIN_DOLL,
+            invaderXim.item.GOBLIN_MUSHPOT,
+            invaderXim.item.GOBLIN_PIE,
         },
         textOption = 0,
     },
@@ -25,9 +25,9 @@ local questItemSets =
     {
         items =
         {
-            xi.item.PILE_OF_CHOCOBO_BEDDING,
-            xi.item.SET_OF_KAISERIN_COSMETICS,
-            xi.item.MY_FIRST_MAGIC_KIT,
+            invaderXim.item.PILE_OF_CHOCOBO_BEDDING,
+            invaderXim.item.SET_OF_KAISERIN_COSMETICS,
+            invaderXim.item.MY_FIRST_MAGIC_KIT,
         },
         textOption = 1,
     },
@@ -36,10 +36,10 @@ local questItemSets =
     {
         items =
         {
-            xi.item.PIECE_OF_EASTERN_PAPER,
-            xi.item.SHURIKEN,
-            xi.item.SILVER_OBI,
-            xi.item.TONOSAMA_RICE_BALL,
+            invaderXim.item.PIECE_OF_EASTERN_PAPER,
+            invaderXim.item.SHURIKEN,
+            invaderXim.item.SILVER_OBI,
+            invaderXim.item.TONOSAMA_RICE_BALL,
         },
         textOption = 4,
     },
@@ -48,10 +48,10 @@ local questItemSets =
     {
         items =
         {
-            xi.item.DART,
-            xi.item.KONGOU_INAHO,
-            xi.item.NYUMOMO_DOLL,
-            xi.item.CONE_OF_SNOLL_GELATO,
+            invaderXim.item.DART,
+            invaderXim.item.KONGOU_INAHO,
+            invaderXim.item.NYUMOMO_DOLL,
+            invaderXim.item.CONE_OF_SNOLL_GELATO,
         },
         textOption = 4,
     },
@@ -60,10 +60,10 @@ local questItemSets =
     {
         items =
         {
-            xi.item.COPY_OF_FERNANS_DIARIES,
-            xi.item.NAPHILLE_POCHETTE,
-            xi.item.SPHENE_EARRING,
-            xi.item.TURQUOISE_RING,
+            invaderXim.item.COPY_OF_FERNANS_DIARIES,
+            invaderXim.item.NAPHILLE_POCHETTE,
+            invaderXim.item.SPHENE_EARRING,
+            invaderXim.item.TURQUOISE_RING,
         },
         textOption = 4,
     }
@@ -72,9 +72,9 @@ local questItemSets =
 quest.reward =
 {
     fame = 50,
-    fameArea = xi.fameArea.JEUNO,
+    fameArea = invaderXim.fameArea.JEUNO,
     gil = 4000,
-    title = xi.title.DUCAL_DUPE,
+    title = invaderXim.title.DUCAL_DUPE,
 }
 
 quest.sections =
@@ -82,17 +82,17 @@ quest.sections =
     -- Quest: AVAILABLE
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.A_VESSEL_WITHOUT_A_CAPTAIN) and
-                player:getFameLevel(xi.fameArea.JEUNO) >= 4
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.A_VESSEL_WITHOUT_A_CAPTAIN) and
+                player:getFameLevel(invaderXim.fameArea.JEUNO) >= 4
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Taillegeas'] =
             {
                 onTrigger = function(player, npc)
-                    local warriorsPathComplete = player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.THE_WARRIORS_PATH) and 1 or 0
+                    local warriorsPathComplete = player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_WARRIORS_PATH) and 1 or 0
                     local questItemSet = math.random(#questItemSets)
                     quest:setVar(player, 'ItemSet', questItemSet)
                     return quest:progressEvent(10057, {
@@ -123,15 +123,15 @@ quest.sections =
     -- Quest: ACCEPTED
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Taillegeas'] =
             {
                 onTrigger = function(player, npc)
-                    local warriorsPathComplete = player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.THE_WARRIORS_PATH) and 1 or 0
+                    local warriorsPathComplete = player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_WARRIORS_PATH) and 1 or 0
                     local questItemSet = quest:getVar(player, 'ItemSet')
                     return quest:progressEvent(10059, {
                         [0] = warriorsPathComplete,
@@ -145,7 +145,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    local warriorsPathComplete = player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.THE_WARRIORS_PATH) and 1 or 0
+                    local warriorsPathComplete = player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_WARRIORS_PATH) and 1 or 0
                     local questItemSet = quest:getVar(player, 'ItemSet')
                     if
                         questItemSet > 0 and
@@ -176,15 +176,15 @@ quest.sections =
     -- Allows for repeats of the quest
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Taillegeas'] =
             {
                 onTrigger = function(player, npc)
-                    local warriorsPathComplete = player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.THE_WARRIORS_PATH) and 1 or 0
+                    local warriorsPathComplete = player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_WARRIORS_PATH) and 1 or 0
                     local questItemSet = quest:getVar(player, 'ItemSet')
                     if questItemSet > 0 then
                         -- Quest has been re-started and an item-set was assigned to the player
@@ -217,7 +217,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    local warriorsPathComplete = player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.THE_WARRIORS_PATH) and 1 or 0
+                    local warriorsPathComplete = player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_WARRIORS_PATH) and 1 or 0
                     local questItemSet = quest:getVar(player, 'ItemSet')
                     if
                         questItemSet > 0 and
@@ -245,7 +245,7 @@ quest.sections =
                         quest:setMustZone(player)
                         quest:setVar(player, 'ItemSet', 0)
                         npcUtil.giveCurrency(player, 'gil', 4000)
-                        player:addFame(xi.fameArea.JEUNO, 50)
+                        player:addFame(invaderXim.fameArea.JEUNO, 50)
                     end
                 end,
             },

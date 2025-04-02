@@ -14,8 +14,8 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local base = math.random(10, 25)
 
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.BLINK, base, 0, 120))
-    return xi.effect.BLINK
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.BLINK, base, 0, 120))
+    return invaderXim.effect.BLINK
 end
 
 return mobskillObject

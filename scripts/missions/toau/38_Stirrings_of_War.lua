@@ -5,12 +5,12 @@
 -- !addmission 4 37
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.STIRRINGS_OF_WAR)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.STIRRINGS_OF_WAR)
 
 mission.reward =
 {
-    keyItem     = xi.ki.ALLIED_COUNCIL_SUMMONS,
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.ALLIED_RUMBLINGS },
+    keyItem     = invaderXim.ki.ALLIED_COUNCIL_SUMMONS,
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.ALLIED_RUMBLINGS },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
                 VanadielUniqueDay() >= mission:getVar(player, 'Timer')
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             onTriggerAreaEnter =
             {

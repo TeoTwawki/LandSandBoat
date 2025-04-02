@@ -9,13 +9,13 @@ abilityObject.onAutomatonAbilityCheck = function(target, automaton, skill)
 end
 
 abilityObject.onAutomatonAbility = function(target, automaton, skill, master, action)
-    automaton:addRecast(xi.recast.ABILITY, skill:getID(), 180)
-    local maneuvers = master:countEffect(xi.effect.DARK_MANEUVER)
+    automaton:addRecast(invaderXim.recast.ABILITY, skill:getID(), 180)
+    local maneuvers = master:countEffect(invaderXim.effect.DARK_MANEUVER)
     local amount = math.floor(automaton:getMaxMP() * 0.2 * maneuvers)
-    skill:setMsg(xi.msg.basic.SKILL_RECOVERS_MP)
+    skill:setMsg(invaderXim.msg.basic.SKILL_RECOVERS_MP)
 
     for i = 1, maneuvers do
-        master:delStatusEffectSilent(xi.effect.DARK_MANEUVER)
+        master:delStatusEffectSilent(invaderXim.effect.DARK_MANEUVER)
     end
 
     return automaton:addMP(amount)

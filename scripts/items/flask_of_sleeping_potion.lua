@@ -11,7 +11,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffect(xi.effect.SLEEP_I, 1, 0, 30)
+    target:addStatusEffect(invaderXim.effect.SLEEP_I, 1, 0, 30)
 end
 
 return itemObject

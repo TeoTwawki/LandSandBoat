@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.CONSUME_MANA
+-- invaderXim.effect.CONSUME_MANA
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

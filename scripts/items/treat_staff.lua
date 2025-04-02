@@ -25,7 +25,7 @@ itemObject.onItemEquip  = function(user, item)
     user:addListener('ATTACK', 'TREAT_STAFF_MELEE', function(player, target, action)
         if
             math.random(1, 100) <= 10 and
-            xi.events.harvestFestival.isHalloweenEnabled()
+            invaderXim.events.harvestFestival.isHalloweenEnabled()
         then
             -- Need a small delay for the swing animation.
             player:timer(100, function(playerArg)

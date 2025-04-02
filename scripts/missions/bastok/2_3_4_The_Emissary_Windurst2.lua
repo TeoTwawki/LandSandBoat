@@ -6,10 +6,10 @@
 -- Kupipi    : !pos 2 0.1 30 242
 -- Melek     : !pos -80.6 -5.5 157.3 240
 -----------------------------------
-local portWindurstID = zones[xi.zone.PORT_WINDURST]
+local portWindurstID = zones[invaderXim.zone.PORT_WINDURST]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY_WINDURST2)
+local mission = Mission:new(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY_WINDURST2)
 
 mission.reward = {}
 
@@ -20,24 +20,24 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BALGAS_DAIS] =
+        [invaderXim.zone.BALGAS_DAIS] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 8 and
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.RANK_2_MISSION
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.RANK_2_MISSION
                     then
-                        npcUtil.giveKeyItem(player, xi.ki.KINDRED_CREST)
-                        player:delKeyItem(xi.ki.DARK_KEY)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.KINDRED_CREST)
+                        player:delKeyItem(invaderXim.ki.DARK_KEY)
                         player:setMissionStatus(mission.areaId, 9)
                     end
                 end,
             },
         },
 
-        [xi.zone.HEAVENS_TOWER] =
+        [invaderXim.zone.HEAVENS_TOWER] =
         {
             ['Kupipi'] =
             {
@@ -45,7 +45,7 @@ mission.sections =
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
                     if missionStatus == 7 then
-                        return mission:progressEvent(242, 1, 1, 1, 1, xi.nation.BASTOK)
+                        return mission:progressEvent(242, 1, 1, 1, 1, invaderXim.nation.BASTOK)
                     elseif missionStatus == 8 then
                         return mission:event(243)
                     elseif missionStatus == 9 then
@@ -59,7 +59,7 @@ mission.sections =
             onEventFinish =
             {
                 [242] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.DARK_KEY)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.DARK_KEY)
                     player:setMissionStatus(mission.areaId, 8)
                 end,
 
@@ -69,7 +69,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Ada'] =
             {
@@ -113,7 +113,7 @@ mission.sections =
                         return mission:progressEvent(64)
                     elseif missionStatus == 8 then
                         return mission:messageText(portWindurstID.text.MELEK_DIALOG_A)
-                    elseif player:hasKeyItem(xi.ki.KINDRED_CREST) then
+                    elseif player:hasKeyItem(invaderXim.ki.KINDRED_CREST) then
                         return mission:progressEvent(66)
                     end
                 end,
@@ -123,10 +123,10 @@ mission.sections =
             {
                 [66] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:addMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY)
-                        player:delKeyItem(xi.ki.KINDRED_CREST)
+                        player:addMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY)
+                        player:delKeyItem(invaderXim.ki.KINDRED_CREST)
                         player:setMissionStatus(mission.areaId, 10)
-                        npcUtil.giveKeyItem(player, xi.ki.KINDRED_REPORT)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.KINDRED_REPORT)
                     end
                 end,
             },

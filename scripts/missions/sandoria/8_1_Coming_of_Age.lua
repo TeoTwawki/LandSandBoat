@@ -9,12 +9,12 @@
 -- Halver                : !pos 2 0.1 0.1 233
 -- Fountain of Kings     : !pos 567 18 -939 208
 -----------------------------------
-local quicksandCavesID   = zones[xi.zone.QUICKSAND_CAVES]
-local southernSandoriaID = zones[xi.zone.SOUTHERN_SAN_DORIA]
-local northernSandoriaID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local quicksandCavesID   = zones[invaderXim.zone.QUICKSAND_CAVES]
+local southernSandoriaID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
+local northernSandoriaID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.COMING_OF_AGE)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.COMING_OF_AGE)
 
 mission.reward =
 {
@@ -32,11 +32,11 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -45,7 +45,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -60,7 +60,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Halver'] =
             {
@@ -71,7 +71,7 @@ mission.sections =
                         return mission:progressEvent(58)
                     elseif
                         missionStatus == 3 and
-                        player:hasKeyItem(xi.ki.DROPS_OF_AMNIO)
+                        player:hasKeyItem(invaderXim.ki.DROPS_OF_AMNIO)
                     then
                         return mission:progressEvent(102)
                     end
@@ -96,7 +96,7 @@ mission.sections =
                         -- before allowing further gate guard interaction (Mission[0][20]Progress).  Required
                         -- final CS will set this to 0, and we should disallow on non-zero values
                         mission:setVar(player, 'Progress', os.time() + 60)
-                        player:delKeyItem(xi.ki.DROPS_OF_AMNIO)
+                        player:delKeyItem(invaderXim.ki.DROPS_OF_AMNIO)
                     end
                 end,
 
@@ -106,7 +106,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.QUICKSAND_CAVES] =
+        [invaderXim.zone.QUICKSAND_CAVES] =
         {
             ['Fountain_of_Kings'] =
             {
@@ -126,8 +126,8 @@ mission.sections =
                             SpawnMob(quicksandCavesID.mob.VALOR)
                             SpawnMob(quicksandCavesID.mob.HONOR)
                             return mission:messageSpecial(quicksandCavesID.text.SENSE_SOMETHING_EVIL)
-                        elseif missionStatus == 3 and not player:hasKeyItem(xi.ki.DROPS_OF_AMNIO) then
-                            return mission:keyItem(xi.ki.DROPS_OF_AMNIO)
+                        elseif missionStatus == 3 and not player:hasKeyItem(invaderXim.ki.DROPS_OF_AMNIO) then
+                            return mission:keyItem(invaderXim.ki.DROPS_OF_AMNIO)
                         end
                     end
                 end,
@@ -175,7 +175,7 @@ mission.sections =
                 mission:getVar(player, 'Progress') > 0
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Grilau'] = mission:messageSpecial(northernSandoriaID.text.ORIGINAL_MISSION_OFFSET + 127):setPriority(1000),
 
@@ -196,7 +196,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] = mission:messageSpecial(southernSandoriaID.text.ORIGINAL_MISSION_OFFSET + 127):setPriority(1000),
             ['Endracion'] = mission:messageSpecial(southernSandoriaID.text.ORIGINAL_MISSION_OFFSET + 127):setPriority(1000),

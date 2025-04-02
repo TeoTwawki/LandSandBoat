@@ -8,28 +8,28 @@
 -- Quu Bokye      : !pos -159 16 181 145
 -- qm1            : !pos -58 0 -449 145
 -----------------------------------
-local giddeusID = zones[xi.zone.GIDDEUS]
+local giddeusID = zones[invaderXim.zone.GIDDEUS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.DARK_LEGACY)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.DARK_LEGACY)
 
 quest.reward =
 {
     fame     = 20,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.RAVEN_SCYTHE,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.RAVEN_SCYTHE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getMainJob() == xi.job.DRK and
-                player:getMainLvl() >= xi.settings.main.AF1_QUEST_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getMainJob() == invaderXim.job.DRK and
+                player:getMainLvl() >= invaderXim.settings.main.AF1_QUEST_LEVEL
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Raibaht'] = quest:progressEvent(751),
 
@@ -44,17 +44,17 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Mighty_Fist'] =
             {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 0 then
                         return quest:progressEvent(752)
-                    elseif player:hasKeyItem(xi.ki.DARKSTEEL_FORMULA) then
+                    elseif player:hasKeyItem(invaderXim.ki.DARKSTEEL_FORMULA) then
                         return quest:event(754)
                     end
                 end,
@@ -63,7 +63,7 @@ quest.sections =
             ['Raibaht'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.DARKSTEEL_FORMULA) then
+                    if player:hasKeyItem(invaderXim.ki.DARKSTEEL_FORMULA) then
                         return quest:progressEvent(755)
                     end
                 end,
@@ -72,19 +72,19 @@ quest.sections =
             onEventFinish =
             {
                 [752] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.LETTER_FROM_THE_DARKSTEEL_FORGE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LETTER_FROM_THE_DARKSTEEL_FORGE)
                     quest:setVar(player, 'Prog', 1)
                 end,
 
                 [755] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.DARKSTEEL_FORMULA)
+                        player:delKeyItem(invaderXim.ki.DARKSTEEL_FORMULA)
                     end
                 end,
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Cochal-Monchal'] =
             {
@@ -95,7 +95,7 @@ quest.sections =
                         return quest:progressEvent(697)
                     elseif questProgress == 2 then
                         return quest:event(698)
-                    elseif player:hasKeyItem(xi.ki.DARKSTEEL_FORMULA) then
+                    elseif player:hasKeyItem(invaderXim.ki.DARKSTEEL_FORMULA) then
                         return quest:event(699)
                     end
                 end,
@@ -104,19 +104,19 @@ quest.sections =
             onEventFinish =
             {
                 [697] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.LETTER_FROM_THE_DARKSTEEL_FORGE)
+                    player:delKeyItem(invaderXim.ki.LETTER_FROM_THE_DARKSTEEL_FORGE)
                     quest:setVar(player, 'Prog', 2)
                 end,
             },
         },
 
-        [xi.zone.GIDDEUS] =
+        [invaderXim.zone.GIDDEUS] =
         {
             ['qm1'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.YAGUDO_CHERRY) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.YAGUDO_CHERRY) and
                         not GetMobByID(giddeusID.mob.VAA_HUJA_THE_ERUDITE):isSpawned() and
                         quest:getVar(player, 'Prog') == 2
                     then
@@ -129,10 +129,10 @@ quest.sections =
 
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.DARKSTEEL_FORMULA) and
+                        not player:hasKeyItem(invaderXim.ki.DARKSTEEL_FORMULA) and
                         quest:getVar(player, 'Prog') == 3
                     then
-                        return quest:keyItem(xi.ki.DARKSTEEL_FORMULA)
+                        return quest:keyItem(invaderXim.ki.DARKSTEEL_FORMULA)
                     end
                 end,
             },
@@ -141,7 +141,7 @@ quest.sections =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.YAGUDO_CHERRY) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.YAGUDO_CHERRY) and
                         quest:getVar(player, 'Prog') == 2 and
                         quest:getVar(player, 'Option') == 0
                     then

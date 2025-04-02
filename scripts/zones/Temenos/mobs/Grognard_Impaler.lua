@@ -8,15 +8,15 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
-            { id = xi.jsa.CALL_WYVERN, hpp = 100 },
+            { id = invaderXim.jsa.CALL_WYVERN, hpp = 100 },
         },
     })
 
-    mob:addImmunity(xi.immunity.GRAVITY)
-    mob:addImmunity(xi.immunity.BIND)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
+    mob:addImmunity(invaderXim.immunity.BIND)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

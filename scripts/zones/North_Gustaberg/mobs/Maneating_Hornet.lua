@@ -3,7 +3,7 @@
 --  Mob: Maneating Hornet
 -- Note: Place Holder For Stinging Sophie
 -----------------------------------
-local ID = zones[xi.zone.NORTH_GUSTABERG]
+local ID = zones[invaderXim.zone.NORTH_GUSTABERG]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -86,14 +86,14 @@ local stingingSophie =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 17, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 17, 1, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
     local nmId   = sophiePHTable[mob:getID()]
     local params = { }
     params.spawnPoints = stingingSophie[nmId]
-    xi.mob.phOnDespawn(mob, sophiePHTable, 5, 1, params) -- Pure Lottery
+    invaderXim.mob.phOnDespawn(mob, sophiePHTable, 5, 1, params) -- Pure Lottery
 end
 
 return entity

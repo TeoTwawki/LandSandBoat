@@ -6,13 +6,13 @@
 -- Entry Gate : !pos 486 -227.6 -20 78
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.GAZE_OF_THE_SABOTEUR)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.GAZE_OF_THE_SABOTEUR)
 
 mission.reward =
 {
-    keyItem     = xi.ki.LUMINIAN_DAGGER,
-    title       = xi.title.EMISSARY_OF_THE_EMPRESS,
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.PATH_OF_BLOOD },
+    keyItem     = invaderXim.ki.LUMINIAN_DAGGER,
+    title       = invaderXim.title.EMISSARY_OF_THE_EMPRESS,
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.PATH_OF_BLOOD },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.HAZHALM_TESTING_GROUNDS] =
+        [invaderXim.zone.HAZHALM_TESTING_GROUNDS] =
         {
             ['_260'] =
             {

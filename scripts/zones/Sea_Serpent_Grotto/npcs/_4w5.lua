@@ -3,14 +3,14 @@
 --  NPC: Silver Beastcoin Door
 -- !pos 280 18.549 -100 176
 -----------------------------------
-local ID = zones[xi.zone.SEA_SERPENT_GROTTO]
+local ID = zones[invaderXim.zone.SEA_SERPENT_GROTTO]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     -- The coin isn't consumed, so we only need to know if one was in the trade window
-    if trade:getItemQty(xi.item.SILVER_BEASTCOIN) > 0 then
+    if trade:getItemQty(invaderXim.item.SILVER_BEASTCOIN) > 0 then
         if player:getCharVar('SSG_SilverDoor') == 7 then
             npc:openDoor(5) -- Open the door if a silver beastcoin has been traded after checking the door the required number of times
         end
@@ -42,7 +42,7 @@ entity.onTrigger = function(player, npc)
             player:messageSpecial(ID.text.SILVER_CHECK)
             player:setCharVar('SSG_SilverDoor', 6)
         elseif silverDoorCheck == 6 or silverDoorCheck == 7 then -- Door has been checked six or more times
-            player:messageSpecial(ID.text.COMPLETED_CHECK, xi.item.SILVER_BEASTCOIN)
+            player:messageSpecial(ID.text.COMPLETED_CHECK, invaderXim.item.SILVER_BEASTCOIN)
             player:setCharVar('SSG_SilverDoor', 7)
         end
     elseif xPos > 280 and zPos < -100 then

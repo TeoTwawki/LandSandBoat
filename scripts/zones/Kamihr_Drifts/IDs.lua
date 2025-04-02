@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.KAMIHR_DRIFTS] =
+zones[invaderXim.zone.KAMIHR_DRIFTS] =
 {
     text =
     {
@@ -41,4 +41,4 @@ zones[xi.zone.KAMIHR_DRIFTS] =
     },
 }
 
-return zones[xi.zone.KAMIHR_DRIFTS]
+return zones[invaderXim.zone.KAMIHR_DRIFTS]

@@ -5,11 +5,11 @@
 -- !addmission 4 36
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.PATH_OF_BLOOD)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.PATH_OF_BLOOD)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.STIRRINGS_OF_WAR },
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.STIRRINGS_OF_WAR },
 }
 
 mission.sections =
@@ -19,7 +19,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             onTriggerAreaEnter =
             {

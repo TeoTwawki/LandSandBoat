@@ -6,49 +6,49 @@
 require('scripts/globals/packet')
 require('scripts/globals/utils')
 -----------------------------------
-local bastokID   = zones[xi.zone.BASTOK_MINES]
-local sandoriaID = zones[xi.zone.SOUTHERN_SAN_DORIA]
-local windurstID = zones[xi.zone.WINDURST_WOODS]
-local kazhamID   = zones[xi.zone.KAZHAM]
+local bastokID   = zones[invaderXim.zone.BASTOK_MINES]
+local sandoriaID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
+local windurstID = zones[invaderXim.zone.WINDURST_WOODS]
+local kazhamID   = zones[invaderXim.zone.KAZHAM]
 -----------------------------------
 xi = xi or {}
-xi.chocoboGame = xi.chocoboGame or {}
+invaderXim.chocoboGame = invaderXim.chocoboGame or {}
 
 local raceData =
 {
-    [xi.zone.WINDURST_WOODS] =
+    [invaderXim.zone.WINDURST_WOODS] =
     {
-        [xi.zone.SAUROMUGUE_CHAMPAIGN] = { gameDay = 0, reward = xi.item.WINDURST_WOODS_GLYPH, raceTimes = 930,            npc = windurstID.npc.ORLAINE, eventParam = 3, finishEvent = 901 },
-        [xi.zone.WEST_RONFAURE]        = { gameDay = 1, reward = xi.item.MIRATETES_MEMOIRS,    raceTimes = { 1717, 1800 }, npc = windurstID.npc.SARIALE, eventParam = 0, finishEvent = 55  },
-        [xi.zone.SOUTH_GUSTABERG]      = { gameDay = 2, reward = xi.item.MIRATETES_MEMOIRS,    raceTimes = { 1950, 2084 }, npc = windurstID.npc.AMIMI,   eventParam = 1, finishEvent = 907 },
+        [invaderXim.zone.SAUROMUGUE_CHAMPAIGN] = { gameDay = 0, reward = invaderXim.item.WINDURST_WOODS_GLYPH, raceTimes = 930,            npc = windurstID.npc.ORLAINE, eventParam = 3, finishEvent = 901 },
+        [invaderXim.zone.WEST_RONFAURE]        = { gameDay = 1, reward = invaderXim.item.MIRATETES_MEMOIRS,    raceTimes = { 1717, 1800 }, npc = windurstID.npc.SARIALE, eventParam = 0, finishEvent = 55  },
+        [invaderXim.zone.SOUTH_GUSTABERG]      = { gameDay = 2, reward = invaderXim.item.MIRATETES_MEMOIRS,    raceTimes = { 1950, 2084 }, npc = windurstID.npc.AMIMI,   eventParam = 1, finishEvent = 907 },
     },
-    [xi.zone.BASTOK_MINES] =
+    [invaderXim.zone.BASTOK_MINES] =
     {
-        [xi.zone.EAST_SARUTABARUTA] = { gameDay = 0, reward = xi.item.MIRATETES_MEMOIRS,  raceTimes = { 1950, 2040 }, npc = bastokID.npc.AZETTE,  eventParam = 2, finishEvent = 901 },
-        [xi.zone.ROLANBERRY_FIELDS] = { gameDay = 1, reward = xi.item.BASTOK_MINES_GLYPH, raceTimes = 1130,           npc = bastokID.npc.EULAPHE, eventParam = 3, finishEvent = 901 },
-        [xi.zone.WEST_RONFAURE]     = { gameDay = 2, reward = xi.item.DRAGON_CHRONICLES,  raceTimes = { 1214, 1260 }, npc = bastokID.npc.QUELLE,  eventParam = 0, finishEvent = 55  },
+        [invaderXim.zone.EAST_SARUTABARUTA] = { gameDay = 0, reward = invaderXim.item.MIRATETES_MEMOIRS,  raceTimes = { 1950, 2040 }, npc = bastokID.npc.AZETTE,  eventParam = 2, finishEvent = 901 },
+        [invaderXim.zone.ROLANBERRY_FIELDS] = { gameDay = 1, reward = invaderXim.item.BASTOK_MINES_GLYPH, raceTimes = 1130,           npc = bastokID.npc.EULAPHE, eventParam = 3, finishEvent = 901 },
+        [invaderXim.zone.WEST_RONFAURE]     = { gameDay = 2, reward = invaderXim.item.DRAGON_CHRONICLES,  raceTimes = { 1214, 1260 }, npc = bastokID.npc.QUELLE,  eventParam = 0, finishEvent = 55  },
     },
-    [xi.zone.SOUTHERN_SAN_DORIA] =
+    [invaderXim.zone.SOUTHERN_SAN_DORIA] =
     {
-        [xi.zone.SOUTH_GUSTABERG]   = { gameDay = 0, reward = xi.item.DRAGON_CHRONICLES,   raceTimes = { 1200, 1248 }, npc = sandoriaID.npc.CAMEREINE, eventParam = 1, finishEvent = 907 },
-        [xi.zone.EAST_SARUTABARUTA] = { gameDay = 1, reward = xi.item.MIRATETES_MEMOIRS,   raceTimes = { 1699, 1800 }, npc = sandoriaID.npc.EMOUSSINE, eventParam = 2, finishEvent = 901 },
-        [xi.zone.BATALLIA_DOWNS]    = { gameDay = 2, reward = xi.item.EAST_SANDORIA_GLYPH, raceTimes = 795,            npc = sandoriaID.npc.MEUNEILLE, eventParam = 3, finishEvent = 906 },
+        [invaderXim.zone.SOUTH_GUSTABERG]   = { gameDay = 0, reward = invaderXim.item.DRAGON_CHRONICLES,   raceTimes = { 1200, 1248 }, npc = sandoriaID.npc.CAMEREINE, eventParam = 1, finishEvent = 907 },
+        [invaderXim.zone.EAST_SARUTABARUTA] = { gameDay = 1, reward = invaderXim.item.MIRATETES_MEMOIRS,   raceTimes = { 1699, 1800 }, npc = sandoriaID.npc.EMOUSSINE, eventParam = 2, finishEvent = 901 },
+        [invaderXim.zone.BATALLIA_DOWNS]    = { gameDay = 2, reward = invaderXim.item.EAST_SANDORIA_GLYPH, raceTimes = 795,            npc = sandoriaID.npc.MEUNEILLE, eventParam = 3, finishEvent = 906 },
     },
-    [xi.zone.KAZHAM] =
+    [invaderXim.zone.KAZHAM] =
     {
-        [xi.zone.YUHTUNGA_JUNGLE] = { gameDay = 0, reward = xi.item.MIRATETES_MEMOIRS, raceTimes = { 150, 240 }, npc = kazhamID.npc.TIELLEQUE, eventParam = 3, finishEvent = 208 },
+        [invaderXim.zone.YUHTUNGA_JUNGLE] = { gameDay = 0, reward = invaderXim.item.MIRATETES_MEMOIRS, raceTimes = { 150, 240 }, npc = kazhamID.npc.TIELLEQUE, eventParam = 3, finishEvent = 208 },
     },
 }
 
 -- Rewards that all races give
 local defaultRewards =
 {
-    xi.item.CHOCOBO_TICKET,
-    xi.item.BUNCH_OF_GYSAHL_GREENS
+    invaderXim.item.CHOCOBO_TICKET,
+    invaderXim.item.BUNCH_OF_GYSAHL_GREENS
 }
 
 -- Checks if the NPC can start a race and the player hasn't already participated this week
-xi.chocoboGame.raceCheck = function(player, npc)
+invaderXim.chocoboGame.raceCheck = function(player, npc)
     local zoneId = player:getZoneID()
 
     -- Early false return if zone isn't a racing zone
@@ -76,7 +76,7 @@ xi.chocoboGame.raceCheck = function(player, npc)
 end
 
 -- Get the event param to tell the player which city race they are offering
-xi.chocoboGame.startRaceEvent = function(player, destination, eventSucceed)
+invaderXim.chocoboGame.startRaceEvent = function(player, destination, eventSucceed)
     local zoneId     = player:getZone():getID()
     local eventParam = raceData[zoneId][destination].eventParam
 
@@ -86,7 +86,7 @@ xi.chocoboGame.startRaceEvent = function(player, destination, eventSucceed)
 end
 
 -- Apply race vars, check for csid and option is done in chocobo.lua
-xi.chocoboGame.beginRace = function(player, option)
+invaderXim.chocoboGame.beginRace = function(player, option)
     if option == 0 then
         local zoneId     = player:getZone():getID()
         local destCity   = player:getLocalVar('[ChocoGame]DestCity')
@@ -101,14 +101,14 @@ xi.chocoboGame.beginRace = function(player, option)
 end
 
 -- Determine which tier of award the player gets based off their time
-xi.chocoboGame.rewardCheck = function(startingCity, destCity, clearTime)
+invaderXim.chocoboGame.rewardCheck = function(startingCity, destCity, clearTime)
     local raceTimes = raceData[startingCity][destCity].raceTimes
     local reward    = 0
     local jeuno     =
     {
-        xi.zone.ROLANBERRY_FIELDS,
-        xi.zone.SAUROMUGUE_CHAMPAIGN,
-        xi.zone.BATALLIA_DOWNS
+        invaderXim.zone.ROLANBERRY_FIELDS,
+        invaderXim.zone.SAUROMUGUE_CHAMPAIGN,
+        invaderXim.zone.BATALLIA_DOWNS
     }
 
     -- Jeuno paths only have two rewards
@@ -132,7 +132,7 @@ xi.chocoboGame.rewardCheck = function(startingCity, destCity, clearTime)
 end
 
 -- Player reached finish line, handle event messaging
-xi.chocoboGame.onTriggerAreaEnter = function(player)
+invaderXim.chocoboGame.onTriggerAreaEnter = function(player)
     local destCity = player:getCharVar('[ChocoGame]DestCity')
 
     if player:getZoneID() == destCity then
@@ -165,7 +165,7 @@ xi.chocoboGame.onTriggerAreaEnter = function(player)
 end
 
 -- Remove chocobo and give player reward
-xi.chocoboGame.onEventFinish = function(player, csid)
+invaderXim.chocoboGame.onEventFinish = function(player, csid)
     local clearTime = os.time() - player:getCharVar('[ChocoGame]StartTime')
     local startingCity = player:getCharVar('[ChocoGame]StartingCity')
     local destCity = player:getCharVar('[ChocoGame]DestCity')
@@ -175,13 +175,13 @@ xi.chocoboGame.onEventFinish = function(player, csid)
         destCity ~= 0 and
         csid == raceData[startingCity][destCity].finishEvent
     then
-        npcUtil.giveItem(player, xi.chocoboGame.rewardCheck(startingCity, destCity, clearTime))
-        player:delStatusEffectSilent(xi.effect.MOUNTED)
+        npcUtil.giveItem(player, invaderXim.chocoboGame.rewardCheck(startingCity, destCity, clearTime))
+        player:delStatusEffectSilent(invaderXim.effect.MOUNTED)
     end
 end
 
 -- Effect is called when mounted effect is lost through scripts\effects\mounted.lua
-xi.chocoboGame.dismountChoco = function(player)
+invaderXim.chocoboGame.dismountChoco = function(player)
     if player:getCharVar('[ChocoGame]StartTime') then
         player:setCharVar('[ChocoGame]StartTime', 0)
         player:setCharVar('[ChocoGame]StartingCity', 0)
@@ -189,7 +189,7 @@ xi.chocoboGame.dismountChoco = function(player)
     end
 end
 
-xi.chocoboGame.handleMessage = function(player)
+invaderXim.chocoboGame.handleMessage = function(player)
     local startTime = player:getCharVar('[ChocoGame]StartTime')
     local raceTime  = os.time() - startTime
     local ID        = zones[player:getZoneID()]
@@ -205,7 +205,7 @@ xi.chocoboGame.handleMessage = function(player)
 end
 
 -- Clear race records on server start
-xi.chocoboGame.clearRecord = function(zone)
+invaderXim.chocoboGame.clearRecord = function(zone)
     local startingCity = zone:getID()
 
     for destination, _ in pairs(raceData[startingCity]) do

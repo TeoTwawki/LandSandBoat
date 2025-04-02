@@ -6,16 +6,16 @@
 -- Legata : !pos 82 0 116 230
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.STARTING_A_FLAME)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.STARTING_A_FLAME)
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Legata'] = quest:progressEvent(37),
 
@@ -31,21 +31,21 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status ~= xi.questStatus.QUEST_AVAILABLE
+            return status ~= invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Legata'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHas(trade, { { xi.item.FLINT_STONE, 4 } }) then
+                    if npcUtil.tradeHas(trade, { { invaderXim.item.FLINT_STONE, 4 } }) then
                         return quest:progressEvent(36)
                     end
                 end,
 
                 onTrigger = function(player, npc)
-                    if player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.STARTING_A_FLAME) == xi.questStatus.QUEST_ACCEPTED then
+                    if player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.STARTING_A_FLAME) == invaderXim.questStatus.QUEST_ACCEPTED then
                         return quest:event(35)
                     else
                         return quest:event(37, { [7] = 1 })
@@ -56,10 +56,10 @@ quest.sections =
             onEventFinish =
             {
                 [36] = function(player, csid, option, npc)
-                    if player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.STARTING_A_FLAME) == xi.questStatus.QUEST_ACCEPTED then
+                    if player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.STARTING_A_FLAME) == invaderXim.questStatus.QUEST_ACCEPTED then
                         quest:complete(player)
                     else
-                        player:addFame(xi.fameArea.SANDORIA, 5)
+                        player:addFame(invaderXim.fameArea.SANDORIA, 5)
                     end
 
                     npcUtil.giveCurrency(player, 'gil', 100)

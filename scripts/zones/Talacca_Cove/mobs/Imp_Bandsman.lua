@@ -6,14 +6,14 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addImmunity(xi.immunity.POISON)
-    mob:addImmunity(xi.immunity.SILENCE)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.GRAVITY)
-    mob:addImmunity(xi.immunity.SLOW)
-    mob:addImmunity(xi.immunity.PARALYZE)
-    mob:setMobMod(xi.mobMod.SIGHT_RANGE, 25)
+    mob:addImmunity(invaderXim.immunity.POISON)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
+    mob:addImmunity(invaderXim.immunity.SLOW)
+    mob:addImmunity(invaderXim.immunity.PARALYZE)
+    mob:setMobMod(invaderXim.mobMod.SIGHT_RANGE, 25)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

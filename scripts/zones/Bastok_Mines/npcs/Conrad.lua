@@ -7,19 +7,19 @@
 ---@type TNpcEntity
 local entity = {}
 
-local teleporterNation = xi.nation.BASTOK
+local teleporterNation = invaderXim.nation.BASTOK
 local teleporterEvent  = 581
 
 entity.onTrigger = function(player, npc)
-    xi.conquest.teleporterOnTrigger(player, teleporterNation, teleporterEvent)
+    invaderXim.conquest.teleporterOnTrigger(player, teleporterNation, teleporterEvent)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.conquest.teleporterOnEventUpdate(player, csid, option, teleporterEvent)
+    invaderXim.conquest.teleporterOnEventUpdate(player, csid, option, teleporterEvent)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.conquest.teleporterOnEventFinish(player, csid, option, teleporterEvent)
+    invaderXim.conquest.teleporterOnEventFinish(player, csid, option, teleporterEvent)
 end
 
 return entity

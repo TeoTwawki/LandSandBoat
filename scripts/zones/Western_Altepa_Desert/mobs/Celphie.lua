@@ -9,7 +9,7 @@ local entity = {}
 
 entity.onMobWeaponSkill = function(target, mob, skill)
     -- Celphie gains strong regen after hundred fists wears
-    if skill:getID() == xi.jsa.HUNDRED_FISTS then
+    if skill:getID() == invaderXim.jsa.HUNDRED_FISTS then
         mob:setLocalVar('regenTime', os.time() + 45)
     end
 end
@@ -19,14 +19,14 @@ entity.onMobFight = function(mob, target)
     if
         regenTimer < os.time() and
         regenTimer ~= 0 and
-        mob:getMod(xi.mod.REGEN) == 0
+        mob:getMod(invaderXim.mod.REGEN) == 0
     then
-        mob:setMod(xi.mod.REGEN, 40)
+        mob:setMod(invaderXim.mod.REGEN, 40)
     end
 end
 
 entity.onMobDespawn = function(mob)
-    mob:setMod(xi.mod.REGEN, 0)
+    mob:setMod(invaderXim.mod.REGEN, 0)
     UpdateNMSpawnPoint(mob:getID())
 end
 

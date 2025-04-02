@@ -12,8 +12,8 @@ end
 
 itemObject.onItemUse = function(target)
     local duration = 2100
-    target:delStatusEffect(xi.effect.RERAISE)
-    target:addStatusEffect(xi.effect.RERAISE, 1, 0, duration)
+    target:delStatusEffect(invaderXim.effect.RERAISE)
+    target:addStatusEffect(invaderXim.effect.RERAISE, 1, 0, duration)
 end
 
 return itemObject

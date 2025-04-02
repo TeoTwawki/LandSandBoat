@@ -4,7 +4,7 @@
 -- Coin Exchange Vendor
 -- !pos -63.079 -6 -28.571 50
 -----------------------------------
-local ID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local ID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -35,10 +35,10 @@ local ImperialPieces =
 
 entity.onTrigger = function(player, npc)
     local points = player:getCurrency('imperial_standing')
-    local rank   = xi.besieged.getMercenaryRank(player)
+    local rank   = invaderXim.besieged.getMercenaryRank(player)
     local badge  = 0
     if rank > 0 then
-        badge = xi.besieged.badges[rank]
+        badge = invaderXim.besieged.badges[rank]
     end
 
     player:startEvent(150, rank, badge, points, 0, 0, 0, 0, 0, 0)

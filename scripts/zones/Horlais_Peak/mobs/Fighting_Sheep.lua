@@ -8,7 +8,7 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMod(xi.mod.ICE_MEVA, 75) -- Todo: Move to mob_resists.sql
+    mob:setMod(invaderXim.mod.ICE_MEVA, 75) -- Todo: Move to mob_resists.sql
 end
 
 entity.onMobSpawn = function(mob)

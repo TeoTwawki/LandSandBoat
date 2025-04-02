@@ -3,29 +3,29 @@
 -- Ryoma !pos -23 0 -9 252
 -- qm1 !pos 110 15 162 213
 -----------------------------------
-local norgID   = zones[xi.zone.NORG]
-local onzozoID = zones[xi.zone.LABYRINTH_OF_ONZOZO]
+local norgID   = zones[invaderXim.zone.NORG]
+local onzozoID = zones[invaderXim.zone.LABYRINTH_OF_ONZOZO]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OUTLANDS, xi.quest.id.outlands.BUGI_SODEN)
+local quest = Quest:new(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.BUGI_SODEN)
 
 quest.reward =
 {
     fame = 30,
-    fameArea = xi.fameArea.NORG,
+    fameArea = invaderXim.fameArea.NORG,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:canEquipItem(xi.item.KODACHI_OF_TRIALS, true) and
-                player:getCharSkillLevel(xi.skill.KATANA) / 10 >= 250 and
-                not player:hasKeyItem(xi.keyItem.WEAPON_TRAINING_GUIDE)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:canEquipItem(invaderXim.item.KODACHI_OF_TRIALS, true) and
+                player:getCharSkillLevel(invaderXim.skill.KATANA) / 10 >= 250 and
+                not player:hasKeyItem(invaderXim.keyItem.WEAPON_TRAINING_GUIDE)
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Ryoma'] =
             {
@@ -39,9 +39,9 @@ quest.sections =
                 [184] = function(player, csid, option, npc)
                     if
                         option == 1 and
-                        (player:hasItem(xi.item.KODACHI_OF_TRIALS) or npcUtil.giveItem(player, xi.item.KODACHI_OF_TRIALS))
+                        (player:hasItem(invaderXim.item.KODACHI_OF_TRIALS) or npcUtil.giveItem(player, invaderXim.item.KODACHI_OF_TRIALS))
                     then
-                        npcUtil.giveKeyItem(player, xi.keyItem.WEAPON_TRAINING_GUIDE)
+                        npcUtil.giveKeyItem(player, invaderXim.keyItem.WEAPON_TRAINING_GUIDE)
                         quest:begin(player)
                     end
                 end,
@@ -51,17 +51,17 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Ryoma'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.ANNALS_OF_TRUTH) then
+                    if player:hasKeyItem(invaderXim.ki.ANNALS_OF_TRUTH) then
                         return quest:progressEvent(189) -- complete
-                    elseif player:hasKeyItem(xi.ki.MAP_TO_THE_ANNALS_OF_TRUTH) then
+                    elseif player:hasKeyItem(invaderXim.ki.MAP_TO_THE_ANNALS_OF_TRUTH) then
                         return quest:event(188) -- cont 2
                     else
                         return quest:event(185) -- cont 1
@@ -69,7 +69,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.KODACHI_OF_TRIALS) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.KODACHI_OF_TRIALS) then
                         local wsPoints = trade:getItem(0):getWeaponskillPoints()
 
                         if wsPoints < 300 then
@@ -85,42 +85,42 @@ quest.sections =
             {
                 [185] = function(player, csid, option, npc)
                     if option == 2 then
-                        player:delQuest(xi.questLog.OUTLANDS, xi.quest.id.outlands.BUGI_SODEN)
-                        player:delKeyItem(xi.ki.WEAPON_TRAINING_GUIDE)
-                        player:delKeyItem(xi.ki.MAP_TO_THE_ANNALS_OF_TRUTH)
-                    elseif not player:hasItem(xi.item.KODACHI_OF_TRIALS) then
-                        npcUtil.giveItem(player, xi.item.KODACHI_OF_TRIALS)
+                        player:delQuest(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.BUGI_SODEN)
+                        player:delKeyItem(invaderXim.ki.WEAPON_TRAINING_GUIDE)
+                        player:delKeyItem(invaderXim.ki.MAP_TO_THE_ANNALS_OF_TRUTH)
+                    elseif not player:hasItem(invaderXim.item.KODACHI_OF_TRIALS) then
+                        npcUtil.giveItem(player, invaderXim.item.KODACHI_OF_TRIALS)
                     end
                 end,
 
                 [187] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    npcUtil.giveKeyItem(player, xi.ki.MAP_TO_THE_ANNALS_OF_TRUTH)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.MAP_TO_THE_ANNALS_OF_TRUTH)
                 end,
 
                 [189] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.MAP_TO_THE_ANNALS_OF_TRUTH)
-                        player:delKeyItem(xi.ki.ANNALS_OF_TRUTH)
-                        player:delKeyItem(xi.ki.WEAPON_TRAINING_GUIDE)
-                        player:addLearnedWeaponskill(xi.wsUnlock.BLADE_KU)
+                        player:delKeyItem(invaderXim.ki.MAP_TO_THE_ANNALS_OF_TRUTH)
+                        player:delKeyItem(invaderXim.ki.ANNALS_OF_TRUTH)
+                        player:delKeyItem(invaderXim.ki.WEAPON_TRAINING_GUIDE)
+                        player:addLearnedWeaponskill(invaderXim.wsUnlock.BLADE_KU)
                         player:messageSpecial(norgID.text.BLADE_KU_LEARNED)
                     end
                 end,
             },
         },
 
-        [xi.zone.LABYRINTH_OF_ONZOZO] =
+        [invaderXim.zone.LABYRINTH_OF_ONZOZO] =
         {
             ['qm1'] =
             {
                 onTrigger = function(player, npc)
                     if player:getLocalVar('killed_wsnm') == 1 then
                         player:setLocalVar('killed_wsnm', 0)
-                        return quest:keyItem(xi.ki.ANNALS_OF_TRUTH)
+                        return quest:keyItem(invaderXim.ki.ANNALS_OF_TRUTH)
                     elseif
-                        player:hasKeyItem(xi.ki.MAP_TO_THE_ANNALS_OF_TRUTH) and
-                        not player:hasKeyItem(xi.keyItem.ANNALS_OF_TRUTH) and
+                        player:hasKeyItem(invaderXim.ki.MAP_TO_THE_ANNALS_OF_TRUTH) and
+                        not player:hasKeyItem(invaderXim.keyItem.ANNALS_OF_TRUTH) and
                         npcUtil.popFromQM(player, npc, onzozoID.mob.MEGAPOD_MEGALOPS, { hide = 0 })
                     then
                         return quest:messageSpecial(onzozoID.text.SENSE_OMINOUS_PRESENCE)
@@ -131,7 +131,7 @@ quest.sections =
             ['Megapod_Megalops'] =
             {
                 onMobDeath = function(mob, player, optParams)
-                    if player:hasKeyItem(xi.ki.MAP_TO_THE_ANNALS_OF_TRUTH) then
+                    if player:hasKeyItem(invaderXim.ki.MAP_TO_THE_ANNALS_OF_TRUTH) then
                         player:setLocalVar('killed_wsnm', 1)
                     end
                 end,

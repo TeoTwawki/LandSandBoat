@@ -9,41 +9,41 @@
 local spellObject = {}
 
 spellObject.onMagicCastingCheck = function(caster, target, spell)
-    return xi.trust.canCast(caster, spell)
+    return invaderXim.trust.canCast(caster, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    return xi.trust.spawn(caster, spell)
+    return invaderXim.trust.spawn(caster, spell)
 end
 
 spellObject.onMobSpawn = function(mob)
-    xi.trust.teamworkMessage(mob, {
-        [xi.magic.spell.NAJI] = xi.trust.messageOffset.TEAMWORK_1,
-        [xi.magic.spell.CID] = xi.trust.messageOffset.TEAMWORK_2,
-        [xi.magic.spell.KLARA] = xi.trust.messageOffset.TEAMWORK_3,
+    invaderXim.trust.teamworkMessage(mob, {
+        [invaderXim.magic.spell.NAJI] = invaderXim.trust.messageOffset.TEAMWORK_1,
+        [invaderXim.magic.spell.CID] = invaderXim.trust.messageOffset.TEAMWORK_2,
+        [invaderXim.magic.spell.KLARA] = invaderXim.trust.messageOffset.TEAMWORK_3,
     })
 
     -- DD Mode
-    mob:addGambit(ai.t.SELF, { ai.c.PT_HAS_TANK, 0 }, { ai.r.JA, ai.s.SPECIFIC, xi.ja.BERSERK })
-    mob:addGambit(ai.t.SELF, { ai.c.PT_HAS_TANK, 0 }, { ai.r.JA, ai.s.SPECIFIC, xi.ja.AGGRESSOR })
-    mob:addGambit(ai.t.TANK, { ai.c.HPP_LT, 50 }, { ai.r.JA, ai.s.SPECIFIC, xi.ja.PROVOKE })
+    mob:addGambit(ai.t.SELF, { ai.c.PT_HAS_TANK, 0 }, { ai.r.JA, ai.s.SPECIFIC, invaderXim.ja.BERSERK })
+    mob:addGambit(ai.t.SELF, { ai.c.PT_HAS_TANK, 0 }, { ai.r.JA, ai.s.SPECIFIC, invaderXim.ja.AGGRESSOR })
+    mob:addGambit(ai.t.TANK, { ai.c.HPP_LT, 50 }, { ai.r.JA, ai.s.SPECIFIC, invaderXim.ja.PROVOKE })
 
     -- Tank Mode
-    mob:addGambit(ai.t.TARGET, { ai.c.NOT_PT_HAS_TANK, 0 }, { ai.r.JA, ai.s.SPECIFIC, xi.ja.PROVOKE })
-    mob:addGambit(ai.t.SELF, { ai.c.NOT_PT_HAS_TANK, 0 }, { ai.r.JA, ai.s.SPECIFIC, xi.ja.DEFENDER })
-    mob:addGambit(ai.t.SELF, { ai.c.NOT_PT_HAS_TANK, 0 }, { ai.r.JA, ai.s.SPECIFIC, xi.ja.RETALIATION })
+    mob:addGambit(ai.t.TARGET, { ai.c.NOT_PT_HAS_TANK, 0 }, { ai.r.JA, ai.s.SPECIFIC, invaderXim.ja.PROVOKE })
+    mob:addGambit(ai.t.SELF, { ai.c.NOT_PT_HAS_TANK, 0 }, { ai.r.JA, ai.s.SPECIFIC, invaderXim.ja.DEFENDER })
+    mob:addGambit(ai.t.SELF, { ai.c.NOT_PT_HAS_TANK, 0 }, { ai.r.JA, ai.s.SPECIFIC, invaderXim.ja.RETALIATION })
 
-    mob:addGambit(ai.t.MASTER, { ai.c.HPP_LT, 50 }, { ai.r.JA, ai.s.SPECIFIC, xi.ja.PROVOKE })
+    mob:addGambit(ai.t.MASTER, { ai.c.HPP_LT, 50 }, { ai.r.JA, ai.s.SPECIFIC, invaderXim.ja.PROVOKE })
 
     -- TODO: Add Warriors Charge + WS Logic
 end
 
 spellObject.onMobDespawn = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.DESPAWN)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.DESPAWN)
 end
 
 spellObject.onMobDeath = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.DEATH)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.DEATH)
 end
 
 return spellObject

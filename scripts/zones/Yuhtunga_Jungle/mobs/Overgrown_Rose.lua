@@ -2,7 +2,7 @@
 -- Area: Yuhtunga Jungle
 --  Mob: Overgrown Rose
 -----------------------------------
-local ID = zones[xi.zone.YUHTUNGA_JUNGLE]
+local ID = zones[invaderXim.zone.YUHTUNGA_JUNGLE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

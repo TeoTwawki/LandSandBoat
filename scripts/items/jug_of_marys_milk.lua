@@ -12,13 +12,13 @@ end
 
 itemObject.onItemUse = function(target)
     if
-        not target:hasStatusEffect(xi.effect.SLEEP_I) and
-        not target:hasStatusEffect(xi.effect.SLEEP_II) and
-        not target:hasStatusEffect(xi.effect.LULLABY)
+        not target:hasStatusEffect(invaderXim.effect.SLEEP_I) and
+        not target:hasStatusEffect(invaderXim.effect.SLEEP_II) and
+        not target:hasStatusEffect(invaderXim.effect.LULLABY)
     then
-        target:addStatusEffect(xi.effect.SLEEP_I, 1, 0, 60)
+        target:addStatusEffect(invaderXim.effect.SLEEP_I, 1, 0, 60)
     else
-        target:messageBasic(xi.msg.basic.NO_EFFECT)
+        target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
     end
 end
 

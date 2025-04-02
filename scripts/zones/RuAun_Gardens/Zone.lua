@@ -1,13 +1,13 @@
 -----------------------------------
 -- Zone: RuAun_Gardens (130)
 -----------------------------------
-local ID = zones[xi.zone.RUAUN_GARDENS]
+local ID = zones[invaderXim.zone.RUAUN_GARDENS]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
 
 local function handleClosingPortal(player, eventId, npcId)
-    if GetNPCByID(npcId):getAnimation() == xi.anim.OPEN_DOOR then
+    if GetNPCByID(npcId):getAnimation() == invaderXim.anim.OPEN_DOOR then
         player:startOptionalCutscene(eventId)
     end
 end
@@ -18,7 +18,7 @@ local function handleGreenPortal(player)
     else
         local title = player:getTitle()
 
-        if title == xi.title.WARRIOR_OF_THE_CRYSTAL then
+        if title == invaderXim.title.WARRIOR_OF_THE_CRYSTAL then
             player:startEvent(41, title)
         else
             player:startEvent(43, title)
@@ -79,12 +79,12 @@ zoneObject.onInitialize = function(zone)
     zone:registerCuboidTriggerArea(37,  142, -41, -156,  145, -39, -153) -- Main Island (NE)
     zone:registerCuboidTriggerArea(38, -145, -41, -156, -142, -39, -153) -- Main Island (NW)
 
-    xi.treasure.initZone(zone)
-    xi.conquest.setRegionalConquestOverseers(zone:getRegionID())
+    invaderXim.treasure.initZone(zone)
+    invaderXim.conquest.setRegionalConquestOverseers(zone:getRegionID())
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)

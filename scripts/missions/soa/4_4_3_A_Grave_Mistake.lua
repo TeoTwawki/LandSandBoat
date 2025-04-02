@@ -9,15 +9,15 @@
 -- Stout_Weir         : !pos -427.506 -1 -48.217 258
 -- Waterways Overlook : !pos -17.995 -6.507 37.43 258
 -----------------------------------
-local easternAdoulinID = zones[xi.zone.EASTERN_ADOULIN]
-local ralaID           = zones[xi.zone.RALA_WATERWAYS]
+local easternAdoulinID = zones[invaderXim.zone.EASTERN_ADOULIN]
+local ralaID           = zones[invaderXim.zone.RALA_WATERWAYS]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.A_GRAVE_MISTAKE)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.A_GRAVE_MISTAKE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.AN_EMERGENCY_CONVOCATION },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.AN_EMERGENCY_CONVOCATION },
 }
 
 mission.sections =
@@ -27,12 +27,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(40, 256, 0, 0, 3, 1, 0, utils.MAX_UINT32, 4),
         },
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Ploh_Trishbahk'] =
             {
@@ -49,15 +49,15 @@ mission.sections =
             {
                 [1534] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.BROKEN_FUSE)
-                        player:messageSpecial(easternAdoulinID.text.LOST_KEYITEM, xi.ki.BROKEN_FUSE)
-                        xi.mission.setMustZone(player, xi.mission.log_id.SOA, xi.mission.id.soa.AN_EMERGENCY_CONVOCATION)
+                        player:delKeyItem(invaderXim.ki.BROKEN_FUSE)
+                        player:messageSpecial(easternAdoulinID.text.LOST_KEYITEM, invaderXim.ki.BROKEN_FUSE)
+                        invaderXim.mission.setMustZone(player, invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.AN_EMERGENCY_CONVOCATION)
                     end
                 end,
             },
         },
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['Sainene'] =
             {
@@ -73,7 +73,7 @@ mission.sections =
             ['Stout_Weir'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.BROKEN_FUSE) then
+                    if not player:hasKeyItem(invaderXim.ki.BROKEN_FUSE) then
                         return mission:progressEvent(371)
                     else
                         return mission:event(373)
@@ -96,7 +96,7 @@ mission.sections =
             {
                 [371] = function(player, csid, option, npc)
                     mission:setVarBit(player, 'Status', 2)
-                    npcUtil.giveKeyItem(player, xi.ki.BROKEN_FUSE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.BROKEN_FUSE)
                 end,
 
                 [372] = function(player, csid, option, npc)

@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.DYNAMIS_BEAUCEDINE] =
+zones[invaderXim.zone.DYNAMIS_BEAUCEDINE] =
 {
     text =
     {
@@ -27,53 +27,53 @@ zones[xi.zone.DYNAMIS_BEAUCEDINE] =
     {
         TIME_EXTENSION =
         {
-            { minutes = 10, ki = xi.ki.CRIMSON_GRANULES_OF_TIME,   mob = 17326207 },
-            { minutes = 10, ki = xi.ki.AZURE_GRANULES_OF_TIME,     mob = 17326279 },
-            { minutes = 10, ki = xi.ki.AMBER_GRANULES_OF_TIME,     mob = 17326353 },
-            { minutes = 10, ki = xi.ki.ALABASTER_GRANULES_OF_TIME, mob = 17326468 },
-            { minutes = 20, ki = xi.ki.OBSIDIAN_GRANULES_OF_TIME,  mob = { 17326742, 17326748, 17326754, 17326760, 17326765, 17326771 } },
+            { minutes = 10, ki = invaderXim.ki.CRIMSON_GRANULES_OF_TIME,   mob = 17326207 },
+            { minutes = 10, ki = invaderXim.ki.AZURE_GRANULES_OF_TIME,     mob = 17326279 },
+            { minutes = 10, ki = invaderXim.ki.AMBER_GRANULES_OF_TIME,     mob = 17326353 },
+            { minutes = 10, ki = invaderXim.ki.ALABASTER_GRANULES_OF_TIME, mob = 17326468 },
+            { minutes = 20, ki = invaderXim.ki.OBSIDIAN_GRANULES_OF_TIME,  mob = { 17326742, 17326748, 17326754, 17326760, 17326765, 17326771 } },
         },
 
         REFILL_STATUE =
         {
             {
-                { mob = 17326203, eye = xi.dynamis.eye.RED  }, -- Adamantking_Effigy
-                { mob = 17326204, eye = xi.dynamis.eye.BLUE },
+                { mob = 17326203, eye = invaderXim.dynamis.eye.RED  }, -- Adamantking_Effigy
+                { mob = 17326204, eye = invaderXim.dynamis.eye.BLUE },
             },
 
             {
-                { mob = 17326205, eye = xi.dynamis.eye.RED   }, -- Adamantking_Effigy
-                { mob = 17326206, eye = xi.dynamis.eye.GREEN },
+                { mob = 17326205, eye = invaderXim.dynamis.eye.RED   }, -- Adamantking_Effigy
+                { mob = 17326206, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 17326275, eye = xi.dynamis.eye.RED  }, -- Serjeant_Tombstone
-                { mob = 17326276, eye = xi.dynamis.eye.BLUE },
+                { mob = 17326275, eye = invaderXim.dynamis.eye.RED  }, -- Serjeant_Tombstone
+                { mob = 17326276, eye = invaderXim.dynamis.eye.BLUE },
             },
 
             {
-                { mob = 17326277, eye = xi.dynamis.eye.RED   }, -- Serjeant_Tombstone
-                { mob = 17326278, eye = xi.dynamis.eye.GREEN },
+                { mob = 17326277, eye = invaderXim.dynamis.eye.RED   }, -- Serjeant_Tombstone
+                { mob = 17326278, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 17326349, eye = xi.dynamis.eye.RED  }, -- Avatar_Icon
-                { mob = 17326350, eye = xi.dynamis.eye.BLUE },
+                { mob = 17326349, eye = invaderXim.dynamis.eye.RED  }, -- Avatar_Icon
+                { mob = 17326350, eye = invaderXim.dynamis.eye.BLUE },
             },
 
             {
-                { mob = 17326351, eye = xi.dynamis.eye.RED   }, -- Avatar_Icon
-                { mob = 17326352, eye = xi.dynamis.eye.GREEN },
+                { mob = 17326351, eye = invaderXim.dynamis.eye.RED   }, -- Avatar_Icon
+                { mob = 17326352, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 17326464, eye = xi.dynamis.eye.RED  }, -- Goblin_Replica
-                { mob = 17326465, eye = xi.dynamis.eye.BLUE },
+                { mob = 17326464, eye = invaderXim.dynamis.eye.RED  }, -- Goblin_Replica
+                { mob = 17326465, eye = invaderXim.dynamis.eye.BLUE },
             },
 
             {
-                { mob = 17326466, eye = xi.dynamis.eye.RED   }, -- Goblin_Replica
-                { mob = 17326467, eye = xi.dynamis.eye.GREEN },
+                { mob = 17326466, eye = invaderXim.dynamis.eye.RED   }, -- Goblin_Replica
+                { mob = 17326467, eye = invaderXim.dynamis.eye.GREEN },
             },
         },
 
@@ -165,4 +165,4 @@ zones[xi.zone.DYNAMIS_BEAUCEDINE] =
     },
 }
 
-return zones[xi.zone.DYNAMIS_BEAUCEDINE]
+return zones[invaderXim.zone.DYNAMIS_BEAUCEDINE]

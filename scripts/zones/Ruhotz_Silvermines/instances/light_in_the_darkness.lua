@@ -17,16 +17,16 @@
 -- - They have True Hearing.
 -- - Trusts are allowed.
 -----------------------------------
-local ID = zones[xi.zone.RUHOTZ_SILVERMINES]
+local ID = zones[invaderXim.zone.RUHOTZ_SILVERMINES]
 -----------------------------------
 local instanceObject = {}
 
 instanceObject.registryRequirements = function(player)
-    return player:hasKeyItem(xi.ki.MINE_SHAFT_KEY)
+    return player:hasKeyItem(invaderXim.ki.MINE_SHAFT_KEY)
 end
 
 instanceObject.entryRequirements = function(player)
-    return player:hasKeyItem(xi.ki.MINE_SHAFT_KEY)
+    return player:hasKeyItem(invaderXim.ki.MINE_SHAFT_KEY)
 end
 
 instanceObject.onInstanceCreated = function(instance)
@@ -36,16 +36,16 @@ instanceObject.onInstanceCreated = function(instance)
 end
 
 instanceObject.onInstanceCreatedCallback = function(player, instance)
-    xi.instance.onInstanceCreatedCallback(player, instance)
+    invaderXim.instance.onInstanceCreatedCallback(player, instance)
 end
 
 instanceObject.afterInstanceRegister = function(player)
-    player:delKeyItem(xi.ki.MINE_SHAFT_KEY)
+    player:delKeyItem(invaderXim.ki.MINE_SHAFT_KEY)
 
-    local questStatus = player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.LIGHT_IN_THE_DARKNESS)
+    local questStatus = player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.LIGHT_IN_THE_DARKNESS)
     local questProgVar = player:getCharVar('Quest[7][19]Prog')
     if
-        questStatus == xi.questStatus.QUEST_ACCEPTED and
+        questStatus == invaderXim.questStatus.QUEST_ACCEPTED and
         (questProgVar == 4 or questProgVar == 7)
     then
         -- TODO: Player is not locked during this CS and will aggro the mobs

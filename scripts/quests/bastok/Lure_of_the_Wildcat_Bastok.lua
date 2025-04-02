@@ -4,16 +4,16 @@
 -- Log ID: 1, Quest ID: 84
 -- Alib-Mufalib : !pos 116.08 7.372 -31.82 236
 -----------------------------------
-local portBastokID = zones[xi.zone.PORT_BASTOK]
+local portBastokID = zones[invaderXim.zone.PORT_BASTOK]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.LURE_OF_THE_WILDCAT)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.LURE_OF_THE_WILDCAT)
 
 quest.reward =
 {
     fame     = 150,
-    fameArea = xi.fameArea.BASTOK,
-    keyItem  = xi.ki.BLUE_INVITATION_CARD,
+    fameArea = invaderXim.fameArea.BASTOK,
+    keyItem  = invaderXim.ki.BLUE_INVITATION_CARD,
 }
 
 local wildcatNpcData =
@@ -56,18 +56,18 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                xi.settings.main.ENABLE_TOAU == 1
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                invaderXim.settings.main.ENABLE_TOAU == 1
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Alib-Mufalib'] = quest:progressEvent(357),
 
             onEventFinish =
             {
                 [357] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.BLUE_SENTINEL_BADGE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.BLUE_SENTINEL_BADGE)
                     quest:begin(player)
                 end,
             },
@@ -76,10 +76,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Arawn']     = wildcatOnTrigger,
             ['Harmodios'] = wildcatOnTrigger,
@@ -97,7 +97,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Deidogg']   = wildcatOnTrigger,
             ['Echo_Hawk'] = wildcatOnTrigger,
@@ -115,7 +115,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Ayame']             = wildcatOnTrigger,
             ['Invincible_Shield'] = wildcatOnTrigger,
@@ -133,7 +133,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Alib-Mufalib'] =
             {
@@ -165,8 +165,8 @@ quest.sections =
                 [356] = wildcatOnEventFinish,
 
                 [360] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.BLUE_SENTINEL_BADGE)
-                    player:messageSpecial(portBastokID.text.KEYITEM_LOST, xi.ki.BLUE_SENTINEL_BADGE)
+                    player:delKeyItem(invaderXim.ki.BLUE_SENTINEL_BADGE)
+                    player:messageSpecial(portBastokID.text.KEYITEM_LOST, invaderXim.ki.BLUE_SENTINEL_BADGE)
 
                     quest:complete(player)
                 end,

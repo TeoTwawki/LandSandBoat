@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.DYNAMIS
+-- invaderXim.effect.DYNAMIS
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -9,7 +9,7 @@ effectObject.onEffectGain = function(target, effect)
 end
 
 effectObject.onEffectTick = function(target, effect)
-    if target:getCurrentRegion() == xi.region.DYNAMIS then
+    if target:getCurrentRegion() == invaderXim.region.DYNAMIS then
         local lastTimeUpdate = target:getLocalVar('dynamis_lasttimeupdate')
         local remainingTimeLimit = effect:getTimeRemaining() / 1000
         local message = 0
@@ -43,17 +43,17 @@ effectObject.onEffectTick = function(target, effect)
             target:setLocalVar('dynamis_lasttimeupdate', message)
         end
     else
-        target:delStatusEffectSilent(xi.effect.DYNAMIS)
+        target:delStatusEffectSilent(invaderXim.effect.DYNAMIS)
     end
 end
 
 effectObject.onEffectLose = function(target, effect)
-    target:delKeyItem(xi.ki.CRIMSON_GRANULES_OF_TIME)
-    target:delKeyItem(xi.ki.AZURE_GRANULES_OF_TIME)
-    target:delKeyItem(xi.ki.AMBER_GRANULES_OF_TIME)
-    target:delKeyItem(xi.ki.ALABASTER_GRANULES_OF_TIME)
-    target:delKeyItem(xi.ki.OBSIDIAN_GRANULES_OF_TIME)
-    if target:getCurrentRegion() == xi.region.DYNAMIS then
+    target:delKeyItem(invaderXim.ki.CRIMSON_GRANULES_OF_TIME)
+    target:delKeyItem(invaderXim.ki.AZURE_GRANULES_OF_TIME)
+    target:delKeyItem(invaderXim.ki.AMBER_GRANULES_OF_TIME)
+    target:delKeyItem(invaderXim.ki.ALABASTER_GRANULES_OF_TIME)
+    target:delKeyItem(invaderXim.ki.OBSIDIAN_GRANULES_OF_TIME)
+    if target:getCurrentRegion() == invaderXim.region.DYNAMIS then
         if effect:getTimeRemaining() == 0 then
             target:messageSpecial(zones[target:getZoneID()].text.DYNAMIS_TIME_EXPIRED)
             target:disengage()

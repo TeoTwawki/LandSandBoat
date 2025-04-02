@@ -4,22 +4,22 @@
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId           = xi.zone.CLOISTER_OF_FROST,
-    battlefieldId    = xi.battlefield.id.WAKING_THE_BEAST_CLOISTER_OF_FROST,
+    zoneId           = invaderXim.zone.CLOISTER_OF_FROST,
+    battlefieldId    = invaderXim.battlefield.id.WAKING_THE_BEAST_CLOISTER_OF_FROST,
     canLoseExp       = false,
     maxPlayers       = 18,
     timeLimit        = utils.minutes(30),
     index            = 3,
     entryNpc         = 'IP_Entrance',
     exitNpc          = 'Ice_Protocrystal',
-    requiredKeyItems = { xi.ki.RAINBOW_RESONATOR },
+    requiredKeyItems = { invaderXim.ki.RAINBOW_RESONATOR },
 
-    questArea = xi.questLog.OTHER_AREAS,
-    quest     = xi.quest.id.otherAreas.WAKING_THE_BEAST,
+    questArea = invaderXim.questLog.OTHER_AREAS,
+    quest     = invaderXim.quest.id.otherAreas.WAKING_THE_BEAST,
 })
 
 function content:onEventFinishWin(player, csid, option, npc)
-    npcUtil.giveKeyItem(player, xi.ki.EYE_OF_FROST)
+    npcUtil.giveKeyItem(player, invaderXim.ki.EYE_OF_FROST)
 end
 
 content.groups =
@@ -35,7 +35,7 @@ content.groups =
                 end
             end
 
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 

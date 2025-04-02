@@ -11,15 +11,15 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     mob:setLocalVar('nuclearWaste', 1)
-    local resist = xi.mobskills.applyPlayerResistance(mob, xi.effect.ELEMENTALRES_DOWN, target, mob:getStat(xi.mod.INT) - target:getStat(xi.mod.INT), 0, 0)
+    local resist = invaderXim.mobskills.applyPlayerResistance(mob, invaderXim.effect.ELEMENTALRES_DOWN, target, mob:getStat(invaderXim.mod.INT) - target:getStat(invaderXim.mod.INT), 0, 0)
     if resist >= 0.25 then
-        target:addStatusEffectEx(xi.effect.ELEMENTALRES_DOWN, 0, 50, 0, 60)
-        skill:setMsg(xi.msg.basic.NONE)
+        target:addStatusEffectEx(invaderXim.effect.ELEMENTALRES_DOWN, 0, 50, 0, 60)
+        skill:setMsg(invaderXim.msg.basic.NONE)
     else
-        skill:setMsg(xi.msg.basic.SKILL_MISS)
+        skill:setMsg(invaderXim.msg.basic.SKILL_MISS)
     end
 
-    return xi.effect.ELEMENTALRES_DOWN
+    return invaderXim.effect.ELEMENTALRES_DOWN
 end
 
 return mobskillObject

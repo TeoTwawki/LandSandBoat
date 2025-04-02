@@ -10,27 +10,27 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    if caster:hasStatusEffect(xi.effect.ACCURACY_BOOST) then
-        spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT) -- no effect
+    if caster:hasStatusEffect(invaderXim.effect.ACCURACY_BOOST) then
+        spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT) -- no effect
     else
-        -- local dINT = caster:getStat(xi.mod.INT) - target:getStat(xi.mod.INT)
+        -- local dINT = caster:getStat(invaderXim.mod.INT) - target:getStat(invaderXim.mod.INT)
         local params = {}
         params.diff = nil
-        params.attribute = xi.mod.INT
-        params.skillType = xi.skill.DARK_MAGIC
+        params.attribute = invaderXim.mod.INT
+        params.skillType = invaderXim.skill.DARK_MAGIC
         params.bonus = 0
         params.effect = nil
         local resist = applyResistanceEffect(caster, target, spell, params)
         if resist <= 0.125 then
-            spell:setMsg(xi.msg.basic.MAGIC_RESIST)
+            spell:setMsg(invaderXim.msg.basic.MAGIC_RESIST)
         else
-            spell:setMsg(xi.msg.basic.MAGIC_ABSORB_ACC)
-            caster:addStatusEffect(xi.effect.ACCURACY_BOOST, xi.settings.main.ABSORB_SPELL_AMOUNT * resist * ((100 + (caster:getMod(xi.mod.AUGMENTS_ABSORB))) / 100), xi.settings.main.ABSORB_SPELL_TICK, xi.settings.main.ABSORB_SPELL_AMOUNT * xi.settings.main.ABSORB_SPELL_TICK) -- caster gains ACC
-            target:addStatusEffect(xi.effect.ACCURACY_DOWN, xi.settings.main.ABSORB_SPELL_AMOUNT * resist * ((100 + (caster:getMod(xi.mod.AUGMENTS_ABSORB))) / 100), xi.settings.main.ABSORB_SPELL_TICK, xi.settings.main.ABSORB_SPELL_AMOUNT * xi.settings.main.ABSORB_SPELL_TICK)    -- target loses ACC
+            spell:setMsg(invaderXim.msg.basic.MAGIC_ABSORB_ACC)
+            caster:addStatusEffect(invaderXim.effect.ACCURACY_BOOST, invaderXim.settings.main.ABSORB_SPELL_AMOUNT * resist * ((100 + (caster:getMod(invaderXim.mod.AUGMENTS_ABSORB))) / 100), invaderXim.settings.main.ABSORB_SPELL_TICK, invaderXim.settings.main.ABSORB_SPELL_AMOUNT * invaderXim.settings.main.ABSORB_SPELL_TICK) -- caster gains ACC
+            target:addStatusEffect(invaderXim.effect.ACCURACY_DOWN, invaderXim.settings.main.ABSORB_SPELL_AMOUNT * resist * ((100 + (caster:getMod(invaderXim.mod.AUGMENTS_ABSORB))) / 100), invaderXim.settings.main.ABSORB_SPELL_TICK, invaderXim.settings.main.ABSORB_SPELL_AMOUNT * invaderXim.settings.main.ABSORB_SPELL_TICK)    -- target loses ACC
         end
     end
 
-    return xi.effect.ACCURACY_BOOST
+    return invaderXim.effect.ACCURACY_BOOST
 end
 
 return spellObject

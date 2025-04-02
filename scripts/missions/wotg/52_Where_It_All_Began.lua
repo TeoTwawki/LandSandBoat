@@ -6,12 +6,12 @@
 -- Lion Springs Door : !pos 96 0 106 80
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.WHERE_IT_ALL_BEGAN)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.WHERE_IT_ALL_BEGAN)
 
 mission.reward =
 {
-    keyItem     = xi.ki.WEDDING_INVITATION,
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.A_TOKEN_OF_TROTH },
+    keyItem     = invaderXim.ki.WEDDING_INVITATION,
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.A_TOKEN_OF_TROTH },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Lion_Springs'] = mission:progressEvent(175, 80, 72),
 

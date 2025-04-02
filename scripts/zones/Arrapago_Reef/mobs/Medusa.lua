@@ -4,18 +4,18 @@
 -- !pos -458 -20 458
 -- TODO: resists, attack/def boosts
 -----------------------------------
-local ID = zones[xi.zone.ARRAPAGO_REEF]
+local ID = zones[invaderXim.zone.ARRAPAGO_REEF]
 mixins = { require('scripts/mixins/job_special') }
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         chance = 75, -- "Is possible that she will not use Eagle Eye Shot at all." (guessing 75 percent)
         specials =
         {
-            { id = xi.jsa.EES_LAMIA, hpp = math.random(5, 99) },
+            { id = invaderXim.jsa.EES_LAMIA, hpp = math.random(5, 99) },
         },
     })
 end
@@ -48,7 +48,7 @@ entity.onMobFight = function(mob, target)
         local pet = GetMobByID(i)
         if
             pet and
-            pet:getCurrentAction() == xi.act.ROAMING
+            pet:getCurrentAction() == invaderXim.act.ROAMING
         then
             pet:updateEnmity(target)
         end
@@ -61,7 +61,7 @@ end
 
 entity.onMobDeath = function(mob, player, optParams)
     player:showText(mob, ID.text.MEDUSA_DEATH)
-    player:addTitle(xi.title.GORGONSTONE_SUNDERER)
+    player:addTitle(invaderXim.title.GORGONSTONE_SUNDERER)
     for i = 1, 4 do DespawnMob(ID.mob.MEDUSA + i) end
 end
 

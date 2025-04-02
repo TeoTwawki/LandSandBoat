@@ -5,39 +5,39 @@
 local slipItems = require('scripts/globals/porter_slip_items')
 -----------------------------------
 xi = xi or {}
-xi.porter_moogle = xi.porter_moogle or {}
+invaderXim.porter_moogle = invaderXim.porter_moogle or {}
 
 -- Item IDs for all of the slips.
 local slipIds =
 {
-    xi.item.MOOGLE_STORAGE_SLIP_01,
-    xi.item.MOOGLE_STORAGE_SLIP_02,
-    xi.item.MOOGLE_STORAGE_SLIP_03,
-    xi.item.MOOGLE_STORAGE_SLIP_04,
-    xi.item.MOOGLE_STORAGE_SLIP_05,
-    xi.item.MOOGLE_STORAGE_SLIP_06,
-    xi.item.MOOGLE_STORAGE_SLIP_07,
-    xi.item.MOOGLE_STORAGE_SLIP_08,
-    xi.item.MOOGLE_STORAGE_SLIP_09,
-    xi.item.MOOGLE_STORAGE_SLIP_10,
-    xi.item.MOOGLE_STORAGE_SLIP_11,
-    xi.item.MOOGLE_STORAGE_SLIP_12,
-    xi.item.MOOGLE_STORAGE_SLIP_13,
-    xi.item.MOOGLE_STORAGE_SLIP_14,
-    xi.item.MOOGLE_STORAGE_SLIP_15,
-    xi.item.MOOGLE_STORAGE_SLIP_16,
-    xi.item.MOOGLE_STORAGE_SLIP_17,
-    xi.item.MOOGLE_STORAGE_SLIP_18,
-    xi.item.MOOGLE_STORAGE_SLIP_19,
-    xi.item.MOOGLE_STORAGE_SLIP_20,
-    xi.item.MOOGLE_STORAGE_SLIP_21,
-    xi.item.MOOGLE_STORAGE_SLIP_22,
-    xi.item.MOOGLE_STORAGE_SLIP_23,
-    xi.item.MOOGLE_STORAGE_SLIP_24,
-    xi.item.MOOGLE_STORAGE_SLIP_25,
-    xi.item.MOOGLE_STORAGE_SLIP_26,
-    xi.item.MOOGLE_STORAGE_SLIP_27,
-    xi.item.MOOGLE_STORAGE_SLIP_28,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_01,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_02,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_03,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_04,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_05,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_06,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_07,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_08,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_09,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_10,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_11,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_12,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_13,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_14,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_15,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_16,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_17,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_18,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_19,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_20,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_21,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_22,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_23,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_24,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_25,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_26,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_27,
+    invaderXim.item.MOOGLE_STORAGE_SLIP_28,
 }
 
 -----------------------------------
@@ -238,7 +238,7 @@ end
 -- desc : Begins the storage or retrieval process based on the items
 --        supplied in the trade.
 -----------------------------------
-xi.porter_moogle.onTrade = function(player, trade, eventTable)
+invaderXim.porter_moogle.onTrade = function(player, trade, eventTable)
     local slipId, slipCount = getSlipId(trade)
 
     if slipId == 0 or slipCount > 1 then
@@ -259,7 +259,7 @@ end
 --        the slip's extra data, displays a message to the user, and
 --        updates the user's event data.
 -----------------------------------
-xi.porter_moogle.onEventUpdate = function(player, csid, option, retrieveEventId)
+invaderXim.porter_moogle.onEventUpdate = function(player, csid, option, retrieveEventId)
     local slipId = player:getLocalVar('slipId')
 
     if csid == retrieveEventId and slipId ~= 0 and slipId ~= nil then
@@ -293,7 +293,7 @@ end
 -----------------------------------
 -- desc : Completes the event.
 -----------------------------------
-xi.porter_moogle.onEventFinish = function(player, csid, option, talkEventId)
+invaderXim.porter_moogle.onEventFinish = function(player, csid, option, talkEventId)
     if csid == talkEventId and option < 1000 then
         option = math.floor(option / 16) + (option % 16)
 

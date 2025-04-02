@@ -21,11 +21,11 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.PLANTOID
-    params.tpmod = xi.spells.blue.tpMod.DURATION
-    params.attackType = xi.attackType.PHYSICAL
-    params.damageType = xi.damageType.BLUNT
-    params.scattr = xi.skillchainType.REVERBERATION
+    params.ecosystem = invaderXim.ecosystem.PLANTOID
+    params.tpmod = invaderXim.spells.blue.tpMod.DURATION
+    params.attackType = invaderXim.attackType.PHYSICAL
+    params.damageType = invaderXim.damageType.BLUNT
+    params.scattr = invaderXim.skillchainType.REVERBERATION
     params.numhits = 1
     params.multiplier = 1.5
     params.tp150 = 1.5
@@ -40,13 +40,13 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
 
-    params.effect = xi.effect.SLOW
+    params.effect = invaderXim.effect.SLOW
     local power = 1500
     local tick = 0
     local duration = 180
 
-    local damage = xi.spells.blue.usePhysicalSpell(caster, target, spell, params)
-    xi.spells.blue.usePhysicalSpellAddedEffect(caster, target, spell, params, damage, power, tick, duration)
+    local damage = invaderXim.spells.blue.usePhysicalSpell(caster, target, spell, params)
+    invaderXim.spells.blue.usePhysicalSpellAddedEffect(caster, target, spell, params, damage, power, tick, duration)
 
     return damage
 end

@@ -4,7 +4,7 @@
 -- Type: Guild Merchant NPC (Woodworking Guild)
 -- !pos -333.729, -5.512, 475.647 2
 -----------------------------------
-local ID = zones[xi.zone.CARPENTERS_LANDING]
+local ID = zones[invaderXim.zone.CARPENTERS_LANDING]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

@@ -1,7 +1,7 @@
 -----------------------------------
 -- Full Speed Ahead! Helper
 -----------------------------------
-local batalliaID = zones[xi.zone.BATALLIA_DOWNS]
+local batalliaID = zones[invaderXim.zone.BATALLIA_DOWNS]
 -----------------------------------
 
 --[[
@@ -23,43 +23,43 @@ FULL_SPEED_AHEAD effect power:
 ]]--
 
 xi = xi or {}
-xi.full_speed_ahead = xi.full_speed_ahead or {}
+invaderXim.full_speed_ahead = invaderXim.full_speed_ahead or {}
 
-xi.full_speed_ahead.duration              = 600
-xi.full_speed_ahead.motivation_decay      = 2
-xi.full_speed_ahead.motivation_food_bonus = 15
-xi.full_speed_ahead.pep_growth            = 1
+invaderXim.full_speed_ahead.duration              = 600
+invaderXim.full_speed_ahead.motivation_decay      = 2
+invaderXim.full_speed_ahead.motivation_food_bonus = 15
+invaderXim.full_speed_ahead.pep_growth            = 1
 
-xi.full_speed_ahead.onEffectGain = function(player, effect)
-    player:setLocalVar('FSA_Time', os.time() + xi.full_speed_ahead.duration)
+invaderXim.full_speed_ahead.onEffectGain = function(player, effect)
+    player:setLocalVar('FSA_Time', os.time() + invaderXim.full_speed_ahead.duration)
     player:setLocalVar('FSA_Motivation', 100)
     player:setLocalVar('FSA_Pep', 0)
     player:setLocalVar('FSA_Food', 0xFF)
     player:setLocalVar('FSA_FoodCount', 0)
     -- NOTE: This used to be mount id 1: QUEST_RAPTOR, but it appears to have changed
-    player:addStatusEffect(xi.effect.MOUNTED, xi.mount.RAPTOR, 3, 0)
+    player:addStatusEffect(invaderXim.effect.MOUNTED, invaderXim.mount.RAPTOR, 3, 0)
     player:setCharVar('[QUEST]FullSpeedAhead', 3)
 end
 
-xi.full_speed_ahead.onEffectLose = function(player, effect)
-    player:delStatusEffectSilent(xi.effect.MOUNTED)
+invaderXim.full_speed_ahead.onEffectLose = function(player, effect)
+    player:delStatusEffectSilent(invaderXim.effect.MOUNTED)
     player:countdown(0)
     player:enableEntities({})
 
     -- If in Batallia Downs and didn't get the completion flag (failed/dismounted)
     if
-        player:getZoneID() == xi.zone.BATALLIA_DOWNS and
+        player:getZoneID() == invaderXim.zone.BATALLIA_DOWNS and
         player:getCharVar('[QUEST]FullSpeedAhead') ~= 4
     then
         player:startEvent(26, 0, effect:getPower())
     end
 end
 
-xi.full_speed_ahead.tick = function(player, effect)
+invaderXim.full_speed_ahead.tick = function(player, effect)
     -- TODO: slow mount speed under 50% motivation
     -- TODO: motivation drains faster when climbing steep hills, red exclamation mark and sweat animation
-    player:setLocalVar('FSA_Motivation', player:getLocalVar('FSA_Motivation') - xi.full_speed_ahead.motivation_decay + effect:getPower())
-    player:setLocalVar('FSA_Pep', player:getLocalVar('FSA_Pep') + xi.full_speed_ahead.pep_growth + effect:getPower())
+    player:setLocalVar('FSA_Motivation', player:getLocalVar('FSA_Motivation') - invaderXim.full_speed_ahead.motivation_decay + effect:getPower())
+    player:setLocalVar('FSA_Pep', player:getLocalVar('FSA_Pep') + invaderXim.full_speed_ahead.pep_growth + effect:getPower())
 
     local timeLeft   = player:getLocalVar('FSA_Time') - os.time()
     local motivation = player:getLocalVar('FSA_Motivation')
@@ -78,9 +78,9 @@ xi.full_speed_ahead.tick = function(player, effect)
     if
         motivation <= 0 or
         timeLeft <= 0 or
-        not player:hasStatusEffect(xi.effect.MOUNTED)
+        not player:hasStatusEffect(invaderXim.effect.MOUNTED)
     then
-        player:delStatusEffectSilent(xi.effect.FULL_SPEED_AHEAD)
+        player:delStatusEffectSilent(invaderXim.effect.FULL_SPEED_AHEAD)
     else
         local objective = {
             countdown = timeLeft,
@@ -100,7 +100,7 @@ xi.full_speed_ahead.tick = function(player, effect)
     end
 end
 
-xi.full_speed_ahead.onTriggerAreaEnter = function(player, index)
+invaderXim.full_speed_ahead.onTriggerAreaEnter = function(player, index)
     local foodByte   = player:getLocalVar('FSA_Food')
     local foodCount  = player:getLocalVar('FSA_FoodCount')
     local motivation = player:getLocalVar('FSA_Motivation')
@@ -113,7 +113,7 @@ xi.full_speed_ahead.onTriggerAreaEnter = function(player, index)
         player:setLocalVar('FSA_FoodCount', foodCount + 1)
 
         local newFoodCount  = player:getLocalVar('FSA_FoodCount')
-        local newMotivation = utils.clamp(motivation + xi.full_speed_ahead.motivation_food_bonus, 0, 100)
+        local newMotivation = utils.clamp(motivation + invaderXim.full_speed_ahead.motivation_food_bonus, 0, 100)
         player:setLocalVar('FSA_Motivation', newMotivation)
 
         -- Hearts
@@ -127,7 +127,7 @@ xi.full_speed_ahead.onTriggerAreaEnter = function(player, index)
     end
 end
 
-xi.full_speed_ahead.onCheer = function(player)
+invaderXim.full_speed_ahead.onCheer = function(player)
     local timeLeft   = player:getLocalVar('FSA_Time') - os.time()
     local motivation = player:getLocalVar('FSA_Motivation')
     local pep        = player:getLocalVar('FSA_Pep')
@@ -159,12 +159,12 @@ xi.full_speed_ahead.onCheer = function(player)
     player:objectiveUtility(objective)
 end
 
-xi.full_speed_ahead.completeGame = function(player)
+invaderXim.full_speed_ahead.completeGame = function(player)
     player:setCharVar('[QUEST]FullSpeedAhead', 4)
-    player:delStatusEffectSilent(xi.effect.FULL_SPEED_AHEAD)
+    player:delStatusEffectSilent(invaderXim.effect.FULL_SPEED_AHEAD)
     player:setPos(-104.5, 0, 187.4, 64, 244)
 end
 
-xi.fsa = xi.full_speed_ahead
+invaderXim.fsa = invaderXim.full_speed_ahead
 
-return xi.full_speed_ahead -- NOTE: This return does nothing apart from silence the hot-reloader
+return invaderXim.full_speed_ahead -- NOTE: This return does nothing apart from silence the hot-reloader

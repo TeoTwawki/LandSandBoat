@@ -21,12 +21,12 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.PLANTOID
-    params.tpmod = xi.spells.blue.tpMod.DURATION
-    params.attackType = xi.attackType.PHYSICAL
-    params.damageType = xi.damageType.SLASHING
-    params.scattr = xi.skillchainType.INDURATION
-    params.scattr2 = xi.skillchainType.DETONATION
+    params.ecosystem = invaderXim.ecosystem.PLANTOID
+    params.tpmod = invaderXim.spells.blue.tpMod.DURATION
+    params.attackType = invaderXim.attackType.PHYSICAL
+    params.damageType = invaderXim.damageType.SLASHING
+    params.scattr = invaderXim.skillchainType.INDURATION
+    params.scattr2 = invaderXim.skillchainType.DETONATION
     params.numhits = 3
     params.multiplier = 0.875
     params.tp150 = 0.875
@@ -41,13 +41,13 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
 
-    params.effect = xi.effect.DEFENSE_DOWN
+    params.effect = invaderXim.effect.DEFENSE_DOWN
     local power = 8
     local tick = 0
     local duration = 120
 
-    local damage = xi.spells.blue.usePhysicalSpell(caster, target, spell, params)
-    xi.spells.blue.usePhysicalSpellAddedEffect(caster, target, spell, params, damage, power, tick, duration)
+    local damage = invaderXim.spells.blue.usePhysicalSpell(caster, target, spell, params)
+    invaderXim.spells.blue.usePhysicalSpellAddedEffect(caster, target, spell, params, damage, power, tick, duration)
 
     return damage
 end

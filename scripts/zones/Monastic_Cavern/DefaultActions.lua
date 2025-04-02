@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.MONASTIC_CAVERN]
+local ID = zones[invaderXim.zone.MONASTIC_CAVERN]
 
 return {
     ['Loo_Kohor'] = { event = 5 },

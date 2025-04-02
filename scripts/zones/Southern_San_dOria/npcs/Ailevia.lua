@@ -13,7 +13,7 @@ entity.onTrade = function(player, npc, trade)
     -- Adventurer coupon
     if
         trade:getItemCount() == 1 and
-        trade:hasItemQty(xi.item.ADVENTURER_COUPON, 1)
+        trade:hasItemQty(invaderXim.item.ADVENTURER_COUPON, 1)
     then
         player:startEvent(655)
     end

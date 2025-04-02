@@ -4,7 +4,7 @@
 --  Guild Merchant: Alchemist Guild
 -- !pos -81.322 -6.000 140.273 50
 -----------------------------------
-local ID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local ID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

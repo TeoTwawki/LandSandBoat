@@ -6,12 +6,12 @@
 -- Rodin-Comidin : !pos 17.205 -5.999 51.161 50
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.LIGHT_OF_JUDGMENT)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.LIGHT_OF_JUDGMENT)
 
 mission.reward =
 {
-    keyItem     = xi.ki.NYZUL_ISLE_ROUTE,
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.PATH_OF_DARKNESS },
+    keyItem     = invaderXim.ki.NYZUL_ISLE_ROUTE,
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.PATH_OF_DARKNESS },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = mission:event(3148, { text_table = 0 }),
             ['Rodin-Comidin'] = mission:event(3137, { text_table = 0 }),

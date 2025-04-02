@@ -5,16 +5,16 @@
 -- Fhe Maksojha   : !pos 19.084 -7 71.287 53
 -- qm12 (Caedarva): !pos 456.993 -7.000 -270.815 79
 -----------------------------------
-local caedarvaMireID = zones[xi.zone.CAEDARVA_MIRE]
+local caedarvaMireID = zones[invaderXim.zone.CAEDARVA_MIRE]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.NOT_MEANT_TO_BE)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.NOT_MEANT_TO_BE)
 
 quest.reward =
 {
     item =
     {
-        { xi.item.IMPERIAL_GOLD_PIECE, 3 },
+        { invaderXim.item.IMPERIAL_GOLD_PIECE, 3 },
     },
 }
 
@@ -23,10 +23,10 @@ quest.sections =
     -- Section: Quest available
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             ['Fhe_Maksojha'] =
             {
@@ -46,10 +46,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             ['Fhe_Maksojha'] =
             {
@@ -80,7 +80,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.CAEDARVA_MIRE] =
+        [invaderXim.zone.CAEDARVA_MIRE] =
         {
             ['qm12'] =
             {
@@ -151,10 +151,10 @@ quest.sections =
     -- Section: Quest completed
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             ['Fhe_Maksojha'] = quest:event(298)
         },

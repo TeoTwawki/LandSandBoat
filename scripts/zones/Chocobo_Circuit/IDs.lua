@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.CHOCOBO_CIRCUIT] =
+zones[invaderXim.zone.CHOCOBO_CIRCUIT] =
 {
     text =
     {
@@ -25,4 +25,4 @@ zones[xi.zone.CHOCOBO_CIRCUIT] =
     },
 }
 
-return zones[xi.zone.CHOCOBO_CIRCUIT]
+return zones[invaderXim.zone.CHOCOBO_CIRCUIT]

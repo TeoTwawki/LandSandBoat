@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.pathflag
-xi.pathflag =
+---@enum invaderXim.pathflag
+invaderXim.pathflag =
 {
     NONE     = 0x00,
     RUN      = 0x01, -- run twice the speed

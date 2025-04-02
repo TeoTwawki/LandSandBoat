@@ -19,18 +19,18 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     params.ftpMod     = { 4.5, 6, 7.5 }
     params.str_wsc    = 0.32
     params.mnd_wsc    = 0.32
-    params.ele        = xi.element.LIGHT
-    params.skill      = xi.skill.SWORD
+    params.ele        = invaderXim.element.LIGHT
+    params.skill      = invaderXim.skill.SWORD
     params.includemab = true
 
-    local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
+    local damage, criticalHit, tpHits, extraHits = invaderXim.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
 
     -- Handle status effect
-    local effectId      = xi.effect.FLASH
-    local actionElement = xi.element.LIGHT
+    local effectId      = invaderXim.effect.FLASH
+    local actionElement = invaderXim.element.LIGHT
     local power         = 200
     local duration      = math.floor(15 * applyResistanceAddEffect(player, target, actionElement, 0))
-    xi.weaponskills.handleWeaponskillEffect(player, target, effectId, actionElement, damage, power, duration)
+    invaderXim.weaponskills.handleWeaponskillEffect(player, target, effectId, actionElement, damage, power, duration)
 
     return tpHits, extraHits, criticalHit, damage
 end

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.NEGATE_DOOM
+-- invaderXim.effect.NEGATE_DOOM
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

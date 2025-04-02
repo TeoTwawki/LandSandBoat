@@ -4142,8 +4142,8 @@ COMPAT53_API int luaL_loadbufferx(lua_State* L, const char* buff, size_t sz, con
 #if defined(_POSIX_VERSION) && _POSIX_VERSION >= 200112L
 #include <sys/wait.h>
 #define l_inspectstat(stat, what)   \
-	if (WIFEXITED(stat)) {         \
-		stat = WEXITSTATUS(stat); \
+	if (WIFIXIMTED(stat)) {         \
+		stat = WIXIMTSTATUS(stat); \
 	}                              \
 	else if (WIFSIGNALED(stat)) {  \
 		stat = WTERMSIG(stat);    \

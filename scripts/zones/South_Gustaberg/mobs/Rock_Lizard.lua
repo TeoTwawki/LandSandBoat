@@ -3,7 +3,7 @@
 --  Mob: Rock Lizard
 -- Note: Place holder Leaping Lizzy
 -----------------------------------
-local ID = zones[xi.zone.SOUTH_GUSTABERG]
+local ID = zones[invaderXim.zone.SOUTH_GUSTABERG]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -15,11 +15,11 @@ local lizzyPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 80, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 80, 1, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, lizzyPHTable, 9, 1) -- Pure Lottery
+    invaderXim.mob.phOnDespawn(mob, lizzyPHTable, 9, 1) -- Pure Lottery
 end
 
 return entity

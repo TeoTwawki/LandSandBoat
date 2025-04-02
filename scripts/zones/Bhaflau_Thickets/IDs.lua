@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.BHAFLAU_THICKETS] =
+zones[invaderXim.zone.BHAFLAU_THICKETS] =
 {
     text =
     {
@@ -63,4 +63,4 @@ zones[xi.zone.BHAFLAU_THICKETS] =
     },
 }
 
-return zones[xi.zone.BHAFLAU_THICKETS]
+return zones[invaderXim.zone.BHAFLAU_THICKETS]

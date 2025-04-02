@@ -4,14 +4,14 @@
 -----------------------------------
 -- !addmission 12 62
 -----------------------------------
-local kamihrID = zones[xi.zone.KAMIHR_DRIFTS]
+local kamihrID = zones[invaderXim.zone.KAMIHR_DRIFTS]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.DRIFTING_NORTHWEST)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.DRIFTING_NORTHWEST)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.KUMHAU_THE_FLASHFROST_NAAKUAL },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.KUMHAU_THE_FLASHFROST_NAAKUAL },
 }
 
 mission.sections =
@@ -21,12 +21,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(144),
         },
 
-        [xi.zone.KAMIHR_DRIFTS] =
+        [invaderXim.zone.KAMIHR_DRIFTS] =
         {
             onZoneIn = function(player, prevZone)
                 return 29
@@ -36,8 +36,8 @@ mission.sections =
             {
                 [29] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.TINTINNABULUM)
-                        player:messageSpecial(kamihrID.text.LOST_KEYITEM, xi.ki.TINTINNABULUM)
+                        player:delKeyItem(invaderXim.ki.TINTINNABULUM)
+                        player:messageSpecial(kamihrID.text.LOST_KEYITEM, invaderXim.ki.TINTINNABULUM)
                     end
                 end,
             },

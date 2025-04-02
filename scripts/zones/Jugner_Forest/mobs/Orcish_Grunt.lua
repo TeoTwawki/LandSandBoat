@@ -3,7 +3,7 @@
 --  Mob: Orcish Grunt
 -- Note: PH for Supplespine Mujwuj
 -----------------------------------
-local ID = zones[xi.zone.JUGNER_FOREST]
+local ID = zones[invaderXim.zone.JUGNER_FOREST]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -17,7 +17,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, supplespinePHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, supplespinePHTable, 10, 3600) -- 1 hour
 end
 
 return entity

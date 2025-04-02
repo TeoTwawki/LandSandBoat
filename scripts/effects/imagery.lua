@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.IMAGERY
+-- invaderXim.effect.IMAGERY
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

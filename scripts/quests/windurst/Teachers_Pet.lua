@@ -5,12 +5,12 @@
 -- Moreno-Toeno : !pos 169 -1.25 159 238
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.TEACHERS_PET)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.TEACHERS_PET)
 
 quest.reward =
 {
     fame     = 8,
-    fameArea = xi.fameArea.WINDURST,
+    fameArea = invaderXim.fameArea.WINDURST,
     gil      = 250,
 }
 
@@ -18,10 +18,10 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Moreno-Toeno'] =
             {
@@ -29,7 +29,7 @@ quest.sections =
                     if quest:getVar(player, 'Prog') == 0 then
                         return quest:progressEvent(437)
                     else
-                        return quest:progressEvent(438, 0, xi.item.BIRD_FEATHER, xi.item.TWO_LEAF_MANDRAGORA_BUD)
+                        return quest:progressEvent(438, 0, invaderXim.item.BIRD_FEATHER, invaderXim.item.TWO_LEAF_MANDRAGORA_BUD)
                     end
                 end,
             },
@@ -53,20 +53,20 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status ~= xi.questStatus.QUEST_AVAILABLE
+            return status ~= invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Moreno-Toeno'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.BIRD_FEATHER, xi.item.TWO_LEAF_MANDRAGORA_BUD }) then
-                        return quest:progressEvent(440, 250, xi.item.BIRD_FEATHER, xi.item.TWO_LEAF_MANDRAGORA_BUD)
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.BIRD_FEATHER, invaderXim.item.TWO_LEAF_MANDRAGORA_BUD }) then
+                        return quest:progressEvent(440, 250, invaderXim.item.BIRD_FEATHER, invaderXim.item.TWO_LEAF_MANDRAGORA_BUD)
                     end
                 end,
 
-                onTrigger = quest:event(439, 0, xi.item.BIRD_FEATHER, xi.item.TWO_LEAF_MANDRAGORA_BUD),
+                onTrigger = quest:event(439, 0, invaderXim.item.BIRD_FEATHER, invaderXim.item.TWO_LEAF_MANDRAGORA_BUD),
             },
 
             onEventFinish =
@@ -74,12 +74,12 @@ quest.sections =
                 [440] = function(player, csid, option, npc)
                     player:confirmTrade()
 
-                    if player:getQuestStatus(quest.areaId, quest.questId) == xi.questStatus.QUEST_ACCEPTED then
-                        player:addFame(xi.fameArea.BASTOK, 67)
+                    if player:getQuestStatus(quest.areaId, quest.questId) == invaderXim.questStatus.QUEST_ACCEPTED then
+                        player:addFame(invaderXim.fameArea.BASTOK, 67)
                     end
 
                     if quest:complete(player) then
-                        xi.quest.setMustZone(player, xi.questLog.WINDURST, xi.quest.id.windurst.MAKING_THE_GRADE)
+                        invaderXim.quest.setMustZone(player, invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.MAKING_THE_GRADE)
                     end
                 end,
             },

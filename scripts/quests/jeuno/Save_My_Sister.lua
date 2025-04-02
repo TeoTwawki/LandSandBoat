@@ -10,16 +10,16 @@
 -- Brazier (F-7) : !pos 99 -33 98 195
 -- Brazier (H-9) : !pos 259 -33 -58 195
 -----------------------------------
-local eldiemeID = zones[xi.zone.THE_ELDIEME_NECROPOLIS]
+local eldiemeID = zones[invaderXim.zone.THE_ELDIEME_NECROPOLIS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.SAVE_MY_SISTER)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.SAVE_MY_SISTER)
 
 quest.reward =
 {
     gil   = 3000,
-    item  = xi.item.HOLY_MACE,
-    title = xi.title.EXORCIST_IN_TRAINING,
+    item  = invaderXim.item.HOLY_MACE,
+    title = invaderXim.title.EXORCIST_IN_TRAINING,
 }
 
 local brazierMessages =
@@ -35,12 +35,12 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.CREST_OF_DAVOI) and
-                player:getFameLevel(xi.fameArea.JEUNO) >= 4
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.CREST_OF_DAVOI) and
+                player:getFameLevel(invaderXim.fameArea.JEUNO) >= 4
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Baudin'] =
             {
@@ -88,7 +88,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Neraf-Najiruf'] =
             {
@@ -106,13 +106,13 @@ quest.sections =
             onEventFinish =
             {
                 [98] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.DUCAL_GUARDS_LANTERN)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.DUCAL_GUARDS_LANTERN)
                     quest:setVar(player, 'Prog', 4)
                 end,
             },
         },
 
-        [xi.zone.THE_ELDIEME_NECROPOLIS] =
+        [invaderXim.zone.THE_ELDIEME_NECROPOLIS] =
         {
             ['Brazier'] =
             {
@@ -131,7 +131,7 @@ quest.sections =
                         local lanternOffset = npc:getID() - eldiemeID.npc.BRAZIER
 
                         if lanternStage == lanternOffset then
-                            player:messageSpecial(brazierMessages[lanternStage][1], 0, 0, 0, xi.ki.DUCAL_GUARDS_LANTERN_LIT)
+                            player:messageSpecial(brazierMessages[lanternStage][1], 0, 0, 0, invaderXim.ki.DUCAL_GUARDS_LANTERN_LIT)
 
                             if lanternStage < 3 then
                                 quest:incrementVar(player, 'Stage', 1)
@@ -139,7 +139,7 @@ quest.sections =
                                 quest:setVar(player, 'Prog', 5)
                             end
                         else
-                            player:messageSpecial(brazierMessages[lanternStage][2], 0, 0, 0, xi.ki.DUCAL_GUARDS_LANTERN_LIT)
+                            player:messageSpecial(brazierMessages[lanternStage][2], 0, 0, 0, invaderXim.ki.DUCAL_GUARDS_LANTERN_LIT)
                             quest:setVar(player, 'Stage', 0)
                         end
                     end
@@ -150,20 +150,20 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Baudin'] = quest:event(176):replaceDefault(),
         },
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Neraf-Najiruf'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.DUCAL_GUARDS_LANTERN) then
+                    if player:hasKeyItem(invaderXim.ki.DUCAL_GUARDS_LANTERN) then
                         return quest:progressEvent(97)
                     end
                 end,
@@ -172,7 +172,7 @@ quest.sections =
             onEventFinish =
             {
                 [97] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.DUCAL_GUARDS_LANTERN)
+                    player:delKeyItem(invaderXim.ki.DUCAL_GUARDS_LANTERN)
                 end,
             },
         },

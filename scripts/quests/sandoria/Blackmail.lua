@@ -7,7 +7,7 @@
 -- Halver    : !pos 2 0 0 233
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.A_KNIGHTS_TEST)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.A_KNIGHTS_TEST)
 
 quest.reward =
 {
@@ -18,16 +18,16 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Dauperiat'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:getFameLevel(xi.fameArea.SANDORIA) >= 3 and
+                        player:getFameLevel(invaderXim.fameArea.SANDORIA) >= 3 and
                         player:getRank(player:getNation()) >= 3
                     then
                         return quest:progressEvent(643)
@@ -48,7 +48,7 @@ quest.sections =
                 end,
 
                 [643] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.SUSPICIOUS_ENVELOPE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.SUSPICIOUS_ENVELOPE)
                     quest:begin(player)
                 end,
             },
@@ -56,23 +56,23 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
-                player:hasKeyItem(xi.ki.SUSPICIOUS_ENVELOPE)
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
+                player:hasKeyItem(invaderXim.ki.SUSPICIOUS_ENVELOPE)
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Dauperiat'] = quest:event(645),
         },
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Halver'] = quest:progressEvent(549),
 
             onEventFinish =
             {
                 [549] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.SUSPICIOUS_ENVELOPE)
+                    player:delKeyItem(invaderXim.ki.SUSPICIOUS_ENVELOPE)
                     quest:setVar(player, 'Prog', 1)
                 end,
             },
@@ -80,13 +80,13 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
                 vars.Prog == 1
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
-            ['Dauperiat'] = quest:progressEvent(646, { [1] = xi.item.COPY_OF_THE_CASTLE_FLOOR_PLANS }),
+            ['Dauperiat'] = quest:progressEvent(646, { [1] = invaderXim.item.COPY_OF_THE_CASTLE_FLOOR_PLANS }),
 
             onEventFinish =
             {
@@ -100,21 +100,21 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
                 vars.Prog == 2
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Dauperiat'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHas(trade, xi.item.COPY_OF_THE_CASTLE_FLOOR_PLANS) then
-                        return quest:progressEvent(648, { [1] = xi.item.COPY_OF_THE_CASTLE_FLOOR_PLANS })
+                    if npcUtil.tradeHas(trade, invaderXim.item.COPY_OF_THE_CASTLE_FLOOR_PLANS) then
+                        return quest:progressEvent(648, { [1] = invaderXim.item.COPY_OF_THE_CASTLE_FLOOR_PLANS })
                     end
                 end,
 
-                onTrigger = quest:event(647, { [1] = xi.item.COPY_OF_THE_CASTLE_FLOOR_PLANS }),
+                onTrigger = quest:event(647, { [1] = invaderXim.item.COPY_OF_THE_CASTLE_FLOOR_PLANS }),
             },
 
             onEventFinish =
@@ -129,13 +129,13 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
                 vars.Prog == 0
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
-            ['Dauperiat'] = quest:progressEvent(650, { [1] = xi.item.COPY_OF_THE_CASTLE_FLOOR_PLANS }),
+            ['Dauperiat'] = quest:progressEvent(650, { [1] = invaderXim.item.COPY_OF_THE_CASTLE_FLOOR_PLANS }),
 
             onEventFinish =
             {
@@ -149,21 +149,21 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
                 vars.Prog == 1
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Dauperiat'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHas(trade, xi.item.COPY_OF_THE_CASTLE_FLOOR_PLANS) then
-                        return quest:progressEvent(648, { [1] = xi.item.COPY_OF_THE_CASTLE_FLOOR_PLANS })
+                    if npcUtil.tradeHas(trade, invaderXim.item.COPY_OF_THE_CASTLE_FLOOR_PLANS) then
+                        return quest:progressEvent(648, { [1] = invaderXim.item.COPY_OF_THE_CASTLE_FLOOR_PLANS })
                     end
                 end,
 
-                onTrigger = quest:event(647, { [1] = xi.item.COPY_OF_THE_CASTLE_FLOOR_PLANS }),
+                onTrigger = quest:event(647, { [1] = invaderXim.item.COPY_OF_THE_CASTLE_FLOOR_PLANS }),
             },
 
             onEventFinish =
@@ -172,7 +172,7 @@ quest.sections =
                     quest:setVar(player, 'Prog', 0)
                     player:confirmTrade()
                     npcUtil.giveCurrency(player, 'gil', 900)
-                    player:addFame(xi.quest.fameArea.SANDORIA, 5)
+                    player:addFame(invaderXim.quest.fameArea.SANDORIA, 5)
                 end,
             },
         },

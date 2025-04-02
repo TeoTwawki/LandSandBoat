@@ -297,8 +297,8 @@ void CLuaBaseEntity::messageText(CLuaBaseEntity* PLuaBaseEntity, uint16 messageI
 /************************************************************************
  *  Function: printToPlayer()
  *  Purpose : Displays either standad messages to a PC or custom text
- *  Example : player:printToPlayer("Hello!", xi.msg.channel.NS_SAY)
- *          : player:printToPlayer(string.format("Hello, %s!", player:getName()), xi.msg.channel.SYSTEM_1)
+ *  Example : player:printToPlayer("Hello!", invaderXim.msg.channel.NS_SAY)
+ *          : player:printToPlayer(string.format("Hello, %s!", player:getName()), invaderXim.msg.channel.SYSTEM_1)
  *  Notes   : see scripts/enum/msg.lua for message channels
  *          : Can modify the name shown through explicit declaration
  ************************************************************************/
@@ -323,7 +323,7 @@ void CLuaBaseEntity::printToPlayer(std::string const& message, sol::object const
 /************************************************************************
  *  Function: printToArea()
  *  Purpose : Version of printToPlayer that passes to message server
- *  Example : player:printToArea("Im a real boy!", xi.msg.channel.SHOUT, xi.msg.area.SYSTEM, "Pinocchio", false);
+ *  Example : player:printToArea("Im a real boy!", invaderXim.msg.channel.SHOUT, invaderXim.msg.area.SYSTEM, "Pinocchio", false);
  *          : would print a shout type message from Pinocchio to the entire server
  ************************************************************************/
 
@@ -419,7 +419,7 @@ void CLuaBaseEntity::printToArea(std::string const& message, sol::object const& 
 /************************************************************************
  *  Function: messageBasic()
  *  Purpose : Send a basic message packet to the PC
- *  Example : target:messageBasic(xi.msg.basic.RECOVERS_HP_AND_MP);
+ *  Example : target:messageBasic(invaderXim.msg.basic.RECOVERS_HP_AND_MP);
  *  Notes   : Mainly used when effects are applied
  ************************************************************************/
 
@@ -1485,7 +1485,7 @@ auto CLuaBaseEntity::getCursorTarget() -> CBaseEntity*
 /************************************************************************
  *  Function: getObjType()
  *  Purpose : Returns the int value of an entity's object type (Mob,PC...)
- *  Example : if caster:getObjType() == xi.objType.PC then
+ *  Example : if caster:getObjType() == invaderXim.objType.PC then
  *  Notes   :
  ************************************************************************/
 
@@ -1613,7 +1613,7 @@ void CLuaBaseEntity::resetAI()
 /************************************************************************
  *  Function: getStatus()
  *  Purpose : Returns the status (or 'state') of an entity
- *  Example : if qm2:getStatus() ~= xi.status.DISAPPEAR then
+ *  Example : if qm2:getStatus() ~= invaderXim.status.DISAPPEAR then
  *  Notes   :
  ************************************************************************/
 
@@ -1638,7 +1638,7 @@ void CLuaBaseEntity::setStatus(uint8 status)
 /************************************************************************
  *  Function: getCurrentAction()
  *  Purpose : Returns the current state of a non-NPC entity
- *  Example : if target:getCurrentAction() ~= xi.act.MOBABILITY_USING then
+ *  Example : if target:getCurrentAction() ~= invaderXim.act.MOBABILITY_USING then
  *  Notes   : Function name ambiguous, but getCurrentState() in use already
  *          : See scripts/enum/action.lua for action definitions
  ************************************************************************/
@@ -1901,7 +1901,7 @@ void CLuaBaseEntity::pathTo(float x, float y, float z, sol::object const& flags)
 /************************************************************************
  *  Function: pathThrough()
  *  Purpose : Makes an Entity follow a given set of points
- *  Example : mob:pathThrough(pathfind.first(path), xi.path.flag.RUN)
+ *  Example : mob:pathThrough(pathfind.first(path), invaderXim.path.flag.RUN)
  *  Notes   : Ex: Gets Zipacna back on his specified path
  ************************************************************************/
 
@@ -2090,7 +2090,7 @@ void CLuaBaseEntity::wait(sol::object const& milliseconds)
 /************************************************************************
  *  Function: follow(target)
  *  Purpose : Makes a Mob follow the provided target
- *  Example : mob:follow(target, xi.followType.Roam)
+ *  Example : mob:follow(target, invaderXim.followType.Roam)
  *  Notes   :
  ************************************************************************/
 
@@ -2389,7 +2389,7 @@ void CLuaBaseEntity::updateNPCHideTime(sol::object const& seconds)
 /************************************************************************
  *  Function: getWeather()
  *  Purpose : Returns the current weather status
- *  Example : if player:getWeather() == xi.weather.WIND then
+ *  Example : if player:getWeather() == invaderXim.weather.WIND then
  ************************************************************************/
 
 uint8 CLuaBaseEntity::getWeather(sol::object const& ignoreScholar)
@@ -2447,7 +2447,7 @@ void CLuaBaseEntity::changeMusic(uint16 blockID, uint16 musicTrackID)
 /************************************************************************
  *  Function: sendMenu()
  *  Purpose : Sends a menu to the PC (Ex: Auction, Mog House, Shop)
- *  Example : player:sendMenu(xi.menuType.AUCTION)
+ *  Example : player:sendMenu(invaderXim.menuType.AUCTION)
  ************************************************************************/
 
 void CLuaBaseEntity::sendMenu(uint32 menu)
@@ -2570,7 +2570,7 @@ void CLuaBaseEntity::leaveGame()
 /************************************************************************
  *  Function: sendEmote()
  *  Purpose : Makes a player entity emit an emote.
- *  Example : player:sendEmote(npc, xi.emote.EXCAVATION, xi.emoteMode.MOTION)
+ *  Example : player:sendEmote(npc, invaderXim.emote.EXCAVATION, invaderXim.emoteMode.MOTION)
  *  Notes   : Currently only used for HELM animations.
  ************************************************************************/
 
@@ -2742,7 +2742,7 @@ auto CLuaBaseEntity::getZone(sol::object const& arg0) -> CZone*
 /************************************************************************
  *  Function: getZoneID()
  *  Purpose : Returns the integer value associated with the current zone
- *  Example : if player:getZoneID() == xi.zone.AHT_URHGAN_WHITEGATE then
+ *  Example : if player:getZoneID() == invaderXim.zone.AHT_URHGAN_WHITEGATE then
  *  Notes   :
  ************************************************************************/
 
@@ -2772,7 +2772,7 @@ auto CLuaBaseEntity::getZoneName() -> std::string
 /************************************************************************
  *  Function: hasVisitedZone()
  *  Purpose : Returns true if a player has ever visited the zone
- *  Example : if not target:hasVisitedZone(xi.zone.BIBIKI_BAY) then
+ *  Example : if not target:hasVisitedZone(invaderXim.zone.BIBIKI_BAY) then
  *  Notes   : Mainly used for teleport items (like to Bibiki Bay)
  ************************************************************************/
 
@@ -3262,7 +3262,7 @@ void CLuaBaseEntity::teleport(std::map<std::string, float> pos, sol::object cons
 /************************************************************************
  *  Function: addTeleport(uint8 type, uint32 destination)
  *  Purpose : Grants acces to a new teleport for a PC
- *  Example : player:addTeleport(xi.teleport.type.HOMEPOINT,16)
+ *  Example : player:addTeleport(invaderXim.teleport.type.HOMEPOINT,16)
  *  Notes   : Param 2 is bits to shift, not exponentiated value
  ************************************************************************/
 
@@ -3346,7 +3346,7 @@ void CLuaBaseEntity::addTeleport(uint8 teleType, uint32 bitval, sol::object cons
 /************************************************************************
  *  Function: getTeleport(uint8 type)
  *  Purpose : Returns bit mask or table for supplied type of teleport
- *  Example : player:getTeleport(xi.teleport.type.HOMEPOINT)
+ *  Example : player:getTeleport(invaderXim.teleport.type.HOMEPOINT)
  *  Notes   :
  ************************************************************************/
 
@@ -3453,7 +3453,7 @@ sol::table CLuaBaseEntity::getTeleportTable(uint8 type)
 /************************************************************************
  *  Function: hasTeleport(uint8 type, uint8 bit, uint8 set (optional))
  *  Purpose : Returns true if player has HP, false otherwise
- *  Example : player:hasTeleport(xi.teleport.type.HOMEPOINT, bit, set)
+ *  Example : player:hasTeleport(invaderXim.teleport.type.HOMEPOINT, bit, set)
  *  Notes   : Refactor this to reduce the amount of returns
  ************************************************************************/
 
@@ -3540,7 +3540,7 @@ bool CLuaBaseEntity::hasTeleport(uint8 tType, uint8 bit, sol::object const& arg2
 /************************************************************************
  *  Function: setTeleportMenu(uint8 type)
  *  Purpose : Store favorite homepoints or menu layout
- *  Example : player:setTeleportMenu(xi.teleport.type.HOMEPOINT)
+ *  Example : player:setTeleportMenu(invaderXim.teleport.type.HOMEPOINT)
  *  Notes   :
  ************************************************************************/
 
@@ -3605,7 +3605,7 @@ void CLuaBaseEntity::setTeleportMenu(uint16 type, sol::object const& teleportObj
 /************************************************************************
  *  Function: getTeleportMenu(uint8)
  *  Purpose : Return lua table containing integer values for favs + layout
- *  Example : player:getTeleportMenu(xi.teleport.teleport.HOMEPOINT)
+ *  Example : player:getTeleportMenu(invaderXim.teleport.teleport.HOMEPOINT)
  *  Notes   :
  ************************************************************************/
 
@@ -3665,7 +3665,7 @@ sol::table CLuaBaseEntity::getTeleportMenu(uint8 type)
 /************************************************************************
  *  Function: setHomePoint()
  *  Purpose : Sets a PC's homepoint.
- *  Example : player:setHomePoint(xi.teleport.type.HOMEPOINT)
+ *  Example : player:setHomePoint(invaderXim.teleport.type.HOMEPOINT)
  *  Notes   :
  ************************************************************************/
 
@@ -3817,7 +3817,7 @@ bool CLuaBaseEntity::bringPlayer(std::string const& playerName)
 /************************************************************************
  *  Function: getEquipID()
  *  Purpose : Returns the Item ID for an item
- *  Example : player:getEquipID(xi.slot.MAIN)
+ *  Example : player:getEquipID(invaderXim.slot.MAIN)
  *  Notes   :
  ************************************************************************/
 
@@ -3846,7 +3846,7 @@ uint16 CLuaBaseEntity::getEquipID(SLOTTYPE slot)
 /************************************************************************
  *  Function: getEquippedItem()
  *  Purpose : Returns the Item for a given slot
- *  Example : player:getEquippedItem(xi.slot.MAIN)
+ *  Example : player:getEquippedItem(invaderXim.slot.MAIN)
  *  Notes   :
  ************************************************************************/
 
@@ -3875,7 +3875,7 @@ auto CLuaBaseEntity::getEquippedItem(uint8 slot) -> CItem*
 /************************************************************************
  *  Function: hasEquipped(equipmentID)
  *  Purpose : Returns true if the player has the item equipped in any slot
- *  Example : player:hasEquipped(xi.item.BREATH_MANTLE)
+ *  Example : player:hasEquipped(invaderXim.item.BREATH_MANTLE)
  *  Notes   :
  ************************************************************************/
 
@@ -3926,7 +3926,7 @@ bool CLuaBaseEntity::hasItem(uint16 itemID, sol::object const& location)
 /************************************************************************
  *  Function: getItemCount()
  *  Purpose : Returns the total count of a specific item across all inventories
- *  Example : if player:getItemCount(xi.item.BONANZA_PEARL) then
+ *  Example : if player:getItemCount(invaderXim.item.BONANZA_PEARL) then
  ************************************************************************/
 
 uint32 CLuaBaseEntity::getItemCount(uint16 itemID)
@@ -4194,7 +4194,7 @@ bool CLuaBaseEntity::delItem(uint16 itemID, int32 quantity, sol::object const& c
 /************************************************************************
  *  Function: delItemAt()
  *  Purpose : Deletes an item from a player's inventory at specified container/slot
- *  Example : player:delItemAt(4102, 1, xi.inv.INVENTORY, 5)
+ *  Example : player:delItemAt(4102, 1, invaderXim.inv.INVENTORY, 5)
  *  Notes   :
  ************************************************************************/
 bool CLuaBaseEntity::delItemAt(const uint16 itemID, const int32 quantity, uint8 containerId, const uint8 slotId)
@@ -4226,7 +4226,7 @@ bool CLuaBaseEntity::delItemAt(const uint16 itemID, const int32 quantity, uint8 
 /************************************************************************
  *  Function: delContainerItems()
  *  Purpose : Deletes all items from a specific player's container
- *  Example : player:delContainerItems(xi.inv.INVENTORY)
+ *  Example : player:delContainerItems(invaderXim.inv.INVENTORY)
  *  Notes   : Used in delinventory command
  ************************************************************************/
 
@@ -4269,7 +4269,7 @@ bool CLuaBaseEntity::delContainerItems(sol::object const& containerID)
 /************************************************************************
  *  Function: addUsedItem()
  *  Purpose : Add charged item with use timer already on full cooldown
- *  Example : player:addUsedItem(xi.item.WARP_CUDGEL)
+ *  Example : player:addUsedItem(invaderXim.item.WARP_CUDGEL)
  ************************************************************************/
 
 bool CLuaBaseEntity::addUsedItem(uint16 itemID)
@@ -4465,7 +4465,7 @@ auto CLuaBaseEntity::findItem(uint16 itemID, sol::object const& location) -> CIt
 /************************************************************************
  *  Function: findItems()
  *  Purpose : Like findItem, but returns all matching item objects (empty if none found)
- *  Example : local items = player:findItems(xi.item.GLOWING_LAMP)
+ *  Example : local items = player:findItems(invaderXim.item.GLOWING_LAMP)
  *  Notes   :
  ************************************************************************/
 auto CLuaBaseEntity::findItems(uint16 itemID, sol::object const& location) -> sol::table
@@ -4548,7 +4548,7 @@ void CLuaBaseEntity::createShop(uint8 size, sol::object const& arg1)
  *  Purpose : Adds an item and established price to an existing shop
  *          : Optionally accepts a GuildID + Guild Rank requirement
  *  Example : addShopItem(512, 8000)                                                   --Regular item
- *          : addShopItem(512, 8000, xi.skill.CLOTHCRAFT, xi.craftRank.JOURNEYMAN)   --Guild-rank locked item
+ *          : addShopItem(512, 8000, invaderXim.skill.CLOTHCRAFT, invaderXim.craftRank.JOURNEYMAN)   --Guild-rank locked item
  *  Notes   : Use with createShop() - 16 Max Items in Shop
  ************************************************************************/
 
@@ -4735,7 +4735,7 @@ auto CLuaBaseEntity::addSoulPlate(std::string const& name, uint16 mobFamily, uin
 /************************************************************************
  *  Function: getContainerSize()
  *  Purpose : Returns the size of an item container
- *  Example : player:getContainerSize(xi.inv.INVENTORY)
+ *  Example : player:getContainerSize(invaderXim.inv.INVENTORY)
  ************************************************************************/
 
 uint8 CLuaBaseEntity::getContainerSize(uint8 locationID)
@@ -5008,7 +5008,7 @@ void CLuaBaseEntity::setEquipBlock(uint16 equipBlock)
 /************************************************************************
  *  Function: lockEquipSlot()
  *  Purpose : Used to keep players from equipment certain equipment?
- *  Example : player:lockEquipSlot(xi.slot.MAIN)
+ *  Example : player:lockEquipSlot(invaderXim.slot.MAIN)
  *  Notes   : Currently not implemented in any file, imagine this is for Salvage
  ************************************************************************/
 
@@ -5040,7 +5040,7 @@ void CLuaBaseEntity::lockEquipSlot(uint8 slot)
 /************************************************************************
  *  Function: unlockEquipSlot()
  *  Purpose : Allows player to equip items in that slot again
- *  Example : player:unlockEquipSlot(xi.slot.MAIN)
+ *  Example : player:unlockEquipSlot(invaderXim.slot.MAIN)
  *  Notes   :
  ************************************************************************/
 
@@ -5067,7 +5067,7 @@ void CLuaBaseEntity::unlockEquipSlot(uint8 slot)
 /************************************************************************
  *  Function: hasSlotEquipped()
  *  Purpose : Returns true if a player has an item equipped in the slot
- *  Example : if player:hasSlotEquipped(xi.slot.RING1) then
+ *  Example : if player:hasSlotEquipped(invaderXim.slot.RING1) then
  *  Notes   :
  ************************************************************************/
 
@@ -5177,7 +5177,7 @@ void CLuaBaseEntity::clearGearSetMods()
 /************************************************************************
  *  Function: getStorageItem()
  *  Purpose : Returns object data for an item in a container
- *  Example : player:getStorageItem(0, 0, xi.slot.RANGED)
+ *  Example : player:getStorageItem(0, 0, invaderXim.slot.RANGED)
  *  Notes   :
  ************************************************************************/
 
@@ -5671,7 +5671,7 @@ uint8 CLuaBaseEntity::getAnimation()
 /************************************************************************
  *  Function: setAnimation()
  *  Purpose : Updates an animation for the entity
- *  Example : GetNPCByID(ID.npc.DOOR_OFFSET + 12):setAnimation(xi.anim.OPEN_DOOR)
+ *  Example : GetNPCByID(ID.npc.DOOR_OFFSET + 12):setAnimation(invaderXim.anim.OPEN_DOOR)
  *  Notes   : Look at scripts/zones/VeLugannon_Palace/npcs/Monolith.lua
  ************************************************************************/
 
@@ -5820,7 +5820,7 @@ uint8 CLuaBaseEntity::getNation()
 /************************************************************************
  *  Function: setNation()
  *  Purpose : Changes a player's nation allegiance
- *  Example : player:setNation(xi.nation.WINDURST)
+ *  Example : player:setNation(invaderXim.nation.WINDURST)
  *  Notes   :
  ************************************************************************/
 
@@ -6206,7 +6206,7 @@ void CLuaBaseEntity::jail()
 /************************************************************************
  *  Function: canUseMisc()
  *  Purpose : Returns true if ZONEMISC contains flag being checked.
- *  Example : if player:canUseMisc(xi.zoneMisc.MOUNT) then
+ *  Example : if player:canUseMisc(invaderXim.zoneMisc.MOUNT) then
  *  Notes   : Checks if specified MISC flag is set in current zone
  ************************************************************************/
 
@@ -6379,7 +6379,7 @@ uint8 CLuaBaseEntity::getSubJob()
 /************************************************************************
  *  Function: changeJob()
  *  Purpose : Changes an entities main job
- *  Example : mob:changeJob(xi.job.RDM); player:changeJob(xi.job.MNK)
+ *  Example : mob:changeJob(invaderXim.job.RDM); player:changeJob(invaderXim.job.MNK)
  *  Notes   :
  ************************************************************************/
 
@@ -6528,7 +6528,7 @@ void CLuaBaseEntity::changeJob(uint8 newJob)
 /************************************************************************
  *  Function: changesJob()
  *  Purpose : Changes an entities sub job
- *  Example : mob:changesJob(xi.job.RDM); player:changesJob(xi.job.MNK)
+ *  Example : mob:changesJob(invaderXim.job.RDM); player:changesJob(invaderXim.job.MNK)
  *  Notes   : To Do: Change name to changeSubJob for visual clarity?
  ************************************************************************/
 
@@ -6561,7 +6561,7 @@ void CLuaBaseEntity::changesJob(uint8 subJob)
 /************************************************************************
  *  Function: unlockJob()
  *  Purpose : Unlocks a new job for a player (updates char_jobs.sql)
- *  Example : player:unlockJob(xi.job.SAM)
+ *  Example : player:unlockJob(invaderXim.job.SAM)
  *  Notes   : Changes value of job from 0 (locked) to 1(unlocked)
  ************************************************************************/
 
@@ -6596,7 +6596,7 @@ void CLuaBaseEntity::unlockJob(uint8 JobID)
 /************************************************************************
  *  Function: hasJob()
  *  Purpose : Check to see if JOBTYPE is unlocked
- *  Example : player:hasJob(xi.job.BRD)
+ *  Example : player:hasJob(invaderXim.job.BRD)
  ************************************************************************/
 
 bool CLuaBaseEntity::hasJob(uint8 job)
@@ -6650,7 +6650,7 @@ uint8 CLuaBaseEntity::getSubLvl()
 /************************************************************************
  *  Function: getJobLevel()
  *  Purpose : Return the levle of job specified by JOBTYPE
- *  Example : player:getJobLevel(xi.job.BRD)
+ *  Example : player:getJobLevel(invaderXim.job.BRD)
  ************************************************************************/
 
 uint8 CLuaBaseEntity::getJobLevel(uint8 JobID)
@@ -6974,7 +6974,7 @@ uint8 CLuaBaseEntity::levelRestriction(sol::object const& level)
 /************************************************************************
  *  Function: addJobTraits
  *  Purpose : Add job traits
- *  Example : player:addJobTraits(xi.job.WHM, 75)
+ *  Example : player:addJobTraits(invaderXim.job.WHM, 75)
  ************************************************************************/
 
 void CLuaBaseEntity::addJobTraits(uint8 jobID, uint8 level)
@@ -7120,7 +7120,7 @@ void CLuaBaseEntity::setMonstrosityEntryData(float x, float y, float z, uint8 ro
 /************************************************************************
  *  Function: getTitle()
  *  Purpose : Returns the integer value of the player's current title
- *  Example : if player:getTitle()) == xi.title.FAKE_MOUSTACHED_INVESTIGATOR then
+ *  Example : if player:getTitle()) == invaderXim.title.FAKE_MOUSTACHED_INVESTIGATOR then
  ************************************************************************/
 
 uint16 CLuaBaseEntity::getTitle()
@@ -7137,7 +7137,7 @@ uint16 CLuaBaseEntity::getTitle()
 /************************************************************************
  *  Function: hasTitle()
  *  Purpose : Returns true if a player's current title matches a value
- *  Example : if player:hasTitle(xi.title.AWESOME_SAUCE) then
+ *  Example : if player:hasTitle(invaderXim.title.AWESOME_SAUCE) then
  ************************************************************************/
 
 bool CLuaBaseEntity::hasTitle(uint16 titleID)
@@ -7154,7 +7154,7 @@ bool CLuaBaseEntity::hasTitle(uint16 titleID)
 /************************************************************************
  *  Function: addTitle()
  *  Purpose : Adds a title to the character's profile only (doesn't change current)
- *  Example : player:addTitle(xi.title.BLACK_DRAGON_SLAYER)
+ *  Example : player:addTitle(invaderXim.title.BLACK_DRAGON_SLAYER)
  *  Notes   : Use setTitle to both change and add
  ************************************************************************/
 
@@ -7178,7 +7178,7 @@ void CLuaBaseEntity::addTitle(uint16 titleID)
 /************************************************************************
  *  Function: setTitle()
  *  Purpose : Updates the player's current title and adds to their profile
- *  Example : player:setTitle(xi.title.SOB_SUPERHERO)
+ *  Example : player:setTitle(invaderXim.title.SOB_SUPERHERO)
  ************************************************************************/
 
 void CLuaBaseEntity::setTitle(uint16 titleID)
@@ -7196,7 +7196,7 @@ void CLuaBaseEntity::setTitle(uint16 titleID)
 /************************************************************************
  *  Function: delTitle()
  *  Purpose : Deletes a title from a character's profile
- *  Example : player:delTitle(xi.title.FODDERCHIEF_FLAYER)
+ *  Example : player:delTitle(invaderXim.title.FODDERCHIEF_FLAYER)
  ************************************************************************/
 
 void CLuaBaseEntity::delTitle(uint16 titleID)
@@ -7288,7 +7288,7 @@ uint16 CLuaBaseEntity::getFame(sol::object const& areaObj)
 /************************************************************************
  *  Function: addFame()
  *  Purpose : Adds a specified amount of fame to the player's balance
- *  Example : player:addFame(xi.fameArea.WINDURST, 30)
+ *  Example : player:addFame(invaderXim.fameArea.WINDURST, 30)
  *  Notes   :
  ************************************************************************/
 
@@ -7350,7 +7350,7 @@ void CLuaBaseEntity::addFame(sol::object const& areaObj, uint16 fame)
 /************************************************************************
  *  Function: setFame()
  *  Purpose : Sets the fame level for a player to a specified amount
- *  Example : player:setFame(xi.fameArea.BASTOK, 1500)
+ *  Example : player:setFame(invaderXim.fameArea.BASTOK, 1500)
  *  Notes   :
  ************************************************************************/
 
@@ -7481,7 +7481,7 @@ uint8 CLuaBaseEntity::getFameLevel(sol::object const& areaObj)
 /************************************************************************
  *  Function: getRank()
  *  Purpose : Returns the rank of a player's current nation
- *  Example : player:getRank(xi.nation.WINDURST)
+ *  Example : player:getRank(invaderXim.nation.WINDURST)
  ************************************************************************/
 
 uint8 CLuaBaseEntity::getRank(uint8 nation)
@@ -7583,7 +7583,7 @@ void CLuaBaseEntity::setRankPoints(uint16 rankPoints)
 /************************************************************************
  *  Function: addQuest()
  *  Purpose : Adds a new quest to the character's in-progress quest log
- *  Example : player:addQuest(xi.quest.log_id.BASTOK, xi.quest.id.bastok.LURE_OF_THE_WILDCAT)
+ *  Example : player:addQuest(invaderXim.quest.log_id.BASTOK, invaderXim.quest.id.bastok.LURE_OF_THE_WILDCAT)
  ************************************************************************/
 
 void CLuaBaseEntity::addQuest(uint8 questLogID, uint16 questID)
@@ -7653,7 +7653,7 @@ void CLuaBaseEntity::delCurrentQuest(uint8 questLogID, uint16 questID)
 /************************************************************************
  *  Function: delQuest()
  *  Purpose : Deletes all records of a quest from a character's quest log
- *  Example : player:delQuest(xi.quest.log_id.WINDURST, xi.quest.id.windurst.LURE_OF_THE_WILDCAT)
+ *  Example : player:delQuest(invaderXim.quest.log_id.WINDURST, invaderXim.quest.id.windurst.LURE_OF_THE_WILDCAT)
  *  Notes   : Doesn't delete any player variables associated with quest
  ************************************************************************/
 
@@ -7692,7 +7692,7 @@ void CLuaBaseEntity::delQuest(uint8 questLogID, uint16 questID)
 /************************************************************************
  *  Function: getQuestStatus()
  *  Purpose : Gets the current quest status of the player
- *  Example : player:getQuestStatus(xi.quest.log_id.WINDURST, xi.quest.id.windurst.MAKING_THE_GRADE)
+ *  Example : player:getQuestStatus(invaderXim.quest.log_id.WINDURST, invaderXim.quest.id.windurst.MAKING_THE_GRADE)
  ************************************************************************/
 
 uint8 CLuaBaseEntity::getQuestStatus(uint8 questLogID, uint16 questID)
@@ -7721,7 +7721,7 @@ uint8 CLuaBaseEntity::getQuestStatus(uint8 questLogID, uint16 questID)
 /************************************************************************
  *  Function: hasCompletedQuest()
  *  Purpose : Returns true if a player has completed a quest
- *  Example : if (player:hasCompletedQuest(xi.quest.log_id.JEUNO, xi.quest.id.jeuno.BEYOND_INFINITY)) then
+ *  Example : if (player:hasCompletedQuest(invaderXim.quest.log_id.JEUNO, invaderXim.quest.id.jeuno.BEYOND_INFINITY)) then
  ************************************************************************/
 
 bool CLuaBaseEntity::hasCompletedQuest(uint8 questLogID, uint16 questID)
@@ -7746,7 +7746,7 @@ bool CLuaBaseEntity::hasCompletedQuest(uint8 questLogID, uint16 questID)
 /************************************************************************
  *  Function: completeQuest()
  *  Purpose : Completes a current quest for the player
- *  Example : player:completeQuest(xi.quest.log_id.OTHER_AREAS, xi.quest.id.otherAreas.ONLY_THE_BEST)
+ *  Example : player:completeQuest(invaderXim.quest.log_id.OTHER_AREAS, invaderXim.quest.id.otherAreas.ONLY_THE_BEST)
  *  Notes   :
  ************************************************************************/
 
@@ -7784,7 +7784,7 @@ void CLuaBaseEntity::completeQuest(uint8 questLogID, uint16 questID)
 /************************************************************************
  *  Function: addMission()
  *  Purpose : Adds a mission to the player's mission log
- *  Example : player:addMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_TO_BASTOK)
+ *  Example : player:addMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_TO_BASTOK)
  *  Notes   : This function no longer accepts tables!
  ************************************************************************/
 
@@ -7818,7 +7818,7 @@ void CLuaBaseEntity::addMission(uint8 missionLogID, uint16 missionID)
 /************************************************************************
  *  Function: delMission()
  *  Purpose : Delets a mission from a player's mission log
- *  Example : player:delMission(xi.mission.log_id.TOAU, xi.mission.id.toau.KNIGHT_OF_GOLD)
+ *  Example : player:delMission(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.KNIGHT_OF_GOLD)
  *  Notes   : Doesn't delete any player variables associated with mission
  *          : This function no longer accepts tables!
  ************************************************************************/
@@ -7859,7 +7859,7 @@ void CLuaBaseEntity::delMission(uint8 missionLogID, uint16 missionID)
 /************************************************************************
  *  Function: getCurrentMission()
  *  Purpose : Returns the integer associated with the player's current mission
- *  Example : player:getCurrentMission(xi.mission.log_id.TOAU)
+ *  Example : player:getCurrentMission(invaderXim.mission.log_id.TOAU)
  *  Notes   : Specify the area to pass a Lua table object
  ************************************************************************/
 
@@ -7904,7 +7904,7 @@ uint16 CLuaBaseEntity::getCurrentMission(sol::object const& missionLogObj)
 /************************************************************************
  *  Function: hasCompletedMission()
  *  Purpose : Returns true if a player has completed a specified mission
- *  Example : if player:hasCompletedMission(xi.mission.log_id.TOAU, xi.mission.id.toau.PRESIDENT_SALAHEEM) then
+ *  Example : if player:hasCompletedMission(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.PRESIDENT_SALAHEEM) then
  *  Notes   :
  ************************************************************************/
 
@@ -7935,7 +7935,7 @@ bool CLuaBaseEntity::hasCompletedMission(uint8 missionLogID, uint16 missionID)
 /************************************************************************
  *  Function: completeMission()
  *  Purpose : Completes a specified mission for the player
- *  Example : player:completeMission(xi.mission.log_id.COP, xi.mission.id.cop.THREE_PATHS)
+ *  Example : player:completeMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THREE_PATHS)
  *  Notes   :
  ************************************************************************/
 
@@ -8432,7 +8432,7 @@ void CLuaBaseEntity::resetClaimedDeeds()
 /************************************************************************
  *  Function: setUniqueEvent()
  *  Purpose : Sets and saves unique event tracking value into database
- *  Example : player:setUniqueEvent(xi.uniqueEvent.TUCKER_INTRO_DIALOGUE)
+ *  Example : player:setUniqueEvent(invaderXim.uniqueEvent.TUCKER_INTRO_DIALOGUE)
  ************************************************************************/
 void CLuaBaseEntity::setUniqueEvent(uint16 uniqueEventId)
 {
@@ -8455,7 +8455,7 @@ void CLuaBaseEntity::setUniqueEvent(uint16 uniqueEventId)
 /************************************************************************
  *  Function: delUniqueEvent()
  *  Purpose : Removes and saves unique event tracking value into database
- *  Example : player:delUniqueEvent(xi.uniqueEvent.TUCKER_INTRO_DIALOGUE)
+ *  Example : player:delUniqueEvent(invaderXim.uniqueEvent.TUCKER_INTRO_DIALOGUE)
  *  NOTE    : This should never be used outside of debugging!
  ************************************************************************/
 void CLuaBaseEntity::delUniqueEvent(uint16 uniqueEventId)
@@ -8479,7 +8479,7 @@ void CLuaBaseEntity::delUniqueEvent(uint16 uniqueEventId)
 /************************************************************************
  *  Function: hasCompletedUniqueEvent()
  *  Purpose : Returns true if the player has seen his event before
- *  Example : if player:hasUniqueEvent(xi.uniqueEvent.TUCKER_INTRO_DIALOGUE) then
+ *  Example : if player:hasUniqueEvent(invaderXim.uniqueEvent.TUCKER_INTRO_DIALOGUE) then
  *  NOTE    : This should never be used outside of debugging!
  ************************************************************************/
 bool CLuaBaseEntity::hasCompletedUniqueEvent(uint16 uniqueEventId)
@@ -8621,7 +8621,7 @@ void CLuaBaseEntity::completeAssault(uint8 missionID)
 /************************************************************************
  *  Function: addKeyItem()
  *  Purpose : Adds a key item to the player
- *  Example : player:addKeyItem(xi.ki.MOGHANCEMENT_FIRE)
+ *  Example : player:addKeyItem(invaderXim.ki.MOGHANCEMENT_FIRE)
  *  Notes   :
  ************************************************************************/
 
@@ -8657,7 +8657,7 @@ void CLuaBaseEntity::addKeyItem(uint16 keyItemID)
 /************************************************************************
  *  Function: hasKeyItem()
  *  Purpose : Returns true if a player has a specified key item
- *  Example : if (player:hasKeyItem(xi.ki.TORN_PAPER)) then
+ *  Example : if (player:hasKeyItem(invaderXim.ki.TORN_PAPER)) then
  *  Notes   :
  ************************************************************************/
 
@@ -8675,7 +8675,7 @@ bool CLuaBaseEntity::hasKeyItem(uint16 keyItemID)
 /************************************************************************
  *  Function: delKeyItem()
  *  Purpose : Deletes a key item from the player
- *  Example : player:delKeyItem(xi.ki.SUNBEAM_FRAGMENT)
+ *  Example : player:delKeyItem(invaderXim.ki.SUNBEAM_FRAGMENT)
  *  Notes   :
  ************************************************************************/
 
@@ -8706,7 +8706,7 @@ void CLuaBaseEntity::delKeyItem(uint16 keyItemID)
 /************************************************************************
  *  Function: seenKeyItem()
  *  Purpose : Returns true if a player has peeked at the key item
- *  Example : if player:seenKeyItem(xi.ki.LETTER_FROM_ROH_LATTEH) then
+ *  Example : if player:seenKeyItem(invaderXim.ki.LETTER_FROM_ROH_LATTEH) then
  *  Notes   :
  ************************************************************************/
 
@@ -8724,7 +8724,7 @@ bool CLuaBaseEntity::seenKeyItem(uint16 keyItemID)
 /************************************************************************
  *  Function: unseenKeyItem()
  *  Purpose : Restores a key item to unseen status
- *  Example : player:unseenKeyItem(xi.ki.MOGHANCEMENT_FIRE)
+ *  Example : player:unseenKeyItem(invaderXim.ki.MOGHANCEMENT_FIRE)
  *  Notes   : Some things just can't be unseen... (not implemented though)
  ************************************************************************/
 
@@ -8814,7 +8814,7 @@ void CLuaBaseEntity::delExp(uint32 exp)
 /************************************************************************
  *  Function: getMerit()
  *  Purpose : Checks for the existence of a merit and returns the value
- *  Example : caster:getMerit(xi.merit.DOTON_EFFECT)
+ *  Example : caster:getMerit(invaderXim.merit.DOTON_EFFECT)
  *  Notes   :
  ************************************************************************/
 
@@ -10207,7 +10207,7 @@ uint8 CLuaBaseEntity::getAverageItemLevel()
 /************************************************************************
  *  Function: capSkill()
  *  Purpose : Caps a particular skill for a PC
- *  Example : player:capSkill(xi.skill.DAGGER)
+ *  Example : player:capSkill(invaderXim.skill.DAGGER)
  *  Notes   :
  ************************************************************************/
 
@@ -10290,7 +10290,7 @@ void CLuaBaseEntity::capAllSkills()
 /************************************************************************
  *  Function: getSkillLevel()
  *  Purpose : Returns the level for a specified skill of a PC
- *  Example : player:getSkillLevel(xi.skill.ENHANCING_MAGIC)
+ *  Example : player:getSkillLevel(invaderXim.skill.ENHANCING_MAGIC)
  *  Notes   :
  ************************************************************************/
 
@@ -10314,7 +10314,7 @@ uint16 CLuaBaseEntity::getSkillLevel(uint16 skillId)
 /************************************************************************
  *  Function: setSkillLevel()
  *  Purpose : Sets a particular skill for a PC
- *  Example : player:setSkillLevel(xi.skill.ENHANCING_MAGIC, 200)
+ *  Example : player:setSkillLevel(invaderXim.skill.ENHANCING_MAGIC, 200)
  *  Notes   :
  ************************************************************************/
 
@@ -10342,7 +10342,7 @@ void CLuaBaseEntity::setSkillLevel(uint8 SkillID, uint16 SkillAmount)
 /************************************************************************
  *  Function: getMaxSkillLevel()
  *  Purpose : Returns the Max Skill Level for a PC's current main job
- *  Example : master:getMaxSkillLevel(avatar:getMainLvl(), xi.job.SMN, xi.skill.SUMMONING_MAGIC)
+ *  Example : master:getMaxSkillLevel(avatar:getMainLvl(), invaderXim.job.SMN, invaderXim.skill.SUMMONING_MAGIC)
  *  Notes   : Used in Meteor, summons, and some Mob TP moves
  ************************************************************************/
 
@@ -10374,7 +10374,7 @@ uint8 CLuaBaseEntity::getSkillRank(uint8 rankID)
 /************************************************************************
  *  Function: setSkillRank()
  *  Purpose : Sets a Skill Rank for a particular skill
- *  Example : player:setSkillRank(xi.skill.DIG, 20)
+ *  Example : player:setSkillRank(invaderXim.skill.DIG, 20)
  *  Notes   :
  ************************************************************************/
 
@@ -10396,7 +10396,7 @@ void CLuaBaseEntity::setSkillRank(uint8 skillID, uint8 newrank)
 /************************************************************************
  *  Function: getCharSkillLevel()
  *  Purpose : Returns the level for a particular skill
- *  Example : player:getCharSkillLevel(xi.skill.DIG)
+ *  Example : player:getCharSkillLevel(invaderXim.skill.DIG)
  *  Notes   : Only used for Chocobo Digging currently
  ************************************************************************/
 
@@ -10415,7 +10415,7 @@ uint16 CLuaBaseEntity::getCharSkillLevel(uint8 skillID)
 /************************************************************************
  *  Function: addLearnedWeaponskill()
  *  Purpose : Manually add a new weaponskill for the player using WSID
- *  Example : player:addLearnedWeaponskill(xi.wsUnlock.DECIMATION)
+ *  Example : player:addLearnedWeaponskill(invaderXim.wsUnlock.DECIMATION)
  *  Notes   : Do not see implemented in any script
  ************************************************************************/
 
@@ -10438,7 +10438,7 @@ void CLuaBaseEntity::addLearnedWeaponskill(uint8 wsUnlockId)
 /************************************************************************
  *  Function: hasLearnedWeaponskill()
  *  Purpose : Returns true if a player has learned a particular weaponskill
- *  Example : if player:hasLearnedWeaponskill(xi.wsUnlock.DECIMATION) then
+ *  Example : if player:hasLearnedWeaponskill(invaderXim.wsUnlock.DECIMATION) then
  *  Notes   :
  ************************************************************************/
 
@@ -10456,7 +10456,7 @@ bool CLuaBaseEntity::hasLearnedWeaponskill(uint8 wsUnlockId)
 /************************************************************************
  *  Function: delLearnedWeaponskill()
  *  Purpose : Removes a learned weaponskill from the player
- *  Example : player:delLearnedWeaponskill(xi.wsUnlock.ASURAN_FISTS)
+ *  Example : player:delLearnedWeaponskill(invaderXim.wsUnlock.ASURAN_FISTS)
  *  Notes   :
  ************************************************************************/
 
@@ -10479,7 +10479,7 @@ void CLuaBaseEntity::delLearnedWeaponskill(uint8 wsUnlockId)
 /************************************************************************
  *  Function: trySkillUp()
  *  Purpose : Attempts to increase skill for <skill> based on compared mob <level>
- *  Example : player:trySkillUp(xi.skill.HAND_TO_HAND, 50)
+ *  Example : player:trySkillUp(invaderXim.skill.HAND_TO_HAND, 50)
  *  Notes   :
  ************************************************************************/
 
@@ -10501,7 +10501,7 @@ void CLuaBaseEntity::trySkillUp(uint8 skill, uint8 level, sol::object const& for
 /************************************************************************
  *  Function: addWeaponSkillPoints()
  *  Purpose : Removes a learned weaponskill from the player
- *  Example : player:addWeaponSkillPoints(xi.slot.MAIN, 300)
+ *  Example : player:addWeaponSkillPoints(invaderXim.slot.MAIN, 300)
  *  Notes   : Returns true if points were successfully added.
  ************************************************************************/
 
@@ -10795,8 +10795,8 @@ void CLuaBaseEntity::recalculateAbilitiesTable()
  *               IN GENERAL, this function should not be used in persistent on-tick logic
  *            if the passed distance is nil or 0 (as well as many other combinations), empty table will be returned
  *            examples
- *      mob:getEntitiesInRange(nearbyPlayer, xi.aoeType.ROUND, xi.aoeRadius.ATTACKER, trampleRange, xi.findFlag.HIT_ALL, xi.targetType.PLAYER + xi.targetType.PLAYER_PARTY)
- *              The parameters should all be enums from xi.aoeType, xi.aoeRadius, xi.findFlag, and xi.targetType
+ *      mob:getEntitiesInRange(nearbyPlayer, invaderXim.aoeType.ROUND, invaderXim.aoeRadius.ATTACKER, trampleRange, invaderXim.findFlag.HIT_ALL, invaderXim.targetType.PLAYER + invaderXim.targetType.PLAYER_PARTY)
+ *              The parameters should all be enums from invaderXim.aoeType, invaderXim.aoeRadius, invaderXim.findFlag, and invaderXim.targetType
  ************************************************************************/
 
 auto CLuaBaseEntity::getEntitiesInRange(CLuaBaseEntity* PLuaEntityTarget, sol::variadic_args va) -> sol::table
@@ -10968,7 +10968,7 @@ uint8 CLuaBaseEntity::getPartySize(sol::object const& arg0)
 /************************************************************************
  *  Function: hasPartyJob()
  *  Purpose : Loops over party members and returns true if job is found
- *  Example : if caster:hasPartyJob(xi.job.DRK) then
+ *  Example : if caster:hasPartyJob(invaderXim.job.DRK) then
  *  Notes   : Highly useful for future addition of features
  ************************************************************************/
 
@@ -12271,7 +12271,7 @@ void CLuaBaseEntity::queue(int ms, sol::function func)
 /************************************************************************
  *  Function: addRecast()
  *  Purpose : Manually adds a cooldown for a particular Ability
- *  Example : automaton:addRecast(xi.recast.ABILITY, skill:getID(), 180)
+ *  Example : automaton:addRecast(invaderXim.recast.ABILITY, skill:getID(), 180)
  *  Notes   :
  ************************************************************************/
 
@@ -12295,7 +12295,7 @@ void CLuaBaseEntity::addRecast(uint8 recastCont, uint16 recastID, uint32 duratio
 /************************************************************************
  *  Function: hasRecast()
  *  Purpose : Checks to see if a particular Ability is on cooldown
- *  Example : automaton:hasRecast(xi.recast.ABILITY, skill:getID(), recast)
+ *  Example : automaton:hasRecast(invaderXim.recast.ABILITY, skill:getID(), recast)
  *  Notes   : Recast parameter is optional to check charges
  ************************************************************************/
 
@@ -12318,7 +12318,7 @@ bool CLuaBaseEntity::hasRecast(uint8 rType, uint16 recastID, sol::object const& 
 /************************************************************************
  *  Function: resetRecast()
  *  Purpose : Resets the cooldown for a specified Ability to 0
- *  Example : player:resetRecast(xi.recast.ABILITY, 231)
+ *  Example : player:resetRecast(invaderXim.recast.ABILITY, 231)
  *  Notes   : Must call the particular container (Ability Container in above example)
  *          : I imagine the Magic container can be specified?
  ************************************************************************/
@@ -12757,7 +12757,7 @@ uint16 CLuaBaseEntity::getBaseRangedDelay()
 /************************************************************************
  *  Function: checkLiementAbsorb()
  *  Purpose : Returns 1.0 if Liement is not up or didn't absorb, -1.0 or less if it did
- *  Example : liementAbsorbPct = player:checkLiementAbsorb(xi.damageType.FIRE)
+ *  Example : liementAbsorbPct = player:checkLiementAbsorb(invaderXim.damageType.FIRE)
  *  Notes   :
  ************************************************************************/
 
@@ -13181,7 +13181,7 @@ void CLuaBaseEntity::clearEnmityForEntity(CLuaBaseEntity* PEntity)
 /************************************************************************
  *  Function: addStatusEffect(effect, power, tick, duration, subtype, subpower, tier)
  *  Purpose : Adds a specified Status Effect to the Entity
- *  Example : target:addStatusEffect(xi.effect.ACCURACY_DOWN, 20, 3, 60)
+ *  Example : target:addStatusEffect(invaderXim.effect.ACCURACY_DOWN, 20, 3, 60)
  *  Notes   :
  ************************************************************************/
 
@@ -13249,7 +13249,7 @@ bool CLuaBaseEntity::addStatusEffect(sol::variadic_args va)
 /************************************************************************
  *  Function: addStatusEffectEx()
  *  Purpose : Adds an instance (or 'battle') Status Effect to the Entity
- *  Example : target:addStatusEffectEx(xi.effect.MOUNTED, xi.effect.MOUNTED, 0, 0, 900, true)
+ *  Example : target:addStatusEffectEx(invaderXim.effect.MOUNTED, invaderXim.effect.MOUNTED, 0, 0, 900, true)
  *  Notes   : For instance, Chocobo status, Fireflights, Teleport
  ************************************************************************/
 
@@ -13294,7 +13294,7 @@ bool CLuaBaseEntity::addStatusEffectEx(sol::variadic_args va)
                           subType,
                           subPower,
                           tier,
-                          effectFlag); // Effect Flag (i.e in lua xi.effectFlag.AURA will make this an aura effect)
+                          effectFlag); // Effect Flag (i.e in lua invaderXim.effectFlag.AURA will make this an aura effect)
 
     return ((CBattleEntity*)m_PBaseEntity)->StatusEffectContainer->AddStatusEffect(PEffect, silent);
 }
@@ -13302,7 +13302,7 @@ bool CLuaBaseEntity::addStatusEffectEx(sol::variadic_args va)
 /************************************************************************
  *  Function: getStatusEffect()
  *  Purpose : Returns the Object of a specified Status ID
- *  Example : local debilitation = target:getStatusEffect(xi.effect.DEBILITATION)
+ *  Example : local debilitation = target:getStatusEffect(invaderXim.effect.DEBILITATION)
  *  Notes   : Can specify Power of the Effect as an option or the Source (will use power if both specified)
  ************************************************************************/
 
@@ -13351,7 +13351,7 @@ auto CLuaBaseEntity::getStatusEffect(uint16 StatusID, sol::object const& SubType
 /************************************************************************
  *  Function: getStatusEffectBySource()
  *  Purpose : Returns the Object of a specified Status ID by source type and param
- *  Example : local aiming_gloves_enchantment = target:getStatusEffectBySource(xi.effect.ENCHANTMENT, xi.effectSourceType.EQUIPPED_ITEM, xi.item.AIMING_GLOVES)
+ *  Example : local aiming_gloves_enchantment = target:getStatusEffectBySource(invaderXim.effect.ENCHANTMENT, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.AIMING_GLOVES)
  *  Notes   :
  ************************************************************************/
 
@@ -13426,7 +13426,7 @@ int16 CLuaBaseEntity::getStatusEffectElement(uint16 statusId)
 /************************************************************************
  *  Function: canGainStatusEffect()
  *  Purpose : Returns true if an Entity can gain a Status Effect
- *  Example : if target:canGainStatusEffect(xi.effect.STR_DOWN) then
+ *  Example : if target:canGainStatusEffect(invaderXim.effect.STR_DOWN) then
  *  Notes   :
  ************************************************************************/
 
@@ -13454,7 +13454,7 @@ bool CLuaBaseEntity::canGainStatusEffect(uint16 effect, sol::object const& power
 /************************************************************************
  *  Function: hasStatusEffect()
  *  Purpose : Returns true if an Entity has a specific Status Effect active
- *  Example : if player:hasStatusEffect(xi.effect.REFRESH) then
+ *  Example : if player:hasStatusEffect(invaderXim.effect.REFRESH) then
  *  Notes   : More specific in scope than hasStatusEffectByFlag()
  ************************************************************************/
 
@@ -13491,7 +13491,7 @@ bool CLuaBaseEntity::hasStatusEffect(uint16 StatusID, sol::object const& SubType
 /************************************************************************
  *  Function: hasStatusEffectByFlag()
  *  Purpose : Returns true if an Entity has a Status Effect of a specified Flag
- *  Example : if target:hasStatusEffectByFlag(xi.effectFlag.INVISIBLE) then
+ *  Example : if target:hasStatusEffectByFlag(invaderXim.effectFlag.INVISIBLE) then
  *  Notes   : More broad in scope than hasStatusEffect()
  ************************************************************************/
 
@@ -13541,7 +13541,7 @@ uint8 CLuaBaseEntity::countEffect(uint16 StatusID)
 /************************************************************************
  *  Function: countEffectWithFlag(EFFECTFLAG)
  *  Purpose : Returns the number of Effects an Entity has in their container that matches the provided flag
- *  Example : if target:countEffectWithFlag(xi.effectFlag.DISPELABLE) > 3 then
+ *  Example : if target:countEffectWithFlag(invaderXim.effectFlag.DISPELABLE) > 3 then
  *  Notes   :
  ************************************************************************/
 
@@ -13566,7 +13566,7 @@ uint8 CLuaBaseEntity::countEffectWithFlag(uint32 flag)
 /************************************************************************
  *  Function: delStatusEffect()
  *  Purpose : Deletes a specified Effect from the Entity's Status Effect Container
- *  Example : target:delStatusEffect(xi.effect.RERAISE)
+ *  Example : target:delStatusEffect(invaderXim.effect.RERAISE)
  *  Notes   : Can specify Power of the Effect as an option or the Source (will use power if both specified)
  ************************************************************************/
 
@@ -13615,7 +13615,7 @@ bool CLuaBaseEntity::delStatusEffect(uint16 StatusID, sol::object const& SubType
 /************************************************************************
  *  Function: delStatusEffectsByFlag()
  *  Purpose : Removes all Status Effects of a specified flag
- *  Example : target:delEffectsByFlag(xi.effectFlag.DEATH)
+ *  Example : target:delEffectsByFlag(invaderXim.effectFlag.DEATH)
  *  Notes   : Used for removal of multiple effects with matching flag
  ************************************************************************/
 
@@ -13641,7 +13641,7 @@ void CLuaBaseEntity::delStatusEffectsByFlag(uint32 flag, sol::object const& sile
 /************************************************************************
  *  Function: delStatusEffectSilent()
  *  Purpose : Removes a Status Effect from the Entity without showing a message
- *  Example : target:delStatusEffectSilent(xi.effect.SANDSTORM)
+ *  Example : target:delStatusEffectSilent(invaderXim.effect.SANDSTORM)
  *  Notes   : Used specifically for Status Effects that are not supposed to show a message once worn
  ************************************************************************/
 
@@ -13807,7 +13807,7 @@ uint16 CLuaBaseEntity::stealStatusEffect(CLuaBaseEntity* PTargetEntity, sol::obj
 /************************************************************************
  *  Function: addMod()
  *  Purpose : Adds a Mod to the Entity
- *  Example : target:addMod(xi.mod.INT, 10)
+ *  Example : target:addMod(invaderXim.mod.INT, 10)
  *  Notes   : If Mod ID already exists, adds the amount to existing amount
  ************************************************************************/
 
@@ -13831,7 +13831,7 @@ void CLuaBaseEntity::addMod(uint16 type, int16 amount)
 /************************************************************************
  *  Function: getMod()
  *  Purpose : Returns the integer value of a specified Mod on the Entity
- *  Example : if target:getMod(xi.mod.MND) > 10 then
+ *  Example : if target:getMod(invaderXim.mod.MND) > 10 then
  *  Notes   :
  ************************************************************************/
 
@@ -13849,7 +13849,7 @@ int16 CLuaBaseEntity::getMod(uint16 modID)
 /************************************************************************
  *  Function: setMod()
  *  Purpose : Sets a specified Mod and Amount for the Entity
- *  Example : target:setMod(xi.mod.STR, 20)
+ *  Example : target:setMod(invaderXim.mod.STR, 20)
  *  Notes   :
  ************************************************************************/
 
@@ -13867,7 +13867,7 @@ void CLuaBaseEntity::setMod(uint16 modID, int16 value)
 /************************************************************************
  *  Function: delMod()
  *  Purpose : Removes a specified Mod and amount from the Entity
- *  Example : target:delMod(xi.mod.STR,4)
+ *  Example : target:delMod(invaderXim.mod.STR,4)
  *  Notes   :
  ************************************************************************/
 
@@ -13924,7 +13924,7 @@ void CLuaBaseEntity::printAllMods()
 /************************************************************************
  *  Function: addLatent()
  *  Purpose : Adds the specified latent to the player
- *  Example : player:addLatent(xi.latent.LATENT_HP_UNDER_PERCENT, 95, xi.mod.REGEN, 1)
+ *  Example : player:addLatent(invaderXim.latent.LATENT_HP_UNDER_PERCENT, 95, invaderXim.mod.REGEN, 1)
  ************************************************************************/
 
 void CLuaBaseEntity::addLatent(uint16 condID, uint16 conditionValue, uint16 mID, int16 modValue)
@@ -13944,7 +13944,7 @@ void CLuaBaseEntity::addLatent(uint16 condID, uint16 conditionValue, uint16 mID,
 /************************************************************************
  *  Function: delLatent()
  *  Purpose : Removes the specified latent to the player. Returns if successfully removed or not.
- *  Example : player:delLatent(xi.latent.LATENT_HP_UNDER_PERCENT, 95, xi.mod.REGEN, 1)
+ *  Example : player:delLatent(invaderXim.latent.LATENT_HP_UNDER_PERCENT, 95, invaderXim.mod.REGEN, 1)
  *  Notes   :
  ************************************************************************/
 
@@ -13965,7 +13965,7 @@ bool CLuaBaseEntity::delLatent(uint16 condID, uint16 conditionValue, uint16 mID,
 /************************************************************************
  *  Function: hasAllLatentsActive()
  *  Purpose : Returns false if any latents for the slot are not active
- *  Example : player:hasAllLatentsActive(xi.slot.NECK)
+ *  Example : player:hasAllLatentsActive(invaderXim.slot.NECK)
  *  Notes   :
  ************************************************************************/
 
@@ -13983,7 +13983,7 @@ bool CLuaBaseEntity::hasAllLatentsActive(uint8 slot)
 /************************************************************************
  *  Function: getMaxGearMod()
  *  Purpose : Returns the highest integer value of a specified Mod on all equiped items
- *  Example : local maxValue = player:getMaxGearMod(xi.mod.GEOMANCY_BONUS)
+ *  Example : local maxValue = player:getMaxGearMod(invaderXim.mod.GEOMANCY_BONUS)
  *  Notes   :
  ************************************************************************/
 
@@ -14067,7 +14067,7 @@ bool CLuaBaseEntity::doRandomDeal(CLuaBaseEntity* PTarget)
 /************************************************************************
  *  Function: addCorsairRoll()
  *  Purpose : Adds the Corsair Roll to the Target's Status Effect Container
- *  Example : target:addCorsairRoll(caster:getMainJob(), caster:getMerit(xi.merit.BUST_DURATION), xi.effect.CHAOS_ROLL, effectpower, 0, duration, caster:getID(),
+ *  Example : target:addCorsairRoll(caster:getMainJob(), caster:getMerit(invaderXim.merit.BUST_DURATION), invaderXim.effect.CHAOS_ROLL, effectpower, 0, duration, caster:getID(),
  *total, MOD_ATTP) Notes   : Returns true if success (Is range a factor?)
  ************************************************************************/
 
@@ -14177,7 +14177,7 @@ uint16 CLuaBaseEntity::healingWaltz()
 /************************************************************************
  *  Function: addBardSong()
  *  Purpose : Adds a song effect to Player(s') Status Effect Container(s); returns true if sucess
- *  Example : target:addBardSong(caster, xi.effect.BALLAD, power, 0, duration, caster:getID(), 0, 1)
+ *  Example : target:addBardSong(caster, invaderXim.effect.BALLAD, power, 0, duration, caster:getID(), 0, 1)
  *  Notes   :
  ************************************************************************/
 
@@ -14263,7 +14263,7 @@ void CLuaBaseEntity::uncharm()
 /************************************************************************
  *  Function: addBurden()
  *  Purpose : Adds a Burden to a Target
- *  Example : local overload = target:addBurden(xi.magic.ele.EARTH - 1, burden)
+ *  Example : local overload = target:addBurden(invaderXim.magic.ele.EARTH - 1, burden)
  *  Notes   : Used for Automation abilities
  *  TODO    : Make these multiple casts easier to read
  ************************************************************************/
@@ -14281,7 +14281,7 @@ uint8 CLuaBaseEntity::addBurden(uint8 element, uint8 burden)
 /************************************************************************
  *  Function: getOverloadChance()
  *  Purpose : Gets percentage chance of overload for automaton element
- *  Example : local overload = target:getOverloadChance(xi.magic.ele.EARTH - 1)
+ *  Example : local overload = target:getOverloadChance(invaderXim.magic.ele.EARTH - 1)
  *  Notes   : Used for Automation abilities
  *  TODO    : Make these multiple casts easier to read
  ************************************************************************/
@@ -14315,7 +14315,7 @@ void CLuaBaseEntity::setStatDebilitation(uint16 statDebil)
 /************************************************************************
  *  Function: getStat()
  *  Purpose : Returns a particular stat for an Entity
- *  Example : caster:getStat(xi.mod.INT)
+ *  Example : caster:getStat(invaderXim.mod.INT)
  *  Notes   : weaponSlot param is used only for ATT (optional and defaults to SLOT_MAIN)
  ************************************************************************/
 
@@ -14922,7 +14922,7 @@ void CLuaBaseEntity::removeAmmo()
 /************************************************************************
  *  Function: getWeaponSkillLevel()
  *  Purpose : Returns the player's skill level for the weapon in a slot
- *  Example : caster:getWeaponSkillLevel(xi.slot.RANGED)
+ *  Example : caster:getWeaponSkillLevel(invaderXim.slot.RANGED)
  *  Notes   : Mainly used to determine String/Wind level, but can be used for others
  ************************************************************************/
 
@@ -14957,7 +14957,7 @@ uint16 CLuaBaseEntity::getWeaponSkillLevel(uint8 slotID)
 /************************************************************************
  *  Function: getWeaponDamageType()
  *  Purpose : Returns the primary type of a weapon in a slot
- *  Example : if attacker:getWeaponDamageType(xi.slot.MAIN) == xi.damageType.PIERCING then
+ *  Example : if attacker:getWeaponDamageType(invaderXim.slot.MAIN) == invaderXim.damageType.PIERCING then
  *  Notes   : Used to identify which damage type is the weapon
  ************************************************************************/
 
@@ -14987,7 +14987,7 @@ uint16 CLuaBaseEntity::getWeaponDamageType(uint8 slotID)
 /************************************************************************
  *  Function: getWeaponSkillType()
  *  Purpose : Returns the primary type of a weapon in a slot
- *  Example : if attacker:getWeaponSkillType(xi.slot.MAIN) == xi.skill.HAND_TO_HAND then
+ *  Example : if attacker:getWeaponSkillType(invaderXim.slot.MAIN) == invaderXim.skill.HAND_TO_HAND then
  *  Notes   : Used to identify which type of weapon it is (Katana, Sword, etc)
  ************************************************************************/
 
@@ -15022,7 +15022,7 @@ uint8 CLuaBaseEntity::getWeaponSkillType(uint8 slotID)
 /************************************************************************
  *  Function: getWeaponSubSkillType()
  *  Purpose : Returns the integer value of the Weapon's Sub Type
- *  Example : if player:getWeaponSubSkillType(xi.slot.RANGED) == 10 then
+ *  Example : if player:getWeaponSubSkillType(invaderXim.slot.RANGED) == 10 then
  *  Notes   : Mainly used to differentiate between ammo and ranged equipment
  ************************************************************************/
 
@@ -15191,7 +15191,7 @@ int32 CLuaBaseEntity::checkDamageCap(int32 damage)
 /************************************************************************
  *  Function: spawnPet()
  *  Purpose : Spawns a pet if a few correct conditions are met
- *  Example : caster:spawnPet(xi.petId.CARBUNCLE)
+ *  Example : caster:spawnPet(invaderXim.petId.CARBUNCLE)
  *  Notes   :
  ************************************************************************/
 
@@ -15332,13 +15332,13 @@ void CLuaBaseEntity::trustPartyMessage(uint32 message_id)
  *  actionsTable: { reactionType, selector, selectorArg }
  *  Purpose  : Adds a behavior to the gambit system with an arbitrary number of predicates and reactions
  *  Examples : trust:addGambit(ai.t.CASTER, {
- *                  { ai.c.NOT_STATUS, xi.effect.REFRESH },
- *                  { ai.c.NOT_STATUS, xi.effect.SUBLIMATION_ACTIVATED },
- *            }, { ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.REFRESH })
- *            trust:addGambit(ai.t.SELF, { ai.c.NOT_STATUS, xi.effect.HASTE }, { ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.HASTE })
- *            trust:addGambit(ai.t.TARGET, { ai.c.NOT_STATUS, xi.effect.FLASH }, {
- *                  { ai.r.JA, ai.s.SPECIFIC, xi.ja.DIVINE_EMBLEM },
- *                  { ai.r.MA, ai.s.SPECIFIC, xi.magic.spellFamily.FLASH } })
+ *                  { ai.c.NOT_STATUS, invaderXim.effect.REFRESH },
+ *                  { ai.c.NOT_STATUS, invaderXim.effect.SUBLIMATION_ACTIVATED },
+ *            }, { ai.r.MA, ai.s.HIGHEST, invaderXim.magic.spellFamily.REFRESH })
+ *            trust:addGambit(ai.t.SELF, { ai.c.NOT_STATUS, invaderXim.effect.HASTE }, { ai.r.MA, ai.s.HIGHEST, invaderXim.magic.spellFamily.HASTE })
+ *            trust:addGambit(ai.t.TARGET, { ai.c.NOT_STATUS, invaderXim.effect.FLASH }, {
+ *                  { ai.r.JA, ai.s.SPECIFIC, invaderXim.ja.DIVINE_EMBLEM },
+ *                  { ai.r.MA, ai.s.SPECIFIC, invaderXim.magic.spellFamily.FLASH } })
  *  Notes   : Adds a behavior to the gambit system
  ************************************************************************/
 
@@ -15838,7 +15838,7 @@ auto CLuaBaseEntity::getPetName() -> const std::string
 /************************************************************************
  *  Function: setPetName()
  *  Purpose : Passes a string to name a new pet
- *  Example : player:setPetName(xi.petType.WYVERN, xi.petName.ROVER)
+ *  Example : player:setPetName(invaderXim.petType.WYVERN, invaderXim.petName.ROVER)
  *  Notes   : Updates char_pet.sql
  ************************************************************************/
 
@@ -15972,7 +15972,7 @@ void CLuaBaseEntity::familiar()
 /************************************************************************
  *  Function: addPetMod()
  *  Purpose : Adds a specified mod and power to a pet
- *  Example : target:addPetMod(xi.mod.HP, 20)
+ *  Example : target:addPetMod(invaderXim.mod.HP, 20)
  *  Notes   : Adds on top of existing values?
  ************************************************************************/
 
@@ -15990,7 +15990,7 @@ void CLuaBaseEntity::addPetMod(uint16 modID, int16 amount)
 /************************************************************************
  *  Function: setPetMod()
  *  Purpose : Sets a specified mod and power for a pet
- *  Example : target:setPetMod(xi.mod.HP, 20)
+ *  Example : target:setPetMod(invaderXim.mod.HP, 20)
  *  Notes   :
  ************************************************************************/
 
@@ -16008,7 +16008,7 @@ void CLuaBaseEntity::setPetMod(uint16 modID, int16 amount)
 /************************************************************************
  *  Function: delPetMod()
  *  Purpose : Removes a specified mod and power from a pet
- *  Example : target:delPetMod(xi.mod.HP, 20)
+ *  Example : target:delPetMod(invaderXim.mod.HP, 20)
  *  Notes   :
  ************************************************************************/
 
@@ -16092,7 +16092,7 @@ uint8 CLuaBaseEntity::getAutomatonFrame()
 /************************************************************************
  *  Function: setAutomatonFrame(frameItemID)
  *  Purpose : Sets the provided frame on the automaton
- *  Example : player:setAutomatonFrame(xi.item.VALOREDGE_FRAME)
+ *  Example : player:setAutomatonFrame(invaderXim.item.VALOREDGE_FRAME)
  *  Notes   :
  ************************************************************************/
 
@@ -16134,7 +16134,7 @@ uint8 CLuaBaseEntity::getAutomatonHead()
 /************************************************************************
  *  Function: setAutomatonHead(headItemID)
  *  Purpose : Sets the automaton head to the specified item
- *  Example : player:setAutomatonHead(xi.item.VALOREDGE_HEAD)
+ *  Example : player:setAutomatonHead(invaderXim.item.VALOREDGE_HEAD)
  *  Notes   :
  ************************************************************************/
 
@@ -16560,7 +16560,7 @@ void CLuaBaseEntity::setMobLevel(uint8 level)
 /************************************************************************
  *  Function: getEcosystem()
  *  Purpose : Returns integer value of system associated with an Entity
- *  Example : if pet:getEcosystem() ~= xi.ecosystem.AVATAR then -- Not an avatar
+ *  Example : if pet:getEcosystem() ~= invaderXim.ecosystem.AVATAR then -- Not an avatar
  *  Notes   :
  ************************************************************************/
 
@@ -17076,7 +17076,7 @@ bool CLuaBaseEntity::hasImmunity(uint32 immunityID)
 /************************************************************************
  *  Function: addImmunity()
  *  Purpose : Adds any immunity
- *  Example : mob:addImmunity(xi.immunity.SILENCE)
+ *  Example : mob:addImmunity(invaderXim.immunity.SILENCE)
  ************************************************************************/
 
 void CLuaBaseEntity::addImmunity(uint32 immunityID)
@@ -17091,7 +17091,7 @@ void CLuaBaseEntity::addImmunity(uint32 immunityID)
 /************************************************************************
  *  Function: delImmunity()
  *  Purpose : Delete any immunity
- *  Example : mob:delImmunity(xi.immunity.SILENCE)
+ *  Example : mob:delImmunity(invaderXim.immunity.SILENCE)
  ************************************************************************/
 
 void CLuaBaseEntity::delImmunity(uint32 immunityID)
@@ -17394,7 +17394,7 @@ void CLuaBaseEntity::setMobSkillAttack(int16 listId)
 /************************************************************************
  *  Function: getMobMod()
  *  Purpose : Returns the power value of a Mob Mod in effect
- *  Example : mob:getMobMod(xi.mobMod.MUG_GIL)
+ *  Example : mob:getMobMod(invaderXim.mobMod.MUG_GIL)
  *  Notes   :
  ************************************************************************/
 
@@ -17412,7 +17412,7 @@ int16 CLuaBaseEntity::getMobMod(uint16 mobModID)
 /************************************************************************
  *  Function: addMobMod()
  *  Purpose : Applies a Mob Mod with a specified amount
- *  Example : mob:addMobMod(xi.mobMod.MUG_GIL, 100)
+ *  Example : mob:addMobMod(invaderXim.mobMod.MUG_GIL, 100)
  *  Notes   : Currently not being used in any script
  ************************************************************************/
 
@@ -17430,7 +17430,7 @@ void CLuaBaseEntity::addMobMod(uint16 mobModID, int16 value)
 /************************************************************************
  *  Function: setMobMod()
  *  Purpose : Applies a Mob Mod of a specified magnitude
- *  Example : mob:setMobMod(xi.mobMod.MUG_GIL, 100)
+ *  Example : mob:setMobMod(invaderXim.mobMod.MUG_GIL, 100)
  *  Notes   : Interesting note - this is being used for superlinking too
  ************************************************************************/
 
@@ -17448,7 +17448,7 @@ void CLuaBaseEntity::setMobMod(uint16 mobModID, int16 value)
 /************************************************************************
  *  Function: delMobMod()
  *  Purpose : Removes a Mob Mod
- *  Example : mob:delMobMod(xi.mobMod.MUG_GIL, 100)
+ *  Example : mob:delMobMod(invaderXim.mobMod.MUG_GIL, 100)
  *  Notes   : Currently not being used in any script
  ************************************************************************/
 
@@ -17502,7 +17502,7 @@ uint16 CLuaBaseEntity::getBehavior()
 /************************************************************************
  *  Function: setBehavior()
  *  Purpose : Sets a particular behavior for a Mob
- *  Example : mob:setBehavior(bit.bor(mob:getBehavior(), xi.behavior.NO_TURN))
+ *  Example : mob:setBehavior(bit.bor(mob:getBehavior(), invaderXim.behavior.NO_TURN))
  *  Notes   : Currently used in bitwise calculations for high-tier NM's
  ************************************************************************/
 
@@ -17573,7 +17573,7 @@ uint16 CLuaBaseEntity::getRoamFlags()
 /************************************************************************
  *  Function: setRoamFlags()
  *  Purpose : Sets roam flags for a mob
- *  Example : mob:setRoamFlags(bit.bor(mob:getRoamFlags(), xi.roamFlag.STEALTH))
+ *  Example : mob:setRoamFlags(bit.bor(mob:getRoamFlags(), invaderXim.roamFlag.STEALTH))
  ************************************************************************/
 
 void CLuaBaseEntity::setRoamFlags(uint16 newRoamFlags)
@@ -17775,7 +17775,7 @@ void CLuaBaseEntity::castSpell(sol::object const& spell, sol::object const& enti
 /************************************************************************
  *  Function: useJobAbility()
  *  Purpose : Instruct a Mob to use a specified Job Ability
- *  Example : wyvern:useJobAbility(xi.jobAbility.SUPER_CLIMB, wyvern) -- Specifying pet to use
+ *  Example : wyvern:useJobAbility(invaderXim.jobAbility.SUPER_CLIMB, wyvern) -- Specifying pet to use
  *  Notes   : Inserts directly into queue stack with 0ms delay,
  *  and checks queue for immediate use.
  ************************************************************************/
@@ -18482,7 +18482,7 @@ void CLuaBaseEntity::setClaimedTraverserStones(uint16 totalStones)
 /************************************************************************
  *  Function: getHistory()
  *  Purpose : Gets a single entry of character history statistics
- *  Example : player:getHistory(xi.history.enemiesDefeated) -- Returns the relevant stat
+ *  Example : player:getHistory(invaderXim.history.enemiesDefeated) -- Returns the relevant stat
  *  Notes   : This will return whatever is cached at runtime, not the contents of the db!
  ************************************************************************/
 

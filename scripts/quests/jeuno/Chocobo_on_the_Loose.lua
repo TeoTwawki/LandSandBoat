@@ -7,12 +7,12 @@
 -- Hantileon      : !pos -2.675 -1.1 -105.287 230
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.CHOCOBO_ON_THE_LOOSE)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.CHOCOBO_ON_THE_LOOSE)
 
 quest.reward =
 {
     -- TODO: Verify this is the correct egg for Quest Reward
-    item = xi.item.CHOCOBO_EGG_FAINTLY_WARM,
+    item = invaderXim.item.CHOCOBO_EGG_FAINTLY_WARM,
 }
 
 quest.sections =
@@ -20,10 +20,10 @@ quest.sections =
     -- NOTE: This quest is flagged by Chocobo's Wounds
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.LA_THEINE_PLATEAU] =
+        [invaderXim.zone.LA_THEINE_PLATEAU] =
         {
             ['Chocobo_Tracks'] =
             {
@@ -42,7 +42,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Hantileon'] =
             {
@@ -65,7 +65,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Brutus'] =
             {

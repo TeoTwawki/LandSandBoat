@@ -7,22 +7,22 @@
 -- Leafy Patch : !pos -418 -33 576
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.BOY_AND_THE_BEAST)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.BOY_AND_THE_BEAST)
 
 quest.reward =
 {
-    item = xi.item.CARBON_FISHING_ROD,
+    item = invaderXim.item.CARBON_FISHING_ROD,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedMission(xi.mission.log_id.WOTG, xi.mission.id.wotg.BACK_TO_THE_BEGINNING)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedMission(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.BACK_TO_THE_BEGINNING)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Raustigne'] =
             {
@@ -58,7 +58,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.VUNKERL_INLET_S] =
+        [invaderXim.zone.VUNKERL_INLET_S] =
         {
             ['qm7'] =
             {
@@ -72,7 +72,7 @@ quest.sections =
             onEventFinish =
             {
                 [105] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.VUNKERL_HERB_MEMO)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.VUNKERL_HERB_MEMO)
                     quest:begin(player)
                 end,
             },
@@ -81,15 +81,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.VUNKERL_INLET_S] =
+        [invaderXim.zone.VUNKERL_INLET_S] =
         {
             ['qm7'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.VUNKERL_HERB) then
+                    if player:hasKeyItem(invaderXim.ki.VUNKERL_HERB) then
                         if quest:getVar(player, 'Prog') == 3 then
                             return quest:progressEvent(108)
                         else
@@ -113,7 +113,7 @@ quest.sections =
             ['Leafy_Patch'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.VUNKERL_HERB) then
+                    if not player:hasKeyItem(invaderXim.ki.VUNKERL_HERB) then
                         local vanadielHour = VanadielHour()
                         local hourParam = 0
 
@@ -135,18 +135,18 @@ quest.sections =
                         quest:setVar(player, 'Prog', 3)
                     end
 
-                    npcUtil.giveKeyItem(player, xi.ki.VUNKERL_HERB)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.VUNKERL_HERB)
                 end,
 
                 [108] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.VUNKERL_HERB)
-                        player:delKeyItem(xi.ki.VUNKERL_HERB_MEMO)
+                        player:delKeyItem(invaderXim.ki.VUNKERL_HERB)
+                        player:delKeyItem(invaderXim.ki.VUNKERL_HERB_MEMO)
                     end
                 end,
 
                 [109] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.VUNKERL_HERB)
+                    player:delKeyItem(invaderXim.ki.VUNKERL_HERB)
                 end,
 
                 [110] = function(player, csid, option, npc)

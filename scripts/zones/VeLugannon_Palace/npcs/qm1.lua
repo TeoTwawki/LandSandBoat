@@ -3,7 +3,7 @@
 --  NPC: ??? (qm1)
 -- !pos -370.039 16.014 -274.378 177
 -----------------------------------
-local ID = zones[xi.zone.VELUGANNON_PALACE]
+local ID = zones[invaderXim.zone.VELUGANNON_PALACE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -11,14 +11,14 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     local hideTime = 1
 
-    if not player:hasItem(xi.item.CURTANA) and player:getFreeSlotsCount() >= 1 then
-        player:addItem(xi.item.CURTANA)
-        player:messageSpecial(ID.text.ITEM_OBTAINED, xi.item.CURTANA) -- Curtana
+    if not player:hasItem(invaderXim.item.CURTANA) and player:getFreeSlotsCount() >= 1 then
+        player:addItem(invaderXim.item.CURTANA)
+        player:messageSpecial(ID.text.ITEM_OBTAINED, invaderXim.item.CURTANA) -- Curtana
 
         -- ??? dissapears for 2 hours and reappears on new position
         hideTime = 7200
     else
-        player:messageSpecial(ID.text.ITEM_CANNOT_BE_OBTAINED, xi.item.CURTANA) -- Curtana
+        player:messageSpecial(ID.text.ITEM_CANNOT_BE_OBTAINED, invaderXim.item.CURTANA) -- Curtana
     end
 
     local curtanaPos =

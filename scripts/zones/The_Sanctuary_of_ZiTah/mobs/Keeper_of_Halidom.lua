@@ -16,16 +16,16 @@ local spawnPoints =
 }
 
 entity.onMobInitialize = function(mob)
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 324)
-    xi.magian.onMobDeath(mob, player, optParams, set{ 73, 287, 435 })
+    invaderXim.hunts.checkHunt(mob, player, 324)
+    invaderXim.magian.onMobDeath(mob, player, optParams, set{ 73, 287, 435 })
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
 end
 
 return entity

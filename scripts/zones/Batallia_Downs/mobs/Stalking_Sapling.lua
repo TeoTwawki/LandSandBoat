@@ -3,7 +3,7 @@
 --  Mob: Stalking Sapling
 -- Note: PH for Tottering Toby
 -----------------------------------
-local ID = zones[xi.zone.BATALLIA_DOWNS]
+local ID = zones[invaderXim.zone.BATALLIA_DOWNS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -68,14 +68,14 @@ local totteringSpawnPoints =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 72, 1, xi.regime.type.FIELDS)
-    xi.regime.checkRegime(player, mob, 73, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 72, 1, invaderXim.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 73, 1, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = totteringSpawnPoints
-    xi.mob.phOnDespawn(mob, totteringPHTable, 20, 3600, params) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, totteringPHTable, 20, 3600, params) -- 1 hour
 end
 
 return entity

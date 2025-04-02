@@ -6,12 +6,12 @@
 -- Naja Salaheem : !pos 22.700 -8.804 -45.591 50
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.IN_THE_BLOOD)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.IN_THE_BLOOD)
 
 mission.reward =
 {
-    item        = xi.item.IMPERIAL_GOLD_PIECE,
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.SENTINELS_HONOR },
+    item        = invaderXim.item.IMPERIAL_GOLD_PIECE,
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.SENTINELS_HONOR },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = mission:progressEvent(3113, { text_table = 0 }),
 

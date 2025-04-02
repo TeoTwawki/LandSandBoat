@@ -8,22 +8,22 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local theFumblingFriar = player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.THE_FUMBLING_FRIAR)
+    local theFumblingFriar = player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.THE_FUMBLING_FRIAR)
 
     -- Change to BRASS_RIBBON_OF_SERVICE later when Campaign has been added.
     if
-        theFumblingFriar == xi.questStatus.QUEST_AVAILABLE and
-        player:hasKeyItem(xi.ki.BRONZE_RIBBON_OF_SERVICE) and
+        theFumblingFriar == invaderXim.questStatus.QUEST_AVAILABLE and
+        player:hasKeyItem(invaderXim.ki.BRONZE_RIBBON_OF_SERVICE) and
         player:getMainLvl() >= 30
     then
         player:startEvent(26) -- Start quest "The Fumbling Friar"
-    elseif theFumblingFriar == xi.questStatus.QUEST_ACCEPTED then
-        if player:hasKeyItem(xi.ki.ORNATE_PACKAGE) then
+    elseif theFumblingFriar == invaderXim.questStatus.QUEST_ACCEPTED then
+        if player:hasKeyItem(invaderXim.ki.ORNATE_PACKAGE) then
             player:startEvent(28) -- During quest "The Fumbling Friar" (with Ornate Package KI)
         else
             player:startEvent(27) -- During quest "The Fumbling Friar" (before retrieving KI Ornate Package)
         end
-    elseif theFumblingFriar == xi.questStatus.QUEST_COMPLETED then
+    elseif theFumblingFriar == invaderXim.questStatus.QUEST_COMPLETED then
         player:startEvent(29) -- New standard dialog after "The Fumbling Friar"
     else
         player:startEvent(25) -- Standard dialog
@@ -32,12 +32,12 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 26 then
-        player:addQuest(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.THE_FUMBLING_FRIAR)
+        player:addQuest(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.THE_FUMBLING_FRIAR)
     elseif
         csid == 28 and
-        npcUtil.completeQuest(player, xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.THE_FUMBLING_FRIAR, { item = xi.item.SCROLL_OF_RECALL_PASHH })
+        npcUtil.completeQuest(player, invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.THE_FUMBLING_FRIAR, { item = invaderXim.item.SCROLL_OF_RECALL_PASHH })
     then
-        player:delKeyItem(xi.ki.ORNATE_PACKAGE)
+        player:delKeyItem(invaderXim.ki.ORNATE_PACKAGE)
     end
 end
 

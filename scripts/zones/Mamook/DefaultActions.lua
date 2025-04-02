@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.MAMOOK]
+local ID = zones[invaderXim.zone.MAMOOK]
 
 return {
     ['qm1'] = { messageSpecial = ID.text.SICKLY_SWEET },

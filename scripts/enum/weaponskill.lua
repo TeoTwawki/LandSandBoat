@@ -9,8 +9,8 @@ xi = xi or {}
 -- Weaponskill IDs
 -----------------------------------
 
----@enum xi.weaponskill
-xi.weaponskill =
+---@enum invaderXim.weaponskill
+invaderXim.weaponskill =
 {
     -----------------------------------
     -- H2H
@@ -332,4 +332,4 @@ xi.weaponskill =
     DIMENSIONAL_DEATH   = 255,
 }
 
-xi.ws = xi.weaponskill
+invaderXim.ws = invaderXim.weaponskill

@@ -1,14 +1,14 @@
 -----------------------------------
 -- Zone: Xarcabard_[S] (137)
 -----------------------------------
-local ID = zones[xi.zone.XARCABARD_S]
+local ID = zones[invaderXim.zone.XARCABARD_S]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
     GetMobByID(ID.mob.ZIRNITRA):setRespawnTime(math.random(14400, 18000))
-    xi.voidwalker.zoneOnInit(zone)
+    invaderXim.voidwalker.zoneOnInit(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)

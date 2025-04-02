@@ -8,19 +8,19 @@
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.festiveMoogle.onTrade(player, npc, trade)
+    invaderXim.festiveMoogle.onTrade(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    xi.festiveMoogle.onTrigger(player, npc)
+    invaderXim.festiveMoogle.onTrigger(player, npc)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.festiveMoogle.onEventUpdate(player, csid, option, npc)
+    invaderXim.festiveMoogle.onEventUpdate(player, csid, option, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.festiveMoogle.onEventFinish(player, csid, option, npc)
+    invaderXim.festiveMoogle.onEventFinish(player, csid, option, npc)
 end
 
 return entity

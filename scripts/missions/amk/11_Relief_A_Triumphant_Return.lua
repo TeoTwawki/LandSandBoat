@@ -5,11 +5,11 @@
 -- Inconspicuous Door : !pos -15 1.300 68 244
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.AMK, xi.mission.id.amk.RELIEF_A_TRIUMPHANT_RETURN)
+local mission = Mission:new(invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.RELIEF_A_TRIUMPHANT_RETURN)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.AMK, xi.mission.id.amk.JOY_SUMMONED_TO_A_FABULOUS_FETE },
+    nextMission = { invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.JOY_SUMMONED_TO_A_FABULOUS_FETE },
 }
 
 mission.sections =
@@ -19,7 +19,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Inconspicuous_Door'] =
             {

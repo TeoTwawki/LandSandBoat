@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.mount
-xi.mount =
+---@enum invaderXim.mount
+invaderXim.mount =
 {
     CHOCOBO        = 0,
     QUEST_RAPTOR   = 1, -- NOTE: This now appears as a plain chocobo

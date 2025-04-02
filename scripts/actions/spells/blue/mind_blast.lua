@@ -21,10 +21,10 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.DEMON
-    params.attackType = xi.attackType.MAGICAL
-    params.damageType = xi.damageType.THUNDER
-    params.attribute = xi.mod.MND
+    params.ecosystem = invaderXim.ecosystem.DEMON
+    params.attackType = invaderXim.attackType.MAGICAL
+    params.damageType = invaderXim.damageType.THUNDER
+    params.attribute = invaderXim.mod.MND
     params.multiplier = 2.08
     params.azureBonus = 0.5
     params.tMultiplier = 1.5
@@ -37,13 +37,13 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.mnd_wsc = 0.3
     params.chr_wsc = 0.0
 
-    params.addedEffect = xi.effect.PARALYSIS
+    params.addedEffect = invaderXim.effect.PARALYSIS
     local power = 20
     local tick = 0
     local duration = 90
 
-    local damage = xi.spells.blue.useMagicalSpell(caster, target, spell, params)
-    xi.spells.blue.useMagicalSpellAddedEffect(caster, target, spell, params, power, tick, duration)
+    local damage = invaderXim.spells.blue.useMagicalSpell(caster, target, spell, params)
+    invaderXim.spells.blue.useMagicalSpellAddedEffect(caster, target, spell, params, power, tick, duration)
 
     return damage
 end

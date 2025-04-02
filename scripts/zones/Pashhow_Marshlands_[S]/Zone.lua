@@ -5,8 +5,8 @@
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.chocobo.initZone(zone)
-    xi.voidwalker.zoneOnInit(zone)
+    invaderXim.chocobo.initZone(zone)
+    invaderXim.voidwalker.zoneOnInit(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)

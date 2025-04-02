@@ -16,18 +16,18 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local typeEffect = nil
-    local blinded    = xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.BLINDNESS, 20, 0, 120)
-    local bio        = xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.BIO, 39, 0, 120)
+    local blinded    = invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.BLINDNESS, 20, 0, 120)
+    local bio        = invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.BIO, 39, 0, 120)
 
-    skill:setMsg(xi.msg.basic.SKILL_ENFEEB_IS)
+    skill:setMsg(invaderXim.msg.basic.SKILL_ENFEEB_IS)
 
     -- display blind first, else bio
-    if blinded == xi.msg.basic.SKILL_ENFEEB_IS then
-        typeEffect = xi.effect.BLINDNESS
-    elseif bio == xi.msg.basic.SKILL_ENFEEB_IS then
-        typeEffect = xi.effect.BIO
+    if blinded == invaderXim.msg.basic.SKILL_ENFEEB_IS then
+        typeEffect = invaderXim.effect.BLINDNESS
+    elseif bio == invaderXim.msg.basic.SKILL_ENFEEB_IS then
+        typeEffect = invaderXim.effect.BIO
     else
-        skill:setMsg(xi.msg.basic.SKILL_MISS)
+        skill:setMsg(invaderXim.msg.basic.SKILL_MISS)
     end
 
     return typeEffect

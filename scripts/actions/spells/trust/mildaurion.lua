@@ -11,37 +11,37 @@
 local spellObject = {}
 
 spellObject.onMagicCastingCheck = function(caster, target, spell)
-    return xi.trust.canCast(caster, spell)
+    return invaderXim.trust.canCast(caster, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    return xi.trust.spawn(caster, spell)
+    return invaderXim.trust.spawn(caster, spell)
 end
 
 spellObject.onMobSpawn = function(mob)
-    xi.trust.teamworkMessage(mob, {
-        [xi.magic.spell.PRISHE] = xi.trust.messageOffset.TEAMWORK_1,
-        [xi.magic.spell.ULMIA] = xi.trust.messageOffset.TEAMWORK_2,
+    invaderXim.trust.teamworkMessage(mob, {
+        [invaderXim.magic.spell.PRISHE] = invaderXim.trust.messageOffset.TEAMWORK_1,
+        [invaderXim.magic.spell.ULMIA] = invaderXim.trust.messageOffset.TEAMWORK_2,
     })
 
     mob:addListener('WEAPONSKILL_USE', 'MILDAURION_WEAPONSKILL_USE', function(mobArg, target, wsid, tp, action)
-        if wsid == xi.mobSkill.LIGHT_BLADE_3 then
+        if wsid == invaderXim.mobSkill.LIGHT_BLADE_3 then
             --  For Vana'diel!
-            xi.trust.message(mobArg, xi.trust.messageOffset.SPECIAL_MOVE_1)
+            invaderXim.trust.message(mobArg, invaderXim.trust.messageOffset.SPECIAL_MOVE_1)
         end
     end)
 
-    mob:addMod(xi.mod.MPP, 100)
+    mob:addMod(invaderXim.mod.MPP, 100)
 
     mob:setTrustTPSkillSettings(ai.tp.OPENER, ai.s.RANDOM)
 end
 
 spellObject.onMobDespawn = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.DESPAWN)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.DESPAWN)
 end
 
 spellObject.onMobDeath = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.DEATH)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.DEATH)
 end
 
 return spellObject

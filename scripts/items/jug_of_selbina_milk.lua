@@ -11,14 +11,14 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    if not target:hasStatusEffect(xi.effect.REGEN) then
-        if target:getEquipID(xi.slot.BODY) == 14520 then -- Dream Robe +1
-            target:addStatusEffect(xi.effect.REGEN, 1, 3, 150)
+    if not target:hasStatusEffect(invaderXim.effect.REGEN) then
+        if target:getEquipID(invaderXim.slot.BODY) == 14520 then -- Dream Robe +1
+            target:addStatusEffect(invaderXim.effect.REGEN, 1, 3, 150)
         else
-            target:addStatusEffect(xi.effect.REGEN, 1, 3, 120)
+            target:addStatusEffect(invaderXim.effect.REGEN, 1, 3, 120)
         end
     else
-        target:messageBasic(xi.msg.basic.NO_EFFECT)
+        target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
     end
 end
 

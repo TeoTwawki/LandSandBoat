@@ -4,7 +4,7 @@
 -- Note: Used to spawn Habetrot
 -- !pos -57.434 -8.484 55.317 159
 -----------------------------------
-local ID = zones[xi.zone.TEMPLE_OF_UGGALEPIH]
+local ID = zones[invaderXim.zone.TEMPLE_OF_UGGALEPIH]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

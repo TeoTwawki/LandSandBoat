@@ -12,7 +12,7 @@
 -- 01 00 00 00 00 00 00 00 00 00 00 00 6B 09 72 2C 00 00 00 00 00 00 00 00
 --  ^-- ticket type                     ^-- signature: PlanA
 -----------------------------------
-local ID = zones[xi.zone.UPPER_JEUNO]
+local ID = zones[invaderXim.zone.UPPER_JEUNO]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -67,18 +67,18 @@ entity.onEventFinish = function(player, csid, option, npc)
 
         if
             player:getFreeSlotsCount() > 0 and
-            not player:hasItem(xi.item.VCS_HONEYMOON_TICKET)
+            not player:hasItem(invaderXim.item.VCS_HONEYMOON_TICKET)
         then
             player:delGil(3500)
             local signatures = { 'PlanA', 'PlanB', 'PlanC', 'PlanD' }
             player:addItem({
-                id = xi.item.VCS_HONEYMOON_TICKET,
+                id = invaderXim.item.VCS_HONEYMOON_TICKET,
                 exdata = { [0] = option },
                 signature = signatures[option]
             })
-            player:messageSpecial(ID.text.YOU_OBTAIN_A_X, xi.item.VCS_HONEYMOON_TICKET)
+            player:messageSpecial(ID.text.YOU_OBTAIN_A_X, invaderXim.item.VCS_HONEYMOON_TICKET)
         else
-            player:messageSpecial(ID.text.ITEM_CANNOT_BE_OBTAINED, xi.item.VCS_HONEYMOON_TICKET)
+            player:messageSpecial(ID.text.ITEM_CANNOT_BE_OBTAINED, invaderXim.item.VCS_HONEYMOON_TICKET)
         end
     end
 end

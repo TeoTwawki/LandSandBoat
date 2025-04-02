@@ -3,7 +3,7 @@
 --  NPC: Loussaire
 -- !pos -248.677 -8.523 -125.734 87
 -----------------------------------
-local ID = zones[xi.zone.BASTOK_MARKETS_S]
+local ID = zones[invaderXim.zone.BASTOK_MARKETS_S]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -14,7 +14,7 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     local mLvl          = player:getMainLvl()
     local mJob          = player:getMainJob()
-    local downwardHelix = player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.DOWNWARD_HELIX)
+    local downwardHelix = player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.DOWNWARD_HELIX)
 
     -- Controls the progress of each step. Everything will start at 1 and end at 4 (complete).
     local loafersQuestProgress = player:getCharVar('AF_SCH_BOOTS')
@@ -36,28 +36,28 @@ entity.onTrigger = function(player, npc)
                 gownQuestProgress == 2
             )
         then
-            local itemid   = xi.item.SCHOLARS_GOWN
-            local firstKI  = xi.ki.PEISTE_DUNG
-            local secondKI = xi.ki.SAMPLE_OF_GRAUBERG_CHERT
+            local itemid   = invaderXim.item.SCHOLARS_GOWN
+            local firstKI  = invaderXim.ki.PEISTE_DUNG
+            local secondKI = invaderXim.ki.SAMPLE_OF_GRAUBERG_CHERT
 
             if loafersQuestProgress == 1 or loafersQuestProgress == 2 then
-                itemid   = xi.item.SCHOLARS_LOAFERS
-                firstKI  = xi.ki.RAFFLESIA_DREAMSPIT
-                secondKI = xi.ki.DROGAROGAN_BONEMEAL
+                itemid   = invaderXim.item.SCHOLARS_LOAFERS
+                firstKI  = invaderXim.ki.RAFFLESIA_DREAMSPIT
+                secondKI = invaderXim.ki.DROGAROGAN_BONEMEAL
 
             elseif pantsQuestProgress == 1 or pantsQuestProgress == 2 then
-                itemid   = xi.item.SCHOLARS_PANTS
-                firstKI  = xi.ki.SLUG_MUCUS
-                secondKI = xi.ki.DJINN_EMBER
+                itemid   = invaderXim.item.SCHOLARS_PANTS
+                firstKI  = invaderXim.ki.SLUG_MUCUS
+                secondKI = invaderXim.ki.DJINN_EMBER
             end
 
             player:startEvent(50, itemid, firstKI, secondKI)
 
         -- Nothing in progress and meet the starting requirements.
         elseif
-            downwardHelix == xi.questStatus.QUEST_COMPLETED and
-            mJob == xi.job.SCH and
-            mLvl >= xi.settings.main.AF2_QUEST_LEVEL
+            downwardHelix == invaderXim.questStatus.QUEST_COMPLETED and
+            mJob == invaderXim.job.SCH and
+            mLvl >= invaderXim.settings.main.AF2_QUEST_LEVEL
         then
             -- If a player has completed any of the paths, it will be a different cutscene.
             local counter = 0
@@ -83,37 +83,37 @@ entity.onTrigger = function(player, npc)
 
             -- Check Key Items and give them their dynamic event.
             if
-                player:hasKeyItem(xi.ki.RAFFLESIA_DREAMSPIT) and
-                player:hasKeyItem(xi.ki.DROGAROGAN_BONEMEAL) and
+                player:hasKeyItem(invaderXim.ki.RAFFLESIA_DREAMSPIT) and
+                player:hasKeyItem(invaderXim.ki.DROGAROGAN_BONEMEAL) and
                 loafersQuestProgress == 3
             then
                 -- Scholar's Loafers
                 player:startEvent(cutsceneID, 15748)
                 player:setLocalVar('item', 15748)
-                player:setLocalVar('firstKI', xi.ki.RAFFLESIA_DREAMSPIT)
-                player:setLocalVar('secondKI', xi.ki.DROGAROGAN_BONEMEAL)
+                player:setLocalVar('firstKI', invaderXim.ki.RAFFLESIA_DREAMSPIT)
+                player:setLocalVar('secondKI', invaderXim.ki.DROGAROGAN_BONEMEAL)
 
             elseif
-                player:hasKeyItem(xi.ki.SLUG_MUCUS) and
-                player:hasKeyItem(xi.ki.DJINN_EMBER) and
+                player:hasKeyItem(invaderXim.ki.SLUG_MUCUS) and
+                player:hasKeyItem(invaderXim.ki.DJINN_EMBER) and
                 pantsQuestProgress == 3
             then
                 -- Scholar's Pants
                 player:startEvent(cutsceneID, 16311)
                 player:setLocalVar('item', 16311)
-                player:setLocalVar('firstKI', xi.ki.SLUG_MUCUS)
-                player:setLocalVar('secondKI', xi.ki.DJINN_EMBER)
+                player:setLocalVar('firstKI', invaderXim.ki.SLUG_MUCUS)
+                player:setLocalVar('secondKI', invaderXim.ki.DJINN_EMBER)
 
             elseif
-                player:hasKeyItem(xi.ki.PEISTE_DUNG) and
-                player:hasKeyItem(xi.ki.SAMPLE_OF_GRAUBERG_CHERT) and
+                player:hasKeyItem(invaderXim.ki.PEISTE_DUNG) and
+                player:hasKeyItem(invaderXim.ki.SAMPLE_OF_GRAUBERG_CHERT) and
                 gownQuestProgress == 3
             then
                 -- Scholar's Gown
                 player:startEvent(cutsceneID, 14580)
                 player:setLocalVar('item', 14580)
-                player:setLocalVar('firstKI', xi.ki.PEISTE_DUNG)
-                player:setLocalVar('secondKI', xi.ki.SAMPLE_OF_GRAUBERG_CHERT)
+                player:setLocalVar('firstKI', invaderXim.ki.PEISTE_DUNG)
+                player:setLocalVar('secondKI', invaderXim.ki.SAMPLE_OF_GRAUBERG_CHERT)
 
             -- Show them the normal Menu to select from.
             else
@@ -153,15 +153,15 @@ entity.onEventUpdate = function(player, csid, option, npc)
     if csid == 49 or csid == 53 then
         -- Display Loafers
         if option == 2 then
-            player:updateEvent(option, xi.ki.RAFFLESIA_DREAMSPIT, xi.ki.DROGAROGAN_BONEMEAL, 0, 0, 0, 0, 0)
+            player:updateEvent(option, invaderXim.ki.RAFFLESIA_DREAMSPIT, invaderXim.ki.DROGAROGAN_BONEMEAL, 0, 0, 0, 0, 0)
 
         -- Display Pants
         elseif option == 4 then
-            player:updateEvent(option, xi.ki.SLUG_MUCUS, xi.ki.DJINN_EMBER, 0, 0, 0, 0, 0)
+            player:updateEvent(option, invaderXim.ki.SLUG_MUCUS, invaderXim.ki.DJINN_EMBER, 0, 0, 0, 0, 0)
 
         -- Display Gown
         elseif option == 6 then
-            player:updateEvent(option, xi.ki.PEISTE_DUNG, xi.ki.SAMPLE_OF_GRAUBERG_CHERT, 0, 0, 0, 0, 0)
+            player:updateEvent(option, invaderXim.ki.PEISTE_DUNG, invaderXim.ki.SAMPLE_OF_GRAUBERG_CHERT, 0, 0, 0, 0, 0)
 
         -- Confirm Loafers
         elseif option == 1 then

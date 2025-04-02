@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.FUGUE
+-- invaderXim.effect.FUGUE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

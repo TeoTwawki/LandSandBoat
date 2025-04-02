@@ -6,26 +6,26 @@
 -- qm2    : !pos 206 -60 -101 196
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.BLADE_OF_DEATH)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.BLADE_OF_DEATH)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.DEATHBRINGER,
-    title    = xi.title.BLACK_DEATH,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.DEATHBRINGER,
+    title    = invaderXim.title.BLACK_DEATH,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.BLADE_OF_DARKNESS) and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 3
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.BLADE_OF_DARKNESS) and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 3
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Gumbah'] = quest:progressEvent(130),
 
@@ -33,7 +33,7 @@ quest.sections =
             {
                 [130] = function(player, csid, option, npc)
                     quest:begin(player)
-                    npcUtil.giveKeyItem(player, xi.ki.LETTER_FROM_ZEID)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LETTER_FROM_ZEID)
                 end,
             },
         },
@@ -41,15 +41,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.ZERUHN_MINES] =
+        [invaderXim.zone.ZERUHN_MINES] =
         {
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.PALBOROUGH_MINES and
-                    not player:hasItem(xi.item.CHAOSBRINGER)
+                    prevZone == invaderXim.zone.PALBOROUGH_MINES and
+                    not player:hasItem(invaderXim.item.CHAOSBRINGER)
                 then
                     return 131
                 end
@@ -58,18 +58,18 @@ quest.sections =
             onEventFinish =
             {
                 [131] = function(player, csid, option, npc)
-                    npcUtil.giveItem(player, xi.item.CHAOSBRINGER)
+                    npcUtil.giveItem(player, invaderXim.item.CHAOSBRINGER)
                 end,
             },
         },
 
-        [xi.zone.GUSGEN_MINES] =
+        [invaderXim.zone.GUSGEN_MINES] =
         {
             ['qm2'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.CHAOSBRINGER) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.CHAOSBRINGER) and
                         player:getCharVar('ChaosbringerKills') >= 200
                     then
                         return quest:progressEvent(10)
@@ -82,7 +82,7 @@ quest.sections =
                 [10] = function(player, csid, option, npc)
                     if quest:complete(player) then
                         player:confirmTrade()
-                        player:delKeyItem(xi.ki.LETTER_FROM_ZEID)
+                        player:delKeyItem(invaderXim.ki.LETTER_FROM_ZEID)
                     end
                 end,
             },

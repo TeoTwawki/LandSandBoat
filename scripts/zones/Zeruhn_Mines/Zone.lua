@@ -5,13 +5,13 @@
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.helm.initZone(zone, xi.helmType.MINING)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.MINING)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
     local cs = -1
 
-    if prevZone == xi.zone.PALBOROUGH_MINES then
+    if prevZone == invaderXim.zone.PALBOROUGH_MINES then
         cs = 150
     elseif
         player:getXPos() == 0 and
@@ -25,7 +25,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

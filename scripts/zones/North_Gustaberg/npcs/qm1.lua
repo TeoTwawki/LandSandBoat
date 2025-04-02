@@ -3,7 +3,7 @@
 --  NPC: qm1 (???)
 -- Involved in Quest "The Siren's Tear"
 -----------------------------------
-local ID = zones[xi.zone.NORTH_GUSTABERG]
+local ID = zones[invaderXim.zone.NORTH_GUSTABERG]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -55,12 +55,12 @@ end
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 10 and option == 0 then
         if
-            player:getEquipID(xi.slot.MAIN) == 0 and
-            player:getEquipID(xi.slot.SUB) == 0
+            player:getEquipID(invaderXim.slot.MAIN) == 0 and
+            player:getEquipID(invaderXim.slot.SUB) == 0
         then
-            if player:hasItem(xi.item.SIRENS_TEAR) then
-                player:messageSpecial(ID.text.ITEM_CANNOT_BE_OBTAINED_TWICE, xi.item.SIRENS_TEAR)
-            elseif npcUtil.giveItem(player, xi.item.SIRENS_TEAR) then
+            if player:hasItem(invaderXim.item.SIRENS_TEAR) then
+                player:messageSpecial(ID.text.ITEM_CANNOT_BE_OBTAINED_TWICE, invaderXim.item.SIRENS_TEAR)
+            elseif npcUtil.giveItem(player, invaderXim.item.SIRENS_TEAR) then
                 resetSirenTear(npc)
             end
         else

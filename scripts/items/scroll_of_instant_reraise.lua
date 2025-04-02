@@ -13,8 +13,8 @@ end
 itemObject.onItemUse = function(target)
     local power = 1
     local duration = 1800
-    if target:hasStatusEffect(xi.effect.RERAISE) then
-        local effect = target:getStatusEffect(xi.effect.RERAISE)
+    if target:hasStatusEffect(invaderXim.effect.RERAISE) then
+        local effect = target:getStatusEffect(invaderXim.effect.RERAISE)
         if not effect then
             return
         end
@@ -22,13 +22,13 @@ itemObject.onItemUse = function(target)
         local oPower = effect:getPower()
 
         if oPower > power then
-            target:messageBasic(xi.msg.basic.NO_EFFECT)
+            target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
         else
-            target:delStatusEffect(xi.effect.RERAISE)
-            target:addStatusEffect(xi.effect.RERAISE, power, 0, duration)
+            target:delStatusEffect(invaderXim.effect.RERAISE)
+            target:addStatusEffect(invaderXim.effect.RERAISE, power, 0, duration)
         end
     else
-        target:addStatusEffect(xi.effect.RERAISE, power, 0, duration)
+        target:addStatusEffect(invaderXim.effect.RERAISE, power, 0, duration)
     end
 end
 

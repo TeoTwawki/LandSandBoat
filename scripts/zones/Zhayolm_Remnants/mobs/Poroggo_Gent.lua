@@ -3,7 +3,7 @@
 -- MOB: Poroggo Gent
 -- Notes: 1st floor 100% drops a chest
 -----------------------------------
-local ID = zones[xi.zone.ZHAYOLM_REMNANTS]
+local ID = zones[invaderXim.zone.ZHAYOLM_REMNANTS]
 -----------------------------------
 
 local playerHealth = function(instance)
@@ -26,7 +26,7 @@ end
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.DETECTION, xi.detects.SIGHT)
+    mob:setMobMod(invaderXim.mobMod.DETECTION, invaderXim.detects.SIGHT)
     mob:addListener('TREASUREPOOL', 'GENT_ADDED_DROPS', function(mobArg, target, itemid)
         -- 4f S gents will always drop 3 of each cell, if it drops
         local mobID = mob:getID()
@@ -42,7 +42,7 @@ entity.onMobSpawn = function(mob)
     if instance and instance:getStage() == 1 then
         mob:setSpellList(0)
         mob:setMP(0)
-        mob:setMobMod(xi.mobMod.NO_STANDBACK, 1)
+        mob:setMobMod(invaderXim.mobMod.NO_STANDBACK, 1)
         mob:setDelay(250)
     end
 end
@@ -52,10 +52,10 @@ entity.onMobDeath = function(mob, player, optParams)
         local instance = mob:getInstance()
         if instance and instance:getStage() == 1 and instance:getProgress() == 1 then
             instance:setProgress(2)
-            xi.salvage.spawnTempChest(mob,
+            invaderXim.salvage.spawnTempChest(mob,
             {
                 rate = 1000,
-                itemID_1 = xi.item.BOTTLE_OF_FIGHTERS_DRINK,
+                itemID_1 = invaderXim.item.BOTTLE_OF_FIGHTERS_DRINK,
                 itemAmount_1 = 10
             })
             if instance:getLocalVar('cellsUsed') == 0 and playerHealth(instance) then

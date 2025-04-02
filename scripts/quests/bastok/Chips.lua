@@ -8,33 +8,33 @@
 -- Ghebi Damomohe : !pos 15.535 -0.111 -7.603
 -- Cid            : !pos -12 -12 1 237
 -----------------------------------
-local metalID = zones[xi.zone.METALWORKS]
+local metalID = zones[invaderXim.zone.METALWORKS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.CHIPS)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.CHIPS)
 
 quest.reward =
 {
-    item = xi.item.CCB_POLYMER,
+    item = invaderXim.item.CCB_POLYMER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Ghebi_Damomohe'] =
             {
                 onTrigger = function(player, npc)
                     if
                         not quest:getMustZone(player) and
-                        (player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.ONE_TO_BE_FEARED) or
-                        (player:getCurrentMission(xi.mission.log_id.COP) == xi.mission.id.cop.ONE_TO_BE_FEARED and
-                        xi.mission.getVar(player, xi.mission.log_id.COP, xi.mission.id.cop.ONE_TO_BE_FEARED, 'Status') >= 1))
+                        (player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.ONE_TO_BE_FEARED) or
+                        (player:getCurrentMission(invaderXim.mission.log_id.COP) == invaderXim.mission.id.cop.ONE_TO_BE_FEARED and
+                        invaderXim.mission.getVar(player, invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.ONE_TO_BE_FEARED, 'Status') >= 1))
                     then
                         return quest:progressEvent(169)
                     end
@@ -56,20 +56,20 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Cid'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.CARMINE_CHIP, xi.item.CYAN_CHIP, xi.item.GRAY_CHIP }) then
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.CARMINE_CHIP, invaderXim.item.CYAN_CHIP, invaderXim.item.GRAY_CHIP }) then
                         if
                             player:getFreeSlotsCount() == 0 or
-                            player:hasItem(xi.item.CCB_POLYMER)
+                            player:hasItem(invaderXim.item.CCB_POLYMER)
                         then
-                            return player:messageSpecial(metalID.text.ITEM_CANNOT_BE_OBTAINED, xi.item.CCB_POLYMER)
+                            return player:messageSpecial(metalID.text.ITEM_CANNOT_BE_OBTAINED, invaderXim.item.CCB_POLYMER)
                         else
                             return quest:progressEvent(883)
                         end
@@ -90,20 +90,20 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Cid'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.CARMINE_CHIP, xi.item.CYAN_CHIP, xi.item.GRAY_CHIP }) then
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.CARMINE_CHIP, invaderXim.item.CYAN_CHIP, invaderXim.item.GRAY_CHIP }) then
                         if
                             player:getFreeSlotsCount() == 0 or
-                            player:hasItem(xi.item.CCB_POLYMER)
+                            player:hasItem(invaderXim.item.CCB_POLYMER)
                         then
-                            return player:messageSpecial(metalID.text.ITEM_CANNOT_BE_OBTAINED, xi.item.CCB_POLYMER)
+                            return player:messageSpecial(metalID.text.ITEM_CANNOT_BE_OBTAINED, invaderXim.item.CCB_POLYMER)
                         else
                             return quest:progressEvent(884)
                         end

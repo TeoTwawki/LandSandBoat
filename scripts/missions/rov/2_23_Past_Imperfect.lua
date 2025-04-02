@@ -5,14 +5,14 @@
 -- !addmission 13 100
 -- Oaken Door : !pos 97 -7 -12 252
 -----------------------------------
-local norgID = zones[xi.zone.NORG]
+local norgID = zones[invaderXim.zone.NORG]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.PAST_IMPERFECT)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.PAST_IMPERFECT)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.THE_CURSED_TEMPLE },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.THE_CURSED_TEMPLE },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             -- NOTE: In observed captures, ZM2 took priority for first interaction with the Oaken Door.  This may be random,
             -- and is currently set to the same priority (Sample size of 1).  In addition, this event was blocked with CoP
@@ -31,12 +31,12 @@ mission.sections =
             ['_700'] =
             {
                 onTrigger = function(player, npc)
-                    if xi.rhapsodies.charactersAvailable(player) then
+                    if invaderXim.rhapsodies.charactersAvailable(player) then
                         local rotzParam = 0
 
-                        if player:getCurrentMission(xi.mission.log_id.ZILART) == xi.mission.id.zilart.THE_TEMPLE_OF_UGGALEPIH then
+                        if player:getCurrentMission(invaderXim.mission.log_id.ZILART) == invaderXim.mission.id.zilart.THE_TEMPLE_OF_UGGALEPIH then
                             rotzParam = 1
-                        elseif player:hasCompletedMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_TEMPLE_OF_UGGALEPIH) then
+                        elseif player:hasCompletedMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_TEMPLE_OF_UGGALEPIH) then
                             rotzParam = 2
                         end
 

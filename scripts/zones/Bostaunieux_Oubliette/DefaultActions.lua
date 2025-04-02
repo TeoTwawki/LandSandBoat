@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.BOSTAUNIEUX_OUBLIETTE]
+local ID = zones[invaderXim.zone.BOSTAUNIEUX_OUBLIETTE]
 
 return {
     ['_4n2']         = { special = ID.text.SEEMS_LOCKED },

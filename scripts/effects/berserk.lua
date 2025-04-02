@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.BERSERK
+-- invaderXim.effect.BERSERK
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -8,16 +8,16 @@ local effectObject = {}
 -- CRITHITRATE & DOUBLE_ATTACK bonuses from Conqueror (all forms) handled by latent effect
 effectObject.onEffectGain = function(target, effect)
     local power = effect:getPower()
-    local jpLevel = target:getJobPointLevel(xi.jp.BERSERK_EFFECT)
+    local jpLevel = target:getJobPointLevel(invaderXim.jp.BERSERK_EFFECT)
     local jpEffect = jpLevel * 2
 
-    target:addMod(xi.mod.ATTP, power)
-    target:addMod(xi.mod.RATTP, power)
-    target:addMod(xi.mod.DEFP, -power)
+    target:addMod(invaderXim.mod.ATTP, power)
+    target:addMod(invaderXim.mod.RATTP, power)
+    target:addMod(invaderXim.mod.DEFP, -power)
 
     -- Job Point Bonuses
-    target:addMod(xi.mod.ATT, jpEffect)
-    target:addMod(xi.mod.RATT, jpEffect)
+    target:addMod(invaderXim.mod.ATT, jpEffect)
+    target:addMod(invaderXim.mod.RATT, jpEffect)
 end
 
 effectObject.onEffectTick = function(target, effect)
@@ -25,16 +25,16 @@ end
 
 effectObject.onEffectLose = function(target, effect)
     local power = effect:getPower()
-    local jpLevel = target:getJobPointLevel(xi.jp.BERSERK_EFFECT)
+    local jpLevel = target:getJobPointLevel(invaderXim.jp.BERSERK_EFFECT)
     local jpEffect = jpLevel * 2
 
-    target:delMod(xi.mod.ATTP, power)
-    target:delMod(xi.mod.RATTP, power)
-    target:delMod(xi.mod.DEFP, -power)
+    target:delMod(invaderXim.mod.ATTP, power)
+    target:delMod(invaderXim.mod.RATTP, power)
+    target:delMod(invaderXim.mod.DEFP, -power)
 
     -- Job Point Bonuses
-    target:delMod(xi.mod.ATT, jpEffect)
-    target:delMod(xi.mod.RATT, jpEffect)
+    target:delMod(invaderXim.mod.ATT, jpEffect)
+    target:delMod(invaderXim.mod.RATT, jpEffect)
 end
 
 return effectObject

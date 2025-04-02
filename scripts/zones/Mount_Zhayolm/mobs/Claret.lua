@@ -11,26 +11,26 @@ mixins = { require('scripts/mixins/rage') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
-    mob:setMobMod(xi.mobMod.TARGET_DISTANCE_OFFSET, 50)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
+    mob:setMobMod(invaderXim.mobMod.TARGET_DISTANCE_OFFSET, 50)
 end
 
 entity.onMobSpawn = function(mob)
     mob:setLocalVar('[rage]timer', 3600) -- 60 minutes
-    mob:addMod(xi.mod.REGEN, math.floor(mob:getMaxHP() * 0.004))
-    mob:addMod(xi.mod.BIND_MEVA, 40)
-    mob:addMod(xi.mod.MOVE_SPEED_STACKABLE, 15)
+    mob:addMod(invaderXim.mod.REGEN, math.floor(mob:getMaxHP() * 0.004))
+    mob:addMod(invaderXim.mod.BIND_MEVA, 40)
+    mob:addMod(invaderXim.mod.MOVE_SPEED_STACKABLE, 15)
     mob:setAutoAttackEnabled(false)
 end
 
 entity.onMobFight = function(mob, target)
     if mob:checkDistance(target) < 3 then
-        if not target:hasStatusEffect(xi.effect.POISON) then
-            target:addStatusEffect(xi.effect.POISON, 100, 3, math.random(3, 6) * 3) -- Poison for 3-6 ticks.
+        if not target:hasStatusEffect(invaderXim.effect.POISON) then
+            target:addStatusEffect(invaderXim.effect.POISON, 100, 3, math.random(3, 6) * 3) -- Poison for 3-6 ticks.
         else
-            if target:getStatusEffect(xi.effect.POISON):getPower() < 100 then
-                target:delStatusEffect(xi.effect.POISON)
-                target:addStatusEffect(xi.effect.POISON, 100, 3, math.random(3, 6) * 3) -- Poison for 3-6 ticks.
+            if target:getStatusEffect(invaderXim.effect.POISON):getPower() < 100 then
+                target:delStatusEffect(invaderXim.effect.POISON)
+                target:addStatusEffect(invaderXim.effect.POISON, 100, 3, math.random(3, 6) * 3) -- Poison for 3-6 ticks.
             end
         end
     end

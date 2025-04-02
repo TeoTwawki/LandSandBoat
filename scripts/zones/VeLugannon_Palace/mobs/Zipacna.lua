@@ -4,7 +4,7 @@
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
-local ID = zones[xi.zone.VELUGANNON_PALACE]
+local ID = zones[invaderXim.zone.VELUGANNON_PALACE]
 
 -- Spawn points from nm_spawn_points.sql
 local spawnPoints =
@@ -271,26 +271,26 @@ local pathNodes =
 
 local setZipPath = function(mob, door, currPath)
     if door then
-        if door:getAnimation() == xi.anim.OPEN_DOOR then
+        if door:getAnimation() == invaderXim.anim.OPEN_DOOR then
             if currentDirection == pathingDirection.TO_EAST then
-                mob:pathThrough(pathNodes[currPath + 1], xi.path.flag.COORDS)
+                mob:pathThrough(pathNodes[currPath + 1], invaderXim.path.flag.COORDS)
                 if currPath + 1 == paths.YELLOW_TO_BASEMENT then
                     currentDirection = pathingDirection.TO_WEST
                 end
             else -- East to West
-                mob:pathThrough(pathNodes[currPath], bit.bor(xi.path.flag.COORDS, xi.path.flag.REVERSE))
+                mob:pathThrough(pathNodes[currPath], bit.bor(invaderXim.path.flag.COORDS, invaderXim.path.flag.REVERSE))
                 if currPath == paths.BLUE_TO_BASEMENT then
                     currentDirection = pathingDirection.TO_EAST
                 end
             end
         else -- Door was closed
             if currentDirection == pathingDirection.TO_EAST then
-                mob:pathThrough(pathNodes[currPath], bit.bor(xi.path.flag.COORDS, xi.path.flag.REVERSE))
+                mob:pathThrough(pathNodes[currPath], bit.bor(invaderXim.path.flag.COORDS, invaderXim.path.flag.REVERSE))
                 if currPath ~= paths.BLUE_TO_BASEMENT then
                     currentDirection = pathingDirection.TO_WEST
                 end
             else -- East to West
-                mob:pathThrough(pathNodes[currPath + 1], xi.path.flag.COORDS)
+                mob:pathThrough(pathNodes[currPath + 1], invaderXim.path.flag.COORDS)
                 if currPath + 1 ~= paths.YELLLOW_TO_BASEMENT then
                     currentDirection = pathingDirection.TO_EAST
                 end
@@ -300,26 +300,26 @@ local setZipPath = function(mob, door, currPath)
 end
 
 entity.onMobInitialize = function(mob)
-    mob:setMod(xi.mod.REGAIN, 200)
+    mob:setMod(invaderXim.mod.REGAIN, 200)
 end
 
 entity.onMobSpawn = function(mob)
     -- Check distance on each of the spawn points to find start point
     if mob:checkDistance(spawnPoints.blueShort) <= 10 then
         currentDirection = pathingDirection.TO_EAST
-        mob:pathThrough(pathNodes[paths.BLUE_SPAWN_SHORT], xi.path.flag.COORDS)
+        mob:pathThrough(pathNodes[paths.BLUE_SPAWN_SHORT], invaderXim.path.flag.COORDS)
 
     elseif mob:checkDistance(spawnPoints.blueLong) <= 10 then
         currentDirection = pathingDirection.TO_EAST
-        mob:pathThrough(pathNodes[paths.BLUE_SPAWN_LONG], xi.path.flag.COORDS)
+        mob:pathThrough(pathNodes[paths.BLUE_SPAWN_LONG], invaderXim.path.flag.COORDS)
 
     elseif mob:checkDistance(spawnPoints.yellowShort) <= 10 then
         currentDirection = pathingDirection.TO_WEST
-        mob:pathThrough(pathNodes[paths.YELLOW_SPAWN_SHORT], xi.path.flag.COORDS)
+        mob:pathThrough(pathNodes[paths.YELLOW_SPAWN_SHORT], invaderXim.path.flag.COORDS)
 
     elseif mob:checkDistance(spawnPoints.yellowLong) <= 10 then
         currentDirection = pathingDirection.TO_WEST
-        mob:pathThrough(pathNodes[paths.YELLOW_SPAWN_LONG], xi.path.flag.COORDS)
+        mob:pathThrough(pathNodes[paths.YELLOW_SPAWN_LONG], invaderXim.path.flag.COORDS)
     end
 end
 

@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.SAN_DORIA_JEUNO_AIRSHIP] =
+zones[invaderXim.zone.SAN_DORIA_JEUNO_AIRSHIP] =
 {
     text =
     {
@@ -28,4 +28,4 @@ zones[xi.zone.SAN_DORIA_JEUNO_AIRSHIP] =
     },
 }
 
-return zones[xi.zone.SAN_DORIA_JEUNO_AIRSHIP]
+return zones[invaderXim.zone.SAN_DORIA_JEUNO_AIRSHIP]

@@ -38,16 +38,16 @@
 require('scripts/globals/npc_util')
 
 xi = xi or {}
-xi.darkixion = xi.darkixion or {}
+invaderXim.darkixion = invaderXim.darkixion or {}
 
 -- TODOs, notes, and reminders
 
 -- mob:AnimationSub() -- 0 is normal || Charging is animation sub 1  || 2 is broken horn || 3 is glowing and causes horn to repair
 -- TODO: dmg taken from front/rear (if we can)
 
-xi.darkixion.zoneinfo =
+invaderXim.darkixion.zoneinfo =
 {
-    [xi.zone.JUGNER_FOREST_S] =
+    [invaderXim.zone.JUGNER_FOREST_S] =
     {
         pathList =
         {
@@ -78,7 +78,7 @@ xi.darkixion.zoneinfo =
             { x = -202.7, y = 002.0, z =  139.0 },
         }
     },
-    [xi.zone.WEST_SARUTABARUTA_S] =
+    [invaderXim.zone.WEST_SARUTABARUTA_S] =
     {
         pathList =
         {
@@ -95,7 +95,7 @@ xi.darkixion.zoneinfo =
             { x = 0098.8, y = -027.0, z = 269.0 },
         }
     },
-    [xi.zone.ROLANBERRY_FIELDS_S] =
+    [invaderXim.zone.ROLANBERRY_FIELDS_S] =
     {
         pathList =
         {
@@ -126,7 +126,7 @@ xi.darkixion.zoneinfo =
             { x = -042.0, y = -007.3, z = -185.0 },
         }
     },
-    [xi.zone.GRAUBERG_S] =
+    [invaderXim.zone.GRAUBERG_S] =
     {
         pathList =
         {
@@ -154,7 +154,7 @@ xi.darkixion.zoneinfo =
             { x = 388.8, y =  031.0, z = -408.7 },
         }
     },
-    [xi.zone.BATALLIA_DOWNS_S] =
+    [invaderXim.zone.BATALLIA_DOWNS_S] =
     {
         pathList =
         {
@@ -180,7 +180,7 @@ xi.darkixion.zoneinfo =
             { x = 0000.0, y =  000.0, z =  046.0 },
         }
     },
-    [xi.zone.FORT_KARUGO_NARUGO_S] =
+    [invaderXim.zone.FORT_KARUGO_NARUGO_S] =
     {
         pathList =
         {
@@ -211,7 +211,7 @@ xi.darkixion.zoneinfo =
             { x = -052.5, y = -067.7, z = -275.0 },
         }
     },
-    [xi.zone.EAST_RONFAURE_S] =
+    [invaderXim.zone.EAST_RONFAURE_S] =
     {
         pathList =
         {
@@ -243,36 +243,36 @@ xi.darkixion.zoneinfo =
     },
 }
 
-xi.darkixion.setupEntity = function(entity)
+invaderXim.darkixion.setupEntity = function(entity)
     entity.onMobDeath = function(mob, player, optParams)
-        xi.darkixion.onMobDeath(mob, player, optParams)
+        invaderXim.darkixion.onMobDeath(mob, player, optParams)
     end
 
     entity.onMobDespawn = function(mob)
-        xi.darkixion.onMobDespawn(mob)
+        invaderXim.darkixion.onMobDespawn(mob)
     end
 
     entity.onMobSpawn = function(mob)
-        xi.darkixion.onMobSpawn(mob)
+        invaderXim.darkixion.onMobSpawn(mob)
     end
 
     entity.onMobRoam = function(mob)
-        xi.darkixion.onMobRoam(mob)
+        invaderXim.darkixion.onMobRoam(mob)
     end
 
     entity.onMobEngage = function(mob, target)
-        xi.darkixion.onMobEngage(mob, target)
+        invaderXim.darkixion.onMobEngage(mob, target)
     end
 
     entity.onMobDisengage = function(mob)
-        xi.darkixion.onMobDisengage(mob)
+        invaderXim.darkixion.onMobDisengage(mob)
     end
 end
 
-xi.darkixion.repop = function(mob)
+invaderXim.darkixion.repop = function(mob)
     DespawnMob(mob:getID())
     local keys = {}
-    for k, _ in pairs(xi.darkixion.zoneinfo) do
+    for k, _ in pairs(invaderXim.darkixion.zoneinfo) do
         table.insert(keys, k)
     end
 
@@ -283,12 +283,12 @@ xi.darkixion.repop = function(mob)
 end
 
 -- Adjustments made once to Dark Ixion when he begins roaming
-xi.darkixion.roamingMods = function(mob)
+invaderXim.darkixion.roamingMods = function(mob)
     -- don't take damage until the fight officially starts
-    mob:setMod(xi.mod.UDMGPHYS, -10000)
-    mob:setMod(xi.mod.UDMGRANGE, -10000)
-    mob:setMod(xi.mod.UDMGBREATH, -10000)
-    mob:setMod(xi.mod.UDMGMAGIC, -10000)
+    mob:setMod(invaderXim.mod.UDMGPHYS, -10000)
+    mob:setMod(invaderXim.mod.UDMGRANGE, -10000)
+    mob:setMod(invaderXim.mod.UDMGBREATH, -10000)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, -10000)
 
     -- restore hp just in case something caused him to regen while roaming
     local diHP = GetServerVariable('DarkIxion_HP')
@@ -317,17 +317,17 @@ xi.darkixion.roamingMods = function(mob)
     mob:setMobAbilityEnabled(true)
 end
 
-xi.darkixion.zoneOnInit = function(zone)
+invaderXim.darkixion.zoneOnInit = function(zone)
     local ixion = zone:queryEntitiesByName('Dark_Ixion')[1]
     local ixionZoneID = GetServerVariable('DarkIxion_ZoneID')
     -- check this on only one zone to catch when ixion has no zone assignment
     if
-        xi.darkixion.zoneinfo[ixionZoneID] == nil or
+        invaderXim.darkixion.zoneinfo[ixionZoneID] == nil or
         (GetServerVariable('DarkIxion_PopTime') < os.time() and ixionZoneID == zone:getID())
     then
         -- reset zone ID but let him spawn next game hour
-        if xi.darkixion.zoneinfo[ixionZoneID] == nil then
-            xi.darkixion.repop(ixion)
+        if invaderXim.darkixion.zoneinfo[ixionZoneID] == nil then
+            invaderXim.darkixion.repop(ixion)
         end
 
         -- 'If Dark Ixion is due to spawn or is already spawned during maintenance, he will spawn shortly after server comes back online.'
@@ -342,14 +342,14 @@ xi.darkixion.zoneOnInit = function(zone)
     end
 end
 
-xi.darkixion.zoneOnGameHour = function(zone)
+invaderXim.darkixion.zoneOnGameHour = function(zone)
     local ixion = zone:queryEntitiesByName('Dark_Ixion')[1]
     if
         GetServerVariable('DarkIxion_ZoneID') == zone:getID() and
         GetServerVariable('DarkIxion_PopTime') < os.time() - 24 * 60 * 60
     then
         -- wander logic in onGameHour so even sleeping zones with no players can hold DI and cycle him out
-        xi.darkixion.repop(ixion)
+        invaderXim.darkixion.repop(ixion)
     elseif
         not ixion:isSpawned() and
         GetServerVariable('DarkIxion_ZoneID') == zone:getID() and
@@ -370,71 +370,71 @@ xi.darkixion.zoneOnGameHour = function(zone)
     end
 end
 
-xi.darkixion.onMobDeath = function(mob, player, isKiller)
-    player:addTitle(xi.title.IXION_HORNBREAKER)
+invaderXim.darkixion.onMobDeath = function(mob, player, isKiller)
+    player:addTitle(invaderXim.title.IXION_HORNBREAKER)
     -- only reset hp after being killed
     SetServerVariable('DarkIxion_HP', 0)
     SetServerVariable('DarkIxion_HornStatus', 0)
 end
 
-xi.darkixion.onMobDespawn = function(mob)
+invaderXim.darkixion.onMobDespawn = function(mob)
     DisallowRespawn(mob:getID(), true)
     if mob:getZoneID() == GetServerVariable('DarkIxion_ZoneID') then
-        xi.darkixion.repop(mob)
+        invaderXim.darkixion.repop(mob)
         SetServerVariable('DarkIxion_PopTime', os.time() + math.random(20, 24) * 60 * 60) -- repop 20-24 hours after death
     end
 end
 
-xi.darkixion.onMobSpawn = function(mob)
+invaderXim.darkixion.onMobSpawn = function(mob)
     mob:setBaseSpeed(70)
-    xi.darkixion.roamingMods(mob)
+    invaderXim.darkixion.roamingMods(mob)
     SetServerVariable('DarkIxion_PopTime', os.time())
     mob:setLocalVar('wasKilled', 0)
-    mob:setMod(xi.mod.SLEEPRES, 100)
-    mob:setMod(xi.mod.STUNRES, 100)
+    mob:setMod(invaderXim.mod.SLEEPRES, 100)
+    mob:setMod(invaderXim.mod.STUNRES, 100)
 
-    mob:setMobMod(xi.mobMod.NO_REST, 10)
+    mob:setMobMod(invaderXim.mobMod.NO_REST, 10)
     mob:setAggressive(true)
 end
 
-xi.darkixion.onMobRoam = function(mob)
+invaderXim.darkixion.onMobRoam = function(mob)
     if
         mob:getLocalVar('RunAway') ~= 0 and
         mob:getLocalVar('RunAway') + 60 < os.time()
     then
         -- 60s of running away, time to repop somewhere else
-        xi.darkixion.repop(mob)
+        invaderXim.darkixion.repop(mob)
     end
 
     if not mob:isFollowingPath() then
         -- Ensures he always cleanly paths (doesn't clip through terrain)
-        local pathList = xi.darkixion.zoneinfo[mob:getZoneID()].pathList
+        local pathList = invaderXim.darkixion.zoneinfo[mob:getZoneID()].pathList
         if not mob:atPoint(pathList[1].x, pathList[1].y, pathList[1].z) then
-            mob:pathTo(pathList[1].x, pathList[1].y, pathList[1].z, xi.path.flag.RUN)
+            mob:pathTo(pathList[1].x, pathList[1].y, pathList[1].z, invaderXim.path.flag.RUN)
         else
-            mob:pathThrough(pathList, bit.bor(xi.path.flag.RUN, xi.path.flag.PATROL))
+            mob:pathThrough(pathList, bit.bor(invaderXim.path.flag.RUN, invaderXim.path.flag.PATROL))
         end
     end
 end
 
-xi.darkixion.onMobEngage = function(mob, target)
-    mob:setMod(xi.mod.REGAIN, 20) -- 'has tp regen': https://www.bluegartr.com/threads/59044-Ixion-discussion-thread/page8
-    xi.darkixion.roamingMods(mob)
+invaderXim.darkixion.onMobEngage = function(mob, target)
+    mob:setMod(invaderXim.mod.REGAIN, 20) -- 'has tp regen': https://www.bluegartr.com/threads/59044-Ixion-discussion-thread/page8
+    invaderXim.darkixion.roamingMods(mob)
     -- if stygian ash missed or aggro via any other means, immediately disengage (even if hearing aggro 'If you get too close, DI runs away')
     if mob:getLocalVar('StygianLanded') ~= 1 then
         mob:disengage()
     end
 
-    mob:setMod(xi.mod.UDMGPHYS, 0)
-    mob:setMod(xi.mod.UDMGRANGE, 0)
-    mob:setMod(xi.mod.UDMGBREATH, 0)
-    mob:setMod(xi.mod.UDMGMAGIC, 0)
+    mob:setMod(invaderXim.mod.UDMGPHYS, 0)
+    mob:setMod(invaderXim.mod.UDMGRANGE, 0)
+    mob:setMod(invaderXim.mod.UDMGBREATH, 0)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, 0)
 
     mob:setLocalVar('run', 0)
     mob:setLocalVar('PhaseChange', os.time() + math.random(60, 240))
 end
 
-xi.darkixion.onMobDisengage = function(mob)
+invaderXim.darkixion.onMobDisengage = function(mob)
     SetServerVariable('DarkIxion_HP', mob:getHP())
     if mob:getAnimationSub() == 2 then
         SetServerVariable('DarkIxion_HornStatus', 1)
@@ -442,7 +442,7 @@ xi.darkixion.onMobDisengage = function(mob)
         SetServerVariable('DarkIxion_HornStatus', 0)
     end
 
-    xi.darkixion.roamingMods(mob)
+    invaderXim.darkixion.roamingMods(mob)
     if mob:getLocalVar('RunAway') == 0 then
         -- disengage, give one window of him standing still unclaimed before 'Running away'
         local waitTime = 15

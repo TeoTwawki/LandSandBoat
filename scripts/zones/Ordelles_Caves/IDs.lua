@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.ORDELLES_CAVES] =
+zones[invaderXim.zone.ORDELLES_CAVES] =
 {
     text =
     {
@@ -58,4 +58,4 @@ zones[xi.zone.ORDELLES_CAVES] =
     },
 }
 
-return zones[xi.zone.ORDELLES_CAVES]
+return zones[invaderXim.zone.ORDELLES_CAVES]

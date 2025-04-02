@@ -3,21 +3,21 @@
 -- Mob: Princess Jelly
 -- BCNM: Royal Jelly
 -----------------------------------
-local waughroonID = zones[xi.zone.WAUGHROON_SHRINE]
+local waughroonID = zones[invaderXim.zone.WAUGHROON_SHRINE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 local elementalSpells =
 {
-    { xi.magic.spell.BURN,  xi.magic.spell.FIRE },
-    { xi.magic.spell.DROWN, xi.magic.spell.WATER },
-    { xi.magic.spell.SHOCK, xi.magic.spell.THUNDER },
-    { xi.magic.spell.RASP , xi.magic.spell.STONE },
-    { xi.magic.spell.CHOKE, xi.magic.spell.AERO },
-    { xi.magic.spell.FROST, xi.magic.spell.BLIZZARD },
-    { xi.magic.spell.DIA,   xi.magic.spell.BANISH },
-    { xi.magic.spell.BIO,   xi.magic.spell.DRAIN },
+    { invaderXim.magic.spell.BURN,  invaderXim.magic.spell.FIRE },
+    { invaderXim.magic.spell.DROWN, invaderXim.magic.spell.WATER },
+    { invaderXim.magic.spell.SHOCK, invaderXim.magic.spell.THUNDER },
+    { invaderXim.magic.spell.RASP , invaderXim.magic.spell.STONE },
+    { invaderXim.magic.spell.CHOKE, invaderXim.magic.spell.AERO },
+    { invaderXim.magic.spell.FROST, invaderXim.magic.spell.BLIZZARD },
+    { invaderXim.magic.spell.DIA,   invaderXim.magic.spell.BANISH },
+    { invaderXim.magic.spell.BIO,   invaderXim.magic.spell.DRAIN },
 }
 
 local centers =
@@ -29,23 +29,23 @@ local centers =
 
 local mevaList =
 {
-    { xi.mod.WATER_MEVA,   xi.mod.FIRE_ABSORB },
-    { xi.mod.THUNDER_MEVA, xi.mod.WATER_ABSORB },
-    { xi.mod.EARTH_MEVA,   xi.mod.LTNG_ABSORB },
-    { xi.mod.WIND_MEVA,    xi.mod.EARTH_ABSORB },
-    { xi.mod.ICE_MEVA,     xi.mod.WIND_ABSORB },
-    { xi.mod.FIRE_MEVA,    xi.mod.ICE_ABSORB },
-    { xi.mod.DARK_MEVA,    xi.mod.LIGHT_ABSORB },
-    { xi.mod.LIGHT_MEVA,   xi.mod.DARK_ABSORB },
+    { invaderXim.mod.WATER_MEVA,   invaderXim.mod.FIRE_ABSORB },
+    { invaderXim.mod.THUNDER_MEVA, invaderXim.mod.WATER_ABSORB },
+    { invaderXim.mod.EARTH_MEVA,   invaderXim.mod.LTNG_ABSORB },
+    { invaderXim.mod.WIND_MEVA,    invaderXim.mod.EARTH_ABSORB },
+    { invaderXim.mod.ICE_MEVA,     invaderXim.mod.WIND_ABSORB },
+    { invaderXim.mod.FIRE_MEVA,    invaderXim.mod.ICE_ABSORB },
+    { invaderXim.mod.DARK_MEVA,    invaderXim.mod.LIGHT_ABSORB },
+    { invaderXim.mod.LIGHT_MEVA,   invaderXim.mod.DARK_ABSORB },
 }
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.MAGIC_COOL, 40)
+    mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 40)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setBaseSpeed(xi.settings.map.BASE_SPEED * 0.05) -- ~5% of normal movementspeed
-    mob:setMod(xi.mod.REGEN, 3)
+    mob:setBaseSpeed(invaderXim.settings.map.BASE_SPEED * 0.05) -- ~5% of normal movementspeed
+    mob:setMod(invaderXim.mod.REGEN, 3)
     mob:setLocalVar('mobElement', math.random(1, 8))
     mob:addMod(mevaList[mob:getLocalVar('mobElement')][1], -250)
     mob:addMod(mevaList[mob:getLocalVar('mobElement')][2], 1000)
@@ -140,7 +140,7 @@ entity.onMobFight = function(mob, target)
     local queen = GetMobByID(getQueenJellyID(bfNum))
     local center = centers[bfNum]
 
-    mob:pathThrough(center, xi.path.flag.SCRIPT)
+    mob:pathThrough(center, invaderXim.path.flag.SCRIPT)
 
     if getDistanceFromCenter(bfNum, mob) <= 0.5 then
         if

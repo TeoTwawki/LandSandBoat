@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.job
-xi.job =
+---@enum invaderXim.job
+invaderXim.job =
 {
     NONE =  0,
     WAR  =  1,
@@ -29,4 +29,4 @@ xi.job =
     MON  = 23,
 }
 
-xi.MAX_JOB_TYPE = 24
+invaderXim.MAX_JOB_TYPE = 24

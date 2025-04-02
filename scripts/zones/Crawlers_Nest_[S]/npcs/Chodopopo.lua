@@ -4,7 +4,7 @@
 -- Type: Item Deliverer
 -- !pos 100.528 -32.272 -58.739 171
 -----------------------------------
-local ID = zones[xi.zone.CRAWLERS_NEST_S]
+local ID = zones[invaderXim.zone.CRAWLERS_NEST_S]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

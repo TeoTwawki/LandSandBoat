@@ -19,11 +19,11 @@ entity.onMobFight = function(mob, target)
         25% HP, 200 storeTP (caps here - this is about 50% TP per greatsword swing)
     --]]
     local power = 20 + math.floor(utils.clamp(100 - mob:getHPP(), 0, 75) * 2.4)
-    mob:setMod(xi.mod.STORETP, power)
+    mob:setMod(invaderXim.mod.STORETP, power)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 346)
+    invaderXim.hunts.checkHunt(mob, player, 346)
 end
 
 return entity

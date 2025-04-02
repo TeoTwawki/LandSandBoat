@@ -1,19 +1,19 @@
 -----------------------------------
--- xi.effect.PROWESS
+-- invaderXim.effect.PROWESS
 -- Treasure Hunter bonus
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.TREASURE_HUNTER, effect:getPower())
+    target:addMod(invaderXim.mod.TREASURE_HUNTER, effect:getPower())
 end
 
 effectObject.onEffectTick = function(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.TREASURE_HUNTER, effect:getPower())
+    target:delMod(invaderXim.mod.TREASURE_HUNTER, effect:getPower())
 end
 
 return effectObject

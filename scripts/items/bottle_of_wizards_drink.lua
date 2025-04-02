@@ -12,8 +12,8 @@ end
 
 itemObject.onItemUse = function(target)
     local duration = 900
-    target:delStatusEffect(xi.effect.MAX_MP_BOOST)
-    target:addStatusEffect(xi.effect.MAX_MP_BOOST, 100, 0, duration)
+    target:delStatusEffect(invaderXim.effect.MAX_MP_BOOST)
+    target:addStatusEffect(invaderXim.effect.MAX_MP_BOOST, 100, 0, duration)
 end
 
 return itemObject

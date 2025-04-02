@@ -7,11 +7,11 @@
 -- Ploh Trishbahk : !pos 100.580 -40.150 -63.830 257
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.BALAMOR_THE_DEATHBORNE_XOL)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.BALAMOR_THE_DEATHBORNE_XOL)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.ANAGNORISIS },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.ANAGNORISIS },
 }
 
 mission.sections =
@@ -21,12 +21,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(40, 256, 0, 1, 975, 4063, 1999, 1999, 4),
         },
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Ploh_Trishbahk'] =
             {

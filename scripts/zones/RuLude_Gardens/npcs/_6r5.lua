@@ -3,7 +3,7 @@
 -- Door: San d'Orian Emb.
 -- San d'Oria Missions 3.3 "Appointment to Jeuno" and 4.1 "Magicite"
 -----------------------------------
-local ID = zones[xi.zone.RULUDE_GARDENS]
+local ID = zones[invaderXim.zone.RULUDE_GARDENS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -12,7 +12,7 @@ entity.onTrigger = function(player, npc)
     local pNation = player:getNation()
 
     if
-        pNation == xi.nation.SANDORIA and
+        pNation == invaderXim.nation.SANDORIA and
         player:getRank(pNation) >= 4
     then
         player:messageSpecial(ID.text.RESTRICTED)

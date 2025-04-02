@@ -8,7 +8,7 @@
 local spellObject = {}
 
 spellObject.onMagicCastingCheck = function(caster, target, spell)
-    spell:setFlag(xi.magic.spellFlag.IGNORE_SHADOWS)
+    spell:setFlag(invaderXim.magic.spellFlag.IGNORE_SHADOWS)
 
     return 0
 end
@@ -23,9 +23,9 @@ spellObject.onSpellCast = function(caster, target, spell)
         if
             not target:isUndead() and
             not target:isNM() and
-            not target:hasStatusEffect(xi.effect.MAGIC_SHIELD)
+            not target:hasStatusEffect(invaderXim.effect.MAGIC_SHIELD)
         then
-            local resistRate = xi.combat.magicHitRate.calculateResistRate(caster, target, xi.magic.spellGroup.BLACK, xi.skill.DARK_MAGIC, 0, xi.element.DARK, 0, 0, 0)
+            local resistRate = invaderXim.combat.magicHitRate.calculateResistRate(caster, target, invaderXim.magic.spellGroup.BLACK, invaderXim.skill.DARK_MAGIC, 0, invaderXim.element.DARK, 0, 0, 0)
 
             if resistRate == 1 then
                 instaDeath = true
@@ -35,8 +35,8 @@ spellObject.onSpellCast = function(caster, target, spell)
         if instaDeath then
             target:setHP(0)
         else
-            spell:setMsg(xi.msg.basic.MAGIC_DMG)
-            result = xi.spells.damage.useDamageSpell(caster, target, spell)
+            spell:setMsg(invaderXim.msg.basic.MAGIC_DMG)
+            result = invaderXim.spells.damage.useDamageSpell(caster, target, spell)
         end
 
         -- Handle MP comsumption. It bypasses "conserve MP" and any other form of mp reduction.
@@ -46,10 +46,10 @@ spellObject.onSpellCast = function(caster, target, spell)
 
     -- Not-player spell.
     else
-        if math.random(1, 100) > target:getMod(xi.mod.DEATHRES) then
+        if math.random(1, 100) > target:getMod(invaderXim.mod.DEATHRES) then
             target:setHP(0)
         else
-            spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+            spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
         end
 
         return 0

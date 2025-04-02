@@ -4,7 +4,7 @@
 -- Notes: Opens Trap Door (_47a) or Brass Door (_470)
 -- !pos 17.717 -1.087 -14.320 151
 -----------------------------------
-local ID = zones[xi.zone.CASTLE_OZTROJA]
+local ID = zones[invaderXim.zone.CASTLE_OZTROJA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -19,8 +19,8 @@ entity.onTrigger = function(player, npc)
         if VanadielDayOfTheYear() % 2 == 0 then
             if
                 brassDoor and
-                brassDoor:getAnimation() == xi.anim.CLOSE_DOOR and
-                npc:getAnimation() == xi.anim.CLOSE_DOOR
+                brassDoor:getAnimation() == invaderXim.anim.CLOSE_DOOR and
+                npc:getAnimation() == invaderXim.anim.CLOSE_DOOR
             then
                 npc:openDoor(8)
                 -- wait 1 second delay goes here
@@ -29,8 +29,8 @@ entity.onTrigger = function(player, npc)
         else
             if
                 trapDoor and
-                trapDoor:getAnimation() == xi.anim.CLOSE_DOOR and
-                npc:getAnimation() == xi.anim.CLOSE_DOOR
+                trapDoor:getAnimation() == invaderXim.anim.CLOSE_DOOR and
+                npc:getAnimation() == invaderXim.anim.CLOSE_DOOR
             then
                 npc:openDoor(8)
                 -- wait 1 second delay goes here
@@ -38,7 +38,7 @@ entity.onTrigger = function(player, npc)
             end
 
             if
-                player:getCurrentMission(xi.mission.log_id.WINDURST) == xi.mission.id.windurst.TO_EACH_HIS_OWN_RIGHT and
+                player:getCurrentMission(invaderXim.mission.log_id.WINDURST) == invaderXim.mission.id.windurst.TO_EACH_HIS_OWN_RIGHT and
                 player:getMissionStatus(player:getNation()) == 3
             then
                 player:startEvent(43)

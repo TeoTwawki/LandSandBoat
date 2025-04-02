@@ -13,11 +13,11 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.geomancer.geoOnEclipticAttritionCheck(player, target, ability)
+    return invaderXim.job_utils.geomancer.geoOnEclipticAttritionCheck(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    xi.job_utils.geomancer.eclipticAttrition(player, target, ability)
+    invaderXim.job_utils.geomancer.eclipticAttrition(player, target, ability)
 end
 
 return abilityObject

@@ -27,11 +27,11 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     params.overrideCE = 80
     params.overrideVE = 240
 
-    local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doRangedWeaponskill(player, target, wsID, params, tp, action, primary)
+    local damage, criticalHit, tpHits, extraHits = invaderXim.weaponskills.doRangedWeaponskill(player, target, wsID, params, tp, action, primary)
 
     -- Apply aftermath
     if damage > 0 then
-        xi.aftermath.addStatusEffect(player, tp, xi.slot.RANGED, xi.aftermath.type.RELIC)
+        invaderXim.aftermath.addStatusEffect(player, tp, invaderXim.slot.RANGED, invaderXim.aftermath.type.RELIC)
     end
 
     return tpHits, extraHits, criticalHit, damage

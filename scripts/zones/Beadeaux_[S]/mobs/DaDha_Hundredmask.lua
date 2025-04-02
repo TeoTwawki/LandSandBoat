@@ -9,8 +9,8 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMod(xi.mod.TRIPLE_ATTACK, 25)
-    mob:addMod(xi.mod.GRAVITY_MEVA, 50)
+    mob:setMod(invaderXim.mod.TRIPLE_ATTACK, 25)
+    mob:addMod(invaderXim.mod.GRAVITY_MEVA, 50)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

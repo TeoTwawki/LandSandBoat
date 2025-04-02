@@ -3,7 +3,7 @@
 --  Mob: Carrion Worm
 -- Note: PH for Bigmouth Billy
 -----------------------------------
-local ID = zones[xi.zone.EAST_RONFAURE]
+local ID = zones[invaderXim.zone.EAST_RONFAURE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -69,13 +69,13 @@ local bigmouthSpawnPoints =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 65, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 65, 1, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = bigmouthSpawnPoints
-    xi.mob.phOnDespawn(mob, bigmouthPHTable, 7, 1300, params) -- 30 minute minimum
+    invaderXim.mob.phOnDespawn(mob, bigmouthPHTable, 7, 1300, params) -- 30 minute minimum
 end
 
 return entity

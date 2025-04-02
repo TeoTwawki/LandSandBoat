@@ -7,12 +7,12 @@
 -- Sueleen          : !pos 612 132 774 32
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.FLAMES_IN_THE_DARKNESS)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.FLAMES_IN_THE_DARKNESS)
 
 mission.reward =
 {
-    title = xi.title.ESHANTARLS_COMRADE_IN_ARMS,
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.FIRE_IN_THE_EYES_OF_MEN },
+    title = invaderXim.title.ESHANTARLS_COMRADE_IN_ARMS,
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.FIRE_IN_THE_EYES_OF_MEN },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.MISAREAUX_COAST] =
+        [invaderXim.zone.MISAREAUX_COAST] =
         {
             ['_0p2'] =
             {
@@ -41,7 +41,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SEALIONS_DEN] =
+        [invaderXim.zone.SEALIONS_DEN] =
         {
             ['Sueleen'] =
             {
@@ -60,7 +60,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             onTriggerAreaEnter =
             {
@@ -79,7 +79,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['_6s1'] =
             {

@@ -7,11 +7,11 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addMod(xi.mod.REGAIN, 200)
-    mob:addMod(xi.mod.ACC, 100)
-    mob:addMod(xi.mod.FASTCAST, 30)
-    mob:setMobMod(xi.mobMod.MAGIC_COOL, 15)
-    mob:setMod(xi.mod.SPELLINTERRUPT, 25)
+    mob:addMod(invaderXim.mod.REGAIN, 200)
+    mob:addMod(invaderXim.mod.ACC, 100)
+    mob:addMod(invaderXim.mod.FASTCAST, 30)
+    mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 15)
+    mob:setMod(invaderXim.mod.SPELLINTERRUPT, 25)
 end
 
 entity.onMobSpawn = function(mob)

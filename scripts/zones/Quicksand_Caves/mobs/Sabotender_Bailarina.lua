@@ -12,13 +12,13 @@ entity.onMobFight = function(mob, target)
     local currentTime = VanadielHour()
 
     if currentTime >= 6 and currentTime <= 18 then -- autoregen during daytime only
-        mob:setMod(xi.mod.REGEN, 30)
+        mob:setMod(invaderXim.mod.REGEN, 30)
     else
-        mob:setMod(xi.mod.REGEN, 0)
+        mob:setMod(invaderXim.mod.REGEN, 0)
     end
 
     if lifePercent < 40 and phase == 0 then
-        mob:setMobMod(xi.mobMod.SKILL_LIST, 0)
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 0)
         mob:setLocalVar('phase', 1)
     end
 
@@ -69,7 +69,7 @@ entity.onMobFight = function(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 438)
+    invaderXim.hunts.checkHunt(mob, player, 438)
 end
 
 return entity

@@ -59,9 +59,9 @@ enum class SAVE_LOGIN_STATE : uint8 // Originally uint32_t, but changed to uint8
     SAVE_LOGIN_STATE_NONE           = 0,
     SAVE_LOGIN_STATE_MYROOM         = 1,
     SAVE_LOGIN_STATE_GAME           = 2,
-    SAVE_LOGIN_STATE_POLEXIT        = 3,
-    SAVE_LOGIN_STATE_JOBEXIT        = 4,
-    SAVE_LOGIN_STATE_POLEXIT_MYROOM = 5,
+    SAVE_LOGIN_STATE_POLIXIMT        = 3,
+    SAVE_LOGIN_STATE_JOBIXIMT        = 4,
+    SAVE_LOGIN_STATE_POLIXIMT_MYROOM = 5,
     SAVE_LOGIN_STATE_END            = 6
 };
 

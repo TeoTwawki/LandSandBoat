@@ -6,11 +6,11 @@
 -- Levil : !pos -87.204 3.350 12.655 256
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.GLIMMER_OF_PORTENT)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.GLIMMER_OF_PORTENT)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.INTO_THE_FIRE },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.INTO_THE_FIRE },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] =
             {

@@ -3,7 +3,7 @@
 --  Mob: Hurricane Wyvern
 -- Note: PH for Vouivre
 -----------------------------------
-local ID = zones[xi.zone.IFRITS_CAULDRON]
+local ID = zones[invaderXim.zone.IFRITS_CAULDRON]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -19,11 +19,11 @@ local vouivrePHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 762, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 762, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, vouivrePHTable, 5, 7200) -- 2 hours
+    invaderXim.mob.phOnDespawn(mob, vouivrePHTable, 5, 7200) -- 2 hours
 end
 
 return entity

@@ -7,17 +7,17 @@
 -- Roderich        : !pos -400.039 39.991 -90.445 88
 -- Barricade       : !pos -514.960 37.979 583.287 88
 -----------------------------------
-local marketsID = zones[xi.zone.BASTOK_MARKETS_S]
+local marketsID = zones[invaderXim.zone.BASTOK_MARKETS_S]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.THE_FIGHTING_FOURTH)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.THE_FIGHTING_FOURTH)
 
 quest.reward =
 {
     -- TODO: The messaging for this should be first keyItem and then item, but is swapped
-    item    = xi.item.SPRINTERS_SHOES,
-    keyItem = xi.keyItem.BRONZE_RIBBON_OF_SERVICE,
-    title   = xi.title.FOURTH_DIVISION_SOLDIER,
+    item    = invaderXim.item.SPRINTERS_SHOES,
+    keyItem = invaderXim.keyItem.BRONZE_RIBBON_OF_SERVICE,
+    title   = invaderXim.title.FOURTH_DIVISION_SOLDIER,
 
     -- TODO: You should only get the item reward the first time you sign up to a campaign allegiance.
     --     : You shouldn't get it again if you switch allegiances (but not a huge deal, these are a cheap item)
@@ -25,36 +25,36 @@ quest.reward =
 
 local removeRations = function(player)
     -- Note the messaging specific to this interaction!
-    player:delKeyItem(xi.keyItem.BATTLE_RATIONS)
-    player:messageSpecial(marketsID.text.ARE_TAKEN_AWAY_FROM_CHAR, xi.keyItem.BATTLE_RATIONS)
+    player:delKeyItem(invaderXim.keyItem.BATTLE_RATIONS)
+    player:messageSpecial(marketsID.text.ARE_TAKEN_AWAY_FROM_CHAR, invaderXim.keyItem.BATTLE_RATIONS)
 end
 
 local returnLetter = function(player)
     -- Note the messaging specific to this interaction!
-    npcUtil.giveKeyItem(player, xi.keyItem.BLUE_RECOMMENDATION_LETTER, marketsID.text.ITEM_RETURNED_TO_CHAR)
+    npcUtil.giveKeyItem(player, invaderXim.keyItem.BLUE_RECOMMENDATION_LETTER, marketsID.text.ITEM_RETURNED_TO_CHAR)
 end
 
 local quitQuest = function(player)
-    player:delQuest(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.THE_FIGHTING_FOURTH)
+    player:delQuest(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.THE_FIGHTING_FOURTH)
 end
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
             -- TODO: Conditions to not have a different campaign allegiance?
         end,
 
-        [xi.zone.THE_ELDIEME_NECROPOLIS_S] =
+        [invaderXim.zone.THE_ELDIEME_NECROPOLIS_S] =
         {
             ['Turbulent_Storm'] =
             {
                 onTrigger = function(player, npc)
                     -- TODO: Conditions to not have a different campaign allegiance?
 
-                    local hasLetter  = player:hasKeyItem(xi.keyItem.BLUE_RECOMMENDATION_LETTER)
-                    local hasRations = player:hasKeyItem(xi.keyItem.BATTLE_RATIONS)
+                    local hasLetter  = player:hasKeyItem(invaderXim.keyItem.BLUE_RECOMMENDATION_LETTER)
+                    local hasRations = player:hasKeyItem(invaderXim.keyItem.BATTLE_RATIONS)
 
                     -- TODO: Verify the check for rations exists on retail
                     if hasLetter or hasRations then
@@ -71,20 +71,20 @@ quest.sections =
             {
                 [7] = function(player, csid, option, npc)
                     if option == 0 then
-                        npcUtil.giveKeyItem(player, xi.keyItem.BLUE_RECOMMENDATION_LETTER)
+                        npcUtil.giveKeyItem(player, invaderXim.keyItem.BLUE_RECOMMENDATION_LETTER)
                     end
                 end,
             },
         },
 
-        [xi.zone.BASTOK_MARKETS_S] =
+        [invaderXim.zone.BASTOK_MARKETS_S] =
         {
             ['Adelbrecht'] =
             {
                 onTrigger = function(player, npc)
                     -- TODO: Conditions to not have a different campaign allegiance?
 
-                    if player:hasKeyItem(xi.keyItem.BLUE_RECOMMENDATION_LETTER) then
+                    if player:hasKeyItem(invaderXim.keyItem.BLUE_RECOMMENDATION_LETTER) then
                         -- Greetings, civillian. The Seventh Cohors of the Republican Legion's Fourth Division is currently recruiting new troops.
                         -- Args (from caps): With recommendation letter
                         return quest:progressEvent(139, 0, 0)
@@ -100,8 +100,8 @@ quest.sections =
             {
                 [139] = function(player, csid, option, npc)
                     if option == 1 then
-                        player:delKeyItem(xi.keyItem.BLUE_RECOMMENDATION_LETTER)
-                        npcUtil.giveKeyItem(player, xi.keyItem.BATTLE_RATIONS)
+                        player:delKeyItem(invaderXim.keyItem.BLUE_RECOMMENDATION_LETTER)
+                        npcUtil.giveKeyItem(player, invaderXim.keyItem.BATTLE_RATIONS)
                         quest:begin(player)
                     end
                 end,
@@ -111,10 +111,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MARKETS_S] =
+        [invaderXim.zone.BASTOK_MARKETS_S] =
         {
             ['Adelbrecht'] =
             {
@@ -167,7 +167,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.NORTH_GUSTABERG_S] =
+        [invaderXim.zone.NORTH_GUSTABERG_S] =
         {
             ['Gebhardt'] =
             {
@@ -219,7 +219,7 @@ quest.sections =
             onEventFinish =
             {
                 [102] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.keyItem.BATTLE_RATIONS) -- TODO: Confirm on retail that these are actually taken, there's no message
+                    player:delKeyItem(invaderXim.keyItem.BATTLE_RATIONS) -- TODO: Confirm on retail that these are actually taken, there's no message
                     quest:setVar(player, 'Prog', 1)
                 end,
 
@@ -236,24 +236,24 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
         -- TODO: Are these new default texts forever, or only as long as you have this campaign allegiance?
 
-        [xi.zone.THE_ELDIEME_NECROPOLIS_S] =
+        [invaderXim.zone.THE_ELDIEME_NECROPOLIS_S] =
         {
             -- I heard about the news, recruit.
             ['Turbulent_Storm'] = quest:event(9):replaceDefault(),
         },
 
-        [xi.zone.BASTOK_MARKETS_S] =
+        [invaderXim.zone.BASTOK_MARKETS_S] =
         {
             -- What are you doing soldier?
             ['Adelbrecht'] = quest:event(162):replaceDefault(),
         },
 
-        [xi.zone.NORTH_GUSTABERG_S] =
+        [invaderXim.zone.NORTH_GUSTABERG_S] =
         {
             -- Thanks to your diligence, the Republic is safe for another day.
             ['Gebhardt'] = quest:event(108):replaceDefault(),

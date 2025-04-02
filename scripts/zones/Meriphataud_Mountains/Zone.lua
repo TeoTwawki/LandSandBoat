@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Meriphataud_Mountains (119)
 -----------------------------------
-local ID = zones[xi.zone.MERIPHATAUD_MOUNTAINS]
+local ID = zones[invaderXim.zone.MERIPHATAUD_MOUNTAINS]
 require('scripts/quests/i_can_hear_a_rainbow')
 require('scripts/missions/amk/helpers')
 -----------------------------------
@@ -15,8 +15,8 @@ zoneObject.onInitialize = function(zone)
     UpdateNMSpawnPoint(ID.mob.COO_KEJA_THE_UNSEEN)
     GetMobByID(ID.mob.COO_KEJA_THE_UNSEEN):setRespawnTime(math.random(900, 10800))
 
-    xi.conquest.setRegionalConquestOverseers(zone:getRegionID())
-    xi.voidwalker.zoneOnInit(zone)
+    invaderXim.conquest.setRegionalConquestOverseers(zone:getRegionID())
+    invaderXim.voidwalker.zoneOnInit(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -35,19 +35,19 @@ zoneObject.onZoneIn = function(player, prevZone)
     end
 
     -- AMK06/AMK07
-    if xi.settings.main.ENABLE_AMK == 1 then
-        xi.amk.helpers.tryRandomlyPlaceDiggingLocation(player)
+    if invaderXim.settings.main.ENABLE_AMK == 1 then
+        invaderXim.amk.helpers.tryRandomlyPlaceDiggingLocation(player)
     end
 
     return cs
 end
 
 zoneObject.afterZoneIn = function(player)
-    xi.chocoboGame.handleMessage(player)
+    invaderXim.chocoboGame.handleMessage(player)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

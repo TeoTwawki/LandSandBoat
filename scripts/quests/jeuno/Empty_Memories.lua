@@ -5,23 +5,23 @@
 -- Harith : !pos -4.349 1 134.014 243
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.EMPTY_MEMORIES)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.EMPTY_MEMORIES)
 
 quest.reward =
 {
     fame     = 5,
-    fameArea = xi.fameArea.JEUNO,
+    fameArea = invaderXim.fameArea.JEUNO,
 }
 
 local rewardItems =
 {
 --  Awarded Item id                       Required Items for Trade
-    [xi.item.BOTTLE_OF_HYSTEROANIMA] = { tradeItem = xi.item.RECOLLECTION_OF_PAIN,      gil = 2000 },
-    [xi.item.BOTTLE_OF_PSYCHOANIMA ] = { tradeItem = xi.item.RECOLLECTION_OF_FEAR,      gil = 2000 },
-    [xi.item.BOTTLE_OF_TERROANIMA  ] = { tradeItem = xi.item.RECOLLECTION_OF_GUILT,     gil = 2000 },
-    [xi.item.HAMAYUMI              ] = { tradeItem = xi.item.RECOLLECTION_OF_SUFFERING, gil =  nil },
-    [xi.item.STONE_GORGET          ] = { tradeItem = xi.item.RECOLLECTION_OF_ANXIETY,   gil =  nil },
-    [xi.item.DIA_WAND              ] = { tradeItem = xi.item.RECOLLECTION_OF_ANIMOSITY, gil =  nil },
+    [invaderXim.item.BOTTLE_OF_HYSTEROANIMA] = { tradeItem = invaderXim.item.RECOLLECTION_OF_PAIN,      gil = 2000 },
+    [invaderXim.item.BOTTLE_OF_PSYCHOANIMA ] = { tradeItem = invaderXim.item.RECOLLECTION_OF_FEAR,      gil = 2000 },
+    [invaderXim.item.BOTTLE_OF_TERROANIMA  ] = { tradeItem = invaderXim.item.RECOLLECTION_OF_GUILT,     gil = 2000 },
+    [invaderXim.item.HAMAYUMI              ] = { tradeItem = invaderXim.item.RECOLLECTION_OF_SUFFERING, gil =  nil },
+    [invaderXim.item.STONE_GORGET          ] = { tradeItem = invaderXim.item.RECOLLECTION_OF_ANXIETY,   gil =  nil },
+    [invaderXim.item.DIA_WAND              ] = { tradeItem = invaderXim.item.RECOLLECTION_OF_ANIMOSITY, gil =  nil },
 }
 
 local memoriesOnEventFinish = function(player, csid, option, npc)
@@ -34,8 +34,8 @@ local memoriesOnEventFinish = function(player, csid, option, npc)
             player:delGil(rewardItems[rewardItem].gil)
         end
 
-        if player:getQuestStatus(quest.areaId, quest.questId) == xi.questStatus.QUEST_ACCEPTED then
-            player:addFame(xi.fameArea.JEUNO, 25)
+        if player:getQuestStatus(quest.areaId, quest.questId) == invaderXim.questStatus.QUEST_ACCEPTED then
+            player:addFame(invaderXim.fameArea.JEUNO, 25)
         end
 
         quest:complete(player)
@@ -46,12 +46,12 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-            (player:getCurrentMission(xi.mission.log_id.COP) > xi.mission.id.cop.THE_MOTHERCRYSTALS or
-            xi.mission.getVar(player, xi.mission.log_id.COP, xi.mission.id.cop.THE_MOTHERCRYSTALS, 'Option') > 0)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+            (player:getCurrentMission(invaderXim.mission.log_id.COP) > invaderXim.mission.id.cop.THE_MOTHERCRYSTALS or
+            invaderXim.mission.getVar(player, invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_MOTHERCRYSTALS, 'Option') > 0)
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Harith'] = quest:progressEvent(113),
 
@@ -66,10 +66,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status >= xi.questStatus.QUEST_ACCEPTED
+            return status >= invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Harith'] =
             {

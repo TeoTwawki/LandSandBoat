@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.MAGIC_DEF_BOOST
+-- invaderXim.effect.MAGIC_DEF_BOOST
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -9,7 +9,7 @@ effectObject.onEffectGain = function(target, effect)
         effect:setPower(50)
     end
 
-    target:addMod(xi.mod.MDEF, effect:getPower())
+    target:addMod(invaderXim.mod.MDEF, effect:getPower())
 end
 
 effectObject.onEffectTick = function(target, effect)
@@ -17,14 +17,14 @@ effectObject.onEffectTick = function(target, effect)
     local power = effect:getPower()
     if power > 0 then
         effect:setPower(power - 1)
-        target:delMod(xi.mod.MDEF, 1)
+        target:delMod(invaderXim.mod.MDEF, 1)
     end
 end
 
 effectObject.onEffectLose = function(target, effect)
     local power = effect:getPower()
     if power > 0 then
-        target:delMod(xi.mod.MDEF, power)
+        target:delMod(invaderXim.mod.MDEF, power)
     end
 end
 

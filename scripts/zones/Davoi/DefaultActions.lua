@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.DAVOI]
+local ID = zones[invaderXim.zone.DAVOI]
 
 return {
     ['!']            = { messageSpecial = ID.text.YOU_SEE_NOTHING },

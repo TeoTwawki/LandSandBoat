@@ -6,39 +6,39 @@
 -- Detzo         : !pos 5.365 6.999 9.891 234
 -- qm_talekeeper : !pos 211 4 -79 127
 -----------------------------------
-local behemothsDominionID = zones[xi.zone.BEHEMOTHS_DOMINION]
+local behemothsDominionID = zones[invaderXim.zone.BEHEMOTHS_DOMINION]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.THE_TALEKEEPERS_GIFT)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_TALEKEEPERS_GIFT)
 
 quest.reward =
 {
     fame     = 60,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.FIGHTERS_LORICA,
-    title    = xi.title.PARAGON_OF_WARRIOR_EXCELLENCE,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.FIGHTERS_LORICA,
+    title    = invaderXim.title.PARAGON_OF_WARRIOR_EXCELLENCE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.THE_TALEKEEPERS_TRUTH) and
-                player:getMainJob() == xi.job.WAR and
-                player:getMainLvl() >= xi.settings.main.AF3_QUEST_LEVEL and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_TALEKEEPERS_TRUTH) and
+                player:getMainJob() == invaderXim.job.WAR and
+                player:getMainLvl() >= invaderXim.settings.main.AF3_QUEST_LEVEL and
                 quest:getVar(player, 'Timer') <= VanadielUniqueDay() and
                 not quest:getMustZone(player)
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Deidogg'] =
             {
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'Prog') == 2 and
-                        npcUtil.tradeHasExactly(trade, xi.item.GINGER_COOKIE)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.GINGER_COOKIE)
                     then
                         return quest:progressEvent(172)
                     end
@@ -82,10 +82,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BEHEMOTHS_DOMINION] =
+        [invaderXim.zone.BEHEMOTHS_DOMINION] =
         {
             ['qm_talekeeper'] =
             {
@@ -127,11 +127,11 @@ quest.sections =
             },
         },
 
-        [xi.zone.QUFIM_ISLAND] =
+        [invaderXim.zone.QUFIM_ISLAND] =
         {
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.BEHEMOTHS_DOMINION and
+                    prevZone == invaderXim.zone.BEHEMOTHS_DOMINION and
                     quest:getVar(player, 'Prog') == 7
                 then
                     return 100

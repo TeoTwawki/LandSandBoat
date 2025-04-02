@@ -8,7 +8,7 @@ local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
     local result = 0
-    if not target:hasKeyItem(xi.ki.VAHZL_GATE_CRYSTAL) then
+    if not target:hasKeyItem(invaderXim.ki.VAHZL_GATE_CRYSTAL) then
         result = 445
     end
 
@@ -16,7 +16,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffectEx(xi.effect.TELEPORT, 0, xi.teleport.id.VAHZL, 0, 4)
+    target:addStatusEffectEx(invaderXim.effect.TELEPORT, 0, invaderXim.teleport.id.VAHZL, 0, 4)
 end
 
 return itemObject

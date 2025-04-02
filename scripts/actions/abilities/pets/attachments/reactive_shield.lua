@@ -8,11 +8,11 @@ attachmentObject.onEquip = function(pet)
     pet:addListener('AUTOMATON_ATTACHMENT_CHECK', 'ATTACHMENT_REACTIVE_SHIELD', function(automaton, target)
         local master = automaton:getMaster()
         if
-            not automaton:hasRecast(xi.recast.ABILITY, xi.automaton.abilities.REACTIVE_SHIELD) and
+            not automaton:hasRecast(invaderXim.recast.ABILITY, invaderXim.automaton.abilities.REACTIVE_SHIELD) and
             master and
-            master:countEffect(xi.effect.FIRE_MANEUVER) > 0
+            master:countEffect(invaderXim.effect.FIRE_MANEUVER) > 0
         then
-            automaton:useMobAbility(xi.automaton.abilities.REACTIVE_SHIELD, automaton)
+            automaton:useMobAbility(invaderXim.automaton.abilities.REACTIVE_SHIELD, automaton)
         end
     end)
 end

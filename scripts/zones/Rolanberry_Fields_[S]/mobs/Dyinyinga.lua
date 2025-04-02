@@ -12,21 +12,21 @@ local entity = {}
 
 entity.onMobInitialize = function(mob)
     mob:setBaseSpeed(100)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
-    mob:setMod(xi.mod.AURA_SIZE, -575) -- 6.25 + (-575) / 100 = .5'
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
+    mob:setMod(invaderXim.mod.AURA_SIZE, -575) -- 6.25 + (-575) / 100 = .5'
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.SLOW, { chance = 15, duration = 45, power = 30 })
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.SLOW, { chance = 15, duration = 45, power = 30 })
 end
 
 entity.onMobFight = function(mob, target)
-    if target:getStatusEffect(xi.effect.SLOW) then
+    if target:getStatusEffect(invaderXim.effect.SLOW) then
         -- No aura and steps back (if too close)
-        if mob:getMobMod(xi.mobMod.TARGET_DISTANCE_OFFSET) ~= 0 then
-            mob:setMobMod(xi.mobMod.TARGET_DISTANCE_OFFSET, 0)
-            mob:delStatusEffectSilent(xi.effect.COLURE_ACTIVE)
-            mob:delStatusEffectSilent(xi.effect.NONE)
+        if mob:getMobMod(invaderXim.mobMod.TARGET_DISTANCE_OFFSET) ~= 0 then
+            mob:setMobMod(invaderXim.mobMod.TARGET_DISTANCE_OFFSET, 0)
+            mob:delStatusEffectSilent(invaderXim.effect.COLURE_ACTIVE)
+            mob:delStatusEffectSilent(invaderXim.effect.NONE)
             local targetDistance = mob:checkDistance(target)
             if targetDistance < 2 then
                 -- step back a bit
@@ -48,14 +48,14 @@ entity.onMobFight = function(mob, target)
         end
     else
         -- Aura and closes the gap
-        mob:setMobMod(xi.mobMod.TARGET_DISTANCE_OFFSET, 50)
-        mob:addStatusEffectEx(xi.effect.COLURE_ACTIVE, xi.effect.COLURE_ACTIVE, 6, 3, 0, xi.effect.AMNESIA, 50, xi.auraTarget.ENEMIES, xi.effectFlag.AURA)
-        mob:addStatusEffectEx(xi.effect.NONE,          xi.effect.NONE,          6, 3, 0, xi.effect.SILENCE, 50, xi.auraTarget.ENEMIES, xi.effectFlag.AURA)
+        mob:setMobMod(invaderXim.mobMod.TARGET_DISTANCE_OFFSET, 50)
+        mob:addStatusEffectEx(invaderXim.effect.COLURE_ACTIVE, invaderXim.effect.COLURE_ACTIVE, 6, 3, 0, invaderXim.effect.AMNESIA, 50, invaderXim.auraTarget.ENEMIES, invaderXim.effectFlag.AURA)
+        mob:addStatusEffectEx(invaderXim.effect.NONE,          invaderXim.effect.NONE,          6, 3, 0, invaderXim.effect.SILENCE, 50, invaderXim.auraTarget.ENEMIES, invaderXim.effectFlag.AURA)
     end
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 511)
+    invaderXim.hunts.checkHunt(mob, player, 511)
 end
 
 return entity

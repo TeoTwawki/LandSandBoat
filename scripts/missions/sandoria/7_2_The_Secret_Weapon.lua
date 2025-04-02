@@ -8,7 +8,7 @@
 -- Endracion             : !pos -110 1 -34 230
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.THE_SECRET_WEAPON)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.THE_SECRET_WEAPON)
 
 mission.reward =
 {
@@ -30,14 +30,14 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId and
                 player:getRank(player:getNation()) == 7 and
-                player:hasCompletedMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.PRESTIGE_OF_THE_PAPSQUE) and
-                xi.mission.getMissionRankPoints(player, mission.missionId)
+                player:hasCompletedMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.PRESTIGE_OF_THE_PAPSQUE) and
+                invaderXim.mission.getMissionRankPoints(player, mission.missionId)
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Grilau'] =
             {
@@ -60,7 +60,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] =
             {
@@ -99,7 +99,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             onTriggerAreaEnter =
             {
@@ -125,23 +125,23 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.HORLAIS_PEAK] =
+        [invaderXim.zone.HORLAIS_PEAK] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 2 and
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.THE_SECRET_WEAPON
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.THE_SECRET_WEAPON
                     then
-                        npcUtil.giveKeyItem(player, xi.ki.CRYSTAL_DOWSER)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.CRYSTAL_DOWSER)
                         player:setMissionStatus(mission.areaId, 3)
                     end
                 end,
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Grilau'] =
             {
@@ -156,13 +156,13 @@ mission.sections =
             {
                 [1043] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.CRYSTAL_DOWSER)
+                        player:delKeyItem(invaderXim.ki.CRYSTAL_DOWSER)
                     end
                 end,
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] =
             {
@@ -186,13 +186,13 @@ mission.sections =
             {
                 [1043] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.CRYSTAL_DOWSER)
+                        player:delKeyItem(invaderXim.ki.CRYSTAL_DOWSER)
                     end
                 end,
 
                 [1044] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.CRYSTAL_DOWSER)
+                        player:delKeyItem(invaderXim.ki.CRYSTAL_DOWSER)
                     end
                 end,
             },

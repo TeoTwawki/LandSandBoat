@@ -12,10 +12,10 @@
 -- Embassy Door     : !pos 31 9 -22 243
 -- Cermet Door      : !pos 636 16 59 184
 -----------------------------------
-local lowerDelkfuttID = zones[xi.zone.LOWER_DELKFUTTS_TOWER]
+local lowerDelkfuttID = zones[invaderXim.zone.LOWER_DELKFUTTS_TOWER]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.A_NEW_JOURNEY)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.A_NEW_JOURNEY)
 
 mission.reward =
 {
@@ -27,7 +27,7 @@ local handleAcceptMission = function(player, csid, option, npc)
     if option == 12 then
         mission:begin(player)
         player:messageSpecial(zones[player:getZoneID()].text.YOU_ACCEPT_THE_MISSION)
-        npcUtil.giveKeyItem(player, xi.ki.STAR_CRESTED_SUMMONS_1)
+        npcUtil.giveKeyItem(player, invaderXim.ki.STAR_CRESTED_SUMMONS_1)
     end
 end
 
@@ -35,11 +35,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onEventFinish =
             {
@@ -47,7 +47,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onEventFinish =
             {
@@ -55,7 +55,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onEventFinish =
             {
@@ -63,7 +63,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onEventFinish =
             {
@@ -77,14 +77,14 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.LOWER_DELKFUTTS_TOWER] =
+        [invaderXim.zone.LOWER_DELKFUTTS_TOWER] =
         {
             ['_540'] =
             {
                 onTrade = function(player, npc, trade)
                     if
                         player:getMissionStatus(mission.areaId) == 2 and
-                        npcUtil.tradeHasExactly(trade, xi.item.DELKFUTT_KEY)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.DELKFUTT_KEY)
                     then
                         return mission:progressEvent(2)
                     end
@@ -92,7 +92,7 @@ mission.sections =
 
                 onTrigger = function(player, npc)
                     if player:getMissionStatus(mission.areaId) == 2 then
-                        if player:hasKeyItem(xi.ki.DELKFUTT_KEY) then
+                        if player:hasKeyItem(invaderXim.ki.DELKFUTT_KEY) then
                             return mission:progressEvent(2)
                         else
                             return mission:messageSpecial(lowerDelkfuttID.text.THE_DOOR_IS_FIRMLY_SHUT_OPEN_KEY):setPriority(1000)
@@ -106,15 +106,15 @@ mission.sections =
                 [2] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 3)
 
-                    if not player:hasKeyItem(xi.ki.DELKFUTT_KEY) then
+                    if not player:hasKeyItem(invaderXim.ki.DELKFUTT_KEY) then
                         player:confirmTrade()
-                        npcUtil.giveKeyItem(player, xi.ki.DELKFUTT_KEY)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.DELKFUTT_KEY)
                     end
                 end,
             },
         },
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['_6r8'] =
             {
@@ -148,7 +148,7 @@ mission.sections =
 
                 [43] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 2)
-                    player:delKeyItem(xi.ki.LETTER_TO_THE_AMBASSADOR)
+                    player:delKeyItem(invaderXim.ki.LETTER_TO_THE_AMBASSADOR)
                 end,
 
                 [141] = function(player, csid, option, npc)
@@ -157,7 +157,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.HEAVENS_TOWER] =
+        [invaderXim.zone.HEAVENS_TOWER] =
         {
             ['_6q2'] =
             {
@@ -172,8 +172,8 @@ mission.sections =
             {
                 [153] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 1)
-                    player:delKeyItem(xi.ki.STAR_CRESTED_SUMMONS_1)
-                    npcUtil.giveKeyItem(player, xi.ki.LETTER_TO_THE_AMBASSADOR)
+                    player:delKeyItem(invaderXim.ki.STAR_CRESTED_SUMMONS_1)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LETTER_TO_THE_AMBASSADOR)
                 end,
             },
         },

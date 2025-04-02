@@ -6,19 +6,19 @@
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.ambuscade.onTradeGorpaMasorpa(player, npc, trade)
+    invaderXim.ambuscade.onTradeGorpaMasorpa(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    xi.ambuscade.onTriggerGorpaMasorpa(player, npc)
+    invaderXim.ambuscade.onTriggerGorpaMasorpa(player, npc)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.ambuscade.onEventUpdateGorpaMasorpa(player, csid, option, npc)
+    invaderXim.ambuscade.onEventUpdateGorpaMasorpa(player, csid, option, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.ambuscade.onEventFinishGorpaMasorpa(player, csid, option, npc)
+    invaderXim.ambuscade.onEventFinishGorpaMasorpa(player, csid, option, npc)
 end
 
 return entity

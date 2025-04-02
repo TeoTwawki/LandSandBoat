@@ -9,20 +9,20 @@
 -- Trodden Snow  : !pos -19.7 -17.3 104.4 126
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ASA, xi.mission.id.asa.THAT_WHICH_CURDLES_BLOOD)
+local mission = Mission:new(invaderXim.mission.log_id.ASA, invaderXim.mission.id.asa.THAT_WHICH_CURDLES_BLOOD)
 
 mission.reward =
 {
     keyItem          =
     {
-        xi.ki.DOMINAS_SCARLET_SEAL,
-        xi.ki.DOMINAS_CERULEAN_SEAL,
-        xi.ki.DOMINAS_EMERALD_SEAL,
-        xi.ki.DOMINAS_AMBER_SEAL,
-        xi.ki.DOMINAS_VIOLET_SEAL,
-        xi.ki.DOMINAS_AZURE_SEAL
+        invaderXim.ki.DOMINAS_SCARLET_SEAL,
+        invaderXim.ki.DOMINAS_CERULEAN_SEAL,
+        invaderXim.ki.DOMINAS_EMERALD_SEAL,
+        invaderXim.ki.DOMINAS_AMBER_SEAL,
+        invaderXim.ki.DOMINAS_VIOLET_SEAL,
+        invaderXim.ki.DOMINAS_AZURE_SEAL
     },
-    nextMission = { xi.mission.log_id.ASA, xi.mission.id.asa.SUGAR_COATED_DIRECTIVE },
+    nextMission = { invaderXim.mission.log_id.ASA, invaderXim.mission.id.asa.SUGAR_COATED_DIRECTIVE },
 }
 
 local function handleTradeEvent(player, trade, firstId)
@@ -45,55 +45,55 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Kuroido-Moido'] =
             {
                 onTrigger = function(player, npc)
                     local potionInfo =
                     {
-                        { xi.item.ENFEEBLEMENT_KIT_OF_POISON,    xi.item.FLASK_OF_POISON_POTION    },
-                        { xi.item.ENFEEBLEMENT_KIT_OF_BLINDNESS, xi.item.FLASK_OF_BLINDNESS_POTION },
-                        { xi.item.ENFEEBLEMENT_KIT_OF_SLEEP,     xi.item.FLASK_OF_SLEEPING_POTION  },
-                        { xi.item.ENFEEBLEMENT_KIT_OF_SILENCE,   xi.item.FLASK_OF_SILENCING_POTION }
+                        { invaderXim.item.ENFEEBLEMENT_KIT_OF_POISON,    invaderXim.item.FLASK_OF_POISON_POTION    },
+                        { invaderXim.item.ENFEEBLEMENT_KIT_OF_BLINDNESS, invaderXim.item.FLASK_OF_BLINDNESS_POTION },
+                        { invaderXim.item.ENFEEBLEMENT_KIT_OF_SLEEP,     invaderXim.item.FLASK_OF_SLEEPING_POTION  },
+                        { invaderXim.item.ENFEEBLEMENT_KIT_OF_SILENCE,   invaderXim.item.FLASK_OF_SILENCING_POTION }
                     }
 
                     local kit = mission:getVar(player, 'Option')
 
                     for _, potionData in ipairs(potionInfo) do
                         if kit == potionData[1] then
-                            return mission:progressEvent(858, kit, xi.item.SHEET_OF_BAST_PARCHMENT, 0, xi.item.INFERIOR_COCOON, potionData[2], xi.item.EARTH_CRYSTAL)
+                            return mission:progressEvent(858, kit, invaderXim.item.SHEET_OF_BAST_PARCHMENT, 0, invaderXim.item.INFERIOR_COCOON, potionData[2], invaderXim.item.EARTH_CRYSTAL)
                         end
                     end
                 end,
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Faulpie'] =
             {
                 onTrigger = function(player, npc)
                     local kit = mission:getVar(player, 'Option')
 
-                    return mission:progressEvent(944, kit, xi.item.SHEET_OF_FINE_PARCHMENT, xi.item.SHEET_OF_PARCHMENT, xi.item.SHEET_OF_PARCHMENT, xi.item.PUMICE_STONE, xi.item.DARK_CRYSTAL)
+                    return mission:progressEvent(944, kit, invaderXim.item.SHEET_OF_FINE_PARCHMENT, invaderXim.item.SHEET_OF_PARCHMENT, invaderXim.item.SHEET_OF_PARCHMENT, invaderXim.item.PUMICE_STONE, invaderXim.item.DARK_CRYSTAL)
                 end,
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Abd-al-Raziq'] =
             {
                 onTrigger = function(player, npc)
                     local kit = mission:getVar(player, 'Option')
 
-                    return mission:progressEvent(590, kit, xi.item.JAR_OF_ENCHANTED_INK, xi.item.JAR_OF_BLACK_INK, xi.item.DARK_CRYSTAL, xi.item.VIAL_OF_MAGICKED_BLOOD, xi.item.DARK_CRYSTAL)
+                    return mission:progressEvent(590, kit, invaderXim.item.JAR_OF_ENCHANTED_INK, invaderXim.item.JAR_OF_BLACK_INK, invaderXim.item.DARK_CRYSTAL, invaderXim.item.VIAL_OF_MAGICKED_BLOOD, invaderXim.item.DARK_CRYSTAL)
                 end,
             },
         },
 
-        [xi.zone.QUFIM_ISLAND] =
+        [invaderXim.zone.QUFIM_ISLAND] =
         {
             ['Trodden_Snow'] =
             {

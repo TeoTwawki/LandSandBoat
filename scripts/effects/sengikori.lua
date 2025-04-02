@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.SENGIKORI
+-- invaderXim.effect.SENGIKORI
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

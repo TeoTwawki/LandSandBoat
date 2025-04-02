@@ -2,7 +2,7 @@
 -- Area: The Garden of Ru'Hmet
 --  Mob: Qn'Zdei
 -----------------------------------
-local ID = zones[xi.zone.THE_GARDEN_OF_RUHMET]
+local ID = zones[invaderXim.zone.THE_GARDEN_OF_RUHMET]
 mixins = { require('scripts/mixins/families/zdei') }
 -----------------------------------
 ---@type TMobEntity
@@ -32,7 +32,7 @@ entity.onMobInitialize = function(mob)
     local subLinkValue = subLinkTable[mob:getID()]
 
     if subLinkValue then
-        mob:setMobMod(xi.mobMod.SUBLINK, subLinkValue)
+        mob:setMobMod(invaderXim.mobMod.SUBLINK, subLinkValue)
     end
 end
 
@@ -53,10 +53,10 @@ local changeState = function(mob, idle)
             end
 
             if doorIdle == 4 then
-                door:setAnimation(xi.animation.OPEN_DOOR)
+                door:setAnimation(invaderXim.animation.OPEN_DOOR)
                 door:setUntargetable(true)
             else
-                door:setAnimation(xi.animation.CLOSE_DOOR)
+                door:setAnimation(invaderXim.animation.CLOSE_DOOR)
                 door:setUntargetable(false)
             end
 

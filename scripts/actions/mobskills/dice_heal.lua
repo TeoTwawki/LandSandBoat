@@ -13,7 +13,7 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local heal = target:getMaxHP() - target:getHP()
 
-    skill:setMsg(xi.msg.basic.SELF_HEAL)
+    skill:setMsg(invaderXim.msg.basic.SELF_HEAL)
 
     target:addHP(heal)
     target:wakeUp()

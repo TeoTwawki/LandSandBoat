@@ -11,29 +11,29 @@
 -- Two-leaf Mandy Bud  : !additem 4368
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.MONSTROSITY)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.MONSTROSITY)
 
 quest.reward = {}
 
 local baseNpcEvents =
 {
-    [xi.zone.PASHHOW_MARSHLANDS] = 40,
-    [xi.zone.NORTHERN_SAN_DORIA] = 882,
-    [xi.zone.PORT_BASTOK]        = 418,
-    [xi.zone.PORT_WINDURST]      = 880,
+    [invaderXim.zone.PASHHOW_MARSHLANDS] = 40,
+    [invaderXim.zone.NORTHERN_SAN_DORIA] = 882,
+    [invaderXim.zone.PORT_BASTOK]        = 418,
+    [invaderXim.zone.PORT_WINDURST]      = 880,
 }
 
 local tradeItems =
 {
-    { xi.item.LIZARD_TAIL, xi.monstrosity.species.LIZARD },
-    { xi.item.RABBIT_HIDE, xi.monstrosity.species.RABBIT },
-    { xi.item.TWO_LEAF_MANDRAGORA_BUD, xi.monstrosity.species.MANDRAGORA },
+    { invaderXim.item.LIZARD_TAIL, invaderXim.monstrosity.species.LIZARD },
+    { invaderXim.item.RABBIT_HIDE, invaderXim.monstrosity.species.RABBIT },
+    { invaderXim.item.TWO_LEAF_MANDRAGORA_BUD, invaderXim.monstrosity.species.MANDRAGORA },
 }
 
 local suspiciousCityNpc =
 {
     onTrade = function(player, npc, trade)
-        if player:hasKeyItem(xi.ki.RING_OF_SUPERNAL_DISJUNCTION) then
+        if player:hasKeyItem(invaderXim.ki.RING_OF_SUPERNAL_DISJUNCTION) then
             return
         end
 
@@ -49,7 +49,7 @@ local suspiciousCityNpc =
     onTrigger = function(player, npc)
         local baseEvent = baseNpcEvents[player:getZoneID()]
 
-        if not player:hasKeyItem(xi.ki.RING_OF_SUPERNAL_DISJUNCTION) then
+        if not player:hasKeyItem(invaderXim.ki.RING_OF_SUPERNAL_DISJUNCTION) then
             return quest:event(baseEvent)
         else
             return quest:event(baseEvent + 2)
@@ -58,17 +58,17 @@ local suspiciousCityNpc =
 }
 
 local tradeEventFinish = function(player, csid, option, npc)
-    npcUtil.giveKeyItem(player, xi.ki.RING_OF_SUPERNAL_DISJUNCTION)
+    npcUtil.giveKeyItem(player, invaderXim.ki.RING_OF_SUPERNAL_DISJUNCTION)
     local species = player:getLocalVar('MONSTROSITY_UNLOCK')
     if species > 0 then
-        xi.monstrosity.unlockStartingMONs(player, species)
+        invaderXim.monstrosity.unlockStartingMONs(player, species)
     end
 end
 
 local odysseanPassageNpc =
 {
     onTrigger = function(player, npc)
-        if player:hasKeyItem(xi.ki.RING_OF_SUPERNAL_DISJUNCTION) then
+        if player:hasKeyItem(invaderXim.ki.RING_OF_SUPERNAL_DISJUNCTION) then
             return quest:progressEvent(baseNpcEvents[player:getZoneID()] + 3)
         end
     end,
@@ -78,7 +78,7 @@ local odysseanPassageOnEventFinish = function(player, csid, option, npc)
     if option == 1 then
         local pos = player:getPos()
         player:setMonstrosityEntryData(pos.x, pos.y, pos.z, pos.rot, player:getZoneID(), player:getMainJob(), player:getSubJob())
-        player:setPos(-358, -3.4, -440, 64, xi.zone.FERETORY)
+        player:setPos(-358, -3.4, -440, 64, invaderXim.zone.FERETORY)
     end
 end
 
@@ -86,10 +86,10 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return xi.settings.main.ENABLE_MONSTROSITY == 1 and status == xi.questStatus.QUEST_AVAILABLE
+            return invaderXim.settings.main.ENABLE_MONSTROSITY == 1 and status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.PASHHOW_MARSHLANDS] =
+        [invaderXim.zone.PASHHOW_MARSHLANDS] =
         {
             ['Suspicious_Hume'] = quest:progressEvent(40),
 
@@ -104,10 +104,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Odyssean_Passage']  = odysseanPassageNpc,
             ['Suspicious_Elvaan'] = suspiciousCityNpc,
@@ -119,13 +119,13 @@ quest.sections =
             },
         },
 
-        [xi.zone.PASHHOW_MARSHLANDS] =
+        [invaderXim.zone.PASHHOW_MARSHLANDS] =
         {
             ['Odyssean_Passage'] = odysseanPassageNpc,
             ['Suspicious_Hume']  =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.RING_OF_SUPERNAL_DISJUNCTION) then
+                    if not player:hasKeyItem(invaderXim.ki.RING_OF_SUPERNAL_DISJUNCTION) then
                         return quest:event(41)
                     else
                         return quest:event(42)
@@ -139,7 +139,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Odyssean_Passage'] = odysseanPassageNpc,
             ['Suspicious_Galka'] = suspiciousCityNpc,
@@ -151,7 +151,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Odyssean_Passage']    = odysseanPassageNpc,
             ['Suspicious_Tarutaru'] = suspiciousCityNpc,
@@ -163,7 +163,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.FERETORY] =
+        [invaderXim.zone.FERETORY] =
         {
             onZoneIn = function(player, prevZone)
                 return 2
@@ -193,10 +193,10 @@ quest.sections =
     -- global, along with event update/finish wiring here.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.PASHHOW_MARSHLANDS] =
+        [invaderXim.zone.PASHHOW_MARSHLANDS] =
         {
 
             ['Odyssean_Passage'] = odysseanPassageNpc,
@@ -208,7 +208,7 @@ quest.sections =
             }
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Odyssean_Passage']  = odysseanPassageNpc,
             ['Suspicious_Elvaan'] = quest:event(886):replaceDefault(), -- TODO: 886 may be once per zone or once, 887 after
@@ -219,7 +219,7 @@ quest.sections =
             }
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Odyssean_Passage'] = odysseanPassageNpc,
             ['Suspicious_Galka'] = quest:event(422):replaceDefault(),
@@ -230,7 +230,7 @@ quest.sections =
             }
         },
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Odyssean_Passage']    = odysseanPassageNpc,
             ['Suspicious_Tarutaru'] = quest:event(884):replaceDefault(),

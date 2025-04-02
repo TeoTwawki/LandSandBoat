@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.ENCUMBRANCE
+-- invaderXim.effect.ENCUMBRANCE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

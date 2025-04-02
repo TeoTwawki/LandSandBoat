@@ -1,7 +1,7 @@
 -----------------------------------
 -- Assault: Wamoura Farm Raid
 -----------------------------------
-local ID = zones[xi.zone.LEBROS_CAVERN]
+local ID = zones[invaderXim.zone.LEBROS_CAVERN]
 -----------------------------------
 local instanceObject = {}
 
@@ -25,7 +25,7 @@ instanceObject.onInstanceCreatedCallback = function(player, instance)
 end
 
 instanceObject.onInstanceTimeUpdate = function(instance, elapsed)
-    xi.instance.updateInstanceTime(instance, elapsed, ID.text)
+    invaderXim.instance.updateInstanceTime(instance, elapsed, ID.text)
 end
 
 instanceObject.onInstanceFailure = function(instance)
@@ -55,12 +55,12 @@ instanceObject.onInstanceComplete = function(instance)
 
     if rune then
         rune:setPos(414.29, -40.64, 301.523, 247)
-        rune:setStatus(xi.status.NORMAL)
+        rune:setStatus(invaderXim.status.NORMAL)
     end
 
     if box then
         box:setPos(410.41, -41.12, 300.743, 243)
-        box:setStatus(xi.status.NORMAL)
+        box:setStatus(invaderXim.status.NORMAL)
     end
 end
 

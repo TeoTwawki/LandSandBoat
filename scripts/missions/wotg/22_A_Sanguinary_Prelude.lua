@@ -5,12 +5,12 @@
 -- !addmission 5 21
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.A_SANGUINARY_PRELUDE)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.A_SANGUINARY_PRELUDE)
 
 mission.reward =
 {
-    keyItem     = xi.ki.AROMA_BUG,
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.DUNGEONS_AND_DANCERS },
+    keyItem     = invaderXim.ki.AROMA_BUG,
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.DUNGEONS_AND_DANCERS },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BEAUCEDINE_GLACIER_S] =
+        [invaderXim.zone.BEAUCEDINE_GLACIER_S] =
         {
             onZoneIn = function(player, prevZone)
                 return 17

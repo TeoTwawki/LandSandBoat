@@ -2,7 +2,7 @@
 -- Area: Apollyon Central
 --  Mob: Gunpod
 -- TODO: Gunpod has a special (non-standard) speed boost of 5x (40 to 200) when
--- target is out of range. This should be added eventually when such mods come to LSB
+-- target is out of range. This should be added eventually when such mods come to IXIM
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -15,58 +15,58 @@ entity.onMobInitialize = function(mob)
             -- Apollyon Chips
             group =
             {
-                { item = xi.item.SMALT_CHIP },
-                { item = xi.item.SMOKY_CHIP },
-                { item = xi.item.CHARCOAL_CHIP },
-                { item = xi.item.MAGENTA_CHIP },
+                { item = invaderXim.item.SMALT_CHIP },
+                { item = invaderXim.item.SMOKY_CHIP },
+                { item = invaderXim.item.CHARCOAL_CHIP },
+                { item = invaderXim.item.MAGENTA_CHIP },
             }
         elseif result <= 50 then
             -- Craft Materials
             group =
             {
-                { item = xi.item.CHUNK_OF_DARKSTEEL_ORE },
-                { item = xi.item.CHUNK_OF_ADAMAN_ORE },
-                { item = xi.item.DARKSTEEL_INGOT },
-                { item = xi.item.DARKSTEEL_SHEET },
-                { item = xi.item.SPOOL_OF_RAINBOW_THREAD },
-                { item = xi.item.PIECE_OF_OXBLOOD },
-                { item = xi.item.HANDFUL_OF_CLOT_PLASMA },
-                { item = xi.item.LIGHT_STEEL_INGOT },
-                { item = xi.item.PONZE_OF_SHELL_POWDER },
+                { item = invaderXim.item.CHUNK_OF_DARKSTEEL_ORE },
+                { item = invaderXim.item.CHUNK_OF_ADAMAN_ORE },
+                { item = invaderXim.item.DARKSTEEL_INGOT },
+                { item = invaderXim.item.DARKSTEEL_SHEET },
+                { item = invaderXim.item.SPOOL_OF_RAINBOW_THREAD },
+                { item = invaderXim.item.PIECE_OF_OXBLOOD },
+                { item = invaderXim.item.HANDFUL_OF_CLOT_PLASMA },
+                { item = invaderXim.item.LIGHT_STEEL_INGOT },
+                { item = invaderXim.item.PONZE_OF_SHELL_POWDER },
             }
         elseif result <= 86 then
             -- AF+1 Materials
             group =
             {
-                { item = xi.item.ARGYRO_RIVET },
-                { item = xi.item.ANCIENT_BRASS_INGOT },
-                { item = xi.item.SPOOL_OF_BENEDICT_YARN },
-                { item = xi.item.SPOOL_OF_DIABOLIC_YARN },
-                { item = xi.item.SQUARE_OF_CARDINAL_CLOTH },
-                { item = xi.item.SPOOL_OF_LIGHT_FILAMENT },
-                { item = xi.item.WHITE_RIVET },
-                { item = xi.item.BLACK_RIVET },
-                { item = xi.item.FETID_LANOLIN_CUBE },
-                { item = xi.item.SQUARE_OF_BROWN_DOESKIN },
-                { item = xi.item.SQUARE_OF_CHARCOAL_COTTON },
-                { item = xi.item.SHEET_OF_KUROGANE },
-                { item = xi.item.POT_OF_EBONY_LACQUER },
-                { item = xi.item.BLUE_RIVET },
-                { item = xi.item.SQUARE_OF_ASTRAL_LEATHER },
-                { item = xi.item.SQUARE_OF_FLAMESHUN_CLOTH },
-                { item = xi.item.SQUARE_OF_CANVAS_TOILE },
-                { item = xi.item.SQUARE_OF_CORDUROY_CLOTH },
-                { item = xi.item.GOLD_STUD },
-                { item = xi.item.ELECTRUM_STUD },
+                { item = invaderXim.item.ARGYRO_RIVET },
+                { item = invaderXim.item.ANCIENT_BRASS_INGOT },
+                { item = invaderXim.item.SPOOL_OF_BENEDICT_YARN },
+                { item = invaderXim.item.SPOOL_OF_DIABOLIC_YARN },
+                { item = invaderXim.item.SQUARE_OF_CARDINAL_CLOTH },
+                { item = invaderXim.item.SPOOL_OF_LIGHT_FILAMENT },
+                { item = invaderXim.item.WHITE_RIVET },
+                { item = invaderXim.item.BLACK_RIVET },
+                { item = invaderXim.item.FETID_LANOLIN_CUBE },
+                { item = invaderXim.item.SQUARE_OF_BROWN_DOESKIN },
+                { item = invaderXim.item.SQUARE_OF_CHARCOAL_COTTON },
+                { item = invaderXim.item.SHEET_OF_KUROGANE },
+                { item = invaderXim.item.POT_OF_EBONY_LACQUER },
+                { item = invaderXim.item.BLUE_RIVET },
+                { item = invaderXim.item.SQUARE_OF_ASTRAL_LEATHER },
+                { item = invaderXim.item.SQUARE_OF_FLAMESHUN_CLOTH },
+                { item = invaderXim.item.SQUARE_OF_CANVAS_TOILE },
+                { item = invaderXim.item.SQUARE_OF_CORDUROY_CLOTH },
+                { item = invaderXim.item.GOLD_STUD },
+                { item = invaderXim.item.ELECTRUM_STUD },
             }
         else
             -- Acient Beastcoins
-            loot:addItem(xi.item.ANCIENT_BEASTCOIN, xi.drop_rate.GUARANTEED, 5)
-            loot:addItem(xi.item.ANCIENT_BEASTCOIN, xi.drop_rate.COMMON)
+            loot:addItem(invaderXim.item.ANCIENT_BEASTCOIN, invaderXim.drop_rate.GUARANTEED, 5)
+            loot:addItem(invaderXim.item.ANCIENT_BEASTCOIN, invaderXim.drop_rate.COMMON)
             return
         end
 
-        loot:addGroup(xi.drop_rate.GUARANTEED, group)
+        loot:addGroup(invaderXim.drop_rate.GUARANTEED, group)
     end)
 end
 

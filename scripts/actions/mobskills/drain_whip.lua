@@ -14,12 +14,12 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local damage     = mob:getWeaponDmg() * 3
-    local drainTable = { xi.mobskills.drainType.HP, xi.mobskills.drainType.MP, xi.mobskills.drainType.TP }
+    local drainTable = { invaderXim.mobskills.drainType.HP, invaderXim.mobskills.drainType.MP, invaderXim.mobskills.drainType.TP }
 
-    damage = xi.mobskills.mobMagicalMove(mob, target, skill, damage, xi.element.DARK, 1, xi.mobskills.magicalTpBonus.NO_EFFECT)
-    damage = xi.mobskills.mobFinalAdjustments(damage, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.DARK, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
+    damage = invaderXim.mobskills.mobMagicalMove(mob, target, skill, damage, invaderXim.element.DARK, 1, invaderXim.mobskills.magicalTpBonus.NO_EFFECT)
+    damage = invaderXim.mobskills.mobFinalAdjustments(damage, mob, skill, target, invaderXim.attackType.MAGICAL, invaderXim.damageType.DARK, invaderXim.mobskills.shadowBehavior.IGNORE_SHADOWS)
 
-    skill:setMsg(xi.mobskills.mobPhysicalDrainMove(mob, target, skill, drainTable[math.random(1, 3)], damage))
+    skill:setMsg(invaderXim.mobskills.mobPhysicalDrainMove(mob, target, skill, drainTable[math.random(1, 3)], damage))
 
     return damage
 end

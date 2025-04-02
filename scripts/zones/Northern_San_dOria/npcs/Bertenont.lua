@@ -4,7 +4,7 @@
 -- Involved in Quest: Lure of the Wildcat (San d'Oria)
 -- !pos -165 0.1 226 231
 -----------------------------------
-local ID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local ID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -13,7 +13,7 @@ entity.onTrigger = function(player, npc)
     local wildcatSandy = player:getCharVar('WildcatSandy')
 
     if
-        player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.LURE_OF_THE_WILDCAT) == xi.questStatus.QUEST_ACCEPTED and
+        player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.LURE_OF_THE_WILDCAT) == invaderXim.questStatus.QUEST_ACCEPTED and
         not utils.mask.getBit(wildcatSandy, 9)
     then
         player:startEvent(809)

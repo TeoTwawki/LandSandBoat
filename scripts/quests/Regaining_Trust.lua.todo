@@ -5,7 +5,7 @@
 -- Giant Footprint !pos -501 -11 354 126
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.REGAINING_TRUST)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.REGAINING_TRUST)
 
 quest.reward = {}
 
@@ -14,10 +14,10 @@ quest.sections = {
     -- Qm's normal state
      {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE or status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE or status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.QUFIM_ISLAND] = {
+        [invaderXim.zone.QUFIM_ISLAND] = {
             ['Giant_Footprint'] = {
                 onTrigger = function(player, npc)
                     return quest:messageSpecial(zones[player:getZoneID()].text.GIGANTIC_FOOTPRINT)
@@ -29,13 +29,13 @@ quest.sections = {
     -- Section: Begin quest
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
-                and player:getQuestStatus(xi.questLog.OTHER_AREAS, PICTURE_PERFECT) == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
+                and player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, PICTURE_PERFECT) == invaderXim.questStatus.QUEST_COMPLETED
                 and player:getFellowValue('level') >= 51
                 and player:getFellowValue('bond') >= 55
         end,
 
-        [xi.zone.UPPER_JEUNO] = {
+        [invaderXim.zone.UPPER_JEUNO] = {
             ['Luto_Mewrilah'] = {
                 onTrigger = function(player, npc)
                     local fellowParam = getFellowParam(player)
@@ -54,10 +54,10 @@ quest.sections = {
     -- Section: Questing
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.UPPER_JEUNO] = {
+        [invaderXim.zone.UPPER_JEUNO] = {
             ['Monberaux'] = {
                 onTrigger = function(player, npc)
                     local fellowParam = getFellowParam(player)
@@ -121,7 +121,7 @@ quest.sections = {
             },
         },
 
-        [xi.zone.QUFIM_ISLAND] = {
+        [invaderXim.zone.QUFIM_ISLAND] = {
             ['Giant_Footprint'] = {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 2 and player:getLocalVar('Initiate') == 0 and not GetMobByID(zones[player:getZoneID()].mob.INGAEVON):isSpawned() then

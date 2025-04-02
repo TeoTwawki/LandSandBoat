@@ -1,7 +1,7 @@
 -- Zone: Den of Rancor (160)
 -- Desc: this file contains functions that are shared by multiple luas in this zone's directory
 -----------------------------------
-local ID = zones[xi.zone.DEN_OF_RANCOR]
+local ID = zones[invaderXim.zone.DEN_OF_RANCOR]
 -----------------------------------
 
 local denOfRancorGlobal =
@@ -11,16 +11,16 @@ local denOfRancorGlobal =
         ..............................................................................................]]
     onTradeLanternChamber = function(player, npc, trade)
         if
-            trade:getItemQty(xi.item.RANCOR_FLAME) > 0 and
-            npc:getAnimation() == xi.anim.OPEN_DOOR
+            trade:getItemQty(invaderXim.item.RANCOR_FLAME) > 0 and
+            npc:getAnimation() == invaderXim.anim.OPEN_DOOR
         then
             player:messageSpecial(ID.text.LANTERN_OFFSET + 7) -- already lit
         else
-            if npcUtil.tradeHas(trade, xi.item.RANCOR_FLAME) then -- Rancor Flame
+            if npcUtil.tradeHas(trade, invaderXim.item.RANCOR_FLAME) then -- Rancor Flame
                 player:confirmTrade()
-                player:addItem(xi.item.UNLIT_LANTERN) -- return unlit lantern
+                player:addItem(invaderXim.item.UNLIT_LANTERN) -- return unlit lantern
 
-                npc:openDoor(xi.settings.main.LANTERNS_STAY_LIT) -- light lantern
+                npc:openDoor(invaderXim.settings.main.LANTERNS_STAY_LIT) -- light lantern
 
                 local total = GetNPCByID(ID.npc.LANTERN_OFFSET + 0):getAnimation() +
                     GetNPCByID(ID.npc.LANTERN_OFFSET + 1):getAnimation() +
@@ -50,16 +50,16 @@ local denOfRancorGlobal =
         ..............................................................................................]]
     onTradeLanternHaku = function(player, npc, trade)
         if
-            trade:getItemQty(xi.item.RANCOR_FLAME) > 0 and
-            npc:getAnimation() == xi.anim.OPEN_DOOR
+            trade:getItemQty(invaderXim.item.RANCOR_FLAME) > 0 and
+            npc:getAnimation() == invaderXim.anim.OPEN_DOOR
         then
             player:messageSpecial(ID.text.LANTERN_OFFSET + 7) -- already lit
         else
-            if npcUtil.tradeHas(trade, xi.item.RANCOR_FLAME) then -- Rancor Flame
+            if npcUtil.tradeHas(trade, invaderXim.item.RANCOR_FLAME) then -- Rancor Flame
                 player:confirmTrade()
-                player:addItem(xi.item.UNLIT_LANTERN) -- return unlit lantern
+                player:addItem(invaderXim.item.UNLIT_LANTERN) -- return unlit lantern
 
-                npc:openDoor(xi.settings.main.LANTERNS_STAY_LIT) -- light lantern
+                npc:openDoor(invaderXim.settings.main.LANTERNS_STAY_LIT) -- light lantern
 
                 local total = GetNPCByID(ID.npc.LANTERN_OFFSET + 6):getAnimation() +
                     GetNPCByID(ID.npc.LANTERN_OFFSET + 7):getAnimation()
@@ -91,15 +91,15 @@ local denOfRancorGlobal =
 
         if
             trade:getItemQty(itemId) > 0 and  -- Flame of Crimson or Blue Rancor
-            npc:getAnimation() == xi.anim.OPEN_DOOR
+            npc:getAnimation() == invaderXim.anim.OPEN_DOOR
         then
             player:messageSpecial(ID.text.LANTERN_OFFSET + 7) -- already lit
         else
             if npcUtil.tradeHas(trade, itemId) then -- Flame of Crimson or Blue Rancor
                 player:confirmTrade()
-                player:addItem(xi.item.UNLIT_LANTERN) -- return unlit lantern
+                player:addItem(invaderXim.item.UNLIT_LANTERN) -- return unlit lantern
 
-                npc:openDoor(xi.settings.main.LANTERNS_STAY_LIT) -- light lantern
+                npc:openDoor(invaderXim.settings.main.LANTERNS_STAY_LIT) -- light lantern
 
                 local total = GetNPCByID(ID.npc.LANTERN_OFFSET + 9):getAnimation() +
                     GetNPCByID(ID.npc.LANTERN_OFFSET + 10):getAnimation()
@@ -124,7 +124,7 @@ local denOfRancorGlobal =
     end,
 
     onTriggerLantern = function(player, npc)
-        if npc:getAnimation() == xi.anim.OPEN_DOOR then
+        if npc:getAnimation() == invaderXim.anim.OPEN_DOOR then
             player:messageSpecial(ID.text.LANTERN_OFFSET + 7) -- already lit
         else
             player:messageSpecial(ID.text.LANTERN_OFFSET + 20) -- unlit

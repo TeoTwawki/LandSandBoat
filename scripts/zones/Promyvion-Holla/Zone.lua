@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Promyvion-Holla (16)
 -----------------------------------
-local ID = zones[xi.zone.PROMYVION_HOLLA]
+local ID = zones[invaderXim.zone.PROMYVION_HOLLA]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -26,7 +26,7 @@ zoneObject.onInitialize = function(zone)
     zone:registerCylindricalTriggerArea(16, 280, 200, 3) -- Floor 3 (East): Portal SE
 
     -- Select portals.
-    xi.promyvion.setupInitialPortals(zone)
+    invaderXim.promyvion.setupInitialPortals(zone)
 
     -- Update NM between Floor 3 islands.
     UpdateNMSpawnPoint(ID.mob.CEREBRATOR)
@@ -77,47 +77,47 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
         end,
 
         [6] = function() -- Floor 1: Portal
-            xi.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 7, 37)
+            invaderXim.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 7, 37)
         end,
 
         [7] = function() -- Floor 2: Portal NW - Destination: East
-            xi.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 3, 33)
+            invaderXim.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 3, 33)
         end,
 
         [8] = function() -- Floor 2: Portal SW - Destination: West
-            xi.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 4, 34)
+            invaderXim.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 4, 34)
         end,
 
         [9] = function() -- Floor 2: Portal SE - Destination: East
-            xi.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 5, 35)
+            invaderXim.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 5, 35)
         end,
 
         [10] = function() -- Floor 2: Portal NE - Destination: West
-            xi.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 6, 36)
+            invaderXim.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 6, 36)
         end,
 
         [11] = function() -- Floor 3 (West): Portal NE
-            xi.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET, 30)
+            invaderXim.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET, 30)
         end,
 
         [12] = function() -- Floor 3 (West): Portal NW
-            xi.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 1, 31)
+            invaderXim.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 1, 31)
         end,
 
         [13] = function() -- Floor 3 (West): Portal SW
-            xi.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 2, 32)
+            invaderXim.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 2, 32)
         end,
 
         [14] = function() -- Floor 3 (East): Portal NW
-            xi.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 8, 38)
+            invaderXim.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 8, 38)
         end,
 
         [15] = function() -- Floor 3 (East): Portal NE
-            xi.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 9, 39)
+            invaderXim.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 9, 39)
         end,
 
         [16] = function() -- Floor 3 (East): Portal SE
-            xi.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 10, 40)
+            invaderXim.promyvion.handlePortal(player, ID.npc.MEMORY_STREAM_OFFSET + 10, 40)
         end,
     }
 end

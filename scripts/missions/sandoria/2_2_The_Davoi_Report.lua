@@ -10,11 +10,11 @@
 -- '!'            : !pos 211 2 -104 149
 -- Papal Chambers : !pos 131 -11 122 231
 -----------------------------------
-local southernSandoriaID = zones[xi.zone.SOUTHERN_SAN_DORIA]
-local northernSandoriaID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local southernSandoriaID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
+local northernSandoriaID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.THE_DAVOI_REPORT)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.THE_DAVOI_REPORT)
 
 mission.reward =
 {
@@ -32,11 +32,11 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -45,7 +45,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -59,14 +59,14 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.DAVOI] =
+        [invaderXim.zone.DAVOI] =
         {
             ['Zantaviat'] =
             {
                 onTrigger = function(player, npc)
                     if player:getMissionStatus(mission.areaId) == 0 then
                         return mission:progressEvent(100)
-                    elseif player:hasKeyItem(xi.ki.LOST_DOCUMENT) then
+                    elseif player:hasKeyItem(invaderXim.ki.LOST_DOCUMENT) then
                         return mission:progressEvent(104)
                     end
                 end,
@@ -79,11 +79,11 @@ mission.sections =
                     local xPos = npc:getXPos()
 
                     if
-                        not player:hasKeyItem(xi.ki.LOST_DOCUMENT) and
+                        not player:hasKeyItem(invaderXim.ki.LOST_DOCUMENT) and
                         xPos > 210 and xPos < 212
                     then
                         player:setMissionStatus(player:getNation(), 2)
-                        return mission:keyItem(xi.ki.LOST_DOCUMENT)
+                        return mission:keyItem(invaderXim.ki.LOST_DOCUMENT)
                     end
                 end,
             },
@@ -96,13 +96,13 @@ mission.sections =
 
                 [104] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 3)
-                    player:delKeyItem(xi.ki.LOST_DOCUMENT)
-                    npcUtil.giveKeyItem(player, xi.ki.TEMPLE_KNIGHTS_DAVOI_REPORT)
+                    player:delKeyItem(invaderXim.ki.LOST_DOCUMENT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.TEMPLE_KNIGHTS_DAVOI_REPORT)
                 end,
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] =
             {
@@ -138,26 +138,26 @@ mission.sections =
             {
                 [1006] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.TEMPLE_KNIGHTS_DAVOI_REPORT)
+                        player:delKeyItem(invaderXim.ki.TEMPLE_KNIGHTS_DAVOI_REPORT)
                     end
                 end,
 
                 [2006] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.TEMPLE_KNIGHTS_DAVOI_REPORT)
+                        player:delKeyItem(invaderXim.ki.TEMPLE_KNIGHTS_DAVOI_REPORT)
                     end
                 end,
             }
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['_6fc'] =
             {
                 onTrigger = function(player, npc)
                     if
                         not player:hasCompletedMission(mission.areaId, mission.missionId) and
-                        player:hasKeyItem(xi.ki.TEMPLE_KNIGHTS_DAVOI_REPORT)
+                        player:hasKeyItem(invaderXim.ki.TEMPLE_KNIGHTS_DAVOI_REPORT)
                     then
                         return mission:progressEvent(695)
                     end
@@ -183,13 +183,13 @@ mission.sections =
             {
                 [695] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.TEMPLE_KNIGHTS_DAVOI_REPORT)
+                        player:delKeyItem(invaderXim.ki.TEMPLE_KNIGHTS_DAVOI_REPORT)
                     end
                 end,
 
                 [1006] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.TEMPLE_KNIGHTS_DAVOI_REPORT)
+                        player:delKeyItem(invaderXim.ki.TEMPLE_KNIGHTS_DAVOI_REPORT)
                     end
                 end,
             }

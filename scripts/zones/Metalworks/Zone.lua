@@ -22,14 +22,14 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.afterZoneIn = function(player)
-    if player:hasKeyItem(xi.ki.MESSAGE_TO_JEUNO_BASTOK) then
+    if player:hasKeyItem(invaderXim.ki.MESSAGE_TO_JEUNO_BASTOK) then
         player:changeMusic(0, 161)   --  Despair
         player:changeMusic(1, 161)   --  Despair
     end
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

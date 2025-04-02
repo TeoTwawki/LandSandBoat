@@ -3,7 +3,7 @@
 --  Mob: Specter
 -- Note: PH for N/E/S/W Shadow NMs
 -----------------------------------
-local ID = zones[xi.zone.FEIYIN]
+local ID = zones[invaderXim.zone.FEIYIN]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -29,14 +29,14 @@ local southernShadowPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 712, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 712, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, northernShadowPHTable, 5, 57600) -- 16 hours
-    xi.mob.phOnDespawn(mob, easternShadowPHTable, 5, 36000) -- 10 hours
-    xi.mob.phOnDespawn(mob, westernShadowPHTable, 5, 36000) -- 10 hours
-    xi.mob.phOnDespawn(mob, southernShadowPHTable, 5, 57600) -- 16 hours
+    invaderXim.mob.phOnDespawn(mob, northernShadowPHTable, 5, 57600) -- 16 hours
+    invaderXim.mob.phOnDespawn(mob, easternShadowPHTable, 5, 36000) -- 10 hours
+    invaderXim.mob.phOnDespawn(mob, westernShadowPHTable, 5, 36000) -- 10 hours
+    invaderXim.mob.phOnDespawn(mob, southernShadowPHTable, 5, 57600) -- 16 hours
 end
 
 return entity

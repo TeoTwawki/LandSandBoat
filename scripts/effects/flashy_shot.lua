@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.FLASHY_SHOT
+-- invaderXim.effect.FLASHY_SHOT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

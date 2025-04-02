@@ -13,8 +13,8 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    target:delStatusEffect(xi.effect.HAGAKURE)
-    player:addStatusEffect(xi.effect.HAGAKURE, 1, 0, 60)
+    target:delStatusEffect(invaderXim.effect.HAGAKURE)
+    player:addStatusEffect(invaderXim.effect.HAGAKURE, 1, 0, 60)
 end
 
 return abilityObject

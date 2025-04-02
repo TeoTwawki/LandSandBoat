@@ -3,7 +3,7 @@
 --   NM: Cemetery Cherry
 -- !pos 33.000 0.500 -287.000 190
 -----------------------------------
-local ID = zones[xi.zone.KING_RANPERRES_TOMB]
+local ID = zones[invaderXim.zone.KING_RANPERRES_TOMB]
 mixins =
 {
     require('scripts/mixins/job_special'),
@@ -23,11 +23,11 @@ local function spawnSaplings()
 end
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 600)
-    mob:setMobMod(xi.mobMod.GIL_MIN, 20000)
-    mob:setMobMod(xi.mobMod.GIL_MAX, 30000)
-    mob:setMobMod(xi.mobMod.MUG_GIL, 10000)
-    mob:addImmunity(xi.immunity.SILENCE)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 600)
+    mob:setMobMod(invaderXim.mobMod.GIL_MIN, 20000)
+    mob:setMobMod(invaderXim.mobMod.GIL_MAX, 30000)
+    mob:setMobMod(invaderXim.mobMod.MUG_GIL, 10000)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
 
     local saplingsRespawn = math.random(1800, 3600) -- 30 to 60 minutes
     mob:timer(saplingsRespawn * 1000, function(mobArg)
@@ -41,7 +41,7 @@ end
 
 entity.onMobDeath = function(mob, player, optParams)
     mob:setLocalVar('wasKilled', 1)
-    player:addTitle(xi.title.MON_CHERRY)
+    player:addTitle(invaderXim.title.MON_CHERRY)
 end
 
 entity.onMobDespawn = function(mob)

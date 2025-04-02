@@ -523,7 +523,7 @@ void CPetEntity::OnPetSkillFinished(CPetSkillState& state, action_t& action)
 
         if (msg == 0)
         {
-            if (PSkill->getMsg() == 185) // TODO: remove when we rip out the original SMN implementation, this is xi.msg.basic.DAMAGE (not in .h)
+            if (PSkill->getMsg() == 185) // TODO: remove when we rip out the original SMN implementation, this is invaderXim.msg.basic.DAMAGE (not in .h)
             {
                 msg = defaultMessage;
             }

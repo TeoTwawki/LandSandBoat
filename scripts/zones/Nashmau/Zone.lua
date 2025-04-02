@@ -16,7 +16,7 @@ zoneObject.onZoneIn = function(player, prevZone)
         player:getYPos() == 0 and
         player:getZPos() == 0
     then
-        if prevZone == xi.zone.SILVER_SEA_ROUTE_TO_NASHMAU then
+        if prevZone == invaderXim.zone.SILVER_SEA_ROUTE_TO_NASHMAU then
             cs = 201
             player:setPos(11, 2, -102, 128)
         else

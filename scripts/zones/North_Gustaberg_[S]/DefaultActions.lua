@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.NORTH_GUSTABERG_S]
+local ID = zones[invaderXim.zone.NORTH_GUSTABERG_S]
 
 return {
     ['Barricade']    = { messageSpecial = ID.text.NO_WAY_PAST_BARRIER },

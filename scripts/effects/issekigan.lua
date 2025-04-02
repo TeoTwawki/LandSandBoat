@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.ISSEKIGAN
+-- invaderXim.effect.ISSEKIGAN
 -- NOTE: This is all handled in core (battleutils)
 -----------------------------------
 ---@type TEffect

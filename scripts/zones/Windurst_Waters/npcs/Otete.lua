@@ -4,15 +4,15 @@
 -- Only sells when Windurst controlls Li'Telor Region
 -- Confirmed shop stock, August 2013
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WATERS]
+local ID = zones[invaderXim.zone.WINDURST_WATERS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local regionOwner = GetRegionOwner(xi.region.LITELOR)
+    local regionOwner = GetRegionOwner(invaderXim.region.LITELOR)
 
-    if regionOwner ~= xi.nation.WINDURST then
+    if regionOwner ~= invaderXim.nation.WINDURST then
         player:showText(npc, ID.text.OTETE_CLOSED_DIALOG)
     else
         player:showText(npc, ID.text.OTETE_OPEN_DIALOG)
@@ -22,7 +22,7 @@ entity.onTrigger = function(player, npc)
             623,    119, -- Bay Leaves
             4154,  6440  -- Holy Water
         }
-        xi.shop.general(player, stock, xi.fameArea.WINDURST)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.WINDURST)
     end
 end
 

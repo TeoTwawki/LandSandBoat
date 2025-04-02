@@ -6,15 +6,15 @@
 -- NPC: Virnage !pos 0.7 -0.0 49 234
 -- NPC: Rakorok !pos 158 13 -42 11
 -----------------------------------
-local ID  = zones[xi.zone.OLDTON_MOVALPOLOS]
+local ID  = zones[invaderXim.zone.OLDTON_MOVALPOLOS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.A_QUESTION_OF_FAITH)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.A_QUESTION_OF_FAITH)
 
 quest.reward =
 {
     fame = 50,
-    fameArea = xi.fameArea.BASTOK,
+    fameArea = invaderXim.fameArea.BASTOK,
     gil = 3000,
 }
 
@@ -22,12 +22,12 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-            player:getFameLevel(xi.fameArea.BASTOK) >= 4 and
-            player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.OUT_OF_THE_DEPTHS)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+            player:getFameLevel(invaderXim.fameArea.BASTOK) >= 4 and
+            player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.OUT_OF_THE_DEPTHS)
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Ayame'] = quest:progressEvent(875),
 
@@ -42,21 +42,21 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Virnage'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.DAWN_TALISMAN) and
+                        not player:hasKeyItem(invaderXim.ki.DAWN_TALISMAN) and
                         quest:getVar(player, 'Prog') == 0
                     then
-                        return quest:progressEvent(239, 0, xi.ki.DAWN_TALISMAN)
-                    elseif player:hasKeyItem(xi.ki.DAWN_TALISMAN) then
-                        return quest:event(242, 0, xi.ki.DAWN_TALISMAN)
+                        return quest:progressEvent(239, 0, invaderXim.ki.DAWN_TALISMAN)
+                    elseif player:hasKeyItem(invaderXim.ki.DAWN_TALISMAN) then
+                        return quest:event(242, 0, invaderXim.ki.DAWN_TALISMAN)
                     elseif quest:getVar(player, 'Prog') == 1 then
                         return quest:progressEvent(241)
                     end
@@ -67,7 +67,7 @@ quest.sections =
             {
                 [239] = function(player, csid, option, npc)
                     if option == 1 then
-                        npcUtil.giveKeyItem(player, xi.ki.DAWN_TALISMAN)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.DAWN_TALISMAN)
                     end
                 end,
 
@@ -77,13 +77,13 @@ quest.sections =
             },
         },
 
-        [xi.zone.OLDTON_MOVALPOLOS] =
+        [invaderXim.zone.OLDTON_MOVALPOLOS] =
         {
             ['Rakorok'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:hasKeyItem(xi.ki.DAWN_TALISMAN) and
+                        player:hasKeyItem(invaderXim.ki.DAWN_TALISMAN) and
                         quest:getVar(player, 'Prog') == 0
                     then
                         if npcUtil.popFromQM(player, npc, ID.mob.BUGALLUG, { claim = true, hide = 0 }) then
@@ -92,9 +92,9 @@ quest.sections =
                         end
                     elseif
                         quest:getVar(player, 'Prog') == 1 and
-                        player:hasKeyItem(xi.ki.DAWN_TALISMAN)
+                        player:hasKeyItem(invaderXim.ki.DAWN_TALISMAN)
                     then
-                        return quest:progressEvent(6, 11, xi.ki.DAWN_TALISMAN)
+                        return quest:progressEvent(6, 11, invaderXim.ki.DAWN_TALISMAN)
                     end
                 end,
             },
@@ -111,8 +111,8 @@ quest.sections =
             onEventFinish =
             {
                 [6] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.DAWN_TALISMAN)
-                    player:messageSpecial(ID.text.WAS_TAKEN_FROM_YOU, 0, xi.ki.DAWN_TALISMAN)
+                    player:delKeyItem(invaderXim.ki.DAWN_TALISMAN)
+                    player:messageSpecial(ID.text.WAS_TAKEN_FROM_YOU, 0, invaderXim.ki.DAWN_TALISMAN)
                 end,
             },
         },

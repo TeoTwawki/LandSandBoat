@@ -9,12 +9,12 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    if target:hasStatusEffect(xi.effect.PLAGUE) then
-        skill:setMsg(xi.msg.basic.SKILL_ERASE)
-        target:delStatusEffect(xi.effect.PLAGUE)
-        return xi.effect.PLAGUE
+    if target:hasStatusEffect(invaderXim.effect.PLAGUE) then
+        skill:setMsg(invaderXim.msg.basic.SKILL_ERASE)
+        target:delStatusEffect(invaderXim.effect.PLAGUE)
+        return invaderXim.effect.PLAGUE
     else
-        skill:setMsg(xi.msg.basic.NO_EFFECT)
+        skill:setMsg(invaderXim.msg.basic.NO_EFFECT)
     end
 end
 

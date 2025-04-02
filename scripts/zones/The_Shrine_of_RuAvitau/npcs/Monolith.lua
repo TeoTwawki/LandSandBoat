@@ -3,7 +3,7 @@
 --  NPC: Monolith
 -- !pos <many>
 -----------------------------------
-local ID = zones[xi.zone.THE_SHRINE_OF_RUAVITAU]
+local ID = zones[invaderXim.zone.THE_SHRINE_OF_RUAVITAU]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -42,12 +42,12 @@ entity.onTrigger = function(player, npc)
     if offset >= 0 and offset <= 38 then
         local colorTouched = monoliths[offset / 2]
         for i = 0, 21 do
-            local anim = doors[i] == colorTouched and xi.anim.OPEN_DOOR or xi.anim.CLOSE_DOOR
+            local anim = doors[i] == colorTouched and invaderXim.anim.OPEN_DOOR or invaderXim.anim.CLOSE_DOOR
             GetNPCByID(ID.npc.DOOR_OFFSET + i):setAnimation(anim)
         end
 
         for i = 0, 19 do
-            local anim = monoliths[i] == colorTouched and xi.anim.OPEN_DOOR or xi.anim.CLOSE_DOOR
+            local anim = monoliths[i] == colorTouched and invaderXim.anim.OPEN_DOOR or invaderXim.anim.CLOSE_DOOR
             GetNPCByID(ID.npc.MONOLITH_OFFSET + (i * 2) - 1):setAnimation(anim)
         end
     end

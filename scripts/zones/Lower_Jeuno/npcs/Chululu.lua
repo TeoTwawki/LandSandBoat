@@ -5,41 +5,41 @@
 -- Optional Cutscene at end of Quest: Searching for the Right Words
 -- !pos -13 -6 -42 245
 -----------------------------------
-local ID = zones[xi.zone.LOWER_JEUNO]
+local ID = zones[invaderXim.zone.LOWER_JEUNO]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    if player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.COLLECT_TARUT_CARDS) == xi.questStatus.QUEST_ACCEPTED then
-        if npcUtil.tradeHas(trade, { xi.item.TARUT_CARD_THE_FOOL, xi.item.TARUT_CARD_DEATH, xi.item.TARUT_CARD_THE_KING, xi.item.TARUT_CARD_THE_HERMIT }, true) then
+    if player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.COLLECT_TARUT_CARDS) == invaderXim.questStatus.QUEST_ACCEPTED then
+        if npcUtil.tradeHas(trade, { invaderXim.item.TARUT_CARD_THE_FOOL, invaderXim.item.TARUT_CARD_DEATH, invaderXim.item.TARUT_CARD_THE_KING, invaderXim.item.TARUT_CARD_THE_HERMIT }, true) then
             player:startEvent(200) -- Finish quest "Collect Tarut Cards"
         end
-    elseif player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.ALL_IN_THE_CARDS) >= xi.questStatus.QUEST_ACCEPTED then
-        if npcUtil.tradeHas(trade, { xi.item.TARUT_CARD_THE_FOOL, xi.item.TARUT_CARD_DEATH, xi.item.TARUT_CARD_THE_KING, xi.item.TARUT_CARD_THE_HERMIT }, true) then
+    elseif player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.ALL_IN_THE_CARDS) >= invaderXim.questStatus.QUEST_ACCEPTED then
+        if npcUtil.tradeHas(trade, { invaderXim.item.TARUT_CARD_THE_FOOL, invaderXim.item.TARUT_CARD_DEATH, invaderXim.item.TARUT_CARD_THE_KING, invaderXim.item.TARUT_CARD_THE_HERMIT }, true) then
             player:startEvent(10114) -- Finish quest "All in the Cards"
         end
     end
 end
 
 entity.onTrigger = function(player, npc)
-    local collectTarutCards = player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.COLLECT_TARUT_CARDS)
-    local rubbishDay        = player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.RUBBISH_DAY)
-    local allInTheCards     = player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.ALL_IN_THE_CARDS)
+    local collectTarutCards = player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.COLLECT_TARUT_CARDS)
+    local rubbishDay        = player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.RUBBISH_DAY)
+    local allInTheCards     = player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.ALL_IN_THE_CARDS)
     local cdate             = player:getCharVar('AllInTheCards_date')
 
     if
-        player:getFameLevel(xi.fameArea.JEUNO) >= 3 and
-        collectTarutCards == xi.questStatus.QUEST_AVAILABLE
+        player:getFameLevel(invaderXim.fameArea.JEUNO) >= 3 and
+        collectTarutCards == invaderXim.questStatus.QUEST_AVAILABLE
     then
         player:startEvent(28) -- Start quest 'Collect Tarut Cards' with option
 
-    elseif collectTarutCards == xi.questStatus.QUEST_ACCEPTED then
+    elseif collectTarutCards == invaderXim.questStatus.QUEST_ACCEPTED then
         player:startEvent(27) -- During quest 'Collect Tarut Cards'
 
     elseif
-        collectTarutCards == xi.questStatus.QUEST_COMPLETED and
-        rubbishDay == xi.questStatus.QUEST_AVAILABLE and
+        collectTarutCards == invaderXim.questStatus.QUEST_COMPLETED and
+        rubbishDay == invaderXim.questStatus.QUEST_AVAILABLE and
         player:getCharVar('RubbishDay_day') ~= VanadielDayOfTheYear()
     then
         -- prog = player:getCharVar('RubbishDay_prog')
@@ -50,32 +50,32 @@ entity.onTrigger = function(player, npc)
         -- end
 
     elseif
-        collectTarutCards == xi.questStatus.QUEST_COMPLETED and
-        rubbishDay == xi.questStatus.QUEST_AVAILABLE
+        collectTarutCards == invaderXim.questStatus.QUEST_COMPLETED and
+        rubbishDay == invaderXim.questStatus.QUEST_AVAILABLE
     then
         player:startEvent(57) -- Standard dialog between 2 quests
 
     elseif
-        rubbishDay == xi.questStatus.QUEST_ACCEPTED and
+        rubbishDay == invaderXim.questStatus.QUEST_ACCEPTED and
         player:getCharVar('RubbishDayVar') == 0
     then
         player:startEvent(49) -- During quest 'Rubbish Day'
 
     elseif
-        rubbishDay == xi.questStatus.QUEST_ACCEPTED and
+        rubbishDay == invaderXim.questStatus.QUEST_ACCEPTED and
         player:getCharVar('RubbishDayVar') == 1
     then
         player:startEvent(197) -- Finish quest 'Rubbish Day'
 
     elseif
-        player:getFameLevel(xi.fameArea.JEUNO) >= 4 and
-        collectTarutCards == xi.questStatus.QUEST_COMPLETED and
-        allInTheCards == xi.questStatus.QUEST_AVAILABLE
+        player:getFameLevel(invaderXim.fameArea.JEUNO) >= 4 and
+        collectTarutCards == invaderXim.questStatus.QUEST_COMPLETED and
+        allInTheCards == invaderXim.questStatus.QUEST_AVAILABLE
     then
         player:startEvent(10110) -- Start quest 'All in the Cards' with option
 
     elseif
-        allInTheCards >= xi.questStatus.QUEST_ACCEPTED and
+        allInTheCards >= invaderXim.questStatus.QUEST_ACCEPTED and
         player:getLocalVar('Cardstemp') == 0
     then
         if cdate >= os.time() then
@@ -86,14 +86,14 @@ entity.onTrigger = function(player, npc)
             player:startEvent(10112) -- During quest 'All in the Cards'  THIS ONE GIVES ANOTHER BATCH
         end
 
-    elseif player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.SEARCHING_FOR_THE_RIGHT_WORDS) == xi.questStatus.QUEST_COMPLETED then
+    elseif player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.SEARCHING_FOR_THE_RIGHT_WORDS) == invaderXim.questStatus.QUEST_COMPLETED then
         if player:getCharVar('SearchingForRightWords_postcs') < -1 then
             player:startEvent(56)
         else
             player:startEvent(57) -- final state, after all quests complete
         end
 
-    elseif rubbishDay == xi.questStatus.QUEST_COMPLETED then
+    elseif rubbishDay == invaderXim.questStatus.QUEST_COMPLETED then
         player:startEvent(57) -- New standard dialog
 
     else
@@ -104,37 +104,37 @@ end
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 28 and option == 0 then
         local rand = math.random(1, 4)
-        local card = xi.item.TARUT_CARD_THE_FOOL
+        local card = invaderXim.item.TARUT_CARD_THE_FOOL
 
         if rand == 1 then
-            card = xi.item.TARUT_CARD_DEATH
+            card = invaderXim.item.TARUT_CARD_DEATH
         elseif rand == 2 then
-            card = xi.item.TARUT_CARD_THE_HERMIT
+            card = invaderXim.item.TARUT_CARD_THE_HERMIT
         elseif rand == 3 then
-            card = xi.item.TARUT_CARD_THE_KING
+            card = invaderXim.item.TARUT_CARD_THE_KING
         end
 
         if player:getFreeSlotsCount() == 0 then
             player:messageSpecial(ID.text.ITEM_CANNOT_BE_OBTAINED, card)
         else
-            player:addQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.COLLECT_TARUT_CARDS)
+            player:addQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.COLLECT_TARUT_CARDS)
             player:addItem(card, 5)
             player:messageSpecial(ID.text.ITEM_OBTAINED, card)
         end
 
     elseif csid == 200 then
-        player:addTitle(xi.title.CARD_COLLECTOR)
-        player:addFame(xi.fameArea.JEUNO, 30)
+        player:addTitle(invaderXim.title.CARD_COLLECTOR)
+        player:addFame(invaderXim.fameArea.JEUNO, 30)
         player:tradeComplete()
-        player:completeQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.COLLECT_TARUT_CARDS)
+        player:completeQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.COLLECT_TARUT_CARDS)
 
     elseif csid == 199 and option == 0 then
         player:incrementCharVar('RubbishDay_prog', 1)
         player:setCharVar('RubbishDay_day', VanadielDayOfTheYear()) -- new vanadiel day
 
     elseif csid == 198 and option == 0 then
-        player:addQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.RUBBISH_DAY)
-        npcUtil.giveKeyItem(player, xi.ki.MAGIC_TRASH)
+        player:addQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.RUBBISH_DAY)
+        npcUtil.giveKeyItem(player, invaderXim.ki.MAGIC_TRASH)
         player:setCharVar('RubbishDay_prog', 0)
         player:setCharVar('RubbishDay_day', VanadielDayOfTheYear())
 
@@ -143,18 +143,18 @@ entity.onEventFinish = function(player, csid, option, npc)
         option == 0
     then -- ALL_IN_THE_CARDS started, repeated, or additional cards given
         local rand = math.random(1, 4)
-        local card = xi.item.TARUT_CARD_THE_FOOL
+        local card = invaderXim.item.TARUT_CARD_THE_FOOL
 
         if rand == 1 then
-            card = xi.item.TARUT_CARD_DEATH
+            card = invaderXim.item.TARUT_CARD_DEATH
         elseif rand == 2 then
-            card = xi.item.TARUT_CARD_THE_HERMIT
+            card = invaderXim.item.TARUT_CARD_THE_HERMIT
         elseif rand == 3 then
-            card = xi.item.TARUT_CARD_THE_KING
+            card = invaderXim.item.TARUT_CARD_THE_KING
         end
 
         if npcUtil.giveItem(player, { { card, 5 } }) then
-            player:addQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.ALL_IN_THE_CARDS)
+            player:addQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.ALL_IN_THE_CARDS)
             player:setCharVar('AllInTheCards_date', getMidnight())
             player:setLocalVar('Cardstemp', 1)
         end
@@ -164,9 +164,9 @@ entity.onEventFinish = function(player, csid, option, npc)
 
     elseif csid == 10114 then
         if
-            npcUtil.completeQuest(player, xi.questLog.JEUNO, xi.quest.id.jeuno.ALL_IN_THE_CARDS, {
+            npcUtil.completeQuest(player, invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.ALL_IN_THE_CARDS, {
                 gil = 600,
-                title = xi.title.CARD_COLLECTOR,
+                title = invaderXim.title.CARD_COLLECTOR,
                 var = { 'AllInTheCards_date' }
             })
         then
@@ -174,9 +174,9 @@ entity.onEventFinish = function(player, csid, option, npc)
         end
 
     elseif csid == 197 then
-        npcUtil.completeQuest(player, xi.questLog.JEUNO, xi.quest.id.jeuno.RUBBISH_DAY, {
+        npcUtil.completeQuest(player, invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.RUBBISH_DAY, {
             gil = 6000,
-            item = xi.item.CHAIN_CHOKER,
+            item = invaderXim.item.CHAIN_CHOKER,
             var = { 'RubbishDayVar' }
         })
     end

@@ -9,11 +9,11 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    xi.mobskills.mobBuffMove(mob, xi.effect.AZURE_LORE, 1, 0, 45)
+    invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.AZURE_LORE, 1, 0, 45)
 
-    skill:setMsg(xi.msg.basic.USES)
+    skill:setMsg(invaderXim.msg.basic.USES)
 
-    return xi.effect.AZURE_LORE
+    return invaderXim.effect.AZURE_LORE
 end
 
 return mobskillObject

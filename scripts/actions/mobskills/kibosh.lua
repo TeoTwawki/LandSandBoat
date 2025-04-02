@@ -17,9 +17,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local power = 1
     local duration = 60
 
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.AMNESIA, power, 0, duration))
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.AMNESIA, power, 0, duration))
 
-    return xi.effect.AMNESIA
+    return invaderXim.effect.AMNESIA
 end
 
 return mobskillObject

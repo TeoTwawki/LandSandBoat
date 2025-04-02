@@ -9,28 +9,28 @@
 -- Tombstone_Upper : !pos 1 0.1 -101 190
 -- Well : !pos -129 -6 92 230
 -----------------------------------
-local sandoriaID = zones[xi.zone.SOUTHERN_SAN_DORIA]
-local krtID      = zones[xi.zone.KING_RANPERRES_TOMB]
+local sandoriaID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
+local krtID      = zones[invaderXim.zone.KING_RANPERRES_TOMB]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.GRAVE_CONCERNS)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.GRAVE_CONCERNS)
 
 quest.reward =
 {
-    fameArea = xi.fameArea.SANDORIA,
+    fameArea = invaderXim.fameArea.SANDORIA,
     gil      = 560,
-    title    = xi.title.ROYAL_GRAVE_KEEPER,
+    title    = invaderXim.title.ROYAL_GRAVE_KEEPER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.SANDORIA) >= 1
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.SANDORIA) >= 1
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Andecia'] = function(player, npc)
                 local introduction = quest:getVar(player, 'Introduction')
@@ -50,7 +50,7 @@ quest.sections =
 
                 [541] = function(player, csid, option, npc)
                     if option == 0 then
-                        if npcUtil.giveItem(player, xi.item.SKIN_OF_WELL_WATER) then
+                        if npcUtil.giveItem(player, invaderXim.item.SKIN_OF_WELL_WATER) then
                             quest:begin(player)
                         end
                     end
@@ -61,16 +61,16 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Andecia'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.TOMB_GUARDS_WATERSKIN) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.TOMB_GUARDS_WATERSKIN) and
                         quest:getVar(player, 'OfferingWaterOK') == 1
                     then
                         local droppedWaterskin = quest:getVar(player, 'DroppedWaterskin')
@@ -87,7 +87,7 @@ quest.sections =
                     local offeringOK = quest:getVar(player, 'OfferingWaterOK')
 
                     if offeringOK == 0 then
-                        if player:hasItem(xi.item.SKIN_OF_WELL_WATER) then
+                        if player:hasItem(invaderXim.item.SKIN_OF_WELL_WATER) then
                             return quest:message(sandoriaID.text.TO_GET_TO_KING_RANPERRES) -- To get to King Ranperres... (regular reminder)
                         elseif quest:getVar(player, 'DroppedWaterskin') == 1 then
                             return quest:event(623) -- take skin from grave, fill and return (dropped item reminder)
@@ -108,10 +108,10 @@ quest.sections =
                     if quest:getVar(player, 'OfferingWaterOK') == 1 then
                         return quest:message(sandoriaID.text.DONT_NEED_MORE_WATER) -- You don't need more water
                     elseif
-                        not player:hasItem(xi.item.SKIN_OF_WELL_WATER) and
-                        npcUtil.tradeHasExactly(trade, xi.item.TOMB_GUARDS_WATERSKIN)
+                        not player:hasItem(invaderXim.item.SKIN_OF_WELL_WATER) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.TOMB_GUARDS_WATERSKIN)
                     then
-                        if npcUtil.giveItem(player, xi.item.SKIN_OF_WELL_WATER) then
+                        if npcUtil.giveItem(player, invaderXim.item.SKIN_OF_WELL_WATER) then
                             player:tradeComplete()
                         end
                     end
@@ -138,7 +138,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.KING_RANPERRES_TOMB] =
+        [invaderXim.zone.KING_RANPERRES_TOMB] =
         {
 
             ['Tombstone_Upper'] =
@@ -146,9 +146,9 @@ quest.sections =
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'OfferingWaterOK') == 0 and
-                        trade:hasItemQty(xi.item.SKIN_OF_WELL_WATER, 1)
+                        trade:hasItemQty(invaderXim.item.SKIN_OF_WELL_WATER, 1)
                     then
-                        if npcUtil.giveItem(player, xi.item.TOMB_GUARDS_WATERSKIN) then
+                        if npcUtil.giveItem(player, invaderXim.item.TOMB_GUARDS_WATERSKIN) then
                             player:tradeComplete()
                             quest:setVar(player, 'OfferingWaterOK', 1)
 
@@ -161,14 +161,14 @@ quest.sections =
                     local offeringOK = quest:getVar(player, 'OfferingWaterOK')
 
                     if
-                        player:hasItem(xi.item.SKIN_OF_WELL_WATER) and
+                        player:hasItem(invaderXim.item.SKIN_OF_WELL_WATER) and
                         offeringOK == 0 and
                         quest:getVar(player, 'DroppedWaterskin') == 0
                     then
                         return quest:progressEvent(2) -- A waterskin is lying here
                     elseif
-                        not player:hasItem(xi.item.SKIN_OF_WELL_WATER) and
-                        not player:hasItem(xi.item.TOMB_GUARDS_WATERSKIN) and
+                        not player:hasItem(invaderXim.item.SKIN_OF_WELL_WATER) and
+                        not player:hasItem(invaderXim.item.TOMB_GUARDS_WATERSKIN) and
                         offeringOK == 0
                     then
                         quest:setVar(player, 'DroppedWaterskin', 1)
@@ -183,9 +183,9 @@ quest.sections =
                 [2] = function(player, csid, option, npc)
                     if
                         quest:getVar(player, 'DroppedWaterskin') == 1 and
-                        not player:hasItem(xi.item.SKIN_OF_WELL_WATER)
+                        not player:hasItem(invaderXim.item.SKIN_OF_WELL_WATER)
                     then
-                        npcUtil.giveItem(player, xi.item.TOMB_GUARDS_WATERSKIN)
+                        npcUtil.giveItem(player, invaderXim.item.TOMB_GUARDS_WATERSKIN)
                     end
                 end,
             },
@@ -194,10 +194,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Andecia'] =
             {

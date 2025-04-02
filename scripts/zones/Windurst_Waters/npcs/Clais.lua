@@ -4,17 +4,17 @@
 -- Involved In Quest: Hat in Hand
 -- !pos -31 -3 11 238
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WATERS]
+local ID = zones[invaderXim.zone.WINDURST_WATERS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
     if
-        player:hasKeyItem(xi.ki.NEW_MODEL_HAT) and
+        player:hasKeyItem(invaderXim.ki.NEW_MODEL_HAT) and
         not utils.mask.getBit(player:getCharVar('QuestHatInHand_var'), 3)
     then
-        player:messageSpecial(ID.text.YOU_SHOW_OFF_THE, 0, xi.ki.NEW_MODEL_HAT)
+        player:messageSpecial(ID.text.YOU_SHOW_OFF_THE, 0, invaderXim.ki.NEW_MODEL_HAT)
         player:startEvent(57)
     else
         player:startEvent(602) -- Standard Conversation

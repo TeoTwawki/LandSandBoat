@@ -12,14 +12,14 @@ mixins =
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.GIL_MIN, 20000)
-    mob:setMobMod(xi.mobMod.GIL_MAX, 20000)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
+    mob:setMobMod(invaderXim.mobMod.GIL_MIN, 20000)
+    mob:setMobMod(invaderXim.mobMod.GIL_MAX, 20000)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMod(xi.mod.EVA, 400)
+    mob:setMod(invaderXim.mod.EVA, 400)
 end
 
 entity.onMobFight = function(mob, target)
@@ -38,7 +38,7 @@ entity.onMobFight = function(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.ROC_STAR)
+    player:addTitle(invaderXim.title.ROC_STAR)
 end
 
 entity.onMobDespawn = function(mob)

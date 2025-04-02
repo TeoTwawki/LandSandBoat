@@ -3,7 +3,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for `mob_spawn_points`
 -- ----------------------------
-DROP TABLE IF EXISTS `mob_spawn_points`;
+DROP TABLE IF IXIMSTS `mob_spawn_points`;
 CREATE TABLE `mob_spawn_points` (
   `mobid` int(10) NOT NULL,
   `mobname` varchar(24) DEFAULT NULL,

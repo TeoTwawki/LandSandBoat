@@ -20,7 +20,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local angle = math.random() * math.pi
     local pos = NearLocation(t, 1.5, angle)
     mob:teleport(pos, battletarget)
-    skill:setMsg(xi.msg.basic.NONE)
+    skill:setMsg(invaderXim.msg.basic.NONE)
     return 0
 end
 

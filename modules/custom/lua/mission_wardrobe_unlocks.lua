@@ -9,47 +9,47 @@ local m = Module:new('mission_wardrobe_unlocks')
 
 local unlocks =
 {
-    [xi.mission.log_id.ZILART] =
+    [invaderXim.mission.log_id.ZILART] =
     {
-        [xi.mission.id.zilart.ARK_ANGELS] = { xi.inv.WARDROBE3, 5 },
+        [invaderXim.mission.id.zilart.ARK_ANGELS] = { invaderXim.inv.WARDROBE3, 5 },
     },
 }
 
 local bagNames =
 {
-    [xi.inv.INVENTORY]  = 'Inventory',
-    [xi.inv.MOGSAFE]    = 'Mog Safe',
-    [xi.inv.STORAGE]    = 'Storage',
-    [xi.inv.TEMPITEMS]  = 'Temp. Items',
-    [xi.inv.MOGLOCKER]  = 'Mog Locker',
-    [xi.inv.MOGSATCHEL] = 'Mog Satchel',
-    [xi.inv.MOGSACK]    = 'Mog Sack',
-    [xi.inv.MOGCASE]    = 'Mog Case',
-    [xi.inv.WARDROBE]   = 'Mog Wardrobe 1',
-    [xi.inv.MOGSAFE2]   = 'Mog Safe 2',
-    [xi.inv.WARDROBE2]  = 'Mog Wardrobe 2',
-    [xi.inv.WARDROBE3]  = 'Mog Wardrobe 3',
-    [xi.inv.WARDROBE4]  = 'Mog Wardrobe 4',
-    [xi.inv.WARDROBE5]  = 'Mog Wardrobe 5',
-    [xi.inv.WARDROBE6]  = 'Mog Wardrobe 6',
-    [xi.inv.WARDROBE7]  = 'Mog Wardrobe 7',
-    [xi.inv.WARDROBE8]  = 'Mog Wardrobe 8',
-    [xi.inv.RECYCLEBIN] = 'Recycle Bin',
+    [invaderXim.inv.INVENTORY]  = 'Inventory',
+    [invaderXim.inv.MOGSAFE]    = 'Mog Safe',
+    [invaderXim.inv.STORAGE]    = 'Storage',
+    [invaderXim.inv.TEMPITEMS]  = 'Temp. Items',
+    [invaderXim.inv.MOGLOCKER]  = 'Mog Locker',
+    [invaderXim.inv.MOGSATCHEL] = 'Mog Satchel',
+    [invaderXim.inv.MOGSACK]    = 'Mog Sack',
+    [invaderXim.inv.MOGCASE]    = 'Mog Case',
+    [invaderXim.inv.WARDROBE]   = 'Mog Wardrobe 1',
+    [invaderXim.inv.MOGSAFE2]   = 'Mog Safe 2',
+    [invaderXim.inv.WARDROBE2]  = 'Mog Wardrobe 2',
+    [invaderXim.inv.WARDROBE3]  = 'Mog Wardrobe 3',
+    [invaderXim.inv.WARDROBE4]  = 'Mog Wardrobe 4',
+    [invaderXim.inv.WARDROBE5]  = 'Mog Wardrobe 5',
+    [invaderXim.inv.WARDROBE6]  = 'Mog Wardrobe 6',
+    [invaderXim.inv.WARDROBE7]  = 'Mog Wardrobe 7',
+    [invaderXim.inv.WARDROBE8]  = 'Mog Wardrobe 8',
+    [invaderXim.inv.RECYCLEBIN] = 'Recycle Bin',
 }
 
-m:addOverride('xi.player.charCreate', function(player)
+m:addOverride('invaderXim.player.charCreate', function(player)
     super(player)
 
     -- NOTE: These will all be clamped between 0-80,
     --     : so using -80 is fine
-    player:changeContainerSize(xi.inv.WARDROBE,  -80)
-    player:changeContainerSize(xi.inv.WARDROBE2, -80)
-    player:changeContainerSize(xi.inv.WARDROBE3, -80)
-    player:changeContainerSize(xi.inv.WARDROBE4, -80)
-    player:changeContainerSize(xi.inv.WARDROBE5, -80)
-    player:changeContainerSize(xi.inv.WARDROBE6, -80)
-    player:changeContainerSize(xi.inv.WARDROBE7, -80)
-    player:changeContainerSize(xi.inv.WARDROBE8, -80)
+    player:changeContainerSize(invaderXim.inv.WARDROBE,  -80)
+    player:changeContainerSize(invaderXim.inv.WARDROBE2, -80)
+    player:changeContainerSize(invaderXim.inv.WARDROBE3, -80)
+    player:changeContainerSize(invaderXim.inv.WARDROBE4, -80)
+    player:changeContainerSize(invaderXim.inv.WARDROBE5, -80)
+    player:changeContainerSize(invaderXim.inv.WARDROBE6, -80)
+    player:changeContainerSize(invaderXim.inv.WARDROBE7, -80)
+    player:changeContainerSize(invaderXim.inv.WARDROBE8, -80)
 end)
 
 m:addOverride('npcUtil.completeMission', function(player, logId, missionId, params)
@@ -69,7 +69,7 @@ m:addOverride('npcUtil.completeMission', function(player, logId, missionId, para
             '%s capacity has been increased by %i from %i to %i',
             bagName, bagIncrease, oldSize, newSize)
 
-        player:printToPlayer(str, xi.msg.channel.SYSTEM_3, '')
+        player:printToPlayer(str, invaderXim.msg.channel.SYSTEM_3, '')
     end
 
     return result

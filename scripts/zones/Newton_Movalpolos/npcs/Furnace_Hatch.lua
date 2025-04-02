@@ -2,13 +2,13 @@
 -- Area: Newton Movalpolos
 --  NPC: Furnace_Hatch
 -----------------------------------
-local ID = zones[xi.zone.NEWTON_MOVALPOLOS]
+local ID = zones[invaderXim.zone.NEWTON_MOVALPOLOS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    if npcUtil.tradeHas(trade, xi.item.JAR_OF_FIRESAND) then
+    if npcUtil.tradeHas(trade, invaderXim.item.JAR_OF_FIRESAND) then
         local offset = npc:getID() - ID.npc.FURNACE_HATCH_OFFSET
         player:confirmTrade()
         player:startEvent(21 + offset) -- THUD!
@@ -19,7 +19,7 @@ entity.onTrade = function(player, npc, trade)
             local door = GetNPCByID(i)
 
             if door then
-                door:setAnimation((door:getAnimation() == xi.anim.OPEN_DOOR) and xi.anim.CLOSE_DOOR or xi.anim.OPEN_DOOR)
+                door:setAnimation((door:getAnimation() == invaderXim.anim.OPEN_DOOR) and invaderXim.anim.CLOSE_DOOR or invaderXim.anim.OPEN_DOOR)
             end
         end
     else

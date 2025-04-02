@@ -11,10 +11,10 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    if  not target:hasStatusEffect(xi.effect.DEODORIZE) then
-        target:addStatusEffect(xi.effect.DEODORIZE, 1, 10, 600)
+    if  not target:hasStatusEffect(invaderXim.effect.DEODORIZE) then
+        target:addStatusEffect(invaderXim.effect.DEODORIZE, 1, 10, 600)
     else
-        target:messageBasic(xi.msg.basic.NO_EFFECT)
+        target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
     end
 end
 

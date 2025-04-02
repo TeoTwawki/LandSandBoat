@@ -8,13 +8,13 @@ local entity = {}
 local abilities = { 1259, 1260, 1269, 1270 }
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.EXP_BONUS, -100)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
-    mob:setMobMod(xi.mobMod.GIL_MAX, -1)
+    mob:setMobMod(invaderXim.mobMod.EXP_BONUS, -100)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
+    mob:setMobMod(invaderXim.mobMod.GIL_MAX, -1)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.SKILL_LIST, 728)
+    mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 728)
 end
 
 entity.onMobWeaponSkillPrepare = function(mob, target)
@@ -60,19 +60,19 @@ entity.onMobFight = function(mob, target)
     local hpp = mob:getHPP()
     if stage == 0 and hpp < 70 then
         mob:setLocalVar('stage', 1)
-        mob:setMobMod(xi.mobMod.SKILL_LIST, 1190)
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 1190)
     elseif stage == 1 and hpp < 40 then
         mob:setLocalVar('stage', 2)
-        mob:setMobMod(xi.mobMod.SKILL_LIST, 1191)
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 1191)
     elseif stage == 2 and hpp < 20 then
         mob:setLocalVar('stage', 3)
-        mob:setMobMod(xi.mobMod.SKILL_LIST, 1192)
-        mob:setMod(xi.mod.REGAIN, 100)
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 1192)
+        mob:setMod(invaderXim.mod.REGAIN, 100)
     end
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.PARALYZE, { duration = 60 })
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.PARALYZE, { duration = 60 })
 end
 
 entity.onMobDeath = function(mob, player, optParams)

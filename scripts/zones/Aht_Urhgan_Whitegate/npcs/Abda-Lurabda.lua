@@ -2,13 +2,13 @@
 -- Area: Aht Urhgan Whitegate
 --  NPC: Abda Lurabda
 -----------------------------------
-local ID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local ID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if player:getMainJob() == xi.job.PUP then
+    if player:getMainJob() == invaderXim.job.PUP then
         player:startEvent(648, 0, 9800, player:getGil())
     else
         player:startEvent(257)
@@ -20,7 +20,7 @@ entity.onEventFinish = function(player, csid, option, npc)
         player:delGil(9800)
         local page = bit.band(option, 0xF)
         local val = bit.rshift(bit.band(option, 0xFFFFF0), 4)
-        player:setPetName(xi.petType.AUTOMATON, 86 + val + page * 32)
+        player:setPetName(invaderXim.petType.AUTOMATON, 86 + val + page * 32)
         player:messageSpecial(ID.text.AUTOMATON_RENAME)
     end
 end

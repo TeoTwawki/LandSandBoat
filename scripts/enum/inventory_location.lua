@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.inventoryLocation
-xi.inventoryLocation =
+---@enum invaderXim.inventoryLocation
+invaderXim.inventoryLocation =
 {
     INVENTORY        = 0,
     MOGSAFE          = 1,
@@ -27,5 +27,5 @@ xi.inventoryLocation =
     MAX_CONTAINER_ID = 18,
 }
 
----@alias xi.inv xi.inventoryLocation
-xi.inv = xi.inventoryLocation
+---@alias invaderXim.inv invaderXim.inventoryLocation
+invaderXim.inv = invaderXim.inventoryLocation

@@ -18,20 +18,20 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local basedmg = 2088
 
     if
-        mob:getWeather() == xi.weather.AURORAS or
-        mob:getWeather() == xi.weather.STELLAR_GLARE
+        mob:getWeather() == invaderXim.weather.AURORAS or
+        mob:getWeather() == invaderXim.weather.STELLAR_GLARE
     then
         basedmg = basedmg + 520
     end
 
-    if VanadielDayElement() == xi.element.LIGHT then
+    if VanadielDayElement() == invaderXim.element.LIGHT then
         basedmg = basedmg + 208
     end
 
-    local damage = basedmg / (1 + (target:getMod(xi.mod.MDEF) / 100))
-    local dmg = xi.mobskills.mobFinalAdjustments(damage, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.LIGHT, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
+    local damage = basedmg / (1 + (target:getMod(invaderXim.mod.MDEF) / 100))
+    local dmg = invaderXim.mobskills.mobFinalAdjustments(damage, mob, skill, target, invaderXim.attackType.MAGICAL, invaderXim.damageType.LIGHT, invaderXim.mobskills.shadowBehavior.IGNORE_SHADOWS)
 
-    target:takeDamage(dmg, mob, xi.attackType.MAGICAL, xi.damageType.LIGHT)
+    target:takeDamage(dmg, mob, invaderXim.attackType.MAGICAL, invaderXim.damageType.LIGHT)
     mob:resetEnmity(target)
 
     return dmg

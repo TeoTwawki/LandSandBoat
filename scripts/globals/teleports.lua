@@ -4,7 +4,7 @@
 require('scripts/globals/utils')
 
 xi = xi or {}
-xi.teleport = xi.teleport or {}
+invaderXim.teleport = invaderXim.teleport or {}
 
 -----------------------------------
 -- TELEPORT IDS
@@ -36,9 +36,9 @@ local ids =
     MAAT                  = 23,
     OUTPOST               = 24,
     LEADER                = 25,
-    EXITPROMHOLLA         = 26,
-    EXITPROMDEM           = 27,
-    EXITPROMMEA           = 28,
+    IXIMTPROMHOLLA         = 26,
+    IXIMTPROMDEM           = 27,
+    IXIMTPROMMEA           = 28,
     LUFAISE               = 29,
     CHOCO_WINDURST        = 30,
     CHOCO_SANDORIA        = 31,
@@ -58,7 +58,7 @@ local ids =
     CLOISTER_OF_STORMS    = 45,
     CLOISTER_OF_TIDES     = 46,
     CLOISTER_OF_TREMORS   = 47,
-    GHELSBA_HUT           = 48,
+    GHEIXIMA_HUT           = 48,
     WAJAOM_LEYPOINT       = 49,
     VALKURM_VORTEX        = 50,
     QUFIM_VORTEX          = 51,
@@ -95,13 +95,13 @@ local ids =
     BASTOK_MINES_GLYPH    = 83,
     WINDY_WOODS_GLYPH     = 84,
 }
-xi.teleport.id = ids
+invaderXim.teleport.id = ids
 
 -----------------------------------
 -- TELEPORT TO SINGLE DESTINATION
 -----------------------------------
 
-xi.teleport.destination =
+invaderXim.teleport.destination =
 {
     [ids.DEM]                   = {  220.000,   19.104,  300.000,   0, 108 }, -- (R)
     [ids.HOLLA]                 = {  420.000,   19.104,   20.000,   0, 102 }, -- (R)
@@ -124,9 +124,9 @@ xi.teleport.destination =
     [ids.S_REM]                 = {  580.000,    0.000,  500.000, 192,  72 }, -- (R)
     [ids.Z_REM]                 = { -580.000,    0.000, -433.000,  64,  72 },
     [ids.MAAT]                  = {   11.000,    3.000,  117.000,   0, 243 },
-    [ids.EXITPROMMEA]           = {  179.000,   35.000,  256.000,  63, 117 },
-    [ids.EXITPROMHOLLA]         = {  337.000,   19.000,  -60.000, 125, 102 },
-    [ids.EXITPROMDEM]           = {  136.000,   19.000,  220.000, 130, 108 },
+    [ids.IXIMTPROMMEA]           = {  179.000,   35.000,  256.000,  63, 117 },
+    [ids.IXIMTPROMHOLLA]         = {  337.000,   19.000,  -60.000, 125, 102 },
+    [ids.IXIMTPROMDEM]           = {  136.000,   19.000,  220.000, 130, 108 },
     [ids.LUFAISE]               = {  438.000,    0.000,  -18.000,  11,  24 },
     [ids.CHOCO_SANDORIA]        = {   -8.557,    1.999,  -80.093,  64, 230 }, -- (R)
     [ids.CHOCO_BASTOK]          = {   40.164,    0.000,  -83.578,  64, 234 }, -- (R)
@@ -147,7 +147,7 @@ xi.teleport.destination =
     [ids.CLOISTER_OF_STORMS]    = {  540.853,  -13.329,  511.298,  82, 202 }, -- (R)
     [ids.CLOISTER_OF_TIDES]     = {  570.294,   36.757,  546.895, 167, 211 }, -- (R)
     [ids.CLOISTER_OF_TREMORS]   = { -540.269,    1.396, -509.800, 192, 209 }, -- (R)
-    [ids.GHELSBA_HUT]           = { -156.000,  -10.000,   80.000, 119, 140 },
+    [ids.GHEIXIMA_HUT]           = { -156.000,  -10.000,   80.000, 119, 140 },
     [ids.WAJAOM_LEYPOINT]       = { -200.116,  -10.000,   79.879, 213,  51 }, -- (R)
     [ids.VALKURM_VORTEX]        = {  420.062,    0.000, -199.904,  87, 103 }, -- (R)
     [ids.QUFIM_VORTEX]          = { -436.000,  -13.499,  340.117, 107, 126 }, -- (R)
@@ -181,7 +181,7 @@ xi.teleport.destination =
     [ids.WINDY_WOODS_GLYPH]     = {  108.726,   -5.000,  -43.588,   0, 241 }, -- Windurst Woods Gate
 }
 
-xi.teleport.type =
+invaderXim.teleport.type =
 {
     OUTPOST_SANDORIA   = 0,
     OUTPOST_BASTOK     = 1,
@@ -198,7 +198,7 @@ xi.teleport.type =
     ESCHAN_PORTAL      = 12,
 }
 
-xi.teleport.runic_portal =
+invaderXim.teleport.runic_portal =
 {
     AZOUPH  = 1,
     DVUCCA  = 2,
@@ -208,8 +208,8 @@ xi.teleport.runic_portal =
     NYZUL   = 6,
 }
 
-xi.teleport.to = function(player, destination)
-    local dest = xi.teleport.destination[destination]
+invaderXim.teleport.to = function(player, destination)
+    local dest = invaderXim.teleport.destination[destination]
     if dest then
         player:setPos(unpack(dest))
     end
@@ -219,7 +219,7 @@ end
 -- TELEPORT TO PARTY LEADER
 -----------------------------------
 
-xi.teleport.toLeader = function(player)
+invaderXim.teleport.toLeader = function(player)
     local leader = player:getPartyLeader()
     if leader ~= nil and not leader:isInMogHouse() then
         player:gotoPlayer(leader:getName())
@@ -254,7 +254,7 @@ local campaignDestinations =
     [20] = {  294.350, -27.500,   19.947,   0, 175 }, -- (R) The Eldieme Necropolis [S]
 }
 
-xi.teleport.toCampaign = function(player, option)
+invaderXim.teleport.toCampaign = function(player, option)
     local dest = campaignDestinations[option]
     if dest then
         player:setPos(unpack(dest))
@@ -278,27 +278,27 @@ end
 
 local outpostDestinations =
 {
-    [xi.region.RONFAURE]        = { -437.688, -20.255, -219.227, 124, 100 }, -- Ronfaure (R)
-    [xi.region.ZULKHEIM]        = {  148.231,  -7.975,   93.479, 154, 103 }, -- Zulkheim (R)
-    [xi.region.NORVALLEN]       = {   62.030,   0.463,   -2.025,  67, 104 }, -- Norvallen (R)
-    [xi.region.GUSTABERG]       = { -580.161,  39.578,   62.680,  89, 106 }, -- Gustaberg (R)
-    [xi.region.DERFLAND]        = {  465.820,  23.625,  423.164,  29, 109 }, -- Derfland (R)
-    [xi.region.SARUTABARUTA]    = {  -17.921, -13.335,  318.156, 254, 115 }, -- Sarutabaruta (R)
-    [xi.region.KOLSHUSHU]       = { -480.237, -30.943,   58.079,  62, 118 }, -- Kolshushu (R)
-    [xi.region.ARAGONEU]        = { -297.047,  16.988,  418.026, 225, 119 }, -- Aragoneu (R)
-    [xi.region.FAUREGANDI]      = {  -18.690, -60.048, -109.243, 100, 111 }, -- Fauregandi (R)
-    [xi.region.VALDEAUNIA]      = {  211.210, -24.016, -207.338, 160, 112 }, -- Valdeaunia (R)
-    [xi.region.QUFIMISLAND]     = { -243.049, -19.983,  306.712,  71, 126 }, -- Qufim Island (R)
-    [xi.region.LITELOR]         = {  -37.669,   0.419, -141.216,  69, 121 }, -- Li'Telor (R)
-    [xi.region.KUZOTZ]          = { -249.983,   7.965, -252.976, 122, 114 }, -- Kuzotz (R)
-    [xi.region.VOLLBOW]         = { -176.360,   7.624,  -63.580, 122, 113 }, -- Vollbow (R)
-    [xi.region.ELSHIMOLOWLANDS] = { -240.860,  -0.031, -388.434,  64, 123 }, -- Elshimo Lowlands (R)
-    [xi.region.ELSHIMOUPLANDS]  = {  207.821,  -0.128,  -86.623, 159, 124 }, -- Elshimo Uplands (R)
-    [xi.region.TULIA]           = {    4.000, -54.000, -600.000, 192, 130 }, -- Tu'Lia (can't acquire on retail, but exists in NCP event menu)
-    [xi.region.TAVNAZIANARCH]   = { -535.861,  -7.149,  -53.628, 122,  24 }, -- Tavnazia (R)
+    [invaderXim.region.RONFAURE]        = { -437.688, -20.255, -219.227, 124, 100 }, -- Ronfaure (R)
+    [invaderXim.region.ZULKHEIM]        = {  148.231,  -7.975,   93.479, 154, 103 }, -- Zulkheim (R)
+    [invaderXim.region.NORVALLEN]       = {   62.030,   0.463,   -2.025,  67, 104 }, -- Norvallen (R)
+    [invaderXim.region.GUSTABERG]       = { -580.161,  39.578,   62.680,  89, 106 }, -- Gustaberg (R)
+    [invaderXim.region.DERFLAND]        = {  465.820,  23.625,  423.164,  29, 109 }, -- Derfland (R)
+    [invaderXim.region.SARUTABARUTA]    = {  -17.921, -13.335,  318.156, 254, 115 }, -- Sarutabaruta (R)
+    [invaderXim.region.KOLSHUSHU]       = { -480.237, -30.943,   58.079,  62, 118 }, -- Kolshushu (R)
+    [invaderXim.region.ARAGONEU]        = { -297.047,  16.988,  418.026, 225, 119 }, -- Aragoneu (R)
+    [invaderXim.region.FAUREGANDI]      = {  -18.690, -60.048, -109.243, 100, 111 }, -- Fauregandi (R)
+    [invaderXim.region.VALDEAUNIA]      = {  211.210, -24.016, -207.338, 160, 112 }, -- Valdeaunia (R)
+    [invaderXim.region.QUFIMISLAND]     = { -243.049, -19.983,  306.712,  71, 126 }, -- Qufim Island (R)
+    [invaderXim.region.LITELOR]         = {  -37.669,   0.419, -141.216,  69, 121 }, -- Li'Telor (R)
+    [invaderXim.region.KUZOTZ]          = { -249.983,   7.965, -252.976, 122, 114 }, -- Kuzotz (R)
+    [invaderXim.region.VOLLBOW]         = { -176.360,   7.624,  -63.580, 122, 113 }, -- Vollbow (R)
+    [invaderXim.region.ELSHIMOLOWLANDS] = { -240.860,  -0.031, -388.434,  64, 123 }, -- Elshimo Lowlands (R)
+    [invaderXim.region.ELSHIMOUPLANDS]  = {  207.821,  -0.128,  -86.623, 159, 124 }, -- Elshimo Uplands (R)
+    [invaderXim.region.TULIA]           = {    4.000, -54.000, -600.000, 192, 130 }, -- Tu'Lia (can't acquire on retail, but exists in NCP event menu)
+    [invaderXim.region.TAVNAZIANARCH]   = { -535.861,  -7.149,  -53.628, 122,  24 }, -- Tavnazia (R)
 }
 
-xi.teleport.toOutpost = function(player, region)
+invaderXim.teleport.toOutpost = function(player, region)
     local dest = outpostDestinations[region]
     player:setPos(unpack(dest))
 end
@@ -307,11 +307,11 @@ end
 -- TELEPORT TO HOME NATION
 -----------------------------------
 
-xi.teleport.toHomeNation = function(player)
+invaderXim.teleport.toHomeNation = function(player)
     local pNation = player:getNation()
-    if pNation == xi.nation.BASTOK then
+    if pNation == invaderXim.nation.BASTOK then
         player:setPos(89, 0 , -66, 0, 234)
-    elseif pNation == xi.nation.SANDORIA then
+    elseif pNation == invaderXim.nation.SANDORIA then
         player:setPos(49, -1 , 29, 164, 231)
     else
         player:setPos(193, -12 , 220, 64, 240)
@@ -322,17 +322,17 @@ end
 -- TELEPORT TO ALLIED NATION
 -----------------------------------
 
-xi.teleport.toAlliedNation = function(player)
+invaderXim.teleport.toAlliedNation = function(player)
     local allegiance = player:getCampaignAllegiance()
-    local sandoriaPos = xi.teleport.destination[ids.SOUTHERN_SAN_DORIA_S]
-    local bastokPos = xi.teleport.destination[ids.BASTOK_MARKETS_S]
-    local windurstPos = xi.teleport.destination[ids.WINDURST_WATERS_S]
+    local sandoriaPos = invaderXim.teleport.destination[ids.SOUTHERN_SAN_DORIA_S]
+    local bastokPos = invaderXim.teleport.destination[ids.BASTOK_MARKETS_S]
+    local windurstPos = invaderXim.teleport.destination[ids.WINDURST_WATERS_S]
 
-    if allegiance == xi.alliedNation.SANDORIA then
+    if allegiance == invaderXim.alliedNation.SANDORIA then
         player:setPos(unpack(sandoriaPos))
-    elseif allegiance == xi.alliedNation.BASTOK then
+    elseif allegiance == invaderXim.alliedNation.BASTOK then
         player:setPos(unpack(bastokPos))
-    elseif allegiance == xi.alliedNation.WINDURST then
+    elseif allegiance == invaderXim.alliedNation.WINDURST then
         player:setPos(unpack(windurstPos))
     end
 end
@@ -341,7 +341,7 @@ end
 -- TELEPORT TO CHAMBER OF PASSAGE
 -----------------------------------
 
-xi.teleport.toChamberOfPassage = function(player)
+invaderXim.teleport.toChamberOfPassage = function(player)
     if math.random(1, 100) <= 50 then
         player:setPos(133.400, 1.485, 47.427, 96, 50) -- (R) Aht Urhgan Whitegate Chamber of Passage Left
     else
@@ -353,7 +353,7 @@ end
 -- TELEPORT TO EXPLORER MOOGLE
 -----------------------------------
 
-xi.teleport.toExplorerMoogle = function(player, zone)
+invaderXim.teleport.toExplorerMoogle = function(player, zone)
     if zone == 231 then
         player:setPos(39.4, -0.2, 25, 253, zone)       -- Northern_San_d'Oria
     elseif zone == 234 then
@@ -486,13 +486,13 @@ local escapeDestinations =
     [213] = {     447,    18,      191,  32, 118 }, -- Labyrinth of Onzozo to Buburimu Peninsula (K-6)
 }
 
-xi.teleport.escape = function(player)
+invaderXim.teleport.escape = function(player)
     local zone = player:getZoneID()
 
     if utils.hasKey(zone, escapeDestinations) then
         player:setPos(unpack(escapeDestinations[zone]))
     else
-        printf('WARNING: xi.teleport.escape received undefined escapeDestinations zone (%d)', zone)
+        printf('WARNING: invaderXim.teleport.escape received undefined escapeDestinations zone (%d)', zone)
     end
 end
 
@@ -500,66 +500,66 @@ end
 -- EXPLORER MOOGLE EVENTS
 -----------------------------------
 
-xi.teleport.explorerMoogleOnTrigger = function(player, event)
+invaderXim.teleport.explorerMoogleOnTrigger = function(player, event)
     local accept = 0
 
     if player:getGil() < 300 then
         accept = 1
     end
 
-    if player:getMainLvl() < xi.settings.main.EXPLORER_MOOGLE_LV then
+    if player:getMainLvl() < invaderXim.settings.main.EXPLORER_MOOGLE_LV then
         event = event + 1
     end
 
     player:startEvent(event, player:getZoneID(), 0, accept)
 end
 
-xi.teleport.explorerMoogleOnEventFinish = function(player, csid, option, event)
+invaderXim.teleport.explorerMoogleOnEventFinish = function(player, csid, option, event)
     local price = 300
 
     if csid == event then
         if option == 1 and player:delGil(price) then
-            xi.teleport.toExplorerMoogle(player, 231)
+            invaderXim.teleport.toExplorerMoogle(player, 231)
         elseif option == 2 and player:delGil(price) then
-            xi.teleport.toExplorerMoogle(player, 234)
+            invaderXim.teleport.toExplorerMoogle(player, 234)
         elseif option == 3 and player:delGil(price) then
-            xi.teleport.toExplorerMoogle(player, 240)
+            invaderXim.teleport.toExplorerMoogle(player, 240)
         elseif option == 4 and player:delGil(price) then
-            xi.teleport.toExplorerMoogle(player, 248)
+            invaderXim.teleport.toExplorerMoogle(player, 248)
         elseif option == 5 and player:delGil(price) then
-            xi.teleport.toExplorerMoogle(player, 249)
+            invaderXim.teleport.toExplorerMoogle(player, 249)
         end
     end
 end
 
-xi.teleport.tidalDestinations =
+invaderXim.teleport.tidalDestinations =
 {
-    [xi.zone.CHATEAU_DORAGUILLE]   = {   0,   3,   2,  64, xi.zone.RULUDE_GARDENS },
-    [xi.zone.NORTHERN_SAN_DORIA]   = {   0,   3,   2,  64, xi.zone.RULUDE_GARDENS },
-    [xi.zone.SOUTHERN_SAN_DORIA]   = {   0,   3,   2,  64, xi.zone.RULUDE_GARDENS },
-    [xi.zone.PORT_SAN_DORIA]       = {   0,   3,   2,  64, xi.zone.RULUDE_GARDENS },
-    [xi.zone.BASTOK_MARKETS]       = {   0,   3,   2,  64, xi.zone.RULUDE_GARDENS },
-    [xi.zone.BASTOK_MINES]         = {   0,   3,   2,  64, xi.zone.RULUDE_GARDENS },
-    [xi.zone.METALWORKS]           = {   0,   3,   2,  64, xi.zone.RULUDE_GARDENS },
-    [xi.zone.PORT_BASTOK]          = {   0,   3,   2,  64, xi.zone.RULUDE_GARDENS },
-    [xi.zone.PORT_WINDURST]        = {   0,   3,   2 , 64, xi.zone.RULUDE_GARDENS },
-    [xi.zone.WINDURST_WALLS]       = {   0,   3,   2,  64, xi.zone.RULUDE_GARDENS },
-    [xi.zone.WINDURST_WATERS]      = {   0,   3,   2,  64, xi.zone.RULUDE_GARDENS },
-    [xi.zone.WINDURST_WOODS]       = {   0,   3,   2,  64, xi.zone.RULUDE_GARDENS },
-    [xi.zone.KAZHAM]               = {   0,   3,   2,  64, xi.zone.RULUDE_GARDENS },
-    [xi.zone.LOWER_JEUNO]          = { -33,  -8, -71,  97, xi.zone.KAZHAM },
-    [xi.zone.PORT_JEUNO]           = { -33,  -8, -71,  97, xi.zone.KAZHAM },
-    [xi.zone.UPPER_JEUNO]          = { -33,  -8, -71,  97, xi.zone.KAZHAM },
-    [xi.zone.RULUDE_GARDENS]       = { -33,  -8, -71,  97, xi.zone.KAZHAM },
-    [xi.zone.MHAURA]               = {  18, -14,  79,  62, xi.zone.SELBINA },
-    [xi.zone.SELBINA]              = {   0,  -8,  59,  62, xi.zone.MHAURA },
-    [xi.zone.AHT_URHGAN_WHITEGATE] = {  12,  -6,  31,  63, xi.zone.NASHMAU },
-    [xi.zone.NASHMAU]              = { -73,   0,   0, 252, xi.zone.AHT_URHGAN_WHITEGATE },
+    [invaderXim.zone.CHATEAU_DORAGUILLE]   = {   0,   3,   2,  64, invaderXim.zone.RULUDE_GARDENS },
+    [invaderXim.zone.NORTHERN_SAN_DORIA]   = {   0,   3,   2,  64, invaderXim.zone.RULUDE_GARDENS },
+    [invaderXim.zone.SOUTHERN_SAN_DORIA]   = {   0,   3,   2,  64, invaderXim.zone.RULUDE_GARDENS },
+    [invaderXim.zone.PORT_SAN_DORIA]       = {   0,   3,   2,  64, invaderXim.zone.RULUDE_GARDENS },
+    [invaderXim.zone.BASTOK_MARKETS]       = {   0,   3,   2,  64, invaderXim.zone.RULUDE_GARDENS },
+    [invaderXim.zone.BASTOK_MINES]         = {   0,   3,   2,  64, invaderXim.zone.RULUDE_GARDENS },
+    [invaderXim.zone.METALWORKS]           = {   0,   3,   2,  64, invaderXim.zone.RULUDE_GARDENS },
+    [invaderXim.zone.PORT_BASTOK]          = {   0,   3,   2,  64, invaderXim.zone.RULUDE_GARDENS },
+    [invaderXim.zone.PORT_WINDURST]        = {   0,   3,   2 , 64, invaderXim.zone.RULUDE_GARDENS },
+    [invaderXim.zone.WINDURST_WALLS]       = {   0,   3,   2,  64, invaderXim.zone.RULUDE_GARDENS },
+    [invaderXim.zone.WINDURST_WATERS]      = {   0,   3,   2,  64, invaderXim.zone.RULUDE_GARDENS },
+    [invaderXim.zone.WINDURST_WOODS]       = {   0,   3,   2,  64, invaderXim.zone.RULUDE_GARDENS },
+    [invaderXim.zone.KAZHAM]               = {   0,   3,   2,  64, invaderXim.zone.RULUDE_GARDENS },
+    [invaderXim.zone.LOWER_JEUNO]          = { -33,  -8, -71,  97, invaderXim.zone.KAZHAM },
+    [invaderXim.zone.PORT_JEUNO]           = { -33,  -8, -71,  97, invaderXim.zone.KAZHAM },
+    [invaderXim.zone.UPPER_JEUNO]          = { -33,  -8, -71,  97, invaderXim.zone.KAZHAM },
+    [invaderXim.zone.RULUDE_GARDENS]       = { -33,  -8, -71,  97, invaderXim.zone.KAZHAM },
+    [invaderXim.zone.MHAURA]               = {  18, -14,  79,  62, invaderXim.zone.SELBINA },
+    [invaderXim.zone.SELBINA]              = {   0,  -8,  59,  62, invaderXim.zone.MHAURA },
+    [invaderXim.zone.AHT_URHGAN_WHITEGATE] = {  12,  -6,  31,  63, invaderXim.zone.NASHMAU },
+    [invaderXim.zone.NASHMAU]              = { -73,   0,   0, 252, invaderXim.zone.AHT_URHGAN_WHITEGATE },
 }
 
-xi.teleport.tidalTeleport = function(player)
+invaderXim.teleport.tidalTeleport = function(player)
     local zone = player:getZoneID()
-    local destination = xi.teleport.tidalDestinations[zone]
+    local destination = invaderXim.teleport.tidalDestinations[zone]
 
     if destination then
         player:setPos(unpack(destination))

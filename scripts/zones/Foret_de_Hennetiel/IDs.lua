@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.FORET_DE_HENNETIEL] =
+zones[invaderXim.zone.FORET_DE_HENNETIEL] =
 {
     text =
     {
@@ -41,4 +41,4 @@ zones[xi.zone.FORET_DE_HENNETIEL] =
     },
 }
 
-return zones[xi.zone.FORET_DE_HENNETIEL]
+return zones[invaderXim.zone.FORET_DE_HENNETIEL]

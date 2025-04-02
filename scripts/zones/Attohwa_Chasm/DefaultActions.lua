@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.ATTOHWA_CHASM]
+local ID = zones[invaderXim.zone.ATTOHWA_CHASM]
 
 return {
     ['Cradle_of_Rebirth'] = { messageSpecial = ID.text.NOTHING_OUT_OF_ORDINARY },

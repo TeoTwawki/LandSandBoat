@@ -24,7 +24,7 @@ entity.onMobFight = function(mob, target)
         if
             pet and
             pet:isSpawned() and
-            pet:getCurrentAction() == xi.act.ROAMING
+            pet:getCurrentAction() == invaderXim.act.ROAMING
         then
             pet:updateEnmity(target)
         end
@@ -54,7 +54,7 @@ entity.onMobMagicPrepare = function(mob, target, spellId)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.dynamis.megaBossOnDeath(mob, player, optParams)
+    invaderXim.dynamis.megaBossOnDeath(mob, player, optParams)
 end
 
 return entity

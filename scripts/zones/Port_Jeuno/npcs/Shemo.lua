@@ -18,7 +18,7 @@ local isTradeNum2 = 0
 entity.onTrade = function(player, npc, trade)
     local eventParams = { 353, 0, 0, 0, 0, 0 }
 
-    xi.seals.onTrade(player, npc, trade, eventParams)
+    invaderXim.seals.onTrade(player, npc, trade, eventParams)
 end
 
 entity.onTrigger = function(player, npc)

@@ -4,17 +4,17 @@
 -- Spawns Shaula
 -- !pos -71 0 408 218
 -----------------------------------
-local ID = zones[xi.zone.ABYSSEA_ALTEPA]
+local ID = zones[invaderXim.zone.ABYSSEA_ALTEPA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.abyssea.qmOnTrade(player, npc, trade, ID.mob.SHAULA, { xi.item.VIAL_OF_VADLEANY_FLUID, xi.item.HIGH_QUALITY_SCORPION_CLAW })
+    invaderXim.abyssea.qmOnTrade(player, npc, trade, ID.mob.SHAULA, { invaderXim.item.VIAL_OF_VADLEANY_FLUID, invaderXim.item.HIGH_QUALITY_SCORPION_CLAW })
 end
 
 entity.onTrigger = function(player, npc)
-    xi.abyssea.qmOnTrigger(player, npc, 0, 0, { xi.item.VIAL_OF_VADLEANY_FLUID, xi.item.HIGH_QUALITY_SCORPION_CLAW })
+    invaderXim.abyssea.qmOnTrigger(player, npc, 0, 0, { invaderXim.item.VIAL_OF_VADLEANY_FLUID, invaderXim.item.HIGH_QUALITY_SCORPION_CLAW })
 end
 
 return entity

@@ -2,12 +2,12 @@
 -- Beyond Infinity
 -- Horlais Peak Level Break
 -----------------------------------
-local horlaisID = zones[xi.zone.HORLAIS_PEAK]
+local horlaisID = zones[invaderXim.zone.HORLAIS_PEAK]
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId        = xi.zone.HORLAIS_PEAK,
-    battlefieldId = xi.battlefield.id.BEYOND_INFINITY_HORLAIS_PEAK,
+    zoneId        = invaderXim.zone.HORLAIS_PEAK,
+    battlefieldId = invaderXim.battlefield.id.BEYOND_INFINITY_HORLAIS_PEAK,
     canLoseExp    = false,
     allowTrusts   = true,
     maxPlayers    = 6,
@@ -17,19 +17,19 @@ local content = BattlefieldQuest:new({
     entryNpc      = 'BC_Entrance',
     exitNpc       = 'Burning_Circle',
 
-    questArea = xi.questLog.JEUNO,
-    quest     = xi.quest.id.jeuno.BEYOND_INFINITY,
+    questArea = invaderXim.questLog.JEUNO,
+    quest     = invaderXim.quest.id.jeuno.BEYOND_INFINITY,
 
     requiredKeyItems =
     {
-        xi.ki.SOUL_GEM_CLASP,
+        invaderXim.ki.SOUL_GEM_CLASP,
         onlyInitiator = true,
         message =
         {
             horlaisID.text.SOUL_GEM_REACTS,
             {
-                xi.ki.SOUL_GEM_CLASP,
-                xi.ki.SOUL_GEM,
+                invaderXim.ki.SOUL_GEM_CLASP,
+                invaderXim.ki.SOUL_GEM,
             }
         },
         deleteMessage = horlaisID.text.LOST_KEYITEM,
@@ -47,7 +47,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

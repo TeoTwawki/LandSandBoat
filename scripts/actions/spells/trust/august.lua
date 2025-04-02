@@ -5,19 +5,19 @@
 local spellObject = {}
 
 spellObject.onMagicCastingCheck = function(caster, target, spell)
-    return xi.trust.canCast(caster, spell)
+    return invaderXim.trust.canCast(caster, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    return xi.trust.spawn(caster, spell)
+    return invaderXim.trust.spawn(caster, spell)
 end
 
 spellObject.onMobSpawn = function(mob)
-    xi.trust.teamworkMessage(mob, {
-        [xi.magic.spell.ARCIELA]   = xi.trust.messageOffset.TEAMWORK_1,
-        [xi.magic.spell.TEODOR]    = xi.trust.messageOffset.TEAMWORK_2,
-        [xi.magic.spell.ROSULATIA] = xi.trust.messageOffset.TEAMWORK_3,
-        [xi.magic.spell.MORIMAR]   = xi.trust.messageOffset.TEAMWORK_4,
+    invaderXim.trust.teamworkMessage(mob, {
+        [invaderXim.magic.spell.ARCIELA]   = invaderXim.trust.messageOffset.TEAMWORK_1,
+        [invaderXim.magic.spell.TEODOR]    = invaderXim.trust.messageOffset.TEAMWORK_2,
+        [invaderXim.magic.spell.ROSULATIA] = invaderXim.trust.messageOffset.TEAMWORK_3,
+        [invaderXim.magic.spell.MORIMAR]   = invaderXim.trust.messageOffset.TEAMWORK_4,
     })
 
     mob:setMobSkillAttack(1197)
@@ -26,11 +26,11 @@ spellObject.onMobSpawn = function(mob)
 end
 
 spellObject.onMobDespawn = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.DESPAWN)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.DESPAWN)
 end
 
 spellObject.onMobDeath = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.DEATH)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.DEATH)
 end
 
 return spellObject

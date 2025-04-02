@@ -8,7 +8,7 @@ local entity = {}
 
 entity.onTrigger = function(player, npc)
     if
-        player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.SAY_IT_WITH_A_HANDBAG) == xi.questStatus.QUEST_ACCEPTED and
+        player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.SAY_IT_WITH_A_HANDBAG) == invaderXim.questStatus.QUEST_ACCEPTED and
         player:getCharVar('sayItWithAHandbagCS') == 0
     then
         player:startEvent(171)

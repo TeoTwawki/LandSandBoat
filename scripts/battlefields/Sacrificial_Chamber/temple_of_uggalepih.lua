@@ -2,12 +2,12 @@
 -- Temple of Uggalepih
 -- Sacrifical Chamber Mission Battlefield
 -----------------------------------
-local sacrificialChamberID = zones[xi.zone.SACRIFICIAL_CHAMBER]
+local sacrificialChamberID = zones[invaderXim.zone.SACRIFICIAL_CHAMBER]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId                = xi.zone.SACRIFICIAL_CHAMBER,
-    battlefieldId         = xi.battlefield.id.TEMPLE_OF_UGGALEPIH,
+    zoneId                = invaderXim.zone.SACRIFICIAL_CHAMBER,
+    battlefieldId         = invaderXim.battlefield.id.TEMPLE_OF_UGGALEPIH,
     canLoseExp            = false,
     isMission             = true,
     allowTrusts           = true,
@@ -17,9 +17,9 @@ local content = BattlefieldMission:new({
     index                 = 0,
     entryNpc              = '_4j0',
     exitNpcs              = { '_4j2', '_4j3', '_4j4' },
-    missionArea           = xi.mission.log_id.ZILART,
-    mission               = xi.mission.id.zilart.THE_TEMPLE_OF_UGGALEPIH,
-    missionStatusArea     = xi.mission.log_id.ZILART,
+    missionArea           = invaderXim.mission.log_id.ZILART,
+    mission               = invaderXim.mission.id.zilart.THE_TEMPLE_OF_UGGALEPIH,
+    missionStatusArea     = invaderXim.mission.log_id.ZILART,
     requiredMissionStatus = 0,
 })
 
@@ -48,7 +48,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 

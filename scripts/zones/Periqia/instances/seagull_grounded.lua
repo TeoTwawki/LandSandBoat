@@ -1,21 +1,21 @@
 -----------------------------------
 -- Assault: Seagull Grounded
 -----------------------------------
-local ID = zones[xi.zone.PERIQIA]
+local ID = zones[invaderXim.zone.PERIQIA]
 -----------------------------------
 local instanceObject = {}
 
 instanceObject.registryRequirements = function(player)
-    return player:hasKeyItem(xi.ki.PERIQIA_ASSAULT_ORDERS) and
-        player:getCurrentAssault() == xi.assault.mission.SEAGULL_GROUNDED and
+    return player:hasKeyItem(invaderXim.ki.PERIQIA_ASSAULT_ORDERS) and
+        player:getCurrentAssault() == invaderXim.assault.mission.SEAGULL_GROUNDED and
         player:getCharVar('assaultEntered') == 0 and
-        player:hasKeyItem(xi.ki.ASSAULT_ARMBAND) and
+        player:hasKeyItem(invaderXim.ki.ASSAULT_ARMBAND) and
         player:getMainLvl() > 50
 end
 
 instanceObject.entryRequirements = function(player)
-    return player:hasKeyItem(xi.ki.PERIQIA_ASSAULT_ORDERS) and
-        player:getCurrentAssault() == xi.assault.mission.SEAGULL_GROUNDED and
+    return player:hasKeyItem(invaderXim.ki.PERIQIA_ASSAULT_ORDERS) and
+        player:getCurrentAssault() == invaderXim.assault.mission.SEAGULL_GROUNDED and
         player:getCharVar('assaultEntered') == 0 and
         player:getMainLvl() > 50
 end
@@ -24,36 +24,36 @@ instanceObject.onInstanceCreated = function(instance)
 end
 
 instanceObject.onInstanceCreatedCallback = function(player, instance)
-    xi.assault.onInstanceCreatedCallback(player, instance)
-    xi.instance.onInstanceCreatedCallback(player, instance)
+    invaderXim.assault.onInstanceCreatedCallback(player, instance)
+    invaderXim.instance.onInstanceCreatedCallback(player, instance)
 end
 
 instanceObject.afterInstanceRegister = function(player)
     local instance = player:getInstance()
 
-    xi.assault.afterInstanceRegister(player, xi.item.CAGE_OF_REEF_FIREFLIES)
+    invaderXim.assault.afterInstanceRegister(player, invaderXim.item.CAGE_OF_REEF_FIREFLIES)
     GetNPCByID(ID.npc.RUNE_OF_RELEASE, instance):setPos(-495.000, -9.695, -72.000, 0)
     GetNPCByID(ID.npc.ANCIENT_LOCKBOX, instance):setPos(-490.000, -9.900, -72.000, 0)
 end
 
 instanceObject.onInstanceTimeUpdate = function(instance, elapsed)
-    local mob = GetMobByID(ID.mob[xi.assault.mission.SEAGULL_GROUNDED].MOBS_START.EXCALIAC, instance)
+    local mob = GetMobByID(ID.mob[invaderXim.assault.mission.SEAGULL_GROUNDED].MOBS_START.EXCALIAC, instance)
     if mob ~= nil then
         instanceObject.onTrack(instance)
     end
 
-    xi.instance.updateInstanceTime(instance, elapsed, ID.text)
+    invaderXim.instance.updateInstanceTime(instance, elapsed, ID.text)
 end
 
 instanceObject.onInstanceFailure = function(instance)
-    xi.assault.onInstanceFailure(instance)
+    invaderXim.assault.onInstanceFailure(instance)
 end
 
 instanceObject.onInstanceProgressUpdate = function(instance, progress)
 end
 
 instanceObject.onInstanceComplete = function(instance)
-    xi.assault.onInstanceComplete(instance, 8, 8)
+    invaderXim.assault.onInstanceComplete(instance, 8, 8)
 end
 
 instanceObject.onEventFinish = function(player, csid, option, npc)
@@ -317,7 +317,7 @@ instanceObject.onTrack = function(instance)
         },
     }
 
-    local mob = GetMobByID(ID.mob[xi.assault.mission.SEAGULL_GROUNDED].MOBS_START.EXCALIAC, instance)
+    local mob = GetMobByID(ID.mob[invaderXim.assault.mission.SEAGULL_GROUNDED].MOBS_START.EXCALIAC, instance)
     if not mob then
         return
     end

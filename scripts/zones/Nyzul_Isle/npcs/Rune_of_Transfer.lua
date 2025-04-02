@@ -3,7 +3,7 @@
 -- NPC:   Rune of Transfer
 -- Notes: Displays currentFloor floor objective, activates when objective completed.
 -----------------------------------
-local ID = zones[xi.zone.NYZUL_ISLE]
+local ID = zones[invaderXim.zone.NYZUL_ISLE]
 require('scripts/zones/Nyzul_Isle/instances/nyzul_isle_investigation')
 -----------------------------------
 ---@type TNpcEntity
@@ -62,7 +62,7 @@ entity.onEventFinish = function(player, csid, option, npc)
 
     if csid == 1 then
         for _, players in ipairs(chars) do
-            players:setPos(0, 0, 0, 0, xi.zone.ALZADAAL_UNDERSEA_RUINS)
+            players:setPos(0, 0, 0, 0, invaderXim.zone.ALZADAAL_UNDERSEA_RUINS)
         end
     elseif
         csid == 201 and
@@ -72,32 +72,32 @@ entity.onEventFinish = function(player, csid, option, npc)
         -- Leave Assault
         if option == 1 and npc:getLocalVar('runCompleted') == 0 then
             npc:setLocalVar('runCompleted', 1)
-            local currentFloor = utils.clamp(xi.nyzul.getRelativeFloor(instance), 1, 100)
+            local currentFloor = utils.clamp(invaderXim.nyzul.getRelativeFloor(instance), 1, 100)
             local startFloor   = instance:getLocalVar('Nyzul_Isle_StartingFloor')
             local diskHolder   = instance:getLocalVar('diskHolder')
 
             for _, players in pairs(chars) do
                 local floorProgress = players:getCharVar('NyzulFloorProgress')
 
-                if not xi.settings.main.RUNIC_DISK_SAVE then
+                if not invaderXim.settings.main.RUNIC_DISK_SAVE then
                     -- Only the person who chose floor gets disk recoreded
                     if players:getID() == diskHolder then
                         if (floorProgress + 1) >= startFloor and floorProgress < currentFloor then
                             players:setCharVar('NyzulFloorProgress', currentFloor)
-                            players:messageSpecial(ID.text.FLOOR_RECORD, xi.ki.RUNIC_DISC, currentFloor)
+                            players:messageSpecial(ID.text.FLOOR_RECORD, invaderXim.ki.RUNIC_DISC, currentFloor)
                         end
                     end
                 else
                     -- Everyone gets to save disk info
-                    if players:hasKeyItem(xi.ki.RUNIC_DISC) then
+                    if players:hasKeyItem(invaderXim.ki.RUNIC_DISC) then
                         if (floorProgress + 1) >= startFloor and floorProgress < currentFloor then
                             players:setCharVar('NyzulFloorProgress', currentFloor)
-                            players:messageSpecial(ID.text.FLOOR_RECORD, xi.ki.RUNIC_DISC, currentFloor)
+                            players:messageSpecial(ID.text.FLOOR_RECORD, invaderXim.ki.RUNIC_DISC, currentFloor)
                         end
                     end
                 end
 
-                local tokens = math.max(0, instance:getLocalVar('potential_tokens') - xi.nyzul.getTokenPenalty(instance))
+                local tokens = math.max(0, instance:getLocalVar('potential_tokens') - invaderXim.nyzul.getTokenPenalty(instance))
 
                 -- Assault initiator gets 10% more tokens
                 if players:getID() == instance:getLocalVar('assaultInitiator') then
@@ -133,9 +133,9 @@ entity.onEventFinish = function(player, csid, option, npc)
                 DespawnMob(enemy:getID(), instance)
             end
 
-            if instance:getStage() == xi.nyzul.objective.ACTIVATE_ALL_LAMPS then
+            if instance:getStage() == invaderXim.nyzul.objective.ACTIVATE_ALL_LAMPS then
                 for i = ID.npc.RUNIC_LAMP_OFFSET, ID.npc.RUNIC_LAMP_OFFSET + 4 do
-                    GetNPCByID(i, instance):setStatus(xi.status.DISAPPEAR)
+                    GetNPCByID(i, instance):setStatus(invaderXim.status.DISAPPEAR)
                     GetNPCByID(i, instance):setAnimationSub(0)
                 end
             end
@@ -151,10 +151,10 @@ entity.onEventFinish = function(player, csid, option, npc)
                 instance:setLocalVar('randomPathos', math.random(18, 29))
             end
 
-            xi.nyzul.clearChests(instance)
+            invaderXim.nyzul.clearChests(instance)
             npc:timer(8000, function(rune)
                 rune:setAnimationSub(0)
-                rune:setStatus(xi.status.DISAPPEAR)
+                rune:setStatus(invaderXim.status.DISAPPEAR)
                 rune:setLocalVar('cued', 0)
             end)
         end

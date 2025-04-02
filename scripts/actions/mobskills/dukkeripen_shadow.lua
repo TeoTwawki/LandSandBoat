@@ -7,7 +7,7 @@
 local mobskillObject = {}
 
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
-    if mob:getMainJob() == xi.job.COR then
+    if mob:getMainJob() == invaderXim.job.COR then
         return 0
     else
         return 1
@@ -15,9 +15,9 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.BLINK, 10, 0, 120))
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.BLINK, 10, 0, 120))
 
-    return xi.effect.BLINK
+    return invaderXim.effect.BLINK
 end
 
 return mobskillObject

@@ -5,11 +5,11 @@
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.combat = xi.combat or {}
-xi.combat.skillLevel = xi.combat.skillLevel or {}
+invaderXim.combat = invaderXim.combat or {}
+invaderXim.combat.skillLevel = invaderXim.combat.skillLevel or {}
 -----------------------------------
 
-xi.combat.skillLevel.dataTable =
+invaderXim.combat.skillLevel.dataTable =
 {
 -- [Level] = { A+,  A,  B+,   B,  B-,  C+,   C,  C-,   D,   E,   F,   G },
     [ 0] = {   3,   3,   2,   2,   2,   2,   2,   2,   2,   2,   2,   1 },
@@ -114,11 +114,11 @@ xi.combat.skillLevel.dataTable =
     [99] = { 424, 417, 404, 398, 388, 378, 373, 368, 334, 300, 265, 228 },
 }
 
-xi.combat.skillLevel.getSkillCap = function(actorLevel, skillRank)
+invaderXim.combat.skillLevel.getSkillCap = function(actorLevel, skillRank)
     -- Sanitize fed values
     local levelToCheck = utils.defaultIfNil(actorLevel, 0)             -- Assume level 0
-    local rankToCheck  = utils.defaultIfNil(skillRank, xi.skillRank.G) -- Assume rank G
+    local rankToCheck  = utils.defaultIfNil(skillRank, invaderXim.skillRank.G) -- Assume rank G
 
     -- Going to assume levels over 99 give 1 skill level, just like master levels.
-    return xi.combat.skillLevel.dataTable[utils.clamp(levelToCheck, 0, 99)][utils.clamp(rankToCheck, 1, 12)] + utils.clamp(levelToCheck - 99, 0, 156)
+    return invaderXim.combat.skillLevel.dataTable[utils.clamp(levelToCheck, 0, 99)][utils.clamp(rankToCheck, 1, 12)] + utils.clamp(levelToCheck - 99, 0, 156)
 end

@@ -6,11 +6,11 @@
 -- Ploh Trishbahk : !pos 100.580 -40.150 -63.830 257
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.ARCIELAS_PROMISE)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.ARCIELAS_PROMISE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.PREDATOR_AND_PREY },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.PREDATOR_AND_PREY },
 }
 
 mission.sections =
@@ -20,12 +20,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['Chalvava'] = mission:event(360, 258):oncePerZone(),
         },
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Ploh_Trishbahk'] =
             {

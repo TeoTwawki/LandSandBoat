@@ -4,7 +4,7 @@
 -- Note: Place holder Mahishasura
 -----------------------------------
 mixins = { require('scripts/mixins/families/marid'), require('scripts/mixins/families/chigoe_pet') }
-local ID = zones[xi.zone.BHAFLAU_THICKETS]
+local ID = zones[invaderXim.zone.BHAFLAU_THICKETS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -74,7 +74,7 @@ end
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = mahishasuraSpawnPoints
-    xi.mob.phOnDespawn(mob, mahishasuraPHTable, 5, 10800, params) -- 3 hours
+    invaderXim.mob.phOnDespawn(mob, mahishasuraPHTable, 5, 10800, params) -- 3 hours
 end
 
 return entity

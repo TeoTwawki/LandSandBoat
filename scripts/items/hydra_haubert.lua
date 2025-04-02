@@ -11,11 +11,11 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    if target:hasEquipped(xi.item.HYDRA_HAUBERT) then
-        if target:hasStatusEffect(xi.effect.REFRESH) then
-            target:messageBasic(xi.msg.basic.NO_EFFECT)
+    if target:hasEquipped(invaderXim.item.HYDRA_HAUBERT) then
+        if target:hasStatusEffect(invaderXim.effect.REFRESH) then
+            target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
         else
-            target:addStatusEffect(xi.effect.REFRESH, 3, 3, 180, 0, 0, 0, xi.effectSourceType.EQUIPPED_ITEM, xi.item.HYDRA_HAUBERT)
+            target:addStatusEffect(invaderXim.effect.REFRESH, 3, 3, 180, 0, 0, 0, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.HYDRA_HAUBERT)
         end
     end
 end

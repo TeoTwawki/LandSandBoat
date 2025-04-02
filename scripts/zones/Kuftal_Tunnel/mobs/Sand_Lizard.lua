@@ -3,7 +3,7 @@
 --  Mob: Sand Lizard
 -- Note: Place Holder for Amemet
 -----------------------------------
-local ID = zones[xi.zone.KUFTAL_TUNNEL]
+local ID = zones[invaderXim.zone.KUFTAL_TUNNEL]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -80,13 +80,13 @@ local amemetPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 735, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 735, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
     local params = {}
     params.spawnPoints = amemetSpawnPoints
-    xi.mob.phOnDespawn(mob, amemetPHTable, 5, 7200, params) -- 2 hours
+    invaderXim.mob.phOnDespawn(mob, amemetPHTable, 5, 7200, params) -- 2 hours
 end
 
 return entity

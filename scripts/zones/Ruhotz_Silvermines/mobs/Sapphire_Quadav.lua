@@ -15,14 +15,14 @@ local pathNodes =
 }
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
-            { id = xi.jsa.BENEDICTION, hpp = math.random(40, 60) },
+            { id = invaderXim.jsa.BENEDICTION, hpp = math.random(40, 60) },
         },
     })
 
-    mob:pathThrough(pathNodes, xi.path.flag.PATROL)
+    mob:pathThrough(pathNodes, invaderXim.path.flag.PATROL)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

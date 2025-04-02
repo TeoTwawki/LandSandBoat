@@ -1,4 +1,4 @@
--- local ID = zones[xi.zone.FERETORY]
+-- local ID = zones[invaderXim.zone.FERETORY]
 
 return {
 }

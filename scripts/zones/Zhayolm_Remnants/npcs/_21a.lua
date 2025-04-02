@@ -3,7 +3,7 @@
 -- 3rd Floor Exit to North Portal
 -- !pos 300 -6 520
 -----------------------------------
-local ID = zones[xi.zone.ZHAYOLM_REMNANTS]
+local ID = zones[invaderXim.zone.ZHAYOLM_REMNANTS]
 -----------------------------------
 
 ---@type TNpcEntity
@@ -21,8 +21,8 @@ entity.onEventFinish = function(player, csid, option, npc)
     if csid == 300 and option == 1 then
         local instance = player:getInstance()
 
-        if instance and xi.salvage.onDoorOpen(npc) then
-            xi.salvage.sealDoors(instance, { ID.npc.DOOR_3_1, ID.npc.DOOR_3_2 })
+        if instance and invaderXim.salvage.onDoorOpen(npc) then
+            invaderXim.salvage.sealDoors(instance, { ID.npc.DOOR_3_1, ID.npc.DOOR_3_2 })
             instance:setLocalVar('stageComplete', 3)
         else
             player:messageSpecial(ID.text.DOOR_IS_SEALED)

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.COLURE_ACTIVE
+-- invaderXim.effect.COLURE_ACTIVE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

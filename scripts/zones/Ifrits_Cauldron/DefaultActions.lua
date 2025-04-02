@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.IFRITS_CAULDRON]
+local ID = zones[invaderXim.zone.IFRITS_CAULDRON]
 
 return {
     ['qm3'] = { messageSpecial = ID.text.NOTHING_OUT_OF_ORDINARY },

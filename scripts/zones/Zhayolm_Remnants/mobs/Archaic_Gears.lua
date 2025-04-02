@@ -2,7 +2,7 @@
 -- Area: Zhayolm Remnants
 -- MOB: Archaic Gears
 -----------------------------------
-local ID = zones[xi.zone.ZHAYOLM_REMNANTS]
+local ID = zones[invaderXim.zone.ZHAYOLM_REMNANTS]
 mixins = { require('scripts/mixins/families/gear') }
 -----------------------------------
 
@@ -239,8 +239,8 @@ end
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
 end
 
 entity.onMobSpawn = function(mob)
@@ -253,19 +253,19 @@ entity.onMobSpawn = function(mob)
 
         if stage == 5 and progress == 1 then
             if utils.contains(mobID, utils.slice(ID.mob.ARCHAIC_GEARS, 1, 8)) then
-                mob:delImmunity(xi.immunity.DARK_SLEEP)
-                mob:pathThrough(getPath(mob), xi.path.flag.PATROL)
+                mob:delImmunity(invaderXim.immunity.DARK_SLEEP)
+                mob:pathThrough(getPath(mob), invaderXim.path.flag.PATROL)
             elseif utils.contains(mobID, utils.slice(ID.mob.ARCHAIC_GEARS, 9, 12)) then
-                mob:delImmunity(xi.immunity.DARK_SLEEP)
-                mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 14)
+                mob:delImmunity(invaderXim.immunity.DARK_SLEEP)
+                mob:setMobMod(invaderXim.mobMod.ROAM_DISTANCE, 14)
             elseif utils.contains(mobID, utils.slice(ID.mob.ARCHAIC_GEARS, 13, 24)) then
-                mob:pathThrough(getPath(mob), xi.path.flag.PATROL)
+                mob:pathThrough(getPath(mob), invaderXim.path.flag.PATROL)
             elseif utils.contains(mobID, utils.slice(ID.mob.ARCHAIC_GEARS, 25, 32)) then
-                mob:delImmunity(xi.immunity.DARK_SLEEP)
-                mob:pathThrough(getPath(mob), xi.path.flag.PATROL)
+                mob:delImmunity(invaderXim.immunity.DARK_SLEEP)
+                mob:pathThrough(getPath(mob), invaderXim.path.flag.PATROL)
             end
         elseif stage == 6 then
-            mob:pathThrough(getPath(mob), xi.path.flag.PATROL)
+            mob:pathThrough(getPath(mob), invaderXim.path.flag.PATROL)
         end
     end
 end

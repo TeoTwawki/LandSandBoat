@@ -5,7 +5,7 @@
 -- Type: Enfeebling
 -- Utsusemi/Blink absorb: Ignores shadows.
 -- Range: Melee?
--- Notes: Very potent paralysis xi.effect. Is NOT a Gaze Attack, unlike Chaotic Eye.
+-- Notes: Very potent paralysis invaderXim.effect. Is NOT a Gaze Attack, unlike Chaotic Eye.
 -----------------------------------
 ---@type TMobSkill
 local mobskillObject = {}
@@ -15,9 +15,9 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.PARALYSIS, 50, 0, 60))
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.PARALYSIS, 50, 0, 60))
 
-    return xi.effect.PARALYSIS
+    return invaderXim.effect.PARALYSIS
 end
 
 return mobskillObject

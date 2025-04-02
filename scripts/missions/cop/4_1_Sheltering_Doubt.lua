@@ -8,11 +8,11 @@
 -- Dilapidated Gate : !pos 260 9 -435 25
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.SHELTERING_DOUBT)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.SHELTERING_DOUBT)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.THE_SAVAGE },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_SAVAGE },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Despachiaire'] =
             {
@@ -70,7 +70,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.MISAREAUX_COAST] =
+        [invaderXim.zone.MISAREAUX_COAST] =
         {
             ['_0p0'] =
             {
@@ -95,7 +95,7 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Justinius'] = mission:event(266):replaceDefault(),
         },

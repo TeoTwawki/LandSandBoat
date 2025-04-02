@@ -7,15 +7,15 @@
 -----------------------------------
 require('scripts/quests/otherAreas/helpers')
 -----------------------------------
-local selbinaID = zones[xi.zone.SELBINA]
+local selbinaID = zones[invaderXim.zone.SELBINA]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.TEST_MY_METTLE)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.TEST_MY_METTLE)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.SELBINA_RABAO,
+    fameArea = invaderXim.fameArea.SELBINA_RABAO,
 }
 
 local betAmounts =
@@ -48,16 +48,16 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status ~= xi.questStatus.QUEST_ACCEPTED and
+            return status ~= invaderXim.questStatus.QUEST_ACCEPTED and
                 player:getMainLvl() >= 10 and
                 player:getRank(player:getNation()) >= 2 and
-                player:getFameLevel(xi.fameArea.SELBINA_RABAO) >= 2 and
+                player:getFameLevel(invaderXim.fameArea.SELBINA_RABAO) >= 2 and
                 quest:getVar(player, 'Repeat') <= os.time()
         end,
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
-            ['Devean'] = quest:progressEvent(120, 0, xi.item.POWER_SANDALS, 0, 0, 0, xi.item.FLINT_STONE),
+            ['Devean'] = quest:progressEvent(120, 0, invaderXim.item.POWER_SANDALS, 0, 0, 0, invaderXim.item.FLINT_STONE),
 
             onEventFinish =
             {
@@ -85,15 +85,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Devean'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.POWER_SANDALS) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.POWER_SANDALS) then
                         local timeRemaining = quest:getVar(player, 'Timer') - os.time()
 
                         if timeRemaining > 0 then
@@ -110,10 +110,10 @@ quest.sections =
                     if timeRemaining > 0 then
                         local hoursRemaining = math.floor(timeRemaining / 144)
 
-                        return quest:event(121, xi.item.POWER_SANDALS, hoursRemaining)
+                        return quest:event(121, invaderXim.item.POWER_SANDALS, hoursRemaining)
                     else
                         if
-                            player:hasItem(xi.item.POWER_SANDALS) and
+                            player:hasItem(invaderXim.item.POWER_SANDALS) and
                             quest:getVar(player, 'Option') == 0
                         then
                             return quest:progressEvent(125)
@@ -148,16 +148,16 @@ quest.sections =
             },
         },
 
-        [xi.zone.DAVOI] =
+        [invaderXim.zone.DAVOI] =
         {
             ['Jar'] =
             {
                 onTrigger = function(player, npc)
                     -- TODO: Find the Jar's default action
 
-                    if not player:hasItem(xi.item.POWER_SANDALS) then
-                        if npcUtil.giveItem(player, xi.item.POWER_SANDALS) then
-                            xi.otherAreas.helpers.TestMyMettle.moveJar(npc)
+                    if not player:hasItem(invaderXim.item.POWER_SANDALS) then
+                        if npcUtil.giveItem(player, invaderXim.item.POWER_SANDALS) then
+                            invaderXim.otherAreas.helpers.TestMyMettle.moveJar(npc)
                         end
 
                         return quest:noAction()

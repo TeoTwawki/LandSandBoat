@@ -2,15 +2,15 @@
 -- Area: Pso'Xja
 --  NPC: Stone Gate
 -----------------------------------
-local ID = zones[xi.zone.PSOXJA]
+local ID = zones[invaderXim.zone.PSOXJA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
     if
-        player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.THE_ENDURING_TUMULT_OF_WAR) or
-        player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.THE_LAST_VERSE)
+        player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_ENDURING_TUMULT_OF_WAR) or
+        player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_LAST_VERSE)
     then
         if player:getZPos() < 318 then
             player:startEvent(69)

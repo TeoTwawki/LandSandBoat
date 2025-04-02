@@ -2,7 +2,7 @@
 -- ----------------------------
 -- Table structure for `skillchain_damage_modifiers`
 -- ----------------------------
-DROP TABLE IF EXISTS `skillchain_damage_modifiers`;
+DROP TABLE IF IXIMSTS `skillchain_damage_modifiers`;
 CREATE TABLE `skillchain_damage_modifiers` (
   `chain_level` enum('1','2','3','4') NOT NULL DEFAULT '1',
   `chain_count` enum('1','2','3','4','5') NOT NULL DEFAULT '1',

@@ -1,25 +1,25 @@
 -----------------------------------
--- xi.effect.IMPETUS
+-- invaderXim.effect.IMPETUS
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    target:addListener('MELEE_SWING_MISS', 'IMPETUS_MISS', xi.job_utils.monk.impetusMissListener)
-    target:addListener('MELEE_SWING_HIT', 'IMPETUS_HIT', xi.job_utils.monk.impetusHitListener)
+    target:addListener('MELEE_SWING_MISS', 'IMPETUS_MISS', invaderXim.job_utils.monk.impetusMissListener)
+    target:addListener('MELEE_SWING_HIT', 'IMPETUS_HIT', invaderXim.job_utils.monk.impetusHitListener)
 
     -- For reload from the DB (/logout, login), add the effect power
     local mainPower = effect:getPower()    -- Stores Attack & Critical Hit Rate bonuses
     local subPower  = effect:getSubPower() -- Stores Critical Hit Damage & Accuracy bonuses
 
     if mainPower > 0 then
-        target:addMod(xi.mod.ATT, mainPower * 2)
-        target:addMod(xi.mod.CRITHITRATE, mainPower)
+        target:addMod(invaderXim.mod.ATT, mainPower * 2)
+        target:addMod(invaderXim.mod.CRITHITRATE, mainPower)
     end
 
     if subPower > 0 then
-        target:addMod(xi.mod.ACC, subPower * 2)
-        target:addMod(xi.mod.CRIT_DMG_INCREASE, subPower)
+        target:addMod(invaderXim.mod.ACC, subPower * 2)
+        target:addMod(invaderXim.mod.CRIT_DMG_INCREASE, subPower)
     end
 end
 
@@ -35,13 +35,13 @@ effectObject.onEffectLose = function(target, effect)
     local subPower  = effect:getSubPower() -- Stores Critical Hit Damage & Accuracy bonuses
 
     if mainPower > 0 then
-        target:delMod(xi.mod.ATT, mainPower * 2)
-        target:delMod(xi.mod.CRITHITRATE, mainPower)
+        target:delMod(invaderXim.mod.ATT, mainPower * 2)
+        target:delMod(invaderXim.mod.CRITHITRATE, mainPower)
     end
 
     if subPower > 0 then
-        target:delMod(xi.mod.ACC, subPower * 2)
-        target:delMod(xi.mod.CRIT_DMG_INCREASE, subPower)
+        target:delMod(invaderXim.mod.ACC, subPower * 2)
+        target:delMod(invaderXim.mod.CRIT_DMG_INCREASE, subPower)
     end
 end
 

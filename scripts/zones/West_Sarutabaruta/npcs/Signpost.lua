@@ -2,7 +2,7 @@
 -- Area: West Sarutabaruta
 --  NPC: Signpost (18 total)
 -----------------------------------
-local ID = zones[xi.zone.WEST_SARUTABARUTA]
+local ID = zones[invaderXim.zone.WEST_SARUTABARUTA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

@@ -1,13 +1,13 @@
 -----------------------------------
--- xi.effect.BLOOD_WEAPON
+-- invaderXim.effect.BLOOD_WEAPON
 -- Does not overwritte any existing "Enspell" effect, including "Soul Enslavement"
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    effect:addMod(xi.mod.ENSPELL, 17)
-    effect:addMod(xi.mod.ENSPELL_DMG, effect:getPower())
+    effect:addMod(invaderXim.mod.ENSPELL, 17)
+    effect:addMod(invaderXim.mod.ENSPELL_DMG, effect:getPower())
 end
 
 effectObject.onEffectTick = function(target, effect)

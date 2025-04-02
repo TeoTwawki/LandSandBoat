@@ -8,7 +8,7 @@ mixins = { require('scripts/mixins/draw_in') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.HP_STANDBACK, -1)
+    mob:setMobMod(invaderXim.mobMod.HP_STANDBACK, -1)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

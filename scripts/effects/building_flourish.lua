@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.BUILDING_FLOURISH
+-- invaderXim.effect.BUILDING_FLOURISH
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

@@ -1,27 +1,27 @@
 -----------------------------------
--- xi.effect.DEBILITATION
+-- invaderXim.effect.DEBILITATION
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 local statsBits =
 {
-    xi.mod.STR,
-    xi.mod.DEX,
-    xi.mod.VIT,
-    xi.mod.AGI,
-    xi.mod.INT,
-    xi.mod.MND,
-    xi.mod.CHR,
-    xi.mod.HPP,
-    xi.mod.MPP
+    invaderXim.mod.STR,
+    invaderXim.mod.DEX,
+    invaderXim.mod.VIT,
+    invaderXim.mod.AGI,
+    invaderXim.mod.INT,
+    invaderXim.mod.MND,
+    invaderXim.mod.CHR,
+    invaderXim.mod.HPP,
+    invaderXim.mod.MPP
 }
 
 effectObject.onEffectGain = function(target, effect)
     local power = effect:getPower()
     for statbit, mod in ipairs(statsBits) do
         if bit.band(bit.lshift(1, statbit - 1), power) > 0 then
-            if mod == xi.mod.HPP or mod == xi.mod.MPP then
+            if mod == invaderXim.mod.HPP or mod == invaderXim.mod.MPP then
                 target:addMod(mod, -40)
             else
                 target:addMod(mod, -30)
@@ -39,7 +39,7 @@ effectObject.onEffectLose = function(target, effect)
     local power = effect:getPower()
     for statbit, mod in ipairs(statsBits) do
         if bit.band(bit.lshift(1, statbit - 1), power) > 0 then
-            if mod == xi.mod.HPP or mod == xi.mod.MPP then
+            if mod == invaderXim.mod.HPP or mod == invaderXim.mod.MPP then
                 target:delMod(mod, -40)
             else
                 target:delMod(mod, -30)

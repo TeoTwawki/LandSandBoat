@@ -30,14 +30,14 @@ commandObj.onTrigger = function(player, minutes)
     local fishers = GetRecentFishers(minutes)
 
     if #fishers == 0 then
-        player:printToPlayer(string.format('No active fishers in past %i minutes.', minutes), xi.msg.channel.SYSTEM_3)
+        player:printToPlayer(string.format('No active fishers in past %i minutes.', minutes), invaderXim.msg.channel.SYSTEM_3)
         return
     end
 
-    player:printToPlayer(string.format('Active fishers in past %i minutes:', minutes), xi.msg.channel.SYSTEM_3)
+    player:printToPlayer(string.format('Active fishers in past %i minutes:', minutes), invaderXim.msg.channel.SYSTEM_3)
     for _, fisher in pairs(fishers) do
         player:printToPlayer(string.format('Name: %s, Zone: %s, JobLevel: %d, Skill: %d',
-        fisher.playerName, fisher.zoneName, fisher.jobLevel, fisher.skill), xi.msg.channel.SYSTEM_3)
+        fisher.playerName, fisher.zoneName, fisher.jobLevel, fisher.skill), invaderXim.msg.channel.SYSTEM_3)
     end
 end
 

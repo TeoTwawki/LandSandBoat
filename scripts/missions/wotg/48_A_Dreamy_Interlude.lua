@@ -6,11 +6,11 @@
 -- Veridical Conflux : !pos -142.279 -6.749 585.239 89
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.A_DREAMY_INTERLUDE)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.A_DREAMY_INTERLUDE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.CAIT_IN_THE_WOODS },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.CAIT_IN_THE_WOODS },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.GRAUBERG_S] =
+        [invaderXim.zone.GRAUBERG_S] =
         {
             ['Veridical_Conflux'] =
             {

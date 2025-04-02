@@ -8,7 +8,7 @@
 -- !pos -240 5.00 440 35
 -- !pos -280 5.00 240 35
 -----------------------------------
-local ID = zones[xi.zone.THE_GARDEN_OF_RUHMET]
+local ID = zones[invaderXim.zone.THE_GARDEN_OF_RUHMET]
 local gardenGlobal = require('scripts/zones/The_Garden_of_RuHmet/globals')
 -----------------------------------
 ---@type TNpcEntity

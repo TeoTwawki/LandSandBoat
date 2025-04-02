@@ -3,7 +3,7 @@
 --  Mob: Stag Beetle
 -- Note: PH for Panzer Percival
 -----------------------------------
-local ID = zones[xi.zone.JUGNER_FOREST]
+local ID = zones[invaderXim.zone.JUGNER_FOREST]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -15,12 +15,12 @@ local panzerPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 12, 1, xi.regime.type.FIELDS)
-    xi.regime.checkRegime(player, mob, 13, 2, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 12, 1, invaderXim.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 13, 2, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, panzerPHTable, 10, 1) -- No minimum respawn
+    invaderXim.mob.phOnDespawn(mob, panzerPHTable, 10, 1) -- No minimum respawn
 end
 
 return entity

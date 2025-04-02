@@ -1,7 +1,7 @@
 /*
 ===========================================================================
 
-  Copyright (c) 2025 LandSandBoat Dev Teams
+  Copyright (c) 2025 InvaderXim Dev Teams
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ CLuaTreasurePool::CLuaTreasurePool(CTreasurePool* PTreasurePool)
  *  Function: getType()
  *  Purpose : Returns the type of the Treasure Pool
  *  Example : pool:getType()
- *  Notes   : See xi.treasurePool enum
+ *  Notes   : See invaderXim.treasurePool enum
  ************************************************************************/
 auto CLuaTreasurePool::getType() const -> TreasurePoolType
 {
@@ -96,7 +96,7 @@ void CLuaTreasurePool::update(CBaseEntity* PEntity) const
 /************************************************************************
  *  Function: addItem()
  *  Purpose : Adds an item to the treasure pool
- *  Example : pool:addItem(xi.item.RIDILL)
+ *  Example : pool:addItem(invaderXim.item.RIDILL)
  *  Notes   : The entity can be either a NPC, a mob or nullptr.
  ************************************************************************/
 auto CLuaTreasurePool::addItem(const uint16 ItemID, CBaseEntity* PEntity) const -> uint8

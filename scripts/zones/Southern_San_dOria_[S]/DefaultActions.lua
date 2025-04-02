@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.SOUTHERN_SAN_DORIA_S]
+local ID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA_S]
 
 return {
     ['_6eo']                     = { text = ID.text.GATE_IS_LOCKED }, -- Yes, even though it's a door.

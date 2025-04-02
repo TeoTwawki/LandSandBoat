@@ -14,7 +14,7 @@ itemObject.onItemUse = function(target)
     local power = 75
     local duration = 1800
 
-    target:addStatusEffect(xi.effect.PROTECT, power, 0, duration)
+    target:addStatusEffect(invaderXim.effect.PROTECT, power, 0, duration)
 end
 
 return itemObject

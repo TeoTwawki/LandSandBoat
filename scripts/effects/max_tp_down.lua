@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.MAX_TP_DOWN
+-- invaderXim.effect.MAX_TP_DOWN
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

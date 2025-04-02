@@ -2,7 +2,7 @@
 -- Area: Riverne Site #A01
 --  NPC: Spacial Displacement
 -----------------------------------
-local ID = zones[xi.zone.RIVERNE_SITE_A01]
+local ID = zones[invaderXim.zone.RIVERNE_SITE_A01]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

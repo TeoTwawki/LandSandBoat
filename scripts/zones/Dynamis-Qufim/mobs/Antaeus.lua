@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.dynamis.megaBossOnDeath(mob, player, optParams)
+    invaderXim.dynamis.megaBossOnDeath(mob, player, optParams)
 end
 
 return entity

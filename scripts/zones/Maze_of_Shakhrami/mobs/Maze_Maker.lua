@@ -3,7 +3,7 @@
 --  Mob: Maze Maker
 -- Note: PH for Trembler Tabitha
 -----------------------------------
-local ID = zones[xi.zone.MAZE_OF_SHAKHRAMI]
+local ID = zones[invaderXim.zone.MAZE_OF_SHAKHRAMI]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -15,11 +15,11 @@ local tremblerPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 696, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 696, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, tremblerPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, tremblerPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

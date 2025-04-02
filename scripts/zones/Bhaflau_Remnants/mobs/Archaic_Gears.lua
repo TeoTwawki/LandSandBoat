@@ -3,7 +3,7 @@
 --  MOB: Archaic Gears
 --
 -----------------------------------
-local ID = zones[xi.zone.BHAFLAU_REMNANTS]
+local ID = zones[invaderXim.zone.BHAFLAU_REMNANTS]
 mixins = { require('scripts/mixins/families/gear') }
 -----------------------------------
 
@@ -27,11 +27,11 @@ entity.onMobDeath = function(mob, player, optParams)
                 end
 
                 instance:setLocalVar('dormantArea', 1)
-                GetNPCByID(ID.npc.DORMANT_RAMPART[3], instance):setStatus(xi.status.NORMAL)
+                GetNPCByID(ID.npc.DORMANT_RAMPART[3], instance):setStatus(invaderXim.status.NORMAL)
             end
         end
 
-        xi.salvage.spawnTempChest(mob)
+        invaderXim.salvage.spawnTempChest(mob)
     end
 end
 

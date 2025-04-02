@@ -1,7 +1,7 @@
 -----------------------------------
 -- Perfect Defense
 --
--- Description: Reduces damage taken and greatly increases resistance to most status xi.effect.
+-- Description: Reduces damage taken and greatly increases resistance to most status invaderXim.effect.
 -- Type: Enhancing
 -- Can be dispelled: No
 -- Range: Self
@@ -19,10 +19,10 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    xi.mobskills.mobBuffMove(mob, xi.effect.PERFECT_DEFENSE, 1, 0, skill:getParam())
+    invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.PERFECT_DEFENSE, 1, 0, skill:getParam())
 
-    skill:setMsg(xi.msg.basic.USES)
-    return xi.effect.PERFECT_DEFENSE
+    skill:setMsg(invaderXim.msg.basic.USES)
+    return invaderXim.effect.PERFECT_DEFENSE
 end
 
 return mobskillObject

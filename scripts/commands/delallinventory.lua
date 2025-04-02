@@ -32,7 +32,7 @@ commandObj.onTrigger = function(player, target)
         end
     end
 
-    if targ:delContainerItems(xi.inv.INVENTORY) then
+    if targ:delContainerItems(invaderXim.inv.INVENTORY) then
         player:printToPlayer(string.format('Deleted entire inventory for %s.', targ:getName()))
     end
 end

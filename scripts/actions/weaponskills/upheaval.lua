@@ -18,13 +18,13 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     local params = {}
     params.numHits = 4
     params.ftpMod = { 1.0, 3.5, 6.5 }
-    params.vit_wsc = player:getMerit(xi.merit.UPHEAVAL) * 0.17
+    params.vit_wsc = player:getMerit(invaderXim.merit.UPHEAVAL) * 0.17
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
-        params.vit_wsc = 0.7 + (player:getMerit(xi.merit.UPHEAVAL) * 0.03)
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+        params.vit_wsc = 0.7 + (player:getMerit(invaderXim.merit.UPHEAVAL) * 0.03)
     end
 
-    local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doPhysicalWeaponskill(player, target, wsID, params, tp, action, primary, taChar)
+    local damage, criticalHit, tpHits, extraHits = invaderXim.weaponskills.doPhysicalWeaponskill(player, target, wsID, params, tp, action, primary, taChar)
     return tpHits, extraHits, criticalHit, damage
 end
 

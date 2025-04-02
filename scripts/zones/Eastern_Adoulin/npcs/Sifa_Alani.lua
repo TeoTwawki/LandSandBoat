@@ -4,7 +4,7 @@
 -- Type: Map Vendor
 -- !pos -103.834 -0.65 -50.226 257
 -----------------------------------
-local eastAdoulinID = zones[xi.zone.EASTERN_ADOULIN]
+local eastAdoulinID = zones[invaderXim.zone.EASTERN_ADOULIN]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -13,21 +13,21 @@ local entity = {}
 -- one when generating the bitmask.
 local mapList =
 { --  KeyItem                             Cost
-    { xi.ki.MAP_OF_ADOULIN,                  0 },
-    { xi.ki.MAP_OF_RALA_WATERWAYS,           0 },
-    { xi.ki.MAP_OF_CEIZAK_BATTLEGROUNDS,     0 },
-    { xi.ki.MAP_OF_YAHSE_HUNTING_GROUNDS,    0 },
-    { xi.ki.MAP_OF_SIH_GATES,             1000 },
-    { xi.ki.MAP_OF_MOH_GATES,             1000 },
-    { xi.ki.MAP_OF_FORET_DE_HENNETIEL,    1000 },
-    { xi.ki.MAP_OF_MORIMAR_BASALT_FIELDS, 1000 },
-    { xi.ki.MAP_OF_CIRDAS_CAVERNS,        2000 },
-    { xi.ki.MAP_OF_DHO_GATES,             2000 },
-    { xi.ki.MAP_OF_MARJAMI_RAVINE,        2000 },
-    { xi.ki.MAP_OF_YORCIA_WEALD,          2000 },
-    { xi.ki.MAP_OF_WOH_GATES,             2000 },
-    { xi.ki.MAP_OF_KAMIHR_DRIFTS,         2000 },
-    { xi.ki.MAP_OF_RAKAZNAR,              2000 },
+    { invaderXim.ki.MAP_OF_ADOULIN,                  0 },
+    { invaderXim.ki.MAP_OF_RALA_WATERWAYS,           0 },
+    { invaderXim.ki.MAP_OF_CEIZAK_BATTLEGROUNDS,     0 },
+    { invaderXim.ki.MAP_OF_YAHSE_HUNTING_GROUNDS,    0 },
+    { invaderXim.ki.MAP_OF_SIH_GATES,             1000 },
+    { invaderXim.ki.MAP_OF_MOH_GATES,             1000 },
+    { invaderXim.ki.MAP_OF_FORET_DE_HENNETIEL,    1000 },
+    { invaderXim.ki.MAP_OF_MORIMAR_BASALT_FIELDS, 1000 },
+    { invaderXim.ki.MAP_OF_CIRDAS_CAVERNS,        2000 },
+    { invaderXim.ki.MAP_OF_DHO_GATES,             2000 },
+    { invaderXim.ki.MAP_OF_MARJAMI_RAVINE,        2000 },
+    { invaderXim.ki.MAP_OF_YORCIA_WEALD,          2000 },
+    { invaderXim.ki.MAP_OF_WOH_GATES,             2000 },
+    { invaderXim.ki.MAP_OF_KAMIHR_DRIFTS,         2000 },
+    { invaderXim.ki.MAP_OF_RAKAZNAR,              2000 },
 }
 
 entity.onTrigger = function(player, npc)

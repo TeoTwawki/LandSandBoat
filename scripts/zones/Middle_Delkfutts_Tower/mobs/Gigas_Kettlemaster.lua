@@ -3,7 +3,7 @@
 --  Mob: Gigas Kettlemaster
 -- Note: PH for Ophion
 -----------------------------------
-local ID = zones[xi.zone.MIDDLE_DELKFUTTS_TOWER]
+local ID = zones[invaderXim.zone.MIDDLE_DELKFUTTS_TOWER]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -16,12 +16,12 @@ local ophionPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 783, 1, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 784, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 783, 1, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 784, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, ophionPHTable, 5, math.random(7200, 14400)) -- 2 to 4 hours (could not find info, so using Ogygos' cooldown)
+    invaderXim.mob.phOnDespawn(mob, ophionPHTable, 5, math.random(7200, 14400)) -- 2 to 4 hours (could not find info, so using Ogygos' cooldown)
 end
 
 return entity

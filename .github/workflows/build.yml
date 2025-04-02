@@ -545,7 +545,7 @@ jobs:
           python3 << EOF
           import time
           try:
-              from tools.headlessxi.hxiclient import HXIClient
+              from tools.headlessinvaderXim.hxiclient import HXIClient
               hxi_client = HXIClient('admin1', 'admin1', 'localhost')
               hxi_client.login()
               print('Sleeping 60s')

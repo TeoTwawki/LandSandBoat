@@ -9,13 +9,13 @@ local function enterShell(mob)
     mob:setAnimationSub(1)
     mob:setAutoAttackEnabled(false)
     mob:setMagicCastingEnabled(false)
-    mob:setMod(xi.mod.UDMGPHYS, -8500)
-    mob:setMod(xi.mod.UDMGRANGE, -8500)
-    mob:setMod(xi.mod.UDMGMAGIC, -7500)
-    mob:setMod(xi.mod.UDMGBREATH, -7500)
-    mob:setMod(xi.mod.REGEN, 100)
-    mob:setMobMod(xi.mobMod.SKILL_LIST, 250)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+    mob:setMod(invaderXim.mod.UDMGPHYS, -8500)
+    mob:setMod(invaderXim.mod.UDMGRANGE, -8500)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, -7500)
+    mob:setMod(invaderXim.mod.UDMGBREATH, -7500)
+    mob:setMod(invaderXim.mod.REGEN, 100)
+    mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 250)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
     mob:setLocalVar('inShell', 1)
 end
 
@@ -23,42 +23,42 @@ local function exitShell(mob)
     mob:setAnimationSub(0)
     mob:setAutoAttackEnabled(true)
     mob:setMagicCastingEnabled(true)
-    mob:setMod(xi.mod.UDMGPHYS, 0)
-    mob:setMod(xi.mod.UDMGRANGE, 0)
-    mob:setMod(xi.mod.UDMGMAGIC, 0)
-    mob:setMod(xi.mod.UDMGBREATH, 0)
-    mob:setMod(xi.mod.REGEN, 0)
-    mob:setMobMod(xi.mobMod.SKILL_LIST, 251)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:setMod(invaderXim.mod.UDMGPHYS, 0)
+    mob:setMod(invaderXim.mod.UDMGRANGE, 0)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, 0)
+    mob:setMod(invaderXim.mod.UDMGBREATH, 0)
+    mob:setMod(invaderXim.mod.REGEN, 0)
+    mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 251)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
     mob:setLocalVar('inShell', 0)
 end
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:addImmunity(xi.immunity.GRAVITY)
-    mob:addImmunity(xi.immunity.BIND)
-    mob:addImmunity(xi.immunity.BLIND)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.POISON)
-    mob:addImmunity(xi.immunity.SILENCE)
-    mob:addImmunity(xi.immunity.PARALYZE)
-    mob:addImmunity(xi.immunity.REQUIEM)
-    mob:setMod(xi.mod.WATER_ABSORB, 100)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
+    mob:addImmunity(invaderXim.immunity.BIND)
+    mob:addImmunity(invaderXim.immunity.BLIND)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.POISON)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
+    mob:addImmunity(invaderXim.immunity.PARALYZE)
+    mob:addImmunity(invaderXim.immunity.REQUIEM)
+    mob:setMod(invaderXim.mod.WATER_ABSORB, 100)
 
     mob:setLocalVar('shellTimer', os.time() + 60)
     mob:setLocalVar('petCooldown', os.time() + 20)
     exitShell(mob)
 
-    mob:addListener('MAGIC_STATE_EXIT', 'SHEN_MAGIC_EXIT', function(shen, spell)
-        if spell:getID() == xi.magic.spell.FLOOD then
+    mob:addListener('MAGIC_STATE_IXIMT', 'SHEN_MAGIC_IXIMT', function(shen, spell)
+        if spell:getID() == invaderXim.magic.spell.FLOOD then
             mob:setMagicCastingEnabled(true)
             -- need to remove chainspell manually so it can be done silently
-            if mob:hasStatusEffect(xi.effect.CHAINSPELL) then
-                mob:delStatusEffectSilent(xi.effect.CHAINSPELL)
+            if mob:hasStatusEffect(invaderXim.effect.CHAINSPELL) then
+                mob:delStatusEffectSilent(invaderXim.effect.CHAINSPELL)
             end
         end
     end)
@@ -85,14 +85,14 @@ entity.onMobFight = function(mob, target)
 
     -- TODO: Potentialy create a global function for this type of isBusy logic (for use in many mobs)
     if
-        mobAction == xi.act.MOBABILITY_START or
-        mobAction == xi.act.MOBABILITY_USING or
-        mobAction == xi.act.MOBABILITY_INTERRUPT or
-        mobAction == xi.act.MOBABILITY_FINISH or
-        mobAction == xi.act.MAGIC_START or
-        mobAction == xi.act.MAGIC_CASTING or
-        mobAction == xi.act.MAGIC_INTERRUPT or
-        mobAction == xi.act.MAGIC_FINISH or
+        mobAction == invaderXim.act.MOBABILITY_START or
+        mobAction == invaderXim.act.MOBABILITY_USING or
+        mobAction == invaderXim.act.MOBABILITY_INTERRUPT or
+        mobAction == invaderXim.act.MOBABILITY_FINISH or
+        mobAction == invaderXim.act.MAGIC_START or
+        mobAction == invaderXim.act.MAGIC_CASTING or
+        mobAction == invaderXim.act.MAGIC_INTERRUPT or
+        mobAction == invaderXim.act.MAGIC_FINISH or
         not mob:actionQueueEmpty()
     then
         mobIsBusy = true
@@ -107,8 +107,8 @@ entity.onMobFight = function(mob, target)
         not mobIsBusy
     then
         mob:setMagicCastingEnabled(false)
-        mob:addStatusEffectEx(xi.effect.CHAINSPELL, xi.effect.CHAINSPELL, 1, 0, 3, true)
-        mob:castSpell(xi.magic.spell.FLOOD, target)
+        mob:addStatusEffectEx(invaderXim.effect.CHAINSPELL, invaderXim.effect.CHAINSPELL, 1, 0, 3, true)
+        mob:castSpell(invaderXim.magic.spell.FLOOD, target)
         mob:setLocalVar('petCooldown', os.time() + 20)
     end
 
@@ -134,7 +134,7 @@ entity.onMobFight = function(mob, target)
                 shenFiltrate:isAlive() and
                 shenFiltrate:checkDistance(mob) < 20
             then
-                local spells = { xi.magic.spell.WATER_IV, xi.magic.spell.WATER_III }
+                local spells = { invaderXim.magic.spell.WATER_IV, invaderXim.magic.spell.WATER_III }
                 local spellID = spells[math.random(1, #spells)]
                 shenFiltrate:castSpell(spellID, mob)
                 mob:setLocalVar('healTimer', os.time() + math.random(40, 100))
@@ -152,7 +152,7 @@ entity.onSpellPrecast = function(mob, spell)
 
     local pos = target:getPos()
 
-    if spell:getID() == xi.magic.spell.FLOOD then
+    if spell:getID() == invaderXim.magic.spell.FLOOD then
         for i = 1, 2 do
             local pet = GetMobByID(mob:getID() + i)
             if pet and not pet:isSpawned() then
@@ -176,7 +176,7 @@ entity.onMobDeath = function(mob, player, optParams)
         end
 
         mob:setLocalVar('firstOnMobDeathCall', 1)
-        mob:removeListener('SHEN_MAGIC_EXIT')
+        mob:removeListener('SHEN_MAGIC_IXIMT')
     end
 end
 

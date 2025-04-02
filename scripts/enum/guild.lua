@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.guild
-xi.guild =
+---@enum invaderXim.guild
+invaderXim.guild =
 {
     FISHING      = 0,
     WOODWORKING  = 1,

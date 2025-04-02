@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.SEALIONS_DEN]
+local ID = zones[invaderXim.zone.SEALIONS_DEN]
 
 return {
     ['_0w0']       = { messageSpecial = ID.text.IRON_GATE_LOCKED },

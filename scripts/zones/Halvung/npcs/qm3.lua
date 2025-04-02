@@ -3,14 +3,14 @@
 --  NPC: ??? (Spawn Reacton(ZNM T2))
 -- !pos 18 -9 213 62
 -----------------------------------
-local ID = zones[xi.zone.HALVUNG]
+local ID = zones[invaderXim.zone.HALVUNG]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHas(trade, xi.item.LUMP_OF_BONE_CHARCOAL) and
+        npcUtil.tradeHas(trade, invaderXim.item.LUMP_OF_BONE_CHARCOAL) and
         npcUtil.popFromQM(player, npc, ID.mob.REACTON)
     then
         player:confirmTrade()

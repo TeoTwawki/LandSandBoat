@@ -14,7 +14,7 @@
 -- Hidden Hallway 2nd Gate  !pos 138.1027 -24 60.3209
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.X_MARKS_THE_SPOT)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.X_MARKS_THE_SPOT)
 
 quest.reward =
 {
@@ -25,11 +25,11 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getCurrentMission(xi.mission.log_id.COP) >= xi.mission.id.cop.ANCIENT_VOWS
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getCurrentMission(invaderXim.mission.log_id.COP) >= invaderXim.mission.id.cop.ANCIENT_VOWS
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Despachiaire'] = quest:progressEvent(144),
 
@@ -44,10 +44,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             -- Will repeat until the quest is completed.
             ['Despachiaire'] = quest:event(144):importantOnce(),
@@ -67,9 +67,9 @@ quest.sections =
                     local progress = quest:getVar(player, 'Prog')
 
                     if progress == 1 then
-                        return quest:progressEvent(141, 0, xi.item.TAVNAZIAN_LIVER)
+                        return quest:progressEvent(141, 0, invaderXim.item.TAVNAZIAN_LIVER)
                     elseif progress == 2 then
-                        return quest:event(146, 0, xi.item.TAVNAZIAN_LIVER)
+                        return quest:event(146, 0, invaderXim.item.TAVNAZIAN_LIVER)
                     elseif progress == 3 then
                         return quest:event(147)
                     elseif progress == 4 then
@@ -80,7 +80,7 @@ quest.sections =
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'Prog') == 2 and
-                        npcUtil.tradeHasExactly(trade, xi.item.TAVNAZIAN_LIVER)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.TAVNAZIAN_LIVER)
                     then
                         return quest:progressEvent(142)
                     end
@@ -110,7 +110,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.PHOMIUNA_AQUEDUCTS] =
+        [invaderXim.zone.PHOMIUNA_AQUEDUCTS] =
         {
             ['_0r9'] =
             {
@@ -137,10 +137,10 @@ quest.sections =
         -- Post Quest Dialogue, once the player gets this dialogue it will continue until the player zones.
         -- After zoning this is never seen again.
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Odeya'] =
             {

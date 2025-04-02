@@ -7,11 +7,11 @@
 -- RuAun_Gardens     : !zone 130
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_GATE_OF_THE_GODS)
+local mission = Mission:new(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_GATE_OF_THE_GODS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ZILART, xi.mission.id.zilart.ARK_ANGELS },
+    nextMission = { invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.ARK_ANGELS },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.RUAUN_GARDENS] =
+        [invaderXim.zone.RUAUN_GARDENS] =
         {
             onZoneIn = function(player, prevZone)
                 return 51

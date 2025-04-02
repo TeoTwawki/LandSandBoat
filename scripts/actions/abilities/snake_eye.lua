@@ -13,9 +13,9 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    player:addStatusEffect(xi.effect.SNAKE_EYE, (player:getMerit(xi.merit.SNAKE_EYE) - 10), 0, 60)
+    player:addStatusEffect(invaderXim.effect.SNAKE_EYE, (player:getMerit(invaderXim.merit.SNAKE_EYE) - 10), 0, 60)
 
-    return xi.effect.SNAKE_EYE
+    return invaderXim.effect.SNAKE_EYE
 end
 
 return abilityObject

@@ -10,37 +10,37 @@ end
 
 local statii =
 {
-    xi.effect.BIND,
-    xi.effect.WEIGHT,
-    xi.effect.ADDLE,
-    xi.effect.BURN,
-    xi.effect.FROST,
-    xi.effect.CHOKE,
-    xi.effect.RASP,
-    xi.effect.SHOCK,
-    xi.effect.DROWN,
-    xi.effect.DIA,
-    xi.effect.BIO,
-    xi.effect.SLOW,
-    xi.effect.ELEGY,
-    xi.effect.REQUIEM,
-    xi.effect.HELIX,
-    xi.effect.STR_DOWN,
-    xi.effect.DEX_DOWN,
-    xi.effect.VIT_DOWN,
-    xi.effect.AGI_DOWN,
-    xi.effect.INT_DOWN,
-    xi.effect.MND_DOWN,
-    xi.effect.CHR_DOWN,
-    xi.effect.MAX_HP_DOWN,
-    xi.effect.MAX_MP_DOWN,
-    xi.effect.ATTACK_DOWN,
-    xi.effect.EVASION_DOWN,
-    xi.effect.DEFENSE_DOWN,
-    xi.effect.MAGIC_DEF_DOWN,
-    xi.effect.INHIBIT_TP,
-    xi.effect.MAGIC_ACC_DOWN,
-    xi.effect.MAGIC_ATK_DOWN,
+    invaderXim.effect.BIND,
+    invaderXim.effect.WEIGHT,
+    invaderXim.effect.ADDLE,
+    invaderXim.effect.BURN,
+    invaderXim.effect.FROST,
+    invaderXim.effect.CHOKE,
+    invaderXim.effect.RASP,
+    invaderXim.effect.SHOCK,
+    invaderXim.effect.DROWN,
+    invaderXim.effect.DIA,
+    invaderXim.effect.BIO,
+    invaderXim.effect.SLOW,
+    invaderXim.effect.ELEGY,
+    invaderXim.effect.REQUIEM,
+    invaderXim.effect.HELIX,
+    invaderXim.effect.STR_DOWN,
+    invaderXim.effect.DEX_DOWN,
+    invaderXim.effect.VIT_DOWN,
+    invaderXim.effect.AGI_DOWN,
+    invaderXim.effect.INT_DOWN,
+    invaderXim.effect.MND_DOWN,
+    invaderXim.effect.CHR_DOWN,
+    invaderXim.effect.MAX_HP_DOWN,
+    invaderXim.effect.MAX_MP_DOWN,
+    invaderXim.effect.ATTACK_DOWN,
+    invaderXim.effect.EVASION_DOWN,
+    invaderXim.effect.DEFENSE_DOWN,
+    invaderXim.effect.MAGIC_DEF_DOWN,
+    invaderXim.effect.INHIBIT_TP,
+    invaderXim.effect.MAGIC_ACC_DOWN,
+    invaderXim.effect.MAGIC_ATK_DOWN,
 }
 
 -- TODO: verify messaging
@@ -49,10 +49,10 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     for _, effect in pairs(statii) do
         if target:delStatusEffect(effect) then
             lastEffect = effect
-            skill:setMsg(xi.msg.basic.SKILL_ERASE)
+            skill:setMsg(invaderXim.msg.basic.SKILL_ERASE)
             return lastEffect
         else
-            skill:setMsg(xi.msg.basic.NO_EFFECT)
+            skill:setMsg(invaderXim.msg.basic.NO_EFFECT)
         end
     end
 end

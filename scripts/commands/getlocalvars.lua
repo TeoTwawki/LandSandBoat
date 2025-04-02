@@ -21,13 +21,13 @@ commandObj.onTrigger = function(player)
     vars = targ:getLocalVars()
 
     if #vars > 0 then
-        player:printToPlayer(string.format('Printing local vars for entity: %s', targ:getName()), xi.msg.channel.SYSTEM_3)
-        player:printToPlayer('----------------------------------', xi.msg.channel.SYSTEM_3)
+        player:printToPlayer(string.format('Printing local vars for entity: %s', targ:getName()), invaderXim.msg.channel.SYSTEM_3)
+        player:printToPlayer('----------------------------------', invaderXim.msg.channel.SYSTEM_3)
         for _, var in pairs(vars) do
-            player:printToPlayer(string.format('"%s" : %u', var['varname'], var['value']), xi.msg.channel.SYSTEM_3)
+            player:printToPlayer(string.format('"%s" : %u', var['varname'], var['value']), invaderXim.msg.channel.SYSTEM_3)
         end
     else
-        player:printToPlayer(string.format('No local vars for entity: %s', targ:getName()), xi.msg.channel.SYSTEM_3)
+        player:printToPlayer(string.format('No local vars for entity: %s', targ:getName()), invaderXim.msg.channel.SYSTEM_3)
     end
 end
 

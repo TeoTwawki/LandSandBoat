@@ -16,7 +16,7 @@ commandObj.onTrigger = function(player)
     local targ = player:getCursorTarget()
     if targ ~= nil then
         local tatarget    = player:getTrickAttackChar(targ)
-        local trickAttack = player:getStatusEffect(xi.effect.TRICK_ATTACK)
+        local trickAttack = player:getStatusEffect(invaderXim.effect.TRICK_ATTACK)
 
         if not trickAttack then
             player:printToPlayer('You do not have Trick Attack active, !getta will fail.')

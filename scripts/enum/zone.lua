@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.zone
-xi.zone =
+---@enum invaderXim.zone
+invaderXim.zone =
 {
     UNKNOWN                         = 0,
     PHANAUET_CHANNEL                = 1,
@@ -49,7 +49,7 @@ xi.zone =
     DYNAMIS_BUBURIMU                = 40,
     DYNAMIS_QUFIM                   = 41,
     DYNAMIS_TAVNAZIA                = 42,
-    DIORAMA_ABDHALJS_GHELSBA        = 43,
+    DIORAMA_ABDHALJS_GHEIXIMA        = 43,
     ABDHALJS_ISLE_PURGONORGO        = 44,
     ABYSSEA_TAHRONGI                = 45,
     OPEN_SEA_ROUTE_TO_AL_ZAHBI      = 46,
@@ -146,8 +146,8 @@ xi.zone =
     XARCABARD_S                     = 137,
     CASTLE_ZVAHL_BAILEYS_S          = 138,
     HORLAIS_PEAK                    = 139,
-    GHELSBA_OUTPOST                 = 140,
-    FORT_GHELSBA                    = 141,
+    GHEIXIMA_OUTPOST                 = 140,
+    FORT_GHEIXIMA                    = 141,
     YUGHOTT_GROTTO                  = 142,
     PALBOROUGH_MINES                = 143,
     WAUGHROON_SHRINE                = 144,

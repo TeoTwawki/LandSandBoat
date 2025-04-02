@@ -5,7 +5,7 @@
 -- !pos -122.853 0.000 -195.605 245
 -----------------------------------
 local lowerJeunoGlobal = require('scripts/zones/Lower_Jeuno/globals')
-local ID = zones[xi.zone.LOWER_JEUNO]
+local ID = zones[invaderXim.zone.LOWER_JEUNO]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -25,7 +25,7 @@ entity.onPath = function(npc)
         -- once a pathThrough begins, there doesn't seem to be a clean way to stop onPath
         -- from being called forever.
 
-        if npc:atPoint(xi.path.get(lowerJeunoGlobal.lampPath, 48)) then
+        if npc:atPoint(invaderXim.path.get(lowerJeunoGlobal.lampPath, 48)) then
             npc:clearPath()
             npc:setStatus(2)
 
@@ -34,11 +34,11 @@ entity.onPath = function(npc)
 
         else
             for i, v in ipairs(lowerJeunoGlobal.lampPoints) do
-                local lampPos = xi.path.get(lowerJeunoGlobal.lampPath, v)
+                local lampPos = invaderXim.path.get(lowerJeunoGlobal.lampPath, v)
                 if npc:atPoint(lampPos) then
                     -- Vhana is at a lamp (she reaches them in reverse order)
                     local lampId = ID.npc.STREETLAMP_OFFSET + (12 - i)
-                    GetNPCByID(lampId):setAnimation(xi.anim.OPEN_DOOR)
+                    GetNPCByID(lampId):setAnimation(invaderXim.anim.OPEN_DOOR)
                     break
                 end
             end

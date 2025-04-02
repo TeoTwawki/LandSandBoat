@@ -35,7 +35,7 @@ g_mixins.families.amphiptere = function(amphiptereMob)
         end
     end)
 
-    amphiptereMob:addListener('WEAPONSKILL_STATE_EXIT', 'SPAM_KNOCKBACK', function(mobArg, actionId)
+    amphiptereMob:addListener('WEAPONSKILL_STATE_IXIMT', 'SPAM_KNOCKBACK', function(mobArg, actionId)
         local reavingWind   = 2431
         local reavingWindKb = 2426
 

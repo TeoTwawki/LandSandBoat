@@ -16,10 +16,10 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     end
 
     -- TODO: what happens when this has no effect?
-    target:addStatusEffect(xi.effect.PROTECT, 220, 0, 300)
-    target:addStatusEffect(xi.effect.SHELL, 2930, 0, 300)
+    target:addStatusEffect(invaderXim.effect.PROTECT, 220, 0, 300)
+    target:addStatusEffect(invaderXim.effect.SHELL, 2930, 0, 300)
 
-    return xi.effect.PROTECT -- Monberaux gains the effect of Protect.
+    return invaderXim.effect.PROTECT -- Monberaux gains the effect of Protect.
 end
 
 return mobskillObject

@@ -7,13 +7,13 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    if target:getNation() ~= xi.nation.WINDURST then
-        return xi.msg.basic.ITEM_CANNOT_USE_ON
+    if target:getNation() ~= invaderXim.nation.WINDURST then
+        return invaderXim.msg.basic.ITEM_CANNOT_USE_ON
     end
 
     -- If target's current region is not a conquest region or not a nation city involved with conquest
-    if target:getCurrentRegion() > xi.region.JEUNO then
-        return xi.msg.basic.ITEM_UNABLE_TO_USE
+    if target:getCurrentRegion() > invaderXim.region.JEUNO then
+        return invaderXim.msg.basic.ITEM_UNABLE_TO_USE
     end
 
     -- Can only use on targets within party or self
@@ -22,7 +22,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
             caster:getPartyLeader() == nil or
             target:getPartyLeader():getID() ~= caster:getPartyLeader():getID()
         then
-            return xi.msg.basic.ITEM_CANNOT_USE_ON
+            return invaderXim.msg.basic.ITEM_CANNOT_USE_ON
         end
     end
 
@@ -30,8 +30,8 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:delStatusEffectsByFlag(xi.effectFlag.INFLUENCE, true)
-    target:addStatusEffect(xi.effect.SIGNET, 0, 0, 18000)
+    target:delStatusEffectsByFlag(invaderXim.effectFlag.INFLUENCE, true)
+    target:addStatusEffect(invaderXim.effect.SIGNET, 0, 0, 18000)
 end
 
 return itemObject

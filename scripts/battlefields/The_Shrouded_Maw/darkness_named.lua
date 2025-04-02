@@ -2,12 +2,12 @@
 -- Darkness Named
 -- The Shrouded Maw mission battlefield
 -----------------------------------
-local shroudedMawID = zones[xi.zone.THE_SHROUDED_MAW]
+local shroudedMawID = zones[invaderXim.zone.THE_SHROUDED_MAW]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId        = xi.zone.THE_SHROUDED_MAW,
-    battlefieldId = xi.battlefield.id.DARKNESS_NAMED,
+    zoneId        = invaderXim.zone.THE_SHROUDED_MAW,
+    battlefieldId = invaderXim.battlefield.id.DARKNESS_NAMED,
     canLoseExp    = false,
     isMission     = true,
     allowTrusts   = true,
@@ -17,8 +17,8 @@ local content = BattlefieldMission:new({
     index         = 0,
     entryNpc      = 'MC_Entrance',
     exitNpc       = 'Memento_Circle',
-    missionArea   = xi.mission.log_id.COP,
-    mission       = xi.mission.id.cop.DARKNESS_NAMED,
+    missionArea   = invaderXim.mission.log_id.COP,
+    mission       = invaderXim.mission.id.cop.DARKNESS_NAMED,
     requiredVar   = 'Mission[6][358]Status',
     requiredValue = 4,
 
@@ -29,7 +29,7 @@ function content:setupBattlefield(battlefield)
     local tileOffset = shroudedMawID.npc.DARKNESS_NAMED_TILE_OFFSET + (battlefield:getArea() - 1) * 8
 
     for tileId = tileOffset, tileOffset + 7 do
-        GetNPCByID(tileId):setAnimation(xi.anim.CLOSE_DOOR)
+        GetNPCByID(tileId):setAnimation(invaderXim.anim.CLOSE_DOOR)
     end
 end
 
@@ -44,7 +44,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 

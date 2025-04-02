@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.ACCESSION
+-- invaderXim.effect.ACCESSION
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

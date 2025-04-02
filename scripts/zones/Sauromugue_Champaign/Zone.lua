@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Sauromugue_Champaign (120)
 -----------------------------------
-local ID = zones[xi.zone.SAUROMUGUE_CHAMPAIGN]
+local ID = zones[invaderXim.zone.SAUROMUGUE_CHAMPAIGN]
 require('scripts/quests/i_can_hear_a_rainbow')
 -----------------------------------
 ---@type TZone
@@ -14,7 +14,7 @@ zoneObject.onInitialize = function(zone)
     UpdateNMSpawnPoint(ID.mob.ROC)
     GetMobByID(ID.mob.ROC):setRespawnTime(math.random(900, 10800))
     GetNPCByID(ID.npc.QM2 + math.random(0, 5)):setLocalVar('Quest[2][70]Option', 1) -- Determine which QM is active today for THF AF2
-    xi.voidwalker.zoneOnInit(zone)
+    invaderXim.voidwalker.zoneOnInit(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -36,18 +36,18 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.afterZoneIn = function(player)
-    xi.chocoboGame.handleMessage(player)
+    invaderXim.chocoboGame.handleMessage(player)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
     local triggerAreaID = triggerArea:getTriggerAreaID()
 
-    if triggerAreaID == 1 and player:hasStatusEffect(xi.effect.MOUNTED) then
-        xi.chocoboGame.onTriggerAreaEnter(player)
+    if triggerAreaID == 1 and player:hasStatusEffect(invaderXim.effect.MOUNTED) then
+        invaderXim.chocoboGame.onTriggerAreaEnter(player)
     end
 end
 
@@ -66,7 +66,7 @@ zoneObject.onEventUpdate = function(player, csid, option, npc)
 end
 
 zoneObject.onEventFinish = function(player, csid, option, npc)
-    xi.chocoboGame.onEventFinish(player, csid)
+    invaderXim.chocoboGame.onEventFinish(player, csid)
 end
 
 return zoneObject

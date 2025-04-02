@@ -12,18 +12,18 @@ mixins =
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
-            { id = xi.jsa.MANAFONT, hpp = math.random(10, 50) },
+            { id = invaderXim.jsa.MANAFONT, hpp = math.random(10, 50) },
         },
     })
 
     mob:setTP(3000)
     mob:setMobSkillAttack(0)
     mob:setMagicCastingEnabled(true)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
-    mob:setMobMod(xi.mobMod.GIL_MAX, -1)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
+    mob:setMobMod(invaderXim.mobMod.GIL_MAX, -1)
     mob:setLocalVar('tp_spam', math.random(5, 15))
     mob:addListener('COMBAT_TICK', 'BUKKI_TICK', function(mobArg)
         if

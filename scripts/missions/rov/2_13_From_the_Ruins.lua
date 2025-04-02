@@ -5,12 +5,12 @@
 -- !addmission 13 62
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.FROM_THE_RUINS)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.FROM_THE_RUINS)
 
 mission.reward =
 {
-    keyItem = xi.ki.RHAPSODY_IN_CRIMSON,
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.CAUTERIZE },
+    keyItem = invaderXim.ki.RHAPSODY_IN_CRIMSON,
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.CAUTERIZE },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Imperial_Whitegate'] =
             {
@@ -29,7 +29,7 @@ mission.sections =
                     -- adjusted as more captures become available, and is limited at this time to what has been observed.
 
                     local param0 = 0
-                    local param1 = player:hasCompletedMission(xi.mission.log_id.WOTG, xi.mission.id.wotg.THE_WILL_OF_THE_WORLD)
+                    local param1 = player:hasCompletedMission(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.THE_WILL_OF_THE_WORLD)
 
                     return mission:progressEvent(169, { [0] = param0, [1] = param1, text_table = 0 })
                 end,

@@ -27,10 +27,10 @@ spellObject.onSpellCast = function(caster, target, spell)
     local isGaze          = false
     local isConal         = false
     local params          = {}
-    params.ecosystem      = xi.ecosystem.UNDEAD
-    params.effect         = xi.effect.VIT_DOWN
+    params.ecosystem      = invaderXim.ecosystem.UNDEAD
+    params.effect         = invaderXim.effect.VIT_DOWN
 
-    return xi.spells.blue.useEnfeeblingSpell(caster, target, spell, params, power, tick, duration, resistThreshold, isGaze, isConal)
+    return invaderXim.spells.blue.useEnfeeblingSpell(caster, target, spell, params, power, tick, duration, resistThreshold, isGaze, isConal)
 end
 
 return spellObject

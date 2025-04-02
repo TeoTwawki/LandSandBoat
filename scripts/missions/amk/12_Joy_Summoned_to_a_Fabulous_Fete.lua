@@ -4,11 +4,11 @@
 -- !addmission 10 11
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.AMK, xi.mission.id.amk.JOY_SUMMONED_TO_A_FABULOUS_FETE)
+local mission = Mission:new(invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.JOY_SUMMONED_TO_A_FABULOUS_FETE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.AMK, xi.mission.id.amk.A_CHALLENGE_YOU_COULD_BE_A_WINNER },
+    nextMission = { invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.A_CHALLENGE_YOU_COULD_BE_A_WINNER },
 }
 
 mission.sections =
@@ -18,7 +18,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CASTLE_ZVAHL_BAILEYS] =
+        [invaderXim.zone.CASTLE_ZVAHL_BAILEYS] =
         {
             onZoneIn = function(player, prevZone)
                 return 88

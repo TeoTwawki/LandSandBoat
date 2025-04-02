@@ -11,12 +11,12 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     if not target:isPC() then
-        skill:setMsg(xi.msg.basic.SKILL_NO_EFFECT)
+        skill:setMsg(invaderXim.msg.basic.SKILL_NO_EFFECT)
         return
     end
 
     local slots = {}
-    for slot = xi.slot.MAIN, xi.slot.BACK do
+    for slot = invaderXim.slot.MAIN, invaderXim.slot.BACK do
         table.insert(slots, slot)
     end
 
@@ -27,8 +27,8 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     for _, slot in pairs(slots) do
         if target:hasSlotEquipped(slot) then
             target:unequipItem(slot)
-            if slot == xi.slot.MAIN then
-                target:unequipItem(xi.slot.SUB)
+            if slot == invaderXim.slot.MAIN then
+                target:unequipItem(invaderXim.slot.SUB)
             end
 
             power = bit.bor(power, bit.lshift(1, slot))
@@ -40,18 +40,18 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     end
 
     if amount == 0 then
-        skill:setMsg(xi.msg.basic.SKILL_NO_EFFECT)
+        skill:setMsg(invaderXim.msg.basic.SKILL_NO_EFFECT)
         return
     end
 
-    local encumbrance = target:getStatusEffect(xi.effect.ENCUMBRANCE_I)
+    local encumbrance = target:getStatusEffect(invaderXim.effect.ENCUMBRANCE_I)
     if encumbrance then
         power = bit.bor(encumbrance:getPower(), power)
-        target:delStatusEffectSilent(xi.effect.ENCUMBRANCE_I)
+        target:delStatusEffectSilent(invaderXim.effect.ENCUMBRANCE_I)
     end
 
-    target:addStatusEffectEx(xi.effect.ENCUMBRANCE_I, xi.effect.ENCUMBRANCE_I, power, 0, 60)
-    skill:setMsg(xi.msg.basic.USES)
+    target:addStatusEffectEx(invaderXim.effect.ENCUMBRANCE_I, invaderXim.effect.ENCUMBRANCE_I, power, 0, 60)
+    skill:setMsg(invaderXim.msg.basic.USES)
 end
 
 return mobskillObject

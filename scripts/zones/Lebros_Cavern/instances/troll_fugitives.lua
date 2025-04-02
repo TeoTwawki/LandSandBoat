@@ -1,7 +1,7 @@
 -----------------------------------
 -- Assault: Troll Fugitives
 -----------------------------------
-local ID = zones[xi.zone.LEBROS_CAVERN]
+local ID = zones[invaderXim.zone.LEBROS_CAVERN]
 -----------------------------------
 local instanceObject = {}
 
@@ -36,7 +36,7 @@ instanceObject.onInstanceCreatedCallback = function(player, instance)
 end
 
 instanceObject.onInstanceTimeUpdate = function(instance, elapsed)
-    xi.instance.updateInstanceTime(instance, elapsed, ID.text)
+    invaderXim.instance.updateInstanceTime(instance, elapsed, ID.text)
 end
 
 instanceObject.onInstanceFailure = function(instance)
@@ -65,11 +65,11 @@ instanceObject.onInstanceComplete = function(instance)
     local box = GetNPCByID(ID.npc.ANCIENT_LOCKBOX, instance)
 
     if rune then
-        rune:setStatus(xi.status.NORMAL)
+        rune:setStatus(invaderXim.status.NORMAL)
     end
 
     if box then
-        box:setStatus(xi.status.NORMAL)
+        box:setStatus(invaderXim.status.NORMAL)
     end
 end
 

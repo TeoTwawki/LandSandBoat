@@ -6,28 +6,28 @@
 -- Exoroche : !pos 72 -1 60 230
 -- Helbort  : !pos 71 -1 65 230
 -----------------------------------
-local northenSandoriaID = zones[xi.zone.NORTHERN_SAN_DORIA]
-local southernSandoriaID = zones[xi.zone.SOUTHERN_SAN_DORIA]
+local northenSandoriaID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
+local southernSandoriaID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.FATHER_AND_SON)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.FATHER_AND_SON)
 
 quest.reward =
 {
     fame = 30,
-    fameArea = xi.fameArea.SANDORIA,
-    item = xi.item.WILLOW_FISHING_ROD,
-    title = xi.title.LOST_CHILD_OFFICER,
+    fameArea = invaderXim.fameArea.SANDORIA,
+    item = invaderXim.item.WILLOW_FISHING_ROD,
+    title = invaderXim.title.LOST_CHILD_OFFICER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Exoroche'] =
             {
@@ -43,7 +43,7 @@ quest.sections =
             ['Helbort'] = quest:event(593):oncePerZone(),
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Ailbeche'] = quest:progressEvent(508),
 
@@ -58,10 +58,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Ailbeche'] =
             {
@@ -82,7 +82,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Helbort'] = quest:event(593):oncePerZone(),
 
@@ -108,28 +108,28 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.SHARPENING_THE_SWORD) == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.SHARPENING_THE_SWORD) == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Ailbeche'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        not player:hasTitle(xi.title.FAMILY_COUNSELOR) and
-                        npcUtil.tradeHasExactly(trade, xi.item.WILLOW_FISHING_ROD)
+                        not player:hasTitle(invaderXim.title.FAMILY_COUNSELOR) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.WILLOW_FISHING_ROD)
                     then
                         return quest:progressEvent(61)
                     end
                 end,
 
                 onTrigger = function(player, npc)
-                    if player:hasTitle(xi.title.FAMILY_COUNSELOR) then
+                    if player:hasTitle(invaderXim.title.FAMILY_COUNSELOR) then
                         return quest:message(northenSandoriaID.text.AILBECHE_WHEN_FISHING):replaceDefault()
                     else
-                        npc:showText(npc, northenSandoriaID.text.OH_I_WANT_MY_ITEM, xi.item.WILLOW_FISHING_ROD)
+                        npc:showText(npc, northenSandoriaID.text.OH_I_WANT_MY_ITEM, invaderXim.item.WILLOW_FISHING_ROD)
                         return quest:noAction():progress()
                     end
                 end,
@@ -139,7 +139,7 @@ quest.sections =
             {
                 [61] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    player:addTitle(xi.title.FAMILY_COUNSELOR)
+                    player:addTitle(invaderXim.title.FAMILY_COUNSELOR)
                 end,
             },
         },

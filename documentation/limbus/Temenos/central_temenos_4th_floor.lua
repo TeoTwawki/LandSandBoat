@@ -8,19 +8,19 @@
 -- !addkeyitem cosmo_cleanse
 -- !pos 580.000 -2.375 104.000 37
 -----------------------------------
-local ID = zones[xi.zone.TEMENOS]
+local ID = zones[invaderXim.zone.TEMENOS]
 -----------------------------------
 
 local content = Limbus:new({
-    zoneId           = xi.zone.TEMENOS,
-    battlefieldId    = xi.battlefield.id.CENTRAL_TEMENOS_4TH_FLOOR,
+    zoneId           = invaderXim.zone.TEMENOS,
+    battlefieldId    = invaderXim.battlefield.id.CENTRAL_TEMENOS_4TH_FLOOR,
     maxPlayers       = 18,
     timeLimit        = utils.minutes(60),
     index            = 3,
     area             = 4,
     entryNpc         = 'Matter_Diffusion_Module',
-    requiredKeyItems = { xi.ki.COSMO_CLEANSE, xi.ki.WHITE_CARD, message = ID.text.YOU_INSERT_THE_CARD_POLISHED },
-    requiredItems    = { xi.item.SILVER_CHIP, xi.item.CERULEAN_CHIP, xi.item.ORCHID_CHIP },
+    requiredKeyItems = { invaderXim.ki.COSMO_CLEANSE, invaderXim.ki.WHITE_CARD, message = ID.text.YOU_INSERT_THE_CARD_POLISHED },
+    requiredItems    = { invaderXim.item.SILVER_CHIP, invaderXim.item.CERULEAN_CHIP, invaderXim.item.ORCHID_CHIP },
     name             = 'CENTRAL_TEMENOS_4TH_FLOOR',
     lootCrateId      = ID.npc.C4_LOOT_CRATE,
 })
@@ -49,7 +49,7 @@ function content:onBattlefieldInitialize(battlefield)
             local crate   = GetEntityByID(crateID)
 
             if crate then
-                crate:setStatus(xi.status.NORMAL)
+                crate:setStatus(invaderXim.status.NORMAL)
                 crate:setUntargetable(false)
                 crate:setAnimationSub(8)
                 crate:setModelId(961)
@@ -145,7 +145,7 @@ content.groups =
             local pos = mob:getSpawnPos()
 
             mob:setPos(pos.x, pos.y, pos.z, 64)
-            xi.limbus.spawnFrom(mob, ID.npc.C4_LOOT_CRATE)
+            invaderXim.limbus.spawnFrom(mob, ID.npc.C4_LOOT_CRATE)
         end
     },
 }
@@ -156,37 +156,37 @@ content.loot =
     {
         {
             quantity = 5,
-            { item = xi.item.ANCIENT_BEASTCOIN, weight = xi.loot.weight.NORMAL },
+            { item = invaderXim.item.ANCIENT_BEASTCOIN, weight = invaderXim.loot.weight.NORMAL },
         },
 
         {
             quantity = 2,
-            { item = xi.item.NONE,              weight = xi.loot.weight.NORMAL },
-            { item = xi.item.ANCIENT_BEASTCOIN, weight = xi.loot.weight.NORMAL },
+            { item = invaderXim.item.NONE,              weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.ANCIENT_BEASTCOIN, weight = invaderXim.loot.weight.NORMAL },
         },
 
         {
             quantity = 2,
-            { item = xi.item.SQUARE_OF_ECARLATE_CLOTH,  weight = xi.loot.weight.NORMAL },
-            { item = xi.item.UTOPIAN_GOLD_THREAD,       weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SQUARE_OF_BENEDICT_SILK,   weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SQUARE_OF_DIABOLIC_SILK,   weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SPOOL_OF_RUBY_SILK_THREAD, weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SQUARE_OF_SUPPLE_SKIN,     weight = xi.loot.weight.NORMAL },
-            { item = xi.item.CHUNK_OF_SNOWY_CERMET,     weight = xi.loot.weight.NORMAL },
-            { item = xi.item.DARK_ORICHALCUM_INGOT,     weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SQUARE_OF_SMALT_LEATHER,   weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SPOOL_OF_COILED_YARN,      weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SPOOL_OF_CHAMELEON_YARN,   weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SPOOL_OF_SCARLET_ODOSHI,   weight = xi.loot.weight.NORMAL },
-            { item = xi.item.PLAITED_CORD,              weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SHEET_OF_COBALT_MYTHRIL,   weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SPOOL_OF_GLITTERING_YARN,  weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SPOOL_OF_LUMINIAN_THREAD,  weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SPOOL_OF_SILKWORM_THREAD,  weight = xi.loot.weight.NORMAL },
-            { item = xi.item.PANTIN_WIRE,               weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SQUARE_OF_FILET_LACE,      weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SQUARE_OF_BRILLIANTINE,    weight = xi.loot.weight.NORMAL },
+            { item = invaderXim.item.SQUARE_OF_ECARLATE_CLOTH,  weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.UTOPIAN_GOLD_THREAD,       weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SQUARE_OF_BENEDICT_SILK,   weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SQUARE_OF_DIABOLIC_SILK,   weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SPOOL_OF_RUBY_SILK_THREAD, weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SQUARE_OF_SUPPLE_SKIN,     weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.CHUNK_OF_SNOWY_CERMET,     weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.DARK_ORICHALCUM_INGOT,     weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SQUARE_OF_SMALT_LEATHER,   weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SPOOL_OF_COILED_YARN,      weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SPOOL_OF_CHAMELEON_YARN,   weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SPOOL_OF_SCARLET_ODOSHI,   weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.PLAITED_CORD,              weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SHEET_OF_COBALT_MYTHRIL,   weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SPOOL_OF_GLITTERING_YARN,  weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SPOOL_OF_LUMINIAN_THREAD,  weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SPOOL_OF_SILKWORM_THREAD,  weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.PANTIN_WIRE,               weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SQUARE_OF_FILET_LACE,      weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SQUARE_OF_BRILLIANTINE,    weight = invaderXim.loot.weight.NORMAL },
         },
     },
 
@@ -194,20 +194,20 @@ content.loot =
     {
         {
             quantity = 7,
-            { item = xi.item.ANCIENT_BEASTCOIN, weight = xi.loot.weight.NORMAL },
+            { item = invaderXim.item.ANCIENT_BEASTCOIN, weight = invaderXim.loot.weight.NORMAL },
         },
 
         {
             quantity = 2,
-            { item = xi.item.PIECE_OF_ULTIMAS_CEREBRUM, weight = xi.loot.weight.NORMAL },
-            { item = xi.item.SEGMENT_OF_ULTIMAS_CLAW,   weight = xi.loot.weight.LOW    },
-            { item = xi.item.SEGMENT_OF_ULTIMAS_LEG,    weight = xi.loot.weight.LOW    },
-            { item = xi.item.SEGMENT_OF_ULTIMAS_TAIL,   weight = xi.loot.weight.LOW    },
+            { item = invaderXim.item.PIECE_OF_ULTIMAS_CEREBRUM, weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.SEGMENT_OF_ULTIMAS_CLAW,   weight = invaderXim.loot.weight.LOW    },
+            { item = invaderXim.item.SEGMENT_OF_ULTIMAS_LEG,    weight = invaderXim.loot.weight.LOW    },
+            { item = invaderXim.item.SEGMENT_OF_ULTIMAS_TAIL,   weight = invaderXim.loot.weight.LOW    },
         },
 
         {
-            { item = xi.item.NONE,                   weight = xi.loot.weight.EXTREMELY_HIGH },
-            { item = xi.item.PIECE_OF_ULTIMAS_HEART, weight = xi.loot.weight.NORMAL         },
+            { item = invaderXim.item.NONE,                   weight = invaderXim.loot.weight.EXTREMELY_HIGH },
+            { item = invaderXim.item.PIECE_OF_ULTIMAS_HEART, weight = invaderXim.loot.weight.NORMAL         },
         },
     },
 }

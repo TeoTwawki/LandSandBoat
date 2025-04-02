@@ -12,11 +12,11 @@
 -- Sauromugue Champaign [S] : !pos 369 8 -227 98
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.CAUTERIZE)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.CAUTERIZE)
 
 mission.reward =
 {
-    keyItem = xi.ki.LIGHTSWORM,
+    keyItem = invaderXim.ki.LIGHTSWORM,
 }
 
 -- NOTE: No capture exists which causes the player to land on Uncertain Destinations. It
@@ -40,22 +40,22 @@ mission.reward =
 -- Default values for mission events.
 local eventIdByZone =
 {
-    [xi.zone.BATALLIA_DOWNS]         = { 20, 0, 0, 0, utils.MAX_UINT32 - 1, 436377, 183, 624793, 21299 },
-    [xi.zone.ROLANBERRY_FIELDS]      = { 18, 0, 0, 0, utils.MAX_UINT32 - 1, utils.MAX_UINT32 - 687432, utils.MAX_UINT32 - 1173, 32387, 0 },
-    [xi.zone.SAUROMUGUE_CHAMPAIGN]   = { 19, 0, 0, 0, utils.MAX_UINT32 - 1, utils.MAX_UINT32 - 2049, utils.MAX_UINT32 - 1325423232, 1, 3871 },
-    [xi.zone.BATALLIA_DOWNS_S]       = { 23, 0, 0, 0, utils.MAX_UINT32 - 1, 1996485631, 2147483519, 3, 0 },
-    [xi.zone.ROLANBERRY_FIELDS_S]    = { 19, 0, 0, 0, utils.MAX_UINT32 - 1, 0, 1, 0, 7 },
-    [xi.zone.SAUROMUGUE_CHAMPAIGN_S] = { 31, 0, 0, 0, utils.MAX_UINT32 - 1, 0, 4653057, 0, 1 },
+    [invaderXim.zone.BATALLIA_DOWNS]         = { 20, 0, 0, 0, utils.MAX_UINT32 - 1, 436377, 183, 624793, 21299 },
+    [invaderXim.zone.ROLANBERRY_FIELDS]      = { 18, 0, 0, 0, utils.MAX_UINT32 - 1, utils.MAX_UINT32 - 687432, utils.MAX_UINT32 - 1173, 32387, 0 },
+    [invaderXim.zone.SAUROMUGUE_CHAMPAIGN]   = { 19, 0, 0, 0, utils.MAX_UINT32 - 1, utils.MAX_UINT32 - 2049, utils.MAX_UINT32 - 1325423232, 1, 3871 },
+    [invaderXim.zone.BATALLIA_DOWNS_S]       = { 23, 0, 0, 0, utils.MAX_UINT32 - 1, 1996485631, 2147483519, 3, 0 },
+    [invaderXim.zone.ROLANBERRY_FIELDS_S]    = { 19, 0, 0, 0, utils.MAX_UINT32 - 1, 0, 1, 0, 7 },
+    [invaderXim.zone.SAUROMUGUE_CHAMPAIGN_S] = { 31, 0, 0, 0, utils.MAX_UINT32 - 1, 0, 4653057, 0, 1 },
 }
 
 local qmOnTrigger = function(player, npc)
     local zoneId = player:getZoneID()
 
-    if xi.rhapsodies.charactersAvailable(player) then
+    if invaderXim.rhapsodies.charactersAvailable(player) then
         -- NOTE: Tables are userdata; make a copy of the desired row before modifying.
         local eventPack = { unpack(eventIdByZone[zoneId]) }
 
-        eventPack[3] = player:getCurrentMission(xi.mission.log_id.WOTG) >= xi.mission.id.wotg.FORK_IN_THE_ROAD and 1 or 0
+        eventPack[3] = player:getCurrentMission(invaderXim.mission.log_id.WOTG) >= invaderXim.mission.id.wotg.FORK_IN_THE_ROAD and 1 or 0
 
         return mission:progressEvent(unpack(eventPack))
     else
@@ -68,10 +68,10 @@ end
 local qmEventFinish = function(player, csid, option, npc)
     mission:complete(player)
 
-    player:addMission(xi.mission.log_id.ROV, xi.mission.id.rov.UNCERTAIN_DESTINATIONS)
-    player:completeMission(xi.mission.log_id.ROV, xi.mission.id.rov.UNCERTAIN_DESTINATIONS)
+    player:addMission(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.UNCERTAIN_DESTINATIONS)
+    player:completeMission(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.UNCERTAIN_DESTINATIONS)
 
-    player:addMission(xi.mission.log_id.ROV, xi.mission.id.rov.GANGED_UP_ON)
+    player:addMission(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.GANGED_UP_ON)
 end
 
 mission.sections =
@@ -81,7 +81,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BATALLIA_DOWNS] =
+        [invaderXim.zone.BATALLIA_DOWNS] =
         {
             ['qm_maw'] = qmOnTrigger,
 
@@ -91,7 +91,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.ROLANBERRY_FIELDS] =
+        [invaderXim.zone.ROLANBERRY_FIELDS] =
         {
             ['qm_maw'] = qmOnTrigger,
 
@@ -101,7 +101,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SAUROMUGUE_CHAMPAIGN] =
+        [invaderXim.zone.SAUROMUGUE_CHAMPAIGN] =
         {
             ['qm_maw'] = qmOnTrigger,
 
@@ -111,7 +111,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BATALLIA_DOWNS_S] =
+        [invaderXim.zone.BATALLIA_DOWNS_S] =
         {
             ['qm_maw'] = qmOnTrigger,
 
@@ -121,7 +121,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.ROLANBERRY_FIELDS_S] =
+        [invaderXim.zone.ROLANBERRY_FIELDS_S] =
         {
             ['qm_maw'] = qmOnTrigger,
 
@@ -131,7 +131,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SAUROMUGUE_CHAMPAIGN_S] =
+        [invaderXim.zone.SAUROMUGUE_CHAMPAIGN_S] =
         {
             ['qm_maw'] = qmOnTrigger,
 

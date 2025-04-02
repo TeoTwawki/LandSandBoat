@@ -2,7 +2,7 @@
 -- Area: Zhayolm Remnants
 -- MOB: Poroggo Madame
 -----------------------------------
-local ID = zones[xi.zone.ZHAYOLM_REMNANTS]
+local ID = zones[invaderXim.zone.ZHAYOLM_REMNANTS]
 -----------------------------------
 
 ---@type TMobEntity
@@ -10,19 +10,19 @@ local entity = {}
 
 local elementMods =
 {
-    [1] = { null = xi.mod.FIRE_NULL,  res = xi.mod.FIRE_RES_RANK },
-    [2] = { null = xi.mod.EARTH_NULL, res = xi.mod.EARTH_RES_RANK },
-    [3] = { null = xi.mod.WATER_NULL, res = xi.mod.WATER_RES_RANK },
-    [4] = { null = xi.mod.WIND_NULL,  res = xi.mod.WIND_RES_RANK },
-    [5] = { null = xi.mod.ICE_NULL,   res = xi.mod.ICE_RES_RANK },
-    [6] = { null = xi.mod.LTNG_NULL,  res = xi.mod.THUNDER_RES_RANK },
-    [7] = { null = xi.mod.LIGHT_NULL, res = xi.mod.LIGHT_RES_RANK },
-    [8] = { null = xi.mod.DARK_NULL,  res = xi.mod.DARK_RES_RANK },
+    [1] = { null = invaderXim.mod.FIRE_NULL,  res = invaderXim.mod.FIRE_RES_RANK },
+    [2] = { null = invaderXim.mod.EARTH_NULL, res = invaderXim.mod.EARTH_RES_RANK },
+    [3] = { null = invaderXim.mod.WATER_NULL, res = invaderXim.mod.WATER_RES_RANK },
+    [4] = { null = invaderXim.mod.WIND_NULL,  res = invaderXim.mod.WIND_RES_RANK },
+    [5] = { null = invaderXim.mod.ICE_NULL,   res = invaderXim.mod.ICE_RES_RANK },
+    [6] = { null = invaderXim.mod.LTNG_NULL,  res = invaderXim.mod.THUNDER_RES_RANK },
+    [7] = { null = invaderXim.mod.LIGHT_NULL, res = invaderXim.mod.LIGHT_RES_RANK },
+    [8] = { null = invaderXim.mod.DARK_NULL,  res = invaderXim.mod.DARK_RES_RANK },
 }
 
 entity.onMobInitialize = function(mob)
-    mob:addImmunity(xi.immunity.SILENCE)
-    mob:setMobMod(xi.mobMod.DETECTION, xi.detects.SIGHT)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
+    mob:setMobMod(invaderXim.mobMod.DETECTION, invaderXim.detects.SIGHT)
 end
 
 entity.onMobSpawn = function(mob)
@@ -34,18 +34,18 @@ entity.onMobSpawn = function(mob)
         -- also prevents enfeebs
         mob:addMod(elementMods[enteringDay].null, 100)
         mob:addMod(elementMods[enteringDay].res, -3)
-        mob:addMod(xi.mod.SPELLINTERRUPT, -20)
-        if enteringDay == xi.day.DARKSDAY then -- takes double dmg on Darksday
-            mob:addMod(xi.mod.UDMGPHYS, 100)
-            mob:addMod(xi.mod.UDMGBREATH, 100)
-            mob:addMod(xi.mod.UDMGMAGIC, 1000)
-            mob:addMod(xi.mod.UDMGRANGE, 100)
+        mob:addMod(invaderXim.mod.SPELLINTERRUPT, -20)
+        if enteringDay == invaderXim.day.DARKSDAY then -- takes double dmg on Darksday
+            mob:addMod(invaderXim.mod.UDMGPHYS, 100)
+            mob:addMod(invaderXim.mod.UDMGBREATH, 100)
+            mob:addMod(invaderXim.mod.UDMGMAGIC, 1000)
+            mob:addMod(invaderXim.mod.UDMGRANGE, 100)
         end
 
         -- first floor madames are bigger
         if instance:getStage() == 1 then
-            --mob:setEntitySize(xi.entitySize.LARGE)
-            mob:setMobMod(xi.mobMod.MAGIC_COOL, 40)
+            --mob:setEntitySize(invaderXim.entitySize.LARGE)
+            mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 40)
             mob:setDelay(200)
         end
     end
@@ -59,10 +59,10 @@ entity.onMobDeath = function(mob, player, optParams)
             instance:setLocalVar('killedNMs', instance:getLocalVar('killedNMs') + 1)
 
             if instance:getStage() == 2 then
-                xi.salvage.handleSocketCells(mob, player)
+                invaderXim.salvage.handleSocketCells(mob, player)
             elseif mob:getID() == ID.mob.POROGGO_MADAME[4] then
                 mob:setDropID(0)
-                xi.salvage.spawnTempChest(mob, { rate = 1000 })
+                invaderXim.salvage.spawnTempChest(mob, { rate = 1000 })
             end
         end
     end

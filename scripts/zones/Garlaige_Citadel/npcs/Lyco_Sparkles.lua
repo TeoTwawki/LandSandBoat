@@ -3,7 +3,7 @@
 --  NPC: Lycopodium Teleport
 -- !pos -176.759 -1.249 71.511 200
 -----------------------------------
-local ID = zones[xi.zone.GARLAIGE_CITADEL]
+local ID = zones[invaderXim.zone.GARLAIGE_CITADEL]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

@@ -17,14 +17,14 @@ require('scripts/globals/utils')
 require('scripts/globals/combat/physical_utilities')
 -----------------------------------
 xi = xi or {}
-xi.weaponskills = xi.weaponskills or {}
+invaderXim.weaponskills = invaderXim.weaponskills or {}
 
 -- Obtains alpha, used for working out WSC on legacy servers
 -- Retail has no alpha anymore as of 2014 Weaponskill functions
 local function getAlpha(level)
     local alpha = 1
 
-    if not xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if not invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         if level > 75 then
             alpha = 0.85
         elseif level > 59 then
@@ -63,7 +63,7 @@ local function calculateRawFstr(dSTR, divisor)
 end
 
 -- Given the attacker's str and the mob's vit, fSTR2 is calculated (for ranged WS)
-xi.weaponskills.fSTR2 = function(atkStr, defVit, weaponRank)
+invaderXim.weaponskills.fSTR2 = function(atkStr, defVit, weaponRank)
     local dSTR  = atkStr - defVit
     local fSTR2 = calculateRawFstr(dSTR, 2)
 
@@ -85,16 +85,16 @@ end
 -- https://www.ffxiah.com/forum/topic/21497/stalwart-soul/ some anecdotal data that aligns with JP
 -- https://www.bg-wiki.com/ffxi/Agwu%27s_Scythe Souleater Effect that goes beyond established cap, Stalwart Soul bonus being additive to trait
 local function souleaterBonus(attacker, wsParams)
-    if attacker:hasStatusEffect(xi.effect.SOULEATER) then
-        local souleaterEffect   = attacker:getMaxGearMod(xi.mod.SOULEATER_EFFECT) / 100
-        local souleaterEffectII = attacker:getMod(xi.mod.SOULEATER_EFFECT_II) / 100
-        local stalwartSoulBonus = 1 - attacker:getMod(xi.mod.STALWART_SOUL) / 100
+    if attacker:hasStatusEffect(invaderXim.effect.SOULEATER) then
+        local souleaterEffect   = attacker:getMaxGearMod(invaderXim.mod.SOULEATER_EFFECT) / 100
+        local souleaterEffectII = attacker:getMod(invaderXim.mod.SOULEATER_EFFECT_II) / 100
+        local stalwartSoulBonus = 1 - attacker:getMod(invaderXim.mod.STALWART_SOUL) / 100
         local bonusDamage       = math.floor(attacker:getHP() * (0.1 + souleaterEffect + souleaterEffectII))
 
         if bonusDamage >= 1 then
             attacker:delHP(utils.stoneskin(attacker, bonusDamage * stalwartSoulBonus))
 
-            if attacker:getMainJob() ~= xi.job.DRK then
+            if attacker:getMainJob() ~= invaderXim.job.DRK then
                 return math.floor(bonusDamage / 2)
             end
 
@@ -108,8 +108,8 @@ end
 local scarletDeliriumBonus = function(attacker)
     local bonus = 1
 
-    if attacker:hasStatusEffect(xi.effect.SCARLET_DELIRIUM_1) then
-        local power = attacker:getStatusEffect(xi.effect.SCARLET_DELIRIUM_1):getPower()
+    if attacker:hasStatusEffect(invaderXim.effect.SCARLET_DELIRIUM_1) then
+        local power = attacker:getStatusEffect(invaderXim.effect.SCARLET_DELIRIUM_1):getPower()
 
         bonus = 1 + power / 100
     end
@@ -120,46 +120,46 @@ end
 local consumeManaBonus = function(attacker)
     local bonus = 0
 
-    if attacker:hasStatusEffect(xi.effect.CONSUME_MANA) then
+    if attacker:hasStatusEffect(invaderXim.effect.CONSUME_MANA) then
         bonus = math.floor(attacker:getMP() / 10)
         attacker:setMP(0)
-        attacker:delStatusEffect(xi.effect.CONSUME_MANA)
+        attacker:delStatusEffect(invaderXim.effect.CONSUME_MANA)
     end
 
     return bonus
 end
 
 local function shadowAbsorb(target)
-    local targetShadows = target:getMod(xi.mod.UTSUSEMI)
-    local shadowType    = xi.mod.UTSUSEMI
+    local targetShadows = target:getMod(invaderXim.mod.UTSUSEMI)
+    local shadowType    = invaderXim.mod.UTSUSEMI
 
     if targetShadows == 0 then
         if math.random(1, 100) <= 80 then
-            targetShadows = target:getMod(xi.mod.BLINK)
-            shadowType    = xi.mod.BLINK
+            targetShadows = target:getMod(invaderXim.mod.BLINK)
+            shadowType    = invaderXim.mod.BLINK
         end
     end
 
     if targetShadows > 0 then
         targetShadows = targetShadows - 1
 
-        if shadowType == xi.mod.UTSUSEMI then
-            local effect = target:getStatusEffect(xi.effect.COPY_IMAGE)
+        if shadowType == invaderXim.mod.UTSUSEMI then
+            local effect = target:getStatusEffect(invaderXim.effect.COPY_IMAGE)
             if effect then
                 if targetShadows == 1 then
-                    effect:setIcon(xi.effect.COPY_IMAGE)
+                    effect:setIcon(invaderXim.effect.COPY_IMAGE)
                 elseif targetShadows == 2 then
-                    effect:setIcon(xi.effect.COPY_IMAGE_2)
+                    effect:setIcon(invaderXim.effect.COPY_IMAGE_2)
                 elseif targetShadows == 3 then
-                    effect:setIcon(xi.effect.COPY_IMAGE_3)
+                    effect:setIcon(invaderXim.effect.COPY_IMAGE_3)
                 end
             end
         end
 
         target:setMod(shadowType, targetShadows)
         if targetShadows == 0 then
-            target:delStatusEffect(xi.effect.COPY_IMAGE)
-            target:delStatusEffect(xi.effect.BLINK)
+            target:delStatusEffect(invaderXim.effect.COPY_IMAGE)
+            target:delStatusEffect(invaderXim.effect.BLINK)
         end
 
         return true
@@ -171,15 +171,15 @@ end
 local function getMultiAttacks(attacker, target, wsParams, firstHit, offHand)
     local numHits      = 0
     local bonusHits    = 0
-    local doubleRate   = attacker:getMod(xi.mod.DOUBLE_ATTACK) + attacker:getMerit(xi.merit.DOUBLE_ATTACK_RATE)
-    local tripleRate   = attacker:getMod(xi.mod.TRIPLE_ATTACK) + attacker:getMerit(xi.merit.TRIPLE_ATTACK_RATE)
-    local quadRate     = attacker:getMod(xi.mod.QUAD_ATTACK)
-    local oaThriceRate = attacker:getMod(xi.mod.MYTHIC_OCC_ATT_THRICE)
-    local oaTwiceRate  = attacker:getMod(xi.mod.MYTHIC_OCC_ATT_TWICE)
+    local doubleRate   = attacker:getMod(invaderXim.mod.DOUBLE_ATTACK) + attacker:getMerit(invaderXim.merit.DOUBLE_ATTACK_RATE)
+    local tripleRate   = attacker:getMod(invaderXim.mod.TRIPLE_ATTACK) + attacker:getMerit(invaderXim.merit.TRIPLE_ATTACK_RATE)
+    local quadRate     = attacker:getMod(invaderXim.mod.QUAD_ATTACK)
+    local oaThriceRate = attacker:getMod(invaderXim.mod.MYTHIC_OCC_ATT_THRICE)
+    local oaTwiceRate  = attacker:getMod(invaderXim.mod.MYTHIC_OCC_ATT_TWICE)
     local isJump       = wsParams.isJump or false
 
     if isJump then
-        doubleRate = doubleRate + attacker:getMod(xi.mod.JUMP_DOUBLE_ATTACK)
+        doubleRate = doubleRate + attacker:getMod(invaderXim.mod.JUMP_DOUBLE_ATTACK)
     end
 
     -- TODO: Assasin vest +2 Ambush augment.
@@ -198,8 +198,8 @@ local function getMultiAttacks(attacker, target, wsParams, firstHit, offHand)
         bonusHits = bonusHits + 1
     end
 
-    attacker:delStatusEffect(xi.effect.ASSASSINS_CHARGE)
-    attacker:delStatusEffect(xi.effect.WARRIORS_CHARGE)
+    attacker:delStatusEffect(invaderXim.effect.ASSASSINS_CHARGE)
+    attacker:delStatusEffect(invaderXim.effect.WARRIORS_CHARGE)
 
     -- Try OaX for Jumps
     -- ... What's the correct dual wield interaction?
@@ -217,7 +217,7 @@ local function getMultiAttacks(attacker, target, wsParams, firstHit, offHand)
     return numHits
 end
 
-xi.weaponskills.getRangedHitRate = function(attacker, target, bonus)
+invaderXim.weaponskills.getRangedHitRate = function(attacker, target, bonus)
     local acc = attacker:getRACC()
     local eva = target:getEVA()
 
@@ -226,15 +226,15 @@ xi.weaponskills.getRangedHitRate = function(attacker, target, bonus)
     end
 
     if
-        target:hasStatusEffect(xi.effect.YONIN) and
+        target:hasStatusEffect(invaderXim.effect.YONIN) and
         target:isFacing(attacker, 23)
     then
         -- Yonin evasion boost if defender is facing attacker
-        bonus = bonus - target:getStatusEffect(xi.effect.YONIN):getPower()
+        bonus = bonus - target:getStatusEffect(invaderXim.effect.YONIN):getPower()
     end
 
-    if attacker:hasTrait(xi.trait.AMBUSH) and attacker:isBehind(target, 23) then
-        bonus = bonus + attacker:getMerit(xi.merit.AMBUSH)
+    if attacker:hasTrait(invaderXim.trait.AMBUSH) and attacker:isBehind(target, 23) then
+        bonus = bonus + attacker:getMerit(invaderXim.merit.AMBUSH)
     end
 
     acc = acc + bonus
@@ -258,9 +258,9 @@ end
 local function getSingleHitDamage(attacker, target, dmg, ftp, wsParams, calcParams)
     local criticalHit          = false
     local hitDamage            = 0
-    local atkMultiplier        = xi.weaponskills.fTP(calcParams.tpUsed, wsParams.atkVaries)
-    local ignoreDefMultiplier  = xi.weaponskills.fTP(calcParams.tpUsed, wsParams.ignoredDefense)
-    local applyLevelCorrection = xi.combat.levelCorrection.isLevelCorrectedZone(attacker)
+    local atkMultiplier        = invaderXim.weaponskills.fTP(calcParams.tpUsed, wsParams.atkVaries)
+    local ignoreDefMultiplier  = invaderXim.weaponskills.fTP(calcParams.tpUsed, wsParams.ignoredDefense)
+    local applyLevelCorrection = invaderXim.combat.levelCorrection.isLevelCorrectedZone(attacker)
     local ignoresDefense       = (wsParams.ignoredDefense ~= nil) -- if the table exists, it ignores defense
 
     -- local pdif = 0 Reminder for Future Implementation!
@@ -281,9 +281,9 @@ local function getSingleHitDamage(attacker, target, dmg, ftp, wsParams, calcPara
 
     -- check parry
     if
-        calcParams.attackType == xi.attackType.PHYSICAL and
+        calcParams.attackType == invaderXim.attackType.PHYSICAL and
         not calcParams.guaranteedHit and
-        xi.combat.physical.isParried(target, attacker)
+        invaderXim.combat.physical.isParried(target, attacker)
     then
         -- parried logic
         return hitDamage, calcParams
@@ -301,9 +301,9 @@ local function getSingleHitDamage(attacker, target, dmg, ftp, wsParams, calcPara
 
     -- check guard
     if
-        calcParams.attackType == xi.attackType.PHYSICAL and
+        calcParams.attackType == invaderXim.attackType.PHYSICAL and
         not calcParams.guaranteedHit and
-        xi.combat.physical.isGuarded(target, attacker)
+        invaderXim.combat.physical.isGuarded(target, attacker)
     then
         -- guarded logic
         return hitDamage, calcParams
@@ -318,17 +318,17 @@ local function getSingleHitDamage(attacker, target, dmg, ftp, wsParams, calcPara
         calcParams.criticalHit = true
     end
 
-    if calcParams.attackType == xi.attackType.PHYSICAL then
-        calcParams.pdif = xi.combat.physical.calculateMeleePDIF(attacker, target, calcParams.attackInfo.weaponType, atkMultiplier, criticalHit, applyLevelCorrection, ignoresDefense, ignoreDefMultiplier, true, calcParams.attackInfo.slot, false)
+    if calcParams.attackType == invaderXim.attackType.PHYSICAL then
+        calcParams.pdif = invaderXim.combat.physical.calculateMeleePDIF(attacker, target, calcParams.attackInfo.weaponType, atkMultiplier, criticalHit, applyLevelCorrection, ignoresDefense, ignoreDefMultiplier, true, calcParams.attackInfo.slot, false)
     else
-        calcParams.pdif = xi.combat.physical.calculateRangedPDIF(attacker, target, calcParams.skillType, atkMultiplier, criticalHit, applyLevelCorrection, ignoresDefense, ignoreDefMultiplier, true, 0)
+        calcParams.pdif = invaderXim.combat.physical.calculateRangedPDIF(attacker, target, calcParams.skillType, atkMultiplier, criticalHit, applyLevelCorrection, ignoresDefense, ignoreDefMultiplier, true, 0)
     end
 
     hitDamage = (dmg + consumeManaBonus(attacker)) * ftp * calcParams.pdif
 
     -- handle blocking and reduce the hit damage if needed
-    if xi.combat.physical.isBlocked(target, attacker) then
-        hitDamage = hitDamage - xi.combat.physical.getDamageReductionForBlock(target, attacker, hitDamage)
+    if invaderXim.combat.physical.isBlocked(target, attacker) then
+        hitDamage = hitDamage - invaderXim.combat.physical.getDamageReductionForBlock(target, attacker, hitDamage)
     end
 
     calcParams.hitsLanded = calcParams.hitsLanded + 1
@@ -342,20 +342,20 @@ local function modifyMeleeHitDamage(attacker, target, attackTbl, wsParams, rawDa
     if not wsParams.formless then
         adjustedDamage = target:physicalDmgTaken(adjustedDamage, attackTbl.damageType)
 
-        if attackTbl.weaponType == xi.skill.HAND_TO_HAND then
-            adjustedDamage = adjustedDamage * (1 + target:getMod(xi.mod.HTH_SDT) / 10000)
+        if attackTbl.weaponType == invaderXim.skill.HAND_TO_HAND then
+            adjustedDamage = adjustedDamage * (1 + target:getMod(invaderXim.mod.HTH_SDT) / 10000)
         elseif
-            attackTbl.weaponType == xi.skill.DAGGER or
-            attackTbl.weaponType == xi.skill.POLEARM
+            attackTbl.weaponType == invaderXim.skill.DAGGER or
+            attackTbl.weaponType == invaderXim.skill.POLEARM
         then
-            adjustedDamage = adjustedDamage * (1 + target:getMod(xi.mod.PIERCE_SDT) / 10000)
+            adjustedDamage = adjustedDamage * (1 + target:getMod(invaderXim.mod.PIERCE_SDT) / 10000)
         elseif
-            attackTbl.weaponType == xi.skill.CLUB or
-            attackTbl.weaponType == xi.skill.STAFF
+            attackTbl.weaponType == invaderXim.skill.CLUB or
+            attackTbl.weaponType == invaderXim.skill.STAFF
         then
-            adjustedDamage = adjustedDamage * (1 + target:getMod(xi.mod.IMPACT_SDT) / 10000)
+            adjustedDamage = adjustedDamage * (1 + target:getMod(invaderXim.mod.IMPACT_SDT) / 10000)
         else
-            adjustedDamage = adjustedDamage * (1 + target:getMod(xi.mod.SLASH_SDT) / 10000)
+            adjustedDamage = adjustedDamage * (1 + target:getMod(invaderXim.mod.SLASH_SDT) / 10000)
         end
     end
 
@@ -366,7 +366,7 @@ local function modifyMeleeHitDamage(attacker, target, attackTbl, wsParams, rawDa
     adjustedDamage = adjustedDamage + souleaterBonus(attacker, wsParams)
 
     if adjustedDamage > 0 then
-        adjustedDamage = adjustedDamage - target:getMod(xi.mod.PHALANX)
+        adjustedDamage = adjustedDamage - target:getMod(invaderXim.mod.PHALANX)
         adjustedDamage = utils.clamp(adjustedDamage, 0, 99999)
     end
 
@@ -377,13 +377,13 @@ end
 
 local modParameters =
 {
-    ['str_wsc'] = { xi.mod.STR, xi.mod.WS_STR_BONUS },
-    ['dex_wsc'] = { xi.mod.DEX, xi.mod.WS_DEX_BONUS },
-    ['vit_wsc'] = { xi.mod.VIT, xi.mod.WS_VIT_BONUS },
-    ['agi_wsc'] = { xi.mod.AGI, xi.mod.WS_AGI_BONUS },
-    ['int_wsc'] = { xi.mod.INT, xi.mod.WS_INT_BONUS },
-    ['mnd_wsc'] = { xi.mod.MND, xi.mod.WS_MND_BONUS },
-    ['chr_wsc'] = { xi.mod.CHR, xi.mod.WS_CHR_BONUS },
+    ['str_wsc'] = { invaderXim.mod.STR, invaderXim.mod.WS_STR_BONUS },
+    ['dex_wsc'] = { invaderXim.mod.DEX, invaderXim.mod.WS_DEX_BONUS },
+    ['vit_wsc'] = { invaderXim.mod.VIT, invaderXim.mod.WS_VIT_BONUS },
+    ['agi_wsc'] = { invaderXim.mod.AGI, invaderXim.mod.WS_AGI_BONUS },
+    ['int_wsc'] = { invaderXim.mod.INT, invaderXim.mod.WS_INT_BONUS },
+    ['mnd_wsc'] = { invaderXim.mod.MND, invaderXim.mod.WS_MND_BONUS },
+    ['chr_wsc'] = { invaderXim.mod.CHR, invaderXim.mod.WS_CHR_BONUS },
 }
 
 local function calculateWsMods(attacker, calcParams, wsParams)
@@ -403,12 +403,12 @@ end
 -- https://www.ffxiah.com/forum/topic/33470/the-sealed-dagger-a-ninja-guide/151/#3420836
 -- https://www.ffxiah.com/forum/topic/49614/blade-chi-damage-formula/2/#3171538
 local function calculateHybridMagicDamage(tp, physicaldmg, attacker, target, wsParams, calcParams, wsID)
-    local ftp      = xi.weaponskills.fTP(tp, wsParams.ftpMod)
-    local magicdmg = physicaldmg * ftp + attacker:getMod(xi.mod.MAGIC_DAMAGE)
-    local wsd      = attacker:getMod(xi.mod.ALL_WSDMG_ALL_HITS)
+    local ftp      = invaderXim.weaponskills.fTP(tp, wsParams.ftpMod)
+    local magicdmg = physicaldmg * ftp + attacker:getMod(invaderXim.mod.MAGIC_DAMAGE)
+    local wsd      = attacker:getMod(invaderXim.mod.ALL_WSDMG_ALL_HITS)
 
-    if attacker:getMod(xi.mod.WEAPONSKILL_DAMAGE_BASE + wsID) > 0 then
-        wsd = wsd + attacker:getMod(xi.mod.WEAPONSKILL_DAMAGE_BASE + wsID)
+    if attacker:getMod(invaderXim.mod.WEAPONSKILL_DAMAGE_BASE + wsID) > 0 then
+        wsd = wsd + attacker:getMod(invaderXim.mod.WEAPONSKILL_DAMAGE_BASE + wsID)
     end
 
     magicdmg = magicdmg * (100 + wsd) / 100
@@ -418,11 +418,11 @@ local function calculateHybridMagicDamage(tp, physicaldmg, attacker, target, wsP
     magicdmg = target:magicDmgTaken(magicdmg, wsParams.ele)
 
     if magicdmg > 0 then
-        magicdmg = magicdmg * xi.spells.damage.calculateNukeAbsorbOrNullify(target, wsParams.ele)
+        magicdmg = magicdmg * invaderXim.spells.damage.calculateNukeAbsorbOrNullify(target, wsParams.ele)
     end
 
     if magicdmg > 0 then                                           -- handle nonzero damage if previous function does not absorb or nullify
-        magicdmg = magicdmg - target:getMod(xi.mod.PHALANX)
+        magicdmg = magicdmg - target:getMod(invaderXim.mod.PHALANX)
         magicdmg = utils.clamp(magicdmg, 0, 99999)
         magicdmg = utils.oneforall(target, magicdmg)
         magicdmg = utils.stoneskin(target, magicdmg)
@@ -431,21 +431,21 @@ local function calculateHybridMagicDamage(tp, physicaldmg, attacker, target, wsP
     return math.floor(magicdmg)
 end
 
--- Calculates the raw damage for a weaponskill, used by both xi.weaponskills.doPhysicalWeaponskill and xi.weaponskills.doRangedWeaponskill.
+-- Calculates the raw damage for a weaponskill, used by both invaderXim.weaponskills.doPhysicalWeaponskill and invaderXim.weaponskills.doRangedWeaponskill.
 -- Behavior of damage calculations can vary based on the passed in calcParams, which are determined by the calling function
 -- depending on the type of weaponskill being done, and any special cases for that weaponskill
 --
 -- wsParams can contain: ftpMod, str_wsc, dex_wsc, vit_wsc, int_wsc, mnd_wsc, critVaries,
 -- accVaries, ignoredDefense, atkVaries, kick, hybridWS, hitsHigh, formless
 --
--- See xi.weaponskills.doPhysicalWeaponskill or xi.weaponskills.doRangedWeaponskill for how calcParams are determined.
+-- See invaderXim.weaponskills.doPhysicalWeaponskill or invaderXim.weaponskills.doRangedWeaponskill for how calcParams are determined.
 
 -- TODO: Reduce complexity
 -- Disable cyclomatic complexity check for this function:
 -- luacheck: ignore 561
-xi.weaponskills.calculateRawWSDmg = function(attacker, target, wsID, tp, action, wsParams, calcParams)
+invaderXim.weaponskills.calculateRawWSDmg = function(attacker, target, wsID, tp, action, wsParams, calcParams)
     local targetLvl = target:getMainLvl()
-    local targetHp  = target:getHP() + target:getMod(xi.mod.STONESKIN)
+    local targetHp  = target:getHP() + target:getMod(invaderXim.mod.STONESKIN)
 
     -- Calculate alpha, WSC, and our modifiers for our base per-hit damage
     calcParams.alpha = getAlpha(attacker:getMainLvl())
@@ -468,7 +468,7 @@ xi.weaponskills.calculateRawWSDmg = function(attacker, target, wsID, tp, action,
     local mainBase = calcParams.weaponDamage[1] + wsMods + calcParams.bonusWSmods
 
     -- Calculate fTP multiplier
-    local ftp = xi.weaponskills.fTP(tp, wsParams.ftpMod) + calcParams.bonusfTP
+    local ftp = invaderXim.weaponskills.fTP(tp, wsParams.ftpMod) + calcParams.bonusfTP
     if calcParams.hybridHit then
         ftp = 1 + calcParams.bonusfTP
     end
@@ -477,15 +477,15 @@ xi.weaponskills.calculateRawWSDmg = function(attacker, target, wsID, tp, action,
     -- TODO: calc per-hit with weapon crit+% on each hand (if dual wielding)
     calcParams.critRate = 0
     if wsParams.critVaries then -- Work out critical hit ratios
-        calcParams.critRate = xi.combat.physical.calculateSwingCriticalRate(attacker, target, tp, wsParams.critVaries)
+        calcParams.critRate = invaderXim.combat.physical.calculateSwingCriticalRate(attacker, target, tp, wsParams.critVaries)
     end
 
     -- Start the WS
     local hitsDone                = 1
     local hitdmg                  = 0
     local finaldmg                = 0
-    local mainhandTPGain          = xi.combat.tp.getSingleWeaponTPReturn(attacker, xi.slot.MAIN) -- TODO: are these calculated wrong? ((delay1+delay2)/2 * 1 - DW%) = tp return for both hands?
-    local subTPGain               = xi.combat.tp.getSingleWeaponTPReturn(attacker, xi.slot.SUB)  --
+    local mainhandTPGain          = invaderXim.combat.tp.getSingleWeaponTPReturn(attacker, invaderXim.slot.MAIN) -- TODO: are these calculated wrong? ((delay1+delay2)/2 * 1 - DW%) = tp return for both hands?
+    local subTPGain               = invaderXim.combat.tp.getSingleWeaponTPReturn(attacker, invaderXim.slot.SUB)  --
     local isJump                  = wsParams.isJump or false
     local attackerTPMult          = wsParams.attackerTPMult or 1
     calcParams.hitsLanded         = 0
@@ -535,14 +535,14 @@ xi.weaponskills.calculateRawWSDmg = function(attacker, target, wsID, tp, action,
     local numMultiProcs     = numMainHandMultis > 0 and 1 or 0
 
     -- Have to calculate added bonus for SA/TA here since it is done outside of the fTP multiplier
-    if attacker:getMainJob() == xi.job.THF then
+    if attacker:getMainJob() == invaderXim.job.THF then
         -- Add DEX/AGI bonus to first hit if THF main and valid Sneak/Trick Attack
         if calcParams.sneakApplicable then
-            finaldmg = finaldmg + calcParams.pdif * attacker:getStat(xi.mod.DEX) * (1 + attacker:getMod(xi.mod.SNEAK_ATK_DEX) / 100) * (1 + attacker:getMod(xi.mod.AUGMENTS_SA) / 100)
+            finaldmg = finaldmg + calcParams.pdif * attacker:getStat(invaderXim.mod.DEX) * (1 + attacker:getMod(invaderXim.mod.SNEAK_ATK_DEX) / 100) * (1 + attacker:getMod(invaderXim.mod.AUGMENTS_SA) / 100)
         end
 
         if calcParams.trickApplicable then
-            finaldmg = finaldmg + calcParams.pdif * attacker:getStat(xi.mod.AGI) * (1 + attacker:getMod(xi.mod.TRICK_ATK_AGI) / 100) * (1 + attacker:getMod(xi.mod.AUGMENTS_TA) / 100)
+            finaldmg = finaldmg + calcParams.pdif * attacker:getStat(invaderXim.mod.AGI) * (1 + attacker:getMod(invaderXim.mod.TRICK_ATK_AGI) / 100) * (1 + attacker:getMod(invaderXim.mod.AUGMENTS_TA) / 100)
         end
     end
 
@@ -551,7 +551,7 @@ xi.weaponskills.calculateRawWSDmg = function(attacker, target, wsID, tp, action,
 
     -- For items that apply bonus damage to the first hit of a weaponskill (but not later hits),
     -- store bonus damage for first hit, for use after other calculations are done
-    local firstHitBonus = finaldmg * attacker:getMod(xi.mod.ALL_WSDMG_FIRST_HIT) / 100
+    local firstHitBonus = finaldmg * attacker:getMod(invaderXim.mod.ALL_WSDMG_FIRST_HIT) / 100
 
     -- Reset fTP if it's not supposed to carry over across all hits for this WS
     -- We'll recalculate our mainhand damage after doing offhand
@@ -559,9 +559,9 @@ xi.weaponskills.calculateRawWSDmg = function(attacker, target, wsID, tp, action,
         ftp = 1
     end
 
-    local offhandSkill = attacker:getWeaponSkillType(xi.slot.SUB)
-    if calcParams.skillType == xi.skill.HAND_TO_HAND then
-        offhandSkill = xi.skill.HAND_TO_HAND
+    local offhandSkill = attacker:getWeaponSkillType(invaderXim.slot.SUB)
+    if calcParams.skillType == invaderXim.skill.HAND_TO_HAND then
+        offhandSkill = invaderXim.skill.HAND_TO_HAND
         subTPGain    = mainhandTPGain
     end
 
@@ -649,8 +649,8 @@ xi.weaponskills.calculateRawWSDmg = function(attacker, target, wsID, tp, action,
 
     -- Update params for accuracy cap/pdif purposes
     if calcParams.extraOffhandHit then
-        if offhandSkill ~= xi.skill.HAND_TO_HAND then
-            calcParams.attackInfo.slot = xi.slot.SUB
+        if offhandSkill ~= invaderXim.skill.HAND_TO_HAND then
+            calcParams.attackInfo.slot = invaderXim.slot.SUB
         end
 
         calcParams.attackInfo.weaponType = offhandSkill
@@ -725,14 +725,14 @@ xi.weaponskills.calculateRawWSDmg = function(attacker, target, wsID, tp, action,
     local bonusdmg = 0
 
     if not isJump then
-        bonusdmg = attacker:getMod(xi.mod.ALL_WSDMG_ALL_HITS) -- For any WS
+        bonusdmg = attacker:getMod(invaderXim.mod.ALL_WSDMG_ALL_HITS) -- For any WS
 
         if
-            attacker:getMod(xi.mod.WEAPONSKILL_DAMAGE_BASE + wsID) > 0 and
+            attacker:getMod(invaderXim.mod.WEAPONSKILL_DAMAGE_BASE + wsID) > 0 and
             not attacker:isPet()
         then
             -- For specific WS
-            bonusdmg = bonusdmg + attacker:getMod(xi.mod.WEAPONSKILL_DAMAGE_BASE + wsID)
+            bonusdmg = bonusdmg + attacker:getMod(invaderXim.mod.WEAPONSKILL_DAMAGE_BASE + wsID)
         end
 
         finaldmg = finaldmg * (100 + bonusdmg) / 100 -- Apply our "all hits" WS dmg bonuses
@@ -746,63 +746,63 @@ xi.weaponskills.calculateRawWSDmg = function(attacker, target, wsID, tp, action,
 end
 
 -- Sets up the necessary calcParams for a melee WS before passing it to calculateRawWSDmg. When the raw
--- damage is returned, handles reductions based on target resistances and passes off to xi.weaponskills.takeWeaponskillDamage.
-xi.weaponskills.doPhysicalWeaponskill = function(attacker, target, wsID, wsParams, tp, action, primaryMsg, taChar)
+-- damage is returned, handles reductions based on target resistances and passes off to invaderXim.weaponskills.takeWeaponskillDamage.
+invaderXim.weaponskills.doPhysicalWeaponskill = function(attacker, target, wsID, wsParams, tp, action, primaryMsg, taChar)
     -- Set up conditions and wsParams used for calculating weaponskill damage
-    local gorgetBeltFTP, gorgetBeltAcc = xi.weaponskills.handleWSGorgetBelt(attacker)
+    local gorgetBeltFTP, gorgetBeltAcc = invaderXim.weaponskills.handleWSGorgetBelt(attacker)
     local attack =
     {
-        ['type']       = xi.attackType.PHYSICAL,
-        ['slot']       = xi.slot.MAIN,
-        ['weaponType'] = attacker:getWeaponSkillType(xi.slot.MAIN),
-        ['damageType'] = attacker:getWeaponDamageType(xi.slot.MAIN)
+        ['type']       = invaderXim.attackType.PHYSICAL,
+        ['slot']       = invaderXim.slot.MAIN,
+        ['weaponType'] = attacker:getWeaponSkillType(invaderXim.slot.MAIN),
+        ['damageType'] = attacker:getWeaponDamageType(invaderXim.slot.MAIN)
     }
 
     local calcParams = {}
     calcParams.wsID                    = wsID
     calcParams.attackInfo              = attack
-    calcParams.weaponDamage            = xi.weaponskills.getMeleeDmg(attacker, attack.weaponType, wsParams.kick)
-    calcParams.fSTR                    = xi.weaponskills.fSTR(attacker:getStat(xi.mod.STR), target:getStat(xi.mod.VIT), attacker:getWeaponDmgRank())
+    calcParams.weaponDamage            = invaderXim.weaponskills.getMeleeDmg(attacker, attack.weaponType, wsParams.kick)
+    calcParams.fSTR                    = invaderXim.weaponskills.fSTR(attacker:getStat(invaderXim.mod.STR), target:getStat(invaderXim.mod.VIT), attacker:getWeaponDmgRank())
     calcParams.accStat                 = attacker:getACC()
     calcParams.melee                   = true
-    calcParams.mustMiss                = target:hasStatusEffect(xi.effect.PERFECT_DODGE) or (target:hasStatusEffect(xi.effect.ALL_MISS) and not wsParams.hitsHigh)
-    calcParams.sneakApplicable         = attacker:hasStatusEffect(xi.effect.SNEAK_ATTACK) and (attacker:isBehind(target) or attacker:hasStatusEffect(xi.effect.HIDE) or target:hasStatusEffect(xi.effect.DOUBT))
+    calcParams.mustMiss                = target:hasStatusEffect(invaderXim.effect.PERFECT_DODGE) or (target:hasStatusEffect(invaderXim.effect.ALL_MISS) and not wsParams.hitsHigh)
+    calcParams.sneakApplicable         = attacker:hasStatusEffect(invaderXim.effect.SNEAK_ATTACK) and (attacker:isBehind(target) or attacker:hasStatusEffect(invaderXim.effect.HIDE) or target:hasStatusEffect(invaderXim.effect.DOUBT))
     calcParams.taChar                  = taChar
     calcParams.trickApplicable         = calcParams.taChar ~= nil
-    calcParams.assassinApplicable      = calcParams.trickApplicable and attacker:hasTrait(xi.trait.ASSASSIN)
+    calcParams.assassinApplicable      = calcParams.trickApplicable and attacker:hasTrait(invaderXim.trait.ASSASSIN)
     calcParams.guaranteedHit           = calcParams.sneakApplicable or calcParams.trickApplicable
-    calcParams.mightyStrikesApplicable = attacker:hasStatusEffect(xi.effect.MIGHTY_STRIKES)
+    calcParams.mightyStrikesApplicable = attacker:hasStatusEffect(invaderXim.effect.MIGHTY_STRIKES)
     calcParams.forcedFirstCrit         = calcParams.sneakApplicable or calcParams.assassinApplicable
-    calcParams.extraOffhandHit         = attacker:isDualWielding() or attack.weaponType == xi.skill.HAND_TO_HAND
+    calcParams.extraOffhandHit         = attacker:isDualWielding() or attack.weaponType == invaderXim.skill.HAND_TO_HAND
     calcParams.hybridHit               = wsParams.hybridWS
-    calcParams.flourishEffect          = attacker:getStatusEffect(xi.effect.BUILDING_FLOURISH)
+    calcParams.flourishEffect          = attacker:getStatusEffect(invaderXim.effect.BUILDING_FLOURISH)
     calcParams.bonusTP                 = wsParams.bonusTP or 0
     calcParams.tpUsed                  = tp
-    calcParams.attackType              = xi.attackType.PHYSICAL
+    calcParams.attackType              = invaderXim.attackType.PHYSICAL
 
     local isJump = wsParams.isJump or false
     if isJump then
         calcParams.bonusfTP    = 0
-        calcParams.bonusAcc    = attacker:getMod(xi.mod.JUMP_ACC_BONUS)
+        calcParams.bonusAcc    = attacker:getMod(invaderXim.mod.JUMP_ACC_BONUS)
         calcParams.bonusWSmods = 0
     else
         calcParams.bonusfTP    = gorgetBeltFTP or 0
-        calcParams.bonusAcc    = (gorgetBeltAcc or 0) + attacker:getMod(xi.mod.WSACC)
+        calcParams.bonusAcc    = (gorgetBeltAcc or 0) + attacker:getMod(invaderXim.mod.WSACC)
         calcParams.bonusWSmods = wsParams.bonusWSmods or 0
     end
 
     if wsParams.accVaries then
         -- applied to all hits (This is a penalty!)
-        local accLost       = calcParams.accStat * (1 - xi.weaponskills.fTP(tp, wsParams.accVaries))
+        local accLost       = calcParams.accStat * (1 - invaderXim.weaponskills.fTP(tp, wsParams.accVaries))
         calcParams.bonusAcc = calcParams.bonusAcc - accLost
     end
 
-    calcParams.firstHitRate = xi.weaponskills.getHitRate(attacker, target, calcParams.bonusAcc + 100)
-    calcParams.hitRate      = xi.weaponskills.getHitRate(attacker, target, calcParams.bonusAcc)
+    calcParams.firstHitRate = invaderXim.weaponskills.getHitRate(attacker, target, calcParams.bonusAcc + 100)
+    calcParams.hitRate      = invaderXim.weaponskills.getHitRate(attacker, target, calcParams.bonusAcc)
     calcParams.skillType    = attack.weaponType
 
     -- Send our wsParams off to calculate our raw WS damage, hits landed, and shadows absorbed
-    calcParams     = xi.weaponskills.calculateRawWSDmg(attacker, target, wsID, tp, action, wsParams, calcParams)
+    calcParams     = invaderXim.weaponskills.calculateRawWSDmg(attacker, target, wsID, tp, action, wsParams, calcParams)
     local finaldmg = math.floor(calcParams.finalDmg)
 
     -- Add in magic damage for hybrid weaponskills
@@ -812,28 +812,28 @@ xi.weaponskills.doPhysicalWeaponskill = function(attacker, target, wsID, wsParam
     end
 
     -- Delete statuses that may have been spent by the WS
-    attacker:delStatusEffectsByFlag(xi.effectFlag.DETECTABLE)
-    attacker:delStatusEffect(xi.effect.SNEAK_ATTACK)
-    attacker:delStatusEffectSilent(xi.effect.BUILDING_FLOURISH)
+    attacker:delStatusEffectsByFlag(invaderXim.effectFlag.DETECTABLE)
+    attacker:delStatusEffect(invaderXim.effect.SNEAK_ATTACK)
+    attacker:delStatusEffectSilent(invaderXim.effect.BUILDING_FLOURISH)
 
-    finaldmg            = finaldmg * xi.settings.main.WEAPON_SKILL_POWER -- Add server bonus
+    finaldmg            = finaldmg * invaderXim.settings.main.WEAPON_SKILL_POWER -- Add server bonus
     calcParams.finalDmg = finaldmg
-    finaldmg            = xi.weaponskills.takeWeaponskillDamage(target, attacker, wsParams, primaryMsg, attack, calcParams, action)
+    finaldmg            = invaderXim.weaponskills.takeWeaponskillDamage(target, attacker, wsParams, primaryMsg, attack, calcParams, action)
 
     return finaldmg, calcParams.criticalHit, calcParams.tpHitsLanded, calcParams.extraHitsLanded, calcParams.shadowsAbsorbed
 end
 
 -- Sets up the necessary calcParams for a ranged WS before passing it to calculateRawWSDmg. When the raw
--- damage is returned, handles reductions based on target resistances and passes off to xi.weaponskills.takeWeaponskillDamage.
-xi.weaponskills.doRangedWeaponskill = function(attacker, target, wsID, wsParams, tp, action, primaryMsg)
+-- damage is returned, handles reductions based on target resistances and passes off to invaderXim.weaponskills.takeWeaponskillDamage.
+invaderXim.weaponskills.doRangedWeaponskill = function(attacker, target, wsID, wsParams, tp, action, primaryMsg)
     -- Set up conditions and params used for calculating weaponskill damage
-    local gorgetBeltFTP, gorgetBeltAcc = xi.weaponskills.handleWSGorgetBelt(attacker)
+    local gorgetBeltFTP, gorgetBeltAcc = invaderXim.weaponskills.handleWSGorgetBelt(attacker)
     local attack =
     {
-        ['type']       = xi.attackType.RANGED,
-        ['slot']       = xi.slot.RANGED,
-        ['weaponType'] = attacker:getWeaponSkillType(xi.slot.RANGED),
-        ['damageType'] = attacker:getWeaponDamageType(xi.slot.RANGED)
+        ['type']       = invaderXim.attackType.RANGED,
+        ['slot']       = invaderXim.slot.RANGED,
+        ['weaponType'] = attacker:getWeaponSkillType(invaderXim.slot.RANGED),
+        ['damageType'] = attacker:getWeaponDamageType(invaderXim.slot.RANGED)
     }
 
     local calcParams =
@@ -841,8 +841,8 @@ xi.weaponskills.doRangedWeaponskill = function(attacker, target, wsID, wsParams,
         wsID                    = wsID,
         attackInfo              = attack,
         weaponDamage            = { attacker:getRangedDmg() },
-        skillType               = attacker:getWeaponSkillType(xi.slot.RANGED),
-        fSTR                    = xi.weaponskills.fSTR2(attacker:getStat(xi.mod.STR), target:getStat(xi.mod.VIT), attacker:getRangedDmgRank()),
+        skillType               = attacker:getWeaponSkillType(invaderXim.slot.RANGED),
+        fSTR                    = invaderXim.weaponskills.fSTR2(attacker:getStat(invaderXim.mod.STR), target:getStat(invaderXim.mod.VIT), attacker:getRangedDmgRank()),
         accStat                 = attacker:getRACC(),
         melee                   = false,
         mustMiss                = false,
@@ -856,33 +856,33 @@ xi.weaponskills.doRangedWeaponskill = function(attacker, target, wsID, wsParams,
         tpUsed                  = tp,
         bonusTP                 = wsParams.bonusTP or 0,
         bonusfTP                = gorgetBeltFTP or 0,
-        bonusAcc                = (gorgetBeltAcc or 0) + attacker:getMod(xi.mod.WSACC),
+        bonusAcc                = (gorgetBeltAcc or 0) + attacker:getMod(invaderXim.mod.WSACC),
         bonusWSmods             = wsParams.bonusWSmods or 0,
-        attackType              = xi.attackType.RANGED
+        attackType              = invaderXim.attackType.RANGED
     }
     if wsParams.accVaries then
         -- applied to all hits (This is a penalty!)
-        local accLost       = calcParams.accStat * (1 - xi.weaponskills.fTP(tp, wsParams.accVaries))
+        local accLost       = calcParams.accStat * (1 - invaderXim.weaponskills.fTP(tp, wsParams.accVaries))
         calcParams.bonusAcc = calcParams.bonusAcc - accLost
     end
 
     -- Split Shot/Piercing Arrow and Empyreal Arrow/Detonator are confirmed for this. Theoretically Last Stand could have a bonus too, and if so it would likely be first hit only.
     if wsParams.rangedAccuracyBonus then
-        calcParams.firstHitRate = xi.weaponskills.getRangedHitRate(attacker, target, calcParams.bonusAcc + wsParams.rangedAccuracyBonus)
+        calcParams.firstHitRate = invaderXim.weaponskills.getRangedHitRate(attacker, target, calcParams.bonusAcc + wsParams.rangedAccuracyBonus)
     end
 
-    calcParams.hitRate = xi.weaponskills.getRangedHitRate(attacker, target, calcParams.bonusAcc)
+    calcParams.hitRate = invaderXim.weaponskills.getRangedHitRate(attacker, target, calcParams.bonusAcc)
 
     -- Send our params off to calculate our raw WS damage, hits landed, and shadows absorbed
-    calcParams = xi.weaponskills.calculateRawWSDmg(attacker, target, wsID, tp, action, wsParams, calcParams)
+    calcParams = invaderXim.weaponskills.calculateRawWSDmg(attacker, target, wsID, tp, action, wsParams, calcParams)
     local finaldmg = calcParams.finalDmg
 
     -- Delete statuses that may have been spent by the WS
-    attacker:delStatusEffectsByFlag(xi.effectFlag.DETECTABLE)
+    attacker:delStatusEffectsByFlag(invaderXim.effectFlag.DETECTABLE)
 
     -- Calculate reductions
     finaldmg = target:rangedDmgTaken(finaldmg)
-    finaldmg = finaldmg * (1 + target:getMod(xi.mod.PIERCE_SDT) / 10000)
+    finaldmg = finaldmg * (1 + target:getMod(invaderXim.mod.PIERCE_SDT) / 10000)
     finaldmg = math.floor(finaldmg)
 
     -- Add in magic damage for hybrid weaponskills
@@ -891,25 +891,25 @@ xi.weaponskills.doRangedWeaponskill = function(attacker, target, wsID, wsParams,
         finaldmg = finaldmg + calculateHybridMagicDamage(tp, finaldmg, attacker, target, wsParams, calcParams, wsID)
     end
 
-    finaldmg            = finaldmg * xi.settings.main.WEAPON_SKILL_POWER -- Add server bonus
+    finaldmg            = finaldmg * invaderXim.settings.main.WEAPON_SKILL_POWER -- Add server bonus
     calcParams.finalDmg = finaldmg
 
-    finaldmg = xi.weaponskills.takeWeaponskillDamage(target, attacker, wsParams, primaryMsg, attack, calcParams, action)
+    finaldmg = invaderXim.weaponskills.takeWeaponskillDamage(target, attacker, wsParams, primaryMsg, attack, calcParams, action)
 
     return finaldmg, calcParams.criticalHit, calcParams.tpHitsLanded, calcParams.extraHitsLanded, calcParams.shadowsAbsorbed
 end
 
 -- params: ftpMod, wsc_str, wsc_dex, wsc_vit, wsc_agi, wsc_int, wsc_mnd, wsc_chr,
---         ele (xi.element.FIRE), skill (xi.skill.STAFF)
+--         ele (invaderXim.element.FIRE), skill (invaderXim.skill.STAFF)
 
-xi.weaponskills.doMagicWeaponskill = function(attacker, target, wsID, wsParams, tp, action, primaryMsg)
+invaderXim.weaponskills.doMagicWeaponskill = function(attacker, target, wsID, wsParams, tp, action, primaryMsg)
     -- Set up conditions and wsParams used for calculating weaponskill damage
     local attack =
     {
-        ['type']       = xi.attackType.MAGICAL,
-        ['slot']       = xi.slot.MAIN,
-        ['weaponType'] = attacker:getWeaponSkillType(xi.slot.MAIN),
-        ['damageType'] = xi.damageType.ELEMENTAL + wsParams.ele
+        ['type']       = invaderXim.attackType.MAGICAL,
+        ['slot']       = invaderXim.slot.MAIN,
+        ['weaponType'] = attacker:getWeaponSkillType(invaderXim.slot.MAIN),
+        ['damageType'] = invaderXim.damageType.ELEMENTAL + wsParams.ele
     }
 
     local calcParams =
@@ -921,10 +921,10 @@ xi.weaponskills.doMagicWeaponskill = function(attacker, target, wsID, wsParams, 
         ['wsID']            = wsID
     }
 
-    local bonusfTP, bonusacc = xi.weaponskills.handleWSGorgetBelt(attacker)
-    bonusacc                 = bonusacc + attacker:getMod(xi.mod.WSACC)
+    local bonusfTP, bonusacc = invaderXim.weaponskills.handleWSGorgetBelt(attacker)
+    bonusacc                 = bonusacc + attacker:getMod(invaderXim.mod.WSACC)
 
-    local fint = utils.clamp(8 + attacker:getStat(xi.mod.INT) - target:getStat(xi.mod.INT), -32, 32)
+    local fint = utils.clamp(8 + attacker:getStat(invaderXim.mod.INT) - target:getStat(invaderXim.mod.INT), -32, 32)
     local dmg  = 0
 
     -- Magic-based WSes never miss, so we don't need to worry about calculating a miss, only if a shadow absorbed it.
@@ -949,7 +949,7 @@ xi.weaponskills.doMagicWeaponskill = function(attacker, target, wsID, wsParams, 
         dmg = dmg + attacker:getMainLvl() + 2 + fint
 
         -- Applying fTP multiplier
-        local ftp = xi.weaponskills.fTP(tp, wsParams.ftpMod) + bonusfTP
+        local ftp = invaderXim.weaponskills.fTP(tp, wsParams.ftpMod) + bonusfTP
 
         dmg = dmg * ftp
 
@@ -958,18 +958,18 @@ xi.weaponskills.doMagicWeaponskill = function(attacker, target, wsID, wsParams, 
         dmg = dmg * scarletDeliriumBonus(attacker)
 
         -- Factor in "all hits" bonus damage mods
-        local bonusdmg = attacker:getMod(xi.mod.ALL_WSDMG_ALL_HITS) -- For any WS
+        local bonusdmg = attacker:getMod(invaderXim.mod.ALL_WSDMG_ALL_HITS) -- For any WS
         if
-            attacker:getMod(xi.mod.WEAPONSKILL_DAMAGE_BASE + wsID) > 0 and
+            attacker:getMod(invaderXim.mod.WEAPONSKILL_DAMAGE_BASE + wsID) > 0 and
             not attacker:isPet()
         then
             -- For specific WS
-            bonusdmg = bonusdmg + attacker:getMod(xi.mod.WEAPONSKILL_DAMAGE_BASE + wsID)
+            bonusdmg = bonusdmg + attacker:getMod(invaderXim.mod.WEAPONSKILL_DAMAGE_BASE + wsID)
         end
 
         -- Add in bonusdmg
         dmg = dmg * (100 + bonusdmg) / 100 -- Apply our "all hits" WS dmg bonuses
-        dmg = dmg + dmg * attacker:getMod(xi.mod.ALL_WSDMG_FIRST_HIT) / 100 -- Add in our "first hit" WS dmg bonus
+        dmg = dmg + dmg * attacker:getMod(invaderXim.mod.ALL_WSDMG_FIRST_HIT) / 100 -- Add in our "first hit" WS dmg bonus
 
         -- Calculate magical bonuses and reductions
         dmg = addBonusesAbility(attacker, wsParams.ele, target, dmg, wsParams)
@@ -979,21 +979,21 @@ xi.weaponskills.doMagicWeaponskill = function(attacker, target, wsID, wsParams, 
         if dmg < 0 then
             calcParams.finalDmg = dmg
 
-            dmg = xi.weaponskills.takeWeaponskillDamage(target, attacker, wsParams, primaryMsg, attack, calcParams, action)
+            dmg = invaderXim.weaponskills.takeWeaponskillDamage(target, attacker, wsParams, primaryMsg, attack, calcParams, action)
             return dmg
         end
 
-        dmg = dmg * xi.spells.damage.calculateNukeAbsorbOrNullify(target, wsParams.ele)
+        dmg = dmg * invaderXim.spells.damage.calculateNukeAbsorbOrNullify(target, wsParams.ele)
 
         if dmg > 0 then
-            dmg = dmg - target:getMod(xi.mod.PHALANX)
+            dmg = dmg - target:getMod(invaderXim.mod.PHALANX)
             dmg = utils.clamp(dmg, 0, 99999)
         end
 
         dmg = utils.oneforall(target, dmg)
         dmg = utils.stoneskin(target, dmg)
 
-        dmg = dmg * xi.settings.main.WEAPON_SKILL_POWER -- Add server bonus
+        dmg = dmg * invaderXim.settings.main.WEAPON_SKILL_POWER -- Add server bonus
     else
         calcParams.shadowsAbsorbed = 1
     end
@@ -1004,48 +1004,48 @@ xi.weaponskills.doMagicWeaponskill = function(attacker, target, wsID, wsParams, 
         attacker:trySkillUp(attack.weaponType, target:getMainLvl())
     end
 
-    dmg = xi.weaponskills.takeWeaponskillDamage(target, attacker, wsParams, primaryMsg, attack, calcParams, action)
+    dmg = invaderXim.weaponskills.takeWeaponskillDamage(target, attacker, wsParams, primaryMsg, attack, calcParams, action)
 
     return dmg, calcParams.criticalHit, calcParams.tpHitsLanded, calcParams.extraHitsLanded, calcParams.shadowsAbsorbed
 end
 
 -- After WS damage is calculated and damage reduction has been taken into account by the calling function,
 -- handles displaying the appropriate action/message, delivering the damage to the mob, and any enmity from it
-xi.weaponskills.takeWeaponskillDamage = function(defender, attacker, wsParams, primaryMsg, attack, wsResults, action)
+invaderXim.weaponskills.takeWeaponskillDamage = function(defender, attacker, wsParams, primaryMsg, attack, wsResults, action)
     local finaldmg = wsResults.finalDmg
 
     if wsResults.tpHitsLanded + wsResults.extraHitsLanded > 0 then
         if finaldmg >= 0 then
             if primaryMsg then
-                action:messageID(defender:getID(), xi.msg.basic.DAMAGE)
+                action:messageID(defender:getID(), invaderXim.msg.basic.DAMAGE)
             else
-                action:messageID(defender:getID(), xi.msg.basic.DAMAGE_SECONDARY)
+                action:messageID(defender:getID(), invaderXim.msg.basic.DAMAGE_SECONDARY)
             end
 
             if finaldmg > 0 then
-                action:reaction(defender:getID(), xi.reaction.HIT)
-                action:speceffect(defender:getID(), xi.specEffect.RECOIL)
+                action:reaction(defender:getID(), invaderXim.reaction.HIT)
+                action:speceffect(defender:getID(), invaderXim.specEffect.RECOIL)
             end
         else
             if primaryMsg then
-                action:messageID(defender:getID(), xi.msg.basic.SELF_HEAL)
+                action:messageID(defender:getID(), invaderXim.msg.basic.SELF_HEAL)
             else
-                action:messageID(defender:getID(), xi.msg.basic.SELF_HEAL_SECONDARY)
+                action:messageID(defender:getID(), invaderXim.msg.basic.SELF_HEAL_SECONDARY)
             end
         end
 
         action:param(defender:getID(), math.abs(finaldmg))
     elseif wsResults.shadowsAbsorbed > 0 then
-        action:messageID(defender:getID(), xi.msg.basic.SHADOW_ABSORB)
+        action:messageID(defender:getID(), invaderXim.msg.basic.SHADOW_ABSORB)
         action:param(defender:getID(), wsResults.shadowsAbsorbed)
     else
         if primaryMsg then
-            action:messageID(defender:getID(), xi.msg.basic.SKILL_MISS)
+            action:messageID(defender:getID(), invaderXim.msg.basic.SKILL_MISS)
         else
-            action:messageID(defender:getID(), xi.msg.basic.EVADES)
+            action:messageID(defender:getID(), invaderXim.msg.basic.EVADES)
         end
 
-        action:reaction(defender:getID(), xi.reaction.EVADE)
+        action:reaction(defender:getID(), invaderXim.reaction.EVADE)
     end
 
     local targetTPMult   = wsParams.targetTPMult or 1
@@ -1085,22 +1085,22 @@ xi.weaponskills.takeWeaponskillDamage = function(defender, attacker, wsParams, p
     if
         (wsResults.tpHitsLanded +
         wsResults.extraHitsLanded > 0) and
-        attacker:hasStatusEffect(xi.effect.SENGIKORI)
+        attacker:hasStatusEffect(invaderXim.effect.SENGIKORI)
     then
-        local sengikoriBonus = attacker:getMod(xi.mod.SENGIKORI_BONUS) -- Additive % bonus: https://www.ffxiah.com/forum/topic/23457/july-11-sam-update/4/#1421344
+        local sengikoriBonus = attacker:getMod(invaderXim.mod.SENGIKORI_BONUS) -- Additive % bonus: https://www.ffxiah.com/forum/topic/23457/july-11-sam-update/4/#1421344
         local power = 25 + sengikoriBonus                              -- base 25% bonus for SC or MB
 
         -- If no SC effect, apply SC damage debuff
         -- If there is one, apply MB damage debuff
         -- This "effect" lasts until the it's used or the SC goes away
         -- see https://wiki.ffo.jp/html/20051.html
-        if defender:hasStatusEffect(xi.effect.SKILLCHAIN) then
-            defender:setMod(xi.mod.SENGIKORI_MB_DMG_DEBUFF, power)
+        if defender:hasStatusEffect(invaderXim.effect.SKILLCHAIN) then
+            defender:setMod(invaderXim.mod.SENGIKORI_MB_DMG_DEBUFF, power)
         else
-            defender:setMod(xi.mod.SENGIKORI_SC_DMG_DEBUFF, power)
+            defender:setMod(invaderXim.mod.SENGIKORI_SC_DMG_DEBUFF, power)
         end
 
-        attacker:delStatusEffect(xi.effect.SENGIKORI)
+        attacker:delStatusEffect(invaderXim.effect.SENGIKORI)
     end
 
     if finaldmg > 0 then
@@ -1113,15 +1113,15 @@ xi.weaponskills.takeWeaponskillDamage = function(defender, attacker, wsParams, p
 end
 
 -- Helper function to get Main damage depending on weapon type
-xi.weaponskills.getMeleeDmg = function(attacker, weaponType, kick)
+invaderXim.weaponskills.getMeleeDmg = function(attacker, weaponType, kick)
     local mainhandDamage = attacker:getWeaponDmg()
     local offhandDamage  = attacker:getOffhandDmg()
 
-    if weaponType == xi.skill.HAND_TO_HAND or weaponType == xi.skill.NONE then
-        local h2hSkill = attacker:getSkillLevel(xi.skill.HAND_TO_HAND) * 0.11 + 3
+    if weaponType == invaderXim.skill.HAND_TO_HAND or weaponType == invaderXim.skill.NONE then
+        local h2hSkill = attacker:getSkillLevel(invaderXim.skill.HAND_TO_HAND) * 0.11 + 3
 
-        if kick and attacker:hasStatusEffect(xi.effect.FOOTWORK) then
-            mainhandDamage = attacker:getMod(xi.mod.KICK_DMG) -- Use Kick damage if footwork is on
+        if kick and attacker:hasStatusEffect(invaderXim.effect.FOOTWORK) then
+            mainhandDamage = attacker:getMod(invaderXim.mod.KICK_DMG) -- Use Kick damage if footwork is on
         end
 
         mainhandDamage = mainhandDamage + h2hSkill
@@ -1131,18 +1131,18 @@ xi.weaponskills.getMeleeDmg = function(attacker, weaponType, kick)
     return { mainhandDamage, offhandDamage }
 end
 
-xi.weaponskills.getHitRate = function(attacker, target, bonus)
-    local flourishEffect = attacker:getStatusEffect(xi.effect.BUILDING_FLOURISH)
+invaderXim.weaponskills.getHitRate = function(attacker, target, bonus)
+    local flourishEffect = attacker:getStatusEffect(invaderXim.effect.BUILDING_FLOURISH)
 
     if flourishEffect ~= nil and flourishEffect:getPower() >= 1 then -- 1 or more Finishing moves used.
-        attacker:addMod(xi.mod.ACC, 40 + flourishEffect:getSubPower() * 2)
+        attacker:addMod(invaderXim.mod.ACC, 40 + flourishEffect:getSubPower() * 2)
     end
 
     local acc = attacker:getACC()
     local eva = target:getEVA()
 
     if flourishEffect ~= nil and flourishEffect:getPower() >= 1 then -- 1 or more Finishing moves used.
-        attacker:delMod(xi.mod.ACC, 40 + flourishEffect:getSubPower() * 2)
+        attacker:delMod(invaderXim.mod.ACC, 40 + flourishEffect:getSubPower() * 2)
     end
 
     if bonus == nil then
@@ -1150,23 +1150,23 @@ xi.weaponskills.getHitRate = function(attacker, target, bonus)
     end
 
     if
-        attacker:hasStatusEffect(xi.effect.INNIN) and
+        attacker:hasStatusEffect(invaderXim.effect.INNIN) and
         attacker:isBehind(target, 23)
     then
         -- Innin acc boost if attacker is behind target
-        bonus = bonus + attacker:getStatusEffect(xi.effect.INNIN):getPower()
+        bonus = bonus + attacker:getStatusEffect(invaderXim.effect.INNIN):getPower()
     end
 
     if
-        target:hasStatusEffect(xi.effect.YONIN) and
+        target:hasStatusEffect(invaderXim.effect.YONIN) and
         attacker:isFacing(target, 23)
     then
         -- Yonin evasion boost if attacker is facing target
-        bonus = bonus - target:getStatusEffect(xi.effect.YONIN):getPower()
+        bonus = bonus - target:getStatusEffect(invaderXim.effect.YONIN):getPower()
     end
 
-    if attacker:hasTrait(xi.trait.AMBUSH) and attacker:isBehind(target, 23) then
-        bonus = bonus + attacker:getMerit(xi.merit.AMBUSH)
+    if attacker:hasTrait(invaderXim.trait.AMBUSH) and attacker:isBehind(target, 23) then
+        bonus = bonus + attacker:getMerit(invaderXim.merit.AMBUSH)
     end
 
     acc = acc + bonus
@@ -1190,7 +1190,7 @@ xi.weaponskills.getHitRate = function(attacker, target, bonus)
 end
 
 -- TODO: Use a common function with optional multiplier on return, or multiply outside of this.
-xi.weaponskills.fTP = function(tp, ftpTable)
+invaderXim.weaponskills.fTP = function(tp, ftpTable)
     if
         not ftpTable or
         tp < 1000
@@ -1206,16 +1206,16 @@ xi.weaponskills.fTP = function(tp, ftpTable)
     end
 end
 
-xi.weaponskills.calculatedIgnoredDef = function(tp, def, ignoredDefenseTable)
+invaderXim.weaponskills.calculatedIgnoredDef = function(tp, def, ignoredDefenseTable)
     if ignoredDefenseTable then
-        return xi.weaponskills.fTP(tp, ignoredDefenseTable) * def
+        return invaderXim.weaponskills.fTP(tp, ignoredDefenseTable) * def
     end
 
     return 0
 end
 
 -- Given the attacker's str and the mob's vit, fSTR is calculated (for melee WS)
-xi.weaponskills.fSTR = function(atkStr, defVit, weaponRank)
+invaderXim.weaponskills.fSTR = function(atkStr, defVit, weaponRank)
     local dSTR = atkStr - defVit
     local fSTR = calculateRawFstr(dSTR, 4)
 
@@ -1227,46 +1227,46 @@ xi.weaponskills.fSTR = function(atkStr, defVit, weaponRank)
     return fSTR
 end
 
-xi.weaponskills.handleWSGorgetBelt = function(attacker)
+invaderXim.weaponskills.handleWSGorgetBelt = function(attacker)
     local ftpBonus = 0
     local accBonus = 0
 
-    if attacker:getObjType() == xi.objType.PC then
+    if attacker:getObjType() == invaderXim.objType.PC then
         local elementalGorget = -- Ordered by element correctly. TODO: mods/latents instead of items
         {
-            xi.item.FLAME_GORGET,
-            xi.item.SNOW_GORGET,
-            xi.item.BREEZE_GORGET,
-            xi.item.SOIL_GORGET,
-            xi.item.THUNDER_GORGET,
-            xi.item.AQUA_GORGET,
-            xi.item.LIGHT_GORGET,
-            xi.item.SHADOW_GORGET
+            invaderXim.item.FLAME_GORGET,
+            invaderXim.item.SNOW_GORGET,
+            invaderXim.item.BREEZE_GORGET,
+            invaderXim.item.SOIL_GORGET,
+            invaderXim.item.THUNDER_GORGET,
+            invaderXim.item.AQUA_GORGET,
+            invaderXim.item.LIGHT_GORGET,
+            invaderXim.item.SHADOW_GORGET
         }
 
         local elementalBelt = -- Ordered by element correctly. TODO: mods/latents instead of items
         {
-            xi.item.FLAME_BELT,
-            xi.item.SNOW_BELT,
-            xi.item.BREEZE_BELT,
-            xi.item.SOIL_BELT,
-            xi.item.THUNDER_BELT,
-            xi.item.AQUA_BELT,
-            xi.item.LIGHT_BELT,
-            xi.item.SHADOW_BELT
+            invaderXim.item.FLAME_BELT,
+            invaderXim.item.SNOW_BELT,
+            invaderXim.item.BREEZE_BELT,
+            invaderXim.item.SOIL_BELT,
+            invaderXim.item.THUNDER_BELT,
+            invaderXim.item.AQUA_BELT,
+            invaderXim.item.LIGHT_BELT,
+            invaderXim.item.SHADOW_BELT
         }
 
-        local neck                      = attacker:getEquipID(xi.slot.NECK)
-        local belt                      = attacker:getEquipID(xi.slot.WAIST)
-        local weapon                    = attacker:getEquipID(xi.slot.MAIN)
+        local neck                      = attacker:getEquipID(invaderXim.slot.NECK)
+        local belt                      = attacker:getEquipID(invaderXim.slot.WAIST)
+        local weapon                    = attacker:getEquipID(invaderXim.slot.MAIN)
         local scProp1, scProp2, scProp3 = attacker:getWSSkillchainProp()
 
         for i, v in ipairs(elementalGorget) do
             if neck == v then
                 if
-                    xi.magicburst.doesElementMatchWeaponskill(i, scProp1) or
-                    xi.magicburst.doesElementMatchWeaponskill(i, scProp2) or
-                    xi.magicburst.doesElementMatchWeaponskill(i, scProp3)
+                    invaderXim.magicburst.doesElementMatchWeaponskill(i, scProp1) or
+                    invaderXim.magicburst.doesElementMatchWeaponskill(i, scProp2) or
+                    invaderXim.magicburst.doesElementMatchWeaponskill(i, scProp3)
                 then
                     accBonus = accBonus + 10
                     ftpBonus = ftpBonus + 0.1
@@ -1276,7 +1276,7 @@ xi.weaponskills.handleWSGorgetBelt = function(attacker)
             end
         end
 
-        if neck == xi.item.FOTIA_GORGET then -- Fotia Gorget
+        if neck == invaderXim.item.FOTIA_GORGET then -- Fotia Gorget
             accBonus = accBonus + 10
             ftpBonus = ftpBonus + 0.1
         end
@@ -1284,9 +1284,9 @@ xi.weaponskills.handleWSGorgetBelt = function(attacker)
         for i, v in ipairs(elementalBelt) do
             if belt == v then
                 if
-                    xi.magicburst.doesElementMatchWeaponskill(i, scProp1) or
-                    xi.magicburst.doesElementMatchWeaponskill(i, scProp2) or
-                    xi.magicburst.doesElementMatchWeaponskill(i, scProp3)
+                    invaderXim.magicburst.doesElementMatchWeaponskill(i, scProp1) or
+                    invaderXim.magicburst.doesElementMatchWeaponskill(i, scProp2) or
+                    invaderXim.magicburst.doesElementMatchWeaponskill(i, scProp3)
                 then
                     accBonus = accBonus + 10
                     ftpBonus = ftpBonus + 0.1
@@ -1296,16 +1296,16 @@ xi.weaponskills.handleWSGorgetBelt = function(attacker)
             end
         end
 
-        if belt == xi.item.FOTIA_BELT then -- Fotia Belt
+        if belt == invaderXim.item.FOTIA_BELT then -- Fotia Belt
             accBonus = accBonus + 10
             ftpBonus = ftpBonus + 0.1
         end
 
         if
-            weapon == xi.item.PRESTER and
-            (xi.magicburst.doesElementMatchWeaponskill(xi.element.WIND, scProp1) or
-            xi.magicburst.doesElementMatchWeaponskill(xi.element.WIND, scProp2) or
-            xi.magicburst.doesElementMatchWeaponskill(xi.element.WIND, scProp3))
+            weapon == invaderXim.item.PRESTER and
+            (invaderXim.magicburst.doesElementMatchWeaponskill(invaderXim.element.WIND, scProp1) or
+            invaderXim.magicburst.doesElementMatchWeaponskill(invaderXim.element.WIND, scProp2) or
+            invaderXim.magicburst.doesElementMatchWeaponskill(invaderXim.element.WIND, scProp3))
         then -- Prester
             ftpBonus = ftpBonus + 0.1
         end
@@ -1314,13 +1314,13 @@ xi.weaponskills.handleWSGorgetBelt = function(attacker)
     return ftpBonus, accBonus
 end
 
-xi.weaponskills.handleWeaponskillEffect = function(actor, target, effectId, actionElement, damage, power, duration)
+invaderXim.weaponskills.handleWeaponskillEffect = function(actor, target, effectId, actionElement, damage, power, duration)
     if
         damage > 0 and
         not target:hasStatusEffect(effectId) and
-        not xi.combat.statusEffect.isTargetImmune(target, effectId, actionElement) and
-        not xi.combat.statusEffect.isTargetResistant(actor, target, effectId) and
-        not xi.combat.statusEffect.isEffectNullified(target, effectId)
+        not invaderXim.combat.statusEffect.isTargetImmune(target, effectId, actionElement) and
+        not invaderXim.combat.statusEffect.isTargetResistant(actor, target, effectId) and
+        not invaderXim.combat.statusEffect.isEffectNullified(target, effectId)
     then
         target:addStatusEffect(effectId, power, 0, duration)
     end

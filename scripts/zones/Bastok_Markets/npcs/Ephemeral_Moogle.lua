@@ -12,19 +12,19 @@ local tradeEvent = 618
 local failEvent = 619
 
 entity.onTrade = function(player, npc, trade)
-    xi.ephemeral.onTrade(player, trade, tradeEvent, failEvent)
+    invaderXim.ephemeral.onTrade(player, trade, tradeEvent, failEvent)
 end
 
 entity.onTrigger = function(player, npc)
-    xi.ephemeral.onTrigger(player, triggerEvent)
+    invaderXim.ephemeral.onTrigger(player, triggerEvent)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.ephemeral.onEventUpdate(player)
+    invaderXim.ephemeral.onEventUpdate(player)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.ephemeral.onEventFinish(player, option, csid == tradeEvent)
+    invaderXim.ephemeral.onEventFinish(player, option, csid == tradeEvent)
 end
 
 return entity

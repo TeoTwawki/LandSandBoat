@@ -1,18 +1,18 @@
 -----------------------------------
--- xi.effect.PHALANX
+-- invaderXim.effect.PHALANX
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.PHALANX, effect:getPower())
+    target:addMod(invaderXim.mod.PHALANX, effect:getPower())
 end
 
 effectObject.onEffectTick = function(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.PHALANX, effect:getPower())
+    target:delMod(invaderXim.mod.PHALANX, effect:getPower())
 end
 
 return effectObject

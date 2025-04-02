@@ -8,11 +8,11 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.skillBookCheck(target, xi.skill.HEALING_MAGIC)
+    return invaderXim.itemUtils.skillBookCheck(target, invaderXim.skill.HEALING_MAGIC)
 end
 
 itemObject.onItemUse = function(target)
-    xi.itemUtils.skillBookUse(target, xi.skill.HEALING_MAGIC)
+    invaderXim.itemUtils.skillBookUse(target, invaderXim.skill.HEALING_MAGIC)
 end
 
 return itemObject

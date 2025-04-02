@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.THIRD_EYE
+-- invaderXim.effect.THIRD_EYE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

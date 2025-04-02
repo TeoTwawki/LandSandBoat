@@ -2,7 +2,7 @@
 -- Area: Jugner Forest
 --  Mob: Knight Crab
 -----------------------------------
-local ID = zones[xi.zone.JUGNER_FOREST]
+local ID = zones[invaderXim.zone.JUGNER_FOREST]
 mixins = { require('scripts/mixins/rage') }
 -----------------------------------
 ---@type TMobEntity

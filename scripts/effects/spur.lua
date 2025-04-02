@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.SPUR
+-- invaderXim.effect.SPUR
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

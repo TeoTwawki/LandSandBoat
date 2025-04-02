@@ -12,8 +12,8 @@ local entity = {}
 entity.onMobInitialize = function(mob)
     -- Has enhanced double attack.
     -- TODO: Exact STP value needs to be researched further
-    mob:setMod(xi.mod.DOUBLE_ATTACK, 50)
-    mob:addMod(xi.mod.STORETP,       25)
+    mob:setMod(invaderXim.mod.DOUBLE_ATTACK, 50)
+    mob:addMod(invaderXim.mod.STORETP,       25)
 end
 
 entity.onMobSpawn = function(mob)
@@ -30,7 +30,7 @@ entity.onMobSpawn = function(mob)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 442)
+    invaderXim.hunts.checkHunt(mob, player, 442)
 end
 
 entity.onMobDespawn = function(mob)

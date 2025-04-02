@@ -7,12 +7,12 @@
 -- qm4 !pos 460.166 -14.920 256.214 52
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.THE_PRANKSTER)
-local ID = zones[xi.zone.BHAFLAU_THICKETS]
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.THE_PRANKSTER)
+local ID = zones[invaderXim.zone.BHAFLAU_THICKETS]
 
 quest.reward =
 {
-    keyItem = xi.ki.MAP_OF_CAEDARVA_MIRE,
+    keyItem = invaderXim.ki.MAP_OF_CAEDARVA_MIRE,
 }
 
 quest.sections =
@@ -20,10 +20,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Ahaadah'] = quest:progressEvent(1),
 
@@ -37,11 +37,11 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 0
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Ahaadah'] = quest:event(15),
 
@@ -62,11 +62,11 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 1
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Ahaadah'] = quest:event(16),
 
@@ -87,16 +87,16 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 2
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Ahaadah'] = quest:event(17),
         },
 
-        [xi.zone.BHAFLAU_THICKETS] =
+        [invaderXim.zone.BHAFLAU_THICKETS] =
         {
             ['qm4'] =
             {
@@ -124,11 +124,11 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 3
         end,
 
-        [xi.zone.BHAFLAU_THICKETS] =
+        [invaderXim.zone.BHAFLAU_THICKETS] =
         {
             ['Ahaadah'] = quest:event(17),
 

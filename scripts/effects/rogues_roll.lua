@@ -1,19 +1,19 @@
 -----------------------------------
--- xi.effect.ROGUES_ROLL
+-- invaderXim.effect.ROGUES_ROLL
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.CRITHITRATE, effect:getPower())
+    target:addMod(invaderXim.mod.CRITHITRATE, effect:getPower())
 end
 
 effectObject.onEffectTick = function(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.CRITHITRATE, effect:getPower())
-    xi.job_utils.corsair.onRollEffectLose(target, effect)
+    target:delMod(invaderXim.mod.CRITHITRATE, effect:getPower())
+    invaderXim.job_utils.corsair.onRollEffectLose(target, effect)
 end
 
 return effectObject

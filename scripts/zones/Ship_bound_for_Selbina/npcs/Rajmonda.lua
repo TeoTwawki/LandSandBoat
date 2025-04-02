@@ -4,7 +4,7 @@
 -- Type: Guild Merchant: Fishing Guild
 -- !pos 1.841 -2.101 -9.000 220
 -----------------------------------
-local ID = zones[xi.zone.SHIP_BOUND_FOR_SELBINA]
+local ID = zones[invaderXim.zone.SHIP_BOUND_FOR_SELBINA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

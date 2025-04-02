@@ -8,13 +8,13 @@
 -- Mhaura, Numi Adaligo, !pos -80.332 -24.050 34.794 249
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.RYCHARDE_THE_CHEF)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.RYCHARDE_THE_CHEF)
 
 quest.reward =
 {
     fame     = 120,
-    fameArea = xi.fameArea.WINDURST,
-    title    = xi.title.PURVEYOR_IN_TRAINING,
+    fameArea = invaderXim.fameArea.WINDURST,
+    title    = invaderXim.title.PURVEYOR_IN_TRAINING,
     gil      = 1500,
 }
 
@@ -23,18 +23,18 @@ quest.sections =
     -- Section: Quest available. Talk to Numi Adaligo, Take and Rycharde.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Rycharde'] =
             {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 2 then
-                        quest:progressEvent(70, xi.item.SLICE_OF_DHALMEL_MEAT)
+                        quest:progressEvent(70, invaderXim.item.SLICE_OF_DHALMEL_MEAT)
                     elseif quest:getVar(player, 'Prog') > 2 then
-                        quest:progressEvent(71, xi.item.SLICE_OF_DHALMEL_MEAT)
+                        quest:progressEvent(71, invaderXim.item.SLICE_OF_DHALMEL_MEAT)
                     end
                 end,
             },
@@ -82,10 +82,10 @@ quest.sections =
     -- Section: Quest accepted. Handle trade outcomes.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Rycharde'] =
             {
@@ -94,9 +94,9 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.SLICE_OF_DHALMEL_MEAT, 2 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.SLICE_OF_DHALMEL_MEAT, 2 } }) then
                         return quest:progressEvent(74) -- Quest completed dialog.
-                    elseif npcUtil.tradeHasExactly(trade, { { xi.item.SLICE_OF_DHALMEL_MEAT, 1 } }) then
+                    elseif npcUtil.tradeHasExactly(trade, { { invaderXim.item.SLICE_OF_DHALMEL_MEAT, 1 } }) then
                         return quest:event(73) -- "That's not enough!" dialog.
                     end
                 end,

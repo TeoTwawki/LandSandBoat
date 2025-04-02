@@ -5,14 +5,14 @@ require('scripts/globals/summon')
 -----------------------------------
 
 xi = xi or {}
-xi.pets = xi.pets or {}
-xi.pets.avatar = {}
+invaderXim.pets = invaderXim.pets or {}
+invaderXim.pets.avatar = {}
 
 local buffModeVar          = 'AVATAR_BUFF_MODE_OFF'
 local lastCastTimeVar      = 'AVATAR_LAST_CASTINGTIME'
 local lastCastTimeStampVar = 'AVATAR_LAST_CAST_TIMESTAMP'
 local playerListenerVar    = 'SMN_SPIRIT_CAST_DELAY'
-local dummySpell           = xi.magic.spell.INDI_REGEN -- used to trigger a "valid" spell in TryCastSpell but not actually cast anything
+local dummySpell           = invaderXim.magic.spell.INDI_REGEN -- used to trigger a "valid" spell in TryCastSpell but not actually cast anything
 
 local printDebug = function(pet, textToPrint)
     -- prints to map server if pet has local var
@@ -32,13 +32,13 @@ local setMagicCastCooldown = function(pet)
         return
     end
 
-    castingCooldown = castingCooldown - math.floor(xi.summon.getSummoningSkillOverCap(pet) / 3)
+    castingCooldown = castingCooldown - math.floor(invaderXim.summon.getSummoningSkillOverCap(pet) / 3)
 
-    if master:hasStatusEffect(xi.effect.ASTRAL_FLOW) then
+    if master:hasStatusEffect(invaderXim.effect.ASTRAL_FLOW) then
         castingCooldown = castingCooldown - 5
     end
 
-    castingCooldown = castingCooldown - master:getMod(xi.mod.SPIRIT_CAST_REDUCTION)
+    castingCooldown = castingCooldown - master:getMod(invaderXim.mod.SPIRIT_CAST_REDUCTION)
 
     local petElement = master:getPetElement()
 
@@ -46,14 +46,14 @@ local setMagicCastCooldown = function(pet)
     local actorWeather = pet:getWeather()
     -- Strong weathers.
     if
-        actorWeather == xi.combat.element.getAssociatedSingleWeather(petElement) or
-        actorWeather == xi.combat.element.getAssociatedDoubleWeather(petElement)
+        actorWeather == invaderXim.combat.element.getAssociatedSingleWeather(petElement) or
+        actorWeather == invaderXim.combat.element.getAssociatedDoubleWeather(petElement)
     then
         castingCooldown = castingCooldown - 2
     -- Weak weathers.
     elseif
-        actorWeather == xi.combat.element.getOppositeSingleWeather(petElement) or
-        actorWeather == xi.combat.element.getOppositeDoubleWeather(petElement)
+        actorWeather == invaderXim.combat.element.getOppositeSingleWeather(petElement) or
+        actorWeather == invaderXim.combat.element.getOppositeDoubleWeather(petElement)
     then
         castingCooldown = castingCooldown + 2
     end
@@ -63,7 +63,7 @@ local setMagicCastCooldown = function(pet)
     if dayElement == petElement then
         castingCooldown = castingCooldown - 3
     -- Weak day.
-    elseif dayElement == xi.combat.element.getOppositeElement(petElement) then
+    elseif dayElement == invaderXim.combat.element.getOppositeElement(petElement) then
         castingCooldown = castingCooldown + 3
     end
 
@@ -73,7 +73,7 @@ local setMagicCastCooldown = function(pet)
     end
 
     -- cast delay is ~1s past the finish of last spell, so we add casting time (or time since spell interrupt) to the castingCooldown
-    -- this is done by simply tracking the elapsed time since action is no longer xi.action.MAGIC_CASTING
+    -- this is done by simply tracking the elapsed time since action is no longer invaderXim.action.MAGIC_CASTING
     local lastCastTime = pet:getLocalVar(lastCastTimeVar)
     local lastCastTimeStamp = pet:getLocalVar(lastCastTimeStampVar)
     if
@@ -85,38 +85,38 @@ local setMagicCastCooldown = function(pet)
 
     if
         lastCastTime > 0 and
-        pet:getCurrentAction() ~= xi.action.MAGIC_CASTING
+        pet:getCurrentAction() ~= invaderXim.action.MAGIC_CASTING
     then
         pet:setLocalVar(lastCastTimeStampVar, 0)
         pet:setLocalVar(lastCastTimeVar, lastCastTime)
     end
 
-    pet:setMobMod(xi.mobMod.MAGIC_COOL, lastCastTime + math.max(castingCooldown, 0))
+    pet:setMobMod(invaderXim.mobMod.MAGIC_COOL, lastCastTime + math.max(castingCooldown, 0))
 end
 
-xi.pets.avatar.onMobSpawn = function(pet)
+invaderXim.pets.avatar.onMobSpawn = function(pet)
     local master = pet:getMaster()
     if
         not master or
-        master:getObjType() ~= xi.objType.PC
+        master:getObjType() ~= invaderXim.objType.PC
     then
         return
     end
 
     -- add listener to player to fine-tune spirit pact cast delays in realtime
     if
-        pet:getPetID() <= xi.petId.DARK_SPIRIT
+        pet:getPetID() <= invaderXim.petId.DARK_SPIRIT
     then
         -- stops the pet from immediately casting a spell on spawn and respecting the cooldowns by exiting early if MAGIC_COOL is 1
-        pet:setMobMod(xi.mobMod.MAGIC_COOL, 1)
-        pet:setMod(xi.mod.MPP, 500)
+        pet:setMobMod(invaderXim.mobMod.MAGIC_COOL, 1)
+        pet:setMod(invaderXim.mod.MPP, 500)
         pet:updateHealth()
         pet:setMP(pet:getMaxMP())
 
         master:addListener('TICK', playerListenerVar, function(playerArg)
             local petArg = playerArg:getPet()
 
-            if petArg and petArg:getMobMod(xi.mobMod.MAGIC_COOL) > 1 then
+            if petArg and petArg:getMobMod(invaderXim.mobMod.MAGIC_COOL) > 1 then
                 setMagicCastCooldown(petArg)
             end
         end)
@@ -127,37 +127,37 @@ xi.pets.avatar.onMobSpawn = function(pet)
 
             if
                 petArg and
-                (abilityID == xi.jobAbility.ASSAULT or
-                abilityID == xi.jobAbility.RETREAT)
+                (abilityID == invaderXim.jobAbility.ASSAULT or
+                abilityID == invaderXim.jobAbility.RETREAT)
             then
                 printDebug(petArg, 'resetting cast cooldown')
                 -- reset cast cooldown via same method as fresh spawn
-                petArg:setMobMod(xi.mobMod.MAGIC_COOL, 1)
+                petArg:setMobMod(invaderXim.mobMod.MAGIC_COOL, 1)
                 petArg:setLocalVar(buffModeVar, 1)
             end
         end)
     end
 end
 
-xi.pets.avatar.onMobDeath = function(pet)
+invaderXim.pets.avatar.onMobDeath = function(pet)
     local master = pet:getMaster()
 
-    if master and master:getObjType() == xi.objType.PC then
+    if master and master:getObjType() == invaderXim.objType.PC then
         master:removeListener(playerListenerVar)
         master:removeListener(playerListenerVar .. 'ABILITY')
     end
 end
 
-xi.pets.avatar.onMobMagicPrepare = function(pet)
+invaderXim.pets.avatar.onMobMagicPrepare = function(pet)
     -- Note that:
     -- returning -1 (or a spell the spirit cannot cast) in this function forces TryCastSpell to exit without choosing/casting a spell, but
     -- will still set the m_LastMagicTime to ensure next call of this function is after the cast delay
     -- Also, if we return nothing (or zero) TryCastSpell will default to normal mob casting behavior (nukes from spell list, etc)
-    printDebug(pet, string.format('onMobMagicPrepare: %u', pet:getMobMod(xi.mobMod.MAGIC_COOL))) -- for debugging magic cooldown
+    printDebug(pet, string.format('onMobMagicPrepare: %u', pet:getMobMod(invaderXim.mobMod.MAGIC_COOL))) -- for debugging magic cooldown
     local master = pet:getMaster()
     if
         not master or
-        master:getObjType() ~= xi.objType.PC
+        master:getObjType() ~= invaderXim.objType.PC
     then
         return
     end
@@ -167,7 +167,7 @@ xi.pets.avatar.onMobMagicPrepare = function(pet)
     pet:setLocalVar(lastCastTimeStampVar, os.time())
 
     -- early exit from casting a spell to prevent immediately casting a spell after being summoned
-    if pet:getMobMod(xi.mobMod.MAGIC_COOL) == 1 then
+    if pet:getMobMod(invaderXim.mobMod.MAGIC_COOL) == 1 then
         setMagicCastCooldown(pet)
 
         return dummySpell
@@ -177,12 +177,12 @@ xi.pets.avatar.onMobMagicPrepare = function(pet)
     pet:setLocalVar(buffModeVar, 1)
 
     -- Core functionality to decide which spell to use
-    local spellID, spellTarget = xi.pets.avatar.getSpiritSpell(pet)
+    local spellID, spellTarget = invaderXim.pets.avatar.getSpiritSpell(pet)
 
     -- Final items to cast the spell and ensure cast delay is proper
     local spell = GetSpell(spellID)
     if spell then
-        if spell:getSkillType() == xi.skill.ENHANCING_MAGIC then
+        if spell:getSkillType() == invaderXim.skill.ENHANCING_MAGIC then
             -- half casting delay
             pet:setLocalVar(buffModeVar, 0)
         end
@@ -198,154 +198,154 @@ end
 
 ---@param pet CBaseEntity
 ---@return integer, CBaseEntity?
-xi.pets.avatar.getSpiritSpell = function(pet)
+invaderXim.pets.avatar.getSpiritSpell = function(pet)
     local spellID = 0
     local spellTarget = nil
     local petID = pet:getPetID()
     -- add more logic as needed with its own function
-    if petID == xi.petId.LIGHT_SPIRIT then
+    if petID == invaderXim.petId.LIGHT_SPIRIT then
         -- TODO: Align spirit and light spirit functions for return consistency and consolidate.
-        spellID, spellTarget = xi.pets.avatar.getLightSpiritSpell(pet)
+        spellID, spellTarget = invaderXim.pets.avatar.getLightSpiritSpell(pet)
     end
 
     return spellID, spellTarget
 end
 
-xi.pets.avatar.lightSpiritBuffs =
+invaderXim.pets.avatar.lightSpiritBuffs =
 {
-    [xi.effect.PROTECT] =
+    [invaderXim.effect.PROTECT] =
     {
         {
-            spell = xi.magic.spell.PROTECT_V,
+            spell = invaderXim.magic.spell.PROTECT_V,
             power = 220,
             level = 76,
         },
         {
-            spell = xi.magic.spell.PROTECT_IV,
+            spell = invaderXim.magic.spell.PROTECT_IV,
             power = 140,
             level = 68,
         },
         {
-            spell = xi.magic.spell.PROTECT_III,
+            spell = invaderXim.magic.spell.PROTECT_III,
             power = 90,
             level = 47,
         },
         {
-            spell = xi.magic.spell.PROTECT_II,
+            spell = invaderXim.magic.spell.PROTECT_II,
             power = 50,
             level = 27,
         },
         {
-            spell = xi.magic.spell.PROTECT,
+            spell = invaderXim.magic.spell.PROTECT,
             power = 20,
             level = 7,
         },
     },
-    [xi.effect.SHELL] =
+    [invaderXim.effect.SHELL] =
     {
         {
-            spell = xi.magic.spell.SHELL_V,
+            spell = invaderXim.magic.spell.SHELL_V,
             power = 2930,
             level = 76,
         },
         {
-            spell = xi.magic.spell.SHELL_IV,
+            spell = invaderXim.magic.spell.SHELL_IV,
             power = 2617,
             level = 68,
         },
         {
-            spell = xi.magic.spell.SHELL_III,
+            spell = invaderXim.magic.spell.SHELL_III,
             power = 2188,
             level = 57,
         },
         {
-            spell = xi.magic.spell.SHELL_II,
+            spell = invaderXim.magic.spell.SHELL_II,
             power = 1641,
             level = 37,
         },
         {
-            spell = xi.magic.spell.SHELL,
+            spell = invaderXim.magic.spell.SHELL,
             power = 1055,
             level = 10,
         },
     },
-    [xi.effect.REGEN] =
+    [invaderXim.effect.REGEN] =
     {
         {
-            spell = xi.magic.spell.REGEN,
+            spell = invaderXim.magic.spell.REGEN,
             power = 0, -- Light spirit does not overwrite
             level = 21,
         },
     },
-    [xi.effect.HASTE] =
+    [invaderXim.effect.HASTE] =
     {
         {
-            spell = xi.magic.spell.HASTE,
+            spell = invaderXim.magic.spell.HASTE,
             power = 0, -- Light spirit does not overwrite
             level = 48,
         },
     },
 }
 
-xi.pets.avatar.lightSpiritCures =
+invaderXim.pets.avatar.lightSpiritCures =
 {
-    [xi.magic.spellFamily.CURE] =
+    [invaderXim.magic.spellFamily.CURE] =
     {
         {
-            spell = xi.magic.spell.CURE_VI,
+            spell = invaderXim.magic.spell.CURE_VI,
             level = 80,
         },
         {
-            spell = xi.magic.spell.CURE_V,
+            spell = invaderXim.magic.spell.CURE_V,
             level = 61,
         },
         {
-            spell = xi.magic.spell.CURE_IV,
+            spell = invaderXim.magic.spell.CURE_IV,
             level = 41,
         },
         {
-            spell = xi.magic.spell.CURE_III,
+            spell = invaderXim.magic.spell.CURE_III,
             level = 21,
         },
         {
-            spell = xi.magic.spell.CURE_II,
+            spell = invaderXim.magic.spell.CURE_II,
             level = 11,
         },
         {
-            spell = xi.magic.spell.CURE,
+            spell = invaderXim.magic.spell.CURE,
             level = 1,
         },
     },
-    [xi.magic.spellFamily.CURAGA] =
+    [invaderXim.magic.spellFamily.CURAGA] =
     {
         {
-            spell = xi.magic.spell.CURAGA_V,
+            spell = invaderXim.magic.spell.CURAGA_V,
             level = 91,
         },
         {
-            spell = xi.magic.spell.CURAGA_IV,
+            spell = invaderXim.magic.spell.CURAGA_IV,
             level = 71,
         },
         {
-            spell = xi.magic.spell.CURAGA_III,
+            spell = invaderXim.magic.spell.CURAGA_III,
             level = 51,
         },
         {
-            spell = xi.magic.spell.CURAGA_II,
+            spell = invaderXim.magic.spell.CURAGA_II,
             level = 31,
         },
         {
-            spell = xi.magic.spell.CURAGA,
+            spell = invaderXim.magic.spell.CURAGA,
             level = 16,
         },
     },
 }
 
-xi.pets.avatar.getLightSpiritBuffs = function(pet)
+invaderXim.pets.avatar.getLightSpiritBuffs = function(pet)
     -- returns a table of the highest-tier buffs available to this light spirit pet
     local petLvl = pet:getMainLvl()
     local buffs = {}
-    for effect, buffData in pairs(xi.pets.avatar.lightSpiritBuffs) do
+    for effect, buffData in pairs(invaderXim.pets.avatar.lightSpiritBuffs) do
         -- loop over every spell for this effect and exit on the first that the pet can cast
         for _, spellData in ipairs(buffData) do
             if petLvl >= spellData.level then
@@ -362,18 +362,18 @@ xi.pets.avatar.getLightSpiritBuffs = function(pet)
     return buffs
 end
 
-xi.pets.avatar.getLightSpiritCure = function(pet)
+invaderXim.pets.avatar.getLightSpiritCure = function(pet)
     -- curaga can be used on anyone in the alliance and isn't determined by how many need a heal (assumed to be based on skill over cap)
     local petLvl = pet:getMainLvl()
-    local spellFamily = xi.magic.spellFamily.CURE
+    local spellFamily = invaderXim.magic.spellFamily.CURE
     if
         petLvl >= 16 and
-        math.random(100) <= 2 * xi.summon.getSummoningSkillOverCap(pet)
+        math.random(100) <= 2 * invaderXim.summon.getSummoningSkillOverCap(pet)
     then
-        spellFamily = xi.magic.spellFamily.CURAGA
+        spellFamily = invaderXim.magic.spellFamily.CURAGA
     end
 
-    for _, spellData in ipairs(xi.pets.avatar.lightSpiritCures[spellFamily]) do
+    for _, spellData in ipairs(invaderXim.pets.avatar.lightSpiritCures[spellFamily]) do
         if petLvl >= spellData.level then
             return spellData.spell
         end
@@ -382,7 +382,7 @@ xi.pets.avatar.getLightSpiritCure = function(pet)
     return 0
 end
 
-xi.pets.avatar.getLightSpiritSpell = function(pet)
+invaderXim.pets.avatar.getLightSpiritSpell = function(pet)
     -- returns the spirit's preferred target based on positioning
     local master = pet:getMaster()
     if not master then
@@ -431,16 +431,16 @@ xi.pets.avatar.getLightSpiritSpell = function(pet)
     end
 
     if cureTarget then
-        spellID = xi.pets.avatar.getLightSpiritCure(pet)
+        spellID = invaderXim.pets.avatar.getLightSpiritCure(pet)
 
         return spellID, cureTarget
     else
-        local lightSpiritBuffs = xi.pets.avatar.getLightSpiritBuffs(pet)
+        local lightSpiritBuffs = invaderXim.pets.avatar.getLightSpiritBuffs(pet)
 
         for _, member in pairs(party) do
             local tempDistance = pet:checkDistance(member)
             if
-                not member:hasStatusEffect(xi.effect.INVISIBLE) and
+                not member:hasStatusEffect(invaderXim.effect.INVISIBLE) and
                 (tempDistance <= distance or
                 not buffTarget)
             then

@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.menuType
-xi.menuType =
+---@enum invaderXim.menuType
+invaderXim.menuType =
 {
     MOOGLE  = 1,
     SHOP    = 2,

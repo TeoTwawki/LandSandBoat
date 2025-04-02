@@ -17,9 +17,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local multiplier = 1 + (1 - (mob:getHP() / mob:getMaxHP())) * m    --higher multiplier the lower your HP. at 15% HP, multiplier is 1+0.85*M
     base = base * multiplier
 
-    skill:setMsg(xi.msg.basic.SELF_HEAL)
+    skill:setMsg(invaderXim.msg.basic.SELF_HEAL)
 
-    return xi.mobskills.mobHealMove(target, base)
+    return invaderXim.mobskills.mobHealMove(target, base)
 end
 
 return mobskillObject

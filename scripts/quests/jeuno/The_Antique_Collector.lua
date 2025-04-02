@@ -5,7 +5,7 @@
 -- Imasuke : !pos -165 11 94 246
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_ANTIQUE_COLLECTOR)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_ANTIQUE_COLLECTOR)
 
 -- TODO: Quest reward has conflicting information from various resources.  Need to confirm
 -- that XP and Gil rewards are also given when the player does not have the KI reward.
@@ -14,21 +14,21 @@ quest.reward =
 {
     exp      = 2000,
     fame     = 30,
-    fameArea = xi.fameArea.JEUNO,
+    fameArea = invaderXim.fameArea.JEUNO,
     gil      = 2000,
-    keyItem  = xi.ki.MAP_OF_DELKFUTTS_TOWER,
-    title    = xi.title.TRADER_OF_ANTIQUITIES,
+    keyItem  = invaderXim.ki.MAP_OF_DELKFUTTS_TOWER,
+    title    = invaderXim.title.TRADER_OF_ANTIQUITIES,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.JEUNO) >= 2
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.JEUNO) >= 2
         end,
 
-        [xi.zone.PORT_JEUNO] =
+        [invaderXim.zone.PORT_JEUNO] =
         {
             ['Imasuke'] = quest:progressEvent(13),
 
@@ -45,15 +45,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_JEUNO] =
+        [invaderXim.zone.PORT_JEUNO] =
         {
             ['Imasuke'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.KAISER_SWORD) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.KAISER_SWORD) then
                         return quest:progressEvent(15)
                     end
                 end,

@@ -10,11 +10,11 @@ attachmentObject.onEquip = function(pet)
         local master = automaton:getMaster()
 
         if
-            not automaton:hasRecast(xi.recast.ABILITY, xi.automaton.abilities.SHOCK_ABSORBER) and
+            not automaton:hasRecast(invaderXim.recast.ABILITY, invaderXim.automaton.abilities.SHOCK_ABSORBER) and
             master and
-            master:countEffect(xi.effect.EARTH_MANEUVER) > 0
+            master:countEffect(invaderXim.effect.EARTH_MANEUVER) > 0
         then
-            automaton:useMobAbility(xi.automaton.abilities.SHOCK_ABSORBER, automaton)
+            automaton:useMobAbility(invaderXim.automaton.abilities.SHOCK_ABSORBER, automaton)
         end
     end)
 end

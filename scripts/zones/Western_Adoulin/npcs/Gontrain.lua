@@ -8,10 +8,10 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local raptorRapture = player:getQuestStatus(xi.questLog.ADOULIN, xi.quest.id.adoulin.RAPTOR_RAPTURE)
+    local raptorRapture = player:getQuestStatus(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.RAPTOR_RAPTURE)
 
     if
-        raptorRapture == xi.questStatus.QUEST_ACCEPTED and
+        raptorRapture == invaderXim.questStatus.QUEST_ACCEPTED and
         player:getCharVar('Raptor_Rapture_Status') == 4
     then
         -- Progresses Quest: 'Raptor Rapture', speaking to Ilney.

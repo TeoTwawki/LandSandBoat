@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.mobType
-xi.mobType =
+---@enum invaderXim.mobType
+invaderXim.mobType =
 {
     NORMAL      = 0x00,
     UNUSED      = 0x01,

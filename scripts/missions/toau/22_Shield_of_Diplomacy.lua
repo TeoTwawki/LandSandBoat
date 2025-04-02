@@ -6,12 +6,12 @@
 -- Decorative Bronze Gate : !pos -601 10 -100 64
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.SHIELD_OF_DIPLOMACY)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.SHIELD_OF_DIPLOMACY)
 
 mission.reward =
 {
-    title       = xi.title.KARABABAS_BODYGUARD,
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.SOCIAL_GRACES },
+    title       = invaderXim.title.KARABABAS_BODYGUARD,
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.SOCIAL_GRACES },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.NAVUKGO_EXECUTION_CHAMBER] =
+        [invaderXim.zone.NAVUKGO_EXECUTION_CHAMBER] =
         {
             ['_1s0'] =
             {
@@ -49,7 +49,7 @@ mission.sections =
                 end,
 
                 [32001] = function(player, csid, option, npc)
-                    if player:getLocalVar('battlefieldWin') == xi.battlefield.id.SHIELD_OF_DIPLOMACY then
+                    if player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.SHIELD_OF_DIPLOMACY then
                         mission:complete(player)
                     end
                 end,

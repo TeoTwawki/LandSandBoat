@@ -21,10 +21,10 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.AMORPH
-    params.attackType = xi.attackType.MAGICAL
-    params.damageType = xi.damageType.EARTH
-    params.attribute = xi.mod.INT
+    params.ecosystem = invaderXim.ecosystem.AMORPH
+    params.attackType = invaderXim.attackType.MAGICAL
+    params.damageType = invaderXim.damageType.EARTH
+    params.attribute = invaderXim.mod.INT
     params.multiplier = 1.0
     params.tMultiplier = 1.0
     params.duppercap = 13
@@ -36,13 +36,13 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
 
-    params.addedEffect = xi.effect.ACCURACY_DOWN
+    params.addedEffect = invaderXim.effect.ACCURACY_DOWN
     local power = 25
     local tick = 0
     local duration = 60
 
-    local damage = xi.spells.blue.useMagicalSpell(caster, target, spell, params)
-    xi.spells.blue.useMagicalSpellAddedEffect(caster, target, spell, params, power, tick, duration)
+    local damage = invaderXim.spells.blue.useMagicalSpell(caster, target, spell, params)
+    invaderXim.spells.blue.useMagicalSpellAddedEffect(caster, target, spell, params, power, tick, duration)
 
     return damage
 end

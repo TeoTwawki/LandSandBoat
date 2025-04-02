@@ -3,7 +3,7 @@
 --  Mob: Greater Manticore
 -- Note: Place Holder for Frostmane
 -----------------------------------
-local ID = zones[xi.zone.CAPE_TERIGGAN]
+local ID = zones[invaderXim.zone.CAPE_TERIGGAN]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -71,11 +71,11 @@ local frostmanePHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 108, 2, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 108, 2, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, frostmanePHTable, 5, 3600, { spawnPoints = frostmaneSpawnPoints }) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, frostmanePHTable, 5, 3600, { spawnPoints = frostmaneSpawnPoints }) -- 1 hour
 end
 
 return entity

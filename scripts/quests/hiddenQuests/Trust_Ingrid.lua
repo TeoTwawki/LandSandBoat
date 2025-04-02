@@ -1,7 +1,7 @@
 -----------------------------------
 -- Trust: Ingrid
 -----------------------------------
-local easternAdoulinID = zones[xi.zone.EASTERN_ADOULIN]
+local easternAdoulinID = zones[invaderXim.zone.EASTERN_ADOULIN]
 -----------------------------------
 
 local quest = HiddenQuest:new('TrustIngrid')
@@ -10,11 +10,11 @@ quest.sections =
 {
     {
         check = function(player, questVars, vars)
-            return not player:hasSpell(xi.magic.spell.INGRID) and
-                player:hasCompletedMission(xi.mission.log_id.SOA, xi.mission.id.soa.THE_MERCILESS_ONE)
+            return not player:hasSpell(invaderXim.magic.spell.INGRID) and
+                player:hasCompletedMission(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_MERCILESS_ONE)
         end,
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Rigobertine'] =
             {
@@ -31,9 +31,9 @@ quest.sections =
             {
                 [5062] = function(player, csid, option, npc)
                     if option == 2 then
-                        player:addSpell(xi.magic.spell.INGRID, true, true)
+                        player:addSpell(invaderXim.magic.spell.INGRID, true, true)
 
-                        player:messageSpecial(easternAdoulinID.text.YOU_LEARNED_TRUST, 0, xi.magic.spell.INGRID)
+                        player:messageSpecial(easternAdoulinID.text.YOU_LEARNED_TRUST, 0, invaderXim.magic.spell.INGRID)
                     end
                 end,
             },

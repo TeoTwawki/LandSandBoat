@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.LEAVEGAME
+-- invaderXim.effect.LEAVEGAME
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

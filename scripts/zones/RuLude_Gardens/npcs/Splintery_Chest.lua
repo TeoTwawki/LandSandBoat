@@ -2,13 +2,13 @@
 -- Area: Ru'Lude Gardens
 --  NPC: Splintery Chest
 -----------------------------------
-local ID = zones[xi.zone.RULUDE_GARDENS]
+local ID = zones[invaderXim.zone.RULUDE_GARDENS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if xi.settings.main.ENABLE_MAGIAN_TRIALS ~= 1 then
+    if invaderXim.settings.main.ENABLE_MAGIAN_TRIALS ~= 1 then
         return
     end
 

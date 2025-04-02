@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.LA_THEINE_PLATEAU] =
+zones[invaderXim.zone.LA_THEINE_PLATEAU] =
 {
     text =
     {
@@ -73,7 +73,7 @@ zones[xi.zone.LA_THEINE_PLATEAU] =
 
         VOIDWALKER =
         {
-            [xi.keyItem.CLEAR_ABYSSITE] =
+            [invaderXim.keyItem.CLEAR_ABYSSITE] =
             {
                 17195493, -- Prickly Sheep
                 17195492, -- Prickly Sheep
@@ -85,18 +85,18 @@ zones[xi.zone.LA_THEINE_PLATEAU] =
                 17195486,  -- Void Hare
             },
 
-            [xi.keyItem.COLORFUL_ABYSSITE] =
+            [invaderXim.keyItem.COLORFUL_ABYSSITE] =
             {
                 17195485,  -- Chesma
                 17195484, -- Tammuz
             },
 
-            [xi.keyItem.GREY_ABYSSITE] =
+            [invaderXim.keyItem.GREY_ABYSSITE] =
             {
                 17195483  -- Dawon
             },
 
-            [xi.keyItem.BLACK_ABYSSITE] =
+            [invaderXim.keyItem.BLACK_ABYSSITE] =
             {
                 17195482  -- Yilbegan
             }
@@ -110,4 +110,4 @@ zones[xi.zone.LA_THEINE_PLATEAU] =
     },
 }
 
-return zones[xi.zone.LA_THEINE_PLATEAU]
+return zones[invaderXim.zone.LA_THEINE_PLATEAU]

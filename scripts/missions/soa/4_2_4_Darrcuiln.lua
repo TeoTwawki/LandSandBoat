@@ -7,12 +7,12 @@
 -- Darkened Crevice : !pos 185.752 27.311 240.72 273
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.DARRCUILN)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.DARRCUILN)
 
 mission.reward =
 {
-    keyItem     = xi.ki.TUFT_OF_GOLDEN_FUR,
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.THE_GATES },
+    keyItem     = invaderXim.ki.TUFT_OF_GOLDEN_FUR,
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_GATES },
 }
 
 mission.sections =
@@ -22,12 +22,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(165),
         },
 
-        [xi.zone.WOH_GATES] =
+        [invaderXim.zone.WOH_GATES] =
         {
             ['Darkened_Crevice'] = mission:progressEvent(8),
 

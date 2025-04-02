@@ -17,9 +17,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local power    = 200
     local duration = 20
 
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.FLASH, power, 0, duration))
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.FLASH, power, 0, duration))
 
-    return xi.effect.FLASH
+    return invaderXim.effect.FLASH
 end
 
 return mobskillObject

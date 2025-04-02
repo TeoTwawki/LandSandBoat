@@ -9,23 +9,23 @@
 -----------------------------------
 
 ---@type TQuest
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.THE_BRUGAIRE_CONSORTIUM)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.THE_BRUGAIRE_CONSORTIUM)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.SANDORIA,
-    item     = xi.item.LAUAN_SHIELD,
-    title    = xi.title.COURIER_EXTRAORDINAIRE,
+    fameArea = invaderXim.fameArea.SANDORIA,
+    item     = invaderXim.item.LAUAN_SHIELD,
+    title    = invaderXim.title.COURIER_EXTRAORDINAIRE,
 }
 
 -- NOTE: Event Ids in Index 1 are for the next event (Option), while item is
 -- used by quest progress (Prog)
 local parcelItemIds =
 {
-    [0] = { 511, xi.item.PARCEL_FOR_THE_MAGIC_SHOP    },
-    [1] = { 512, xi.item.PARCEL_FOR_THE_AUCTION_HOUSE },
-    [2] = { 515, xi.item.PARCEL_FOR_THE_PUB           },
+    [0] = { 511, invaderXim.item.PARCEL_FOR_THE_MAGIC_SHOP    },
+    [1] = { 512, invaderXim.item.PARCEL_FOR_THE_AUCTION_HOUSE },
+    [2] = { 515, invaderXim.item.PARCEL_FOR_THE_PUB           },
 }
 
 local tradeOnEventFinish = function(player, csid, option, npc)
@@ -43,10 +43,10 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.PORT_SAN_DORIA] =
+        [invaderXim.zone.PORT_SAN_DORIA] =
         {
             ['Fontoumant'] = quest:progressEvent(509),
 
@@ -55,7 +55,7 @@ quest.sections =
                 [509] = function(player, csid, option, npc)
                     if
                         option == 0 and
-                        npcUtil.giveItem(player, xi.item.PARCEL_FOR_THE_MAGIC_SHOP)
+                        npcUtil.giveItem(player, invaderXim.item.PARCEL_FOR_THE_MAGIC_SHOP)
                     then
                         quest:begin(player)
                     end
@@ -66,10 +66,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_SAN_DORIA] =
+        [invaderXim.zone.PORT_SAN_DORIA] =
         {
             ['Fontoumant'] =
             {
@@ -102,7 +102,7 @@ quest.sections =
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'Prog') == 0 and
-                        npcUtil.tradeHasExactly(trade, xi.item.PARCEL_FOR_THE_MAGIC_SHOP)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.PARCEL_FOR_THE_MAGIC_SHOP)
                     then
                         return quest:progressEvent(535)
                     end
@@ -114,7 +114,7 @@ quest.sections =
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'Prog') == 1 and
-                        npcUtil.tradeHasExactly(trade, xi.item.PARCEL_FOR_THE_AUCTION_HOUSE)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.PARCEL_FOR_THE_AUCTION_HOUSE)
                     then
                         return quest:progressEvent(540)
                     end
@@ -126,7 +126,7 @@ quest.sections =
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'Prog') == 2 and
-                        npcUtil.tradeHasExactly(trade, xi.item.PARCEL_FOR_THE_PUB)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.PARCEL_FOR_THE_PUB)
                     then
                         return quest:progressEvent(539)
                     end

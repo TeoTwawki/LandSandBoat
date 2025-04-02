@@ -2,7 +2,7 @@
 -- Area: Lower Jeuno
 --  NPC: Chenokih
 -----------------------------------
-local ID = zones[xi.zone.LOWER_JEUNO]
+local ID = zones[invaderXim.zone.LOWER_JEUNO]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -25,7 +25,7 @@ entity.onTrigger = function(player, npc)
     }
 
     player:showText(npc, ID.text.ORTHONS_GARMENT_SHOP_DIALOG)
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 return entity

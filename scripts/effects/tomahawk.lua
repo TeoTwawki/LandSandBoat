@@ -1,11 +1,11 @@
 -----------------------------------
--- xi.effect.TOMAHAWK
+-- invaderXim.effect.TOMAHAWK
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    local physSDT = { xi.mod.SLASH_SDT, xi.mod.PIERCE_SDT, xi.mod.IMPACT_SDT, xi.mod.HTH_SDT }
+    local physSDT = { invaderXim.mod.SLASH_SDT, invaderXim.mod.PIERCE_SDT, invaderXim.mod.IMPACT_SDT, invaderXim.mod.HTH_SDT }
 
     for i = 1, #physSDT do
         local physicalSDTModifier   = physSDT[i]
@@ -15,8 +15,8 @@ effectObject.onEffectGain = function(target, effect)
         effect:addMod(physicalSDTModifier, -physicalSDTAdjustment)
     end
 
-    for element = xi.element.FIRE, xi.element.DARK do
-        local elementSDTModifier   = xi.combat.element.getElementalSDTModifier(element)
+    for element = invaderXim.element.FIRE, invaderXim.element.DARK do
+        local elementSDTModifier   = invaderXim.combat.element.getElementalSDTModifier(element)
         local elementSDTValue      = target:getMod(elementSDTModifier)
         local elementSDTAdjustment = math.floor(elementSDTValue * 0.25)
 

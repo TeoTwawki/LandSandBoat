@@ -3,12 +3,12 @@
 -- Name: ZM8 Return to Delkfutt's Tower
 -- !pos -520 -4 17 179
 -----------------------------------
-local stellarFulcrumID = zones[xi.zone.STELLAR_FULCRUM]
+local stellarFulcrumID = zones[invaderXim.zone.STELLAR_FULCRUM]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId                = xi.zone.STELLAR_FULCRUM,
-    battlefieldId         = xi.battlefield.id.RETURN_TO_DELKFUTTS_TOWER,
+    zoneId                = invaderXim.zone.STELLAR_FULCRUM,
+    battlefieldId         = invaderXim.battlefield.id.RETURN_TO_DELKFUTTS_TOWER,
     canLoseExp            = false,
     isMission             = true,
     allowTrusts           = true,
@@ -18,11 +18,11 @@ local content = BattlefieldMission:new({
     index                 = 0,
     entryNpc              = '_4z0',
     exitNpcs              = { '_4z1', '_4z2', '_4z3' },
-    missionArea           = xi.mission.log_id.ZILART,
-    mission               = xi.mission.id.zilart.RETURN_TO_DELKFUTTS_TOWER,
-    missionStatusArea     = xi.mission.log_id.ZILART,
+    missionArea           = invaderXim.mission.log_id.ZILART,
+    mission               = invaderXim.mission.id.zilart.RETURN_TO_DELKFUTTS_TOWER,
+    missionStatusArea     = invaderXim.mission.log_id.ZILART,
     requiredMissionStatus = 2,
-    title                 = xi.title.DESTROYER_OF_ANTIQUITY,
+    title                 = invaderXim.title.DESTROYER_OF_ANTIQUITY,
 })
 
 content.groups =
@@ -36,7 +36,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

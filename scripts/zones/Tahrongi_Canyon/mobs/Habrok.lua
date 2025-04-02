@@ -12,8 +12,8 @@ entity.onMobInitialize = function(mob)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 258)
-    xi.tutorial.onMobDeath(player)
+    invaderXim.hunts.checkHunt(mob, player, 258)
+    invaderXim.tutorial.onMobDeath(player)
 end
 
 entity.onMobDespawn = function(mob)

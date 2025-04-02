@@ -10,18 +10,18 @@
 -- Mourices        : !pos -50.646 -0.501 -27.642 241
 -- Savae E Paleade : !pos 23.724 -17.39 -43.360 237
 -----------------------------------
-local southernSandoriaID = zones[xi.zone.SOUTHERN_SAN_DORIA]
-local northernSandoriaID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local southernSandoriaID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
+local northernSandoriaID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_ABROAD)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_ABROAD)
 
 mission.reward =
 {
     rank    = 3,
     gil     = 3000,
-    keyItem = xi.ki.ADVENTURERS_CERTIFICATE,
-    title   = xi.title.CERTIFIED_ADVENTURER,
+    keyItem = invaderXim.ki.ADVENTURERS_CERTIFICATE,
+    title   = invaderXim.title.CERTIFIED_ADVENTURER,
 }
 
 local handleAcceptMission = function(player, csid, option, npc)
@@ -35,11 +35,11 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -48,7 +48,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -62,7 +62,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] =
             {
@@ -87,7 +87,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Grilau'] =
             {
@@ -101,7 +101,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Halver'] =
             {
@@ -111,8 +111,8 @@ mission.sections =
                     if missionStatus == 11 then
                         return mission:progressEvent(507)
                     elseif missionStatus == 0 then
-                        if xi.settings.main.ENABLE_TRUST_QUESTS == 1 then
-                            local needsHalverTrust = (not player:hasSpell(xi.magic.spell.HALVER) and not player:findItem(xi.item.CIPHER_OF_HALVERS_ALTER_EGO)) and 1 or 0
+                        if invaderXim.settings.main.ENABLE_TRUST_QUESTS == 1 then
+                            local needsHalverTrust = (not player:hasSpell(invaderXim.magic.spell.HALVER) and not player:findItem(invaderXim.item.CIPHER_OF_HALVERS_ALTER_EGO)) and 1 or 0
 
                             return mission:progressEvent(505, { [7] = needsHalverTrust })
                         else
@@ -128,26 +128,26 @@ mission.sections =
             {
                 [505] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 2)
-                    npcUtil.giveKeyItem(player, xi.ki.LETTER_TO_THE_CONSULS_SANDORIA)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LETTER_TO_THE_CONSULS_SANDORIA)
 
                     if
-                        xi.settings.main.ENABLE_TRUST_QUESTS == 1 and
-                        not player:hasSpell(xi.magic.spell.HALVER) and
-                        not player:findItem(xi.item.CIPHER_OF_HALVERS_ALTER_EGO)
+                        invaderXim.settings.main.ENABLE_TRUST_QUESTS == 1 and
+                        not player:hasSpell(invaderXim.magic.spell.HALVER) and
+                        not player:findItem(invaderXim.item.CIPHER_OF_HALVERS_ALTER_EGO)
                     then
-                        npcUtil.giveItem(player, xi.item.CIPHER_OF_HALVERS_ALTER_EGO)
+                        npcUtil.giveItem(player, invaderXim.item.CIPHER_OF_HALVERS_ALTER_EGO)
                     end
                 end,
 
                 [507] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.KINDRED_REPORT)
+                        player:delKeyItem(invaderXim.ki.KINDRED_REPORT)
                     end
                 end,
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Chantain'] =
             {
@@ -209,26 +209,26 @@ mission.sections =
             {
                 [204] = function(player, csid, option, npc)
                     player:delMission(mission.areaId, mission.missionId)
-                    player:addMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_TO_BASTOK)
+                    player:addMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_TO_BASTOK)
                     player:setMissionStatus(mission.areaId, 3)
-                    player:delKeyItem(xi.ki.LETTER_TO_THE_CONSULS_SANDORIA)
+                    player:delKeyItem(invaderXim.ki.LETTER_TO_THE_CONSULS_SANDORIA)
                 end,
 
                 [206] = function(player, csid, option, npc)
                     player:delMission(mission.areaId, mission.missionId)
-                    player:addMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_TO_BASTOK2)
+                    player:addMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_TO_BASTOK2)
                     player:setMissionStatus(mission.areaId, 8)
                 end,
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Catalia'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:hasCompletedMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_TO_WINDURST) and
+                        player:hasCompletedMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_TO_WINDURST) and
                         player:getMissionStatus(mission.areaId) == 7
                     then
                         return mission:progressEvent(459)
@@ -240,7 +240,7 @@ mission.sections =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:hasCompletedMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_TO_WINDURST) and
+                        player:hasCompletedMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_TO_WINDURST) and
                         player:getMissionStatus(mission.areaId) == 7
                     then
                         return mission:progressEvent(460)
@@ -252,7 +252,7 @@ mission.sections =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:hasCompletedMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_TO_WINDURST) and
+                        player:hasCompletedMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_TO_WINDURST) and
                         player:getMissionStatus(mission.areaId) == 7
                     then
                         return mission:progressEvent(461)
@@ -272,7 +272,7 @@ mission.sections =
                     elseif missionStatus == 6 then
                         return mission:progressEvent(462)
                     elseif
-                        player:hasCompletedMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_TO_WINDURST) and
+                        player:hasCompletedMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_TO_WINDURST) and
                         missionStatus == 7
                     then
                         return mission:progressEvent(458) -- Head to Bastok
@@ -286,14 +286,14 @@ mission.sections =
             {
                 [448] = function(player, csid, option, npc)
                     player:delMission(mission.areaId, mission.missionId)
-                    player:addMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_TO_WINDURST)
+                    player:addMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_TO_WINDURST)
                     player:setMissionStatus(mission.areaId, 3)
-                    player:delKeyItem(xi.ki.LETTER_TO_THE_CONSULS_SANDORIA)
+                    player:delKeyItem(invaderXim.ki.LETTER_TO_THE_CONSULS_SANDORIA)
                 end,
 
                 [462] = function(player, csid, option, npc)
                     player:delMission(mission.areaId, mission.missionId)
-                    player:addMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_TO_WINDURST2)
+                    player:addMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_TO_WINDURST2)
                     player:setMissionStatus(mission.areaId, 7)
                 end,
             },

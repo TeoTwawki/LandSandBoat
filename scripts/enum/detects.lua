@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.detects
-xi.detects =
+---@enum invaderXim.detects
+invaderXim.detects =
 {
     NONE              = 0x000,
     SIGHT             = 0x001,

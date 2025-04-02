@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.MANA_CEDE
+-- invaderXim.effect.MANA_CEDE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

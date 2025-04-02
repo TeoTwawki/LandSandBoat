@@ -3,7 +3,7 @@
 --  NPC: Swirling_Vortex
 -- !pos ? ? ? 33
 -----------------------------------
--- local ID = zones[xi.zone.ALTAIEU]
+-- local ID = zones[invaderXim.zone.ALTAIEU]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -17,9 +17,9 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     -- if csid == 160 and option == 1 then
-    --     xi.limbus.enter(player, 1)
+    --     invaderXim.limbus.enter(player, 1)
     -- elseif csid == 159 and option == 1 then
-    --     xi.limbus.enter(player, 0)
+    --     invaderXim.limbus.enter(player, 0)
     -- end
 end
 

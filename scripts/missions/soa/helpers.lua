@@ -2,13 +2,13 @@
 -- Seekers of Adoulin Helpers
 -----------------------------------
 xi = xi or {}
-xi.soa = xi.soa or {}
-xi.soa.helpers = xi.soa.helpers or {}
+invaderXim.soa = invaderXim.soa or {}
+invaderXim.soa.helpers = invaderXim.soa.helpers or {}
 
-xi.soa.helpers.imprimaturGate = function(player, gateAmount)
+invaderXim.soa.helpers.imprimaturGate = function(player, gateAmount)
     -- TODO: All of this
     local imprimatursSpent = 0 -- TODO: Pull from DB
-    local fame = player:getFameLevel(xi.fameArea.ADOULIN)
+    local fame = player:getFameLevel(invaderXim.fameArea.ADOULIN)
     local gate = 100 - (fame * gateAmount)
     return imprimatursSpent >= gate
 end
@@ -154,7 +154,7 @@ local function chooseTeodorAction(player)
     return teodorAction, teodorShotValue, teodorSpecial
 end
 
-xi.soa.helpers.initGameRound = function(player)
+invaderXim.soa.helpers.initGameRound = function(player)
     player:setLocalVar('turnNumber', 1)
     player:setLocalVar('playerShots', 0)
     player:setLocalVar('teodorShots', 0)
@@ -163,7 +163,7 @@ xi.soa.helpers.initGameRound = function(player)
     player:setLocalVar('teodorSpecial', 0)
 end
 
-xi.soa.helpers.updateMinigameEvent = function(player, csid, option, npc)
+invaderXim.soa.helpers.updateMinigameEvent = function(player, csid, option, npc)
     local turnNumber = player:getLocalVar('turnNumber')
     local trickMask  = player:getLocalVar('playerSpecial') == 0 and 128 or 4
 
@@ -203,7 +203,7 @@ xi.soa.helpers.updateMinigameEvent = function(player, csid, option, npc)
         player:updateEvent(gameStatus, turnNumber, 0, 1, teodorSpecial, teodorShotValue, teodorAction, player:getLocalVar('sessionScore'))
 
         if gameStatus > 0 then
-            xi.soa.helpers.initGameRound(player)
+            invaderXim.soa.helpers.initGameRound(player)
         end
 
     -- Peek

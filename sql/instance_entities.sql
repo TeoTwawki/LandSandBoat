@@ -13,7 +13,7 @@
 -- Table structure for table `instance_entities`
 --
 
-DROP TABLE IF EXISTS `instance_entities`;
+DROP TABLE IF IXIMSTS `instance_entities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `instance_entities` (

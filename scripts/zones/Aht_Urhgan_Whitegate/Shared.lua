@@ -72,12 +72,12 @@ local allowedBodyArmors = set{
 
 -- Function to check if the player is wearing armor that is appropriate for the royal palace.
 sharedObj.doRoyalPalaceArmorCheck = function(player)
-    local bodyArmor = player:getEquipID(xi.slot.BODY)
+    local bodyArmor = player:getEquipID(invaderXim.slot.BODY)
     local check = allowedBodyArmors[bodyArmor] ~= nil
 
-    local hasHandArmor = player:getEquipID(xi.slot.HANDS)
-    local hasLegArmor = player:getEquipID(xi.slot.LEGS)
-    local hasFeetArmor = player:getEquipID(xi.slot.FEET)
+    local hasHandArmor = player:getEquipID(invaderXim.slot.HANDS)
+    local hasLegArmor = player:getEquipID(invaderXim.slot.LEGS)
+    local hasFeetArmor = player:getEquipID(invaderXim.slot.FEET)
 
     if hasHandArmor == 0 or hasLegArmor == 0 or hasFeetArmor == 0 then
         check = false

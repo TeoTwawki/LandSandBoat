@@ -10,8 +10,8 @@ entity.onTrigger = function(player, npc)
 
     -- ISNM accepted but not completed. TODO: Check if KIs expire aswell.
     if
-        player:hasKeyItem(xi.ki.CONFIDENTIAL_IMPERIAL_ORDER) or
-        player:hasKeyItem(xi.ki.SECRET_IMPERIAL_ORDER)
+        player:hasKeyItem(invaderXim.ki.CONFIDENTIAL_IMPERIAL_ORDER) or
+        player:hasKeyItem(invaderXim.ki.SECRET_IMPERIAL_ORDER)
     then
         player:startEvent(161)
 
@@ -20,7 +20,7 @@ entity.onTrigger = function(player, npc)
         player:startEvent(163)
 
     -- Can purchuase KI.
-    elseif player:hasKeyItem(xi.ki.PSC_WILDCAT_BADGE) then
+    elseif player:hasKeyItem(invaderXim.ki.PSC_WILDCAT_BADGE) then
         player:startEvent(160, imperialStanding, 1)
 
     -- Default.
@@ -40,7 +40,7 @@ entity.onEventFinish = function(player, csid, option, npc)
         then
             player:setCharVar('[ISNM]Accepted', 1, getMidnight())
             player:delCurrency('imperial_standing', 2000)
-            npcUtil.giveKeyItem(player, xi.ki.CONFIDENTIAL_IMPERIAL_ORDER)
+            npcUtil.giveKeyItem(player, invaderXim.ki.CONFIDENTIAL_IMPERIAL_ORDER)
 
         -- Lv. 75 fight
         elseif
@@ -49,7 +49,7 @@ entity.onEventFinish = function(player, csid, option, npc)
         then
             player:setCharVar('[ISNM]Accepted', 1, getMidnight())
             player:delCurrency('imperial_standing', 3000)
-            npcUtil.giveKeyItem(player, xi.ki.SECRET_IMPERIAL_ORDER)
+            npcUtil.giveKeyItem(player, invaderXim.ki.SECRET_IMPERIAL_ORDER)
         end
     end
 end

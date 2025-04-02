@@ -8,25 +8,25 @@
 require('scripts/missions/wotg/helpers')
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.HER_MEMORIES_OPERATION_CUPID)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.HER_MEMORIES_OPERATION_CUPID)
 
 quest.reward =
 {
-    keyItem = xi.ki.LARGE_MEMORY_FRAGMENT3,
+    keyItem = invaderXim.ki.LARGE_MEMORY_FRAGMENT3,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getCurrentMission(xi.mission.log_id.WOTG) == xi.mission.id.wotg.HER_MEMORIES
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getCurrentMission(invaderXim.mission.log_id.WOTG) == invaderXim.mission.id.wotg.HER_MEMORIES
         end,
 
-        [xi.zone.BATALLIA_DOWNS_S] =
+        [invaderXim.zone.BATALLIA_DOWNS_S] =
         {
             onZoneIn = function(player, prevZone)
-                if prevZone == xi.zone.JUGNER_FOREST_S then
+                if prevZone == invaderXim.zone.JUGNER_FOREST_S then
                     return 23
                 end
             end,
@@ -42,17 +42,17 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SAUROMUGUE_CHAMPAIGN_S] =
+        [invaderXim.zone.SAUROMUGUE_CHAMPAIGN_S] =
         {
             ['Bulwark_Gate'] =
             {
                 onTrigger = function(player, npc)
                     local questProgress = quest:getVar(player, 'Prog')
 
-                    if player:hasKeyItem(xi.ki.POT_OF_MARTIAL_RELISH) then
+                    if player:hasKeyItem(invaderXim.ki.POT_OF_MARTIAL_RELISH) then
                         return quest:progressEvent(13)
                     elseif questProgress == 0 then
                         return quest:progressEvent(11)
@@ -72,19 +72,19 @@ quest.sections =
 
                 [13] = function(player, csid, option, npc)
                     quest:setVar(player, 'Prog', 2)
-                    player:delKeyItem(xi.ki.POT_OF_MARTIAL_RELISH)
+                    player:delKeyItem(invaderXim.ki.POT_OF_MARTIAL_RELISH)
                 end,
             },
         },
 
-        [xi.zone.VUNKERL_INLET_S] =
+        [invaderXim.zone.VUNKERL_INLET_S] =
         {
             ['Leadavox'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        not player:hasKeyItem(xi.ki.POT_OF_MARTIAL_RELISH) and
-                        npcUtil.tradeHasExactly(trade, { xi.item.BOTTLE_OF_RICE_VINEGAR, xi.item.JAR_OF_GROUND_WASABI, xi.item.SPRIG_OF_HOLY_BASIL }) and
+                        not player:hasKeyItem(invaderXim.ki.POT_OF_MARTIAL_RELISH) and
+                        npcUtil.tradeHasExactly(trade, { invaderXim.item.BOTTLE_OF_RICE_VINEGAR, invaderXim.item.JAR_OF_GROUND_WASABI, invaderXim.item.SPRIG_OF_HOLY_BASIL }) and
                         quest:getVar(player, 'Prog') == 1
                     then
                         return quest:progressEvent(4)
@@ -92,7 +92,7 @@ quest.sections =
                 end,
 
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.POT_OF_MARTIAL_RELISH) then
+                    if player:hasKeyItem(invaderXim.ki.POT_OF_MARTIAL_RELISH) then
                         return quest:event(5):oncePerZone()
                     end
                 end,
@@ -102,16 +102,16 @@ quest.sections =
             {
                 [4] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    npcUtil.giveKeyItem(player, xi.ki.POT_OF_MARTIAL_RELISH)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.POT_OF_MARTIAL_RELISH)
                 end,
             },
         },
 
-        [xi.zone.BATALLIA_DOWNS_S] =
+        [invaderXim.zone.BATALLIA_DOWNS_S] =
         {
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.ROLANBERRY_FIELDS_S and
+                    prevZone == invaderXim.zone.ROLANBERRY_FIELDS_S and
                     quest:getVar(player, 'Prog') == 2
                 then
                     return 24
@@ -121,7 +121,7 @@ quest.sections =
             onEventFinish =
             {
                 [24] = function(player, csid, option, npc)
-                    xi.wotg.helpers.checkMemoryFragments(player)
+                    invaderXim.wotg.helpers.checkMemoryFragments(player)
                     quest:complete(player)
                 end,
             },

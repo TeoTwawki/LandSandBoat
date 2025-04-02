@@ -21,14 +21,14 @@ commandObj.onTrigger = function(player)
                 'Full Speed Ahead! (Normal)',
                 function(playerArg)
                     playerArg:setCharVar('[QUEST]FullSpeedAhead', 1)
-                    player:setPos(475, 8.8, -159, 128, xi.zone.BATALLIA_DOWNS)
+                    player:setPos(475, 8.8, -159, 128, invaderXim.zone.BATALLIA_DOWNS)
                 end,
             },
             {
                 'Full Speed Ahead! (Easy)',
                 function(playerArg)
                     playerArg:setCharVar('[QUEST]FullSpeedAhead', 2)
-                    player:setPos(475, 8.8, -159, 128, xi.zone.BATALLIA_DOWNS)
+                    player:setPos(475, 8.8, -159, 128, invaderXim.zone.BATALLIA_DOWNS)
                 end,
             },
         },

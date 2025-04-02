@@ -3,7 +3,7 @@
 --  NPC: Geltpix
 -- !pos 154 -2 103 80
 -----------------------------------
-local ID = zones[xi.zone.SOUTHERN_SAN_DORIA_S]
+local ID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA_S]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -18,7 +18,7 @@ entity.onTrigger = function(player, npc)
     }
 
     player:showText(npc, ID.text.DONT_HURT_GELTPIX)
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 return entity

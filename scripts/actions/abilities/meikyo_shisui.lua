@@ -9,13 +9,13 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    ability:setRecast(math.max(0, ability:getRecast() - player:getMod(xi.mod.ONE_HOUR_RECAST) * 60))
+    ability:setRecast(math.max(0, ability:getRecast() - player:getMod(invaderXim.mod.ONE_HOUR_RECAST) * 60))
 
     return 0, 0
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    player:addStatusEffect(xi.effect.MEIKYO_SHISUI, 1, 0, 30)
+    player:addStatusEffect(invaderXim.effect.MEIKYO_SHISUI, 1, 0, 30)
     player:addTP(3000)
 end
 

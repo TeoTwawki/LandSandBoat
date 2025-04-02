@@ -10,7 +10,7 @@ local entity = {}
 entity.onTrade = function(player, npc, trade)
     -- Trade Parradamo Stones
     if
-        trade:hasItemQty(xi.item.POUCH_OF_PARRADAMO_STONES, 1) and
+        trade:hasItemQty(invaderXim.item.POUCH_OF_PARRADAMO_STONES, 1) and
         trade:getItemCount() == 1
     then
         player:tradeComplete()
@@ -21,7 +21,7 @@ end
 entity.onTrigger = function(player, npc)
     local miasmaFilterCD = player:getCharVar('[ENM]MiasmaFilter')
 
-    if player:hasKeyItem(xi.ki.MIASMA_FILTER) then
+    if player:hasKeyItem(invaderXim.ki.MIASMA_FILTER) then
         player:startEvent(11)
     else
         if miasmaFilterCD >= os.time() then
@@ -29,8 +29,8 @@ entity.onTrigger = function(player, npc)
             player:startEvent(14, VanadielTime() + (miasmaFilterCD - os.time()))
         else
             if
-                player:hasItem(xi.item.POUCH_OF_PARRADAMO_STONES) or
-                player:hasItem(xi.item.FLAXEN_POUCH)
+                player:hasItem(invaderXim.item.POUCH_OF_PARRADAMO_STONES) or
+                player:hasItem(invaderXim.item.FLAXEN_POUCH)
             then
                 player:startEvent(15)
             else
@@ -42,10 +42,10 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 12 then
-        npcUtil.giveKeyItem(player, xi.ki.MIASMA_FILTER)
-        player:setCharVar('[ENM]MiasmaFilter', os.time() + (xi.settings.main.ENM_COOLDOWN * 3600)) -- Current time + (ENM_COOLDOWN*1hr in seconds)
+        npcUtil.giveKeyItem(player, invaderXim.ki.MIASMA_FILTER)
+        player:setCharVar('[ENM]MiasmaFilter', os.time() + (invaderXim.settings.main.ENM_COOLDOWN * 3600)) -- Current time + (ENM_COOLDOWN*1hr in seconds)
     elseif csid == 13 then
-        npcUtil.giveItem(player, xi.item.FLAXEN_POUCH)
+        npcUtil.giveItem(player, invaderXim.item.FLAXEN_POUCH)
     end
 end
 

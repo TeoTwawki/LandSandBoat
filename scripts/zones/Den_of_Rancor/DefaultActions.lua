@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.DEN_OF_RANCOR]
+local ID = zones[invaderXim.zone.DEN_OF_RANCOR]
 
 return {
     ['_4g0'] = { messageSpecial = ID.text.LANTERN_OFFSET },

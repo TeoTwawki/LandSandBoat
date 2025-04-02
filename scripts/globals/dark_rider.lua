@@ -1,33 +1,33 @@
 -----------------------------------
 -- Warhorse Hoofprint global file
 -----------------------------------
-local bhaflauID = zones[xi.zone.BHAFLAU_THICKETS]
-local caedarvaID = zones[xi.zone.CAEDARVA_MIRE]
-local mountID = zones[xi.zone.MOUNT_ZHAYOLM]
-local wajaomID = zones[xi.zone.WAJAOM_WOODLANDS]
+local bhaflauID = zones[invaderXim.zone.BHAFLAU_THICKETS]
+local caedarvaID = zones[invaderXim.zone.CAEDARVA_MIRE]
+local mountID = zones[invaderXim.zone.MOUNT_ZHAYOLM]
+local wajaomID = zones[invaderXim.zone.WAJAOM_WOODLANDS]
 -----------------------------------
 
 xi = xi or {}
-xi.darkRider = {}
-xi.darkRider.MAX_HOOFPRINTS_PER_DAY = 2
+invaderXim.darkRider = {}
+invaderXim.darkRider.MAX_HOOFPRINTS_PER_DAY = 2
 
 local hoofprintIds = {
-    [xi.zone.WAJAOM_WOODLANDS] = {
+    [invaderXim.zone.WAJAOM_WOODLANDS] = {
         wajaomID.npc.HOOFPRINT,
         wajaomID.npc.HOOFPRINT + 1,
         wajaomID.npc.HOOFPRINT + 2,
     },
-    [xi.zone.BHAFLAU_THICKETS] = {
+    [invaderXim.zone.BHAFLAU_THICKETS] = {
         bhaflauID.npc.HOOFPRINT,
         bhaflauID.npc.HOOFPRINT + 1,
         bhaflauID.npc.HOOFPRINT + 2,
     },
-    [xi.zone.MOUNT_ZHAYOLM] = {
+    [invaderXim.zone.MOUNT_ZHAYOLM] = {
         mountID.npc.HOOFPRINT,
         mountID.npc.HOOFPRINT + 1,
         mountID.npc.HOOFPRINT + 2,
     },
-    [xi.zone.CAEDARVA_MIRE] = {
+    [invaderXim.zone.CAEDARVA_MIRE] = {
         caedarvaID.npc.HOOFPRINT,
         caedarvaID.npc.HOOFPRINT + 1,
         caedarvaID.npc.HOOFPRINT + 2,
@@ -35,7 +35,7 @@ local hoofprintIds = {
 }
 
 local hoofprintPositions = {
-    [xi.zone.WAJAOM_WOODLANDS] = {
+    [invaderXim.zone.WAJAOM_WOODLANDS] = {
         { 400, -24, 2 }, -- K-9
         { 345, -18, -41 }, -- J-9 E edge
         { 221, -18, -63 }, -- J-9 W edge
@@ -58,7 +58,7 @@ local hoofprintPositions = {
         { -360, -32, 680 }, -- F-5 behind tower
         { 105, -26, 320 },  -- I-7
     },
-    [xi.zone.BHAFLAU_THICKETS] = {
+    [invaderXim.zone.BHAFLAU_THICKETS] = {
         { 447, -18, 266 }, -- I-8
         { 425, -20.25, 239 }, -- I-9
         { 298, -8.5, 211 }, -- H-8 center of open area
@@ -72,7 +72,7 @@ local hoofprintPositions = {
         { 336, -18, 380 }, -- H-7 SE corner
         { 379, -17, 380 }, -- I-7 in tunnel
     },
-    [xi.zone.MOUNT_ZHAYOLM] = {
+    [invaderXim.zone.MOUNT_ZHAYOLM] = {
         { -401, -14.5, 374 }, -- D/E-6
         { -458, -13, 357 }, -- D-6
         { -350, -14, 330 }, -- E-6 near manhole cover
@@ -82,7 +82,7 @@ local hoofprintPositions = {
         { 598, -14, -4 }, -- K-8
         { 762, -14.5, -55 }, -- L-8
     },
-    [xi.zone.CAEDARVA_MIRE] = {
+    [invaderXim.zone.CAEDARVA_MIRE] = {
         { -600, 4.5, -100 }, -- G-9 (2nd map)
         { 212, 0, -533 }, -- I-9
         { 280, -16, -357 }, -- J-8
@@ -99,7 +99,7 @@ for zoneId, _ in pairs(hoofprintPositions) do
 end
 
 -- Adds hoofprints if the current zone is the one picked for that day
-xi.darkRider.addHoofprints = function(zone)
+invaderXim.darkRider.addHoofprints = function(zone)
     -- We need a random number that's the same across servers,
     -- so we add a bunch of vanadiel time values, which will be the same across servers, but should
     -- result in a seemingly "random" area and positions each time when combined with the modulo operator.
@@ -118,7 +118,7 @@ xi.darkRider.addHoofprints = function(zone)
     local daysSinceEpoch = VanadielUniqueDay()
     local currentHoofprintCount = zone:getLocalVar('HoofprintCount')
 
-    local hoofprintsToAdd = math.fmod(fakeRandomNum, xi.darkRider.MAX_HOOFPRINTS_PER_DAY) + 1
+    local hoofprintsToAdd = math.fmod(fakeRandomNum, invaderXim.darkRider.MAX_HOOFPRINTS_PER_DAY) + 1
 
     for i = 1, #possibleHoofprintIds do
         if hoofprintsToAdd <= 0 then
@@ -126,9 +126,9 @@ xi.darkRider.addHoofprints = function(zone)
         end
 
         local hoofprint = GetNPCByID(possibleHoofprintIds[i])
-        if hoofprint ~= nil and hoofprint:getStatus() ~= xi.status.NORMAL then
+        if hoofprint ~= nil and hoofprint:getStatus() ~= invaderXim.status.NORMAL then
             hoofprint:setPos(possiblePositions[i])
-            hoofprint:setStatus(xi.status.NORMAL)
+            hoofprint:setStatus(invaderXim.status.NORMAL)
             hoofprint:setLocalVar('DaysSinceEpoch', daysSinceEpoch)
             currentHoofprintCount = currentHoofprintCount + 1
             hoofprintsToAdd = hoofprintsToAdd - 1
@@ -141,7 +141,7 @@ xi.darkRider.addHoofprints = function(zone)
 end
 
 -- Remove hoofprints at 06:00 from previous day
-xi.darkRider.onGameHour = function(zone)
+invaderXim.darkRider.onGameHour = function(zone)
     if VanadielHour() ~= 6 then
         return
     end
@@ -159,10 +159,10 @@ xi.darkRider.onGameHour = function(zone)
         -- Hide hoofprint if it was shown in a previous day
         if
             hoofprint ~= nil and
-            hoofprint:getStatus() == xi.status.NORMAL and
+            hoofprint:getStatus() == invaderXim.status.NORMAL and
             hoofprint:getLocalVar('DaysSinceEpoch') < daysSinceEpoch
         then
-            hoofprint:setStatus(xi.status.DISAPPEAR)
+            hoofprint:setStatus(invaderXim.status.DISAPPEAR)
             hoofprint:resetLocalVars()
             hoofprintCount = hoofprintCount - 1
         end

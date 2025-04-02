@@ -16,12 +16,12 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local numhits = 1
     local accmod  = 2
-    local info    = xi.mobskills.mobPhysicalMove(mob, target, skill, numhits, accmod, 1, xi.mobskills.physicalTpBonus.NO_EFFECT, 0, 0, 0)
-    local damage  = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.PIERCING, info.hitslanded)
+    local info    = invaderXim.mobskills.mobPhysicalMove(mob, target, skill, numhits, accmod, 1, invaderXim.mobskills.physicalTpBonus.NO_EFFECT, 0, 0, 0)
+    local damage  = invaderXim.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, invaderXim.attackType.PHYSICAL, invaderXim.damageType.PIERCING, info.hitslanded)
 
-    target:takeDamage(damage, mob, xi.attackType.PHYSICAL, xi.damageType.PIERCING)
+    target:takeDamage(damage, mob, invaderXim.attackType.PHYSICAL, invaderXim.damageType.PIERCING)
 
-    skill:setMsg(xi.mobskills.mobPhysicalDrainMove(mob, target, skill, xi.mobskills.drainType.HP, damage))
+    skill:setMsg(invaderXim.mobskills.mobPhysicalDrainMove(mob, target, skill, invaderXim.mobskills.drainType.HP, damage))
 
     return damage
 end

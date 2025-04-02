@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.SABOTEUR
+-- invaderXim.effect.SABOTEUR
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

@@ -13,22 +13,22 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    local helix = target:getStatusEffect(xi.effect.HELIX)
+    local helix = target:getStatusEffect(invaderXim.effect.HELIX)
 
     if helix ~= nil then
         local mvPower = helix:getSubPower()
-        local resist  = applyResistanceAbility(player, target, xi.element.NONE, xi.skill.ELEMENTAL_MAGIC, 0)
+        local resist  = applyResistanceAbility(player, target, invaderXim.element.NONE, invaderXim.skill.ELEMENTAL_MAGIC, 0)
         -- Doesn't work against NMs apparently
         if mvPower > 0 or resist < 0.25 or target:isNM() then -- Don't let Modus Veritas stack to prevent abuse
-            ability:setMsg(xi.msg.basic.JA_MISS) --Miss
+            ability:setMsg(invaderXim.msg.basic.JA_MISS) --Miss
             return 0
         else
             -- Double power and halve remaining time
-            local mvMerits           = player:getMerit(xi.merit.MODUS_VERITAS_DURATION)
+            local mvMerits           = player:getMerit(invaderXim.merit.MODUS_VERITAS_DURATION)
             local durationMultiplier = 0.5 + (0.05 * mvMerits)
             mvPower = mvPower + 1
 
-            local helixPower = helix:getPower() * 2 + (3 * player:getJobPointLevel(xi.jp.MODUS_VERITAS_EFFECT))
+            local helixPower = helix:getPower() * 2 + (3 * player:getJobPointLevel(invaderXim.jp.MODUS_VERITAS_EFFECT))
             local duration   = helix:getDuration()
             local remaining  = math.floor(helix:getTimeRemaining() / 1000) -- from milliseconds
 
@@ -38,7 +38,7 @@ abilityObject.onUseAbility = function(player, target, ability)
             helix:setDuration(duration * 1000) -- back to milliseconds
         end
     else
-        ability:setMsg(xi.msg.basic.JA_NO_EFFECT_2) -- No effect
+        ability:setMsg(invaderXim.msg.basic.JA_NO_EFFECT_2) -- No effect
     end
 end
 

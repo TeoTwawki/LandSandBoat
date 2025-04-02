@@ -3,14 +3,14 @@
 --  Mob: Ajido-Marujido
 -- Ally during Windurst Mission 9-2
 -----------------------------------
-local ID = zones[xi.zone.FULL_MOON_FOUNTAIN]
+local ID = zones[invaderXim.zone.FULL_MOON_FOUNTAIN]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMod(xi.mod.REFRESH, 1)
-    mob:setMobMod(xi.mobMod.TELEPORT_CD, 30)
+    mob:setMod(invaderXim.mod.REFRESH, 1)
+    mob:setMobMod(invaderXim.mobMod.TELEPORT_CD, 30)
 end
 
 entity.onMobSpawn = function(ajidoMob)
@@ -53,7 +53,7 @@ entity.onMobRoam = function(mob)
 end
 
 entity.onMobEngage = function(mob, target)
-    mob:setMobMod(xi.mobMod.TELEPORT_TYPE, 0)
+    mob:setMobMod(invaderXim.mobMod.TELEPORT_TYPE, 0)
 end
 
 entity.onMobFight = function(mob, target)
@@ -63,7 +63,7 @@ entity.onMobFight = function(mob, target)
     end
 
     if target:isEngaged() then
-        mob:setMobMod(xi.mobMod.TELEPORT_TYPE, 1)
+        mob:setMobMod(invaderXim.mobMod.TELEPORT_TYPE, 1)
     end
 end
 

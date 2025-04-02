@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.WEAPON_BONUS, 60) -- Level 85 + 60 = 145 Base Weapon Damage
+    mob:setMobMod(invaderXim.mobMod.WEAPON_BONUS, 60) -- Level 85 + 60 = 145 Base Weapon Damage
 end
 
 entity.onMobFight = function(mob, target)
@@ -23,7 +23,7 @@ entity.onMobFight = function(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.OURYU_OVERWHELMER)
+    player:addTitle(invaderXim.title.OURYU_OVERWHELMER)
 end
 
 return entity

@@ -8,11 +8,11 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local makingHeadlines = player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.MAKING_HEADLINES)
+    local makingHeadlines = player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.MAKING_HEADLINES)
 
-    if makingHeadlines == xi.questStatus.QUEST_AVAILABLE then
+    if makingHeadlines == invaderXim.questStatus.QUEST_AVAILABLE then
         player:startEvent(665)
-    elseif makingHeadlines == xi.questStatus.QUEST_ACCEPTED then
+    elseif makingHeadlines == invaderXim.questStatus.QUEST_ACCEPTED then
         -- bitmask of progress: 0 = Kyume-Romeh, 1 = Yuyuju, 2 = Hiwom-Gomoi, 3 = Umumu, 4 = Mahogany Door
         local prog = player:getCharVar('QuestMakingHeadlines_var')
 
@@ -38,17 +38,17 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 665 then
-        player:addQuest(xi.questLog.WINDURST, xi.quest.id.windurst.MAKING_HEADLINES)
+        player:addQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.MAKING_HEADLINES)
     elseif csid == 670 or csid == 674 then
-        npcUtil.completeQuest(player, xi.questLog.WINDURST, xi.quest.id.windurst.MAKING_HEADLINES, {
-            title = xi.title.EDITORS_HATCHET_MAN,
+        npcUtil.completeQuest(player, invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.MAKING_HEADLINES, {
+            title = invaderXim.title.EDITORS_HATCHET_MAN,
             gil = 560,
             var = 'QuestMakingHeadlines_var',
         })
-        player:delKeyItem(xi.ki.WINDURST_WOODS_SCOOP)
-        player:delKeyItem(xi.ki.WINDURST_WALLS_SCOOP)
-        player:delKeyItem(xi.ki.WINDURST_WATERS_SCOOP)
-        player:delKeyItem(xi.ki.PORT_WINDURST_SCOOP)
+        player:delKeyItem(invaderXim.ki.WINDURST_WOODS_SCOOP)
+        player:delKeyItem(invaderXim.ki.WINDURST_WALLS_SCOOP)
+        player:delKeyItem(invaderXim.ki.WINDURST_WATERS_SCOOP)
+        player:delKeyItem(invaderXim.ki.PORT_WINDURST_SCOOP)
     end
 end
 

@@ -6,7 +6,7 @@
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 197)
+    invaderXim.hunts.checkHunt(mob, player, 197)
 end
 
 return entity

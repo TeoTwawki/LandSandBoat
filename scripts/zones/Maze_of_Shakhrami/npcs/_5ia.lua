@@ -7,22 +7,22 @@
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.strangeApparatus.onTrade(player, trade, 55)
+    invaderXim.strangeApparatus.onTrade(player, trade, 55)
 end
 
 entity.onTrigger = function(player, npc)
-    xi.strangeApparatus.onTrigger(player, 53)
+    invaderXim.strangeApparatus.onTrigger(player, 53)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
     if csid == 53 then
-        xi.strangeApparatus.onEventUpdate(player, option)
+        invaderXim.strangeApparatus.onEventUpdate(player, option)
     end
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 55 then
-        xi.strangeApparatus.onEventFinish(player)
+        invaderXim.strangeApparatus.onEventFinish(player)
     end
 end
 

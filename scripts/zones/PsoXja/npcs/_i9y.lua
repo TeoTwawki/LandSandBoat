@@ -3,7 +3,7 @@
 --  NPC: _i9y (Crystal Receptor)
 -- !pos -389.980 -3.198 -203.595 9
 -----------------------------------
-local ID = zones[xi.zone.PSOXJA]
+local ID = zones[invaderXim.zone.PSOXJA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

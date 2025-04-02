@@ -2,12 +2,12 @@
 -- Area: Navukgo Execution Chamber
 -- BCNM: TOAU-22 Shield of Diplomacy
 -----------------------------------
-local navukgoID = zones[xi.zone.NAVUKGO_EXECUTION_CHAMBER]
+local navukgoID = zones[invaderXim.zone.NAVUKGO_EXECUTION_CHAMBER]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId                = xi.zone.NAVUKGO_EXECUTION_CHAMBER,
-    battlefieldId         = xi.battlefield.id.SHIELD_OF_DIPLOMACY,
+    zoneId                = invaderXim.zone.NAVUKGO_EXECUTION_CHAMBER,
+    battlefieldId         = invaderXim.battlefield.id.SHIELD_OF_DIPLOMACY,
     canLoseExp            = false,
     isMission             = true,
     allowTrusts           = true,
@@ -18,9 +18,9 @@ local content = BattlefieldMission:new({
     allowedAreas          = set{ 1 },
     entryNpc              = '_1s0',
     exitNpcs              = { '_1s1', '_1s2', '_1s3' },
-    missionArea           = xi.mission.log_id.TOAU,
-    mission               = xi.mission.id.toau.SHIELD_OF_DIPLOMACY,
-    missionStatusArea     = xi.mission.log_id.TOAU,
+    missionArea           = invaderXim.mission.log_id.TOAU,
+    mission               = invaderXim.mission.id.toau.SHIELD_OF_DIPLOMACY,
+    missionStatusArea     = invaderXim.mission.log_id.TOAU,
     requiredMissionStatus = 2,
 })
 
@@ -53,7 +53,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

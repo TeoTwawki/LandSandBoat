@@ -3,7 +3,7 @@
 --  Mob: Yagudo Interrogator
 -- Note: PH for Mee Deggi the Punisher
 -----------------------------------
-local ID = zones[xi.zone.CASTLE_OZTROJA]
+local ID = zones[invaderXim.zone.CASTLE_OZTROJA]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -20,7 +20,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, meeDeggiPHTable, 5, 3000) -- 50 minutes
+    invaderXim.mob.phOnDespawn(mob, meeDeggiPHTable, 5, 3000) -- 50 minutes
 end
 
 return entity

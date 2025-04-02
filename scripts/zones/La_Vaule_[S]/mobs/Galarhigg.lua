@@ -16,19 +16,19 @@ entity.onMobWeaponSkill = function(target, mob, skill)
     local id = skill:getID()
 
     if id == 624 or id == 625 or id == 626 then
-        mob:delMod(xi.mod.FIRE_ABSORB, 100)
-        mob:delMod(xi.mod.WATER_ABSORB, 100)
-        mob:delMod(xi.mod.WIND_ABSORB, 100)
+        mob:delMod(invaderXim.mod.FIRE_ABSORB, 100)
+        mob:delMod(invaderXim.mod.WATER_ABSORB, 100)
+        mob:delMod(invaderXim.mod.WIND_ABSORB, 100)
     end
 
     if id == 624 then -- follow with Flame Breah, fire absorb
-        mob:setMod(xi.mod.FIRE_ABSORB, 100)
+        mob:setMod(invaderXim.mod.FIRE_ABSORB, 100)
         mob:useMobAbility(642)
     elseif id == 625 then -- follow with Water Breath, water absorb
-        mob:setMod(xi.mod.WATER_ABSORB, 100)
+        mob:setMod(invaderXim.mod.WATER_ABSORB, 100)
         mob:useMobAbility(643)
     elseif id == 626 then -- follow with Wind Breath, wind absorb
-        mob:setMod(xi.mod.WIND_ABSORB, 100)
+        mob:setMod(invaderXim.mod.WIND_ABSORB, 100)
         mob:useMobAbility(644)
 
     elseif id == 627 then -- follow with random dragon skills, no known absorb

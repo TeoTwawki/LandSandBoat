@@ -2,7 +2,7 @@
 -- Area: Temenos
 --  Mob: Proto-Ultima
 -----------------------------------
-local ID = zones[xi.zone.TEMENOS]
+local ID = zones[invaderXim.zone.TEMENOS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -63,12 +63,12 @@ entity.onMobSpawn = function(mob)
     mob:setMagicCastingEnabled(false)
     mob:setAutoAttackEnabled(true)
     mob:setMobAbilityEnabled(true)
-    mob:setMobMod(xi.mobMod.SKILL_LIST, 729)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 729)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
 end
 
 entity.onMobRoam = function(mob)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
 end
 
 entity.onMobFight = function(mob, target)
@@ -83,10 +83,10 @@ entity.onMobFight = function(mob, target)
         wait = 3,
     }
     if drawInTable.conditions[1] then
-        mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+        mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
         utils.drawIn(target, drawInTable)
     else
-        mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+        mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
     end
 
     if not mob:actionQueueEmpty() then
@@ -99,18 +99,18 @@ entity.onMobFight = function(mob, target)
         phase = phase + 1
 
         if phase == 1 then
-            mob:setMobMod(xi.mobMod.SKILL_LIST, 1193)
+            mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 1193)
         elseif phase == 2 then
-            mob:setMobMod(xi.mobMod.SKILL_LIST, 1194)
+            mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 1194)
                 -- Enable Holy II after a short delay so Dissipation will go off first
             mob:timer(1000, function(mobArg)
                 mob:setMagicCastingEnabled(true)
             end)
         elseif phase == 3 then
-            mob:setMobMod(xi.mobMod.SKILL_LIST, 1195)
+            mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 1195)
         elseif phase == 4 then
-            mob:setMobMod(xi.mobMod.SKILL_LIST, 1196)
-            mob:setMod(xi.mod.REGAIN, 100)
+            mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 1196)
+            mob:setMod(invaderXim.mod.REGAIN, 100)
             mob:setLocalVar('citadelBusterTime', os.time() + math.random(20, 30))
         end
 
@@ -144,7 +144,7 @@ end
 
 entity.onMobDeath = function(mob, player, optParams)
     if player then
-        player:addTitle(xi.title.TEMENOS_LIBERATOR)
+        player:addTitle(invaderXim.title.TEMENOS_LIBERATOR)
     end
 end
 

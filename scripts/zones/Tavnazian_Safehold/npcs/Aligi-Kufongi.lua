@@ -14,62 +14,62 @@ local titleInfo =
         cost = 200,
         title =
         {
-            xi.title.TAVNAZIAN_SQUIRE,
-            xi.title.PUTRID_PURVEYOR_OF_PUNGENT_PETALS,
-            xi.title.MONARCH_LINN_PATROL_GUARD,
-            xi.title.SIN_HUNTER_HUNTER,
-            xi.title.DISCIPLE_OF_JUSTICE,
-            xi.title.DYNAMIS_TAVNAZIA_INTERLOPER,
-            xi.title.CONFRONTER_OF_NIGHTMARES,
+            invaderXim.title.TAVNAZIAN_SQUIRE,
+            invaderXim.title.PUTRID_PURVEYOR_OF_PUNGENT_PETALS,
+            invaderXim.title.MONARCH_LINN_PATROL_GUARD,
+            invaderXim.title.SIN_HUNTER_HUNTER,
+            invaderXim.title.DISCIPLE_OF_JUSTICE,
+            invaderXim.title.DYNAMIS_TAVNAZIA_INTERLOPER,
+            invaderXim.title.CONFRONTER_OF_NIGHTMARES,
         },
     },
     {
         cost = 300,
         title =
         {
-            xi.title.DEAD_BODY,
-            xi.title.FROZEN_DEAD_BODY,
-            xi.title.DREAMBREAKER,
-            xi.title.MIST_MELTER,
-            xi.title.DELTA_ENFORCER,
-            xi.title.OMEGA_OSTRACIZER,
-            xi.title.ULTIMA_UNDERTAKER,
-            xi.title.ULMIAS_SOULMATE,
-            xi.title.TENZENS_ALLY,
-            xi.title.COMPANION_OF_LOUVERANCE,
-            xi.title.TRUE_COMPANION_OF_LOUVERANCE,
-            xi.title.PRISHES_BUDDY,
-            xi.title.NAGMOLADAS_UNDERLING,
-            xi.title.ESHANTARLS_COMRADE_IN_ARMS,
-            xi.title.THE_CHEBUKKIS_WORST_NIGHTMARE,
-            xi.title.UNQUENCHABLE_LIGHT,
-            xi.title.WARRIOR_OF_THE_CRYSTAL,
+            invaderXim.title.DEAD_BODY,
+            invaderXim.title.FROZEN_DEAD_BODY,
+            invaderXim.title.DREAMBREAKER,
+            invaderXim.title.MIST_MELTER,
+            invaderXim.title.DELTA_ENFORCER,
+            invaderXim.title.OMEGA_OSTRACIZER,
+            invaderXim.title.ULTIMA_UNDERTAKER,
+            invaderXim.title.ULMIAS_SOULMATE,
+            invaderXim.title.TENZENS_ALLY,
+            invaderXim.title.COMPANION_OF_LOUVERANCE,
+            invaderXim.title.TRUE_COMPANION_OF_LOUVERANCE,
+            invaderXim.title.PRISHES_BUDDY,
+            invaderXim.title.NAGMOLADAS_UNDERLING,
+            invaderXim.title.ESHANTARLS_COMRADE_IN_ARMS,
+            invaderXim.title.THE_CHEBUKKIS_WORST_NIGHTMARE,
+            invaderXim.title.UNQUENCHABLE_LIGHT,
+            invaderXim.title.WARRIOR_OF_THE_CRYSTAL,
         },
     },
     {
         cost = 400,
         title =
         {
-            xi.title.ANCIENT_FLAME_FOLLOWER,
-            xi.title.TAVNAZIAN_TRAVELER,
-            xi.title.TRANSIENT_DREAMER,
-            xi.title.THE_LOST_ONE,
-            xi.title.TREADER_OF_AN_ICY_PAST,
-            xi.title.BRANDED_BY_LIGHTNING,
-            xi.title.SEEKER_OF_THE_LIGHT,
-            xi.title.AVERTER_OF_THE_APOCALYPSE,
-            xi.title.BANISHER_OF_EMPTINESS,
-            xi.title.BREAKER_OF_THE_CHAINS,
+            invaderXim.title.ANCIENT_FLAME_FOLLOWER,
+            invaderXim.title.TAVNAZIAN_TRAVELER,
+            invaderXim.title.TRANSIENT_DREAMER,
+            invaderXim.title.THE_LOST_ONE,
+            invaderXim.title.TREADER_OF_AN_ICY_PAST,
+            invaderXim.title.BRANDED_BY_LIGHTNING,
+            invaderXim.title.SEEKER_OF_THE_LIGHT,
+            invaderXim.title.AVERTER_OF_THE_APOCALYPSE,
+            invaderXim.title.BANISHER_OF_EMPTINESS,
+            invaderXim.title.BREAKER_OF_THE_CHAINS,
         },
     },
 }
 
 entity.onTrigger = function(player, npc)
-    xi.titleChanger.onTrigger(player, eventId, titleInfo)
+    invaderXim.titleChanger.onTrigger(player, eventId, titleInfo)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.titleChanger.onEventFinish(player, csid, option, eventId, titleInfo)
+    invaderXim.titleChanger.onEventFinish(player, csid, option, eventId, titleInfo)
 end
 
 return entity

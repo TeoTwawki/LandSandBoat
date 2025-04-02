@@ -4,7 +4,7 @@
 --  Guild Merchant NPC: Smithing Guild
 -- !pos -37.192 0.000 -33.949 48
 -----------------------------------
-local ID = zones[xi.zone.AL_ZAHBI]
+local ID = zones[invaderXim.zone.AL_ZAHBI]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

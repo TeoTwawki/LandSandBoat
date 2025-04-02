@@ -5,7 +5,7 @@
 --  Bowl of Quadav Stew is a guaranteed steal with
 --  Quest THE_TENSHODO_SHOWDOWN active
 -----------------------------------
-local ID = zones[xi.zone.BEADEAUX]
+local ID = zones[invaderXim.zone.BEADEAUX]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -19,7 +19,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, zoKhuPHTable, 10, 3600) -- 1 to 5 hours
+    invaderXim.mob.phOnDespawn(mob, zoKhuPHTable, 10, 3600) -- 1 to 5 hours
 end
 
 return entity

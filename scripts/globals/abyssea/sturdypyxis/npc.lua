@@ -7,11 +7,11 @@ require('scripts/globals/abyssea/sturdypyxis/blue_chest')
 require('scripts/globals/abyssea/sturdypyxis/gold_chest')
 -----------------------------------
 xi = xi or {}
-xi.pyxis = xi.pyxis or {}
+invaderXim.pyxis = invaderXim.pyxis or {}
 
-xi.pyxis.npc = {}
+invaderXim.pyxis.npc = {}
 
-xi.pyxis.npc.contentMessage =
+invaderXim.pyxis.npc.contentMessage =
 {
 -----------------------------------
 -- | Key | Value |          Description           | --
@@ -71,42 +71,42 @@ local function GetEvents(chestTier)
     return lockedEvent, unlockedEvent
 end
 
-xi.pyxis.npc.onPyxisTrade = function(player, npc, trade)
+invaderXim.pyxis.npc.onPyxisTrade = function(player, npc, trade)
     local ID = zones[player:getZoneID()]
     local chestTier = npc:getLocalVar('TIER')
     local dropType = npc:getLocalVar('DROPTYPE')
 
-    if not xi.pyxis.canOpenChest(player, npc) then
+    if not invaderXim.pyxis.canOpenChest(player, npc) then
         return
     end
 
     if npc:getAnimationSub() == 12 then
         if
-            trade:hasItemQty(xi.item.FORBIDDEN_KEY, 1) and
+            trade:hasItemQty(invaderXim.item.FORBIDDEN_KEY, 1) and
             trade:getItemCount() == 1
         then
             player:tradeComplete()
-            xi.pyxis.getDrops(npc, dropType, chestTier)
-            xi.pyxis.messageChest(player, ID.text.TRADE_KEY_OPEN, 2490, 0, 0, 0, npc)
-            xi.pyxis.openChest(player, npc)
+            invaderXim.pyxis.getDrops(npc, dropType, chestTier)
+            invaderXim.pyxis.messageChest(player, ID.text.TRADE_KEY_OPEN, 2490, 0, 0, 0, npc)
+            invaderXim.pyxis.openChest(player, npc)
         end
     end
 end
 
-xi.pyxis.npc.onPyxisTrigger = function(player, npc)
+invaderXim.pyxis.npc.onPyxisTrigger = function(player, npc)
     local tier            = npc:getLocalVar('TIER')
     local dropType        = npc:getLocalVar('DROPTYPE')
     local chestType       = npc:getLocalVar('CHESTTYPE')         -- 1:Blue 'twist dial' || 2:Red 'pressure' || 3:Gold 'enter two-digit combination (10~99)'.
     local messagetype     = npc:getLocalVar('MESSAGE')
     local timeleft        = os.time() - npc:getLocalVar('[pyxis]SPAWNTIME')
-    local contentMessage  = xi.pyxis.npc.contentMessage[messagetype] + chestType
+    local contentMessage  = invaderXim.pyxis.npc.contentMessage[messagetype] + chestType
     local lockedEvent, unlockedEvent = GetEvents(tier)
 
-    if not xi.pyxis.canOpenChest(player, npc) then
+    if not invaderXim.pyxis.canOpenChest(player, npc) then
         return
     end
 
-    xi.pyxis.getDrops(npc, dropType, tier)
+    invaderXim.pyxis.getDrops(npc, dropType, tier)
 
     timeleft = timeleft * 60
     --------------------------------------------------
@@ -117,16 +117,16 @@ xi.pyxis.npc.onPyxisTrigger = function(player, npc)
 
         switch(chestType): caseof
         {
-            [xi.pyxis.chestType.BLUE] = function()
-                xi.pyxis.blueChest.startEvent(player, npc, lockedEvent, contentMessage, timeleft)
+            [invaderXim.pyxis.chestType.BLUE] = function()
+                invaderXim.pyxis.blueChest.startEvent(player, npc, lockedEvent, contentMessage, timeleft)
             end,
 
-            [xi.pyxis.chestType.RED] = function()
-                xi.pyxis.redChest.startEvent(player, npc, lockedEvent, contentMessage, timeleft)
+            [invaderXim.pyxis.chestType.RED] = function()
+                invaderXim.pyxis.redChest.startEvent(player, npc, lockedEvent, contentMessage, timeleft)
             end,
 
-            [xi.pyxis.chestType.GOLD] = function()
-                xi.pyxis.goldChest.startEvent(player, npc, lockedEvent, contentMessage, timeleft)
+            [invaderXim.pyxis.chestType.GOLD] = function()
+                invaderXim.pyxis.goldChest.startEvent(player, npc, lockedEvent, contentMessage, timeleft)
             end,
         }
     --------------------------------------------------
@@ -136,23 +136,23 @@ xi.pyxis.npc.onPyxisTrigger = function(player, npc)
         local dropTypeEvent = 0
         switch(dropType): caseof
         {
-            [xi.pyxis.chestDropType.TEMPORARY_ITEM] = function()
+            [invaderXim.pyxis.chestDropType.TEMPORARY_ITEM] = function()
                 dropTypeEvent = 1
             end,
 
-            [xi.pyxis.chestDropType.POPITEM] = function()
+            [invaderXim.pyxis.chestDropType.POPITEM] = function()
                 dropTypeEvent = 2
             end,
 
-            [xi.pyxis.chestDropType.ITEM] = function()
+            [invaderXim.pyxis.chestDropType.ITEM] = function()
                 dropTypeEvent = 2
             end,
 
-            [xi.pyxis.chestDropType.AUGMENTED_ITEM] = function()
+            [invaderXim.pyxis.chestDropType.AUGMENTED_ITEM] = function()
                 dropTypeEvent = 3
             end,
 
-            [xi.pyxis.chestDropType.KEY_ITEM] = function()
+            [invaderXim.pyxis.chestDropType.KEY_ITEM] = function()
                 dropTypeEvent = 4
             end,
         }
@@ -161,7 +161,7 @@ xi.pyxis.npc.onPyxisTrigger = function(player, npc)
     end
 end
 
-xi.pyxis.npc.onPyxisEventUpdate = function(player, csid, option, input)
+invaderXim.pyxis.npc.onPyxisEventUpdate = function(player, csid, option, input)
     local npc            = player:getEventTarget()
     local dropType       = npc:getLocalVar('DROPTYPE')
     local tier           = npc:getLocalVar('TIER')
@@ -170,30 +170,30 @@ xi.pyxis.npc.onPyxisEventUpdate = function(player, csid, option, input)
     if csid == lockedEvent or csid == unlockedEvent then
         switch(dropType): caseof
         {
-            [xi.pyxis.chestDropType.TEMPORARY_ITEM] = function() -- temps
-                xi.pyxis.tempItem.updateEvent(player, npc)
+            [invaderXim.pyxis.chestDropType.TEMPORARY_ITEM] = function() -- temps
+                invaderXim.pyxis.tempItem.updateEvent(player, npc)
             end,
 
-            [xi.pyxis.chestDropType.ITEM] = function() -- basic items
-                xi.pyxis.item.updateEvent(player, npc)
+            [invaderXim.pyxis.chestDropType.ITEM] = function() -- basic items
+                invaderXim.pyxis.item.updateEvent(player, npc)
             end,
 
-            [xi.pyxis.chestDropType.POPITEM] = function() -- pop items
-                xi.pyxis.popitem.updateEvent(player, npc)
+            [invaderXim.pyxis.chestDropType.POPITEM] = function() -- pop items
+                invaderXim.pyxis.popitem.updateEvent(player, npc)
             end,
 
-            [xi.pyxis.chestDropType.AUGMENTED_ITEM] = function() -- aug items
-                xi.pyxis.augItem.updateEvent(player, npc)
+            [invaderXim.pyxis.chestDropType.AUGMENTED_ITEM] = function() -- aug items
+                invaderXim.pyxis.augItem.updateEvent(player, npc)
             end,
 
-            [xi.pyxis.chestDropType.KEY_ITEM] = function() -- ki's
-                xi.pyxis.ki.updateEvent(player, npc)
+            [invaderXim.pyxis.chestDropType.KEY_ITEM] = function() -- ki's
+                invaderXim.pyxis.ki.updateEvent(player, npc)
             end,
         }
     end
 end
 
-xi.pyxis.npc.onPyxisEventFinish = function(player, csid, option, npc)
+invaderXim.pyxis.npc.onPyxisEventFinish = function(player, csid, option, npc)
     local ID               = zones[player:getZoneID()]
     local spawnstatus      = npc:getLocalVar('SPAWNSTATUS')
     local chestTier        = npc:getLocalVar('TIER')
@@ -209,23 +209,23 @@ xi.pyxis.npc.onPyxisEventFinish = function(player, csid, option, npc)
     end
 
     if option == 999 then
-        xi.pyxis.removeChest(player, npc, 1, 1)
+        invaderXim.pyxis.removeChest(player, npc, 1, 1)
         return
     end
 
     if csid == lockedEvent then
         switch(chestType): caseof
         {
-            [xi.pyxis.chestType.BLUE] = function()
-                xi.pyxis.blueChest.unlock(player, csid, option, npc)
+            [invaderXim.pyxis.chestType.BLUE] = function()
+                invaderXim.pyxis.blueChest.unlock(player, csid, option, npc)
             end,
 
-            [xi.pyxis.chestType.RED] = function()
-                xi.pyxis.redChest.unlock(player, csid, option, npc)
+            [invaderXim.pyxis.chestType.RED] = function()
+                invaderXim.pyxis.redChest.unlock(player, csid, option, npc)
             end,
 
-            [xi.pyxis.chestType.GOLD] = function()
-                xi.pyxis.goldChest.unlock(player, csid, option, npc)
+            [invaderXim.pyxis.chestType.GOLD] = function()
+                invaderXim.pyxis.goldChest.unlock(player, csid, option, npc)
             end,
         }
     elseif csid == unlockedEvent then
@@ -235,28 +235,28 @@ xi.pyxis.npc.onPyxisEventFinish = function(player, csid, option, npc)
         if openchoice == 1 then
             switch(dropType): caseof
             {
-                [xi.pyxis.chestDropType.TEMPORARY_ITEM] = function() -- Temp item
-                    xi.pyxis.tempItem.giveTemporaryItem(player, npc, option)
+                [invaderXim.pyxis.chestDropType.TEMPORARY_ITEM] = function() -- Temp item
+                    invaderXim.pyxis.tempItem.giveTemporaryItem(player, npc, option)
                 end,
 
-                [xi.pyxis.chestDropType.ITEM] = function() -- Item
-                    xi.pyxis.item.giveItem(player, npc, option)
+                [invaderXim.pyxis.chestDropType.ITEM] = function() -- Item
+                    invaderXim.pyxis.item.giveItem(player, npc, option)
                 end,
 
-                [xi.pyxis.chestDropType.POPITEM] = function() -- Item
-                    xi.pyxis.popitem.givePopItem(player, npc, option)
+                [invaderXim.pyxis.chestDropType.POPITEM] = function() -- Item
+                    invaderXim.pyxis.popitem.givePopItem(player, npc, option)
                 end,
 
-                [xi.pyxis.chestDropType.AUGMENTED_ITEM] = function() -- AugmentedItem
-                    xi.pyxis.augItem.giveAugItem(player, npc, option)
+                [invaderXim.pyxis.chestDropType.AUGMENTED_ITEM] = function() -- AugmentedItem
+                    invaderXim.pyxis.augItem.giveAugItem(player, npc, option)
                 end,
 
-                [xi.pyxis.chestDropType.KEY_ITEM] = function() -- KI
-                    xi.pyxis.ki.giveKeyItem(player, npc)
+                [invaderXim.pyxis.chestDropType.KEY_ITEM] = function() -- KI
+                    invaderXim.pyxis.ki.giveKeyItem(player, npc)
                 end,
             }
         elseif openchoice == 2 then
-            xi.pyxis.removeChest(player, npc, 1, 1)
+            invaderXim.pyxis.removeChest(player, npc, 1, 1)
         end
     end
 end

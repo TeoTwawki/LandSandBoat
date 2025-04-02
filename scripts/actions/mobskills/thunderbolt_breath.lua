@@ -16,12 +16,12 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.STUN, 1, 0, 7)
+    invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.STUN, 1, 0, 7)
 
-    local dmgmod = xi.mobskills.mobBreathMove(mob, target, skill, 0.333, 0.625, xi.element.THUNDER, 500)
-    local dmg    = xi.mobskills.mobFinalAdjustments(dmgmod, mob, skill, target, xi.attackType.BREATH, xi.damageType.THUNDER, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
+    local dmgmod = invaderXim.mobskills.mobBreathMove(mob, target, skill, 0.333, 0.625, invaderXim.element.THUNDER, 500)
+    local dmg    = invaderXim.mobskills.mobFinalAdjustments(dmgmod, mob, skill, target, invaderXim.attackType.BREATH, invaderXim.damageType.THUNDER, invaderXim.mobskills.shadowBehavior.IGNORE_SHADOWS)
 
-    target:takeDamage(dmg, mob, xi.attackType.BREATH, xi.damageType.THUNDER)
+    target:takeDamage(dmg, mob, invaderXim.attackType.BREATH, invaderXim.damageType.THUNDER)
     return dmg
 end
 

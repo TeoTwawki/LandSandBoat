@@ -4,7 +4,7 @@
 -- Involved in Quests: Atop the Highest Mountains
 -- !pos -21 -25 -490 112
 -----------------------------------
-local ID = zones[xi.zone.XARCABARD]
+local ID = zones[invaderXim.zone.XARCABARD]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -64,17 +64,17 @@ entity.onPathPoint = function(mob)
 end
 
 entity.onMobRoam = function(mob)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
     local pathingIndex = mob:getLocalVar('pathingIndex')
 
     if
         not mob:isFollowingPath() and
         mob:getSpeed() ~= 0
     then
-        local pathFlag = xi.pathflag.SLIDE
+        local pathFlag = invaderXim.pathflag.SLIDE
         if math.random(1, 100) <= 50 then
             -- sometimes he runs between points
-            pathFlag = pathFlag + xi.pathflag.RUN
+            pathFlag = pathFlag + invaderXim.pathflag.RUN
         end
 
         pathingIndex = (pathingIndex + 1) % #pathNodes + 1 -- Keep PathingIndex between the valid range
@@ -88,14 +88,14 @@ entity.onMobEngage = function(mob)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.WEAPON_BONUS, 50)
-    mob:setMobMod(xi.mobMod.ALWAYS_AGGRO, 1)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
-    mob:addImmunity(xi.immunity.SILENCE)
-    mob:addImmunity(xi.immunity.PARALYZE)
+    mob:setMobMod(invaderXim.mobMod.WEAPON_BONUS, 50)
+    mob:setMobMod(invaderXim.mobMod.ALWAYS_AGGRO, 1)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
+    mob:addImmunity(invaderXim.immunity.PARALYZE)
     mob:setBaseSpeed(baseSpeed)
     -- Failsafe to make sure NPC is down when NM is up
-    if xi.settings.main.OLDSCHOOL_G2 then
+    if invaderXim.settings.main.OLDSCHOOL_G2 then
         GetNPCByID(ID.npc.BOREAL_HOUND_QM):showNPC(0)
     end
 end
@@ -114,27 +114,27 @@ entity.onMobFight = function(mob, target)
     }
 
     if drawInTable.conditions[1] then
-        mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+        mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
         -- If player is farther than melee range, then deaggro. Otherwise draw-in
         if mob:checkDistance(target) > 10 then
-            mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+            mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
             mob:disengage()
         else
             utils.drawIn(target, drawInTable)
         end
     else
-        mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+        mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
     end
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    if xi.settings.main.OLDSCHOOL_G2 then
+    if invaderXim.settings.main.OLDSCHOOL_G2 then
         -- show ??? for desired duration
         -- notify people on the quest who need the KI
-        GetNPCByID(ID.npc.BOREAL_HOUND_QM):showNPC(xi.settings.main.FRIGICITE_TIME)
+        GetNPCByID(ID.npc.BOREAL_HOUND_QM):showNPC(invaderXim.settings.main.FRIGICITE_TIME)
         if
-            not player:hasKeyItem(xi.ki.TRIANGULAR_FRIGICITE) and
-            player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.ATOP_THE_HIGHEST_MOUNTAINS) == xi.questStatus.QUEST_ACCEPTED
+            not player:hasKeyItem(invaderXim.ki.TRIANGULAR_FRIGICITE) and
+            player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.ATOP_THE_HIGHEST_MOUNTAINS) == invaderXim.questStatus.QUEST_ACCEPTED
         then
             player:messageSpecial(ID.text.BLOCKS_OF_ICE)
         end

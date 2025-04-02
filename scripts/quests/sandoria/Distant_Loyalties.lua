@@ -11,24 +11,24 @@
 -- Mythril Ingot !giveitem 653
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.DISTANT_LOYALTIES)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.DISTANT_LOYALTIES)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.SANDORIA,
-    item     = xi.item.WHITE_CAPE,
+    fameArea = invaderXim.fameArea.SANDORIA,
+    item     = invaderXim.item.WHITE_CAPE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.SANDORIA) >= 4
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.SANDORIA) >= 4
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Femitte'] =
             {
@@ -40,7 +40,7 @@ quest.sections =
                 [663] = function(player, csid, option, npc)
                     if option == 0 then
                         quest:begin(player)
-                        npcUtil.giveKeyItem(player, xi.ki.GOLDSMITHING_ORDER)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.GOLDSMITHING_ORDER)
                     end
                 end,
             },
@@ -49,10 +49,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Femitte'] =
             {
@@ -60,7 +60,7 @@ quest.sections =
                     local questProgress = quest:getVar(player, 'Prog')
                     if
                         questProgress == 3 and
-                        player:hasKeyItem(xi.ki.MYTHRIL_HEARTS)
+                        player:hasKeyItem(invaderXim.ki.MYTHRIL_HEARTS)
                     then
                         return quest:progressEvent(665)
                     end
@@ -75,19 +75,19 @@ quest.sections =
                 [665] = function(player, csid, option, npc)
                     if quest:complete(player) then
                         quest:setVar(player, 'finalCS', 1)
-                        player:delKeyItem(xi.ki.MYTHRIL_HEARTS)
+                        player:delKeyItem(invaderXim.ki.MYTHRIL_HEARTS)
                     end
                 end,
             },
         },
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Michea'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, { { xi.item.MYTHRIL_INGOT, 1 } }) and
+                        npcUtil.tradeHasExactly(trade, { { invaderXim.item.MYTHRIL_INGOT, 1 } }) and
                         quest:getVar(player, 'Prog') == 1
                     then
                         return quest:progressEvent(317)
@@ -99,7 +99,7 @@ quest.sections =
 
                     if
                         questProgress == 0 and
-                        player:hasKeyItem(xi.ki.GOLDSMITHING_ORDER)
+                        player:hasKeyItem(invaderXim.ki.GOLDSMITHING_ORDER)
                     then
                         return quest:progressEvent(315)
                     elseif questProgress == 1 then
@@ -121,7 +121,7 @@ quest.sections =
             onEventFinish =
             {
                 [315] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.GOLDSMITHING_ORDER)
+                    player:delKeyItem(invaderXim.ki.GOLDSMITHING_ORDER)
                     quest:setVar(player, 'Prog', 1)
                 end,
 
@@ -133,7 +133,7 @@ quest.sections =
 
                 [318] = function(player, csid, option, npc)
                     quest:setVar(player, 'Prog', 3)
-                    npcUtil.giveKeyItem(player, xi.ki.MYTHRIL_HEARTS)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.MYTHRIL_HEARTS)
                 end,
             },
         },
@@ -141,10 +141,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Michea'] =
             {
@@ -158,7 +158,7 @@ quest.sections =
             onEventFinish =
             {
                 [319] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.GOLDSMITHING_ORDER)
+                    player:delKeyItem(invaderXim.ki.GOLDSMITHING_ORDER)
                     quest:setVar(player, 'finalCS', 0)
                 end,
             },

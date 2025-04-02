@@ -4,7 +4,7 @@
 -- Involved in Quests: Riding on the Clouds
 -- !pos -56 2 -21 230
 -----------------------------------
-local ID = zones[xi.zone.SOUTHERN_SAN_DORIA]
+local ID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -55,14 +55,14 @@ local pathNodes =
 
 entity.onSpawn = function(npc)
     npc:initNpcAi()
-    npc:setPos(xi.path.first(pathNodes))
-    npc:pathThrough(pathNodes, xi.path.flag.PATROL)
+    npc:setPos(invaderXim.path.first(pathNodes))
+    npc:pathThrough(pathNodes, invaderXim.path.flag.PATROL)
 end
 
 entity.onPath = function(npc)
     if
         npc:getLocalVar('delivered') ~= 1 and
-        npc:atPoint(xi.path.get(pathNodes, 39))
+        npc:atPoint(invaderXim.path.get(pathNodes, 39))
     then
         -- give package to Lusiane, wait 4 seconds, then continue
         local lus = GetNPCByID(ID.npc.LUSIANE)
@@ -72,7 +72,7 @@ entity.onPath = function(npc)
         end
 
         npc:setLocalVar('delivered', 1)
-    elseif npc:atPoint(xi.path.last(pathNodes)) then
+    elseif npc:atPoint(invaderXim.path.last(pathNodes)) then
         -- when I walk away stop looking at me
         GetNPCByID(ID.npc.LUSIANE):clearTargID()
         npc:setLocalVar('delivered', 0)

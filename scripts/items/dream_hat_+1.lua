@@ -7,11 +7,11 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.itemBoxOnItemCheck(target)
+    return invaderXim.itemUtils.itemBoxOnItemCheck(target)
 end
 
 itemObject.onItemUse = function(target)
-    npcUtil.giveItem(target, { { xi.item.GINGER_COOKIE, math.random(1, 10) } })
+    npcUtil.giveItem(target, { { invaderXim.item.GINGER_COOKIE, math.random(1, 10) } })
 end
 
 return itemObject

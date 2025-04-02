@@ -8,8 +8,8 @@ local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
     if optParams.isKiller or optParams.noKiller then
-        xi.nyzul.spawnChest(mob, player)
-        xi.nyzul.enemyLeaderKill(mob)
+        invaderXim.nyzul.spawnChest(mob, player)
+        invaderXim.nyzul.enemyLeaderKill(mob)
         local instance = mob:getInstance()
         if not instance then
             return
@@ -18,8 +18,8 @@ entity.onMobDeath = function(mob, player, optParams)
         local chars    = instance:getChars()
 
         for _, entities in ipairs(chars) do
-            if player:hasStatusEffect(xi.effect.COSTUME) then
-                player:delStatusEffect(xi.effect.COSTUME)
+            if player:hasStatusEffect(invaderXim.effect.COSTUME) then
+                player:delStatusEffect(invaderXim.effect.COSTUME)
             end
         end
     end

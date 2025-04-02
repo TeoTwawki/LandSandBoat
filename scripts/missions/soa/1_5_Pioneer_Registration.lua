@@ -6,13 +6,13 @@
 -- Brenton : !pos -86.036 3.349 18.121 256
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.PIONEER_REGISTRATION)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.PIONEER_REGISTRATION)
 
 mission.reward =
 {
     bayld       = 1000,
-    keyItem     = xi.ki.MAP_OF_ADOULIN,
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.LIFE_ON_THE_FRONTIER },
+    keyItem     = invaderXim.ki.MAP_OF_ADOULIN,
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.LIFE_ON_THE_FRONTIER },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Brenton'] =
             {
@@ -35,7 +35,7 @@ mission.sections =
             {
                 [3] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:addKeyItem(xi.ki.PIONEERS_BADGE)
+                        player:addKeyItem(invaderXim.ki.PIONEERS_BADGE)
                     end
                 end,
             },
@@ -47,7 +47,7 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Berstrogus']      = mission:event(587):replaceDefault(),
             ['Chanteillie']     = mission:event(588):replaceDefault(),
@@ -64,7 +64,7 @@ mission.sections =
             {
                 [546] = function(player, csid, option, npc)
                     if option == 1 then
-                        player:setPos(0, 0, 0, 0, xi.zone.MOG_GARDEN)
+                        player:setPos(0, 0, 0, 0, invaderXim.zone.MOG_GARDEN)
                     end
                 end,
             },

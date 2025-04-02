@@ -3,7 +3,7 @@
 --  Mob: Robber Crab
 -- Note: PH for Aquarius
 -----------------------------------
-local ID = zones[xi.zone.THE_BOYAHDA_TREE]
+local ID = zones[invaderXim.zone.THE_BOYAHDA_TREE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -34,13 +34,13 @@ local aquariusSpawnPoints =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 720, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 720, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
     local params = {}
     params.spawnPoints = aquariusSpawnPoints
-    xi.mob.phOnDespawn(mob, aquariusPHTable, 5, 1, params) -- can repop instantly
+    invaderXim.mob.phOnDespawn(mob, aquariusPHTable, 5, 1, params) -- can repop instantly
 end
 
 return entity

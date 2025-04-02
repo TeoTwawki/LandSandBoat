@@ -6,16 +6,16 @@
 -- Southern San'doria, Sharzalion,  !pos 95   0 111 230
 -- Southern San'doria, Valderotaux, !pos 97 0.1 113 230
 -----------------------------------
-local davoiID = zones[xi.zone.DAVOI]
+local davoiID = zones[invaderXim.zone.DAVOI]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.THE_CRIMSON_TRIAL)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.THE_CRIMSON_TRIAL)
 
 quest.reward =
 {
-    item     = xi.item.FENCING_DEGEN,
+    item     = invaderXim.item.FENCING_DEGEN,
     fame     = 30,
-    fameArea = xi.fameArea.SANDORIA,
+    fameArea = invaderXim.fameArea.SANDORIA,
 }
 
 quest.sections =
@@ -23,12 +23,12 @@ quest.sections =
     -- Section: Quest available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getMainJob() == xi.job.RDM and
-                player:getMainLvl() >= xi.settings.main.AF1_QUEST_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getMainJob() == invaderXim.job.RDM and
+                player:getMainLvl() >= invaderXim.settings.main.AF1_QUEST_LEVEL
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Sharzalion'] =
             {
@@ -81,10 +81,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.DAVOI] =
+        [invaderXim.zone.DAVOI] =
         {
             ['Storage_Hole'] =
             {
@@ -94,18 +94,18 @@ quest.sections =
 
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.DAVOI_STORAGE_KEY) and
-                        not player:hasKeyItem(xi.ki.ORCISH_DRIED_FOOD)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.DAVOI_STORAGE_KEY) and
+                        not player:hasKeyItem(invaderXim.ki.ORCISH_DRIED_FOOD)
                     then
                         player:tradeComplete()
-                        npcUtil.giveKeyItem(player, xi.ki.ORCISH_DRIED_FOOD)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.ORCISH_DRIED_FOOD)
                     end
                 end,
             },
 
             onZoneIn = function(player, prevZone)
                 if
-                    not player:hasKeyItem(xi.ki.ORCISH_DRIED_FOOD) and
+                    not player:hasKeyItem(invaderXim.ki.ORCISH_DRIED_FOOD) and
                     not GetMobByID(davoiID.mob.PURPLEFLASH_BRUKDOK):isSpawned()
                 then
                     SpawnMob(davoiID.mob.PURPLEFLASH_BRUKDOK) -- Spawned by Quest: The Crimson Trial upon entering the zone
@@ -113,12 +113,12 @@ quest.sections =
             end,
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Sharzalion'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.ORCISH_DRIED_FOOD) then
+                    if player:hasKeyItem(invaderXim.ki.ORCISH_DRIED_FOOD) then
                         return quest:progressEvent(75) -- Finish quest.
                     else
                         return quest:event(74) -- Reminder.
@@ -146,7 +146,7 @@ quest.sections =
             {
                 [75] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.ORCISH_DRIED_FOOD)
+                        player:delKeyItem(invaderXim.ki.ORCISH_DRIED_FOOD)
                     end
                 end,
             },

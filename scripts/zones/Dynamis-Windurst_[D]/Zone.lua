@@ -30,7 +30,7 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
 end
 
 zoneObject.onInstanceLoadFailed = function()
-    return xi.zone.WINDURST_WALLS
+    return invaderXim.zone.WINDURST_WALLS
 end
 
 return zoneObject

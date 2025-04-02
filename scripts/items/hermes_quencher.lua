@@ -7,18 +7,18 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    if target:hasStatusEffect(xi.effect.MEDICINE) then
-        return xi.msg.basic.ITEM_NO_USE_MEDICATED
+    if target:hasStatusEffect(invaderXim.effect.MEDICINE) then
+        return invaderXim.msg.basic.ITEM_NO_USE_MEDICATED
     end
 
     return 0
 end
 
 itemObject.onItemUse = function(target)
-    target:delStatusEffect(xi.effect.FLEE)
-    target:addStatusEffect(xi.effect.FLEE, 8750, 0, 30)
-    target:messageBasic(xi.msg.basic.GAINS_EFFECT_OF_STATUS, xi.effect.FLEE)
-    target:addStatusEffect(xi.effect.MEDICINE, 0, 0, 900)
+    target:delStatusEffect(invaderXim.effect.FLEE)
+    target:addStatusEffect(invaderXim.effect.FLEE, 8750, 0, 30)
+    target:messageBasic(invaderXim.msg.basic.GAINS_EFFECT_OF_STATUS, invaderXim.effect.FLEE)
+    target:addStatusEffect(invaderXim.effect.MEDICINE, 0, 0, 900)
 end
 
 return itemObject

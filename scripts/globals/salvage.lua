@@ -2,12 +2,12 @@
 -- Salvage Global Functions
 -----------------------------------
 xi = xi or {}
-xi.salvage = xi.salvage or {}
+invaderXim.salvage = invaderXim.salvage or {}
 -----------------------------------
 
-xi.salvage.onCellItemCheck = function(target, effect, value)
-    if target:getCurrentRegion() ~= xi.region.ALZADAAL then
-        return xi.msg.basic.CANT_BE_USED_IN_AREA
+invaderXim.salvage.onCellItemCheck = function(target, effect, value)
+    if target:getCurrentRegion() ~= invaderXim.region.ALZADAAL then
+        return invaderXim.msg.basic.CANT_BE_USED_IN_AREA
     end
 
     local statusEffect = target:getStatusEffect(effect)
@@ -18,10 +18,10 @@ xi.salvage.onCellItemCheck = function(target, effect, value)
         end
     end
 
-    return xi.msg.basic.ITEM_UNABLE_TO_USE
+    return invaderXim.msg.basic.ITEM_UNABLE_TO_USE
 end
 
-xi.salvage.onCellItemUse = function(target, effect, value, offset)
+invaderXim.salvage.onCellItemUse = function(target, effect, value, offset)
     local statusEffect = target:getStatusEffect(effect)
     local power        = statusEffect:getPower()
     local newpower     = bit.band(power, bit.bnot(value))
@@ -37,9 +37,9 @@ xi.salvage.onCellItemUse = function(target, effect, value, offset)
     if
         pet ~= nil and
         (
-            effect == xi.effect.DEBILITATION or
-            effect == xi.effect.IMPAIRMENT or
-            effect == xi.effect.OMERTA
+            effect == invaderXim.effect.DEBILITATION or
+            effect == invaderXim.effect.IMPAIRMENT or
+            effect == invaderXim.effect.OMERTA
         )
     then
         pet:delStatusEffectSilent(effect)
@@ -53,21 +53,21 @@ xi.salvage.onCellItemUse = function(target, effect, value, offset)
     instance:setLocalVar('cellsUsed', instance:getLocalVar('cellsUsed') + 1)
 end
 
-xi.salvage.instanceRegister = function(player, fireFlies)
-    for i = xi.slot.MAIN, xi.slot.BACK do
+invaderXim.salvage.instanceRegister = function(player, fireFlies)
+    for i = invaderXim.slot.MAIN, invaderXim.slot.BACK do
         player:unequipItem(i)
     end
 
-    player:addStatusEffectEx(xi.effect.ENCUMBRANCE_I, xi.effect.ENCUMBRANCE_I, 65535, 0, 6000)
-    player:addStatusEffectEx(xi.effect.OBLIVISCENCE, xi.effect.OBLIVISCENCE, 1, 0, 6000)
-    player:addStatusEffectEx(xi.effect.OMERTA, xi.effect.OMERTA, 63, 0, 6000)
-    player:addStatusEffectEx(xi.effect.IMPAIRMENT, xi.effect.IMPAIRMENT, 3, 0, 6000)
-    player:addStatusEffectEx(xi.effect.DEBILITATION, xi.effect.DEBILITATION, 511, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.ENCUMBRANCE_I, invaderXim.effect.ENCUMBRANCE_I, 65535, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.OBLIVISCENCE, invaderXim.effect.OBLIVISCENCE, 1, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.OMERTA, invaderXim.effect.OMERTA, 63, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.IMPAIRMENT, invaderXim.effect.IMPAIRMENT, 3, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.DEBILITATION, invaderXim.effect.DEBILITATION, 511, 0, 6000)
     player:addTempItem(fireFlies)
-    player:delKeyItem(xi.ki.REMNANTS_PERMIT)
+    player:delKeyItem(invaderXim.ki.REMNANTS_PERMIT)
 end
 
-xi.salvage.onFailure = function(instance)
+invaderXim.salvage.onFailure = function(instance)
     local chars = instance:getChars()
     local mobs  = instance:getMobs()
 
@@ -84,14 +84,14 @@ xi.salvage.onFailure = function(instance)
     end
 end
 
-xi.salvage.onTransportUpdate = function(player, instance)
+invaderXim.salvage.onTransportUpdate = function(player, instance)
     if instance:getLocalVar('transportUser') == 0 then
         local chars = instance:getChars()
 
         instance:setLocalVar('transportUser', player:getID())
         instance:setLocalVar('stageComplete', 0)
-        xi.salvage.resetTempBoxes(player)
-        xi.salvage.deSpawnStage(instance)
+        invaderXim.salvage.resetTempBoxes(player)
+        invaderXim.salvage.deSpawnStage(instance)
         for _, target in pairs(chars) do
             if target:getID() ~= player:getID() then
                 if target:isInEvent() then
@@ -108,11 +108,11 @@ xi.salvage.onTransportUpdate = function(player, instance)
     end
 end
 
-xi.salvage.teleportGroup = function(target)
+invaderXim.salvage.teleportGroup = function(target)
     local instance = target:getInstance()
     local chars    = instance:getChars()
     local pos      = target:getPos()
-    local csid     = target:getZoneID() == xi.zone.BHAFLAU_REMNANTS and 4 or 3
+    local csid     = target:getZoneID() == invaderXim.zone.BHAFLAU_REMNANTS and 4 or 3
 
     for _, players in pairs(chars) do
         if players:getID() ~= target:getID() then
@@ -133,12 +133,12 @@ xi.salvage.teleportGroup = function(target)
     end
 end
 
-xi.salvage.onDoorOpen = function(npc, stage, progress)
+invaderXim.salvage.onDoorOpen = function(npc, stage, progress)
     local instance = npc:getInstance()
     local result   = false
 
     if
-        npc:getAnimation() == xi.animation.CLOSE_DOOR and
+        npc:getAnimation() == invaderXim.animation.CLOSE_DOOR and
         npc:getLocalVar('unSealed') == 1
     then
         npc:setLocalVar('unSealed', 0)
@@ -150,7 +150,7 @@ xi.salvage.onDoorOpen = function(npc, stage, progress)
             instance:setProgress(progress)
         end
 
-        npc:setAnimation(xi.animation.OPEN_DOOR)
+        npc:setAnimation(invaderXim.animation.OPEN_DOOR)
         npc:setUntargetable(true)
         result = true
     end
@@ -158,7 +158,7 @@ xi.salvage.onDoorOpen = function(npc, stage, progress)
     return result
 end
 
-xi.salvage.sealDoors = function(instance, indexID)
+invaderXim.salvage.sealDoors = function(instance, indexID)
     if type(indexID) == 'table' then
         for _, id in pairs(indexID) do
             local door = GetNPCByID(id, instance)
@@ -174,7 +174,7 @@ xi.salvage.sealDoors = function(instance, indexID)
     end
 end
 
-xi.salvage.unsealDoors = function(instance, indexID)
+invaderXim.salvage.unsealDoors = function(instance, indexID)
     if type(indexID) == 'table' then
         for _, id in pairs(indexID) do
             local door = GetNPCByID(id, instance)
@@ -190,8 +190,8 @@ xi.salvage.unsealDoors = function(instance, indexID)
     end
 end
 
-xi.salvage.openBossDoor = function(npc)
-    if npc:getAnimation() == xi.anim.CLOSE_DOOR then
+invaderXim.salvage.openBossDoor = function(npc)
+    if npc:getAnimation() == invaderXim.anim.CLOSE_DOOR then
         local instance = npc:getInstance()
 
         npc:openDoor(15)
@@ -201,46 +201,46 @@ xi.salvage.openBossDoor = function(npc)
     end
 end
 
-xi.salvage.onTriggerCrate = function(player, npc)
+invaderXim.salvage.onTriggerCrate = function(player, npc)
     if npc:getLocalVar('open') == 0 then
         npc:setLocalVar('open', 1)
         local firstRandom =
         {
-            xi.item.CUMULUS_CELL,
-            xi.item.UNDULATUS_CELL,
-            xi.item.HUMILUS_CELL,
-            xi.item.SPISSATUS_CELL
+            invaderXim.item.CUMULUS_CELL,
+            invaderXim.item.UNDULATUS_CELL,
+            invaderXim.item.HUMILUS_CELL,
+            invaderXim.item.SPISSATUS_CELL
         }
         local secondRandom =
         {
-            xi.item.CASTELLANUS_CELL,
-            xi.item.RADIATUS_CELL,
-            xi.item.STRATUS_CELL,
-            xi.item.CIRROCUMULUS_CELL,
-            xi.item.VIRGA_CELL,
-            xi.item.PANNUS_CELL,
-            xi.item.FRACTUS_CELL,
-            xi.item.CONGESTUS_CELL,
-            xi.item.NIMBUS_CELL,
-            xi.item.VELUM_CELL,
-            xi.item.PILEUS_CELL,
-            xi.item.MEDIOCRIS_CELL
+            invaderXim.item.CASTELLANUS_CELL,
+            invaderXim.item.RADIATUS_CELL,
+            invaderXim.item.STRATUS_CELL,
+            invaderXim.item.CIRROCUMULUS_CELL,
+            invaderXim.item.VIRGA_CELL,
+            invaderXim.item.PANNUS_CELL,
+            invaderXim.item.FRACTUS_CELL,
+            invaderXim.item.CONGESTUS_CELL,
+            invaderXim.item.NIMBUS_CELL,
+            invaderXim.item.VELUM_CELL,
+            invaderXim.item.PILEUS_CELL,
+            invaderXim.item.MEDIOCRIS_CELL
         }
 
-        player:addTreasure(xi.item.INCUS_CELL, npc)
-        player:addTreasure(xi.item.INCUS_CELL, npc)
-        player:addTreasure(xi.item.DUPLICATUS_CELL, npc)
-        player:addTreasure(xi.item.PRAECIPITATIO_CELL, npc)
-        player:addTreasure(xi.item.OPACUS_CELL, npc)
+        player:addTreasure(invaderXim.item.INCUS_CELL, npc)
+        player:addTreasure(invaderXim.item.INCUS_CELL, npc)
+        player:addTreasure(invaderXim.item.DUPLICATUS_CELL, npc)
+        player:addTreasure(invaderXim.item.PRAECIPITATIO_CELL, npc)
+        player:addTreasure(invaderXim.item.OPACUS_CELL, npc)
         player:addTreasure(firstRandom[math.random(#firstRandom)], npc)
         player:addTreasure(firstRandom[math.random(#firstRandom)], npc)
         player:addTreasure(secondRandom[math.random(#secondRandom)], npc)
         player:addTreasure(secondRandom[math.random(#secondRandom)], npc)
 
         if math.random(1, 2) == 1 then
-            player:addTreasure(xi.item.PRAECIPITATIO_CELL, npc)
+            player:addTreasure(invaderXim.item.PRAECIPITATIO_CELL, npc)
         else
-            player:addTreasure(xi.item.OPACUS_CELL, npc)
+            player:addTreasure(invaderXim.item.OPACUS_CELL, npc)
         end
 
         npc:entityAnimationPacket('open')
@@ -249,39 +249,39 @@ xi.salvage.onTriggerCrate = function(player, npc)
         end)
 
         npc:timer(16000, function(npcArg)
-            npcArg:setStatus(xi.status.DISAPPEAR)
+            npcArg:setStatus(invaderXim.status.DISAPPEAR)
         end)
     end
 end
 
-xi.salvage.handleSlot = function(player, npc, trade, card, mobID)
+invaderXim.salvage.handleSlot = function(player, npc, trade, card, mobID)
     if npcUtil.tradeHasExactly(trade, card) then
         local instance = npc:getInstance()
         SpawnMob(mobID, instance):updateClaim(player)
         player:confirmTrade()
-        npc:setStatus(xi.status.DISAPPEAR)
+        npc:setStatus(invaderXim.status.DISAPPEAR)
     end
 end
 
-xi.salvage.handleSocket = function(player, npc, trade, mobID)
+invaderXim.salvage.handleSocket = function(player, npc, trade, mobID)
     local instance  = npc:getInstance()
     local mob       = GetMobByID(mobID, instance)
     local cellCount = trade:getItemCount()
 
-    for cellType = xi.item.INCUS_CELL, xi.item.SPISSATUS_CELL do
+    for cellType = invaderXim.item.INCUS_CELL, invaderXim.item.SPISSATUS_CELL do
         if cellCount <= 5 and trade:hasItemQty(cellType, cellCount) then
             player:tradeComplete()
             if mob then
                 SpawnMob(mobID, instance):updateClaim(player)
                 mob:setLocalVar('tradedCell', cellType)
                 mob:setLocalVar('cellCount', cellCount)
-                npc:setStatus(xi.status.DISAPPEAR)
+                npc:setStatus(invaderXim.status.DISAPPEAR)
             end
         end
     end
 end
 
-xi.salvage.handleSocketCells = function(mob, player)
+invaderXim.salvage.handleSocketCells = function(mob, player)
     local amount = mob:getLocalVar('cellCount') * 2
 
     while amount > 0 do
@@ -290,7 +290,7 @@ xi.salvage.handleSocketCells = function(mob, player)
     end
 end
 
-xi.salvage.spawnGroup = function(instance, indexID)
+invaderXim.salvage.spawnGroup = function(instance, indexID)
     if indexID then
         for _, enemies in pairs(indexID) do
             if type(enemies) == 'table' then
@@ -313,7 +313,7 @@ xi.salvage.spawnGroup = function(instance, indexID)
     end
 end
 
-xi.salvage.groupKilled = function(instance, indexID)
+invaderXim.salvage.groupKilled = function(instance, indexID)
     for _, enemies in pairs(indexID) do
         if type(enemies) == 'table' then
             for _, groups in pairs(enemies) do
@@ -349,7 +349,7 @@ xi.salvage.groupKilled = function(instance, indexID)
     return true
 end
 
-xi.salvage.deSpawnStage = function(instance)
+invaderXim.salvage.deSpawnStage = function(instance)
     local mobs = instance:getMobs()
 
     for _, enemy in pairs(mobs) do
@@ -357,7 +357,7 @@ xi.salvage.deSpawnStage = function(instance)
     end
 end
 
-xi.salvage.resetTempBoxes = function(player)
+invaderXim.salvage.resetTempBoxes = function(player)
     local ID          = zones[player:getZoneID()]
     local instance    = player:getInstance()
     local tempBoxes   = utils.slice(ID.npc.ARMOURY_CRATE, 2, #ID.npc.ARMOURY_CRATE)
@@ -366,8 +366,8 @@ xi.salvage.resetTempBoxes = function(player)
     if tempBoxes then
         for _, casketID in ipairs(tempBoxes) do
             local casket = GetNPCByID(casketID, instance)
-            if casket and casket:getStatus() == xi.status.NORMAL then
-                casket:setStatus(xi.status.DISAPPEAR)
+            if casket and casket:getStatus() == invaderXim.status.NORMAL then
+                casket:setStatus(invaderXim.status.DISAPPEAR)
                 casket:resetLocalVars()
                 casket:setAnimationSub(8)
             end
@@ -377,8 +377,8 @@ xi.salvage.resetTempBoxes = function(player)
     if staticBoxes then
         for _, casketID in ipairs(staticBoxes) do
             local casket = GetNPCByID(casketID, instance)
-            if casket and casket:getStatus() == xi.status.NORMAL then
-                casket:setStatus(xi.status.DISAPPEAR)
+            if casket and casket:getStatus() == invaderXim.status.NORMAL then
+                casket:setStatus(invaderXim.status.DISAPPEAR)
                 casket:resetLocalVars()
                 casket:setAnimationSub(8)
             end
@@ -386,7 +386,7 @@ xi.salvage.resetTempBoxes = function(player)
     end
 end
 
-xi.salvage.spawnTempChest = function(mob, params)
+invaderXim.salvage.spawnTempChest = function(mob, params)
     local ID       = zones[mob:getZoneID()]
     local instance = mob:getInstance()
 
@@ -396,7 +396,7 @@ xi.salvage.spawnTempChest = function(mob, params)
     end
 
     if params.rate == nil then
-        if mob:getZoneID() == xi.zone.ARRAPAGO_REMNANTS then
+        if mob:getZoneID() == invaderXim.zone.ARRAPAGO_REMNANTS then
             params.rate = 300
         else
             params.rate = 40
@@ -415,11 +415,11 @@ xi.salvage.spawnTempChest = function(mob, params)
 
     for _, casketID in ipairs(utils.slice(ID.npc.ARMOURY_CRATE, 2, #ID.npc.ARMOURY_CRATE)) do
         local casket = GetNPCByID(casketID, instance)
-        if casket and casket:getStatus() == xi.status.DISAPPEAR then
+        if casket and casket:getStatus() == invaderXim.status.DISAPPEAR then
             local pos = mob:getPos()
             casket:setPos(pos.x, pos.y, pos.z, pos.rot)
             casket:resetLocalVars()
-            casket:setStatus(xi.status.NORMAL)
+            casket:setStatus(invaderXim.status.NORMAL)
 
             if params.itemID_1 then
                 casket:setLocalVar('prePicked', 1)
@@ -436,13 +436,13 @@ xi.salvage.spawnTempChest = function(mob, params)
     end
 end
 
-xi.salvage.tempBoxTrigger = function(player, npc)
+invaderXim.salvage.tempBoxTrigger = function(player, npc)
     if npc:getLocalVar('itemsPicked') == 0 then
         npc:setLocalVar('itemsPicked', 1)
         npc:entityAnimationPacket('open')
         npc:setAnimationSub(13)
         if npc:getLocalVar('prePicked') == 0 then
-            xi.salvage.tempBoxPickItems(npc)
+            invaderXim.salvage.tempBoxPickItems(npc)
         end
     end
 
@@ -458,31 +458,31 @@ xi.salvage.tempBoxTrigger = function(player, npc)
     })
 end
 
-xi.salvage.tempBoxPickItems = function(npc)
+invaderXim.salvage.tempBoxPickItems = function(npc)
     local tempBoxItems =
     {
-        [1]  = { itemID = xi.item.BOTTLE_OF_BARBARIANS_DRINK, amount = math.random(1, 3) },
-        [2]  = { itemID = xi.item.BOTTLE_OF_FIGHTERS_DRINK,   amount = math.random(1, 3) },
-        [3]  = { itemID = xi.item.BOTTLE_OF_ORACLES_DRINK,    amount = math.random(1, 3) },
-        [4]  = { itemID = xi.item.BOTTLE_OF_ASSASSINS_DRINK,  amount = math.random(1, 3) },
-        [5]  = { itemID = xi.item.BOTTLE_OF_SPYS_DRINK,       amount = math.random(1, 3) },
-        [6]  = { itemID = xi.item.BOTTLE_OF_BRAVERS_DRINK,    amount = math.random(1, 3) },
-        [7]  = { itemID = xi.item.BOTTLE_OF_SOLDIERS_DRINK,   amount = math.random(1, 3) },
-        [8]  = { itemID = xi.item.BOTTLE_OF_CHAMPIONS_DRINK,  amount = math.random(1, 3) },
-        [9]  = { itemID = xi.item.BOTTLE_OF_MONARCHS_DRINK,   amount = math.random(1, 3) },
-        [10] = { itemID = xi.item.BOTTLE_OF_GNOSTICS_DRINK,   amount = math.random(1, 3) },
-        [11] = { itemID = xi.item.BOTTLE_OF_CLERICS_DRINK,    amount = math.random(1, 3) },
-        [12] = { itemID = xi.item.BOTTLE_OF_SHEPHERDS_DRINK,  amount = math.random(1, 3) },
-        [13] = { itemID = xi.item.BOTTLE_OF_SPRINTERS_DRINK,  amount = math.random(1, 3) },
-        [14] = { itemID = xi.item.FLASK_OF_STRANGE_MILK,      amount = math.random(1, 5) },
-        [15] = { itemID = xi.item.BOTTLE_OF_STRANGE_JUICE,    amount = math.random(1, 5) },
-        [16] = { itemID = xi.item.BOTTLE_OF_FANATICS_DRINK,   amount = 1 },
-        [17] = { itemID = xi.item.BOTTLE_OF_FOOLS_DRINK,      amount = 1 },
-        [18] = { itemID = xi.item.DUSTY_WING,                 amount = 1 },
-        [19] = { itemID = xi.item.BOTTLE_OF_VICARS_DRINK,     amount = math.random(1, 3) },
-        [20] = { itemID = xi.item.DUSTY_POTION,               amount = math.random(1, 10) },
-        [21] = { itemID = xi.item.DUSTY_ETHER,                amount = math.random(1, 10) },
-        [22] = { itemID = xi.item.DUSTY_ELIXIR,               amount = 1 }
+        [1]  = { itemID = invaderXim.item.BOTTLE_OF_BARBARIANS_DRINK, amount = math.random(1, 3) },
+        [2]  = { itemID = invaderXim.item.BOTTLE_OF_FIGHTERS_DRINK,   amount = math.random(1, 3) },
+        [3]  = { itemID = invaderXim.item.BOTTLE_OF_ORACLES_DRINK,    amount = math.random(1, 3) },
+        [4]  = { itemID = invaderXim.item.BOTTLE_OF_ASSASSINS_DRINK,  amount = math.random(1, 3) },
+        [5]  = { itemID = invaderXim.item.BOTTLE_OF_SPYS_DRINK,       amount = math.random(1, 3) },
+        [6]  = { itemID = invaderXim.item.BOTTLE_OF_BRAVERS_DRINK,    amount = math.random(1, 3) },
+        [7]  = { itemID = invaderXim.item.BOTTLE_OF_SOLDIERS_DRINK,   amount = math.random(1, 3) },
+        [8]  = { itemID = invaderXim.item.BOTTLE_OF_CHAMPIONS_DRINK,  amount = math.random(1, 3) },
+        [9]  = { itemID = invaderXim.item.BOTTLE_OF_MONARCHS_DRINK,   amount = math.random(1, 3) },
+        [10] = { itemID = invaderXim.item.BOTTLE_OF_GNOSTICS_DRINK,   amount = math.random(1, 3) },
+        [11] = { itemID = invaderXim.item.BOTTLE_OF_CLERICS_DRINK,    amount = math.random(1, 3) },
+        [12] = { itemID = invaderXim.item.BOTTLE_OF_SHEPHERDS_DRINK,  amount = math.random(1, 3) },
+        [13] = { itemID = invaderXim.item.BOTTLE_OF_SPRINTERS_DRINK,  amount = math.random(1, 3) },
+        [14] = { itemID = invaderXim.item.FLASK_OF_STRANGE_MILK,      amount = math.random(1, 5) },
+        [15] = { itemID = invaderXim.item.BOTTLE_OF_STRANGE_JUICE,    amount = math.random(1, 5) },
+        [16] = { itemID = invaderXim.item.BOTTLE_OF_FANATICS_DRINK,   amount = 1 },
+        [17] = { itemID = invaderXim.item.BOTTLE_OF_FOOLS_DRINK,      amount = 1 },
+        [18] = { itemID = invaderXim.item.DUSTY_WING,                 amount = 1 },
+        [19] = { itemID = invaderXim.item.BOTTLE_OF_VICARS_DRINK,     amount = math.random(1, 3) },
+        [20] = { itemID = invaderXim.item.DUSTY_POTION,               amount = math.random(1, 10) },
+        [21] = { itemID = invaderXim.item.DUSTY_ETHER,                amount = math.random(1, 10) },
+        [22] = { itemID = invaderXim.item.DUSTY_ELIXIR,               amount = 1 }
     }
     local chosen1      = math.random(1, #tempBoxItems)
     local item1        = tempBoxItems[chosen1]
@@ -514,7 +514,7 @@ xi.salvage.tempBoxPickItems = function(npc)
     end
 end
 
-xi.salvage.tempBoxFinish = function(player, csid, option, npc)
+invaderXim.salvage.tempBoxFinish = function(player, csid, option, npc)
     local ID = zones[player:getZoneID()]
 
     if csid == 2 then
@@ -524,7 +524,7 @@ xi.salvage.tempBoxFinish = function(player, csid, option, npc)
                 local itemQnty = npc:getLocalVar('itemAmount_'..choice)
 
                 if item > 0 and itemQnty > 0 then
-                    if not player:hasItem(item, xi.inventoryLocation.TEMPITEMS) then
+                    if not player:hasItem(item, invaderXim.inventoryLocation.TEMPITEMS) then
                         player:addTempItem(item)
                         player:messageSpecial(ID.text.TEMP_ITEM, item)
                         npc:setLocalVar('itemAmount_'..choice, itemQnty - 1)
@@ -550,7 +550,7 @@ xi.salvage.tempBoxFinish = function(player, csid, option, npc)
             end)
 
             npc:queue(12000, function(npcArg)
-                npcArg:setStatus(xi.status.DISAPPEAR)
+                npcArg:setStatus(invaderXim.status.DISAPPEAR)
                 npc:setAnimationSub(8)
             end)
         end

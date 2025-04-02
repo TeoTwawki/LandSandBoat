@@ -6,7 +6,7 @@
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 56, 2, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 56, 2, invaderXim.regime.type.FIELDS)
 end
 
 return entity

@@ -1,11 +1,11 @@
 -----------------------------------
--- xi.effect.AURORASTORM
+-- invaderXim.effect.AURORASTORM
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    effect:addMod(xi.mod.CHR, effect:getPower())
+    effect:addMod(invaderXim.mod.CHR, effect:getPower())
 end
 
 effectObject.onEffectTick = function(target, effect)

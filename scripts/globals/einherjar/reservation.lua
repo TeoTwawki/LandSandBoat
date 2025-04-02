@@ -2,16 +2,16 @@
 -- Einherjar: Chamber reservation
 -----------------------------------
 xi = xi or {}
-xi.einherjar = xi.einherjar or {}
+invaderXim.einherjar = invaderXim.einherjar or {}
 
-xi.einherjar.meetsRequirementsForReservation = function(player)
-    local texts   = zones[xi.zone.HAZHALM_TESTING_GROUNDS].text
-    local lockout = xi.einherjar.isLockedOut(player)
-    local toau    = player:hasCompletedMission(xi.mission.log_id.TOAU, xi.mission.id.toau.IMMORTAL_SENTRIES)
+invaderXim.einherjar.meetsRequirementsForReservation = function(player)
+    local texts   = zones[invaderXim.zone.HAZHALM_TESTING_GROUNDS].text
+    local lockout = invaderXim.einherjar.isLockedOut(player)
+    local toau    = player:hasCompletedMission(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.IMMORTAL_SENTRIES)
 
     -- 1. Player must be level EINHERJAR_LEVEL_MIN+
-    if player:getMainLvl() < xi.einherjar.settings.EINHERJAR_LEVEL_MIN then
-        player:messageSpecial(texts.MIN_LEVEL_RESERVATION, xi.einherjar.settings.EINHERJAR_LEVEL_MIN)
+    if player:getMainLvl() < invaderXim.einherjar.settings.EINHERJAR_LEVEL_MIN then
+        player:messageSpecial(texts.MIN_LEVEL_RESERVATION, invaderXim.einherjar.settings.EINHERJAR_LEVEL_MIN)
         return false
     end
 
@@ -30,11 +30,11 @@ xi.einherjar.meetsRequirementsForReservation = function(player)
     return true
 end
 
-xi.einherjar.meetsRequirementsForEntry = function(player, chamberId)
-    local texts       = zones[xi.zone.HAZHALM_TESTING_GROUNDS].text
-    local lockout     = xi.einherjar.isLockedOut(player)
-    local toau        = player:hasCompletedMission(xi.mission.log_id.TOAU, xi.mission.id.toau.IMMORTAL_SENTRIES)
-    local chamberData = xi.einherjar.getChamber(chamberId)
+invaderXim.einherjar.meetsRequirementsForEntry = function(player, chamberId)
+    local texts       = zones[invaderXim.zone.HAZHALM_TESTING_GROUNDS].text
+    local lockout     = invaderXim.einherjar.isLockedOut(player)
+    local toau        = player:hasCompletedMission(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.IMMORTAL_SENTRIES)
+    local chamberData = invaderXim.einherjar.getChamber(chamberId)
 
     if not chamberData then
         player:messageSpecial(texts.REQUIREMENTS_UNMET)
@@ -42,8 +42,8 @@ xi.einherjar.meetsRequirementsForEntry = function(player, chamberId)
     end
 
     -- 1. Player must be level EINHERJAR_LEVEL_MIN+
-    if player:getMainLvl() < xi.einherjar.settings.EINHERJAR_LEVEL_MIN then
-        player:messageSpecial(texts.MIN_LEVEL_ENTRY, xi.einherjar.settings.EINHERJAR_LEVEL_MIN)
+    if player:getMainLvl() < invaderXim.einherjar.settings.EINHERJAR_LEVEL_MIN then
+        player:messageSpecial(texts.MIN_LEVEL_ENTRY, invaderXim.einherjar.settings.EINHERJAR_LEVEL_MIN)
         return false
     end
 
@@ -74,7 +74,7 @@ xi.einherjar.meetsRequirementsForEntry = function(player, chamberId)
         count = count + 1
     end
 
-    if count >= xi.einherjar.settings.EINHERJAR_MAX_PLAYERS_PER_CHAMBER then
+    if count >= invaderXim.einherjar.settings.EINHERJAR_MAX_PLAYERS_PER_CHAMBER then
         player:messageSpecial(texts.CHAMBER_FULL)
         return false
     end

@@ -4,82 +4,82 @@
 -----------------------------------
 
 xi = xi or {}
-xi.geomanticReservoir = xi.geomanticReservoir or {}
+invaderXim.geomanticReservoir = invaderXim.geomanticReservoir or {}
 
 -- This table was necessary in order for us to be able to print the name of the newly learned spell.
 local geoSpellTable =
 {
-    [xi.magic.spell.GEO_POISON    ] = { xi.item.GEO_POISON     },
-    [xi.magic.spell.GEO_VOIDANCE  ] = { xi.item.GEO_VOIDANCE   },
-    [xi.magic.spell.GEO_PRECISION ] = { xi.item.GEO_PRECISION  },
-    [xi.magic.spell.GEO_REGEN     ] = { xi.item.GEO_REGEN      },
-    [xi.magic.spell.GEO_ATTUNEMENT] = { xi.item.GEO_ATTUNEMENT },
-    [xi.magic.spell.GEO_FOCUS     ] = { xi.item.GEO_FOCUS      },
-    [xi.magic.spell.GEO_BARRIER   ] = { xi.item.GEO_BARRIER    },
-    [xi.magic.spell.GEO_REFRESH   ] = { xi.item.GEO_REFRESH    },
-    [xi.magic.spell.GEO_CHR       ] = { xi.item.GEO_CHR        },
-    [xi.magic.spell.GEO_MND       ] = { xi.item.GEO_MND        },
-    [xi.magic.spell.GEO_FURY      ] = { xi.item.GEO_FURY       },
-    [xi.magic.spell.GEO_INT       ] = { xi.item.GEO_INT        },
-    [xi.magic.spell.GEO_AGI       ] = { xi.item.GEO_AGI        },
-    [xi.magic.spell.GEO_POISON    ] = { xi.item.GEO_POISON     },
-    [xi.magic.spell.GEO_FEND      ] = { xi.item.GEO_FEND       },
-    [xi.magic.spell.GEO_VIT       ] = { xi.item.GEO_VIT        },
-    [xi.magic.spell.GEO_DEX       ] = { xi.item.GEO_DEX        },
-    [xi.magic.spell.GEO_ACUMEN    ] = { xi.item.GEO_ACUMEN     },
-    [xi.magic.spell.GEO_STR       ] = { xi.item.GEO_STR        },
-    [xi.magic.spell.GEO_SLOW      ] = { xi.item.GEO_SLOW       },
-    [xi.magic.spell.GEO_TORPOR    ] = { xi.item.GEO_TORPOR     },
-    [xi.magic.spell.GEO_SLIP      ] = { xi.item.GEO_SLIP       },
-    [xi.magic.spell.GEO_LANGUOR   ] = { xi.item.GEO_LANGUOR    },
-    [xi.magic.spell.GEO_PARALYSIS ] = { xi.item.GEO_PARALYSIS  },
-    [xi.magic.spell.GEO_VEX       ] = { xi.item.GEO_VEX        },
-    [xi.magic.spell.GEO_FRAILTY   ] = { xi.item.GEO_FRAILTY    },
-    [xi.magic.spell.GEO_WILT      ] = { xi.item.GEO_WILT       },
-    [xi.magic.spell.GEO_MALAISE   ] = { xi.item.GEO_MALAISE    },
-    [xi.magic.spell.GEO_GRAVITY   ] = { xi.item.GEO_GRAVITY    },
-    [xi.magic.spell.GEO_HASTE     ] = { xi.item.GEO_HASTE      },
-    [xi.magic.spell.GEO_FADE      ] = { xi.item.GEO_FADE       },
+    [invaderXim.magic.spell.GEO_POISON    ] = { invaderXim.item.GEO_POISON     },
+    [invaderXim.magic.spell.GEO_VOIDANCE  ] = { invaderXim.item.GEO_VOIDANCE   },
+    [invaderXim.magic.spell.GEO_PRECISION ] = { invaderXim.item.GEO_PRECISION  },
+    [invaderXim.magic.spell.GEO_REGEN     ] = { invaderXim.item.GEO_REGEN      },
+    [invaderXim.magic.spell.GEO_ATTUNEMENT] = { invaderXim.item.GEO_ATTUNEMENT },
+    [invaderXim.magic.spell.GEO_FOCUS     ] = { invaderXim.item.GEO_FOCUS      },
+    [invaderXim.magic.spell.GEO_BARRIER   ] = { invaderXim.item.GEO_BARRIER    },
+    [invaderXim.magic.spell.GEO_REFRESH   ] = { invaderXim.item.GEO_REFRESH    },
+    [invaderXim.magic.spell.GEO_CHR       ] = { invaderXim.item.GEO_CHR        },
+    [invaderXim.magic.spell.GEO_MND       ] = { invaderXim.item.GEO_MND        },
+    [invaderXim.magic.spell.GEO_FURY      ] = { invaderXim.item.GEO_FURY       },
+    [invaderXim.magic.spell.GEO_INT       ] = { invaderXim.item.GEO_INT        },
+    [invaderXim.magic.spell.GEO_AGI       ] = { invaderXim.item.GEO_AGI        },
+    [invaderXim.magic.spell.GEO_POISON    ] = { invaderXim.item.GEO_POISON     },
+    [invaderXim.magic.spell.GEO_FEND      ] = { invaderXim.item.GEO_FEND       },
+    [invaderXim.magic.spell.GEO_VIT       ] = { invaderXim.item.GEO_VIT        },
+    [invaderXim.magic.spell.GEO_DEX       ] = { invaderXim.item.GEO_DEX        },
+    [invaderXim.magic.spell.GEO_ACUMEN    ] = { invaderXim.item.GEO_ACUMEN     },
+    [invaderXim.magic.spell.GEO_STR       ] = { invaderXim.item.GEO_STR        },
+    [invaderXim.magic.spell.GEO_SLOW      ] = { invaderXim.item.GEO_SLOW       },
+    [invaderXim.magic.spell.GEO_TORPOR    ] = { invaderXim.item.GEO_TORPOR     },
+    [invaderXim.magic.spell.GEO_SLIP      ] = { invaderXim.item.GEO_SLIP       },
+    [invaderXim.magic.spell.GEO_LANGUOR   ] = { invaderXim.item.GEO_LANGUOR    },
+    [invaderXim.magic.spell.GEO_PARALYSIS ] = { invaderXim.item.GEO_PARALYSIS  },
+    [invaderXim.magic.spell.GEO_VEX       ] = { invaderXim.item.GEO_VEX        },
+    [invaderXim.magic.spell.GEO_FRAILTY   ] = { invaderXim.item.GEO_FRAILTY    },
+    [invaderXim.magic.spell.GEO_WILT      ] = { invaderXim.item.GEO_WILT       },
+    [invaderXim.magic.spell.GEO_MALAISE   ] = { invaderXim.item.GEO_MALAISE    },
+    [invaderXim.magic.spell.GEO_GRAVITY   ] = { invaderXim.item.GEO_GRAVITY    },
+    [invaderXim.magic.spell.GEO_HASTE     ] = { invaderXim.item.GEO_HASTE      },
+    [invaderXim.magic.spell.GEO_FADE      ] = { invaderXim.item.GEO_FADE       },
 }
 
 -- need to check if you have the indi spell before learning the geo spell
 -- https://www.bg-wiki.com/ffxi/Geomantic_Reservoir
 local indiSpellMap =
 {
-    [xi.magic.spell.GEO_POISON    ] = xi.magic.spell.INDI_POISON,
-    [xi.magic.spell.GEO_VOIDANCE  ] = xi.magic.spell.INDI_VOIDANCE,
-    [xi.magic.spell.GEO_PRECISION ] = xi.magic.spell.INDI_PRECISION,
-    [xi.magic.spell.GEO_REGEN     ] = xi.magic.spell.INDI_REGEN,
-    [xi.magic.spell.GEO_ATTUNEMENT] = xi.magic.spell.INDI_ATTUNEMENT,
-    [xi.magic.spell.GEO_FOCUS     ] = xi.magic.spell.INDI_FOCUS,
-    [xi.magic.spell.GEO_BARRIER   ] = xi.magic.spell.INDI_BARRIER,
-    [xi.magic.spell.GEO_REFRESH   ] = xi.magic.spell.INDI_REFRESH,
-    [xi.magic.spell.GEO_CHR       ] = xi.magic.spell.INDI_CHR,
-    [xi.magic.spell.GEO_MND       ] = xi.magic.spell.INDI_MND,
-    [xi.magic.spell.GEO_FURY      ] = xi.magic.spell.INDI_FURY,
-    [xi.magic.spell.GEO_INT       ] = xi.magic.spell.INDI_INT,
-    [xi.magic.spell.GEO_AGI       ] = xi.magic.spell.INDI_AGI,
-    [xi.magic.spell.GEO_POISON    ] = xi.magic.spell.INDI_POISON,
-    [xi.magic.spell.GEO_FEND      ] = xi.magic.spell.INDI_FEND,
-    [xi.magic.spell.GEO_VIT       ] = xi.magic.spell.INDI_VIT,
-    [xi.magic.spell.GEO_DEX       ] = xi.magic.spell.INDI_DEX,
-    [xi.magic.spell.GEO_ACUMEN    ] = xi.magic.spell.INDI_ACUMEN,
-    [xi.magic.spell.GEO_STR       ] = xi.magic.spell.INDI_STR,
-    [xi.magic.spell.GEO_SLOW      ] = xi.magic.spell.INDI_SLOW,
-    [xi.magic.spell.GEO_TORPOR    ] = xi.magic.spell.INDI_TORPOR,
-    [xi.magic.spell.GEO_SLIP      ] = xi.magic.spell.INDI_SLIP,
-    [xi.magic.spell.GEO_LANGUOR   ] = xi.magic.spell.INDI_LANGUOR,
-    [xi.magic.spell.GEO_PARALYSIS ] = xi.magic.spell.INDI_PARALYSIS,
-    [xi.magic.spell.GEO_VEX       ] = xi.magic.spell.INDI_VEX,
-    [xi.magic.spell.GEO_FRAILTY   ] = xi.magic.spell.INDI_FRAILTY,
-    [xi.magic.spell.GEO_WILT      ] = xi.magic.spell.INDI_WILT,
-    [xi.magic.spell.GEO_MALAISE   ] = xi.magic.spell.INDI_MALAISE,
-    [xi.magic.spell.GEO_GRAVITY   ] = xi.magic.spell.INDI_GRAVITY,
-    [xi.magic.spell.GEO_HASTE     ] = xi.magic.spell.INDI_HASTE,
-    [xi.magic.spell.GEO_FADE      ] = xi.magic.spell.INDI_FADE,
+    [invaderXim.magic.spell.GEO_POISON    ] = invaderXim.magic.spell.INDI_POISON,
+    [invaderXim.magic.spell.GEO_VOIDANCE  ] = invaderXim.magic.spell.INDI_VOIDANCE,
+    [invaderXim.magic.spell.GEO_PRECISION ] = invaderXim.magic.spell.INDI_PRECISION,
+    [invaderXim.magic.spell.GEO_REGEN     ] = invaderXim.magic.spell.INDI_REGEN,
+    [invaderXim.magic.spell.GEO_ATTUNEMENT] = invaderXim.magic.spell.INDI_ATTUNEMENT,
+    [invaderXim.magic.spell.GEO_FOCUS     ] = invaderXim.magic.spell.INDI_FOCUS,
+    [invaderXim.magic.spell.GEO_BARRIER   ] = invaderXim.magic.spell.INDI_BARRIER,
+    [invaderXim.magic.spell.GEO_REFRESH   ] = invaderXim.magic.spell.INDI_REFRESH,
+    [invaderXim.magic.spell.GEO_CHR       ] = invaderXim.magic.spell.INDI_CHR,
+    [invaderXim.magic.spell.GEO_MND       ] = invaderXim.magic.spell.INDI_MND,
+    [invaderXim.magic.spell.GEO_FURY      ] = invaderXim.magic.spell.INDI_FURY,
+    [invaderXim.magic.spell.GEO_INT       ] = invaderXim.magic.spell.INDI_INT,
+    [invaderXim.magic.spell.GEO_AGI       ] = invaderXim.magic.spell.INDI_AGI,
+    [invaderXim.magic.spell.GEO_POISON    ] = invaderXim.magic.spell.INDI_POISON,
+    [invaderXim.magic.spell.GEO_FEND      ] = invaderXim.magic.spell.INDI_FEND,
+    [invaderXim.magic.spell.GEO_VIT       ] = invaderXim.magic.spell.INDI_VIT,
+    [invaderXim.magic.spell.GEO_DEX       ] = invaderXim.magic.spell.INDI_DEX,
+    [invaderXim.magic.spell.GEO_ACUMEN    ] = invaderXim.magic.spell.INDI_ACUMEN,
+    [invaderXim.magic.spell.GEO_STR       ] = invaderXim.magic.spell.INDI_STR,
+    [invaderXim.magic.spell.GEO_SLOW      ] = invaderXim.magic.spell.INDI_SLOW,
+    [invaderXim.magic.spell.GEO_TORPOR    ] = invaderXim.magic.spell.INDI_TORPOR,
+    [invaderXim.magic.spell.GEO_SLIP      ] = invaderXim.magic.spell.INDI_SLIP,
+    [invaderXim.magic.spell.GEO_LANGUOR   ] = invaderXim.magic.spell.INDI_LANGUOR,
+    [invaderXim.magic.spell.GEO_PARALYSIS ] = invaderXim.magic.spell.INDI_PARALYSIS,
+    [invaderXim.magic.spell.GEO_VEX       ] = invaderXim.magic.spell.INDI_VEX,
+    [invaderXim.magic.spell.GEO_FRAILTY   ] = invaderXim.magic.spell.INDI_FRAILTY,
+    [invaderXim.magic.spell.GEO_WILT      ] = invaderXim.magic.spell.INDI_WILT,
+    [invaderXim.magic.spell.GEO_MALAISE   ] = invaderXim.magic.spell.INDI_MALAISE,
+    [invaderXim.magic.spell.GEO_GRAVITY   ] = invaderXim.magic.spell.INDI_GRAVITY,
+    [invaderXim.magic.spell.GEO_HASTE     ] = invaderXim.magic.spell.INDI_HASTE,
+    [invaderXim.magic.spell.GEO_FADE      ] = invaderXim.magic.spell.INDI_FADE,
 }
 
-xi.geomanticReservoir.onTrigger = function(player, npc, geoSpell)
+invaderXim.geomanticReservoir.onTrigger = function(player, npc, geoSpell)
     -- TODO: According to BG-Wiki there is a sequence here that a player can proc '!!' and achieve a Geomancy skill-up.
     -- TODO: is there different messaging if you don't know the indi spell vs already having the geo spell?
     -- https://www.bg-wiki.com/ffxi/Geomantic_Reservoir
@@ -87,7 +87,7 @@ xi.geomanticReservoir.onTrigger = function(player, npc, geoSpell)
     local indiSpell = indiSpellMap[geoSpell]
 
     if
-        player:getMainJob() == xi.job.GEO and
+        player:getMainJob() == invaderXim.job.GEO and
         not player:hasSpell(geoSpell) and
         indiSpell and
         player:hasSpell(indiSpell)
@@ -99,7 +99,7 @@ xi.geomanticReservoir.onTrigger = function(player, npc, geoSpell)
     end
 end
 
-xi.geomanticReservoir.onEventFinish = function(player, csid, geoSpell)
+invaderXim.geomanticReservoir.onEventFinish = function(player, csid, geoSpell)
     if csid == 15000 then
         player:addSpell(geoSpell, true, true) -- Quiesce the baked in message from addSpell(), we prefer the one below.
         player:messageSpecial(zones[player:getZoneID()].text.LEARNS_SPELL, geoSpellTable[geoSpell][1])

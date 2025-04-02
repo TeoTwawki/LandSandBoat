@@ -3,13 +3,13 @@
 --  NPC: ??? (Spawns Kirin)
 -- !pos -81 32 2 178
 -----------------------------------
-local ID = zones[xi.zone.THE_SHRINE_OF_RUAVITAU]
+local ID = zones[invaderXim.zone.THE_SHRINE_OF_RUAVITAU]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    if npcUtil.tradeHas(trade, { xi.item.SEAL_OF_GENBU, xi.item.SEAL_OF_BYAKKO, xi.item.SEAL_OF_SEIRYU, xi.item.SEAL_OF_SUZAKU }) then
+    if npcUtil.tradeHas(trade, { invaderXim.item.SEAL_OF_GENBU, invaderXim.item.SEAL_OF_BYAKKO, invaderXim.item.SEAL_OF_SEIRYU, invaderXim.item.SEAL_OF_SUZAKU }) then
         player:startEvent(101)
     end
 end

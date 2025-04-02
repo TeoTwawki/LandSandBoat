@@ -9,18 +9,18 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    if player:hasStatusEffect(xi.effect.ENLIGHTENMENT) then
-        return xi.msg.basic.EFFECT_ALREADY_ACTIVE, 0
+    if player:hasStatusEffect(invaderXim.effect.ENLIGHTENMENT) then
+        return invaderXim.msg.basic.EFFECT_ALREADY_ACTIVE, 0
     end
 
     return 0, 0
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    local merit = (player:getMerit(xi.merit.ENLIGHTENMENT) - 5)
-    player:addStatusEffect(xi.effect.ENLIGHTENMENT, merit, 0, 60)
+    local merit = (player:getMerit(invaderXim.merit.ENLIGHTENMENT) - 5)
+    player:addStatusEffect(invaderXim.effect.ENLIGHTENMENT, merit, 0, 60)
 
-    return xi.effect.ENLIGHTENMENT
+    return invaderXim.effect.ENLIGHTENMENT
 end
 
 return abilityObject

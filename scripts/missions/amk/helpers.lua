@@ -3,45 +3,45 @@
 -----------------------------------
 
 xi = xi or {}
-xi.amk = xi.amk or {}
-xi.amk.helpers = xi.amk.helpers or {}
+invaderXim.amk = invaderXim.amk or {}
+invaderXim.amk.helpers = invaderXim.amk.helpers or {}
 
 local validRegions = set{
-    xi.region.RONFAURE,
-    xi.region.ZULKHEIM,
-    xi.region.NORVALLEN,
-    xi.region.GUSTABERG,
-    xi.region.DERFLAND,
-    xi.region.SARUTABARUTA,
-    xi.region.KOLSHUSHU,
-    xi.region.ARAGONEU,
-    xi.region.FAUREGANDI,
-    xi.region.VALDEAUNIA,
-    xi.region.QUFIMISLAND,
-    xi.region.LITELOR,
-    xi.region.KUZOTZ,
-    xi.region.VOLLBOW,
-    xi.region.ELSHIMOLOWLANDS,
-    xi.region.ELSHIMOUPLANDS,
-    xi.region.SANDORIA,
-    xi.region.BASTOK,
-    xi.region.WINDURST,
-    xi.region.JEUNO,
-    xi.region.DYNAMIS,
+    invaderXim.region.RONFAURE,
+    invaderXim.region.ZULKHEIM,
+    invaderXim.region.NORVALLEN,
+    invaderXim.region.GUSTABERG,
+    invaderXim.region.DERFLAND,
+    invaderXim.region.SARUTABARUTA,
+    invaderXim.region.KOLSHUSHU,
+    invaderXim.region.ARAGONEU,
+    invaderXim.region.FAUREGANDI,
+    invaderXim.region.VALDEAUNIA,
+    invaderXim.region.QUFIMISLAND,
+    invaderXim.region.LITELOR,
+    invaderXim.region.KUZOTZ,
+    invaderXim.region.VOLLBOW,
+    invaderXim.region.ELSHIMOLOWLANDS,
+    invaderXim.region.ELSHIMOUPLANDS,
+    invaderXim.region.SANDORIA,
+    invaderXim.region.BASTOK,
+    invaderXim.region.WINDURST,
+    invaderXim.region.JEUNO,
+    invaderXim.region.DYNAMIS,
 }
 
-xi.amk.helpers.helmTrade = function(player, helmType, broke)
+invaderXim.amk.helpers.helmTrade = function(player, helmType, broke)
     local amkChance = 5
     local regionId = player:getCurrentRegion()
     local helmMapping =
     {
-        [xi.helmType.MINING] = xi.ki.STURDY_METAL_STRIP,
-        [xi.helmType.LOGGING] = xi.ki.PIECE_OF_RUGGED_TREE_BARK,
-        [xi.helmType.HARVESTING] = xi.ki.SAVORY_LAMB_ROAST,
+        [invaderXim.helmType.MINING] = invaderXim.ki.STURDY_METAL_STRIP,
+        [invaderXim.helmType.LOGGING] = invaderXim.ki.PIECE_OF_RUGGED_TREE_BARK,
+        [invaderXim.helmType.HARVESTING] = invaderXim.ki.SAVORY_LAMB_ROAST,
     }
 
     if
-        player:getCurrentMission(xi.mission.log_id.AMK) >= xi.mission.id.amk.WELCOME_TO_MY_DECREPIT_DOMICILE
+        player:getCurrentMission(invaderXim.mission.log_id.AMK) >= invaderXim.mission.id.amk.WELCOME_TO_MY_DECREPIT_DOMICILE
     then
         if
             helmMapping[helmType] and
@@ -57,10 +57,10 @@ end
 -- Cardian orb KI logic: All or nothing drop of the orb is handled by
 -- a local var that is set once by the first player is called by onMobDeath
 -- The rest of the players in alliance get the same outcome as the first
-xi.amk.helpers.cardianOrbDrop = function(mob, player, orb)
+invaderXim.amk.helpers.cardianOrbDrop = function(mob, player, orb)
     if
         player == nil or
-        player:getCurrentMission(xi.mission.log_id.AMK) < xi.mission.id.amk.AN_ERRAND_THE_PROFESSORS_PRICE
+        player:getCurrentMission(invaderXim.mission.log_id.AMK) < invaderXim.mission.id.amk.AN_ERRAND_THE_PROFESSORS_PRICE
     then
         return
     end
@@ -69,7 +69,7 @@ xi.amk.helpers.cardianOrbDrop = function(mob, player, orb)
     if mob:getLocalVar('Mission[10][5]cardianOrbDrop') == 0 then
         local partySize = 0
         for _, member in pairs(player:getAlliance()) do
-            if member:getZoneID() == xi.zone.OUTER_HORUTOTO_RUINS then
+            if member:getZoneID() == invaderXim.zone.OUTER_HORUTOTO_RUINS then
                 partySize = partySize + 1
             end
         end
@@ -94,24 +94,24 @@ end
 -- AMK 7 (index 6) - Select/lookup the digging zone
 local digZoneIds =
 {
-    xi.zone.LA_THEINE_PLATEAU,
-    xi.zone.VALKURM_DUNES,
-    xi.zone.JUGNER_FOREST,
-    xi.zone.KONSCHTAT_HIGHLANDS,
-    xi.zone.PASHHOW_MARSHLANDS,
-    xi.zone.TAHRONGI_CANYON,
-    xi.zone.BUBURIMU_PENINSULA,
-    xi.zone.MERIPHATAUD_MOUNTAINS,
-    xi.zone.THE_SANCTUARY_OF_ZITAH,
-    xi.zone.YUHTUNGA_JUNGLE,
-    xi.zone.YHOATOR_JUNGLE,
-    xi.zone.WESTERN_ALTEPA_DESERT,
-    xi.zone.EASTERN_ALTEPA_DESERT,
+    invaderXim.zone.LA_THEINE_PLATEAU,
+    invaderXim.zone.VALKURM_DUNES,
+    invaderXim.zone.JUGNER_FOREST,
+    invaderXim.zone.KONSCHTAT_HIGHLANDS,
+    invaderXim.zone.PASHHOW_MARSHLANDS,
+    invaderXim.zone.TAHRONGI_CANYON,
+    invaderXim.zone.BUBURIMU_PENINSULA,
+    invaderXim.zone.MERIPHATAUD_MOUNTAINS,
+    invaderXim.zone.THE_SANCTUARY_OF_ZITAH,
+    invaderXim.zone.YUHTUNGA_JUNGLE,
+    invaderXim.zone.YHOATOR_JUNGLE,
+    invaderXim.zone.WESTERN_ALTEPA_DESERT,
+    invaderXim.zone.EASTERN_ALTEPA_DESERT,
 }
 
-xi.amk.helpers.digSites =
+invaderXim.amk.helpers.digSites =
 {
-    [xi.zone.LA_THEINE_PLATEAU] =
+    [invaderXim.zone.LA_THEINE_PLATEAU] =
     {
         eventID = 0,
         spots =
@@ -128,7 +128,7 @@ xi.amk.helpers.digSites =
             { x = 107.780, z = -575.280 },  -- (I-11) (slightly to left of lone tree on the map)
         },
     },
-    [xi.zone.VALKURM_DUNES] =
+    [invaderXim.zone.VALKURM_DUNES] =
     {
         eventID = 1,
         spots =
@@ -143,7 +143,7 @@ xi.amk.helpers.digSites =
             { x = -80.900, z = 181.840 },  -- (F-7) (next to root closest to trees)
         },
     },
-    [xi.zone.JUGNER_FOREST] =
+    [invaderXim.zone.JUGNER_FOREST] =
     {
         eventID = 2,
         spots =
@@ -158,7 +158,7 @@ xi.amk.helpers.digSites =
             { x = 591.460, z = 230.220 },   -- (L-7)
         },
     },
-    [xi.zone.KONSCHTAT_HIGHLANDS] =
+    [invaderXim.zone.KONSCHTAT_HIGHLANDS] =
     {
         eventID = 3,
         spots =
@@ -175,7 +175,7 @@ xi.amk.helpers.digSites =
             { x = 246.900, z = 634.040 },   -- (J-4)
         },
     },
-    [xi.zone.PASHHOW_MARSHLANDS] =
+    [invaderXim.zone.PASHHOW_MARSHLANDS] =
     {
         eventID = 4,
         spots =
@@ -191,7 +191,7 @@ xi.amk.helpers.digSites =
             { x = 422.530, z = -301.460 },  -- (K-10)
         },
     },
-    [xi.zone.TAHRONGI_CANYON] =
+    [invaderXim.zone.TAHRONGI_CANYON] =
     {
         eventID = 5,
         spots =
@@ -210,7 +210,7 @@ xi.amk.helpers.digSites =
             { x = -306.550, z = 265.430 },  -- (F-6) directly on center of grid
         },
     },
-    [xi.zone.BUBURIMU_PENINSULA] =
+    [invaderXim.zone.BUBURIMU_PENINSULA] =
     {
         eventID = 6,
         spots =
@@ -226,7 +226,7 @@ xi.amk.helpers.digSites =
             { x = 426.50, z = -231.660 },   -- (K-9) Few feet west of sign post
         },
     },
-    [xi.zone.MERIPHATAUD_MOUNTAINS] =
+    [invaderXim.zone.MERIPHATAUD_MOUNTAINS] =
     {
         eventID = 7,
         spots =
@@ -242,7 +242,7 @@ xi.amk.helpers.digSites =
             { x = 164.510, z = 165.470 },  -- (H-7) Middle on top of little ledge
         },
     },
-    [xi.zone.THE_SANCTUARY_OF_ZITAH] =
+    [invaderXim.zone.THE_SANCTUARY_OF_ZITAH] =
     {
         eventID = 8,
         spots =
@@ -256,7 +256,7 @@ xi.amk.helpers.digSites =
             { x = 275.428, z = 159.460 },   -- (J-7)
         },
     },
-    [xi.zone.YUHTUNGA_JUNGLE] =
+    [invaderXim.zone.YUHTUNGA_JUNGLE] =
     {
         eventID = 9,
         spots =
@@ -271,7 +271,7 @@ xi.amk.helpers.digSites =
             { x = -130.948, z = 203.126 },  -- (H-7)
         },
     },
-    [xi.zone.YHOATOR_JUNGLE] =
+    [invaderXim.zone.YHOATOR_JUNGLE] =
     {
         eventID = 10,
         spots =
@@ -285,7 +285,7 @@ xi.amk.helpers.digSites =
             { x = -231.969, z = -144.198 }, -- (G-9) Just east of telepoint
         },
     },
-    [xi.zone.WESTERN_ALTEPA_DESERT] =
+    [invaderXim.zone.WESTERN_ALTEPA_DESERT] =
     {
         eventID = 11,
         spots =
@@ -302,7 +302,7 @@ xi.amk.helpers.digSites =
             { x = 334.699, z = 105.761 },   -- (K-7) NW corner
         },
     },
-    [xi.zone.EASTERN_ALTEPA_DESERT] =
+    [invaderXim.zone.EASTERN_ALTEPA_DESERT] =
     {
         eventID = 12,
         spots =
@@ -321,11 +321,11 @@ xi.amk.helpers.digSites =
     },
 }
 
-xi.amk.helpers.getDiggingZone = function(player)
+invaderXim.amk.helpers.getDiggingZone = function(player)
     -- Returns zone id of 1 of the 13 possible zones, and sets variable
     local diggingZone = player:getCharVar('Mission[10][6]diggingZone')
 
-    if xi.amk.helpers.digSites[diggingZone] == nil then
+    if invaderXim.amk.helpers.digSites[diggingZone] == nil then
         -- 1  = La Theine Plateau
         -- 2  = Valkurm Dunes
         -- 3  = Jugner Forest
@@ -346,20 +346,20 @@ xi.amk.helpers.getDiggingZone = function(player)
     return diggingZone
 end
 
-xi.amk.helpers.tryRandomlyPlaceDiggingLocation = function(player)
+invaderXim.amk.helpers.tryRandomlyPlaceDiggingLocation = function(player)
     -- Randomly selects a dig spot every time player zones into an AMK7 zone
-    local diggingZoneId = xi.amk.helpers.getDiggingZone(player)
-    local diggingSiteTable = xi.amk.helpers.digSites[diggingZoneId].spots
+    local diggingZoneId = invaderXim.amk.helpers.getDiggingZone(player)
+    local diggingSiteTable = invaderXim.amk.helpers.digSites[diggingZoneId].spots
     player:setLocalVar('Mission[10][6]diggingSpot', math.random(#diggingSiteTable))
 end
 
-xi.amk.helpers.chocoboDig = function(player, zoneId, text)
-    local diggingZoneId = xi.amk.helpers.getDiggingZone(player)
+invaderXim.amk.helpers.chocoboDig = function(player, zoneId, text)
+    local diggingZoneId = invaderXim.amk.helpers.getDiggingZone(player)
     local diggingSpot = player:getLocalVar('Mission[10][6]diggingSpot')
-    local diggingSiteTable = xi.amk.helpers.digSites[diggingZoneId].spots
+    local diggingSiteTable = invaderXim.amk.helpers.digSites[diggingZoneId].spots
 
     if
-        player:hasKeyItem(xi.ki.MOLDY_WORM_EATEN_CHEST) or
+        player:hasKeyItem(invaderXim.ki.MOLDY_WORM_EATEN_CHEST) or
         zoneId ~= diggingZoneId
     then
         return false
@@ -376,7 +376,7 @@ xi.amk.helpers.chocoboDig = function(player, zoneId, text)
 
     -- Success!
     if distance < 5 then
-        npcUtil.giveKeyItem(player, xi.ki.MOLDY_WORM_EATEN_CHEST)
+        npcUtil.giveKeyItem(player, invaderXim.ki.MOLDY_WORM_EATEN_CHEST)
         return true
     end
 
@@ -421,7 +421,7 @@ end
 -----------------------------------
 -- Puzzle 1 - Elemental Numbers!
 -----------------------------------
-xi.amk.helpers.pipSets =
+invaderXim.amk.helpers.pipSets =
 {
     -- [Answer]: 0-9
     -- {
@@ -500,17 +500,17 @@ xi.amk.helpers.pipSets =
     },
 }
 
-xi.amk.helpers.puzzleOneOnTrigger = function(player, npc, mission, offset)
+invaderXim.amk.helpers.puzzleOneOnTrigger = function(player, npc, mission, offset)
     local pipSet = mission:getLocalVar(player, '[p1]pipSet') - 1
     local pos = npc:getPos()
-    local element = xi.amk.helpers.pipSets[pipSet][offset]
+    local element = invaderXim.amk.helpers.pipSets[pipSet][offset]
 
     return mission:progressEvent(509 + offset,
         pos.x * 1000,
         pos.z * 1000,
         pos.y * 1000,
         element,
-        xi.ki.MAP_OF_THE_NORTHLANDS_AREA
+        invaderXim.ki.MAP_OF_THE_NORTHLANDS_AREA
     )
 end
 
@@ -522,7 +522,7 @@ end
 -- Stooge CS locations: 1 = option one, 2 = option two, 3 = option three
 -- Variables are named as 'option' if 0-indexed, as 'stooge' if 1-indexed
 -----------------------------------
-local xarc = zones[xi.zone.XARCABARD]
+local xarc = zones[invaderXim.zone.XARCABARD]
 
 -- returns -1 or 1 to offset the wrong answer randomly
 local randomSign = function()
@@ -530,7 +530,7 @@ local randomSign = function()
 end
 
 -- Structured list of the trivia questions
-xi.amk.helpers.triviaQuestions =
+invaderXim.amk.helpers.triviaQuestions =
 {
     -- 0 : Add your current hit points to your current magic points, and you get…?
     [0] = function(player)
@@ -548,7 +548,7 @@ xi.amk.helpers.triviaQuestions =
     -- 1 : The sum total of each and every one of your job levels is?
     [1] = function(player)
         local jobTotal = 0
-        for i = xi.job.WAR, xi.job.RUN do
+        for i = invaderXim.job.WAR, invaderXim.job.RUN do
             jobTotal = jobTotal + player:getJobLevel(i)
         end
 
@@ -560,7 +560,7 @@ xi.amk.helpers.triviaQuestions =
     -- 2 : The sum total of each of your crafting skill levels is?
     [2] = function(player)
         local craftTotal = 0
-        for craft = xi.skill.FISHING, xi.skill.SYNERGY do
+        for craft = invaderXim.skill.FISHING, invaderXim.skill.SYNERGY do
             craftTotal = craftTotal + math.floor(player:getCharSkillLevel(craft) / 10)
         end
 
@@ -582,7 +582,7 @@ xi.amk.helpers.triviaQuestions =
     -- 3 : The sum total of each one of your current elemental resistance levels is?
     [3] = function(player)
         local elementTotal = 0
-        for mod = xi.mod.FIRE_MEVA, xi.mod.DARK_MEVA do
+        for mod = invaderXim.mod.FIRE_MEVA, invaderXim.mod.DARK_MEVA do
             elementTotal = elementTotal + player:getMod(mod)
         end
 
@@ -599,7 +599,7 @@ xi.amk.helpers.triviaQuestions =
 
     -- 4 : The total number of foes you’ve felled is?
     [4] = function(player)
-        local right = player:getHistory(xi.history.ENEMIES_DEFEATED)
+        local right = player:getHistory(invaderXim.history.ENEMIES_DEFEATED)
         local wrong = right + (randomSign() * math.floor(right / 2))
 
         if wrong == right then
@@ -612,7 +612,7 @@ xi.amk.helpers.triviaQuestions =
 
     -- 5 : Multiply your current attack and defense, and what do you get!?
     [5] = function(player)
-        local right = player:getStat(xi.mod.ATT) * player:getStat(xi.mod.DEF)
+        local right = player:getStat(invaderXim.mod.ATT) * player:getStat(invaderXim.mod.DEF)
         local wrong = right + (randomSign() * math.floor(right / 2))
 
         if wrong == right then
@@ -629,7 +629,7 @@ xi.amk.helpers.triviaQuestions =
 
     -- 6 : The total number of times you’ve strolled through the doors of your Mog House is?
     [6] = function(player)
-        local right = player:getHistory(xi.history.MH_ENTRANCES)
+        local right = player:getHistory(invaderXim.history.MH_ENTRANCES)
         local wrong = right + (randomSign() * math.floor(right / 2))
 
         return { right, wrong }
@@ -637,7 +637,7 @@ xi.amk.helpers.triviaQuestions =
 
     -- 7 : The total number of times you’ve been incapacitated by your enemies is?
     [7] = function(player)
-        local right = player:getHistory(xi.history.TIMES_KNOCKED_OUT)
+        local right = player:getHistory(invaderXim.history.TIMES_KNOCKED_OUT)
         local wrong = right + (randomSign() * math.floor(right / 2))
 
         if wrong == right then
@@ -654,7 +654,7 @@ xi.amk.helpers.triviaQuestions =
 
     -- 8 : The total number of times you’ve participated in a party is?
     [8] = function(player)
-        local right = player:getHistory(xi.history.JOINED_PARTIES)
+        local right = player:getHistory(invaderXim.history.JOINED_PARTIES)
         local wrong = right + (randomSign() * math.floor(right / 2))
 
         if wrong == right then
@@ -671,7 +671,7 @@ xi.amk.helpers.triviaQuestions =
 
     -- 9 : The total number of times you’ve affiliated yourself with an alliance is?
     [9] = function(player)
-        local right = player:getHistory(xi.history.JOINED_ALLIANCES)
+        local right = player:getHistory(invaderXim.history.JOINED_ALLIANCES)
         local wrong = right + (randomSign() * math.floor(right / 2))
 
         if wrong == right then
@@ -689,7 +689,7 @@ xi.amk.helpers.triviaQuestions =
 
 local assignRandomTriviaQuestions = function(player, mission)
     local questions = {}
-    for i, _ in pairs(xi.amk.helpers.triviaQuestions) do
+    for i, _ in pairs(invaderXim.amk.helpers.triviaQuestions) do
         table.insert(questions, i)
     end
 
@@ -722,7 +722,7 @@ local stooges =
     [xarc.npc.OPTION_THREE] = { stoogeNum = 3, answerOne = 0, answerTwo = 1 },
 }
 
-xi.amk.helpers.puzzleTwoOnTrigger = function(player, npc, mission)
+invaderXim.amk.helpers.puzzleTwoOnTrigger = function(player, npc, mission)
     local p2Progress = mission:getLocalVar(player, '[p2]progress')
 
     -- Starting puzzle, assign questions
@@ -734,7 +734,7 @@ xi.amk.helpers.puzzleTwoOnTrigger = function(player, npc, mission)
 
     -- Puzzle already beaten, show flavor text
     if
-        player:hasKeyItem(xi.ki.GAUNTLET_CHALLENGE_KUPON) or
+        player:hasKeyItem(invaderXim.ki.GAUNTLET_CHALLENGE_KUPON) or
         player:getCharVar('Mission[10][12]progress') == 3
     then
         p2Progress = 10
@@ -764,13 +764,13 @@ xi.amk.helpers.puzzleTwoOnTrigger = function(player, npc, mission)
     end
 end
 
-xi.amk.helpers.puzzleTwoOnEventUpdate = function(player, csid, option, npc, mission)
+invaderXim.amk.helpers.puzzleTwoOnEventUpdate = function(player, csid, option, npc, mission)
     if option >= 1 and option <= 3 then
         local stooge = stooges[npc:getID()]
         local timeLimit = os.time() + 180 -- Three minutes
         local p2Progress = mission:getLocalVar(player, '[p2]progress')
         local currentQuestion = mission:getLocalVar(player, '[p2]question' .. p2Progress)
-        local answers = xi.amk.helpers.triviaQuestions[currentQuestion](player)
+        local answers = invaderXim.amk.helpers.triviaQuestions[currentQuestion](player)
 
         -- Right and wrong answer/stooge has to be randomized in terms of order given to updateEvent
         -- Randomize which of the two other options is correct.  Set vars to a default choice, then swap only when answerOne is 2
@@ -810,7 +810,7 @@ xi.amk.helpers.puzzleTwoOnEventUpdate = function(player, csid, option, npc, miss
     end
 end
 
-xi.amk.helpers.puzzleTwoOnEventFinish = function(player, csid, option, npc, mission)
+invaderXim.amk.helpers.puzzleTwoOnEventFinish = function(player, csid, option, npc, mission)
     local p2Progress = mission:getLocalVar(player, '[p2]progress')
     if csid == 200 then
         if option == 0 then
@@ -821,8 +821,8 @@ xi.amk.helpers.puzzleTwoOnEventFinish = function(player, csid, option, npc, miss
         elseif option == 2 and p2Progress == 4 then
             -- Won game, reset all vars
             resetPuzzleVars(player, mission)
-            npcUtil.giveKeyItem(player, xi.ki.GAUNTLET_CHALLENGE_KUPON)
-            player:delKeyItem(xi.ki.TRIVIA_CHALLENGE_KUPON)
+            npcUtil.giveKeyItem(player, invaderXim.ki.GAUNTLET_CHALLENGE_KUPON)
+            player:delKeyItem(invaderXim.ki.TRIVIA_CHALLENGE_KUPON)
 
             -- Advance to puzzle 3
             mission:setVar(player, 'progress', 3)
@@ -830,11 +830,11 @@ xi.amk.helpers.puzzleTwoOnEventFinish = function(player, csid, option, npc, miss
     end
 end
 
-xi.amk.helpers.puzzleFourOnEventFinish = function(player, csid, option, npc, mission)
+invaderXim.amk.helpers.puzzleFourOnEventFinish = function(player, csid, option, npc, mission)
     if option == 1 then
         mission:setVar(player, 'cohortIdx', 0)
-        npcUtil.giveKeyItem(player, xi.ki.MEGA_BONANZA_KUPON)
-        player:delKeyItem(xi.ki.FESTIVAL_SOUVENIR_KUPON)
+        npcUtil.giveKeyItem(player, invaderXim.ki.MEGA_BONANZA_KUPON)
+        player:delKeyItem(invaderXim.ki.FESTIVAL_SOUVENIR_KUPON)
 
         -- Advance to final fight
         mission:setVar(player, 'progress', 5)

@@ -3,7 +3,7 @@
 --  Mob: Desert Dhalmel
 -- Note: Place holder for Celphie
 -----------------------------------
-local ID = zones[xi.zone.WESTERN_ALTEPA_DESERT]
+local ID = zones[invaderXim.zone.WESTERN_ALTEPA_DESERT]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -14,11 +14,11 @@ local celphiePHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 135, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 135, 1, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, celphiePHTable, 10, 7200) -- 2 hours
+    invaderXim.mob.phOnDespawn(mob, celphiePHTable, 10, 7200) -- 2 hours
 end
 
 return entity

@@ -3,41 +3,41 @@
 -- Angelica !pos -64 -9.25 -9 238
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.A_POSE_BY_ANY_OTHER_NAME)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.A_POSE_BY_ANY_OTHER_NAME)
 
 local poseItems =
 {
-    [xi.job.WAR] = xi.item.BRONZE_HARNESS,
-    [xi.job.MNK] = xi.item.ROBE,
-    [xi.job.WHM] = xi.item.TUNIC,
-    [xi.job.BLM] = xi.item.TUNIC,
-    [xi.job.RDM] = xi.item.TUNIC,
-    [xi.job.THF] = xi.item.LEATHER_VEST,
-    [xi.job.PLD] = xi.item.BRONZE_HARNESS,
-    [xi.job.DRK] = xi.item.BRONZE_HARNESS,
-    [xi.job.BST] = xi.item.LEATHER_VEST,
-    [xi.job.BRD] = xi.item.ROBE,
-    [xi.job.RNG] = xi.item.LEATHER_VEST,
-    [xi.job.SAM] = xi.item.KENPOGI,
-    [xi.job.NIN] = xi.item.KENPOGI,
-    [xi.job.DRG] = xi.item.BRONZE_HARNESS,
-    [xi.job.SMN] = xi.item.TUNIC,
-    [xi.job.BLU] = xi.item.ROBE,
-    [xi.job.COR] = xi.item.BRONZE_HARNESS,
-    [xi.job.PUP] = xi.item.TUNIC,
-    [xi.job.DNC] = xi.item.LEATHER_VEST,
-    [xi.job.SCH] = xi.item.TUNIC,
-    [xi.job.GEO] = xi.item.TUNIC,
-    [xi.job.RUN] = xi.item.BRONZE_HARNESS,
+    [invaderXim.job.WAR] = invaderXim.item.BRONZE_HARNESS,
+    [invaderXim.job.MNK] = invaderXim.item.ROBE,
+    [invaderXim.job.WHM] = invaderXim.item.TUNIC,
+    [invaderXim.job.BLM] = invaderXim.item.TUNIC,
+    [invaderXim.job.RDM] = invaderXim.item.TUNIC,
+    [invaderXim.job.THF] = invaderXim.item.LEATHER_VEST,
+    [invaderXim.job.PLD] = invaderXim.item.BRONZE_HARNESS,
+    [invaderXim.job.DRK] = invaderXim.item.BRONZE_HARNESS,
+    [invaderXim.job.BST] = invaderXim.item.LEATHER_VEST,
+    [invaderXim.job.BRD] = invaderXim.item.ROBE,
+    [invaderXim.job.RNG] = invaderXim.item.LEATHER_VEST,
+    [invaderXim.job.SAM] = invaderXim.item.KENPOGI,
+    [invaderXim.job.NIN] = invaderXim.item.KENPOGI,
+    [invaderXim.job.DRG] = invaderXim.item.BRONZE_HARNESS,
+    [invaderXim.job.SMN] = invaderXim.item.TUNIC,
+    [invaderXim.job.BLU] = invaderXim.item.ROBE,
+    [invaderXim.job.COR] = invaderXim.item.BRONZE_HARNESS,
+    [invaderXim.job.PUP] = invaderXim.item.TUNIC,
+    [invaderXim.job.DNC] = invaderXim.item.LEATHER_VEST,
+    [invaderXim.job.SCH] = invaderXim.item.TUNIC,
+    [invaderXim.job.GEO] = invaderXim.item.TUNIC,
+    [invaderXim.job.RUN] = invaderXim.item.BRONZE_HARNESS,
 }
 
 quest.reward =
 {
     fame = 75,
-    fameArea = xi.fameArea.WINDURST,
-    item = xi.item.COPY_OF_ANCIENT_BLOOD,
-    title = xi.title.SUPER_MODEL,
-    keyItem = xi.ki.ANGELICAS_AUTOGRAPH,
+    fameArea = invaderXim.fameArea.WINDURST,
+    item = invaderXim.item.COPY_OF_ANCIENT_BLOOD,
+    title = invaderXim.title.SUPER_MODEL,
+    keyItem = invaderXim.ki.ANGELICAS_AUTOGRAPH,
 }
 
 quest.sections =
@@ -45,16 +45,16 @@ quest.sections =
     -- Section: Quest available
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and player:needToZone() == false
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and player:needToZone() == false
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Angelica'] =
             {
                 onTrigger = function(player, npc)
                     local desiredBody = poseItems[player:getMainJob()]
-                    local currentBody = player:getEquipID(xi.slot.BODY)
+                    local currentBody = player:getEquipID(invaderXim.slot.BODY)
                     if currentBody ~= desiredBody then
                         if quest:getVar(player, 'Prog') == 1 then
                             return quest:progressEvent(90)
@@ -94,10 +94,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 0
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 0
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Angelica'] =
             {
@@ -116,17 +116,17 @@ quest.sections =
     -- Section: Finish quest
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog ~= 0
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog ~= 0
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Angelica'] =
             {
                 onTrigger = function(player, npc)
                     local requestedBody = quest:getVar(player, 'Prog')
                     if quest:getVar(player, 'Stage') >= os.time() then -- Under time. Quest completed.
-                        if player:getEquipID(xi.slot.BODY) == requestedBody then
+                        if player:getEquipID(invaderXim.slot.BODY) == requestedBody then
                             return quest:progressEvent(96)
                         else
                             return quest:progressEvent(93, 0, 0, 0, requestedBody)
@@ -144,10 +144,10 @@ quest.sections =
                 end,
 
                 [102] = function(player, csid, option, npc) -- Quest failed.
-                    player:delQuest(xi.questLog.WINDURST, xi.quest.id.windurst.A_POSE_BY_ANY_OTHER_NAME)
+                    player:delQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.A_POSE_BY_ANY_OTHER_NAME)
                     quest:setVar(player, 'Prog', 0) -- TODO: Confirm that initial CS has to be repeated aswell upon quest failure. If not, set var to 1 here.
                     quest:setVar(player, 'Stage', 0)
-                    player:addTitle(xi.title.LOWER_THAN_THE_LOWEST_TUNNEL_WORM)
+                    player:addTitle(invaderXim.title.LOWER_THAN_THE_LOWEST_TUNNEL_WORM)
                     player:needToZone(true)
                 end,
             },
@@ -157,10 +157,10 @@ quest.sections =
     -- Section: Quest Completed
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Angelica'] =
             {

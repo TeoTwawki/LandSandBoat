@@ -7,14 +7,14 @@
 -- _5i0 (Iron Door) : !pos 247.735 18.499 -142.267 198
 -- Ratihb           : !pos 75.225 -6.000 -137.203 50
 -----------------------------------
-local mazeID = zones[xi.zone.MAZE_OF_SHAKHRAMI]
+local mazeID = zones[invaderXim.zone.MAZE_OF_SHAKHRAMI]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.EQUIPPED_FOR_ALL_OCCASIONS)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.EQUIPPED_FOR_ALL_OCCASIONS)
 
 quest.reward =
 {
-    item  = xi.item.TRUMP_GUN,
+    item  = invaderXim.item.TRUMP_GUN,
 }
 
 quest.sections =
@@ -22,12 +22,12 @@ quest.sections =
     -- Section: Quest
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getMainJob() == xi.job.COR and
-                player:getMainLvl() >= xi.settings.main.AF1_QUEST_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getMainJob() == invaderXim.job.COR and
+                player:getMainLvl() >= invaderXim.settings.main.AF1_QUEST_LEVEL
         end,
 
-        [xi.zone.ARRAPAGO_REEF] =
+        [invaderXim.zone.ARRAPAGO_REEF] =
         {
             ['qm6'] =
             {
@@ -49,10 +49,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.MAZE_OF_SHAKHRAMI] =
+        [invaderXim.zone.MAZE_OF_SHAKHRAMI] =
         {
             ['_5i0'] =
             {
@@ -79,13 +79,13 @@ quest.sections =
             onEventFinish =
             {
                 [66] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.WHEEL_LOCK_TRIGGER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.WHEEL_LOCK_TRIGGER)
                     quest:setVar(player, 'Prog', 3)
                 end,
             },
         },
 
-        [xi.zone.ARRAPAGO_REEF] =
+        [invaderXim.zone.ARRAPAGO_REEF] =
         {
             ['qm6'] =
             {
@@ -99,13 +99,13 @@ quest.sections =
             onEventFinish =
             {
                 [231] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.WHEEL_LOCK_TRIGGER)
+                    player:delKeyItem(invaderXim.ki.WHEEL_LOCK_TRIGGER)
                     quest:setVar(player, 'Prog', 4)
                 end,
             },
         },
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Ratihb'] =
             {

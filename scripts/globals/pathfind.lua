@@ -5,7 +5,7 @@
 -----------------------------------
 xi = xi or {}
 
-xi.path =
+invaderXim.path =
 {
     flag =
     {
@@ -32,13 +32,13 @@ xi.path =
 
     -- returns first point in given path
     first = function(points)
-        return xi.path.get(points, 1)
+        return invaderXim.path.get(points, 1)
     end,
 
     -- returns last point in given path
     last = function(points)
-        local length = xi.path.length(points)
-        local result = xi.path.get(points, length)
+        local length = invaderXim.path.length(points)
+        local result = invaderXim.path.get(points, length)
         return result
     end,
 

@@ -6,12 +6,12 @@
 -- Bulwark_Gate : !pos -447.174 -1.831 342.417 98
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.BORNE_BY_THE_WIND)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.BORNE_BY_THE_WIND)
 
 mission.reward =
 {
-    keyItem     = xi.ki.UNDERPASS_HATCH_KEY,
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.A_NATION_ON_THE_BRINK },
+    keyItem     = invaderXim.ki.UNDERPASS_HATCH_KEY,
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.A_NATION_ON_THE_BRINK },
 }
 
 mission.sections =
@@ -25,17 +25,17 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 0
         end,
 
-        [xi.zone.BASTOK_MARKETS_S] =
+        [invaderXim.zone.BASTOK_MARKETS_S] =
         {
             ['Radford'] = mission:event(177, 87, 23),
         },
 
-        [xi.zone.WINDURST_WATERS_S] =
+        [invaderXim.zone.WINDURST_WATERS_S] =
         {
             ['Velda-Galda'] = mission:event(180, 94, 3),
         },
 
-        [xi.zone.SAUROMUGUE_CHAMPAIGN_S] =
+        [invaderXim.zone.SAUROMUGUE_CHAMPAIGN_S] =
         {
             ['Bulwark_Gate'] =
             {

@@ -3,7 +3,7 @@
 --  NPC: Macchi Gazlitah
 -- TODO: Add support for occasional stock.
 -----------------------------------
-local ID = zones[xi.zone.RULUDE_GARDENS]
+local ID = zones[invaderXim.zone.RULUDE_GARDENS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -31,7 +31,7 @@ entity.onTrigger = function(player, npc)
     }
 
     player:showText(npc, ID.text.MACCHI_GAZLITAH_SHOP_DIALOG1)
-    xi.shop.general(player, stock, xi.fameArea.JEUNO)
+    invaderXim.shop.general(player, stock, invaderXim.fameArea.JEUNO)
 end
 
 return entity

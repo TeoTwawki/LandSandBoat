@@ -16,10 +16,10 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    local duration = xi.mobskills.calculateDuration(skill:getTP(), 120, 180)
-    skill:setMsg(xi.mobskills.mobGazeMove(mob, target, xi.effect.SLEEP_I, 1, 0, duration))
+    local duration = invaderXim.mobskills.calculateDuration(skill:getTP(), 120, 180)
+    skill:setMsg(invaderXim.mobskills.mobGazeMove(mob, target, invaderXim.effect.SLEEP_I, 1, 0, duration))
 
-    return xi.effect.SLEEP_I
+    return invaderXim.effect.SLEEP_I
 end
 
 return mobskillObject

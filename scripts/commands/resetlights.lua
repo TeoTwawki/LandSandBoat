@@ -29,7 +29,7 @@ commandObj.onTrigger = function(player, target)
         end
     end
 
-    xi.abyssea.resetPlayerLights(targ)
+    invaderXim.abyssea.resetPlayerLights(targ)
     player:printToPlayer(string.format('%s\'s lights have been reset!. ', targ:getName()))
 end
 

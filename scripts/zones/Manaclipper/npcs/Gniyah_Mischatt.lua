@@ -7,11 +7,11 @@
 ---@type TNpcEntity
 local entity = {}
 
-local timekeeperLocation = xi.manaclipper.location.MANACLIPPER
+local timekeeperLocation = invaderXim.manaclipper.location.MANACLIPPER
 local timekeeperEventId = 2
 
 entity.onTrigger = function(player, npc)
-    xi.manaclipper.timekeeperOnTrigger(player, timekeeperLocation, timekeeperEventId)
+    invaderXim.manaclipper.timekeeperOnTrigger(player, timekeeperLocation, timekeeperEventId)
 end
 
 return entity

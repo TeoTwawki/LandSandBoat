@@ -3,7 +3,7 @@
 --  Mob: Demon Warlock
 -- Note: PH for Viscount Morax
 -----------------------------------
-local ID = zones[xi.zone.CASTLE_ZVAHL_KEEP]
+local ID = zones[invaderXim.zone.CASTLE_ZVAHL_KEEP]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -68,7 +68,7 @@ local viscountPHTable =
 }
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, viscountPHTable, 10, 1, { spawnPoints = viscountSpawnPoints }) -- No respawn
+    invaderXim.mob.phOnDespawn(mob, viscountPHTable, 10, 1, { spawnPoints = viscountSpawnPoints }) -- No respawn
 end
 
 return entity

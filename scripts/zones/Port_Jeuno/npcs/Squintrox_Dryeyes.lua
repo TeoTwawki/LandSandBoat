@@ -6,7 +6,7 @@
 -- wiki has good info on his behavior: https://ffxiclopedia.fandom.com/wiki/Squintrox_Dryeyes
 -- Essentially, he accomodates re-obtaining key items from completed mini expansion missions
 -----------------------------------
-local ID = zones[xi.zone.PORT_JEUNO]
+local ID = zones[invaderXim.zone.PORT_JEUNO]
 require('scripts/missions/amk/helpers')
 -----------------------------------
 ---@type TNpcEntity
@@ -22,117 +22,117 @@ local menuMetadata =
     {
         ['initialList'] =
         {
-            xi.ki.CRIMSON_KEY,
-            xi.ki.VIRIDIAN_KEY,
-            xi.ki.WHITE_CORAL_KEY,
-            xi.ki.BLUE_CORAL_KEY,
-            xi.ki.BLACK_CORAL_KEY,
-            xi.ki.MOOGLE_KEY,
-            xi.ki.BIRD_KEY,
-            xi.ki.BOMB_KEY,
+            invaderXim.ki.CRIMSON_KEY,
+            invaderXim.ki.VIRIDIAN_KEY,
+            invaderXim.ki.WHITE_CORAL_KEY,
+            invaderXim.ki.BLUE_CORAL_KEY,
+            invaderXim.ki.BLACK_CORAL_KEY,
+            invaderXim.ki.MOOGLE_KEY,
+            invaderXim.ki.BIRD_KEY,
+            invaderXim.ki.BOMB_KEY,
         },
-        [xi.ki.CRIMSON_KEY] =
+        [invaderXim.ki.CRIMSON_KEY] =
         {
             expansion    = 1,
             charVar      = 'LastCrimsonKey',
             reqItems     =
             {
-                xi.item.SEEDSPALL_LUX,
-                xi.item.SEEDSPALL_LUNA,
-                xi.item.SEEDSPALL_ASTRUM,
+                invaderXim.item.SEEDSPALL_LUX,
+                invaderXim.item.SEEDSPALL_LUNA,
+                invaderXim.item.SEEDSPALL_ASTRUM,
             },
         },
-        [xi.ki.VIRIDIAN_KEY] =
+        [invaderXim.ki.VIRIDIAN_KEY] =
         {
             expansion   = 1,
             charVar     = 'LastViridianKey',
             reqKeyItems =
             {
-                xi.ki.BOWL_OF_BLAND_GOBLIN_SALAD,
-                xi.ki.JUG_OF_GREASY_GOBLIN_JUICE,
-                xi.ki.CHUNK_OF_SMOKED_GOBLIN_GRUB,
+                invaderXim.ki.BOWL_OF_BLAND_GOBLIN_SALAD,
+                invaderXim.ki.JUG_OF_GREASY_GOBLIN_JUICE,
+                invaderXim.ki.CHUNK_OF_SMOKED_GOBLIN_GRUB,
             }
         },
-        [xi.ki.WHITE_CORAL_KEY] =
+        [invaderXim.ki.WHITE_CORAL_KEY] =
         {
             expansion = 2,
             charVar   = 'LastWhiteCoralKey',
             reqItems  =
             {
-                xi.item.ORCISH_PLATE_ARMOR,
-                xi.item.QUADAV_BACKSCALE,
-                xi.item.YAGUDO_CAULK,
+                invaderXim.item.ORCISH_PLATE_ARMOR,
+                invaderXim.item.QUADAV_BACKSCALE,
+                invaderXim.item.YAGUDO_CAULK,
             },
         },
-        [xi.ki.BLUE_CORAL_KEY] =
+        [invaderXim.ki.BLUE_CORAL_KEY] =
         {
             expansion   = 2,
             charVar     = 'LastBlueCoralKey',
             reqKeyItems =
             {
-                xi.ki.STURDY_METAL_STRIP,
-                xi.ki.PIECE_OF_RUGGED_TREE_BARK,
-                xi.ki.SAVORY_LAMB_ROAST,
+                invaderXim.ki.STURDY_METAL_STRIP,
+                invaderXim.ki.PIECE_OF_RUGGED_TREE_BARK,
+                invaderXim.ki.SAVORY_LAMB_ROAST,
             },
         },
-        [xi.ki.BLACK_CORAL_KEY] =
+        [invaderXim.ki.BLACK_CORAL_KEY] =
         {
             expansion   = 2,
             charVar     = 'LastBlackCoralKey',
             reqKeyItems =
             {
-                xi.ki.MOLDY_WORM_EATEN_CHEST,
+                invaderXim.ki.MOLDY_WORM_EATEN_CHEST,
             },
         },
-        [xi.ki.MOOGLE_KEY] =
+        [invaderXim.ki.MOOGLE_KEY] =
         {
             expansion      = 3,
             charVar        = 'LastMoogleKey',
             reqItemCharVar = 'ASA_kit',
             reqItems       =
             {
-                xi.item.ENFEEBLEMENT_KIT_OF_POISON,
-                xi.item.ENFEEBLEMENT_KIT_OF_BLINDNESS,
-                xi.item.ENFEEBLEMENT_KIT_OF_SLEEP,
-                xi.item.ENFEEBLEMENT_KIT_OF_SILENCE,
+                invaderXim.item.ENFEEBLEMENT_KIT_OF_POISON,
+                invaderXim.item.ENFEEBLEMENT_KIT_OF_BLINDNESS,
+                invaderXim.item.ENFEEBLEMENT_KIT_OF_SLEEP,
+                invaderXim.item.ENFEEBLEMENT_KIT_OF_SILENCE,
             }
         },
-        [xi.ki.BIRD_KEY] =
+        [invaderXim.ki.BIRD_KEY] =
         {
             expansion    = 3,
             charVar      = 'LastBirdKey',
             reqItemCount = 3,
             reqKeyItems  =
             {
-                xi.ki.AMBER_COUNTERSEAL,
-                xi.ki.AZURE_COUNTERSEAL,
-                xi.ki.CERULEAN_COUNTERSEAL,
-                xi.ki.EMERALD_COUNTERSEAL,
-                xi.ki.SCARLET_COUNTERSEAL,
-                xi.ki.VIOLET_COUNTERSEAL,
+                invaderXim.ki.AMBER_COUNTERSEAL,
+                invaderXim.ki.AZURE_COUNTERSEAL,
+                invaderXim.ki.CERULEAN_COUNTERSEAL,
+                invaderXim.ki.EMERALD_COUNTERSEAL,
+                invaderXim.ki.SCARLET_COUNTERSEAL,
+                invaderXim.ki.VIOLET_COUNTERSEAL,
             },
             prereqKeyItems =
             {
-                xi.ki.DOMINAS_SCARLET_SEAL,
-                xi.ki.DOMINAS_CERULEAN_SEAL,
-                xi.ki.DOMINAS_EMERALD_SEAL,
-                xi.ki.DOMINAS_AMBER_SEAL,
-                xi.ki.DOMINAS_VIOLET_SEAL,
-                xi.ki.DOMINAS_AZURE_SEAL,
+                invaderXim.ki.DOMINAS_SCARLET_SEAL,
+                invaderXim.ki.DOMINAS_CERULEAN_SEAL,
+                invaderXim.ki.DOMINAS_EMERALD_SEAL,
+                invaderXim.ki.DOMINAS_AMBER_SEAL,
+                invaderXim.ki.DOMINAS_VIOLET_SEAL,
+                invaderXim.ki.DOMINAS_AZURE_SEAL,
             },
         },
-        [xi.ki.BOMB_KEY] =
+        [invaderXim.ki.BOMB_KEY] =
         {
             expansion   = 3,
             charVar     = 'LastBombKey',
             reqKeyItems =
             {
-                xi.ki.LUMINOUS_PURPLE_FRAGMENT,
-                xi.ki.LUMINOUS_YELLOW_FRAGMENT,
-                xi.ki.LUMINOUS_BLUE_FRAGMENT,
-                xi.ki.LUMINOUS_BEIGE_FRAGMENT,
-                xi.ki.LUMINOUS_RED_FRAGMENT,
-                xi.ki.LUMINOUS_GREEN_FRAGMENT,
+                invaderXim.ki.LUMINOUS_PURPLE_FRAGMENT,
+                invaderXim.ki.LUMINOUS_YELLOW_FRAGMENT,
+                invaderXim.ki.LUMINOUS_BLUE_FRAGMENT,
+                invaderXim.ki.LUMINOUS_BEIGE_FRAGMENT,
+                invaderXim.ki.LUMINOUS_RED_FRAGMENT,
+                invaderXim.ki.LUMINOUS_GREEN_FRAGMENT,
             },
         },
     },
@@ -144,9 +144,9 @@ local menuMetadata =
             costSeals        = 5,
             relevantKeyItems =
             {
-                xi.ki.SEEDSPALL_ROSEUM,
-                xi.ki.SEEDSPALL_CAERULUM,
-                xi.ki.SEEDSPALL_VIRIDIS,
+                invaderXim.ki.SEEDSPALL_ROSEUM,
+                invaderXim.ki.SEEDSPALL_CAERULUM,
+                invaderXim.ki.SEEDSPALL_VIRIDIS,
             },
         },
         {
@@ -155,7 +155,7 @@ local menuMetadata =
             costSeals        = 15,
             relevantKeyItems =
             {
-                xi.ki.MARK_OF_SEED,
+                invaderXim.ki.MARK_OF_SEED,
             },
         },
         {
@@ -164,7 +164,7 @@ local menuMetadata =
             costSeals        = 20,
             relevantKeyItems =
             {
-                xi.ki.OMNIS_STONE,
+                invaderXim.ki.OMNIS_STONE,
             },
         },
         {
@@ -173,10 +173,10 @@ local menuMetadata =
             costSeals        = 5,
             relevantKeyItems =
             {
-                xi.ki.ORB_OF_CUPS,
-                xi.ki.ORB_OF_COINS,
-                xi.ki.ORB_OF_BATONS,
-                xi.ki.ORB_OF_SWORDS,
+                invaderXim.ki.ORB_OF_CUPS,
+                invaderXim.ki.ORB_OF_COINS,
+                invaderXim.ki.ORB_OF_BATONS,
+                invaderXim.ki.ORB_OF_SWORDS,
             },
         },
         {
@@ -185,7 +185,7 @@ local menuMetadata =
             costSeals        = 15,
             relevantKeyItems =
             {
-                xi.ki.NAVARATNA_TALISMAN,
+                invaderXim.ki.NAVARATNA_TALISMAN,
             },
         },
         {
@@ -194,7 +194,7 @@ local menuMetadata =
             costSeals        = 20,
             relevantKeyItems =
             {
-                xi.ki.MEGA_BONANZA_KUPON,
+                invaderXim.ki.MEGA_BONANZA_KUPON,
             },
         },
         {
@@ -203,7 +203,7 @@ local menuMetadata =
             costSeals        = 5,
             relevantKeyItems =
             {
-                xi.ki.BLACK_BOOK,
+                invaderXim.ki.BLACK_BOOK,
             },
         },
         {
@@ -212,14 +212,14 @@ local menuMetadata =
             costSeals        = 15,
             relevantKeyItems =
             {
-                xi.ki.WATER_SAP_CRYSTAL,
-                xi.ki.EARTH_SAP_CRYSTAL,
-                xi.ki.ICE_SAP_CRYSTAL,
-                xi.ki.WIND_SAP_CRYSTAL,
-                xi.ki.LIGHTNING_SAP_CRYSTAL,
-                xi.ki.FIRE_SAP_CRYSTAL,
-                xi.ki.LIGHT_SAP_CRYSTAL,
-                xi.ki.DARK_SAP_CRYSTAL,
+                invaderXim.ki.WATER_SAP_CRYSTAL,
+                invaderXim.ki.EARTH_SAP_CRYSTAL,
+                invaderXim.ki.ICE_SAP_CRYSTAL,
+                invaderXim.ki.WIND_SAP_CRYSTAL,
+                invaderXim.ki.LIGHTNING_SAP_CRYSTAL,
+                invaderXim.ki.FIRE_SAP_CRYSTAL,
+                invaderXim.ki.LIGHT_SAP_CRYSTAL,
+                invaderXim.ki.DARK_SAP_CRYSTAL,
             },
         },
         {
@@ -228,22 +228,22 @@ local menuMetadata =
             costSeals        = 20,
             relevantKeyItems =
             {
-                xi.ki.TABLET_OF_HEXES_GREED,
-                xi.ki.TABLET_OF_HEXES_ENVY,
-                xi.ki.TABLET_OF_HEXES_MALICE,
-                xi.ki.TABLET_OF_HEXES_DECEIT,
-                xi.ki.TABLET_OF_HEXES_PRIDE,
-                xi.ki.TABLET_OF_HEXES_BALE,
-                xi.ki.TABLET_OF_HEXES_DESPAIR,
-                xi.ki.TABLET_OF_HEXES_REGRET,
-                xi.ki.TABLET_OF_HEXES_RAGE,
-                xi.ki.TABLET_OF_HEXES_AGONY,
-                xi.ki.TABLET_OF_HEXES_DOLOR,
-                xi.ki.TABLET_OF_HEXES_RANCOR,
-                xi.ki.TABLET_OF_HEXES_STRIFE,
-                xi.ki.TABLET_OF_HEXES_PENURY,
-                xi.ki.TABLET_OF_HEXES_BLIGHT,
-                xi.ki.TABLET_OF_HEXES_DEATH,
+                invaderXim.ki.TABLET_OF_HEXES_GREED,
+                invaderXim.ki.TABLET_OF_HEXES_ENVY,
+                invaderXim.ki.TABLET_OF_HEXES_MALICE,
+                invaderXim.ki.TABLET_OF_HEXES_DECEIT,
+                invaderXim.ki.TABLET_OF_HEXES_PRIDE,
+                invaderXim.ki.TABLET_OF_HEXES_BALE,
+                invaderXim.ki.TABLET_OF_HEXES_DESPAIR,
+                invaderXim.ki.TABLET_OF_HEXES_REGRET,
+                invaderXim.ki.TABLET_OF_HEXES_RAGE,
+                invaderXim.ki.TABLET_OF_HEXES_AGONY,
+                invaderXim.ki.TABLET_OF_HEXES_DOLOR,
+                invaderXim.ki.TABLET_OF_HEXES_RANCOR,
+                invaderXim.ki.TABLET_OF_HEXES_STRIFE,
+                invaderXim.ki.TABLET_OF_HEXES_PENURY,
+                invaderXim.ki.TABLET_OF_HEXES_BLIGHT,
+                invaderXim.ki.TABLET_OF_HEXES_DEATH,
             },
         },
     },
@@ -321,34 +321,34 @@ end
 
 entity.onTrade = function(player, npc, trade)
     local count  = trade:getItemCount()
-    local ki     = xi.ki.MOOGLE_KEY
+    local ki     = invaderXim.ki.MOOGLE_KEY
     local asaKit = player:getCharVar(menuMetadata[1][ki].reqItemCharVar)
 
     if -- Crimson Key: Trade Seedspall's Lux, Luna, Astrum
-        trade:hasItemQty(menuMetadata[1][xi.ki.CRIMSON_KEY].reqItems[1], 1) and
-        trade:hasItemQty(menuMetadata[1][xi.ki.CRIMSON_KEY].reqItems[2], 1) and
-        trade:hasItemQty(menuMetadata[1][xi.ki.CRIMSON_KEY].reqItems[3], 1) and
+        trade:hasItemQty(menuMetadata[1][invaderXim.ki.CRIMSON_KEY].reqItems[1], 1) and
+        trade:hasItemQty(menuMetadata[1][invaderXim.ki.CRIMSON_KEY].reqItems[2], 1) and
+        trade:hasItemQty(menuMetadata[1][invaderXim.ki.CRIMSON_KEY].reqItems[3], 1) and
         count == 3 and
-        player:getCurrentMission(xi.mission.log_id.ACP) == xi.mission.id.acp.A_CRYSTALLINE_PROPHECY_FIN
+        player:getCurrentMission(invaderXim.mission.log_id.ACP) == invaderXim.mission.id.acp.A_CRYSTALLINE_PROPHECY_FIN
     then
-        ki = xi.ki.CRIMSON_KEY
+        ki = invaderXim.ki.CRIMSON_KEY
         tradeForKeyItem(player, trade, ki)
     elseif -- White Coral Key: orcish plate armor, quadav backscale, yagudo caulk
-        trade:hasItemQty(menuMetadata[1][xi.ki.WHITE_CORAL_KEY].reqItems[1], 1) and
-        trade:hasItemQty(menuMetadata[1][xi.ki.WHITE_CORAL_KEY].reqItems[2], 1) and
-        trade:hasItemQty(menuMetadata[1][xi.ki.WHITE_CORAL_KEY].reqItems[3], 1) and
+        trade:hasItemQty(menuMetadata[1][invaderXim.ki.WHITE_CORAL_KEY].reqItems[1], 1) and
+        trade:hasItemQty(menuMetadata[1][invaderXim.ki.WHITE_CORAL_KEY].reqItems[2], 1) and
+        trade:hasItemQty(menuMetadata[1][invaderXim.ki.WHITE_CORAL_KEY].reqItems[3], 1) and
         count == 3 and
-        player:getCurrentMission(xi.mission.log_id.AMK) == xi.mission.id.amk.A_MOOGLE_KUPO_DETAT_FIN
+        player:getCurrentMission(invaderXim.mission.log_id.AMK) == invaderXim.mission.id.amk.A_MOOGLE_KUPO_DETAT_FIN
     then
-        ki = xi.ki.WHITE_CORAL_KEY
+        ki = invaderXim.ki.WHITE_CORAL_KEY
         tradeForKeyItem(player, trade, ki)
     elseif -- Moogle Key: trade proper enfeebling kit
         asaKit ~= 0 and
         trade:hasItemQty(asaKit, 1) and
         count == 1 and
-        player:getCurrentMission(xi.mission.log_id.ASA) == xi.mission.id.asa.A_SHANTOTTO_ASCENSION_FIN
+        player:getCurrentMission(invaderXim.mission.log_id.ASA) == invaderXim.mission.id.asa.A_SHANTOTTO_ASCENSION_FIN
     then
-        ki = xi.ki.MOOGLE_KEY
+        ki = invaderXim.ki.MOOGLE_KEY
         if tradeForKeyItem(player, trade, ki) then
             player:setCharVar(menuMetadata[1][ki].reqItemCharVar, 0)
         end
@@ -359,16 +359,16 @@ end
 
 entity.onTrigger = function(player, npc)
     if
-        xi.settings.main.ENABLE_ACP == 0 and
-        xi.settings.main.ENABLE_AMK == 0 and
-        xi.settings.main.ENABLE_ASA == 0
+        invaderXim.settings.main.ENABLE_ACP == 0 and
+        invaderXim.settings.main.ENABLE_AMK == 0 and
+        invaderXim.settings.main.ENABLE_ASA == 0
     then
         player:showText(npc, ID.text.GET_LOST)
     else
         local now          = os.time()
-        local finishedACP  = player:getCurrentMission(xi.mission.log_id.ACP) == xi.mission.id.acp.A_CRYSTALLINE_PROPHECY_FIN
-        local finishedAMK  = player:getCurrentMission(xi.mission.log_id.AMK) == xi.mission.id.amk.A_MOOGLE_KUPO_DETAT_FIN
-        local finishedASA  = player:getCurrentMission(xi.mission.log_id.ASA) == xi.mission.id.asa.A_SHANTOTTO_ASCENSION_FIN
+        local finishedACP  = player:getCurrentMission(invaderXim.mission.log_id.ACP) == invaderXim.mission.id.acp.A_CRYSTALLINE_PROPHECY_FIN
+        local finishedAMK  = player:getCurrentMission(invaderXim.mission.log_id.AMK) == invaderXim.mission.id.amk.A_MOOGLE_KUPO_DETAT_FIN
+        local finishedASA  = player:getCurrentMission(invaderXim.mission.log_id.ASA) == invaderXim.mission.id.asa.A_SHANTOTTO_ASCENSION_FIN
 
         -- Show only the key items available to retrive based on time gate and if you don't already have it
         local arg1 = 0
@@ -401,22 +401,22 @@ end
 entity.onEventUpdate = function(player, csid, option, npc)
     if csid == 323 then
         if option == 100 then -- Viridian Key
-            if verifyReqKeyItems(player, xi.ki.VIRIDIAN_KEY) then
+            if verifyReqKeyItems(player, invaderXim.ki.VIRIDIAN_KEY) then
                 player:updateEvent(1)
             else
                 player:updateEvent(0)
             end
         elseif option == 101 then -- blue coral Key
-            if verifyReqKeyItems(player, xi.ki.BLUE_CORAL_KEY) then
+            if verifyReqKeyItems(player, invaderXim.ki.BLUE_CORAL_KEY) then
                 player:updateEvent(3)
             else
                 player:updateEvent(0)
             end
         elseif option == 102 then -- black coral Key
-            local ki = xi.ki.BLACK_CORAL_KEY
+            local ki = invaderXim.ki.BLACK_CORAL_KEY
             if not player:hasKeyItem(menuMetadata[1][ki].reqKeyItems[1]) then
                 -- extracts the eventID for the digging zone
-                local diggingZoneEventID = xi.amk.helpers.getDiggingZone(player)
+                local diggingZoneEventID = invaderXim.amk.helpers.getDiggingZone(player)
                 if diggingZoneEventID ~= 0 then
                     player:updateEvent(0, 1, diggingZoneEventID)
                 else
@@ -424,7 +424,7 @@ entity.onEventUpdate = function(player, csid, option, npc)
                 end
             end
         elseif option == 103 then -- Moogle Key
-            local entry = menuMetadata[1][xi.ki.MOOGLE_KEY]
+            local entry = menuMetadata[1][invaderXim.ki.MOOGLE_KEY]
             local asaKit = player:getCharVar(entry.reqItemCharVar)
             if asaKit == 0 then
                 asaKit = entry.reqItems[math.random(1, #entry.reqItems)]
@@ -433,7 +433,7 @@ entity.onEventUpdate = function(player, csid, option, npc)
 
             player:updateEvent(asaKit)
         elseif option == 104 then -- Bird Key
-            local completedSeals = verifyReqKeyItems(player, xi.ki.BIRD_KEY)
+            local completedSeals = verifyReqKeyItems(player, invaderXim.ki.BIRD_KEY)
 
             -- if verifyReqKeyItems returns a positive number, it meens it was at least the minimum
             if not completedSeals or completedSeals <= 0 then
@@ -443,13 +443,13 @@ entity.onEventUpdate = function(player, csid, option, npc)
                 player:updateEvent(0, completedSeals, 2)
             end
         elseif option == 105 then -- Bomb Key
-            if not verifyReqKeyItems(player, xi.ki.BOMB_KEY) then
+            if not verifyReqKeyItems(player, invaderXim.ki.BOMB_KEY) then
                 player:updateEvent(0, 0, 0, 0, 0, 0, 3)
             end
         elseif option == 203 then -- 2nd page menu to choose helper key items to allow player to go off and repeat the mission for the key item
-            local finishedACP = player:getCurrentMission(xi.mission.log_id.ACP) == xi.mission.id.acp.A_CRYSTALLINE_PROPHECY_FIN
-            local finishedAMK = player:getCurrentMission(xi.mission.log_id.AMK) == xi.mission.id.amk.A_MOOGLE_KUPO_DETAT_FIN
-            local finishedASA = player:getCurrentMission(xi.mission.log_id.ASA) == xi.mission.id.asa.A_SHANTOTTO_ASCENSION_FIN
+            local finishedACP = player:getCurrentMission(invaderXim.mission.log_id.ACP) == invaderXim.mission.id.acp.A_CRYSTALLINE_PROPHECY_FIN
+            local finishedAMK = player:getCurrentMission(invaderXim.mission.log_id.AMK) == invaderXim.mission.id.amk.A_MOOGLE_KUPO_DETAT_FIN
+            local finishedASA = player:getCurrentMission(invaderXim.mission.log_id.ASA) == invaderXim.mission.id.asa.A_SHANTOTTO_ASCENSION_FIN
 
             local arg1 = 0
             for bitPos, entry in pairs(menuMetadata[2]) do
@@ -488,21 +488,21 @@ entity.onEventFinish = function(player, csid, option, npc)
             -- catchall "stop wasting my time" response, triggered via updateEvent(1)
             player:showText(player, ID.text.DRYEYES_1)
         elseif option == 100 then -- Viridian Key
-            takeReqKeyItems(player, xi.ki.VIRIDIAN_KEY)
+            takeReqKeyItems(player, invaderXim.ki.VIRIDIAN_KEY)
         elseif option == 101 then -- blue coral Key
-            takeReqKeyItems(player, xi.ki.BLUE_CORAL_KEY)
+            takeReqKeyItems(player, invaderXim.ki.BLUE_CORAL_KEY)
         elseif option == 102 then -- black coral Key
             -- shouldn't trigger without the moldy chest, but just in case since the logic above is complex
-            local ki = xi.ki.BLACK_CORAL_KEY
+            local ki = invaderXim.ki.BLACK_CORAL_KEY
             if player:hasKeyItem(menuMetadata[1][ki].reqKeyItems[1]) then
                 takeReqKeyItems(player, ki)
             end
         elseif option == 103 then -- Bird Key prereqs to run the bcnms
-            npcUtil.giveKeyItem(player, menuMetadata[1][xi.ki.BIRD_KEY].prereqKeyItems)
+            npcUtil.giveKeyItem(player, menuMetadata[1][invaderXim.ki.BIRD_KEY].prereqKeyItems)
         elseif option == 104 then -- Bomb Key
-            takeReqKeyItems(player, xi.ki.BOMB_KEY)
+            takeReqKeyItems(player, invaderXim.ki.BOMB_KEY)
         elseif option == 105 then -- Bird Key
-            takeReqKeyItems(player, xi.ki.BIRD_KEY)
+            takeReqKeyItems(player, invaderXim.ki.BIRD_KEY)
         elseif option >= 300 and option <= 308 then
             local entry = menuMetadata[2][option - 299]
             if player:getSeals(0) < entry.costSeals then

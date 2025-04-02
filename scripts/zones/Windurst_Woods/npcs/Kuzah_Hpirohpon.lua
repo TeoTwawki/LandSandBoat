@@ -4,7 +4,7 @@
 -- Guild Merchant NPC: Clothcrafting Guild
 -- !pos -80.068 -3.25 -127.686 241
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WOODS]
+local ID = zones[invaderXim.zone.WINDURST_WOODS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

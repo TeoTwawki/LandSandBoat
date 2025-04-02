@@ -9,15 +9,15 @@
 -- _0x3 : !pos 683.718 -6.250 -222.167 33
 -- _iya : !pos -20 0.1 -283 34
 -----------------------------------
-local altaieuID = zones[xi.zone.ALTAIEU]
-local huxoiID   = zones[xi.zone.GRAND_PALACE_OF_HUXZOI]
+local altaieuID = zones[invaderXim.zone.ALTAIEU]
+local huxoiID   = zones[invaderXim.zone.GRAND_PALACE_OF_HUXZOI]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.GARDEN_OF_ANTIQUITY)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.GARDEN_OF_ANTIQUITY)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.A_FATE_DECIDED },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.A_FATE_DECIDED },
 }
 
 -- NOTE: Tower event parameters do not align with NPCs in the database.  This table
@@ -32,7 +32,7 @@ local towerOption =
 }
 
 local function setMissionStatusBit(player, bitNum)
-    local statusIndex   = bitNum == 0 and xi.mission.status.COP.CID or xi.mission.status.COP.RUBIOUS
+    local statusIndex   = bitNum == 0 and invaderXim.mission.status.COP.CID or invaderXim.mission.status.COP.RUBIOUS
     local adjustedBit   = bitNum == 0 and 3 or bitNum - 1
     local missionStatus = player:getMissionStatus(mission.areaId, statusIndex)
 
@@ -40,7 +40,7 @@ local function setMissionStatusBit(player, bitNum)
 end
 
 local function getMissionStatusBit(player, bitNum)
-    local statusIndex   = bitNum == 0 and xi.mission.status.COP.CID or xi.mission.status.COP.RUBIOUS
+    local statusIndex   = bitNum == 0 and invaderXim.mission.status.COP.CID or invaderXim.mission.status.COP.RUBIOUS
     local adjustedBit   = bitNum == 0 and 3 or bitNum - 1
     local missionStatus = player:getMissionStatus(mission.areaId, statusIndex)
 
@@ -104,7 +104,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.ALTAIEU] =
+        [invaderXim.zone.ALTAIEU] =
         {
             ['_0x0'] =
             {
@@ -170,7 +170,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.GRAND_PALACE_OF_HUXZOI] =
+        [invaderXim.zone.GRAND_PALACE_OF_HUXZOI] =
         {
             ['_iya'] =
             {
@@ -196,7 +196,7 @@ mission.sections =
             onEventFinish =
             {
                 [1] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.TAVNAZIAN_RING) then
+                    if npcUtil.giveItem(player, invaderXim.item.TAVNAZIAN_RING) then
                         mission:setVar(player, 'Status', 3)
                     end
                 end,
@@ -213,7 +213,7 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.ALTAIEU] =
+        [invaderXim.zone.ALTAIEU] =
         {
             ['_0x0'] = mission:progressEvent(100),
 

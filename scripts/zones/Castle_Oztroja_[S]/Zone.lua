@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Castle_Oztroja_[S] (99)
 -----------------------------------
-local ID = zones[xi.zone.CASTLE_OZTROJA_S]
+local ID = zones[invaderXim.zone.CASTLE_OZTROJA_S]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}

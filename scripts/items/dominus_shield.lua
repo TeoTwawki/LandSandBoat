@@ -18,7 +18,7 @@ itemObject.onItemUse = function(target)
     end
 
     target:addMP(mpHeal)
-    target:messageBasic(xi.msg.basic.RECOVERS_MP, 0, mpHeal)
+    target:messageBasic(invaderXim.msg.basic.RECOVERS_MP, 0, mpHeal)
 end
 
 return itemObject

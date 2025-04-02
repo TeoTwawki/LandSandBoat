@@ -7,14 +7,14 @@
 -- Boarding House : !pos -41.693 -0.15 -38.29 257
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.SHARED_CONSCIOUSNESS)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.SHARED_CONSCIOUSNESS)
 
 mission.reward =
 {
     exp         = 1000,
     bayld       = 1000,
-    title       = xi.title.SUNSHINE_CADET,
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.CLEAR_SKIES },
+    title       = invaderXim.title.SUNSHINE_CADET,
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.CLEAR_SKIES },
 }
 
 mission.sections =
@@ -24,12 +24,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(141),
         },
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Door_Boarding_House'] = mission:progressEvent(1513),
 
@@ -37,7 +37,7 @@ mission.sections =
             {
                 [1513] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        xi.mission.setVar(player, xi.mission.log_id.SOA, xi.mission.id.soa.CLEAR_SKIES, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.mission.setVar(player, invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.CLEAR_SKIES, 'Timer', VanadielUniqueDay() + 1)
                     end
                 end,
             },

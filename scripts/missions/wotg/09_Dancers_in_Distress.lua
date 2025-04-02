@@ -9,22 +9,22 @@
 -- GOLD_BEASTCOIN     : !additem 748
 -- NYUMOMO_DOLL       : !additem 1706
 -----------------------------------
-local pastJugnerID = zones[xi.zone.JUGNER_FOREST_S]
-local sandoriaSID  = zones[xi.zone.SOUTHERN_SAN_DORIA_S]
+local pastJugnerID = zones[invaderXim.zone.JUGNER_FOREST_S]
+local sandoriaSID  = zones[invaderXim.zone.SOUTHERN_SAN_DORIA_S]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.DANCERS_IN_DISTRESS)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.DANCERS_IN_DISTRESS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.DAUGHTER_OF_A_KNIGHT },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.DAUGHTER_OF_A_KNIGHT },
 }
 
 local quizItems =
 {
-    xi.item.LYNX_MEAT,
-    xi.item.GOLD_BEASTCOIN,
-    xi.item.NYUMOMO_DOLL,
+    invaderXim.item.LYNX_MEAT,
+    invaderXim.item.GOLD_BEASTCOIN,
+    invaderXim.item.NYUMOMO_DOLL,
 }
 
 mission.sections =
@@ -35,7 +35,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 0
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Lion_Springs'] = mission:messageSpecial(sandoriaSID.text.CONCERNED_FOR_WOUNDED),
 
@@ -64,7 +64,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 1
         end,
 
-        [xi.zone.JUGNER_FOREST_S] =
+        [invaderXim.zone.JUGNER_FOREST_S] =
         {
             ['Elegant_Footprints'] =
             {
@@ -110,7 +110,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 2
         end,
 
-        [xi.zone.JUGNER_FOREST_S] =
+        [invaderXim.zone.JUGNER_FOREST_S] =
         {
             ['Elegant_Footprints'] =
             {

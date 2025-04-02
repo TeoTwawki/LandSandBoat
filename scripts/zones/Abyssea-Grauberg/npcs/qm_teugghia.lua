@@ -4,17 +4,17 @@
 -- Spawns Teugghia
 -- !pos -68 -6 656 254
 -----------------------------------
-local ID = zones[xi.zone.ABYSSEA_GRAUBERG]
+local ID = zones[invaderXim.zone.ABYSSEA_GRAUBERG]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.abyssea.qmOnTrade(player, npc, trade, ID.mob.TEUGGHIA, { xi.item.NAIADS_LOCK, xi.item.UNSEELIE_EYE })
+    invaderXim.abyssea.qmOnTrade(player, npc, trade, ID.mob.TEUGGHIA, { invaderXim.item.NAIADS_LOCK, invaderXim.item.UNSEELIE_EYE })
 end
 
 entity.onTrigger = function(player, npc)
-    xi.abyssea.qmOnTrigger(player, npc, 0, 0, { xi.item.NAIADS_LOCK, xi.item.UNSEELIE_EYE })
+    invaderXim.abyssea.qmOnTrigger(player, npc, 0, 0, { invaderXim.item.NAIADS_LOCK, invaderXim.item.UNSEELIE_EYE })
 end
 
 return entity

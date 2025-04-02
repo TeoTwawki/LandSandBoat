@@ -6,7 +6,7 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180)
 end
 
 entity.onMobSpawn = function(mob)
@@ -16,8 +16,8 @@ entity.onMobSpawn = function(mob)
     mob:setModelId(1168) -- Dark
 
     -- Todo: confirm this is legit and move to mob_reistances table if so
-    mob:addMod(xi.mod.LIGHT_MEVA, -100)
-    mob:addMod(xi.mod.DARK_MEVA, 100)
+    mob:addMod(invaderXim.mod.LIGHT_MEVA, -100)
+    mob:addMod(invaderXim.mod.DARK_MEVA, 100)
 end
 
 entity.onMobRoam = function(mob)

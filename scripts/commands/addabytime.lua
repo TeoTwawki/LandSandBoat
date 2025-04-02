@@ -30,7 +30,7 @@ commandObj.onTrigger = function(player, minutes, target)
     end
 
     -- target must be in dynamis
-    local effect = targ:getStatusEffect(xi.effect.VISITANT)
+    local effect = targ:getStatusEffect(invaderXim.effect.VISITANT)
     if not effect then
         error(player, string.format('%s is not in Abyssea.', targ:getName()))
         return
@@ -48,7 +48,7 @@ commandObj.onTrigger = function(player, minutes, target)
 
     effect:setDuration(newDuration)
     effect:resetStartTime()
-    effect:setIcon(xi.effect.VISITANT)
+    effect:setIcon(invaderXim.effect.VISITANT)
 end
 
 return commandObj

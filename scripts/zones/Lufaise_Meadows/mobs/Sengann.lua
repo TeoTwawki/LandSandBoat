@@ -8,7 +8,7 @@ mixins = { require('scripts/mixins/fomor_hate') }
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 441)
+    invaderXim.hunts.checkHunt(mob, player, 441)
 end
 
 return entity

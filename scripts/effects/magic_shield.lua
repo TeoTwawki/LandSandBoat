@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.MAGIC_SHIELD
+-- invaderXim.effect.MAGIC_SHIELD
 -- Blocks Magic damage and effects depending on power
 -- Power Notes:
 --  0 - 50%  DMGMAGIC (e.g. Fool's Tonic)
@@ -17,20 +17,20 @@ local effectObject = {}
 effectObject.onEffectGain = function(target, effect)
     local power = effect:getPower()
     if power == 3 then
-        target:addMod(xi.mod.MAGIC_ABSORB, 100)
+        target:addMod(invaderXim.mod.MAGIC_ABSORB, 100)
     elseif power == 2 then
-        target:addMod(xi.mod.FIRE_ABSORB, 100)
-        target:addMod(xi.mod.EARTH_ABSORB, 100)
-        target:addMod(xi.mod.WATER_ABSORB, 100)
-        target:addMod(xi.mod.WIND_ABSORB, 100)
-        target:addMod(xi.mod.ICE_ABSORB, 100)
-        target:addMod(xi.mod.LTNG_ABSORB, 100)
-        target:addMod(xi.mod.LIGHT_ABSORB, 100)
-        target:addMod(xi.mod.DARK_ABSORB, 100)
+        target:addMod(invaderXim.mod.FIRE_ABSORB, 100)
+        target:addMod(invaderXim.mod.EARTH_ABSORB, 100)
+        target:addMod(invaderXim.mod.WATER_ABSORB, 100)
+        target:addMod(invaderXim.mod.WIND_ABSORB, 100)
+        target:addMod(invaderXim.mod.ICE_ABSORB, 100)
+        target:addMod(invaderXim.mod.LTNG_ABSORB, 100)
+        target:addMod(invaderXim.mod.LIGHT_ABSORB, 100)
+        target:addMod(invaderXim.mod.DARK_ABSORB, 100)
     elseif power == 1 then
-        target:addMod(xi.mod.UDMGMAGIC, -10000)
+        target:addMod(invaderXim.mod.UDMGMAGIC, -10000)
     else
-        target:addMod(xi.mod.DMGMAGIC, -5000)
+        target:addMod(invaderXim.mod.DMGMAGIC, -5000)
     end
 end
 
@@ -40,20 +40,20 @@ end
 effectObject.onEffectLose = function(target, effect)
     local power = effect:getPower()
     if power == 3 then
-        target:delMod(xi.mod.MAGIC_ABSORB, 100)
+        target:delMod(invaderXim.mod.MAGIC_ABSORB, 100)
     elseif power == 2 then
-        target:delMod(xi.mod.FIRE_ABSORB, 100)
-        target:delMod(xi.mod.EARTH_ABSORB, 100)
-        target:delMod(xi.mod.WATER_ABSORB, 100)
-        target:delMod(xi.mod.WIND_ABSORB, 100)
-        target:delMod(xi.mod.ICE_ABSORB, 100)
-        target:delMod(xi.mod.LTNG_ABSORB, 100)
-        target:delMod(xi.mod.LIGHT_ABSORB, 100)
-        target:delMod(xi.mod.DARK_ABSORB, 100)
+        target:delMod(invaderXim.mod.FIRE_ABSORB, 100)
+        target:delMod(invaderXim.mod.EARTH_ABSORB, 100)
+        target:delMod(invaderXim.mod.WATER_ABSORB, 100)
+        target:delMod(invaderXim.mod.WIND_ABSORB, 100)
+        target:delMod(invaderXim.mod.ICE_ABSORB, 100)
+        target:delMod(invaderXim.mod.LTNG_ABSORB, 100)
+        target:delMod(invaderXim.mod.LIGHT_ABSORB, 100)
+        target:delMod(invaderXim.mod.DARK_ABSORB, 100)
     elseif power == 1 then
-        target:delMod(xi.mod.UDMGMAGIC, -10000)
+        target:delMod(invaderXim.mod.UDMGMAGIC, -10000)
     else
-        target:delMod(xi.mod.DMGMAGIC, -5000)
+        target:delMod(invaderXim.mod.DMGMAGIC, -5000)
     end
 end
 

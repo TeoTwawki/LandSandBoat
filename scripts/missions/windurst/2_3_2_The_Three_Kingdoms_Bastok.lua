@@ -8,7 +8,7 @@
 -- Patt-Pott       : !pos 23 -17 42 237
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_THREE_KINGDOMS_BASTOK)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_THREE_KINGDOMS_BASTOK)
 
 mission.reward = {}
 
@@ -19,7 +19,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Grohm'] =
             {
@@ -29,10 +29,10 @@ mission.sections =
                     if mission:getVar(player, 'Option') == 1 then
                         return mission:progressEvent(425)
                     elseif missionStatus == 4 then
-                        local onPathUntraveled = player:getCurrentMission(xi.mission.log_id.ROV) == xi.mission.id.rov.THE_PATH_UNTRAVELED and 1 or 0
+                        local onPathUntraveled = player:getCurrentMission(invaderXim.mission.log_id.ROV) == invaderXim.mission.id.rov.THE_PATH_UNTRAVELED and 1 or 0
 
                         return mission:progressEvent(423, { [7] = onPathUntraveled })
-                    elseif missionStatus == 5 and not player:hasItem(xi.item.ONZ_OF_MYTHRIL_SAND) then
+                    elseif missionStatus == 5 and not player:hasItem(invaderXim.item.ONZ_OF_MYTHRIL_SAND) then
                         return mission:progressEvent(424)
                     else
                         return mission:progressEvent(422)
@@ -56,7 +56,7 @@ mission.sections =
                 onTrade = function(player, npc, trade)
                     if
                         player:getMissionStatus(mission.areaId) == 5 and
-                        npcUtil.tradeHasExactly(trade, xi.item.ONZ_OF_MYTHRIL_SAND)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.ONZ_OF_MYTHRIL_SAND)
                     then
                         return mission:progressEvent(255)
                     end
@@ -69,7 +69,7 @@ mission.sections =
                     if mission:complete(player) then
                         player:confirmTrade()
                         player:setMissionStatus(mission.areaId, 7)
-                        player:addMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_THREE_KINGDOMS)
+                        player:addMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_THREE_KINGDOMS)
                     end
                 end,
 
@@ -78,7 +78,7 @@ mission.sections =
                 end,
 
                 [423] = function(player, csid, option, npc)
-                    if not npcUtil.giveItem(player, { { xi.item.PICKAXE, 5 } }) then
+                    if not npcUtil.giveItem(player, { { invaderXim.item.PICKAXE, 5 } }) then
                         mission:setVar(player, 'Option', 1)
                     else
                         player:setMissionStatus(mission.areaId, 5)
@@ -86,7 +86,7 @@ mission.sections =
                 end,
 
                 [425] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, { { xi.item.PICKAXE, 5 } }) then
+                    if npcUtil.giveItem(player, { { invaderXim.item.PICKAXE, 5 } }) then
                         player:setMissionStatus(mission.areaId, 5)
                         mission:setVar(player, 'Option', 0)
                     end

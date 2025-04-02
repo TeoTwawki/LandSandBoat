@@ -3,7 +3,7 @@
 --  Mob: Sand Lizard
 -- Note: PH for Nussknacker
 -----------------------------------
-local ID = zones[xi.zone.QUICKSAND_CAVES]
+local ID = zones[invaderXim.zone.QUICKSAND_CAVES]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -15,11 +15,11 @@ local nussknackerPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 817, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 817, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, nussknackerPHTable, 5, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, nussknackerPHTable, 5, 3600) -- 1 hour
 end
 
 return entity

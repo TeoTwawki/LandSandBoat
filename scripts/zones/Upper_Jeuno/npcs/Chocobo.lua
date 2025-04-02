@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    if trade:hasItemQty(xi.item.BUNCH_OF_GYSAHL_GREENS, 1) then
+    if trade:hasItemQty(invaderXim.item.BUNCH_OF_GYSAHL_GREENS, 1) then
         player:startEvent(38)
     end
 end

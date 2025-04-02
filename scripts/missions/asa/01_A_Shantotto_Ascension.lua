@@ -5,11 +5,11 @@
 -- !addmission 11 0
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ASA, xi.mission.id.asa.A_SHANTOTTO_ASCENSION)
+local mission = Mission:new(invaderXim.mission.log_id.ASA, invaderXim.mission.id.asa.A_SHANTOTTO_ASCENSION)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ASA, xi.mission.id.asa.BURGEONING_DREAD },
+    nextMission = { invaderXim.mission.log_id.ASA, invaderXim.mission.id.asa.BURGEONING_DREAD },
 }
 
 mission.sections =
@@ -17,16 +17,16 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
-                xi.settings.main.ENABLE_ASA == 1 and
+                invaderXim.settings.main.ENABLE_ASA == 1 and
                 player:getMainLvl() >= 10
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.WINDURST_WATERS or
-                    prevZone == xi.zone.WINDURST_WOODS
+                    prevZone == invaderXim.zone.WINDURST_WATERS or
+                    prevZone == invaderXim.zone.WINDURST_WOODS
                 then
                     return 510
                 end

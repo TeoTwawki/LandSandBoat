@@ -6,17 +6,17 @@
 -- Mhaura,  Rycharde, !pos 17.451 -16.000 88.815 249
 -- Selbina, Valgeir,  !pos 57.496 -15.273 20.229 248
 -----------------------------------
-local selbinaID = zones[xi.zone.SELBINA]
+local selbinaID = zones[invaderXim.zone.SELBINA]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.THE_BASICS)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.THE_BASICS)
 
 quest.reward =
 {
     fame     = 120,
-    fameArea = xi.fameArea.WINDURST,
-    item     = xi.item.TEA_SET,
-    title    = xi.title.FIVE_STAR_PURVEYOR,
+    fameArea = invaderXim.fameArea.WINDURST,
+    item     = invaderXim.item.TEA_SET,
+    title    = invaderXim.title.FIVE_STAR_PURVEYOR,
 }
 
 quest.sections =
@@ -24,11 +24,11 @@ quest.sections =
     -- Section: Quest is available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and player:getFameLevel(xi.fameArea.WINDURST) > 4 and
-                player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.THE_CLUE) == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and player:getFameLevel(invaderXim.fameArea.WINDURST) > 4 and
+                player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.THE_CLUE) == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Rycharde'] =
             {
@@ -51,14 +51,14 @@ quest.sections =
                 [94] = function(player, csid, option, npc)
                     if option == 85 then -- Accept quest option.
                         player:setCharVar('Quest[4][5]DayCompleted', 0)  -- Delete previous quest (The clue) variables.
-                        npcUtil.giveKeyItem(player, xi.ki.MHAURAN_COUSCOUS) -- Give Key Item to player.
+                        npcUtil.giveKeyItem(player, invaderXim.ki.MHAURAN_COUSCOUS) -- Give Key Item to player.
                         quest:begin(player)
                     end
                 end,
             },
         },
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Valgeir'] =
             {
@@ -72,10 +72,10 @@ quest.sections =
     -- Section: Quest accepeted.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             -- TODO: Find information about the ferry free ride. NPC involved and number of times it allows for free rides.
             -- KNOWN: It isnt mandatory to take the ferry.
@@ -84,7 +84,7 @@ quest.sections =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, { xi.item.BAKED_POPOTO }) and
+                        npcUtil.tradeHasExactly(trade, { invaderXim.item.BAKED_POPOTO }) and
                         quest:getVar(player, 'Prog') == 1
                     then
                         return quest:progressEvent(96) -- Quest completed.
@@ -109,7 +109,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Valgeir'] =
             {
@@ -125,9 +125,9 @@ quest.sections =
             onEventFinish =
             {
                 [106] = function(player, csid, option, npc)
-                    npcUtil.giveItem(player, xi.item.BAKED_POPOTO)
-                    player:delKeyItem(xi.ki.MHAURAN_COUSCOUS)
-                    player:messageSpecial(selbinaID.text.KEYITEM_OBTAINED + 1, xi.ki.MHAURAN_COUSCOUS)
+                    npcUtil.giveItem(player, invaderXim.item.BAKED_POPOTO)
+                    player:delKeyItem(invaderXim.ki.MHAURAN_COUSCOUS)
+                    player:messageSpecial(selbinaID.text.KEYITEM_OBTAINED + 1, invaderXim.ki.MHAURAN_COUSCOUS)
                     quest:setVar(player, 'Prog', 1)
                 end,
             },
@@ -138,10 +138,10 @@ quest.sections =
     -- Section: Quest completed. Handle optional post quest dialogs and default interactions.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Rycharde'] =
             {
@@ -169,7 +169,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Valgeir'] =
             {

@@ -4,14 +4,14 @@
 -- !addquest 9 126
 -- Lerene : !pos -46.876 -179.334 -28.602 274
 -----------------------------------
-local outerRaKaznarID = zones[xi.zone.OUTER_RAKAZNAR]
+local outerRaKaznarID = zones[invaderXim.zone.OUTER_RAKAZNAR]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.ADOULIN, xi.quest.id.adoulin.LERENES_LAMENT)
+local quest = Quest:new(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.LERENES_LAMENT)
 
 quest.reward =
 {
-    fameArea = xi.fameArea.ADOULIN,
+    fameArea = invaderXim.fameArea.ADOULIN,
     bayld    = 500,
 }
 
@@ -19,10 +19,10 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.OUTER_RAKAZNAR] =
+        [invaderXim.zone.OUTER_RAKAZNAR] =
         {
             ['Lerene'] = quest:progressEvent(22),
 
@@ -39,15 +39,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.OUTER_RAKAZNAR] =
+        [invaderXim.zone.OUTER_RAKAZNAR] =
         {
             ['Lerene'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.SQUARE_OF_ANCESTRAL_CLOTH, 2 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.SQUARE_OF_ANCESTRAL_CLOTH, 2 } }) then
                         return quest:progressEvent(24)
                     end
                 end,
@@ -58,12 +58,12 @@ quest.sections =
             onEventFinish =
             {
                 [24] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.LERENES_PATEN)
-                    player:messageSpecial(outerRaKaznarID.text.YOU_HAVE_LEARNED, xi.ki.PULVERIZING)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LERENES_PATEN)
+                    player:messageSpecial(outerRaKaznarID.text.YOU_HAVE_LEARNED, invaderXim.ki.PULVERIZING)
 
                     if quest:complete(player) then
                         player:confirmTrade()
-                        player:addKeyItem(xi.ki.PULVERIZING)
+                        player:addKeyItem(invaderXim.ki.PULVERIZING)
                     end
                 end,
             },

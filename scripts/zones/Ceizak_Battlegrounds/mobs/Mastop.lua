@@ -13,8 +13,8 @@ local auraChance = 20
 local damageStages = { 0, -2500, -5000, -7500, -9900 } -- Predefined resistance stages
 
 local function applyAura(mob)
-    for _, effect in ipairs({ xi.effect.SILENCE, xi.effect.AMNESIA, xi.effect.POISON }) do
-        mob:addStatusEffectEx(effect, effect, 6, 3, auraDuration, effect, 50, xi.auraTarget.ENEMIES, xi.effectFlag.AURA)
+    for _, effect in ipairs({ invaderXim.effect.SILENCE, invaderXim.effect.AMNESIA, invaderXim.effect.POISON }) do
+        mob:addStatusEffectEx(effect, effect, 6, 3, auraDuration, effect, 50, invaderXim.auraTarget.ENEMIES, invaderXim.effectFlag.AURA)
     end
 end
 
@@ -42,9 +42,9 @@ end
 
 local function adjustResistance(mob)
     local dmgTypes = {
-        { key = 'physDmg', mod = xi.mod.UDMGPHYS },
-        { key = 'magDmg', mod = xi.mod.UDMGMAGIC },
-        { key = 'rangedDmg', mod = xi.mod.UDMGRANGE }
+        { key = 'physDmg', mod = invaderXim.mod.UDMGPHYS },
+        { key = 'magDmg', mod = invaderXim.mod.UDMGMAGIC },
+        { key = 'rangedDmg', mod = invaderXim.mod.UDMGRANGE }
     }
 
     local highestIndex, highestDmg = nil, 0
@@ -113,7 +113,7 @@ entity.onMobSpawn = function(mob)
 
         -- Adjust resistance before resetting damage tracking
         if
-            weaponSkillID == xi.mobSkill.BOOMING_BOMBINATION and
+            weaponSkillID == invaderXim.mobSkill.BOOMING_BOMBINATION and
             os.time() >= mobArg:getLocalVar('boomingCooldown')
         then
             adjustResistance(mobArg)
@@ -134,7 +134,7 @@ entity.onMobSpawn = function(mob)
 end
 
 entity.onMobDeath = function(mob, player, isKiller)
-    for _, mod in ipairs({ xi.mod.ACC, xi.mod.ATTP, xi.mod.UDMGPHYS, xi.mod.UDMGMAGIC, xi.mod.UDMGRANGE }) do
+    for _, mod in ipairs({ invaderXim.mod.ACC, invaderXim.mod.ATTP, invaderXim.mod.UDMGPHYS, invaderXim.mod.UDMGMAGIC, invaderXim.mod.UDMGRANGE }) do
         mob:setMod(mod, 0)
     end
 end

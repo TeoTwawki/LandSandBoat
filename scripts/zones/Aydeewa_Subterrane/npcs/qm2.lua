@@ -3,14 +3,14 @@
 --  NPC: ??? (Spawn Pandemonium Warden)
 -- !pos 200 33 -140 68
 -----------------------------------
-local ID = zones[xi.zone.AYDEEWA_SUBTERRANE]
+local ID = zones[invaderXim.zone.AYDEEWA_SUBTERRANE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHas(trade, xi.item.PANDEMONIUM_KEY) and
+        npcUtil.tradeHas(trade, invaderXim.item.PANDEMONIUM_KEY) and
         npcUtil.popFromQM(player, npc, ID.mob.PANDEMONIUM_WARDEN + 1)
     then
         -- Trade Pandemonium Key

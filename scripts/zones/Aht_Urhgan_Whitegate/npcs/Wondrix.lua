@@ -23,19 +23,19 @@ local events =
 }
 
 entity.onTrade = function(player, npc, trade)
-    xi.gobbieMysteryBox.onTrade(player, npc, trade, events)
+    invaderXim.gobbieMysteryBox.onTrade(player, npc, trade, events)
 end
 
 entity.onTrigger = function(player, npc)
-    xi.gobbieMysteryBox.onTrigger(player, npc, events)
+    invaderXim.gobbieMysteryBox.onTrigger(player, npc, events)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.gobbieMysteryBox.onEventUpdate(player, csid, option, events)
+    invaderXim.gobbieMysteryBox.onEventUpdate(player, csid, option, events)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.gobbieMysteryBox.onEventFinish(player, csid, option, events)
+    invaderXim.gobbieMysteryBox.onEventFinish(player, csid, option, events)
 end
 
 return entity

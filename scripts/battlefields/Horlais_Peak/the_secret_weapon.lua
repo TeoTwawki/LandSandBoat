@@ -2,12 +2,12 @@
 -- The Secret Weapon
 -- Horlais Peak mission battlefield
 -----------------------------------
-local horlaisID = zones[xi.zone.HORLAIS_PEAK]
+local horlaisID = zones[invaderXim.zone.HORLAIS_PEAK]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId                = xi.zone.HORLAIS_PEAK,
-    battlefieldId         = xi.battlefield.id.THE_SECRET_WEAPON,
+    zoneId                = invaderXim.zone.HORLAIS_PEAK,
+    battlefieldId         = invaderXim.battlefield.id.THE_SECRET_WEAPON,
     canLoseExp            = false,
     isMission             = true,
     allowTrusts           = true,
@@ -17,9 +17,9 @@ local content = BattlefieldMission:new({
     index                 = 3,
     entryNpc              = 'BC_Entrance',
     exitNpc               = 'Burning_Circle',
-    missionArea           = xi.mission.log_id.SANDORIA,
-    mission               = xi.mission.id.sandoria.THE_SECRET_WEAPON,
-    missionStatusArea     = xi.mission.log_id.SANDORIA,
+    missionArea           = invaderXim.mission.log_id.SANDORIA,
+    mission               = invaderXim.mission.id.sandoria.THE_SECRET_WEAPON,
+    missionStatusArea     = invaderXim.mission.log_id.SANDORIA,
     requiredMissionStatus = 2,
 })
 
@@ -54,7 +54,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 

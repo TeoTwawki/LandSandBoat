@@ -16,7 +16,7 @@ entity.onMobEngage = function(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.dynamis.megaBossOnDeath(mob, player, optParams)
+    invaderXim.dynamis.megaBossOnDeath(mob, player, optParams)
 
     if optParams.isKiller then
         local mobId = mob:getID()
@@ -27,7 +27,7 @@ entity.onMobDeath = function(mob, player, optParams)
         end
     end
 
-    xi.magian.onMobDeath(mob, player, optParams, set{ 2714 })
+    invaderXim.magian.onMobDeath(mob, player, optParams, set{ 2714 })
 end
 
 return entity

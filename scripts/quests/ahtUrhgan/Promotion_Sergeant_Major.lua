@@ -2,27 +2,27 @@
 -- Promotion: Promotion Sergeant Major
 -- Naja Salaheem !pos 26 -8 -45.5 50
 -----------------------------------
-local whitegateID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local whitegateID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.PROMOTION_SERGEANT_MAJOR)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.PROMOTION_SERGEANT_MAJOR)
 
 quest.reward =
 {
-    keyItem = xi.ki.SM_WILDCAT_BADGE,
-    title   = xi.title.SERGEANT_MAJOR,
+    keyItem = invaderXim.ki.SM_WILDCAT_BADGE,
+    title   = invaderXim.title.SERGEANT_MAJOR,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
             player:getCharVar('AssaultPromotion') >= 25 and
-            player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.PROMOTION_SERGEANT) == xi.questStatus.QUEST_COMPLETED
+            player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.PROMOTION_SERGEANT) == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = quest:progressEvent(5048),
 
@@ -41,12 +41,12 @@ quest.sections =
     {
         -- Didnt pass 1st game and has to redo
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Stage == 0 and
             vars.Prog < VanadielUniqueDay()
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = quest:progressEvent(5049),
 
@@ -65,12 +65,12 @@ quest.sections =
     {
         -- Passed 1st mini game, start 2nd
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Stage == 1 and
             vars.Prog < VanadielUniqueDay()
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = quest:progressEvent(5050),
 
@@ -92,12 +92,12 @@ quest.sections =
     {
         -- Didnt pass 2nd game, redo
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Stage == 2 and
             vars.Prog < VanadielUniqueDay()
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = quest:progressEvent(5051),
 
@@ -116,12 +116,12 @@ quest.sections =
     {
         -- Passed 2nd mini game, start 3rd
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Stage == 3 and
             vars.Prog < VanadielUniqueDay()
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = quest:progressEvent(5052),
 
@@ -143,12 +143,12 @@ quest.sections =
     {
         -- Didnt pass 3rd game, Redo
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Stage == 4 and
             vars.Prog < VanadielUniqueDay()
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = quest:progressEvent(5053),
 
@@ -167,12 +167,12 @@ quest.sections =
     {
         -- Passed all games and 1 game day wait
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Stage == 5 and
             vars.Prog < VanadielUniqueDay()
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = quest:progressEvent(5054),
 
@@ -181,7 +181,7 @@ quest.sections =
                 [5054] = function(player, csid, option, npc)
                     if quest:complete(player) then
                         player:setCharVar('AssaultPromotion', 0)
-                        player:delKeyItem(xi.ki.S_WILDCAT_BADGE)
+                        player:delKeyItem(invaderXim.ki.S_WILDCAT_BADGE)
                         player:messageSpecial(whitegateID.text.PROMOTION_SERGEANT_MAJOR)
                     end
                 end,

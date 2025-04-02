@@ -4,7 +4,7 @@
 -- Type: Guild Merchant: Fishing Guild
 -- !pos -31.720 -6.000 -94.919 50
 -----------------------------------
-local ID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local ID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

@@ -3,13 +3,13 @@
 --  NPC: _3h0 (Altepa Gate)
 -- !pos -19 12 131 125
 -----------------------------------
-local ID = zones[xi.zone.WESTERN_ALTEPA_DESERT]
+local ID = zones[invaderXim.zone.WESTERN_ALTEPA_DESERT]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if npc:getAnimation() == xi.anim.CLOSE_DOOR then
+    if npc:getAnimation() == invaderXim.anim.CLOSE_DOOR then
         if player:getZPos() > 137 then
             npc:openDoor(3.2)
         else

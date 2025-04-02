@@ -7,12 +7,12 @@
 -- Alpine Trail : !pos -13.479 -1.047 488.863 267
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.LIGHTING_THE_WAY)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.LIGHTING_THE_WAY)
 
 mission.reward =
 {
-    title       = xi.title.KNOWER_OF_UNTRUTHS,
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.SAJJAKA },
+    title       = invaderXim.title.KNOWER_OF_UNTRUTHS,
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.SAJJAKA },
 }
 
 mission.sections =
@@ -22,12 +22,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(165),
         },
 
-        [xi.zone.KAMIHR_DRIFTS] =
+        [invaderXim.zone.KAMIHR_DRIFTS] =
         {
             ['Alpine_Trail'] = mission:progressEvent(44),
 
@@ -42,13 +42,13 @@ mission.sections =
                 [44] = function(player, csid, option, npc)
                     if option == 1 then
                         mission:setVar(player, 'Status', 1)
-                        player:setPos(306.42, -0.051, -24.974, 199, xi.zone.MOUNT_KAMIHR)
+                        player:setPos(306.42, -0.051, -24.974, 199, invaderXim.zone.MOUNT_KAMIHR)
                     end
                 end,
             },
         },
 
-        [xi.zone.MOUNT_KAMIHR] =
+        [invaderXim.zone.MOUNT_KAMIHR] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 1 then
@@ -72,7 +72,7 @@ mission.sections =
             {
                 [1] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 2)
-                    player:setPos(-8.495, 0.454, 487.467, 12, xi.zone.KAMIHR_DRIFTS)
+                    player:setPos(-8.495, 0.454, 487.467, 12, invaderXim.zone.KAMIHR_DRIFTS)
                 end,
             },
         },

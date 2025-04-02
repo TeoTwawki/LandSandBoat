@@ -4,7 +4,7 @@
 -- 3rd Floor SW door
 -- !pos -400 -2 -500
 -----------------------------------
-local ID = zones[xi.zone.BHAFLAU_REMNANTS]
+local ID = zones[invaderXim.zone.BHAFLAU_REMNANTS]
 -----------------------------------
 
 ---@type TNpcEntity
@@ -27,9 +27,9 @@ entity.onEventFinish = function(player, csid, option, npc)
     if csid == 300 and option == 1 then
         local instance = npc:getInstance()
 
-        if instance and xi.salvage.onDoorOpen(npc, nil, 6) then
-            xi.salvage.unsealDoors(instance, ID.npc.DOOR_3_SOUTH_CENTER)
-            xi.salvage.spawnGroup(instance, utils.slice(ID.mob.BLACK_PUDDING, 25, 34))
+        if instance and invaderXim.salvage.onDoorOpen(npc, nil, 6) then
+            invaderXim.salvage.unsealDoors(instance, ID.npc.DOOR_3_SOUTH_CENTER)
+            invaderXim.salvage.spawnGroup(instance, utils.slice(ID.mob.BLACK_PUDDING, 25, 34))
         else
             player:messageSpecial(ID.text.DOOR_IS_SEALED)
         end

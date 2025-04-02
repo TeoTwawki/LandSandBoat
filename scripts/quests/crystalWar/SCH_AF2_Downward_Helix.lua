@@ -6,24 +6,24 @@
 -- Indescript Markings : !pos 322 24 113 98
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.DOWNWARD_HELIX)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.DOWNWARD_HELIX)
 
 quest.reward =
 {
-    item = xi.item.SCHOLARS_BRACERS
+    item = invaderXim.item.SCHOLARS_BRACERS
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                xi.quest.getVar(player, xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.ON_SABBATICAL, 'Timer') <= VanadielUniqueDay() and
-                player:getMainJob() == xi.job.SCH and
-                player:getMainLvl() >= xi.settings.main.AF2_QUEST_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                invaderXim.quest.getVar(player, invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.ON_SABBATICAL, 'Timer') <= VanadielUniqueDay() and
+                player:getMainJob() == invaderXim.job.SCH and
+                player:getMainLvl() >= invaderXim.settings.main.AF2_QUEST_LEVEL
         end,
 
-        [xi.zone.THE_ELDIEME_NECROPOLIS_S] =
+        [invaderXim.zone.THE_ELDIEME_NECROPOLIS_S] =
         {
             ['Erlene'] =
             {
@@ -42,14 +42,14 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.EAST_RONFAURE_S and
+                    prevZone == invaderXim.zone.EAST_RONFAURE_S and
                     quest:getVar(player, 'Prog') == 0
                 then
                     return 65
@@ -64,7 +64,7 @@ quest.sections =
             }
         },
 
-        [xi.zone.THE_ELDIEME_NECROPOLIS_S] =
+        [invaderXim.zone.THE_ELDIEME_NECROPOLIS_S] =
         {
             ['Erlene'] =
             {
@@ -90,18 +90,18 @@ quest.sections =
 
                 [27] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        xi.quest.setVar(player, xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.DOWNWARD_HELIX, 'Timer', VanadielUniqueDay() + 1)
-                        xi.quest.setMustZone(player, xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.DOWNWARD_HELIX)
+                        invaderXim.quest.setVar(player, invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.DOWNWARD_HELIX, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.quest.setMustZone(player, invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.DOWNWARD_HELIX)
                     end
                 end,
             }
         },
 
-        [xi.zone.SAUROMUGUE_CHAMPAIGN_S] =
+        [invaderXim.zone.SAUROMUGUE_CHAMPAIGN_S] =
         {
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.ROLANBERRY_FIELDS_S and
+                    prevZone == invaderXim.zone.ROLANBERRY_FIELDS_S and
                     quest:getVar(player, 'Prog') == 2
                 then
                     return 3
@@ -124,7 +124,7 @@ quest.sections =
                 end,
 
                 [4] = function(player, csid, option, npc)
-                    if npcUtil.giveKeyItem(player, xi.ki.ULBRECHTS_MORTARBOARD) then
+                    if npcUtil.giveKeyItem(player, invaderXim.ki.ULBRECHTS_MORTARBOARD) then
                         quest:setVar(player, 'Prog', 4)
                     end
                 end,

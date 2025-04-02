@@ -8,12 +8,12 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.GIL_MIN, 6000)
-    mob:setMobMod(xi.mobMod.GIL_MAX, 6000)
+    mob:setMobMod(invaderXim.mobMod.GIL_MIN, 6000)
+    mob:setMobMod(invaderXim.mobMod.GIL_MAX, 6000)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:addImmunity(xi.immunity.TERROR)
+    mob:addImmunity(invaderXim.immunity.TERROR)
 end
 
 return entity

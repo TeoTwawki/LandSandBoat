@@ -18,7 +18,7 @@ commandObj.cmdprops =
 
 local function error(player, msg)
     player:printToPlayer(msg)
-    player:printToPlayer('!quest <logId> <questId> {player}', xi.msg.channel.NS_LINKSHELL3)
+    player:printToPlayer('!quest <logId> <questId> {player}', invaderXim.msg.channel.NS_LINKSHELL3)
 end
 
 commandObj.onTrigger = function(player, logId, questId, target)
@@ -33,7 +33,7 @@ commandObj.onTrigger = function(player, logId, questId, target)
     logId = questLog.quest_log
 
     -- validate questId
-    local areaQuestIds = xi.quest.id[xi.quest.area[logId]]
+    local areaQuestIds = invaderXim.quest.id[invaderXim.quest.area[logId]]
     if questId ~= nil then
         questId = tonumber(questId) or areaQuestIds[string.upper(questId)]
     end
@@ -53,7 +53,7 @@ commandObj.onTrigger = function(player, logId, questId, target)
     else
         targ = GetPlayerByName(target)
         if targ == nil then
-            error(player, string.format('Player named %s not found!', target, xi.msg.channel.NS_LINKSHELL3))
+            error(player, string.format('Player named %s not found!', target, invaderXim.msg.channel.NS_LINKSHELL3))
             return
         end
     end
@@ -79,20 +79,20 @@ commandObj.onTrigger = function(player, logId, questId, target)
                     statusName = 'COMPLETED'
                 end,
             }
-            playerArg:printToPlayer(string.format('Player %s status for %s quest ID %i is: %s', targ:getName(), logName, questId, statusName), xi.msg.channel.NS_LINKSHELL3)
-            playerArg:printToPlayer(string.format('Player %s variables for %s Quest %i are:', targ:getName(), logName, questId), xi.msg.channel.NS_LINKSHELL3)
+            playerArg:printToPlayer(string.format('Player %s status for %s quest ID %i is: %s', targ:getName(), logName, questId, statusName), invaderXim.msg.channel.NS_LINKSHELL3)
+            playerArg:printToPlayer(string.format('Player %s variables for %s Quest %i are:', targ:getName(), logName, questId), invaderXim.msg.channel.NS_LINKSHELL3)
 
-            local targetQuest = xi.quest.getVarPrefix(logId, questId)
+            local targetQuest = invaderXim.quest.getVarPrefix(logId, questId)
             local questVars   = targ:getCharVarsWithPrefix(targetQuest)
             local count       = 0
 
             for tag, value in pairs(questVars) do
-                playerArg:printToPlayer(string.format('%s = %s', tag, value), xi.msg.channel.NS_LINKSHELL3)
+                playerArg:printToPlayer(string.format('%s = %s', tag, value), invaderXim.msg.channel.NS_LINKSHELL3)
                 count = count + 1
             end
 
             if count == 0 then
-                playerArg:printToPlayer('No variables found.', xi.msg.channel.NS_LINKSHELL3)
+                playerArg:printToPlayer('No variables found.', invaderXim.msg.channel.NS_LINKSHELL3)
             end
         end,
 
@@ -101,56 +101,56 @@ commandObj.onTrigger = function(player, logId, questId, target)
             {
                 'Add Quest',
                 function(playerArg)
-                    if status == xi.questStatus.QUEST_ACCEPTED then
-                        playerArg:printToPlayer(string.format('Quest %s %i is already Accepted on %s', logName, questId, targ:getName()), xi.msg.channel.NS_LINKSHELL3)
+                    if status == invaderXim.questStatus.QUEST_ACCEPTED then
+                        playerArg:printToPlayer(string.format('Quest %s %i is already Accepted on %s', logName, questId, targ:getName()), invaderXim.msg.channel.NS_LINKSHELL3)
                         return
-                    elseif status == xi.questStatus.QUEST_COMPLETED then
+                    elseif status == invaderXim.questStatus.QUEST_COMPLETED then
                         targ:delQuest(logId, questId)
-                        playerArg:printToPlayer(string.format('Quest was in Completed status'), xi.msg.channel.NS_LINKSHELL3)
+                        playerArg:printToPlayer(string.format('Quest was in Completed status'), invaderXim.msg.channel.NS_LINKSHELL3)
                     end
 
                     targ:addQuest(logId, questId)
-                    playerArg:printToPlayer(string.format('Added %s quest %i to %s.', logName, questId, targ:getName()), xi.msg.channel.NS_LINKSHELL3)
+                    playerArg:printToPlayer(string.format('Added %s quest %i to %s.', logName, questId, targ:getName()), invaderXim.msg.channel.NS_LINKSHELL3)
                 end,
             },
             {
                 'Complete Quest',
                 function(playerArg)
-                    if status == xi.questStatus.QUEST_COMPLETED then
-                        playerArg:printToPlayer(string.format('Quest %s %i is already Completed', logName, questId), xi.msg.channel.NS_LINKSHELL3)
+                    if status == invaderXim.questStatus.QUEST_COMPLETED then
+                        playerArg:printToPlayer(string.format('Quest %s %i is already Completed', logName, questId), invaderXim.msg.channel.NS_LINKSHELL3)
                         return
-                    elseif status == xi.questStatus.QUEST_AVAILABLE then
+                    elseif status == invaderXim.questStatus.QUEST_AVAILABLE then
                         targ:addQuest(logId, questId)
-                        playerArg:printToPlayer(string.format('Quest was in the Available status'), xi.msg.channel.NS_LINKSHELL3)
+                        playerArg:printToPlayer(string.format('Quest was in the Available status'), invaderXim.msg.channel.NS_LINKSHELL3)
                     end
 
                     targ:completeQuest(logId, questId)
-                    playerArg:printToPlayer(string.format('Completed %s Quest with ID %u for %s', logName, questId, targ:getName()), xi.msg.channel.NS_LINKSHELL3)
+                    playerArg:printToPlayer(string.format('Completed %s Quest with ID %u for %s', logName, questId, targ:getName()), invaderXim.msg.channel.NS_LINKSHELL3)
                 end,
             },
             {
                 'Delete Quest',
                 function(playerArg)
-                    if status == xi.questStatus.QUEST_AVAILABLE then
-                        playerArg:printToPlayer(string.format('Quest %s %i is already in Available status', logName, questId), xi.msg.channel.NS_LINKSHELL3)
+                    if status == invaderXim.questStatus.QUEST_AVAILABLE then
+                        playerArg:printToPlayer(string.format('Quest %s %i is already in Available status', logName, questId), invaderXim.msg.channel.NS_LINKSHELL3)
                         return
                     end
 
                     targ:delQuest(logId, questId)
-                    playerArg:printToPlayer(string.format('Deleted %s quest %i from %s.', logName, questId, targ:getName()), xi.msg.channel.NS_LINKSHELL3)
+                    playerArg:printToPlayer(string.format('Deleted %s quest %i from %s.', logName, questId, targ:getName()), invaderXim.msg.channel.NS_LINKSHELL3)
                 end,
             },
             {
                 'Clear Vars',
                 function(playerArg)
-                    targ:clearVarsWithPrefix(xi.quest.getVarPrefix(logId, questId))
-                    playerArg:printToPlayer(string.format('Player %s variables for %s Quest %i are cleared', targ:getName(), logName, questId), xi.msg.channel.NS_LINKSHELL3)
+                    targ:clearVarsWithPrefix(invaderXim.quest.getVarPrefix(logId, questId))
+                    playerArg:printToPlayer(string.format('Player %s variables for %s Quest %i are cleared', targ:getName(), logName, questId), invaderXim.msg.channel.NS_LINKSHELL3)
                 end,
             },
         },
 
         onCancelled = function(playerArg)
-            playerArg:printToPlayer('Quest Menu Cancelled', xi.msg.channel.NS_LINKSHELL3)
+            playerArg:printToPlayer('Quest Menu Cancelled', invaderXim.msg.channel.NS_LINKSHELL3)
         end,
 
         onEnd = function(playerArg)

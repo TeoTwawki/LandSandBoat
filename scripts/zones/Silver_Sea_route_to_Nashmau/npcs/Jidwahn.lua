@@ -4,7 +4,7 @@
 -- Guild Merchant NPC: Fishing Guild
 -- !pos 4.986 -2.101 -12.026 58
 -----------------------------------
-local ID = zones[xi.zone.SILVER_SEA_ROUTE_TO_NASHMAU]
+local ID = zones[invaderXim.zone.SILVER_SEA_ROUTE_TO_NASHMAU]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

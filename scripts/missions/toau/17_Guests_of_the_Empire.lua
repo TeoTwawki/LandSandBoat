@@ -9,13 +9,13 @@
 local whitegateShared = require('scripts/zones/Aht_Urhgan_Whitegate/Shared')
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.GUESTS_OF_THE_EMPIRE)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.GUESTS_OF_THE_EMPIRE)
 
 mission.reward =
 {
-    item        = xi.item.IMPERIAL_MYTHRIL_PIECE,
-    title       = xi.title.OVJANGS_ERRAND_RUNNER,
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.PASSING_GLORY },
+    item        = invaderXim.item.IMPERIAL_MYTHRIL_PIECE,
+    title       = invaderXim.title.OVJANGS_ERRAND_RUNNER,
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.PASSING_GLORY },
 }
 
 mission.sections =
@@ -25,15 +25,15 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Imperial_Whitegate'] =
             {
                 onTrigger = function(player, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 1 and
-                        player:getEquipID(xi.slot.MAIN) == 0 and
-                        player:getEquipID(xi.slot.SUB) == 0 and
+                        player:getEquipID(invaderXim.slot.MAIN) == 0 and
+                        player:getEquipID(invaderXim.slot.SUB) == 0 and
                         whitegateShared.doRoyalPalaceArmorCheck(player)
                     then
                         return mission:progressEvent(3078, 0, 1, 0, 0, 0, 0, 0, 1, 0)

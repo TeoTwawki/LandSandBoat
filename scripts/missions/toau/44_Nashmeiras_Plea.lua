@@ -7,12 +7,12 @@
 -- blank_lamp    : !pos 206.55 -1.5 20.05 72
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.NASHMEIRAS_PLEA)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.NASHMEIRAS_PLEA)
 
 mission.reward =
 {
-    title       = xi.title.PREVENTER_OF_RAGNAROK,
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.RAGNAROK },
+    title       = invaderXim.title.PREVENTER_OF_RAGNAROK,
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.RAGNAROK },
 }
 
 mission.sections =
@@ -22,12 +22,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.MYTHRIL_MIRROR) then
+                    if not player:hasKeyItem(invaderXim.ki.MYTHRIL_MIRROR) then
                         return mission:progressEvent(3156, { text_table = 0 })
                     else
                         return mission:progressEvent(3149, { text_table = 0 })
@@ -38,12 +38,12 @@ mission.sections =
             onEventFinish =
             {
                 [3156] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.MYTHRIL_MIRROR)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.MYTHRIL_MIRROR)
                 end,
             },
         },
 
-        [xi.zone.ALZADAAL_UNDERSEA_RUINS] =
+        [invaderXim.zone.ALZADAAL_UNDERSEA_RUINS] =
         {
             ['blank_lamp'] =
             {
@@ -80,7 +80,7 @@ mission.sections =
                         option == 1 and
                         player:getLocalVar('INSTANCE_ID') == 7701
                     then
-                        xi.instance.onEventFinish(player, csid, option, npc)
+                        invaderXim.instance.onEventFinish(player, csid, option, npc)
                     end
                 end,
             },

@@ -6,11 +6,11 @@
 -- Oscairn : !pos -80.214 -0.150 30.717 257
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.THE_TWIN_WORLD_TREES)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_TWIN_WORLD_TREES)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.HONOR_AND_AUDACITY },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.HONOR_AND_AUDACITY },
 }
 
 mission.sections =
@@ -20,14 +20,14 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             -- Note: This message persists over several missions.  Once a breakpoint is found,
             -- this should be a replaceDefault after completion of the initial change.
             ['Levil'] = mission:event(127),
         },
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             onTriggerAreaEnter =
             {

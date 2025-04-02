@@ -3,7 +3,7 @@
 --  Mob: Goblin Mercenary
 -- Note: Place Holder for Bloodthirster Madkix
 -----------------------------------
-local ID = zones[xi.zone.KUFTAL_TUNNEL]
+local ID = zones[invaderXim.zone.KUFTAL_TUNNEL]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -68,13 +68,13 @@ local bloodthirsterPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 740, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 740, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
     local params = {}
     params.spawnPoints = madkixSpawnPoints
-    xi.mob.phOnDespawn(mob, bloodthirsterPHTable, 5, 7200, params) -- 2 hours
+    invaderXim.mob.phOnDespawn(mob, bloodthirsterPHTable, 5, 7200, params) -- 2 hours
 end
 
 return entity

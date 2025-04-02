@@ -3,14 +3,14 @@
 --  NPC: ??? (Spawn Olla Pequena)
 -- !pos 851 0.1 92 178
 -----------------------------------
-local ID = zones[xi.zone.THE_SHRINE_OF_RUAVITAU]
+local ID = zones[invaderXim.zone.THE_SHRINE_OF_RUAVITAU]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        trade:hasItemQty(xi.item.FLASK_OF_ROMAEVE_SPRING_WATER, 1) and
+        trade:hasItemQty(invaderXim.item.FLASK_OF_ROMAEVE_SPRING_WATER, 1) and
         trade:getItemCount() == 1
     then
         for i = ID.mob.OLLAS_OFFSET, ID.mob.OLLAS_OFFSET + 2 do
@@ -21,7 +21,7 @@ entity.onTrade = function(player, npc, trade)
 
         player:tradeComplete()
         SpawnMob(ID.mob.OLLAS_OFFSET):updateClaim(player)
-        npc:setStatus(xi.status.DISAPPEAR)
+        npc:setStatus(invaderXim.status.DISAPPEAR)
     end
 end
 

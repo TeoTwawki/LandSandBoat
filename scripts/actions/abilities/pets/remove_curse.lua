@@ -10,17 +10,17 @@ end
 
 abilityObject.onUseAbility = function(pet, target, skill, action)
     local effect
-    if target:delStatusEffect(xi.effect.CURSE_I) then
-        skill:setMsg(xi.msg.basic.JA_REMOVE_EFFECT)
-        effect = xi.effect.CURSE_I
-    elseif target:delStatusEffect(xi.effect.DOOM) then
-        skill:setMsg(xi.msg.basic.JA_REMOVE_EFFECT)
-        effect = xi.effect.DOOM
-    elseif target:delStatusEffect(xi.effect.BANE) then
-        skill:setMsg(xi.msg.basic.JA_REMOVE_EFFECT)
-        effect = xi.effect.BANE
+    if target:delStatusEffect(invaderXim.effect.CURSE_I) then
+        skill:setMsg(invaderXim.msg.basic.JA_REMOVE_EFFECT)
+        effect = invaderXim.effect.CURSE_I
+    elseif target:delStatusEffect(invaderXim.effect.DOOM) then
+        skill:setMsg(invaderXim.msg.basic.JA_REMOVE_EFFECT)
+        effect = invaderXim.effect.DOOM
+    elseif target:delStatusEffect(invaderXim.effect.BANE) then
+        skill:setMsg(invaderXim.msg.basic.JA_REMOVE_EFFECT)
+        effect = invaderXim.effect.BANE
     else
-        skill:setMsg(xi.msg.basic.JA_NO_EFFECT)
+        skill:setMsg(invaderXim.msg.basic.JA_NO_EFFECT)
     end
 
     return effect

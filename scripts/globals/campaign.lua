@@ -2,9 +2,9 @@
 -- Campaign Global
 -----------------------------------
 xi = xi or {}
-xi.campaign = {}
+invaderXim.campaign = {}
 
-xi.campaign.control =
+invaderXim.campaign.control =
 {
     SANDORIA = 2,
     BASTOK   = 4,
@@ -12,7 +12,7 @@ xi.campaign.control =
     BEASTMEN = 8,
 }
 
-xi.campaign.union =
+invaderXim.campaign.union =
 {
     ADDER  = 1,
     BISON  = 2,
@@ -21,7 +21,7 @@ xi.campaign.union =
     ELAND  = 5,
 }
 
-xi.campaign.army =
+invaderXim.campaign.army =
 {
     SANDORIA = 0,
     BASTOK   = 1,
@@ -35,200 +35,200 @@ xi.campaign.army =
 -- First nibble: 2, Second Nibble: Page, rshift 8: entry
 local noteRewardItems =
 {
-    [xi.zone.SOUTHERN_SAN_DORIA_S] =
+    [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
     {
         [0] = -- Common
         {
             -- BitPos = { itemId, basePrice (allied), isAdjusted },
-            [0] = { xi.item.SPRINTERS_SHOES,                  980, false },
-            [1] = { xi.item.SCROLL_OF_INSTANT_RETRACE,         10, false },
-            [2] = { xi.item.IRON_RAM_JACK_COAT,              1000, true  },
-            [3] = { xi.item.PILGRIM_TUNICA,                  1000, true  },
-            [4] = { xi.item.IRON_RAM_SHIELD,                 3000, true  },
-            [5] = { xi.item.RECALL_RING_JUGNER,              5000, false },
-            [6] = { xi.item.RECALL_RING_PASHHOW,             5000, false },
-            [7] = { xi.item.RECALL_RING_MERIPHATAUD,         5000, false },
-            [8] = { xi.item.CIPHER_OF_VALAINERALS_ALTER_EGO, 2000, false },
-            [9] = { xi.item.CIPHER_OF_ADELHEIDS_ALTER_EGO,   2000, false },
+            [0] = { invaderXim.item.SPRINTERS_SHOES,                  980, false },
+            [1] = { invaderXim.item.SCROLL_OF_INSTANT_RETRACE,         10, false },
+            [2] = { invaderXim.item.IRON_RAM_JACK_COAT,              1000, true  },
+            [3] = { invaderXim.item.PILGRIM_TUNICA,                  1000, true  },
+            [4] = { invaderXim.item.IRON_RAM_SHIELD,                 3000, true  },
+            [5] = { invaderXim.item.RECALL_RING_JUGNER,              5000, false },
+            [6] = { invaderXim.item.RECALL_RING_PASHHOW,             5000, false },
+            [7] = { invaderXim.item.RECALL_RING_MERIPHATAUD,         5000, false },
+            [8] = { invaderXim.item.CIPHER_OF_VALAINERALS_ALTER_EGO, 2000, false },
+            [9] = { invaderXim.item.CIPHER_OF_ADELHEIDS_ALTER_EGO,   2000, false },
         },
 
         [1] = -- Stars of Service
         {
-            [0] = { xi.item.IRON_RAM_CHAINMAIL, 10000, true },
-            [1] = { xi.item.IRON_RAM_MUFFLERS,   7000, true },
-            [2] = { xi.item.IRON_RAM_SOLLERETS,  7000, true },
-            [3] = { xi.item.IRON_RAM_HELM,       7000, true },
-            [4] = { xi.item.IRON_RAM_BREECHES,   7000, true },
+            [0] = { invaderXim.item.IRON_RAM_CHAINMAIL, 10000, true },
+            [1] = { invaderXim.item.IRON_RAM_MUFFLERS,   7000, true },
+            [2] = { invaderXim.item.IRON_RAM_SOLLERETS,  7000, true },
+            [3] = { invaderXim.item.IRON_RAM_HELM,       7000, true },
+            [4] = { invaderXim.item.IRON_RAM_BREECHES,   7000, true },
         },
 
         [2] = -- Emblems of Service
         {
-            [0] = { xi.item.IRON_RAM_HORN,     20000, true },
-            [1] = { xi.item.IRON_RAM_LANCE,    20000, true },
-            [2] = { xi.item.IRON_RAM_PICK,     20000, true },
-            [3] = { xi.item.IRON_RAM_SALLET,   40000, true },
-            [4] = { xi.item.IRON_RAM_DASTANAS, 40000, true },
+            [0] = { invaderXim.item.IRON_RAM_HORN,     20000, true },
+            [1] = { invaderXim.item.IRON_RAM_LANCE,    20000, true },
+            [2] = { invaderXim.item.IRON_RAM_PICK,     20000, true },
+            [3] = { invaderXim.item.IRON_RAM_SALLET,   40000, true },
+            [4] = { invaderXim.item.IRON_RAM_DASTANAS, 40000, true },
         },
 
         [3] = -- Wings of Service
         {
-            [0] = { xi.item.IRON_RAM_GREAVES, 50000, true },
-            [1] = { xi.item.IRON_RAM_HOSE,    50000, true },
+            [0] = { invaderXim.item.IRON_RAM_GREAVES, 50000, true },
+            [1] = { invaderXim.item.IRON_RAM_HOSE,    50000, true },
         },
 
         [4] = -- Medals of Service
         {
-            [0] = { xi.item.PATRONUS_RING,      30000, true },
-            [1] = { xi.item.FOX_EARRING,        30000, true },
-            [2] = { xi.item.TEMPLE_EARRING,     30000, true },
-            [3] = { xi.item.CRIMSON_BELT,       30000, true },
-            [4] = { xi.item.ROSE_STRAP,         30000, true },
-            [5] = { xi.item.IRON_RAM_HAUBERK,   75000, true },
-            [6] = { xi.item.ROYAL_GUARD_LIVERY, 10000, true },
-            [7] = { xi.item.ALLIED_RING,        15000, true },
+            [0] = { invaderXim.item.PATRONUS_RING,      30000, true },
+            [1] = { invaderXim.item.FOX_EARRING,        30000, true },
+            [2] = { invaderXim.item.TEMPLE_EARRING,     30000, true },
+            [3] = { invaderXim.item.CRIMSON_BELT,       30000, true },
+            [4] = { invaderXim.item.ROSE_STRAP,         30000, true },
+            [5] = { invaderXim.item.IRON_RAM_HAUBERK,   75000, true },
+            [6] = { invaderXim.item.ROYAL_GUARD_LIVERY, 10000, true },
+            [7] = { invaderXim.item.ALLIED_RING,        15000, true },
         },
 
         [5] = -- Medals of Altana
         {
-            [0] = { xi.item.GRIFFINCLAW,             100000, true },
-            [1] = { xi.item.ROYAL_KNIGHT_SIGIL_RING,  50000, true },
+            [0] = { invaderXim.item.GRIFFINCLAW,             100000, true },
+            [1] = { invaderXim.item.ROYAL_KNIGHT_SIGIL_RING,  50000, true },
         },
     },
 
-    [xi.zone.BASTOK_MARKETS_S] =
+    [invaderXim.zone.BASTOK_MARKETS_S] =
     {
         [0] = -- Common
         {
-            [0] = { xi.item.SPRINTERS_SHOES,                  980, false },
-            [1] = { xi.item.SCROLL_OF_INSTANT_RETRACE,         10, false },
-            [2] = { xi.item.FOURTH_DIVISION_TUNICA,          1000, true  },
-            [3] = { xi.item.PILGRIM_TUNICA,                  1000, true  },
-            [4] = { xi.item.FOURTH_DIVISION_GUN,             3000, true  },
-            [5] = { xi.item.RECALL_RING_JUGNER,              5000, false },
-            [6] = { xi.item.RECALL_RING_PASHHOW,             5000, false },
-            [7] = { xi.item.RECALL_RING_MERIPHATAUD,         5000, false },
-            [8] = { xi.item.CIPHER_OF_VALAINERALS_ALTER_EGO, 2000, false },
-            [9] = { xi.item.CIPHER_OF_ADELHEIDS_ALTER_EGO,   2000, false },
+            [0] = { invaderXim.item.SPRINTERS_SHOES,                  980, false },
+            [1] = { invaderXim.item.SCROLL_OF_INSTANT_RETRACE,         10, false },
+            [2] = { invaderXim.item.FOURTH_DIVISION_TUNICA,          1000, true  },
+            [3] = { invaderXim.item.PILGRIM_TUNICA,                  1000, true  },
+            [4] = { invaderXim.item.FOURTH_DIVISION_GUN,             3000, true  },
+            [5] = { invaderXim.item.RECALL_RING_JUGNER,              5000, false },
+            [6] = { invaderXim.item.RECALL_RING_PASHHOW,             5000, false },
+            [7] = { invaderXim.item.RECALL_RING_MERIPHATAUD,         5000, false },
+            [8] = { invaderXim.item.CIPHER_OF_VALAINERALS_ALTER_EGO, 2000, false },
+            [9] = { invaderXim.item.CIPHER_OF_ADELHEIDS_ALTER_EGO,   2000, false },
         },
 
         [1] = -- Stars of Service
         {
-            [0] = { xi.item.FOURTH_DIVISION_CUIRASS,   10000, true },
-            [1] = { xi.item.FOURTH_DIVISION_GAUNTLETS,  7000, true },
-            [2] = { xi.item.FOURTH_DIVISION_SABATONS,   7000, true },
-            [3] = { xi.item.FOURTH_DIVISION_ARMET,      7000, true },
-            [4] = { xi.item.FOURTH_DIVISION_CUISSES,    7000, true },
+            [0] = { invaderXim.item.FOURTH_DIVISION_CUIRASS,   10000, true },
+            [1] = { invaderXim.item.FOURTH_DIVISION_GAUNTLETS,  7000, true },
+            [2] = { invaderXim.item.FOURTH_DIVISION_SABATONS,   7000, true },
+            [3] = { invaderXim.item.FOURTH_DIVISION_ARMET,      7000, true },
+            [4] = { invaderXim.item.FOURTH_DIVISION_CUISSES,    7000, true },
         },
 
         [2] = -- Emblems of Service
         {
-            [0] = { xi.item.FOURTH_DIVISION_TOPOROK, 20000, true },
-            [1] = { xi.item.FOURTH_DIVISION_MACE,    20000, true },
-            [2] = { xi.item.FOURTH_DIVISION_ZAGHNAL, 20000, true },
-            [3] = { xi.item.FOURTH_DIVISION_HAUBE,   40000, true },
-            [4] = { xi.item.FOURTH_DIVISION_HENTZES, 40000, true },
+            [0] = { invaderXim.item.FOURTH_DIVISION_TOPOROK, 20000, true },
+            [1] = { invaderXim.item.FOURTH_DIVISION_MACE,    20000, true },
+            [2] = { invaderXim.item.FOURTH_DIVISION_ZAGHNAL, 20000, true },
+            [3] = { invaderXim.item.FOURTH_DIVISION_HAUBE,   40000, true },
+            [4] = { invaderXim.item.FOURTH_DIVISION_HENTZES, 40000, true },
         },
 
         [3] = -- Wings of Service
         {
-            [0] = { xi.item.FOURTH_DIVISION_SCHUHS, 50000, true },
-            [1] = { xi.item.FOURTH_DIVISION_SCHOSS, 50000, true },
+            [0] = { invaderXim.item.FOURTH_DIVISION_SCHUHS, 50000, true },
+            [1] = { invaderXim.item.FOURTH_DIVISION_SCHOSS, 50000, true },
         },
 
         [4] = -- Medals of Service
         {
-            [0] = { xi.item.SHIELD_COLLAR,            30000, true },
-            [1] = { xi.item.STURMS_REPORT,            30000, true },
-            [2] = { xi.item.SONIAS_PLECTRUM,          30000, true },
-            [3] = { xi.item.BULL_NECKLACE,            30000, true },
-            [4] = { xi.item.ARRESTOR_MANTLE,          30000, true },
-            [5] = { xi.item.FOURTH_DIVISION_BRUNNE,   75000, true },
-            [6] = { xi.item.MYTHRIL_MUSKETEER_LIVERY, 10000, true },
-            [7] = { xi.item.ALLIED_RING,              15000, true },
+            [0] = { invaderXim.item.SHIELD_COLLAR,            30000, true },
+            [1] = { invaderXim.item.STURMS_REPORT,            30000, true },
+            [2] = { invaderXim.item.SONIAS_PLECTRUM,          30000, true },
+            [3] = { invaderXim.item.BULL_NECKLACE,            30000, true },
+            [4] = { invaderXim.item.ARRESTOR_MANTLE,          30000, true },
+            [5] = { invaderXim.item.FOURTH_DIVISION_BRUNNE,   75000, true },
+            [6] = { invaderXim.item.MYTHRIL_MUSKETEER_LIVERY, 10000, true },
+            [7] = { invaderXim.item.ALLIED_RING,              15000, true },
         },
 
         [5] = -- Medals of Altana
         {
-            [0] = { xi.item.LEX_TALIONIS,           100000, true },
-            [1] = { xi.item.FOURTH_DIVISION_MANTLE,  50000, true },
+            [0] = { invaderXim.item.LEX_TALIONIS,           100000, true },
+            [1] = { invaderXim.item.FOURTH_DIVISION_MANTLE,  50000, true },
         },
     },
 
-    [xi.zone.WINDURST_WATERS_S] =
+    [invaderXim.zone.WINDURST_WATERS_S] =
     {
         [0] = -- Common
         {
-            [0] = { xi.item.SPRINTERS_SHOES,                  980, false },
-            [1] = { xi.item.SCROLL_OF_INSTANT_RETRACE,         10, false },
-            [2] = { xi.item.COBRA_UNIT_TUNICA,               1000, true  },
-            [3] = { xi.item.PILGRIM_TUNICA,                  1000, true  },
-            [4] = { xi.item.COBRA_UNIT_CLAYMORE,             3000, true  },
-            [5] = { xi.item.RECALL_RING_JUGNER,              5000, false },
-            [6] = { xi.item.RECALL_RING_PASHHOW,             5000, false },
-            [7] = { xi.item.RECALL_RING_MERIPHATAUD,         5000, false },
-            [8] = { xi.item.CIPHER_OF_VALAINERALS_ALTER_EGO, 2000, false },
-            [9] = { xi.item.CIPHER_OF_ADELHEIDS_ALTER_EGO,   2000, false },
+            [0] = { invaderXim.item.SPRINTERS_SHOES,                  980, false },
+            [1] = { invaderXim.item.SCROLL_OF_INSTANT_RETRACE,         10, false },
+            [2] = { invaderXim.item.COBRA_UNIT_TUNICA,               1000, true  },
+            [3] = { invaderXim.item.PILGRIM_TUNICA,                  1000, true  },
+            [4] = { invaderXim.item.COBRA_UNIT_CLAYMORE,             3000, true  },
+            [5] = { invaderXim.item.RECALL_RING_JUGNER,              5000, false },
+            [6] = { invaderXim.item.RECALL_RING_PASHHOW,             5000, false },
+            [7] = { invaderXim.item.RECALL_RING_MERIPHATAUD,         5000, false },
+            [8] = { invaderXim.item.CIPHER_OF_VALAINERALS_ALTER_EGO, 2000, false },
+            [9] = { invaderXim.item.CIPHER_OF_ADELHEIDS_ALTER_EGO,   2000, false },
         },
 
         [1] = -- Stars of Service
         {
-            [0] = { xi.item.COBRA_UNIT_COAT,    10000, true },
-            [1] = { xi.item.COBRA_UNIT_CUFFS,    7000, true },
-            [2] = { xi.item.COBRA_UNIT_PIGACHES, 7000, true },
-            [3] = { xi.item.COBRA_UNIT_HAT,      7000, true },
-            [4] = { xi.item.COBRA_UNIT_SLOPS,    7000, true },
+            [0] = { invaderXim.item.COBRA_UNIT_COAT,    10000, true },
+            [1] = { invaderXim.item.COBRA_UNIT_CUFFS,    7000, true },
+            [2] = { invaderXim.item.COBRA_UNIT_PIGACHES, 7000, true },
+            [3] = { invaderXim.item.COBRA_UNIT_HAT,      7000, true },
+            [4] = { invaderXim.item.COBRA_UNIT_SLOPS,    7000, true },
         },
 
         [2] = -- Emblems of Service
         {
-            [0] = { xi.item.COBRA_UNIT_BAGHNAKHS, 20000, true },
-            [1] = { xi.item.COBRA_UNIT_KNIFE,     20000, true },
-            [2] = { xi.item.COBRA_UNIT_BOW,       20000, true },
-            [3] = { xi.item.COBRA_UNIT_CAP,       40000, true },
-            [4] = { xi.item.COBRA_UNIT_MITTENS,   40000, true },
-            [5] = { xi.item.COBRA_UNIT_CLOCHE,    40000, true },
-            [6] = { xi.item.COBRA_UNIT_GLOVES,    40000, true },
+            [0] = { invaderXim.item.COBRA_UNIT_BAGHNAKHS, 20000, true },
+            [1] = { invaderXim.item.COBRA_UNIT_KNIFE,     20000, true },
+            [2] = { invaderXim.item.COBRA_UNIT_BOW,       20000, true },
+            [3] = { invaderXim.item.COBRA_UNIT_CAP,       40000, true },
+            [4] = { invaderXim.item.COBRA_UNIT_MITTENS,   40000, true },
+            [5] = { invaderXim.item.COBRA_UNIT_CLOCHE,    40000, true },
+            [6] = { invaderXim.item.COBRA_UNIT_GLOVES,    40000, true },
         },
 
         [3] = -- Wings of Service
         {
-            [0] = { xi.item.COBRA_UNIT_LEGGINGS, 50000, true },
-            [1] = { xi.item.COBRA_UNIT_SUBLIGAR, 50000, true },
-            [2] = { xi.item.COBRA_UNIT_CRACKOWS, 50000, true },
-            [3] = { xi.item.COBRA_UNIT_TREWS,    50000, true },
+            [0] = { invaderXim.item.COBRA_UNIT_LEGGINGS, 50000, true },
+            [1] = { invaderXim.item.COBRA_UNIT_SUBLIGAR, 50000, true },
+            [2] = { invaderXim.item.COBRA_UNIT_CRACKOWS, 50000, true },
+            [3] = { invaderXim.item.COBRA_UNIT_TREWS,    50000, true },
         },
 
         [4] = -- Medals of Service
         {
-            [0] = { xi.item.CAPRICORNIAN_ROPE,  30000, true },
-            [1] = { xi.item.EARTHY_BELT,        30000, true },
-            [2] = { xi.item.COUGAR_PENDANT,     30000, true },
-            [3] = { xi.item.CROCODILE_COLLAR,   30000, true },
-            [4] = { xi.item.ARIESIAN_GRIP,      30000, true },
-            [5] = { xi.item.COBRA_UNIT_HARNESS, 75000, true },
-            [6] = { xi.item.COBRA_UNIT_ROBE,    75000, true },
-            [7] = { xi.item.ALLIED_RING,        15000, true }
+            [0] = { invaderXim.item.CAPRICORNIAN_ROPE,  30000, true },
+            [1] = { invaderXim.item.EARTHY_BELT,        30000, true },
+            [2] = { invaderXim.item.COUGAR_PENDANT,     30000, true },
+            [3] = { invaderXim.item.CROCODILE_COLLAR,   30000, true },
+            [4] = { invaderXim.item.ARIESIAN_GRIP,      30000, true },
+            [5] = { invaderXim.item.COBRA_UNIT_HARNESS, 75000, true },
+            [6] = { invaderXim.item.COBRA_UNIT_ROBE,    75000, true },
+            [7] = { invaderXim.item.ALLIED_RING,        15000, true }
         },
 
         [5] = -- Medals of Altana
         {
-            [0] = { xi.item.SAMUDRA,               100000, true },
-            [1] = { xi.item.MERCENARY_MAJOR_CHARM,  50000, true },
+            [0] = { invaderXim.item.SAMUDRA,               100000, true },
+            [1] = { invaderXim.item.MERCENARY_MAJOR_CHARM,  50000, true },
         },
     },
 }
 
 local sigilNpcInfo =
 {
-    [xi.zone.BASTOK_MARKETS_S    ] = {  13, 2 }, -- !pos -248.5 0 81.2 87
-    [xi.zone.SOUTHERN_SAN_DORIA_S] = { 110, 1 }, -- !pos 107 1 -31 80
-    [xi.zone.WINDURST_WATERS_S   ] = {  13, 3 }, -- !pos -31.869 -6.009 226.793 94
+    [invaderXim.zone.BASTOK_MARKETS_S    ] = {  13, 2 }, -- !pos -248.5 0 81.2 87
+    [invaderXim.zone.SOUTHERN_SAN_DORIA_S] = { 110, 1 }, -- !pos 107 1 -31 80
+    [invaderXim.zone.WINDURST_WATERS_S   ] = {  13, 3 }, -- !pos -31.869 -6.009 226.793 94
 }
 
 -- Returns the Vanadiel time in which Sigil will expire or 0
 local function getSigilTimeStamp(player)
     local sigilTimestamp = VanadielTime()
-    local sigilEffect    = player:getStatusEffect(xi.effect.SIGIL)
+    local sigilEffect    = player:getStatusEffect(invaderXim.effect.SIGIL)
 
     if sigilEffect then
         sigilTimestamp = sigilTimestamp + sigilEffect:getTimeRemaining() / 1000
@@ -242,9 +242,9 @@ local function getSigilRankMask(player)
 
     -- Rank Category is separated into five groups, each with four KIs and represented as bits 0..4 in
     -- the mask.
-    for keyItemId = xi.ki.BRONZE_RIBBON_OF_SERVICE, xi.ki.MEDAL_OF_ALTANA do
+    for keyItemId = invaderXim.ki.BRONZE_RIBBON_OF_SERVICE, invaderXim.ki.MEDAL_OF_ALTANA do
         if player:hasKeyItem(keyItemId) then
-            utils.mask.setBit(rankMask, math.floor(keyItemId - xi.ki.BRONZE_RIBBON_OF_SERVICE) / 4, true)
+            utils.mask.setBit(rankMask, math.floor(keyItemId - invaderXim.ki.BRONZE_RIBBON_OF_SERVICE) / 4, true)
         else
             break
         end
@@ -263,9 +263,9 @@ local function getSigilMenuOptions(player)
     -- 2: Valaineral Available (1 = Available)
     -- 3: Adelheid Available (1 = Available)
 
-    local optionMask = xi.extravaganza.campaignActive() * 4
+    local optionMask = invaderXim.extravaganza.campaignActive() * 4
 
-    if not player:hasStatusEffect(xi.effect.SIGIL) then
+    if not player:hasStatusEffect(invaderXim.effect.SIGIL) then
         optionMask = utils.mask.setBit(optionMask, 1, true)
     end
 
@@ -275,10 +275,10 @@ local function getSigilMenuOptions(player)
 end
 
 -- TODO: Is this deprecated by the mask function?
-xi.campaign.getMedalRank = function(player)
+invaderXim.campaign.getMedalRank = function(player)
     local rank = 0
 
-    for keyItemId = xi.ki.BRONZE_RIBBON_OF_SERVICE, xi.ki.MEDAL_OF_ALTANA do
+    for keyItemId = invaderXim.ki.BRONZE_RIBBON_OF_SERVICE, invaderXim.ki.MEDAL_OF_ALTANA do
         if player:hasKeyItem(keyItemId) then
             rank = rank + 1
         else
@@ -290,14 +290,14 @@ xi.campaign.getMedalRank = function(player)
 end
 
 -- Sigil NPC
-xi.campaign.sigilOnTrigger = function(player, npc)
+invaderXim.campaign.sigilOnTrigger = function(player, npc)
     local baseEvent     = sigilNpcInfo[player:getZoneID()][1]
     local freelanceMask = 0
 
     -- TODO: Update freelanceMask on implementation.  Bit 0 is required
     -- to be true to allow for Reduced XP Loss
 
-    if xi.campaign.getMedalRank(player) == 0 then
+    if invaderXim.campaign.getMedalRank(player) == 0 then
         player:startEvent(baseEvent + 1)
     else
         player:startEvent(baseEvent,
@@ -313,7 +313,7 @@ xi.campaign.sigilOnTrigger = function(player, npc)
     end
 end
 
-xi.campaign.sigilOnEventUpdate = function(player, csid, option, npc)
+invaderXim.campaign.sigilOnEventUpdate = function(player, csid, option, npc)
     local optionType   = bit.band(option, 0xF)
 
     if
@@ -348,7 +348,7 @@ xi.campaign.sigilOnEventUpdate = function(player, csid, option, npc)
     end
 end
 
-xi.campaign.sigilOnEventFinish = function(player, csid, option, npc)
+invaderXim.campaign.sigilOnEventFinish = function(player, csid, option, npc)
     local zoneId = player:getZoneID()
 
     if
@@ -366,7 +366,7 @@ xi.campaign.sigilOnEventFinish = function(player, csid, option, npc)
                 end
             end
 
-            local duration        = 10800 + ((15 * xi.campaign.getMedalRank(player)) * 60) -- 3hrs +15 min per medal (minimum 3hr 15 min with 1st medal)
+            local duration        = 10800 + ((15 * invaderXim.campaign.getMedalRank(player)) * 60) -- 3hrs +15 min per medal (minimum 3hr 15 min with 1st medal)
             local subPower        = 35 -- Sets % trigger for regen/refresh. Static at minimum value (35%) for now.
             -- Selected Effect Mask:
             -- 0: Regen
@@ -374,8 +374,8 @@ xi.campaign.sigilOnEventFinish = function(player, csid, option, npc)
             -- 2: Meal Duration
             -- 3: EXP Loss Reduction
 
-            player:delStatusEffectsByFlag(xi.effectFlag.INFLUENCE, true)
-            player:addStatusEffect(xi.effect.SIGIL, selectedEffects, 0, duration, 0, subPower, 0)
+            player:delStatusEffectsByFlag(invaderXim.effectFlag.INFLUENCE, true)
+            player:addStatusEffect(invaderXim.effect.SIGIL, selectedEffects, 0, duration, 0, subPower, 0)
             player:messageSpecial(zones[zoneId].text.ALLIED_SIGIL)
 
             if bonusCost > 0 then

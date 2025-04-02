@@ -8,19 +8,19 @@
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.znm.ryo.onTrade(player, npc, trade)
+    invaderXim.znm.ryo.onTrade(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    xi.znm.ryo.onTrigger(player, npc)
+    invaderXim.znm.ryo.onTrigger(player, npc)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.znm.ryo.onEventUpdate(player, csid, option, npc)
+    invaderXim.znm.ryo.onEventUpdate(player, csid, option, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.znm.ryo.onEventFinish(player, csid, option, npc)
+    invaderXim.znm.ryo.onEventFinish(player, csid, option, npc)
 end
 
 return entity

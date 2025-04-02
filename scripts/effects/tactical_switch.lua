@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.TACTICAL_SWITCH
+-- invaderXim.effect.TACTICAL_SWITCH
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

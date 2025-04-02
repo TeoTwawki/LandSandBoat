@@ -11,7 +11,7 @@ entity.onTrigger = function(player, npc)
     if player:getCharVar('BorghertzHandsFirstTime') == 2 then
         player:startEvent(220)
     elseif
-        player:getCurrentMission(player:getNation()) == xi.mission.id.nation.MAGICITE and
+        player:getCurrentMission(player:getNation()) == invaderXim.mission.id.nation.MAGICITE and
         player:getMissionStatus(player:getNation()) == 3
     then
         player:startEvent(210)

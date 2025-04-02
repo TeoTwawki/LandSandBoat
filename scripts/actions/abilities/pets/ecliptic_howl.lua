@@ -5,14 +5,14 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.summoner.canUseBloodPact(player, player:getPet(), target, ability)
+    return invaderXim.job_utils.summoner.canUseBloodPact(player, player:getPet(), target, ability)
 end
 
 abilityObject.onPetAbility = function(target, pet, petskill, summoner, action)
-    local bonusTime = utils.clamp(summoner:getSkillLevel(xi.skill.SUMMONING_MAGIC) - 300, 0, 200)
+    local bonusTime = utils.clamp(summoner:getSkillLevel(invaderXim.skill.SUMMONING_MAGIC) - 300, 0, 200)
     local duration = 180 + bonusTime
 
-    xi.job_utils.summoner.onUseBloodPact(target, petskill, summoner, action)
+    invaderXim.job_utils.summoner.onUseBloodPact(target, petskill, summoner, action)
 
     local moon = VanadielMoonPhase()
     local buffvalue = 1
@@ -30,15 +30,15 @@ abilityObject.onPetAbility = function(target, pet, petskill, summoner, action)
         buffvalue = 5
     end
 
-    target:delStatusEffect(xi.effect.ACCURACY_BOOST)
-    target:delStatusEffect(xi.effect.EVASION_BOOST)
-    target:addStatusEffect(xi.effect.ACCURACY_BOOST, buffvalue, 0, duration)
-    target:addStatusEffect(xi.effect.EVASION_BOOST, 25-buffvalue, 0, duration)
+    target:delStatusEffect(invaderXim.effect.ACCURACY_BOOST)
+    target:delStatusEffect(invaderXim.effect.EVASION_BOOST)
+    target:addStatusEffect(invaderXim.effect.ACCURACY_BOOST, buffvalue, 0, duration)
+    target:addStatusEffect(invaderXim.effect.EVASION_BOOST, 25-buffvalue, 0, duration)
 
     if target:getID() == action:getPrimaryTargetID() then
-        petskill:setMsg(xi.msg.basic.ACC_EVA_BOOST)
+        petskill:setMsg(invaderXim.msg.basic.ACC_EVA_BOOST)
     else
-        petskill:setMsg(xi.msg.basic.ACC_EVA_BOOST_2)
+        petskill:setMsg(invaderXim.msg.basic.ACC_EVA_BOOST_2)
     end
 
     return 0

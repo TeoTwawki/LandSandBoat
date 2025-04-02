@@ -7,11 +7,11 @@
 -- Kipligg : !pos -32 0 22 256
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.INTO_THE_FIRE)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.INTO_THE_FIRE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.MELVIEN_DE_MALECROIX },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.MELVIEN_DE_MALECROIX },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Kipligg'] = mission:progressEvent(155, 256, 932, 256),
             ['Levil']   = mission:event(161),

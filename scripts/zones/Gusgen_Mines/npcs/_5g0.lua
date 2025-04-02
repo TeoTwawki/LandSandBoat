@@ -3,7 +3,7 @@
 --  NPC: _5g0 (Door C)
 -- !pos 44 -42.4 -25.5 196
 -----------------------------------
-local ID = zones[xi.zone.GUSGEN_MINES]
+local ID = zones[invaderXim.zone.GUSGEN_MINES]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

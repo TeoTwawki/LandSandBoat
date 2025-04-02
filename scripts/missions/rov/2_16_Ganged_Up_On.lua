@@ -4,15 +4,15 @@
 -----------------------------------
 -- !addmission 13 80
 -----------------------------------
-local pastSandoriaID = zones[xi.zone.SOUTHERN_SAN_DORIA_S]
+local pastSandoriaID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA_S]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.GANGED_UP_ON)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.GANGED_UP_ON)
 
 mission.reward =
 {
-    item        = xi.item.CIPHER_OF_LILISETTES_ALTER_EGO_II,
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.SACRIFICE },
+    item        = invaderXim.item.CIPHER_OF_LILISETTES_ALTER_EGO_II,
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.SACRIFICE },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Mystic_Retriever'] =
             {
@@ -33,7 +33,7 @@ mission.sections =
 
                             mission:complete(player)
                         else
-                            player:messageName(pastSandoriaID.text.ITEM_CANNOT_BE_OBTAINED, nil, xi.item.CIPHER_OF_LILISETTES_ALTER_EGO_II)
+                            player:messageName(pastSandoriaID.text.ITEM_CANNOT_BE_OBTAINED, nil, invaderXim.item.CIPHER_OF_LILISETTES_ALTER_EGO_II)
                         end
 
                         return mission:noAction()
@@ -43,7 +43,7 @@ mission.sections =
 
             onZoneIn = function(player, prevZone)
                 if
-                    xi.rhapsodies.charactersAvailable(player) and
+                    invaderXim.rhapsodies.charactersAvailable(player) and
                     mission:getVar(player, 'Status') == 0
                 then
                     -- Lilisette is required for this event to occur, and was tested during repeat of
@@ -66,7 +66,7 @@ mission.sections =
                     if option == 1 then
                         local updateParams = { 0, 0, 0, 0 }
 
-                        if player:getCurrentMission(xi.mission.log_id.WOTG) >= xi.mission.id.wotg.FATE_IN_HAZE then
+                        if player:getCurrentMission(invaderXim.mission.log_id.WOTG) >= invaderXim.mission.id.wotg.FATE_IN_HAZE then
                             updateParams[1] = 1
                             updateParams[2] = 1
                         end
@@ -84,7 +84,7 @@ mission.sections =
 
                         mission:complete(player)
                     else
-                        player:messageName(pastSandoriaID.text.CANNOT_OBTAIN_MYSTIC, nil, xi.item.CIPHER_OF_LILISETTES_ALTER_EGO_II)
+                        player:messageName(pastSandoriaID.text.CANNOT_OBTAIN_MYSTIC, nil, invaderXim.item.CIPHER_OF_LILISETTES_ALTER_EGO_II)
                         mission:setVar(player, 'Status', 1)
                     end
                 end,

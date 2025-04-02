@@ -9,10 +9,10 @@ local entity = {}
 
 entity.onTrigger = function(player, npc)
     if
-        player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.THE_FUMBLING_FRIAR) == xi.questStatus.QUEST_ACCEPTED and
-        not player:hasKeyItem(xi.ki.ORNATE_PACKAGE)
+        player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.THE_FUMBLING_FRIAR) == invaderXim.questStatus.QUEST_ACCEPTED and
+        not player:hasKeyItem(invaderXim.ki.ORNATE_PACKAGE)
     then
-        npcUtil.giveKeyItem(player, xi.ki.ORNATE_PACKAGE)
+        npcUtil.giveKeyItem(player, invaderXim.ki.ORNATE_PACKAGE)
     end
 end
 

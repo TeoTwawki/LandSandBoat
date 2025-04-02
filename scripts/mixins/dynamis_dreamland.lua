@@ -64,7 +64,7 @@ g_mixins.dynamis_dreamland = function(dynamisDreamlandMob)
                 )
             )
         then
-            xi.dynamis.procMonster(target, caster)
+            invaderXim.dynamis.procMonster(target, caster)
         end
     end)
 
@@ -83,7 +83,7 @@ g_mixins.dynamis_dreamland = function(dynamisDreamlandMob)
                 )
             )
         then
-            xi.dynamis.procMonster(target, user)
+            invaderXim.dynamis.procMonster(target, user)
         end
     end)
 
@@ -102,7 +102,7 @@ g_mixins.dynamis_dreamland = function(dynamisDreamlandMob)
                 )
             )
         then
-            xi.dynamis.procMonster(target, user)
+            invaderXim.dynamis.procMonster(target, user)
         end
     end)
 

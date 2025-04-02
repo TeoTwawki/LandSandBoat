@@ -3,7 +3,7 @@
 --  Mob: Antican Princeps
 -- Note: PH for Sagittarius X-XIII and Antican Praefectus
 -----------------------------------
-local ID = zones[xi.zone.QUICKSAND_CAVES]
+local ID = zones[invaderXim.zone.QUICKSAND_CAVES]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -26,20 +26,20 @@ local praefectusPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 812, 2, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 813, 2, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 814, 2, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 815, 1, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 816, 2, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 817, 2, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 818, 2, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 819, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 812, 2, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 813, 2, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 814, 2, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 815, 1, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 816, 2, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 817, 2, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 818, 2, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 819, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, sagittariusPHTable, 10, 14400) -- 4 hours
-    xi.mob.phOnDespawn(mob, praefectusPHTable, 10, 3600) -- 1 hour
-    xi.mob.phOnDespawn(mob, magisterPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, sagittariusPHTable, 10, 14400) -- 4 hours
+    invaderXim.mob.phOnDespawn(mob, praefectusPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, magisterPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

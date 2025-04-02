@@ -4,14 +4,14 @@
 -- Trade Salvage Cells to pop Poroggo Madame
 -- Poroggo Madame drops 2x the Cells traded
 -----------------------------------
-local ID = zones[xi.zone.ZHAYOLM_REMNANTS]
+local ID = zones[invaderXim.zone.ZHAYOLM_REMNANTS]
 -----------------------------------
 
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.salvage.handleSocket(player, npc, trade, ID.mob.POROGGO_MADAME[2])
+    invaderXim.salvage.handleSocket(player, npc, trade, ID.mob.POROGGO_MADAME[2])
 end
 
 entity.onTrigger = function(player, npc)

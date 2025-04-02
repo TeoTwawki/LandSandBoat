@@ -6,8 +6,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
-DROP TABLE IF EXISTS `item_latents`;
-CREATE TABLE IF NOT EXISTS `item_latents` (
+DROP TABLE IF IXIMSTS `item_latents`;
+CREATE TABLE IF NOT IXIMSTS `item_latents` (
   `itemId` smallint(5) unsigned NOT NULL,
   `modId` smallint(5) unsigned NOT NULL,
   `value` smallint(5) NOT NULL DEFAULT 0,

@@ -1,13 +1,13 @@
 xi = xi or {}
 
-xi.ally =
+invaderXim.ally =
 {
     ASSIST_PLAYER = 1,
     ASSIST_RANDOM = 2,
 
     startAssist = function(entity, assistMode)
         if assistMode == nil then
-            assistMode = xi.ally.ASSIST_PLAYER
+            assistMode = invaderXim.ally.ASSIST_PLAYER
         end
 
         local mobs
@@ -34,7 +34,7 @@ xi.ally =
         end
 
         -- In this mode, find a player with a battle target, and assist that player
-        if assistMode == xi.ally.ASSIST_PLAYER then
+        if assistMode == invaderXim.ally.ASSIST_PLAYER then
             local assistTarget = 0
 
             -- Loop players and find someone who is engaged in battle
@@ -46,7 +46,7 @@ xi.ally =
                 end
             end
 
-            -- Attack their target if found. If none found, we'll fall to xi.ally.ASSIST_RANDOM.
+            -- Attack their target if found. If none found, we'll fall to invaderXim.ally.ASSIST_RANDOM.
             -- A variety of reasons could cause this - players have hate but are not engaged is one.
             -- Being aggroed when not engaged is another.
 
@@ -59,7 +59,7 @@ xi.ally =
             end
         end
 
-        -- xi.ally.ASSIST RANDOM - also a fallback for xi.ally.ASSIST_PLAYER
+        -- invaderXim.ally.ASSIST RANDOM - also a fallback for invaderXim.ally.ASSIST_PLAYER
         -- Pick an enemy to attack. Some allies do this intentionally. Some allies start to attack on their own if
         -- a player stalls too long. This can be used to set a target in both cases.
 

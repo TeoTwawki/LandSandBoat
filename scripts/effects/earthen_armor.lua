@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.EARTHEN_ARMOR
+-- invaderXim.effect.EARTHEN_ARMOR
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

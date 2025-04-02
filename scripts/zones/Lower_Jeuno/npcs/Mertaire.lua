@@ -4,22 +4,22 @@
 -- Starts and Finishes Quest: The Old Monument (start only), A Minstrel in Despair, Painful Memory (BARD AF1)
 -- !pos -17 0 -61 245
 -----------------------------------
-local ID = zones[xi.zone.LOWER_JEUNO]
+local ID = zones[invaderXim.zone.LOWER_JEUNO]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local painfulMemory  = player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.PAINFUL_MEMORY)
-    local circleOfTime   = player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_CIRCLE_OF_TIME)
+    local painfulMemory  = player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.PAINFUL_MEMORY)
+    local circleOfTime   = player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_CIRCLE_OF_TIME)
     local job            = player:getMainJob()
     local level          = player:getMainLvl()
 
     -- PAINFUL MEMORY (Bard AF1)
     if
-        painfulMemory == xi.questStatus.QUEST_AVAILABLE and
-        job == xi.job.BRD and
-        level >= xi.settings.main.AF1_QUEST_LEVEL
+        painfulMemory == invaderXim.questStatus.QUEST_AVAILABLE and
+        job == invaderXim.job.BRD and
+        level >= invaderXim.settings.main.AF1_QUEST_LEVEL
     then
         if player:getCharVar('PainfulMemoryCS') == 0 then
             player:startEvent(138) -- Long dialog for 'Painful Memory'
@@ -27,23 +27,23 @@ entity.onTrigger = function(player, npc)
             player:startEvent(137) -- Short dialog for 'Painful Memory'
         end
 
-    elseif painfulMemory == xi.questStatus.QUEST_ACCEPTED then
+    elseif painfulMemory == invaderXim.questStatus.QUEST_ACCEPTED then
         player:startEvent(136) -- During Quest 'Painful Memory'
 
     -- CIRCLE OF TIME (Bard AF3)
     elseif
-        player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_REQUIEM) == xi.questStatus.QUEST_COMPLETED and
-        circleOfTime == xi.questStatus.QUEST_AVAILABLE and
-        job == xi.job.BRD and
-        level >= xi.settings.main.AF3_QUEST_LEVEL
+        player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_REQUIEM) == invaderXim.questStatus.QUEST_COMPLETED and
+        circleOfTime == invaderXim.questStatus.QUEST_AVAILABLE and
+        job == invaderXim.job.BRD and
+        level >= invaderXim.settings.main.AF3_QUEST_LEVEL
     then
         player:startEvent(139) -- Start "The Circle of Time"
 
-    elseif circleOfTime == xi.questStatus.QUEST_ACCEPTED then
+    elseif circleOfTime == invaderXim.questStatus.QUEST_ACCEPTED then
         player:messageSpecial(ID.text.MERTAIRE_RING)
 
     -- DEFAULT DIALOG
-    elseif painfulMemory == xi.questStatus.QUEST_COMPLETED then
+    elseif painfulMemory == invaderXim.questStatus.QUEST_COMPLETED then
         player:startEvent(135) -- Standard dialog after completed "Painful Memory"
 
     else
@@ -60,13 +60,13 @@ entity.onEventFinish = function(player, csid, option, npc)
         (csid == 137 or csid == 138) and
         option == 1
     then
-        player:addQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.PAINFUL_MEMORY)
+        player:addQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.PAINFUL_MEMORY)
         player:setCharVar('PainfulMemoryCS', 0)
-        npcUtil.giveKeyItem(player, xi.ki.MERTAIRES_BRACELET)
+        npcUtil.giveKeyItem(player, invaderXim.ki.MERTAIRES_BRACELET)
 
     -- CIRCLE OF TIME (Bard AF3)
     elseif csid == 139 then
-        player:addQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_CIRCLE_OF_TIME)
+        player:addQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_CIRCLE_OF_TIME)
         player:setCharVar('circleTime', 1)
     end
 end

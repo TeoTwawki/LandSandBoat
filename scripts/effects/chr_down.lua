@@ -1,15 +1,15 @@
 -----------------------------------
--- xi.effect.CHR_DOWN
+-- invaderXim.effect.CHR_DOWN
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    if (target:getStat(xi.mod.CHR) - effect:getPower()) < 0 then
-        effect:setPower(target:getStat(xi.mod.CHR))
+    if (target:getStat(invaderXim.mod.CHR) - effect:getPower()) < 0 then
+        effect:setPower(target:getStat(invaderXim.mod.CHR))
     end
 
-    target:addMod(xi.mod.CHR, -effect:getPower())
+    target:addMod(invaderXim.mod.CHR, -effect:getPower())
 end
 
 effectObject.onEffectTick = function(target, effect)
@@ -17,14 +17,14 @@ effectObject.onEffectTick = function(target, effect)
     local downCHREffectSize = effect:getPower()
     if downCHREffectSize > 0 then
         effect:setPower(downCHREffectSize - 1)
-        target:delMod(xi.mod.CHR, -1)
+        target:delMod(invaderXim.mod.CHR, -1)
     end
 end
 
 effectObject.onEffectLose = function(target, effect)
     local downCHREffectSize = effect:getPower()
     if downCHREffectSize > 0 then
-        target:delMod(xi.mod.CHR, -downCHREffectSize)
+        target:delMod(invaderXim.mod.CHR, -downCHREffectSize)
     end
 end
 

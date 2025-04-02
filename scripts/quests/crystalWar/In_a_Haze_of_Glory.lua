@@ -7,34 +7,34 @@
 -- Wooden Crates : !pos -0.717 3.347 -99.535 164
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.IN_A_HAZE_OF_GLORY)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.IN_A_HAZE_OF_GLORY)
 
 quest.reward =
 {
-    item = xi.item.FULLMETAL_BULLET,
+    item = invaderXim.item.FULLMETAL_BULLET,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.PERILS_OF_THE_GRIFFON)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.PERILS_OF_THE_GRIFFON)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Rholont'] = quest:event(637),
         },
 
-        [xi.zone.GARLAIGE_CITADEL_S] =
+        [invaderXim.zone.GARLAIGE_CITADEL_S] =
         {
             ['Diordinne'] = quest:progressEvent(31),
 
             onEventFinish =
             {
                 [31] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.NUMBER_EIGHT_SHELTER_KEY)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.NUMBER_EIGHT_SHELTER_KEY)
                     quest:begin(player)
                 end,
             },
@@ -43,15 +43,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.GARLAIGE_CITADEL_S] =
+        [invaderXim.zone.GARLAIGE_CITADEL_S] =
         {
             ['Diordinne'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.NUMBER_EIGHT_SHELTER_KEY) then
+                    if player:hasKeyItem(invaderXim.ki.NUMBER_EIGHT_SHELTER_KEY) then
                         if quest:getVar(player, 'Option') == 0 then
                             return quest:event(37)
                         end
@@ -100,7 +100,7 @@ quest.sections =
 
                 [36] = function(player, csid, option, npc)
                     quest:setVar(player, 'Timer', 0)
-                    npcUtil.giveKeyItem(player, xi.ki.NUMBER_EIGHT_SHELTER_KEY)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.NUMBER_EIGHT_SHELTER_KEY)
                 end,
 
                 [37] = function(player, csid, option, npc)
@@ -109,7 +109,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.GHOYUS_REVERIE] =
+        [invaderXim.zone.GHOYUS_REVERIE] =
         {
             onEventFinish =
             {
@@ -118,12 +118,12 @@ quest.sections =
                 -- implementation of the instance.
                 [10000] = function(player, csid, option, npc)
                     quest:setVar(player, 'Prog', 2)
-                    player:setPos(2.436, 6.235, -99.966, 127, xi.zone.GARLAIGE_CITADEL_S)
+                    player:setPos(2.436, 6.235, -99.966, 127, invaderXim.zone.GARLAIGE_CITADEL_S)
                 end,
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Rholont'] =
             {
@@ -148,8 +148,8 @@ quest.sections =
                         -- NOTE: The Price of Valor also requires specific mission progress; however, it is possible to hit the below
                         -- conditions if this is a second or third nation being completed by the player.
 
-                        xi.quest.setVar(player, xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.THE_PRICE_OF_VALOR, 'Timer', VanadielUniqueDay() + 1)
-                        xi.quest.setMustZone(player, xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.THE_PRICE_OF_VALOR)
+                        invaderXim.quest.setVar(player, invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.THE_PRICE_OF_VALOR, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.quest.setMustZone(player, invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.THE_PRICE_OF_VALOR)
                     end
                 end,
             },

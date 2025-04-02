@@ -2,7 +2,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ------------------------------
 -- Table structure for char_flags 
 -- ------------------------------
-DROP TABLE IF EXISTS `char_flags`;
+DROP TABLE IF IXIMSTS `char_flags`;
 CREATE TABLE `char_flags` (
   `charid` int(10) unsigned NOT NULL,
   `disconnecting` smallint(3) NOT NULL DEFAULT '0',

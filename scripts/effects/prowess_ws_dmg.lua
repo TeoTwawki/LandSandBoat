@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.PROWESS
+-- invaderXim.effect.PROWESS
 -- Increased weapon skill damage
 -----------------------------------
 ---@type TEffect

@@ -16,19 +16,19 @@ local weaponskillObject = {}
 weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary, action, taChar)
     local params = {}
     params.ftpMod = { 1.0, 2.0, 2.5 }
-    params.skill = xi.skill.STAFF
+    params.skill = invaderXim.skill.STAFF
     params.includemab = true
     -- 50/50 shot of being light or dark
-    params.ele = xi.element.LIGHT
+    params.ele = invaderXim.element.LIGHT
     if math.random(1, 100) <= 50 then
-        params.ele = xi.element.DARK
+        params.ele = invaderXim.element.DARK
     end
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         params.str_wsc = 0.4 params.mnd_wsc = 0.4
     end
 
-    local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
+    local damage, criticalHit, tpHits, extraHits = invaderXim.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
     return tpHits, extraHits, criticalHit, damage
 end
 

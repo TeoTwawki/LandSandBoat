@@ -2,8 +2,8 @@
 -- Seasonal Events Handler
 -----------------------------------
 xi = xi or {}
-xi.events = xi.events or {}
-xi.events.handler = xi.events.handler or {}
+invaderXim.events = invaderXim.events or {}
+invaderXim.events.handler = invaderXim.events.handler or {}
 
 -- Seasonal Event Type
 SeasonalEvent = {}
@@ -63,23 +63,23 @@ end
 
 -- NOTE: Since this is caching require'd tables, this system won't easily
 --     : work with Lua hot-reloading (yet)!
-xi.events.registeredEvents =
+invaderXim.events.registeredEvents =
 {
     require('scripts/events/starlight_celebration'),
     require('scripts/events/egg_hunt_egg-stravaganza'),
     require('scripts/events/mog_bonanza'),
 }
 
-xi.events.handler.checkSeasonalEvents = function()
+invaderXim.events.handler.checkSeasonalEvents = function()
     print('Checking Seasonal Events')
 
-    for _, event in pairs(xi.events.registeredEvents) do
+    for _, event in pairs(invaderXim.events.registeredEvents) do
         event:checkEnding()
     end
 
-    for _, event in pairs(xi.events.registeredEvents) do
+    for _, event in pairs(invaderXim.events.registeredEvents) do
         event:checkStarting()
     end
 end
 
-return xi.events.handler
+return invaderXim.events.handler

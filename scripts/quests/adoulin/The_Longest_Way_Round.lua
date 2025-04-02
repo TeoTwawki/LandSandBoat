@@ -11,14 +11,14 @@
 -- Cunegonde      : !pos -55.964 -0.15 -129.833 257
 -- Ndah Tolohjin  : !pos -86.808 0.001 -36.867 257
 -----------------------------------
-local easternAdoulinID = zones[xi.zone.EASTERN_ADOULIN]
+local easternAdoulinID = zones[invaderXim.zone.EASTERN_ADOULIN]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.ADOULIN, xi.quest.id.adoulin.THE_LONGEST_WAY_ROUND)
+local quest = Quest:new(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.THE_LONGEST_WAY_ROUND)
 
 quest.reward =
 {
-    fameArea = xi.fameArea.ADOULIN,
+    fameArea = invaderXim.fameArea.ADOULIN,
     bayld    = 500,
     exp      = 1000,
 }
@@ -54,11 +54,11 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getCurrentMission(xi.mission.log_id.SOA) >= xi.mission.id.soa.LIFE_ON_THE_FRONTIER
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getCurrentMission(invaderXim.mission.log_id.SOA) >= invaderXim.mission.id.soa.LIFE_ON_THE_FRONTIER
         end,
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Vastran'] = quest:progressEvent(2510),
 
@@ -66,7 +66,7 @@ quest.sections =
             {
                 [2510] = function(player, csid, option, npc)
                     quest:begin(player)
-                    npcUtil.giveKeyItem(player, xi.ki.EASTERN_ADOULIN_PATROL_ROUTE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.EASTERN_ADOULIN_PATROL_ROUTE)
                 end,
             },
         },
@@ -74,10 +74,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Vastran'] =
             {
@@ -129,8 +129,8 @@ quest.sections =
             {
                 [2512] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.EASTERN_ADOULIN_PATROL_ROUTE)
-                        player:messageSpecial(easternAdoulinID.text.KEYITEM_LOST, xi.ki.EASTERN_ADOULIN_PATROL_ROUTE)
+                        player:delKeyItem(invaderXim.ki.EASTERN_ADOULIN_PATROL_ROUTE)
+                        player:messageSpecial(easternAdoulinID.text.KEYITEM_LOST, invaderXim.ki.EASTERN_ADOULIN_PATROL_ROUTE)
                     end
                 end,
 

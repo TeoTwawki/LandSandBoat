@@ -10,30 +10,30 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.TERROR)
-    mob:addImmunity(xi.immunity.STUN)
-    mob:addImmunity(xi.immunity.SLOW)
-    mob:addImmunity(xi.immunity.BLIND)
-    mob:addImmunity(xi.immunity.PARALYZE)
-    mob:addImmunity(xi.immunity.GRAVITY)
-    mob:addImmunity(xi.immunity.BIND)
-    mob:addImmunity(xi.immunity.TERROR)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.TERROR)
+    mob:addImmunity(invaderXim.immunity.STUN)
+    mob:addImmunity(invaderXim.immunity.SLOW)
+    mob:addImmunity(invaderXim.immunity.BLIND)
+    mob:addImmunity(invaderXim.immunity.PARALYZE)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
+    mob:addImmunity(invaderXim.immunity.BIND)
+    mob:addImmunity(invaderXim.immunity.TERROR)
 end
 
 entity.onMobSpawn = function(mob)
     mob:setAutoAttackEnabled(false)
     mob:setMobAbilityEnabled(false)
-    mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 0)
-    mob:setMobMod(xi.mobMod.ROAM_TURNS, 0)
-    mob:setMod(xi.mod.UDMGMAGIC, 1600)
-    mob:setMod(xi.mod.UDMGPHYS, 160)
-    mob:setMod(xi.mod.UDMGRANGE, 160)
+    mob:setMobMod(invaderXim.mobMod.ROAM_DISTANCE, 0)
+    mob:setMobMod(invaderXim.mobMod.ROAM_TURNS, 0)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, 1600)
+    mob:setMod(invaderXim.mod.UDMGPHYS, 160)
+    mob:setMod(invaderXim.mod.UDMGRANGE, 160)
 
     -- TODO:
-    -- mob:addStatusEffect(xi.effect.NO_REST, 1, 0, 0)
-    mob:setMobMod(xi.mobMod.DETECTION, xi.detects.SCENT)
+    -- mob:addStatusEffect(invaderXim.effect.NO_REST, 1, 0, 0)
+    mob:setMobMod(invaderXim.mobMod.DETECTION, invaderXim.detects.SCENT)
 
     -- 70/30 split to be able to spawn a NM or not into rotation
     local canSpawnNM = 700

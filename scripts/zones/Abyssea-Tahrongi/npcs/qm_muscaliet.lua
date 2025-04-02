@@ -4,17 +4,17 @@
 -- Spawns Muscaliet
 -- !pos 253 46 291 45
 -----------------------------------
-local ID = zones[xi.zone.ABYSSEA_TAHRONGI]
+local ID = zones[invaderXim.zone.ABYSSEA_TAHRONGI]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.abyssea.qmOnTrade(player, npc, trade, ID.mob.MUSCALIET, { xi.item.RESILIENT_MANE, xi.item.SMOOTH_WHISKER })
+    invaderXim.abyssea.qmOnTrade(player, npc, trade, ID.mob.MUSCALIET, { invaderXim.item.RESILIENT_MANE, invaderXim.item.SMOOTH_WHISKER })
 end
 
 entity.onTrigger = function(player, npc)
-    xi.abyssea.qmOnTrigger(player, npc, 0, 0, { xi.item.RESILIENT_MANE, xi.item.SMOOTH_WHISKER })
+    invaderXim.abyssea.qmOnTrigger(player, npc, 0, 0, { invaderXim.item.RESILIENT_MANE, invaderXim.item.SMOOTH_WHISKER })
 end
 
 return entity

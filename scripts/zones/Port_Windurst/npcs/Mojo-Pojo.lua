@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onSpawn = function(npc)
-    npcUtil.castingAnimation(npc, xi.magic.spellGroup.BLACK, 14)
+    npcUtil.castingAnimation(npc, invaderXim.magic.spellGroup.BLACK, 14)
 end
 
 return entity

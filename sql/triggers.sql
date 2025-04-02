@@ -2,7 +2,7 @@ SET NAMES 'utf8';
 
 DELIMITER $$
 
-DROP TRIGGER IF EXISTS auction_house_buy $$
+DROP TRIGGER IF IXIMSTS auction_house_buy $$
 CREATE TRIGGER auction_house_buy
     BEFORE UPDATE ON auction_house
     FOR EACH ROW
@@ -10,7 +10,7 @@ BEGIN
     IF OLD.seller != 0 AND NEW.sale != 0 THEN INSERT INTO delivery_box VALUES (NEW.seller, NEW.seller_name, 1, 0, 0xFFFF, NEW.itemid, NEW.sale, NULL, 0, 'AH-Jeuno', 0, 0); END IF;
 END $$
 
-DROP TRIGGER IF EXISTS auction_house_list $$
+DROP TRIGGER IF IXIMSTS auction_house_list $$
 CREATE TRIGGER auction_house_list
     BEFORE INSERT ON auction_house
     FOR EACH ROW
@@ -18,7 +18,7 @@ BEGIN
     INSERT IGNORE INTO `auction_house_items` SET `itemid` = NEW.itemid;
 END $$
 
-DROP TRIGGER IF EXISTS delivery_box_insert $$
+DROP TRIGGER IF IXIMSTS delivery_box_insert $$
 CREATE TRIGGER delivery_box_insert
     BEFORE INSERT ON delivery_box
     FOR EACH ROW
@@ -30,7 +30,7 @@ BEGIN
     END IF;
 END $$
 
-DROP TRIGGER IF EXISTS account_delete $$
+DROP TRIGGER IF IXIMSTS account_delete $$
 CREATE TRIGGER account_delete
     BEFORE DELETE ON accounts
     FOR EACH ROW
@@ -39,7 +39,7 @@ BEGIN
     DELETE FROM `chars` WHERE `accid` = OLD.id;
 END $$
 
-DROP TRIGGER IF EXISTS session_delete $$
+DROP TRIGGER IF IXIMSTS session_delete $$
 CREATE TRIGGER session_delete
     BEFORE DELETE ON accounts_sessions
     FOR EACH ROW
@@ -47,7 +47,7 @@ BEGIN
     UPDATE `char_stats` SET zoning = 0 WHERE `charid` = OLD.charid;
 END $$
 
-DROP TRIGGER IF EXISTS char_delete $$
+DROP TRIGGER IF IXIMSTS char_delete $$
 CREATE TRIGGER char_delete
     BEFORE DELETE ON chars
     FOR EACH ROW
@@ -83,7 +83,7 @@ BEGIN
     UPDATE `delivery_box`      SET `sent` = 0   WHERE `box` = 2 AND `received` = 0 AND `sent` = 1 AND `senderid` = OLD.charid;
 END $$
 
-DROP TRIGGER IF EXISTS char_insert $$
+DROP TRIGGER IF IXIMSTS char_insert $$
 CREATE TRIGGER char_insert
     BEFORE INSERT ON chars
     FOR EACH ROW

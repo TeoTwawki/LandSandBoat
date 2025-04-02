@@ -3,7 +3,7 @@
 --  Mob: Scarab Beetle
 -- Note: Place holder for Fungus Beetle
 -----------------------------------
-local ID = zones[xi.zone.WEST_RONFAURE]
+local ID = zones[invaderXim.zone.WEST_RONFAURE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -68,14 +68,14 @@ local fungusSpawnPoints =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 3, 1, xi.regime.type.FIELDS)
-    xi.regime.checkRegime(player, mob, 4, 2, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 3, 1, invaderXim.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 4, 2, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = fungusSpawnPoints
-    xi.mob.phOnDespawn(mob, fungusPHTable, 10, 900, params) -- 15 minute minimum
+    invaderXim.mob.phOnDespawn(mob, fungusPHTable, 10, 900, params) -- 15 minute minimum
 end
 
 return entity

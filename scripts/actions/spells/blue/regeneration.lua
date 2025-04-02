@@ -24,28 +24,28 @@ spellObject.onSpellCast = function(caster, target, spell)
     local power = 25
     local duration = 90
 
-    if caster:hasStatusEffect(xi.effect.DIFFUSION) then
-        local diffMerit = caster:getMerit(xi.merit.DIFFUSION)
+    if caster:hasStatusEffect(invaderXim.effect.DIFFUSION) then
+        local diffMerit = caster:getMerit(invaderXim.merit.DIFFUSION)
 
         if diffMerit > 0 then
             duration = duration + (duration / 100) * diffMerit
         end
 
-        caster:delStatusEffect(xi.effect.DIFFUSION)
+        caster:delStatusEffect(invaderXim.effect.DIFFUSION)
     end
 
     if
-        target:hasStatusEffect(xi.effect.REGEN) and
-        target:getStatusEffect(xi.effect.REGEN):getTier() == 1
+        target:hasStatusEffect(invaderXim.effect.REGEN) and
+        target:getStatusEffect(invaderXim.effect.REGEN):getTier() == 1
     then
-        target:delStatusEffect(xi.effect.REGEN)
+        target:delStatusEffect(invaderXim.effect.REGEN)
     end
 
-    if not target:addStatusEffect(xi.effect.REGEN, power, 3, duration, 0, 0, 0) then
-        spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+    if not target:addStatusEffect(invaderXim.effect.REGEN, power, 3, duration, 0, 0, 0) then
+        spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
     end
 
-    return xi.effect.REGEN
+    return invaderXim.effect.REGEN
 end
 
 return spellObject

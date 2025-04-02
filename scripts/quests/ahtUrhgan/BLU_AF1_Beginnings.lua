@@ -9,23 +9,23 @@
 -- Nareema : !pos 518.387 -24.707 -467.297 79
 -- Waudeen : !pos 673.882 -23.995 367.604 61
 -----------------------------------
-local whitegateID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local whitegateID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.BEGINNINGS)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.BEGINNINGS)
 
 quest.reward =
 {
-    item = xi.item.IMMORTALS_SCIMITAR,
+    item = invaderXim.item.IMMORTALS_SCIMITAR,
 }
 
 local brandKeyItems =
 {
-    xi.ki.BRAND_OF_THE_SPRINGSERPENT,
-    xi.ki.BRAND_OF_THE_GALESERPENT,
-    xi.ki.BRAND_OF_THE_FLAMESERPENT,
-    xi.ki.BRAND_OF_THE_SKYSERPENT,
-    xi.ki.BRAND_OF_THE_STONESERPENT,
+    invaderXim.ki.BRAND_OF_THE_SPRINGSERPENT,
+    invaderXim.ki.BRAND_OF_THE_GALESERPENT,
+    invaderXim.ki.BRAND_OF_THE_FLAMESERPENT,
+    invaderXim.ki.BRAND_OF_THE_SKYSERPENT,
+    invaderXim.ki.BRAND_OF_THE_STONESERPENT,
 }
 
 local function hasRequiredBrands(player)
@@ -42,20 +42,20 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedMission(xi.mission.log_id.TOAU, xi.mission.id.toau.IMMORTAL_SENTRIES) and
-                player:hasCompletedQuest(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AN_EMPTY_VESSEL) and
-                player:getMainJob() == xi.job.BLU and
-                player:getMainLvl() >= xi.settings.main.AF1_QUEST_LEVEL and
-                xi.quest.getVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'completeEvent') == 0
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedMission(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.IMMORTAL_SENTRIES) and
+                player:hasCompletedQuest(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AN_EMPTY_VESSEL) and
+                player:getMainJob() == invaderXim.job.BLU and
+                player:getMainLvl() >= invaderXim.settings.main.AF1_QUEST_LEVEL and
+                invaderXim.quest.getVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'completeEvent') == 0
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Waoud'] =
             {
                 onTrigger = function(player, npc)
-                    local lastDivination = xi.quest.getVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer')
+                    local lastDivination = invaderXim.quest.getVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer')
 
                     if
                         lastDivination <= VanadielUniqueDay() and
@@ -72,7 +72,7 @@ quest.sections =
                     if option == 1 then
                         quest:begin(player)
 
-                        xi.quest.setVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.BEGINNINGS, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.quest.setVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.BEGINNINGS, 'Timer', VanadielUniqueDay() + 1)
                     end
                 end,
             },
@@ -81,16 +81,16 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
-                player:getMainJob() == xi.job.BLU
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
+                player:getMainJob() == invaderXim.job.BLU
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Waoud'] =
             {
                 onTrigger = function(player, npc)
-                    local lastDivination = xi.quest.getVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer')
+                    local lastDivination = invaderXim.quest.getVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.AN_EMPTY_VESSEL, 'Timer')
 
                     if hasRequiredBrands(player) then
                         return quest:progressEvent(707)
@@ -110,25 +110,25 @@ quest.sections =
                         player:delGil(1000)
                         player:messageSpecial(whitegateID.text.PAY_DIVINATION)
 
-                        xi.quest.setVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.BEGINNINGS, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.quest.setVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.BEGINNINGS, 'Timer', VanadielUniqueDay() + 1)
                     end
                 end,
 
                 [707] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        xi.quest.setVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.BEGINNINGS, 'Timer', VanadielUniqueDay() + 1)
-                        xi.quest.setMustZone(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.OMENS)
+                        invaderXim.quest.setVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.BEGINNINGS, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.quest.setMustZone(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.OMENS)
                     end
                 end,
             },
         },
 
-        [xi.zone.ARRAPAGO_REEF] =
+        [invaderXim.zone.ARRAPAGO_REEF] =
         {
             ['Meyaada'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.BRAND_OF_THE_SPRINGSERPENT) then
+                    if not player:hasKeyItem(invaderXim.ki.BRAND_OF_THE_SPRINGSERPENT) then
                         return quest:progressEvent(10)
                     else
                         return quest:event(11):importantEvent()
@@ -139,17 +139,17 @@ quest.sections =
             onEventFinish =
             {
                 [10] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.BRAND_OF_THE_SPRINGSERPENT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.BRAND_OF_THE_SPRINGSERPENT)
                 end,
             },
         },
 
-        [xi.zone.BHAFLAU_THICKETS] =
+        [invaderXim.zone.BHAFLAU_THICKETS] =
         {
             ['Daswil'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.BRAND_OF_THE_SKYSERPENT) then
+                    if not player:hasKeyItem(invaderXim.ki.BRAND_OF_THE_SKYSERPENT) then
                         return quest:progressEvent(8)
                     else
                         return quest:event(9):importantEvent()
@@ -160,17 +160,17 @@ quest.sections =
             onEventFinish =
             {
                 [8] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.BRAND_OF_THE_SKYSERPENT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.BRAND_OF_THE_SKYSERPENT)
                 end,
             },
         },
 
-        [xi.zone.CAEDARVA_MIRE] =
+        [invaderXim.zone.CAEDARVA_MIRE] =
         {
             ['Nahshib'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.BRAND_OF_THE_GALESERPENT) then
+                    if not player:hasKeyItem(invaderXim.ki.BRAND_OF_THE_GALESERPENT) then
                         return quest:progressEvent(10)
                     else
                         return quest:event(11):importantEvent()
@@ -181,7 +181,7 @@ quest.sections =
             ['Nareema'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.BRAND_OF_THE_STONESERPENT) then
+                    if not player:hasKeyItem(invaderXim.ki.BRAND_OF_THE_STONESERPENT) then
                         return quest:progressEvent(12)
                     else
                         return quest:event(13):importantEvent()
@@ -192,21 +192,21 @@ quest.sections =
             onEventFinish =
             {
                 [10] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.BRAND_OF_THE_GALESERPENT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.BRAND_OF_THE_GALESERPENT)
                 end,
 
                 [12] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.BRAND_OF_THE_STONESERPENT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.BRAND_OF_THE_STONESERPENT)
                 end,
             },
         },
 
-        [xi.zone.MOUNT_ZHAYOLM] =
+        [invaderXim.zone.MOUNT_ZHAYOLM] =
         {
             ['Waudeen'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.BRAND_OF_THE_FLAMESERPENT) then
+                    if not player:hasKeyItem(invaderXim.ki.BRAND_OF_THE_FLAMESERPENT) then
                         return quest:progressEvent(10)
                     else
                         return quest:event(11):importantEvent()
@@ -217,7 +217,7 @@ quest.sections =
             onEventFinish =
             {
                 [10] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.BRAND_OF_THE_FLAMESERPENT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.BRAND_OF_THE_FLAMESERPENT)
                 end,
             },
         },

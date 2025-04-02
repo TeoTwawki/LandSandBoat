@@ -7,18 +7,18 @@
 -- Ploh Trishbahk : !pos 100.580 -40.150 -63.830 257
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.THE_LIGHTSLAND)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_LIGHTSLAND)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.THE_LIGHT_OF_DAWN_COMES },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_LIGHT_OF_DAWN_COMES },
 }
 
 local rewardItems =
 {
-    xi.item.ADOULINS_REFUGE,
-    xi.item.YGNASS_RESOLVE,
-    xi.item.ARCIELAS_GRACE,
+    invaderXim.item.ADOULINS_REFUGE,
+    invaderXim.item.YGNASS_RESOLVE,
+    invaderXim.item.ARCIELAS_GRACE,
 }
 
 mission.sections =
@@ -28,7 +28,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Ploh_Trishbahk'] =
             {
@@ -65,30 +65,30 @@ mission.sections =
                 [1529] = function(player, csid, option, npc)
                     if npcUtil.giveItem(player, rewardItems[option]) then
                         mission:complete(player)
-                        xi.mission.setVar(player, xi.mission.log_id.SOA, xi.mission.id.soa.THE_LIGHT_OF_DAWN_COMES, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.mission.setVar(player, invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_LIGHT_OF_DAWN_COMES, 'Timer', VanadielUniqueDay() + 1)
                     else
                         mission:setVar(player, 'Option', 1)
                     end
 
                     -- Experience is given after this cutscene regardless of mission complete.
-                    player:addExp(500 * xi.settings.EXP_RATE)
+                    player:addExp(500 * invaderXim.settings.EXP_RATE)
                 end,
 
                 [1531] = function(player, csid, option, npc)
                     if npcUtil.giveItem(player, rewardItems[option]) then
                         mission:complete(player)
-                        xi.mission.setVar(player, xi.mission.log_id.SOA, xi.mission.id.soa.THE_LIGHT_OF_DAWN_COMES, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.mission.setVar(player, invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_LIGHT_OF_DAWN_COMES, 'Timer', VanadielUniqueDay() + 1)
                     end
                 end,
             },
         },
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:progressEvent(166),
         },
 
-        [xi.zone.LEAFALLIA] =
+        [invaderXim.zone.LEAFALLIA] =
         {
             ['Heroic_Footprints'] = mission:progressEvent(5, 281, 0, 1756, 0, 58029558, 583232, 4095, 131184),
         },

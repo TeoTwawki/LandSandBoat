@@ -8,17 +8,17 @@
 -- qm3 : !pos 580 -9 290 112
 -- qm4 : !pos -21 -25 -490 112
 -----------------------------------
-local ruludeID    = zones[xi.zone.RULUDE_GARDENS]
-local xarcabardID = zones[xi.zone.XARCABARD]
+local ruludeID    = zones[invaderXim.zone.RULUDE_GARDENS]
+local xarcabardID = zones[invaderXim.zone.XARCABARD]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.ATOP_THE_HIGHEST_MOUNTAINS)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.ATOP_THE_HIGHEST_MOUNTAINS)
 
 quest.reward =
 {
     fame = 40,
-    fameArea = xi.fameArea.JEUNO,
-    title = xi.title.SUMMIT_BREAKER,
+    fameArea = invaderXim.fameArea.JEUNO,
+    title = invaderXim.title.SUMMIT_BREAKER,
 }
 
 quest.sections =
@@ -26,12 +26,12 @@ quest.sections =
     -- Section: Quest available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
                 player:getLevelCap() == 55 and
-                xi.settings.main.MAX_LEVEL >= 60
+                invaderXim.settings.main.MAX_LEVEL >= 60
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Maat'] =
             {
@@ -58,18 +58,18 @@ quest.sections =
     -- Section: Quest accepted.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Maat'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:hasKeyItem(xi.ki.ROUND_FRIGICITE) and
-                        player:hasKeyItem(xi.ki.SQUARE_FRIGICITE) and
-                        player:hasKeyItem(xi.ki.TRIANGULAR_FRIGICITE)
+                        player:hasKeyItem(invaderXim.ki.ROUND_FRIGICITE) and
+                        player:hasKeyItem(invaderXim.ki.SQUARE_FRIGICITE) and
+                        player:hasKeyItem(invaderXim.ki.TRIANGULAR_FRIGICITE)
                     then
                         return quest:progressEvent(84)
                     else
@@ -82,9 +82,9 @@ quest.sections =
             {
                 [84] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.ROUND_FRIGICITE)
-                        player:delKeyItem(xi.ki.SQUARE_FRIGICITE)
-                        player:delKeyItem(xi.ki.TRIANGULAR_FRIGICITE)
+                        player:delKeyItem(invaderXim.ki.ROUND_FRIGICITE)
+                        player:delKeyItem(invaderXim.ki.SQUARE_FRIGICITE)
+                        player:delKeyItem(invaderXim.ki.TRIANGULAR_FRIGICITE)
                         player:setLevelCap(60)
                         player:messageSpecial(ruludeID.text.YOUR_LEVEL_LIMIT_IS_NOW_60)
                     end
@@ -92,16 +92,16 @@ quest.sections =
             },
         },
 
-        [xi.zone.XARCABARD] =
+        [invaderXim.zone.XARCABARD] =
         {
             ['qm_boreal_tiger'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.ROUND_FRIGICITE) and
-                        (not xi.settings.main.OLDSCHOOL_G2 or GetMobByID(xarcabardID.mob.BOREAL_TIGER):isDead())
+                        not player:hasKeyItem(invaderXim.ki.ROUND_FRIGICITE) and
+                        (not invaderXim.settings.main.OLDSCHOOL_G2 or GetMobByID(xarcabardID.mob.BOREAL_TIGER):isDead())
                     then
-                        return quest:keyItem(xi.ki.ROUND_FRIGICITE)
+                        return quest:keyItem(invaderXim.ki.ROUND_FRIGICITE)
                     end
                 end,
             },
@@ -110,10 +110,10 @@ quest.sections =
             {
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.SQUARE_FRIGICITE) and
-                        (not xi.settings.main.OLDSCHOOL_G2 or GetMobByID(xarcabardID.mob.BOREAL_COEURL):isDead())
+                        not player:hasKeyItem(invaderXim.ki.SQUARE_FRIGICITE) and
+                        (not invaderXim.settings.main.OLDSCHOOL_G2 or GetMobByID(xarcabardID.mob.BOREAL_COEURL):isDead())
                     then
-                        return quest:keyItem(xi.ki.SQUARE_FRIGICITE)
+                        return quest:keyItem(invaderXim.ki.SQUARE_FRIGICITE)
                     end
                 end,
             },
@@ -122,10 +122,10 @@ quest.sections =
             {
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.TRIANGULAR_FRIGICITE) and
-                        (not xi.settings.main.OLDSCHOOL_G2 or GetMobByID(xarcabardID.mob.BOREAL_HOUND):isDead())
+                        not player:hasKeyItem(invaderXim.ki.TRIANGULAR_FRIGICITE) and
+                        (not invaderXim.settings.main.OLDSCHOOL_G2 or GetMobByID(xarcabardID.mob.BOREAL_HOUND):isDead())
                     then
-                        return quest:keyItem(xi.ki.TRIANGULAR_FRIGICITE)
+                        return quest:keyItem(invaderXim.ki.TRIANGULAR_FRIGICITE)
                     end
                 end,
             },

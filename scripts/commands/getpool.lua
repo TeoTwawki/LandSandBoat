@@ -12,7 +12,7 @@ commandObj.cmdprops =
 }
 
 local function getItemNameById(id)
-    for name, value in pairs(xi.item) do
+    for name, value in pairs(invaderXim.item) do
         if value == id then
             return name
         end
@@ -22,7 +22,7 @@ local function getItemNameById(id)
 end
 
 local function getPoolTypeById(id)
-    for name, value in pairs(xi.treasurePool) do
+    for name, value in pairs(invaderXim.treasurePool) do
         if value == id then
             return name
         end
@@ -35,26 +35,26 @@ local function printPool(player, target, treasurePool)
     local itemsInPool = treasurePool:getItems()
     local members = treasurePool:getMembers()
     player:printToPlayer(
-            string.format('%s\'s Treasure Pool (%s)', target:getName(), getPoolTypeById(treasurePool:getType())), xi.msg.channel.SYSTEM_3)
+            string.format('%s\'s Treasure Pool (%s)', target:getName(), getPoolTypeById(treasurePool:getType())), invaderXim.msg.channel.SYSTEM_3)
     player:printToPlayer(
-            string.format('%d/%d member(s)', #members, treasurePool:getType()), xi.msg.channel.SYSTEM_3)
+            string.format('%d/%d member(s)', #members, treasurePool:getType()), invaderXim.msg.channel.SYSTEM_3)
     for _, member in pairs(members) do
         player:printToPlayer(
-                string.format('  %s (%d)', member:getName(), member:getID()), xi.msg.channel.SYSTEM_3)
+                string.format('  %s (%d)', member:getName(), member:getID()), invaderXim.msg.channel.SYSTEM_3)
     end
 
     for _, item in pairs(itemsInPool) do
         if item.id ~= 0 then
             local lotters = item.lotters
             player:printToPlayer(
-                    string.format('Slot_%d = %s', item.slotId, getItemNameById(item.id), #lotters), xi.msg.channel.SYSTEM_3)
+                    string.format('Slot_%d = %s', item.slotId, getItemNameById(item.id), #lotters), invaderXim.msg.channel.SYSTEM_3)
             if #lotters == 0 then
                 player:printToPlayer(
-                        '  No lots', xi.msg.channel.SYSTEM_3)
+                        '  No lots', invaderXim.msg.channel.SYSTEM_3)
             else
                 for _, lotter in pairs(lotters) do
                     player:printToPlayer(
-                            string.format('  %s -> %d', lotter.member:getName(), lotter.lot), xi.msg.channel.SYSTEM_3)
+                            string.format('  %s -> %d', lotter.member:getName(), lotter.lot), invaderXim.msg.channel.SYSTEM_3)
                 end
             end
         end

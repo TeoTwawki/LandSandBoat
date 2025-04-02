@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.LARCENY
+-- invaderXim.effect.LARCENY
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

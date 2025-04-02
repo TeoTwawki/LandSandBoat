@@ -2,7 +2,7 @@
 -- Area: Kazham-Jeuno Airship
 --  NPC: Oslam
 -----------------------------------
-local ID = zones[xi.zone.KAZHAM_JEUNO_AIRSHIP]
+local ID = zones[invaderXim.zone.KAZHAM_JEUNO_AIRSHIP]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

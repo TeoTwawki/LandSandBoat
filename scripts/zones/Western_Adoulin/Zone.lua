@@ -10,7 +10,7 @@ end
 
 zoneObject.onZoneIn = function(player, prevZone)
     local cs = -1
-    local heartwingsAndTheKindhearted = player:getCurrentMission(xi.mission.log_id.SOA) == xi.mission.id.soa.HEARTWINGS_AND_THE_KINDHEARTED
+    local heartwingsAndTheKindhearted = player:getCurrentMission(invaderXim.mission.log_id.SOA) == invaderXim.mission.id.soa.HEARTWINGS_AND_THE_KINDHEARTED
 
     if
         player:getXPos() == 0 and
@@ -45,12 +45,12 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
 
         if option == 1 then
             -- Starts Quest: 'Raptor Rapture'
-            player:addQuest(xi.questLog.ADOULIN, xi.quest.id.adoulin.RAPTOR_RAPTURE)
+            player:addQuest(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.RAPTOR_RAPTURE)
             player:setCharVar('Raptor_Rapture_Status', 4)
         end
     elseif csid == 2 then
-        player:completeMission(xi.mission.log_id.SOA, xi.mission.id.soa.HEARTWINGS_AND_THE_KINDHEARTED)
-        player:addMission(xi.mission.log_id.SOA, xi.mission.id.soa.PIONEER_REGISTRATION)
+        player:completeMission(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.HEARTWINGS_AND_THE_KINDHEARTED)
+        player:addMission(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.PIONEER_REGISTRATION)
     end
 end
 

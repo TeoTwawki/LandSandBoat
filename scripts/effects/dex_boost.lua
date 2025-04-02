@@ -1,11 +1,11 @@
 -----------------------------------
--- xi.effect.DEX_BOOST
+-- invaderXim.effect.DEX_BOOST
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.DEX, effect:getPower())
+    target:addMod(invaderXim.mod.DEX, effect:getPower())
 end
 
 effectObject.onEffectTick = function(target, effect)
@@ -13,14 +13,14 @@ effectObject.onEffectTick = function(target, effect)
     local boostDEXEffectSize = effect:getPower()
     if boostDEXEffectSize > 0 then
         effect:setPower(boostDEXEffectSize - 1)
-        target:delMod(xi.mod.DEX, 1)
+        target:delMod(invaderXim.mod.DEX, 1)
     end
 end
 
 effectObject.onEffectLose = function(target, effect)
     local boostDEXEffectSize = effect:getPower()
     if boostDEXEffectSize > 0 then
-        target:delMod(xi.mod.DEX, boostDEXEffectSize)
+        target:delMod(invaderXim.mod.DEX, boostDEXEffectSize)
     end
 end
 

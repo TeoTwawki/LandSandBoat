@@ -6,23 +6,23 @@
 -- _qm2         : !pos -69.588 -1.415 57.695
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.THE_FLIPSIDE_OF_THINGS)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.THE_FLIPSIDE_OF_THINGS)
 
 quest.reward =
 {
     exp     = 2000,
     gil     = 2000,
-    keyItem = xi.keyItem.MAP_OF_VUNKERL_INLET,
+    keyItem = invaderXim.keyItem.MAP_OF_VUNKERL_INLET,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.GARLAIGE_CITADEL_S] =
+        [invaderXim.zone.GARLAIGE_CITADEL_S] =
         {
             ['Rarcasmeault'] =
             {
@@ -44,15 +44,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.GARLAIGE_CITADEL_S] =
+        [invaderXim.zone.GARLAIGE_CITADEL_S] =
         {
             ['Rarcasmeault'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.FIREPOWER_CASE) then
+                    if player:hasKeyItem(invaderXim.ki.FIREPOWER_CASE) then
                         return quest:progressEvent(9)
                     else
                         return quest:event(8) -- This is their default action until the quest is completed.
@@ -63,7 +63,7 @@ quest.sections =
             ['_qm2'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.FIREPOWER_CASE) then
+                    if not player:hasKeyItem(invaderXim.ki.FIREPOWER_CASE) then
                         return quest:progressEvent(7)
                     end
                 end,
@@ -72,12 +72,12 @@ quest.sections =
             onEventFinish =
             {
                 [7] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.FIREPOWER_CASE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.FIREPOWER_CASE)
                 end,
 
                 [9] = function(player, csid, option, npc)
                     quest:complete(player)
-                    player:delKeyItem(xi.ki.FIREPOWER_CASE)
+                    player:delKeyItem(invaderXim.ki.FIREPOWER_CASE)
                 end,
             },
         },
@@ -85,10 +85,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.GARLAIGE_CITADEL_S] =
+        [invaderXim.zone.GARLAIGE_CITADEL_S] =
         {
             ['Rarcasmeault'] = quest:event(4):replaceDefault(),
         },

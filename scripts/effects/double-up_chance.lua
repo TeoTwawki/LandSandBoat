@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.DOUBLE_UP_CHANCE
+-- invaderXim.effect.DOUBLE_UP_CHANCE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

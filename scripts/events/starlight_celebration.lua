@@ -2,31 +2,31 @@
 -- Starlight Celebration
 -----------------------------------
 xi = xi or {}
-xi.events = xi.events or {}
-xi.events.starlightCelebration = xi.events.starlightCelebration or {}
-xi.events.starlightCelebration.data = xi.events.starlightCelebration.data or {}
-xi.events.starlightCelebration.entities = xi.events.starlightCelebration.entities or {}
+invaderXim.events = invaderXim.events or {}
+invaderXim.events.starlightCelebration = invaderXim.events.starlightCelebration or {}
+invaderXim.events.starlightCelebration.data = invaderXim.events.starlightCelebration.data or {}
+invaderXim.events.starlightCelebration.entities = invaderXim.events.starlightCelebration.entities or {}
 
 local event = SeasonalEvent:new('StarlightCelebration')
 
-xi.events.starlightCelebration.enabledCheck = function()
+invaderXim.events.starlightCelebration.enabledCheck = function()
     local month = tonumber(os.date('%m'))
     return month == 12
 end
 
-event:setEnableCheck(xi.events.starlightCelebration.enabledCheck)
+event:setEnableCheck(invaderXim.events.starlightCelebration.enabledCheck)
 
 local musicZones =
 {
-    xi.zone.UPPER_JEUNO,
-    xi.zone.LOWER_JEUNO,
-    xi.zone.PORT_JEUNO,
+    invaderXim.zone.UPPER_JEUNO,
+    invaderXim.zone.LOWER_JEUNO,
+    invaderXim.zone.PORT_JEUNO,
 }
 
 local starlightCelebrationMusic = 239
 local grandDuchyOfJeunoMusic    = 110
 
-xi.events.starlightCelebration.setMusic = function(musicId)
+invaderXim.events.starlightCelebration.setMusic = function(musicId)
     for _, zoneId in pairs(musicZones) do
         local zone = GetZone(zoneId)
         if zone then
@@ -49,9 +49,9 @@ end
 
 local verticalOffset = 1.75
 
-xi.events.starlightCelebration.data =
+invaderXim.events.starlightCelebration.data =
 {
-    [xi.zone.SOUTHERN_SAN_DORIA] =
+    [invaderXim.zone.SOUTHERN_SAN_DORIA] =
     {
         {  0, -277.910, -3.500,  78.470, '0x0000DD0400000000000000000000000000000000', },
         {  0, -268.574, -3.600,  82.015, '0x0000DD0400000000000000000000000000000000', },
@@ -86,7 +86,7 @@ xi.events.starlightCelebration.data =
         { 40,  152.600, -1.991, 157.099, '0x0000DD0400000000000000000000000000000000', },
     },
 
-    [xi.zone.NORTHERN_SAN_DORIA] =
+    [invaderXim.zone.NORTHERN_SAN_DORIA] =
     {
         { 64,    0.000, -2.500, 29.000, '0x0000DB0400000000000000000000000000000000', },
         { 64,    0.000, -2.500, 40.000, '0x0000DB0400000000000000000000000000000000', },
@@ -112,7 +112,7 @@ xi.events.starlightCelebration.data =
     },
 
     -- Note: These are slighly elevated, so a small vertical offset has been added
-    [xi.zone.BASTOK_MINES] =
+    [invaderXim.zone.BASTOK_MINES] =
     {
         { 0, -20.979, -3.000 + verticalOffset, -61.813, '0x0000DA0400000000000000000000000000000000', },
         { 0, -12.124, -3.000 + verticalOffset, -64.650, '0x0000DA0400000000000000000000000000000000', },
@@ -123,7 +123,7 @@ xi.events.starlightCelebration.data =
     },
 
     -- Note: These are slighly elevated, so a small vertical offset has been added
-    [xi.zone.BASTOK_MARKETS] =
+    [invaderXim.zone.BASTOK_MARKETS] =
     {
         { 0, -343.894, -10.004 + verticalOffset, -158.219, '0x0000DA0400000000000000000000000000000000', },
         { 0, -333.456, -10.004 + verticalOffset, -147.542, '0x0000DA0400000000000000000000000000000000', },
@@ -150,7 +150,7 @@ xi.events.starlightCelebration.data =
     },
 
     -- Note: These are slighly elevated, so a small vertical offset has been added
-    [xi.zone.PORT_BASTOK] =
+    [invaderXim.zone.PORT_BASTOK] =
     {
         { 0,  116.000,  8.510 + verticalOffset, -40.000, '0x0000D90400000000000000000000000000000000', },
         { 0, -170.000, -6.000 + verticalOffset, -16.078, '0x0000D90400000000000000000000000000000000', },
@@ -181,7 +181,7 @@ xi.events.starlightCelebration.data =
         { 0,   39.040, -6.100 + verticalOffset,  54.006, '0x0000DA0400000000000000000000000000000000', },
     },
 
-    [xi.zone.WINDURST_WATERS] =
+    [invaderXim.zone.WINDURST_WATERS] =
     {
         { 255, -125.921, -1.194, -163.106, '0x0000E00400000000000000000000000000000000', },
         {   0,  -84.583, -1.178, -169.583, '0x0000E00400000000000000000000000000000000', },
@@ -205,7 +205,7 @@ xi.events.starlightCelebration.data =
         {   0,   98.761, -2.500,  205.072, '0x0000E00400000000000000000000000000000000', },
     },
 
-    [xi.zone.PORT_WINDURST] =
+    [invaderXim.zone.PORT_WINDURST] =
     {
         {   0, -185.773, -4.000,  93.305, '0x0000E00400000000000000000000000000000000', },
         { 135, -130.000, -4.000, 134.000, '0x0000E00400000000000000000000000000000000', },
@@ -224,7 +224,7 @@ xi.events.starlightCelebration.data =
         {   0,  201.785, -4.427, 140.265, '0x0000E00400000000000000000000000000000000', },
     },
 
-    [xi.zone.WINDURST_WOODS] =
+    [invaderXim.zone.WINDURST_WOODS] =
     {
         {  14, -16.000, -1.300,  -64.000, '0x0000DF0400000000000000000000000000000000', },
         {   0,   0.937, -3.883, -164.015, '0x0000E00400000000000000000000000000000000', },
@@ -242,8 +242,8 @@ xi.events.starlightCelebration.data =
     },
 }
 
-xi.events.starlightCelebration.generateEntities = function()
-    for zoneId, data in pairs(xi.events.starlightCelebration.data) do
+invaderXim.events.starlightCelebration.generateEntities = function()
+    for zoneId, data in pairs(invaderXim.events.starlightCelebration.data) do
         local zone = GetZone(zoneId)
         if zone then
             for _, entry in pairs(data) do
@@ -254,7 +254,7 @@ xi.events.starlightCelebration.generateEntities = function()
                 local look = entry[5]
 
                 local npc = zone:insertDynamicEntity({
-                    objtype = xi.objType.NPC,
+                    objtype = invaderXim.objType.NPC,
                     name = '     ',
                     look = look,
                     x = x,
@@ -268,45 +268,45 @@ xi.events.starlightCelebration.generateEntities = function()
                 })
 
                 if npc then
-                    table.insert(xi.events.starlightCelebration.entities, npc:getID())
+                    table.insert(invaderXim.events.starlightCelebration.entities, npc:getID())
                 end
             end
         end
     end
 end
 
-xi.events.starlightCelebration.showEntities = function(enabled)
-    if enabled and #xi.events.starlightCelebration.entities == 0 then
-        xi.events.starlightCelebration.generateEntities()
+invaderXim.events.starlightCelebration.showEntities = function(enabled)
+    if enabled and #invaderXim.events.starlightCelebration.entities == 0 then
+        invaderXim.events.starlightCelebration.generateEntities()
     end
 
-    for _, entityID in pairs(xi.events.starlightCelebration.entities) do
+    for _, entityID in pairs(invaderXim.events.starlightCelebration.entities) do
         local entity = GetNPCByID(entityID)
         if entity then
             if enabled then
-                entity:setStatus(xi.status.NORMAL)
+                entity:setStatus(invaderXim.status.NORMAL)
             else
                 -- TODO: Why doesn't DISAPPEAR work here?
-                -- entity:setStatus(xi.status.DISAPPEAR)
+                -- entity:setStatus(invaderXim.status.DISAPPEAR)
 
-                entity:setStatus(xi.status.INVISIBLE)
+                entity:setStatus(invaderXim.status.INVISIBLE)
             end
         end
     end
 
     if not enabled then
-        xi.events.starlightCelebration.entities = {}
+        invaderXim.events.starlightCelebration.entities = {}
     end
 end
 
 event:setStartFunction(function()
-    xi.events.starlightCelebration.setMusic(starlightCelebrationMusic)
-    xi.events.starlightCelebration.showEntities(true)
+    invaderXim.events.starlightCelebration.setMusic(starlightCelebrationMusic)
+    invaderXim.events.starlightCelebration.showEntities(true)
 end)
 
 event:setEndFunction(function()
-    xi.events.starlightCelebration.setMusic(grandDuchyOfJeunoMusic)
-    xi.events.starlightCelebration.showEntities(false)
+    invaderXim.events.starlightCelebration.setMusic(grandDuchyOfJeunoMusic)
+    invaderXim.events.starlightCelebration.showEntities(false)
 end)
 
 return event

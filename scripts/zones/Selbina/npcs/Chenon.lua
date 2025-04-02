@@ -8,19 +8,19 @@
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.fishingContest.onTrade(player, npc, trade)
+    invaderXim.fishingContest.onTrade(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    xi.fishingContest.onTrigger(player, npc)
+    invaderXim.fishingContest.onTrigger(player, npc)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.fishingContest.onEventUpdate(player, csid, option, npc)
+    invaderXim.fishingContest.onEventUpdate(player, csid, option, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.fishingContest.onEventFinish(player, csid, option, npc)
+    invaderXim.fishingContest.onEventFinish(player, csid, option, npc)
 end
 
 return entity

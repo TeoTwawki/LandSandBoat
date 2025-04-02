@@ -7,7 +7,7 @@ local attachmentObject = {}
 attachmentObject.onEquip = function(pet)
     pet:addListener('AUTOMATON_ATTACHMENT_CHECK', 'ATTACHMENT_MANA_CONVERTER', function(automaton, target)
         local master = automaton:getMaster()
-        local maneuvers = master and master:countEffect(xi.effect.DARK_MANEUVER) or 0
+        local maneuvers = master and master:countEffect(invaderXim.effect.DARK_MANEUVER) or 0
         local mpthreshold = -1
 
         if maneuvers == 1 then
@@ -20,7 +20,7 @@ attachmentObject.onEquip = function(pet)
 
         local mpp = (automaton:getMaxMP() > 0) and math.ceil(automaton:getMP() / automaton:getMaxMP() * 100) or 100
         if mpp < mpthreshold and automaton:getLocalVar('convert') < VanadielTime() then
-            automaton:useMobAbility(xi.automaton.abilities.MANA_CONVERTER, automaton)
+            automaton:useMobAbility(invaderXim.automaton.abilities.MANA_CONVERTER, automaton)
         end
     end)
 end

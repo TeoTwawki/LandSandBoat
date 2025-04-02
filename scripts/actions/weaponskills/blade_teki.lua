@@ -19,17 +19,17 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     params.ftpMod = { 0.5, 0.75, 1.0 }
     params.str_wsc = 0.2 params.int_wsc = 0.2
     params.hybridWS = true
-    params.ele = xi.element.WATER
-    params.skill = xi.skill.KATANA
+    params.ele = invaderXim.element.WATER
+    params.skill = invaderXim.skill.KATANA
     params.includemab = true
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         -- http://wiki.ffo.jp/html/718.html
         params.str_wsc = 0.3 params.int_wsc = 0.3
         params.ftpMod = { 0.5, 1.375, 2.25 }
     end
 
-    local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doPhysicalWeaponskill(player, target, wsID, params, tp, action, primary, taChar)
+    local damage, criticalHit, tpHits, extraHits = invaderXim.weaponskills.doPhysicalWeaponskill(player, target, wsID, params, tp, action, primary, taChar)
     return tpHits, extraHits, criticalHit, damage
 end
 

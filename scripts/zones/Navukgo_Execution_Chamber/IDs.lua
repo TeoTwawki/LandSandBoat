@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.NAVUKGO_EXECUTION_CHAMBER] =
+zones[invaderXim.zone.NAVUKGO_EXECUTION_CHAMBER] =
 {
     text =
     {
@@ -49,4 +49,4 @@ zones[xi.zone.NAVUKGO_EXECUTION_CHAMBER] =
     },
 }
 
-return zones[xi.zone.NAVUKGO_EXECUTION_CHAMBER]
+return zones[invaderXim.zone.NAVUKGO_EXECUTION_CHAMBER]

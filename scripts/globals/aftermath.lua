@@ -3,9 +3,9 @@
 -----------------------------------
 xi = xi or {}
 
-xi.aftermath = {}
+invaderXim.aftermath = {}
 
-xi.aftermath.type =
+invaderXim.aftermath.type =
 {
     RELIC    = 1,
     MYTHIC   = 2,
@@ -23,43 +23,43 @@ local getTier2RelicDuration = function(tp)
     return math.floor(tp * 0.06)
 end
 
-xi.aftermath.effects =
+invaderXim.aftermath.effects =
 {
     -----------------------------------
     -- Tier 1 Relic
     -----------------------------------
-    [1]  = { mods = { xi.mod.SUBTLE_BLOW, 10 }, duration = getTier1RelicDuration }, -- Spharai
-    [2]  = { mods = { xi.mod.CRITHITRATE, 5 }, duration = getTier1RelicDuration }, -- Mandau
-    [3]  = { mods = { xi.mod.REGEN, 10 }, duration = getTier1RelicDuration }, -- Excalibur
-    [4]  = { mods = { xi.mod.CRITHITRATE, 5 }, duration = getTier1RelicDuration }, -- Ragnarok
-    [5]  = { mods = { xi.mod.ATTP, 10 }, duration = getTier1RelicDuration }, -- Guttler
-    [6]  = { mods = { xi.mod.DMG, -2000 }, duration = getTier1RelicDuration }, -- Bravura
-    [7]  = { mods = { xi.mod.HASTE_GEAR, 1000 }, duration = getTier1RelicDuration }, -- Apocalypse
-    [8]  = { mods = { xi.mod.SPIKES, xi.subEffect.SHOCK_SPIKES, xi.mod.SPIKES_DMG, 10 }, duration = getTier1RelicDuration }, -- Gungnir
-    [9]  = { mods = { xi.mod.SUBTLE_BLOW, 10 }, duration = getTier1RelicDuration }, -- Kikoku
-    [10] = { mods = { xi.mod.STORETP, 7 }, duration = getTier1RelicDuration }, -- Amanomurakumo
-    [11] = { mods = { xi.mod.ACC, 20 }, duration = getTier1RelicDuration }, -- Mjollnir
-    [12] = { mods = { xi.mod.REFRESH, 8 }, duration = getTier1RelicDuration }, -- Claustrum
-    [13] = { mods = { xi.mod.RACC, 20 }, duration = getTier1RelicDuration }, -- Yoichinoyumi
-    [14] = { mods = { xi.mod.ENMITY, -20 }, duration = getTier1RelicDuration }, -- Annihilator
+    [1]  = { mods = { invaderXim.mod.SUBTLE_BLOW, 10 }, duration = getTier1RelicDuration }, -- Spharai
+    [2]  = { mods = { invaderXim.mod.CRITHITRATE, 5 }, duration = getTier1RelicDuration }, -- Mandau
+    [3]  = { mods = { invaderXim.mod.REGEN, 10 }, duration = getTier1RelicDuration }, -- Excalibur
+    [4]  = { mods = { invaderXim.mod.CRITHITRATE, 5 }, duration = getTier1RelicDuration }, -- Ragnarok
+    [5]  = { mods = { invaderXim.mod.ATTP, 10 }, duration = getTier1RelicDuration }, -- Guttler
+    [6]  = { mods = { invaderXim.mod.DMG, -2000 }, duration = getTier1RelicDuration }, -- Bravura
+    [7]  = { mods = { invaderXim.mod.HASTE_GEAR, 1000 }, duration = getTier1RelicDuration }, -- Apocalypse
+    [8]  = { mods = { invaderXim.mod.SPIKES, invaderXim.subEffect.SHOCK_SPIKES, invaderXim.mod.SPIKES_DMG, 10 }, duration = getTier1RelicDuration }, -- Gungnir
+    [9]  = { mods = { invaderXim.mod.SUBTLE_BLOW, 10 }, duration = getTier1RelicDuration }, -- Kikoku
+    [10] = { mods = { invaderXim.mod.STORETP, 7 }, duration = getTier1RelicDuration }, -- Amanomurakumo
+    [11] = { mods = { invaderXim.mod.ACC, 20 }, duration = getTier1RelicDuration }, -- Mjollnir
+    [12] = { mods = { invaderXim.mod.REFRESH, 8 }, duration = getTier1RelicDuration }, -- Claustrum
+    [13] = { mods = { invaderXim.mod.RACC, 20 }, duration = getTier1RelicDuration }, -- Yoichinoyumi
+    [14] = { mods = { invaderXim.mod.ENMITY, -20 }, duration = getTier1RelicDuration }, -- Annihilator
 
     -----------------------------------
     -- Tier 2 Relic
     -----------------------------------
-    [15] = { mods = { xi.mod.SUBTLE_BLOW, 10, xi.mod.KICK_ATTACK_RATE, 15 }, duration = getTier2RelicDuration }, -- Spharai
-    [16] = { mods = { xi.mod.CRITHITRATE, 5, xi.mod.CRIT_DMG_INCREASE, 5 }, duration = getTier2RelicDuration }, -- Mandau
-    [17] = { mods = { xi.mod.REGEN, 30, xi.mod.REFRESH, 3 }, duration = getTier2RelicDuration }, -- Excalibur
-    [18] = { mods = { xi.mod.CRITHITRATE, 10, xi.mod.ACC, 15 }, duration = getTier2RelicDuration }, -- Ragnarok
-    [19] = { mods = { xi.mod.ATTP, 10 }, duration = getTier2RelicDuration, includePets = true }, -- Guttler
-    [20] = { mods = { xi.mod.DMG, -2000, xi.mod.REGEN, 15 }, duration = getTier2RelicDuration }, -- Bravura
-    [21] = { mods = { xi.mod.HASTE_ABILITY, 1000, xi.mod.ACC, 15 }, duration = getTier2RelicDuration }, -- Apocalypse
-    [22] = { mods = { xi.mod.SPIKES, xi.subEffect.SHOCK_SPIKES, xi.mod.SPIKES_DMG, 10, xi.mod.ATTP, 5, xi.mod.DOUBLE_ATTACK, 5 }, duration = getTier2RelicDuration }, -- Gungir
-    [23] = { mods = { xi.mod.SUBTLE_BLOW, 10, xi.mod.ATTP, 10 }, duration = getTier2RelicDuration }, -- Kikoku
-    [24] = { mods = { xi.mod.STORETP, 10, xi.mod.ZANSHIN, 10 }, duration = getTier2RelicDuration }, -- Amanomurakumo
-    [25] = { mods = { xi.mod.ACC, 20, xi.mod.MACC, 20, xi.mod.REFRESH, 5 }, duration = getTier2RelicDuration }, -- Mjollnir
-    [26] = { mods = { xi.mod.REFRESH, 15, xi.mod.DMG, -2000 }, duration = getTier2RelicDuration }, -- Claustrum
-    [27] = { mods = { xi.mod.RACC, 30, xi.mod.SNAPSHOT, 5 }, duration = getTier2RelicDuration }, -- Yoichinoyumi
-    [28] = { mods = { xi.mod.ENMITY, -25, xi.mod.RATTP, 10 }, duration = getTier2RelicDuration }, -- Annihilator
+    [15] = { mods = { invaderXim.mod.SUBTLE_BLOW, 10, invaderXim.mod.KICK_ATTACK_RATE, 15 }, duration = getTier2RelicDuration }, -- Spharai
+    [16] = { mods = { invaderXim.mod.CRITHITRATE, 5, invaderXim.mod.CRIT_DMG_INCREASE, 5 }, duration = getTier2RelicDuration }, -- Mandau
+    [17] = { mods = { invaderXim.mod.REGEN, 30, invaderXim.mod.REFRESH, 3 }, duration = getTier2RelicDuration }, -- Excalibur
+    [18] = { mods = { invaderXim.mod.CRITHITRATE, 10, invaderXim.mod.ACC, 15 }, duration = getTier2RelicDuration }, -- Ragnarok
+    [19] = { mods = { invaderXim.mod.ATTP, 10 }, duration = getTier2RelicDuration, includePets = true }, -- Guttler
+    [20] = { mods = { invaderXim.mod.DMG, -2000, invaderXim.mod.REGEN, 15 }, duration = getTier2RelicDuration }, -- Bravura
+    [21] = { mods = { invaderXim.mod.HASTE_ABILITY, 1000, invaderXim.mod.ACC, 15 }, duration = getTier2RelicDuration }, -- Apocalypse
+    [22] = { mods = { invaderXim.mod.SPIKES, invaderXim.subEffect.SHOCK_SPIKES, invaderXim.mod.SPIKES_DMG, 10, invaderXim.mod.ATTP, 5, invaderXim.mod.DOUBLE_ATTACK, 5 }, duration = getTier2RelicDuration }, -- Gungir
+    [23] = { mods = { invaderXim.mod.SUBTLE_BLOW, 10, invaderXim.mod.ATTP, 10 }, duration = getTier2RelicDuration }, -- Kikoku
+    [24] = { mods = { invaderXim.mod.STORETP, 10, invaderXim.mod.ZANSHIN, 10 }, duration = getTier2RelicDuration }, -- Amanomurakumo
+    [25] = { mods = { invaderXim.mod.ACC, 20, invaderXim.mod.MACC, 20, invaderXim.mod.REFRESH, 5 }, duration = getTier2RelicDuration }, -- Mjollnir
+    [26] = { mods = { invaderXim.mod.REFRESH, 15, invaderXim.mod.DMG, -2000 }, duration = getTier2RelicDuration }, -- Claustrum
+    [27] = { mods = { invaderXim.mod.RACC, 30, invaderXim.mod.SNAPSHOT, 5 }, duration = getTier2RelicDuration }, -- Yoichinoyumi
+    [28] = { mods = { invaderXim.mod.ENMITY, -25, invaderXim.mod.RATTP, 10 }, duration = getTier2RelicDuration }, -- Annihilator
 
     -----------------------------------
     -- Tier 1 Mythic
@@ -69,21 +69,21 @@ xi.aftermath.effects =
         mods =
         {
             {
-                xi.mod.ACC,
+                invaderXim.mod.ACC,
                 function(tp)
                     return math.floor(tp / 100)
                 end
             },
 
             {
-                xi.mod.ATT,
+                invaderXim.mod.ATT,
                 function(tp)
                     return math.floor(2 * tp / 50 - 60)
                 end
             },
 
             {
-                xi.mod.MYTHIC_OCC_ATT_TWICE,
+                invaderXim.mod.MYTHIC_OCC_ATT_TWICE,
                 function(tp)
                     return 40
                 end
@@ -98,21 +98,21 @@ xi.aftermath.effects =
         mods =
         {
             {
-                xi.mod.MACC,
+                invaderXim.mod.MACC,
                 function(tp)
                     return math.floor(tp / 100)
                 end
             },
 
             {
-                xi.mod.ACC,
+                invaderXim.mod.ACC,
                 function(tp)
                     return math.floor(tp / 100 - 10)
                 end
             },
 
             {
-                xi.mod.MYTHIC_OCC_ATT_TWICE,
+                invaderXim.mod.MYTHIC_OCC_ATT_TWICE,
                 function(tp)
                     return 40
                 end
@@ -127,21 +127,21 @@ xi.aftermath.effects =
         mods =
         {
             {
-                xi.mod.MACC,
+                invaderXim.mod.MACC,
                 function(tp)
                     return math.floor(tp / 100)
                 end
             },
 
             {
-                xi.mod.MATT,
+                invaderXim.mod.MATT,
                 function(tp)
                     return math.floor(tp / 100)
                 end
             },
 
             {
-                xi.mod.MYTHIC_OCC_ATT_TWICE,
+                invaderXim.mod.MYTHIC_OCC_ATT_TWICE,
                 function(tp)
                     return 40
                 end
@@ -156,21 +156,21 @@ xi.aftermath.effects =
         mods =
         {
             {
-                xi.mod.ACC,
+                invaderXim.mod.ACC,
                 function(tp)
                     return math.floor(tp / 100)
                 end
             },
 
             {
-                xi.mod.MACC,
+                invaderXim.mod.MACC,
                 function(tp)
                     return math.floor(tp / 100 - 10)
                 end
             },
 
             {
-                xi.mod.MYTHIC_OCC_ATT_TWICE,
+                invaderXim.mod.MYTHIC_OCC_ATT_TWICE,
                 function(tp)
                     return 40
                 end
@@ -185,21 +185,21 @@ xi.aftermath.effects =
         mods =
         {
             {
-                xi.mod.RACC,
+                invaderXim.mod.RACC,
                 function(tp)
                     return math.floor(tp / 100)
                 end
             },
 
             {
-                xi.mod.RATT,
+                invaderXim.mod.RATT,
                 function(tp)
                     return math.floor(2 * tp / 50 - 60)
                 end
             },
 
             {
-                xi.mod.REM_OCC_DO_DOUBLE_DMG_RANGED,
+                invaderXim.mod.REM_OCC_DO_DOUBLE_DMG_RANGED,
                 function(tp)
                     return 40
                 end
@@ -217,21 +217,21 @@ xi.aftermath.effects =
         mods =
         {
             {
-                xi.mod.ACC,
+                invaderXim.mod.ACC,
                 function(tp)
                     return math.floor(3 * tp / 200)
                 end
             },
 
             {
-                xi.mod.ATT,
+                invaderXim.mod.ATT,
                 function(tp)
                     return math.floor(3 * tp / 50 - 90)
                 end
             },
 
             {
-                xi.mod.MYTHIC_OCC_ATT_TWICE,
+                invaderXim.mod.MYTHIC_OCC_ATT_TWICE,
                 function(tp)
                     return 60
                 end
@@ -246,21 +246,21 @@ xi.aftermath.effects =
         mods =
         {
             {
-                xi.mod.MACC,
+                invaderXim.mod.MACC,
                 function(tp)
                     return math.floor(3 * tp / 200)
                 end
             },
 
             {
-                xi.mod.ACC,
+                invaderXim.mod.ACC,
                 function(tp)
                     return math.floor(3 * tp / 200 - 15)
                 end
             },
 
             {
-                xi.mod.MYTHIC_OCC_ATT_TWICE,
+                invaderXim.mod.MYTHIC_OCC_ATT_TWICE,
                 function(tp)
                     return 60
                 end
@@ -275,21 +275,21 @@ xi.aftermath.effects =
         mods =
         {
             {
-                xi.mod.MACC,
+                invaderXim.mod.MACC,
                 function(tp)
                     return math.floor(3 * tp / 200)
                 end
             },
 
             {
-                xi.mod.MATT,
+                invaderXim.mod.MATT,
                 function(tp)
                     return math.floor(tp / 50 - 20)
                 end
             },
 
             {
-                xi.mod.MYTHIC_OCC_ATT_TWICE,
+                invaderXim.mod.MYTHIC_OCC_ATT_TWICE,
                 function(tp)
                     return 60
                 end
@@ -304,21 +304,21 @@ xi.aftermath.effects =
         mods =
         {
             {
-                xi.mod.ACC,
+                invaderXim.mod.ACC,
                 function(tp)
                     return math.floor(3 * tp / 200)
                 end
             },
 
             {
-                xi.mod.MACC,
+                invaderXim.mod.MACC,
                 function(tp)
                     return math.floor(3 * tp / 200 - 15)
                 end
             },
 
             {
-                xi.mod.MYTHIC_OCC_ATT_TWICE,
+                invaderXim.mod.MYTHIC_OCC_ATT_TWICE,
                 function(tp)
                     return 60
                 end
@@ -333,21 +333,21 @@ xi.aftermath.effects =
         mods =
         {
             {
-                xi.mod.RACC,
+                invaderXim.mod.RACC,
                 function(tp)
                     return math.floor(tp / 50)
                 end
             },
 
             {
-                xi.mod.RATT,
+                invaderXim.mod.RATT,
                 function(tp)
                     return math.floor(3 * tp / 50 - 90)
                 end
             },
 
             {
-                xi.mod.REM_OCC_DO_DOUBLE_DMG_RANGED,
+                invaderXim.mod.REM_OCC_DO_DOUBLE_DMG_RANGED,
                 function(tp)
                     return 60
                 end
@@ -365,26 +365,26 @@ xi.aftermath.effects =
         mods =
         {
             {
-                xi.mod.ACC,
+                invaderXim.mod.ACC,
                 function(tp)
                     return math.floor(tp / 50 + 10)
                 end
             },
 
             {
-                xi.mod.ATT,
+                invaderXim.mod.ATT,
                 function(tp)
                     return math.floor(tp * 0.6 - 80)
                 end
             },
 
             {
-                xi.mod.MYTHIC_OCC_ATT_TWICE,
+                invaderXim.mod.MYTHIC_OCC_ATT_TWICE,
                 function(tp)
                     return 40
                 end,
 
-                xi.mod.MYTHIC_OCC_ATT_THRICE,
+                invaderXim.mod.MYTHIC_OCC_ATT_THRICE,
                 function(tp)
                     return 20
                 end
@@ -399,26 +399,26 @@ xi.aftermath.effects =
         mods =
         {
             {
-                xi.mod.MACC,
+                invaderXim.mod.MACC,
                 function(tp)
                     return math.floor(tp / 50 + 10)
                 end
             },
 
             {
-                xi.mod.ACC,
+                invaderXim.mod.ACC,
                 function(tp)
                     return math.floor(tp / 50 - 10)
                 end
             },
 
             {
-                xi.mod.MYTHIC_OCC_ATT_TWICE,
+                invaderXim.mod.MYTHIC_OCC_ATT_TWICE,
                 function(tp)
                     return 40
                 end,
 
-                xi.mod.MYTHIC_OCC_ATT_THRICE,
+                invaderXim.mod.MYTHIC_OCC_ATT_THRICE,
                 function(tp)
                     return 20
                 end
@@ -433,26 +433,26 @@ xi.aftermath.effects =
         mods =
         {
             {
-                xi.mod.MACC,
+                invaderXim.mod.MACC,
                 function(tp)
                     return math.floor(tp / 50 + 10)
                 end
             },
 
             {
-                xi.mod.MATT,
+                invaderXim.mod.MATT,
                 function(tp)
                     return math.floor(tp / 50 - 10)
                 end
             },
 
             {
-                xi.mod.MYTHIC_OCC_ATT_TWICE,
+                invaderXim.mod.MYTHIC_OCC_ATT_TWICE,
                 function(tp)
                     return 40
                 end,
 
-                xi.mod.MYTHIC_OCC_ATT_THRICE,
+                invaderXim.mod.MYTHIC_OCC_ATT_THRICE,
                 function(tp)
                     return 20
                 end
@@ -467,26 +467,26 @@ xi.aftermath.effects =
         mods =
         {
             {
-                xi.mod.ACC,
+                invaderXim.mod.ACC,
                 function(tp)
                     return math.floor(tp / 50 + 10)
                 end
             },
 
             {
-                xi.mod.MACC,
+                invaderXim.mod.MACC,
                 function(tp)
                     return math.floor(tp / 50 - 10)
                 end
             },
 
             {
-                xi.mod.MYTHIC_OCC_ATT_TWICE,
+                invaderXim.mod.MYTHIC_OCC_ATT_TWICE,
                 function(tp)
                     return 40
                 end,
 
-                xi.mod.MYTHIC_OCC_ATT_THRICE,
+                invaderXim.mod.MYTHIC_OCC_ATT_THRICE,
                 function(tp)
                     return 20
                 end
@@ -501,26 +501,26 @@ xi.aftermath.effects =
         mods =
         {
             {
-                xi.mod.RACC,
+                invaderXim.mod.RACC,
                 function(tp)
                     return math.floor(tp / 50 + 10)
                 end
             },
 
             {
-                xi.mod.RATT,
+                invaderXim.mod.RATT,
                 function(tp)
                     return math.floor(tp * 0.6 - 80)
                 end
             },
 
             {
-                xi.mod.REM_OCC_DO_DOUBLE_DMG_RANGED,
+                invaderXim.mod.REM_OCC_DO_DOUBLE_DMG_RANGED,
                 function(tp)
                     return 40
                 end,
 
-                xi.mod.REM_OCC_DO_TRIPLE_DMG_RANGED,
+                invaderXim.mod.REM_OCC_DO_TRIPLE_DMG_RANGED,
                 function(tp)
                     return 20
                 end
@@ -535,7 +535,7 @@ xi.aftermath.effects =
     -----------------------------------
     [44] =
     {
-        mod = xi.mod.REM_OCC_DO_DOUBLE_DMG,
+        mod = invaderXim.mod.REM_OCC_DO_DOUBLE_DMG,
         power = { 30, 40, 50 },
         duration = { 30, 60, 90 },
     },
@@ -545,15 +545,15 @@ xi.aftermath.effects =
     -----------------------------------
     [45] =
     {
-        mod = xi.mod.REM_OCC_DO_TRIPLE_DMG,
+        mod = invaderXim.mod.REM_OCC_DO_TRIPLE_DMG,
         power = { 30, 40, 50 },
         duration = { 60, 120, 180 },
     }
 }
 
-xi.aftermath.addStatusEffect = function(player, tp, weaponSlot, aftermathType)
+invaderXim.aftermath.addStatusEffect = function(player, tp, weaponSlot, aftermathType)
     -- Players only!
-    if player:getObjType() ~= xi.objType.PC then
+    if player:getObjType() ~= invaderXim.objType.PC then
         return
     end
 
@@ -562,7 +562,7 @@ xi.aftermath.addStatusEffect = function(player, tp, weaponSlot, aftermathType)
         return
     end
 
-    local id = weapon:getMod(xi.mod.AFTERMATH)
+    local id = weapon:getMod(invaderXim.mod.AFTERMATH)
 
     -- Verify the aftermath ID matches the aftermath Type
     local invalid = false
@@ -588,35 +588,35 @@ xi.aftermath.addStatusEffect = function(player, tp, weaponSlot, aftermathType)
         return
     end
 
-    local aftermath = xi.aftermath.effects[id]
+    local aftermath = invaderXim.aftermath.effects[id]
     if not aftermath then
         return
     end
 
-    if not xi.aftermath.canOverwrite(player, tp, id, aftermathType) then
+    if not invaderXim.aftermath.canOverwrite(player, tp, id, aftermathType) then
         return
     end
 
-    player:delStatusEffect(xi.effect.AFTERMATH)
+    player:delStatusEffect(invaderXim.effect.AFTERMATH)
     switch (aftermathType) : caseof
     {
         -- Relic
         [1] = function(x)
-            player:addStatusEffect(xi.effect.AFTERMATH, id, 0, aftermath.duration(tp), 0, tp, aftermathType)
+            player:addStatusEffect(invaderXim.effect.AFTERMATH, id, 0, aftermath.duration(tp), 0, tp, aftermathType)
         end,
 
         -- Mythic
         [2] = function(x)
             local tier = math.floor(tp / 1000)
-            local icon = xi.effect['AFTERMATH_LV'..tier]
-            player:addStatusEffectEx(xi.effect.AFTERMATH, icon, id, 0, aftermath.duration[tier], 0, tp, aftermathType)
+            local icon = invaderXim.effect['AFTERMATH_LV'..tier]
+            player:addStatusEffectEx(invaderXim.effect.AFTERMATH, icon, id, 0, aftermath.duration[tier], 0, tp, aftermathType)
         end,
 
         -- Empyrean
         [3] = function(x)
             local tier = math.floor(tp / 1000)
-            local icon = xi.effect['AFTERMATH_LV'..tier]
-            player:addStatusEffectEx(xi.effect.AFTERMATH, icon, id, 0, aftermath.duration[tier], 0, tp, aftermathType)
+            local icon = invaderXim.effect['AFTERMATH_LV'..tier]
+            player:addStatusEffectEx(invaderXim.effect.AFTERMATH, icon, id, 0, aftermath.duration[tier], 0, tp, aftermathType)
         end
     }
 end
@@ -626,8 +626,8 @@ end
 -- Effect SubPower = TP
 -- Effect Tier = Aftermath Type
 -----------------------------------
-xi.aftermath.onEffectGain = function(target, effect)
-    local aftermath = xi.aftermath.effects[effect:getPower()]
+invaderXim.aftermath.onEffectGain = function(target, effect)
+    local aftermath = invaderXim.aftermath.effects[effect:getPower()]
     switch (effect:getTier()) : caseof
     {
         -- Relic
@@ -665,8 +665,8 @@ xi.aftermath.onEffectGain = function(target, effect)
     }
 end
 
-xi.aftermath.onEffectLose = function(target, effect)
-    local aftermath = xi.aftermath.effects[effect:getPower()]
+invaderXim.aftermath.onEffectLose = function(target, effect)
+    local aftermath = invaderXim.aftermath.effects[effect:getPower()]
     switch (effect:getTier()) : caseof
     {
         -- Relic
@@ -704,8 +704,8 @@ xi.aftermath.onEffectLose = function(target, effect)
     }
 end
 
-xi.aftermath.canOverwrite = function(player, tp, aftermathId, aftermathType)
-    local effect = player:getStatusEffect(xi.effect.AFTERMATH)
+invaderXim.aftermath.canOverwrite = function(player, tp, aftermathId, aftermathType)
+    local effect = player:getStatusEffect(invaderXim.effect.AFTERMATH)
     if not effect then
         return true
     end
@@ -716,7 +716,7 @@ xi.aftermath.canOverwrite = function(player, tp, aftermathId, aftermathType)
     end
 
     local canOverwrite = false
-    local aftermath = xi.aftermath.effects[aftermathId]
+    local aftermath = invaderXim.aftermath.effects[aftermathId]
     switch (aftermathType) : caseof
     {
         -- Relic

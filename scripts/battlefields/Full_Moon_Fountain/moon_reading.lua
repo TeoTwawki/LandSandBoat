@@ -2,12 +2,12 @@
 -- Area: Full Moon Mountain
 -- Name: Windurst Mission 9-2 Moon Reading
 -----------------------------------
-local fullMoonFountainID = zones[xi.zone.FULL_MOON_FOUNTAIN]
+local fullMoonFountainID = zones[invaderXim.zone.FULL_MOON_FOUNTAIN]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId                = xi.zone.FULL_MOON_FOUNTAIN,
-    battlefieldId         = xi.battlefield.id.MOON_READING,
+    zoneId                = invaderXim.zone.FULL_MOON_FOUNTAIN,
+    battlefieldId         = invaderXim.battlefield.id.MOON_READING,
     canLoseExp            = false,
     isMission             = true,
     allowTrusts           = true,
@@ -17,9 +17,9 @@ local content = BattlefieldMission:new({
     index                 = 1,
     entryNpc              = 'MS_Entrance',
     exitNpc               = 'Moon_Spiral',
-    missionArea           = xi.mission.log_id.WINDURST,
-    mission               = xi.mission.id.windurst.MOON_READING,
-    missionStatusArea     = xi.mission.log_id.WINDURST,
+    missionArea           = invaderXim.mission.log_id.WINDURST,
+    mission               = invaderXim.mission.id.windurst.MOON_READING,
+    missionStatusArea     = invaderXim.mission.log_id.WINDURST,
     requiredMissionStatus = 2,
 })
 
@@ -120,7 +120,7 @@ content.groups =
         spawned   = false,
         superlink = true,
         allDeath  = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

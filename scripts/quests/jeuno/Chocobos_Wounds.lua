@@ -8,14 +8,14 @@
 -- _6t2    : !pos -88.2 -7.65 -168.8 245
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.CHOCOBOS_WOUNDS)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.CHOCOBOS_WOUNDS)
 
 quest.reward =
 {
     fame = 30,
-    fameArea = xi.fameArea.JEUNO,
-    keyItem = xi.ki.CHOCOBO_LICENSE,
-    title = xi.title.CHOCOBO_TRAINER,
+    fameArea = invaderXim.fameArea.JEUNO,
+    keyItem = invaderXim.ki.CHOCOBO_LICENSE,
+    title = invaderXim.title.CHOCOBO_TRAINER,
 }
 
 -- The following tables are based on the stage variable for feeding
@@ -39,15 +39,15 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and player:getMainLvl() >= 20
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and player:getMainLvl() >= 20
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['_6t2'] = quest:event(64),
         },
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Brutus'] =
             {
@@ -72,9 +72,9 @@ quest.sections =
                     if option == 1 then
                         quest:begin(player)
                         quest:setVar(player, 'Prog', 1)
-                        if xi.settings.main.ENABLE_TOAU == 1 then
+                        if invaderXim.settings.main.ENABLE_TOAU == 1 then
                             -- This quest is automatically flagged during this interaction.
-                            player:addQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.CHOCOBO_ON_THE_LOOSE)
+                            player:addQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.CHOCOBO_ON_THE_LOOSE)
                         end
                     else
                         -- Dialogue changes if the player fails to choose the correct option.
@@ -87,10 +87,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['_6t2'] =
             {
@@ -102,7 +102,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Brutus'] =
             {
@@ -122,9 +122,9 @@ quest.sections =
             ['Chocobo'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.BUNCH_OF_GYSAHL_GREENS) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.BUNCH_OF_GYSAHL_GREENS) then
                         return quest:progressEvent(76)
-                    elseif npcUtil.tradeHasExactly(trade, xi.item.CLUMP_OF_GAUSEBIT_WILDGRASS) then
+                    elseif npcUtil.tradeHasExactly(trade, invaderXim.item.CLUMP_OF_GAUSEBIT_WILDGRASS) then
                         if quest:getVar(player, 'Timer') <= os.time() then
                             return quest:progressEvent(chocoboFeedTrades[quest:getVar(player, 'Prog')])
                         else
@@ -190,11 +190,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                not player:hasCompletedQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.SAVE_MY_SON)
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                not player:hasCompletedQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.SAVE_MY_SON)
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Brutus']  = quest:event(22), -- Always used except for importantOnce() for Chocobo on the Loose (10094)
             ['Chocobo'] = quest:event(55),

@@ -10,11 +10,11 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.dancer.checkFlourishAbility(player, target, ability, true, 1)
+    return invaderXim.job_utils.dancer.checkFlourishAbility(player, target, ability, true, 1)
 end
 
 abilityObject.onUseAbility = function(player, target, ability, action)
-    return xi.job_utils.dancer.useViolentFlourishAbility(player, target, ability, action)
+    return invaderXim.job_utils.dancer.useViolentFlourishAbility(player, target, ability, action)
 end
 
 return abilityObject

@@ -6,29 +6,29 @@
 -- Hot Springs : !pos 444 -37 -18 139
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OUTLANDS, xi.quest.id.outlands.SECRET_OF_THE_DAMP_SCROLL)
+local quest = Quest:new(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.SECRET_OF_THE_DAMP_SCROLL)
 
 quest.reward =
 {
     fame     = 75,
-    fameArea = xi.fameArea.NORG,
-    item     = xi.item.SCROLL_OF_JUBAKU_ICHI,
-    title    = xi.title.CRACKER_OF_THE_SECRET_CODE,
+    fameArea = invaderXim.fameArea.NORG,
+    item     = invaderXim.item.SCROLL_OF_JUBAKU_ICHI,
+    title    = invaderXim.title.CRACKER_OF_THE_SECRET_CODE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.NORG) >= 3 and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.NORG) >= 3 and
                 player:getMainLvl() >= 10 and
-                player:hasItem(xi.item.DAMP_SCROLL)
+                player:hasItem(invaderXim.item.DAMP_SCROLL)
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
-            ['Shivivi'] = quest:progressEvent(31, xi.item.DAMP_SCROLL),
+            ['Shivivi'] = quest:progressEvent(31, invaderXim.item.DAMP_SCROLL),
 
             onEventFinish =
             {
@@ -41,21 +41,21 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Shivivi'] = quest:event(32),
         },
 
-        [xi.zone.HORLAIS_PEAK] =
+        [invaderXim.zone.HORLAIS_PEAK] =
         {
             ['Hot_Springs'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.DAMP_SCROLL) then
-                        return quest:progressEvent(2, xi.item.DAMP_SCROLL)
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.DAMP_SCROLL) then
+                        return quest:progressEvent(2, invaderXim.item.DAMP_SCROLL)
                     end
                 end,
             },

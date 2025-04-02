@@ -10,9 +10,9 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local needles = 10000 / skill:getTotalTargets()
-    local dmg = xi.mobskills.mobFinalAdjustments(needles, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.LIGHT, xi.mobskills.shadowBehavior.WIPE_SHADOWS)
+    local dmg = invaderXim.mobskills.mobFinalAdjustments(needles, mob, skill, target, invaderXim.attackType.MAGICAL, invaderXim.damageType.LIGHT, invaderXim.mobskills.shadowBehavior.WIPE_SHADOWS)
 
-    target:takeDamage(dmg, mob, xi.attackType.MAGICAL, xi.damageType.LIGHT)
+    target:takeDamage(dmg, mob, invaderXim.attackType.MAGICAL, invaderXim.damageType.LIGHT)
 
     return dmg
 end

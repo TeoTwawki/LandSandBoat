@@ -9,7 +9,7 @@
 -- Saldinor       : !pos -338.882 -1.000 -308.252 258
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.ADOULIN, xi.quest.id.adoulin.IT_SETS_MY_HEART_AFLUTTER)
+local quest = Quest:new(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.IT_SETS_MY_HEART_AFLUTTER)
 
 -- NOTE:
 -- It is reported that to reach max fame (~610) you must complete this cycle of quests
@@ -18,7 +18,7 @@ local quest = Quest:new(xi.questLog.ADOULIN, xi.quest.id.adoulin.IT_SETS_MY_HEAR
 quest.reward =
 {
     fame     = 6,
-    fameArea = xi.fameArea.ADOULIN,
+    fameArea = invaderXim.fameArea.ADOULIN,
     bayld    = 200,
     exp      = 500,
 }
@@ -28,10 +28,10 @@ quest.sections =
     -- Section: Begin quest (First time)
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and player:hasKeyItem(xi.ki.PIONEERS_BADGE)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and player:hasKeyItem(invaderXim.ki.PIONEERS_BADGE)
         end,
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['Saldinor'] =
             {
@@ -54,13 +54,13 @@ quest.sections =
     -- Section: Begin quest (Repeated)
     {
         check = function(player, status, vars)
-            return player:hasCompletedQuest(xi.questLog.ADOULIN, xi.quest.id.adoulin.IT_SETS_MY_HEART_AFLUTTER) and
-                player:hasCompletedQuest(xi.questLog.ADOULIN, xi.quest.id.adoulin.A_GOOD_PAIR_OF_CROCS) and
-                player:hasCompletedQuest(xi.questLog.ADOULIN, xi.quest.id.adoulin.A_SHOT_IN_THE_DARK) and
+            return player:hasCompletedQuest(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.IT_SETS_MY_HEART_AFLUTTER) and
+                player:hasCompletedQuest(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.A_GOOD_PAIR_OF_CROCS) and
+                player:hasCompletedQuest(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.A_SHOT_IN_THE_DARK) and
                 player:getCharVar('ADOULIN_FAME_QUEST_TRACKER') == 0
         end,
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['Saldinor'] =
             {
@@ -72,7 +72,7 @@ quest.sections =
             onEventFinish =
             {
                 [332] = function(player, csid, option, npc)
-                    player:delQuest(xi.questLog.ADOULIN, xi.quest.id.adoulin.IT_SETS_MY_HEART_AFLUTTER)
+                    player:delQuest(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.IT_SETS_MY_HEART_AFLUTTER)
                     quest:begin(player)
                 end,
             },
@@ -82,10 +82,10 @@ quest.sections =
     -- Section: Questing
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['Saldinor'] =
             {
@@ -94,7 +94,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.TWITHERYM_WING, 2 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.TWITHERYM_WING, 2 } }) then
                         return quest:progressEvent(331)
                     end
                 end,
@@ -115,10 +115,10 @@ quest.sections =
     -- Section: Completed quest
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['Saldinor'] =
             {

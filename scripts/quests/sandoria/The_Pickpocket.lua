@@ -4,20 +4,20 @@
 -- Altiret !pos 21 -4 -65 232
 -- Esca !pos -624 -51 278 100
 -----------------------------------
-local portSandOriaID     = zones[xi.zone.PORT_SAN_DORIA]
-local northernSandOriaID = zones[xi.zone.NORTHERN_SAN_DORIA]
-local westRonfaureID     = zones[xi.zone.WEST_RONFAURE]
+local portSandOriaID     = zones[invaderXim.zone.PORT_SAN_DORIA]
+local northernSandOriaID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
+local westRonfaureID     = zones[invaderXim.zone.WEST_RONFAURE]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.THE_PICKPOCKET)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.THE_PICKPOCKET)
 
 quest.reward =
 {
     fame = 30,
-    fameArea = xi.fameArea.SANDORIA,
-    item = xi.item.LIGHT_AXE,
+    fameArea = invaderXim.fameArea.SANDORIA,
+    item = invaderXim.item.LIGHT_AXE,
     itemParams = { fromTrade = true },
-    title = xi.title.PICKPOCKET_PINCHER,
+    title = invaderXim.title.PICKPOCKET_PINCHER,
 }
 
 quest.sections =
@@ -25,10 +25,10 @@ quest.sections =
     -- Speaking with the little elvaan girl, Miene, will activate a cutscene. You will see a burglar steal something from Altiret, one of the guards.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and vars.Prog == 0
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and vars.Prog == 0
         end,
 
-        [xi.zone.PORT_SAN_DORIA] =
+        [invaderXim.zone.PORT_SAN_DORIA] =
         {
             ['Miene'] = quest:progressEvent(502),
 
@@ -45,11 +45,11 @@ quest.sections =
     {
         check = function(player, status, vars)
             return
-                (status == xi.questStatus.QUEST_AVAILABLE and vars.Prog == 1) or
-                (status == xi.questStatus.QUEST_ACCEPTED and not player:hasItem(xi.item.GILT_GLASSES))
+                (status == invaderXim.questStatus.QUEST_AVAILABLE and vars.Prog == 1) or
+                (status == invaderXim.questStatus.QUEST_ACCEPTED and not player:hasItem(invaderXim.item.GILT_GLASSES))
         end,
 
-        [xi.zone.PORT_SAN_DORIA] =
+        [invaderXim.zone.PORT_SAN_DORIA] =
         {
             ['Answald'] =       quest:message(portSandOriaID.text.PICKPOCKET_ANSWALD),
             ['Artinien'] =      quest:message(portSandOriaID.text.PICKPOCKET_ARTINIEN),
@@ -71,7 +71,7 @@ quest.sections =
             ['Solgierte'] =     quest:message(portSandOriaID.text.PICKPOCKET_SOLGIERTE),
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Aurege'] =        quest:message(northernSandOriaID.text.PICKPOCKET_AUREGE):importantOnce(),
             ['Gilipese'] =      quest:message(northernSandOriaID.text.PICKPOCKET_GILIPESE),
@@ -85,7 +85,7 @@ quest.sections =
             ['Rodaillece'] =    quest:message(northernSandOriaID.text.PICKPOCKET_RODAILLECE):importantOnce(),
         },
 
-        [xi.zone.WEST_RONFAURE] =
+        [invaderXim.zone.WEST_RONFAURE] =
         {
             ['Aaveleon'] =      quest:message(westRonfaureID.text.PICKPOCKET_AAVELEON),
             ['Adalefont'] =     quest:message(westRonfaureID.text.PICKPOCKET_ADALEFONT),
@@ -100,10 +100,10 @@ quest.sections =
     -- After the cutscene ends, speak with Altiret. He asks you to retrieve his wife's glasses for him, since he cannot leave his post.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and vars.Prog == 1
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and vars.Prog == 1
         end,
 
-        [xi.zone.PORT_SAN_DORIA] =
+        [invaderXim.zone.PORT_SAN_DORIA] =
         {
             ['Miene'] = quest:event(554),
             ['Altiret'] = quest:progressEvent(547),
@@ -125,17 +125,17 @@ quest.sections =
     -- Return to Port San d'Oria and trade the Gilt Glasses to Altiret for your reward.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_SAN_DORIA] =
+        [invaderXim.zone.PORT_SAN_DORIA] =
         {
             ['Altiret'] =
             {
                 onTrigger = quest:event(547),
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHas(trade, xi.item.GILT_GLASSES) then
+                    if npcUtil.tradeHas(trade, invaderXim.item.GILT_GLASSES) then
                         return quest:progressEvent(550)
                     else
                         return quest:event(551)
@@ -157,8 +157,8 @@ quest.sections =
                     else
                         if
                             player:getFreeSlotsCount() > 0 and
-                            not player:hasItem(xi.item.EAGLE_BUTTON) and
-                            not player:hasItem(xi.item.GILT_GLASSES)
+                            not player:hasItem(invaderXim.item.EAGLE_BUTTON) and
+                            not player:hasItem(invaderXim.item.GILT_GLASSES)
                         then
                             -- Reaquire the button
                             return quest:progressEvent(611)
@@ -170,13 +170,13 @@ quest.sections =
             onEventFinish =
             {
                 [549] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.EAGLE_BUTTON) then
+                    if npcUtil.giveItem(player, invaderXim.item.EAGLE_BUTTON) then
                         quest:setVar(player, 'Stage', 1)
                     end
                 end,
 
                 [611] = function(player, csid, option, npc)
-                    npcUtil.giveItem(player, xi.item.EAGLE_BUTTON)
+                    npcUtil.giveItem(player, invaderXim.item.EAGLE_BUTTON)
                 end,
 
                 [550] = function(player, csid, option, npc)
@@ -187,12 +187,12 @@ quest.sections =
             },
         },
 
-        [xi.zone.WEST_RONFAURE] =
+        [invaderXim.zone.WEST_RONFAURE] =
         {
             ['Esca'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasItem(xi.item.GILT_GLASSES) then
+                    if player:hasItem(invaderXim.item.GILT_GLASSES) then
                         return quest:event(123)
                     else
                         return quest:event(120)
@@ -200,7 +200,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHas(trade, xi.item.EAGLE_BUTTON) then
+                    if npcUtil.tradeHas(trade, invaderXim.item.EAGLE_BUTTON) then
                         return quest:progressEvent(121)
                     end
                 end,
@@ -209,7 +209,7 @@ quest.sections =
             onEventFinish =
             {
                 [121] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.GILT_GLASSES, { fromTrade = true }) then
+                    if npcUtil.giveItem(player, invaderXim.item.GILT_GLASSES, { fromTrade = true }) then
                         player:confirmTrade()
                     end
                 end,
@@ -220,15 +220,15 @@ quest.sections =
     -- Section: Completed quest
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.PORT_SAN_DORIA] =
+        [invaderXim.zone.PORT_SAN_DORIA] =
         {
             ['Altiret'] = quest:event(580),
         },
 
-        [xi.zone.WEST_RONFAURE] =
+        [invaderXim.zone.WEST_RONFAURE] =
         {
             ['Esca'] = quest:event(123),
         },

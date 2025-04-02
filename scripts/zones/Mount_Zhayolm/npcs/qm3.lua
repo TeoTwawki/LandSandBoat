@@ -3,14 +3,14 @@
 --  NPC: ??? (Spawn Anantaboga(ZNM T2))
 -- !pos -368 -13 366 61
 -----------------------------------
-local ID = zones[xi.zone.MOUNT_ZHAYOLM]
+local ID = zones[invaderXim.zone.MOUNT_ZHAYOLM]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHas(trade, xi.item.SLAB_OF_RAW_BUFFALO) and
+        npcUtil.tradeHas(trade, invaderXim.item.SLAB_OF_RAW_BUFFALO) and
         npcUtil.popFromQM(player, npc, ID.mob.ANANTABOGA, { hide = 0 })
     then
         player:confirmTrade()

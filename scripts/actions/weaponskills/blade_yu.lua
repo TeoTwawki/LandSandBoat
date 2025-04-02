@@ -18,24 +18,24 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     params.ftpMod     = { 2.25, 2.25, 2.25 }
     params.dex_wsc    = 0.28
     params.int_wsc    = 0.28
-    params.ele        = xi.element.WATER
-    params.skill      = xi.skill.KATANA
+    params.ele        = invaderXim.element.WATER
+    params.skill      = invaderXim.skill.KATANA
     params.includemab = true
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         params.ftpMod  = { 3, 3, 3 }
         params.dex_wsc = 0.4
         params.int_wsc = 0.4
     end
 
-    local damage, tpHits, extraHits = xi.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
+    local damage, tpHits, extraHits = invaderXim.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
 
     -- Handle status effect
-    local effectId      = xi.effect.POISON
-    local actionElement = xi.element.WATER
+    local effectId      = invaderXim.effect.POISON
+    local actionElement = invaderXim.element.WATER
     local power         = 10
     local duration      = math.floor((75 + 15 * tp / 1000) * applyResistanceAddEffect(player, target, actionElement, 0))
-    xi.weaponskills.handleWeaponskillEffect(player, target, effectId, actionElement, damage, power, duration)
+    invaderXim.weaponskills.handleWeaponskillEffect(player, target, effectId, actionElement, damage, power, duration)
 
     return tpHits, extraHits, false, damage
 end

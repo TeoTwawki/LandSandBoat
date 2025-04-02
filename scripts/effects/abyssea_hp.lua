@@ -1,11 +1,11 @@
 -----------------------------------
--- xi.effect.ABYSSEA_HP
+-- invaderXim.effect.ABYSSEA_HP
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    effect:addMod(xi.mod.HPP, effect:getPower())
+    effect:addMod(invaderXim.mod.HPP, effect:getPower())
 end
 
 effectObject.onEffectTick = function(target, effect)

@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.CLOISTER_OF_FROST] =
+zones[invaderXim.zone.CLOISTER_OF_FROST] =
 {
     text =
     {
@@ -45,4 +45,4 @@ zones[xi.zone.CLOISTER_OF_FROST] =
     },
 }
 
-return zones[xi.zone.CLOISTER_OF_FROST]
+return zones[invaderXim.zone.CLOISTER_OF_FROST]

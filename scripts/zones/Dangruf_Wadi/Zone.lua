@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Dangruf_Wadi (191)
 -----------------------------------
-local ID = zones[xi.zone.DANGRUF_WADI]
+local ID = zones[invaderXim.zone.DANGRUF_WADI]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -11,11 +11,11 @@ zoneObject.onInitialize = function(zone)
     zone:registerCuboidTriggerArea(2, -213.5, 2,  92.6, -212.7, 4,   94.0)  -- H-8 Geyser
     zone:registerCuboidTriggerArea(3,  -67.3, 2, 532.8,  -66.3, 4,  534.0)  -- J-3 Geyser
 
-    xi.treasure.initZone(zone)
+    invaderXim.treasure.initZone(zone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -80,12 +80,12 @@ end
 
 zoneObject.onZoneWeatherChange = function(weather)
     if
-        weather == xi.weather.NONE or
-        weather == xi.weather.SUNSHINE
+        weather == invaderXim.weather.NONE or
+        weather == invaderXim.weather.SUNSHINE
     then
-        GetNPCByID(ID.npc.AN_EMPTY_VESSEL_QM):setStatus(xi.status.NORMAL)
+        GetNPCByID(ID.npc.AN_EMPTY_VESSEL_QM):setStatus(invaderXim.status.NORMAL)
     else
-        GetNPCByID(ID.npc.AN_EMPTY_VESSEL_QM):setStatus(xi.status.DISAPPEAR)
+        GetNPCByID(ID.npc.AN_EMPTY_VESSEL_QM):setStatus(invaderXim.status.DISAPPEAR)
     end
 end
 

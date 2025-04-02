@@ -2,7 +2,7 @@
 -- Area: La Theine Plateau
 --  Mob: Poison Funguar
 -----------------------------------
-local ID = zones[xi.zone.LA_THEINE_PLATEAU]
+local ID = zones[invaderXim.zone.LA_THEINE_PLATEAU]
 require('scripts/quests/tutorial')
 -----------------------------------
 ---@type TMobEntity
@@ -23,14 +23,14 @@ local tumblingSpawnPoints =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 71, 2, xi.regime.type.FIELDS)
-    xi.tutorial.onMobDeath(player)
+    invaderXim.regime.checkRegime(player, mob, 71, 2, invaderXim.regime.type.FIELDS)
+    invaderXim.tutorial.onMobDeath(player)
 end
 
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = tumblingSpawnPoints
-    xi.mob.phOnDespawn(mob, tumblingPHTable, 5, 3600, params) -- 1 hour minimum
+    invaderXim.mob.phOnDespawn(mob, tumblingPHTable, 5, 3600, params) -- 1 hour minimum
 end
 
 return entity

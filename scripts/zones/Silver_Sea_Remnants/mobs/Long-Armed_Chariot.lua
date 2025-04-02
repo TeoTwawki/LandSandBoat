@@ -6,7 +6,7 @@
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.MOON_CHARIOTEER)
+    player:addTitle(invaderXim.title.MOON_CHARIOTEER)
 end
 
 return entity

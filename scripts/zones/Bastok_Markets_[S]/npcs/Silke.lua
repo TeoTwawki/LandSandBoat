@@ -2,7 +2,7 @@
 -- Area: Bastok Markets (S)
 --  NPC: Silke
 -----------------------------------
-local ID = zones[xi.zone.BASTOK_MARKETS_S]
+local ID = zones[invaderXim.zone.BASTOK_MARKETS_S]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -16,7 +16,7 @@ entity.onTrigger = function(player, npc)
     }
 
     player:showText(npc, ID.text.SILKE_SHOP_DIALOG)
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 return entity

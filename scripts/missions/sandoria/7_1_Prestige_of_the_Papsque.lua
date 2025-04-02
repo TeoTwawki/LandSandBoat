@@ -9,10 +9,10 @@
 -- Papal Chambers (_6fc) : !pos 131 -11 122 231
 -- qm4                   : !pos -695 -40 21 100
 -----------------------------------
-local westRonfaureID = zones[xi.zone.WEST_RONFAURE]
+local westRonfaureID = zones[invaderXim.zone.WEST_RONFAURE]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.PRESTIGE_OF_THE_PAPSQUE)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.PRESTIGE_OF_THE_PAPSQUE)
 
 mission.reward =
 {
@@ -30,11 +30,11 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -43,7 +43,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -58,7 +58,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['_6fc'] =
             {
@@ -69,7 +69,7 @@ mission.sections =
                         return mission:progressEvent(7)
                     elseif missionStatus == 1 then
                         return mission:progressEvent(9)
-                    elseif player:hasKeyItem(xi.ki.ANCIENT_SAN_DORIAN_TABLET) then
+                    elseif player:hasKeyItem(invaderXim.ki.ANCIENT_SAN_DORIAN_TABLET) then
                         return mission:progressEvent(8)
                     end
                 end,
@@ -83,13 +83,13 @@ mission.sections =
 
                 [8] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.ANCIENT_SAN_DORIAN_TABLET)
+                        player:delKeyItem(invaderXim.ki.ANCIENT_SAN_DORIAN_TABLET)
                     end
                 end,
             },
         },
 
-        [xi.zone.WEST_RONFAURE] =
+        [invaderXim.zone.WEST_RONFAURE] =
         {
             ['qm4'] =
             {
@@ -101,7 +101,7 @@ mission.sections =
                         if player:getLocalVar('Mission[0][18]Stage') == 1 then
                             player:setLocalVar('Mission[0][18]Stage', 0)
                             player:setMissionStatus(mission.areaId, 2)
-                            return mission:keyItem(xi.ki.ANCIENT_SAN_DORIAN_TABLET)
+                            return mission:keyItem(invaderXim.ki.ANCIENT_SAN_DORIAN_TABLET)
                         else
                             SpawnMob(westRonfaureID.mob.MARAUDER_DVOGZOG):updateClaim(player)
                             return mission:messageSpecial(westRonfaureID.text.SOMETHING_IS_AMISS)

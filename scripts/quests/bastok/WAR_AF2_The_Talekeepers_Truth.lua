@@ -6,29 +6,29 @@
 -- Deidogg       : !pos -13 7 29 234
 -- qm_talekeeper : !pos 15 -31 -94 143
 -----------------------------------
-local palboroughMinesID = zones[xi.zone.PALBOROUGH_MINES]
+local palboroughMinesID = zones[invaderXim.zone.PALBOROUGH_MINES]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.THE_TALEKEEPERS_TRUTH)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_TALEKEEPERS_TRUTH)
 
 quest.reward =
 {
     fame     = 40,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.FIGHTERS_CALLIGAE,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.FIGHTERS_CALLIGAE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.THE_DOORMAN) and
-                player:getMainJob() == xi.job.WAR and
-                player:getMainLvl() >= xi.settings.main.AF2_QUEST_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_DOORMAN) and
+                player:getMainJob() == invaderXim.job.WAR and
+                player:getMainLvl() >= invaderXim.settings.main.AF2_QUEST_LEVEL
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Deidogg'] =
             {
@@ -67,10 +67,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Deidogg'] =
             {
@@ -79,12 +79,12 @@ quest.sections =
 
                     if
                         questProgress == 0 and
-                        npcUtil.tradeHasExactly(trade, xi.item.MOTTLED_QUADAV_EGG)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.MOTTLED_QUADAV_EGG)
                     then
                         return quest:progressEvent(162)
                     elseif
                         questProgress == 1 and
-                        npcUtil.tradeHasExactly(trade, xi.item.PARASITE_SKIN)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.PARASITE_SKIN)
                     then
                         return quest:progressEvent(164)
                     end
@@ -122,14 +122,14 @@ quest.sections =
 
                 [165] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        xi.quest.setVar(player, xi.questLog.BASTOK, xi.quest.id.bastok.THE_TALEKEEPERS_GIFT, 'Timer', VanadielUniqueDay() + 1)
-                        xi.quest.setMustZone(player, xi.questLog.BASTOK, xi.quest.id.bastok.THE_TALEKEEPERS_GIFT)
+                        invaderXim.quest.setVar(player, invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_TALEKEEPERS_GIFT, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.quest.setMustZone(player, invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_TALEKEEPERS_GIFT)
                     end
                 end,
             },
         },
 
-        [xi.zone.PALBOROUGH_MINES] =
+        [invaderXim.zone.PALBOROUGH_MINES] =
         {
             ['qm_talekeeper'] =
             {
@@ -147,10 +147,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Deidogg'] = quest:event(166):replaceDefault(),
         },

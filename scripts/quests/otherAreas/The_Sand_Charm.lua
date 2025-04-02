@@ -8,26 +8,26 @@
 -- Celestina : !pos -37.624 -16.050 75.681 249
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.THE_SAND_CHARM)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.THE_SAND_CHARM)
 
 quest.reward =
 {
     exp      = 2000,
     gil      = 2000,
-    ki       = xi.ki.MAP_OF_BOSTAUNIEUX_OUBLIETTE,
-    fameArea = xi.fameArea.WINDURST,
+    ki       = invaderXim.ki.MAP_OF_BOSTAUNIEUX_OUBLIETTE,
+    fameArea = invaderXim.fameArea.WINDURST,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.WINDURST) >= 4 and
-                xi.settings.map.FISHING_ENABLE == true
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.WINDURST) >= 4 and
+                invaderXim.settings.map.FISHING_ENABLE == true
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Blandine'] =
             {
@@ -59,7 +59,7 @@ quest.sections =
             {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 3 then
-                        return quest:progressEvent(126, xi.item.SAND_CHARM) -- Go get back the sand charm
+                        return quest:progressEvent(126, invaderXim.item.SAND_CHARM) -- Go get back the sand charm
                     end
                 end,
             },
@@ -87,16 +87,16 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Celestina'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHas(trade, xi.item.SAND_CHARM) then
-                        return quest:progressEvent(127, 0, xi.item.SAND_CHARM) -- hes dead, but he'll be back soon I'm sure
+                    if npcUtil.tradeHas(trade, invaderXim.item.SAND_CHARM) then
+                        return quest:progressEvent(127, 0, invaderXim.item.SAND_CHARM) -- hes dead, but he'll be back soon I'm sure
                     end
                 end,
             },
@@ -115,10 +115,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Blandine'] =
             {

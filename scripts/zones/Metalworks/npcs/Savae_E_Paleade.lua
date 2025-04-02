@@ -8,7 +8,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if player:getCurrentMission(xi.mission.log_id.SANDORIA) ~= xi.mission.id.sandoria.NONE then
+    if player:getCurrentMission(invaderXim.mission.log_id.SANDORIA) ~= invaderXim.mission.id.sandoria.NONE then
         player:startEvent(208)
     else
         player:startEvent(200)

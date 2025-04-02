@@ -4,33 +4,33 @@
 -- Log ID: 1, Quest ID: 59
 -- qm1 : !pos 84 -79 77 157
 -----------------------------------
-local middleDelkfuttsID = zones[xi.zone.MIDDLE_DELKFUTTS_TOWER]
+local middleDelkfuttsID = zones[invaderXim.zone.MIDDLE_DELKFUTTS_TOWER]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.BLADE_OF_EVIL)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.BLADE_OF_EVIL)
 
 quest.reward =
 {
     fame     = 60,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.CHAOS_BURGEONET,
-    title    = xi.title.PARAGON_OF_DARK_KNIGHT_EXCELLENCE,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.CHAOS_BURGEONET,
+    title    = invaderXim.title.PARAGON_OF_DARK_KNIGHT_EXCELLENCE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.DARK_PUPPET) and
-                player:getMainJob() == xi.job.DRK and
-                player:getMainLvl() >= xi.settings.main.AF3_QUEST_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.DARK_PUPPET) and
+                player:getMainJob() == invaderXim.job.DRK and
+                player:getMainLvl() >= invaderXim.settings.main.AF3_QUEST_LEVEL
         end,
 
-        [xi.zone.BEADEAUX] =
+        [invaderXim.zone.BEADEAUX] =
         {
             onZoneIn = function(player, prevZone)
-                if prevZone == xi.zone.PASHHOW_MARSHLANDS then
+                if prevZone == invaderXim.zone.PASHHOW_MARSHLANDS then
                     return 122
                 end
             end,
@@ -46,16 +46,16 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.MIDDLE_DELKFUTTS_TOWER] =
+        [invaderXim.zone.MIDDLE_DELKFUTTS_TOWER] =
         {
             ['qm1'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.VIAL_OF_QUADAV_MAGE_BLOOD) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.VIAL_OF_QUADAV_MAGE_BLOOD) and
                         quest:getVar(player, 'Prog') == 0 and
                         not GetMobByID(middleDelkfuttsID.mob.BLADE_OF_EVIL_MOB_OFFSET + 0):isSpawned() and
                         not GetMobByID(middleDelkfuttsID.mob.BLADE_OF_EVIL_MOB_OFFSET + 1):isSpawned() and

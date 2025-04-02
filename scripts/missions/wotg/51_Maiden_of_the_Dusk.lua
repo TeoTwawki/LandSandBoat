@@ -7,12 +7,12 @@
 -- Ornate Door       : !pos -700 -20.25 -303.398 89
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.MAIDEN_OF_THE_DUSK)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.MAIDEN_OF_THE_DUSK)
 
 mission.reward =
 {
-    keyItem     = xi.ki.MOONSHADE_EARRING,
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.WHERE_IT_ALL_BEGAN },
+    keyItem     = invaderXim.ki.MOONSHADE_EARRING,
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.WHERE_IT_ALL_BEGAN },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.GRAUBERG_S] =
+        [invaderXim.zone.GRAUBERG_S] =
         {
             ['Veridical_Conflux'] =
             {
@@ -31,7 +31,7 @@ mission.sections =
                         local hasDeclined = mission:getVar(player, 'Option')
 
                         return mission:progressEvent(38, 89, 23, 1756, 0, 0, 0, hasDeclined, 0)
-                    elseif not player:hasKeyItem(xi.ki.PRIMAL_GLOW) then
+                    elseif not player:hasKeyItem(invaderXim.ki.PRIMAL_GLOW) then
                         -- The wait for reobtaining this keyitem is only triggered after the initial
                         -- replacement.  It is possible that a timer is set on complete of last mission
                         -- for this piece, but unconfirmed.
@@ -50,7 +50,7 @@ mission.sections =
                 [38] = function(player, csid, option, npc)
                     if option == 1 then
                         mission:setVar(player, 'Status', 1)
-                        player:setPos(-700.042, 0.399, -441.301, 192, xi.zone.WALK_OF_ECHOES)
+                        player:setPos(-700.042, 0.399, -441.301, 192, invaderXim.zone.WALK_OF_ECHOES)
                     else
                         mission:setVar(player, 'Option', 1)
                     end
@@ -58,12 +58,12 @@ mission.sections =
 
                 [44] = function(player, csid, option, npc)
                     mission:setVar(player, 'Timer', VanadielUniqueDay() + 1)
-                    npcUtil.giveKeyItem(player, xi.ki.PRIMAL_GLOW)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.PRIMAL_GLOW)
                 end,
             },
         },
 
-        [xi.zone.WALK_OF_ECHOES] =
+        [invaderXim.zone.WALK_OF_ECHOES] =
         {
             ['_521'] =
             {
@@ -127,17 +127,17 @@ mission.sections =
 
                 [6] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 5)
-                    player:setPos(-700.063, -17.6, -331.903, 64, xi.zone.WALK_OF_ECHOES)
+                    player:setPos(-700.063, -17.6, -331.903, 64, invaderXim.zone.WALK_OF_ECHOES)
                 end,
 
                 [7] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 6)
-                    player:setPos(-700.063, -17.6, -331.903, 64, xi.zone.WALK_OF_ECHOES)
+                    player:setPos(-700.063, -17.6, -331.903, 64, invaderXim.zone.WALK_OF_ECHOES)
                 end,
 
                 [8] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 7)
-                    player:setPos(-700.063, -17.6, -331.903, 64, xi.zone.WALK_OF_ECHOES)
+                    player:setPos(-700.063, -17.6, -331.903, 64, invaderXim.zone.WALK_OF_ECHOES)
                 end,
 
                 [9] = function(player, csid, option, npc)
@@ -149,7 +149,7 @@ mission.sections =
                     -- ID prior to this event being triggered in BCNM script.
 
                     mission:setVar(player, 'Status', 4)
-                    player:setPos(-700.063, -17.6, -331.903, 64, xi.zone.WALK_OF_ECHOES)
+                    player:setPos(-700.063, -17.6, -331.903, 64, invaderXim.zone.WALK_OF_ECHOES)
                 end,
             },
         },

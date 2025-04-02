@@ -2,7 +2,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for guild_item_points
 -- ----------------------------
-DROP TABLE IF EXISTS `guild_item_points`;
+DROP TABLE IF IXIMSTS `guild_item_points`;
 CREATE TABLE `guild_item_points` (
   `guildid` tinyint(1) unsigned NOT NULL,
   `itemid` smallint(5) unsigned NOT NULL,

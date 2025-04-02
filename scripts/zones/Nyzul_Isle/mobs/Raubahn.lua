@@ -2,7 +2,7 @@
 -- Area: Nyzul Isle (Nashmeira's Plea)
 --  Mob: Raubahn
 -----------------------------------
-local ID = zones[xi.zone.NYZUL_ISLE]
+local ID = zones[invaderXim.zone.NYZUL_ISLE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -83,23 +83,23 @@ entity.onMobSpawn = function(mob)
                 -- 2nd reraise should use ID.text.NOW_UNDERSTAND instead
                 if phys >= magic and phys >= ranged then
                     mobArg:showText(mobArg, ID.text.RESIST_MELEE)
-                    mobArg:setMod(xi.mod.UDMGPHYS, -10000)
+                    mobArg:setMod(invaderXim.mod.UDMGPHYS, -10000)
                 elseif magic >= phys and magic >= ranged then
                     mobArg:showText(mobArg, ID.text.RESIST_MAGIC)
-                    mobArg:addMod(xi.mod.UDMGMAGIC, -10000)
+                    mobArg:addMod(invaderXim.mod.UDMGMAGIC, -10000)
                 else
                     mobArg:showText(mobArg, ID.text.RESIST_RANGE)
-                    mobArg:addMod(xi.mod.UDMGRANGE, -10000)
+                    mobArg:addMod(invaderXim.mod.UDMGRANGE, -10000)
                 end
             end
         else
             -- We're out of raises, so we can go away now
-            mobArg:setMobMod(xi.mobMod.BEHAVIOR, 0)
+            mobArg:setMobMod(invaderXim.mobMod.BEHAVIOR, 0)
         end
     end)
 
     -- We're able to be raised initially and shouldn't despawn
-    mob:setMobMod(xi.mobMod.BEHAVIOR, 5)
+    mob:setMobMod(invaderXim.mobMod.BEHAVIOR, 5)
 end
 
 entity.onMobEngage = function(mob, target)
@@ -119,7 +119,7 @@ entity.onMobFight = function(mob, target)
         if mob:getHPP() <= hpTrigger and usedAzure == 0 then
             mob:setLocalVar('usedAzureLore', 1)
             mob:setLocalVar('AzureLoreHP', math.random(20, 50) -- Re-rolling the % for next 'life'
-            mob:useMobAbility(xi.jsa.AZURE_LORE)
+            mob:useMobAbility(invaderXim.jsa.AZURE_LORE)
         end
     end
     ]]
@@ -134,7 +134,7 @@ end
 
 entity.onMobDeath = function(mob, player, optParams)
     -- If he's out of reraises, display text
-    if optParams.isKiller and mob:getMobMod(xi.mobMod.BEHAVIOR) == 0 then
+    if optParams.isKiller and mob:getMobMod(invaderXim.mobMod.BEHAVIOR) == 0 then
         mob:showText(mob, ID.text.MIRACLE)
     end
 end

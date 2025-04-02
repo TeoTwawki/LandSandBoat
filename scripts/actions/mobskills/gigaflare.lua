@@ -28,16 +28,16 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     mob:setMobAbilityEnabled(true) -- enable the spells/other mobskills again
     mob:setMagicCastingEnabled(true)
 
-    if bit.band(mob:getBehavior(), xi.behavior.NO_TURN) == 0 then -- re-enable noturn
-        mob:setBehavior(bit.bor(mob:getBehavior(), xi.behavior.NO_TURN))
+    if bit.band(mob:getBehavior(), invaderXim.behavior.NO_TURN) == 0 then -- re-enable noturn
+        mob:setBehavior(bit.bor(mob:getBehavior(), invaderXim.behavior.NO_TURN))
     end
 
     local damage = mob:getWeaponDmg() * 15
 
-    damage = xi.mobskills.mobMagicalMove(mob, target, skill, damage, xi.element.FIRE, 1, xi.mobskills.magicalTpBonus.NO_EFFECT)
-    damage = xi.mobskills.mobFinalAdjustments(damage, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.FIRE, xi.mobskills.shadowBehavior.WIPE_SHADOWS)
+    damage = invaderXim.mobskills.mobMagicalMove(mob, target, skill, damage, invaderXim.element.FIRE, 1, invaderXim.mobskills.magicalTpBonus.NO_EFFECT)
+    damage = invaderXim.mobskills.mobFinalAdjustments(damage, mob, skill, target, invaderXim.attackType.MAGICAL, invaderXim.damageType.FIRE, invaderXim.mobskills.shadowBehavior.WIPE_SHADOWS)
 
-    target:takeDamage(damage, mob, xi.attackType.MAGICAL, xi.damageType.FIRE)
+    target:takeDamage(damage, mob, invaderXim.attackType.MAGICAL, invaderXim.damageType.FIRE)
 
     return damage
 end

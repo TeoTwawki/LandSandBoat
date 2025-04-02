@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.petName
-xi.petName =
+---@enum invaderXim.petName
+invaderXim.petName =
 {
     -- AZURE         = 1,
     -- CERULEAN      = 2,

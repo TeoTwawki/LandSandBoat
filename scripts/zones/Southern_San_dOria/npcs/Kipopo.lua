@@ -9,7 +9,7 @@ local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        player:hasKeyItem(xi.ki.TORN_PATCHES_OF_LEATHER) and
+        player:hasKeyItem(invaderXim.ki.TORN_PATCHES_OF_LEATHER) and
         player:getCharVar('sayItWithAHandbagCS') == 2 and
         npcUtil.tradeHasExactly(trade, { 2012, 850, 816 })
     then
@@ -21,13 +21,13 @@ entity.onTrigger = function(player, npc)
     local sayItWithAHandbagCS = player:getCharVar('sayItWithAHandbagCS')
 
     if
-        player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.SAY_IT_WITH_A_HANDBAG) == xi.questStatus.QUEST_COMPLETED and
+        player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.SAY_IT_WITH_A_HANDBAG) == invaderXim.questStatus.QUEST_COMPLETED and
         player:getCharVar('sayItWithAHandbagBonusCS') == 1
     then
         player:startEvent(914)
 
     elseif
-        player:hasKeyItem(xi.ki.REPAIRED_HANDBAG) and
+        player:hasKeyItem(invaderXim.ki.REPAIRED_HANDBAG) and
         sayItWithAHandbagCS == 4
     then
         player:startEvent(913)
@@ -43,13 +43,13 @@ entity.onTrigger = function(player, npc)
         player:startEvent(909)
 
     elseif
-        player:hasKeyItem(xi.ki.TORN_PATCHES_OF_LEATHER) and
+        player:hasKeyItem(invaderXim.ki.TORN_PATCHES_OF_LEATHER) and
         sayItWithAHandbagCS == 1
     then
         player:startEvent(908)
 
     else
-        xi.crafting.oldImageSupportOnTrigger(player, npc)
+        invaderXim.crafting.oldImageSupportOnTrigger(player, npc)
     end
 end
 
@@ -57,17 +57,17 @@ entity.onEventFinish = function(player, csid, option, npc)
     if csid == 914 then
         player:setCharVar('sayItWithAHandbagBonusCS', 0)
     elseif csid == 912 then
-        npcUtil.giveKeyItem(player, xi.ki.REPAIRED_HANDBAG)
+        npcUtil.giveKeyItem(player, invaderXim.ki.REPAIRED_HANDBAG)
         player:setCharVar('sayItWithAHandbagCS', 4)
     elseif csid == 910 then
-        player:delKeyItem(xi.ki.TORN_PATCHES_OF_LEATHER)
+        player:delKeyItem(invaderXim.ki.TORN_PATCHES_OF_LEATHER)
         player:setCharVar('sayItWithAHandbagCS', 3)
         player:needToZone(true)
         player:confirmTrade()
     elseif csid == 908 and option == 1 then
         player:setCharVar('sayItWithAHandbagCS', 2)
     else
-        xi.crafting.oldImageSupportOnEventFinish(player, csid, option, npc)
+        invaderXim.crafting.oldImageSupportOnEventFinish(player, csid, option, npc)
     end
 end
 

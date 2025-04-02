@@ -19,7 +19,7 @@ end
 itemObject.onItemUse = function(target)
     -- May need a retail capture to verify actual position
     -- https://ffxiclopedia.fandom.com/wiki/Shadow_Lord_Shirt states teleports next to HP#1
-    target:addStatusEffectEx(xi.effect.TELEPORT, 0, xi.teleport.id.ZVAHL_KEEP, 0, 4)
+    target:addStatusEffectEx(invaderXim.effect.TELEPORT, 0, invaderXim.teleport.id.ZVAHL_KEEP, 0, 4)
 end
 
 return itemObject

@@ -9,13 +9,13 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(pet, target, skill, action)
-    if target:delStatusEffect(xi.effect.BLINDNESS) then
-        skill:setMsg(xi.msg.basic.JA_REMOVE_EFFECT)
+    if target:delStatusEffect(invaderXim.effect.BLINDNESS) then
+        skill:setMsg(invaderXim.msg.basic.JA_REMOVE_EFFECT)
     else
-        skill:setMsg(xi.msg.basic.JA_NO_EFFECT)
+        skill:setMsg(invaderXim.msg.basic.JA_NO_EFFECT)
     end
 
-    return xi.effect.BLINDNESS
+    return invaderXim.effect.BLINDNESS
 end
 
 return abilityObject

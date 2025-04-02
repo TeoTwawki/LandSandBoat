@@ -9,15 +9,15 @@ end
 
 zoneObject.onZoneIn = function(player, prevZone)
     local cs = -1
-    local head = player:getEquipID(xi.slot.HEAD)
+    local head = player:getEquipID(invaderXim.slot.HEAD)
 
     if
         player:getCharVar('FickblixCS') == 1 and
-        player:getNation() ~= xi.nation.SANDORIA
+        player:getNation() ~= invaderXim.nation.SANDORIA
     then
         cs = 10000
     elseif
-        player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.A_MORAL_MANIFEST) == xi.questStatus.QUEST_AVAILABLE and
+        player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.A_MORAL_MANIFEST) == invaderXim.questStatus.QUEST_AVAILABLE and
         player:getMainLvl() >= 60 and
         player:getCharVar('moraldecline') == 0
     then
@@ -40,7 +40,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
@@ -54,15 +54,15 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
         player:setCharVar('FickblixCS', 0)
     elseif csid == 46 and option == 0 then
         player:setCharVar('moral', 1)
-        player:addQuest(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.A_MORAL_MANIFEST)
+        player:addQuest(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.A_MORAL_MANIFEST)
     elseif csid == 46 and option == 1 then
         player:setCharVar('moraldecline', 1, NextConquestTally())
     elseif csid == 47 then
-        npcUtil.giveKeyItem(player, xi.ki.VAULT_QUIPUS)
+        npcUtil.giveKeyItem(player, invaderXim.ki.VAULT_QUIPUS)
         player:setCharVar('moral', 5)
     elseif csid == 51 then
         player:setCharVar('moralrebuy', 1)
-        npcUtil.completeQuest(player, xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.A_MORAL_MANIFEST, {
+        npcUtil.completeQuest(player, invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.A_MORAL_MANIFEST, {
             item = 748,
             var = 'moral'
         })

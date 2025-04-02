@@ -9,11 +9,11 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.thief.checkCollaborator(player, target, ability)
+    return invaderXim.job_utils.thief.checkCollaborator(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    xi.job_utils.thief.useCollaborator(player, target, ability)
+    invaderXim.job_utils.thief.useCollaborator(player, target, ability)
 end
 
 return abilityObject

@@ -3,7 +3,7 @@
 --  Mob: Aw'aern
 -- Note: PH for Ix'Aern DRK and DRG
 -----------------------------------
-local ID = zones[xi.zone.THE_GARDEN_OF_RUHMET]
+local ID = zones[invaderXim.zone.THE_GARDEN_OF_RUHMET]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -31,7 +31,7 @@ entity.onMobDeath = function(mob, player, optParams)
             local isInTime    = qmDrk:getLocalVar('hateTimer') > os.time()
 
             if
-                qmDrk:getStatus() ~= xi.status.DISAPPEAR and
+                qmDrk:getStatus() ~= invaderXim.status.DISAPPEAR and
                 (hatedPlayer == 0 or not isInTime)
             then
                 -- if hated player took too long, reset

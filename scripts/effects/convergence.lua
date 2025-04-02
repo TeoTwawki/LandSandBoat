@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.CONVERGENCE
+-- invaderXim.effect.CONVERGENCE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

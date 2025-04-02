@@ -3,7 +3,7 @@
 --  Mob: Boggart
 -- Note: Place holder Nocuous Weapon
 -----------------------------------
-local ID = zones[xi.zone.INNER_HORUTOTO_RUINS]
+local ID = zones[invaderXim.zone.INNER_HORUTOTO_RUINS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -16,11 +16,11 @@ local nocuousPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 650, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 650, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, nocuousPHTable, 5, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, nocuousPHTable, 5, 3600) -- 1 hour
 end
 
 return entity

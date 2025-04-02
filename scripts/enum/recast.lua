@@ -3,16 +3,16 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.recast
-xi.recast =
+---@enum invaderXim.recast
+invaderXim.recast =
 {
     ITEM     = 0,
     MAGIC    = 1,
     ABILITY  = 2,
 }
 
----@enum xi.recastID
-xi.recastID =
+---@enum invaderXim.recastID
+invaderXim.recastID =
 {
     SIC            = 102,
     BLOODPACT_RAGE = 173,

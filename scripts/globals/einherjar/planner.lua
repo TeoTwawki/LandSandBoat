@@ -2,9 +2,9 @@
 -- Einherjar: Chamber planner
 -----------------------------------
 xi = xi or {}
-xi.einherjar = xi.einherjar or {}
+invaderXim.einherjar = invaderXim.einherjar or {}
 
-local ID = zones[xi.zone.HAZHALM_TESTING_GROUNDS]
+local ID = zones[invaderXim.zone.HAZHALM_TESTING_GROUNDS]
 
 -- Merge two mob groups into one
 -- Certain mob groups contain different models/jobs of the same mob family
@@ -25,13 +25,13 @@ end
 local lockedMobs = {}
 
 -- Removes lock on mob
-xi.einherjar.unlockMob = function(mobId)
+invaderXim.einherjar.unlockMob = function(mobId)
     lockedMobs[mobId] = nil
 end
 
 local mobPool =
 {
-    [xi.einherjar.wing.WING_1] =
+    [invaderXim.einherjar.wing.WING_1] =
     {
         ID.mob.BUGARD_X,
         ID.mob.CHIGOE,
@@ -48,7 +48,7 @@ local mobPool =
         ID.mob.ROTTING_HUSKARL_BLM,
         ID.mob.SJOKRAKJEN,
     },
-    [xi.einherjar.wing.WING_2] =
+    [invaderXim.einherjar.wing.WING_2] =
     {
         ID.mob.BATTLEMITE,
         ID.mob.CHIGOE,
@@ -70,7 +70,7 @@ local mobPool =
         ID.mob.WALDGEIST,
         ID.mob.WINEBIBBER,
     },
-    [xi.einherjar.wing.WING_3] =
+    [invaderXim.einherjar.wing.WING_3] =
     {
         ID.mob.AUDHUMBLA,
         ID.mob.BERSERKR,
@@ -124,7 +124,7 @@ end
 
 local bossPool =
 {
-    [xi.einherjar.wing.WING_1] =
+    [invaderXim.einherjar.wing.WING_1] =
     {
         ID.mob.HAKENMANN,
         ID.mob.HILDESVINI,
@@ -133,7 +133,7 @@ local bossPool =
         ID.mob.MORBOL_EMPEROR,
         ID.mob.NIHHUS,
     },
-    [xi.einherjar.wing.WING_2] =
+    [invaderXim.einherjar.wing.WING_2] =
     {
         ID.mob.ANDHRIMNIR,
         ID.mob.ARIRI_SAMARIRI,
@@ -142,7 +142,7 @@ local bossPool =
         ID.mob.MOKKURALFI,
         ID.mob.TANNGRISNIR,
     },
-    [xi.einherjar.wing.WING_3] =
+    [invaderXim.einherjar.wing.WING_3] =
     {
         ID.mob.DENDAINSONNE,
         ID.mob.FREKE,
@@ -257,7 +257,7 @@ end
 
 -- Generates a chamber plan based on the chamber ID and tier
 -- All selected mobs are locked until released by the chamber
-xi.einherjar.makeChamberPlan = function(chamberId)
+invaderXim.einherjar.makeChamberPlan = function(chamberId)
     local chamberTier = math.ceil(chamberId / 3)
     local chamberConfig =
     {
@@ -309,10 +309,10 @@ xi.einherjar.makeChamberPlan = function(chamberId)
         local family = getRandomMobFamily(chamberTier)
         if not family then
             print('ERROR: Einherjar unable to plan chamber: no mob family available for tier ', chamberTier)
-            xi.einherjar.unlockMob(chamberConfig.boss)
+            invaderXim.einherjar.unlockMob(chamberConfig.boss)
             for _, f in ipairs(families) do
                 for _, id in ipairs(f) do
-                    xi.einherjar.unlockMob(id)
+                    invaderXim.einherjar.unlockMob(id)
                 end
             end
 
@@ -362,7 +362,7 @@ xi.einherjar.makeChamberPlan = function(chamberId)
 end
 
 -- Subdivides a list of mob IDs into random-sized subgroups
-xi.einherjar.subDivideMobs = function(mobIds)
+invaderXim.einherjar.subDivideMobs = function(mobIds)
     local subdividedGroups = {}
     local shuffled         = utils.shuffle(mobIds)
     local index            = 1
@@ -385,7 +385,7 @@ xi.einherjar.subDivideMobs = function(mobIds)
     return subdividedGroups
 end
 
-xi.einherjar.getRandomPosForMobGroup = function(chamberId, min, max)
+invaderXim.einherjar.getRandomPosForMobGroup = function(chamberId, min, max)
     local groupOffsetX = math.random(min, max)
     local groupOffsetZ = math.random(min, max)
 
@@ -399,8 +399,8 @@ xi.einherjar.getRandomPosForMobGroup = function(chamberId, min, max)
 
     return
     {
-        xi.einherjar.chambers[chamberId].center[1] + groupOffsetX,
-        xi.einherjar.chambers[chamberId].center[2],
-        xi.einherjar.chambers[chamberId].center[3] + groupOffsetZ
+        invaderXim.einherjar.chambers[chamberId].center[1] + groupOffsetX,
+        invaderXim.einherjar.chambers[chamberId].center[2],
+        invaderXim.einherjar.chambers[chamberId].center[3] + groupOffsetZ
     }
 end

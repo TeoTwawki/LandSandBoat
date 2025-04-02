@@ -10,10 +10,10 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    if player:hasStatusEffect(xi.effect.FAN_DANCE) then
-        return xi.msg.basic.UNABLE_TO_USE_JA2, 0
+    if player:hasStatusEffect(invaderXim.effect.FAN_DANCE) then
+        return invaderXim.msg.basic.UNABLE_TO_USE_JA2, 0
     elseif player:getTP() < 400 then
-        return xi.msg.basic.NOT_ENOUGH_TP, 0
+        return invaderXim.msg.basic.NOT_ENOUGH_TP, 0
     end
 
     return 0, 0
@@ -21,15 +21,15 @@ end
 
 abilityObject.onUseAbility = function(player, target, ability)
     -- Only remove TP if the player doesn't have Trance.
-    if not player:hasStatusEffect(xi.effect.TRANCE) then
+    if not player:hasStatusEffect(invaderXim.effect.TRANCE) then
         player:delTP(400)
     end
 
-    local duration = 120 + player:getMod(xi.mod.SAMBA_DURATION) + (player:getJobPointLevel(xi.jp.SAMBA_DURATION) * 2)
-    duration       = duration * (100 + player:getMod(xi.mod.SAMBA_PDURATION)) / 100
-    player:delStatusEffect(xi.effect.HASTE_SAMBA)
-    player:delStatusEffect(xi.effect.ASPIR_SAMBA)
-    player:addStatusEffect(xi.effect.DRAIN_SAMBA, 3, 0, duration)
+    local duration = 120 + player:getMod(invaderXim.mod.SAMBA_DURATION) + (player:getJobPointLevel(invaderXim.jp.SAMBA_DURATION) * 2)
+    duration       = duration * (100 + player:getMod(invaderXim.mod.SAMBA_PDURATION)) / 100
+    player:delStatusEffect(invaderXim.effect.HASTE_SAMBA)
+    player:delStatusEffect(invaderXim.effect.ASPIR_SAMBA)
+    player:addStatusEffect(invaderXim.effect.DRAIN_SAMBA, 3, 0, duration)
 end
 
 return abilityObject

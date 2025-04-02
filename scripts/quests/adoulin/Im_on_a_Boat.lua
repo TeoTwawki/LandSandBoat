@@ -5,32 +5,32 @@
 -- Choubollet      : !pos 380.818 -2.094 290.792 262
 -- Castoff_Point_4 : !pos 220 0.800 146 262
 -----------------------------------
-local foretID = zones[xi.zone.FORET_DE_HENNETIEL]
+local foretID = zones[invaderXim.zone.FORET_DE_HENNETIEL]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.ADOULIN, xi.quest.id.adoulin.IM_ON_A_BOAT)
+local quest = Quest:new(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.IM_ON_A_BOAT)
 
 quest.reward =
 {
-    fameArea = xi.fameArea.ADOULIN,
+    fameArea = invaderXim.fameArea.ADOULIN,
     bayld    = 500,
 }
 
 local requiredTradeItems =
 {
-    { xi.item.SQUARE_OF_DHALMEL_LEATHER, 3 },
-    { xi.item.UMBRIL_OOZE,               1 },
-    { xi.item.TWITHERYM_SCALE,           1 },
+    { invaderXim.item.SQUARE_OF_DHALMEL_LEATHER, 3 },
+    { invaderXim.item.UMBRIL_OOZE,               1 },
+    { invaderXim.item.TWITHERYM_SCALE,           1 },
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.FORET_DE_HENNETIEL] =
+        [invaderXim.zone.FORET_DE_HENNETIEL] =
         {
             ['Choubollet'] = quest:progressEvent(2561),
 
@@ -45,10 +45,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.FORET_DE_HENNETIEL] =
+        [invaderXim.zone.FORET_DE_HENNETIEL] =
         {
             ['Choubollet'] =
             {
@@ -61,7 +61,7 @@ quest.sections =
                 end,
 
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.WATERCRAFT) then
+                    if not player:hasKeyItem(invaderXim.ki.WATERCRAFT) then
                         return quest:event(2562)
                     elseif quest:getVar(player, 'Prog') == 2 then
                         return quest:progressEvent(2563)
@@ -74,8 +74,8 @@ quest.sections =
             ['Castoff_Point_4'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.WATERCRAFT) then
-                        local hasTitle = player:hasTitle(xi.title.TOXIN_TUSSLER) and 1 or 0
+                    if player:hasKeyItem(invaderXim.ki.WATERCRAFT) then
+                        local hasTitle = player:hasTitle(invaderXim.title.TOXIN_TUSSLER) and 1 or 0
 
                         return quest:event(19, 4, hasTitle)
                     end
@@ -85,8 +85,8 @@ quest.sections =
             ['Castoff_Point_5'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.WATERCRAFT) then
-                        local hasTitle = player:hasTitle(xi.title.TOXIN_TUSSLER) and 1 or 0
+                    if player:hasKeyItem(invaderXim.ki.WATERCRAFT) then
+                        local hasTitle = player:hasTitle(invaderXim.title.TOXIN_TUSSLER) and 1 or 0
 
                         return quest:event(19, 5, hasTitle)
                     end
@@ -108,23 +108,23 @@ quest.sections =
                             player:messageName(foretID.text.FIGURED_OUT_BOAT, nil)
                         end
                     elseif option == 3 then
-                        player:addTitle(xi.title.TOXIN_TUSSLER)
+                        player:addTitle(invaderXim.title.TOXIN_TUSSLER)
                     end
                 end,
 
                 [2563] = function(player, csid, option, npc)
-                    player:messageSpecial(foretID.text.YOU_HAVE_LEARNED, xi.ki.WATERCRAFTING)
+                    player:messageSpecial(foretID.text.YOU_HAVE_LEARNED, invaderXim.ki.WATERCRAFTING)
 
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.WATERCRAFT)
-                        player:addKeyItem(xi.ki.WATERCRAFTING)
+                        player:delKeyItem(invaderXim.ki.WATERCRAFT)
+                        player:addKeyItem(invaderXim.ki.WATERCRAFTING)
                     end
                 end,
 
                 [2576] = function(player, csid, option, npc)
                     player:confirmTrade()
 
-                    npcUtil.giveKeyItem(player, xi.ki.WATERCRAFT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.WATERCRAFT)
                 end,
             },
         },

@@ -15,9 +15,9 @@ mixins =
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
-    mob:addMod(xi.mod.MDEF, 60)
-    mob:addMod(xi.mod.DEF, 60)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
+    mob:addMod(invaderXim.mod.MDEF, 60)
+    mob:addMod(invaderXim.mod.DEF, 60)
     mob:setAnimationSub(0)
 end
 

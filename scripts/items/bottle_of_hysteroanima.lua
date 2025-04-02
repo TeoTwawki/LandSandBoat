@@ -10,18 +10,18 @@ local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
     local result = 0
-    if target:getEcosystem() ~= xi.ecosystem.EMPTY then -- Empty
-        result = xi.msg.basic.ITEM_UNABLE_TO_USE
+    if target:getEcosystem() ~= invaderXim.ecosystem.EMPTY then -- Empty
+        result = invaderXim.msg.basic.ITEM_UNABLE_TO_USE
     elseif target:checkDistance(caster) > 10 then
-        result = xi.msg.basic.TOO_FAR_AWAY
+        result = invaderXim.msg.basic.TOO_FAR_AWAY
     end
 
     return result
 end
 
 itemObject.onItemUse = function(target, player)
-    target:delStatusEffectSilent(xi.effect.HYSTERIA)
-    target:addStatusEffectEx(xi.effect.HYSTERIA, xi.effect.HYSTERIA, 1, 0, math.random(25, 32), 0, 0, 0, xi.effectFlag.NO_LOSS_MESSAGE)
+    target:delStatusEffectSilent(invaderXim.effect.HYSTERIA)
+    target:addStatusEffectEx(invaderXim.effect.HYSTERIA, invaderXim.effect.HYSTERIA, 1, 0, math.random(25, 32), 0, 0, 0, invaderXim.effectFlag.NO_LOSS_MESSAGE)
 end
 
 return itemObject

@@ -5,25 +5,25 @@
 -- Rholont : !pos -168 -2 56 80
 -- qm6     : !pos 68 -0.5 324 82
 -----------------------------------
-local jugnerSID = zones[xi.zone.JUGNER_FOREST_S]
+local jugnerSID = zones[invaderXim.zone.JUGNER_FOREST_S]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.CLAWS_OF_THE_GRIFFON)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.CLAWS_OF_THE_GRIFFON)
 
 quest.reward =
 {
-    item = xi.item.ANGELSTONE,
+    item = invaderXim.item.ANGELSTONE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.GIFTS_OF_THE_GRIFFON)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.GIFTS_OF_THE_GRIFFON)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
 
             ['Rholont'] =
@@ -47,10 +47,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Rholont'] =
             {
@@ -84,7 +84,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.JUGNER_FOREST_S] =
+        [invaderXim.zone.JUGNER_FOREST_S] =
         {
             ['qm6'] =
             {
@@ -115,7 +115,7 @@ quest.sections =
 
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.EAST_RONFAURE_S and
+                    prevZone == invaderXim.zone.EAST_RONFAURE_S and
                     quest:getVar(player, 'Prog') == 1
                 then
                     return 200

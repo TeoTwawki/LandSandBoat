@@ -8,11 +8,11 @@
 -- Royal Sepulcher : !pos 319 -7.5 -300 258
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.ARCIELAS_RESOLVE)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.ARCIELAS_RESOLVE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.BALAMORS_RUSE },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.BALAMORS_RUSE },
 }
 
 mission.sections =
@@ -22,17 +22,17 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(40, 256, 0, 127, 0, 0, 0, 1999, 4),
         },
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Ploh_Trishbahk'] = mission:progressEvent(1546, 257, 8192, 127, 0, 66977791, 2875743, 4095, 0),
         },
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['Royal_Sepulcher'] = mission:progressEvent(368, 258, 3223117, 1756, 0, 20558, 1452, 309278, 8),
 

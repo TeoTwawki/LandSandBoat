@@ -13,7 +13,7 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability, action)
-    target:addStatusEffect(xi.effect.EMBOLDEN, 0, 0, 60) -- effects handled in scripts/globals/spells/spell_enhancing.lua
+    target:addStatusEffect(invaderXim.effect.EMBOLDEN, 0, 0, 60) -- effects handled in scripts/globals/spells/spell_enhancing.lua
 end
 
 return abilityObject

@@ -11,11 +11,11 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    if target:hasEquipped(xi.item.MIST_TUNIC) then
-        if not target:hasStatusEffect(xi.effect.EVASION_BOOST) then
-            target:addStatusEffect(xi.effect.EVASION_BOOST, 20, 0, 180, 0, 0, 0, xi.effectSourceType.EQUIPPED_ITEM, xi.item.MIST_TUNIC)
+    if target:hasEquipped(invaderXim.item.MIST_TUNIC) then
+        if not target:hasStatusEffect(invaderXim.effect.EVASION_BOOST) then
+            target:addStatusEffect(invaderXim.effect.EVASION_BOOST, 20, 0, 180, 0, 0, 0, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.MIST_TUNIC)
         else
-            target:messageBasic(xi.msg.basic.NO_EFFECT)
+            target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
         end
     end
 end

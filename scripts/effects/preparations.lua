@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.PREPARATIONS
+-- invaderXim.effect.PREPARATIONS
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

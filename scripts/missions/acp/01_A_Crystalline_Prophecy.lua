@@ -5,11 +5,11 @@
 -- !addmission 9 0
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ACP, xi.mission.id.acp.A_CRYSTALLINE_PROPHECY)
+local mission = Mission:new(invaderXim.mission.log_id.ACP, invaderXim.mission.id.acp.A_CRYSTALLINE_PROPHECY)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ACP, xi.mission.id.acp.THE_ECHO_AWAKENS },
+    nextMission = { invaderXim.mission.log_id.ACP, invaderXim.mission.id.acp.THE_ECHO_AWAKENS },
 }
 
 mission.sections =
@@ -17,11 +17,11 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
-                xi.settings.main.ENABLE_ACP == 1 and
+                invaderXim.settings.main.ENABLE_ACP == 1 and
                 player:getMainLvl() >= 10
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             onZoneIn = function(player, prevZone)
                 return 10094
@@ -37,11 +37,11 @@ mission.sections =
                         local noSibyl  = 0
 
                         -- TODO: Fact check this.
-                        if player:hasCompletedMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.WELCOME_TNORG) then
+                        if player:hasCompletedMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.WELCOME_TNORG) then
                             noVerena = 1
                         end
 
-                        if player:hasCompletedMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.MOON_READING) then
+                        if player:hasCompletedMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.MOON_READING) then
                             noSibyl = 1
                         end
 

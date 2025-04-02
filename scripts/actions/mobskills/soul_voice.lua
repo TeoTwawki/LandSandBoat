@@ -9,11 +9,11 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    xi.mobskills.mobBuffMove(mob, xi.effect.SOUL_VOICE, 1, 0, 180)
+    invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.SOUL_VOICE, 1, 0, 180)
 
-    skill:setMsg(xi.msg.basic.USES)
+    skill:setMsg(invaderXim.msg.basic.USES)
 
-    return xi.effect.SOUL_VOICE
+    return invaderXim.effect.SOUL_VOICE
 end
 
 return mobskillObject

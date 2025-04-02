@@ -5,7 +5,7 @@
 -- Joachim : !pos -52.844 0 -9.978 246
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.ABYSSEA, xi.quest.id.abyssea.THE_TRUTH_BECKONS)
+local quest = Quest:new(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.THE_TRUTH_BECKONS)
 
 quest.reward = {}
 
@@ -18,16 +18,16 @@ quest.sections =
     -- This quest is flagged on completion of A Journey Begins.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_JEUNO] =
+        [invaderXim.zone.PORT_JEUNO] =
         {
             ['Joachim'] =
             {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 1 then
-                        return quest:progressEvent(327, 0, 0, xi.abyssea.getTraverserCap(player))
+                        return quest:progressEvent(327, 0, 0, invaderXim.abyssea.getTraverserCap(player))
                     else
                         return quest:progressEvent(326)
                     end
@@ -38,53 +38,53 @@ quest.sections =
             {
                 [327] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:addQuest(xi.questLog.ABYSSEA, xi.quest.id.abyssea.DAWN_OF_DEATH)
+                        player:addQuest(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.DAWN_OF_DEATH)
                     end
                 end,
             },
         },
 
-        [xi.zone.ABYSSEA_KONSCHTAT] =
+        [invaderXim.zone.ABYSSEA_KONSCHTAT] =
         {
             onZoneIn = handleOnZoneIn,
         },
 
-        [xi.zone.ABYSSEA_LA_THEINE] =
+        [invaderXim.zone.ABYSSEA_LA_THEINE] =
         {
             onZoneIn = handleOnZoneIn,
         },
 
-        [xi.zone.ABYSSEA_TAHRONGI] =
+        [invaderXim.zone.ABYSSEA_TAHRONGI] =
         {
             onZoneIn = handleOnZoneIn,
         },
 
-        [xi.zone.ABYSSEA_ATTOHWA] =
+        [invaderXim.zone.ABYSSEA_ATTOHWA] =
         {
             onZoneIn = handleOnZoneIn,
         },
 
-        [xi.zone.ABYSSEA_MISAREAUX] =
+        [invaderXim.zone.ABYSSEA_MISAREAUX] =
         {
             onZoneIn = handleOnZoneIn,
         },
 
-        [xi.zone.ABYSSEA_VUNKERL] =
+        [invaderXim.zone.ABYSSEA_VUNKERL] =
         {
             onZoneIn = handleOnZoneIn,
         },
 
-        [xi.zone.ABYSSEA_ALTEPA] =
+        [invaderXim.zone.ABYSSEA_ALTEPA] =
         {
             onZoneIn = handleOnZoneIn,
         },
 
-        [xi.zone.ABYSSEA_ULEGUERAND] =
+        [invaderXim.zone.ABYSSEA_ULEGUERAND] =
         {
             onZoneIn = handleOnZoneIn,
         },
 
-        [xi.zone.ABYSSEA_GRAUBERG]  =
+        [invaderXim.zone.ABYSSEA_GRAUBERG]  =
         {
             onZoneIn = handleOnZoneIn,
         },

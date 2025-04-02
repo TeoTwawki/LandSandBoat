@@ -1,4 +1,4 @@
--- local ID = zones[xi.zone.ABYSSEA_ULEGUERAND]
+-- local ID = zones[invaderXim.zone.ABYSSEA_ULEGUERAND]
 
 return {
     ['Ardea']           = { event = 353 },

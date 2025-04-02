@@ -10,9 +10,9 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobGazeMove(mob, target, xi.effect.STR_DOWN, 33, 3, 120))
+    skill:setMsg(invaderXim.mobskills.mobGazeMove(mob, target, invaderXim.effect.STR_DOWN, 33, 3, 120))
 
-    return xi.effect.STR_DOWN
+    return invaderXim.effect.STR_DOWN
 end
 
 return mobskillObject

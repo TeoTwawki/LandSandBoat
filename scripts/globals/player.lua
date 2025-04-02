@@ -9,40 +9,40 @@ require('scripts/quests/full_speed_ahead')
 
 local startingRaceInfo =
 {
-    [xi.race.HUME_M  ] = { gear = { body = xi.item.HUME_TUNIC,        hand = xi.item.HUME_M_GLOVES,     leg = xi.item.HUME_SLACKS,       feet = xi.item.HUME_M_BOOTS       }, homeNation = xi.nation.BASTOK   },
-    [xi.race.HUME_F  ] = { gear = { body = xi.item.HUME_VEST,         hand = xi.item.HUME_F_GLOVES,     leg = xi.item.HUME_PANTS,        feet = xi.item.HUME_F_BOOTS       }, homeNation = xi.nation.BASTOK   },
-    [xi.race.ELVAAN_M] = { gear = { body = xi.item.ELVAAN_JERKIN,     hand = xi.item.ELVAAN_GLOVES,     leg = xi.item.ELVAAN_M_CHAUSSES, feet = xi.item.ELVAAN_M_LEDELSENS }, homeNation = xi.nation.SANDORIA },
-    [xi.race.ELVAAN_F] = { gear = { body = xi.item.ELVAAN_BODICE,     hand = xi.item.ELVAAN_GAUNTLETS,  leg = xi.item.ELVAAN_F_CHAUSSES, feet = xi.item.ELVAAN_F_LEDELSENS }, homeNation = xi.nation.SANDORIA },
-    [xi.race.TARU_M  ] = { gear = { body = xi.item.TARUTARU_KAFTAN,   hand = xi.item.TARUTARU_MITTS,    leg = xi.item.TARUTARU_BRACCAE,  feet = xi.item.TARUTARU_CLOMPS    }, homeNation = xi.nation.WINDURST },
-    [xi.race.TARU_F  ] = { gear = { body = xi.item.TARUTARU_KAFTAN,   hand = xi.item.TARUTARU_MITTS,    leg = xi.item.TARUTARU_BRACCAE,  feet = xi.item.TARUTARU_CLOMPS    }, homeNation = xi.nation.WINDURST },
-    [xi.race.MITHRA  ] = { gear = { body = xi.item.MITHRAN_SEPARATES, hand = xi.item.MITHRAN_GAUNTLETS, leg = xi.item.MITHRAN_LOINCLOTH, feet = xi.item.MITHRAN_GAITERS    }, homeNation = xi.nation.WINDURST },
-    [xi.race.GALKA   ] = { gear = { body = xi.item.GALKAN_SURCOAT,    hand = xi.item.GALKAN_BRACERS,    leg = xi.item.GALKAN_BRAGUETTE,  feet = xi.item.GALKAN_SANDALS     }, homeNation = xi.nation.BASTOK   },
+    [invaderXim.race.HUME_M  ] = { gear = { body = invaderXim.item.HUME_TUNIC,        hand = invaderXim.item.HUME_M_GLOVES,     leg = invaderXim.item.HUME_SLACKS,       feet = invaderXim.item.HUME_M_BOOTS       }, homeNation = invaderXim.nation.BASTOK   },
+    [invaderXim.race.HUME_F  ] = { gear = { body = invaderXim.item.HUME_VEST,         hand = invaderXim.item.HUME_F_GLOVES,     leg = invaderXim.item.HUME_PANTS,        feet = invaderXim.item.HUME_F_BOOTS       }, homeNation = invaderXim.nation.BASTOK   },
+    [invaderXim.race.ELVAAN_M] = { gear = { body = invaderXim.item.ELVAAN_JERKIN,     hand = invaderXim.item.ELVAAN_GLOVES,     leg = invaderXim.item.ELVAAN_M_CHAUSSES, feet = invaderXim.item.ELVAAN_M_LEDELSENS }, homeNation = invaderXim.nation.SANDORIA },
+    [invaderXim.race.ELVAAN_F] = { gear = { body = invaderXim.item.ELVAAN_BODICE,     hand = invaderXim.item.ELVAAN_GAUNTLETS,  leg = invaderXim.item.ELVAAN_F_CHAUSSES, feet = invaderXim.item.ELVAAN_F_LEDELSENS }, homeNation = invaderXim.nation.SANDORIA },
+    [invaderXim.race.TARU_M  ] = { gear = { body = invaderXim.item.TARUTARU_KAFTAN,   hand = invaderXim.item.TARUTARU_MITTS,    leg = invaderXim.item.TARUTARU_BRACCAE,  feet = invaderXim.item.TARUTARU_CLOMPS    }, homeNation = invaderXim.nation.WINDURST },
+    [invaderXim.race.TARU_F  ] = { gear = { body = invaderXim.item.TARUTARU_KAFTAN,   hand = invaderXim.item.TARUTARU_MITTS,    leg = invaderXim.item.TARUTARU_BRACCAE,  feet = invaderXim.item.TARUTARU_CLOMPS    }, homeNation = invaderXim.nation.WINDURST },
+    [invaderXim.race.MITHRA  ] = { gear = { body = invaderXim.item.MITHRAN_SEPARATES, hand = invaderXim.item.MITHRAN_GAUNTLETS, leg = invaderXim.item.MITHRAN_LOINCLOTH, feet = invaderXim.item.MITHRAN_GAITERS    }, homeNation = invaderXim.nation.WINDURST },
+    [invaderXim.race.GALKA   ] = { gear = { body = invaderXim.item.GALKAN_SURCOAT,    hand = invaderXim.item.GALKAN_BRACERS,    leg = invaderXim.item.GALKAN_BRAGUETTE,  feet = invaderXim.item.GALKAN_SANDALS     }, homeNation = invaderXim.nation.BASTOK   },
 }
 
 local startingNationInfo =
 {
-    [xi.nation.SANDORIA] = { ring = xi.item.SAN_DORIAN_RING,  map = xi.ki.MAP_OF_THE_SAN_DORIA_AREA },
-    [xi.nation.BASTOK  ] = { ring = xi.item.BASTOKAN_RING,    map = xi.ki.MAP_OF_THE_BASTOK_AREA    },
-    [xi.nation.WINDURST] = { ring = xi.item.WINDURSTIAN_RING, map = xi.ki.MAP_OF_THE_WINDURST_AREA  },
+    [invaderXim.nation.SANDORIA] = { ring = invaderXim.item.SAN_DORIAN_RING,  map = invaderXim.ki.MAP_OF_THE_SAN_DORIA_AREA },
+    [invaderXim.nation.BASTOK  ] = { ring = invaderXim.item.BASTOKAN_RING,    map = invaderXim.ki.MAP_OF_THE_BASTOK_AREA    },
+    [invaderXim.nation.WINDURST] = { ring = invaderXim.item.WINDURSTIAN_RING, map = invaderXim.ki.MAP_OF_THE_WINDURST_AREA  },
 }
 
 local startingJobGear =
 {
-    [xi.job.WAR] = { xi.item.ONION_SWORD                               },
-    [xi.job.MNK] = { xi.item.WHITE_BELT                                },
-    [xi.job.WHM] = { xi.item.ONION_ROD,    xi.item.SCROLL_OF_CURE_EX  },
-    [xi.job.BLM] = { xi.item.ONION_STAFF,  xi.item.SCROLL_OF_STONE_EX },
-    [xi.job.RDM] = { xi.item.ONION_DAGGER, xi.item.SCROLL_OF_DIA_EX   },
-    [xi.job.THF] = { xi.item.ONION_KNIFE                               },
+    [invaderXim.job.WAR] = { invaderXim.item.ONION_SWORD                               },
+    [invaderXim.job.MNK] = { invaderXim.item.WHITE_BELT                                },
+    [invaderXim.job.WHM] = { invaderXim.item.ONION_ROD,    invaderXim.item.SCROLL_OF_CURE_EX  },
+    [invaderXim.job.BLM] = { invaderXim.item.ONION_STAFF,  invaderXim.item.SCROLL_OF_STONE_EX },
+    [invaderXim.job.RDM] = { invaderXim.item.ONION_DAGGER, invaderXim.item.SCROLL_OF_DIA_EX   },
+    [invaderXim.job.THF] = { invaderXim.item.ONION_KNIFE                               },
 }
 
 -----------------------------------
 -- public functions
 -----------------------------------
 xi = xi or {}
-xi.player = {}
+invaderXim.player = {}
 
-xi.player.charCreate = function(player)
+invaderXim.player.charCreate = function(player)
     local race       = player:getRace()
     local raceInfo   = startingRaceInfo[race]
     local nation     = player:getNation()
@@ -67,12 +67,12 @@ xi.player.charCreate = function(player)
     player:addKeyItem(nationInfo.map)
 
     -- add job-emote Key items
-    player:addKeyItem(xi.ki.JOB_GESTURE_WARRIOR)
-    player:addKeyItem(xi.ki.JOB_GESTURE_MONK)
-    player:addKeyItem(xi.ki.JOB_GESTURE_WHITE_MAGE)
-    player:addKeyItem(xi.ki.JOB_GESTURE_BLACK_MAGE)
-    player:addKeyItem(xi.ki.JOB_GESTURE_RED_MAGE)
-    player:addKeyItem(xi.ki.JOB_GESTURE_THIEF)
+    player:addKeyItem(invaderXim.ki.JOB_GESTURE_WARRIOR)
+    player:addKeyItem(invaderXim.ki.JOB_GESTURE_MONK)
+    player:addKeyItem(invaderXim.ki.JOB_GESTURE_WHITE_MAGE)
+    player:addKeyItem(invaderXim.ki.JOB_GESTURE_BLACK_MAGE)
+    player:addKeyItem(invaderXim.ki.JOB_GESTURE_RED_MAGE)
+    player:addKeyItem(invaderXim.ki.JOB_GESTURE_THIEF)
 
     -- add nation- and race-specific ring
     if nation == raceInfo.homeNation and not player:hasItem(nationInfo.ring) then
@@ -80,45 +80,45 @@ xi.player.charCreate = function(player)
     end
 
     -- unlock advanced jobs
-    if xi.settings.main.ADVANCED_JOB_LEVEL == 0 then
-        for i = xi.job.PLD, xi.job.SCH do
+    if invaderXim.settings.main.ADVANCED_JOB_LEVEL == 0 then
+        for i = invaderXim.job.PLD, invaderXim.job.SCH do
             player:unlockJob(i)
         end
     end
 
     -- unlock subjob
-    if xi.settings.main.SUBJOB_QUEST_LEVEL == 0 then
+    if invaderXim.settings.main.SUBJOB_QUEST_LEVEL == 0 then
         player:unlockJob(0)
     end
 
     -- give all maps
-    if xi.settings.main.ALL_MAPS == 1 then
-        for i = xi.ki.MAP_OF_THE_SAN_DORIA_AREA, xi.ki.MAP_OF_DIO_ABDHALJS_GHELSBA do
+    if invaderXim.settings.main.ALL_MAPS == 1 then
+        for i = invaderXim.ki.MAP_OF_THE_SAN_DORIA_AREA, invaderXim.ki.MAP_OF_DIO_ABDHALJS_GHEIXIMA do
             player:addKeyItem(i)
         end
 
-        for i = xi.ki.MAP_OF_AL_ZAHBI, xi.ki.MAP_OF_RAKAZNAR do
+        for i = invaderXim.ki.MAP_OF_AL_ZAHBI, invaderXim.ki.MAP_OF_RAKAZNAR do
             player:addKeyItem(i)
         end
 
-        for i = xi.ki.MAP_OF_RALA_WATERWAYS_U, xi.ki.MAP_OF_RAKAZNAR_U do
+        for i = invaderXim.ki.MAP_OF_RALA_WATERWAYS_U, invaderXim.ki.MAP_OF_RAKAZNAR_U do
             player:addKeyItem(i)
         end
 
-        for i = xi.ki.MAP_OF_ESCHA_ZITAH, xi.ki.MAP_OF_REISENJIMA do
+        for i = invaderXim.ki.MAP_OF_ESCHA_ZITAH, invaderXim.ki.MAP_OF_REISENJIMA do
             player:addKeyItem(i)
         end
     end
 
     -- set initial level cap
-    if xi.settings.main.INITIAL_LEVEL_CAP ~= 50 then
-        player:setLevelCap(xi.settings.main.INITIAL_LEVEL_CAP)
+    if invaderXim.settings.main.INITIAL_LEVEL_CAP ~= 50 then
+        player:setLevelCap(invaderXim.settings.main.INITIAL_LEVEL_CAP)
     end
 
     -- increase starting inventory
-    if xi.settings.main.START_INVENTORY > 30 then
-        player:changeContainerSize(xi.inv.INVENTORY, xi.settings.main.START_INVENTORY - 30)
-        player:changeContainerSize(xi.inv.MOGSATCHEL, xi.settings.main.START_INVENTORY - 30)
+    if invaderXim.settings.main.START_INVENTORY > 30 then
+        player:changeContainerSize(invaderXim.inv.INVENTORY, invaderXim.settings.main.START_INVENTORY - 30)
+        player:changeContainerSize(invaderXim.inv.MOGSATCHEL, invaderXim.settings.main.START_INVENTORY - 30)
     end
 
     --[[
@@ -129,16 +129,16 @@ xi.player.charCreate = function(player)
         on servers with very high values of START_GIL, I guess.
     --]]
 
-    if player:getGil() < xi.settings.main.START_GIL then
-        player:setGil(xi.settings.main.START_GIL)
+    if player:getGil() < invaderXim.settings.main.START_GIL then
+        player:setGil(invaderXim.settings.main.START_GIL)
     end
 
-    if xi.settings.main.NEW_CHARACTER_CUTSCENE == 0 then -- Do things that would normally be done in opening cutscene.
-        player:addItem(xi.item.ADVENTURER_COUPON)
+    if invaderXim.settings.main.NEW_CHARACTER_CUTSCENE == 0 then -- Do things that would normally be done in opening cutscene.
+        player:addItem(invaderXim.item.ADVENTURER_COUPON)
         player:setHomePoint()
     end
 
-    player:addTitle(xi.title.NEW_ADVENTURER)
+    player:addTitle(invaderXim.title.NEW_ADVENTURER)
     player:setCharVar('HQuest[moghouseExpo]notSeen', 1) -- needs Moghouse intro
     player:setCharVar('spokeKindlix', 1)                -- Kindlix introduction
     player:setCharVar('spokePyropox', 1)                -- Pyropox introduction
@@ -148,69 +148,69 @@ xi.player.charCreate = function(player)
 end
 
 -- called by core after a player logs into the server or zones
-xi.player.onGameIn = function(player, firstLogin, zoning)
+invaderXim.player.onGameIn = function(player, firstLogin, zoning)
     if not zoning then
         -- things checked ONLY during logon go here
         if firstLogin then
-            xi.player.charCreate(player)
+            invaderXim.player.charCreate(player)
         end
     else
         -- things checked ONLY during zone in go here
         if
             player:getLocalVar('gameLogin') == 1 and
-            xi.abyssea.isInAbysseaZone(player) and
-            not player:hasStatusEffect(xi.effect.VISITANT)
+            invaderXim.abyssea.isInAbysseaZone(player) and
+            not player:hasStatusEffect(invaderXim.effect.VISITANT)
         then
             local zoneID = player:getZoneID()
             local ID = zones[zoneID]
 
             player:messageSpecial(ID.text.ABYSSEA_TIME_OFFSET + 8)
-            player:setPos(unpack(xi.abyssea.exitPositions[zoneID]))
+            player:setPos(unpack(invaderXim.abyssea.exitPositions[zoneID]))
         end
     end
 
     -- Abyssea starting quest should be flagged when expansion is active
     if
-        xi.settings.main.ENABLE_ABYSSEA == 1 and
-        player:getQuestStatus(xi.questLog.ABYSSEA, xi.quest.id.abyssea.A_JOURNEY_BEGINS) == xi.questStatus.QUEST_AVAILABLE
+        invaderXim.settings.main.ENABLE_ABYSSEA == 1 and
+        player:getQuestStatus(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.A_JOURNEY_BEGINS) == invaderXim.questStatus.QUEST_AVAILABLE
     then
-        player:addQuest(xi.questLog.ABYSSEA, xi.quest.id.abyssea.A_JOURNEY_BEGINS)
+        player:addQuest(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.A_JOURNEY_BEGINS)
     end
 
     -- This is for migration safety only, and should be removed at a later date
     if
-        player:hasCompletedQuest(xi.questLog.ABYSSEA, xi.quest.id.abyssea.A_JOURNEY_BEGINS) and
+        player:hasCompletedQuest(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.A_JOURNEY_BEGINS) and
         player:getTraverserEpoch() == 0
     then
         player:setTraverserEpoch()
     end
 
     -- apply mods from gearsets (scripts/globals/gear_sets.lua)
-    xi.gear_sets.checkForGearSet(player)
+    invaderXim.gear_sets.checkForGearSet(player)
 
     -- god mode
     if player:getCharVar('GodMode') == 1 then
-        player:addStatusEffect(xi.effect.MAX_HP_BOOST, 1000, 0, 0)
-        player:addStatusEffect(xi.effect.MAX_MP_BOOST, 1000, 0, 0)
-        player:addStatusEffect(xi.effect.MIGHTY_STRIKES, 1, 0, 0)
-        player:addStatusEffect(xi.effect.HUNDRED_FISTS, 1, 0, 0)
-        player:addStatusEffect(xi.effect.CHAINSPELL, 1, 0, 0)
-        player:addStatusEffect(xi.effect.PERFECT_DODGE, 1, 0, 0)
-        player:addStatusEffect(xi.effect.INVINCIBLE, 1, 0, 0)
-        player:addStatusEffect(xi.effect.ELEMENTAL_SFORZO, 1, 0, 0)
-        player:addStatusEffect(xi.effect.MANAFONT, 1, 0, 0)
-        player:addStatusEffect(xi.effect.REGAIN, 300, 0, 0)
-        player:addStatusEffect(xi.effect.REFRESH, 99, 0, 0)
-        player:addStatusEffect(xi.effect.REGEN, 99, 0, 0)
-        player:addMod(xi.mod.RACC, 2500)
-        player:addMod(xi.mod.RATT, 2500)
-        player:addMod(xi.mod.ACC, 2500)
-        player:addMod(xi.mod.ATT, 2500)
-        player:addMod(xi.mod.MATT, 2500)
-        player:addMod(xi.mod.MACC, 2500)
-        player:addMod(xi.mod.RDEF, 2500)
-        player:addMod(xi.mod.DEF, 2500)
-        player:addMod(xi.mod.MDEF, 2500)
+        player:addStatusEffect(invaderXim.effect.MAX_HP_BOOST, 1000, 0, 0)
+        player:addStatusEffect(invaderXim.effect.MAX_MP_BOOST, 1000, 0, 0)
+        player:addStatusEffect(invaderXim.effect.MIGHTY_STRIKES, 1, 0, 0)
+        player:addStatusEffect(invaderXim.effect.HUNDRED_FISTS, 1, 0, 0)
+        player:addStatusEffect(invaderXim.effect.CHAINSPELL, 1, 0, 0)
+        player:addStatusEffect(invaderXim.effect.PERFECT_DODGE, 1, 0, 0)
+        player:addStatusEffect(invaderXim.effect.INVINCIBLE, 1, 0, 0)
+        player:addStatusEffect(invaderXim.effect.ELEMENTAL_SFORZO, 1, 0, 0)
+        player:addStatusEffect(invaderXim.effect.MANAFONT, 1, 0, 0)
+        player:addStatusEffect(invaderXim.effect.REGAIN, 300, 0, 0)
+        player:addStatusEffect(invaderXim.effect.REFRESH, 99, 0, 0)
+        player:addStatusEffect(invaderXim.effect.REGEN, 99, 0, 0)
+        player:addMod(invaderXim.mod.RACC, 2500)
+        player:addMod(invaderXim.mod.RATT, 2500)
+        player:addMod(invaderXim.mod.ACC, 2500)
+        player:addMod(invaderXim.mod.ATT, 2500)
+        player:addMod(invaderXim.mod.MATT, 2500)
+        player:addMod(invaderXim.mod.MACC, 2500)
+        player:addMod(invaderXim.mod.RDEF, 2500)
+        player:addMod(invaderXim.mod.DEF, 2500)
+        player:addMod(invaderXim.mod.MDEF, 2500)
         player:addHP(50000)
         player:setMP(50000)
     end
@@ -233,7 +233,7 @@ xi.player.onGameIn = function(player, firstLogin, zoning)
     player:timer(2500, function(playerArg)
         player:setLocalVar('ZoningIn', 0)
         -- Login Campaign rewards points once daily
-        xi.events.loginCampaign.onGameIn(playerArg)
+        invaderXim.events.loginCampaign.onGameIn(playerArg)
     end)
 
     -- Enforce that gameLogin is always set to 0 once this method exits
@@ -241,37 +241,37 @@ xi.player.onGameIn = function(player, firstLogin, zoning)
     player:setLocalVar('gameLogin', 0)
 end
 
-xi.player.onPlayerDeath = function(player)
+invaderXim.player.onPlayerDeath = function(player)
 end
 
-xi.player.onPlayerLevelUp = function(player)
+invaderXim.player.onPlayerLevelUp = function(player)
 end
 
-xi.player.onPlayerLevelDown = function(player)
+invaderXim.player.onPlayerLevelDown = function(player)
 end
 
-xi.player.onPlayerMount = function(player)
+invaderXim.player.onPlayerMount = function(player)
     -- For PM3-3 The Road Forks.  This value will be checked periodically, and break
     -- the Mimeo Jewel should a player be mounted, zone, or disconnect.
     if
-        player:getZoneID() == xi.zone.ATTOHWA_CHASM and
-        player:hasKeyItem(xi.ki.MIMEO_JEWEL)
+        player:getZoneID() == invaderXim.zone.ATTOHWA_CHASM and
+        player:hasKeyItem(invaderXim.ki.MIMEO_JEWEL)
     then
-        player:messageSpecial(zones[xi.zone.ATTOHWA_CHASM].text.MIMEO_JEWEL_OFFSET + 4, xi.ki.MIMEO_JEWEL)
-        player:delKeyItem(xi.ki.MIMEO_JEWEL)
+        player:messageSpecial(zones[invaderXim.zone.ATTOHWA_CHASM].text.MIMEO_JEWEL_OFFSET + 4, invaderXim.ki.MIMEO_JEWEL)
+        player:delKeyItem(invaderXim.ki.MIMEO_JEWEL)
     end
 end
 
-xi.player.onPlayerEmote = function(player, emoteId)
+invaderXim.player.onPlayerEmote = function(player, emoteId)
     if
-        emoteId == xi.emote.CHEER and
-        player:hasStatusEffect(xi.effect.FULL_SPEED_AHEAD)
+        emoteId == invaderXim.emote.CHEER and
+        player:hasStatusEffect(invaderXim.effect.FULL_SPEED_AHEAD)
     then
-        xi.fsa.onCheer(player)
+        invaderXim.fsa.onCheer(player)
     end
 end
 
-xi.player.onPlayerVolunteer = function(player, text)
+invaderXim.player.onPlayerVolunteer = function(player, text)
 end
 
-return xi.player
+return invaderXim.player

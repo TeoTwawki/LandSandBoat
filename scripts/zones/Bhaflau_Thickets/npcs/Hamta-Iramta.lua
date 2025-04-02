@@ -4,7 +4,7 @@
 -- Type: Alzadaal Undersea Ruins
 -- !pos -459.942 -20.048 -4.999 52
 -----------------------------------
-local ID = zones[xi.zone.BHAFLAU_THICKETS]
+local ID = zones[invaderXim.zone.BHAFLAU_THICKETS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -21,7 +21,7 @@ entity.onTrade = function(player, npc, trade)
     if
         isOutsideAlzadaal(player) and
         trade:getItemCount() == 1 and
-        trade:hasItemQty(xi.item.IMPERIAL_SILVER_PIECE, 1)
+        trade:hasItemQty(invaderXim.item.IMPERIAL_SILVER_PIECE, 1)
     then
         player:tradeComplete()
         player:startEvent(135)
@@ -30,8 +30,8 @@ end
 
 entity.onTrigger = function(player, npc)
     if isOutsideAlzadaal(player) then
-        if player:hasKeyItem(xi.ki.CAPTAIN_WILDCAT_BADGE) then
-            player:messageSpecial(ID.text.YOU_HAVE_A_BADGE, xi.ki.CAPTAIN_WILDCAT_BADGE)
+        if player:hasKeyItem(invaderXim.ki.CAPTAIN_WILDCAT_BADGE) then
+            player:messageSpecial(ID.text.YOU_HAVE_A_BADGE, invaderXim.ki.CAPTAIN_WILDCAT_BADGE)
             player:startEvent(135)
         else
             player:startEvent(134)
@@ -43,7 +43,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 135 then
-        player:setPos(-115, -4, -620, 253, xi.zone.ALZADAAL_UNDERSEA_RUINS)
+        player:setPos(-115, -4, -620, 253, invaderXim.zone.ALZADAAL_UNDERSEA_RUINS)
     end
 end
 

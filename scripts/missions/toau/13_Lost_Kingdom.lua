@@ -6,15 +6,15 @@
 -- Pyopyoroon           : !pos 22.112 0 24.682 53
 -- Jazaraat's Headstone : !pos -389 6 -570 79
 -----------------------------------
-local caedarvaID = zones[xi.zone.CAEDARVA_MIRE]
+local caedarvaID = zones[invaderXim.zone.CAEDARVA_MIRE]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.LOST_KINGDOM)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.LOST_KINGDOM)
 
 mission.reward =
 {
-    keyItem     = xi.ki.EPHRAMADIAN_GOLD_COIN,
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.THE_DOLPHIN_CREST },
+    keyItem     = invaderXim.ki.EPHRAMADIAN_GOLD_COIN,
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.THE_DOLPHIN_CREST },
 }
 
 mission.sections =
@@ -24,7 +24,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CAEDARVA_MIRE] =
+        [invaderXim.zone.CAEDARVA_MIRE] =
         {
             ['Jazaraats_Headstone'] =
             {
@@ -33,7 +33,7 @@ mission.sections =
 
                     if
                         missionStatus == 0 and
-                        player:hasKeyItem(xi.ki.VIAL_OF_SPECTRAL_SCENT)
+                        player:hasKeyItem(invaderXim.ki.VIAL_OF_SPECTRAL_SCENT)
                     then
                         return mission:progressEvent(8)
                     elseif
@@ -62,7 +62,7 @@ mission.sections =
             {
                 [8] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 1)
-                    player:delKeyItem(xi.ki.VIAL_OF_SPECTRAL_SCENT)
+                    player:delKeyItem(invaderXim.ki.VIAL_OF_SPECTRAL_SCENT)
                 end,
 
                 [9] = function(player, csid, option, npc)
@@ -71,7 +71,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             ['Pyopyoroon'] = mission:progressEvent(275),
         },
@@ -82,13 +82,13 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.CAEDARVA_MIRE] =
+        [invaderXim.zone.CAEDARVA_MIRE] =
         {
             ['Jazaraats_Headstone'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.EPHRAMADIAN_GOLD_COIN) then
-                        return mission:keyItem(xi.ki.EPHRAMADIAN_GOLD_COIN)
+                    if not player:hasKeyItem(invaderXim.ki.EPHRAMADIAN_GOLD_COIN) then
+                        return mission:keyItem(invaderXim.ki.EPHRAMADIAN_GOLD_COIN)
                     else
                         return mission:messageSpecial(caedarvaID.text.JAZARAATS_HEADSTONE)
                     end

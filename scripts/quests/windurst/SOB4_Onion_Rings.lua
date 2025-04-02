@@ -4,7 +4,7 @@
 -- Kohlo-Lakolo, !pos -26.8 -6 190 240
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.ONION_RINGS)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.ONION_RINGS)
 
 local function timedEvents(player, inTime, outATime)
     local daysPassed     = VanadielDayOfTheYear() - quest:getVar(player, 'DayStarted')
@@ -20,8 +20,8 @@ end
 quest.reward =
 {
     fame     = 10,
-    fameArea = xi.fameArea.WINDURST,
-    title    = xi.title.STAR_ONION_BRIGADIER,
+    fameArea = invaderXim.fameArea.WINDURST,
+    title    = invaderXim.title.STAR_ONION_BRIGADIER,
 }
 
 quest.sections =
@@ -33,21 +33,21 @@ quest.sections =
     -- Section: Quest is available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.WINDURST, xi.quest.id.windurst.INSPECTORS_GADGET)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.INSPECTORS_GADGET)
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Kohlo-Lakolo'] =
             {
                 onTrigger = function(player, npc)
                     if
                         player:getMainLvl() >= 5 and
-                        player:getFameLevel(xi.fameArea.WINDURST) >= 3 and
+                        player:getFameLevel(invaderXim.fameArea.WINDURST) >= 3 and
                         not quest:getMustZone(player)
                     then
-                        if player:hasKeyItem(xi.ki.OLD_RING) then
+                        if player:hasKeyItem(invaderXim.ki.OLD_RING) then
                             local daysPassed     = VanadielDayOfTheYear() - quest:getVar(player, 'DayStarted')
                             local totalHoursLeft = 24 - (VanadielHour() + daysPassed * 24) + quest:getVar(player, 'HourStarted')
 
@@ -55,9 +55,9 @@ quest.sections =
                                 totalHoursLeft > 0 and
                                 quest:getVar(player, 'Prog') == 1
                             then
-                                return quest:progressEvent(430, 0, xi.ki.OLD_RING) -- Quest starting event.
+                                return quest:progressEvent(430, 0, invaderXim.ki.OLD_RING) -- Quest starting event.
                             else
-                                return quest:progressEvent(432, 0, xi.ki.OLD_RING) -- Instant Quest Complete.
+                                return quest:progressEvent(432, 0, invaderXim.ki.OLD_RING) -- Instant Quest Complete.
                             end
                         else
                             return quest:progressEvent(429) -- Timer start and reminder text.
@@ -84,7 +84,7 @@ quest.sections =
 
                 [432] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.OLD_RING)
+                        player:delKeyItem(invaderXim.ki.OLD_RING)
                         player:setLocalVar('[2][76]mustZone', 1)
                     end
                 end,
@@ -95,10 +95,10 @@ quest.sections =
     -- Section: Quest accepeted. You didn't start with the "Old Ring" Key Item.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 1
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 1
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Kohlo-Lakolo'] =
             {
@@ -153,14 +153,14 @@ quest.sections =
             {
                 [433] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.OLD_RING)
+                        player:delKeyItem(invaderXim.ki.OLD_RING)
                         player:setLocalVar('[2][76]mustZone', 1)
                     end
                 end,
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['_6n2'] =
             {
@@ -177,7 +177,7 @@ quest.sections =
             {
                 [289] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.OLD_RING)
+                        player:delKeyItem(invaderXim.ki.OLD_RING)
                         player:setLocalVar('[2][76]mustZone', 1)
                     end
                 end,
@@ -188,11 +188,11 @@ quest.sections =
     -- Section: Quest completed.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.CRYING_OVER_ONIONS) == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.CRYING_OVER_ONIONS) == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             -- New default texts.
             ['Gomada-Vulmada'] = quest:event(442):replaceDefault(),

@@ -6,26 +6,26 @@
 -- Steel Bones : !pos -185.766 1.999 -57.631 236
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.GUEST_OF_HAUTEUR)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.GUEST_OF_HAUTEUR)
 
 quest.reward =
 {
     fame     = 80,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.TARGE,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.TARGE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 3 and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 3 and
                 player:getMainLvl() >= 31 and
-                player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.WELCOME_TO_BASTOK)
+                player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.WELCOME_TO_BASTOK)
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Powhatan'] = quest:progressEvent(55),
 
@@ -42,15 +42,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Powhatan'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.LETTER_FROM_DOMIEN) then
+                    if not player:hasKeyItem(invaderXim.ki.LETTER_FROM_DOMIEN) then
                         return quest:event(56)
                     else
                         return quest:progressEvent(58)
@@ -61,12 +61,12 @@ quest.sections =
             ['Steel_Bones'] =
             {
                 onTrigger = function(player, npc)
-                    local mainSlot = player:getEquipID(xi.slot.MAIN)
+                    local mainSlot = player:getEquipID(invaderXim.slot.MAIN)
 
                     if
-                        not player:hasKeyItem(xi.ki.LETTER_FROM_DOMIEN) and
-                        (mainSlot == xi.item.MAUL or
-                        mainSlot == xi.item.REPLICA_MAUL)
+                        not player:hasKeyItem(invaderXim.ki.LETTER_FROM_DOMIEN) and
+                        (mainSlot == invaderXim.item.MAUL or
+                        mainSlot == invaderXim.item.REPLICA_MAUL)
                     then
                         return quest:progressEvent(57)
                     end
@@ -76,12 +76,12 @@ quest.sections =
             onEventFinish =
             {
                 [57] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.LETTER_FROM_DOMIEN)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LETTER_FROM_DOMIEN)
                 end,
 
                 [58] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.LETTER_FROM_DOMIEN)
+                        player:delKeyItem(invaderXim.ki.LETTER_FROM_DOMIEN)
                     end
                 end,
             },

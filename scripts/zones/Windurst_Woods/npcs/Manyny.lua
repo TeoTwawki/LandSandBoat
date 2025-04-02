@@ -2,7 +2,7 @@
 -- Area: Windurst Woods
 --  NPC: Manyny
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WOODS]
+local ID = zones[invaderXim.zone.WINDURST_WOODS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -19,7 +19,7 @@ entity.onTrigger = function(player, npc)
         5038,   990        --Enchanting Etude
     }
     player:showText(npc, ID.text.MANYNY_SHOP_DIALOG)
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 return entity

@@ -787,7 +787,7 @@ namespace zoneutils
         Async::getInstance()->wait();
         // clang-format on
 
-        // IDs attached to xi.zone[name] need to be populated before NPCs and Mobs are loaded
+        // IDs attached to invaderXim.zone[name] need to be populated before NPCs and Mobs are loaded
         luautils::PopulateIDLookupsByZone();
 
         LoadNPCList(mapIPP);
@@ -821,8 +821,8 @@ namespace zoneutils
         {
             case ZONE_BOSTAUNIEUX_OUBLIETTE:
             case ZONE_EAST_RONFAURE:
-            case ZONE_FORT_GHELSBA:
-            case ZONE_GHELSBA_OUTPOST:
+            case ZONE_FORT_GHEIXIMA:
+            case ZONE_GHEIXIMA_OUTPOST:
             case ZONE_HORLAIS_PEAK:
             case ZONE_KING_RANPERRES_TOMB:
             case ZONE_WEST_RONFAURE:
@@ -1089,7 +1089,7 @@ namespace zoneutils
                 return REGION_TYPE::ABYSSEA;
             case ZONE_WALK_OF_ECHOES:
                 return REGION_TYPE::THE_THRESHOLD;
-            case ZONE_DIORAMA_ABDHALJS_GHELSBA:
+            case ZONE_DIORAMA_ABDHALJS_GHEIXIMA:
             case ZONE_ABDHALJS_ISLE_PURGONORGO:
             case ZONE_MAQUETTE_ABDHALJS_LEGION_A:
             case ZONE_MAQUETTE_ABDHALJS_LEGION_B:

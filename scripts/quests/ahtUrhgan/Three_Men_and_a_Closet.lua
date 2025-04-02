@@ -6,11 +6,11 @@
 -- Ekhu Pesshyadha !pos -13.043 0.999 103.423 50
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.THREE_MEN_AND_A_CLOSET)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.THREE_MEN_AND_A_CLOSET)
 
 quest.reward =
 {
-    item = xi.item.IMPERIAL_BRONZE_PIECE,
+    item = invaderXim.item.IMPERIAL_BRONZE_PIECE,
 }
 
 quest.sections =
@@ -18,11 +18,11 @@ quest.sections =
     -- Section: Begin quest
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.GOT_IT_ALL) == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.GOT_IT_ALL) == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Kubhe_Ijyuhla'] =
             {
@@ -43,10 +43,10 @@ quest.sections =
     -- Section: Questing
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Kubhe_Ijyuhla'] =
             {
@@ -115,11 +115,11 @@ quest.sections =
             },
         },
 
-        [xi.zone.WAJAOM_WOODLANDS] =
+        [invaderXim.zone.WAJAOM_WOODLANDS] =
         {
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.AHT_URHGAN_WHITEGATE and
+                    prevZone == invaderXim.zone.AHT_URHGAN_WHITEGATE and
                     quest:getVar(player, 'Prog') == 0
                 then
                     return 510
@@ -138,10 +138,10 @@ quest.sections =
     -- Section: Completed quest
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Kubhe_Ijyuhla'] = quest:event(846),
         }

@@ -5,14 +5,14 @@
 -- !addmission 3 22
 -- _700 (Oaken Door) : !pos 97 -7 -12 252
 -----------------------------------
-local hallID = zones[xi.zone.HALL_OF_THE_GODS]
+local hallID = zones[invaderXim.zone.HALL_OF_THE_GODS]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_HALL_OF_THE_GODS)
+local mission = Mission:new(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_HALL_OF_THE_GODS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_MITHRA_AND_THE_CRYSTAL },
+    nextMission = { invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_MITHRA_AND_THE_CRYSTAL },
 }
 
 mission.sections =
@@ -22,12 +22,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.HALL_OF_THE_GODS] =
+        [invaderXim.zone.HALL_OF_THE_GODS] =
         {
             ['_6z0'] = mission:messageSpecial(hallID.text.DEPRESSION_A_CLUE),
         },
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['_700'] = mission:progressEvent(169),
 

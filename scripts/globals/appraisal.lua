@@ -6,10 +6,10 @@ require('scripts/globals/assault')
 require('scripts/globals/npc_util')
 -----------------------------------
 xi = xi or {}
-xi.appraisal = xi.appraisal or {}
+invaderXim.appraisal = invaderXim.appraisal or {}
 -----------------------------------
 
-xi.appraisal.origin =
+invaderXim.appraisal.origin =
 {
     NYZUL_BASIC                 = 100,
     NYZUL_BAT_EYE               = 101,
@@ -104,1440 +104,1440 @@ xi.appraisal.origin =
 
 }
 
-xi.appraisal.unappraisedItems =
+invaderXim.appraisal.unappraisedItems =
 {
-    xi.item.UNAPPRAISED_SWORD,
-    xi.item.UNAPPRAISED_DAGGER,
-    xi.item.UNAPPRAISED_POLEARM,
-    xi.item.UNAPPRAISED_AXE,
-    xi.item.UNAPPRAISED_BOW,
-    xi.item.UNAPPRAISED_GLOVES,
-    xi.item.UNAPPRAISED_FOOTWEAR,
-    xi.item.UNAPPRAISED_HEADPIECE,
-    xi.item.UNAPPRAISED_EARRING,
-    xi.item.UNAPPRAISED_RING,
-    xi.item.UNAPPRAISED_CAPE,
-    xi.item.UNAPPRAISED_SASH,
-    xi.item.UNAPPRAISED_SHIELD,
-    xi.item.UNAPPRAISED_NECKLACE,
-    xi.item.UNAPPRAISED_INGOT,
-    xi.item.UNAPPRAISED_POTION,
-    xi.item.UNAPPRAISED_CLOTH,
-    xi.item.UNAPPRAISED_BOX,
+    invaderXim.item.UNAPPRAISED_SWORD,
+    invaderXim.item.UNAPPRAISED_DAGGER,
+    invaderXim.item.UNAPPRAISED_POLEARM,
+    invaderXim.item.UNAPPRAISED_AXE,
+    invaderXim.item.UNAPPRAISED_BOW,
+    invaderXim.item.UNAPPRAISED_GLOVES,
+    invaderXim.item.UNAPPRAISED_FOOTWEAR,
+    invaderXim.item.UNAPPRAISED_HEADPIECE,
+    invaderXim.item.UNAPPRAISED_EARRING,
+    invaderXim.item.UNAPPRAISED_RING,
+    invaderXim.item.UNAPPRAISED_CAPE,
+    invaderXim.item.UNAPPRAISED_SASH,
+    invaderXim.item.UNAPPRAISED_SHIELD,
+    invaderXim.item.UNAPPRAISED_NECKLACE,
+    invaderXim.item.UNAPPRAISED_INGOT,
+    invaderXim.item.UNAPPRAISED_POTION,
+    invaderXim.item.UNAPPRAISED_CLOTH,
+    invaderXim.item.UNAPPRAISED_BOX,
 }
 
-xi.appraisal.appraisalItems =
+invaderXim.appraisal.appraisalItems =
 {
-    [xi.item.UNAPPRAISED_SWORD] =
+    [invaderXim.item.UNAPPRAISED_SWORD] =
     {
-        [xi.assault.mission.SEAGULL_GROUNDED] =
+        [invaderXim.assault.mission.SEAGULL_GROUNDED] =
         {
             items =
             {
-                { 65, xi.item.GUST_CLAYMORE  },
-                { 30, xi.item.UCHIGATANA_P1  },
-                {  5, xi.item.KOSETSUSAMONJI },
+                { 65, invaderXim.item.GUST_CLAYMORE  },
+                { 30, invaderXim.item.UCHIGATANA_P1  },
+                {  5, invaderXim.item.KOSETSUSAMONJI },
             },
         },
 
-        [xi.assault.mission.SAGELORD_ELIMINATION] =
+        [invaderXim.assault.mission.SAGELORD_ELIMINATION] =
         {
             items =
             {
-                { 55, xi.item.GUST_CLAYMORE },
-                { 40, xi.item.UCHIGATANA_P1 },
-                {  5, xi.item.DJINNBRINGER  },
+                { 55, invaderXim.item.GUST_CLAYMORE },
+                { 40, invaderXim.item.UCHIGATANA_P1 },
+                {  5, invaderXim.item.DJINNBRINGER  },
             },
         },
 
-        [xi.assault.mission.BREAKING_MORALE] =
+        [invaderXim.assault.mission.BREAKING_MORALE] =
         {
             items =
             {
-                { 45, xi.item.GUST_CLAYMORE   },
-                { 30, xi.item.UCHIGATANA_P1   },
-                { 20, xi.item.PEALING_ANELACE },
-                { 10, xi.item.KAGIROI         },
-                {  5, xi.item.STORM_SCIMITAR  },
+                { 45, invaderXim.item.GUST_CLAYMORE   },
+                { 30, invaderXim.item.UCHIGATANA_P1   },
+                { 20, invaderXim.item.PEALING_ANELACE },
+                { 10, invaderXim.item.KAGIROI         },
+                {  5, invaderXim.item.STORM_SCIMITAR  },
             },
         },
 
-        [xi.assault.mission.THE_DOUBLE_AGENT] =
+        [invaderXim.assault.mission.THE_DOUBLE_AGENT] =
         {
             items =
             {
-                { 45, xi.item.GUST_CLAYMORE   },
-                { 10, xi.item.DJINNBRINGER    },
-                { 38, xi.item.UCHIGATANA_P1   },
-                {  4, xi.item.PEALING_ANELACE },
-                {  3, xi.item.KAGIROI         },
+                { 45, invaderXim.item.GUST_CLAYMORE   },
+                { 10, invaderXim.item.DJINNBRINGER    },
+                { 38, invaderXim.item.UCHIGATANA_P1   },
+                {  4, invaderXim.item.PEALING_ANELACE },
+                {  3, invaderXim.item.KAGIROI         },
             },
         },
-        [xi.assault.mission.AZURE_EXPERIMENTS] =
+        [invaderXim.assault.mission.AZURE_EXPERIMENTS] =
         {
             items =
             {
-                { 100, xi.item.MACUAHUITL_M1 },
-            },
-        },
-
-        [xi.assault.mission.BLITZKRIEG] =
-        {
-            items =
-            {
-                { 45, xi.item.GUST_CLAYMORE  },
-                { 30, xi.item.UCHIGATANA_P1  },
-                { 20, xi.item.DURANDAL       },
-                {  5, xi.item.SANGUINE_SWORD },
+                { 100, invaderXim.item.MACUAHUITL_M1 },
             },
         },
 
-        [xi.assault.mission.WAMOURA_FARM_RAID] =
+        [invaderXim.assault.mission.BLITZKRIEG] =
         {
             items =
             {
-                { 45, xi.item.GUST_CLAYMORE },
-                { 30, xi.item.UCHIGATANA_P1 },
-                { 20, xi.item.HOTARUMARU    },
-                {  5, xi.item.KUMOKIRIMARU  },
+                { 45, invaderXim.item.GUST_CLAYMORE  },
+                { 30, invaderXim.item.UCHIGATANA_P1  },
+                { 20, invaderXim.item.DURANDAL       },
+                {  5, invaderXim.item.SANGUINE_SWORD },
             },
         },
 
-        [xi.assault.mission.RED_VERSUS_BLUE] =
+        [invaderXim.assault.mission.WAMOURA_FARM_RAID] =
         {
             items =
             {
-                { 100, xi.item.KILIJ },
+                { 45, invaderXim.item.GUST_CLAYMORE },
+                { 30, invaderXim.item.UCHIGATANA_P1 },
+                { 20, invaderXim.item.HOTARUMARU    },
+                {  5, invaderXim.item.KUMOKIRIMARU  },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_FROSTMANE] =
+        [invaderXim.assault.mission.RED_VERSUS_BLUE] =
         {
             items =
             {
-                { 60, xi.item.CLAYMORE      },
-                { 35, xi.item.GUST_CLAYMORE },
-                {  5, xi.item.LOCKHEART     },
+                { 100, invaderXim.item.KILIJ },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_CARNERO] =
+        [invaderXim.appraisal.origin.NYZUL_FROSTMANE] =
         {
             items =
             {
-                { 75, xi.item.BRONZE_SWORD       },
-                { 25, xi.item.KATAYAMA_ICHIMONJI },
+                { 60, invaderXim.item.CLAYMORE      },
+                { 35, invaderXim.item.GUST_CLAYMORE },
+                {  5, invaderXim.item.LOCKHEART     },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_EMERGENT_ELM] =
+        [invaderXim.appraisal.origin.NYZUL_CARNERO] =
         {
             items =
             {
-                { 60, xi.item.BRONZE_SWORD   },
-                { 35, xi.item.XIPHOS         },
-                {  5, xi.item.GLOOM_CLAYMORE },
+                { 75, invaderXim.item.BRONZE_SWORD       },
+                { 25, invaderXim.item.KATAYAMA_ICHIMONJI },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_ZIZZY_ZILLAH] =
+        [invaderXim.appraisal.origin.NYZUL_EMERGENT_ELM] =
         {
             items =
             {
-                { 60, xi.item.BRONZE_SWORD  },
-                { 35, xi.item.UCHIGATANA_P1 },
-                {  5, xi.item.NAMIKIRIMARU  },
+                { 60, invaderXim.item.BRONZE_SWORD   },
+                { 35, invaderXim.item.XIPHOS         },
+                {  5, invaderXim.item.GLOOM_CLAYMORE },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_KEEPER_OF_HALIDOM] =
+        [invaderXim.appraisal.origin.NYZUL_ZIZZY_ZILLAH] =
         {
             items =
             {
-                { 65, xi.item.BRONZE_SWORD  },
-                { 32, xi.item.UCHIGATANA_P1 },
-                {  3, xi.item.DAIHANNYA     },
+                { 60, invaderXim.item.BRONZE_SWORD  },
+                { 35, invaderXim.item.UCHIGATANA_P1 },
+                {  5, invaderXim.item.NAMIKIRIMARU  },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_AMIKIRI] =
+        [invaderXim.appraisal.origin.NYZUL_KEEPER_OF_HALIDOM] =
         {
             items =
             {
-                { 75, xi.item.BRONZE_SWORD },
-                { 25, xi.item.KAMEWARI     },
+                { 65, invaderXim.item.BRONZE_SWORD  },
+                { 32, invaderXim.item.UCHIGATANA_P1 },
+                {  3, invaderXim.item.DAIHANNYA     },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_CARGO_CRAB_COLIN] =
+        [invaderXim.appraisal.origin.NYZUL_AMIKIRI] =
         {
             items =
             {
-                { 85, xi.item.BRONZE_SWORD },
-                { 15, xi.item.NADRS        },
+                { 75, invaderXim.item.BRONZE_SWORD },
+                { 25, invaderXim.item.KAMEWARI     },
+            },
+        },
+
+        [invaderXim.appraisal.origin.NYZUL_CARGO_CRAB_COLIN] =
+        {
+            items =
+            {
+                { 85, invaderXim.item.BRONZE_SWORD },
+                { 15, invaderXim.item.NADRS        },
             },
         },
     },
 
-    [xi.item.UNAPPRAISED_DAGGER] =
+    [invaderXim.item.UNAPPRAISED_DAGGER] =
     {
-        [xi.appraisal.origin.NYZUL_TOM_TIT_TAT] =
+        [invaderXim.appraisal.origin.NYZUL_TOM_TIT_TAT] =
         {
             items =
             {
-                { 70, xi.item.BRONZE_KNIFE  },
-                { 25, xi.item.KUNAI         },
-                {  5, xi.item.FRUIT_PUNCHES },
+                { 70, invaderXim.item.BRONZE_KNIFE  },
+                { 25, invaderXim.item.KUNAI         },
+                {  5, invaderXim.item.FRUIT_PUNCHES },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_ORCTRAP] =
+        [invaderXim.appraisal.origin.NYZUL_ORCTRAP] =
         {
             items =
             {
-                { 95, xi.item.BRONZE_KNIFE },
-                {  5, xi.item.NIKKARIAOE   },
+                { 95, invaderXim.item.BRONZE_KNIFE },
+                {  5, invaderXim.item.NIKKARIAOE   },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_STINGING_SOPHIE] =
+        [invaderXim.appraisal.origin.NYZUL_STINGING_SOPHIE] =
         {
             items =
             {
-                { 95, xi.item.BRONZE_KNIFE },
-                {  5, xi.item.BEESTINGER   },
+                { 95, invaderXim.item.BRONZE_KNIFE },
+                {  5, invaderXim.item.BEESTINGER   },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_WESTERN_SHADOW] =
+        [invaderXim.appraisal.origin.NYZUL_WESTERN_SHADOW] =
         {
             items =
             {
-                { 95, xi.item.KUNAI       },
-                {  5, xi.item.RETALIATORS },
+                { 95, invaderXim.item.KUNAI       },
+                {  5, invaderXim.item.RETALIATORS },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_MISCHIEVOUS_MICHOLAS] =
+        [invaderXim.appraisal.origin.NYZUL_MISCHIEVOUS_MICHOLAS] =
         {
             items =
             {
-                { 95, xi.item.BRONZE_KNIFE  },
-                {  5, xi.item.KIDNEY_DAGGER },
+                { 95, invaderXim.item.BRONZE_KNIFE  },
+                {  5, invaderXim.item.KIDNEY_DAGGER },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_NIGHTMARE_VASE] =
+        [invaderXim.appraisal.origin.NYZUL_NIGHTMARE_VASE] =
         {
             items =
             {
-                { 90, xi.item.KUNAI   },
-                { 10, xi.item.SHINOGI },
+                { 90, invaderXim.item.KUNAI   },
+                { 10, invaderXim.item.SHINOGI },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_DAGGERCLAW_DRACOS] =
+        [invaderXim.appraisal.origin.NYZUL_DAGGERCLAW_DRACOS] =
         {
             items =
             {
-                { 90, xi.item.BRONZE_KNUCKLES },
-                { 10, xi.item.SONIC_KNUCKLES  },
+                { 90, invaderXim.item.BRONZE_KNUCKLES },
+                { 10, invaderXim.item.SONIC_KNUCKLES  },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_SABOTENDER_MARIACHI] =
+        [invaderXim.appraisal.origin.NYZUL_SABOTENDER_MARIACHI] =
         {
             items =
             {
-                { 90, xi.item.BRONZE_KNIFE },
-                { 10, xi.item.BANO_DEL_SOL },
+                { 90, invaderXim.item.BRONZE_KNIFE },
+                { 10, invaderXim.item.BANO_DEL_SOL },
             },
         },
     },
 
-    [xi.item.UNAPPRAISED_POLEARM] =
+    [invaderXim.item.UNAPPRAISED_POLEARM] =
     {
-        [xi.assault.mission.SEAGULL_GROUNDED] =
+        [invaderXim.assault.mission.SEAGULL_GROUNDED] =
         {
             items =
             {
-                { 100, xi.item.SPARK_SPEAR },
+                { 100, invaderXim.item.SPARK_SPEAR },
             },
         },
 
-        [xi.assault.mission.REQUIEM] =
+        [invaderXim.assault.mission.REQUIEM] =
         {
             items =
             {
-                { 20, xi.item.HOLLY_STAFF_P1 },
-                { 40, xi.item.BRASS_ZAGHNAL  },
-                { 20, xi.item.WILLOW_WAND_P1 },
-                {  5, xi.item.PUK_LANCE      },
-                { 15, xi.item.SPARK_SPEAR    },
+                { 20, invaderXim.item.HOLLY_STAFF_P1 },
+                { 40, invaderXim.item.BRASS_ZAGHNAL  },
+                { 20, invaderXim.item.WILLOW_WAND_P1 },
+                {  5, invaderXim.item.PUK_LANCE      },
+                { 15, invaderXim.item.SPARK_SPEAR    },
             },
         },
 
-        [xi.assault.mission.EXTERMINATION] =
+        [invaderXim.assault.mission.EXTERMINATION] =
         {
             items =
             {
-                { 20, xi.item.SPARK_SPEAR       },
-                { 20, xi.item.WILLOW_WAND_P1    },
-                { 15, xi.item.HOLLY_STAFF_P1    },
-                { 35, xi.item.BRASS_ZAGHNAL     },
-                { 10, xi.item.VOLUNTEERS_SCYTHE },
+                { 20, invaderXim.item.SPARK_SPEAR       },
+                { 20, invaderXim.item.WILLOW_WAND_P1    },
+                { 15, invaderXim.item.HOLLY_STAFF_P1    },
+                { 35, invaderXim.item.BRASS_ZAGHNAL     },
+                { 10, invaderXim.item.VOLUNTEERS_SCYTHE },
             },
         },
 
-        [xi.assault.mission.TROLL_FUGITIVES] =
+        [invaderXim.assault.mission.TROLL_FUGITIVES] =
         {
             items =
             {
-                { 100, xi.item.SICKLE }
+                { 100, invaderXim.item.SICKLE }
             },
         },
 
-        [xi.appraisal.origin.NYZUL_JUGGLER_HECATOMB] =
+        [invaderXim.appraisal.origin.NYZUL_JUGGLER_HECATOMB] =
         {
             items =
             {
-                { 90, xi.item.ASH_CLUB      },
-                { 10, xi.item.HEAVY_HALBERD },
+                { 90, invaderXim.item.ASH_CLUB      },
+                { 10, invaderXim.item.HEAVY_HALBERD },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_HELLION] =
+        [invaderXim.appraisal.origin.NYZUL_HELLION] =
         {
             items =
             {
-                { 70, xi.item.MAPLE_WAND  },
-                { 30, xi.item.A_LOUTRANCE },
+                { 70, invaderXim.item.MAPLE_WAND  },
+                { 30, invaderXim.item.A_LOUTRANCE },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_FALCATUS_ARANEI] =
+        [invaderXim.appraisal.origin.NYZUL_FALCATUS_ARANEI] =
         {
             items =
             {
-                { 70, xi.item.MAPLE_WAND     },
-                { 20, xi.item.BRONZE_ZAGHNAL },
-                { 10, xi.item.WEBCUTTER      },
+                { 70, invaderXim.item.MAPLE_WAND     },
+                { 20, invaderXim.item.BRONZE_ZAGHNAL },
+                { 10, invaderXim.item.WEBCUTTER      },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_NUNYENUNC] =
+        [invaderXim.appraisal.origin.NYZUL_NUNYENUNC] =
         {
             items =
             {
-                { 90, xi.item.ASH_CLUB      },
-                { 10, xi.item.PILGRIMS_WAND },
+                { 90, invaderXim.item.ASH_CLUB      },
+                { 10, invaderXim.item.PILGRIMS_WAND },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_ROC] =
+        [invaderXim.appraisal.origin.NYZUL_ROC] =
         {
             items =
             {
-                { 90, xi.item.MAPLE_WAND  },
-                { 10, xi.item.DRYAD_STAFF },
+                { 90, invaderXim.item.MAPLE_WAND  },
+                { 10, invaderXim.item.DRYAD_STAFF },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_SWAMFISK] =
+        [invaderXim.appraisal.origin.NYZUL_SWAMFISK] =
         {
             items =
             {
-                { 90, xi.item.MAPLE_WAND   },
-                { 10, xi.item.GELONG_STAFF },
+                { 90, invaderXim.item.MAPLE_WAND   },
+                { 10, invaderXim.item.GELONG_STAFF },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_VOUIVRE] =
+        [invaderXim.appraisal.origin.NYZUL_VOUIVRE] =
         {
             items =
             {
-                { 90, xi.item.ASH_CLUB },
-                { 10, xi.item.GAE_BOLG },
+                { 90, invaderXim.item.ASH_CLUB },
+                { 10, invaderXim.item.GAE_BOLG },
             },
         },
     },
 
-    [xi.item.UNAPPRAISED_AXE] =
+    [invaderXim.item.UNAPPRAISED_AXE] =
     {
-        [xi.assault.mission.REQUIEM] =
+        [invaderXim.assault.mission.REQUIEM] =
         {
             items =
             {
-                { 100, xi.item.PICKAXE },
+                { 100, invaderXim.item.PICKAXE },
             },
         },
 
-        [xi.assault.mission.EXTERMINATION] =
+        [invaderXim.assault.mission.EXTERMINATION] =
         {
             items =
             {
-                { 100, xi.item.PICKAXE },
+                { 100, invaderXim.item.PICKAXE },
             },
         },
 
-        [xi.assault.mission.TROLL_FUGITIVES] =
+        [invaderXim.assault.mission.TROLL_FUGITIVES] =
         {
             items =
             {
-                { 60, xi.item.HATCHET        },
-                { 10, xi.item.TOMAHAWK_P1    },
-                { 15, xi.item.WAMOURA_AXE    },
-                { 15, xi.item.PROMINENCE_AXE },
+                { 60, invaderXim.item.HATCHET        },
+                { 10, invaderXim.item.TOMAHAWK_P1    },
+                { 15, invaderXim.item.WAMOURA_AXE    },
+                { 15, invaderXim.item.PROMINENCE_AXE },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_BAT_EYE] =
+        [invaderXim.appraisal.origin.NYZUL_BAT_EYE] =
         {
             items =
             {
-                { 95, xi.item.BONE_AXE  },
-                {  5, xi.item.STORM_AXE },
+                { 95, invaderXim.item.BONE_AXE  },
+                {  5, invaderXim.item.STORM_AXE },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_NORTHERN_SHADOW] =
+        [invaderXim.appraisal.origin.NYZUL_NORTHERN_SHADOW] =
         {
             items =
             {
-                { 90, xi.item.BUTTERFLY_AXE },
-                { 10, xi.item.EXECUTIONER   },
+                { 90, invaderXim.item.BUTTERFLY_AXE },
+                { 10, invaderXim.item.EXECUTIONER   },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_AQUARIUS] =
+        [invaderXim.appraisal.origin.NYZUL_AQUARIUS] =
         {
             items =
             {
-                { 90, xi.item.BONE_AXE  },
-                { 10, xi.item.FRANSISCA },
+                { 90, invaderXim.item.BONE_AXE  },
+                { 10, invaderXim.item.FRANSISCA },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_TRICKSTER_KINETIX] =
+        [invaderXim.appraisal.origin.NYZUL_TRICKSTER_KINETIX] =
         {
             items =
             {
-                { 90, xi.item.BONE_AXE },
-                { 10, xi.item.TABAR    },
+                { 90, invaderXim.item.BONE_AXE },
+                { 10, invaderXim.item.TABAR    },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_TYRANNIC_TUNNOK] =
+        [invaderXim.appraisal.origin.NYZUL_TYRANNIC_TUNNOK] =
         {
             items =
             {
-                { 90, xi.item.BONE_AXE },
-                { 10, xi.item.LOHAR    },
+                { 90, invaderXim.item.BONE_AXE },
+                { 10, invaderXim.item.LOHAR    },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_PANZER_PERCIVAL] =
+        [invaderXim.appraisal.origin.NYZUL_PANZER_PERCIVAL] =
         {
             items =
             {
-                { 90, xi.item.BUTTERFLY_AXE },
-                { 10, xi.item.NECKCHOPPER   },
+                { 90, invaderXim.item.BUTTERFLY_AXE },
+                { 10, invaderXim.item.NECKCHOPPER   },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_PEG_POWLER] =
+        [invaderXim.appraisal.origin.NYZUL_PEG_POWLER] =
         {
             items =
             {
-                { 90, xi.item.BUTTERFLY_AXE },
-                { 10, xi.item.SCHWARZ_AXT   },
+                { 90, invaderXim.item.BUTTERFLY_AXE },
+                { 10, invaderXim.item.SCHWARZ_AXT   },
             },
         },
     },
 
-    [xi.item.UNAPPRAISED_BOW] =
+    [invaderXim.item.UNAPPRAISED_BOW] =
     {
-        [xi.assault.mission.LAMIA_NO_13] =
+        [invaderXim.assault.mission.LAMIA_NO_13] =
         {
             items =
             {
-                { 43, xi.item.LONGBOW_P1   },
-                { 43, xi.item.CROSSBOW_P1  },
-                { 14, xi.item.IMPERIAL_BOW },
+                { 43, invaderXim.item.LONGBOW_P1   },
+                { 43, invaderXim.item.CROSSBOW_P1  },
+                { 14, invaderXim.item.IMPERIAL_BOW },
             },
         },
 
-        [xi.assault.mission.SHOOTING_DOWN_THE_BARON] =
+        [invaderXim.assault.mission.SHOOTING_DOWN_THE_BARON] =
         {
             items =
             {
-                { 330, xi.item.CROSSBOW_P1    },
-                { 550, xi.item.LONGBOW_P1     },
-                { 100, xi.item.CULVERIN       },
-                {  10, xi.item.CULVERIN_P1    },
-                {  10, xi.item.STORM_ZAMBURAK },
+                { 330, invaderXim.item.CROSSBOW_P1    },
+                { 550, invaderXim.item.LONGBOW_P1     },
+                { 100, invaderXim.item.CULVERIN       },
+                {  10, invaderXim.item.CULVERIN_P1    },
+                {  10, invaderXim.item.STORM_ZAMBURAK },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_GYRE_CARLIN] =
+        [invaderXim.appraisal.origin.NYZUL_GYRE_CARLIN] =
         {
             items =
             {
-                { 90, xi.item.SHORTBOW },
-                { 10, xi.item.RIKONODO },
+                { 90, invaderXim.item.SHORTBOW },
+                { 10, invaderXim.item.RIKONODO },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_EASTERN_SHADOW] =
+        [invaderXim.appraisal.origin.NYZUL_EASTERN_SHADOW] =
         {
             items =
             {
-                { 90, xi.item.LONGBOW   },
-                { 10, xi.item.VALIS_BOW },
+                { 90, invaderXim.item.LONGBOW   },
+                { 10, invaderXim.item.VALIS_BOW },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_HELLDIVER] =
+        [invaderXim.appraisal.origin.NYZUL_HELLDIVER] =
         {
             items =
             {
-                { 90, xi.item.SELF_BOW },
-                { 10, xi.item.WINGEDGE },
+                { 90, invaderXim.item.SELF_BOW },
+                { 10, invaderXim.item.WINGEDGE },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_UNGUR] =
+        [invaderXim.appraisal.origin.NYZUL_UNGUR] =
         {
             items =
             {
-                { 90, xi.item.CROSSBOW        },
-                { 10, xi.item.UNGUR_BOOMERANG },
+                { 90, invaderXim.item.CROSSBOW        },
+                { 10, invaderXim.item.UNGUR_BOOMERANG },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_FRAELISSA] =
+        [invaderXim.appraisal.origin.NYZUL_FRAELISSA] =
         {
             items =
             {
-                { 90, xi.item.CROSSBOW      },
-                { 10, xi.item.ALMOGAVAR_BOW },
+                { 90, invaderXim.item.CROSSBOW      },
+                { 10, invaderXim.item.ALMOGAVAR_BOW },
             },
         },
     },
 
-    [xi.item.UNAPPRAISED_GLOVES] =
+    [invaderXim.item.UNAPPRAISED_GLOVES] =
     {
-        [xi.assault.mission.ORICHALCUM_SURVEY] =
+        [invaderXim.assault.mission.ORICHALCUM_SURVEY] =
         {
             items =
             {
-                { 100, xi.item.STORM_GAGES },
+                { 100, invaderXim.item.STORM_GAGES },
             },
         },
 
-        [xi.assault.mission.SEAGULL_GROUNDED] =
+        [invaderXim.assault.mission.SEAGULL_GROUNDED] =
         {
             items =
             {
-                { 28, xi.item.BRONZE_MITTENS_P1 },
-                { 30, xi.item.LEATHER_GLOVES    },
-                { 20, xi.item.COTTON_GLOVES     },
-                { 18, xi.item.CUFFS             },
-                {  5, xi.item.STORM_MANOPOLAS   },
+                { 28, invaderXim.item.BRONZE_MITTENS_P1 },
+                { 30, invaderXim.item.LEATHER_GLOVES    },
+                { 20, invaderXim.item.COTTON_GLOVES     },
+                { 18, invaderXim.item.CUFFS             },
+                {  5, invaderXim.item.STORM_MANOPOLAS   },
             },
         },
 
-        [xi.assault.mission.REQUIEM] =
+        [invaderXim.assault.mission.REQUIEM] =
         {
             items =
             {
-                { 30, xi.item.LEATHER_GLOVES    },
-                { 28, xi.item.BRONZE_MITTENS_P1 },
-                { 20, xi.item.COTTON_GLOVES     },
-                { 18, xi.item.CUFFS             },
-                {  5, xi.item.STORM_GAGES       },
+                { 30, invaderXim.item.LEATHER_GLOVES    },
+                { 28, invaderXim.item.BRONZE_MITTENS_P1 },
+                { 20, invaderXim.item.COTTON_GLOVES     },
+                { 18, invaderXim.item.CUFFS             },
+                {  5, invaderXim.item.STORM_GAGES       },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_PEALLAIDH] =
+        [invaderXim.appraisal.origin.NYZUL_PEALLAIDH] =
         {
             items =
             {
-                { 90, xi.item.LEATHER_GLOVES   },
-                { 10, xi.item.NIGHTMARE_GLOVES },
+                { 90, invaderXim.item.LEATHER_GLOVES   },
+                { 10, invaderXim.item.NIGHTMARE_GLOVES },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_ENERGETIC_ERUCA] =
+        [invaderXim.appraisal.origin.NYZUL_ENERGETIC_ERUCA] =
         {
             items =
             {
-                { 90, xi.item.COTTON_GLOVES },
-                { 10, xi.item.HANZO_TEKKO   },
+                { 90, invaderXim.item.COTTON_GLOVES },
+                { 10, invaderXim.item.HANZO_TEKKO   },
             },
         },
     },
 
-    [xi.item.UNAPPRAISED_FOOTWEAR] =
+    [invaderXim.item.UNAPPRAISED_FOOTWEAR] =
     {
-        [xi.assault.mission.LAMIA_NO_13] =
+        [invaderXim.assault.mission.LAMIA_NO_13] =
         {
             items =
             {
-                { 20, xi.item.ASH_CLOGS          },
-                { 38, xi.item.BRONZE_LEGGINGS_P1 },
-                { 18, xi.item.LEATHER_HIGHBOOTS  },
-                {  6, xi.item.SOLEA              },
-                { 18, xi.item.STORM_GAMBIERAS    },
+                { 20, invaderXim.item.ASH_CLOGS          },
+                { 38, invaderXim.item.BRONZE_LEGGINGS_P1 },
+                { 18, invaderXim.item.LEATHER_HIGHBOOTS  },
+                {  6, invaderXim.item.SOLEA              },
+                { 18, invaderXim.item.STORM_GAMBIERAS    },
             },
         },
 
-        [xi.assault.mission.EXTERMINATION] =
+        [invaderXim.assault.mission.EXTERMINATION] =
         {
             items =
             {
-                {  5, xi.item.STORM_CRACKOWS     },
-                { 35, xi.item.ASH_CLOGS          },
-                { 25, xi.item.BRONZE_LEGGINGS_P1 },
-                { 35, xi.item.LEATHER_HIGHBOOTS  },
+                {  5, invaderXim.item.STORM_CRACKOWS     },
+                { 35, invaderXim.item.ASH_CLOGS          },
+                { 25, invaderXim.item.BRONZE_LEGGINGS_P1 },
+                { 35, invaderXim.item.LEATHER_HIGHBOOTS  },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_LEAPING_LIZZY] =
+        [invaderXim.appraisal.origin.NYZUL_LEAPING_LIZZY] =
         {
             items =
             {
-                { 95, xi.item.LEATHER_HIGHBOOTS },
-                {  5, xi.item.BOUNDING_BOOTS    },
+                { 95, invaderXim.item.LEATHER_HIGHBOOTS },
+                {  5, invaderXim.item.BOUNDING_BOOTS    },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_CACTUAR_CANTAUTOR] =
+        [invaderXim.appraisal.origin.NYZUL_CACTUAR_CANTAUTOR] =
         {
             items =
             {
-                { 90, xi.item.LEATHER_HIGHBOOTS },
-                { 10, xi.item.KUNG_FU_SHOES     },
+                { 90, invaderXim.item.LEATHER_HIGHBOOTS },
+                { 10, invaderXim.item.KUNG_FU_SHOES     },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_BONNACON] =
+        [invaderXim.appraisal.origin.NYZUL_BONNACON] =
         {
             items =
             {
-                { 90, xi.item.ASH_CLOGS       },
-                { 10, xi.item.TREDECIM_SCYTHE }, -- Tredecim Scythe or Cure Clogs
+                { 90, invaderXim.item.ASH_CLOGS       },
+                { 10, invaderXim.item.TREDECIM_SCYTHE }, -- Tredecim Scythe or Cure Clogs
             },
         },
 
-        [xi.appraisal.origin.NYZUL_TOTTERING_TOBY] =
+        [invaderXim.appraisal.origin.NYZUL_TOTTERING_TOBY] =
         {
             items =
             {
-                { 90, xi.item.ASH_CLOGS         },
-                { 10, xi.item.STUMBLING_SANDALS },
+                { 90, invaderXim.item.ASH_CLOGS         },
+                { 10, invaderXim.item.STUMBLING_SANDALS },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_SIMURGH] =
+        [invaderXim.appraisal.origin.NYZUL_SIMURGH] =
         {
             items =
             {
-                { 90, xi.item.LEATHER_HIGHBOOTS },
-                { 10, xi.item.TROTTER_BOOTS     },
+                { 90, invaderXim.item.LEATHER_HIGHBOOTS },
+                { 10, invaderXim.item.TROTTER_BOOTS     },
             },
         },
     },
 
-    [xi.item.UNAPPRAISED_HEADPIECE] =
+    [invaderXim.item.UNAPPRAISED_HEADPIECE] =
     {
-        [xi.assault.mission.TROLL_FUGITIVES] =
+        [invaderXim.assault.mission.TROLL_FUGITIVES] =
         {
             items =
             {
-                {  5, xi.item.STORM_TURBAN    },
-                { 20, xi.item.COTTON_HEADGEAR },
-                { 15, xi.item.BRONZE_CAP_P1   },
-                { 30, xi.item.LEATHER_BANDANA },
-                { 30, xi.item.CIRCLET         },
+                {  5, invaderXim.item.STORM_TURBAN    },
+                { 20, invaderXim.item.COTTON_HEADGEAR },
+                { 15, invaderXim.item.BRONZE_CAP_P1   },
+                { 30, invaderXim.item.LEATHER_BANDANA },
+                { 30, invaderXim.item.CIRCLET         },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_VALKURM_EMPEROR] =
+        [invaderXim.appraisal.origin.NYZUL_VALKURM_EMPEROR] =
         {
             items =
             {
-                { 90, xi.item.COPPER_HAIRPIN  },
-                { 10, xi.item.EMPRESS_HAIRPIN },
+                { 90, invaderXim.item.COPPER_HAIRPIN  },
+                { 10, invaderXim.item.EMPRESS_HAIRPIN },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_ELLYLLON] =
+        [invaderXim.appraisal.origin.NYZUL_ELLYLLON] =
         {
             items =
             {
-                { 90, xi.item.LEATHER_BANDANA },
-                { 10, xi.item.MUSHROOM_HELM   },
+                { 90, invaderXim.item.LEATHER_BANDANA },
+                { 10, invaderXim.item.MUSHROOM_HELM   },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_TAISAIJIN] =
+        [invaderXim.appraisal.origin.NYZUL_TAISAIJIN] =
         {
             items =
             {
-                { 90, xi.item.LEATHER_BANDANA },
-                { 10, xi.item.SPELUNKERS_HAT  },
+                { 90, invaderXim.item.LEATHER_BANDANA },
+                { 10, invaderXim.item.SPELUNKERS_HAT  },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_DROOLING_DAISY] =
+        [invaderXim.appraisal.origin.NYZUL_DROOLING_DAISY] =
         {
             items =
             {
-                { 90, xi.item.BONE_HAIRPIN   },
-                { 10, xi.item.DODGE_HEADBAND },
+                { 90, invaderXim.item.BONE_HAIRPIN   },
+                { 10, invaderXim.item.DODGE_HEADBAND },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_SHARP_EARED_ROPIPI] =
+        [invaderXim.appraisal.origin.NYZUL_SHARP_EARED_ROPIPI] =
         {
             items =
             {
-                { 90, xi.item.COPPER_HAIRPIN    },
-                { 10, xi.item.ENTRANCING_RIBBON },
+                { 90, invaderXim.item.COPPER_HAIRPIN    },
+                { 10, invaderXim.item.ENTRANCING_RIBBON },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_TUMBLING_TRUFFLE] =
+        [invaderXim.appraisal.origin.NYZUL_TUMBLING_TRUFFLE] =
         {
             items =
             {
-                { 90, xi.item.LEATHER_BANDANA },
-                { 10, xi.item.FUNGUS_HAT      },
+                { 90, invaderXim.item.LEATHER_BANDANA },
+                { 10, invaderXim.item.FUNGUS_HAT      },
             },
         },
     },
 
-    [xi.item.UNAPPRAISED_EARRING] =
+    [invaderXim.item.UNAPPRAISED_EARRING] =
     {
-        [xi.assault.mission.EXCAVATION_DUTY] =
+        [invaderXim.assault.mission.EXCAVATION_DUTY] =
         {
             items =
             {
-                { 25, xi.item.SHELL_EARRING   },
-                { 21, xi.item.BONE_EARRING    },
-                { 25, xi.item.BEETLE_EARRING  },
-                { 20, xi.item.SILVER_EARRING  },
-                {  6, xi.item.RERAISE_EARRING },
-                {  3, xi.item.STORM_LOOP      },
+                { 25, invaderXim.item.SHELL_EARRING   },
+                { 21, invaderXim.item.BONE_EARRING    },
+                { 25, invaderXim.item.BEETLE_EARRING  },
+                { 20, invaderXim.item.SILVER_EARRING  },
+                {  6, invaderXim.item.RERAISE_EARRING },
+                {  3, invaderXim.item.STORM_LOOP      },
             },
         },
 
-        [xi.assault.mission.GOLDEN_SALVAGE] =
+        [invaderXim.assault.mission.GOLDEN_SALVAGE] =
         {
             items =
             {
-                { 22, xi.item.SHELL_EARRING  },
-                { 20, xi.item.BONE_EARRING   },
-                { 21, xi.item.BEETLE_EARRING },
-                { 27, xi.item.SILVER_EARRING },
-                {  6, xi.item.HEIMS_EARRING  },
-                {  4, xi.item.STORM_EARRING  },
+                { 22, invaderXim.item.SHELL_EARRING  },
+                { 20, invaderXim.item.BONE_EARRING   },
+                { 21, invaderXim.item.BEETLE_EARRING },
+                { 27, invaderXim.item.SILVER_EARRING },
+                {  6, invaderXim.item.HEIMS_EARRING  },
+                {  4, invaderXim.item.STORM_EARRING  },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_LEECH_KING] =
+        [invaderXim.appraisal.origin.NYZUL_LEECH_KING] =
         {
             items =
             {
-                { 90, xi.item.SHELL_EARRING     },
-                { 10, xi.item.BLOODBEAD_EARRING },
+                { 90, invaderXim.item.SHELL_EARRING     },
+                { 10, invaderXim.item.BLOODBEAD_EARRING },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_CAPRICIOUS_CASSIE] =
+        [invaderXim.appraisal.origin.NYZUL_CAPRICIOUS_CASSIE] =
         {
             items =
             {
-                { 90, xi.item.BONE_EARRING   },
-                { 10, xi.item.CASSIE_EARRING },
+                { 90, invaderXim.item.BONE_EARRING   },
+                { 10, invaderXim.item.CASSIE_EARRING },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_MAIGHDEAN_UAINE] =
+        [invaderXim.appraisal.origin.NYZUL_MAIGHDEAN_UAINE] =
         {
             items =
             {
-                { 90, xi.item.BEETLE_EARRING  },
-                { 10, xi.item.OPTICAL_EARRING },
+                { 90, invaderXim.item.BEETLE_EARRING  },
+                { 10, invaderXim.item.OPTICAL_EARRING },
             },
         },
     },
 
-    [xi.item.UNAPPRAISED_RING] =
+    [invaderXim.item.UNAPPRAISED_RING] =
     {
-        [xi.assault.mission.LEUJAOAM_CLEANSING] =
+        [invaderXim.assault.mission.LEUJAOAM_CLEANSING] =
         {
             items =
             {
-                { 50, xi.item.COPPER_RING   },
-                { 30, xi.item.BRASS_RING    },
-                { 15, xi.item.ARCHERS_RING  },
-                {  5, xi.item.IMPERIAL_RING },
+                { 50, invaderXim.item.COPPER_RING   },
+                { 30, invaderXim.item.BRASS_RING    },
+                { 15, invaderXim.item.ARCHERS_RING  },
+                {  5, invaderXim.item.IMPERIAL_RING },
             },
         },
 
-        [xi.assault.mission.IMPERIAL_AGENT_RESCUE] =
+        [invaderXim.assault.mission.IMPERIAL_AGENT_RESCUE] =
         {
             items =
             {
-                { 50, xi.item.COPPER_RING },
-                { 30, xi.item.BRASS_RING  },
-                { 15, xi.item.ETHER_RING  },
-                {  5, xi.item.STORM_RING  },
+                { 50, invaderXim.item.COPPER_RING },
+                { 30, invaderXim.item.BRASS_RING  },
+                { 15, invaderXim.item.ETHER_RING  },
+                {  5, invaderXim.item.STORM_RING  },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_BOMB_KING] =
+        [invaderXim.appraisal.origin.NYZUL_BOMB_KING] =
         {
             items =
             {
-                { 60, xi.item.COPPER_RING },
-                { 30, xi.item.BRASS_RING  },
-                { 10, xi.item.BOMB_RING   },
+                { 60, invaderXim.item.COPPER_RING },
+                { 30, invaderXim.item.BRASS_RING  },
+                { 10, invaderXim.item.BOMB_RING   },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_SMOTHERING_SCHMIDT] =
+        [invaderXim.appraisal.origin.NYZUL_SMOTHERING_SCHMIDT] =
         {
             items =
             {
-                { 60, xi.item.COPPER_RING   },
-                { 30, xi.item.BRASS_RING    },
-                { 10, xi.item.MALFLOOD_RING },
+                { 60, invaderXim.item.COPPER_RING   },
+                { 30, invaderXim.item.BRASS_RING    },
+                { 10, invaderXim.item.MALFLOOD_RING },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_ASPHYXIATED_AMSEL] =
+        [invaderXim.appraisal.origin.NYZUL_ASPHYXIATED_AMSEL] =
         {
             items =
             {
-                { 90, xi.item.BRASS_RING   },
-                { 10, xi.item.MALGUST_RING },
+                { 90, invaderXim.item.BRASS_RING   },
+                { 10, invaderXim.item.MALGUST_RING },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_CRUSHED_KRAUSE] =
+        [invaderXim.appraisal.origin.NYZUL_CRUSHED_KRAUSE] =
         {
             items =
             {
-                { 90, xi.item.COPPER_RING  },
-                { 10, xi.item.MALDUST_RING },
+                { 90, invaderXim.item.COPPER_RING  },
+                { 10, invaderXim.item.MALDUST_RING },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_PULVERIZED_PFEFFER] =
+        [invaderXim.appraisal.origin.NYZUL_PULVERIZED_PFEFFER] =
         {
             items =
             {
-                { 90, xi.item.COPPER_RING   },
-                { 10, xi.item.MALFROST_RING },
+                { 90, invaderXim.item.COPPER_RING   },
+                { 10, invaderXim.item.MALFROST_RING },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_SERKET] =
+        [invaderXim.appraisal.origin.NYZUL_SERKET] =
         {
             items =
             {
-                { 90, xi.item.BRASS_RING  },
-                { 10, xi.item.SERKET_RING },
+                { 90, invaderXim.item.BRASS_RING  },
+                { 10, invaderXim.item.SERKET_RING },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_BURNED_BERGMANN] =
+        [invaderXim.appraisal.origin.NYZUL_BURNED_BERGMANN] =
         {
             items =
             {
-                { 90, xi.item.COPPER_RING   },
-                { 10, xi.item.MALFLAME_RING },
+                { 90, invaderXim.item.COPPER_RING   },
+                { 10, invaderXim.item.MALFLAME_RING },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_BLOODSUCKER] =
+        [invaderXim.appraisal.origin.NYZUL_BLOODSUCKER] =
         {
             items =
             {
-                { 90, xi.item.COPPER_RING    },
-                { 10, xi.item.BLOODBEAD_RING },
+                { 90, invaderXim.item.COPPER_RING    },
+                { 10, invaderXim.item.BLOODBEAD_RING },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_SEWER_SYRUP] =
+        [invaderXim.appraisal.origin.NYZUL_SEWER_SYRUP] =
         {
             items =
             {
-                { 90, xi.item.BRASS_RING },
-                { 10, xi.item.JELLY_RING },
+                { 90, invaderXim.item.BRASS_RING },
+                { 10, invaderXim.item.JELLY_RING },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_WOUNDED_WURFEL] =
+        [invaderXim.appraisal.origin.NYZUL_WOUNDED_WURFEL] =
         {
             items =
             {
-                { 90, xi.item.COPPER_RING   },
-                { 10, xi.item.MALFLASH_RING },
+                { 90, invaderXim.item.COPPER_RING   },
+                { 10, invaderXim.item.MALFLASH_RING },
             },
         },
     },
 
-    [xi.item.UNAPPRAISED_CAPE] =
+    [invaderXim.item.UNAPPRAISED_CAPE] =
     {
-        [xi.assault.mission.LEBROS_SUPPLIES] =
+        [invaderXim.assault.mission.LEBROS_SUPPLIES] =
         {
             items =
             {
-                { 30, xi.item.DHALMEL_MANTLE_P1 },
-                { 25, xi.item.COTTON_CAPE_P1    },
-                { 25, xi.item.LIZARD_MANTLE_P1  },
-                {  5, xi.item.STORM_CAPE        },
-                { 15, xi.item.ENHANCING_MANTLE  },
+                { 30, invaderXim.item.DHALMEL_MANTLE_P1 },
+                { 25, invaderXim.item.COTTON_CAPE_P1    },
+                { 25, invaderXim.item.LIZARD_MANTLE_P1  },
+                {  5, invaderXim.item.STORM_CAPE        },
+                { 15, invaderXim.item.ENHANCING_MANTLE  },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_OLD_TWO_WINGS] =
+        [invaderXim.appraisal.origin.NYZUL_OLD_TWO_WINGS] =
         {
             items =
             {
-                { 90, xi.item.LIZARD_MANTLE_P1 },
-                { 10, xi.item.BAT_CAPE         },
+                { 90, invaderXim.item.LIZARD_MANTLE_P1 },
+                { 10, invaderXim.item.BAT_CAPE         },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_FRAELISSA] =
+        [invaderXim.appraisal.origin.NYZUL_FRAELISSA] =
         {
             items =
             {
-                { 90, xi.item.COTTON_CAPE_P1   },
-                { 10, xi.item.BELLICOSE_MANTLE },
+                { 90, invaderXim.item.COTTON_CAPE_P1   },
+                { 10, invaderXim.item.BELLICOSE_MANTLE },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_SPINY_SPIPI] =
+        [invaderXim.appraisal.origin.NYZUL_SPINY_SPIPI] =
         {
             items =
             {
-                { 90, xi.item.RABBIT_MANTLE  },
-                { 10, xi.item.MIST_SILK_CAPE },
+                { 90, invaderXim.item.RABBIT_MANTLE  },
+                { 10, invaderXim.item.MIST_SILK_CAPE },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_GOLDEN_BAT] =
+        [invaderXim.appraisal.origin.NYZUL_GOLDEN_BAT] =
         {
             items =
             {
-                { 90, xi.item.COTTON_CAPE_P1 },
-                { 10, xi.item.NIGHT_CAPE     },
+                { 90, invaderXim.item.COTTON_CAPE_P1 },
+                { 10, invaderXim.item.NIGHT_CAPE     },
             },
         },
     },
 
-    [xi.item.UNAPPRAISED_SASH] =
+    [invaderXim.item.UNAPPRAISED_SASH] =
     {
 
     },
 
-    [xi.item.UNAPPRAISED_SHIELD] =
+    [invaderXim.item.UNAPPRAISED_SHIELD] =
     {
-        [xi.appraisal.origin.NYZUL_BLOODTEAR_BALDURF] =
+        [invaderXim.appraisal.origin.NYZUL_BLOODTEAR_BALDURF] =
         {
             items =
             {
-                { 90, xi.item.OAK_SHIELD    },
-                { 10, xi.item.VIKING_SHIELD },
+                { 90, invaderXim.item.OAK_SHIELD    },
+                { 10, invaderXim.item.VIKING_SHIELD },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_FUNGUS_BEETLE] =
+        [invaderXim.appraisal.origin.NYZUL_FUNGUS_BEETLE] =
         {
             items =
             {
-                { 90, xi.item.LAUAN_SHIELD },
-                { 10, xi.item.CLIPEUS      },
+                { 90, invaderXim.item.LAUAN_SHIELD },
+                { 10, invaderXim.item.CLIPEUS      },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_STEELFLEECE_BALDARICH] =
+        [invaderXim.appraisal.origin.NYZUL_STEELFLEECE_BALDARICH] =
         {
             items =
             {
-                { 90, xi.item.OAK_SHIELD    },
-                { 10, xi.item.VIKING_SHIELD },
+                { 90, invaderXim.item.OAK_SHIELD    },
+                { 10, invaderXim.item.VIKING_SHIELD },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_SOUTHERN_SHADOW] =
+        [invaderXim.appraisal.origin.NYZUL_SOUTHERN_SHADOW] =
         {
             items =
             {
-                { 90, xi.item.ELM_SHIELD    },
-                { 10, xi.item.MASTER_SHIELD },
+                { 90, invaderXim.item.ELM_SHIELD    },
+                { 10, invaderXim.item.MASTER_SHIELD },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_PELICAN] =
+        [invaderXim.appraisal.origin.NYZUL_PELICAN] =
         {
             items =
             {
-                { 90, xi.item.ASPIS        },
-                { 10, xi.item.ASTRAL_ASPIS },
+                { 90, invaderXim.item.ASPIS        },
+                { 10, invaderXim.item.ASTRAL_ASPIS },
             },
         },
     },
 
-    [xi.item.UNAPPRAISED_NECKLACE] =
+    [invaderXim.item.UNAPPRAISED_NECKLACE] =
     {
-        [xi.assault.mission.ORICHALCUM_SURVEY] =
+        [invaderXim.assault.mission.ORICHALCUM_SURVEY] =
         {
             items =
             {
-                { 55, xi.item.FEATHER_COLLAR },
-                { 30, xi.item.GORGET_P1      },
-                { 10, xi.item.JAGD_GORGET    },
-                {  5, xi.item.STORM_MUFFLER  },
+                { 55, invaderXim.item.FEATHER_COLLAR },
+                { 30, invaderXim.item.GORGET_P1      },
+                { 10, invaderXim.item.JAGD_GORGET    },
+                {  5, invaderXim.item.STORM_MUFFLER  },
             },
         },
 
-        [xi.assault.mission.PREEMPTIVE_STRIKE] =
+        [invaderXim.assault.mission.PREEMPTIVE_STRIKE] =
         {
             items =
             {
-                { 55, xi.item.FEATHER_COLLAR },
-                { 30, xi.item.GORGET_P1      },
-                { 10, xi.item.SPECTACLES     },
-                {  5, xi.item.STORM_TORQUE   },
+                { 55, invaderXim.item.FEATHER_COLLAR },
+                { 30, invaderXim.item.GORGET_P1      },
+                { 10, invaderXim.item.SPECTACLES     },
+                {  5, invaderXim.item.STORM_TORQUE   },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_SHADOW_EYE] =
+        [invaderXim.appraisal.origin.NYZUL_SHADOW_EYE] =
         {
             items =
             {
-                { 95, xi.item.REGEN_COLLAR },
-                {  5, xi.item.MOON_AMULET  },
+                { 95, invaderXim.item.REGEN_COLLAR },
+                {  5, invaderXim.item.MOON_AMULET  },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_JAGGEDY_EARED_JACK] =
+        [invaderXim.appraisal.origin.NYZUL_JAGGEDY_EARED_JACK] =
         {
             items =
             {
-                { 90, xi.item.LEATHER_GORGET },
-                { 10, xi.item.RABBIT_CHARM   },
+                { 90, invaderXim.item.LEATHER_GORGET },
+                { 10, invaderXim.item.RABBIT_CHARM   },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_GARGANTUA] =
+        [invaderXim.appraisal.origin.NYZUL_GARGANTUA] =
         {
             items =
             {
-                { 90, xi.item.FEATHER_COLLAR  },
-                { 10, xi.item.ELEMENTAL_CHARM },
+                { 90, invaderXim.item.FEATHER_COLLAR  },
+                { 10, invaderXim.item.ELEMENTAL_CHARM },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_SERPOPARD_ISHTAR] =
+        [invaderXim.appraisal.origin.NYZUL_SERPOPARD_ISHTAR] =
         {
             items =
             {
-                { 90, xi.item.FEATHER_COLLAR   },
-                { 10, xi.item.CERULEAN_PENDANT },
+                { 90, invaderXim.item.FEATHER_COLLAR   },
+                { 10, invaderXim.item.CERULEAN_PENDANT },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_ARGUS] =
+        [invaderXim.appraisal.origin.NYZUL_ARGUS] =
         {
             items =
             {
-                { 90, xi.item.REGEN_COLLAR  },
-                { 10, xi.item.PEACOCK_CHARM },
+                { 90, invaderXim.item.REGEN_COLLAR  },
+                { 10, invaderXim.item.PEACOCK_CHARM },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_BLOODPOOL_VORAX] =
+        [invaderXim.appraisal.origin.NYZUL_BLOODPOOL_VORAX] =
         {
             items =
             {
-                { 90, xi.item.GORGET_P1        },
-                { 10, xi.item.BLOODBEAD_AMULET },
+                { 90, invaderXim.item.GORGET_P1        },
+                { 10, invaderXim.item.BLOODBEAD_AMULET },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_BUBURIMBOO] =
+        [invaderXim.appraisal.origin.NYZUL_BUBURIMBOO] =
         {
             items =
             {
-                { 90, xi.item.GORGET_P1       },
-                { 10, xi.item.BUBURIMU_GORGET },
+                { 90, invaderXim.item.GORGET_P1       },
+                { 10, invaderXim.item.BUBURIMU_GORGET },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_DUNE_WIDOW] =
+        [invaderXim.appraisal.origin.NYZUL_DUNE_WIDOW] =
         {
             items =
             {
-                { 90, xi.item.REGEN_COLLAR  },
-                { 10, xi.item.SPIDER_TORQUE },
+                { 90, invaderXim.item.REGEN_COLLAR  },
+                { 10, invaderXim.item.SPIDER_TORQUE },
             },
         },
     },
 
-    [xi.item.UNAPPRAISED_INGOT] =
+    [invaderXim.item.UNAPPRAISED_INGOT] =
     {
 
     },
 
-    [xi.item.UNAPPRAISED_POTION] =
+    [invaderXim.item.UNAPPRAISED_POTION] =
     {
 
     },
 
-    [xi.item.UNAPPRAISED_CLOTH] =
+    [invaderXim.item.UNAPPRAISED_CLOTH] =
     {
 
     },
 
-    [xi.item.UNAPPRAISED_BOX] =
+    [invaderXim.item.UNAPPRAISED_BOX] =
     {
-        [xi.assault.mission.LEUJAOAM_CLEANSING] =
+        [invaderXim.assault.mission.LEUJAOAM_CLEANSING] =
         {
             items =
             {
-                { 10, xi.item.WHITE_ROCK        },
-                { 20, xi.item.TSURARA           },
-                {  2, xi.item.PHALAENOPSIS      },
-                {  5, xi.item.GARDENIA_SEED     },
-                {  8, xi.item.GLASS_SHEET       },
-                { 20, xi.item.MERROW_SCALE      },
-                { 15, xi.item.SOULFLAYER_STAFF  },
-                { 10, xi.item.ICE_CRYSTAL       },
-                {  1, xi.item.TOOLBAG_JUSATSU   },
-                {  3, xi.item.IRON_BULLET_POUCH },
-                {  6, xi.item.LAKERDA           },
+                { 10, invaderXim.item.WHITE_ROCK        },
+                { 20, invaderXim.item.TSURARA           },
+                {  2, invaderXim.item.PHALAENOPSIS      },
+                {  5, invaderXim.item.GARDENIA_SEED     },
+                {  8, invaderXim.item.GLASS_SHEET       },
+                { 20, invaderXim.item.MERROW_SCALE      },
+                { 15, invaderXim.item.SOULFLAYER_STAFF  },
+                { 10, invaderXim.item.ICE_CRYSTAL       },
+                {  1, invaderXim.item.TOOLBAG_JUSATSU   },
+                {  3, invaderXim.item.IRON_BULLET_POUCH },
+                {  6, invaderXim.item.LAKERDA           },
             },
         },
 
-        [xi.assault.mission.ORICHALCUM_SURVEY] =
+        [invaderXim.assault.mission.ORICHALCUM_SURVEY] =
         {
             items =
             {
-                { 10, xi.item.EGGPLANT              },
-                {  9, xi.item.GARDENIA_SEED         },
-                { 10, xi.item.ICE_CRYSTAL           },
-                {  7, xi.item.KABURA_QUIVER         },
-                { 13, xi.item.SQUARE_OF_LINEN_CLOTH },
-                {  8, xi.item.MERROW_SCALE          },
-                {  5, xi.item.PHALAENOPSIS          },
-                { 10, xi.item.POROGGO_HAT           },
-                {  6, xi.item.SOULFLAYER_STAFF      },
-                { 15, xi.item.TSURARA               },
-                {  7, xi.item.WHITE_ROCK            },
+                { 10, invaderXim.item.EGGPLANT              },
+                {  9, invaderXim.item.GARDENIA_SEED         },
+                { 10, invaderXim.item.ICE_CRYSTAL           },
+                {  7, invaderXim.item.KABURA_QUIVER         },
+                { 13, invaderXim.item.SQUARE_OF_LINEN_CLOTH },
+                {  8, invaderXim.item.MERROW_SCALE          },
+                {  5, invaderXim.item.PHALAENOPSIS          },
+                { 10, invaderXim.item.POROGGO_HAT           },
+                {  6, invaderXim.item.SOULFLAYER_STAFF      },
+                { 15, invaderXim.item.TSURARA               },
+                {  7, invaderXim.item.WHITE_ROCK            },
             },
         },
 
-        [xi.assault.mission.IMPERIAL_AGENT_RESCUE] =
+        [invaderXim.assault.mission.IMPERIAL_AGENT_RESCUE] =
         {
             items =
             {
-                {  7, xi.item.DATE                         },
-                {  5, xi.item.EGGPLANT                     },
-                { 10, xi.item.CLUMP_OF_IMPERIAL_TEA_LEAVES },
-                {  4, xi.item.CHUNK_OF_KAOLIN              },
-                { 20, xi.item.MAMOOL_JA_COLLAR             },
-                { 15, xi.item.POROGGO_HAT                  },
-                {  6, xi.item.SPRIG_OF_SAGE                },
-                {  5, xi.item.SQUARE_OF_SILK_CLOTH         },
-                {  1, xi.item.TOOLBAG_KAWAHORI_OGI         },
-                {  1, xi.item.TOOLBAG_SHIHEI               },
-                {  1, xi.item.TOOLBAG_TSURARA              },
-                { 10, xi.item.WILD_ONION                   },
-                {  1, xi.item.TOOLBAG_UCHITAKE             },
-                { 14, xi.item.ISTAKOZ                      },
+                {  7, invaderXim.item.DATE                         },
+                {  5, invaderXim.item.EGGPLANT                     },
+                { 10, invaderXim.item.CLUMP_OF_IMPERIAL_TEA_LEAVES },
+                {  4, invaderXim.item.CHUNK_OF_KAOLIN              },
+                { 20, invaderXim.item.MAMOOL_JA_COLLAR             },
+                { 15, invaderXim.item.POROGGO_HAT                  },
+                {  6, invaderXim.item.SPRIG_OF_SAGE                },
+                {  5, invaderXim.item.SQUARE_OF_SILK_CLOTH         },
+                {  1, invaderXim.item.TOOLBAG_KAWAHORI_OGI         },
+                {  1, invaderXim.item.TOOLBAG_SHIHEI               },
+                {  1, invaderXim.item.TOOLBAG_TSURARA              },
+                { 10, invaderXim.item.WILD_ONION                   },
+                {  1, invaderXim.item.TOOLBAG_UCHITAKE             },
+                { 14, invaderXim.item.ISTAKOZ                      },
             },
         },
 
-        [xi.assault.mission.LEBROS_SUPPLIES] =
+        [invaderXim.assault.mission.LEBROS_SUPPLIES] =
         {
             items =
             {
-                { 20, xi.item.PINCH_OF_SULFUR     },
-                { 20, xi.item.CHUNK_OF_FLAN_MEAT  },
-                {  5, xi.item.BULLET_POUCH        },
-                { 20, xi.item.TROLL_PAULDRON      },
-                { 10, xi.item.SPARTAN_BULLET      },
-                { 25, xi.item.SPRIG_OF_HOLY_BASIL },
+                { 20, invaderXim.item.PINCH_OF_SULFUR     },
+                { 20, invaderXim.item.CHUNK_OF_FLAN_MEAT  },
+                {  5, invaderXim.item.BULLET_POUCH        },
+                { 20, invaderXim.item.TROLL_PAULDRON      },
+                { 10, invaderXim.item.SPARTAN_BULLET      },
+                { 25, invaderXim.item.SPRIG_OF_HOLY_BASIL },
             },
         },
 
-        [xi.assault.mission.PREEMPTIVE_STRIKE] =
+        [invaderXim.assault.mission.PREEMPTIVE_STRIKE] =
         {
             items =
             {
-                { 17, xi.item.EGGPLANT                     },
-                { 15, xi.item.SPRIG_OF_SAGE                },
-                { 15, xi.item.CLUMP_OF_IMPERIAL_TEA_LEAVES },
-                {  7, xi.item.WILD_ONION                   },
-                { 10, xi.item.SPOOL_OF_RED_GRASS_THREAD    },
-                {  7, xi.item.MAMOOL_JA_COLLAR             },
-                {  4, xi.item.TOOLBAG_SAIRUI_RAN           },
-                {  3, xi.item.TOOLBAG_SHIHEI               },
-                {  4, xi.item.TOOLBAG_JUSATSU              },
-                { 10, xi.item.CHUNK_OF_KAOLIN              },
-                {  8, xi.item.POROGGO_HAT                  },
+                { 17, invaderXim.item.EGGPLANT                     },
+                { 15, invaderXim.item.SPRIG_OF_SAGE                },
+                { 15, invaderXim.item.CLUMP_OF_IMPERIAL_TEA_LEAVES },
+                {  7, invaderXim.item.WILD_ONION                   },
+                { 10, invaderXim.item.SPOOL_OF_RED_GRASS_THREAD    },
+                {  7, invaderXim.item.MAMOOL_JA_COLLAR             },
+                {  4, invaderXim.item.TOOLBAG_SAIRUI_RAN           },
+                {  3, invaderXim.item.TOOLBAG_SHIHEI               },
+                {  4, invaderXim.item.TOOLBAG_JUSATSU              },
+                { 10, invaderXim.item.CHUNK_OF_KAOLIN              },
+                {  8, invaderXim.item.POROGGO_HAT                  },
             },
         },
 
-        [xi.assault.mission.REQUIEM] =
+        [invaderXim.assault.mission.REQUIEM] =
         {
             items =
             {
-                {  4, xi.item.IGNEOUS_ROCK             },
-                {  5, xi.item.ROTTEN_QUIVER            },
-                {  5, xi.item.HOLY_BOLT_QUIVER         },
-                { 20, xi.item.BONE_CHIP                },
-                {  5, xi.item.CLEANING_TOOL_SET        },
-                {  2, xi.item.HANDFUL_OF_DRAGON_SCALES },
-                {  9, xi.item.QIQIRN_SANDBAG           },
-                { 15, xi.item.IMP_WING                 },
-                { 20, xi.item.BRONZE_BOLT              },
-                { 15, xi.item.SPRIG_OF_APPLE_MINT      },
+                {  4, invaderXim.item.IGNEOUS_ROCK             },
+                {  5, invaderXim.item.ROTTEN_QUIVER            },
+                {  5, invaderXim.item.HOLY_BOLT_QUIVER         },
+                { 20, invaderXim.item.BONE_CHIP                },
+                {  5, invaderXim.item.CLEANING_TOOL_SET        },
+                {  2, invaderXim.item.HANDFUL_OF_DRAGON_SCALES },
+                {  9, invaderXim.item.QIQIRN_SANDBAG           },
+                { 15, invaderXim.item.IMP_WING                 },
+                { 20, invaderXim.item.BRONZE_BOLT              },
+                { 15, invaderXim.item.SPRIG_OF_APPLE_MINT      },
             },
         },
 
-        [xi.assault.mission.EXCAVATION_DUTY] =
+        [invaderXim.assault.mission.EXCAVATION_DUTY] =
         {
             items =
             {
-                { 15, xi.item.CHUNK_OF_COPPER_ORE    },
-                { 10, xi.item.RED_ROCK               },
-                {  5, xi.item.SQUARE_OF_VELVET_CLOTH },
-                {  8, xi.item.PINCH_OF_BOMB_ASH      },
-                {  8, xi.item.PINCH_OF_SULFUR        },
-                {  5, xi.item.SPRIG_OF_HOLY_BASIL    },
-                { 20, xi.item.TROLL_PAULDRON         },
-                { 15, xi.item.CHUNK_OF_FLAN_MEAT     },
-                {  1, xi.item.TROLL_BRONZE_INGOT     },
-                {  2, xi.item.SILVER_BULLET_POUCH    },
-                {  1, xi.item.SPARTAN_BULLET_POUCH   },
-                {  2, xi.item.IRON_BULLET_POUCH      },
-                {  4, xi.item.BRONZE_BULLET_POUCH    },
-                {  3, xi.item.BULLET_POUCH           },
+                { 15, invaderXim.item.CHUNK_OF_COPPER_ORE    },
+                { 10, invaderXim.item.RED_ROCK               },
+                {  5, invaderXim.item.SQUARE_OF_VELVET_CLOTH },
+                {  8, invaderXim.item.PINCH_OF_BOMB_ASH      },
+                {  8, invaderXim.item.PINCH_OF_SULFUR        },
+                {  5, invaderXim.item.SPRIG_OF_HOLY_BASIL    },
+                { 20, invaderXim.item.TROLL_PAULDRON         },
+                { 15, invaderXim.item.CHUNK_OF_FLAN_MEAT     },
+                {  1, invaderXim.item.TROLL_BRONZE_INGOT     },
+                {  2, invaderXim.item.SILVER_BULLET_POUCH    },
+                {  1, invaderXim.item.SPARTAN_BULLET_POUCH   },
+                {  2, invaderXim.item.IRON_BULLET_POUCH      },
+                {  4, invaderXim.item.BRONZE_BULLET_POUCH    },
+                {  3, invaderXim.item.BULLET_POUCH           },
             },
         },
 
-        [xi.assault.mission.SEAGULL_GROUNDED] =
+        [invaderXim.assault.mission.SEAGULL_GROUNDED] =
         {
             items =
             {
-                {  1, xi.item.CLEANING_TOOL_SET       },
-                {  2, xi.item.SPOOL_OF_RAINBOW_THREAD },
-                { 25, xi.item.BONE_CHIP               },
-                {  5, xi.item.SPRIG_OF_APPLE_MINT     },
-                {  3, xi.item.IGNEOUS_ROCK            },
-                { 20, xi.item.QIQIRN_SANDBAG          },
-                {  5, xi.item.IMP_WING                },
-                { 10, xi.item.ROTTEN_QUIVER           },
-                {  6, xi.item.BRONZE_BOLT_QUIVER      },
-                { 10, xi.item.WILD_ONION              },
-                {  5, xi.item.HOLY_BOLT_QUIVER        },
-                {  3, xi.item.SLEEP_BOLT_QUIVER       },
+                {  1, invaderXim.item.CLEANING_TOOL_SET       },
+                {  2, invaderXim.item.SPOOL_OF_RAINBOW_THREAD },
+                { 25, invaderXim.item.BONE_CHIP               },
+                {  5, invaderXim.item.SPRIG_OF_APPLE_MINT     },
+                {  3, invaderXim.item.IGNEOUS_ROCK            },
+                { 20, invaderXim.item.QIQIRN_SANDBAG          },
+                {  5, invaderXim.item.IMP_WING                },
+                { 10, invaderXim.item.ROTTEN_QUIVER           },
+                {  6, invaderXim.item.BRONZE_BOLT_QUIVER      },
+                { 10, invaderXim.item.WILD_ONION              },
+                {  5, invaderXim.item.HOLY_BOLT_QUIVER        },
+                {  3, invaderXim.item.SLEEP_BOLT_QUIVER       },
             },
         },
 
         -- Low sample rate. Borrowing similar Periqia tables for now
-        [xi.assault.mission.SHOOTING_DOWN_THE_BARON] =
+        [invaderXim.assault.mission.SHOOTING_DOWN_THE_BARON] =
         {
             items =
             {
-                {  30, xi.item.CHUNK_OF_GOLD_ORE     },
-                { 340, xi.item.QIQIRN_SANDBAG        },
-                { 200, xi.item.SPRIG_OF_APPLE_MINT   },
-                {  30, xi.item.BLOODY_BOLT_QUIVER    },
-                {  30, xi.item.HOLY_BOLT_QUIVER      },
-                {  30, xi.item.MYTHRIL_BOLT_QUIVER   },
-                {  30, xi.item.SLEEP_BOLT_QUIVER     },
-                {  30, xi.item.DARKSTEEL_BOLT_QUIVER },
-                { 250, xi.item.IMP_WING              },
-                {  30, xi.item.QIQIRN_SANDBAG        },
+                {  30, invaderXim.item.CHUNK_OF_GOLD_ORE     },
+                { 340, invaderXim.item.QIQIRN_SANDBAG        },
+                { 200, invaderXim.item.SPRIG_OF_APPLE_MINT   },
+                {  30, invaderXim.item.BLOODY_BOLT_QUIVER    },
+                {  30, invaderXim.item.HOLY_BOLT_QUIVER      },
+                {  30, invaderXim.item.MYTHRIL_BOLT_QUIVER   },
+                {  30, invaderXim.item.SLEEP_BOLT_QUIVER     },
+                {  30, invaderXim.item.DARKSTEEL_BOLT_QUIVER },
+                { 250, invaderXim.item.IMP_WING              },
+                {  30, invaderXim.item.QIQIRN_SANDBAG        },
             },
         },
 
-        [xi.assault.mission.GOLDEN_SALVAGE] =
+        [invaderXim.assault.mission.GOLDEN_SALVAGE] =
         {
             items =
             {
-                {  1, xi.item.RUSTY_BUCKET               },
-                { 24, xi.item.QUTRUB_GORGET              },
-                { 20, xi.item.LAMIAN_ARMLET              },
-                {  6, xi.item.AHT_URHGAN_BRASS_INGOT     },
-                {  2, xi.item.STONE_QUIVER               },
-                {  6, xi.item.BONE_QUIVER                },
-                {  2, xi.item.BEETLE_QUIVER              },
-                {  1, xi.item.HORN_QUIVER                },
-                {  5, xi.item.SCORPION_QUIVER            },
-                {  5, xi.item.DEMON_QUIVER               },
-                {  3, xi.item.IRON_QUIVER                },
-                {  4, xi.item.SILVER_QUIVER              },
-                {  1, xi.item.FLASK_OF_DISTILLED_WATER   },
-                {  5, xi.item.SCROLL_OF_PUPPETS_OPERETTA },
-                {  5, xi.item.KABURA_QUIVER              },
-                {  1, xi.item.SLEEP_QUIVER               },
-                { 14, xi.item.ISTAKOZ                    },
-                {  1, xi.item.WILLOW_FISHING_ROD         },
-                {  1, xi.item.LITTLE_WORM                },
+                {  1, invaderXim.item.RUSTY_BUCKET               },
+                { 24, invaderXim.item.QUTRUB_GORGET              },
+                { 20, invaderXim.item.LAMIAN_ARMLET              },
+                {  6, invaderXim.item.AHT_URHGAN_BRASS_INGOT     },
+                {  2, invaderXim.item.STONE_QUIVER               },
+                {  6, invaderXim.item.BONE_QUIVER                },
+                {  2, invaderXim.item.BEETLE_QUIVER              },
+                {  1, invaderXim.item.HORN_QUIVER                },
+                {  5, invaderXim.item.SCORPION_QUIVER            },
+                {  5, invaderXim.item.DEMON_QUIVER               },
+                {  3, invaderXim.item.IRON_QUIVER                },
+                {  4, invaderXim.item.SILVER_QUIVER              },
+                {  1, invaderXim.item.FLASK_OF_DISTILLED_WATER   },
+                {  5, invaderXim.item.SCROLL_OF_PUPPETS_OPERETTA },
+                {  5, invaderXim.item.KABURA_QUIVER              },
+                {  1, invaderXim.item.SLEEP_QUIVER               },
+                { 14, invaderXim.item.ISTAKOZ                    },
+                {  1, invaderXim.item.WILLOW_FISHING_ROD         },
+                {  1, invaderXim.item.LITTLE_WORM                },
             },
         },
 
-        [xi.assault.mission.LAMIA_NO_13] =
+        [invaderXim.assault.mission.LAMIA_NO_13] =
         {
             items =
             {
-                {  2, xi.item.SPRIG_OF_APPLE_MINT    },
-                { 25, xi.item.QUTRUB_GORGET          },
-                { 25, xi.item.LAMIAN_ARMLET          },
-                {  2, xi.item.AHT_URHGAN_BRASS_INGOT },
-                {  2, xi.item.STONE_QUIVER           },
-                {  6, xi.item.BONE_QUIVER            },
-                {  2, xi.item.BEETLE_QUIVER          },
-                {  2, xi.item.DEMON_QUIVER           },
-                {  4, xi.item.SILVER_QUIVER          },
-                {  6, xi.item.LIGHT_SPIRIT_PACT      },
-                {  2, xi.item.KABURA_QUIVER          },
-                {  2, xi.item.SLEEP_QUIVER           },
-                { 19, xi.item.ISTAKOZ                },
-                {  1, xi.item.RUSTY_BUCKET           },
+                {  2, invaderXim.item.SPRIG_OF_APPLE_MINT    },
+                { 25, invaderXim.item.QUTRUB_GORGET          },
+                { 25, invaderXim.item.LAMIAN_ARMLET          },
+                {  2, invaderXim.item.AHT_URHGAN_BRASS_INGOT },
+                {  2, invaderXim.item.STONE_QUIVER           },
+                {  6, invaderXim.item.BONE_QUIVER            },
+                {  2, invaderXim.item.BEETLE_QUIVER          },
+                {  2, invaderXim.item.DEMON_QUIVER           },
+                {  4, invaderXim.item.SILVER_QUIVER          },
+                {  6, invaderXim.item.LIGHT_SPIRIT_PACT      },
+                {  2, invaderXim.item.KABURA_QUIVER          },
+                {  2, invaderXim.item.SLEEP_QUIVER           },
+                { 19, invaderXim.item.ISTAKOZ                },
+                {  1, invaderXim.item.RUSTY_BUCKET           },
             },
         },
 
-        [xi.assault.mission.EXTERMINATION] =
+        [invaderXim.assault.mission.EXTERMINATION] =
         {
             items =
             {
-                { 15, xi.item.RUSTY_BUCKET             },
-                { 25, xi.item.LITTLE_WORM              },
-                { 25, xi.item.FLASK_OF_DISTILLED_WATER },
-                { 10, xi.item.LAMIAN_ARMLET            },
-                {  5, xi.item.KING_TRUFFLE             },
-                {  5, xi.item.QUTRUB_GORGET            },
-                {  2, xi.item.SILVER_QUIVER            },
-                {  2, xi.item.SLEEP_QUIVER             },
-                {  4, xi.item.STONE_QUIVER             },
-                {  3, xi.item.BONE_QUIVER              },
-                {  4, xi.item.BEETLE_QUIVER            },
+                { 15, invaderXim.item.RUSTY_BUCKET             },
+                { 25, invaderXim.item.LITTLE_WORM              },
+                { 25, invaderXim.item.FLASK_OF_DISTILLED_WATER },
+                { 10, invaderXim.item.LAMIAN_ARMLET            },
+                {  5, invaderXim.item.KING_TRUFFLE             },
+                {  5, invaderXim.item.QUTRUB_GORGET            },
+                {  2, invaderXim.item.SILVER_QUIVER            },
+                {  2, invaderXim.item.SLEEP_QUIVER             },
+                {  4, invaderXim.item.STONE_QUIVER             },
+                {  3, invaderXim.item.BONE_QUIVER              },
+                {  4, invaderXim.item.BEETLE_QUIVER            },
             },
         },
 
-        [xi.assault.mission.TROLL_FUGITIVES] =
+        [invaderXim.assault.mission.TROLL_FUGITIVES] =
         {
             items =
             {
-                { 10, xi.item.PINCH_OF_BOMB_ASH   },
-                { 15, xi.item.CHUNK_OF_COPPER_ORE },
-                {  8, xi.item.CHUNK_OF_FLAN_MEAT  },
-                {  6, xi.item.SPRIG_OF_HOLY_BASIL },
-                {  2, xi.item.IRON_BULLET_POUCH   },
-                {  1, xi.item.SILVER_BULLET_POUCH },
-                {  5, xi.item.PETRIFIED_LOG       },
-                { 10, xi.item.RED_ROCK            },
-                { 25, xi.item.PINCH_OF_SULFUR     },
-                {  8, xi.item.TROLL_BRONZE_INGOT  },
-                { 10, xi.item.TROLL_PAULDRON      },
+                { 10, invaderXim.item.PINCH_OF_BOMB_ASH   },
+                { 15, invaderXim.item.CHUNK_OF_COPPER_ORE },
+                {  8, invaderXim.item.CHUNK_OF_FLAN_MEAT  },
+                {  6, invaderXim.item.SPRIG_OF_HOLY_BASIL },
+                {  2, invaderXim.item.IRON_BULLET_POUCH   },
+                {  1, invaderXim.item.SILVER_BULLET_POUCH },
+                {  5, invaderXim.item.PETRIFIED_LOG       },
+                { 10, invaderXim.item.RED_ROCK            },
+                { 25, invaderXim.item.PINCH_OF_SULFUR     },
+                {  8, invaderXim.item.TROLL_BRONZE_INGOT  },
+                { 10, invaderXim.item.TROLL_PAULDRON      },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_AIATAR] =
+        [invaderXim.appraisal.origin.NYZUL_AIATAR] =
         {
             items =
             {
-                { 80, xi.item.LEATHER_TROUSERS },
-                { 10, xi.item.FALCONERS_HOSE   },
-                { 10, xi.item.SABLE_CUISSES    },
+                { 80, invaderXim.item.LEATHER_TROUSERS },
+                { 10, invaderXim.item.FALCONERS_HOSE   },
+                { 10, invaderXim.item.SABLE_CUISSES    },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_INTULO] =
+        [invaderXim.appraisal.origin.NYZUL_INTULO] =
         {
             items =
             {
-                { 90, xi.item.SLACKS       },
-                { 10, xi.item.MAGIC_SLACKS },
+                { 90, invaderXim.item.SLACKS       },
+                { 10, invaderXim.item.MAGIC_SLACKS },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_FRIAR_RUSH] =
+        [invaderXim.appraisal.origin.NYZUL_FRIAR_RUSH] =
         {
             items =
             {
-                { 90, xi.item.BOMB_ARM  },
-                { 10, xi.item.BOMB_CORE },
+                { 90, invaderXim.item.BOMB_ARM  },
+                { 10, invaderXim.item.BOMB_CORE },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_SABOTENDER_BAILARIN] =
+        [invaderXim.appraisal.origin.NYZUL_SABOTENDER_BAILARIN] =
         {
             items =
             {
-                { 90, xi.item.DART       },
-                { 10, xi.item.BAILATHORN },
+                { 90, invaderXim.item.DART       },
+                { 10, invaderXim.item.BAILATHORN },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_ODQAN] =
+        [invaderXim.appraisal.origin.NYZUL_ODQAN] =
         {
             items =
             {
-                { 90, xi.item.LEATHER_TROUSERS },
-                { 10, xi.item.BRAVOS_SUBLIGAR  },
+                { 90, invaderXim.item.LEATHER_TROUSERS },
+                { 10, invaderXim.item.BRAVOS_SUBLIGAR  },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_STRAY_MARY] =
+        [invaderXim.appraisal.origin.NYZUL_STRAY_MARY] =
         {
             items =
             {
-                { 90, xi.item.CORNETTE   },
-                { 10, xi.item.MARYS_HORN },
+                { 90, invaderXim.item.CORNETTE   },
+                { 10, invaderXim.item.MARYS_HORN },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_UNUT] =
+        [invaderXim.appraisal.origin.NYZUL_UNUT] =
         {
             items =
             {
-                { 90, xi.item.LINEN_SLOPS   },
-                { 10, xi.item.LUNA_SUBLIGAR },
+                { 90, invaderXim.item.LINEN_SLOPS   },
+                { 10, invaderXim.item.LUNA_SUBLIGAR },
             },
         },
 
-        [xi.appraisal.origin.NYZUL_JADED_JODY] =
+        [invaderXim.appraisal.origin.NYZUL_JADED_JODY] =
         {
             items =
             {
-                { 90, xi.item.SLACKS        },
-                { 10, xi.item.JET_SERAWEELS },
+                { 90, invaderXim.item.SLACKS        },
+                { 10, invaderXim.item.JET_SERAWEELS },
             },
         },
     },
 }
 
-xi.appraisal.appraiseItem = function(player, npc, trade, gil, appraisalCsid)
+invaderXim.appraisal.appraiseItem = function(player, npc, trade, gil, appraisalCsid)
     if player:getGil() >= gil then
-        for _, tradedItem in pairs(xi.appraisal.unappraisedItems) do
+        for _, tradedItem in pairs(invaderXim.appraisal.unappraisedItems) do
             if npcUtil.tradeHasExactly(trade, tradedItem) then
                 local tradeID        = trade:getItemId()
-                local info           = xi.appraisal.appraisalItems[tradeID]
+                local info           = invaderXim.appraisal.appraisalItems[tradeID]
                 local appraisalID    = trade:getItem():getAppraisalID()
-                local appraisedItem  = xi.appraisal.itemPick(player, info, appraisalID)
+                local appraisedItem  = invaderXim.appraisal.itemPick(player, info, appraisalID)
 
                 if appraisedItem ~= 0 then
                     player:startEvent(appraisalCsid, 1, appraisedItem)
@@ -1551,7 +1551,7 @@ xi.appraisal.appraiseItem = function(player, npc, trade, gil, appraisalCsid)
     end
 end
 
-xi.appraisal.itemPick = function(player, info, appraisalID)
+invaderXim.appraisal.itemPick = function(player, info, appraisalID)
     -- possible drops
     local items = info[appraisalID].items
 
@@ -1577,7 +1577,7 @@ xi.appraisal.itemPick = function(player, info, appraisalID)
     return item
 end
 
-xi.appraisal.appraisalOnEventFinish = function(player, csid, option, gil, appraisalCsid, npc)
+invaderXim.appraisal.appraisalOnEventFinish = function(player, csid, option, gil, appraisalCsid, npc)
     if csid == appraisalCsid then
         local appraisedItem = player:getLocalVar('Appraisal')
         player:addTreasure(appraisedItem, npc)
@@ -1586,19 +1586,19 @@ xi.appraisal.appraisalOnEventFinish = function(player, csid, option, gil, apprai
     end
 end
 
-xi.appraisal.canGetUnappraisedItem = function(player, area)
+invaderXim.appraisal.canGetUnappraisedItem = function(player, area)
     local instance = player:getInstance()
     local result   = false
     local cap      = instance:getLevelCap()
 
-    if cap == 0 or cap >= xi.assault.missionInfo[area].suggestedLevel then
+    if cap == 0 or cap >= invaderXim.assault.missionInfo[area].suggestedLevel then
         result = true
     end
 
     return result
 end
 
-xi.appraisal.pickUnappraisedItem = function(player, npc, qItemTable)
+invaderXim.appraisal.pickUnappraisedItem = function(player, npc, qItemTable)
     if npc:getLocalVar('UnappraisedItem') == 0 then
         for i = 1, #qItemTable, 1 do
             local lootGroup = qItemTable[i]
@@ -1625,14 +1625,14 @@ xi.appraisal.pickUnappraisedItem = function(player, npc, qItemTable)
     end
 end
 
-xi.appraisal.assaultChestTrigger = function(player, npc, qItemTable, regItemTable)
+invaderXim.appraisal.assaultChestTrigger = function(player, npc, qItemTable, regItemTable)
     local instance = player:getInstance()
     local chars    = instance:getChars()
     local area     = player:getCurrentAssault()
 
     if instance:completed() and npc:getLocalVar('open') == 0 then
-        if xi.appraisal.canGetUnappraisedItem(player, area) then
-            xi.appraisal.pickUnappraisedItem(player, npc, qItemTable)
+        if invaderXim.appraisal.canGetUnappraisedItem(player, area) then
+            invaderXim.appraisal.pickUnappraisedItem(player, npc, qItemTable)
             local unappraisedItem = npc:getLocalVar('UnappraisedItem')
             if player:getFreeSlotsCount() == 0 then
                 player:messageSpecial(zones[player:getZoneID()].text.ITEM_CANNOT_BE_OBTAINED, unappraisedItem)
@@ -1645,15 +1645,15 @@ xi.appraisal.assaultChestTrigger = function(player, npc, qItemTable, regItemTabl
             end
         end
 
-        npc:entityAnimationPacket(xi.animationString.OPEN_CRATE_GLOW)
+        npc:entityAnimationPacket(invaderXim.animationString.OPEN_CRATE_GLOW)
         npc:setLocalVar('open', 1)
         npc:setUntargetable(true)
         npc:timer(15000, function(npcArg)
-            npcArg:entityAnimationPacket(xi.animationString.STATUS_DISAPPEAR)
+            npcArg:entityAnimationPacket(invaderXim.animationString.STATUS_DISAPPEAR)
         end)
 
         npc:timer(16000, function(npcArg)
-            npcArg:setStatus(xi.status.DISAPPEAR)
+            npcArg:setStatus(invaderXim.status.DISAPPEAR)
         end)
 
         for i = 1, #regItemTable, 1 do

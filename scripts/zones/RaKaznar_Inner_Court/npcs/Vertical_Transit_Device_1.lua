@@ -12,7 +12,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 82 and option == 4 then
-        player:setPos(70, -30, 20, 0, xi.zone.RAKAZNAR_TURRIS)
+        player:setPos(70, -30, 20, 0, invaderXim.zone.RAKAZNAR_TURRIS)
     end
 end
 

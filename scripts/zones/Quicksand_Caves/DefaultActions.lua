@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.QUICKSAND_CAVES]
+local ID = zones[invaderXim.zone.QUICKSAND_CAVES]
 
 return {
     ['qm_amk']            = { messageSpecial = ID.text.NOTHING_OUT_OF_ORDINARY },

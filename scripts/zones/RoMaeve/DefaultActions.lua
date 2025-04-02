@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.ROMAEVE]
+local ID = zones[invaderXim.zone.ROMAEVE]
 
 return {
     ['qm1']          = { messageSpecial = ID.text.NOTHING_OUT_OF_ORDINARY },

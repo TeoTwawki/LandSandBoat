@@ -8,13 +8,13 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local unforgiven = player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.UNFORGIVEN)
+    local unforgiven = player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.UNFORGIVEN)
 
     if
-        unforgiven == xi.questStatus.QUEST_ACCEPTED and
-        not player:hasKeyItem(xi.ki.ALABASTER_HAIRPIN)
+        unforgiven == invaderXim.questStatus.QUEST_ACCEPTED and
+        not player:hasKeyItem(invaderXim.ki.ALABASTER_HAIRPIN)
     then
-        npcUtil.giveKeyItem(player, xi.ki.ALABASTER_HAIRPIN) -- ALABASTER HAIRPIN for Unforgiven Quest
+        npcUtil.giveKeyItem(player, invaderXim.ki.ALABASTER_HAIRPIN) -- ALABASTER HAIRPIN for Unforgiven Quest
     end
 end
 

@@ -3,13 +3,13 @@
 --  NPC: Milva
 -- Sarutabaruta Regional Merchant
 -----------------------------------
-local ID = zones[xi.zone.PORT_SAN_DORIA]
+local ID = zones[invaderXim.zone.PORT_SAN_DORIA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if GetRegionOwner(xi.region.SARUTABARUTA) ~= xi.nation.SANDORIA then
+    if GetRegionOwner(invaderXim.region.SARUTABARUTA) ~= invaderXim.nation.SANDORIA then
         player:showText(npc, ID.text.MILVA_CLOSED_DIALOG)
     else
         local stock =
@@ -22,7 +22,7 @@ entity.onTrigger = function(player, npc)
         }
 
         player:showText(npc, ID.text.MILVA_OPEN_DIALOG)
-        xi.shop.general(player, stock, xi.fameArea.SANDORIA)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.SANDORIA)
     end
 end
 

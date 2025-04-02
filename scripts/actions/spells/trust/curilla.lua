@@ -5,34 +5,34 @@
 local spellObject = {}
 
 spellObject.onMagicCastingCheck = function(caster, target, spell)
-    return xi.trust.canCast(caster, spell)
+    return invaderXim.trust.canCast(caster, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    return xi.trust.spawn(caster, spell)
+    return invaderXim.trust.spawn(caster, spell)
 end
 
 spellObject.onMobSpawn = function(mob)
-    xi.trust.teamworkMessage(mob, {
-        [xi.magic.spell.TRION] = xi.trust.messageOffset.TEAMWORK_1,
-        [xi.magic.spell.RAINEMARD] = xi.trust.messageOffset.TEAMWORK_2,
-        [xi.magic.spell.RAHAL] = xi.trust.messageOffset.TEAMWORK_3,
-        [xi.magic.spell.HALVER] = xi.trust.messageOffset.TEAMWORK_4,
+    invaderXim.trust.teamworkMessage(mob, {
+        [invaderXim.magic.spell.TRION] = invaderXim.trust.messageOffset.TEAMWORK_1,
+        [invaderXim.magic.spell.RAINEMARD] = invaderXim.trust.messageOffset.TEAMWORK_2,
+        [invaderXim.magic.spell.RAHAL] = invaderXim.trust.messageOffset.TEAMWORK_3,
+        [invaderXim.magic.spell.HALVER] = invaderXim.trust.messageOffset.TEAMWORK_4,
     })
 
-    mob:addGambit(ai.t.SELF, { ai.c.NOT_STATUS, xi.effect.SENTINEL }, { ai.r.JA, ai.s.SPECIFIC, xi.ja.SENTINEL })
+    mob:addGambit(ai.t.SELF, { ai.c.NOT_STATUS, invaderXim.effect.SENTINEL }, { ai.r.JA, ai.s.SPECIFIC, invaderXim.ja.SENTINEL })
 
-    mob:addGambit(ai.t.TARGET, { ai.c.NOT_STATUS, xi.effect.FLASH }, { ai.r.MA, ai.s.SPECIFIC, xi.magic.spell.FLASH })
+    mob:addGambit(ai.t.TARGET, { ai.c.NOT_STATUS, invaderXim.effect.FLASH }, { ai.r.MA, ai.s.SPECIFIC, invaderXim.magic.spell.FLASH })
 
-    mob:addGambit(ai.t.PARTY, { ai.c.HPP_LT, 75 }, { ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.CURE })
+    mob:addGambit(ai.t.PARTY, { ai.c.HPP_LT, 75 }, { ai.r.MA, ai.s.HIGHEST, invaderXim.magic.spellFamily.CURE })
 end
 
 spellObject.onMobDespawn = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.DESPAWN)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.DESPAWN)
 end
 
 spellObject.onMobDeath = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.DEATH)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.DEATH)
 end
 
 return spellObject

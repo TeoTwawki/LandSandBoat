@@ -8,11 +8,11 @@ zoneObject.onInitialize = function(zone)
     -- Used for Windurst Mission 1-3
     zone:registerCuboidTriggerArea(1, 23, -12, -208, 31, -8, -197)
 
-    xi.events.harvestFestival.applyHalloweenNpcCostumes(zone:getID())
+    invaderXim.events.harvestFestival.applyHalloweenNpcCostumes(zone:getID())
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
-    -- MOG HOUSE EXIT
+    -- MOG HOUSE IXIMT
     if
         player:getXPos() == 0 and
         player:getYPos() == 0 and
@@ -24,7 +24,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

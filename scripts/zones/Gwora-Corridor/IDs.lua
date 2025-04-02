@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.GWORA_CORRIDOR] =
+zones[invaderXim.zone.GWORA_CORRIDOR] =
 {
     text =
     {
@@ -26,4 +26,4 @@ zones[xi.zone.GWORA_CORRIDOR] =
     },
 }
 
-return zones[xi.zone.GWORA_CORRIDOR]
+return zones[invaderXim.zone.GWORA_CORRIDOR]

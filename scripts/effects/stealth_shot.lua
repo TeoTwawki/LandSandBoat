@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.STEALTH_SHOT
+-- invaderXim.effect.STEALTH_SHOT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

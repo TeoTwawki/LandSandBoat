@@ -14,13 +14,13 @@ end
 
 abilityObject.onUseAbility = function(player, target, ability)
     local amount   = 12
-    local duration = 15 + player:getMod(xi.mod.MEDITATE_DURATION)
+    local duration = 15 + player:getMod(invaderXim.mod.MEDITATE_DURATION)
 
-    if player:getMainJob() == xi.job.SAM then
-        amount = 20 + target:getJobPointLevel(xi.jp.MEDITATE_EFFECT) * 5
+    if player:getMainJob() == invaderXim.job.SAM then
+        amount = 20 + target:getJobPointLevel(invaderXim.jp.MEDITATE_EFFECT) * 5
     end
 
-    player:addStatusEffectEx(xi.effect.MEDITATE, 0, amount, 3, duration)
+    player:addStatusEffectEx(invaderXim.effect.MEDITATE, 0, amount, 3, duration)
 end
 
 return abilityObject

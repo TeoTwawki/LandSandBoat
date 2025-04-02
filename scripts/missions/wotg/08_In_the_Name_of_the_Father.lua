@@ -11,11 +11,11 @@
 require('scripts/missions/wotg/helpers')
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.IN_THE_NAME_OF_THE_FATHER)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.IN_THE_NAME_OF_THE_FATHER)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.DANCERS_IN_DISTRESS },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.DANCERS_IN_DISTRESS },
 }
 
 mission.sections =
@@ -23,10 +23,10 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
-                xi.wotg.helpers.meetsMission8Reqs(player)
+                invaderXim.wotg.helpers.meetsMission8Reqs(player)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Lion_Springs'] =
             {

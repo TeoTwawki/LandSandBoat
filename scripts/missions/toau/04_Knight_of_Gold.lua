@@ -6,12 +6,12 @@
 -- Cacaroon : !pos -72.026 0.000 -82.337 50
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.KNIGHT_OF_GOLD)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.KNIGHT_OF_GOLD)
 
 mission.reward =
 {
-    keyItem     = xi.ki.RAILLEFALS_LETTER,
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.CONFESSIONS_OF_ROYALTY },
+    keyItem     = invaderXim.ki.RAILLEFALS_LETTER,
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.CONFESSIONS_OF_ROYALTY },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Cacaroon'] =
             {
@@ -29,7 +29,7 @@ mission.sections =
                     if
                         player:getMissionStatus(mission.areaId) == 1 and
                         (npcUtil.tradeHasExactly(trade, { { 'gil', 1000 } }) or
-                        npcUtil.tradeHasExactly(trade, xi.item.IMPERIAL_BRONZE_PIECE))
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.IMPERIAL_BRONZE_PIECE))
                     then
                         return mission:progressEvent(3022, { text_table = 0 })
                     end

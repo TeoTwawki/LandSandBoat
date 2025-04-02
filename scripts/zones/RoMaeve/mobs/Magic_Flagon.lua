@@ -4,7 +4,7 @@
 -- Note: PH for Nightmare Vase and Rogue Receptacle
 -- TODO: Nightmare Vase and Rogue Receptacle PHs should be in spawn groups
 -----------------------------------
-local ID = zones[xi.zone.ROMAEVE]
+local ID = zones[invaderXim.zone.ROMAEVE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -64,12 +64,12 @@ local roguePHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 120, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 120, 1, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, nightmarePHTable, 10, 3600, { spawnPoints = nightmareSpawnPoints }) -- 1 hour
-    xi.mob.phOnDespawn(mob, roguePHTable, 10, 7200, { spawnPoints = rogueSpawnPoints }) -- 2 hour
+    invaderXim.mob.phOnDespawn(mob, nightmarePHTable, 10, 3600, { spawnPoints = nightmareSpawnPoints }) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, roguePHTable, 10, 7200, { spawnPoints = rogueSpawnPoints }) -- 2 hour
 end
 
 return entity

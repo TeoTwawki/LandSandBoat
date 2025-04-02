@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.GUSGEN_MINES]
+local ID = zones[invaderXim.zone.GUSGEN_MINES]
 
 return {
     ['Clay'] = { messageSpecial = ID.text.NOTHING_OUT_OF_ORDINARY },

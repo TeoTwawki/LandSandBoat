@@ -7,12 +7,12 @@
 -- Justinius        : !pos 76 -34 68 26
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.THE_SAVAGE)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_SAVAGE)
 
 mission.reward =
 {
-    title       = xi.title.NAGMOLADAS_UNDERLING,
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.THE_SECRETS_OF_WORSHIP },
+    title       = invaderXim.title.NAGMOLADAS_UNDERLING,
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_SECRETS_OF_WORSHIP },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.MISAREAUX_COAST] =
+        [invaderXim.zone.MISAREAUX_COAST] =
         {
             ['_0p2'] =
             {
@@ -44,13 +44,13 @@ mission.sections =
             },
         },
 
-        [xi.zone.MONARCH_LINN] =
+        [invaderXim.zone.MONARCH_LINN] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
                     if
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.SAVAGE and
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.SAVAGE and
                         mission:getVar(player, 'Status') == 1
                     then
                         mission:setVar(player, 'Status', 2)
@@ -59,7 +59,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Justinius'] =
             {

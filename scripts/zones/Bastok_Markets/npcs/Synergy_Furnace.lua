@@ -10,19 +10,19 @@
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.synergy.synergyFurnaceOnTrade(player, npc, trade)
+    invaderXim.synergy.synergyFurnaceOnTrade(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    xi.synergy.synergyFurnaceOnTrigger(player, npc)
+    invaderXim.synergy.synergyFurnaceOnTrigger(player, npc)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.synergy.synergyFurnaceOnEventUpdate(player, csid, option, npc)
+    invaderXim.synergy.synergyFurnaceOnEventUpdate(player, csid, option, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.synergy.synergyFurnaceOnEventFinish(player, csid, option, npc)
+    invaderXim.synergy.synergyFurnaceOnEventFinish(player, csid, option, npc)
 end
 
 return entity

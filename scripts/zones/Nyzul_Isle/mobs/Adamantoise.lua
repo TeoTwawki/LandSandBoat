@@ -10,21 +10,21 @@ local entity = {}
 
 entity.onMobInitialize = function(mob)
     -- Set Immunities.
-    -- mob:addImmunity(xi.immunity.STUN)
-    -- mob:addImmunity(xi.immunity.SLOW)
-    -- mob:addImmunity(xi.immunity.POISON)
-    -- mob:addImmunity(xi.immunity.ELEGY)
-    -- mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    -- mob:addImmunity(xi.immunity.DARK_SLEEP)
-    -- mob:addImmunity(xi.immunity.TERROR)
+    -- mob:addImmunity(invaderXim.immunity.STUN)
+    -- mob:addImmunity(invaderXim.immunity.SLOW)
+    -- mob:addImmunity(invaderXim.immunity.POISON)
+    -- mob:addImmunity(invaderXim.immunity.ELEGY)
+    -- mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    -- mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    -- mob:addImmunity(invaderXim.immunity.TERROR)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMod(xi.mod.MAIN_DMG_RATING, 36)
-    mob:addMod(xi.mod.DEF, 200)
-    mob:addMod(xi.mod.ATT, 150)
+    mob:setMod(invaderXim.mod.MAIN_DMG_RATING, 36)
+    mob:addMod(invaderXim.mod.DEF, 200)
+    mob:addMod(invaderXim.mod.ATT, 150)
 
-    mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 15)
+    mob:setMobMod(invaderXim.mobMod.ROAM_DISTANCE, 15)
 end
 
 entity.onMobEngage = function(mob, target)
@@ -35,8 +35,8 @@ end
 
 entity.onMobDeath = function(mob, player, optParams)
     if optParams.isKiller or optParams.noKiller then
-        xi.nyzul.enemyLeaderKill(mob)
-        xi.nyzul.vigilWeaponDrop(player, mob)
+        invaderXim.nyzul.enemyLeaderKill(mob)
+        invaderXim.nyzul.vigilWeaponDrop(player, mob)
     end
 end
 

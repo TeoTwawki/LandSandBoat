@@ -21,20 +21,20 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.UNDEAD
-    params.attackType = xi.attackType.BREATH
-    params.damageType = xi.damageType.WATER
+    params.ecosystem = invaderXim.ecosystem.UNDEAD
+    params.attackType = invaderXim.attackType.BREATH
+    params.damageType = invaderXim.damageType.WATER
     params.diff = 0 -- no stat increases magic accuracy
-    params.skillType = xi.skill.BLUE_MAGIC
+    params.skillType = invaderXim.skill.BLUE_MAGIC
     params.hpMod = 10
     params.lvlMod = 1.25
 
-    local results = xi.spells.blue.useBreathSpell(caster, target, spell, params, true)
+    local results = invaderXim.spells.blue.useBreathSpell(caster, target, spell, params, true)
     local damage = results[1]
     local resist = results[2]
 
     if resist >= 0.5 then
-        target:addStatusEffect(xi.effect.POISON, 4, 0, 60 * resist)
+        target:addStatusEffect(invaderXim.effect.POISON, 4, 0, 60 * resist)
     end
 
     return damage

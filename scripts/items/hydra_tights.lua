@@ -8,19 +8,19 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target)
-    if target:getStatusEffectBySource(xi.effect.HASTE, xi.effectSourceType.EQUIPPED_ITEM, xi.item.HYDRA_TIGHTS) ~= nil then
-        target:delStatusEffect(xi.effect.HASTE, nil, xi.effectSourceType.EQUIPPED_ITEM, xi.item.HYDRA_TIGHTS)
+    if target:getStatusEffectBySource(invaderXim.effect.HASTE, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.HYDRA_TIGHTS) ~= nil then
+        target:delStatusEffect(invaderXim.effect.HASTE, nil, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.HYDRA_TIGHTS)
     end
 
     return 0
 end
 
 itemObject.onItemUse = function(target)
-    if target:hasEquipped(xi.item.HYDRA_TIGHTS) then
-        if not target:hasStatusEffect(xi.effect.HASTE) then
-            target:addStatusEffect(xi.effect.HASTE, 1000, 0, 180, 0, 0, 0, xi.effectSourceType.EQUIPPED_ITEM, xi.item.HYDRA_TIGHTS)
+    if target:hasEquipped(invaderXim.item.HYDRA_TIGHTS) then
+        if not target:hasStatusEffect(invaderXim.effect.HASTE) then
+            target:addStatusEffect(invaderXim.effect.HASTE, 1000, 0, 180, 0, 0, 0, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.HYDRA_TIGHTS)
         else
-            target:messageBasic(xi.msg.basic.NO_EFFECT)
+            target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
         end
     end
 end

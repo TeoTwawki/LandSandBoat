@@ -8,15 +8,15 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.mogTablet.moogleOnTrigger(player, npc)
+    invaderXim.mogTablet.moogleOnTrigger(player, npc)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.mogTablet.moogleOnEventUpdate(player, csid, option, npc)
+    invaderXim.mogTablet.moogleOnEventUpdate(player, csid, option, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.mogTablet.moogleOnEventFinish(player, csid, option, npc)
+    invaderXim.mogTablet.moogleOnEventFinish(player, csid, option, npc)
 end
 
 return entity

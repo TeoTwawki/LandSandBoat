@@ -12,18 +12,18 @@
 require('scripts/missions/wotg/helpers')
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.HER_MEMORIES_HOMECOMING_QUEEN)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.HER_MEMORIES_HOMECOMING_QUEEN)
 
 quest.reward =
 {
-    keyItem = xi.ki.LARGE_MEMORY_FRAGMENT1,
+    keyItem = invaderXim.ki.LARGE_MEMORY_FRAGMENT1,
 }
 
 local subQuestData =
 {
-    [793] = { xi.quest.id.crystalWar.HER_MEMORIES_OLD_BEAN,          xi.ki.TINY_MEMORY_FRAGMENT1 },
-    [870] = { xi.quest.id.crystalWar.HER_MEMORIES_THE_FAUX_PAS,      xi.ki.TINY_MEMORY_FRAGMENT2 },
-    [6  ] = { xi.quest.id.crystalWar.HER_MEMORIES_THE_GRAVE_RESOLVE, xi.ki.TINY_MEMORY_FRAGMENT3 },
+    [793] = { invaderXim.quest.id.crystalWar.HER_MEMORIES_OLD_BEAN,          invaderXim.ki.TINY_MEMORY_FRAGMENT1 },
+    [870] = { invaderXim.quest.id.crystalWar.HER_MEMORIES_THE_FAUX_PAS,      invaderXim.ki.TINY_MEMORY_FRAGMENT2 },
+    [6  ] = { invaderXim.quest.id.crystalWar.HER_MEMORIES_THE_GRAVE_RESOLVE, invaderXim.ki.TINY_MEMORY_FRAGMENT3 },
 }
 
 local function handleQuestCompletion(player, csid, option, npc)
@@ -36,19 +36,19 @@ local function handleQuestCompletion(player, csid, option, npc)
         end
     end
 
-    player:completeQuest(xi.questLog.CRYSTAL_WAR, subQuestData[csid][1])
+    player:completeQuest(invaderXim.questLog.CRYSTAL_WAR, subQuestData[csid][1])
 
     if numKeyItems < 2 then
         player:messageName(ID.text.FRAGMENT_FAR_TOO_SMALL, nil, subQuestData[csid][2])
         npcUtil.giveKeyItem(player, subQuestData[csid][2])
     else
-        player:messageSpecial(ID.text.FRAGMENTS_MELD, xi.ki.LARGE_MEMORY_FRAGMENT1)
+        player:messageSpecial(ID.text.FRAGMENTS_MELD, invaderXim.ki.LARGE_MEMORY_FRAGMENT1)
 
         for _, questData in pairs(subQuestData) do
             player:delKeyItem(questData[2])
         end
 
-        xi.wotg.helpers.checkMemoryFragments(player)
+        invaderXim.wotg.helpers.checkMemoryFragments(player)
 
         quest:complete(player)
     end
@@ -58,14 +58,14 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getCurrentMission(xi.mission.log_id.WOTG) == xi.mission.id.wotg.HER_MEMORIES
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getCurrentMission(invaderXim.mission.log_id.WOTG) == invaderXim.mission.id.wotg.HER_MEMORIES
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onZoneIn = function(player, prevZone)
-                if prevZone == xi.zone.EAST_RONFAURE then
+                if prevZone == invaderXim.zone.EAST_RONFAURE then
                     return 957
                 end
             end,
@@ -82,11 +82,11 @@ quest.sections =
     -- Her Memories: Old Bean
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
-                player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.HER_MEMORIES_OLD_BEAN) ~= xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
+                player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.HER_MEMORIES_OLD_BEAN) ~= invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.PORT_SAN_DORIA] =
+        [invaderXim.zone.PORT_SAN_DORIA] =
         {
             ['Thierride'] =
             {
@@ -94,7 +94,7 @@ quest.sections =
                     local questProgress = quest:getVar(player, 'Prog1')
 
                     if questProgress == 0 then
-                        if not player:hasKeyItem(xi.ki.THIERRIDES_BEAN_CREATION) then
+                        if not player:hasKeyItem(invaderXim.ki.THIERRIDES_BEAN_CREATION) then
                             return quest:progressEvent(792)
                         else
                             return quest:event(794):oncePerZone()
@@ -108,21 +108,21 @@ quest.sections =
             onEventFinish =
             {
                 [792] = function(player, csid, option, npc)
-                    player:addQuest(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.HER_MEMORIES_OLD_BEAN)
+                    player:addQuest(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.HER_MEMORIES_OLD_BEAN)
 
-                    npcUtil.giveKeyItem(player, xi.ki.THIERRIDES_BEAN_CREATION)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.THIERRIDES_BEAN_CREATION)
                 end,
 
                 [793] = handleQuestCompletion,
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Amaura'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.THIERRIDES_BEAN_CREATION) then
+                    if player:hasKeyItem(invaderXim.ki.THIERRIDES_BEAN_CREATION) then
                         return quest:progressEvent(958, 650067949, 0, 5, 0, 156286100, 100000, 4095, 131073)
                     elseif quest:getVar(player, 'Prog1') == 1 then
                         return quest:event(959):oncePerZone()
@@ -133,7 +133,7 @@ quest.sections =
             onEventFinish =
             {
                 [958] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.THIERRIDES_BEAN_CREATION)
+                    player:delKeyItem(invaderXim.ki.THIERRIDES_BEAN_CREATION)
 
                     quest:setVar(player, 'Prog1', 1)
                 end,
@@ -144,11 +144,11 @@ quest.sections =
     -- Her Memories: The Faux Pas
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
-                player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.HER_MEMORIES_THE_FAUX_PAS) ~= xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
+                player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.HER_MEMORIES_THE_FAUX_PAS) ~= invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Abioleget'] =
             {
@@ -173,7 +173,7 @@ quest.sections =
             onEventFinish =
             {
                 [869] = function(player, csid, option, npc)
-                    player:addQuest(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.HER_MEMORIES_THE_FAUX_PAS)
+                    player:addQuest(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.HER_MEMORIES_THE_FAUX_PAS)
 
                     quest:setVar(player, 'Prog2', 1)
                 end,
@@ -186,11 +186,11 @@ quest.sections =
     -- Her Memories: The Grave Resolve
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
-                player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.HER_MEMORIES_THE_GRAVE_RESOLVE) ~= xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
+                player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.HER_MEMORIES_THE_GRAVE_RESOLVE) ~= invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Halver'] =
             {
@@ -206,20 +206,20 @@ quest.sections =
             onEventFinish =
             {
                 [571] = function(player, csid, option, npc)
-                    player:addQuest(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.HER_MEMORIES_THE_GRAVE_RESOLVE)
+                    player:addQuest(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.HER_MEMORIES_THE_GRAVE_RESOLVE)
 
                     quest:setVar(player, 'Prog3', 1)
                 end,
             },
         },
 
-        [xi.zone.BATALLIA_DOWNS] =
+        [invaderXim.zone.BATALLIA_DOWNS] =
         {
             ['Weathered_Gravestone'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.LILAC) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.LILAC) and
                         quest:getVar(player, 'Prog3') == 2
                     then
                         player:confirmTrade()

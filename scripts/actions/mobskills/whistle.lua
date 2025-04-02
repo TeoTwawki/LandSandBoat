@@ -18,9 +18,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local power = target:getMainLvl() / 10 * 3.75 + 5
     local duration = 60
 
-    skill:setMsg(xi.mobskills.mobBuffMove(target, xi.effect.AGI_BOOST, power, 3, duration))
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(target, invaderXim.effect.AGI_BOOST, power, 3, duration))
 
-    return xi.effect.AGI_BOOST
+    return invaderXim.effect.AGI_BOOST
 end
 
 return mobskillObject

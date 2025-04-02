@@ -15,11 +15,11 @@ local function spawnArkAngelPet(mob, target)
     if battlefield then
         local battlefieldId   = battlefield:getID()
         local battlefieldArea = battlefield:getArea()
-        local content         = xi.battlefield.contents[battlefieldId]
-        local selectedPet     = battlefieldId == xi.battlefield.id.DIVINE_MIGHT and 4 or 2
+        local content         = invaderXim.battlefield.contents[battlefieldId]
+        local selectedPet     = battlefieldId == invaderXim.battlefield.id.DIVINE_MIGHT and 4 or 2
 
         mob:setAutoAttackEnabled(false)
-        mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+        mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
         mob:injectActionPacket(mob:getID(), 11, 438, 0, 0x18, 101, 732, 55)
 
         local pet = SpawnMob(content.groups[selectedPet]['mobIds'][battlefieldArea][1])
@@ -36,17 +36,17 @@ local function spawnArkAngelPet(mob, target)
         end
 
         mob:setAutoAttackEnabled(true)
-        mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+        mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
     end
 end
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
             -- "Meikyo Shisui is used very frequently."
             {
-                id       = xi.jsa.MEIKYO_SHISUI,
+                id       = invaderXim.jsa.MEIKYO_SHISUI,
                 hpp      = math.random(90, 95),
                 cooldown = 90,
 
@@ -63,7 +63,7 @@ entity.onMobEngage = function(mob, target)
 end
 
 entity.onMobFight = function(mob, target)
-    if mob:hasStatusEffect(xi.effect.MEIKYO_SHISUI) then
+    if mob:hasStatusEffect(invaderXim.effect.MEIKYO_SHISUI) then
         if mob:getLocalVar('order') == 0 then
             mob:useMobAbility(946) -- Tachi - Yukikaze
             mob:setLocalVar('order', 1)

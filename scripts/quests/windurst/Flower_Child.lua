@@ -4,40 +4,40 @@
 -- Log ID: 2, Quest ID: 65
 -- Ojha Rhawash : !pos -209 0 -134 239
 -----------------------------------
-local windurstWallsID = zones[xi.zone.WINDURST_WALLS]
+local windurstWallsID = zones[invaderXim.zone.WINDURST_WALLS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.FLOWER_CHILD)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.FLOWER_CHILD)
 
 quest.reward =
 {
     fame     = 120,
-    fameArea = xi.fameArea.WINDURST,
+    fameArea = invaderXim.fameArea.WINDURST,
 }
 
 local flowerItems =
 {
-    xi.item.AMARYLLIS,
-    xi.item.ASPHODEL,
-    xi.item.CARNATION,
-    xi.item.CASABLANCA,
-    xi.item.CATTLEYA,
-    xi.item.CHAMOMILE,
-    xi.item.DAHLIA,
-    xi.item.FLAX_FLOWER,
-    xi.item.LILAC,
-    xi.item.LYCOPODIUM_FLOWER,
-    xi.item.MARGUERITE,
-    xi.item.OLIVE_FLOWER,
-    xi.item.PAPAKA_GRASS,
-    xi.item.PHALAENOPSIS,
-    xi.item.RAIN_LILY,
-    xi.item.RED_ROSE,
-    xi.item.SNOW_LILY,
-    xi.item.SWEET_WILLIAM,
-    xi.item.TAHRONGI_CACTUS,
-    xi.item.WATER_LILY,
-    xi.item.WIJNRUIT,
+    invaderXim.item.AMARYLLIS,
+    invaderXim.item.ASPHODEL,
+    invaderXim.item.CARNATION,
+    invaderXim.item.CASABLANCA,
+    invaderXim.item.CATTLEYA,
+    invaderXim.item.CHAMOMILE,
+    invaderXim.item.DAHLIA,
+    invaderXim.item.FLAX_FLOWER,
+    invaderXim.item.LILAC,
+    invaderXim.item.LYCOPODIUM_FLOWER,
+    invaderXim.item.MARGUERITE,
+    invaderXim.item.OLIVE_FLOWER,
+    invaderXim.item.PAPAKA_GRASS,
+    invaderXim.item.PHALAENOPSIS,
+    invaderXim.item.RAIN_LILY,
+    invaderXim.item.RED_ROSE,
+    invaderXim.item.SNOW_LILY,
+    invaderXim.item.SWEET_WILLIAM,
+    invaderXim.item.TAHRONGI_CACTUS,
+    invaderXim.item.WATER_LILY,
+    invaderXim.item.WIJNRUIT,
 }
 
 local function isTradeInTable(trade, itemTable)
@@ -54,15 +54,15 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status ~= xi.questStatus.QUEST_COMPLETED
+            return status ~= invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Ojha_Rhawash'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.LILAC) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.LILAC) then
                         return quest:progressEvent(10000, 0, 239, 2)
                     elseif isTradeInTable(trade, flowerItems) then
                         return quest:progressEvent(10000, 0, 239, 1)
@@ -89,7 +89,7 @@ quest.sections =
                             player:confirmTrade()
                             local mhflag = player:getMoghouseFlag()
                             player:setMoghouseFlag(mhflag + 0x0004)
-                            player:messageSpecial(windurstWallsID.text.MOGHOUSE_EXIT)
+                            player:messageSpecial(windurstWallsID.text.MOGHOUSE_IXIMT)
                         end
 
                     else
@@ -99,7 +99,7 @@ quest.sections =
                         end
 
                         -- Start quest if it wasn't.
-                        if player:getQuestStatus(quest.areaId, quest.questId) == xi.questStatus.QUEST_AVAILABLE then
+                        if player:getQuestStatus(quest.areaId, quest.questId) == invaderXim.questStatus.QUEST_AVAILABLE then
                             quest:begin(player)
                         end
                     end
@@ -110,17 +110,17 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Ojha_Rhawash'] =
             {
                 onTrade = function(player, npc, trade)
                     -- NOTE: After completing this quest, trade is not consumed.
 
-                    if npcUtil.tradeHasExactly(trade, xi.item.LILAC) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.LILAC) then
                         return quest:progressEvent(10000, 0, 239, 4)
                     elseif isTradeInTable(trade, flowerItems) then
                         return quest:progressEvent(10000, 0, 239, 5)

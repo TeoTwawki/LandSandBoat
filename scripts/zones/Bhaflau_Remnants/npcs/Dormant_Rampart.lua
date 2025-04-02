@@ -1,7 +1,7 @@
 -----------------------------------
 -- NPC: Dormant Rampart
 -----------------------------------
-local ID = zones[xi.zone.BHAFLAU_REMNANTS]
+local ID = zones[invaderXim.zone.BHAFLAU_REMNANTS]
 -----------------------------------
 
 ---@type TNpcEntity
@@ -51,7 +51,7 @@ entity.onEventFinish = function(player, csid, option, npc)
             npc:setAnimationSub(0)
             SpawnMob(ID.mob.REACTION_RAMPART[stage], instance)
         elseif csid == 5 then
-            npc:setStatus(xi.status.INVISIBLE)
+            npc:setStatus(invaderXim.status.INVISIBLE)
         end
     end
 end

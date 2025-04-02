@@ -3,7 +3,7 @@
 --  NPC: Rajmonda
 -- Type: Guild Merchant: Fishing Guild
 -----------------------------------
-local ID = zones[xi.zone.SHIP_BOUND_FOR_SELBINA_PIRATES]
+local ID = zones[invaderXim.zone.SHIP_BOUND_FOR_SELBINA_PIRATES]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

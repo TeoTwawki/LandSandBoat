@@ -2,7 +2,7 @@
 -- Area: Windurst-Jeuno Airship
 --  NPC: Mauricio
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_JEUNO_AIRSHIP]
+local ID = zones[invaderXim.zone.WINDURST_JEUNO_AIRSHIP]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

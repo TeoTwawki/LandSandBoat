@@ -2,12 +2,12 @@
 -- Beyond Infinity
 -- Wauhroon Shrine Level Break
 -----------------------------------
-local waughroonID = zones[xi.zone.WAUGHROON_SHRINE]
+local waughroonID = zones[invaderXim.zone.WAUGHROON_SHRINE]
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId        = xi.zone.WAUGHROON_SHRINE,
-    battlefieldId = xi.battlefield.id.BEYOND_INFINITY_WAUGHROON_SHRINE,
+    zoneId        = invaderXim.zone.WAUGHROON_SHRINE,
+    battlefieldId = invaderXim.battlefield.id.BEYOND_INFINITY_WAUGHROON_SHRINE,
     canLoseExp    = false,
     allowTrusts   = true,
     maxPlayers    = 6,
@@ -17,19 +17,19 @@ local content = BattlefieldQuest:new({
     entryNpc      = 'BC_Entrance',
     exitNpc       = 'Burning_Circle',
 
-    questArea = xi.questLog.JEUNO,
-    quest     = xi.quest.id.jeuno.BEYOND_INFINITY,
+    questArea = invaderXim.questLog.JEUNO,
+    quest     = invaderXim.quest.id.jeuno.BEYOND_INFINITY,
 
     requiredKeyItems =
     {
-        xi.ki.SOUL_GEM_CLASP,
+        invaderXim.ki.SOUL_GEM_CLASP,
         onlyInitiator = true,
         message =
         {
             waughroonID.text.SOUL_GEM_REACTS,
             {
-                xi.ki.SOUL_GEM_CLASP,
-                xi.ki.SOUL_GEM,
+                invaderXim.ki.SOUL_GEM_CLASP,
+                invaderXim.ki.SOUL_GEM,
             }
         },
         deleteMessage = waughroonID.text.LOST_KEYITEM,
@@ -47,7 +47,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

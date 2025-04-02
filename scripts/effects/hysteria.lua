@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.HYSTERIA
+-- invaderXim.effect.HYSTERIA
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

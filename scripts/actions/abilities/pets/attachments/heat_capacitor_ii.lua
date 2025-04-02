@@ -10,7 +10,7 @@ attachmentObject.onEquip = function(pet)
         local master = automaton:getMaster()
         if
             master and
-            master:countEffect(xi.effect.FIRE_MANEUVER) > 0 and
+            master:countEffect(invaderXim.effect.FIRE_MANEUVER) > 0 and
             automaton:getLocalVar('meditate') < VanadielTime()
         then
             automaton:useMobAbility(2745, automaton)

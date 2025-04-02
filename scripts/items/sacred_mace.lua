@@ -6,17 +6,17 @@
 -----------------------------------
 local itemObject = {}
 itemObject.onItemCheck = function(target)
-    if target:getStatusEffectBySource(xi.effect.ENLIGHT, xi.effectSourceType.EQUIPPED_ITEM, xi.item.SACRED_MACE) ~= nil then
-        target:delStatusEffect(xi.effect.ENLIGHT, nil, xi.effectSourceType.EQUIPPED_ITEM, xi.item.SACRED_MACE)
+    if target:getStatusEffectBySource(invaderXim.effect.ENLIGHT, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.SACRED_MACE) ~= nil then
+        target:delStatusEffect(invaderXim.effect.ENLIGHT, nil, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.SACRED_MACE)
     end
 
     return 0
 end
 
 itemObject.onItemUse = function(target)
-    if target:hasEquipped(xi.item.SACRED_MACE) then
-        local effect = xi.effect.ENLIGHT
-        local magicskill = target:getSkillLevel(xi.skill.ENHANCING_MAGIC)
+    if target:hasEquipped(invaderXim.item.SACRED_MACE) then
+        local effect = invaderXim.effect.ENLIGHT
+        local magicskill = target:getSkillLevel(invaderXim.skill.ENHANCING_MAGIC)
         local potency = 0
 
         if magicskill <= 200 then
@@ -27,7 +27,7 @@ itemObject.onItemUse = function(target)
 
         potency = utils.clamp(potency, 3, 25)
 
-        target:addStatusEffect(effect, potency, 0, 180, 0, 0, 0, xi.effectSourceType.EQUIPPED_ITEM, xi.item.SACRED_MACE)
+        target:addStatusEffect(effect, potency, 0, 180, 0, 0, 0, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.SACRED_MACE)
     end
 end
 

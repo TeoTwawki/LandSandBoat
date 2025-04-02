@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.HELIX
+-- invaderXim.effect.HELIX
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

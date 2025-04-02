@@ -1,7 +1,7 @@
 ﻿/*
 ===========================================================================
 
-  Copyright (c) 2022 LandSandBoat Dev Teams
+  Copyright (c) 2022 InvaderXim Dev Teams
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -55,7 +55,7 @@ HTTPServer::HTTPServer()
     {
         m_httpServer.Get("/api", [&](httplib::Request const& req, httplib::Response& res)
         {
-            res.set_content("Hello LSB API", "text/plain");
+            res.set_content("Hello IXIM API", "text/plain");
         });
 
         m_httpServer.Get("/api/sessions", [&](httplib::Request const& req, httplib::Response& res)

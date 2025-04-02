@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.OPEN_SEA_ROUTE_TO_AL_ZAHBI] =
+zones[invaderXim.zone.OPEN_SEA_ROUTE_TO_AL_ZAHBI] =
 {
     text =
     {
@@ -30,4 +30,4 @@ zones[xi.zone.OPEN_SEA_ROUTE_TO_AL_ZAHBI] =
     },
 }
 
-return zones[xi.zone.OPEN_SEA_ROUTE_TO_AL_ZAHBI]
+return zones[invaderXim.zone.OPEN_SEA_ROUTE_TO_AL_ZAHBI]

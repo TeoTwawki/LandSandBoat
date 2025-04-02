@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.RHAPSODY
+-- invaderXim.effect.RHAPSODY
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

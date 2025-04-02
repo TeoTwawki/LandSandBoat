@@ -7,15 +7,15 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.conflux.confluxOnTrigger(player, npc)
+    invaderXim.conflux.confluxOnTrigger(player, npc)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.conflux.confluxEventUpdate(player, csid, option, npc)
+    invaderXim.conflux.confluxEventUpdate(player, csid, option, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.conflux.confluxEventFinish(player, csid, option, npc)
+    invaderXim.conflux.confluxEventFinish(player, csid, option, npc)
 end
 
 return entity

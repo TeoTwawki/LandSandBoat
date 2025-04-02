@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.REISENJIMA_HENGE] =
+zones[invaderXim.zone.REISENJIMA_HENGE] =
 {
     text =
     {
@@ -25,4 +25,4 @@ zones[xi.zone.REISENJIMA_HENGE] =
     },
 }
 
-return zones[xi.zone.REISENJIMA_HENGE]
+return zones[invaderXim.zone.REISENJIMA_HENGE]

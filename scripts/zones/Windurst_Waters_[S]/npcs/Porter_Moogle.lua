@@ -17,7 +17,7 @@ local e =
 }
 
 entity.onTrade = function(player, npc, trade)
-    xi.porter_moogle.onTrade(player, trade, e)
+    invaderXim.porter_moogle.onTrade(player, trade, e)
 end
 
 entity.onTrigger = function(player, npc)
@@ -26,11 +26,11 @@ entity.onTrigger = function(player, npc)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.porter_moogle.onEventUpdate(player, csid, option, e.RETRIEVE_EVENT_ID)
+    invaderXim.porter_moogle.onEventUpdate(player, csid, option, e.RETRIEVE_EVENT_ID)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.porter_moogle.onEventFinish(player, csid, option, e.TALK_EVENT_ID)
+    invaderXim.porter_moogle.onEventFinish(player, csid, option, e.TALK_EVENT_ID)
 end
 
 return entity

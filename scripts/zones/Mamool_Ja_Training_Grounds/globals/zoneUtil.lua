@@ -2,13 +2,13 @@
 -- Zone Utilities
 -- random globals that may be used per zone
 -----------------------------------
-local ID = zones[xi.zone.MAMOOL_JA_TRAINING_GROUNDS]
+local ID = zones[invaderXim.zone.MAMOOL_JA_TRAINING_GROUNDS]
 -----------------------------------
 xi = xi or {}
-xi.zoneUtil = xi.zoneUtil or {}
+invaderXim.zoneUtil = invaderXim.zoneUtil or {}
 -----------------------------------
 
-xi.zoneUtil.ImperialAgent_PotHatch = function(player, npc, posX, posZ, posR)
+invaderXim.zoneUtil.ImperialAgent_PotHatch = function(player, npc, posX, posZ, posR)
     local instance = npc:getInstance()
 
     npc:setAnimation(8)
@@ -22,8 +22,8 @@ xi.zoneUtil.ImperialAgent_PotHatch = function(player, npc, posX, posZ, posR)
         instance:setProgress(0)
         npc:timer(2000, function(npcArg)
             ally:setPos(posX, -1, posZ, posR)
-            ally:setStatus(xi.status.NORMAL)
-            ally:entityAnimationPacket(xi.animationString.STATUS_VISIBLE)
+            ally:setStatus(invaderXim.status.NORMAL)
+            ally:entityAnimationPacket(invaderXim.animationString.STATUS_VISIBLE)
         end)
 
         npc:timer(4000, function(npcArg)
@@ -55,19 +55,19 @@ xi.zoneUtil.ImperialAgent_PotHatch = function(player, npc, posX, posZ, posR)
         end)
 
         npc:timer(20000, function(npcArg)
-            ally:entityAnimationPacket(xi.animationString.CAST_BLACK_MAGIC_START)
+            ally:entityAnimationPacket(invaderXim.animationString.CAST_BLACK_MAGIC_START)
         end)
 
         npc:timer(22000, function(npcArg)
-            ally:entityAnimationPacket(xi.animationString.CAST_BLACK_MAGIC_STOP)
+            ally:entityAnimationPacket(invaderXim.animationString.CAST_BLACK_MAGIC_STOP)
         end)
 
         npc:timer(23000, function(npcArg)
-            ally:entityAnimationPacket(xi.animationString.STATUS_DISAPPEAR)
+            ally:entityAnimationPacket(invaderXim.animationString.STATUS_DISAPPEAR)
         end)
 
         npc:timer(24500, function(npcArg)
-            ally:setStatus(xi.status.DISAPPEAR)
+            ally:setStatus(invaderXim.status.DISAPPEAR)
         end)
 
         npc:timer(26000, function(npcArg)

@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.KUFTAL_TUNNEL]
+local ID = zones[invaderXim.zone.KUFTAL_TUNNEL]
 
 return {
     ['Hawk_Nose'] = { event = 14 },

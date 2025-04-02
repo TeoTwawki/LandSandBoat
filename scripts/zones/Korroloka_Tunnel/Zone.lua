@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Korroloka Tunnel (173)
 -----------------------------------
-local ID = zones[xi.zone.KORROLOKA_TUNNEL]
+local ID = zones[invaderXim.zone.KORROLOKA_TUNNEL]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -12,7 +12,7 @@ zoneObject.onInitialize = function(zone)
     zone:registerCylindricalTriggerArea(2, -101, -114, 7) -- Center Pool
     zone:registerCylindricalTriggerArea(3, -112, -103, 3) -- Right Pool
 
-    xi.helm.initZone(zone, xi.helmType.EXCAVATION)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.EXCAVATION)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -30,7 +30,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

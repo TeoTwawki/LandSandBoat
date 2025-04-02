@@ -3,7 +3,7 @@
 --  Mob: Stink Bats
 -- Note: PH for Desmodont
 -----------------------------------
-local ID = zones[xi.zone.OUTER_HORUTOTO_RUINS]
+local ID = zones[invaderXim.zone.OUTER_HORUTOTO_RUINS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -17,7 +17,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, desmodontPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, desmodontPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

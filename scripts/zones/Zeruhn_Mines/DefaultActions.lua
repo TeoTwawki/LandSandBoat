@@ -1,4 +1,4 @@
--- local ID = zones[xi.zone.ZERUHN_MINES]
+-- local ID = zones[invaderXim.zone.ZERUHN_MINES]
 
 return {
     ['Alaric']       = { event = 100 },

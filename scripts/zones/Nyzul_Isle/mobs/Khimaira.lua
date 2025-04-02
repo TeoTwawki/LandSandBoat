@@ -10,18 +10,18 @@ local entity = {}
 
 entity.onMobInitialize = function(mob)
     -- Set Immunities.
-    -- mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    -- mob:addImmunity(xi.immunity.DARK_SLEEP)
-    -- mob:addImmunity(xi.immunity.TERROR)
+    -- mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    -- mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    -- mob:addImmunity(invaderXim.immunity.TERROR)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMod(xi.mod.MEVA, 25)
-    mob:setMod(xi.mod.MAIN_DMG_RATING, 33)
-    mob:setMod(xi.mod.DOUBLE_ATTACK, 15)
-    mob:addMod(xi.mod.ATT, 100)
-    -- TODO: mob:addResist({ xi.resist.ENFEEBLING_STUN, 10, 0 })
-    mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 15)
+    mob:setMod(invaderXim.mod.MEVA, 25)
+    mob:setMod(invaderXim.mod.MAIN_DMG_RATING, 33)
+    mob:setMod(invaderXim.mod.DOUBLE_ATTACK, 15)
+    mob:addMod(invaderXim.mod.ATT, 100)
+    -- TODO: mob:addResist({ invaderXim.resist.ENFEEBLING_STUN, 10, 0 })
+    mob:setMobMod(invaderXim.mobMod.ROAM_DISTANCE, 15)
 end
 
 entity.onMobFight = function(mob, target)
@@ -29,9 +29,9 @@ end
 
 entity.onMobDeath = function(mob, player, optParams)
     if optParams.isKiller or optParams.noKiller then
-        xi.nyzul.enemyLeaderKill(mob)
-        xi.nyzul.vigilWeaponDrop(player, mob)
-        xi.nyzul.handleRunicKey(mob)
+        invaderXim.nyzul.enemyLeaderKill(mob)
+        invaderXim.nyzul.vigilWeaponDrop(player, mob)
+        invaderXim.nyzul.handleRunicKey(mob)
     end
 end
 

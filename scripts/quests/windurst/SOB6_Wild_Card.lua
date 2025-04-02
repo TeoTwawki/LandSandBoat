@@ -4,13 +4,13 @@
 -- Honoi-Gumoi: !pos -195 -11 -120 238
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.WILD_CARD)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.WILD_CARD)
 
 quest.reward =
 {
     fame     = 10,
-    fameArea = xi.fameArea.WINDURST,
-    title    = xi.title.DREAM_DWELLER,
+    fameArea = invaderXim.fameArea.WINDURST,
+    title    = invaderXim.title.DREAM_DWELLER,
 }
 
 quest.sections =
@@ -18,18 +18,18 @@ quest.sections =
     -- Section: Quest is available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.WINDURST, xi.quest.id.windurst.CRYING_OVER_ONIONS)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.CRYING_OVER_ONIONS)
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Honoi-Gomoi'] =
             {
                 onTrigger = function(player, npc)
                     if
                         player:getMainLvl() >= 5 and
-                        player:getFameLevel(xi.fameArea.WINDURST) >= 5 and
+                        player:getFameLevel(invaderXim.fameArea.WINDURST) >= 5 and
                         not quest:getMustZone(player)
                     then
                         return quest:progressEvent(780) -- Quest starting event.
@@ -51,10 +51,10 @@ quest.sections =
     -- Section: Quest accepeted.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Kohlo-Lakolo'] = quest:progressEvent(545),
             ['Papo-Hopo']    = quest:event(509),
@@ -69,20 +69,20 @@ quest.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['_6n2'] =
             {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 1 then -- First meeting at house of hero.
-                        if player:getRank(xi.nation.WINDURST) < 9 then
+                        if player:getRank(invaderXim.nation.WINDURST) < 9 then
                             return quest:progressEvent(386) -- Meet Joker.
                         else
                             return quest:progressEvent(388) -- Meet Apururu.
                         end
-                    elseif player:hasKeyItem(xi.ki.JOKER_CARD) then -- Second meeting at house of hero.
-                        if player:getRank(xi.nation.WINDURST) < 9 then
-                            return quest:progressEvent(387, 0, xi.ki.JOKER_CARD) -- Meet Joker after meeting Joker first.
+                    elseif player:hasKeyItem(invaderXim.ki.JOKER_CARD) then -- Second meeting at house of hero.
+                        if player:getRank(invaderXim.nation.WINDURST) < 9 then
+                            return quest:progressEvent(387, 0, invaderXim.ki.JOKER_CARD) -- Meet Joker after meeting Joker first.
                         else
                             return quest:progressEvent(389) -- Meet Apururu after meeting Joker first.
                         end
@@ -97,7 +97,7 @@ quest.sections =
                 end,
 
                 [387] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.JOKER_CARD)
+                    player:delKeyItem(invaderXim.ki.JOKER_CARD)
                     npcUtil.giveCurrency(player, 'gil', 8000)
                     quest:setVar(player, 'Prog', 4)
                 end,
@@ -107,14 +107,14 @@ quest.sections =
                 end,
 
                 [389] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.JOKER_CARD)
+                    player:delKeyItem(invaderXim.ki.JOKER_CARD)
                     npcUtil.giveCurrency(player, 'gil', 8000)
                     quest:setVar(player, 'Prog', 4)
                 end,
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Honoi-Gomoi'] =
             {
@@ -137,7 +137,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Apururu'] =
             {
@@ -151,7 +151,7 @@ quest.sections =
             onEventFinish =
             {
                 [600] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.JOKER_CARD)
+                    player:delKeyItem(invaderXim.ki.JOKER_CARD)
                     npcUtil.giveCurrency(player, 'gil', 8000)
                     quest:setVar(player, 'Prog', 4)
                 end,
@@ -162,10 +162,10 @@ quest.sections =
     -- Section: Quest completed.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Honoi-Gomoi'] = quest:event(783):replaceDefault(),
         },

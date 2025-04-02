@@ -6,201 +6,201 @@ require('scripts/globals/npc_util')
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.crafting = xi.crafting or {}
+invaderXim.crafting = invaderXim.crafting or {}
 
 -----------------------------------
 -- Data
 -----------------------------------
----@class hqCrystals : { id: xi.item, cost: integer }
+---@class hqCrystals : { id: invaderXim.item, cost: integer }
 local hqCrystals =
 {
-    [0] = { id = xi.item.ROBBER_RIG,       cost = 1500 }, -- Robber Rig is located in category 3. Not a typo.
-    [1] = { id = xi.item.INFERNO_CRYSTAL,  cost =  200 },
-    [2] = { id = xi.item.GLACIER_CRYSTAL,  cost =  200 },
-    [3] = { id = xi.item.CYCLONE_CRYSTAL,  cost =  200 },
-    [4] = { id = xi.item.TERRA_CRYSTAL,    cost =  200 },
-    [5] = { id = xi.item.PLASMA_CRYSTAL,   cost =  200 },
-    [6] = { id = xi.item.TORRENT_CRYSTAL,  cost =  200 },
-    [7] = { id = xi.item.AURORA_CRYSTAL,   cost =  500 },
-    [8] = { id = xi.item.TWILIGHT_CRYSTAL, cost =  500 },
+    [0] = { id = invaderXim.item.ROBBER_RIG,       cost = 1500 }, -- Robber Rig is located in category 3. Not a typo.
+    [1] = { id = invaderXim.item.INFERNO_CRYSTAL,  cost =  200 },
+    [2] = { id = invaderXim.item.GLACIER_CRYSTAL,  cost =  200 },
+    [3] = { id = invaderXim.item.CYCLONE_CRYSTAL,  cost =  200 },
+    [4] = { id = invaderXim.item.TERRA_CRYSTAL,    cost =  200 },
+    [5] = { id = invaderXim.item.PLASMA_CRYSTAL,   cost =  200 },
+    [6] = { id = invaderXim.item.TORRENT_CRYSTAL,  cost =  200 },
+    [7] = { id = invaderXim.item.AURORA_CRYSTAL,   cost =  500 },
+    [8] = { id = invaderXim.item.TWILIGHT_CRYSTAL, cost =  500 },
 }
 
 local guildKeyItemTable =
 {
-    [xi.guild.FISHING] =
+    [invaderXim.guild.FISHING] =
     {
-        [0] = { id = xi.ki.FROG_FISHING,    rank = xi.craftRank.NOVICE,  cost =  30000 },
-        [1] = { id = xi.ki.SERPENT_RUMORS,  rank = xi.craftRank.ADEPT,   cost =  95000 },
-        [2] = { id = xi.ki.MOOCHING,        rank = xi.craftRank.VETERAN, cost = 115000 },
-        [3] = { id = xi.ki.ANGLERS_ALMANAC, rank = xi.craftRank.VETERAN, cost =  20000 },
+        [0] = { id = invaderXim.ki.FROG_FISHING,    rank = invaderXim.craftRank.NOVICE,  cost =  30000 },
+        [1] = { id = invaderXim.ki.SERPENT_RUMORS,  rank = invaderXim.craftRank.ADEPT,   cost =  95000 },
+        [2] = { id = invaderXim.ki.MOOCHING,        rank = invaderXim.craftRank.VETERAN, cost = 115000 },
+        [3] = { id = invaderXim.ki.ANGLERS_ALMANAC, rank = invaderXim.craftRank.VETERAN, cost =  20000 },
     },
-    [xi.guild.WOODWORKING] =
+    [invaderXim.guild.WOODWORKING] =
     {
-        [0] = { id = xi.ki.WOOD_PURIFICATION,    rank = xi.craftRank.NOVICE,  cost = 40000 },
-        [1] = { id = xi.ki.WOOD_ENSORCELLMENT,   rank = xi.craftRank.NOVICE,  cost = 40000 },
-        [2] = { id = xi.ki.LUMBERJACK,           rank = xi.craftRank.NOVICE,  cost = 10000 },
-        [3] = { id = xi.ki.BOLTMAKER,            rank = xi.craftRank.NOVICE,  cost = 10000 },
-        [4] = { id = xi.ki.WAY_OF_THE_CARPENTER, rank = xi.craftRank.VETERAN, cost = 20000 },
+        [0] = { id = invaderXim.ki.WOOD_PURIFICATION,    rank = invaderXim.craftRank.NOVICE,  cost = 40000 },
+        [1] = { id = invaderXim.ki.WOOD_ENSORCELLMENT,   rank = invaderXim.craftRank.NOVICE,  cost = 40000 },
+        [2] = { id = invaderXim.ki.LUMBERJACK,           rank = invaderXim.craftRank.NOVICE,  cost = 10000 },
+        [3] = { id = invaderXim.ki.BOLTMAKER,            rank = invaderXim.craftRank.NOVICE,  cost = 10000 },
+        [4] = { id = invaderXim.ki.WAY_OF_THE_CARPENTER, rank = invaderXim.craftRank.VETERAN, cost = 20000 },
     },
-    [xi.guild.SMITHING] =
+    [invaderXim.guild.SMITHING] =
     {
-        [0] = { id = xi.ki.METAL_PURIFICATION,    rank = xi.craftRank.NOVICE,  cost = 40000 },
-        [1] = { id = xi.ki.METAL_ENSORCELLMENT,   rank = xi.craftRank.NOVICE,  cost = 40000 },
-        [2] = { id = xi.ki.CHAINWORK,             rank = xi.craftRank.NOVICE,  cost = 10000 },
-        [3] = { id = xi.ki.SHEETING,              rank = xi.craftRank.NOVICE,  cost = 10000 },
-        [4] = { id = xi.ki.WAY_OF_THE_BLACKSMITH, rank = xi.craftRank.VETERAN, cost = 20000 },
+        [0] = { id = invaderXim.ki.METAL_PURIFICATION,    rank = invaderXim.craftRank.NOVICE,  cost = 40000 },
+        [1] = { id = invaderXim.ki.METAL_ENSORCELLMENT,   rank = invaderXim.craftRank.NOVICE,  cost = 40000 },
+        [2] = { id = invaderXim.ki.CHAINWORK,             rank = invaderXim.craftRank.NOVICE,  cost = 10000 },
+        [3] = { id = invaderXim.ki.SHEETING,              rank = invaderXim.craftRank.NOVICE,  cost = 10000 },
+        [4] = { id = invaderXim.ki.WAY_OF_THE_BLACKSMITH, rank = invaderXim.craftRank.VETERAN, cost = 20000 },
     },
-    [xi.guild.GOLDSMITHING] =
+    [invaderXim.guild.GOLDSMITHING] =
     {
-        [0] = { id = xi.ki.GOLD_PURIFICATION,    rank = xi.craftRank.NOVICE,  cost = 40000 },
-        [1] = { id = xi.ki.GOLD_ENSORCELLMENT,   rank = xi.craftRank.NOVICE,  cost = 40000 },
-        [2] = { id = xi.ki.CHAINWORK,            rank = xi.craftRank.NOVICE,  cost = 10000 },
-        [3] = { id = xi.ki.SHEETING,             rank = xi.craftRank.NOVICE,  cost = 10000 },
-        [4] = { id = xi.ki.CLOCKMAKING,          rank = xi.craftRank.NOVICE,  cost = 10000 },
-        [5] = { id = xi.ki.WAY_OF_THE_GOLDSMITH, rank = xi.craftRank.VETERAN, cost = 20000 },
+        [0] = { id = invaderXim.ki.GOLD_PURIFICATION,    rank = invaderXim.craftRank.NOVICE,  cost = 40000 },
+        [1] = { id = invaderXim.ki.GOLD_ENSORCELLMENT,   rank = invaderXim.craftRank.NOVICE,  cost = 40000 },
+        [2] = { id = invaderXim.ki.CHAINWORK,            rank = invaderXim.craftRank.NOVICE,  cost = 10000 },
+        [3] = { id = invaderXim.ki.SHEETING,             rank = invaderXim.craftRank.NOVICE,  cost = 10000 },
+        [4] = { id = invaderXim.ki.CLOCKMAKING,          rank = invaderXim.craftRank.NOVICE,  cost = 10000 },
+        [5] = { id = invaderXim.ki.WAY_OF_THE_GOLDSMITH, rank = invaderXim.craftRank.VETERAN, cost = 20000 },
     },
-    [xi.guild.CLOTHCRAFT] =
+    [invaderXim.guild.CLOTHCRAFT] =
     {
-        [0] = { id = xi.ki.CLOTH_PURIFICATION,  rank = xi.craftRank.NOVICE,  cost = 40000 },
-        [1] = { id = xi.ki.CLOTH_ENSORCELLMENT, rank = xi.craftRank.NOVICE,  cost = 40000 },
-        [2] = { id = xi.ki.SPINNING,            rank = xi.craftRank.NOVICE,  cost = 10000 },
-        [3] = { id = xi.ki.FLETCHING,           rank = xi.craftRank.NOVICE,  cost = 10000 },
-        [4] = { id = xi.ki.WAY_OF_THE_WEAVER,   rank = xi.craftRank.VETERAN, cost = 20000 },
+        [0] = { id = invaderXim.ki.CLOTH_PURIFICATION,  rank = invaderXim.craftRank.NOVICE,  cost = 40000 },
+        [1] = { id = invaderXim.ki.CLOTH_ENSORCELLMENT, rank = invaderXim.craftRank.NOVICE,  cost = 40000 },
+        [2] = { id = invaderXim.ki.SPINNING,            rank = invaderXim.craftRank.NOVICE,  cost = 10000 },
+        [3] = { id = invaderXim.ki.FLETCHING,           rank = invaderXim.craftRank.NOVICE,  cost = 10000 },
+        [4] = { id = invaderXim.ki.WAY_OF_THE_WEAVER,   rank = invaderXim.craftRank.VETERAN, cost = 20000 },
     },
-    [xi.guild.LEATHERCRAFT] =
+    [invaderXim.guild.LEATHERCRAFT] =
     {
-        [0] = { id = xi.ki.LEATHER_PURIFICATION,  rank = xi.craftRank.NOVICE,  cost = 40000 },
-        [1] = { id = xi.ki.LEATHER_ENSORCELLMENT, rank = xi.craftRank.NOVICE,  cost = 40000 },
-        [2] = { id = xi.ki.TANNING,               rank = xi.craftRank.NOVICE,  cost = 10000 },
-        [3] = { id = xi.ki.WAY_OF_THE_TANNER,     rank = xi.craftRank.VETERAN, cost = 20000 },
+        [0] = { id = invaderXim.ki.LEATHER_PURIFICATION,  rank = invaderXim.craftRank.NOVICE,  cost = 40000 },
+        [1] = { id = invaderXim.ki.LEATHER_ENSORCELLMENT, rank = invaderXim.craftRank.NOVICE,  cost = 40000 },
+        [2] = { id = invaderXim.ki.TANNING,               rank = invaderXim.craftRank.NOVICE,  cost = 10000 },
+        [3] = { id = invaderXim.ki.WAY_OF_THE_TANNER,     rank = invaderXim.craftRank.VETERAN, cost = 20000 },
     },
-    [xi.guild.BONECRAFT] =
+    [invaderXim.guild.BONECRAFT] =
     {
-        [0] = { id = xi.ki.BONE_PURIFICATION,     rank = xi.craftRank.NOVICE,  cost = 40000 },
-        [1] = { id = xi.ki.BONE_ENSORCELLMENT,    rank = xi.craftRank.NOVICE,  cost = 40000 },
-        [2] = { id = xi.ki.FILING,                rank = xi.craftRank.NOVICE,  cost = 10000 },
-        [3] = { id = xi.ki.WAY_OF_THE_BONEWORKER, rank = xi.craftRank.VETERAN, cost = 20000 },
+        [0] = { id = invaderXim.ki.BONE_PURIFICATION,     rank = invaderXim.craftRank.NOVICE,  cost = 40000 },
+        [1] = { id = invaderXim.ki.BONE_ENSORCELLMENT,    rank = invaderXim.craftRank.NOVICE,  cost = 40000 },
+        [2] = { id = invaderXim.ki.FILING,                rank = invaderXim.craftRank.NOVICE,  cost = 10000 },
+        [3] = { id = invaderXim.ki.WAY_OF_THE_BONEWORKER, rank = invaderXim.craftRank.VETERAN, cost = 20000 },
     },
-    [xi.guild.ALCHEMY] =
+    [invaderXim.guild.ALCHEMY] =
     {
-        [0] = { id = xi.ki.ANIMA_SYNTHESIS,        rank = xi.craftRank.NOVICE,  cost = 20000 },
-        [1] = { id = xi.ki.ALCHEMIC_PURIFICATION,  rank = xi.craftRank.NOVICE,  cost = 40000 },
-        [2] = { id = xi.ki.ALCHEMIC_ENSORCELLMENT, rank = xi.craftRank.NOVICE,  cost = 40000 },
-        [3] = { id = xi.ki.TRITURATION,            rank = xi.craftRank.NOVICE,  cost = 10000 },
-        [4] = { id = xi.ki.CONCOCTION,             rank = xi.craftRank.NOVICE,  cost = 20000 },
-        [5] = { id = xi.ki.IATROCHEMISTRY,         rank = xi.craftRank.NOVICE,  cost = 10000 },
-        [6] = { id = xi.ki.WAY_OF_THE_ALCHEMIST,   rank = xi.craftRank.VETERAN, cost = 20000 },
+        [0] = { id = invaderXim.ki.ANIMA_SYNTHESIS,        rank = invaderXim.craftRank.NOVICE,  cost = 20000 },
+        [1] = { id = invaderXim.ki.ALCHEMIC_PURIFICATION,  rank = invaderXim.craftRank.NOVICE,  cost = 40000 },
+        [2] = { id = invaderXim.ki.ALCHEMIC_ENSORCELLMENT, rank = invaderXim.craftRank.NOVICE,  cost = 40000 },
+        [3] = { id = invaderXim.ki.TRITURATION,            rank = invaderXim.craftRank.NOVICE,  cost = 10000 },
+        [4] = { id = invaderXim.ki.CONCOCTION,             rank = invaderXim.craftRank.NOVICE,  cost = 20000 },
+        [5] = { id = invaderXim.ki.IATROCHEMISTRY,         rank = invaderXim.craftRank.NOVICE,  cost = 10000 },
+        [6] = { id = invaderXim.ki.WAY_OF_THE_ALCHEMIST,   rank = invaderXim.craftRank.VETERAN, cost = 20000 },
     },
-    [xi.guild.COOKING] =
+    [invaderXim.guild.COOKING] =
     {
-        [0] = { id = xi.ki.RAW_FISH_HANDLING,     rank = xi.craftRank.NOVICE,  cost = 30000 },
-        [1] = { id = xi.ki.NOODLE_KNEADING,       rank = xi.craftRank.NOVICE,  cost = 30000 },
-        [2] = { id = xi.ki.PATISSIER,             rank = xi.craftRank.NOVICE,  cost =  8000 },
-        [3] = { id = xi.ki.STEWPOT_MASTERY,       rank = xi.craftRank.NOVICE,  cost = 30000 },
-        [4] = { id = xi.ki.WAY_OF_THE_CULINARIAN, rank = xi.craftRank.VETERAN, cost = 20000 },
+        [0] = { id = invaderXim.ki.RAW_FISH_HANDLING,     rank = invaderXim.craftRank.NOVICE,  cost = 30000 },
+        [1] = { id = invaderXim.ki.NOODLE_KNEADING,       rank = invaderXim.craftRank.NOVICE,  cost = 30000 },
+        [2] = { id = invaderXim.ki.PATISSIER,             rank = invaderXim.craftRank.NOVICE,  cost =  8000 },
+        [3] = { id = invaderXim.ki.STEWPOT_MASTERY,       rank = invaderXim.craftRank.NOVICE,  cost = 30000 },
+        [4] = { id = invaderXim.ki.WAY_OF_THE_CULINARIAN, rank = invaderXim.craftRank.VETERAN, cost = 20000 },
     },
 }
 
 local guildItemTable =
 {
-    [xi.guild.FISHING] =
+    [invaderXim.guild.FISHING] =
     {
-        [0] = { id = xi.item.FISHERMANS_BELT,      rank = xi.craftRank.APPRENTICE, cost =  10000 },
-        [1] = { id = xi.item.WADERS,               rank = xi.craftRank.JOURNEYMAN, cost =  70000 },
-        [2] = { id = xi.item.FISHERMANS_APRON,     rank = xi.craftRank.ARTISAN,    cost = 100000 },
-        [3] = { id = xi.item.FISHING_HOLE_MAP,     rank = xi.craftRank.VETERAN,    cost = 150000 },
-        [4] = { id = xi.item.FISHERMANS_SIGNBOARD, rank = xi.craftRank.VETERAN,    cost = 200000 },
+        [0] = { id = invaderXim.item.FISHERMANS_BELT,      rank = invaderXim.craftRank.APPRENTICE, cost =  10000 },
+        [1] = { id = invaderXim.item.WADERS,               rank = invaderXim.craftRank.JOURNEYMAN, cost =  70000 },
+        [2] = { id = invaderXim.item.FISHERMANS_APRON,     rank = invaderXim.craftRank.ARTISAN,    cost = 100000 },
+        [3] = { id = invaderXim.item.FISHING_HOLE_MAP,     rank = invaderXim.craftRank.VETERAN,    cost = 150000 },
+        [4] = { id = invaderXim.item.FISHERMANS_SIGNBOARD, rank = invaderXim.craftRank.VETERAN,    cost = 200000 },
         -- There is a blank space here. Robber Rig SHOULD be here, but it isnt. It's with the crystals.
-        [6] = { id = xi.item.NET_AND_LURE,         rank = xi.craftRank.ARTISAN,    cost =  50000 },
-        [7] = { id = xi.item.FISHERMENS_EMBLEM,    rank = xi.craftRank.VETERAN,    cost =  15000 },
+        [6] = { id = invaderXim.item.NET_AND_LURE,         rank = invaderXim.craftRank.ARTISAN,    cost =  50000 },
+        [7] = { id = invaderXim.item.FISHERMENS_EMBLEM,    rank = invaderXim.craftRank.VETERAN,    cost =  15000 },
     },
-    [xi.guild.WOODWORKING] =
+    [invaderXim.guild.WOODWORKING] =
     {
-        [0] = { id = xi.item.CARPENTERS_BELT,      rank = xi.craftRank.NOVICE,     cost =  10000 },
-        [1] = { id = xi.item.CARPENTERS_GLOVES,    rank = xi.craftRank.JOURNEYMAN, cost =  70000 },
-        [2] = { id = xi.item.CARPENTERS_APRON,     rank = xi.craftRank.ARTISAN,    cost = 100000 },
-        [3] = { id = xi.item.DRAWING_DESK,         rank = xi.craftRank.VETERAN,    cost = 150000 },
-        [4] = { id = xi.item.CARPENTERS_SIGNBOARD, rank = xi.craftRank.VETERAN,    cost = 200000 },
-        [5] = { id = xi.item.CARPENTERS_RING,      rank = xi.craftRank.CRAFTSMAN,  cost =  80000 },
-        [6] = { id = xi.item.CARPENTERS_KIT,       rank = xi.craftRank.ARTISAN,    cost =  50000 },
-        [7] = { id = xi.item.CARPENTERS_EMBLEM,    rank = xi.craftRank.VETERAN,    cost =  15000 },
+        [0] = { id = invaderXim.item.CARPENTERS_BELT,      rank = invaderXim.craftRank.NOVICE,     cost =  10000 },
+        [1] = { id = invaderXim.item.CARPENTERS_GLOVES,    rank = invaderXim.craftRank.JOURNEYMAN, cost =  70000 },
+        [2] = { id = invaderXim.item.CARPENTERS_APRON,     rank = invaderXim.craftRank.ARTISAN,    cost = 100000 },
+        [3] = { id = invaderXim.item.DRAWING_DESK,         rank = invaderXim.craftRank.VETERAN,    cost = 150000 },
+        [4] = { id = invaderXim.item.CARPENTERS_SIGNBOARD, rank = invaderXim.craftRank.VETERAN,    cost = 200000 },
+        [5] = { id = invaderXim.item.CARPENTERS_RING,      rank = invaderXim.craftRank.CRAFTSMAN,  cost =  80000 },
+        [6] = { id = invaderXim.item.CARPENTERS_KIT,       rank = invaderXim.craftRank.ARTISAN,    cost =  50000 },
+        [7] = { id = invaderXim.item.CARPENTERS_EMBLEM,    rank = invaderXim.craftRank.VETERAN,    cost =  15000 },
     },
-    [xi.guild.SMITHING] =
+    [invaderXim.guild.SMITHING] =
     {
-        [0] = { id = xi.item.BLACKSMITHS_BELT,      rank = xi.craftRank.NOVICE,     cost =  10000 },
-        [1] = { id = xi.item.SMITHYS_MITTS,         rank = xi.craftRank.JOURNEYMAN, cost =  70000 },
-        [2] = { id = xi.item.BLACKSMITHS_APRON,     rank = xi.craftRank.ARTISAN,    cost = 100000 },
-        [3] = { id = xi.item.MASTERSMITH_ANVIL,     rank = xi.craftRank.VETERAN,    cost = 150000 },
-        [4] = { id = xi.item.BLACKSMITHS_SIGNBOARD, rank = xi.craftRank.VETERAN,    cost = 200000 },
-        [5] = { id = xi.item.SMITHS_RING,           rank = xi.craftRank.CRAFTSMAN,  cost =  80000 },
-        [6] = { id = xi.item.STONE_HEARTH,          rank = xi.craftRank.ARTISAN,    cost =  50000 },
-        [7] = { id = xi.item.BLACKSMITHS_EMBLEM,    rank = xi.craftRank.VETERAN,    cost =  15000 },
+        [0] = { id = invaderXim.item.BLACKSMITHS_BELT,      rank = invaderXim.craftRank.NOVICE,     cost =  10000 },
+        [1] = { id = invaderXim.item.SMITHYS_MITTS,         rank = invaderXim.craftRank.JOURNEYMAN, cost =  70000 },
+        [2] = { id = invaderXim.item.BLACKSMITHS_APRON,     rank = invaderXim.craftRank.ARTISAN,    cost = 100000 },
+        [3] = { id = invaderXim.item.MASTERSMITH_ANVIL,     rank = invaderXim.craftRank.VETERAN,    cost = 150000 },
+        [4] = { id = invaderXim.item.BLACKSMITHS_SIGNBOARD, rank = invaderXim.craftRank.VETERAN,    cost = 200000 },
+        [5] = { id = invaderXim.item.SMITHS_RING,           rank = invaderXim.craftRank.CRAFTSMAN,  cost =  80000 },
+        [6] = { id = invaderXim.item.STONE_HEARTH,          rank = invaderXim.craftRank.ARTISAN,    cost =  50000 },
+        [7] = { id = invaderXim.item.BLACKSMITHS_EMBLEM,    rank = invaderXim.craftRank.VETERAN,    cost =  15000 },
     },
-    [xi.guild.GOLDSMITHING] =
+    [invaderXim.guild.GOLDSMITHING] =
     {
-        [0] = { id = xi.item.GOLDSMITHS_BELT,      rank = xi.craftRank.NOVICE,     cost =  10000 },
-        [1] = { id = xi.item.SHADED_SPECTACLES,    rank = xi.craftRank.JOURNEYMAN, cost =  70000 },
-        [2] = { id = xi.item.GOLDSMITHS_APRON,     rank = xi.craftRank.ARTISAN,    cost = 100000 },
-        [3] = { id = xi.item.STACK_OF_FOOLS_GOLD,  rank = xi.craftRank.VETERAN,    cost = 150000 },
-        [4] = { id = xi.item.GOLDSMITHS_SIGNBOARD, rank = xi.craftRank.VETERAN,    cost = 200000 },
-        [5] = { id = xi.item.GOLDSMITHS_RING,      rank = xi.craftRank.CRAFTSMAN,  cost =  80000 },
-        [6] = { id = xi.item.GEMSCOPE,             rank = xi.craftRank.ARTISAN,    cost =  50000 },
-        [7] = { id = xi.item.GOLDSMITHS_EMBLEM,    rank = xi.craftRank.VETERAN,    cost =  15000 },
+        [0] = { id = invaderXim.item.GOLDSMITHS_BELT,      rank = invaderXim.craftRank.NOVICE,     cost =  10000 },
+        [1] = { id = invaderXim.item.SHADED_SPECTACLES,    rank = invaderXim.craftRank.JOURNEYMAN, cost =  70000 },
+        [2] = { id = invaderXim.item.GOLDSMITHS_APRON,     rank = invaderXim.craftRank.ARTISAN,    cost = 100000 },
+        [3] = { id = invaderXim.item.STACK_OF_FOOLS_GOLD,  rank = invaderXim.craftRank.VETERAN,    cost = 150000 },
+        [4] = { id = invaderXim.item.GOLDSMITHS_SIGNBOARD, rank = invaderXim.craftRank.VETERAN,    cost = 200000 },
+        [5] = { id = invaderXim.item.GOLDSMITHS_RING,      rank = invaderXim.craftRank.CRAFTSMAN,  cost =  80000 },
+        [6] = { id = invaderXim.item.GEMSCOPE,             rank = invaderXim.craftRank.ARTISAN,    cost =  50000 },
+        [7] = { id = invaderXim.item.GOLDSMITHS_EMBLEM,    rank = invaderXim.craftRank.VETERAN,    cost =  15000 },
     },
-    [xi.guild.CLOTHCRAFT] =
+    [invaderXim.guild.CLOTHCRAFT] =
     {
-        [0] = { id = xi.item.WEAVERS_BELT,          rank = xi.craftRank.NOVICE,     cost =  10000 },
-        [1] = { id = xi.item.MAGNIFYING_SPECTACLES, rank = xi.craftRank.JOURNEYMAN, cost =  70000 },
-        [2] = { id = xi.item.WEAVERS_APRON,         rank = xi.craftRank.ARTISAN,    cost = 100000 },
-        [3] = { id = xi.item.GILT_TAPESTRY,         rank = xi.craftRank.VETERAN,    cost = 150000 },
-        [4] = { id = xi.item.WEAVERS_SIGNBOARD,     rank = xi.craftRank.VETERAN,    cost = 200000 },
-        [5] = { id = xi.item.TAILORS_RING,          rank = xi.craftRank.CRAFTSMAN,  cost =  80000 },
-        [6] = { id = xi.item.SPINNING_WHEEL,        rank = xi.craftRank.ARTISAN,    cost =  50000 },
-        [7] = { id = xi.item.WEAVERS_EMBLEM,        rank = xi.craftRank.VETERAN,    cost =  15000 },
+        [0] = { id = invaderXim.item.WEAVERS_BELT,          rank = invaderXim.craftRank.NOVICE,     cost =  10000 },
+        [1] = { id = invaderXim.item.MAGNIFYING_SPECTACLES, rank = invaderXim.craftRank.JOURNEYMAN, cost =  70000 },
+        [2] = { id = invaderXim.item.WEAVERS_APRON,         rank = invaderXim.craftRank.ARTISAN,    cost = 100000 },
+        [3] = { id = invaderXim.item.GILT_TAPESTRY,         rank = invaderXim.craftRank.VETERAN,    cost = 150000 },
+        [4] = { id = invaderXim.item.WEAVERS_SIGNBOARD,     rank = invaderXim.craftRank.VETERAN,    cost = 200000 },
+        [5] = { id = invaderXim.item.TAILORS_RING,          rank = invaderXim.craftRank.CRAFTSMAN,  cost =  80000 },
+        [6] = { id = invaderXim.item.SPINNING_WHEEL,        rank = invaderXim.craftRank.ARTISAN,    cost =  50000 },
+        [7] = { id = invaderXim.item.WEAVERS_EMBLEM,        rank = invaderXim.craftRank.VETERAN,    cost =  15000 },
     },
-    [xi.guild.LEATHERCRAFT] =
+    [invaderXim.guild.LEATHERCRAFT] =
     {
-        [0] = { id = xi.item.TANNERS_BELT,      rank = xi.craftRank.NOVICE,     cost =  10000 },
-        [1] = { id = xi.item.TANNERS_GLOVES,    rank = xi.craftRank.JOURNEYMAN, cost =  70000 },
-        [2] = { id = xi.item.TANNERS_APRON,     rank = xi.craftRank.ARTISAN,    cost = 100000 },
-        [3] = { id = xi.item.GOLDEN_FLEECE,     rank = xi.craftRank.VETERAN,    cost = 150000 },
-        [4] = { id = xi.item.TANNERS_SIGNBOARD, rank = xi.craftRank.VETERAN,    cost = 200000 },
-        [5] = { id = xi.item.TANNERS_RING,      rank = xi.craftRank.CRAFTSMAN,  cost =  80000 },
-        [6] = { id = xi.item.HIDE_STRETCHER,    rank = xi.craftRank.ARTISAN,    cost =  50000 },
-        [7] = { id = xi.item.TANNERS_EMBLEM,    rank = xi.craftRank.VETERAN,    cost =  15000 },
+        [0] = { id = invaderXim.item.TANNERS_BELT,      rank = invaderXim.craftRank.NOVICE,     cost =  10000 },
+        [1] = { id = invaderXim.item.TANNERS_GLOVES,    rank = invaderXim.craftRank.JOURNEYMAN, cost =  70000 },
+        [2] = { id = invaderXim.item.TANNERS_APRON,     rank = invaderXim.craftRank.ARTISAN,    cost = 100000 },
+        [3] = { id = invaderXim.item.GOLDEN_FLEECE,     rank = invaderXim.craftRank.VETERAN,    cost = 150000 },
+        [4] = { id = invaderXim.item.TANNERS_SIGNBOARD, rank = invaderXim.craftRank.VETERAN,    cost = 200000 },
+        [5] = { id = invaderXim.item.TANNERS_RING,      rank = invaderXim.craftRank.CRAFTSMAN,  cost =  80000 },
+        [6] = { id = invaderXim.item.HIDE_STRETCHER,    rank = invaderXim.craftRank.ARTISAN,    cost =  50000 },
+        [7] = { id = invaderXim.item.TANNERS_EMBLEM,    rank = invaderXim.craftRank.VETERAN,    cost =  15000 },
     },
-    [xi.guild.BONECRAFT] =
+    [invaderXim.guild.BONECRAFT] =
     {
-        [0] = { id = xi.item.BONEWORKERS_BELT,          rank = xi.craftRank.NOVICE,     cost =  10000 },
-        [1] = { id = xi.item.PROTECTIVE_SPECTACLES,     rank = xi.craftRank.JOURNEYMAN, cost =  70000 },
-        [2] = { id = xi.item.BONEWORKERS_APRON,         rank = xi.craftRank.ARTISAN,    cost = 100000 },
-        [3] = { id = xi.item.DROGAROGAS_FANG,           rank = xi.craftRank.VETERAN,    cost = 150000 },
-        [4] = { id = xi.item.BONEWORKERS_SIGNBOARD,     rank = xi.craftRank.VETERAN,    cost = 200000 },
-        [5] = { id = xi.item.BONECRAFTERS_RING,         rank = xi.craftRank.CRAFTSMAN,  cost =  80000 },
-        [6] = { id = xi.item.SET_OF_BONECRAFTING_TOOLS, rank = xi.craftRank.ARTISAN,    cost =  50000 },
-        [7] = { id = xi.item.BONEWORKERS_EMBLEM,        rank = xi.craftRank.VETERAN,    cost =  15000 },
+        [0] = { id = invaderXim.item.BONEWORKERS_BELT,          rank = invaderXim.craftRank.NOVICE,     cost =  10000 },
+        [1] = { id = invaderXim.item.PROTECTIVE_SPECTACLES,     rank = invaderXim.craftRank.JOURNEYMAN, cost =  70000 },
+        [2] = { id = invaderXim.item.BONEWORKERS_APRON,         rank = invaderXim.craftRank.ARTISAN,    cost = 100000 },
+        [3] = { id = invaderXim.item.DROGAROGAS_FANG,           rank = invaderXim.craftRank.VETERAN,    cost = 150000 },
+        [4] = { id = invaderXim.item.BONEWORKERS_SIGNBOARD,     rank = invaderXim.craftRank.VETERAN,    cost = 200000 },
+        [5] = { id = invaderXim.item.BONECRAFTERS_RING,         rank = invaderXim.craftRank.CRAFTSMAN,  cost =  80000 },
+        [6] = { id = invaderXim.item.SET_OF_BONECRAFTING_TOOLS, rank = invaderXim.craftRank.ARTISAN,    cost =  50000 },
+        [7] = { id = invaderXim.item.BONEWORKERS_EMBLEM,        rank = invaderXim.craftRank.VETERAN,    cost =  15000 },
     },
-    [xi.guild.ALCHEMY] =
+    [invaderXim.guild.ALCHEMY] =
     {
-        [0] = { id = xi.item.ALCHEMISTS_BELT,      rank = xi.craftRank.NOVICE,     cost =  10000 },
-        [1] = { id = xi.item.CADUCEUS,             rank = xi.craftRank.JOURNEYMAN, cost =  70000 },
-        [2] = { id = xi.item.ALCHEMISTS_APRON,     rank = xi.craftRank.ARTISAN,    cost = 100000 },
-        [3] = { id = xi.item.COPY_OF_EMERALDA,     rank = xi.craftRank.VETERAN,    cost = 150000 },
-        [4] = { id = xi.item.ALCHEMISTS_SIGNBOARD, rank = xi.craftRank.VETERAN,    cost = 200000 },
-        [5] = { id = xi.item.ALCHEMISTS_RING,      rank = xi.craftRank.CRAFTSMAN,  cost =  80000 },
-        [6] = { id = xi.item.ALEMBIC,              rank = xi.craftRank.ARTISAN,    cost =  50000 },
-        [7] = { id = xi.item.ALCHEMISTS_EMBLEM,    rank = xi.craftRank.VETERAN,    cost =  15000 },
+        [0] = { id = invaderXim.item.ALCHEMISTS_BELT,      rank = invaderXim.craftRank.NOVICE,     cost =  10000 },
+        [1] = { id = invaderXim.item.CADUCEUS,             rank = invaderXim.craftRank.JOURNEYMAN, cost =  70000 },
+        [2] = { id = invaderXim.item.ALCHEMISTS_APRON,     rank = invaderXim.craftRank.ARTISAN,    cost = 100000 },
+        [3] = { id = invaderXim.item.COPY_OF_EMERALDA,     rank = invaderXim.craftRank.VETERAN,    cost = 150000 },
+        [4] = { id = invaderXim.item.ALCHEMISTS_SIGNBOARD, rank = invaderXim.craftRank.VETERAN,    cost = 200000 },
+        [5] = { id = invaderXim.item.ALCHEMISTS_RING,      rank = invaderXim.craftRank.CRAFTSMAN,  cost =  80000 },
+        [6] = { id = invaderXim.item.ALEMBIC,              rank = invaderXim.craftRank.ARTISAN,    cost =  50000 },
+        [7] = { id = invaderXim.item.ALCHEMISTS_EMBLEM,    rank = invaderXim.craftRank.VETERAN,    cost =  15000 },
     },
-    [xi.guild.COOKING] =
+    [invaderXim.guild.COOKING] =
     {
-        [0] = { id = xi.item.CULINARIANS_BELT,        rank = xi.craftRank.NOVICE,     cost =  10000 },
-        [1] = { id = xi.item.CHEFS_HAT,               rank = xi.craftRank.JOURNEYMAN, cost =  70000 },
-        [2] = { id = xi.item.CULINARIANS_APRON,       rank = xi.craftRank.ARTISAN,    cost = 100000 },
-        [3] = { id = xi.item.CORDON_BLEU_COOKING_SET, rank = xi.craftRank.VETERAN,    cost = 150000 },
-        [4] = { id = xi.item.CULINARIANS_SIGNBOARD,   rank = xi.craftRank.VETERAN,    cost = 200000 },
-        [5] = { id = xi.item.CHEFS_RING,              rank = xi.craftRank.CRAFTSMAN,  cost =  80000 },
-        [6] = { id = xi.item.BRASS_CROCK,             rank = xi.craftRank.ARTISAN,    cost =  50000 },
-        [7] = { id = xi.item.CULINARIANS_EMBLEM,      rank = xi.craftRank.VETERAN,    cost =  15000 },
+        [0] = { id = invaderXim.item.CULINARIANS_BELT,        rank = invaderXim.craftRank.NOVICE,     cost =  10000 },
+        [1] = { id = invaderXim.item.CHEFS_HAT,               rank = invaderXim.craftRank.JOURNEYMAN, cost =  70000 },
+        [2] = { id = invaderXim.item.CULINARIANS_APRON,       rank = invaderXim.craftRank.ARTISAN,    cost = 100000 },
+        [3] = { id = invaderXim.item.CORDON_BLEU_COOKING_SET, rank = invaderXim.craftRank.VETERAN,    cost = 150000 },
+        [4] = { id = invaderXim.item.CULINARIANS_SIGNBOARD,   rank = invaderXim.craftRank.VETERAN,    cost = 200000 },
+        [5] = { id = invaderXim.item.CHEFS_RING,              rank = invaderXim.craftRank.CRAFTSMAN,  cost =  80000 },
+        [6] = { id = invaderXim.item.BRASS_CROCK,             rank = invaderXim.craftRank.ARTISAN,    cost =  50000 },
+        [7] = { id = invaderXim.item.CULINARIANS_EMBLEM,      rank = invaderXim.craftRank.VETERAN,    cost =  15000 },
     },
 }
 
@@ -221,7 +221,7 @@ end
 -----------------------------------
 -- NPC Events
 -----------------------------------
-xi.crafting.guildPointOnTrade = function(player, npc, trade, csid, guildId)
+invaderXim.crafting.guildPointOnTrade = function(player, npc, trade, csid, guildId)
     local ID                 = zones[player:getZoneID()]
     local _, remainingPoints = player:getCurrentGPItem(guildId)
 
@@ -247,24 +247,24 @@ xi.crafting.guildPointOnTrade = function(player, npc, trade, csid, guildId)
     end
 end
 
-xi.crafting.guildPointOnTrigger = function(player, csid, guildId)
-    local currency                = xi.crafting.guildTable[guildId][2]
+invaderXim.crafting.guildPointOnTrigger = function(player, csid, guildId)
+    local currency                = invaderXim.crafting.guildTable[guildId][2]
     local gpItem, remainingPoints = player:getCurrentGPItem(guildId)
-    local rank                    = player:getSkillRank(xi.crafting.guildTable[guildId][1])
+    local rank                    = player:getSkillRank(invaderXim.crafting.guildTable[guildId][1])
     local skillCap                = (rank + 1) * 10
     local keyItemBits             = calculateKeyItemBitmask(player, rank, guildKeyItemTable[guildId])
 
     player:startEvent(csid, player:getCurrency(currency), player:getCharVar('[GUILD]currentGuild') - 1, gpItem, remainingPoints, skillCap, 0, keyItemBits, 0)
 end
 
-xi.crafting.guildPointOnEventUpdate = function(player, option, target, guildId)
+invaderXim.crafting.guildPointOnEventUpdate = function(player, option, target, guildId)
     local category           = bit.band(bit.rshift(option, 2), 3)
 
     local ID                 = zones[player:getZoneID()]
     local _, remainingPoints = player:getCurrentGPItem(guildId)
-    local rank               = player:getSkillRank(xi.crafting.guildTable[guildId][1])
+    local rank               = player:getSkillRank(invaderXim.crafting.guildTable[guildId][1])
     local skillCap           = (rank + 1) * 10
-    local currency           = xi.crafting.guildTable[guildId][2]
+    local currency           = invaderXim.crafting.guildTable[guildId][2]
     local keyItems           = guildKeyItemTable[guildId]
 
     -- GP Key Item Option.
@@ -336,9 +336,9 @@ xi.crafting.guildPointOnEventUpdate = function(player, option, target, guildId)
     end
 end
 
-xi.crafting.guildPointOnEventFinish = function(player, option, guildId)
+invaderXim.crafting.guildPointOnEventFinish = function(player, option, guildId)
     local ID   = zones[player:getZoneID()]
-    local rank = player:getSkillRank(xi.crafting.guildTable[guildId][1])
+    local rank = player:getSkillRank(invaderXim.crafting.guildTable[guildId][1])
 
     -- Contract Dialog.
     if bit.tobit(option) == -1 and rank >= 3 then

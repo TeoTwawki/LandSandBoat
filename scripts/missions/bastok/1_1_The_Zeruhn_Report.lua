@@ -10,14 +10,14 @@
 -- Makarim : !pos -58 8 -333 172
 -- Naji    : !pos 64 -14 -4 237
 -----------------------------------
-local bastokMarketsID = zones[xi.zone.BASTOK_MARKETS]
-local bastokMinesID   = zones[xi.zone.BASTOK_MINES]
-local metalworksID    = zones[xi.zone.METALWORKS]
-local portBastokID    = zones[xi.zone.PORT_BASTOK]
-local zeruhnID        = zones[xi.zone.ZERUHN_MINES]
+local bastokMarketsID = zones[invaderXim.zone.BASTOK_MARKETS]
+local bastokMinesID   = zones[invaderXim.zone.BASTOK_MINES]
+local metalworksID    = zones[invaderXim.zone.METALWORKS]
+local portBastokID    = zones[invaderXim.zone.PORT_BASTOK]
+local zeruhnID        = zones[invaderXim.zone.ZERUHN_MINES]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_ZERUHN_REPORT)
+local mission = Mission:new(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_ZERUHN_REPORT)
 
 local handleAcceptMission = function(player, csid, option, npc)
     if option == 0 then
@@ -30,12 +30,12 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId and
                 not player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Cleades'] = mission:progressEvent(1000),
 
@@ -45,7 +45,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Rashid'] = mission:progressEvent(1000),
 
@@ -55,7 +55,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Malduc'] = mission:progressEvent(1000),
 
@@ -65,7 +65,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Argus'] = mission:progressEvent(1000),
 
@@ -81,25 +81,25 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Cleades'] = mission:messageSpecial(bastokMarketsID.text.ORIGINAL_MISSION_OFFSET),
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Rashid'] = mission:messageSpecial(bastokMinesID.text.ORIGINAL_MISSION_OFFSET),
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Malduc'] = mission:messageSpecial(metalworksID.text.ORIGINAL_MISSION_OFFSET),
 
             ['Naji'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.ZERUHN_REPORT) then
-                        return mission:progressEvent(710, not player:seenKeyItem(xi.ki.ZERUHN_REPORT) and 1 or 0)
+                    if player:hasKeyItem(invaderXim.ki.ZERUHN_REPORT) then
+                        return mission:progressEvent(710, not player:seenKeyItem(invaderXim.ki.ZERUHN_REPORT) and 1 or 0)
                     end
                 end,
             },
@@ -108,23 +108,23 @@ mission.sections =
             {
                 [710] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.ZERUHN_REPORT)
+                        player:delKeyItem(invaderXim.ki.ZERUHN_REPORT)
                     end
                 end,
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Argus'] = mission:messageSpecial(portBastokID.text.ORIGINAL_MISSION_OFFSET),
         },
 
-        [xi.zone.ZERUHN_MINES] =
+        [invaderXim.zone.ZERUHN_MINES] =
         {
             ['Makarim'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.ZERUHN_REPORT) then
+                    if player:hasKeyItem(invaderXim.ki.ZERUHN_REPORT) then
                         return mission:messageSpecial(zeruhnID.text.MAKARIM_DIALOG_I)
                     else
                         return mission:progressEvent(121)
@@ -135,7 +135,7 @@ mission.sections =
             ['Rasmus'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.ZERUHN_REPORT) then
+                    if not player:hasKeyItem(invaderXim.ki.ZERUHN_REPORT) then
                         return mission:progressEvent(120)
                     end
                 end,
@@ -144,7 +144,7 @@ mission.sections =
             onEventFinish =
             {
                 [121] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.ZERUHN_REPORT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ZERUHN_REPORT)
                 end,
             },
         },

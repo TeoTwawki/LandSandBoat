@@ -36,7 +36,7 @@ local function resetAtHome(mob, isAtHome)
     mob:setLocalVar('pathingHome', 0)
     -- face the correct direction and do not move while waiting at home
     mob:setRotation(0)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
     -- heal Lioumere
     healWhileAtHome(mob, isAtHome)
     -- disengage clears enmity list and claim
@@ -44,7 +44,7 @@ local function resetAtHome(mob, isAtHome)
 end
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180)
 
     -- use custom listeners rather than antlion_ambush or antlion_ambush_noaggro mixins
     -- because unlike other Antlions Lioumere does not go underground or use pit
@@ -58,15 +58,15 @@ entity.onMobInitialize = function(mob)
     mob:addListener('ENGAGE', 'LIOUMERE_AMBUSH_ENGAGE', function(mobArg, target)
         if mobArg:getLocalVar('alreadyEngagedOnce') == 0 then
             mobArg:setLocalVar('alreadyEngagedOnce', 1)
-            mobArg:useMobAbility(xi.mobSkill.PIT_AMBUSH_1)
+            mobArg:useMobAbility(invaderXim.mobSkill.PIT_AMBUSH_1)
         end
 
         -- make sure Lioumere can move away from home if needed
-        mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+        mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
     end)
 
-    mob:addListener('WEAPONSKILL_STATE_EXIT', 'LIOUMERE_AMBUSH_FINISH', function(mobArg, skillID)
-        if skillID == xi.mobSkill.PIT_AMBUSH_1 then
+    mob:addListener('WEAPONSKILL_STATE_IXIMT', 'LIOUMERE_AMBUSH_FINISH', function(mobArg, skillID)
+        if skillID == invaderXim.mobSkill.PIT_AMBUSH_1 then
             mobArg:hideName(false)
             mobArg:setUntargetable(false)
             mobArg:setAnimationSub(1)
@@ -75,7 +75,7 @@ entity.onMobInitialize = function(mob)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.ALWAYS_AGGRO, 1)
+    mob:setMobMod(invaderXim.mobMod.ALWAYS_AGGRO, 1)
 end
 
 entity.onMobRoam = function(mob)
@@ -100,7 +100,7 @@ end
 
 entity.onMobWeaponSkill = function(target, mob, skill)
     -- travel to home after a mob skill (except initial pit ambush skill)
-    if skill:getID() ~= xi.mobSkill.PIT_AMBUSH_1 then
+    if skill:getID() ~= invaderXim.mobSkill.PIT_AMBUSH_1 then
         travelToHome(mob)
     end
 end

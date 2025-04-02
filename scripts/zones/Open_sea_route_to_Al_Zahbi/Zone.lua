@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Open_sea_route_to_Al_Zahbi (46)
 -----------------------------------
-local ID = zones[xi.zone.OPEN_SEA_ROUTE_TO_AL_ZAHBI]
+local ID = zones[invaderXim.zone.OPEN_SEA_ROUTE_TO_AL_ZAHBI]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}

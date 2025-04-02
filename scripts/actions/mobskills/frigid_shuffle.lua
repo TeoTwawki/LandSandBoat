@@ -9,19 +9,19 @@
 local mobskillObject = {}
 
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
-    return xi.apkallu.canUseAbility(mob, 30)
+    return invaderXim.apkallu.canUseAbility(mob, 30)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     if not target:isFacing(mob) then
-        skill:setMsg(xi.msg.basic.SKILL_MISS)
+        skill:setMsg(invaderXim.msg.basic.SKILL_MISS)
         return
     end
 
     local duration = math.random(60, 120)
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.PARALYSIS, 50, 0, duration))
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.PARALYSIS, 50, 0, duration))
 
-    return xi.effect.PARALYSIS
+    return invaderXim.effect.PARALYSIS
 end
 
 return mobskillObject

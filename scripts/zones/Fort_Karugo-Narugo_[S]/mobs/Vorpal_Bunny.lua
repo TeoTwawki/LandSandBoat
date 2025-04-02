@@ -3,7 +3,7 @@
 --  Mob: Vorpal Bunny
 -- Note: PH for Ratatoskr
 -----------------------------------
-local ID = zones[xi.zone.FORT_KARUGO_NARUGO_S]
+local ID = zones[invaderXim.zone.FORT_KARUGO_NARUGO_S]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -17,7 +17,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, ratatoskrPHTable, 10, 5400) -- 90 minutes
+    invaderXim.mob.phOnDespawn(mob, ratatoskrPHTable, 10, 5400) -- 90 minutes
 end
 
 return entity

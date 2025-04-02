@@ -7,11 +7,11 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 120)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 120)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.BOGEYDOWNER)
+    player:addTitle(invaderXim.title.BOGEYDOWNER)
 end
 
 return entity

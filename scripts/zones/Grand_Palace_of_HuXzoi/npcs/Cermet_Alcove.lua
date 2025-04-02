@@ -3,7 +3,7 @@
 --  NPC: Cermet Alcove
 -- Note: Escort Quest
 -----------------------------------
-local ID = zones[xi.zone.GRAND_PALACE_OF_HUXZOI]
+local ID = zones[invaderXim.zone.GRAND_PALACE_OF_HUXZOI]
 -----------------------------------
 
 local escorts =
@@ -50,7 +50,7 @@ entity.onTrigger = function(player, npc)
 
     -- Create a dynamic entity for the Quasilumin that the player has to escort
     local quasilumin = npc:getZone():insertDynamicEntity({
-        objtype = xi.objType.MOB,
+        objtype = invaderXim.objType.MOB,
         name = 'Quasilumin',
         groupId = 27,
         groupZoneId = 34,
@@ -58,7 +58,7 @@ entity.onTrigger = function(player, npc)
         y = data.spawn.y,
         z = data.spawn.z,
         rotation = data.spawn.rotation,
-        allegiance = xi.allegiance.PLAYER,
+        allegiance = invaderXim.allegiance.PLAYER,
         isAggroable = true,
         specialSpawnAnimation = true,
         releaseIdOnDisappear = true,
@@ -72,7 +72,7 @@ entity.onTrigger = function(player, npc)
 
     quasilumin:setSpawn(data.spawn.x, data.spawn.y, data.spawn.z, data.spawn.rotation)
     quasilumin:spawn()
-    quasilumin:setStatus(xi.status.NORMAL)
+    quasilumin:setStatus(invaderXim.status.NORMAL)
 
     player:messageSpecial(ID.text.TIME_RESTRICTION, data.limit)
     quasilumin:setLocalVar('escort', npc:getID())

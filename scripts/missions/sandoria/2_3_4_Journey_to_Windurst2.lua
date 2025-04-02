@@ -7,7 +7,7 @@
 -- Mourices  : !pos -50.646 -0.501 -27.642 241
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_TO_WINDURST2)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_TO_WINDURST2)
 
 mission.reward = {}
 
@@ -18,24 +18,24 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BALGAS_DAIS] =
+        [invaderXim.zone.BALGAS_DAIS] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 8 and
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.RANK_2_MISSION
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.RANK_2_MISSION
                     then
-                        npcUtil.giveKeyItem(player, xi.ki.KINDRED_CREST)
-                        player:delKeyItem(xi.ki.DARK_KEY)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.KINDRED_CREST)
+                        player:delKeyItem(invaderXim.ki.DARK_KEY)
                         player:setMissionStatus(mission.areaId, 9)
                     end
                 end,
             },
         },
 
-        [xi.zone.HEAVENS_TOWER] =
+        [invaderXim.zone.HEAVENS_TOWER] =
         {
             ['Kupipi'] =
             {
@@ -57,7 +57,7 @@ mission.sections =
             onEventFinish =
             {
                 [242] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.DARK_KEY)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.DARK_KEY)
                     player:setMissionStatus(mission.areaId, 8)
                 end,
 
@@ -67,7 +67,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Mourices'] =
             {
@@ -86,10 +86,10 @@ mission.sections =
             {
                 [467] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:addMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_ABROAD)
-                        player:delKeyItem(xi.ki.KINDRED_CREST)
+                        player:addMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_ABROAD)
+                        player:delKeyItem(invaderXim.ki.KINDRED_CREST)
                         player:setMissionStatus(mission.areaId, 11)
-                        npcUtil.giveKeyItem(player, xi.ki.KINDRED_REPORT)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.KINDRED_REPORT)
                     end
                 end,
             },

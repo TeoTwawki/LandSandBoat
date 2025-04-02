@@ -12,7 +12,7 @@ end
 
 itemObject.onItemUse = function(target)
     local amount = math.random(5, 10)
-    target:messageCombat(target, xi.item.BEAD_POUCH, amount, xi.msg.combat.USE_OBTAIN_ESCHA_BEAD)
+    target:messageCombat(target, invaderXim.item.BEAD_POUCH, amount, invaderXim.msg.combat.USE_OBTAIN_ESCHA_BEAD)
     target:addCurrency('escha_beads', amount)
 end
 

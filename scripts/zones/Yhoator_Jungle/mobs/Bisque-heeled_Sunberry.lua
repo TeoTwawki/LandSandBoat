@@ -8,17 +8,17 @@ mixins = { require('scripts/mixins/families/tonberry') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.GIL_MIN, 350)
-    mob:setMobMod(xi.mobMod.GIL_MAX, 900)
+    mob:setMobMod(invaderXim.mobMod.GIL_MIN, 350)
+    mob:setMobMod(invaderXim.mobMod.GIL_MAX, 900)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 133, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 133, 1, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)

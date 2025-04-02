@@ -2,7 +2,7 @@
 -- Zone: Attohwa_Chasm
 -- Desc: this file contains functions that are shared by multiple luas in this zone's directory
 -----------------------------------
-local ID = zones[xi.zone.ATTOHWA_CHASM]
+local ID = zones[invaderXim.zone.ATTOHWA_CHASM]
 -----------------------------------
 
 local attohwaChasmGlobal =

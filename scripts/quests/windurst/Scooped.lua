@@ -5,7 +5,7 @@
 -- Hariga-Origa : !pos -70.244, -3.800, -4.439
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.SCOOPED)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.SCOOPED)
 
 quest.reward =
 {
@@ -16,11 +16,11 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.WINDURST, xi.quest.id.windurst.MAKING_HEADLINES)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.MAKING_HEADLINES)
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Naiko-Paneiko'] = quest:progressEvent(676),
 
@@ -35,15 +35,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Naiko-Paneiko'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.BRONZE_BOX) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.BRONZE_BOX) then
                         return quest:progressEvent(680)
                     end
                 end,
@@ -65,10 +65,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Chyuk-Kochak'] = quest:event(682):replaceDefault(),
 

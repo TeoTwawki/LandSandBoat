@@ -6,12 +6,12 @@
 -- Regal Pawprints (G-9) : !pos -145.266 -61.851 -174.171 136
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.DUNGEONS_AND_DANCERS)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.DUNGEONS_AND_DANCERS)
 
 mission.reward =
 {
-    keyItem     = xi.ki.UMBRA_BUG,
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.DISTORTER_OF_TIME },
+    keyItem     = invaderXim.ki.UMBRA_BUG,
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.DISTORTER_OF_TIME },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BEAUCEDINE_GLACIER_S] =
+        [invaderXim.zone.BEAUCEDINE_GLACIER_S] =
         {
             ['Regal_Pawprints_8'] =
             {
@@ -36,7 +36,7 @@ mission.sections =
             {
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.AROMA_BUG) and
+                        not player:hasKeyItem(invaderXim.ki.AROMA_BUG) and
                         mission:getVar(player, 'Timer') <= VanadielUniqueDay()
                     then
                         -- TODO: For future Instance implementation, on instance fail,
@@ -64,12 +64,12 @@ mission.sections =
                 end,
 
                 [25] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.AROMA_BUG)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.AROMA_BUG)
                 end,
             },
         },
 
-        [xi.zone.EVERBLOOM_HOLLOW] =
+        [invaderXim.zone.EVERBLOOM_HOLLOW] =
         {
             onEventFinish =
             {
@@ -79,7 +79,7 @@ mission.sections =
                     -- implementation of the instance.
 
                     mission:setVar(player, 'Status', 2)
-                    player:setPos(-148.078, -61.320, -176.608, 32, xi.zone.BEAUCEDINE_GLACIER_S)
+                    player:setPos(-148.078, -61.320, -176.608, 32, invaderXim.zone.BEAUCEDINE_GLACIER_S)
                 end,
             },
         },

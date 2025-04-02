@@ -4,22 +4,22 @@
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId           = xi.zone.CLOISTER_OF_TREMORS,
-    battlefieldId    = xi.battlefield.id.WAKING_THE_BEAST_CLOISTER_OF_TREMORS,
+    zoneId           = invaderXim.zone.CLOISTER_OF_TREMORS,
+    battlefieldId    = invaderXim.battlefield.id.WAKING_THE_BEAST_CLOISTER_OF_TREMORS,
     canLoseExp       = false,
     maxPlayers       = 18,
     timeLimit        = utils.minutes(30),
     index            = 3,
     entryNpc         = 'EP_Entrance',
     exitNpc          = 'Earth_Protocrystal',
-    requiredKeyItems = { xi.ki.RAINBOW_RESONATOR },
+    requiredKeyItems = { invaderXim.ki.RAINBOW_RESONATOR },
 
-    questArea = xi.questLog.OTHER_AREAS,
-    quest     = xi.quest.id.otherAreas.WAKING_THE_BEAST,
+    questArea = invaderXim.questLog.OTHER_AREAS,
+    quest     = invaderXim.quest.id.otherAreas.WAKING_THE_BEAST,
 })
 
 function content:onEventFinishWin(player, csid, option, npc)
-    npcUtil.giveKeyItem(player, xi.ki.EYE_OF_TREMORS)
+    npcUtil.giveKeyItem(player, invaderXim.ki.EYE_OF_TREMORS)
 end
 
 content.groups =
@@ -35,7 +35,7 @@ content.groups =
                 end
             end
 
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 

@@ -1,12 +1,12 @@
 -----------------------------------
--- xi.effect.SILENCE
+-- invaderXim.effect.SILENCE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
     -- Immunobreak reset.
-    target:setMod(xi.mod.SILENCE_IMMUNOBREAK, 0)
+    target:setMod(invaderXim.mod.SILENCE_IMMUNOBREAK, 0)
 end
 
 effectObject.onEffectTick = function(target, effect)

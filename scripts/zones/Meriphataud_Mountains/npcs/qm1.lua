@@ -4,14 +4,14 @@
 -- Involved in Quest: The Holy Crest
 -- !pos 641 -15 7 119
 -----------------------------------
-local ID = zones[xi.zone.MERIPHATAUD_MOUNTAINS]
+local ID = zones[invaderXim.zone.MERIPHATAUD_MOUNTAINS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHas(trade, xi.item.WYVERN_EGG) and
+        npcUtil.tradeHas(trade, invaderXim.item.WYVERN_EGG) and
         player:getCharVar('TheHolyCrest_Event') == 4
     then
         player:startEvent(56)

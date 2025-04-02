@@ -3,12 +3,12 @@
 -- Name: Bastok Mission 9-2
 -- !pos -111 -6 0 165
 -----------------------------------
-local ID = zones[xi.zone.THRONE_ROOM]
+local ID = zones[invaderXim.zone.THRONE_ROOM]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId        = xi.zone.THRONE_ROOM,
-    battlefieldId = xi.battlefield.id.WHERE_TWO_PATHS_CONVERGE,
+    zoneId        = invaderXim.zone.THRONE_ROOM,
+    battlefieldId = invaderXim.battlefield.id.WHERE_TWO_PATHS_CONVERGE,
     canLoseExp    = false,
     maxPlayers    = 6,
     levelCap      = 75,
@@ -17,8 +17,8 @@ local content = BattlefieldMission:new({
     entryNpc      = '_4l1',
     exitNpcs      = { '_4l2', '_4l3', '_4l4' },
 
-    missionArea           = xi.mission.log_id.BASTOK,
-    mission               = xi.mission.id.bastok.WHERE_TWO_PATHS_CONVERGE,
+    missionArea           = invaderXim.mission.log_id.BASTOK,
+    mission               = invaderXim.mission.id.bastok.WHERE_TWO_PATHS_CONVERGE,
     requiredMissionStatus = 1,
     skipMissionStatus     = 4,
 })
@@ -90,7 +90,7 @@ content.groups =
         mobs    = { 'Zeid_2' },
         spawned = false,
         death   = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end
     },
 

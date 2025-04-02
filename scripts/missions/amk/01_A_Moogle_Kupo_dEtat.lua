@@ -4,11 +4,11 @@
 -- !addmission 10 0
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.AMK, xi.mission.id.amk.A_MOOGLE_KUPO_DETAT)
+local mission = Mission:new(invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.A_MOOGLE_KUPO_DETAT)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.AMK, xi.mission.id.amk.DRENCHED_IT_BEGAN_WITH_A_RAINDROP },
+    nextMission = { invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.DRENCHED_IT_BEGAN_WITH_A_RAINDROP },
 }
 
 -- Since there are so many zones with interactions:
@@ -18,8 +18,8 @@ mission.sections[1] = -- REMEMBER: Lua is 1-indexed!
 {
     check = function(player, currentMission, missionStatus, vars)
         return currentMission == mission.missionId and
-            xi.settings.main.ENABLE_AMK == 1 and
-            xi.moghouse.isInMogHouseInHomeNation(player) and
+            invaderXim.settings.main.ENABLE_AMK == 1 and
+            invaderXim.moghouse.isInMogHouseInHomeNation(player) and
             player:getMainLvl() >= 10 and
             player:getCharVar('HQuest[moghouseExpo]notSeen') == 0
     end,
@@ -45,7 +45,7 @@ local moogleTriggerEvent =
     },
 }
 
-for i, zoneId in ipairs(xi.moghouse.moghouseZones) do
+for i, zoneId in ipairs(invaderXim.moghouse.moghouseZones) do
     mission.sections[1][zoneId] = moogleTriggerEvent
 end
 

@@ -5,7 +5,7 @@
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.chocobo.initZone(zone)
+    invaderXim.chocobo.initZone(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -27,16 +27,16 @@ zoneObject.onZoneIn = function(player, prevZone)
         player:getYPos() == 0 and
         player:getZPos() == 0
     then
-        if prevZone == xi.zone.SAN_DORIA_JEUNO_AIRSHIP then
+        if prevZone == invaderXim.zone.SAN_DORIA_JEUNO_AIRSHIP then
             cs = 10018
             player:setPos(-87.000, 12.000, 116.000, 128)
-        elseif prevZone == xi.zone.BASTOK_JEUNO_AIRSHIP then
+        elseif prevZone == invaderXim.zone.BASTOK_JEUNO_AIRSHIP then
             cs = 10020
             player:setPos(-50.000, 12.000, -116.000, 0)
-        elseif prevZone == xi.zone.WINDURST_JEUNO_AIRSHIP then
+        elseif prevZone == invaderXim.zone.WINDURST_JEUNO_AIRSHIP then
             cs = 10019
             player:setPos(16.000, 12.000, -117.000, 0)
-        elseif prevZone == xi.zone.KAZHAM_JEUNO_AIRSHIP then
+        elseif prevZone == invaderXim.zone.KAZHAM_JEUNO_AIRSHIP then
             cs = 10021
             player:setPos(-24.000, 12.000, 116.000, 128)
         else
@@ -49,7 +49,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTransportEvent = function(player, transport)

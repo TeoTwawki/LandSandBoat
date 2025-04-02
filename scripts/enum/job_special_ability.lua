@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.jobSpecialAbility
-xi.jobSpecialAbility =
+---@enum invaderXim.jobSpecialAbility
+invaderXim.jobSpecialAbility =
 {
     MIGHTY_STRIKES      = 688,
     MIGHTY_STRIKES_MAAT = 1008,
@@ -108,4 +108,4 @@ xi.jobSpecialAbility =
     BOLSTER              = 3482,
 }
 
-xi.jsa = xi.jobSpecialAbility
+invaderXim.jsa = invaderXim.jobSpecialAbility

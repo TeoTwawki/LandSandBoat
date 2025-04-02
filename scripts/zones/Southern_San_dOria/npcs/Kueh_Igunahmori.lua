@@ -4,7 +4,7 @@
 -- Guild Merchant NPC: Leathercrafting Guild
 -- !pos -194.791 -8.800 13.130 230
 -----------------------------------
-local ID = zones[xi.zone.SOUTHERN_SAN_DORIA]
+local ID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

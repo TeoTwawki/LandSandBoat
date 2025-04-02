@@ -9,11 +9,11 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    xi.mobskills.mobBuffMove(mob, xi.effect.CHAINSPELL, 1, 0, 60)
+    invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.CHAINSPELL, 1, 0, 60)
 
-    skill:setMsg(xi.msg.basic.USES)
+    skill:setMsg(invaderXim.msg.basic.USES)
 
-    return xi.effect.CHAINSPELL
+    return invaderXim.effect.CHAINSPELL
 end
 
 return mobskillObject

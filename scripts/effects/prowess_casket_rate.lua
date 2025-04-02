@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.PROWESS
+-- invaderXim.effect.PROWESS
 -- Increased treasure casket discovery
 -----------------------------------
 ---@type TEffect

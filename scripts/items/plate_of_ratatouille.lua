@@ -13,27 +13,27 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.foodOnItemCheck(target, xi.foodType.BASIC)
+    return invaderXim.itemUtils.foodOnItemCheck(target, invaderXim.foodType.BASIC)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffect(xi.effect.FOOD, 0, 0, 10800, 5731)
+    target:addStatusEffect(invaderXim.effect.FOOD, 0, 0, 10800, 5731)
 end
 
 itemObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.AGI, 5)
-    target:addMod(xi.mod.EVA, 5)
-    target:addMod(xi.mod.HPHEAL, 2)
-    target:addMod(xi.mod.MPHEAL, 2)
-    target:addMod(xi.mod.UNDEAD_KILLER, 5)
+    target:addMod(invaderXim.mod.AGI, 5)
+    target:addMod(invaderXim.mod.EVA, 5)
+    target:addMod(invaderXim.mod.HPHEAL, 2)
+    target:addMod(invaderXim.mod.MPHEAL, 2)
+    target:addMod(invaderXim.mod.UNDEAD_KILLER, 5)
 end
 
 itemObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.AGI, 5)
-    target:delMod(xi.mod.EVA, 5)
-    target:delMod(xi.mod.HPHEAL, 2)
-    target:delMod(xi.mod.MPHEAL, 2)
-    target:delMod(xi.mod.UNDEAD_KILLER, 5)
+    target:delMod(invaderXim.mod.AGI, 5)
+    target:delMod(invaderXim.mod.EVA, 5)
+    target:delMod(invaderXim.mod.HPHEAL, 2)
+    target:delMod(invaderXim.mod.MPHEAL, 2)
+    target:delMod(invaderXim.mod.UNDEAD_KILLER, 5)
 end
 
 return itemObject

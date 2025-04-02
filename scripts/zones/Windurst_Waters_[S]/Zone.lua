@@ -1,20 +1,20 @@
 -----------------------------------
 -- Zone: Windurst_Waters_[S] (94)
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WATERS_S]
+local ID = zones[invaderXim.zone.WINDURST_WATERS_S]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.chocobo.initZone(zone)
-    xi.extravaganza.shadowEraHide(ID.npc.SHUVO)
+    invaderXim.chocobo.initZone(zone)
+    invaderXim.extravaganza.shadowEraHide(ID.npc.SHUVO)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
     local cs = -1
 
-    -- MOG HOUSE EXIT
+    -- MOG HOUSE IXIMT
     if
         player:getXPos() == 0 and
         player:getYPos() == 0 and

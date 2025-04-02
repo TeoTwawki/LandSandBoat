@@ -5,8 +5,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
-DROP TABLE IF EXISTS `char_pet`;
-CREATE TABLE IF NOT EXISTS `char_pet` (
+DROP TABLE IF IXIMSTS `char_pet`;
+CREATE TABLE IF NOT IXIMSTS `char_pet` (
   `charid` int(10) unsigned NOT NULL,
   `wyvernid` smallint(3) unsigned NOT NULL DEFAULT '0',
   `automatonid` smallint(3) unsigned NOT NULL DEFAULT '0',

@@ -8,10 +8,10 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.SILENCE)
-    mob:setMobMod(xi.mobMod.ALWAYS_AGGRO, 1)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
+    mob:setMobMod(invaderXim.mobMod.ALWAYS_AGGRO, 1)
     mob:setMaxMP(0) -- WHM but has no MP
 end
 

@@ -2,7 +2,7 @@
 -- Area: Sealion's Den
 --  Mob: Tenzen
 -----------------------------------
-local ID = zones[xi.zone.SEALIONS_DEN]
+local ID = zones[invaderXim.zone.SEALIONS_DEN]
 local tenzenFunctions = require('scripts/zones/Sealions_Den/helpers/TenzenFunctions')
 -----------------------------------
 ---@type TMobEntity
@@ -11,10 +11,10 @@ local entity = {}
 entity.onMobSpawn = function(mob)
     -- Tenzen in Warriors Path is a completely scripted encounter once you trigger certain states
     -- Leaving mods here as visuals
-    mob:setMod(xi.mod.DEF, 350)
-    mob:setBehavior(bit.band(mob:getBehavior(), bit.bnot(xi.behavior.STANDBACK)))
-    mob:setMobMod(xi.mobMod.NO_MOVE, 1)
-    mob:setMobMod(xi.mobMod.SIGHT_RANGE, 10)
+    mob:setMod(invaderXim.mod.DEF, 350)
+    mob:setBehavior(bit.band(mob:getBehavior(), bit.bnot(invaderXim.behavior.STANDBACK)))
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
+    mob:setMobMod(invaderXim.mobMod.SIGHT_RANGE, 10)
     mob:setAnimationSub(0)
     mob:setMobSkillAttack(0)
     mob:setMobAbilityEnabled(true)
@@ -26,7 +26,7 @@ end
 
 entity.onMobEngage = function(mob, target)
     mob:showText(mob, ID.text.TENZEN_MSG_OFFSET + 1)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
     -- three tarus fight with tenzen
     local mobId  = mob:getID()
     local offset = mobId - ID.mob.TENZEN
@@ -62,9 +62,9 @@ entity.onMobFight = function(mob, target)
     local act    = mob:getCurrentAction()
 
     if
-        act == xi.act.MOBABILITY_START or
-        act == xi.act.MOBABILITY_USING or
-        act == xi.act.MOBABILITY_FINISH
+        act == invaderXim.act.MOBABILITY_START or
+        act == invaderXim.act.MOBABILITY_USING or
+        act == invaderXim.act.MOBABILITY_FINISH
     then
         isBusy = true -- is set to true if Tenzen is in any stage of using a mobskill
     end
@@ -88,7 +88,7 @@ entity.onMobFight = function(mob, target)
     then -- Tenzen gives up at 15% - win
         mob:showText(target, ID.text.TENZEN_MSG_OFFSET + 2)
         mob:setAnimationSub(5)
-        mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+        mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
         battlefield:win()
         return
     end
@@ -96,9 +96,9 @@ entity.onMobFight = function(mob, target)
     tenzenFunctions.riceBall(mob, target, isBusy)
 
     if mob:getHPP() > 35 then
-        mob:setMod(xi.mod.REGAIN, 30)
+        mob:setMod(invaderXim.mod.REGAIN, 30)
     else
-        mob:setMod(xi.mod.REGAIN, 70)
+        mob:setMod(invaderXim.mod.REGAIN, 70)
     end
 end
 

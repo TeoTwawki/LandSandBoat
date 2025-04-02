@@ -35,7 +35,7 @@ commandObj.onTrigger = function(player, skillID, target, tp)
 
     if target == nil then
         targ = player:getCursorTarget()
-    elseif zone and zone:getTypeMask() == xi.zoneType.INSTANCED then
+    elseif zone and zone:getTypeMask() == invaderXim.zoneType.INSTANCED then
         local instance = player:getInstance()
 
         if not instance then

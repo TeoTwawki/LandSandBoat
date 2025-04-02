@@ -6,11 +6,11 @@
 -- RALA_WATERWAYS : !zone 258
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.HONOR_AND_AUDACITY)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.HONOR_AND_AUDACITY)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.THE_WATERGARDEN_COLISEUM },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_WATERGARDEN_COLISEUM },
 }
 
 mission.sections =
@@ -20,12 +20,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(127),
         },
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             onZoneIn = function(player, prevZone)
                 return 342

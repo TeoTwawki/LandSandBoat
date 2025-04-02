@@ -8,13 +8,13 @@
 -- Mahogany Door (BCNM) : !pos 299 0.1 349 163
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_TEMPLE_OF_UGGALEPIH)
+local mission = Mission:new(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_TEMPLE_OF_UGGALEPIH)
 
 mission.reward =
 {
-    keyItem     = xi.ki.DARK_FRAGMENT,
-    title       = xi.title.BEARER_OF_THE_WISEWOMANS_HOPE,
-    nextMission = { xi.mission.log_id.ZILART, xi.mission.id.zilart.HEADSTONE_PILGRIMAGE },
+    keyItem     = invaderXim.ki.DARK_FRAGMENT,
+    title       = invaderXim.title.BEARER_OF_THE_WISEWOMANS_HOPE,
+    nextMission = { invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.HEADSTONE_PILGRIMAGE },
 }
 
 mission.sections =
@@ -24,19 +24,19 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Gilgamesh']  = mission:event(8),
         },
 
-        [xi.zone.KAZHAM] =
+        [invaderXim.zone.KAZHAM] =
         {
             -- NOTE: This CS is blocked by Evisceration quest if it is active, and will not
             -- be displayed.
             ['Jakoh_Wahcondalo'] = mission:event(115),
         },
 
-        [xi.zone.SACRIFICIAL_CHAMBER] =
+        [invaderXim.zone.SACRIFICIAL_CHAMBER] =
         {
             onZoneIn = function(player, prevZone)
                 local missionStatus = player:getMissionStatus(mission.areaId)
@@ -66,26 +66,26 @@ mission.sections =
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
-                    if player:getLocalVar('battlefieldWin') == xi.battlefield.id.TEMPLE_OF_UGGALEPIH then
+                    if player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.TEMPLE_OF_UGGALEPIH then
                         player:setMissionStatus(mission.areaId, 1)
-                        player:setPos(-329.762, -0.015, -300.172, 127, xi.zone.SACRIFICIAL_CHAMBER)
+                        player:setPos(-329.762, -0.015, -300.172, 127, invaderXim.zone.SACRIFICIAL_CHAMBER)
                     end
                 end,
 
                 [7] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 2)
-                    player:setPos(-329.762, -0.015, -300.172, 127, xi.zone.SACRIFICIAL_CHAMBER)
+                    player:setPos(-329.762, -0.015, -300.172, 127, invaderXim.zone.SACRIFICIAL_CHAMBER)
                 end,
 
                 [8] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.SACRIFICIAL_CHAMBER_KEY)
+                        player:delKeyItem(invaderXim.ki.SACRIFICIAL_CHAMBER_KEY)
 
                         -- NOTE: RoV mission transition occurs if the player is on Cursed Temple following the completion
                         -- of this event.
-                        if player:getCurrentMission(xi.mission.log_id.ROV) == xi.mission.id.rov.THE_CURSED_TEMPLE then
-                            player:completeMission(xi.mission.log_id.ROV, xi.mission.id.rov.THE_CURSED_TEMPLE)
-                            player:addMission(xi.mission.log_id.ROV, xi.mission.id.rov.WISDOM_OF_OUR_FOREFATHERS)
+                        if player:getCurrentMission(invaderXim.mission.log_id.ROV) == invaderXim.mission.id.rov.THE_CURSED_TEMPLE then
+                            player:completeMission(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.THE_CURSED_TEMPLE)
+                            player:addMission(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.WISDOM_OF_OUR_FOREFATHERS)
                         end
                     end
                 end,
@@ -97,15 +97,15 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission ~= mission.missionId and
-                player:getLocalVar('battlefieldWin') == xi.battlefield.id.TEMPLE_OF_UGGALEPIH
+                player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.TEMPLE_OF_UGGALEPIH
         end,
 
-        [xi.zone.SACRIFICIAL_CHAMBER] =
+        [invaderXim.zone.SACRIFICIAL_CHAMBER] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
-                    player:addTitle(xi.title.BEARER_OF_THE_WISEWOMANS_HOPE)
+                    player:addTitle(invaderXim.title.BEARER_OF_THE_WISEWOMANS_HOPE)
                 end,
             },
         },

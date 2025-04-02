@@ -92,7 +92,7 @@ function utils.getDebugPrinter(printEntityName, settingOrCondition, prefix)
             local depth  = utils.getStackDepth()
             local player = utils.getObjectFromScope(printEntityName, depth + 1)
             if player then
-                player:printToPlayer(str, xi.msg.channel.SYSTEM_3, '')
+                player:printToPlayer(str, invaderXim.msg.channel.SYSTEM_3, '')
             end
         end
     end
@@ -429,14 +429,14 @@ end
 function utils.stoneskin(target, dmg)
     --handling stoneskin
     if dmg > 0 then
-        local skin = target:getMod(xi.mod.STONESKIN)
+        local skin = target:getMod(invaderXim.mod.STONESKIN)
         if skin > 0 then
             if skin > dmg then --absorb all damage
-                target:delMod(xi.mod.STONESKIN, dmg)
+                target:delMod(invaderXim.mod.STONESKIN, dmg)
                 return 0
             else --absorbs some damage then wear
-                target:delStatusEffect(xi.effect.STONESKIN)
-                target:setMod(xi.mod.STONESKIN, 0)
+                target:delStatusEffect(invaderXim.effect.STONESKIN)
+                target:setMod(invaderXim.mod.STONESKIN, 0)
                 return dmg - skin
             end
         end
@@ -452,7 +452,7 @@ end
 ---@return integer
 function utils.oneforall(target, dmg)
     if dmg > 0 then
-        local oneForAllEffect = target:getStatusEffect(xi.effect.ONE_FOR_ALL)
+        local oneForAllEffect = target:getStatusEffect(invaderXim.effect.ONE_FOR_ALL)
 
         if oneForAllEffect ~= nil then
             local power = oneForAllEffect:getPower()
@@ -472,20 +472,20 @@ function utils.takeShadows(target, dmg, shadowbehav)
         shadowbehav = 1
     end
 
-    local targShadows = target:getMod(xi.mod.UTSUSEMI)
-    local shadowType = xi.mod.UTSUSEMI
+    local targShadows = target:getMod(invaderXim.mod.UTSUSEMI)
+    local shadowType = invaderXim.mod.UTSUSEMI
 
     if targShadows == 0 then
         --try blink, as utsusemi always overwrites blink this is okay
-        targShadows = target:getMod(xi.mod.BLINK)
-        shadowType = xi.mod.BLINK
+        targShadows = target:getMod(invaderXim.mod.BLINK)
+        shadowType = invaderXim.mod.BLINK
     end
 
     local shadowsLeft = targShadows
     local shadowsUsed = 0
 
     if targShadows > 0 then
-        if shadowType == xi.mod.BLINK then
+        if shadowType == invaderXim.mod.BLINK then
             for i = 1, shadowbehav, 1 do
                 if shadowsLeft > 0 then
                     if math.random() <= 0.8 then
@@ -506,16 +506,16 @@ function utils.takeShadows(target, dmg, shadowbehav)
 
                 if shadowsLeft > 0 then
                     -- Update icon
-                    local effect = target:getStatusEffect(xi.effect.COPY_IMAGE)
+                    local effect = target:getStatusEffect(invaderXim.effect.COPY_IMAGE)
                     if effect ~= nil then
                         if shadowsLeft == 1 then
-                            effect:setIcon(xi.effect.COPY_IMAGE)
+                            effect:setIcon(invaderXim.effect.COPY_IMAGE)
                         elseif shadowsLeft == 2 then
-                            effect:setIcon(xi.effect.COPY_IMAGE_2)
+                            effect:setIcon(invaderXim.effect.COPY_IMAGE_2)
                         elseif shadowsLeft == 3 then
-                            effect:setIcon(xi.effect.COPY_IMAGE_3)
+                            effect:setIcon(invaderXim.effect.COPY_IMAGE_3)
                         elseif shadowsLeft >= 4 then
-                            effect:setIcon(xi.effect.COPY_IMAGE_4)
+                            effect:setIcon(invaderXim.effect.COPY_IMAGE_4)
                         end
                     end
                 end
@@ -530,8 +530,8 @@ function utils.takeShadows(target, dmg, shadowbehav)
         target:setMod(shadowType, shadowsLeft)
 
         if shadowsLeft <= 0 then
-            target:delStatusEffect(xi.effect.COPY_IMAGE)
-            target:delStatusEffect(xi.effect.BLINK)
+            target:delStatusEffect(invaderXim.effect.COPY_IMAGE)
+            target:delStatusEffect(invaderXim.effect.BLINK)
         end
     end
 
@@ -581,7 +581,7 @@ end
 function utils.thirdeye(target)
     --third eye doesnt care how many shadows, so attempt to anticipate, but reduce
     --chance of anticipate based on previous successful anticipates.
-    local teye = target:getStatusEffect(xi.effect.THIRD_EYE)
+    local teye = target:getStatusEffect(invaderXim.effect.THIRD_EYE)
 
     if teye == nil then
         return false
@@ -591,7 +591,7 @@ function utils.thirdeye(target)
 
     if prevAnt == 0 or (math.random() * 100) < (80 - (prevAnt * 10)) then
         --anticipated!
-        target:delStatusEffect(xi.effect.THIRD_EYE)
+        target:delStatusEffect(invaderXim.effect.THIRD_EYE)
         return true
     end
 
@@ -600,7 +600,7 @@ end
 
 ---@nodiscard
 ---@param actor CBaseEntity
----@param job xi.job
+---@param job invaderXim.job
 function utils.getActiveJobLevel(actor, job)
     local jobLevel = 0
 
@@ -613,30 +613,30 @@ function utils.getActiveJobLevel(actor, job)
     return jobLevel
 end
 
--- System Strength Bonus table.  This is used by xi.mobskills.mobBreathMove, but determines weakness of
+-- System Strength Bonus table.  This is used by invaderXim.mobskills.mobBreathMove, but determines weakness of
 -- a defending system, vs the attacking system.  This table is indexed by the attacker.
 -- This table can scale beyond two values, but at this time, no data has been recorded.
 -- Values: 1 == Bonus, -1 == Weakness, 0 == Default (No Weakness or Bonus)
 local systemStrengthTable =
 {
-    [xi.eco.BEAST   ] = { [xi.eco.LIZARD  ] = 1, [xi.eco.PLANTOID] = -1, },
-    [xi.eco.LIZARD  ] = { [xi.eco.VERMIN  ] = 1, [xi.eco.BEAST   ] = -1, },
-    [xi.eco.VERMIN  ] = { [xi.eco.PLANTOID] = 1, [xi.eco.LIZARD  ] = -1, },
-    [xi.eco.PLANTOID] = { [xi.eco.BEAST   ] = 1, [xi.eco.VERMIN  ] = -1, },
-    [xi.eco.AQUAN   ] = { [xi.eco.AMORPH  ] = 1, [xi.eco.BIRD    ] = -1, },
-    [xi.eco.AMORPH  ] = { [xi.eco.BIRD    ] = 1, [xi.eco.AQUAN   ] = -1, },
-    [xi.eco.BIRD    ] = { [xi.eco.AQUAN   ] = 1, [xi.eco.AMORPH  ] = -1, },
-    [xi.eco.UNDEAD  ] = { [xi.eco.ARCANA  ] = 1, },
-    [xi.eco.ARCANA  ] = { [xi.eco.UNDEAD  ] = 1, },
-    [xi.eco.DRAGON  ] = { [xi.eco.DEMON   ] = 1, },
-    [xi.eco.DEMON   ] = { [xi.eco.DRAGON  ] = 1, },
-    [xi.eco.LUMINIAN] = { [xi.eco.LUMINION] = 1, },
-    [xi.eco.LUMINION] = { [xi.eco.LUMINIAN] = 1, },
+    [invaderXim.eco.BEAST   ] = { [invaderXim.eco.LIZARD  ] = 1, [invaderXim.eco.PLANTOID] = -1, },
+    [invaderXim.eco.LIZARD  ] = { [invaderXim.eco.VERMIN  ] = 1, [invaderXim.eco.BEAST   ] = -1, },
+    [invaderXim.eco.VERMIN  ] = { [invaderXim.eco.PLANTOID] = 1, [invaderXim.eco.LIZARD  ] = -1, },
+    [invaderXim.eco.PLANTOID] = { [invaderXim.eco.BEAST   ] = 1, [invaderXim.eco.VERMIN  ] = -1, },
+    [invaderXim.eco.AQUAN   ] = { [invaderXim.eco.AMORPH  ] = 1, [invaderXim.eco.BIRD    ] = -1, },
+    [invaderXim.eco.AMORPH  ] = { [invaderXim.eco.BIRD    ] = 1, [invaderXim.eco.AQUAN   ] = -1, },
+    [invaderXim.eco.BIRD    ] = { [invaderXim.eco.AQUAN   ] = 1, [invaderXim.eco.AMORPH  ] = -1, },
+    [invaderXim.eco.UNDEAD  ] = { [invaderXim.eco.ARCANA  ] = 1, },
+    [invaderXim.eco.ARCANA  ] = { [invaderXim.eco.UNDEAD  ] = 1, },
+    [invaderXim.eco.DRAGON  ] = { [invaderXim.eco.DEMON   ] = 1, },
+    [invaderXim.eco.DEMON   ] = { [invaderXim.eco.DRAGON  ] = 1, },
+    [invaderXim.eco.LUMINIAN] = { [invaderXim.eco.LUMINION] = 1, },
+    [invaderXim.eco.LUMINION] = { [invaderXim.eco.LUMINIAN] = 1, },
 }
 
 ---@nodiscard
----@param attackerSystem xi.eco
----@param defenderSystem xi.eco
+---@param attackerSystem invaderXim.eco
+---@param defenderSystem invaderXim.eco
 ---@return integer
 function utils.getEcosystemStrengthBonus(attackerSystem, defenderSystem)
     for k, v in pairs(systemStrengthTable) do
@@ -777,7 +777,7 @@ end
 
 -- Checks to see if a specific key is contained in the table.  This is used by
 -- tables that contain specific indices that may be non-sequential.
--- See: xi.teleport.escape
+-- See: invaderXim.teleport.escape
 ---@nodiscard
 ---@param keyVal string|integer
 ---@param collection table
@@ -820,10 +820,10 @@ end
 -- These should only be used when working between quests, or outside
 -- of the quest script itself.  Quest vars will be deleted automatically
 -- when that quest:complete(player) is called!
----@deprecated Use xi.quest or xi.mission functions
+---@deprecated Use invaderXim.quest or invaderXim.mission functions
 ---@nodiscard
 ---@param player CBaseEntity
----@param logId xi.questLog
+---@param logId invaderXim.questLog
 ---@param questId integer
 ---@param varName string
 ---@return integer
@@ -832,9 +832,9 @@ function utils.getQuestVar(player, logId, questId, varName)
     return player:getCharVar(charVarName)
 end
 
----@deprecated Use xi.quest or xi.mission functions
+---@deprecated Use invaderXim.quest or invaderXim.mission functions
 ---@param player CBaseEntity
----@param logId xi.questLog
+---@param logId invaderXim.questLog
 ---@param questId integer
 ---@param varName string
 ---@param value integer
@@ -883,8 +883,8 @@ end
 ---@param mob CBaseEntity
 ---@param hideDuration integer
 ---@param pos table?
----@param disAnim xi.animationString?
----@param reapAnim xi.animationString?
+---@param disAnim invaderXim.animationString?
+---@param reapAnim invaderXim.animationString?
 ---@return nil
 function utils.mobTeleport(mob, hideDuration, pos, disAnim, reapAnim)
     if hideDuration == nil then
@@ -892,11 +892,11 @@ function utils.mobTeleport(mob, hideDuration, pos, disAnim, reapAnim)
     end
 
     if disAnim == nil then
-        disAnim = xi.animationString.STATUS_DISAPPEAR
+        disAnim = invaderXim.animationString.STATUS_DISAPPEAR
     end
 
     if reapAnim == nil then
-        reapAnim = xi.animationString.STATUS_VISIBLE
+        reapAnim = invaderXim.animationString.STATUS_VISIBLE
     end
 
     if pos == nil then

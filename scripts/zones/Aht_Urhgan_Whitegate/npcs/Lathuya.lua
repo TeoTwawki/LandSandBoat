@@ -59,10 +59,10 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    local transformations = player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.TRANSFORMATIONS)
+    local transformations = player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.TRANSFORMATIONS)
 
     -- CRAFTING OTHER 3 BLUE MAGE ARMOR PIECES
-    if transformations >= xi.questStatus.QUEST_ACCEPTED then
+    if transformations >= invaderXim.questStatus.QUEST_ACCEPTED then
         local remainingBLUAF = player:getCharVar('[BLUAF]Remaining') -- Bitmask of AF the player has NOT crafted
         local totalCraftedPieces = 3 - utils.mask.countBits(remainingBLUAF, 3)
         local currentTask = player:getCharVar('[BLUAF]Current')
@@ -140,7 +140,7 @@ entity.onEventFinish = function(player, csid, option, npc)
         player:confirmTrade()
         player:setCharVar('[BLUAF]CraftingStage', 2)
         player:setCharVar('[BLUAF]PaymentDay', VanadielUniqueDay())
-        npcUtil.giveKeyItem(player, xi.ki.MAGUS_ORDER_SLIP)
+        npcUtil.giveKeyItem(player, invaderXim.ki.MAGUS_ORDER_SLIP)
     elseif csid == 736 + artifactOffset and currentTask > 0 then
         if npcUtil.giveItem(player, craftingItems[currentTask].result) then
             player:setCharVar('[BLUAF]Remaining', utils.mask.setBit(remainingBLUAF, currentTask - 1, false))
@@ -155,7 +155,7 @@ entity.onEventFinish = function(player, csid, option, npc)
                 player:setCharVar('[BLUAF]RestingDay', VanadielUniqueDay())
             end
 
-            player:delKeyItem(xi.ki.MAGUS_ORDER_SLIP)
+            player:delKeyItem(invaderXim.ki.MAGUS_ORDER_SLIP)
         end
     end
 end

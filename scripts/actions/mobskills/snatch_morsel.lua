@@ -10,18 +10,18 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    if target:hasStatusEffect(xi.effect.FOOD) then
+    if target:hasStatusEffect(invaderXim.effect.FOOD) then
         -- 99% sure retail doesn't do this. Uncomment if you want it to happen.
-        -- local foodID = target:getStatusEffect(xi.effect.FOOD):getSubType()
-        -- local duration = target:getStatusEffect(xi.effect.FOOD):getDuration()
-        -- mob:addStatusEffect(xi.effect.FOOD, 0, 0, duration, foodID) -- Gives Colibri the players food.
-        target:delStatusEffectSilent(xi.effect.FOOD)
-        skill:setMsg(xi.msg.basic.SKILL_ERASE)
+        -- local foodID = target:getStatusEffect(invaderXim.effect.FOOD):getSubType()
+        -- local duration = target:getStatusEffect(invaderXim.effect.FOOD):getDuration()
+        -- mob:addStatusEffect(invaderXim.effect.FOOD, 0, 0, duration, foodID) -- Gives Colibri the players food.
+        target:delStatusEffectSilent(invaderXim.effect.FOOD)
+        skill:setMsg(invaderXim.msg.basic.SKILL_ERASE)
     else
-        skill:setMsg(xi.msg.basic.SKILL_MISS) -- no effect
+        skill:setMsg(invaderXim.msg.basic.SKILL_MISS) -- no effect
     end
 
-    return xi.effect.FOOD
+    return invaderXim.effect.FOOD
 end
 
 return mobskillObject

@@ -5,11 +5,11 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.summoner.canUseBloodPact(player, player:getPet(), target, ability)
+    return invaderXim.job_utils.summoner.canUseBloodPact(player, player:getPet(), target, ability)
 end
 
 abilityObject.onPetAbility = function(target, pet, petskill, summoner, action)
-    xi.job_utils.summoner.onUseBloodPact(target, petskill, summoner, action)
+    invaderXim.job_utils.summoner.onUseBloodPact(target, petskill, summoner, action)
 
     local tp = pet:getTP()
 
@@ -17,19 +17,19 @@ abilityObject.onPetAbility = function(target, pet, petskill, summoner, action)
     local merits = 0
 
     if summoner and summoner:isPC() then
-        merits = summoner:getMerit(xi.merit.METEOR_STRIKE)
+        merits = summoner:getMerit(invaderXim.merit.METEOR_STRIKE)
     end
 
     tp = utils.clamp(tp + merits - 400, 0, 3000)
 
     --note: this formula is only accurate for level 75 - 76+ may have a different intercept and/or slope
-    local damage = math.floor(512 + 0.172 * tp + (pet:getStat(xi.mod.INT) - target:getStat(xi.mod.INT)) * 1.5)
+    local damage = math.floor(512 + 0.172 * tp + (pet:getStat(invaderXim.mod.INT) - target:getStat(invaderXim.mod.INT)) * 1.5)
 
-    damage = xi.mobskills.mobMagicalMove(pet, target, petskill, damage, xi.element.FIRE, 1, xi.mobskills.magicalTpBonus.NO_EFFECT, 0)
-    damage = xi.mobskills.mobAddBonuses(pet, target, damage, xi.element.FIRE, petskill)
-    damage = xi.summon.avatarFinalAdjustments(damage, pet, petskill, target, xi.attackType.MAGICAL, xi.damageType.FIRE, 1)
+    damage = invaderXim.mobskills.mobMagicalMove(pet, target, petskill, damage, invaderXim.element.FIRE, 1, invaderXim.mobskills.magicalTpBonus.NO_EFFECT, 0)
+    damage = invaderXim.mobskills.mobAddBonuses(pet, target, damage, invaderXim.element.FIRE, petskill)
+    damage = invaderXim.summon.avatarFinalAdjustments(damage, pet, petskill, target, invaderXim.attackType.MAGICAL, invaderXim.damageType.FIRE, 1)
 
-    target:takeDamage(damage, pet, xi.attackType.MAGICAL, xi.damageType.FIRE)
+    target:takeDamage(damage, pet, invaderXim.attackType.MAGICAL, invaderXim.damageType.FIRE)
     target:updateEnmityFromDamage(pet, damage)
 
     return damage

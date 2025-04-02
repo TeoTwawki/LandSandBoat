@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.STELLAR_FULCRUM] =
+zones[invaderXim.zone.STELLAR_FULCRUM] =
 {
     text =
     {
@@ -35,4 +35,4 @@ zones[xi.zone.STELLAR_FULCRUM] =
     },
 }
 
-return zones[xi.zone.STELLAR_FULCRUM]
+return zones[invaderXim.zone.STELLAR_FULCRUM]

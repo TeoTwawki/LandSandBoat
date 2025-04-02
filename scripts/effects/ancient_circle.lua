@@ -1,11 +1,11 @@
 -----------------------------------
--- xi.effect.ANCIENT_CIRCLE
+-- invaderXim.effect.ANCIENT_CIRCLE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    effect:addMod(xi.mod.DRAGON_KILLER, effect:getPower())
+    effect:addMod(invaderXim.mod.DRAGON_KILLER, effect:getPower())
 end
 
 effectObject.onEffectTick = function(target, effect)

@@ -36,7 +36,7 @@ commandObj.onTrigger = function(player, race, pose, target)
     end
 
     if race > 0 then
-        xi.mannequin.setMannequinPose(player, race, pose)
+        invaderXim.mannequin.setMannequinPose(player, race, pose)
     end
 end
 

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.SIGIL
+-- invaderXim.effect.SIGIL
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -9,20 +9,20 @@ effectObject.onEffectGain = function(target, effect)
 
     if utils.mask.getBit(power, 1) then
         local percentage = 70 -- TODO: This should be based off of controlled areas in Campaign
-        target:addLatent(xi.latent.SIGIL_REGEN_BONUS, percentage, xi.mod.REGEN, 1)
+        target:addLatent(invaderXim.latent.SIGIL_REGEN_BONUS, percentage, invaderXim.mod.REGEN, 1)
     end
 
     if utils.mask.getBit(power, 2) then
         local percentage = 60 -- TODO: This should be based off of controlled areas in Campaign
-        target:addLatent(xi.latent.SIGIL_REFRESH_BONUS, percentage, xi.mod.REFRESH, 1)
+        target:addLatent(invaderXim.latent.SIGIL_REFRESH_BONUS, percentage, invaderXim.mod.REFRESH, 1)
     end
 
     if utils.mask.getBit(power, 3) then
-        target:addMod(xi.mod.FOOD_DURATION, 100)
+        target:addMod(invaderXim.mod.FOOD_DURATION, 100)
     end
 
     if utils.mask.getBit(power, 4) then
-        -- target:addMod(xi.mod.EXPLOSS_REDUCTION), ???)
+        -- target:addMod(invaderXim.mod.EXPLOSS_REDUCTION), ???)
         -- exp loss reduction not implemented.
     end
 end
@@ -36,20 +36,20 @@ effectObject.onEffectLose = function(target, effect)
 
     if utils.mask.getBit(power, 1) then
         local percentage = 70 -- TODO: This should be based off of controlled areas in Campaign
-        target:delLatent(xi.latent.SIGIL_REGEN_BONUS, percentage, xi.mod.REGEN, 1)
+        target:delLatent(invaderXim.latent.SIGIL_REGEN_BONUS, percentage, invaderXim.mod.REGEN, 1)
     end
 
     if utils.mask.getBit(power, 2) then
         local percentage = 60 -- TODO: This should be based off of controlled areas in Campaign
-        target:delLatent(xi.latent.SIGIL_REFRESH_BONUS, percentage, xi.mod.REFRESH, 1)
+        target:delLatent(invaderXim.latent.SIGIL_REFRESH_BONUS, percentage, invaderXim.mod.REFRESH, 1)
     end
 
     if utils.mask.getBit(power, 3) then
-        target:delMod(xi.mod.FOOD_DURATION, 100)
+        target:delMod(invaderXim.mod.FOOD_DURATION, 100)
     end
 
     if utils.mask.getBit(power, 4) then
-        -- target:delMod(xi.mod.EXPLOSS_REDUCTION), ???)
+        -- target:delMod(invaderXim.mod.EXPLOSS_REDUCTION), ???)
         -- exp loss reduction not implemented.
     end
 end

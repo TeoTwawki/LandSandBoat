@@ -5,11 +5,11 @@
 -- !addmission 13 2
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.RESONACE)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.RESONACE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.EMISSARY_FROM_THE_SEAS },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.EMISSARY_FROM_THE_SEAS },
 }
 
 mission.sections =
@@ -19,7 +19,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 0
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             onZoneIn = function(player, prevZone)
                 return 368
@@ -36,7 +36,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             onZoneIn = function(player, prevZone)
                 return 176

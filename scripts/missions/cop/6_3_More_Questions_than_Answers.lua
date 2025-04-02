@@ -7,11 +7,11 @@
 -- Mathilde    : !pos 12.578 -8.287 -7.576 248
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.MORE_QUESTIONS_THAN_ANSWERS)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.MORE_QUESTIONS_THAN_ANSWERS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.ONE_TO_BE_FEARED },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.ONE_TO_BE_FEARED },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['_6r9'] =
             {
@@ -77,7 +77,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Mathilde'] =
             {

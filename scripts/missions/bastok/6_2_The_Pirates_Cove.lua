@@ -11,14 +11,14 @@
 -- qm4        : !pos 171 0 -25 205
 -- Gilgamesh  : !pos 122.452 -9.009 -12.052 252
 -----------------------------------
-local bastokMarketsID  = zones[xi.zone.BASTOK_MARKETS]
-local bastokMinesID    = zones[xi.zone.BASTOK_MINES]
-local ifritsCauldronID = zones[xi.zone.IFRITS_CAULDRON]
-local metalworksID     = zones[xi.zone.METALWORKS]
-local portBastokID     = zones[xi.zone.PORT_BASTOK]
+local bastokMarketsID  = zones[invaderXim.zone.BASTOK_MARKETS]
+local bastokMinesID    = zones[invaderXim.zone.BASTOK_MINES]
+local ifritsCauldronID = zones[invaderXim.zone.IFRITS_CAULDRON]
+local metalworksID     = zones[invaderXim.zone.METALWORKS]
+local portBastokID     = zones[invaderXim.zone.PORT_BASTOK]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_PIRATES_COVE)
+local mission = Mission:new(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_PIRATES_COVE)
 
 mission.reward =
 {
@@ -37,11 +37,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             onEventFinish =
             {
@@ -49,7 +49,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             onEventFinish =
             {
@@ -57,7 +57,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             onEventFinish =
             {
@@ -65,7 +65,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             onEventFinish =
             {
@@ -79,17 +79,17 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Cleades'] = mission:messageSpecial(bastokMarketsID.text.EXTENDED_MISSION_OFFSET + 3),
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Rashid'] = mission:messageSpecial(bastokMinesID.text.EXTENDED_MISSION_OFFSET + 3),
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Malduc'] = mission:messageSpecial(metalworksID.text.EXTENDED_MISSION_OFFSET + 3),
 
@@ -118,19 +118,19 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Argus'] = mission:messageSpecial(portBastokID.text.EXTENDED_MISSION_OFFSET + 3),
         },
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Gilgamesh'] =
             {
                 onTrade = function(player, npc, trade)
                     if
                         player:getMissionStatus(mission.areaId) == 2 and
-                        npcUtil.tradeHasExactly(trade, xi.item.FRAG_ROCK)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.FRAG_ROCK)
                     then
                         return mission:progressEvent(99)
                     end
@@ -156,14 +156,14 @@ mission.sections =
             },
         },
 
-        [xi.zone.IFRITS_CAULDRON] =
+        [invaderXim.zone.IFRITS_CAULDRON] =
         {
             ['qm4'] =
             {
                 onTrade = function(player, npc, trade)
                     if
                         player:getMissionStatus(mission.areaId) == 2 and
-                        npcUtil.tradeHasExactly(trade, xi.item.CHUNK_OF_ADAMAN_ORE) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.CHUNK_OF_ADAMAN_ORE) and
                         npcUtil.popFromQM(player, npc, { ifritsCauldronID.mob.PIRATES_COVE_NMS, ifritsCauldronID.mob.PIRATES_COVE_NMS + 1 }, { claim = false, hide = 900 })
                     then
                         player:confirmTrade()

@@ -4,29 +4,29 @@
 require('scripts/globals/pathfind')
 -----------------------------------
 xi = xi or {}
-xi.transport = xi.transport or {}
+invaderXim.transport = invaderXim.transport or {}
 
 -----------------------------------
 -- Enums
 -----------------------------------
-xi.transport.message =
+invaderXim.transport.message =
 {
     NEARING = 0,
     DOCKING = 1
 }
 
-xi.transport.epochOffset =
+invaderXim.transport.epochOffset =
 {
     NEARING = 265,
     DOCKING = 290
 }
 
-xi.transport.messageTime =
+invaderXim.transport.messageTime =
 {
     SILVER_SEA = 480
 }
 
-xi.transport.trigger =
+invaderXim.transport.trigger =
 {
     mhaura =
     {
@@ -42,7 +42,7 @@ xi.transport.trigger =
     }
 }
 
-xi.transport.interval =
+invaderXim.transport.interval =
 {
     mhaura =
     {
@@ -55,7 +55,7 @@ xi.transport.interval =
     }
 }
 
-xi.transport.offset =
+invaderXim.transport.offset =
 {
     mhaura =
     {
@@ -71,7 +71,7 @@ xi.transport.offset =
     }
 }
 
-xi.transport.pos =
+invaderXim.transport.pos =
 {
     mhaura =
     {
@@ -110,7 +110,7 @@ local destination =
     AL_ZAHBI = 1,
 }
 
-xi.transport.routes =
+invaderXim.transport.routes =
 {
     SELBINA_MHAURA          = 0,
     OPEN_SEA                = 1,
@@ -124,17 +124,17 @@ xi.transport.routes =
 local dockTable =
 {
     -- ['npc_name'] = { eventId, route },
-    ['Baya_Hiramayuh' ] = { 232, xi.transport.routes.OPEN_SEA                }, -- Aht Urhgan Whitegate to Mhaura
-    ['Dieh_Yamilsiah' ] = { 231, xi.transport.routes.SELBINA_MHAURA_OPEN_SEA }, -- Mhaura to Aht Urhgan Whitegate or Selbina
-    ['Laughing_Bison' ] = { 333, xi.transport.routes.SELBINA_MHAURA_OPEN_SEA }, -- Mhaura to Aht Urhgan Whitegate or Selbina
-    ['Humilitie'      ] = { 231, xi.transport.routes.SELBINA_MHAURA          }, -- Selbina to Mhaura
-    ['Kuhn_Tsahnpri'  ] = { 236, xi.transport.routes.SILVER_SEA              }, -- Aht Urhgan Whitegate to Nashmau
-    ['Yohj_Dukonlhy'  ] = { 231, xi.transport.routes.SILVER_SEA              }, -- Nashmau to Aht Urhgan Whitegate
+    ['Baya_Hiramayuh' ] = { 232, invaderXim.transport.routes.OPEN_SEA                }, -- Aht Urhgan Whitegate to Mhaura
+    ['Dieh_Yamilsiah' ] = { 231, invaderXim.transport.routes.SELBINA_MHAURA_OPEN_SEA }, -- Mhaura to Aht Urhgan Whitegate or Selbina
+    ['Laughing_Bison' ] = { 333, invaderXim.transport.routes.SELBINA_MHAURA_OPEN_SEA }, -- Mhaura to Aht Urhgan Whitegate or Selbina
+    ['Humilitie'      ] = { 231, invaderXim.transport.routes.SELBINA_MHAURA          }, -- Selbina to Mhaura
+    ['Kuhn_Tsahnpri'  ] = { 236, invaderXim.transport.routes.SILVER_SEA              }, -- Aht Urhgan Whitegate to Nashmau
+    ['Yohj_Dukonlhy'  ] = { 231, invaderXim.transport.routes.SILVER_SEA              }, -- Nashmau to Aht Urhgan Whitegate
 }
 
 local scheduleTable =
 {
-    [xi.transport.routes.SELBINA_MHAURA] = -- Ship bound for [Mhaura/Selbina]
+    [invaderXim.transport.routes.SELBINA_MHAURA] = -- Ship bound for [Mhaura/Selbina]
     {
         [1] = { startTime =    0, endTime =  400, action = direction.ARRIVE, target = 0 },
         [2] = { startTime =  400, endTime =  480, action = direction.DEPART, target = 0 },
@@ -144,7 +144,7 @@ local scheduleTable =
         [6] = { startTime = 1360, endTime = 1440, action = direction.DEPART, target = 0 },
     },
 
-    [xi.transport.routes.OPEN_SEA] = -- Open sea route to [Al Zahbi/Mhaura]
+    [invaderXim.transport.routes.OPEN_SEA] = -- Open sea route to [Al Zahbi/Mhaura]
     {
         [1] = { startTime =    0, endTime =  160, action = direction.ARRIVE, target = 0 },
         [2] = { startTime =  160, endTime =  240, action = direction.DEPART, target = 0 },
@@ -154,7 +154,7 @@ local scheduleTable =
         [6] = { startTime = 1120, endTime = 1200, action = direction.DEPART, target = 0 },
         [7] = { startTime = 1200, endTime = 1600, action = direction.ARRIVE, target = 0 },
     },
-    [xi.transport.routes.SILVER_SEA] = -- Silver Sea route to [Al Zahbi/Nashmau]
+    [invaderXim.transport.routes.SILVER_SEA] = -- Silver Sea route to [Al Zahbi/Nashmau]
     {
         [1] = { startTime =    0, endTime =  300, action = direction.ARRIVE, target = 0 },
         [2] = { startTime =  300, endTime =  480, action = direction.DEPART, target = 0 },
@@ -163,7 +163,7 @@ local scheduleTable =
         [5] = { startTime =  960, endTime = 1260, action = direction.ARRIVE, target = 0 },
         [6] = { startTime = 1260, endTime = 1440, action = direction.DEPART, target = 0 },
     },
-    [xi.transport.routes.SELBINA_MHAURA_OPEN_SEA] = -- Combination of Ship bound for [Mhaura/Selbina] and Open sea route to [Al Zahbi/Mhaura] used by Dieh Yamilsiah
+    [invaderXim.transport.routes.SELBINA_MHAURA_OPEN_SEA] = -- Combination of Ship bound for [Mhaura/Selbina] and Open sea route to [Al Zahbi/Mhaura] used by Dieh Yamilsiah
     {
         [ 1] = { startTime =    0, endTime =  160, action = direction.ARRIVE, target = destination.AL_ZAHBI },
         [ 2] = { startTime =  160, endTime =  240, action = direction.DEPART, target = destination.AL_ZAHBI },
@@ -184,26 +184,26 @@ local scheduleTable =
 -- public functions
 -----------------------------------
 
-xi.transport.captainMessage = function(npc, triggerID, messages)
+invaderXim.transport.captainMessage = function(npc, triggerID, messages)
     local playersInZone = npc:getZone():getPlayers()
     for _, player in pairs(playersInZone) do
         player:showText(player, messages[triggerID])
     end
 end
 
-xi.transport.dockMessage = function(npc, triggerID, messages, dock)
+invaderXim.transport.dockMessage = function(npc, triggerID, messages, dock)
     npc:showText(npc, messages[triggerID])
     if (triggerID % 2) == 0 then
-        npc:pathThrough(xi.transport.pos[dock].ARRIVING, bit.bor(xi.path.flag.PATROL, xi.path.flag.WALLHACK))
+        npc:pathThrough(invaderXim.transport.pos[dock].ARRIVING, bit.bor(invaderXim.path.flag.PATROL, invaderXim.path.flag.WALLHACK))
     else
-        npc:pathThrough(xi.transport.pos[dock].DEPARTING, bit.bor(xi.path.flag.PATROL, xi.path.flag.WALLHACK))
+        npc:pathThrough(invaderXim.transport.pos[dock].DEPARTING, bit.bor(invaderXim.path.flag.PATROL, invaderXim.path.flag.WALLHACK))
     end
 end
 
 -----------------------------------
 -- NPC functions
 -----------------------------------
-xi.transport.onBoatTimekeeperTrigger = function(player, route, travelMessage, arrivingMessage)
+invaderXim.transport.onBoatTimekeeperTrigger = function(player, route, travelMessage, arrivingMessage)
     local currentTime = VanadielHour() * 60 + VanadielMinute()
     local timeDiff    = 0
 
@@ -225,7 +225,7 @@ xi.transport.onBoatTimekeeperTrigger = function(player, route, travelMessage, ar
     player:messageSpecial(message, earthMins, gameHours)
 end
 
-xi.transport.onDockTimekeeperTrigger = function(player, npc)
+invaderXim.transport.onDockTimekeeperTrigger = function(player, npc)
     -- Fetch NPC data.
     local npcName = npc:getName()
     local eventId = dockTable[npcName][1]

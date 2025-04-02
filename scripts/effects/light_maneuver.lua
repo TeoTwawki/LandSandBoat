@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.LIGHT_MANEUVER
+-- invaderXim.effect.LIGHT_MANEUVER
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -7,7 +7,7 @@ local effectObject = {}
 effectObject.onEffectGain = function(target, effect)
     local pet = target:getPet()
     if pet then
-        pet:addMod(xi.mod.CHR, effect:getPower())
+        pet:addMod(invaderXim.mod.CHR, effect:getPower())
     end
 end
 
@@ -17,7 +17,7 @@ end
 effectObject.onEffectLose = function(target, effect)
     local pet = target:getPet()
     if pet then
-        pet:delMod(xi.mod.CHR, effect:getPower())
+        pet:delMod(invaderXim.mod.CHR, effect:getPower())
     end
 end
 

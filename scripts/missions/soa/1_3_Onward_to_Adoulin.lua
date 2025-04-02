@@ -6,11 +6,11 @@
 -- Waypoint : !pos -34.922 0.000 -30.966 245
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.ONWARD_TO_ADOULIN)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.ONWARD_TO_ADOULIN)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.HEARTWINGS_AND_THE_KINDHEARTED },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.HEARTWINGS_AND_THE_KINDHEARTED },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 0
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Waypoint'] =
             {
@@ -47,7 +47,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 1
         end,
 
-        [xi.zone.CEIZAK_BATTLEGROUNDS] =
+        [invaderXim.zone.CEIZAK_BATTLEGROUNDS] =
         {
             onZoneIn = function(player, prevZone)
                 return 3

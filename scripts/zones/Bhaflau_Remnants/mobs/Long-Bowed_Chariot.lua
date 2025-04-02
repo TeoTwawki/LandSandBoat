@@ -10,15 +10,15 @@ mixins = { require('scripts/mixins/families/chariot') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.BIND)
-    mob:addImmunity(xi.immunity.GRAVITY)
-    mob:addMod(xi.mod.ATT, 100)
-    mob:setMod(xi.mod.MAIN_DMG_RATING, 50)
-    mob:setMod(xi.mod.REGAIN, 25)
-    mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 0)
-    mob:setMobMod(xi.mobMod.ROAM_TURNS, 0)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.BIND)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
+    mob:addMod(invaderXim.mod.ATT, 100)
+    mob:setMod(invaderXim.mod.MAIN_DMG_RATING, 50)
+    mob:setMod(invaderXim.mod.REGAIN, 25)
+    mob:setMobMod(invaderXim.mobMod.ROAM_DISTANCE, 0)
+    mob:setMobMod(invaderXim.mobMod.ROAM_TURNS, 0)
 end
 
 entity.onMobSpawn = function(mob)
@@ -26,16 +26,16 @@ entity.onMobSpawn = function(mob)
 
     if instance then
         if instance:getLocalVar('bossModifier') == 1 then
-            mob:addMod(xi.mod.DEF, -100)
-            mob:setMod(xi.mod.DMGMAGIC, 100)
+            mob:addMod(invaderXim.mod.DEF, -100)
+            mob:setMod(invaderXim.mod.DMGMAGIC, 100)
         elseif instance:getLocalVar('bossModifier') == 2 then
-            mob:addMod(xi.mod.ATT, -100)
+            mob:addMod(invaderXim.mod.ATT, -100)
         end
     end
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.COMET_CHARIOTEER)
+    player:addTitle(invaderXim.title.COMET_CHARIOTEER)
     if optParams.isKiller or optParams.noKiller then
         mob:getInstance():complete()
     end

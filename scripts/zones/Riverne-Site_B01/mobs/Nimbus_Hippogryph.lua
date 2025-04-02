@@ -3,7 +3,7 @@
 --  Mob: Nimbus Hippogryph
 -- Note: Place holder Imdugud
 -----------------------------------
-local ID = zones[xi.zone.RIVERNE_SITE_B01]
+local ID = zones[invaderXim.zone.RIVERNE_SITE_B01]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -78,7 +78,7 @@ end
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = imdugudSpawnPoints
-    xi.mob.phOnDespawn(mob, imdugudPHTable, 10, 75600, params) -- 21 hours
+    invaderXim.mob.phOnDespawn(mob, imdugudPHTable, 10, 75600, params) -- 21 hours
 end
 
 return entity

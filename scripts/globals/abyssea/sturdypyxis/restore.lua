@@ -2,10 +2,10 @@
 -- Abyssea Sturdy Pyxis - Restore HP/MP/JA
 -----------------------------------
 xi = xi or {}
-xi.pyxis = xi.pyxis or {}
-xi.pyxis.restore = {}
+invaderXim.pyxis = invaderXim.pyxis or {}
+invaderXim.pyxis.restore = {}
 
-xi.pyxis.restore.giveRestore = function(npc, player)
+invaderXim.pyxis.restore.giveRestore = function(npc, player)
     local alliance = player:getAlliance()
     local restore = npc:getLocalVar('RESTORE')
 
@@ -19,7 +19,7 @@ xi.pyxis.restore.giveRestore = function(npc, player)
                     local hp = member:getMaxHP() - member:getHP()
                     member:addHP(hp)
                     if member:isPC() then
-                        member:messageBasic(xi.msg.basic.RECOVERS_HP, 0, hp)
+                        member:messageBasic(invaderXim.msg.basic.RECOVERS_HP, 0, hp)
                     end
                 end
             end
@@ -33,7 +33,7 @@ xi.pyxis.restore.giveRestore = function(npc, player)
                     local mp = member:getMaxMP() - member:getMP()
                     member:addMP(mp)
                     if member:isPC() then
-                        member:messageBasic(xi.msg.basic.RECOVERS_MP, 0, mp)
+                        member:messageBasic(invaderXim.msg.basic.RECOVERS_MP, 0, mp)
                     end
                 end
             end
@@ -60,7 +60,7 @@ xi.pyxis.restore.giveRestore = function(npc, player)
                     member:addMP(mp)
                     member:addTP(3000)
                     if member:isPC() then
-                        member:messageBasic(xi.msg.basic.RECOVERS_HP_AND_MP)
+                        member:messageBasic(invaderXim.msg.basic.RECOVERS_HP_AND_MP)
                     end
                 end
             end
@@ -78,8 +78,8 @@ xi.pyxis.restore.giveRestore = function(npc, player)
                     member:addTP(3000)
                     if member:isPC() then
                         member:resetRecasts()
-                        member:messageBasic(xi.msg.basic.RECOVERS_HP_AND_MP)
-                        member:messageBasic(xi.msg.basic.ALL_ABILITIES_RECHARGED)
+                        member:messageBasic(invaderXim.msg.basic.RECOVERS_HP_AND_MP)
+                        member:messageBasic(invaderXim.msg.basic.ALL_ABILITIES_RECHARGED)
                     end
                 end
             end

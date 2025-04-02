@@ -1,8 +1,8 @@
 xi = xi or {}
 
 -- addType, used in ability:getAddType(). the addType of an ability is defined in sql.
----@enum xi.addtype
-xi.addType =
+---@enum invaderXim.addtype
+invaderXim.addType =
 {
     ADDTYPE_NORMAL      = 0,
     ADDTYPE_MERIT       = 1,

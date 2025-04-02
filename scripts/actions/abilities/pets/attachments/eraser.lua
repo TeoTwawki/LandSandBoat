@@ -6,25 +6,25 @@ local attachmentObject = {}
 
 local removable =
 {
-    xi.effect.PETRIFICATION,
-    xi.effect.SILENCE,
-    xi.effect.BANE,
-    xi.effect.CURSE_II,
-    xi.effect.CURSE_I,
-    xi.effect.PARALYSIS,
-    xi.effect.PLAGUE,
-    xi.effect.POISON,
-    xi.effect.DISEASE,
-    xi.effect.BLINDNESS
+    invaderXim.effect.PETRIFICATION,
+    invaderXim.effect.SILENCE,
+    invaderXim.effect.BANE,
+    invaderXim.effect.CURSE_II,
+    invaderXim.effect.CURSE_I,
+    invaderXim.effect.PARALYSIS,
+    invaderXim.effect.PLAGUE,
+    invaderXim.effect.POISON,
+    invaderXim.effect.DISEASE,
+    invaderXim.effect.BLINDNESS
 }
 
 attachmentObject.onEquip = function(pet)
     pet:addListener('AUTOMATON_ATTACHMENT_CHECK', 'ATTACHMENT_ERASER', function(automaton, target)
         local master = automaton:getMaster()
         if
-            not automaton:hasRecast(xi.recast.ABILITY, xi.automaton.abilities.ERASER) and
+            not automaton:hasRecast(invaderXim.recast.ABILITY, invaderXim.automaton.abilities.ERASER) and
             master and
-            master:countEffect(xi.effect.LIGHT_MANEUVER) > 0
+            master:countEffect(invaderXim.effect.LIGHT_MANEUVER) > 0
         then
             local erasetarget = false
 
@@ -39,13 +39,13 @@ attachmentObject.onEquip = function(pet)
             end
 
             if
-                automaton:hasStatusEffectByFlag(xi.effectFlag.ERASABLE) or
+                automaton:hasStatusEffectByFlag(invaderXim.effectFlag.ERASABLE) or
                 checkEffects(automaton)
             then
                 erasetarget = automaton
             elseif
                 (automaton:checkDistance(master) - master:getModelSize()) < 7 and
-                (master:hasStatusEffectByFlag(xi.effectFlag.ERASABLE) or checkEffects(master))
+                (master:hasStatusEffectByFlag(invaderXim.effectFlag.ERASABLE) or checkEffects(master))
             then
                 erasetarget = master
             end
@@ -54,7 +54,7 @@ attachmentObject.onEquip = function(pet)
                 return
             end
 
-            automaton:useMobAbility(xi.automaton.abilities.ERASER, erasetarget)
+            automaton:useMobAbility(invaderXim.automaton.abilities.ERASER, erasetarget)
         end
     end)
 end

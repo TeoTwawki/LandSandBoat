@@ -8,11 +8,11 @@
 require('scripts/missions/wotg/helpers')
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.BY_THE_FADING_LIGHT)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.BY_THE_FADING_LIGHT)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.EDGE_OF_EXISTENCE },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.EDGE_OF_IXIMSTENCE },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.XARCABARD_S] =
+        [invaderXim.zone.XARCABARD_S] =
         {
             ['Rally_Point_Red'] = mission:progressEvent(41, 137, 0, 0, 7),
 

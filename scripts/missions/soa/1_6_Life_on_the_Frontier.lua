@@ -8,11 +8,11 @@
 require('scripts/missions/soa/helpers')
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.LIFE_ON_THE_FRONTIER)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.LIFE_ON_THE_FRONTIER)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.MEETING_OF_THE_MINDS },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.MEETING_OF_THE_MINDS },
 }
 
 mission.sections =
@@ -20,10 +20,10 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
-                xi.soa.helpers.imprimaturGate(player, 10)
+                invaderXim.soa.helpers.imprimaturGate(player, 10)
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Brenton'] =
             {
@@ -36,7 +36,7 @@ mission.sections =
             {
                 [4] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        npcUtil.giveKeyItem(player, xi.ki.DINNER_INVITATION)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.DINNER_INVITATION)
                     end
                 end,
             },

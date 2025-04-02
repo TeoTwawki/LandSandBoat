@@ -3,7 +3,7 @@
 --  Mob: Doom Toad
 -- Note: PH for Ogama
 -----------------------------------
-local ID = zones[xi.zone.DEN_OF_RANCOR]
+local ID = zones[invaderXim.zone.DEN_OF_RANCOR]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -16,11 +16,11 @@ local ogamaPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 801, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 801, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, ogamaPHTable, 5, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, ogamaPHTable, 5, 3600) -- 1 hour
 end
 
 return entity

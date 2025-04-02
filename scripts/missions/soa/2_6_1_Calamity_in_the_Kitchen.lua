@@ -6,12 +6,12 @@
 -- Chalvava : !pos -318.000 -1.000 -318.000 258
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.CALAMITY_IN_THE_KITCHEN)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.CALAMITY_IN_THE_KITCHEN)
 
 mission.reward =
 {
-    keyItem     = xi.ki.BOX_OF_ADOULINIAN_TOMATOES,
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.ARCIELAS_PROMISE },
+    keyItem     = invaderXim.ki.BOX_OF_ADOULINIAN_TOMATOES,
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.ARCIELAS_PROMISE },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['Chalvava'] =
             {

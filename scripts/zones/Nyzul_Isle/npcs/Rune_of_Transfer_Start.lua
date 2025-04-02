@@ -4,7 +4,7 @@
 -- Notes: Allows players to select a floor to transport to
 -- !pos -20.000 -4.000 -11.000
 -----------------------------------
-local ID = zones[xi.zone.NYZUL_ISLE]
+local ID = zones[invaderXim.zone.NYZUL_ISLE]
 require('scripts/zones/Nyzul_Isle/instances/nyzul_isle_investigation')
 -----------------------------------
 ---@type TNpcEntity
@@ -21,16 +21,16 @@ entity.onTrigger = function(player, npc)
     local floorGroup    = math.floor(player:getCharVar('NyzulFloorProgress') / 5)
     local floorProgress = 0xFFFFFFFC - bit.bxor(bit.lshift(2, floorGroup + 1) - 1, 3)
 
-    if not player:hasKeyItem(xi.ki.RUNIC_DISC) then
-        player:messageSpecial(ID.text.NEW_USER, xi.ki.RUNIC_DISC)
-        npcUtil.giveKeyItem(player, xi.ki.RUNIC_DISC)
+    if not player:hasKeyItem(invaderXim.ki.RUNIC_DISC) then
+        player:messageSpecial(ID.text.NEW_USER, invaderXim.ki.RUNIC_DISC)
+        npcUtil.giveKeyItem(player, invaderXim.ki.RUNIC_DISC)
     elseif instance:getLocalVar('runeHandler') ~= 0 then
         player:messageSpecial(ID.text.IN_OPERATION)
 
         return
     else
         instance:setLocalVar('runeHandler', player:getID())
-        player:startEvent(94, xi.ki.RUNIC_DISC, tokens, 1, prefered, 100, 200, 300, floorProgress)
+        player:startEvent(94, invaderXim.ki.RUNIC_DISC, tokens, 1, prefered, 100, 200, 300, floorProgress)
     end
 end
 
@@ -48,7 +48,7 @@ entity.onEventFinish = function(player, csid, option, npc)
         option < 21 and
         instance:getLocalVar('runeHandler') == player:getID()
     then
-        local floorCost = xi.nyzul.floorCost[option]
+        local floorCost = invaderXim.nyzul.floorCost[option]
 
         if player:getCurrency('nyzul_isle_assault_point') >= floorCost.cost then
             player:delCurrency('nyzul_isle_assault_point', floorCost.cost)

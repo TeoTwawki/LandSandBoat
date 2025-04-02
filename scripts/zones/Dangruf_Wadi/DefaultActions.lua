@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.DANGRUF_WADI]
+local ID = zones[invaderXim.zone.DANGRUF_WADI]
 
 return {
     ['qm3'] = { messageSpecial = ID.text.CRYSTALLINE_DUST },

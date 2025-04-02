@@ -6,11 +6,11 @@
 local spellObject = {}
 
 spellObject.onMagicCastingCheck = function(caster, target, spell)
-    return xi.spells.enhancing.checkTeleportSpell(caster, target, spell)
+    return invaderXim.spells.enhancing.checkTeleportSpell(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    return xi.spells.enhancing.useTeleportSpell(caster, target, spell)
+    return invaderXim.spells.enhancing.useTeleportSpell(caster, target, spell)
 end
 
 return spellObject

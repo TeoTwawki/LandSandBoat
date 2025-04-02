@@ -5,12 +5,12 @@
 require('scripts/globals/mixins')
 
 xi = xi or {}
-xi.mix = xi.mix or {}
-xi.mix.clear_doom = xi.mix.clear_doom or {}
+invaderXim.mix = invaderXim.mix or {}
+invaderXim.mix.clear_doom = invaderXim.mix.clear_doom or {}
 
 g_mixins = g_mixins or {}
 
-xi.mix.clear_doom.config = function(mob, params)
+invaderXim.mix.clear_doom.config = function(mob, params)
     if params.doomRemovalChance and type(params.doomRemovalChance) == 'number' then
         mob:setLocalVar('[remove_doom]removalChance', params.doomRemovalChance)
     end
@@ -27,8 +27,8 @@ g_mixins.clear_doom = function(doomMob)
 
             for name, playerVal in pairs(players) do
                 if mob:checkDistance(player) < 30 then
-                    if playerVal:delStatusEffectSilent(xi.effect.DOOM) then
-                        playerVal:messagePublic(xi.msg.basic.NARROWLY_ESCAPE, playerVal)
+                    if playerVal:delStatusEffectSilent(invaderXim.effect.DOOM) then
+                        playerVal:messagePublic(invaderXim.msg.basic.NARROWLY_ESCAPE, playerVal)
                     end
                 end
             end

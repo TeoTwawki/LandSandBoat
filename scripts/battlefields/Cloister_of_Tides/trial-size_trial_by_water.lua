@@ -2,12 +2,12 @@
 -- Area: Cloister of Tides
 -- BCNM: Trial-size Trial by Water
 -----------------------------------
-local cloisterOfTidesID = zones[xi.zone.CLOISTER_OF_TIDES]
+local cloisterOfTidesID = zones[invaderXim.zone.CLOISTER_OF_TIDES]
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId           = xi.zone.CLOISTER_OF_TIDES,
-    battlefieldId    = xi.battlefield.id.TRIAL_SIZE_TRIAL_BY_WATER,
+    zoneId           = invaderXim.zone.CLOISTER_OF_TIDES,
+    battlefieldId    = invaderXim.battlefield.id.TRIAL_SIZE_TRIAL_BY_WATER,
     canLoseExp       = false,
     maxPlayers       = 1,
     levelCap         = 20,
@@ -15,29 +15,29 @@ local content = BattlefieldQuest:new({
     index            = 1,
     entryNpc         = 'WP_Entrance',
     exitNpc          = 'Water_Protocrystal',
-    requiredItems    = { xi.item.MINI_TUNING_FORK_OF_WATER },
+    requiredItems    = { invaderXim.item.MINI_TUNING_FORK_OF_WATER },
 
-    questArea = xi.questLog.OUTLANDS,
-    quest     = xi.quest.id.outlands.TRIAL_SIZE_TRIAL_BY_WATER,
+    questArea = invaderXim.questLog.OUTLANDS,
+    quest     = invaderXim.quest.id.outlands.TRIAL_SIZE_TRIAL_BY_WATER,
 })
 
 function content:entryRequirement(player, npc, isRegistrant, trade)
-    return player:getMainJob() == xi.job.SMN and
+    return player:getMainJob() == invaderXim.job.SMN and
         player:getMainLvl() >= 20
 end
 
 function content:onEventFinishWin(player, csid, option, npc)
-    if not player:hasSpell(xi.magic.spell.LEVIATHAN) then
-        player:addSpell(xi.magic.spell.LEVIATHAN)
+    if not player:hasSpell(invaderXim.magic.spell.LEVIATHAN) then
+        player:addSpell(invaderXim.magic.spell.LEVIATHAN)
         player:messageSpecial(cloisterOfTidesID.text.LEVIATHAN_UNLOCKED, 0, 0, 2)
     end
 
-    if not player:hasItem(xi.item.SCROLL_OF_INSTANT_WARP) then
-        npcUtil.giveItem(player, xi.item.SCROLL_OF_INSTANT_WARP)
+    if not player:hasItem(invaderXim.item.SCROLL_OF_INSTANT_WARP) then
+        npcUtil.giveItem(player, invaderXim.item.SCROLL_OF_INSTANT_WARP)
     end
 
-    player:addFame(xi.fameArea.NORG, 30)
-    player:completeQuest(xi.questLog.OUTLANDS, xi.quest.id.outlands.TRIAL_SIZE_TRIAL_BY_WATER)
+    player:addFame(invaderXim.fameArea.NORG, 30)
+    player:completeQuest(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.TRIAL_SIZE_TRIAL_BY_WATER)
 end
 
 content.groups =
@@ -45,7 +45,7 @@ content.groups =
     {
         mobs = { 'Leviathan_Prime_TSTBW' },
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

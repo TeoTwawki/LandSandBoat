@@ -3,7 +3,7 @@
 --  Mob: Gessho
 -- TOAU-15 Mission Battle
 -----------------------------------
-local ID = zones[xi.zone.THE_ASHU_TALIF]
+local ID = zones[invaderXim.zone.THE_ASHU_TALIF]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -13,7 +13,7 @@ entity.onMobSpawn = function(mob)
     -- Give a little buffer for while the instance loads
     mob:timer(80000, function(m)
         if m:getLocalVar('ready') == 0 and not m:getTarget() then
-            xi.ally.startAssist(m, xi.ally.ASSIST_RANDOM)
+            invaderXim.ally.startAssist(m, invaderXim.ally.ASSIST_RANDOM)
         end
     end)
 
@@ -48,7 +48,7 @@ entity.onMobRoam = function(mob)
 
     -- When Gessho becomes ready via you pulling, he will assist you
     if ready == 1 then
-        xi.ally.startAssist(mob, xi.ally.ASSIST_PLAYER)
+        invaderXim.ally.startAssist(mob, invaderXim.ally.ASSIST_PLAYER)
     end
 end
 

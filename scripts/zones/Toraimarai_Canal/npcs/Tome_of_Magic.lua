@@ -4,7 +4,7 @@
 -- Involved In Windurst Mission 7-1
 -- !zone 169
 -----------------------------------
-local ID = zones[xi.zone.TORAIMARAI_CANAL]
+local ID = zones[invaderXim.zone.TORAIMARAI_CANAL]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

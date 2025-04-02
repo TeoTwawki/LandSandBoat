@@ -4,7 +4,7 @@
 -- !pos 44 2 -35 80
 -- Sealed Container NPC
 -----------------------------------
-local ID = zones[xi.zone.SOUTHERN_SAN_DORIA_S]
+local ID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA_S]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -13,14 +13,14 @@ entity.onTrade = function(player, npc, trade)
     local itemID = trade:getItemId()
     local itemKeyItemMapping =
     {
-        [xi.item.MAPLE_STRONGBOX] = xi.ki.IMPERIAL_LINEAGE_CHAPTER_I,
-        [xi.item.MAGNOLIA_STRONGBOX] = xi.ki.IMPERIAL_LINEAGE_CHAPTER_II,
-        [xi.item.BEECH_STRONGBOX] = xi.ki.IMPERIAL_LINEAGE_CHAPTER_III,
-        [xi.item.EVERGREEN_STRONGBOX] = xi.ki.IMPERIAL_LINEAGE_CHAPTER_IV,
-        [xi.item.HOLLY_STRONGBOX] = xi.ki.IMPERIAL_LINEAGE_CHAPTER_V,
-        [xi.item.OAK_STRONGBOX] = xi.ki.IMPERIAL_LINEAGE_CHAPTER_VI,
-        [xi.item.ELM_STRONGBOX] = xi.ki.IMPERIAL_LINEAGE_CHAPTER_VII,
-        [xi.item.WILLOW_STRONGBOX] = xi.ki.IMPERIAL_LINEAGE_CHAPTER_VIII
+        [invaderXim.item.MAPLE_STRONGBOX] = invaderXim.ki.IMPERIAL_LINEAGE_CHAPTER_I,
+        [invaderXim.item.MAGNOLIA_STRONGBOX] = invaderXim.ki.IMPERIAL_LINEAGE_CHAPTER_II,
+        [invaderXim.item.BEECH_STRONGBOX] = invaderXim.ki.IMPERIAL_LINEAGE_CHAPTER_III,
+        [invaderXim.item.EVERGREEN_STRONGBOX] = invaderXim.ki.IMPERIAL_LINEAGE_CHAPTER_IV,
+        [invaderXim.item.HOLLY_STRONGBOX] = invaderXim.ki.IMPERIAL_LINEAGE_CHAPTER_V,
+        [invaderXim.item.OAK_STRONGBOX] = invaderXim.ki.IMPERIAL_LINEAGE_CHAPTER_VI,
+        [invaderXim.item.ELM_STRONGBOX] = invaderXim.ki.IMPERIAL_LINEAGE_CHAPTER_VII,
+        [invaderXim.item.WILLOW_STRONGBOX] = invaderXim.ki.IMPERIAL_LINEAGE_CHAPTER_VIII
     }
     -- Make sure we're only trading 1 Basket at a time.
     if

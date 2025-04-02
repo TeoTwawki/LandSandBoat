@@ -202,12 +202,12 @@ local pathFind =
 entity.onMobInitialize = function(mob)
     -- Guivre has increased movespeed, sight range with
     -- Natural double/triple attack.
-    mob:setMod(xi.mod.MOVE_SPEED_STACKABLE, 150)
-    mob:setMobMod(xi.mobMod.SIGHT_RANGE, 30)
-    mob:setMod(xi.mod.DOUBLE_ATTACK, 25)
-    mob:setMod(xi.mod.TRIPLE_ATTACK, 15)
+    mob:setMod(invaderXim.mod.MOVE_SPEED_STACKABLE, 150)
+    mob:setMobMod(invaderXim.mobMod.SIGHT_RANGE, 30)
+    mob:setMod(invaderXim.mod.DOUBLE_ATTACK, 25)
+    mob:setMod(invaderXim.mod.TRIPLE_ATTACK, 15)
 
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(math.random(900, 10800))
 end
 
@@ -216,7 +216,7 @@ entity.onMobSpawn = function(mob)
     mob:setLocalVar('despawnTime', math.random(10800, 18000) + os.time())
     mob:setLocalVar('isPaused', 0)
     mob:setLocalVar('mobPath', 1)
-    mob:pathThrough(pathStart, xi.path.flag.COORDS)
+    mob:pathThrough(pathStart, invaderXim.path.flag.COORDS)
 end
 
 entity.onPath = function(mob)
@@ -232,9 +232,9 @@ entity.onPath = function(mob)
 
             local newReverse = mob:getLocalVar('reversePath')
             if newReverse == 0 then
-                mob:pathThrough(pathNodes, xi.path.flag.COORDS)
+                mob:pathThrough(pathNodes, invaderXim.path.flag.COORDS)
             else
-                mob:pathThrough(pathNodes, bit.bor(xi.path.flag.COORDS, xi.path.flag.REVERSE))
+                mob:pathThrough(pathNodes, bit.bor(invaderXim.path.flag.COORDS, invaderXim.path.flag.REVERSE))
             end
         else
             -- Guivre is paused, he will wait and rotate
@@ -253,7 +253,7 @@ entity.onPath = function(mob)
                 }
             end
 
-            mob:pathThrough(rotations, xi.path.flag.COORDS)
+            mob:pathThrough(rotations, invaderXim.path.flag.COORDS)
             mob:setLocalVar('isPaused', 1)
         end
     end
@@ -267,7 +267,7 @@ entity.onMobRoam = function(mob)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints)
     mob:setRespawnTime(math.random(64800, 86400)) -- 18 to 24 hours
 end
 

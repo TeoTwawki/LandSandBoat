@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `linkshells`
 --
 
-DROP TABLE IF EXISTS `linkshells`;
-CREATE TABLE IF NOT EXISTS `linkshells` (
+DROP TABLE IF IXIMSTS `linkshells`;
+CREATE TABLE IF NOT IXIMSTS `linkshells` (
   `linkshellid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL DEFAULT '',
   `color` smallint(5) unsigned NOT NULL DEFAULT '61440',

@@ -4,12 +4,12 @@
 require('scripts/globals/abyssea')
 -----------------------------------
 xi = xi or {}
-xi.abyssea = xi.abyssea or {}
+invaderXim.abyssea = invaderXim.abyssea or {}
 
 -- if the amount is 100 or 50 it is a special number and is randomised as per retail
 local lightInfo =
 {
-    [xi.zone.ABYSSEA_KONSCHTAT] =
+    [invaderXim.zone.ABYSSEA_KONSCHTAT] =
     {
         ['Ab_xzomit']              = { azure = 8,   pearl = 5,   ruby = 16,  amber = 8  }, -- Xzomits
         ['Cryptonberry_Occultist'] = { azure = 16,  pearl = 5,   ruby = 16,  amber = 16 }, -- Tonberries
@@ -70,7 +70,7 @@ local lightInfo =
         ['Hadal_Satiator']         = { azure = 16,  pearl = 16,  ruby = 16,  amber = 16 },
     },
 
-    [xi.zone.ABYSSEA_LA_THEINE] =
+    [invaderXim.zone.ABYSSEA_LA_THEINE] =
     {
         ['Angler_Tiger']           = { azure = 8,   pearl = 5,   ruby = 8,   amber = 8  }, -- Tigers
         ['Bathyal_Gigas']          = { azure = 8,   pearl = 5,   ruby = 8,   amber = 8  }, -- Gigas
@@ -131,7 +131,7 @@ local lightInfo =
         ['Ruminator']              = { azure = 16,  pearl = 16,  ruby = 16,  amber = 16 },
     },
 
-    [xi.zone.ABYSSEA_TAHRONGI] =
+    [invaderXim.zone.ABYSSEA_TAHRONGI] =
     {
         ['Beholder']               = { azure = 8,   pearl = 5,   ruby = 0,   amber = 0  }, -- Hecteyes
         ['Canyon_Eft']             = { azure = 8,   pearl = 5,   ruby = 0,   amber = 0  }, -- Eft
@@ -189,7 +189,7 @@ local lightInfo =
         ['Usurper']                = { azure = 16,  pearl = 16,  ruby = 16,  amber = 16 },
     },
 
-    [xi.zone.ABYSSEA_MISAREAUX] =
+    [invaderXim.zone.ABYSSEA_MISAREAUX] =
     {
         ['Abyssobugard']           = { azure = 8,   pearl = 5,   ruby = 8,   amber = 16 }, -- Bugards
         ['Atrociraptor']           = { azure = 8,   pearl = 5,   ruby = 8,   amber = 8  }, -- Raptors
@@ -247,7 +247,7 @@ local lightInfo =
         ['Tristitia']              = { azure = 16,  pearl = 16,  ruby = 16,  amber = 16 },
     },
 
-    [xi.zone.ABYSSEA_VUNKERL] =
+    [invaderXim.zone.ABYSSEA_VUNKERL] =
     {
         ['Aestutaur']              = { azure = 8,   pearl = 5,   ruby = 8,   amber = 0  }, -- Tauri
         ['Blademaw_Pugil']         = { azure = 8,   pearl = 5,   ruby = 8,   amber = 0  }, -- Fish
@@ -305,7 +305,7 @@ local lightInfo =
         ['Ketea']                  = { azure = 16,  pearl = 16,  ruby = 16,  amber = 16 },
     },
 
-    [xi.zone.ABYSSEA_ATTOHWA] =
+    [invaderXim.zone.ABYSSEA_ATTOHWA] =
     {
         ['Amuckatrice']            = { azure = 8,   pearl = 5,   ruby = 8,   amber = 8  }, -- Cockatrice  100% Azure
         ['Gullycampa']             = { azure = 8,   pearl = 5,   ruby = 8,   amber = 8  }, -- Wamouracampa
@@ -363,7 +363,7 @@ local lightInfo =
         ['Lusca']                  = { azure = 16,  pearl = 16,  ruby = 16,  amber = 16 },
     },
 
-    [xi.zone.ABYSSEA_GRAUBERG] =
+    [invaderXim.zone.ABYSSEA_GRAUBERG] =
     {
         ['Baelfyr']                = { azure = 16,  pearl = 5,   ruby = 16,  amber = 16 }, -- Elementals
         ['Byrgen']                 = { azure = 16,  pearl = 5,   ruby = 16,  amber = 16 }, -- Elementals
@@ -412,7 +412,7 @@ local lightInfo =
         ['Xibalba']                = { azure = 16,  pearl = 5,   ruby = 16,  amber = 16 },
     },
 
-    [xi.zone.ABYSSEA_ULEGUERAND] =
+    [invaderXim.zone.ABYSSEA_ULEGUERAND] =
     {
         ['Adasaurus']              = { azure = 0,   pearl = 5,   ruby = 8,   amber = 8  }, -- Raptors
         ['Benumbed_Vodoriga']      = { azure = 0,   pearl = 5,   ruby = 8,   amber = 8  }, -- Gargouilles
@@ -461,7 +461,7 @@ local lightInfo =
         ['Ogopogo']                = { azure = 16,  pearl = 16,  ruby = 16,  amber = 16 },
     },
 
-    [xi.zone.ABYSSEA_ALTEPA] =
+    [invaderXim.zone.ABYSSEA_ALTEPA] =
     {
         ['Akrab']                  = { azure = 8,   pearl = 5,   ruby = 8,   amber = 8  }, -- Scorpions
         ['Arid_Limule']            = { azure = 16,  pearl = 5,   ruby = 100, amber = 8  }, -- Limule
@@ -517,25 +517,25 @@ local lightInfo =
 
 local lightTypes =
 {
-    [xi.abyssea.deathType.PHYSICAL]    = { light = xi.abyssea.lightType.PEARL, lightType = 'pearl' }, -- pearl
-    [xi.abyssea.deathType.MAGICAL]     = { light = xi.abyssea.lightType.AZURE, lightType = 'azure' }, -- Azure
-    [xi.abyssea.deathType.WS_PHYSICAL] = { light = xi.abyssea.lightType.RUBY,  lightType = 'ruby'  }, -- Ruby
-    [xi.abyssea.deathType.WS_MAGICAL]  = { light = xi.abyssea.lightType.AMBER, lightType = 'amber' }, -- Amber
+    [invaderXim.abyssea.deathType.PHYSICAL]    = { light = invaderXim.abyssea.lightType.PEARL, lightType = 'pearl' }, -- pearl
+    [invaderXim.abyssea.deathType.MAGICAL]     = { light = invaderXim.abyssea.lightType.AZURE, lightType = 'azure' }, -- Azure
+    [invaderXim.abyssea.deathType.WS_PHYSICAL] = { light = invaderXim.abyssea.lightType.RUBY,  lightType = 'ruby'  }, -- Ruby
+    [invaderXim.abyssea.deathType.WS_MAGICAL]  = { light = invaderXim.abyssea.lightType.AMBER, lightType = 'amber' }, -- Amber
 }
 
-xi.abyssea.RemoveDeathListeners = function(mob)
+invaderXim.abyssea.RemoveDeathListeners = function(mob)
     mob:removeListener('ABYSSEA_PHYSICAL_DEATH_CHECK')
     mob:removeListener('ABYSSEA_MAGIC_DEATH_CHECK')
     mob:removeListener('ABYSSEA_DEATH_LIGHTS_CHECK')
 end
 
-xi.abyssea.AddDeathListeners = function(mob)
+invaderXim.abyssea.AddDeathListeners = function(mob)
     mob:addListener('MAGIC_TAKE', 'ABYSSEA_MAGIC_DEATH_CHECK', function(target, caster, spell)
         if
             target:getHP() <= 0 and
-            target:getDeathType() == xi.abyssea.deathType.NONE
+            target:getDeathType() == invaderXim.abyssea.deathType.NONE
         then
-            target:setDeathType(xi.abyssea.deathType.MAGICAL)
+            target:setDeathType(invaderXim.abyssea.deathType.MAGICAL)
         end
     end)
 
@@ -548,15 +548,15 @@ xi.abyssea.AddDeathListeners = function(mob)
             186, 187, 188, 189, 192, 208, 217, 218, 220,
         }
 
-        local wsType = xi.abyssea.deathType.WS_PHYSICAL
+        local wsType = invaderXim.abyssea.deathType.WS_PHYSICAL
 
         if
             target:getHP() <= 0 and
-            target:getDeathType() == xi.abyssea.deathType.NONE
+            target:getDeathType() == invaderXim.abyssea.deathType.NONE
         then
             for i = 1, #magicalWS do
                 if wsid == magicalWS[i] then
-                    wsType = xi.abyssea.deathType.WS_MAGICAL
+                    wsType = invaderXim.abyssea.deathType.WS_MAGICAL
                     break
                 end
             end
@@ -567,17 +567,17 @@ xi.abyssea.AddDeathListeners = function(mob)
 
     mob:addListener('DEATH', 'ABYSSEA_DEATH_LIGHTS_CHECK', function(mobArg, player)
         local deathType = mobArg:getDeathType()
-        if deathType == xi.abyssea.deathType.NONE then
-            deathType = xi.abyssea.deathType.PHYSICAL
+        if deathType == invaderXim.abyssea.deathType.NONE then
+            deathType = invaderXim.abyssea.deathType.PHYSICAL
         end
 
-        xi.abyssea.DropLights(player, mobArg:getName(), deathType, mobArg)
+        invaderXim.abyssea.DropLights(player, mobArg:getName(), deathType, mobArg)
 
-        xi.abyssea.RemoveDeathListeners(mobArg)
+        invaderXim.abyssea.RemoveDeathListeners(mobArg)
     end)
 end
 
-xi.abyssea.DropLights = function(killer, mobName, killType, mob)
+invaderXim.abyssea.DropLights = function(killer, mobName, killType, mob)
     if killer then
         if not killer:isPC() and killer:getAllegiance() == 1 then
             local master = killer:getMaster()
@@ -596,7 +596,7 @@ xi.abyssea.DropLights = function(killer, mobName, killType, mob)
 
     local dropLight = 0
     local amount    = 0
-    local dropRate  = xi.settings.main.ABYSSEA_LIGHTS_DROP_RATE
+    local dropRate  = invaderXim.settings.main.ABYSSEA_LIGHTS_DROP_RATE
 
     if lightInfo[zoneID][mobName][lightTypes[killType].lightType] ~= nil then
         amount = lightInfo[zoneID][mobName][lightTypes[killType].lightType]
@@ -616,7 +616,7 @@ xi.abyssea.DropLights = function(killer, mobName, killType, mob)
 
     dropLight = lightTypes[killType].light
 
-    if dropLight == xi.abyssea.lightType.PEARL then
+    if dropLight == invaderXim.abyssea.lightType.PEARL then
         if
             mobName == 'Ab_xzomit' or
             mobName == 'Gneiss_Leech' or
@@ -624,17 +624,17 @@ xi.abyssea.DropLights = function(killer, mobName, killType, mob)
             mobName == 'Irate_Sheep' or
             mobName == 'Luison'
         then
-            if xi.settings.main.ABYSSEA_LIGHTS_DROP_RATE > 0 then
+            if invaderXim.settings.main.ABYSSEA_LIGHTS_DROP_RATE > 0 then
                 dropRate = 2
             end
         else
-            if xi.settings.main.ABYSSEA_LIGHTS_DROP_RATE > 10 then
-                dropRate = math.floor(xi.settings.main.ABYSSEA_LIGHTS_DROP_RATE / 2)
+            if invaderXim.settings.main.ABYSSEA_LIGHTS_DROP_RATE > 10 then
+                dropRate = math.floor(invaderXim.settings.main.ABYSSEA_LIGHTS_DROP_RATE / 2)
             end
         end
     end
 
-    if dropLight == xi.abyssea.lightType.AZURE then
+    if dropLight == invaderXim.abyssea.lightType.AZURE then
         if
             mobName == 'Cluckatrice' or
             mobName == 'Pachypodium' or
@@ -642,7 +642,7 @@ xi.abyssea.DropLights = function(killer, mobName, killType, mob)
             mobName == 'Amuckatrice' or
             mobName == 'Camelopardalis'
         then
-            if xi.settings.main.ABYSSEA_LIGHTS_DROP_RATE > 0 then
+            if invaderXim.settings.main.ABYSSEA_LIGHTS_DROP_RATE > 0 then
                 dropRate = 100
             end
         end
@@ -653,7 +653,7 @@ xi.abyssea.DropLights = function(killer, mobName, killType, mob)
     if canDrop <= dropRate then
         for _, member in pairs(killer:getAlliance()) do
             if member:getZoneID() == killer:getZoneID() and member:isPC() then
-                xi.abyssea.addPlayerLights(member, dropLight, amount)
+                invaderXim.abyssea.addPlayerLights(member, dropLight, amount)
             end
         end
     end

@@ -6,11 +6,11 @@
 -- Kasaroro : !pos -72 -3 34 231
 -- Halver   : !pos 2 0.1 0.1 233
 -----------------------------------
-local chateauID          = zones[xi.zone.CHATEAU_DORAGUILLE]
-local northernSandoriaID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local chateauID          = zones[invaderXim.zone.CHATEAU_DORAGUILLE]
+local northernSandoriaID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_THREE_KINGDOMS_SANDORIA2)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_THREE_KINGDOMS_SANDORIA2)
 
 mission.reward = {}
 
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Halver'] =
             {
@@ -29,8 +29,8 @@ mission.sections =
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
                     if missionStatus == 8 then
-                        if xi.settings.main.ENABLE_TRUST_QUESTS == 1 then
-                            local needsHalverTrust = (not player:hasSpell(xi.magic.spell.HALVER) and not player:findItem(xi.item.CIPHER_OF_HALVERS_ALTER_EGO)) and 1 or 0
+                        if invaderXim.settings.main.ENABLE_TRUST_QUESTS == 1 then
+                            local needsHalverTrust = (not player:hasSpell(invaderXim.magic.spell.HALVER) and not player:findItem(invaderXim.item.CIPHER_OF_HALVERS_ALTER_EGO)) and 1 or 0
 
                             return mission:progressEvent(504, { [7] = needsHalverTrust })
                         else
@@ -48,34 +48,34 @@ mission.sections =
                     player:setMissionStatus(mission.areaId, 9)
 
                     if
-                        xi.settings.main.ENABLE_TRUST_QUESTS == 1 and
-                        not player:hasSpell(xi.magic.spell.HALVER) and
-                        not player:findItem(xi.item.CIPHER_OF_HALVERS_ALTER_EGO)
+                        invaderXim.settings.main.ENABLE_TRUST_QUESTS == 1 and
+                        not player:hasSpell(invaderXim.magic.spell.HALVER) and
+                        not player:findItem(invaderXim.item.CIPHER_OF_HALVERS_ALTER_EGO)
                     then
-                        npcUtil.giveItem(player, xi.item.CIPHER_OF_HALVERS_ALTER_EGO)
+                        npcUtil.giveItem(player, invaderXim.item.CIPHER_OF_HALVERS_ALTER_EGO)
                     end
                 end,
             },
         },
 
-        [xi.zone.HORLAIS_PEAK] =
+        [invaderXim.zone.HORLAIS_PEAK] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 9 and
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.RANK_2_MISSION_1
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.RANK_2_MISSION_1
                     then
-                        npcUtil.giveKeyItem(player, xi.ki.KINDRED_CREST)
-                        player:delKeyItem(xi.ki.DARK_KEY)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.KINDRED_CREST)
+                        player:delKeyItem(invaderXim.ki.DARK_KEY)
                         player:setMissionStatus(mission.areaId, 10)
                     end
                 end,
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Kasaroro'] =
             {
@@ -94,9 +94,9 @@ mission.sections =
             {
                 [551] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:addMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_THREE_KINGDOMS)
-                        player:delKeyItem(xi.ki.KINDRED_CREST)
-                        npcUtil.giveKeyItem(player, xi.ki.KINDRED_REPORT)
+                        player:addMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_THREE_KINGDOMS)
+                        player:delKeyItem(invaderXim.ki.KINDRED_CREST)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.KINDRED_REPORT)
                         player:setMissionStatus(mission.areaId, 11)
                     end
                 end,

@@ -3,7 +3,7 @@
 --  NPC: Lycopodium
 -- !pos -275.953 12.333 262.368 88
 -----------------------------------
-local ID = zones[xi.zone.GARLAIGE_CITADEL_S]
+local ID = zones[invaderXim.zone.GARLAIGE_CITADEL_S]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

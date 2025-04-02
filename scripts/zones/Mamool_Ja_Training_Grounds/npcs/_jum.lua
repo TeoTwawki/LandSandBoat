@@ -9,7 +9,7 @@ require('scripts/zones/Mamool_Ja_Training_Grounds/globals/zoneUtil')
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.zoneUtil.ImperialAgent_PotHatch(player, npc, 269, -582, 124)
+    invaderXim.zoneUtil.ImperialAgent_PotHatch(player, npc, 269, -582, 124)
 end
 
 return entity

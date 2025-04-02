@@ -39,7 +39,7 @@ zoneObject.onZoneIn = function(player, prevZone)
         player:getYPos() == 0 and
         player:getZPos() == 0
     then
-        if prevZone == xi.zone.ARRAPAGO_REMNANTS then
+        if prevZone == invaderXim.zone.ARRAPAGO_REMNANTS then
             player:setPos(-579, 0.05, -100, 192)
         else
             player:setPos(222.798, -0.5, 19.872, 0)

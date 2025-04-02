@@ -16,9 +16,9 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local power = 20
 
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.DEFENSE_BOOST, power, 0, 120))
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.DEFENSE_BOOST, power, 0, 120))
 
-    return xi.effect.DEFENSE_BOOST
+    return invaderXim.effect.DEFENSE_BOOST
 end
 
 return mobskillObject

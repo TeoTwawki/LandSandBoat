@@ -7,18 +7,18 @@
 ---@type TNpcEntity
 local entity = {}
 
----@class rseMap : { [xi.race] : xi.item[] }
+---@class rseMap : { [invaderXim.race] : invaderXim.item[] }
 local rseMap =
 {
     -- [race] = { body, hands, legs, feet }
-    [xi.race.HUME_M  ] = { xi.item.CUSTOM_TUNIC,     xi.item.CUSTOM_M_GLOVES,  xi.item.CUSTOM_SLACKS,    xi.item.CUSTOM_M_BOOTS    },
-    [xi.race.HUME_F  ] = { xi.item.CUSTOM_VEST,      xi.item.CUSTOM_F_GLOVES,  xi.item.CUSTOM_PANTS,     xi.item.CUSTOM_F_BOOTS    },
-    [xi.race.ELVAAN_M] = { xi.item.MAGNA_JERKIN,     xi.item.MAGNA_GAUNTLETS,  xi.item.MAGNA_M_CHAUSSES, xi.item.MAGNA_M_LEDELSENS },
-    [xi.race.ELVAAN_F] = { xi.item.MAGNA_BODICE,     xi.item.MAGNA_GLOVES,     xi.item.MAGNA_F_CHAUSSES, xi.item.MAGNA_F_LEDELSENS },
-    [xi.race.TARU_M  ] = { xi.item.WONDER_KAFTAN,    xi.item.WONDER_MITTS,     xi.item.WONDER_BRACCAE,   xi.item.WONDER_CLOMPS     },
-    [xi.race.TARU_F  ] = { xi.item.WONDER_KAFTAN,    xi.item.WONDER_MITTS,     xi.item.WONDER_BRACCAE,   xi.item.WONDER_CLOMPS     },
-    [xi.race.MITHRA  ] = { xi.item.SAVAGE_SEPARATES, xi.item.SAVAGE_GAUNTLETS, xi.item.SAVAGE_LOINCLOTH, xi.item.SAVAGE_GAITERS    },
-    [xi.race.GALKA   ] = { xi.item.ELDERS_SURCOAT,   xi.item.ELDERS_BRACERS,   xi.item.ELDERS_BRAGUETTE, xi.item.ELDERS_SANDALS    },
+    [invaderXim.race.HUME_M  ] = { invaderXim.item.CUSTOM_TUNIC,     invaderXim.item.CUSTOM_M_GLOVES,  invaderXim.item.CUSTOM_SLACKS,    invaderXim.item.CUSTOM_M_BOOTS    },
+    [invaderXim.race.HUME_F  ] = { invaderXim.item.CUSTOM_VEST,      invaderXim.item.CUSTOM_F_GLOVES,  invaderXim.item.CUSTOM_PANTS,     invaderXim.item.CUSTOM_F_BOOTS    },
+    [invaderXim.race.ELVAAN_M] = { invaderXim.item.MAGNA_JERKIN,     invaderXim.item.MAGNA_GAUNTLETS,  invaderXim.item.MAGNA_M_CHAUSSES, invaderXim.item.MAGNA_M_LEDELSENS },
+    [invaderXim.race.ELVAAN_F] = { invaderXim.item.MAGNA_BODICE,     invaderXim.item.MAGNA_GLOVES,     invaderXim.item.MAGNA_F_CHAUSSES, invaderXim.item.MAGNA_F_LEDELSENS },
+    [invaderXim.race.TARU_M  ] = { invaderXim.item.WONDER_KAFTAN,    invaderXim.item.WONDER_MITTS,     invaderXim.item.WONDER_BRACCAE,   invaderXim.item.WONDER_CLOMPS     },
+    [invaderXim.race.TARU_F  ] = { invaderXim.item.WONDER_KAFTAN,    invaderXim.item.WONDER_MITTS,     invaderXim.item.WONDER_BRACCAE,   invaderXim.item.WONDER_CLOMPS     },
+    [invaderXim.race.MITHRA  ] = { invaderXim.item.SAVAGE_SEPARATES, invaderXim.item.SAVAGE_GAUNTLETS, invaderXim.item.SAVAGE_LOINCLOTH, invaderXim.item.SAVAGE_GAITERS    },
+    [invaderXim.race.GALKA   ] = { invaderXim.item.ELDERS_SURCOAT,   invaderXim.item.ELDERS_BRACERS,   invaderXim.item.ELDERS_BRAGUETTE, invaderXim.item.ELDERS_SANDALS    },
 }
 
 local function hasRSE(player)
@@ -35,21 +35,21 @@ local function hasRSE(player)
 end
 
 entity.onTrigger = function(player, npc)
-    local questStatus = player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_GOBLIN_TAILOR)
+    local questStatus = player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_GOBLIN_TAILOR)
     local rseGear     = hasRSE(player)
     local rseRace     = VanadielRSERace()
     local rseLocation = VanadielRSELocation()
 
     if
         player:getMainLvl() >= 10 and
-        player:getFameLevel(xi.fameArea.JEUNO) >= 3
+        player:getFameLevel(invaderXim.fameArea.JEUNO) >= 3
     then
         if rseGear < 15 then
-            if questStatus == xi.questStatus.QUEST_AVAILABLE then
+            if questStatus == invaderXim.questStatus.QUEST_AVAILABLE then
                 player:startEvent(10016, rseLocation, rseRace)
             elseif
-                questStatus >= xi.questStatus.QUEST_ACCEPTED and
-                player:hasKeyItem(xi.ki.MAGICAL_PATTERN)
+                questStatus >= invaderXim.questStatus.QUEST_ACCEPTED and
+                player:hasKeyItem(invaderXim.ki.MAGICAL_PATTERN)
             then
                 player:startEvent(10018, rseGear)
             else
@@ -64,24 +64,24 @@ entity.onTrigger = function(player, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    local questStatus = player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_GOBLIN_TAILOR)
+    local questStatus = player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_GOBLIN_TAILOR)
 
     if csid == 10016 then
-        player:addQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_GOBLIN_TAILOR)
+        player:addQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_GOBLIN_TAILOR)
     elseif
         csid == 10018 and
         option >= 1 and
         option <= 4 and
-        questStatus >= xi.questStatus.QUEST_ACCEPTED and
-        player:hasKeyItem(xi.ki.MAGICAL_PATTERN)
+        questStatus >= invaderXim.questStatus.QUEST_ACCEPTED and
+        player:hasKeyItem(invaderXim.ki.MAGICAL_PATTERN)
     then
         if npcUtil.giveItem(player, rseMap[player:getRace()][option]) then
-            if questStatus == xi.questStatus.QUEST_ACCEPTED then
-                player:addFame(xi.fameArea.JEUNO, 30)
-                player:completeQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_GOBLIN_TAILOR)
+            if questStatus == invaderXim.questStatus.QUEST_ACCEPTED then
+                player:addFame(invaderXim.fameArea.JEUNO, 30)
+                player:completeQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_GOBLIN_TAILOR)
             end
 
-            player:delKeyItem(xi.ki.MAGICAL_PATTERN)
+            player:delKeyItem(invaderXim.ki.MAGICAL_PATTERN)
         end
     end
 end

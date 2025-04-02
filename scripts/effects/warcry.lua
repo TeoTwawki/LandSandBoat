@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.WARCRY
+-- invaderXim.effect.WARCRY
 -- Notes:
 -- Savagery TP bonus not cut in half like ffxclopedia says.
 -- ffxiclopedia is wrong, bg wiki right. See link where testing was done.
@@ -9,32 +9,32 @@
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    local jpLevel = target:getJobPointLevel(xi.jp.WARCRY_EFFECT)
+    local jpLevel = target:getJobPointLevel(invaderXim.jp.WARCRY_EFFECT)
     local jpEffect = jpLevel * 3
 
-    target:addMod(xi.mod.ATTP, effect:getPower())
-    target:addMod(xi.mod.RATTP, effect:getPower())
-    target:addMod(xi.mod.TP_BONUS, effect:getSubPower())
+    target:addMod(invaderXim.mod.ATTP, effect:getPower())
+    target:addMod(invaderXim.mod.RATTP, effect:getPower())
+    target:addMod(invaderXim.mod.TP_BONUS, effect:getSubPower())
 
     -- Job Point Bonus
-    target:addMod(xi.mod.ATT, jpEffect)
-    target:addMod(xi.mod.RATT, jpEffect)
+    target:addMod(invaderXim.mod.ATT, jpEffect)
+    target:addMod(invaderXim.mod.RATT, jpEffect)
 end
 
 effectObject.onEffectTick = function(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    local jpLevel = target:getJobPointLevel(xi.jp.WARCRY_EFFECT)
+    local jpLevel = target:getJobPointLevel(invaderXim.jp.WARCRY_EFFECT)
     local jpEffect = jpLevel * 3
 
-    target:delMod(xi.mod.ATTP, effect:getPower())
-    target:delMod(xi.mod.RATTP, effect:getPower())
-    target:delMod(xi.mod.TP_BONUS, effect:getSubPower())
+    target:delMod(invaderXim.mod.ATTP, effect:getPower())
+    target:delMod(invaderXim.mod.RATTP, effect:getPower())
+    target:delMod(invaderXim.mod.TP_BONUS, effect:getSubPower())
 
     -- Job Point Bonus
-    target:delMod(xi.mod.ATT, jpEffect)
-    target:delMod(xi.mod.RATT, jpEffect)
+    target:delMod(invaderXim.mod.ATT, jpEffect)
+    target:delMod(invaderXim.mod.RATT, jpEffect)
 end
 
 return effectObject

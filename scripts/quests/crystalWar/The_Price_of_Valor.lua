@@ -4,25 +4,25 @@
 -- !addquest 7 44
 -- Rholont       : !pos -168 -2 56 80
 -----------------------------------
-local vunkerlID = zones[xi.zone.VUNKERL_INLET_S]
+local vunkerlID = zones[invaderXim.zone.VUNKERL_INLET_S]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.THE_PRICE_OF_VALOR)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.THE_PRICE_OF_VALOR)
 
 quest.reward =
 {
-    item = xi.item.PEISTE_SKIN,
+    item = invaderXim.item.PEISTE_SKIN,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.IN_A_HAZE_OF_GLORY)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.IN_A_HAZE_OF_GLORY)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Rholont'] =
             {
@@ -37,9 +37,9 @@ quest.sections =
                             return quest:progressEvent(638)
                         elseif questProgress == 1 then
                             if
-                                player:hasKeyItem(xi.ki.LONG_LIFE_BISCUITS) and
-                                player:hasKeyItem(xi.ki.FLASK_OF_KINGDOM_WATER) and
-                                player:hasKeyItem(xi.ki.RONFAURE_MAPLE_SYRUP)
+                                player:hasKeyItem(invaderXim.ki.LONG_LIFE_BISCUITS) and
+                                player:hasKeyItem(invaderXim.ki.FLASK_OF_KINGDOM_WATER) and
+                                player:hasKeyItem(invaderXim.ki.RONFAURE_MAPLE_SYRUP)
                             then
                                 return quest:progressEvent(642)
                             else
@@ -58,7 +58,7 @@ quest.sections =
             {
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.LONG_LIFE_BISCUITS) and
+                        not player:hasKeyItem(invaderXim.ki.LONG_LIFE_BISCUITS) and
                         quest:getVar(player, 'Prog') == 1
                     then
                         return quest:progressEvent(640)
@@ -70,7 +70,7 @@ quest.sections =
             {
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.FLASK_OF_KINGDOM_WATER) and
+                        not player:hasKeyItem(invaderXim.ki.FLASK_OF_KINGDOM_WATER) and
                         quest:getVar(player, 'Prog') == 1
                     then
                         return quest:progressEvent(641)
@@ -85,26 +85,26 @@ quest.sections =
                 end,
 
                 [640] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.LONG_LIFE_BISCUITS)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LONG_LIFE_BISCUITS)
                 end,
 
                 [641] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.FLASK_OF_KINGDOM_WATER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.FLASK_OF_KINGDOM_WATER)
                 end,
 
                 [642] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.BISCUIT_A_LA_RHOLONT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.BISCUIT_A_LA_RHOLONT)
 
-                    player:delKeyItem(xi.ki.LONG_LIFE_BISCUITS)
-                    player:delKeyItem(xi.ki.FLASK_OF_KINGDOM_WATER)
-                    player:delKeyItem(xi.ki.RONFAURE_MAPLE_SYRUP)
+                    player:delKeyItem(invaderXim.ki.LONG_LIFE_BISCUITS)
+                    player:delKeyItem(invaderXim.ki.FLASK_OF_KINGDOM_WATER)
+                    player:delKeyItem(invaderXim.ki.RONFAURE_MAPLE_SYRUP)
 
                     quest:setVar(player, 'Prog', 2)
                 end,
             },
         },
 
-        [xi.zone.JUGNER_FOREST_S] =
+        [invaderXim.zone.JUGNER_FOREST_S] =
         {
             ['Felled_Trees'] =
             {
@@ -126,10 +126,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.VUNKERL_INLET_S] =
+        [invaderXim.zone.VUNKERL_INLET_S] =
         {
             ['Toppled_Cresset_1'] =
             {
@@ -213,7 +213,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.PASHHOW_MARSHLANDS_S] =
+        [invaderXim.zone.PASHHOW_MARSHLANDS_S] =
         {
             ['Shimmering_Pondweed'] =
             {

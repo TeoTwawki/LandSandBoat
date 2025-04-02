@@ -3,7 +3,7 @@
 --  NPC: Chhaya
 -- !pos -1.139 -2.101 -9.000 221
 -----------------------------------
-local ID = zones[xi.zone.SHIP_BOUND_FOR_MHAURA]
+local ID = zones[invaderXim.zone.SHIP_BOUND_FOR_MHAURA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -19,7 +19,7 @@ entity.onTrigger = function(player, npc)
     }
 
     player:showText(npc, ID.text.CHHAYA_SHOP_DIALOG)
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 return entity

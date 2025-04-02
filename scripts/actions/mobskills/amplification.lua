@@ -10,10 +10,10 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.MAGIC_DEF_BOOST, 30, 0, 120))
-    xi.mobskills.mobBuffMove(mob, xi.effect.MAGIC_ATK_BOOST, 30, 0, 120)
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.MAGIC_DEF_BOOST, 30, 0, 120))
+    invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.MAGIC_ATK_BOOST, 30, 0, 120)
 
-    return xi.effect.MAGIC_DEF_BOOST
+    return invaderXim.effect.MAGIC_DEF_BOOST
 end
 
 return mobskillObject

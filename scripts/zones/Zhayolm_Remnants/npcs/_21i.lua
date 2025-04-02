@@ -9,7 +9,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.salvage.openBossDoor(npc)
+    invaderXim.salvage.openBossDoor(npc)
 end
 
 return entity

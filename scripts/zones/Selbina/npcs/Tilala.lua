@@ -4,7 +4,7 @@
 -- Guild Merchant NPC: Clothcrafting Guild
 -- !pos 14.344 -7.912 10.276 248
 -----------------------------------
-local ID = zones[xi.zone.SELBINA]
+local ID = zones[invaderXim.zone.SELBINA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

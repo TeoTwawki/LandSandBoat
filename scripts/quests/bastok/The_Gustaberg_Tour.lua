@@ -6,24 +6,24 @@
 -- Hunting Bear: !pos -235.7 40 424.5 106
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.THE_GUSTABERG_TOUR)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_GUSTABERG_TOUR)
 
 quest.reward =
 {
     fame     = 20,
-    fameArea = xi.fameArea.BASTOK,
+    fameArea = invaderXim.fameArea.BASTOK,
     gil      = 500,
-    title    = xi.title.GUSTABERG_TOURIST,
+    title    = invaderXim.title.GUSTABERG_TOURIST,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Izabele'] = quest:progressEvent(745),
 
@@ -38,15 +38,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Izabele'] = quest:progressEvent(746)
         },
 
-        [xi.zone.NORTH_GUSTABERG] =
+        [invaderXim.zone.NORTH_GUSTABERG] =
         {
             ['Hunting_Bear'] =
             {
@@ -81,14 +81,14 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Izabele'] = quest:event(747):replaceDefault()
         },
-        [xi.zone.NORTH_GUSTABERG] =
+        [invaderXim.zone.NORTH_GUSTABERG] =
         {
             ['Hunting_Bear'] = quest:event(23):replaceDefault()
         },

@@ -2,7 +2,7 @@
 -- Area: Southern San d'Oria
 --  NPC: Victoire
 -----------------------------------
-local ID = zones[xi.zone.SOUTHERN_SAN_DORIA]
+local ID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -10,20 +10,20 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     local stock =
     {
-        xi.item.FACEGUARD,              1508,
-        xi.item.HEADGEAR,               2013,
-        xi.item.SCALE_MAIL,             2319,
-        xi.item.DOUBLET,                2854,
-        xi.item.SCALE_FINGER_GAUNTLETS, 1237,
-        xi.item.GLOVES,                 1575,
-        xi.item.SCALE_CUISSES,          1861,
-        xi.item.BRAIS,                  2194,
-        xi.item.SCALE_GREAVES,          1128,
-        xi.item.GAITERS,                1466,
+        invaderXim.item.FACEGUARD,              1508,
+        invaderXim.item.HEADGEAR,               2013,
+        invaderXim.item.SCALE_MAIL,             2319,
+        invaderXim.item.DOUBLET,                2854,
+        invaderXim.item.SCALE_FINGER_GAUNTLETS, 1237,
+        invaderXim.item.GLOVES,                 1575,
+        invaderXim.item.SCALE_CUISSES,          1861,
+        invaderXim.item.BRAIS,                  2194,
+        invaderXim.item.SCALE_GREAVES,          1128,
+        invaderXim.item.GAITERS,                1466,
     }
 
     player:showText(npc, ID.text.CARAUTIA_SHOP_DIALOG)
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 return entity

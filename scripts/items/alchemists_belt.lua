@@ -13,7 +13,7 @@ local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
     local result = 0
-    if target:hasStatusEffect(xi.effect.ALCHEMY_IMAGERY) then
+    if target:hasStatusEffect(invaderXim.effect.ALCHEMY_IMAGERY) then
         result = 242
     end
 
@@ -21,15 +21,15 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffect(xi.effect.ALCHEMY_IMAGERY, 3, 0, 480)
+    target:addStatusEffect(invaderXim.effect.ALCHEMY_IMAGERY, 3, 0, 480)
 end
 
 itemObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.ALCHEMY, 1)
+    target:addMod(invaderXim.mod.ALCHEMY, 1)
 end
 
 itemObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.ALCHEMY, 1)
+    target:delMod(invaderXim.mod.ALCHEMY, 1)
 end
 
 return itemObject

@@ -15,35 +15,35 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.foodOnItemCheck(target, xi.foodType.BASIC)
+    return invaderXim.itemUtils.foodOnItemCheck(target, invaderXim.foodType.BASIC)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffect(xi.effect.FOOD, 0, 0, 3600, 6275)
+    target:addStatusEffect(invaderXim.effect.FOOD, 0, 0, 3600, 6275)
 end
 
 itemObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.FOOD_HP, 20)
-    target:addMod(xi.mod.FOOD_MP, 20)
-    target:addMod(xi.mod.STR, 3)
-    target:addMod(xi.mod.FIRE_MEVA, 21)
-    target:addMod(xi.mod.FOOD_ATTP, 21)
-    target:addMod(xi.mod.FOOD_ATT_CAP, 90)
-    target:addMod(xi.mod.FOOD_RATTP, 21)
-    target:addMod(xi.mod.FOOD_RATT_CAP, 90)
-    target:addMod(xi.mod.SUBTLE_BLOW, 9)
+    target:addMod(invaderXim.mod.FOOD_HP, 20)
+    target:addMod(invaderXim.mod.FOOD_MP, 20)
+    target:addMod(invaderXim.mod.STR, 3)
+    target:addMod(invaderXim.mod.FIRE_MEVA, 21)
+    target:addMod(invaderXim.mod.FOOD_ATTP, 21)
+    target:addMod(invaderXim.mod.FOOD_ATT_CAP, 90)
+    target:addMod(invaderXim.mod.FOOD_RATTP, 21)
+    target:addMod(invaderXim.mod.FOOD_RATT_CAP, 90)
+    target:addMod(invaderXim.mod.SUBTLE_BLOW, 9)
 end
 
 itemObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.FOOD_HP, 20)
-    target:delMod(xi.mod.FOOD_MP, 20)
-    target:delMod(xi.mod.STR, 3)
-    target:delMod(xi.mod.FIRE_MEVA, 21)
-    target:delMod(xi.mod.FOOD_ATTP, 21)
-    target:delMod(xi.mod.FOOD_ATT_CAP, 90)
-    target:delMod(xi.mod.FOOD_RATTP, 21)
-    target:delMod(xi.mod.FOOD_RATT_CAP, 90)
-    target:delMod(xi.mod.SUBTLE_BLOW, 9)
+    target:delMod(invaderXim.mod.FOOD_HP, 20)
+    target:delMod(invaderXim.mod.FOOD_MP, 20)
+    target:delMod(invaderXim.mod.STR, 3)
+    target:delMod(invaderXim.mod.FIRE_MEVA, 21)
+    target:delMod(invaderXim.mod.FOOD_ATTP, 21)
+    target:delMod(invaderXim.mod.FOOD_ATT_CAP, 90)
+    target:delMod(invaderXim.mod.FOOD_RATTP, 21)
+    target:delMod(invaderXim.mod.FOOD_RATT_CAP, 90)
+    target:delMod(invaderXim.mod.SUBTLE_BLOW, 9)
 end
 
 return itemObject

@@ -3,7 +3,7 @@
 --  Mob: Goblin Reaper
 -- Note: Place holder Goblinsavior Heronox
 -----------------------------------
-local ID = zones[xi.zone.GUSTAV_TUNNEL]
+local ID = zones[invaderXim.zone.GUSTAV_TUNNEL]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -69,12 +69,12 @@ local goblinsaviorPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 764, 3, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 765, 3, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 764, 3, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 765, 3, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, goblinsaviorPHTable, 5, 10800, { spawnPoints = goblinsaviorSpawnPoints }) -- 3 hours
+    invaderXim.mob.phOnDespawn(mob, goblinsaviorPHTable, 5, 10800, { spawnPoints = goblinsaviorSpawnPoints }) -- 3 hours
 end
 
 return entity

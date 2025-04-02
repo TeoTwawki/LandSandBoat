@@ -10,11 +10,11 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemEquip = function(target, item)
-    target:addSpell(xi.magic.spell.IMPACT)
+    target:addSpell(invaderXim.magic.spell.IMPACT)
 end
 
 itemObject.onItemUnequip = function(target, item)
-    target:delSpell(xi.magic.spell.IMPACT)
+    target:delSpell(invaderXim.magic.spell.IMPACT)
 end
 
 return itemObject

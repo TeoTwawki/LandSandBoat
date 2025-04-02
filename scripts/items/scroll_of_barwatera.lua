@@ -7,11 +7,11 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return target:canLearnSpell(xi.magic.spell.BARWATERA)
+    return target:canLearnSpell(invaderXim.magic.spell.BARWATERA)
 end
 
 itemObject.onItemUse = function(target)
-    target:addSpell(xi.magic.spell.BARWATERA)
+    target:addSpell(invaderXim.magic.spell.BARWATERA)
 end
 
 return itemObject

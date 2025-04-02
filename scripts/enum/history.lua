@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.history
-xi.history =
+---@enum invaderXim.history
+invaderXim.history =
 {
     ENEMIES_DEFEATED   = 0,
     TIMES_KNOCKED_OUT  = 1,

@@ -4,23 +4,23 @@
 -- !addquest 7 6
 -- Erlene : !pos 376.936 -39.999 17.914 175
 -----------------------------------
-local eldiemeSID = zones[xi.zone.THE_ELDIEME_NECROPOLIS_S]
+local eldiemeSID = zones[invaderXim.zone.THE_ELDIEME_NECROPOLIS_S]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.A_LITTLE_KNOWLEDGE)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.A_LITTLE_KNOWLEDGE)
 
 quest.reward =
 {
-    keyItem = { xi.ki.GRIMOIRE, xi.ki.JOB_GESTURE_SCHOLAR },
-    title   = xi.title.SCHULTZ_SCHOLAR,
+    keyItem = { invaderXim.ki.GRIMOIRE, invaderXim.ki.JOB_GESTURE_SCHOLAR },
+    title   = invaderXim.title.SCHULTZ_SCHOLAR,
 }
 
-local validMageJobs = set{ xi.job.BLM, xi.job.RDM, xi.job.SMN, xi.job.BLU }
+local validMageJobs = set{ invaderXim.job.BLM, invaderXim.job.RDM, invaderXim.job.SMN, invaderXim.job.BLU }
 
 local tuckerEventFinish = function(player, csid, option, npc)
     local numAwarded = quest:getLocalVar(player, 'numAwarded')
 
-    if npcUtil.giveItem(player, { { xi.item.SHEET_OF_VELLUM, numAwarded } }) then
+    if npcUtil.giveItem(player, { { invaderXim.item.SHEET_OF_VELLUM, numAwarded } }) then
         player:confirmTrade()
         quest:incrementVar(player, 'Option', 1)
     end
@@ -30,11 +30,11 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getMainLvl() >= xi.settings.main.ADVANCED_JOB_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getMainLvl() >= invaderXim.settings.main.ADVANCED_JOB_LEVEL
         end,
 
-        [xi.zone.THE_ELDIEME_NECROPOLIS_S] =
+        [invaderXim.zone.THE_ELDIEME_NECROPOLIS_S] =
         {
             ['Erlene'] = quest:progressEvent(10, 1),
 
@@ -51,10 +51,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.CRAWLERS_NEST_S] =
+        [invaderXim.zone.CRAWLERS_NEST_S] =
         {
             ['Tucker'] =
             {
@@ -70,12 +70,12 @@ quest.sections =
                     if
                         questOption >= 1 and
                         questOption <= 3 and
-                        trade:getItemQty(xi.item.ROLANBERRY) >= 12 and
-                        trade:hasItemQty(xi.item.ROLANBERRY, trade:getItemCount())
+                        trade:getItemQty(invaderXim.item.ROLANBERRY) >= 12 and
+                        trade:hasItemQty(invaderXim.item.ROLANBERRY, trade:getItemCount())
                     then
                         local numAwardedVellum = math.min(4, math.floor(trade:getItemCount() / 12))
 
-                        trade:confirmItem(xi.item.ROLANBERRY, numAwardedVellum * 12)
+                        trade:confirmItem(invaderXim.item.ROLANBERRY, numAwardedVellum * 12)
                         quest:setLocalVar(player, 'numAwarded', numAwardedVellum)
 
                         if questOption == 1 then
@@ -119,14 +119,14 @@ quest.sections =
             },
         },
 
-        [xi.zone.THE_ELDIEME_NECROPOLIS_S] =
+        [invaderXim.zone.THE_ELDIEME_NECROPOLIS_S] =
         {
             ['Erlene'] =
             {
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'Prog') == 0 and
-                        npcUtil.tradeHasExactly(trade, { { xi.item.SHEET_OF_VELLUM, 12 } })
+                        npcUtil.tradeHasExactly(trade, { { invaderXim.item.SHEET_OF_VELLUM, 12 } })
                     then
                         local isMageJob = validMageJobs[player:getMainJob()] and 1 or 0
 
@@ -141,10 +141,10 @@ quest.sections =
                         return quest:event(11)
                     elseif questProgress == 1 then
                         if
-                            player:hasStatusEffect(xi.effect.MANAFONT) or
-                            player:hasStatusEffect(xi.effect.CHAINSPELL) or
-                            player:hasStatusEffect(xi.effect.ASTRAL_FLOW) or
-                            player:hasStatusEffect(xi.effect.AZURE_LORE)
+                            player:hasStatusEffect(invaderXim.effect.MANAFONT) or
+                            player:hasStatusEffect(invaderXim.effect.CHAINSPELL) or
+                            player:hasStatusEffect(invaderXim.effect.ASTRAL_FLOW) or
+                            player:hasStatusEffect(invaderXim.effect.AZURE_LORE)
                         then
                             return quest:progressEvent(14)
                         else
@@ -163,7 +163,7 @@ quest.sections =
 
                 [14] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:unlockJob(xi.job.SCH)
+                        player:unlockJob(invaderXim.job.SCH)
                         player:messageSpecial(eldiemeSID.text.YOU_CAN_NOW_BECOME_A_SCHOLAR)
                     end
                 end,
@@ -173,17 +173,17 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.THE_ELDIEME_NECROPOLIS_S] =
+        [invaderXim.zone.THE_ELDIEME_NECROPOLIS_S] =
         {
             ['Erlene'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:canLearnSpell(xi.magic.spell.EMBRAVA) and
-                        player:canLearnSpell(xi.magic.spell.KAUSTRA)
+                        player:canLearnSpell(invaderXim.magic.spell.EMBRAVA) and
+                        player:canLearnSpell(invaderXim.magic.spell.KAUSTRA)
                     then
                         return quest:progressEvent(47)
                     else
@@ -195,8 +195,8 @@ quest.sections =
             onEventFinish =
             {
                 [47] = function(player, csid, option, npc)
-                    player:addSpell(xi.magic.spell.EMBRAVA, true)
-                    player:addSpell(xi.magic.spell.KAUSTRA, true)
+                    player:addSpell(invaderXim.magic.spell.EMBRAVA, true)
+                    player:addSpell(invaderXim.magic.spell.KAUSTRA, true)
                     player:messageSpecial(eldiemeSID.text.YOU_LEARN_EMBRAVA_AND_KAUSTRA)
                 end,
             }

@@ -5,7 +5,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for table xidbw.unity_system
-DROP TABLE IF EXISTS `unity_system`;
+DROP TABLE IF IXIMSTS `unity_system`;
 CREATE TABLE `unity_system` (
   `leader` tinyint(4) NOT NULL,
   `members_current` int(11) NOT NULL DEFAULT 0,

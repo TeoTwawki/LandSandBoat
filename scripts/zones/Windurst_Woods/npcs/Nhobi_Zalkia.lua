@@ -4,19 +4,19 @@
 -- Only sells when Windurst controlls Kuzotz Region
 -- Confirmed shop stock, August 2013
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WOODS]
+local ID = zones[invaderXim.zone.WINDURST_WOODS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.events.harvestFestival.onHalloweenTrade(player, trade, npc)
+    invaderXim.events.harvestFestival.onHalloweenTrade(player, trade, npc)
 end
 
 entity.onTrigger = function(player, npc)
-    local regionOwner = GetRegionOwner(xi.region.KUZOTZ)
+    local regionOwner = GetRegionOwner(invaderXim.region.KUZOTZ)
 
-    if regionOwner ~= xi.nation.WINDURST then
+    if regionOwner ~= invaderXim.nation.WINDURST then
         player:showText(npc, ID.text.NHOBI_ZALKIA_CLOSED_DIALOG)
     else
         player:showText(npc, ID.text.NHOBI_ZALKIA_OPEN_DIALOG)
@@ -27,7 +27,7 @@ entity.onTrigger = function(player, npc)
             4412,  299,  -- Thundermelon
             4491,  184   -- Watermelon
         }
-        xi.shop.general(player, stock, xi.fameArea.WINDURST)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.WINDURST)
     end
 end
 

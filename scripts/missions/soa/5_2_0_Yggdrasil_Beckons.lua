@@ -6,11 +6,11 @@
 -- Levil : !pos -87.204 3.350 12.655 256
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.YGGDRASIL_BECKONS)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.YGGDRASIL_BECKONS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.RETURNING_TO_THE_TREES },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.RETURNING_TO_THE_TREES },
 }
 
 mission.sections =
@@ -20,12 +20,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(40, 256, 0, 256),
         },
 
-        [xi.zone.CIRDAS_CAVERNS] =
+        [invaderXim.zone.CIRDAS_CAVERNS] =
         {
             ['Wavering_Flux'] =
             {
@@ -39,7 +39,7 @@ mission.sections =
             onZoneIn = function(player, prevZone)
                 if
                     mission:isVarBitsSet(player, 'Status', 3) and
-                    not player:hasKeyItem(xi.ki.DHOKMAKS_BLOOD_SIGIL)
+                    not player:hasKeyItem(invaderXim.ki.DHOKMAKS_BLOOD_SIGIL)
                 then
                     return 36
                 end
@@ -55,16 +55,16 @@ mission.sections =
                 end,
 
                 [36] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.DHOKMAKS_BLOOD_SIGIL)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.DHOKMAKS_BLOOD_SIGIL)
 
-                    if player:hasKeyItem(xi.ki.ASHRAKKS_BLOOD_SIGIL) then
+                    if player:hasKeyItem(invaderXim.ki.ASHRAKKS_BLOOD_SIGIL) then
                         mission:complete(player)
                     end
                 end,
             },
         },
 
-        [xi.zone.CIRDAS_CAVERNS_U] =
+        [invaderXim.zone.CIRDAS_CAVERNS_U] =
         {
             onEventFinish =
             {
@@ -76,12 +76,12 @@ mission.sections =
 
                 [1000] = function(player, csid, option, npc)
                     mission:setVarBit(player, 'Status', 3)
-                    player:setPos(300, 29.998, -79, 64, xi.zone.CIRDAS_CAVERNS)
+                    player:setPos(300, 29.998, -79, 64, invaderXim.zone.CIRDAS_CAVERNS)
                 end,
             },
         },
 
-        [xi.zone.YORCIA_WEALD] =
+        [invaderXim.zone.YORCIA_WEALD] =
         {
             ['Wavering_Flux'] =
             {
@@ -95,7 +95,7 @@ mission.sections =
             onZoneIn = function(player, prevZone)
                 if
                     mission:isVarBitsSet(player, 'Status', 1) and
-                    not player:hasKeyItem(xi.ki.ASHRAKKS_BLOOD_SIGIL)
+                    not player:hasKeyItem(invaderXim.ki.ASHRAKKS_BLOOD_SIGIL)
                 then
                     return 4
                 end
@@ -111,16 +111,16 @@ mission.sections =
                 end,
 
                 [4] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.ASHRAKKS_BLOOD_SIGIL)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ASHRAKKS_BLOOD_SIGIL)
 
-                    if player:hasKeyItem(xi.ki.DHOKMAKS_BLOOD_SIGIL) then
+                    if player:hasKeyItem(invaderXim.ki.DHOKMAKS_BLOOD_SIGIL) then
                         mission:complete(player)
                     end
                 end,
             },
         },
 
-        [xi.zone.YORCIA_WEALD_U] =
+        [invaderXim.zone.YORCIA_WEALD_U] =
         {
             onEventFinish =
             {
@@ -132,12 +132,12 @@ mission.sections =
 
                 [1000] = function(player, csid, option, npc)
                     mission:setVarBit(player, 'Status', 1)
-                    player:setPos(34, 1.124, 372, 0, xi.zone.YORCIA_WEALD)
+                    player:setPos(34, 1.124, 372, 0, invaderXim.zone.YORCIA_WEALD)
                 end,
             },
         },
 
-        [xi.zone.LEAFALLIA] =
+        [invaderXim.zone.LEAFALLIA] =
         {
             ['Aged_Stump'] =
             {
@@ -146,17 +146,17 @@ mission.sections =
                     -- This needs to be verified
 
                     if
-                        not player:hasKeyItem(xi.ki.SKY_BLUE_POME) and
-                        not player:hasKeyItem(xi.ki.ASHRAKKS_BLOOD_SIGIL)
+                        not player:hasKeyItem(invaderXim.ki.SKY_BLUE_POME) and
+                        not player:hasKeyItem(invaderXim.ki.ASHRAKKS_BLOOD_SIGIL)
                     then
-                        npcUtil.giveKeyItem(player, xi.ki.SKY_BLUE_POME)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.SKY_BLUE_POME)
                     end
 
                     if
-                        not player:hasKeyItem(xi.ki.SUN_YELLOW_POME) and
-                        not player:hasKeyItem(xi.ki.DHOKMAKS_BLOOD_SIGIL)
+                        not player:hasKeyItem(invaderXim.ki.SUN_YELLOW_POME) and
+                        not player:hasKeyItem(invaderXim.ki.DHOKMAKS_BLOOD_SIGIL)
                     then
-                        npcUtil.giveKeyItem(player, xi.ki.SUN_YELLOW_POME)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.SUN_YELLOW_POME)
                     end
 
                     return mission:noAction()

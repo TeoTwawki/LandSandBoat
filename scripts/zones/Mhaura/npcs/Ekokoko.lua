@@ -9,7 +9,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if not player:hasCompletedUniqueEvent(xi.uniqueEvent.EKOKOKO_INTRODUCTION) then
+    if not player:hasCompletedUniqueEvent(invaderXim.uniqueEvent.EKOKOKO_INTRODUCTION) then
         player:startEvent(51)
     else
         player:startEvent(52)
@@ -18,7 +18,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 51 then
-        player:setUniqueEvent(xi.uniqueEvent.EKOKOKO_INTRODUCTION)
+        player:setUniqueEvent(invaderXim.uniqueEvent.EKOKOKO_INTRODUCTION)
     end
 end
 

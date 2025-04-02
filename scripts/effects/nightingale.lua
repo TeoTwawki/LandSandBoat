@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.NIGHTINGALE
+-- invaderXim.effect.NIGHTINGALE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

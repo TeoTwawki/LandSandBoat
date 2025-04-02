@@ -6,7 +6,7 @@ local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
     zone:registerCuboidTriggerArea(1, -570, 20, -810, -487.3, 35, -740)
-    xi.helm.initZone(zone, xi.helmType.HARVESTING)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.HARVESTING)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -20,20 +20,20 @@ zoneObject.onZoneIn = function(player, prevZone)
         player:setPos(-555, 31, -760, 0)
     end
 
-    xi.abyssea.onZoneIn(player)
+    invaderXim.abyssea.onZoneIn(player)
 
     return cs
 end
 
 zoneObject.afterZoneIn = function(player)
-    xi.abyssea.afterZoneIn(player)
+    invaderXim.abyssea.afterZoneIn(player)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
     switch (triggerArea:getTriggerAreaID()): caseof
     {
         [1] = function()
-            xi.abyssea.onWardTriggerAreaEnter(player)
+            invaderXim.abyssea.onWardTriggerAreaEnter(player)
         end,
     }
 end
@@ -42,7 +42,7 @@ zoneObject.onTriggerAreaLeave = function(player, triggerArea)
     switch (triggerArea:getTriggerAreaID()): caseof
     {
         [1] = function()
-            xi.abyssea.onWardTriggerAreaLeave(player)
+            invaderXim.abyssea.onWardTriggerAreaLeave(player)
         end,
     }
 end
@@ -51,7 +51,7 @@ zoneObject.onEventUpdate = function(player, csid, option, npc)
 end
 
 zoneObject.onEventFinish = function(player, csid, option, npc)
-    xi.abyssea.onEventFinish(player, csid, option, npc)
+    invaderXim.abyssea.onEventFinish(player, csid, option, npc)
 end
 
 return zoneObject

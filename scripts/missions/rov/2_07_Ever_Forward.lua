@@ -4,29 +4,29 @@
 -----------------------------------
 -- !addmission 13 56
 -----------------------------------
-local whitegateID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local whitegateID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.EVER_FORWARD)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.EVER_FORWARD)
 
 mission.reward =
 {
-    item = xi.item.CIPHER_OF_NASHMEIRAS_ALTER_EGO_II,
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.REUNITED },
+    item = invaderXim.item.CIPHER_OF_NASHMEIRAS_ALTER_EGO_II,
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.REUNITED },
 }
 
 local nationZones =
 {
-    xi.zone.BASTOK_MARKETS,
-    xi.zone.BASTOK_MINES,
-    xi.zone.NORTHERN_SAN_DORIA,
-    xi.zone.PORT_BASTOK,
-    xi.zone.PORT_SAN_DORIA,
-    xi.zone.PORT_WINDURST,
-    xi.zone.SOUTHERN_SAN_DORIA,
-    xi.zone.WINDURST_WALLS,
-    xi.zone.WINDURST_WATERS,
-    xi.zone.WINDURST_WOODS,
+    invaderXim.zone.BASTOK_MARKETS,
+    invaderXim.zone.BASTOK_MINES,
+    invaderXim.zone.NORTHERN_SAN_DORIA,
+    invaderXim.zone.PORT_BASTOK,
+    invaderXim.zone.PORT_SAN_DORIA,
+    invaderXim.zone.PORT_WINDURST,
+    invaderXim.zone.SOUTHERN_SAN_DORIA,
+    invaderXim.zone.WINDURST_WALLS,
+    invaderXim.zone.WINDURST_WATERS,
+    invaderXim.zone.WINDURST_WOODS,
 }
 
 mission.sections =
@@ -36,13 +36,13 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Imperial_Whitegate'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:getCurrentMission(xi.mission.log_id.TOAU) >= xi.mission.id.toau.ROYAL_PUPPETEER
+                        player:getCurrentMission(invaderXim.mission.log_id.TOAU) >= invaderXim.mission.id.toau.ROYAL_PUPPETEER
                     then
                         -- NOTE: The first 4 parameters for this event change the available dialogue.  This remains all zeroes
                         -- until the player has progressed at least past TOAU21.  No changes are implemented at this time until
@@ -59,8 +59,8 @@ mission.sections =
             {
                 [166] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:completeMission(xi.mission.log_id.ROV, xi.mission.id.rov.APHMAUS_LIGHT)
-                        player:addMission(xi.mission.log_id.ROV, xi.mission.id.rov.REUNITED)
+                        player:completeMission(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.APHMAUS_LIGHT)
+                        player:addMission(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.REUNITED)
                     end
                 end,
             },
@@ -72,7 +72,7 @@ mission.sections[2] =
 {
     check = function(player, currentMission, missionStatus, vars)
         return currentMission == mission.missionId and
-            player:getCurrentMission(xi.mission.log_id.TOAU) >= xi.mission.id.toau.ROYAL_PUPPETEER
+            player:getCurrentMission(invaderXim.mission.log_id.TOAU) >= invaderXim.mission.id.toau.ROYAL_PUPPETEER
     end,
 }
 
@@ -87,7 +87,7 @@ local rovZoneInEvent =
     {
         [30039] = function(player, csid, option, npc)
             player:completeMission(mission.areaId, mission.missionId)
-            player:addMission(xi.mission.log_id.ROV, xi.mission.id.rov.APHMAUS_LIGHT)
+            player:addMission(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.APHMAUS_LIGHT)
         end,
     },
 }

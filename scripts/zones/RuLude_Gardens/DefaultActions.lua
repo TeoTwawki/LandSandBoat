@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.RULUDE_GARDENS]
+local ID = zones[invaderXim.zone.RULUDE_GARDENS]
 
 return {
     ['Adolie']               = { event = 30 },

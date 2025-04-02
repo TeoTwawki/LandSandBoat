@@ -2,7 +2,7 @@
 -- Area: Windurst Woods
 --  NPC: Wije Tiren
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WOODS]
+local ID = zones[invaderXim.zone.WINDURST_WOODS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -21,7 +21,7 @@ entity.onTrigger = function(player, npc)
         5014,    98,       --Scroll of Herb Pastoral
         2864,  9200        --Federation Waystone
     }
-    xi.shop.general(player, stock, xi.fameArea.WINDURST)
+    invaderXim.shop.general(player, stock, invaderXim.fameArea.WINDURST)
 end
 
 return entity

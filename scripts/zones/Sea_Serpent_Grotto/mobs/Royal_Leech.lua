@@ -3,7 +3,7 @@
 --  Mob: Royal Leech
 -- Note: PH for Masan
 -----------------------------------
-local ID = zones[xi.zone.SEA_SERPENT_GROTTO]
+local ID = zones[invaderXim.zone.SEA_SERPENT_GROTTO]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -15,11 +15,11 @@ local masanPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 804, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 804, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, masanPHTable, 10, 14400) -- 4 hours
+    invaderXim.mob.phOnDespawn(mob, masanPHTable, 10, 14400) -- 4 hours
 end
 
 return entity

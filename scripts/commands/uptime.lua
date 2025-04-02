@@ -44,7 +44,7 @@ commandObj.onTrigger = function(player)
     local zone = player:getZone()
     if zone then
         local uptime = zone:getUptime()
-        player:printToPlayer('The zone has been up for ' .. formatSeconds(uptime), xi.msg.channel.SYSTEM_3)
+        player:printToPlayer('The zone has been up for ' .. formatSeconds(uptime), invaderXim.msg.channel.SYSTEM_3)
     end
 end
 

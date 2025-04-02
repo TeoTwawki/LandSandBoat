@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.GRADUAL_PETRIFICATION
+-- invaderXim.effect.GRADUAL_PETRIFICATION
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

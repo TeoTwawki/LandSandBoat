@@ -6,11 +6,11 @@
 -- Naja Salaheem : !pos 22.700 -8.804 -45.591 50
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.THE_BLACK_COFFIN)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.THE_BLACK_COFFIN)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.GHOSTS_OF_THE_PAST },
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.GHOSTS_OF_THE_PAST },
 }
 
 mission.sections =
@@ -20,18 +20,18 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = mission:progressEvent(3073, { text_table = 0 }),
         },
 
-        [xi.zone.ARRAPAGO_REEF] =
+        [invaderXim.zone.ARRAPAGO_REEF] =
         {
             onTriggerAreaEnter =
             {
                 [1] = function(player, triggerArea)
                     if
-                        player:hasKeyItem(xi.ki.EPHRAMADIAN_GOLD_COIN) and
+                        player:hasKeyItem(invaderXim.ki.EPHRAMADIAN_GOLD_COIN) and
                         player:getMissionStatus(mission.areaId) == 0
                     then
                         player:startEvent(8)
@@ -43,7 +43,7 @@ mission.sections =
 
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.THE_ASHU_TALIF and
+                    prevZone == invaderXim.zone.THE_ASHU_TALIF and
                     player:getMissionStatus(mission.areaId) == 2
                 then
                     player:setPos(-456, -3, -405, 64)
@@ -64,11 +64,11 @@ mission.sections =
             },
         },
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.ARRAPAGO_REEF and
+                    prevZone == invaderXim.zone.ARRAPAGO_REEF and
                     player:getMissionStatus(mission.areaId) == 3 and
                     player:getXPos() == 0 and
                     player:getYPos() == 0 and

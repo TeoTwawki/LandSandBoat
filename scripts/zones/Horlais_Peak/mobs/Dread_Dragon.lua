@@ -9,7 +9,7 @@ mixins = { require('scripts/mixins/draw_in') }
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.DREAD_DRAGON_SLAYER)
+    player:addTitle(invaderXim.title.DREAD_DRAGON_SLAYER)
 end
 
 return entity

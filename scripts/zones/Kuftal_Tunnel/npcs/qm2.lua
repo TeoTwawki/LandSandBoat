@@ -4,14 +4,14 @@
 -- Note: Spawns NM Cancer
 -- !pos -25.238 -12.785 -148.393 174
 -----------------------------------
-local ID = zones[xi.zone.KUFTAL_TUNNEL]
+local ID = zones[invaderXim.zone.KUFTAL_TUNNEL]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHas(trade, xi.item.QUUS) and
+        npcUtil.tradeHas(trade, invaderXim.item.QUUS) and
         not GetMobByID(ID.mob.CANCER):isSpawned() and
         not GetMobByID(ID.mob.CANCER + 1):isSpawned()
     then

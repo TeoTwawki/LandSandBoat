@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.PORT_WINDURST]
+local ID = zones[invaderXim.zone.PORT_WINDURST]
 
 return {
     ['_6o7']                = { event = 182 },

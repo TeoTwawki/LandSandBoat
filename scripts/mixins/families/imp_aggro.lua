@@ -1,8 +1,8 @@
 require('scripts/globals/mixins')
 -----------------------------------
 xi = xi or {}
-xi.mix = xi.mix or {}
-xi.mix.imp_aggro = xi.mix.imp_aggro or {}
+invaderXim.mix = invaderXim.mix or {}
+invaderXim.mix.imp_aggro = invaderXim.mix.imp_aggro or {}
 
 g_mixins = g_mixins or {}
 g_mixins.families = g_mixins.families or {}
@@ -11,9 +11,9 @@ local function updateAggro(mob, hour)
     mob:setLocalVar('hour', hour)
 
     if hour >= 18 or hour < 6 then
-        mob:setMobMod(xi.mobMod.DETECTION, bit.bor(xi.detects.SIGHT, xi.detects.HEARING))
+        mob:setMobMod(invaderXim.mobMod.DETECTION, bit.bor(invaderXim.detects.SIGHT, invaderXim.detects.HEARING))
     elseif hour < 18 and hour >= 6 then
-        mob:setMobMod(xi.mobMod.DETECTION, xi.detects.HEARING)
+        mob:setMobMod(invaderXim.mobMod.DETECTION, invaderXim.detects.HEARING)
     end
 end
 

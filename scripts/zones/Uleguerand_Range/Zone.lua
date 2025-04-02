@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Uleguerand_Range (5)
 -----------------------------------
-local ID = zones[xi.zone.ULEGUERAND_RANGE]
+local ID = zones[invaderXim.zone.ULEGUERAND_RANGE]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -15,7 +15,7 @@ zoneObject.onInitialize = function(zone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -45,13 +45,13 @@ zoneObject.onZoneWeatherChange = function(weather)
     local waterfall = GetNPCByID(ID.npc.WATERFALL)
 
     if waterfall then
-        if weather == xi.weather.SNOW or weather == xi.weather.BLIZZARDS then
-            if waterfall:getAnimation() ~= xi.anim.CLOSE_DOOR then
-                waterfall:setAnimation(xi.anim.CLOSE_DOOR)
+        if weather == invaderXim.weather.SNOW or weather == invaderXim.weather.BLIZZARDS then
+            if waterfall:getAnimation() ~= invaderXim.anim.CLOSE_DOOR then
+                waterfall:setAnimation(invaderXim.anim.CLOSE_DOOR)
             end
         else
-            if waterfall:getAnimation() ~= xi.anim.OPEN_DOOR then
-                waterfall:setAnimation(xi.anim.OPEN_DOOR)
+            if waterfall:getAnimation() ~= invaderXim.anim.OPEN_DOOR then
+                waterfall:setAnimation(invaderXim.anim.OPEN_DOOR)
             end
         end
     end

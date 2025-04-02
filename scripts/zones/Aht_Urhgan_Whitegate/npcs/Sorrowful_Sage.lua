@@ -8,11 +8,11 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    -- local rank = xi.besieged.getMercenaryRank(player)
+    -- local rank = invaderXim.besieged.getMercenaryRank(player)
     -- local haveimperialIDtag
     -- local tokens = 3--player:getAssaultPoint(ILRUSI_ASSAULT_POINT)
 --[[
-    if player:hasKeyItem(xi.ki.IMPERIAL_ARMY_ID_TAG) then
+    if player:hasKeyItem(invaderXim.ki.IMPERIAL_ARMY_ID_TAG) then
         haveimperialIDtag = 1
     else
         haveimperialIDtag = 0
@@ -49,8 +49,8 @@ entity.onEventFinish = function(player, csid, option, npc)
         if selectiontype == 1 then
             -- taken assault mission
             player:addAssault(bit.rshift(option, 4))
-            player:delKeyItem(xi.ki.IMPERIAL_ARMY_ID_TAG)
-            npcUtil.giveKeyItem(player, xi.ki.NYZUL_ISLE_ASSAULT_ORDERS)
+            player:delKeyItem(invaderXim.ki.IMPERIAL_ARMY_ID_TAG)
+            npcUtil.giveKeyItem(player, invaderXim.ki.NYZUL_ISLE_ASSAULT_ORDERS)
         end
     end
 end

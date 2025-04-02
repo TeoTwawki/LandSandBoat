@@ -4,15 +4,15 @@
 -- Log ID: 3, Quest ID: 134
 -- Nomad Moogle : !pos 10.012 1.453 121.883 243
 -----------------------------------
-local ruludeID = zones[xi.zone.RULUDE_GARDENS]
+local ruludeID = zones[invaderXim.zone.RULUDE_GARDENS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.EXPANDING_HORIZONS)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.EXPANDING_HORIZONS)
 
 quest.reward =
 {
     fame = 50,
-    fameArea = xi.fameArea.JEUNO,
+    fameArea = invaderXim.fameArea.JEUNO,
 }
 
 quest.sections =
@@ -20,13 +20,13 @@ quest.sections =
     -- Section: Quest available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
                 player:getMainLvl() >= 76 and
                 player:getLevelCap() == 80 and
-                xi.settings.main.MAX_LEVEL >= 85
+                invaderXim.settings.main.MAX_LEVEL >= 85
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Nomad_Moogle'] =
             {
@@ -49,10 +49,10 @@ quest.sections =
     -- Section: Quest accepted.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Nomad_Moogle'] =
             {
@@ -62,7 +62,7 @@ quest.sections =
 
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, { { xi.item.KINDREDS_CREST, 5 } }) and
+                        npcUtil.tradeHasExactly(trade, { { invaderXim.item.KINDREDS_CREST, 5 } }) and
                         player:getMeritCount() > 3
                     then
                         return quest:progressEvent(10136)

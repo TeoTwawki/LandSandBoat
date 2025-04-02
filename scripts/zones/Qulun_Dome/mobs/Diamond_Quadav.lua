@@ -5,7 +5,7 @@
 -- TODO: messages should be zone-wide
 -----------------------------------
 mixins = { require('scripts/mixins/job_special') }
-local ID = zones[xi.zone.QULUN_DOME]
+local ID = zones[invaderXim.zone.QULUN_DOME]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -13,7 +13,7 @@ local entity = {}
 entity.onMobInitialize = function(mob)
     -- the quest version of this NM doesn't drop gil
     if mob:getID() >= ID.mob.DIAMOND_QUADAV + 2 then
-        mob:setMobMod(xi.mobMod.GIL_MAX, -1)
+        mob:setMobMod(invaderXim.mobMod.GIL_MAX, -1)
     end
 end
 

@@ -8,17 +8,17 @@
 -- qm2      : !pos -208 -9 176 173
 -- Ryoma    : !pos -23 0 -9 252
 -----------------------------------
-local korrolokaID  = zones[xi.zone.KORROLOKA_TUNNEL]
-local portBastokID = zones[xi.zone.PORT_BASTOK]
+local korrolokaID  = zones[invaderXim.zone.KORROLOKA_TUNNEL]
+local portBastokID = zones[invaderXim.zone.PORT_BASTOK]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.AYAME_AND_KAEDE)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.AYAME_AND_KAEDE)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.BASTOK,
-    title    = xi.title.SHADOW_WALKER,
+    fameArea = invaderXim.fameArea.BASTOK,
+    title    = invaderXim.title.SHADOW_WALKER,
 }
 
 local function isNMSpawned()
@@ -45,11 +45,11 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getMainLvl() >= xi.settings.main.ADVANCED_JOB_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getMainLvl() >= invaderXim.settings.main.ADVANCED_JOB_LEVEL
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Kaede'] = quest:progressEvent(240),
 
@@ -64,10 +64,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.KORROLOKA_TUNNEL] =
+        [invaderXim.zone.KORROLOKA_TUNNEL] =
         {
             ['qm2'] =
             {
@@ -81,10 +81,10 @@ quest.sections =
 
                             if quest:getLocalVar(player, 'isActor') == 1 then
                                 quest:setLocalVar(player, 'isActor', 0)
-                                npc:hideNPC(xi.settings.main.FORCE_SPAWN_QM_RESET_TIME)
+                                npc:hideNPC(invaderXim.settings.main.FORCE_SPAWN_QM_RESET_TIME)
                             end
 
-                            return quest:keyItem(xi.ki.STRANGELY_SHAPED_CORAL)
+                            return quest:keyItem(invaderXim.ki.STRANGELY_SHAPED_CORAL)
                         else
                             quest:setLocalVar(player, 'isActor', 1)
 
@@ -111,7 +111,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Ryoma'] =
             {
@@ -125,14 +125,14 @@ quest.sections =
             onEventFinish =
             {
                 [95] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.SEALED_DAGGER)
-                    player:delKeyItem(xi.ki.STRANGELY_SHAPED_CORAL)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.SEALED_DAGGER)
+                    player:delKeyItem(invaderXim.ki.STRANGELY_SHAPED_CORAL)
                     quest:setVar(player, 'Prog', 5)
                 end,
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Ensetsu'] =
             {
@@ -149,7 +149,7 @@ quest.sections =
                     elseif questProgress == 4 then
                         return quest:event(243)
                     elseif questProgress == 5 then
-                        return quest:progressEvent(246, xi.ki.SEALED_DAGGER)
+                        return quest:progressEvent(246, invaderXim.ki.SEALED_DAGGER)
                     end
                 end,
             },
@@ -183,7 +183,7 @@ quest.sections =
 
                 [246] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:unlockJob(xi.job.NIN)
+                        player:unlockJob(invaderXim.job.NIN)
                         player:messageSpecial(portBastokID.text.UNLOCK_NINJA)
                     end
                 end,
@@ -193,10 +193,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Kaede'] = quest:event(248):replaceDefault(),
         },

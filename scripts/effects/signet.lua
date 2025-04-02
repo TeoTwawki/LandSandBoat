@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.SIGNET
+-- invaderXim.effect.SIGNET
 --   Signet is a a beneficial Status Effect that allows the acquisition of Conquest Points and Crystals
 --   from defeated enemies that grant Experience Points.
 
@@ -12,16 +12,16 @@
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    target:addLatent(xi.latent.SIGNET_BONUS, 0, xi.mod.DEF, 15)
-    target:addLatent(xi.latent.SIGNET_BONUS, 0, xi.mod.EVA, 15)
+    target:addLatent(invaderXim.latent.SIGNET_BONUS, 0, invaderXim.mod.DEF, 15)
+    target:addLatent(invaderXim.latent.SIGNET_BONUS, 0, invaderXim.mod.EVA, 15)
 end
 
 effectObject.onEffectTick = function(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    target:delLatent(xi.latent.SIGNET_BONUS, 0, xi.mod.DEF, 15)
-    target:delLatent(xi.latent.SIGNET_BONUS, 0, xi.mod.EVA, 15)
+    target:delLatent(invaderXim.latent.SIGNET_BONUS, 0, invaderXim.mod.DEF, 15)
+    target:delLatent(invaderXim.latent.SIGNET_BONUS, 0, invaderXim.mod.EVA, 15)
 end
 
 return effectObject

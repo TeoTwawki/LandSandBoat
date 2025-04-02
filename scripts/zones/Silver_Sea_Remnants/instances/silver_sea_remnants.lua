@@ -1,19 +1,19 @@
 -----------------------------------
 -- Salvage : Silver Sea Remnants
 -----------------------------------
-local ID = zones[xi.zone.SILVER_SEA_REMNANTS]
+local ID = zones[invaderXim.zone.SILVER_SEA_REMNANTS]
 -----------------------------------
 
 local instanceObject = {}
 
 -- Requirements for the first player registering the instance
 instanceObject.registryRequirements = function(player)
-    return player:getMainLvl() >= 65 and player:hasKeyItem(xi.ki.REMNANTS_PERMIT)
+    return player:getMainLvl() >= 65 and player:hasKeyItem(invaderXim.ki.REMNANTS_PERMIT)
 end
 
 -- Requirements for further players entering an already-registered instance
 instanceObject.entryRequirements = function(player)
-    return player:getMainLvl() >= 65 and player:hasKeyItem(xi.ki.REMNANTS_PERMIT)
+    return player:getMainLvl() >= 65 and player:hasKeyItem(invaderXim.ki.REMNANTS_PERMIT)
 end
 
 -- Called on the instance once it is created and ready
@@ -24,27 +24,27 @@ end
 
 -- Once the instance is ready inform the requester that it's ready
 instanceObject.onInstanceCreatedCallback = function(player, instance)
-    xi.instance.onInstanceCreatedCallback(player, instance)
+    invaderXim.instance.onInstanceCreatedCallback(player, instance)
 end
 
 -- When the player zones into the instance
 instanceObject.afterInstanceRegister = function(player)
-    for i = xi.slot.MAIN, xi.slot.BACK do
+    for i = invaderXim.slot.MAIN, invaderXim.slot.BACK do
         player:unequipItem(i)
     end
 
-    player:addStatusEffectEx(xi.effect.ENCUMBRANCE_I, xi.effect.ENCUMBRANCE_I, 0xFFFF, 0, 6000)
-    player:addStatusEffectEx(xi.effect.OBLIVISCENCE, xi.effect.OBLIVISCENCE, 1, 0, 6000)
-    player:addStatusEffectEx(xi.effect.OMERTA, xi.effect.OMERTA, 0x3F, 0, 6000)
-    player:addStatusEffectEx(xi.effect.IMPAIRMENT, xi.effect.IMPAIRMENT, 3, 0, 6000)
-    player:addStatusEffectEx(xi.effect.DEBILITATION, xi.effect.DEBILITATION, 0x1FF, 0, 6000)
-    player:addTempItem(xi.item.CAGE_OF_S_REMNANTS_FIREFLIES)
-    player:delKeyItem(xi.ki.REMNANTS_PERMIT)
+    player:addStatusEffectEx(invaderXim.effect.ENCUMBRANCE_I, invaderXim.effect.ENCUMBRANCE_I, 0xFFFF, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.OBLIVISCENCE, invaderXim.effect.OBLIVISCENCE, 1, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.OMERTA, invaderXim.effect.OMERTA, 0x3F, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.IMPAIRMENT, invaderXim.effect.IMPAIRMENT, 3, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.DEBILITATION, invaderXim.effect.DEBILITATION, 0x1FF, 0, 6000)
+    player:addTempItem(invaderXim.item.CAGE_OF_S_REMNANTS_FIREFLIES)
+    player:delKeyItem(invaderXim.ki.REMNANTS_PERMIT)
 end
 
 -- Instance 'tick'
 instanceObject.onInstanceTimeUpdate = function(instance, elapsed)
-    xi.instance.updateInstanceTime(instance, elapsed, ID.text)
+    invaderXim.instance.updateInstanceTime(instance, elapsed, ID.text)
 end
 
 -- On fail
@@ -84,7 +84,7 @@ instanceObject.onEventFinish = function(player, csid, option, npc)
 
     if csid == 1 then
         for _, players in ipairs(chars) do
-            players:setPos(580, 0, 500, 192, xi.zone.ALZADAAL_UNDERSEA_RUINS)
+            players:setPos(580, 0, 500, 192, invaderXim.zone.ALZADAAL_UNDERSEA_RUINS)
         end
     end
 end

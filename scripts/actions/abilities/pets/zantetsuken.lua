@@ -6,7 +6,7 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.summoner.canUseBloodPact(player, player:getPet(), target, ability)
+    return invaderXim.job_utils.summoner.canUseBloodPact(player, player:getPet(), target, ability)
 end
 
 abilityObject.onPetAbility = function(target, pet, skill, summoner, action)
@@ -23,11 +23,11 @@ abilityObject.onPetAbility = function(target, pet, skill, summoner, action)
             dmg = 9999
         end
 
-        dmg = xi.mobskills.mobMagicalMove(pet, target, skill, dmg, xi.element.DARK, 1, xi.mobskills.magicalTpBonus.NO_EFFECT, 0)
-        dmg = xi.mobskills.mobAddBonuses(pet, target, dmg, xi.element.DARK, skill)
-        dmg = xi.summon.avatarFinalAdjustments(dmg, pet, skill, target, xi.attackType.MAGICAL, xi.damageType.DARK, 1)
+        dmg = invaderXim.mobskills.mobMagicalMove(pet, target, skill, dmg, invaderXim.element.DARK, 1, invaderXim.mobskills.magicalTpBonus.NO_EFFECT, 0)
+        dmg = invaderXim.mobskills.mobAddBonuses(pet, target, dmg, invaderXim.element.DARK, skill)
+        dmg = invaderXim.summon.avatarFinalAdjustments(dmg, pet, skill, target, invaderXim.attackType.MAGICAL, invaderXim.damageType.DARK, 1)
 
-        target:takeDamage(dmg, pet, xi.attackType.MAGICAL, xi.damageType.DARK)
+        target:takeDamage(dmg, pet, invaderXim.attackType.MAGICAL, invaderXim.damageType.DARK)
         target:updateEnmityFromDamage(pet, dmg)
 
         returnParam = dmg
@@ -40,12 +40,12 @@ abilityObject.onPetAbility = function(target, pet, skill, summoner, action)
             math.random(1, 100) <= chance and
             target:getAnimation() ~= 33
         then
-            skill:setMsg(xi.msg.basic.SKILL_ENFEEB_IS)
-            target:takeDamage(target:getHP(), pet, xi.attackType.MAGICAL, xi.damageType.DARK)
+            skill:setMsg(invaderXim.msg.basic.SKILL_ENFEEB_IS)
+            target:takeDamage(target:getHP(), pet, invaderXim.attackType.MAGICAL, invaderXim.damageType.DARK)
 
-            returnParam = xi.effect.KO
+            returnParam = invaderXim.effect.KO
         else
-            skill:setMsg(xi.msg.basic.EVADES)
+            skill:setMsg(invaderXim.msg.basic.EVADES)
 
             returnParam = 0
         end

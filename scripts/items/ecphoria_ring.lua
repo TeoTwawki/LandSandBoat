@@ -12,7 +12,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    local statusEffect = xi.effect.AMNESIA
+    local statusEffect = invaderXim.effect.AMNESIA
     if target:hasStatusEffect(statusEffect) then
         local effectSubPower = target:getStatusEffect(statusEffect):getSubPower()
         -- If the amnesia is too strong, do not remove it. By default this would be zero allowing removal.

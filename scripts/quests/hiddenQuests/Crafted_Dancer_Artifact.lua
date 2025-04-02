@@ -14,9 +14,9 @@ local quest = HiddenQuest:new('DncArtifact')
 
 local dncArtifactOptions =
 {
-    [1] = { xi.item.DANCERS_TIARA_F,     { xi.item.SQUARE_OF_IMPERIAL_SILK_CLOTH, xi.item.SQUARE_OF_WOLF_FELT,     xi.item.SQUARE_OF_SILVER_BROCADE }, },
-    [2] = { xi.item.DANCERS_BANGLES_F,   { xi.item.SQUARE_OF_KARAKUL_CLOTH,       xi.item.SQUARE_OF_RAINBOW_CLOTH, xi.item.SQUARE_OF_RAINBOW_VELVET }, },
-    [3] = { xi.item.DANCERS_TOE_SHOES_F, { xi.item.SQUARE_OF_WAMOURA_CLOTH,       xi.item.SQUARE_OF_MOBLINWEAVE,   xi.item.SQUARE_OF_GOLD_BROCADE   }, },
+    [1] = { invaderXim.item.DANCERS_TIARA_F,     { invaderXim.item.SQUARE_OF_IMPERIAL_SILK_CLOTH, invaderXim.item.SQUARE_OF_WOLF_FELT,     invaderXim.item.SQUARE_OF_SILVER_BROCADE }, },
+    [2] = { invaderXim.item.DANCERS_BANGLES_F,   { invaderXim.item.SQUARE_OF_KARAKUL_CLOTH,       invaderXim.item.SQUARE_OF_RAINBOW_CLOTH, invaderXim.item.SQUARE_OF_RAINBOW_VELVET }, },
+    [3] = { invaderXim.item.DANCERS_TOE_SHOES_F, { invaderXim.item.SQUARE_OF_WAMOURA_CLOTH,       invaderXim.item.SQUARE_OF_MOBLINWEAVE,   invaderXim.item.SQUARE_OF_GOLD_BROCADE   }, },
 }
 
 quest.sections =
@@ -25,11 +25,11 @@ quest.sections =
     -- order to prevent needing a forever CharVar.
     {
         check = function(player, questVars, vars)
-            return player:hasCompletedQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_ROAD_TO_DIVADOM) and
-                player:getMainJob() == xi.job.DNC
+            return player:hasCompletedQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_ROAD_TO_DIVADOM) and
+                player:getMainJob() == invaderXim.job.DNC
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Olgald'] =
             {
@@ -60,10 +60,10 @@ quest.sections =
         check = function(player, questVars, vars)
             return questVars.Prog > 0 and
                 questVars.Status > 0 and
-                player:getMainJob() == xi.job.DNC
+                player:getMainJob() == invaderXim.job.DNC
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Matthias'] =
             {
@@ -153,13 +153,13 @@ quest.sections =
 
     {
         check = function(player, questVars, vars)
-            return player:findItem(xi.item.DANCERS_TIARA_F - player:getGender()) and
-                player:findItem(xi.item.DANCERS_BANGLES_F - player:getGender()) and
-                player:findItem(xi.item.DANCERS_TOE_SHOES_F - player:getGender()) and
-                player:getMainJob() == xi.job.DNC
+            return player:findItem(invaderXim.item.DANCERS_TIARA_F - player:getGender()) and
+                player:findItem(invaderXim.item.DANCERS_BANGLES_F - player:getGender()) and
+                player:findItem(invaderXim.item.DANCERS_TOE_SHOES_F - player:getGender()) and
+                player:getMainJob() == invaderXim.job.DNC
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Matthias'] = quest:progressEvent(498),
         },

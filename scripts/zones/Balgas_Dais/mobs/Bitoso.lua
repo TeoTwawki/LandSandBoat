@@ -7,15 +7,15 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addImmunity(xi.immunity.SILENCE)
-    mob:setMobMod(xi.mobMod.HP_HEAL_CHANCE, 90)
-    mob:setMobMod(xi.mobMod.HEAL_CHANCE, 100)
-    mob:setMod(xi.mod.REGEN, 0)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
+    mob:setMobMod(invaderXim.mobMod.HP_HEAL_CHANCE, 90)
+    mob:setMobMod(invaderXim.mobMod.HEAL_CHANCE, 100)
+    mob:setMod(invaderXim.mod.REGEN, 0)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.MAGIC_COOL, 20)
-    mob:setMobMod(xi.mobMod.SOUND_RANGE, 13)
+    mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 20)
+    mob:setMobMod(invaderXim.mobMod.SOUND_RANGE, 13)
 end
 
 entity.onMobFight = function(mob, target)

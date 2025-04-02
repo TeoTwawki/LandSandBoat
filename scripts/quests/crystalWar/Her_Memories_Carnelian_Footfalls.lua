@@ -10,23 +10,23 @@
 require('scripts/missions/wotg/helpers')
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.HER_MEMORIES_CARNELIAN_FOOTFALLS)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.HER_MEMORIES_CARNELIAN_FOOTFALLS)
 
 quest.reward =
 {
-    keyItem = xi.ki.LARGE_MEMORY_FRAGMENT4,
+    keyItem = invaderXim.ki.LARGE_MEMORY_FRAGMENT4,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getCurrentMission(xi.mission.log_id.WOTG) == xi.mission.id.wotg.HER_MEMORIES and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getCurrentMission(invaderXim.mission.log_id.WOTG) == invaderXim.mission.id.wotg.HER_MEMORIES and
                 player:getCampaignAllegiance() == 1
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Mainchelite'] =
             {
@@ -39,7 +39,7 @@ quest.sections =
 
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.EAST_RONFAURE_S and
+                    prevZone == invaderXim.zone.EAST_RONFAURE_S and
                     quest:getVar(player, 'Prog') == 0
                 then
                     return 170
@@ -61,10 +61,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Mainchelite'] =
             {
@@ -80,13 +80,13 @@ quest.sections =
             onEventFinish =
             {
                 [172] = function(player, csid, option, npc)
-                    xi.wotg.helpers.checkMemoryFragments(player)
+                    invaderXim.wotg.helpers.checkMemoryFragments(player)
                     quest:complete(player)
                 end,
             },
         },
 
-        [xi.zone.EAST_RONFAURE_S] =
+        [invaderXim.zone.EAST_RONFAURE_S] =
         {
             ['qm3'] =
             {
@@ -123,7 +123,7 @@ quest.sections =
 
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.SOUTHERN_SAN_DORIA_S and
+                    prevZone == invaderXim.zone.SOUTHERN_SAN_DORIA_S and
                     quest:getVar(player, 'Prog') == 1
                 then
                     return 12

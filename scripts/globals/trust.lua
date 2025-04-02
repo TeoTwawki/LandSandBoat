@@ -5,16 +5,16 @@ require('scripts/globals/magic')
 require('scripts/globals/roe')
 -----------------------------------
 xi = xi or {}
-xi.trust = xi.trust or {}
+invaderXim.trust = invaderXim.trust or {}
 
-xi.trust.movementType =
+invaderXim.trust.movementType =
 {
     -- NOTE: If you need to add special movement types, add descending into the minus values.
     --     : All of the positive values are taken for the ranged movement range.
     --     : See trust_controller.cpp for more.
     -- NOTE: You can use any positive value as a distance, and it will act as MID_RANGE or LONG_RANGE, but with the value you've provided.
     --     : For example:
-    --     :     mob:setMobMod(xi.mobMod.TRUST_DISTANCE, 20)
+    --     :     mob:setMobMod(invaderXim.mobMod.TRUST_DISTANCE, 20)
     --     : Will set the combat distance the trust tries to stick to to 20'
     -- NOTE: If a Trust doesn't immediately sprint to a certain distance at the start of battle, it's probably NO_MOVE or MELEE.
     NO_MOVE    = -1, -- Will stand still providing they're within casting distance of their master and target when the fight starts. Otherwise will reposition to be within 9.0' of both
@@ -23,7 +23,7 @@ xi.trust.movementType =
     LONG_RANGE = 12, -- Will path at the start of battle to 12' away from the target, and try to stay at that distance
 }
 
-xi.trust.messageOffset =
+invaderXim.trust.messageOffset =
 {
     SPAWN          = 1,
     TEAMWORK_1     = 4,
@@ -191,7 +191,7 @@ local poolIDToMessagePageOffset =
 }
 
 -- TODO: handle Dynamis Divergence, Omen, etc that are not "battlefields" but have a trust upper limit.
-xi.trust.checkBattlefieldTrustCount = function(caster)
+invaderXim.trust.checkBattlefieldTrustCount = function(caster)
     local battlefield = caster:getBattlefield()
     if battlefield then
         local participants     = battlefield:getPlayersAndTrusts()
@@ -205,7 +205,7 @@ xi.trust.checkBattlefieldTrustCount = function(caster)
 
         if
             rovKIBattlefieldIDs[battlefield:getID()] and
-            caster:hasKeyItem(xi.ki.RHAPSODY_IN_UMBER)
+            caster:hasKeyItem(invaderXim.ki.RHAPSODY_IN_UMBER)
         then
             maxParticipants = 6
         end
@@ -213,7 +213,7 @@ xi.trust.checkBattlefieldTrustCount = function(caster)
         for _, entity in ipairs(participants) do
             local objType = entity:getObjType()
 
-            if objType == xi.objType.TRUST then
+            if objType == invaderXim.objType.TRUST then
                 numTrusts = numTrusts + 1
             end
         end
@@ -224,13 +224,13 @@ xi.trust.checkBattlefieldTrustCount = function(caster)
     return true
 end
 
-xi.trust.hasPermit = function(player)
-    return player:hasKeyItem(xi.ki.WINDURST_TRUST_PERMIT) or
-        player:hasKeyItem(xi.ki.BASTOK_TRUST_PERMIT) or
-        player:hasKeyItem(xi.ki.SAN_DORIA_TRUST_PERMIT)
+invaderXim.trust.hasPermit = function(player)
+    return player:hasKeyItem(invaderXim.ki.WINDURST_TRUST_PERMIT) or
+        player:hasKeyItem(invaderXim.ki.BASTOK_TRUST_PERMIT) or
+        player:hasKeyItem(invaderXim.ki.SAN_DORIA_TRUST_PERMIT)
 end
 
-xi.trust.onTradeCipher = function(player, trade, csid, rovCs, arkAngelCs)
+invaderXim.trust.onTradeCipher = function(player, trade, csid, rovCs, arkAngelCs)
     local itemId   = trade:getItemId(0)
     local subId    = trade:getItemSubId(0)
     local isCipher = itemId >= 10112 and itemId <= 10193
@@ -254,7 +254,7 @@ xi.trust.onTradeCipher = function(player, trade, csid, rovCs, arkAngelCs)
     --                (Mainline story princesses and II trust versions??)
 
     if
-        xi.trust.hasPermit(player) and
+        invaderXim.trust.hasPermit(player) and
         trade:getSlotCount() == 1 and
         subId ~= 0 and
         isCipher and
@@ -277,10 +277,10 @@ xi.trust.onTradeCipher = function(player, trade, csid, rovCs, arkAngelCs)
     end
 end
 
-xi.trust.canCast = function(caster, spell, notAllowedTrustIds)
+invaderXim.trust.canCast = function(caster, spell, notAllowedTrustIds)
     -- Trusts must be enabled in settings
-    if xi.settings.main.ENABLE_TRUST_CASTING == 0 then
-        return xi.msg.basic.TRUST_NO_CAST_TRUST
+    if invaderXim.settings.main.ENABLE_TRUST_CASTING == 0 then
+        return invaderXim.msg.basic.TRUST_NO_CAST_TRUST
     end
 
     -- GMs can do what they want (as long as ENABLE_TRUST_CASTING is enabled)
@@ -290,37 +290,37 @@ xi.trust.canCast = function(caster, spell, notAllowedTrustIds)
 
     -- Trusts not allowed in an alliance
     if caster:checkSoloPartyAlliance() == 2 then
-        return xi.msg.basic.TRUST_NO_CAST_TRUST
+        return invaderXim.msg.basic.TRUST_NO_CAST_TRUST
     end
 
     -- Trusts only allowed in certain zones (Remove this for trusts everywhere)
-    if not caster:canUseMisc(xi.zoneMisc.TRUST) then
-        return xi.msg.basic.TRUST_NO_CALL_AE
+    if not caster:canUseMisc(invaderXim.zoneMisc.TRUST) then
+        return invaderXim.msg.basic.TRUST_NO_CALL_AE
     end
 
     -- You can only summon trusts if you are the party leader or solo
     local leader = caster:getPartyLeader()
     if leader and caster:getID() ~= leader:getID() then
-        caster:messageSystem(xi.msg.system.TRUST_SOLO_OR_LEADER)
+        caster:messageSystem(invaderXim.msg.system.TRUST_SOLO_OR_LEADER)
         return -1
     end
 
     -- Block summoning trusts if seeking a party
     if caster:isSeekingParty() then
-        caster:messageSystem(xi.msg.system.TRUST_NO_SEEKING_PARTY)
+        caster:messageSystem(invaderXim.msg.system.TRUST_NO_SEEKING_PARTY)
         return -1
     end
 
     -- Block summoning trusts if someone recently joined party (120s)
     local lastPartyMemberAddedTime = caster:getPartyLastMemberJoinedTime()
     if os.time() - lastPartyMemberAddedTime < 120 then
-        caster:messageSystem(xi.msg.system.TRUST_DELAY_NEW_PARTY_MEMBER)
+        caster:messageSystem(invaderXim.msg.system.TRUST_DELAY_NEW_PARTY_MEMBER)
         return -1
     end
 
     -- Trusts cannot be summoned if you have hate
     if caster:hasEnmity() then
-        caster:messageSystem(xi.msg.system.TRUST_NO_ENMITY)
+        caster:messageSystem(invaderXim.msg.system.TRUST_NO_ENMITY)
         return -1
     end
 
@@ -330,22 +330,22 @@ xi.trust.canCast = function(caster, spell, notAllowedTrustIds)
     local party     = caster:getPartyWithTrusts()
 
     for _, member in pairs(party) do
-        if member:getObjType() == xi.objType.TRUST then
+        if member:getObjType() == invaderXim.objType.TRUST then
             -- Check for same trust
             if member:getTrustID() == spell:getID() then
-                caster:messageSystem(xi.msg.system.TRUST_ALREADY_CALLED)
+                caster:messageSystem(invaderXim.msg.system.TRUST_ALREADY_CALLED)
                 return -1
             -- Check not allowed trust combinations (Shantotto I vs Shantotto II)
             elseif type(notAllowedTrustIds) == 'number' then
                 if member:getTrustID() == notAllowedTrustIds then
-                    caster:messageSystem(xi.msg.system.TRUST_ALREADY_CALLED)
+                    caster:messageSystem(invaderXim.msg.system.TRUST_ALREADY_CALLED)
                     return -1
                 end
             elseif type(notAllowedTrustIds) == 'table' then
                 for _, v in pairs(notAllowedTrustIds) do
                     if type(v) == 'number' then
                         if member:getTrustID() == v then
-                            caster:messageSystem(xi.msg.system.TRUST_ALREADY_CALLED)
+                            caster:messageSystem(invaderXim.msg.system.TRUST_ALREADY_CALLED)
                             return -1
                         end
                     end
@@ -360,7 +360,7 @@ xi.trust.canCast = function(caster, spell, notAllowedTrustIds)
 
     -- Max party size
     if numPt >= 6 then
-        caster:messageSystem(xi.msg.system.TRUST_MAXIMUM_NUMBER)
+        caster:messageSystem(invaderXim.msg.system.TRUST_MAXIMUM_NUMBER)
         return -1
     end
 
@@ -369,38 +369,38 @@ xi.trust.canCast = function(caster, spell, notAllowedTrustIds)
     -- to checking the battlefield's definitions.
     local casterBattlefieldID = caster:getBattlefieldID()
     if rovKIBattlefieldIDs[casterBattlefieldID] then
-        if not caster:hasKeyItem(xi.ki.RHAPSODY_IN_UMBER) then
-            return xi.msg.basic.TRUST_NO_CAST_TRUST
+        if not caster:hasKeyItem(invaderXim.ki.RHAPSODY_IN_UMBER) then
+            return invaderXim.msg.basic.TRUST_NO_CAST_TRUST
         end
     elseif
-        xi.battlefield.contents[casterBattlefieldID] and
-        not xi.battlefield.contents[casterBattlefieldID].allowTrusts
+        invaderXim.battlefield.contents[casterBattlefieldID] and
+        not invaderXim.battlefield.contents[casterBattlefieldID].allowTrusts
     then
-        return xi.msg.basic.TRUST_NO_CAST_TRUST
+        return invaderXim.msg.basic.TRUST_NO_CAST_TRUST
     end
 
     -- Limits set by ROV Key Items
-    if numTrusts >= 3 and not caster:hasKeyItem(xi.ki.RHAPSODY_IN_WHITE) then
-        caster:messageSystem(xi.msg.system.TRUST_MAXIMUM_NUMBER)
+    if numTrusts >= 3 and not caster:hasKeyItem(invaderXim.ki.RHAPSODY_IN_WHITE) then
+        caster:messageSystem(invaderXim.msg.system.TRUST_MAXIMUM_NUMBER)
         return -1
-    elseif numTrusts >= 4 and not caster:hasKeyItem(xi.ki.RHAPSODY_IN_CRIMSON) then
-        caster:messageSystem(xi.msg.system.TRUST_MAXIMUM_NUMBER)
+    elseif numTrusts >= 4 and not caster:hasKeyItem(invaderXim.ki.RHAPSODY_IN_CRIMSON) then
+        caster:messageSystem(invaderXim.msg.system.TRUST_MAXIMUM_NUMBER)
         return -1
     end
 
-    if not xi.trust.checkBattlefieldTrustCount(caster) then
-        return xi.msg.basic.TRUST_NO_CAST_TRUST
+    if not invaderXim.trust.checkBattlefieldTrustCount(caster) then
+        return invaderXim.msg.basic.TRUST_NO_CAST_TRUST
     end
 
     return 0
 end
 
-xi.trust.spawn = function(caster, spell)
+invaderXim.trust.spawn = function(caster, spell)
     caster:spawnTrust(spell:getID())
 
     -- Records of Eminence: Call Forth an Alter Ego
     if caster:getEminenceProgress(932) then
-        xi.roe.onRecordTrigger(caster, 932)
+        invaderXim.roe.onRecordTrigger(caster, 932)
     end
 
     return 0
@@ -409,7 +409,7 @@ end
 -- pageOffset is: (summon_message_id - 1) / 100
 -- Example: Shantotto II summon message ID: 11201
 -- pageOffset: (11201 - 1) / 100 = 112
-xi.trust.message = function(mob, messageOffset)
+invaderXim.trust.message = function(mob, messageOffset)
     local poolID     = mob:getPool()
     local pageOffset = poolIDToMessagePageOffset[poolID]
 
@@ -423,18 +423,18 @@ xi.trust.message = function(mob, messageOffset)
         return
     end
 
-    local trustOffset = xi.msg.system.GLOBAL_TRUST_OFFSET + (pageOffset * 100)
+    local trustOffset = invaderXim.msg.system.GLOBAL_TRUST_OFFSET + (pageOffset * 100)
     mob:trustPartyMessage(trustOffset + messageOffset)
 end
 
-xi.trust.teamworkMessage = function(mob, teamwork_messages)
+invaderXim.trust.teamworkMessage = function(mob, teamwork_messages)
     local messages = {}
 
     local master = mob:getMaster()
     local party  = master:getPartyWithTrusts()
 
     for _, member in pairs(party) do
-        if member:getObjType() == xi.objType.TRUST then
+        if member:getObjType() == invaderXim.objType.TRUST then
             for id, message in pairs(teamwork_messages) do
                 if member:getTrustID() == id then
                     table.insert(messages, message)
@@ -444,22 +444,22 @@ xi.trust.teamworkMessage = function(mob, teamwork_messages)
     end
 
     if #messages > 0 then
-        xi.trust.message(mob, messages[math.random(1, #messages)])
+        invaderXim.trust.message(mob, messages[math.random(1, #messages)])
     else
         -- Defaults to regular spawn message
-        xi.trust.message(mob, xi.trust.messageOffset.SPAWN)
+        invaderXim.trust.message(mob, invaderXim.trust.messageOffset.SPAWN)
     end
 end
 
 -- For debugging and lining up teamwork messages
-xi.trust.dumpMessages = function(mob, pageOffset)
+invaderXim.trust.dumpMessages = function(mob, pageOffset)
     for i = 0, 20 do
-        xi.trust.message(mob, pageOffset)
+        invaderXim.trust.message(mob, pageOffset)
     end
 end
 
-xi.trust.dumpMessagePages = function(mob)
+invaderXim.trust.dumpMessagePages = function(mob)
     for i = 0, 120 do
-        xi.trust.message(mob, i)
+        invaderXim.trust.message(mob, i)
     end
 end

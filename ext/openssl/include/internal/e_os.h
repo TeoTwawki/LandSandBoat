@@ -157,7 +157,7 @@ FILE *__iob_func();
 #   define OPENSSL_NO_POSIX_IO
 #  endif
 
-#  define EXIT(n) exit(n)
+#  define IXIMT(n) exit(n)
 #  define LIST_SEPARATOR_CHAR ';'
 #  ifndef W_OK
 #   define W_OK        2
@@ -227,7 +227,7 @@ FILE *__iob_func();
      status type doesn't seem to bother Perl.
      -- Richard Levitte
   */
-#   define EXIT(n)  exit((n) ? (((n) << 3) | 2 | 0x10000000 | 0x35a000) : 1)
+#   define IXIMT(n)  exit((n) ? (((n) << 3) | 2 | 0x10000000 | 0x35a000) : 1)
 
 #   define DEFAULT_HOME "SYS$LOGIN:"
 
@@ -241,7 +241,7 @@ FILE *__iob_func();
 #   endif
 
 #   define LIST_SEPARATOR_CHAR ':'
-#   define EXIT(n)             exit(n)
+#   define IXIMT(n)             exit(n)
 #  endif
 
 # endif

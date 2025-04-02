@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.MISAREAUX_COAST]
+local ID = zones[invaderXim.zone.MISAREAUX_COAST]
 
 return {
     ['_0p0']       = { messageSpecial = ID.text.SNOWMINT_POINT_LOCKED },

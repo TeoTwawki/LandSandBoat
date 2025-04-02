@@ -13,8 +13,8 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    if not target:hasStatusEffect(xi.effect.INVISIBLE) then
-        target:addStatusEffect(xi.effect.INVISIBLE, 0, 10, math.floor(200 * xi.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER))
+    if not target:hasStatusEffect(invaderXim.effect.INVISIBLE) then
+        target:addStatusEffect(invaderXim.effect.INVISIBLE, 0, 10, math.floor(200 * invaderXim.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER))
     end
 end
 

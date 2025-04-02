@@ -10,15 +10,15 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     local pNation = player:getNation()
 
-    if pNation == xi.nation.SANDORIA then
-        if player:hasKeyItem(xi.ki.MESSAGE_TO_JEUNO_SANDORIA) then
+    if pNation == invaderXim.nation.SANDORIA then
+        if player:hasKeyItem(invaderXim.ki.MESSAGE_TO_JEUNO_SANDORIA) then
             player:startEvent(56)
         else
             player:startEvent(102)
         end
-    elseif pNation == xi.nation.WINDURST then
+    elseif pNation == invaderXim.nation.WINDURST then
         player:startEvent(47)
-    elseif pNation == xi.nation.BASTOK then
+    elseif pNation == invaderXim.nation.BASTOK then
         player:startEvent(46)
     end
 end

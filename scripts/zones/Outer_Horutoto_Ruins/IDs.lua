@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.OUTER_HORUTOTO_RUINS] =
+zones[invaderXim.zone.OUTER_HORUTOTO_RUINS] =
 {
     text =
     {
@@ -62,4 +62,4 @@ zones[xi.zone.OUTER_HORUTOTO_RUINS] =
     },
 }
 
-return zones[xi.zone.OUTER_HORUTOTO_RUINS]
+return zones[invaderXim.zone.OUTER_HORUTOTO_RUINS]

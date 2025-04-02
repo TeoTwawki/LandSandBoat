@@ -9,14 +9,14 @@
 -- Charred Firewood   : !pos 83.296 -58.472 175.2 136
 -- Compressed Snow    : !pos 46.437 -0.762 -370.178 136
 -----------------------------------
-local pastBeaucedineID = zones[xi.zone.BEAUCEDINE_GLACIER_S]
+local pastBeaucedineID = zones[invaderXim.zone.BEAUCEDINE_GLACIER_S]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.SONGBIRDS_IN_A_SNOWSTORM)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.SONGBIRDS_IN_A_SNOWSTORM)
 
 quest.reward =
 {
-    item = xi.item.ICARUS_WING,
+    item = invaderXim.item.ICARUS_WING,
 }
 
 -- NOTE: For fishing up the required Key Items, capture was accomplished with 0 skill, and the
@@ -30,12 +30,12 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.BONDS_THAT_NEVER_DIE) and
-                player:hasCompletedMission(xi.mission.log_id.WOTG, xi.mission.id.wotg.THE_WILL_OF_THE_WORLD)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.BONDS_THAT_NEVER_DIE) and
+                player:hasCompletedMission(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.THE_WILL_OF_THE_WORLD)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Rholont'] =
             {
@@ -91,21 +91,21 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Rholont'] = quest:event(656),
         },
 
-        [xi.zone.BEAUCEDINE_GLACIER_S] =
+        [invaderXim.zone.BEAUCEDINE_GLACIER_S] =
         {
             ['Charred_Firewood'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.FLINT_STONE) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.FLINT_STONE) and
                         quest:getVar(player, 'Prog') == 4
                     then
                         return quest:progressEvent(4)
@@ -117,9 +117,9 @@ quest.sections =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:hasKeyItem(xi.ki.LANCE_FISH) and
-                        player:hasKeyItem(xi.ki.PALADIN_LOBSTER) and
-                        player:hasKeyItem(xi.ki.SCUTUM_CRAB)
+                        player:hasKeyItem(invaderXim.ki.LANCE_FISH) and
+                        player:hasKeyItem(invaderXim.ki.PALADIN_LOBSTER) and
+                        player:hasKeyItem(invaderXim.ki.SCUTUM_CRAB)
                     then
                         return quest:progressEvent(3, 136)
                     elseif quest:getVar(player, 'Prog') == 2 then
@@ -161,7 +161,7 @@ quest.sections =
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 3 then
                         player:messageSpecial(pastBeaucedineID.text.NONDESCRIPT_MASS)
-                        npcUtil.giveItem(player, xi.item.GOLIATH_WORM)
+                        npcUtil.giveItem(player, invaderXim.item.GOLIATH_WORM)
 
                         return quest:noAction()
                     end

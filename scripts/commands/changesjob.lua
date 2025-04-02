@@ -23,8 +23,8 @@ commandObj.onTrigger = function(player, jobId, level)
         return
     end
 
-    jobId = tonumber(jobId) or xi.job[string.upper(jobId)]
-    if jobId == nil or jobId <= 0 or jobId >= xi.MAX_JOB_TYPE then
+    jobId = tonumber(jobId) or invaderXim.job[string.upper(jobId)]
+    if jobId == nil or jobId <= 0 or jobId >= invaderXim.MAX_JOB_TYPE then
         error(player, 'Invalid jobID.  Use job short name, e.g. WAR, or its equivalent numeric ID.')
         return
     end
@@ -43,9 +43,9 @@ commandObj.onTrigger = function(player, jobId, level)
         player:setsLevel(level)
     end
 
-    -- invert xi.job table
+    -- invert invaderXim.job table
     local jobNameByNum = {}
-    for k, v in pairs(xi.job) do
+    for k, v in pairs(invaderXim.job) do
         jobNameByNum[v] = k
     end
 

@@ -25,16 +25,16 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local numhits = math.random(2, 3)
 
     if
-        mob:getMainJob() == xi.job.BLM or
-        mob:getMainJob() == xi.job.WHM
+        mob:getMainJob() == invaderXim.job.BLM or
+        mob:getMainJob() == invaderXim.job.WHM
     then
-        numhits = xi.mobskills.shadowBehavior.IGNORE_SHADOWS
+        numhits = invaderXim.mobskills.shadowBehavior.IGNORE_SHADOWS
     end
 
-    damage = xi.mobskills.mobMagicalMove(mob, target, skill, damage, xi.element.FIRE, 1, xi.mobskills.magicalTpBonus.NO_EFFECT)
-    damage = xi.mobskills.mobFinalAdjustments(damage, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.FIRE, numhits)
+    damage = invaderXim.mobskills.mobMagicalMove(mob, target, skill, damage, invaderXim.element.FIRE, 1, invaderXim.mobskills.magicalTpBonus.NO_EFFECT)
+    damage = invaderXim.mobskills.mobFinalAdjustments(damage, mob, skill, target, invaderXim.attackType.MAGICAL, invaderXim.damageType.FIRE, numhits)
 
-    target:takeDamage(damage, mob, xi.attackType.MAGICAL, xi.damageType.FIRE)
+    target:takeDamage(damage, mob, invaderXim.attackType.MAGICAL, invaderXim.damageType.FIRE)
 
     return damage
 end

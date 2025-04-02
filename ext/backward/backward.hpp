@@ -4318,7 +4318,7 @@ private:
 
     // terminate the process immediately.
     puts("watf? exit");
-    _exit(EXIT_FAILURE);
+    _exit(IXIMT_FAILURE);
   }
 };
 

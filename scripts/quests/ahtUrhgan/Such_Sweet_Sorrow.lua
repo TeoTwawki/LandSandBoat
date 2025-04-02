@@ -5,21 +5,21 @@
 -- Dabhuh: !pos 97.939 0 -91.530 50
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.SUCH_SWEET_SORROW)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.SUCH_SWEET_SORROW)
 
 quest.reward =
 {
-    item = xi.item.MERROW_NO_17_LOCKET,
+    item = invaderXim.item.MERROW_NO_17_LOCKET,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Dabhuh'] = quest:progressEvent(582, { text_table = 0 }),
 
@@ -33,7 +33,7 @@ quest.sections =
             {
                 [582] = function(player, csid, option, npc)
                     quest:setVar(player, 'Option', 1)
-                    player:setPos(43.493, 5.325, -699.828, 90, xi.zone.CAEDARVA_MIRE)
+                    player:setPos(43.493, 5.325, -699.828, 90, invaderXim.zone.CAEDARVA_MIRE)
                 end,
 
                 [956] = function(player, csid, option, npc)
@@ -43,7 +43,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.CAEDARVA_MIRE] =
+        [invaderXim.zone.CAEDARVA_MIRE] =
         {
             onZoneIn = function(player, prevZone)
                 if quest:getVar(player, 'Option') == 1 then
@@ -55,7 +55,7 @@ quest.sections =
             {
                 [29] = function(player, csid, option, npc)
                     quest:setVar(player, 'Option', 2)
-                    player:setPos(100.023, 0, -91.762, 125, xi.zone.AHT_URHGAN_WHITEGATE)
+                    player:setPos(100.023, 0, -91.762, 125, invaderXim.zone.AHT_URHGAN_WHITEGATE)
                 end,
             },
         },
@@ -63,10 +63,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Dabhuh'] =
             {
@@ -75,7 +75,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.MERROW_SCALE }) then
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.MERROW_SCALE }) then
                         return quest:progressEvent(583, { text_table = 0 })
                     end
                 end,
@@ -94,10 +94,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Dabhuh'] = quest:event(584, { text_table = 0 }),
         },

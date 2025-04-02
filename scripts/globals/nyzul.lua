@@ -1,37 +1,37 @@
 -----------------------------------
 -- Nyzul Isle Global
 -----------------------------------
-local ID = zones[xi.zone.NYZUL_ISLE]
+local ID = zones[invaderXim.zone.NYZUL_ISLE]
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.nyzul = xi.nyzul or {}
+invaderXim.nyzul = invaderXim.nyzul or {}
 
-xi.nyzul.baseWeapons =
+invaderXim.nyzul.baseWeapons =
 {
-    [xi.job.WAR] = xi.item.STURDY_AXE,
-    [xi.job.MNK] = xi.item.BURNING_FISTS,
-    [xi.job.WHM] = xi.item.WEREBUSTER,
-    [xi.job.BLM] = xi.item.MAGES_STAFF,
-    [xi.job.RDM] = xi.item.VORPAL_SWORD,
-    [xi.job.THF] = xi.item.SWORDBREAKER,
-    [xi.job.PLD] = xi.item.BRAVE_BLADE,
-    [xi.job.DRK] = xi.item.DEATH_SICKLE,
-    [xi.job.BST] = xi.item.DOUBLE_AXE,
-    [xi.job.BRD] = xi.item.DANCING_DAGGER,
-    [xi.job.RNG] = xi.item.KILLER_BOW,
-    [xi.job.SAM] = xi.item.WINDSLICER,
-    [xi.job.NIN] = xi.item.SASUKE_KATANA,
-    [xi.job.DRG] = xi.item.RADIANT_LANCE,
-    [xi.job.SMN] = xi.item.SCEPTER_STAFF,
-    [xi.job.BLU] = xi.item.WIGHTSLAYER,
-    [xi.job.COR] = xi.item.QUICKSILVER,
-    [xi.job.PUP] = xi.item.INFERNO_CLAWS,
-    [xi.job.DNC] = xi.item.MAIN_GAUCHE,
-    [xi.job.SCH] = xi.item.ELDER_STAFF,
+    [invaderXim.job.WAR] = invaderXim.item.STURDY_AXE,
+    [invaderXim.job.MNK] = invaderXim.item.BURNING_FISTS,
+    [invaderXim.job.WHM] = invaderXim.item.WEREBUSTER,
+    [invaderXim.job.BLM] = invaderXim.item.MAGES_STAFF,
+    [invaderXim.job.RDM] = invaderXim.item.VORPAL_SWORD,
+    [invaderXim.job.THF] = invaderXim.item.SWORDBREAKER,
+    [invaderXim.job.PLD] = invaderXim.item.BRAVE_BLADE,
+    [invaderXim.job.DRK] = invaderXim.item.DEATH_SICKLE,
+    [invaderXim.job.BST] = invaderXim.item.DOUBLE_AXE,
+    [invaderXim.job.BRD] = invaderXim.item.DANCING_DAGGER,
+    [invaderXim.job.RNG] = invaderXim.item.KILLER_BOW,
+    [invaderXim.job.SAM] = invaderXim.item.WINDSLICER,
+    [invaderXim.job.NIN] = invaderXim.item.SASUKE_KATANA,
+    [invaderXim.job.DRG] = invaderXim.item.RADIANT_LANCE,
+    [invaderXim.job.SMN] = invaderXim.item.SCEPTER_STAFF,
+    [invaderXim.job.BLU] = invaderXim.item.WIGHTSLAYER,
+    [invaderXim.job.COR] = invaderXim.item.QUICKSILVER,
+    [invaderXim.job.PUP] = invaderXim.item.INFERNO_CLAWS,
+    [invaderXim.job.DNC] = invaderXim.item.MAIN_GAUCHE,
+    [invaderXim.job.SCH] = invaderXim.item.ELDER_STAFF,
 }
 
-xi.nyzul.objective =
+invaderXim.nyzul.objective =
 {
     ELIMINATE_ENEMY_LEADER      = 1,
     ELIMINATE_SPECIFIED_ENEMIES = 2,
@@ -41,27 +41,27 @@ xi.nyzul.objective =
     FREE_FLOOR                  = 6,
 }
 
-xi.nyzul.lampsObjective =
+invaderXim.nyzul.lampsObjective =
 {
     REGISTER     = 1,
     ACTIVATE_ALL = 2,
     ORDER        = 3,
 }
 
-xi.nyzul.gearObjective =
+invaderXim.nyzul.gearObjective =
 {
     AVOID_AGRO     = 1,
     DO_NOT_DESTROY = 2,
 }
 
-xi.nyzul.penalty =
+invaderXim.nyzul.penalty =
 {
     TIME   = 1,
     TOKENS = 2,
     PATHOS = 3,
 }
 
-xi.nyzul.FloorLayout =
+invaderXim.nyzul.FloorLayout =
 {
     [ 0] = {   -20, -0.5, -380 }, -- boss floors 20, 40, 60, 80
 --  [ ?] = {  -491, -4.0, -500 }, -- boss floor 20 confirmed
@@ -91,7 +91,7 @@ xi.nyzul.FloorLayout =
 --  [24] = { -64.5,    0,   60 },
 }
 
-xi.nyzul.floorCost =
+invaderXim.nyzul.floorCost =
 {
     [ 1] = { level =  1, cost =    0 },
     [ 2] = { level =  6, cost =  500 },
@@ -128,7 +128,7 @@ local function getTokenRate(instance)
 end
 
 local function calculateTokens(instance)
-    local relativeFloor   = xi.nyzul.getRelativeFloor(instance)
+    local relativeFloor   = invaderXim.nyzul.getRelativeFloor(instance)
     local rate            = getTokenRate(instance)
     local potentialTokens = instance:getLocalVar('potential_tokens')
     local floorBonus      = 0
@@ -143,7 +143,7 @@ local function calculateTokens(instance)
 end
 
 -- Global functions
-xi.nyzul.getRelativeFloor = function(instance)
+invaderXim.nyzul.getRelativeFloor = function(instance)
     local currentFloor  = instance:getLocalVar('Nyzul_Current_Floor')
     local startingFloor = instance:getLocalVar('Nyzul_Isle_StartingFloor')
 
@@ -154,23 +154,23 @@ xi.nyzul.getRelativeFloor = function(instance)
     return currentFloor
 end
 
-xi.nyzul.clearChests = function(instance)
+invaderXim.nyzul.clearChests = function(instance)
     for cofferID = ID.npc.TREASURE_COFFER_OFFSET, ID.npc.TREASURE_COFFER_OFFSET + 2 do
         local coffer = GetNPCByID(cofferID, instance)
 
-        if coffer and coffer:getStatus() ~= xi.status.DISAPPEAR then
-            coffer:setStatus(xi.status.DISAPPEAR)
+        if coffer and coffer:getStatus() ~= invaderXim.status.DISAPPEAR then
+            coffer:setStatus(invaderXim.status.DISAPPEAR)
             coffer:setAnimationSub(0)
             coffer:resetLocalVars()
         end
     end
 
-    if xi.settings.main.ENABLE_NYZUL_CASKETS then
+    if invaderXim.settings.main.ENABLE_NYZUL_CASKETS then
         for casketID = ID.npc.TREASURE_CASKET_OFFSET, ID.npc.TREASURE_CASKET_OFFSET + 3 do
             local casket = GetNPCByID(casketID, instance)
 
-            if casket and casket:getStatus() ~= xi.status.DISAPPEAR then
-                casket:setStatus(xi.status.DISAPPEAR)
+            if casket and casket:getStatus() ~= invaderXim.status.DISAPPEAR then
+                casket:setStatus(invaderXim.status.DISAPPEAR)
                 casket:setAnimationSub(0)
                 casket:resetLocalVars()
             end
@@ -178,7 +178,7 @@ xi.nyzul.clearChests = function(instance)
     end
 end
 
-xi.nyzul.handleRunicKey = function(mob)
+invaderXim.nyzul.handleRunicKey = function(mob)
     local instance = mob:getInstance()
 
     if instance:getLocalVar('Nyzul_Current_Floor') == 100 then
@@ -189,37 +189,37 @@ xi.nyzul.handleRunicKey = function(mob)
             -- Does players Runic Disk have data saved to a floor of entering or higher
             if
                 entity:getVar('NyzulFloorProgress') + 1 >= startFloor and
-                not entity:hasKeyItem(xi.ki.RUNIC_KEY)
+                not entity:hasKeyItem(invaderXim.ki.RUNIC_KEY)
             then
                 -- On early version only initiator of floor got progress saves and key credit
-                if not xi.settings.main.RUNIC_DISK_SAVE then
+                if not invaderXim.settings.main.RUNIC_DISK_SAVE then
                     if entity:getID() == instance:getLocalVar('diskHolder') then
-                        if npcUtil.giveKeyItem(entity, xi.ki.RUNIC_KEY) then
+                        if npcUtil.giveKeyItem(entity, invaderXim.ki.RUNIC_KEY) then
                             entity:setVar('NyzulFloorProgress', 0)
                         end
                     end
 
                 -- Anyone can get a key on 100 win if disk passed check
                 else
-                    npcUtil.giveKeyItem(entity, xi.ki.RUNIC_KEY)
+                    npcUtil.giveKeyItem(entity, invaderXim.ki.RUNIC_KEY)
                 end
             end
         end
     end
 end
 
-xi.nyzul.handleProgress = function(instance, progress)
+invaderXim.nyzul.handleProgress = function(instance, progress)
     local stage      = instance:getStage()
     local isComplete = false
 
     if
-        ((stage == xi.nyzul.objective.FREE_FLOOR or
-        stage == xi.nyzul.objective.ELIMINATE_ENEMY_LEADER or
-        stage == xi.nyzul.objective.ACTIVATE_ALL_LAMPS or
-        stage == xi.nyzul.objective.ELIMINATE_SPECIFIED_ENEMY) and
+        ((stage == invaderXim.nyzul.objective.FREE_FLOOR or
+        stage == invaderXim.nyzul.objective.ELIMINATE_ENEMY_LEADER or
+        stage == invaderXim.nyzul.objective.ACTIVATE_ALL_LAMPS or
+        stage == invaderXim.nyzul.objective.ELIMINATE_SPECIFIED_ENEMY) and
         progress == 15)
         or
-        ((stage == xi.nyzul.objective.ELIMINATE_ALL_ENEMIES or stage == xi.nyzul.objective.ELIMINATE_SPECIFIED_ENEMIES) and
+        ((stage == invaderXim.nyzul.objective.ELIMINATE_ALL_ENEMIES or stage == invaderXim.nyzul.objective.ELIMINATE_SPECIFIED_ENEMIES) and
         progress >= instance:getLocalVar('Eliminate'))
     then
         local chars        = instance:getChars()
@@ -239,57 +239,57 @@ xi.nyzul.handleProgress = function(instance, progress)
     return isComplete
 end
 
-xi.nyzul.enemyLeaderKill = function(mob)
+invaderXim.nyzul.enemyLeaderKill = function(mob)
     local instance = mob:getInstance()
     instance:setProgress(15)
 end
 
-xi.nyzul.specifiedGroupKill = function(mob)
+invaderXim.nyzul.specifiedGroupKill = function(mob)
     local instance = mob:getInstance()
 
-    if instance:getStage() == xi.nyzul.objective.ELIMINATE_SPECIFIED_ENEMIES then
+    if instance:getStage() == invaderXim.nyzul.objective.ELIMINATE_SPECIFIED_ENEMIES then
         instance:setProgress(instance:getProgress() + 1)
     end
 end
 
-xi.nyzul.specifiedEnemySet = function(mob)
+invaderXim.nyzul.specifiedEnemySet = function(mob)
     local instance = mob:getInstance()
 
-    if instance:getStage() == xi.nyzul.objective.ELIMINATE_SPECIFIED_ENEMY then
+    if instance:getStage() == invaderXim.nyzul.objective.ELIMINATE_SPECIFIED_ENEMY then
         if instance:getLocalVar('Nyzul_Specified_Enemy') == 0 then
-            mob:setMobMod(xi.mobMod.CHECK_AS_NM, 1)
+            mob:setMobMod(invaderXim.mobMod.CHECK_AS_NM, 1)
         end
     end
 end
 
-xi.nyzul.specifiedEnemyKill = function(mob)
+invaderXim.nyzul.specifiedEnemyKill = function(mob)
     local instance = mob:getInstance()
     local stage    = instance:getStage()
 
     -- Eliminate specified enemy
-    if stage == xi.nyzul.objective.ELIMINATE_SPECIFIED_ENEMY then
+    if stage == invaderXim.nyzul.objective.ELIMINATE_SPECIFIED_ENEMY then
         if instance:getLocalVar('Nyzul_Specified_Enemy') == mob:getID() then
             instance:setProgress(15)
             instance:setLocalVar('Nyzul_Specified_Enemy', 0)
         end
 
     -- Eliminiate all enemies
-    elseif stage == xi.nyzul.objective.ELIMINATE_ALL_ENEMIES then
+    elseif stage == invaderXim.nyzul.objective.ELIMINATE_ALL_ENEMIES then
         instance:setProgress(instance:getProgress() + 1)
     end
 end
 
-xi.nyzul.eliminateAllKill = function(mob)
+invaderXim.nyzul.eliminateAllKill = function(mob)
     local instance = mob:getInstance()
 
-    if instance:getStage() == xi.nyzul.objective.ELIMINATE_ALL_ENEMIES then
+    if instance:getStage() == invaderXim.nyzul.objective.ELIMINATE_ALL_ENEMIES then
         instance:setProgress(instance:getProgress() + 1)
     end
 end
 
-xi.nyzul.activateRuneOfTransfer = function(instance)
+invaderXim.nyzul.activateRuneOfTransfer = function(instance)
     for runeID = ID.npc.RUNE_OF_TRANSFER_OFFSET, ID.npc.RUNE_OF_TRANSFER_OFFSET + 1 do
-        if GetNPCByID(runeID, instance):getStatus() == xi.status.NORMAL then
+        if GetNPCByID(runeID, instance):getStatus() == invaderXim.status.NORMAL then
             GetNPCByID(runeID, instance):setAnimationSub(1)
 
             break
@@ -297,7 +297,7 @@ xi.nyzul.activateRuneOfTransfer = function(instance)
     end
 end
 
-xi.nyzul.vigilWeaponDrop = function(player, mob)
+invaderXim.nyzul.vigilWeaponDrop = function(player, mob)
     local instance = mob:getInstance()
 
     -- Only floor 100 Bosses to drop 1 random weapon guarenteed and 1 of the disk holders job
@@ -308,23 +308,23 @@ xi.nyzul.vigilWeaponDrop = function(player, mob)
 
         if diskHolder ~= nil then
             for _, entity in pairs(chars) do
-                if not entity:hasItem(xi.nyzul.baseWeapons[diskHolder:getMainJob()]) then
-                    player:addTreasure(xi.nyzul.baseWeapons[diskHolder:getMainJob()], mob)
+                if not entity:hasItem(invaderXim.nyzul.baseWeapons[diskHolder:getMainJob()]) then
+                    player:addTreasure(invaderXim.nyzul.baseWeapons[diskHolder:getMainJob()], mob)
 
                     break
                 end
             end
         end
 
-        player:addTreasure(xi.nyzul.baseWeapons[math.random(1, #xi.nyzul.baseWeapons)], mob)
+        player:addTreasure(invaderXim.nyzul.baseWeapons[math.random(1, #invaderXim.nyzul.baseWeapons)], mob)
 
     -- Every NM can randomly drop a vigil weapon
-    elseif math.random(1, 100) <= 20 and xi.settings.main.ENABLE_VIGIL_DROPS then
-        player:addTreasure(xi.nyzul.baseWeapons[math.random(1, #xi.nyzul.baseWeapons)], mob)
+    elseif math.random(1, 100) <= 20 and invaderXim.settings.main.ENABLE_VIGIL_DROPS then
+        player:addTreasure(invaderXim.nyzul.baseWeapons[math.random(1, #invaderXim.nyzul.baseWeapons)], mob)
     end
 end
 
-xi.nyzul.spawnChest = function(mob, player)
+invaderXim.nyzul.spawnChest = function(mob, player)
     local instance = mob:getInstance()
     local mobID    = mob:getID()
 
@@ -333,17 +333,17 @@ xi.nyzul.spawnChest = function(mob, player)
         mobID >= ID.mob.NM_OFFSET and
         mobID <= ID.mob.TAISAIJIN
     then
-        xi.nyzul.vigilWeaponDrop(player, mob)
+        invaderXim.nyzul.vigilWeaponDrop(player, mob)
 
     for cofferID = ID.npc.TREASURE_COFFER_OFFSET, ID.npc.TREASURE_COFFER_OFFSET + 2 do
             local coffer = GetNPCByID(cofferID, instance)
 
-            if coffer and coffer:getStatus() == xi.status.DISAPPEAR then
+            if coffer and coffer:getStatus() == invaderXim.status.DISAPPEAR then
                 local pos = mob:getPos()
                 coffer:setUntargetable(false)
                 coffer:setPos(pos.x, pos.y, pos.z, pos.rot)
                 coffer:setLocalVar('appraisalItem', mobID)
-                coffer:setStatus(xi.status.NORMAL)
+                coffer:setStatus(invaderXim.status.NORMAL)
 
                 break
             end
@@ -352,16 +352,16 @@ xi.nyzul.spawnChest = function(mob, player)
     -- NM casket spawn.
     elseif
         mobID < ID.mob.BOSS_OFFSET and
-        xi.settings.main.ENABLE_NYZUL_CASKETS
+        invaderXim.settings.main.ENABLE_NYZUL_CASKETS
     then
         if math.random(1, 100) <= 6 then
             for casketID = ID.npc.TREASURE_CASKET_OFFSET, ID.npc.TREASURE_CASKET_OFFSET + 3 do
                 local casket = GetNPCByID(casketID, instance)
 
-                if casket and casket:getStatus() == xi.status.DISAPPEAR then
+                if casket and casket:getStatus() == invaderXim.status.DISAPPEAR then
                     local pos = mob:getPos()
                     casket:setPos(pos.x, pos.y, pos.z, pos.rot)
-                    casket:setStatus(xi.status.NORMAL)
+                    casket:setStatus(invaderXim.status.NORMAL)
 
                     break
                 end
@@ -370,7 +370,7 @@ xi.nyzul.spawnChest = function(mob, player)
     end
 end
 
-xi.nyzul.getTokenPenalty = function(instance)
+invaderXim.nyzul.getTokenPenalty = function(instance)
     local floorPenalities = instance:getLocalVar('tokenPenalty')
     local rate            = getTokenRate(instance)
 

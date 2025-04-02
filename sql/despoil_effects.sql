@@ -13,7 +13,7 @@
 -- Table structure for table `despoil_effects`
 --
 
-DROP TABLE IF EXISTS `despoil_effects`;
+DROP TABLE IF IXIMSTS `despoil_effects`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `despoil_effects` (

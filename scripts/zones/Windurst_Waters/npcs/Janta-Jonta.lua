@@ -34,8 +34,8 @@ local pathNodes =
 
 entity.onSpawn = function(npc)
     npc:initNpcAi()
-    npc:setPos(xi.path.first(pathNodes))
-    npc:pathThrough(pathNodes, bit.bor(xi.path.flag.PATROL, xi.path.flag.RUN))
+    npc:setPos(invaderXim.path.first(pathNodes))
+    npc:pathThrough(pathNodes, bit.bor(invaderXim.path.flag.PATROL, invaderXim.path.flag.RUN))
 end
 
 return entity

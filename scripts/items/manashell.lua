@@ -8,16 +8,16 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target)
-    if target:getStatusEffectBySource(xi.effect.MAX_MP_BOOST, xi.effectSourceType.EQUIPPED_ITEM, xi.item.MANASHELL_RING) ~= nil then
-        target:delStatusEffect(xi.effect.MAX_MP_BOOST, nil, xi.effectSourceType.EQUIPPED_ITEM, xi.item.MANASHELL_RING)
+    if target:getStatusEffectBySource(invaderXim.effect.MAX_MP_BOOST, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.MANASHELL_RING) ~= nil then
+        target:delStatusEffect(invaderXim.effect.MAX_MP_BOOST, nil, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.MANASHELL_RING)
     end
 
     return 0
 end
 
 itemObject.onItemUse = function(target)
-    if target:hasEquipped(xi.item.MANASHELL_RING) then
-        target:addStatusEffect(xi.effect.MAX_MP_BOOST, 9, 0, 180, 0, 0, 0, xi.effectSourceType.EQUIPPED_ITEM, xi.item.MANASHELL_RING)
+    if target:hasEquipped(invaderXim.item.MANASHELL_RING) then
+        target:addStatusEffect(invaderXim.effect.MAX_MP_BOOST, 9, 0, 180, 0, 0, 0, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.MANASHELL_RING)
     end
 end
 

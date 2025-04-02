@@ -6,11 +6,11 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.itemBoxOnItemCheck(target)
+    return invaderXim.itemUtils.itemBoxOnItemCheck(target)
 end
 
 itemObject.onItemUse = function(target)
-    npcUtil.giveItem(target, { { xi.item.PINWHEEL, 99 } }) -- pinwheel
+    npcUtil.giveItem(target, { { invaderXim.item.PINWHEEL, 99 } }) -- pinwheel
 end
 
 return itemObject

@@ -2,7 +2,7 @@
 https://ffxiclopedia.fandom.com/wiki/Category:Uragnites
 https://www.bg-wiki.com/bg/Category:Uragnite
 
-Uragnite mob can optionally be modified by calling xi.mix.uragnite.config(mob, params) from within onMobSpawn.
+Uragnite mob can optionally be modified by calling invaderXim.mix.uragnite.config(mob, params) from within onMobSpawn.
 
 params is a table that can contain the following keys:
     inShellSkillList : skill list given to mob when it enters shell (default: 250)
@@ -14,7 +14,7 @@ params is a table that can contain the following keys:
 
 Example:
 
-xi.mix.uragnite.config(mob, {
+invaderXim.mix.uragnite.config(mob, {
     chanceToShell = 10,
     timeInShellMin = 45,
     timeInShellMin = 60,
@@ -24,8 +24,8 @@ xi.mix.uragnite.config(mob, {
 require('scripts/globals/mixins')
 -----------------------------------
 xi = xi or {}
-xi.mix = xi.mix or {}
-xi.mix.uragnite = xi.mix.uragnite or {}
+invaderXim.mix = invaderXim.mix or {}
+invaderXim.mix.uragnite = invaderXim.mix.uragnite or {}
 
 g_mixins = g_mixins or {}
 g_mixins.families = g_mixins.families or {}
@@ -33,28 +33,28 @@ g_mixins.families = g_mixins.families or {}
 local function enterShell(mob)
     mob:setAnimationSub(mob:getAnimationSub() + 1)
     mob:setAutoAttackEnabled(false)
-    mob:addMod(xi.mod.UDMGPHYS, -7500)
-    mob:addMod(xi.mod.UDMGRANGE, -7500)
-    mob:addMod(xi.mod.UDMGMAGIC, -7500)
-    mob:addMod(xi.mod.UDMGBREATH, -7500)
-    mob:addMod(xi.mod.REGEN, mob:getLocalVar('[uragnite]inShellRegen'))
-    mob:setMobMod(xi.mobMod.SKILL_LIST, mob:getLocalVar('[uragnite]inShellSkillList'))
-    mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+    mob:addMod(invaderXim.mod.UDMGPHYS, -7500)
+    mob:addMod(invaderXim.mod.UDMGRANGE, -7500)
+    mob:addMod(invaderXim.mod.UDMGMAGIC, -7500)
+    mob:addMod(invaderXim.mod.UDMGBREATH, -7500)
+    mob:addMod(invaderXim.mod.REGEN, mob:getLocalVar('[uragnite]inShellRegen'))
+    mob:setMobMod(invaderXim.mobMod.SKILL_LIST, mob:getLocalVar('[uragnite]inShellSkillList'))
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
 end
 
 local function exitShell(mob)
     mob:setAnimationSub(mob:getAnimationSub() - 1)
     mob:setAutoAttackEnabled(true)
-    mob:delMod(xi.mod.UDMGPHYS, -7500)
-    mob:delMod(xi.mod.UDMGRANGE, -7500)
-    mob:delMod(xi.mod.UDMGMAGIC, -7500)
-    mob:delMod(xi.mod.UDMGBREATH, -7500)
-    mob:delMod(xi.mod.REGEN, mob:getLocalVar('[uragnite]inShellRegen'))
-    mob:setMobMod(xi.mobMod.SKILL_LIST, mob:getLocalVar('[uragnite]noShellSkillList'))
-    mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+    mob:delMod(invaderXim.mod.UDMGPHYS, -7500)
+    mob:delMod(invaderXim.mod.UDMGRANGE, -7500)
+    mob:delMod(invaderXim.mod.UDMGMAGIC, -7500)
+    mob:delMod(invaderXim.mod.UDMGBREATH, -7500)
+    mob:delMod(invaderXim.mod.REGEN, mob:getLocalVar('[uragnite]inShellRegen'))
+    mob:setMobMod(invaderXim.mobMod.SKILL_LIST, mob:getLocalVar('[uragnite]noShellSkillList'))
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
 end
 
-xi.mix.uragnite.config = function(mob, params)
+invaderXim.mix.uragnite.config = function(mob, params)
     if params.inShellSkillList and type(params.inShellSkillList) == 'number' then
         mob:setLocalVar('[uragnite]inShellSkillList', params.inShellSkillList)
     end
@@ -82,7 +82,7 @@ end
 
 g_mixins.families.uragnite = function(uragniteMob)
     -- at spawn, give mob default skill lists for in-shell and out-of-shell states
-    -- these defaults can be overwritten by using xi.mix.uragnite.config() in onMobSpawn.
+    -- these defaults can be overwritten by using invaderXim.mix.uragnite.config() in onMobSpawn.
 
     uragniteMob:addListener('SPAWN', 'URAGNITE_SPAWN', function(mob)
         mob:setLocalVar('[uragnite]noShellSkillList', 251)
@@ -94,7 +94,7 @@ g_mixins.families.uragnite = function(uragniteMob)
     end)
 
     uragniteMob:addListener('TAKE_DAMAGE', 'URAGNITE_TAKE_DAMAGE', function(mob, amount, attacker, attackType, damageType)
-        if attackType == xi.attackType.PHYSICAL then
+        if attackType == invaderXim.attackType.PHYSICAL then
             if
                 math.random(1, 100) <= mob:getLocalVar('[uragnite]chanceToShell') and
                 bit.band(mob:getAnimationSub(), 1) == 0

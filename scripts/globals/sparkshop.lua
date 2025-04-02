@@ -6,7 +6,7 @@ require('scripts/globals/npc_util')
 require('scripts/globals/extravaganza')
 -----------------------------------
 xi = xi or {}
-xi.sparkshop = xi.sparkshop or {}
+invaderXim.sparkshop = invaderXim.sparkshop or {}
 
 local optionToItem =
 {
@@ -568,11 +568,11 @@ local optionToItem =
 
     [12] = -- Alter Ego Extravaganza Trusts
     {
-        [10133] = { cost =  500, id = xi.item.CIPHER_OF_F_COFFINS_ALTER_EGO }, -- F. Coffin
-        [10138] = { cost =  500, id = xi.item.CIPHER_OF_CIDS_ALTER_EGO }, -- Cid
-        [10148] = { cost =  500, id = xi.item.CIPHER_OF_GILGAMESHS_ALTER_EGO }, -- Gilgamesh
-        [10152] = { cost =  500, id = xi.item.CIPHER_OF_QULTADAS_ALTER_EGO }, -- Qultada
-        [10181] = { cost =  500, id = xi.item.CIPHER_OF_KINGS_ALTER_EGO }, -- King
+        [10133] = { cost =  500, id = invaderXim.item.CIPHER_OF_F_COFFINS_ALTER_EGO }, -- F. Coffin
+        [10138] = { cost =  500, id = invaderXim.item.CIPHER_OF_CIDS_ALTER_EGO }, -- Cid
+        [10148] = { cost =  500, id = invaderXim.item.CIPHER_OF_GILGAMESHS_ALTER_EGO }, -- Gilgamesh
+        [10152] = { cost =  500, id = invaderXim.item.CIPHER_OF_QULTADAS_ALTER_EGO }, -- Qultada
+        [10181] = { cost =  500, id = invaderXim.item.CIPHER_OF_KINGS_ALTER_EGO }, -- King
     },
 
     [20] = -- Currency Exchange
@@ -604,45 +604,45 @@ local function getCurrencyCap(currencyName)
     local cap = nil
 
     if currencyName == 'spark_of_eminence' then
-        cap = xi.settings.main.CAP_CURRENCY_SPARKS
+        cap = invaderXim.settings.main.CAP_CURRENCY_SPARKS
     elseif currencyName == 'unity_accolades' then
-        cap = xi.settings.main.CAP_CURRENCY_ACCOLADES
+        cap = invaderXim.settings.main.CAP_CURRENCY_ACCOLADES
     elseif currencyName == 'ballista_point' then
-        cap = xi.settings.main.CAP_CURRENCY_BALLISTA
+        cap = invaderXim.settings.main.CAP_CURRENCY_BALLISTA
     elseif currencyName == 'valor_point' then
-        cap = xi.settings.main.CAP_CURRENCY_VALOR
+        cap = invaderXim.settings.main.CAP_CURRENCY_VALOR
     end
 
     return cap
 end
 
-function xi.sparkshop.onTrade(player, npc, trade, eventid)
+function invaderXim.sparkshop.onTrade(player, npc, trade, eventid)
     local copperVouchersStored = player:getCurrency('aman_vouchers')
-    local count = trade:getItemQty(xi.item.COPPER_AMAN_VOUCHER)
+    local count = trade:getItemQty(invaderXim.item.COPPER_AMAN_VOUCHER)
 
     if count > 0 then
-        trade:confirmItem(xi.item.COPPER_AMAN_VOUCHER, count)
+        trade:confirmItem(invaderXim.item.COPPER_AMAN_VOUCHER, count)
         player:addCurrency('aman_vouchers', count)
         player:confirmTrade()
-        player:startEvent(eventid, xi.item.COPPER_AMAN_VOUCHER, count + copperVouchersStored, 230)
+        player:startEvent(eventid, invaderXim.item.COPPER_AMAN_VOUCHER, count + copperVouchersStored, 230)
     end
 end
 
-function xi.sparkshop.onTrigger(player, npc, event)
+function invaderXim.sparkshop.onTrigger(player, npc, event)
     local sparks = player:getCurrency('spark_of_eminence')
     local vouchers = player:getCurrency('aman_vouchers')
-    local remainingLimit = xi.settings.main.WEEKLY_EXCHANGE_LIMIT - player:getCharVar('weekly_sparks_spent')
-    local cipher = xi.extravaganza.campaignActive() * 16 * 65536 -- Trust Alter Ego Extravaganza
+    local remainingLimit = invaderXim.settings.main.WEEKLY_EXCHANGE_LIMIT - player:getCharVar('weekly_sparks_spent')
+    local cipher = invaderXim.extravaganza.campaignActive() * 16 * 65536 -- Trust Alter Ego Extravaganza
     local naakual = 0 -- TODO: Naakual Seven Treasures Item Logic
 
     -- opens shop and lists available sparks
     player:startEvent(event, 0, sparks, vouchers, naakual, cipher, remainingLimit)
 end
 
-function xi.sparkshop.onEventUpdate(player, csid, option, npc)
+function invaderXim.sparkshop.onEventUpdate(player, csid, option, npc)
     local sparks = player:getCurrency('spark_of_eminence')
     local weeklySparksSpent = player:getCharVar('weekly_sparks_spent')
-    local remainingLimit = xi.settings.main.WEEKLY_EXCHANGE_LIMIT - weeklySparksSpent
+    local remainingLimit = invaderXim.settings.main.WEEKLY_EXCHANGE_LIMIT - weeklySparksSpent
     local category = bit.band(option, 0xFF)
     local selection = bit.rshift(option, 16)
 
@@ -680,13 +680,13 @@ function xi.sparkshop.onEventUpdate(player, csid, option, npc)
         end
 
         -- verifies and finishes transaction
-        if cost > remainingLimit and xi.settings.main.ENABLE_EXCHANGE_LIMIT == 1 then
-            player:messageSpecial(zones[player:getZoneID()].text.MAX_SPARKS_LIMIT_REACHED, xi.settings.main.WEEKLY_EXCHANGE_LIMIT)
+        if cost > remainingLimit and invaderXim.settings.main.ENABLE_EXCHANGE_LIMIT == 1 then
+            player:messageSpecial(zones[player:getZoneID()].text.MAX_SPARKS_LIMIT_REACHED, invaderXim.settings.main.WEEKLY_EXCHANGE_LIMIT)
         elseif sparks >= cost then
             if npcUtil.giveItem(player, { { item.id, qty } }) then
                 sparks = sparks - cost
                 player:delCurrency('spark_of_eminence', cost)
-                if xi.settings.main.ENABLE_EXCHANGE_LIMIT == 1 then
+                if invaderXim.settings.main.ENABLE_EXCHANGE_LIMIT == 1 then
                     remainingLimit = remainingLimit - cost
                     player:setCharVar('weekly_sparks_spent', weeklySparksSpent + cost)
                 end
@@ -718,7 +718,7 @@ function xi.sparkshop.onEventUpdate(player, csid, option, npc)
             player:addCurrency(currency.name, currency.amount * qty, getCurrencyCap(currency.name))
             player:messageSpecial(zones[player:getZoneID()].text.YOU_NOW_HAVE_AMT_CURRENCY, selection, player:getCurrency(currency.name))
         else
-            player:messageSpecial(zones[player:getZoneID()].text.DO_NOT_POSSESS_ENOUGH, xi.item.COPPER_AMAN_VOUCHER)
+            player:messageSpecial(zones[player:getZoneID()].text.DO_NOT_POSSESS_ENOUGH, invaderXim.item.COPPER_AMAN_VOUCHER)
         end
 
         player:updateEvent(sparks, player:getCurrency('aman_vouchers'))
@@ -733,12 +733,12 @@ function xi.sparkshop.onEventUpdate(player, csid, option, npc)
                 player:messageSpecial(zones[player:getZoneID()].text.ITEM_CANNOT_BE_OBTAINED, selection)
             end
         else
-            player:messageSpecial(zones[player:getZoneID()].text.DO_NOT_POSSESS_ENOUGH, xi.item.COPPER_AMAN_VOUCHER)
+            player:messageSpecial(zones[player:getZoneID()].text.DO_NOT_POSSESS_ENOUGH, invaderXim.item.COPPER_AMAN_VOUCHER)
         end
 
         player:updateEvent(sparks, player:getCurrency('aman_vouchers'))
     end
 end
 
-function xi.sparkshop.onEventFinish(player, csid, option, npc)
+function invaderXim.sparkshop.onEventFinish(player, csid, option, npc)
 end

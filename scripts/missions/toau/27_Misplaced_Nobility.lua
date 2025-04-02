@@ -6,11 +6,11 @@
 -- blank_toau20 : !pos -298 36 -38 68
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.MISPLACED_NOBILITY)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.MISPLACED_NOBILITY)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.BASTION_OF_KNOWLEDGE },
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.BASTION_OF_KNOWLEDGE },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AYDEEWA_SUBTERRANE] =
+        [invaderXim.zone.AYDEEWA_SUBTERRANE] =
         {
             ['blank_toau20'] = mission:progressEvent(12),
 

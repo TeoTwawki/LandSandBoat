@@ -4,7 +4,7 @@
 -- Notes: Door blocked by Temple Guardian
 -- !pos -62 0 -99 159
 -----------------------------------
-local ID = zones[xi.zone.TEMPLE_OF_UGGALEPIH]
+local ID = zones[invaderXim.zone.TEMPLE_OF_UGGALEPIH]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -12,7 +12,7 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     local guardian = GetMobByID(ID.mob.TEMPLE_GUARDIAN)
 
-    if npc:getAnimation() == xi.anim.CLOSE_DOOR then
+    if npc:getAnimation() == invaderXim.anim.CLOSE_DOOR then
         player:messageSpecial(ID.text.PROTECTED_BY_UNKNOWN_FORCE)
     end
 

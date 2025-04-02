@@ -9,27 +9,27 @@
 -- TODO: This quest could be simplified with expanded use of Prog questVar.
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.CHASING_TALES)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.CHASING_TALES)
 
 quest.reward =
 {
     fame = 120,
-    fameArea = xi.fameArea.WINDURST,
+    fameArea = invaderXim.fameArea.WINDURST,
     gil = 2800,
-    title = xi.title.SAVIOR_OF_KNOWLEDGE,
+    title = invaderXim.title.SAVIOR_OF_KNOWLEDGE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.WINDURST, xi.quest.id.windurst.EARLY_BIRD_CATCHES_THE_BOOKWORM) and
-                player:getFameLevel(xi.fameArea.WINDURST) >= 3 and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.EARLY_BIRD_CATCHES_THE_BOOKWORM) and
+                player:getFameLevel(invaderXim.fameArea.WINDURST) >= 3 and
                 not quest:getMustZone(player)
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Tosuka-Porika'] =
             {
@@ -38,8 +38,8 @@ quest.sections =
                     -- in this block to make it easier to remove if it turns out to be inaccurate.
                     -- https://ffxiclopedia.fandom.com/wiki/Chasing_Tales
                     if
-                        player:getNation() ~= xi.nation.WINDURST or
-                        player:getCurrentMission(xi.mission.log_id.WINDURST) ~= xi.mission.id.windurst.THE_JESTER_WHOD_BE_KING
+                        player:getNation() ~= invaderXim.nation.WINDURST or
+                        player:getCurrentMission(invaderXim.mission.log_id.WINDURST) ~= invaderXim.mission.id.windurst.THE_JESTER_WHOD_BE_KING
                     then
                         return quest:progressEvent(403)
                     end
@@ -59,15 +59,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Hae_Jakhya'] =
             {
                 onTrigger = function(player, npc)
-                    local hasBookKeyItem = player:hasKeyItem(xi.ki.A_SONG_OF_LOVE)
+                    local hasBookKeyItem = player:hasKeyItem(invaderXim.ki.A_SONG_OF_LOVE)
 
                     if
                         not hasBookKeyItem and
@@ -75,7 +75,7 @@ quest.sections =
                     then
                         return quest:progressEvent(611)
                     elseif hasBookKeyItem then
-                        return quest:progressEvent(612, 0, xi.ki.A_SONG_OF_LOVE)
+                        return quest:progressEvent(612, 0, invaderXim.ki.A_SONG_OF_LOVE)
                     end
                 end,
             },
@@ -83,12 +83,12 @@ quest.sections =
             onEventFinish =
             {
                 [611] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.A_SONG_OF_LOVE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.A_SONG_OF_LOVE)
                 end,
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Tosuka-Porika'] =
             {
@@ -104,15 +104,15 @@ quest.sections =
             ['Furakku-Norakku'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.OVERDUE_BOOK_NOTIFICATION_CHASING_TALES) then
-                        return quest:progressEvent(404, 0, xi.ki.A_SONG_OF_LOVE)
-                    elseif not player:hasKeyItem(xi.ki.A_SONG_OF_LOVE) then
+                    if not player:hasKeyItem(invaderXim.ki.OVERDUE_BOOK_NOTIFICATION_CHASING_TALES) then
+                        return quest:progressEvent(404, 0, invaderXim.ki.A_SONG_OF_LOVE)
+                    elseif not player:hasKeyItem(invaderXim.ki.A_SONG_OF_LOVE) then
                         if quest:getVar(player, 'Prog') == 1 then
                             return quest:progressEvent(409)
-                        elseif player:hasKeyItem(xi.ki.OVERDUE_BOOK_NOTIFICATION_CHASING_TALES) then
+                        elseif player:hasKeyItem(invaderXim.ki.OVERDUE_BOOK_NOTIFICATION_CHASING_TALES) then
                             return quest:progressEvent(405, 0, 126)
                         end
-                    elseif player:hasKeyItem(xi.ki.A_SONG_OF_LOVE) then
+                    elseif player:hasKeyItem(invaderXim.ki.A_SONG_OF_LOVE) then
                         return quest:progressEvent(410)
                     end
                 end,
@@ -121,25 +121,25 @@ quest.sections =
             onEventFinish =
             {
                 [404] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.OVERDUE_BOOK_NOTIFICATION_CHASING_TALES)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.OVERDUE_BOOK_NOTIFICATION_CHASING_TALES)
                 end,
 
                 [410] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.OVERDUE_BOOK_NOTIFICATION_CHASING_TALES)
-                        player:delKeyItem(xi.ki.A_SONG_OF_LOVE)
+                        player:delKeyItem(invaderXim.ki.OVERDUE_BOOK_NOTIFICATION_CHASING_TALES)
+                        player:delKeyItem(invaderXim.ki.A_SONG_OF_LOVE)
                         player:setLocalVar('Quest[2][12]mustZone', 1)
                     end
                 end,
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['An_Polaali'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.A_SONG_OF_LOVE) then
+                    if player:hasKeyItem(invaderXim.ki.A_SONG_OF_LOVE) then
                         return quest:progressEvent(407)
                     elseif quest:getVar(player, 'Prog') == 1 then
                         return quest:progressEvent(404)
@@ -150,8 +150,8 @@ quest.sections =
             ['An_Shanaa'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.A_SONG_OF_LOVE) then
-                        return quest:progressEvent(408, 0, xi.ki.A_SONG_OF_LOVE)
+                    if player:hasKeyItem(invaderXim.ki.A_SONG_OF_LOVE) then
+                        return quest:progressEvent(408, 0, invaderXim.ki.A_SONG_OF_LOVE)
                     elseif quest:getVar(player, 'Prog') == 1 then
                         return quest:progressEvent(405)
                     end
@@ -161,12 +161,12 @@ quest.sections =
             ['Hae_Jakkya'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.A_SONG_OF_LOVE) then
+                    if player:hasKeyItem(invaderXim.ki.A_SONG_OF_LOVE) then
                         return quest:progressEvent(406)
                     elseif quest:getVar(player, 'Prog') == 1 then
-                        return quest:progressEvent(403, 0, xi.ki.A_SONG_OF_LOVE)
-                    elseif player:hasKeyItem(xi.ki.OVERDUE_BOOK_NOTIFICATION_CHASING_TALES) then
-                        return quest:progressEvent(402, 0, xi.ki.A_SONG_OF_LOVE)
+                        return quest:progressEvent(403, 0, invaderXim.ki.A_SONG_OF_LOVE)
+                    elseif player:hasKeyItem(invaderXim.ki.OVERDUE_BOOK_NOTIFICATION_CHASING_TALES) then
+                        return quest:progressEvent(402, 0, invaderXim.ki.A_SONG_OF_LOVE)
                     end
                 end,
             },
@@ -182,10 +182,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Furakku-Norakku'] =
             {
@@ -197,7 +197,7 @@ quest.sections =
             }
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['An_Polaali'] = quest:event(407):importantOnce(),
             ['An_Shanaa'] = quest:event(408, 0, 126):importantOnce(),

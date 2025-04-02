@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.METALWORKS]
+local ID = zones[invaderXim.zone.METALWORKS]
 
 return {
     ['_6ld']              = { event = 604 },

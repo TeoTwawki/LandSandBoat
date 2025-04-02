@@ -1,10 +1,10 @@
 -----------------------------------
 -- Global file for Nyzul's Vending Box
 -----------------------------------
-local ID = zones[xi.zone.NYZUL_ISLE]
+local ID = zones[invaderXim.zone.NYZUL_ISLE]
 -----------------------------------
 xi = xi or {}
-xi.nyzul = xi.nyzul or {}
+invaderXim.nyzul = invaderXim.nyzul or {}
 -----------------------------------
 -- Event ID : 202
 -- Parameter 1 : Unused. However, it seems to be some short of progresive count that gets reset randomly. Time-based.
@@ -26,40 +26,40 @@ local itemCost =
 
 local itemsTable =
 {
-    [ 8450] = { item = xi.item.BOTTLE_OF_BARBARIANS_DRINK, cost = itemCost.LOW_GRADE,    slot = 0x02      },
-    [ 8451] = { item = xi.item.BOTTLE_OF_FIGHTERS_DRINK,   cost = itemCost.LOW_GRADE,    slot = 0x04      },
-    [ 8452] = { item = xi.item.BOTTLE_OF_ORACLES_DRINK,    cost = itemCost.LOW_GRADE,    slot = 0x08      },
-    [ 8453] = { item = xi.item.BOTTLE_OF_ASSASSINS_DRINK,  cost = itemCost.LOW_GRADE,    slot = 0x10      },
-    [ 8454] = { item = xi.item.BOTTLE_OF_SPYS_DRINK,       cost = itemCost.LOW_GRADE,    slot = 0x20      },
-    [ 8455] = { item = xi.item.BOTTLE_OF_GNOSTICS_DRINK,   cost = itemCost.LOW_GRADE,    slot = 0x400     },
-    [ 8456] = { item = xi.item.BOTTLE_OF_SPRINTERS_DRINK,  cost = itemCost.LOW_GRADE,    slot = 0x1000    },
-    [ 8457] = { item = xi.item.DUSTY_SCROLL_OF_RERAISE,    cost = itemCost.LOW_GRADE,    slot = 0x40000   },
-    [ 8458] = { item = xi.item.FLASK_OF_STRANGE_MILK,      cost = itemCost.LOW_GRADE,    slot = 0x80000   },
-    [ 8459] = { item = xi.item.BOTTLE_OF_STRANGE_JUICE,    cost = itemCost.LOW_GRADE,    slot = 0x100000  },
-    [ 8460] = { item = xi.item.BOTTLE_OF_VICARS_DRINK,     cost = itemCost.LOW_GRADE,    slot = 0x200000  },
-    [ 8461] = { item = xi.item.BOTTLE_OF_SPRINTERS_DRINK,  cost = itemCost.LOW_GRADE,    slot = 0x4000000 },
+    [ 8450] = { item = invaderXim.item.BOTTLE_OF_BARBARIANS_DRINK, cost = itemCost.LOW_GRADE,    slot = 0x02      },
+    [ 8451] = { item = invaderXim.item.BOTTLE_OF_FIGHTERS_DRINK,   cost = itemCost.LOW_GRADE,    slot = 0x04      },
+    [ 8452] = { item = invaderXim.item.BOTTLE_OF_ORACLES_DRINK,    cost = itemCost.LOW_GRADE,    slot = 0x08      },
+    [ 8453] = { item = invaderXim.item.BOTTLE_OF_ASSASSINS_DRINK,  cost = itemCost.LOW_GRADE,    slot = 0x10      },
+    [ 8454] = { item = invaderXim.item.BOTTLE_OF_SPYS_DRINK,       cost = itemCost.LOW_GRADE,    slot = 0x20      },
+    [ 8455] = { item = invaderXim.item.BOTTLE_OF_GNOSTICS_DRINK,   cost = itemCost.LOW_GRADE,    slot = 0x400     },
+    [ 8456] = { item = invaderXim.item.BOTTLE_OF_SPRINTERS_DRINK,  cost = itemCost.LOW_GRADE,    slot = 0x1000    },
+    [ 8457] = { item = invaderXim.item.DUSTY_SCROLL_OF_RERAISE,    cost = itemCost.LOW_GRADE,    slot = 0x40000   },
+    [ 8458] = { item = invaderXim.item.FLASK_OF_STRANGE_MILK,      cost = itemCost.LOW_GRADE,    slot = 0x80000   },
+    [ 8459] = { item = invaderXim.item.BOTTLE_OF_STRANGE_JUICE,    cost = itemCost.LOW_GRADE,    slot = 0x100000  },
+    [ 8460] = { item = invaderXim.item.BOTTLE_OF_VICARS_DRINK,     cost = itemCost.LOW_GRADE,    slot = 0x200000  },
+    [ 8461] = { item = invaderXim.item.BOTTLE_OF_SPRINTERS_DRINK,  cost = itemCost.LOW_GRADE,    slot = 0x4000000 },
 
-    [12546] = { item = xi.item.BOTTLE_OF_BRAVERS_DRINK,    cost = itemCost.MEDIUM_GRADE, slot = 0x40      },
-    [12547] = { item = xi.item.BOTTLE_OF_SOLDIERS_DRINK,   cost = itemCost.MEDIUM_GRADE, slot = 0x80      },
-    [12548] = { item = xi.item.BOTTLE_OF_CHAMPIONS_DRINK,  cost = itemCost.MEDIUM_GRADE, slot = 0x100     },
-    [12549] = { item = xi.item.BOTTLE_OF_MONARCHS_DRINK,   cost = itemCost.MEDIUM_GRADE, slot = 0x200     },
-    [12550] = { item = xi.item.BOTTLE_OF_CLERICS_DRINK,    cost = itemCost.MEDIUM_GRADE, slot = 0x800     },
-    [12551] = { item = xi.item.DUSTY_POTION,               cost = itemCost.MEDIUM_GRADE, slot = 0x2000    },
-    [12552] = { item = xi.item.DUSTY_ETHER,                cost = itemCost.MEDIUM_GRADE, slot = 0x4000    },
-    [12553] = { item = xi.item.BOTTLE_OF_FANATICS_DRINK,   cost = itemCost.MEDIUM_GRADE, slot = 0x10000   },
-    [12554] = { item = xi.item.BOTTLE_OF_FOOLS_DRINK,      cost = itemCost.MEDIUM_GRADE, slot = 0x20000   },
-    [12555] = { item = xi.item.DUSTY_WING,                 cost = itemCost.MEDIUM_GRADE, slot = 0x400000  },
-    [12556] = { item = xi.item.BOTTLE_OF_BODY_BOOST,       cost = itemCost.MEDIUM_GRADE, slot = 0x800000  },
-    [12557] = { item = xi.item.BOTTLE_OF_MANA_BOOST,       cost = itemCost.MEDIUM_GRADE, slot = 0x1000000 },
+    [12546] = { item = invaderXim.item.BOTTLE_OF_BRAVERS_DRINK,    cost = itemCost.MEDIUM_GRADE, slot = 0x40      },
+    [12547] = { item = invaderXim.item.BOTTLE_OF_SOLDIERS_DRINK,   cost = itemCost.MEDIUM_GRADE, slot = 0x80      },
+    [12548] = { item = invaderXim.item.BOTTLE_OF_CHAMPIONS_DRINK,  cost = itemCost.MEDIUM_GRADE, slot = 0x100     },
+    [12549] = { item = invaderXim.item.BOTTLE_OF_MONARCHS_DRINK,   cost = itemCost.MEDIUM_GRADE, slot = 0x200     },
+    [12550] = { item = invaderXim.item.BOTTLE_OF_CLERICS_DRINK,    cost = itemCost.MEDIUM_GRADE, slot = 0x800     },
+    [12551] = { item = invaderXim.item.DUSTY_POTION,               cost = itemCost.MEDIUM_GRADE, slot = 0x2000    },
+    [12552] = { item = invaderXim.item.DUSTY_ETHER,                cost = itemCost.MEDIUM_GRADE, slot = 0x4000    },
+    [12553] = { item = invaderXim.item.BOTTLE_OF_FANATICS_DRINK,   cost = itemCost.MEDIUM_GRADE, slot = 0x10000   },
+    [12554] = { item = invaderXim.item.BOTTLE_OF_FOOLS_DRINK,      cost = itemCost.MEDIUM_GRADE, slot = 0x20000   },
+    [12555] = { item = invaderXim.item.DUSTY_WING,                 cost = itemCost.MEDIUM_GRADE, slot = 0x400000  },
+    [12556] = { item = invaderXim.item.BOTTLE_OF_BODY_BOOST,       cost = itemCost.MEDIUM_GRADE, slot = 0x800000  },
+    [12557] = { item = invaderXim.item.BOTTLE_OF_MANA_BOOST,       cost = itemCost.MEDIUM_GRADE, slot = 0x1000000 },
 
-    [16641] = { item = xi.item.DUSTY_ELIXIR,               cost = itemCost.HIGH_GRADE,   slot = 0x8000    },
+    [16641] = { item = invaderXim.item.DUSTY_ELIXIR,               cost = itemCost.HIGH_GRADE,   slot = 0x8000    },
 }
 
 local function buildTemporaryItemBitmask(player)
     local hasTempItem = 1 -- All players start with 1 temporary item in inventory. Can't be thrown. Uses bit 0.
 
     for _, itemList in pairs(itemsTable) do
-        if player:hasItem(itemList.item, xi.inventoryLocation.TEMPITEMS) then
+        if player:hasItem(itemList.item, invaderXim.inventoryLocation.TEMPITEMS) then
             hasTempItem = hasTempItem + itemList.slot
         end
     end
@@ -71,7 +71,7 @@ local function giveAllTemporaryItems(player)
     -- TODO: Check if items are given 1 by 1 or in bulk, currency wise.
 
     for _, itemList in pairs(itemsTable) do
-        if not player:hasItem(itemList.item, xi.inventoryLocation.TEMPITEMS) then
+        if not player:hasItem(itemList.item, invaderXim.inventoryLocation.TEMPITEMS) then
             if player:getCurrency('nyzul_isle_assault_point') >= itemList.cost then
                 player:addTempItem(itemList.item)
                 player:messageSpecial(ID.text.TEMP_ITEM_OBTAINED, itemList.item)
@@ -122,7 +122,7 @@ local function giveAllTemporaryItemsPrefered(player)
             local itemId = itemsTable[option].item
 
             if itemId ~= nil then
-                if not player:hasItem(itemId, xi.inventoryLocation.TEMPITEMS) then
+                if not player:hasItem(itemId, invaderXim.inventoryLocation.TEMPITEMS) then
                     player:addTempItem(itemId)
                     player:messageSpecial(ID.text.TEMP_ITEM_OBTAINED, itemId)
                     player:delCurrency('nyzul_isle_assault_point', itemsTable[option].cost)
@@ -132,7 +132,7 @@ local function giveAllTemporaryItemsPrefered(player)
     end
 end
 
-xi.nyzul.vendingBoxOnTrigger = function(player)
+invaderXim.nyzul.vendingBoxOnTrigger = function(player)
     local playerTokens       = player:getCurrency('nyzul_isle_assault_point')
     local itemsGottenBitmask = buildTemporaryItemBitmask(player)
     local preferenceBitmask  = player:getCharVar('[Nyzul]preferredItems')
@@ -140,7 +140,7 @@ xi.nyzul.vendingBoxOnTrigger = function(player)
     player:startEvent(202, 0, playerTokens, itemsGottenBitmask, preferenceBitmask, itemCost.LOW_GRADE, itemCost.MEDIUM_GRADE, itemCost.HIGH_GRADE, 0)
 end
 
-xi.nyzul.vendingBoxOnEventUpdate = function(player, csid, option)
+invaderXim.nyzul.vendingBoxOnEventUpdate = function(player, csid, option)
     if csid == 202 then
         -- Give all items not in possesion.
         if option == 20737 then

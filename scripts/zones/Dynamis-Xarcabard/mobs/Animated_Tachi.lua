@@ -2,7 +2,7 @@
 -- Area: Dynamis - Xarcabard
 --  Mob: Animated Tachi
 -----------------------------------
-local ID = zones[xi.zone.DYNAMIS_XARCABARD]
+local ID = zones[invaderXim.zone.DYNAMIS_XARCABARD]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -21,7 +21,7 @@ end
 
 entity.onMobDeath = function(mob, player, optParams)
     player:showText(mob, ID.text.ANIMATED_TACHI_DIALOG + 1)
-    xi.magian.onMobDeath(mob, player, optParams, set{ 3115 })
+    invaderXim.magian.onMobDeath(mob, player, optParams, set{ 3115 })
 end
 
 return entity

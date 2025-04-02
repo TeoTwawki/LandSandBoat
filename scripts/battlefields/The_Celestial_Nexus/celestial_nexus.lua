@@ -2,12 +2,12 @@
 -- Area: The Celestial Nexus
 -- Name: The Celestial Nexus (ZM16)
 -----------------------------------
-local celestialNexusID = zones[xi.zone.THE_CELESTIAL_NEXUS]
+local celestialNexusID = zones[invaderXim.zone.THE_CELESTIAL_NEXUS]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId        = xi.zone.THE_CELESTIAL_NEXUS,
-    battlefieldId = xi.battlefield.id.CELESTIAL_NEXUS,
+    zoneId        = invaderXim.zone.THE_CELESTIAL_NEXUS,
+    battlefieldId = invaderXim.battlefield.id.CELESTIAL_NEXUS,
     canLoseExp    = false,
     isMission     = true,
     allowTrusts   = true,
@@ -21,9 +21,9 @@ local content = BattlefieldMission:new({
     -- and display appropriate message.
     exitNpcs      = { },
 
-    missionArea           = xi.mission.log_id.ZILART,
-    mission               = xi.mission.id.zilart.THE_CELESTIAL_NEXUS,
-    missionStatusArea     = xi.mission.log_id.ZILART,
+    missionArea           = invaderXim.mission.log_id.ZILART,
+    mission               = invaderXim.mission.id.zilart.THE_CELESTIAL_NEXUS,
+    missionStatusArea     = invaderXim.mission.log_id.ZILART,
     requiredMissionStatus = 0,
 })
 
@@ -117,7 +117,7 @@ content.groups =
 
         spawned = false,
         death   = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end
     },
 }

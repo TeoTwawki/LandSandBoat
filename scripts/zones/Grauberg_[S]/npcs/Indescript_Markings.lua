@@ -3,7 +3,7 @@
 --  NPC: Indescript Markings
 -- Type: Quest
 -----------------------------------
-local ID = zones[xi.zone.GRAUBERG_S]
+local ID = zones[invaderXim.zone.GRAUBERG_S]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -11,16 +11,16 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     local gownQuestProgress = player:getCharVar('AF_SCH_BODY')
 
-    player:delStatusEffect(xi.effect.SNEAK)
+    player:delStatusEffect(invaderXim.effect.SNEAK)
 
     -- SCH AF Quest - Boots
     if
         npc:getID() == ID.npc.INDESCRIPT_MARKINGS and -- Second markings are bcnm entrance
         gownQuestProgress > 0 and
         gownQuestProgress < 3 and
-        not player:hasKeyItem(xi.ki.SAMPLE_OF_GRAUBERG_CHERT)
+        not player:hasKeyItem(invaderXim.ki.SAMPLE_OF_GRAUBERG_CHERT)
     then
-        npcUtil.giveKeyItem(player, xi.ki.SAMPLE_OF_GRAUBERG_CHERT)
+        npcUtil.giveKeyItem(player, invaderXim.ki.SAMPLE_OF_GRAUBERG_CHERT)
         player:setCharVar('AF_SCH_BODY', gownQuestProgress + 1)
 
         -- Move the markings around

@@ -3,7 +3,7 @@
 --  NPC: Valeriano
 -- Confirmed shop stock, August 2013
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WOODS]
+local ID = zones[invaderXim.zone.WINDURST_WOODS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -27,7 +27,7 @@ entity.onTrigger = function(player, npc)
         5059, 28520, -- Scroll of Water Carol II
         4996, 123880  -- Scroll of Mage's Ballad III
     }
-    xi.shop.general(player, stock, xi.fameArea.WINDURST)
+    invaderXim.shop.general(player, stock, invaderXim.fameArea.WINDURST)
 end
 
 return entity

@@ -4,29 +4,29 @@
 -- Log ID: 1, Quest ID: 5
 -- Ronan : !pos 84.712 -8.772 20.301 236
 -----------------------------------
-local portBastokID = zones[xi.zone.PORT_BASTOK]
+local portBastokID = zones[invaderXim.zone.PORT_BASTOK]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.OUT_OF_ONES_SHELL)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.OUT_OF_ONES_SHELL)
 
 quest.reward =
 {
     fame     = 120,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.MONKS_HEADGEAR,
-    title    = xi.title.SHELL_OUTER,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.MONKS_HEADGEAR,
+    title    = invaderXim.title.SHELL_OUTER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.THE_QUADAVS_CURSE) and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 2
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_QUADAVS_CURSE) and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 2
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Ronan'] = quest:progressEvent(82),
 
@@ -41,16 +41,16 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Ronan'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, { { xi.item.SHELL_BUG, 3 } }) and
+                        npcUtil.tradeHasExactly(trade, { { invaderXim.item.SHELL_BUG, 3 } }) and
                         quest:getVar(player, 'Prog') == 0
                     then
                         return quest:progressEvent(84)
@@ -106,10 +106,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Corann'] = quest:event(88):replaceDefault(),
             ['Ronan']  = quest:event(89):replaceDefault(),

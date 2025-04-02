@@ -17,24 +17,24 @@ entity.onTrigger = function(player, npc)
 
     -- Animate lever's Gear - do not use openDoor() / closeDoor() here!
     if gear then
-        if gear:getAnimation() == xi.animation.OPEN_DOOR then
-            gear:setAnimation(xi.animation.CLOSE_DOOR)
+        if gear:getAnimation() == invaderXim.animation.OPEN_DOOR then
+            gear:setAnimation(invaderXim.animation.CLOSE_DOOR)
         else
-            gear:setAnimation(xi.animation.OPEN_DOOR)
+            gear:setAnimation(invaderXim.animation.OPEN_DOOR)
         end
     end
 
     -- Animate bigWinch - do not use openDoor() / closeDoor() here!
     if bigWinch then
-        if bigWinch:getAnimation() == xi.animation.OPEN_DOOR then
-            bigWinch:setAnimation(xi.animation.CLOSE_DOOR)
+        if bigWinch:getAnimation() == invaderXim.animation.OPEN_DOOR then
+            bigWinch:setAnimation(invaderXim.animation.CLOSE_DOOR)
         else
-            bigWinch:setAnimation(xi.animation.OPEN_DOOR)
+            bigWinch:setAnimation(invaderXim.animation.OPEN_DOOR)
         end
     end
 
     -- Move platform
-    RunElevator(xi.elevator.FORT_GHELSBA_LIFT)
+    RunElevator(invaderXim.elevator.FORT_GHEIXIMA_LIFT)
 end
 
 return entity

@@ -26,15 +26,15 @@
 -- NOTE: This mission uses extended Mission Status.  See documentation for CoP MissionStatus for
 -- predefined values.  These must not be changed!
 -----------------------------------
-local attohwaChasmID      = zones[xi.zone.ATTOHWA_CHASM]
-local carpentersLandingID = zones[xi.zone.CARPENTERS_LANDING]
+local attohwaChasmID      = zones[invaderXim.zone.ATTOHWA_CHASM]
+local carpentersLandingID = zones[invaderXim.zone.CARPENTERS_LANDING]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.THE_ROAD_FORKS)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_ROAD_FORKS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.TENDING_AGED_WOUNDS },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.TENDING_AGED_WOUNDS },
 }
 
 -- A 30 minute timer is started once obtaining the Mimeo Jewel for Windurst Path.  Create a
@@ -43,7 +43,7 @@ local jewelTimer
 jewelTimer = function(player)
     if
         not player or
-        not player:hasKeyItem(xi.ki.MIMEO_JEWEL)
+        not player:hasKeyItem(invaderXim.ki.MIMEO_JEWEL)
     then
         return
     end
@@ -52,15 +52,15 @@ jewelTimer = function(player)
     if secondsRemaining <= 0 then
         -- There are some conditions that can instantly break the jewel.  Short-circuit out
         -- here and display the final message should that occur.
-        player:messageSpecial(attohwaChasmID.text.MIMEO_JEWEL_OFFSET + 4, xi.ki.MIMEO_JEWEL)
-        player:delKeyItem(xi.ki.MIMEO_JEWEL)
+        player:messageSpecial(attohwaChasmID.text.MIMEO_JEWEL_OFFSET + 4, invaderXim.ki.MIMEO_JEWEL)
+        player:delKeyItem(invaderXim.ki.MIMEO_JEWEL)
     else
         local messageOffset = mission:getLocalVar(player, 'Option')
         local nextMessageTime = 30 - (messageOffset * 6)
         local minutesRemaining = secondsRemaining / 60
 
         if minutesRemaining <= nextMessageTime then
-            player:messageSpecial(attohwaChasmID.text.MIMEO_JEWEL_OFFSET + messageOffset - 1, xi.ki.MIMEO_JEWEL)
+            player:messageSpecial(attohwaChasmID.text.MIMEO_JEWEL_OFFSET + messageOffset - 1, invaderXim.ki.MIMEO_JEWEL)
             mission:setLocalVar(player, 'Option', messageOffset + 1)
         end
 
@@ -75,15 +75,15 @@ mission.sections =
     -- San d'Oria Path
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == mission.missionId and player:getMissionStatus(mission.areaId, xi.mission.status.COP.SANDORIA) <= 14
+            return currentMission == mission.missionId and player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.SANDORIA) <= 14
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Arnau'] =
             {
                 onTrigger = function(player, npc)
-                    if player:getMissionStatus(mission.areaId, xi.mission.status.COP.SANDORIA) == 1 then
+                    if player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.SANDORIA) == 1 then
                         return mission:progressEvent(51)
                     end
                 end,
@@ -92,7 +92,7 @@ mission.sections =
             ['Chasalvige'] =
             {
                 onTrigger = function(player, npc)
-                    local missionStatus = player:getMissionStatus(mission.areaId, xi.mission.status.COP.SANDORIA)
+                    local missionStatus = player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.SANDORIA)
 
                     if missionStatus == 2 then
                         return mission:progressEvent(38)
@@ -103,7 +103,7 @@ mission.sections =
             },
 
             onZoneIn = function(player, prevZone)
-                if player:getMissionStatus(mission.areaId, xi.mission.status.COP.SANDORIA) == 0 then
+                if player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.SANDORIA) == 0 then
                     return 14
                 end
             end,
@@ -111,29 +111,29 @@ mission.sections =
             onEventFinish =
             {
                 [14] = function(player, csid, option, npc)
-                    player:setMissionStatus(mission.areaId, 1, xi.mission.status.COP.SANDORIA)
+                    player:setMissionStatus(mission.areaId, 1, invaderXim.mission.status.COP.SANDORIA)
                 end,
 
                 [38] = function(player, csid, option, npc)
-                    player:setMissionStatus(mission.areaId, 5, xi.mission.status.COP.SANDORIA)
+                    player:setMissionStatus(mission.areaId, 5, invaderXim.mission.status.COP.SANDORIA)
                 end,
 
                 [51] = function(player, csid, option, npc)
-                    player:setMissionStatus(mission.areaId, 2, xi.mission.status.COP.SANDORIA)
+                    player:setMissionStatus(mission.areaId, 2, invaderXim.mission.status.COP.SANDORIA)
                 end,
             },
         },
 
-        [xi.zone.CARPENTERS_LANDING] =
+        [invaderXim.zone.CARPENTERS_LANDING] =
         {
             ['Guilloud'] =
             {
                 onTrigger = function(player, npc)
-                    local missionStatus = player:getMissionStatus(mission.areaId, xi.mission.status.COP.SANDORIA)
+                    local missionStatus = player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.SANDORIA)
 
                     if missionStatus == 5 then
                         if mission:getLocalVar(player, 'ivyDefeated') == 1 then
-                            local isSanDorian = player:getNation() == xi.nation.SANDORIA and 1 or 0
+                            local isSanDorian = player:getNation() == invaderXim.nation.SANDORIA and 1 or 0
 
                             return mission:progressEvent(0, isSanDorian)
                         elseif not GetMobByID(carpentersLandingID.mob.OVERGROWN_IVY):isSpawned() then
@@ -151,7 +151,7 @@ mission.sections =
             ['Overgrown_Ivy'] =
             {
                 onMobDeath = function(mob, player, optParams)
-                    if player:getMissionStatus(mission.areaId, xi.mission.status.COP.SANDORIA) == 5 then
+                    if player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.SANDORIA) == 5 then
                         mission:setLocalVar(player, 'ivyDefeated', 1)
                     end
                 end,
@@ -160,17 +160,17 @@ mission.sections =
             onEventFinish =
             {
                 [0] = function(player, csid, option, npc)
-                    player:setMissionStatus(mission.areaId, 9, xi.mission.status.COP.SANDORIA)
+                    player:setMissionStatus(mission.areaId, 9, invaderXim.mission.status.COP.SANDORIA)
                 end,
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Hinaree'] =
             {
                 onTrigger = function(player, npc)
-                    local missionStatus = player:getMissionStatus(mission.areaId, xi.mission.status.COP.SANDORIA)
+                    local missionStatus = player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.SANDORIA)
 
                     if missionStatus == 9 then
                         return mission:progressEvent(23)
@@ -184,7 +184,7 @@ mission.sections =
             {
                 [23] = function(player, csid, option, npc)
                     -- End of San d'Oria Path
-                    player:setMissionStatus(mission.areaId, 14, xi.mission.status.COP.SANDORIA)
+                    player:setMissionStatus(mission.areaId, 14, invaderXim.mission.status.COP.SANDORIA)
                 end,
             },
         },
@@ -193,20 +193,20 @@ mission.sections =
     -- Windurst Path
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == mission.missionId and player:getMissionStatus(mission.areaId, xi.mission.status.COP.WINDURST) <= 14
+            return currentMission == mission.missionId and player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.WINDURST) <= 14
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Honoi-Gomoi'] =
             {
                 onTrigger = function(player, npc)
-                    local missionStatus = player:getMissionStatus(mission.areaId, xi.mission.status.COP.WINDURST)
+                    local missionStatus = player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.WINDURST)
 
                     if missionStatus == 5 then
                         return mission:progressEvent(874)
                     elseif missionStatus == 6 then
-                        return mission:event(879, 0, xi.ki.CRACKED_MIMEO_MIRROR):importantEvent()
+                        return mission:event(879, 0, invaderXim.ki.CRACKED_MIMEO_MIRROR):importantEvent()
                     end
                 end,
             },
@@ -214,7 +214,7 @@ mission.sections =
             ['Kyume-Romeh'] =
             {
                 onTrigger = function(player, npc)
-                    local missionStatus = player:getMissionStatus(mission.areaId, xi.mission.status.COP.WINDURST)
+                    local missionStatus = player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.WINDURST)
 
                     if missionStatus == 3 then
                         return mission:progressEvent(873)
@@ -227,7 +227,7 @@ mission.sections =
             ['Ohbiru-Dohbiru'] =
             {
                 onTrigger = function(player, npc)
-                    local missionStatus = player:getMissionStatus(mission.areaId, xi.mission.status.COP.WINDURST)
+                    local missionStatus = player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.WINDURST)
 
                     if missionStatus == 1 then
                         return mission:progressEvent(872)
@@ -240,7 +240,7 @@ mission.sections =
             ['Tosuka-Porika'] =
             {
                 onTrigger = function(player, npc)
-                    local missionStatus = player:getMissionStatus(mission.areaId, xi.mission.status.COP.WINDURST)
+                    local missionStatus = player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.WINDURST)
 
                     if missionStatus == 11 then
                         return mission:progressEvent(875)
@@ -251,7 +251,7 @@ mission.sections =
             },
 
             onZoneIn = function(player, prevZone)
-                if player:getMissionStatus(mission.areaId, xi.mission.status.COP.WINDURST) == 0 then
+                if player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.WINDURST) == 0 then
                     return 871
                 end
             end,
@@ -259,46 +259,46 @@ mission.sections =
             onEventFinish =
             {
                 [871] = function(player, csid, option, npc)
-                    player:setMissionStatus(mission.areaId, 1, xi.mission.status.COP.WINDURST)
+                    player:setMissionStatus(mission.areaId, 1, invaderXim.mission.status.COP.WINDURST)
                 end,
 
                 [872] = function(player, csid, option, npc)
-                    player:setMissionStatus(mission.areaId, 2, xi.mission.status.COP.WINDURST)
+                    player:setMissionStatus(mission.areaId, 2, invaderXim.mission.status.COP.WINDURST)
                 end,
 
                 [873] = function(player, csid, option, npc)
-                    player:setMissionStatus(mission.areaId, 5, xi.mission.status.COP.WINDURST)
+                    player:setMissionStatus(mission.areaId, 5, invaderXim.mission.status.COP.WINDURST)
                 end,
 
                 [874] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.CRACKED_MIMEO_MIRROR)
-                    player:setMissionStatus(mission.areaId, 6, xi.mission.status.COP.WINDURST)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.CRACKED_MIMEO_MIRROR)
+                    player:setMissionStatus(mission.areaId, 6, invaderXim.mission.status.COP.WINDURST)
                 end,
 
                 [875] = function(player, csid, option, npc)
-                    player:setMissionStatus(mission.areaId, 12, xi.mission.status.COP.WINDURST)
+                    player:setMissionStatus(mission.areaId, 12, invaderXim.mission.status.COP.WINDURST)
                 end,
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Yoran-Oran'] =
             {
                 onTrigger = function(player, npc)
-                    local missionStatus = player:getMissionStatus(mission.areaId, xi.mission.status.COP.WINDURST)
+                    local missionStatus = player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.WINDURST)
 
                     if missionStatus == 2 then
                         return mission:progressEvent(469)
                     elseif missionStatus == 3 then
                         return mission:event(474):importantEvent()
                     elseif missionStatus == 6 then
-                        return mission:progressEvent(470, 0, xi.ki.MIMEO_FEATHER, xi.ki.CRACKED_MIMEO_MIRROR, xi.ki.MIMEO_JEWEL)
+                        return mission:progressEvent(470, 0, invaderXim.ki.MIMEO_FEATHER, invaderXim.ki.CRACKED_MIMEO_MIRROR, invaderXim.ki.MIMEO_JEWEL)
                     elseif missionStatus == 8 then
-                        if player:hasKeyItem(xi.ki.MIMEO_FEATHER) then
+                        if player:hasKeyItem(invaderXim.ki.MIMEO_FEATHER) then
                             return mission:progressEvent(471)
                         else
-                            return mission:event(476, 0, xi.ki.MIMEO_FEATHER, 0, xi.ki.MIMEO_JEWEL):importantEvent()
+                            return mission:event(476, 0, invaderXim.ki.MIMEO_FEATHER, 0, invaderXim.ki.MIMEO_JEWEL):importantEvent()
                         end
                     elseif missionStatus == 9 then
                         return mission:event(477):importantEvent()
@@ -313,34 +313,34 @@ mission.sections =
             onEventFinish =
             {
                 [469] = function(player, csid, option, npc)
-                    player:setMissionStatus(mission.areaId, 3, xi.mission.status.COP.WINDURST)
+                    player:setMissionStatus(mission.areaId, 3, invaderXim.mission.status.COP.WINDURST)
                 end,
 
                 [470] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.CRACKED_MIMEO_MIRROR)
-                    player:setMissionStatus(mission.areaId, 8, xi.mission.status.COP.WINDURST)
+                    player:delKeyItem(invaderXim.ki.CRACKED_MIMEO_MIRROR)
+                    player:setMissionStatus(mission.areaId, 8, invaderXim.mission.status.COP.WINDURST)
                 end,
 
                 [471] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.MIMEO_FEATHER)
-                    player:delKeyItem(xi.ki.SECOND_MIMEO_FEATHER)
-                    player:delKeyItem(xi.ki.THIRD_MIMEO_FEATHER)
+                    player:delKeyItem(invaderXim.ki.MIMEO_FEATHER)
+                    player:delKeyItem(invaderXim.ki.SECOND_MIMEO_FEATHER)
+                    player:delKeyItem(invaderXim.ki.THIRD_MIMEO_FEATHER)
 
-                    player:setMissionStatus(mission.areaId, 9, xi.mission.status.COP.WINDURST)
+                    player:setMissionStatus(mission.areaId, 9, invaderXim.mission.status.COP.WINDURST)
                 end,
 
                 [472] = function(player, csid, option, npc)
-                    player:setMissionStatus(mission.areaId, 14, xi.mission.status.COP.WINDURST)
+                    player:setMissionStatus(mission.areaId, 14, invaderXim.mission.status.COP.WINDURST)
                 end,
             },
         },
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Yujuju'] =
             {
                 onTrigger = function(player, npc)
-                    local missionStatus = player:getMissionStatus(mission.areaId, xi.mission.status.COP.WINDURST)
+                    local missionStatus = player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.WINDURST)
 
                     if missionStatus == 9 then
                         return mission:progressEvent(592)
@@ -353,17 +353,17 @@ mission.sections =
             onEventFinish =
             {
                 [592] = function(player, csid, option, npc)
-                    player:setMissionStatus(mission.areaId, 11, xi.mission.status.COP.WINDURST)
+                    player:setMissionStatus(mission.areaId, 11, invaderXim.mission.status.COP.WINDURST)
                 end,
             },
         },
 
-        [xi.zone.ATTOHWA_CHASM] =
+        [invaderXim.zone.ATTOHWA_CHASM] =
         {
             ['Cradle_of_Rebirth'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.MIMEO_JEWEL) then
+                    if player:hasKeyItem(invaderXim.ki.MIMEO_JEWEL) then
                         local animationNpc = GetNPCByID(npc:getID() + 1)
                         if animationNpc then
                             animationNpc:entityAnimationPacket('krtu')
@@ -378,7 +378,7 @@ mission.sections =
             {
                 onMobDeath = function(mob, player, optParams)
                     if
-                        player:getMissionStatus(mission.areaId, xi.mission.status.COP.WINDURST) == 8 and
+                        player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.WINDURST) == 8 and
                         mission:getVar(player, 'Status') == 0
                     then
                         mission:setVar(player, 'Status', 1)
@@ -391,7 +391,7 @@ mission.sections =
                 onTrigger = function(player, npc)
                     if player:checkDistance(npc) < 0.5 then
                         if
-                            player:getMissionStatus(mission.areaId, xi.mission.status.COP.WINDURST) == 8
+                            player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.WINDURST) == 8
                         then
                             local lioumereStatus = mission:getVar(player, 'Status')
 
@@ -403,9 +403,9 @@ mission.sections =
                                 return mission:noAction()
                             elseif
                                 lioumereStatus == 1 and
-                                not player:hasKeyItem(xi.ki.MIMEO_JEWEL)
+                                not player:hasKeyItem(invaderXim.ki.MIMEO_JEWEL)
                             then
-                                npcUtil.giveKeyItem(player, xi.ki.MIMEO_JEWEL)
+                                npcUtil.giveKeyItem(player, invaderXim.ki.MIMEO_JEWEL)
                                 mission:setLocalVar(player, 'Option', 0)
                                 mission:setLocalVar(player, 'Timer', os.time() + 30 * 60)
                                 jewelTimer(player)
@@ -419,20 +419,20 @@ mission.sections =
             },
 
             onZoneOut = function(player)
-                if player:hasKeyItem(xi.ki.MIMEO_JEWEL) then
+                if player:hasKeyItem(invaderXim.ki.MIMEO_JEWEL) then
                     player:messageSpecial(attohwaChasmID.text.MIMEO_JEWEL_OFFSET + 4)
-                    player:delKeyItem(xi.ki.MIMEO_JEWEL)
+                    player:delKeyItem(invaderXim.ki.MIMEO_JEWEL)
                 end
             end,
 
             onEventFinish =
             {
                 [2] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.MIMEO_JEWEL)
+                    player:delKeyItem(invaderXim.ki.MIMEO_JEWEL)
 
-                    npcUtil.giveKeyItem(player, xi.ki.MIMEO_FEATHER)
-                    npcUtil.giveKeyItem(player, xi.ki.SECOND_MIMEO_FEATHER)
-                    npcUtil.giveKeyItem(player, xi.ki.THIRD_MIMEO_FEATHER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.MIMEO_FEATHER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.SECOND_MIMEO_FEATHER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.THIRD_MIMEO_FEATHER)
                 end,
             },
         },
@@ -441,11 +441,11 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
-                player:getMissionStatus(mission.areaId, xi.mission.status.COP.SANDORIA) == 14 and
-                player:getMissionStatus(mission.areaId, xi.mission.status.COP.WINDURST) == 14
+                player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.SANDORIA) == 14 and
+                player:getMissionStatus(mission.areaId, invaderXim.mission.status.COP.WINDURST) == 14
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Cid'] = mission:progressEvent(847),
 

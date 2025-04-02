@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.EAST_SARUTABARUTA]
+local ID = zones[invaderXim.zone.EAST_SARUTABARUTA]
 
 return {
     ['Heih_Porhiaap']    = { text = ID.text.HEIH_PORHIAAP_DIALOG },

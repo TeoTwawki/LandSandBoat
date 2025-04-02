@@ -3,12 +3,12 @@
 -- Spire of Dem mission battlefield
 -----------------------------------
 require('scripts/missions/cop/helpers')
-local spireOfDemID = zones[xi.zone.SPIRE_OF_DEM]
+local spireOfDemID = zones[invaderXim.zone.SPIRE_OF_DEM]
 -----------------------------------
 
 local content = Battlefield:new({
-    zoneId        = xi.zone.SPIRE_OF_DEM,
-    battlefieldId = xi.battlefield.id.ANCIENT_FLAMES_BECKON_SPIRE_OF_DEM,
+    zoneId        = invaderXim.zone.SPIRE_OF_DEM,
+    battlefieldId = invaderXim.battlefield.id.ANCIENT_FLAMES_BECKON_SPIRE_OF_DEM,
     canLoseExp    = false,
     isMission     = true,
     allowTrusts   = true,
@@ -23,30 +23,30 @@ local content = Battlefield:new({
 })
 
 function content:entryRequirement(player, npc, isRegistrant, trade)
-    local promathiaMission    = player:getCurrentMission(xi.mission.log_id.COP)
-    local currentRequirements = promathiaMission == xi.mission.id.cop.BELOW_THE_ARKS or
-        (promathiaMission == xi.mission.id.cop.THE_MOTHERCRYSTALS and not player:hasKeyItem(xi.ki.LIGHT_OF_DEM))
-    local nonRegistrantReqs   = player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.THE_MOTHERCRYSTALS) or currentRequirements
+    local promathiaMission    = player:getCurrentMission(invaderXim.mission.log_id.COP)
+    local currentRequirements = promathiaMission == invaderXim.mission.id.cop.BELOW_THE_ARKS or
+        (promathiaMission == invaderXim.mission.id.cop.THE_MOTHERCRYSTALS and not player:hasKeyItem(invaderXim.ki.LIGHT_OF_DEM))
+    local nonRegistrantReqs   = player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_MOTHERCRYSTALS) or currentRequirements
 
     return (not isRegistrant and nonRegistrantReqs) or currentRequirements
 end
 
 function content:checkSkipCutscene(player)
-    return player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.THE_MOTHERCRYSTALS) or
-        player:hasKeyItem(xi.ki.LIGHT_OF_DEM)
+    return player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_MOTHERCRYSTALS) or
+        player:hasKeyItem(invaderXim.ki.LIGHT_OF_DEM)
 end
 
 function content:onBattlefieldWin(player, battlefield)
     local _, clearTime, partySize = battlefield:getRecord()
 
-    local arg8        = xi.cop.helpers.numPromyvionCompleted(player, xi.cop.helpers.promyvionCrags.DEM) + 1
-    local copMission  = player:getCurrentMission(xi.mission.log_id.COP)
+    local arg8        = invaderXim.cop.helpers.numPromyvionCompleted(player, invaderXim.cop.helpers.promyvionCrags.DEM) + 1
+    local copMission  = player:getCurrentMission(invaderXim.mission.log_id.COP)
     local promyvionId = (player:getZoneID() - 17) / 2
 
     if
-        (copMission == xi.mission.id.cop.BELOW_THE_ARKS or
-        copMission == xi.mission.id.cop.THE_MOTHERCRYSTALS) and
-        not player:hasKeyItem(xi.ki.LIGHT_OF_HOLLA + promyvionId)
+        (copMission == invaderXim.mission.id.cop.BELOW_THE_ARKS or
+        copMission == invaderXim.mission.id.cop.THE_MOTHERCRYSTALS) and
+        not player:hasKeyItem(invaderXim.ki.LIGHT_OF_HOLLA + promyvionId)
     then
         player:setLocalVar('newPromy', 1)
     end
@@ -66,7 +66,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 

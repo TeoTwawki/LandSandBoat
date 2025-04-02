@@ -8,16 +8,16 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local medicineWoman = player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.THE_MEDICINE_WOMAN)
-    local toCureaCough = player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.TO_CURE_A_COUGH)
+    local medicineWoman = player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.THE_MEDICINE_WOMAN)
+    local toCureaCough = player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.TO_CURE_A_COUGH)
 
     if
-        toCureaCough == xi.questStatus.QUEST_AVAILABLE and
+        toCureaCough == invaderXim.questStatus.QUEST_AVAILABLE and
         player:getCharVar('toCureaCough') == 0 and
-        medicineWoman == xi.questStatus.QUEST_COMPLETED
+        medicineWoman == invaderXim.questStatus.QUEST_COMPLETED
     then
         player:startEvent(538)
-    elseif player:hasKeyItem(xi.ki.COUGH_MEDICINE) then
+    elseif player:hasKeyItem(invaderXim.ki.COUGH_MEDICINE) then
         player:startEvent(647)
     else
         player:startEvent(584)
@@ -28,12 +28,12 @@ entity.onEventFinish = function(player, csid, option, npc)
     if csid == 538 then
         player:setCharVar('toCureaCough', 1)
     elseif csid == 647 then
-        player:addTitle(xi.title.A_MOSS_KIND_PERSON)
+        player:addTitle(invaderXim.title.A_MOSS_KIND_PERSON)
         player:setCharVar('toCureaCough', 0)
-        player:delKeyItem(xi.ki.COUGH_MEDICINE)
-        npcUtil.giveKeyItem(player, xi.ki.SCROLL_OF_TREASURE)
-        player:addFame(xi.fameArea.SANDORIA, 30)
-        player:completeQuest(xi.questLog.SANDORIA, xi.quest.id.sandoria.TO_CURE_A_COUGH)
+        player:delKeyItem(invaderXim.ki.COUGH_MEDICINE)
+        npcUtil.giveKeyItem(player, invaderXim.ki.SCROLL_OF_TREASURE)
+        player:addFame(invaderXim.fameArea.SANDORIA, 30)
+        player:completeQuest(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.TO_CURE_A_COUGH)
     end
 end
 

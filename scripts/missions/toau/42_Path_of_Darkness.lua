@@ -8,12 +8,12 @@
 -- _1e1 (Door)   : !pos 23 -6 -63 50
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.PATH_OF_DARKNESS)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.PATH_OF_DARKNESS)
 
 mission.reward =
 {
-    title       = xi.title.NAJAS_COMRADE_IN_ARMS,
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.FANGS_OF_THE_LION },
+    title       = invaderXim.title.NAJAS_COMRADE_IN_ARMS,
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.FANGS_OF_THE_LION },
 }
 
 mission.sections =
@@ -23,14 +23,14 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = mission:event(3148, { text_table = 0 }),
 
             ['Rodin-Comidin'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.NYZUL_ISLE_ROUTE) then
+                    if not player:hasKeyItem(invaderXim.ki.NYZUL_ISLE_ROUTE) then
                         return mission:progressEvent(3142, { text_table = 0 })
                     else
                         return mission:progressEvent(3141, { text_table = 0 })
@@ -54,7 +54,7 @@ mission.sections =
             onEventFinish =
             {
                 [3142] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.NYZUL_ISLE_ROUTE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.NYZUL_ISLE_ROUTE)
                 end,
 
                 [3143] = function(player, csid, option, npc)
@@ -64,7 +64,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.ALZADAAL_UNDERSEA_RUINS] =
+        [invaderXim.zone.ALZADAAL_UNDERSEA_RUINS] =
         {
             ['blank_lamp'] =
             {
@@ -101,7 +101,7 @@ mission.sections =
                         option == 1 and
                         player:getLocalVar('INSTANCE_ID') == 7700
                     then
-                        xi.instance.onEventFinish(player, csid, option, npc)
+                        invaderXim.instance.onEventFinish(player, csid, option, npc)
                     end
                 end,
             },

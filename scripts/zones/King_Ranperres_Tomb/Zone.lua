@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: King Ranperres Tomb (190)
 -----------------------------------
-local ID = zones[xi.zone.KING_RANPERRES_TOMB]
+local ID = zones[invaderXim.zone.KING_RANPERRES_TOMB]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -12,7 +12,7 @@ zoneObject.onInitialize = function(zone)
     UpdateNMSpawnPoint(ID.mob.BARBASTELLE)
     GetMobByID(ID.mob.BARBASTELLE):setRespawnTime(math.random(1800, 5400))
 
-    xi.treasure.initZone(zone)
+    invaderXim.treasure.initZone(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -30,7 +30,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

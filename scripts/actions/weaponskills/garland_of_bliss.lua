@@ -19,27 +19,27 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     local params      = {}
     params.ftpMod     = { 2, 2, 2 }
     params.mnd_wsc    = 0.4
-    params.ele        = xi.element.LIGHT
-    params.skill      = xi.skill.STAFF
+    params.ele        = invaderXim.element.LIGHT
+    params.skill      = invaderXim.skill.STAFF
     params.includemab = true
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         params.ftpMod  = { 2.25, 2.25, 2.25 }
         params.str_wsc = 0.3
         params.mnd_wsc = 0.7
     end
 
     -- Apply Aftermath
-    xi.aftermath.addStatusEffect(player, tp, xi.slot.MAIN, xi.aftermath.type.MYTHIC)
+    invaderXim.aftermath.addStatusEffect(player, tp, invaderXim.slot.MAIN, invaderXim.aftermath.type.MYTHIC)
 
-    local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
+    local damage, criticalHit, tpHits, extraHits = invaderXim.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
 
     -- Handle status effect
-    local effectId      = xi.effect.DEFENSE_DOWN
-    local actionElement = xi.element.WIND
+    local effectId      = invaderXim.effect.DEFENSE_DOWN
+    local actionElement = invaderXim.element.WIND
     local power         = 12.5
     local duration      = math.floor((30 + 3 * tp / 100) * applyResistanceAddEffect(player, target, actionElement, 0))
-    xi.weaponskills.handleWeaponskillEffect(player, target, effectId, actionElement, damage, power, duration)
+    invaderXim.weaponskills.handleWeaponskillEffect(player, target, effectId, actionElement, damage, power, duration)
 
     return tpHits, extraHits, criticalHit, damage
 end

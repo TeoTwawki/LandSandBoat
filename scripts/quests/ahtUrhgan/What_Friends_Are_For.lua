@@ -5,17 +5,17 @@
 -- Qm9 !pos -406 6.5 -440 68
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.WHAT_FRIENDS_ARE_FOR)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.WHAT_FRIENDS_ARE_FOR)
 
 quest.sections =
 {
     -- Section: Quest available
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and vars.Prog == 0
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and vars.Prog == 0
         end,
 
-        [xi.zone.AYDEEWA_SUBTERRANE] =
+        [invaderXim.zone.AYDEEWA_SUBTERRANE] =
         {
             onTriggerAreaEnter =
             {
@@ -32,7 +32,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             ['Tsetseroon'] =
             {
@@ -46,10 +46,10 @@ quest.sections =
     -- Section: Quest available, step 2
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and vars.Prog == 1
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and vars.Prog == 1
         end,
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             ['Tsetseroon'] =
             {
@@ -71,10 +71,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             ['Tsetseroon'] =
             {
@@ -91,7 +91,7 @@ quest.sections =
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'Prog') == 2 and
-                        npcUtil.tradeHasExactly(trade, { xi.item.CHUNK_OF_TIN_ORE, xi.item.COBALT_JELLYFISH })
+                        npcUtil.tradeHasExactly(trade, { invaderXim.item.CHUNK_OF_TIN_ORE, invaderXim.item.COBALT_JELLYFISH })
                     then
                         return quest:progressEvent(18)
                     end
@@ -102,32 +102,32 @@ quest.sections =
             {
                 [18] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    npcUtil.giveKeyItem(player, xi.ki.POT_OF_TSETSEROONS_STEW)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.POT_OF_TSETSEROONS_STEW)
                     quest:setVar(player, 'Prog', 3)
                 end,
 
                 [20] = function(player, csid, option, npc)
-                    if player:hasKeyItem(xi.ki.MAP_OF_AYDEEWA_SUBTERRANE) then
-                        if npcUtil.giveItem(player, xi.item.IMPERIAL_BRONZE_PIECE) then
+                    if player:hasKeyItem(invaderXim.ki.MAP_OF_AYDEEWA_SUBTERRANE) then
+                        if npcUtil.giveItem(player, invaderXim.item.IMPERIAL_BRONZE_PIECE) then
                             quest:complete(player)
                         end
                     else
                         if quest:complete(player) then
-                            npcUtil.giveKeyItem(player, xi.ki.MAP_OF_AYDEEWA_SUBTERRANE)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.MAP_OF_AYDEEWA_SUBTERRANE)
                         end
                     end
                 end,
             },
         },
 
-        [xi.zone.AYDEEWA_SUBTERRANE] =
+        [invaderXim.zone.AYDEEWA_SUBTERRANE] =
         {
             ['qm9'] =
             {
                 onTrigger = function(player, npc)
                     if
                         quest:getVar(player, 'Prog') == 3 and
-                        player:hasKeyItem(xi.ki.POT_OF_TSETSEROONS_STEW)
+                        player:hasKeyItem(invaderXim.ki.POT_OF_TSETSEROONS_STEW)
                     then
                         return quest:progressEvent(8)
                     end
@@ -138,9 +138,9 @@ quest.sections =
             {
                 [8] = function(player, csid, option, npc)
                     quest:setVar(player, 'Prog', 4)
-                    player:delKeyItem(xi.ki.POT_OF_TSETSEROONS_STEW)
+                    player:delKeyItem(invaderXim.ki.POT_OF_TSETSEROONS_STEW)
                     if option == 1 then
-                        npcUtil.giveKeyItem(player, xi.ki.MAP_OF_AYDEEWA_SUBTERRANE)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.MAP_OF_AYDEEWA_SUBTERRANE)
                     end
                 end,
             },
@@ -150,10 +150,10 @@ quest.sections =
     -- Section: Quest completed
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             ['Tsetseroon'] =
             {

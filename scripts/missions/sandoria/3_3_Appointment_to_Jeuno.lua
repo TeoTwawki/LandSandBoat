@@ -11,12 +11,12 @@
 -- Nelcabrit            : !pos -32 9 -49 243
 -- _541 (Cermet Door)   : !pos 636 16 20 184
 -----------------------------------
-local southernSandoriaID = zones[xi.zone.SOUTHERN_SAN_DORIA]
-local northernSandoriaID = zones[xi.zone.NORTHERN_SAN_DORIA]
-local lowerDelkfuttID    = zones[xi.zone.LOWER_DELKFUTTS_TOWER]
+local southernSandoriaID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
+local northernSandoriaID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
+local lowerDelkfuttID    = zones[invaderXim.zone.LOWER_DELKFUTTS_TOWER]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.APPOINTMENT_TO_JEUNO)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.APPOINTMENT_TO_JEUNO)
 
 mission.reward =
 {
@@ -35,11 +35,11 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -48,7 +48,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -63,7 +63,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Grilau'] =
             {
@@ -75,7 +75,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] =
             {
@@ -96,7 +96,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Arsha'] =
             {
@@ -143,12 +143,12 @@ mission.sections =
 
                 [537] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 3)
-                    npcUtil.giveKeyItem(player, xi.ki.LETTER_TO_THE_AMBASSADOR)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LETTER_TO_THE_AMBASSADOR)
                 end,
             },
         },
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Nelcabrit'] =
             {
@@ -182,12 +182,12 @@ mission.sections =
 
                 [42] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 4)
-                    player:delKeyItem(xi.ki.LETTER_TO_THE_AMBASSADOR)
+                    player:delKeyItem(invaderXim.ki.LETTER_TO_THE_AMBASSADOR)
                 end,
             },
         },
 
-        [xi.zone.LOWER_DELKFUTTS_TOWER] =
+        [invaderXim.zone.LOWER_DELKFUTTS_TOWER] =
         {
             ['_541'] =
             {
@@ -196,7 +196,7 @@ mission.sections =
                     -- the key into a key item, allowing the player to drop the inventory key for space.
                     if
                         player:getMissionStatus(mission.areaId) == 4 and
-                        npcUtil.tradeHasExactly(trade, xi.item.DELKFUTT_KEY)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.DELKFUTT_KEY)
                     then
                         return mission:progressEvent(0)
                     end
@@ -204,7 +204,7 @@ mission.sections =
 
                 onTrigger = function(player, npc)
                     if player:getMissionStatus(mission.areaId) == 4 then
-                        if player:hasKeyItem(xi.ki.DELKFUTT_KEY) then
+                        if player:hasKeyItem(invaderXim.ki.DELKFUTT_KEY) then
                             return mission:progressEvent(0)
                         else
                             return mission:messageSpecial(lowerDelkfuttID.text.THE_DOOR_IS_FIRMLY_SHUT_OPEN_KEY):setPriority(1000)
@@ -218,8 +218,8 @@ mission.sections =
                 [0] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 5)
 
-                    if not player:hasKeyItem(xi.ki.DELKFUTT_KEY) then
-                        npcUtil.giveKeyItem(player, xi.ki.DELKFUTT_KEY)
+                    if not player:hasKeyItem(invaderXim.ki.DELKFUTT_KEY) then
+                        npcUtil.giveKeyItem(player, invaderXim.ki.DELKFUTT_KEY)
                         player:confirmTrade()
                     end
                 end,

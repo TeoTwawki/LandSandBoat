@@ -7,7 +7,7 @@ local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
     if target:getMP() == target:getMaxMP() then
-        return xi.msg.basic.ITEM_UNABLE_TO_USE
+        return invaderXim.msg.basic.ITEM_UNABLE_TO_USE
     end
 
     return 0
@@ -21,7 +21,7 @@ itemObject.onItemUse = function(target)
     end
 
     target:addMP(mpHeal)
-    target:messageBasic(xi.msg.basic.RECOVERS_MP, 0, mpHeal)
+    target:messageBasic(invaderXim.msg.basic.RECOVERS_MP, 0, mpHeal)
 end
 
 return itemObject

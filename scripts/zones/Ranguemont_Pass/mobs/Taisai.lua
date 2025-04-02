@@ -2,7 +2,7 @@
 -- Area: Ranguemont Pass
 --  Mob: Taisai
 -----------------------------------
-local ID = zones[xi.zone.RANGUEMONT_PASS]
+local ID = zones[invaderXim.zone.RANGUEMONT_PASS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

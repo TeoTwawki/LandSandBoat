@@ -7,12 +7,12 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 600)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 600)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
     if
-        player:hasKeyItem(xi.ki.SEANCE_STAFF) and
+        player:hasKeyItem(invaderXim.ki.SEANCE_STAFF) and
         player:getCharVar('Enagakure_Killed') == 0
     then
         player:setCharVar('Enagakure_Killed', 1)

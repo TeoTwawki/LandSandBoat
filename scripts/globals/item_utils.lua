@@ -4,66 +4,66 @@
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
----@class xi.itemUtils
-xi.itemUtils = {}
+---@class invaderXim.itemUtils
+invaderXim.itemUtils = {}
 
----@enum xi.itemUtils.removableEffects
-xi.itemUtils.removableEffects =
+---@enum invaderXim.itemUtils.removableEffects
+invaderXim.itemUtils.removableEffects =
 {
-    xi.effect.PARALYSIS,
-    xi.effect.POISON,
-    xi.effect.BLINDNESS,
-    xi.effect.SILENCE,
-    xi.effect.DISEASE,
-    xi.effect.PETRIFICATION,
-    xi.effect.BIND,
-    xi.effect.WEIGHT,
-    xi.effect.ADDLE,
-    xi.effect.BURN,
-    xi.effect.FROST,
-    xi.effect.CHOKE,
-    xi.effect.RASP,
-    xi.effect.SHOCK,
-    xi.effect.DROWN,
-    xi.effect.DIA,
-    xi.effect.BIO,
-    xi.effect.STR_DOWN,
-    xi.effect.DEX_DOWN,
-    xi.effect.VIT_DOWN,
-    xi.effect.AGI_DOWN,
-    xi.effect.INT_DOWN,
-    xi.effect.MND_DOWN,
-    xi.effect.CHR_DOWN,
-    xi.effect.MAX_HP_DOWN,
-    xi.effect.MAX_MP_DOWN,
-    xi.effect.ATTACK_DOWN,
-    xi.effect.EVASION_DOWN,
-    xi.effect.DEFENSE_DOWN,
-    xi.effect.MAGIC_DEF_DOWN,
-    xi.effect.INHIBIT_TP,
-    xi.effect.MAGIC_ACC_DOWN,
-    xi.effect.MAGIC_ATK_DOWN
+    invaderXim.effect.PARALYSIS,
+    invaderXim.effect.POISON,
+    invaderXim.effect.BLINDNESS,
+    invaderXim.effect.SILENCE,
+    invaderXim.effect.DISEASE,
+    invaderXim.effect.PETRIFICATION,
+    invaderXim.effect.BIND,
+    invaderXim.effect.WEIGHT,
+    invaderXim.effect.ADDLE,
+    invaderXim.effect.BURN,
+    invaderXim.effect.FROST,
+    invaderXim.effect.CHOKE,
+    invaderXim.effect.RASP,
+    invaderXim.effect.SHOCK,
+    invaderXim.effect.DROWN,
+    invaderXim.effect.DIA,
+    invaderXim.effect.BIO,
+    invaderXim.effect.STR_DOWN,
+    invaderXim.effect.DEX_DOWN,
+    invaderXim.effect.VIT_DOWN,
+    invaderXim.effect.AGI_DOWN,
+    invaderXim.effect.INT_DOWN,
+    invaderXim.effect.MND_DOWN,
+    invaderXim.effect.CHR_DOWN,
+    invaderXim.effect.MAX_HP_DOWN,
+    invaderXim.effect.MAX_MP_DOWN,
+    invaderXim.effect.ATTACK_DOWN,
+    invaderXim.effect.EVASION_DOWN,
+    invaderXim.effect.DEFENSE_DOWN,
+    invaderXim.effect.MAGIC_DEF_DOWN,
+    invaderXim.effect.INHIBIT_TP,
+    invaderXim.effect.MAGIC_ACC_DOWN,
+    invaderXim.effect.MAGIC_ATK_DOWN
 }
 
 ---@nodiscard
 ---@param target CBaseEntity
----@param foodType xi.foodType
+---@param foodType invaderXim.foodType
 ---@return integer
-xi.itemUtils.foodOnItemCheck = function(target, foodType)
+invaderXim.itemUtils.foodOnItemCheck = function(target, foodType)
     local result     = 0
     local targetRace = target:getRace()
-    local canEatFish = targetRace == xi.race.MITHRA or target:getMod(xi.mod.EAT_RAW_FISH) == 1
-    local canEatMeat = targetRace == xi.race.GALKA or target:getMod(xi.mod.EAT_RAW_MEAT) == 1
+    local canEatFish = targetRace == invaderXim.race.MITHRA or target:getMod(invaderXim.mod.EAT_RAW_FISH) == 1
+    local canEatMeat = targetRace == invaderXim.race.GALKA or target:getMod(invaderXim.mod.EAT_RAW_MEAT) == 1
 
     if
-        (foodType == xi.foodType.RAW_FISH and not canEatFish) or
-        (foodType == xi.foodType.RAW_MEAT and not canEatMeat)
+        (foodType == invaderXim.foodType.RAW_FISH and not canEatFish) or
+        (foodType == invaderXim.foodType.RAW_MEAT and not canEatMeat)
     then
-        result = xi.msg.basic.CANNOT_EAT
+        result = invaderXim.msg.basic.CANNOT_EAT
     end
 
-    if target:hasStatusEffect(xi.effect.FOOD) then
-        result = xi.msg.basic.IS_FULL
+    if target:hasStatusEffect(invaderXim.effect.FOOD) then
+        result = invaderXim.msg.basic.IS_FULL
     end
 
     return result
@@ -72,10 +72,10 @@ end
 ---@nodiscard
 ---@param target CBaseEntity
 ---@return integer
-xi.itemUtils.itemBoxOnItemCheck = function(target)
+invaderXim.itemUtils.itemBoxOnItemCheck = function(target)
     local result = 0
     if target:getFreeSlotsCount() == 0 then
-        result = xi.msg.basic.ITEM_NO_USE_INVENTORY
+        result = invaderXim.msg.basic.ITEM_NO_USE_INVENTORY
     end
 
     return result
@@ -85,7 +85,7 @@ end
 ---@param target CBaseEntity
 ---@param skillID integer
 ---@return integer
-xi.itemUtils.skillBookCheck = function(target, skillID)
+invaderXim.itemUtils.skillBookCheck = function(target, skillID)
     local skill   = skillID
     local mainCap = target:getMaxSkillLevel(target:getMainLvl(), target:getMainJob(), skill) or 0
     local subCap  = target:getMaxSkillLevel(target:getSubLvl(), target:getSubJob(), skill) or 0
@@ -102,15 +102,15 @@ xi.itemUtils.skillBookCheck = function(target, skillID)
     end
 
     if noSkill >= 2 then
-        return xi.msg.basic.ITEM_UNABLE_TO_USE
+        return invaderXim.msg.basic.ITEM_UNABLE_TO_USE
     end
 
     if mainCap > 0 and mainDif <= 0 then
-        return xi.msg.basic.ITEM_UNABLE_TO_USE
+        return invaderXim.msg.basic.ITEM_UNABLE_TO_USE
     end
 
     if subCap > 0 and mainCap == 0 and subDif <= 0 then
-        return xi.msg.basic.ITEM_UNABLE_TO_USE
+        return invaderXim.msg.basic.ITEM_UNABLE_TO_USE
     end
 
     return 0
@@ -119,7 +119,7 @@ end
 ---@param target CBaseEntity
 ---@param skillID integer
 ---@return nil
-xi.itemUtils.skillBookUse = function(target, skillID)
+invaderXim.itemUtils.skillBookUse = function(target, skillID)
     target:trySkillUp(skillID, target:getMainLvl(), true, true)
 end
 
@@ -127,7 +127,7 @@ end
 ---@param target CBaseEntity
 ---@param itemgroup table
 ---@return integer
-xi.itemUtils.pickItemRandom = function(target, itemgroup) -- selects an item from a weighted result table
+invaderXim.itemUtils.pickItemRandom = function(target, itemgroup) -- selects an item from a weighted result table
     -- possible results
     local items = itemgroup
 
@@ -153,40 +153,40 @@ xi.itemUtils.pickItemRandom = function(target, itemgroup) -- selects an item fro
     return item
 end
 
-xi.itemUtils.removeShield = function(effect, target)
-    if effect == xi.effect.PHYSICAL_SHIELD then
-        target:delStatusEffect(xi.effect.MAGIC_SHIELD)
+invaderXim.itemUtils.removeShield = function(effect, target)
+    if effect == invaderXim.effect.PHYSICAL_SHIELD then
+        target:delStatusEffect(invaderXim.effect.MAGIC_SHIELD)
     else
-        target:delStatusEffect(xi.effect.PHYSICAL_SHIELD)
+        target:delStatusEffect(invaderXim.effect.PHYSICAL_SHIELD)
     end
 end
 
-xi.itemUtils.addItemShield = function(target, power, duration, effect, special)
+invaderXim.itemUtils.addItemShield = function(target, power, duration, effect, special)
     if target:hasStatusEffect(effect) then
         local shield            = target:getStatusEffect(effect)
         local activeshieldpower = shield:getPower()
 
         if activeshieldpower > power then
-            target:messageBasic(xi.msg.basic.NO_EFFECT)
+            target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
         else
-            xi.itemUtils.removeShield(effect, target)
+            invaderXim.itemUtils.removeShield(effect, target)
             target:addStatusEffect(effect, power, 0, duration, 0, special)
-            target:messageBasic(xi.msg.basic.GAINS_EFFECT_OF_STATUS, effect)
+            target:messageBasic(invaderXim.msg.basic.GAINS_EFFECT_OF_STATUS, effect)
         end
     else
-        xi.itemUtils.removeShield(effect, target)
+        invaderXim.itemUtils.removeShield(effect, target)
         target:addStatusEffect(effect, power, 0, duration, 0, special)
-        target:messageBasic(xi.msg.basic.GAINS_EFFECT_OF_STATUS, effect)
+        target:messageBasic(invaderXim.msg.basic.GAINS_EFFECT_OF_STATUS, effect)
     end
 end
 
-xi.itemUtils.addItemEffect = function(target, effect, power, duration, subpower)
+invaderXim.itemUtils.addItemEffect = function(target, effect, power, duration, subpower)
     if target:hasStatusEffect(effect) then
         local buff        = target:getStatusEffect(effect)
         local effectpower = buff:getPower()
 
         if effectpower > power then
-            target:messageBasic(xi.msg.basic.NO_EFFECT)
+            target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
         else
             target:addStatusEffect(effect, power, 0, duration, 0, subpower)
         end
@@ -195,13 +195,13 @@ xi.itemUtils.addItemEffect = function(target, effect, power, duration, subpower)
     end
 end
 
-xi.itemUtils.addTwoItemEffects = function(target, effect1, effect2, power1, power2, duration)
+invaderXim.itemUtils.addTwoItemEffects = function(target, effect1, effect2, power1, power2, duration)
     if target:hasStatusEffect(effect1) then
         local buff        = target:getStatusEffect(effect1)
         local effectpower = buff:getPower()
 
         if effectpower > power1 then
-            target:messageBasic(xi.msg.basic.NO_EFFECT)
+            target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
         else
             target:addStatusEffect(effect1, power1, 0, duration, 0, power1)
         end
@@ -214,7 +214,7 @@ xi.itemUtils.addTwoItemEffects = function(target, effect1, effect2, power1, powe
         local effectpower = buff:getPower()
 
         if effectpower > power2 then
-            target:messageBasic(xi.msg.basic.NO_EFFECT)
+            target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
         else
             target:addStatusEffect(effect2, power2, 0, duration, 0, power2)
         end
@@ -223,11 +223,11 @@ xi.itemUtils.addTwoItemEffects = function(target, effect1, effect2, power1, powe
     end
 end
 
-xi.itemUtils.addItemExpEffect = function(target, effect, power, duration, subpower)
-    local deleffect = xi.effect.COMMITMENT
+invaderXim.itemUtils.addItemExpEffect = function(target, effect, power, duration, subpower)
+    local deleffect = invaderXim.effect.COMMITMENT
 
     if effect == deleffect then
-        deleffect = xi.effect.DEDICATION
+        deleffect = invaderXim.effect.DEDICATION
     end
 
     if target:hasStatusEffect(effect) then
@@ -235,7 +235,7 @@ xi.itemUtils.addItemExpEffect = function(target, effect, power, duration, subpow
         local effectpower = buff:getPower()
 
         if effectpower > power then
-            target:messageBasic(xi.msg.basic.NO_EFFECT)
+            target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
         else
             target:delStatusEffectSilent(deleffect)
             target:addStatusEffect(effect, power, 0, duration, 0, subpower)
@@ -246,7 +246,7 @@ xi.itemUtils.addItemExpEffect = function(target, effect, power, duration, subpow
     end
 end
 
-xi.itemUtils.removeStatus = function(target, effects)
+invaderXim.itemUtils.removeStatus = function(target, effects)
     for _, effect in ipairs(effects) do
         if target:delStatusEffect(effect) then
             return true
@@ -260,7 +260,7 @@ xi.itemUtils.removeStatus = function(target, effects)
     return false
 end
 
-xi.itemUtils.removeMultipleEffects = function(target, effects, count, random)
+invaderXim.itemUtils.removeMultipleEffects = function(target, effects, count, random)
     local effectsToRemove = effects
 
     if random == 1 then -- randomize which effects get removed
@@ -271,7 +271,7 @@ xi.itemUtils.removeMultipleEffects = function(target, effects, count, random)
         local removed = 0
 
         for i = 0, count do
-            if not xi.itemUtils.removeStatus(target, effectsToRemove) then
+            if not invaderXim.itemUtils.removeStatus(target, effectsToRemove) then
                 break
             end
 
@@ -290,7 +290,7 @@ end
 -- I.E. avatar attack only for a particular pet
 -- example usage in fervor_ring.lua
 -- can pass nil for petId to apply to all pets
-xi.itemUtils.handlePetLatentMods = function(owner, petId, mods, give)
+invaderXim.itemUtils.handlePetLatentMods = function(owner, petId, mods, give)
     local pet = owner:getPet()
 
     if

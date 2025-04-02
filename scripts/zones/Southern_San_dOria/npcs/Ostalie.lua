@@ -2,7 +2,7 @@
 -- Area: Southern San d'Oria
 --  NPC: Ostalie
 -----------------------------------
-local ID = zones[xi.zone.SOUTHERN_SAN_DORIA]
+local ID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -10,23 +10,23 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     local stock =
     {
-        xi.item.LEATHER_BELT,          442, 3,
-        xi.item.LIZARD_BELT,          2808, 3,
-        xi.item.SILVER_BELT,         11618, 1,
-        xi.item.CIRCLET,               166, 3,
-        xi.item.ROBE,                  249, 3,
-        xi.item.CUFFS,                 137, 3,
-        xi.item.SLOPS,                 199, 3,
-        xi.item.FLASK_OF_EYE_DROPS,   2698, 3,
-        xi.item.ANTIDOTE,              328, 3,
-        xi.item.FLASK_OF_ECHO_DROPS,   832, 2,
-        xi.item.POTION,                946, 1,
-        xi.item.ETHER,                5025, 1,
-        xi.item.PICKAXE,               208, 3,
-        xi.item.HATCHET,               520, 3,
+        invaderXim.item.LEATHER_BELT,          442, 3,
+        invaderXim.item.LIZARD_BELT,          2808, 3,
+        invaderXim.item.SILVER_BELT,         11618, 1,
+        invaderXim.item.CIRCLET,               166, 3,
+        invaderXim.item.ROBE,                  249, 3,
+        invaderXim.item.CUFFS,                 137, 3,
+        invaderXim.item.SLOPS,                 199, 3,
+        invaderXim.item.FLASK_OF_EYE_DROPS,   2698, 3,
+        invaderXim.item.ANTIDOTE,              328, 3,
+        invaderXim.item.FLASK_OF_ECHO_DROPS,   832, 2,
+        invaderXim.item.POTION,                946, 1,
+        invaderXim.item.ETHER,                5025, 1,
+        invaderXim.item.PICKAXE,               208, 3,
+        invaderXim.item.HATCHET,               520, 3,
     }
 
-    local rank = GetNationRank(xi.nation.SANDORIA)
+    local rank = GetNationRank(invaderXim.nation.SANDORIA)
 
     -- TODO: Check
     if rank ~= 1 then
@@ -40,7 +40,7 @@ entity.onTrigger = function(player, npc)
     end
 
     player:showText(npc, ID.text.OSTALIE_SHOP_DIALOG)
-    xi.shop.nation(player, stock, xi.nation.SANDORIA)
+    invaderXim.shop.nation(player, stock, invaderXim.nation.SANDORIA)
 end
 
 return entity

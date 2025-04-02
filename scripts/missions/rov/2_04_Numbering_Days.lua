@@ -6,11 +6,11 @@
 -- Marble Bridge Eatery (Door) : !pos -96.6 -0.2 92.3 244
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.NUMBERING_DAYS)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.NUMBERING_DAYS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.INESCAPABLE_BINDS },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.INESCAPABLE_BINDS },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['_6s1'] =
             {
@@ -38,9 +38,9 @@ mission.sections =
                     -- Darkness Named            : 0, 1, 1, 0
                     -- >= Flames in the Darkness : 0, 2, 1, 0
 
-                    local promathiaMission = player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.DARKNESS_NAMED) and 1 or 0
+                    local promathiaMission = player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.DARKNESS_NAMED) and 1 or 0
 
-                    if player:getCurrentMission(xi.mission.log_id.COP) >= xi.mission.id.cop.FLAMES_IN_THE_DARKNESS then
+                    if player:getCurrentMission(invaderXim.mission.log_id.COP) >= invaderXim.mission.id.cop.FLAMES_IN_THE_DARKNESS then
                         promathiaMission = promathiaMission + 1
                     end
 

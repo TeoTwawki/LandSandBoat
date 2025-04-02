@@ -5,15 +5,15 @@
 -- known positions include:
 -- !pos 252.000 -2.326 -119.994 22
 -----------------------------------
-local ID = zones[xi.zone.PROMYVION_VAHZL]
+local ID = zones[invaderXim.zone.PROMYVION_VAHZL]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHas(trade, xi.item.WHITE_MEMOSPHERE) and
-        not player:hasKeyItem(xi.ki.MAP_OF_PROMYVION_VAHZL)
+        npcUtil.tradeHas(trade, invaderXim.item.WHITE_MEMOSPHERE) and
+        not player:hasKeyItem(invaderXim.ki.MAP_OF_PROMYVION_VAHZL)
     then
         player:startEvent(48)
     else
@@ -22,7 +22,7 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    if not player:hasKeyItem(xi.ki.MAP_OF_PROMYVION_VAHZL) then
+    if not player:hasKeyItem(invaderXim.ki.MAP_OF_PROMYVION_VAHZL) then
         player:messageSpecial(ID.text.EERIE_GREEN_GLOW)
     else
         player:messageSpecial(ID.text.NOTHING_OUT_OF_ORDINARY_MAP)
@@ -32,7 +32,7 @@ end
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 48 then
         player:confirmTrade()
-        npcUtil.giveKeyItem(player, xi.ki.MAP_OF_PROMYVION_VAHZL)
+        npcUtil.giveKeyItem(player, invaderXim.ki.MAP_OF_PROMYVION_VAHZL)
     end
 end
 

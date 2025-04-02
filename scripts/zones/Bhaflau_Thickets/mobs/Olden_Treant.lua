@@ -3,7 +3,7 @@
 --  Mob: Olden Treant
 -- Note: Place holder Emergent Elm
 -----------------------------------
-local ID = zones[xi.zone.BHAFLAU_THICKETS]
+local ID = zones[invaderXim.zone.BHAFLAU_THICKETS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -73,7 +73,7 @@ end
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = elmSpawnPoints
-    xi.mob.phOnDespawn(mob, elmPHTable, 5, 14400, params) -- 4 hours
+    invaderXim.mob.phOnDespawn(mob, elmPHTable, 5, 14400, params) -- 4 hours
 end
 
 return entity

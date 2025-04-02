@@ -7,17 +7,17 @@
 -- Gilgamesh : !pos 122.452 -9.009 -12.052 252
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.APOCALYPSE_NIGH)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.APOCALYPSE_NIGH)
 
 quest.reward = {}
 
 local rewardOnEventUpdate = function(player, csid, option, npc)
     if option == 99 then
         player:updateEvent(252,
-            xi.item.STATIC_EARRING,
-            xi.item.MAGNETIC_EARRING,
-            xi.item.HOLLOW_EARRING,
-            xi.item.ETHEREAL_EARRING
+            invaderXim.item.STATIC_EARRING,
+            invaderXim.item.MAGNETIC_EARRING,
+            invaderXim.item.HOLLOW_EARRING,
+            invaderXim.item.ETHEREAL_EARRING
         )
     end
 end
@@ -32,7 +32,7 @@ local rewardOnEventFinish = function(player, csid, option, npc)
         option >= 1 and
         option <= 4
     then
-        local rewardItem = xi.item.STATIC_EARRING + option - 1
+        local rewardItem = invaderXim.item.STATIC_EARRING + option - 1
 
         if npcUtil.giveItem(player, rewardItem) then
             quest:complete(player)
@@ -46,13 +46,13 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.SHADOWS_OF_THE_DEPARTED) and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.SHADOWS_OF_THE_DEPARTED) and
                 VanadielUniqueDay() >= vars.Timer and
                 not quest:getMustZone(player)
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             onTriggerAreaEnter =
             {
@@ -72,10 +72,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SEALIONS_DEN] =
+        [invaderXim.zone.SEALIONS_DEN] =
         {
             onZoneIn = function(player, prevZone)
                 if quest:getVar(player, 'Prog') == 0 then
@@ -100,7 +100,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.GRAND_PALACE_OF_HUXZOI] =
+        [invaderXim.zone.GRAND_PALACE_OF_HUXZOI] =
         {
             ['_iya'] =
             {
@@ -120,7 +120,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.EMPYREAL_PARADOX] =
+        [invaderXim.zone.EMPYREAL_PARADOX] =
         {
             onZoneIn = function(player, prevZone)
                 if quest:getVar(player, 'Prog') == 4 then
@@ -153,12 +153,12 @@ quest.sections =
                 end,
 
                 [7] = function(player, csid, option, npc)
-                    player:setPos(-.0745, -10, -465.1132, 63, xi.zone.ALTAIEU)
+                    player:setPos(-.0745, -10, -465.1132, 63, invaderXim.zone.ALTAIEU)
                 end,
 
                 [32001] = function(player, csid, option, npc)
                     if
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.APOCALYPSE_NIGH and
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.APOCALYPSE_NIGH and
                         quest:getVar(player, 'Prog') == 3
                     then
                         quest:setVar(player, 'Prog', 4)
@@ -167,7 +167,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Aldo'] =
             {
@@ -194,7 +194,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['_700'] =
             {
@@ -246,15 +246,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.EMPYREAL_PARADOX] =
+        [invaderXim.zone.EMPYREAL_PARADOX] =
         {
             ['qm1'] =
             {
                 onTrigger = function(player, npc)
-                    for itemId = xi.item.STATIC_EARRING, xi.item.STATIC_EARRING + 3 do
+                    for itemId = invaderXim.item.STATIC_EARRING, invaderXim.item.STATIC_EARRING + 3 do
                         if player:hasItem(itemId) then
                             return
                         end
@@ -268,23 +268,23 @@ quest.sections =
             {
                 [5] = function(player, csid, option, npc)
                     if option == 1 then
-                        player:delMission(xi.mission.log_id.COP, xi.mission.id.cop.THE_LAST_VERSE)
-                        player:delMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_LAST_VERSE)
+                        player:delMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_LAST_VERSE)
+                        player:delMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_LAST_VERSE)
 
-                        player:addMission(xi.mission.log_id.COP, xi.mission.id.cop.DAWN)
-                        player:addMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.AWAKENING)
+                        player:addMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.DAWN)
+                        player:addMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.AWAKENING)
 
-                        player:setMissionStatus(xi.mission.log_id.ZILART, 3)
-                        xi.mission.setVar(player, xi.mission.log_id.COP, xi.mission.id.cop.DAWN, 'Status', 8)
+                        player:setMissionStatus(invaderXim.mission.log_id.ZILART, 3)
+                        invaderXim.mission.setVar(player, invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.DAWN, 'Status', 8)
 
-                        player:delQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.SHADOWS_OF_THE_DEPARTED)
-                        player:delQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.APOCALYPSE_NIGH)
+                        player:delQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.SHADOWS_OF_THE_DEPARTED)
+                        player:delQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.APOCALYPSE_NIGH)
                     end
                 end,
             },
         },
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Gilgamesh'] = quest:event(233):replaceDefault(),
         },

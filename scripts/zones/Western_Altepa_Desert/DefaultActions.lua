@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.WESTERN_ALTEPA_DESERT]
+local ID = zones[invaderXim.zone.WESTERN_ALTEPA_DESERT]
 
 return {
     ['qm1']              = { messageSpecial = ID.text.NOTHING_OUT_OF_ORDINARY },

@@ -21,19 +21,19 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.UNDEAD
-    params.tpmod = xi.spells.blue.tpMod.ACC
+    params.ecosystem = invaderXim.ecosystem.UNDEAD
+    params.tpmod = invaderXim.spells.blue.tpMod.ACC
     params.bonusacc = 0
-    if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
+    if caster:hasStatusEffect(invaderXim.effect.AZURE_LORE) then
         params.bonusacc = 70
-    elseif caster:hasStatusEffect(xi.effect.CHAIN_AFFINITY) then
+    elseif caster:hasStatusEffect(invaderXim.effect.CHAIN_AFFINITY) then
         params.bonusacc = math.floor(caster:getTP() / 50)
     end
 
-    params.attackType = xi.attackType.PHYSICAL
-    params.damageType = xi.damageType.SLASHING
-    params.scattr = xi.skillchainType.SCISSION
-    params.scattr2 = xi.skillchainType.DETONATION
+    params.attackType = invaderXim.attackType.PHYSICAL
+    params.damageType = invaderXim.damageType.SLASHING
+    params.scattr = invaderXim.skillchainType.SCISSION
+    params.scattr2 = invaderXim.skillchainType.DETONATION
     params.numhits = 1
     params.multiplier = 3.0
     params.tp150 = 3.0
@@ -48,7 +48,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
 
-    return xi.spells.blue.usePhysicalSpell(caster, target, spell, params)
+    return invaderXim.spells.blue.usePhysicalSpell(caster, target, spell, params)
 end
 
 return spellObject

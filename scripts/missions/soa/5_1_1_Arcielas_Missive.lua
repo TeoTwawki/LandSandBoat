@@ -7,14 +7,14 @@
 -- Ploh Trishbahk  : !pos 100.580 -40.150 -63.830 257
 -- Sunrise Beacon  : !pos 115.167 32 177.887 256
 -----------------------------------
-local westernAdoulinID = zones[xi.zone.WESTERN_ADOULIN]
+local westernAdoulinID = zones[invaderXim.zone.WESTERN_ADOULIN]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.ARCIELAS_MISSIVE)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.ARCIELAS_MISSIVE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.HEROES_UNITE },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.HEROES_UNITE },
 }
 
 mission.sections =
@@ -24,14 +24,14 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(183, 256, 0, 3, 0, 67108863, 2811819, 4095, 4),
 
             ['Sunrise_Beacon'] =
             {
                 onTrigger = function(player, npc)
-                    if player:seenKeyItem(xi.ki.HASTILY_SCRIBBLED_NOTE) then
+                    if player:seenKeyItem(invaderXim.ki.HASTILY_SCRIBBLED_NOTE) then
                         return mission:progressEvent(179, 256, 3930, 5, 5, 65306623, 1589031, 4095, 131116)
                     end
                 end,
@@ -41,14 +41,14 @@ mission.sections =
             {
                 [179] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.HASTILY_SCRIBBLED_NOTE)
-                        player:messageSpecial(westernAdoulinID.text.KEYITEM_LOST, xi.ki.HASTILY_SCRIBBLED_NOTE)
+                        player:delKeyItem(invaderXim.ki.HASTILY_SCRIBBLED_NOTE)
+                        player:messageSpecial(westernAdoulinID.text.KEYITEM_LOST, invaderXim.ki.HASTILY_SCRIBBLED_NOTE)
                     end
                 end,
             },
         },
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Ploh_Trishbahk'] =
             {

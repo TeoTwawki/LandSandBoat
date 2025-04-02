@@ -7,9 +7,9 @@ require('scripts/globals/npc_util')
 require('scripts/globals/quests')
 -----------------------------------
 xi = xi or {}
-xi.treasure = xi.treasure or {}
+invaderXim.treasure = invaderXim.treasure or {}
 
-xi.treasure.type =
+invaderXim.treasure.type =
 {
     CHEST  = 1,
     COFFER = 2,
@@ -26,22 +26,22 @@ local keyType =
 local thiefKeyInfo =
 {
 --   Key                       Item ID                       Success Modifier
-    [keyType.THIEF_TOOLS ] = { xi.item.SET_OF_THIEFS_TOOLS, 0.1  },
-    [keyType.SKELETON_KEY] = { xi.item.SKELETON_KEY,        0.2  },
-    [keyType.LIVING_KEY  ] = { xi.item.LIVING_KEY,          0.15 },
+    [keyType.THIEF_TOOLS ] = { invaderXim.item.SET_OF_THIEFS_TOOLS, 0.1  },
+    [keyType.SKELETON_KEY] = { invaderXim.item.SKELETON_KEY,        0.2  },
+    [keyType.LIVING_KEY  ] = { invaderXim.item.LIVING_KEY,          0.15 },
 }
 
-xi.treasure.treasureInfo =
+invaderXim.treasure.treasureInfo =
 {
-    [xi.treasure.type.CHEST] =
+    [invaderXim.treasure.type.CHEST] =
     {
         zone =
         {
-            [xi.zone.PSOXJA] = -- 9
+            [invaderXim.zone.PSOXJA] = -- 9
             {
                 treasureLvl = 53,
                 key = 1064,
-                map = xi.ki.MAP_OF_PSOXJA,
+                map = invaderXim.ki.MAP_OF_PSOXJA,
                 points =
                 {
                     { -393.000,   16.000, -208.000,   0 },
@@ -58,11 +58,11 @@ xi.treasure.treasureInfo =
                 gem = { 0.238, 811, 798, 815, 790, 799, 788, 808 },
             },
 
-            [xi.zone.OLDTON_MOVALPOLOS] = -- 11
+            [invaderXim.zone.OLDTON_MOVALPOLOS] = -- 11
             {
                 treasureLvl = 43,
                 key = 1062,
-                map = xi.ki.MAP_OF_OLDTON_MOVALPOLOS,
+                map = invaderXim.ki.MAP_OF_OLDTON_MOVALPOLOS,
                 points =
                 {
                     { -140.636,    7.999,  200.498, 192 },
@@ -82,7 +82,7 @@ xi.treasure.treasureInfo =
                 gem = { 0.269, 811, 808, 796, 799, 788, 815, 798 },
             },
 
-            [xi.zone.SACRARIUM] = -- 28
+            [invaderXim.zone.SACRARIUM] = -- 28
             {
                 treasureLvl = 53,
                 key = 1061,
@@ -101,7 +101,7 @@ xi.treasure.treasureInfo =
                 gem = { 0.071, 790, 799, 815, 788, 796 },
             },
 
-            [xi.zone.FORT_GHELSBA] = -- 141
+            [invaderXim.zone.FORT_GHEIXIMA] = -- 141
             {
                 treasureLvl = 53,
                 key = 1024,
@@ -118,7 +118,7 @@ xi.treasure.treasureInfo =
                 item = { 0.464, 16702 },
             },
 
-            [xi.zone.YUGHOTT_GROTTO] = -- 142
+            [invaderXim.zone.YUGHOTT_GROTTO] = -- 142
             {
                 treasureLvl = 53,
                 key = 1024,
@@ -137,7 +137,7 @@ xi.treasure.treasureInfo =
                 item = { 0.450, 16702 },
             },
 
-            [xi.zone.PALBOROUGH_MINES] = -- 143
+            [invaderXim.zone.PALBOROUGH_MINES] = -- 143
             {
                 treasureLvl = 43,
                 key = 1025,
@@ -145,13 +145,13 @@ xi.treasure.treasureInfo =
                 {
                     {
                         test = function(player)
-                            return player:getQuestStatus(xi.questLog.BASTOK, xi.quest.id.bastok.FADED_PROMISES) == xi.questStatus.QUEST_ACCEPTED and
-                                xi.quest.getVar(player, xi.questLog.BASTOK, xi.quest.id.bastok.FADED_PROMISES, 'Prog') == 1 and
-                                not player:hasKeyItem(xi.ki.DIARY_OF_MUKUNDA)
+                            return player:getQuestStatus(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.FADED_PROMISES) == invaderXim.questStatus.QUEST_ACCEPTED and
+                                invaderXim.quest.getVar(player, invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.FADED_PROMISES, 'Prog') == 1 and
+                                not player:hasKeyItem(invaderXim.ki.DIARY_OF_MUKUNDA)
                         end,
 
                         code = function(player)
-                            npcUtil.giveKeyItem(player, xi.ki.DIARY_OF_MUKUNDA)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.DIARY_OF_MUKUNDA)
                         end,
                     },
                 },
@@ -175,7 +175,7 @@ xi.treasure.treasureInfo =
                 item = { 0.409, 17291 },
             },
 
-            [xi.zone.GIDDEUS] = -- 145
+            [invaderXim.zone.GIDDEUS] = -- 145
             {
                 treasureLvl = 43,
                 key = 1026,
@@ -198,7 +198,7 @@ xi.treasure.treasureInfo =
                 item = { 0.483, 13365 },
             },
 
-            [xi.zone.BEADEAUX] = -- 147
+            [invaderXim.zone.BEADEAUX] = -- 147
             {
                 treasureLvl = 53,
                 key = 1034,
@@ -222,7 +222,7 @@ xi.treasure.treasureInfo =
                 item = { 0.758, 13230 },
             },
 
-            [xi.zone.DAVOI] = -- 149
+            [invaderXim.zone.DAVOI] = -- 149
             {
                 treasureLvl = 43,
                 key = 1033,
@@ -246,7 +246,7 @@ xi.treasure.treasureInfo =
                 item = { 0.464, 13515 },
             },
 
-            [xi.zone.CASTLE_OZTROJA] = -- 151
+            [invaderXim.zone.CASTLE_OZTROJA] = -- 151
             {
                 treasureLvl = 43,
                 key = 1035,
@@ -254,14 +254,14 @@ xi.treasure.treasureInfo =
                 {
                     {
                         test = function(player)
-                            return player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.SCATTERED_INTO_SHADOW) == xi.questStatus.QUEST_ACCEPTED and
-                                xi.quest.getVar(player, xi.questLog.JEUNO, xi.quest.id.jueno.SCATTERED_INTO_SHADOW, 'Prog') == 4 and
-                                xi.quest.getVar(player, xi.questLog.JEUNO, xi.quest.id.jeuno.SCATTERED_INTO_SHADOW, 'Stage') == 7 and
-                                not player:hasItem(xi.item.BEAST_COLLAR)
+                            return player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.SCATTERED_INTO_SHADOW) == invaderXim.questStatus.QUEST_ACCEPTED and
+                                invaderXim.quest.getVar(player, invaderXim.questLog.JEUNO, invaderXim.quest.id.jueno.SCATTERED_INTO_SHADOW, 'Prog') == 4 and
+                                invaderXim.quest.getVar(player, invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.SCATTERED_INTO_SHADOW, 'Stage') == 7 and
+                                not player:hasItem(invaderXim.item.BEAST_COLLAR)
                         end,
 
                         code = function(player)
-                            npcUtil.giveItem(player, xi.item.BEAST_COLLAR)
+                            npcUtil.giveItem(player, invaderXim.item.BEAST_COLLAR)
                         end,
                     },
                 },
@@ -286,7 +286,7 @@ xi.treasure.treasureInfo =
                 item = { 0.480, 13840 },
             },
 
-            [xi.zone.MIDDLE_DELKFUTTS_TOWER] = -- 157
+            [invaderXim.zone.MIDDLE_DELKFUTTS_TOWER] = -- 157
             {
                 treasureLvl = 43,
                 key = 1036,
@@ -294,12 +294,12 @@ xi.treasure.treasureInfo =
                 {
                     {
                         test = function(player)
-                            return player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.WINGS_OF_GOLD) == xi.questStatus.QUEST_ACCEPTED and
-                                not player:hasKeyItem(xi.ki.GUIDING_BELL)
+                            return player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.WINGS_OF_GOLD) == invaderXim.questStatus.QUEST_ACCEPTED and
+                                not player:hasKeyItem(invaderXim.ki.GUIDING_BELL)
                         end,
 
                         code = function(player)
-                            npcUtil.giveKeyItem(player, xi.ki.GUIDING_BELL)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.GUIDING_BELL)
                         end,
                     },
                 },
@@ -319,7 +319,7 @@ xi.treasure.treasureInfo =
                 item = { 0.484, 16674 },
             },
 
-            [xi.zone.UPPER_DELKFUTTS_TOWER] = -- 158
+            [invaderXim.zone.UPPER_DELKFUTTS_TOWER] = -- 158
             {
                 treasureLvl = 43,
                 key = 1036,
@@ -327,12 +327,12 @@ xi.treasure.treasureInfo =
                 {
                     {
                         test = function(player)
-                            return player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.WINGS_OF_GOLD) == xi.questStatus.QUEST_ACCEPTED and
-                                not player:hasKeyItem(xi.ki.GUIDING_BELL)
+                            return player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.WINGS_OF_GOLD) == invaderXim.questStatus.QUEST_ACCEPTED and
+                                not player:hasKeyItem(invaderXim.ki.GUIDING_BELL)
                         end,
 
                         code = function(player)
-                            npcUtil.giveKeyItem(player, xi.ki.GUIDING_BELL)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.GUIDING_BELL)
                         end,
                     },
                 },
@@ -348,7 +348,7 @@ xi.treasure.treasureInfo =
                 item = { 0.484, 16674 },
             },
 
-            [xi.zone.CASTLE_ZVAHL_BAILEYS] = -- 161
+            [invaderXim.zone.CASTLE_ZVAHL_BAILEYS] = -- 161
             {
                 treasureLvl = 53,
                 key = 1038,
@@ -356,12 +356,12 @@ xi.treasure.treasureInfo =
                 {
                     {
                         test = function(player)
-                            return player:getQuestStatus(xi.questLog.BASTOK, xi.quest.id.bastok.A_TEST_OF_TRUE_LOVE) == xi.questStatus.QUEST_ACCEPTED and
-                                not player:hasKeyItem(xi.ki.UN_MOMENT)
+                            return player:getQuestStatus(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.A_TEST_OF_TRUE_LOVE) == invaderXim.questStatus.QUEST_ACCEPTED and
+                                not player:hasKeyItem(invaderXim.ki.UN_MOMENT)
                         end,
 
                         code = function(player)
-                            npcUtil.giveKeyItem(player, xi.ki.UN_MOMENT)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.UN_MOMENT)
                         end,
                     },
                 },
@@ -388,7 +388,7 @@ xi.treasure.treasureInfo =
                 item = { 0.610, 13516 },
             },
 
-            [xi.zone.CASTLE_ZVAHL_KEEP] = -- 162
+            [invaderXim.zone.CASTLE_ZVAHL_KEEP] = -- 162
             {
                 treasureLvl = 53,
                 key = 1038,
@@ -396,12 +396,12 @@ xi.treasure.treasureInfo =
                 {
                     {
                         test = function(player)
-                            return player:getQuestStatus(xi.questLog.BASTOK, xi.quest.id.bastok.A_TEST_OF_TRUE_LOVE) == xi.questStatus.QUEST_ACCEPTED and
-                                not player:hasKeyItem(xi.ki.UN_MOMENT)
+                            return player:getQuestStatus(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.A_TEST_OF_TRUE_LOVE) == invaderXim.questStatus.QUEST_ACCEPTED and
+                                not player:hasKeyItem(invaderXim.ki.UN_MOMENT)
                         end,
 
                         code = function(player)
-                            npcUtil.giveKeyItem(player, xi.ki.UN_MOMENT)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.UN_MOMENT)
                         end,
                     },
                 },
@@ -414,21 +414,21 @@ xi.treasure.treasureInfo =
                 item = { 0.490, 13516 },
             },
 
-            [xi.zone.SEA_SERPENT_GROTTO] = -- 176
+            [invaderXim.zone.SEA_SERPENT_GROTTO] = -- 176
             {
                 treasureLvl = 53,
                 key = 1055,
-                map = xi.ki.MAP_OF_SEA_SERPENT_GROTTO,
+                map = invaderXim.ki.MAP_OF_SEA_SERPENT_GROTTO,
                 misc =
                 {
                     {
                         test = function(player)
-                            return player:getQuestStatus(xi.questLog.BASTOK, xi.quest.id.bastok.A_TEST_OF_TRUE_LOVE) == xi.questStatus.QUEST_ACCEPTED and
-                                not player:hasKeyItem(xi.ki.LEPHEMERE)
+                            return player:getQuestStatus(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.A_TEST_OF_TRUE_LOVE) == invaderXim.questStatus.QUEST_ACCEPTED and
+                                not player:hasKeyItem(invaderXim.ki.LEPHEMERE)
                         end,
 
                         code = function(player)
-                            npcUtil.giveKeyItem(player, xi.ki.LEPHEMERE)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.LEPHEMERE)
                         end,
                     },
                 },
@@ -450,7 +450,7 @@ xi.treasure.treasureInfo =
                 gem = { 0.071, 811, 808, 790, 796, 815, 788, 799, 798 },
             },
 
-            [xi.zone.KING_RANPERRES_TOMB] = -- 190
+            [invaderXim.zone.KING_RANPERRES_TOMB] = -- 190
             {
                 treasureLvl = 43,
                 key = 1027,
@@ -476,7 +476,7 @@ xi.treasure.treasureInfo =
                 item = { 0.433, 12799 },
             },
 
-            [xi.zone.DANGRUF_WADI] = -- 191
+            [invaderXim.zone.DANGRUF_WADI] = -- 191
             {
                 treasureLvl = 43,
                 key = 1028,
@@ -503,7 +503,7 @@ xi.treasure.treasureInfo =
                 item = { 0.462, 12341 },
             },
 
-            [xi.zone.INNER_HORUTOTO_RUINS] = -- 192
+            [invaderXim.zone.INNER_HORUTOTO_RUINS] = -- 192
             {
                 treasureLvl = 43,
                 key = 1029,
@@ -516,7 +516,7 @@ xi.treasure.treasureInfo =
                 item = { 0.432, 16719 },
             },
 
-            [xi.zone.ORDELLES_CAVES] = -- 193
+            [invaderXim.zone.ORDELLES_CAVES] = -- 193
             {
                 treasureLvl = 43,
                 key = 1030,
@@ -524,26 +524,26 @@ xi.treasure.treasureInfo =
                 {
                     {
                         test = function(player)
-                            return player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.SIGNED_IN_BLOOD) == xi.questStatus.QUEST_ACCEPTED and
+                            return player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.SIGNED_IN_BLOOD) == invaderXim.questStatus.QUEST_ACCEPTED and
                                 player:getCharVar('Quest[0][108]Prog') == 2 and
-                                not player:hasKeyItem(xi.ki.TORN_OUT_PAGES)
+                                not player:hasKeyItem(invaderXim.ki.TORN_OUT_PAGES)
                         end,
 
                         code = function(player)
-                            npcUtil.giveKeyItem(player, xi.ki.TORN_OUT_PAGES)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.TORN_OUT_PAGES)
                         end,
                     },
 
                     {
                         test = function(player)
-                            return player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_GOBLIN_TAILOR) >= xi.questStatus.QUEST_ACCEPTED and
+                            return player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_GOBLIN_TAILOR) >= invaderXim.questStatus.QUEST_ACCEPTED and
                                 VanadielRSELocation() == 0 and
                                 VanadielRSERace() == player:getRace() and
-                                not player:hasKeyItem(xi.ki.MAGICAL_PATTERN)
+                                not player:hasKeyItem(invaderXim.ki.MAGICAL_PATTERN)
                         end,
 
                         code = function(player)
-                            npcUtil.giveKeyItem(player, xi.ki.MAGICAL_PATTERN)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.MAGICAL_PATTERN)
                         end,
                     },
                 },
@@ -570,7 +570,7 @@ xi.treasure.treasureInfo =
                 item = { 0.476, 13222 },
             },
 
-            [xi.zone.OUTER_HORUTOTO_RUINS] = -- 194
+            [invaderXim.zone.OUTER_HORUTOTO_RUINS] = -- 194
             {
                 treasureLvl = 43,
                 key = 1029,
@@ -583,7 +583,7 @@ xi.treasure.treasureInfo =
                 item = { 0.432, 16719 },
             },
 
-            [xi.zone.THE_ELDIEME_NECROPOLIS] = -- 195
+            [invaderXim.zone.THE_ELDIEME_NECROPOLIS] = -- 195
             {
                 treasureLvl = 53,
                 key = 1039,
@@ -605,7 +605,7 @@ xi.treasure.treasureInfo =
                 item = { 0.474, 16771 },
             },
 
-            [xi.zone.GUSGEN_MINES] = -- 196
+            [invaderXim.zone.GUSGEN_MINES] = -- 196
             {
                 treasureLvl = 43,
                 key = 1031,
@@ -613,14 +613,14 @@ xi.treasure.treasureInfo =
                 {
                     {
                         test = function(player)
-                            return player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_GOBLIN_TAILOR) >= xi.questStatus.QUEST_ACCEPTED and
+                            return player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_GOBLIN_TAILOR) >= invaderXim.questStatus.QUEST_ACCEPTED and
                                 VanadielRSELocation() == 1 and
                                 VanadielRSERace() == player:getRace() and
-                                not player:hasKeyItem(xi.ki.MAGICAL_PATTERN)
+                                not player:hasKeyItem(invaderXim.ki.MAGICAL_PATTERN)
                         end,
 
                         code = function(player)
-                            npcUtil.giveKeyItem(player, xi.ki.MAGICAL_PATTERN)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.MAGICAL_PATTERN)
                         end,
                     },
                 },
@@ -644,7 +644,7 @@ xi.treasure.treasureInfo =
                 item = { 0.465, 12338, 17426 },
             },
 
-            [xi.zone.CRAWLERS_NEST] = -- 197
+            [invaderXim.zone.CRAWLERS_NEST] = -- 197
             {
                 treasureLvl = 43,
                 key = 1040,
@@ -652,13 +652,13 @@ xi.treasure.treasureInfo =
                 {
                     {
                         test = function(player)
-                            return xi.quest.getVar(player, xi.questLog.SANDORIA, xi.quest.id.sandoria.ENVELOPED_IN_DARKNESS, 'Prog') >= 2 and
-                                xi.quest.getVar(player, xi.questLog.SANDORIA, xi.quest.id.sandoria.ENVELOPED_IN_DARKNESS, 'Time') == 0 and
-                                not player:hasKeyItem(xi.ki.CRAWLER_BLOOD)
+                            return invaderXim.quest.getVar(player, invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.ENVELOPED_IN_DARKNESS, 'Prog') >= 2 and
+                                invaderXim.quest.getVar(player, invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.ENVELOPED_IN_DARKNESS, 'Time') == 0 and
+                                not player:hasKeyItem(invaderXim.ki.CRAWLER_BLOOD)
                         end,
 
                         code = function(player)
-                            npcUtil.giveKeyItem(player, xi.ki.CRAWLER_BLOOD)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.CRAWLER_BLOOD)
                         end,
                     },
                 },
@@ -683,7 +683,7 @@ xi.treasure.treasureInfo =
                 item = { 0.444, 16710 },
             },
 
-            [xi.zone.MAZE_OF_SHAKHRAMI] = -- 198
+            [invaderXim.zone.MAZE_OF_SHAKHRAMI] = -- 198
             {
                 treasureLvl = 43,
                 key = 1032,
@@ -691,14 +691,14 @@ xi.treasure.treasureInfo =
                 {
                     {
                         test = function(player)
-                            return player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_GOBLIN_TAILOR) >= xi.questStatus.QUEST_ACCEPTED and
+                            return player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_GOBLIN_TAILOR) >= invaderXim.questStatus.QUEST_ACCEPTED and
                                 VanadielRSELocation() == 2 and
                                 VanadielRSERace() == player:getRace() and
-                                not player:hasKeyItem(xi.ki.MAGICAL_PATTERN)
+                                not player:hasKeyItem(invaderXim.ki.MAGICAL_PATTERN)
                         end,
 
                         code = function(player)
-                            npcUtil.giveKeyItem(player, xi.ki.MAGICAL_PATTERN)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.MAGICAL_PATTERN)
                         end,
                     },
                 },
@@ -726,7 +726,7 @@ xi.treasure.treasureInfo =
                 item = { 0.415, 17071 },
             },
 
-            [xi.zone.GARLAIGE_CITADEL] = -- 200
+            [invaderXim.zone.GARLAIGE_CITADEL] = -- 200
             {
                 treasureLvl = 53,
                 key = 1041,
@@ -748,7 +748,7 @@ xi.treasure.treasureInfo =
                 item = { 0.365, 13723 },
             },
 
-            [xi.zone.FEIYIN] = -- 204
+            [invaderXim.zone.FEIYIN] = -- 204
             {
                 treasureLvl = 53,
                 key = 1037,
@@ -756,12 +756,12 @@ xi.treasure.treasureInfo =
                 {
                     {
                         test = function(player)
-                            return player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.SORCERY_OF_THE_NORTH) == xi.questStatus.QUEST_ACCEPTED and
-                                not player:hasKeyItem(xi.ki.FEIYIN_MAGIC_TOME)
+                            return player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.SORCERY_OF_THE_NORTH) == invaderXim.questStatus.QUEST_ACCEPTED and
+                                not player:hasKeyItem(invaderXim.ki.FEIYIN_MAGIC_TOME)
                         end,
 
                         code = function(player)
-                            npcUtil.giveKeyItem(player, xi.ki.FEIYIN_MAGIC_TOME)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.FEIYIN_MAGIC_TOME)
                         end,
                     },
                 },
@@ -787,21 +787,21 @@ xi.treasure.treasureInfo =
                 item = { 0.440, 13231 },
             },
 
-            [xi.zone.LABYRINTH_OF_ONZOZO] = -- 213
+            [invaderXim.zone.LABYRINTH_OF_ONZOZO] = -- 213
             {
                 treasureLvl = 43,
                 key = 1056,
-                map = xi.ki.MAP_OF_LABYRINTH_OF_ONZOZO,
+                map = invaderXim.ki.MAP_OF_LABYRINTH_OF_ONZOZO,
                 misc =
                 {
                     {
                         test = function(player)
-                            return player:getQuestStatus(xi.questLog.BASTOK, xi.quest.id.bastok.A_TEST_OF_TRUE_LOVE) == xi.questStatus.QUEST_ACCEPTED and
-                                not player:hasKeyItem(xi.ki.LANCIENNE)
+                            return player:getQuestStatus(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.A_TEST_OF_TRUE_LOVE) == invaderXim.questStatus.QUEST_ACCEPTED and
+                                not player:hasKeyItem(invaderXim.ki.LANCIENNE)
                         end,
 
                         code = function(player)
-                            npcUtil.giveKeyItem(player, xi.ki.LANCIENNE)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.LANCIENNE)
                         end,
                     },
                 },
@@ -830,15 +830,15 @@ xi.treasure.treasureInfo =
 
     -----------------------------------
 
-    [xi.treasure.type.COFFER] =
+    [invaderXim.treasure.type.COFFER] =
     {
         zone =
         {
-            [xi.zone.NEWTON_MOVALPOLOS] = -- 12
+            [invaderXim.zone.NEWTON_MOVALPOLOS] = -- 12
             {
                 treasureLvl = 53,
                 key = 1063,
-                map = xi.ki.MAP_OF_NEWTON_MOVALPOLOS,
+                map = invaderXim.ki.MAP_OF_NEWTON_MOVALPOLOS,
                 points =
                 {
                     { -46.014,   17.980,  -26.274,  64 },
@@ -855,11 +855,11 @@ xi.treasure.treasureInfo =
                 gem = { 0.073, 791, 797, 784, 803, 805, 801, 802 },
             },
 
-            [xi.zone.RUAUN_GARDENS] = -- 130
+            [invaderXim.zone.RUAUN_GARDENS] = -- 130
             {
                 treasureLvl = 53,
                 key = 1058,
-                map = xi.ki.MAP_OF_THE_RUAUN_GARDENS,
+                map = invaderXim.ki.MAP_OF_THE_RUAUN_GARDENS,
                 points =
                 {
                     { -306.824,  -23.999,  230.783, 155 },
@@ -879,19 +879,19 @@ xi.treasure.treasureInfo =
                 gem = { 0.179, 791, 801, 810, 784, 802, 797, 805, 803 },
             },
 
-            [xi.zone.BEADEAUX] = -- 147
+            [invaderXim.zone.BEADEAUX] = -- 147
             {
                 treasureLvl = 53,
                 key = 1043,
                 hands =
                 {
-                    [xi.job.WHM] = true,
+                    [invaderXim.job.WHM] = true,
                 },
                 af =
                 {
-                    [xi.job.BST] = { quest = xi.quest.id.jeuno.BORGHERTZS_WILD_HANDS,     reward = 12646 }, -- Beast Jackcoat
-                    [xi.job.PLD] = { quest = xi.quest.id.jeuno.BORGHERTZS_STALWART_HANDS, reward = 14220 }, -- Gallant Breeches
-                    [xi.job.MNK] = { quest = xi.quest.id.jeuno.BORGHERTZS_STRIKING_HANDS, reward = 12639 }, -- Temple Cyclas
+                    [invaderXim.job.BST] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_WILD_HANDS,     reward = 12646 }, -- Beast Jackcoat
+                    [invaderXim.job.PLD] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_STALWART_HANDS, reward = 14220 }, -- Gallant Breeches
+                    [invaderXim.job.MNK] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_STRIKING_HANDS, reward = 12639 }, -- Temple Cyclas
                 },
                 points =
                 {
@@ -909,19 +909,19 @@ xi.treasure.treasureInfo =
                 item = { 0.385, 4820 },
             },
 
-            [xi.zone.MONASTIC_CAVERN] = -- 150
+            [invaderXim.zone.MONASTIC_CAVERN] = -- 150
             {
                 treasureLvl = 53,
                 key = 1042,
                 hands =
                 {
-                    [xi.job.THF] = true,
+                    [invaderXim.job.THF] = true,
                 },
                 af =
                 {
-                    [xi.job.DRK] = { quest = xi.quest.id.jeuno.BORGHERTZS_SHADOWY_HANDS,   reward = 14221 }, -- Chaos Flanchard
-                    [xi.job.RNG] = { quest = xi.quest.id.jeuno.BORGHERTZS_CHASING_HANDS,   reward = 12648 }, -- Hunter's Jerkin
-                    [xi.job.BLM] = { quest = xi.quest.id.jeuno.BORGHERTZS_SORCEROUS_HANDS, reward = 12641 }, -- Wizard's Coat
+                    [invaderXim.job.DRK] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_SHADOWY_HANDS,   reward = 14221 }, -- Chaos Flanchard
+                    [invaderXim.job.RNG] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_CHASING_HANDS,   reward = 12648 }, -- Hunter's Jerkin
+                    [invaderXim.job.BLM] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_SORCEROUS_HANDS, reward = 12641 }, -- Wizard's Coat
                 },
                 points =
                 {
@@ -941,16 +941,16 @@ xi.treasure.treasureInfo =
                 item = { 0.127, 13398 },
             },
 
-            [xi.zone.CASTLE_OZTROJA] = -- 151
+            [invaderXim.zone.CASTLE_OZTROJA] = -- 151
             {
                 treasureLvl = 53,
                 key = 1044,
                 af =
                 {
-                    [xi.job.DRK] = { quest = xi.quest.id.jeuno.BORGHERTZS_SHADOWY_HANDS,    reward = 12645 }, -- Chaos Cuirass
-                    [xi.job.BRD] = { quest = xi.quest.id.jeuno.BORGHERTZS_HARMONIOUS_HANDS, reward = 14223 }, -- Choral Cannions
-                    [xi.job.THF] = { quest = xi.quest.id.jeuno.BORGHERTZS_SNEAKY_HANDS,     reward = 14219 }, -- Rogue's Culottes
-                    [xi.job.RDM] = { quest = xi.quest.id.jeuno.BORGHERTZS_VERMILLION_HANDS, reward = 12642 }, -- Warlock's Tabard
+                    [invaderXim.job.DRK] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_SHADOWY_HANDS,    reward = 12645 }, -- Chaos Cuirass
+                    [invaderXim.job.BRD] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_HARMONIOUS_HANDS, reward = 14223 }, -- Choral Cannions
+                    [invaderXim.job.THF] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_SNEAKY_HANDS,     reward = 14219 }, -- Rogue's Culottes
+                    [invaderXim.job.RDM] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_VERMILLION_HANDS, reward = 12642 }, -- Warlock's Tabard
                 },
                 points =
                 {
@@ -970,18 +970,18 @@ xi.treasure.treasureInfo =
                 item = { 0.304, 14670 },
             },
 
-            [xi.zone.THE_BOYAHDA_TREE] = -- 153
+            [invaderXim.zone.THE_BOYAHDA_TREE] = -- 153
             {
                 treasureLvl = 53,
                 key = 1052,
-                map = xi.ki.MAP_OF_THE_BOYAHDA_TREE,
+                map = invaderXim.ki.MAP_OF_THE_BOYAHDA_TREE,
                 hands =
                 {
-                    [xi.job.DRG] = true,
+                    [invaderXim.job.DRG] = true,
                 },
                 af =
                 {
-                    [xi.job.NIN] = { quest = xi.quest.id.jeuno.BORGHERTZS_LURKING_HANDS, reward = 13869 }, -- Ninja Hatsuburi
+                    [invaderXim.job.NIN] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_LURKING_HANDS, reward = 13869 }, -- Ninja Hatsuburi
                 },
                 points =
                 {
@@ -1005,15 +1005,15 @@ xi.treasure.treasureInfo =
                 item = { 0.115, 4447 },
             },
 
-            [xi.zone.TEMPLE_OF_UGGALEPIH] = -- 159
+            [invaderXim.zone.TEMPLE_OF_UGGALEPIH] = -- 159
             {
                 treasureLvl = 53,
                 key = 1049,
-                map = xi.ki.MAP_OF_TEMPLE_OF_UGGALEPIH,
+                map = invaderXim.ki.MAP_OF_TEMPLE_OF_UGGALEPIH,
                 af =
                 {
-                    [xi.job.SMN] = { quest = xi.quest.id.jeuno.BORGHERTZS_CALLING_HANDS, reward = 12650 }, -- Evoker's Doublet
-                    [xi.job.SAM] = { quest = xi.quest.id.jeuno.BORGHERTZS_LOYAL_HANDS,   reward = 13781 }, -- Myochin Domaru
+                    [invaderXim.job.SMN] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_CALLING_HANDS, reward = 12650 }, -- Evoker's Doublet
+                    [invaderXim.job.SAM] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_LOYAL_HANDS,   reward = 13781 }, -- Myochin Domaru
                 },
                 points =
                 {
@@ -1032,11 +1032,11 @@ xi.treasure.treasureInfo =
                 gem = { 0.154, 797, 801, 810, 802, 805, 803 },
             },
 
-            [xi.zone.DEN_OF_RANCOR] = -- 160
+            [invaderXim.zone.DEN_OF_RANCOR] = -- 160
             {
                 treasureLvl = 53,
                 key = 1050,
-                map = xi.ki.MAP_OF_THE_DEN_OF_RANCOR,
+                map = invaderXim.ki.MAP_OF_THE_DEN_OF_RANCOR,
                 points =
                 {
                     { 371.199,   -5.059,  260.752,  95 },
@@ -1056,18 +1056,18 @@ xi.treasure.treasureInfo =
                 gem = { 0.300, 797, 805 },
             },
 
-            [xi.zone.CASTLE_ZVAHL_BAILEYS] = -- 161
+            [invaderXim.zone.CASTLE_ZVAHL_BAILEYS] = -- 161
             {
                 treasureLvl = 53,
                 key = 1048,
                 hands =
                 {
-                    [xi.job.BRD] = true,
+                    [invaderXim.job.BRD] = true,
                 },
                 af =
                 {
-                    [xi.job.WAR] = { quest = xi.quest.id.jeuno.BORGHERTZS_WARRING_HANDS, reward = 14214 }, -- Fighter's Cuisses
-                    [xi.job.THF] = { quest = xi.quest.id.jeuno.BORGHERTZS_SNEAKY_HANDS,  reward = 12643 }, -- Rogue's Vest
+                    [invaderXim.job.WAR] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_WARRING_HANDS, reward = 14214 }, -- Fighter's Cuisses
+                    [invaderXim.job.THF] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_SNEAKY_HANDS,  reward = 12643 }, -- Rogue's Vest
                 },
                 misc =
                 {
@@ -1077,7 +1077,7 @@ xi.treasure.treasureInfo =
                         end,
 
                         code = function(player)
-                            npcUtil.giveKeyItem(player, xi.ki.MIQUES_PAINTBRUSH)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.MIQUES_PAINTBRUSH)
                         end,
                     },
                 },
@@ -1097,24 +1097,24 @@ xi.treasure.treasureInfo =
                 item = { 0.189, 4995 },
             },
 
-            [xi.zone.TORAIMARAI_CANAL] = -- 169
+            [invaderXim.zone.TORAIMARAI_CANAL] = -- 169
             {
                 treasureLvl = 53,
                 key = 1057,
                 af =
                 {
-                    [xi.job.SMN] = { quest = xi.quest.id.jeuno.BORGHERTZS_CALLING_HANDS, reward = 14103 }, -- Evoker's Pigaches
+                    [invaderXim.job.SMN] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_CALLING_HANDS, reward = 14103 }, -- Evoker's Pigaches
                 },
                 misc =
                 {
                     {
                         test = function(player)
-                            return not player:hasKeyItem(xi.ki.JOKER_CARD) and
+                            return not player:hasKeyItem(invaderXim.ki.JOKER_CARD) and
                                 (player:getCharVar('Quest[2][77]Prog') == 2 or player:getCharVar('Quest[2][77]Prog') == 3)
                         end,
 
                         code = function(player)
-                            npcUtil.giveKeyItem(player, xi.ki.JOKER_CARD)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.JOKER_CARD)
                         end,
                     },
                 },
@@ -1140,37 +1140,37 @@ xi.treasure.treasureInfo =
                 gem = { 0.100, 791, 801, 784, 802, 797, 803, 805 },
             },
 
-            [xi.zone.KUFTAL_TUNNEL] = -- 174
+            [invaderXim.zone.KUFTAL_TUNNEL] = -- 174
             {
                 treasureLvl = 53,
                 key = 1051,
-                map = xi.ki.MAP_OF_THE_KUFTAL_TUNNEL,
+                map = invaderXim.ki.MAP_OF_THE_KUFTAL_TUNNEL,
                 hands =
                 {
-                    [xi.job.SAM] = true,
+                    [invaderXim.job.SAM] = true,
                 },
                 misc =
                 {
                     {
                         test = function(player)
-                            return player:getQuestStatus(xi.questLog.OUTLANDS, xi.quest.id.outlands.TRUE_WILL) == xi.questStatus.QUEST_ACCEPTED and
+                            return player:getQuestStatus(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.TRUE_WILL) == invaderXim.questStatus.QUEST_ACCEPTED and
                                 player:getCharVar('trueWillCS') == 2 and
-                                not player:hasKeyItem(xi.ki.LARGE_TRICK_BOX)
+                                not player:hasKeyItem(invaderXim.ki.LARGE_TRICK_BOX)
                         end,
 
                         code = function(player)
-                            npcUtil.giveKeyItem(player, xi.ki.LARGE_TRICK_BOX)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.LARGE_TRICK_BOX)
                         end,
                     },
 
                     {
                         test = function(player)
-                            return player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.KNIGHT_STALKER) == xi.questStatus.QUEST_ACCEPTED and
+                            return player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.KNIGHT_STALKER) == invaderXim.questStatus.QUEST_ACCEPTED and
                                 player:getCharVar('KnightStalker_Progress') == 1
                         end,
 
                         code = function(player)
-                            npcUtil.giveKeyItem(player, xi.ki.CHALLENGE_TO_THE_ROYAL_KNIGHTS)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.CHALLENGE_TO_THE_ROYAL_KNIGHTS)
                         end,
                     },
                 },
@@ -1194,18 +1194,18 @@ xi.treasure.treasureInfo =
                 gem = { 0.057, 802, 801, 797, 784, 803, 791, 805, 810 },
             },
 
-            [xi.zone.SEA_SERPENT_GROTTO] = -- 176
+            [invaderXim.zone.SEA_SERPENT_GROTTO] = -- 176
             {
                 treasureLvl = 53,
                 key = 1059,
-                map = xi.ki.MAP_OF_SEA_SERPENT_GROTTO,
+                map = invaderXim.ki.MAP_OF_SEA_SERPENT_GROTTO,
                 hands =
                 {
-                    [xi.job.SMN] = true,
+                    [invaderXim.job.SMN] = true,
                 },
                 af =
                 {
-                    [xi.job.NIN] = { quest = xi.quest.id.jeuno.BORGHERTZS_LURKING_HANDS, reward = 14101 }, -- Ninja Kyahan
+                    [invaderXim.job.NIN] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_LURKING_HANDS, reward = 14101 }, -- Ninja Kyahan
                 },
                 points =
                 {
@@ -1225,11 +1225,11 @@ xi.treasure.treasureInfo =
                 gem = { 0.450, 791, 810, 784, 802, 803, 797, 801 },
             },
 
-            [xi.zone.VELUGANNON_PALACE] = -- 177
+            [invaderXim.zone.VELUGANNON_PALACE] = -- 177
             {
                 treasureLvl = 53,
                 key = 1060,
-                map = xi.ki.MAP_OF_VELUGANNON_PALACE,
+                map = invaderXim.ki.MAP_OF_VELUGANNON_PALACE,
                 points =
                 {
                     {  101.588,   15.837,  380.587,   1 },
@@ -1246,20 +1246,20 @@ xi.treasure.treasureInfo =
                 gem = { 0.500, 791, 805 },
             },
 
-            [xi.zone.THE_ELDIEME_NECROPOLIS] = -- 195
+            [invaderXim.zone.THE_ELDIEME_NECROPOLIS] = -- 195
             {
                 treasureLvl = 53,
                 key = 1046,
                 hands =
                 {
-                    [xi.job.WAR] = true,
-                    [xi.job.RDM] = true,
-                    [xi.job.PLD] = true,
-                    [xi.job.DRK] = true,
+                    [invaderXim.job.WAR] = true,
+                    [invaderXim.job.RDM] = true,
+                    [invaderXim.job.PLD] = true,
+                    [invaderXim.job.DRK] = true,
                 },
                 af =
                 {
-                    [xi.job.BLM] = { quest = xi.quest.id.jeuno.BORGHERTZS_SORCEROUS_HANDS, reward = 14217 }, -- Wizard's Tonban
+                    [invaderXim.job.BLM] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_SORCEROUS_HANDS, reward = 14217 }, -- Wizard's Tonban
                 },
                 points =
                 {
@@ -1278,21 +1278,21 @@ xi.treasure.treasureInfo =
                 item = { 0.250, 4175 },
             },
 
-            [xi.zone.CRAWLERS_NEST] = -- 197
+            [invaderXim.zone.CRAWLERS_NEST] = -- 197
             {
                 treasureLvl = 53,
                 key = 1045,
                 hands =
                 {
-                    [xi.job.MNK] = true,
-                    [xi.job.BST] = true,
+                    [invaderXim.job.MNK] = true,
+                    [invaderXim.job.BST] = true,
                 },
                 af =
                 {
-                    [xi.job.BRD] = { quest = xi.quest.id.jeuno.BORGHERTZS_HARMONIOUS_HANDS, reward = 13857 }, -- Choral Roundlet
-                    [xi.job.WAR] = { quest = xi.quest.id.jeuno.BORGHERTZS_WARRING_HANDS,    reward = 12511 }, -- Fighter's Mask
-                    [xi.job.WHM] = { quest = xi.quest.id.jeuno.BORGHERTZS_HEALING_HANDS,    reward = 14216 }, -- Healer's Pantaloons
-                    [xi.job.RNG] = { quest = xi.quest.id.jeuno.BORGHERTZS_CHASING_HANDS,    reward = 14224 }, -- Hunter's Braccae
+                    [invaderXim.job.BRD] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_HARMONIOUS_HANDS, reward = 13857 }, -- Choral Roundlet
+                    [invaderXim.job.WAR] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_WARRING_HANDS,    reward = 12511 }, -- Fighter's Mask
+                    [invaderXim.job.WHM] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_HEALING_HANDS,    reward = 14216 }, -- Healer's Pantaloons
+                    [invaderXim.job.RNG] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_CHASING_HANDS,    reward = 14224 }, -- Hunter's Braccae
                 },
                 points =
                 {
@@ -1309,22 +1309,22 @@ xi.treasure.treasureInfo =
                 item = { 0.226, 4173 },
             },
 
-            [xi.zone.GARLAIGE_CITADEL] = -- 200
+            [invaderXim.zone.GARLAIGE_CITADEL] = -- 200
             {
                 treasureLvl = 53,
                 key = 1047,
                 hands =
                 {
-                    [xi.job.BLM] = true,
-                    [xi.job.RNG] = true,
+                    [invaderXim.job.BLM] = true,
+                    [invaderXim.job.RNG] = true,
                 },
                 af =
                 {
-                    [xi.job.BST] = { quest = xi.quest.id.jeuno.BORGHERTZS_WILD_HANDS,       reward = 12517 }, -- Beast Helm
-                    [xi.job.PLD] = { quest = xi.quest.id.jeuno.BORGHERTZS_STALWART_HANDS,   reward = 12515 }, -- Gallant Coronet
-                    [xi.job.WHM] = { quest = xi.quest.id.jeuno.BORGHERTZS_HEALING_HANDS,    reward = 13855 }, -- Healer's Cap
-                    [xi.job.MNK] = { quest = xi.quest.id.jeuno.BORGHERTZS_STRIKING_HANDS,   reward = 12512 }, -- Temple Crown
-                    [xi.job.RDM] = { quest = xi.quest.id.jeuno.BORGHERTZS_VERMILLION_HANDS, reward = 14218 }, -- Warlock's Tights
+                    [invaderXim.job.BST] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_WILD_HANDS,       reward = 12517 }, -- Beast Helm
+                    [invaderXim.job.PLD] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_STALWART_HANDS,   reward = 12515 }, -- Gallant Coronet
+                    [invaderXim.job.WHM] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_HEALING_HANDS,    reward = 13855 }, -- Healer's Cap
+                    [invaderXim.job.MNK] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_STRIKING_HANDS,   reward = 12512 }, -- Temple Crown
+                    [invaderXim.job.RDM] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_VERMILLION_HANDS, reward = 14218 }, -- Warlock's Tights
                 },
                 points =
                 {
@@ -1341,18 +1341,18 @@ xi.treasure.treasureInfo =
                 item = { 0.125, 13977 },
             },
 
-            [xi.zone.IFRITS_CAULDRON] = -- 205
+            [invaderXim.zone.IFRITS_CAULDRON] = -- 205
             {
                 treasureLvl = 53,
                 key = 1053,
-                map = xi.ki.MAP_OF_IFRITS_CAULDRON,
+                map = invaderXim.ki.MAP_OF_IFRITS_CAULDRON,
                 hands =
                 {
-                    [xi.job.NIN] = true,
+                    [invaderXim.job.NIN] = true,
                 },
                 af =
                 {
-                    [xi.job.DRG] = { quest = xi.quest.id.jeuno.BORGHERTZS_DRAGON_HANDS, reward = 12649 }, -- Drachen Mail
+                    [invaderXim.job.DRG] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_DRAGON_HANDS, reward = 12649 }, -- Drachen Mail
                 },
                 points =
                 {
@@ -1374,15 +1374,15 @@ xi.treasure.treasureInfo =
                 gem = { 0.103, 802, 797, 803, 801, 810, 791 },
             },
 
-            [xi.zone.QUICKSAND_CAVES] = -- 208
+            [invaderXim.zone.QUICKSAND_CAVES] = -- 208
             {
                 treasureLvl = 53,
                 key = 1054,
-                map = xi.ki.MAP_OF_THE_QUICKSAND_CAVES,
+                map = invaderXim.ki.MAP_OF_THE_QUICKSAND_CAVES,
                 af =
                 {
-                    [xi.job.DRG] = { quest = xi.quest.id.jeuno.BORGHERTZS_DRAGON_HANDS, reward = 14102 }, -- Drachen Greaves
-                    [xi.job.SAM] = { quest = xi.quest.id.jeuno.BORGHERTZS_LOYAL_HANDS,  reward = 14225 }, -- Myochin Haidate
+                    [invaderXim.job.DRG] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_DRAGON_HANDS, reward = 14102 }, -- Drachen Greaves
+                    [invaderXim.job.SAM] = { quest = invaderXim.quest.id.jeuno.BORGHERTZS_LOYAL_HANDS,  reward = 14225 }, -- Myochin Haidate
                 },
                 points =
                 {
@@ -1415,7 +1415,7 @@ local function doMove(npc, x, y, z)
 end
 
 local function moveChest(npc, zoneId, chestType, mimicSpawned)
-    local points = xi.treasure.treasureInfo[chestType].zone[zoneId].points
+    local points = invaderXim.treasure.treasureInfo[chestType].zone[zoneId].points
     local point = points[math.random(#points)]
     if not mimicSpawned then
         npc:hideNPC(5)
@@ -1432,7 +1432,7 @@ local function spawnMimic(player, npc)
     if mimicId then
         GetMobByID(mimicId):setSpawn(npc:getXPos(), npc:getYPos(), npc:getZPos(), npc:getRotPos())
         npcUtil.popFromQM(player, npc, mimicId, { claim = true, hide = 5 })
-        moveChest(npc, zoneId, xi.treasure.type.COFFER, true)
+        moveChest(npc, zoneId, invaderXim.treasure.type.COFFER, true)
     else
         printf('treasure.lua MIMIC id missing in zoneId %i', zoneId)
     end
@@ -1442,23 +1442,23 @@ end
 -- public functions
 -----------------------------------
 
-xi.treasure.initZone = function(zone)
+invaderXim.treasure.initZone = function(zone)
     local zoneId = zone:getID()
     local ID = zones[zoneId]
 
     if ID.npc.TREASURE_CHEST then
         local npc = GetNPCByID(ID.npc.TREASURE_CHEST)
         if npc then
-            npc:setStatus(xi.status.NORMAL)
-            moveChest(npc, zoneId, xi.treasure.type.CHEST)
+            npc:setStatus(invaderXim.status.NORMAL)
+            moveChest(npc, zoneId, invaderXim.treasure.type.CHEST)
         end
     end
 
     if ID.npc.TREASURE_COFFER then
         local npc = GetNPCByID(ID.npc.TREASURE_COFFER)
         if npc then
-            npc:setStatus(xi.status.NORMAL)
-            moveChest(npc, zoneId, xi.treasure.type.COFFER)
+            npc:setStatus(invaderXim.status.NORMAL)
+            moveChest(npc, zoneId, invaderXim.treasure.type.COFFER)
         end
     end
 end
@@ -1478,7 +1478,7 @@ end
 local function getKeyTraded(player, trade, chestInfo)
     if npcUtil.tradeHasExactly(trade, chestInfo.key) then
         return keyType.ZONE_KEY
-    elseif player:getMainJob() == xi.job.THF then
+    elseif player:getMainJob() == invaderXim.job.THF then
         for keyValue, keyData in pairs(thiefKeyInfo) do
             if npcUtil.tradeHasExactly(trade, keyData[1]) then
                 return keyValue
@@ -1491,7 +1491,7 @@ end
 
 local function getLockpickSuccessRate(player, keyTraded, chestInfo)
     if
-        player:getMainJob() == xi.job.THF and
+        player:getMainJob() == invaderXim.job.THF and
         player:getMainLvl() >= chestInfo.treasureLvl - 10
     then
         return (player:getMainLvl() / chestInfo.treasureLvl) - 0.50 + thiefKeyInfo[keyTraded][2]
@@ -1505,27 +1505,27 @@ local function handleLockpickFailure(player, npc, messageOffset, failureType)
         player:messageSpecial(messageOffset + 1, player:getID()) -- "<name> fails to open the chest."
     elseif failureType == 2 then
         player:messageSpecial(messageOffset + 2) -- "The chest was trapped!"
-        player:addStatusEffect(xi.effect.WEAKNESS, 1, 0, math.random(300, 10800)) -- 5 minutes to 3 hours
+        player:addStatusEffect(invaderXim.effect.WEAKNESS, 1, 0, math.random(300, 10800)) -- 5 minutes to 3 hours
     else
         player:messageSpecial(messageOffset + 4) -- "The chest was a mimic!"
         spawnMimic(player, npc)
     end
 end
 
-xi.treasure.onTrade = function(player, npc, trade, chestType)
+invaderXim.treasure.onTrade = function(player, npc, trade, chestType)
     local zoneId = player:getZoneID()
     local ID = zones[zoneId]
     local msgBase = ID.text.CHEST_UNLOCKED
-    local info = xi.treasure.treasureInfo[chestType].zone[zoneId]
+    local info = invaderXim.treasure.treasureInfo[chestType].zone[zoneId]
     local mJob = player:getMainJob()
     local activeHands = player:getCharVar('BorghertzAlreadyActiveWithJob')
     local illusionCooldown  = npc:getLocalVar('illusionCooldown')
 
     -- NOTE: The client blocks actions like this while invisible, but it's very easy to inject an action packet to get
     -- around this restriction. Strip invisible to make sure that case is covered.
-    player:delStatusEffect(xi.effect.INVISIBLE)
+    player:delStatusEffect(invaderXim.effect.INVISIBLE)
     -- Interacting with Treasures and Coffers drops Sneak
-    player:delStatusEffect(xi.effect.SNEAK)
+    player:delStatusEffect(invaderXim.effect.SNEAK)
 
     -- determine type of key traded
     local keyTraded = getKeyTraded(player, trade, info)
@@ -1540,7 +1540,7 @@ xi.treasure.onTrade = function(player, npc, trade, chestType)
     if keyTraded ~= keyType.ZONE_KEY then
 
         -- can't lockpick while weakened
-        if player:hasStatusEffect(xi.effect.WEAKNESS) then
+        if player:hasStatusEffect(invaderXim.effect.WEAKNESS) then
             player:messageSpecial(msgBase + 3)
             return
         end
@@ -1551,22 +1551,22 @@ xi.treasure.onTrade = function(player, npc, trade, chestType)
             player:confirmTrade()
 
             -- Determine type of failure, Coffers have 3 possibilities, and chests have 2
-            -- Use xi.treasure.type table to establish base value.
+            -- Use invaderXim.treasure.type table to establish base value.
             handleLockpickFailure(player, npc, msgBase, math.random(chestType + 1))
             return
         end
     end
 
-    if chestType == xi.treasure.type.COFFER then
+    if chestType == invaderXim.treasure.type.COFFER then
         -- old gauntlets
         if
             activeHands > 0 and
             info.hands and
             info.hands[activeHands] and
-            not player:hasKeyItem(xi.ki.OLD_GAUNTLETS)
+            not player:hasKeyItem(invaderXim.ki.OLD_GAUNTLETS)
         then
             player:messageSpecial(msgBase)
-            npcUtil.giveKeyItem(player, xi.ki.OLD_GAUNTLETS)
+            npcUtil.giveKeyItem(player, invaderXim.ki.OLD_GAUNTLETS)
             player:confirmTrade()
             moveChest(npc, zoneId, chestType)
             return
@@ -1576,7 +1576,7 @@ xi.treasure.onTrade = function(player, npc, trade, chestType)
         if
             info.af and
             info.af[mJob] and
-            player:getQuestStatus(xi.questLog.JEUNO, info.af[mJob].quest) >= xi.questStatus.QUEST_ACCEPTED and
+            player:getQuestStatus(invaderXim.questLog.JEUNO, info.af[mJob].quest) >= invaderXim.questStatus.QUEST_ACCEPTED and
             not player:hasItem(info.af[mJob].reward)
         then
             player:messageSpecial(msgBase)
@@ -1658,19 +1658,19 @@ xi.treasure.onTrade = function(player, npc, trade, chestType)
     end
 
     player:confirmTrade()
-    if chestType == xi.treasure.type.CHEST then
-        npc:setLocalVar('illusionCooldown', os.time() + math.random(xi.settings.main.CHEST_MIN_ILLUSION_TIME, xi.settings.main.CHEST_MAX_ILLUSION_TIME))
+    if chestType == invaderXim.treasure.type.CHEST then
+        npc:setLocalVar('illusionCooldown', os.time() + math.random(invaderXim.settings.main.CHEST_MIN_ILLUSION_TIME, invaderXim.settings.main.CHEST_MAX_ILLUSION_TIME))
     else
-        npc:setLocalVar('illusionCooldown', os.time() + math.random(xi.settings.main.COFFER_MIN_ILLUSION_TIME, xi.settings.main.COFFER_MAX_ILLUSION_TIME))
+        npc:setLocalVar('illusionCooldown', os.time() + math.random(invaderXim.settings.main.COFFER_MIN_ILLUSION_TIME, invaderXim.settings.main.COFFER_MAX_ILLUSION_TIME))
     end
 
     moveChest(npc, zoneId, chestType)
 end
 
-xi.treasure.onTrigger = function(player, chestType)
+invaderXim.treasure.onTrigger = function(player, chestType)
     local zoneId = player:getZoneID()
     local msgBase = zones[zoneId].text.CHEST_UNLOCKED
-    local info = xi.treasure.treasureInfo[chestType].zone[zoneId]
+    local info = invaderXim.treasure.treasureInfo[chestType].zone[zoneId]
 
     player:messageSpecial(msgBase + 7, info.key)
 end

@@ -7,7 +7,7 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    local encumbrance = target:getStatusEffect(xi.effect.ENCUMBRANCE_I)
+    local encumbrance = target:getStatusEffect(invaderXim.effect.ENCUMBRANCE_I)
     if encumbrance then
         local power = encumbrance:getPower()
         if bit.band(power, 0x8400) > 0 then
@@ -19,16 +19,16 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    local encumbrance = target:getStatusEffect(xi.effect.ENCUMBRANCE_I)
+    local encumbrance = target:getStatusEffect(invaderXim.effect.ENCUMBRANCE_I)
     if not encumbrance then
         return
     end
 
     local power = encumbrance:getPower()
     local newpower = bit.band(power, bit.bnot(0x8400))
-    target:delStatusEffectSilent(xi.effect.ENCUMBRANCE_I)
+    target:delStatusEffectSilent(invaderXim.effect.ENCUMBRANCE_I)
     if newpower > 0 then
-        target:addStatusEffectEx(xi.effect.ENCUMBRANCE_I, xi.effect.ENCUMBRANCE_I, newpower, 0, 0)
+        target:addStatusEffectEx(invaderXim.effect.ENCUMBRANCE_I, invaderXim.effect.ENCUMBRANCE_I, newpower, 0, 0)
     end
 
     target:messageText(target, zones[target:getZoneID()].text.CELL_OFFSET + 5)

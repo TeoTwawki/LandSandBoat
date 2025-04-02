@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if player:hasCompletedQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.BEYOND_INFINITY) then
+    if player:hasCompletedQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.BEYOND_INFINITY) then
         player:startEvent(10115, player:getGil())
     else
         player:startEvent(10116)
@@ -18,7 +18,7 @@ entity.onEventFinish = function(player, csid, option, npc)
     if csid == 10115 then
         if option == 1 and player:getGil() >= 750 then
             player:delGil(750)
-            xi.teleport.to(player, xi.teleport.id.GHELSBA_HUT)
+            invaderXim.teleport.to(player, invaderXim.teleport.id.GHEIXIMA_HUT)
         elseif option == 2 and player:getGil() >= 750 then
             player:delGil(750)
             player:setPos(0, 0, 0, 0, 139)

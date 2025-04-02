@@ -15,16 +15,16 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    local typeEffect = xi.effect.CHARM_I
+    local typeEffect = invaderXim.effect.CHARM_I
     local duration = 30
 
     if not target:isPC() then
-        skill:setMsg(xi.msg.basic.SKILL_MISS)
+        skill:setMsg(invaderXim.msg.basic.SKILL_MISS)
         return typeEffect
     end
 
-    local msg = xi.mobskills.mobStatusEffectMove(mob, target, typeEffect, 0, 3, duration)
-    if msg == xi.msg.basic.SKILL_ENFEEB_IS then
+    local msg = invaderXim.mobskills.mobStatusEffectMove(mob, target, typeEffect, 0, 3, duration)
+    if msg == invaderXim.msg.basic.SKILL_ENFEEB_IS then
         mob:charm(target)
     end
 

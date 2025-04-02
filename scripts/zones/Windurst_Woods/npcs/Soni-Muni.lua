@@ -23,37 +23,37 @@ local pathNodes =
 
 entity.onSpawn = function(npc)
     npc:initNpcAi()
-    npc:setPos(xi.path.first(pathNodes))
-    npc:pathThrough(pathNodes, xi.path.flag.PATROL)
+    npc:setPos(invaderXim.path.first(pathNodes))
+    npc:pathThrough(pathNodes, invaderXim.path.flag.PATROL)
 end
 
 entity.onTrade = function(player, npc, trade)
     if
-        player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.THE_AMAZIN_SCORPIO) == xi.questStatus.QUEST_ACCEPTED and
-        npcUtil.tradeHas(trade, xi.item.SCORPION_STINGER)
+        player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.THE_AMAZIN_SCORPIO) == invaderXim.questStatus.QUEST_ACCEPTED and
+        npcUtil.tradeHas(trade, invaderXim.item.SCORPION_STINGER)
     then
         player:startEvent(484)
     end
 end
 
 entity.onTrigger = function(player, npc)
-    local amazinScorpio = player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.THE_AMAZIN_SCORPIO)
+    local amazinScorpio = player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.THE_AMAZIN_SCORPIO)
     local wildcatWindurst = player:getCharVar('WildcatWindurst')
 
     if
-        player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.LURE_OF_THE_WILDCAT) == xi.questStatus.QUEST_ACCEPTED and
+        player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.LURE_OF_THE_WILDCAT) == invaderXim.questStatus.QUEST_ACCEPTED and
         not utils.mask.getBit(wildcatWindurst, 0)
     then
         player:startEvent(735)
-    elseif amazinScorpio == xi.questStatus.QUEST_COMPLETED then
+    elseif amazinScorpio == invaderXim.questStatus.QUEST_COMPLETED then
         player:startEvent(485)
-    elseif amazinScorpio == xi.questStatus.QUEST_ACCEPTED then
-        player:startEvent(482, 0, 0, xi.item.SCORPION_STINGER)
+    elseif amazinScorpio == invaderXim.questStatus.QUEST_ACCEPTED then
+        player:startEvent(482, 0, 0, invaderXim.item.SCORPION_STINGER)
     elseif
-        amazinScorpio == xi.questStatus.QUEST_AVAILABLE and
-        player:getFameLevel(xi.fameArea.WINDURST) >= 2
+        amazinScorpio == invaderXim.questStatus.QUEST_AVAILABLE and
+        player:getFameLevel(invaderXim.fameArea.WINDURST) >= 2
     then
-        player:startEvent(481, 0, 0, xi.item.SCORPION_STINGER)
+        player:startEvent(481, 0, 0, invaderXim.item.SCORPION_STINGER)
     else
         player:startEvent(421)
     end
@@ -61,10 +61,10 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 481 then
-        player:addQuest(xi.questLog.WINDURST, xi.quest.id.windurst.THE_AMAZIN_SCORPIO)
+        player:addQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.THE_AMAZIN_SCORPIO)
     elseif
         csid == 484 and
-        npcUtil.completeQuest(player, xi.questLog.WINDURST, xi.quest.id.windurst.THE_AMAZIN_SCORPIO, { fame = 80, title = xi.title.GREAT_GRAPPLER_SCORPIO, gil = 1500 })
+        npcUtil.completeQuest(player, invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.THE_AMAZIN_SCORPIO, { fame = 80, title = invaderXim.title.GREAT_GRAPPLER_SCORPIO, gil = 1500 })
     then
         player:confirmTrade()
     elseif csid == 735 then

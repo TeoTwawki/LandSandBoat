@@ -10,14 +10,14 @@
 -- Tosuka-Porika    : !pos -26 -6 103 238
 -- _4pc             : !pos 132 12 -19 169
 -----------------------------------
-local toraimaraiID = zones[xi.zone.TORAIMARAI_CANAL]
+local toraimaraiID = zones[invaderXim.zone.TORAIMARAI_CANAL]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_SIXTH_MINISTRY)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_SIXTH_MINISTRY)
 
 mission.reward =
 {
-    keyItem    = xi.ki.BLANK_BOOK_OF_THE_GODS,
+    keyItem    = invaderXim.ki.BLANK_BOOK_OF_THE_GODS,
     rankPoints = 700,
 }
 
@@ -32,11 +32,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onEventFinish =
             {
@@ -44,7 +44,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onEventFinish =
             {
@@ -52,7 +52,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onEventFinish =
             {
@@ -60,7 +60,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onEventFinish =
             {
@@ -74,7 +74,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Tosuka-Porika'] =
             {
@@ -82,9 +82,9 @@ mission.sections =
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
                     if missionStatus == 0 then
-                        return mission:progressEvent(715, 0, xi.ki.OPTISTERY_RING)
+                        return mission:progressEvent(715, 0, invaderXim.ki.OPTISTERY_RING)
                     elseif missionStatus == 1 then
-                        return mission:progressEvent(716, 0, xi.ki.OPTISTERY_RING)
+                        return mission:progressEvent(716, 0, invaderXim.ki.OPTISTERY_RING)
                     elseif missionStatus == 2 then
                         return mission:progressEvent(724)
                     end
@@ -94,13 +94,13 @@ mission.sections =
             onEventFinish =
             {
                 [715] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.OPTISTERY_RING)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.OPTISTERY_RING)
                     player:setMissionStatus(mission.areaId, 1)
                 end,
 
                 [724] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.OPTISTERY_RING)
+                        player:delKeyItem(invaderXim.ki.OPTISTERY_RING)
                     end
                 end
             },
@@ -113,7 +113,7 @@ mission.sections =
                 player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.TORAIMARAI_CANAL] =
+        [invaderXim.zone.TORAIMARAI_CANAL] =
         {
             ['_4pc'] =
             {

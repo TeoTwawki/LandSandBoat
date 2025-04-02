@@ -8,19 +8,19 @@ local quest = HiddenQuest:new('Invitation_Cards')
 
 local invitationCards =
 {
-    xi.ki.RED_INVITATION_CARD,
-    xi.ki.BLUE_INVITATION_CARD,
-    xi.ki.GREEN_INVITATION_CARD,
-    xi.ki.WHITE_INVITATION_CARD,
+    invaderXim.ki.RED_INVITATION_CARD,
+    invaderXim.ki.BLUE_INVITATION_CARD,
+    invaderXim.ki.GREEN_INVITATION_CARD,
+    invaderXim.ki.WHITE_INVITATION_CARD,
 }
 
 local rewards =
 {
     [0] = { coin = 0,                               amount = 0 },
-    [1] = { coin = xi.item.IMPERIAL_BRONZE_PIECE,  amount = 1 },
-    [2] = { coin = xi.item.IMPERIAL_BRONZE_PIECE,  amount = 2 },
-    [3] = { coin = xi.item.IMPERIAL_BRONZE_PIECE,  amount = 3 },
-    [4] = { coin = xi.item.IMPERIAL_MYTHRIL_PIECE, amount = 1 },
+    [1] = { coin = invaderXim.item.IMPERIAL_BRONZE_PIECE,  amount = 1 },
+    [2] = { coin = invaderXim.item.IMPERIAL_BRONZE_PIECE,  amount = 2 },
+    [3] = { coin = invaderXim.item.IMPERIAL_BRONZE_PIECE,  amount = 3 },
+    [4] = { coin = invaderXim.item.IMPERIAL_MYTHRIL_PIECE, amount = 1 },
 }
 
 local function getCards(player)
@@ -50,7 +50,7 @@ quest.sections =
             return getCards(player) > 0
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] =
             {
@@ -79,7 +79,7 @@ quest.sections =
                     if option == 1 then
                         local cards, _, _ = getCards(player)
 
-                        player:updateEvent({ [0] = cards, [1] = xi.item.IMPERIAL_BRONZE_PIECE, [2] = 1, text_table = 0 })
+                        player:updateEvent({ [0] = cards, [1] = invaderXim.item.IMPERIAL_BRONZE_PIECE, [2] = 1, text_table = 0 })
                     end
                 end,
             },
@@ -108,7 +108,7 @@ quest.sections =
                     if option == 3 then
                         local cards, _, _ = getCards(player)
 
-                        if npcUtil.giveItem(player, xi.item.IMPERIAL_BRONZE_PIECE) then
+                        if npcUtil.giveItem(player, invaderXim.item.IMPERIAL_BRONZE_PIECE) then
                             deleteCards(player)
 
                             local count = quest:getVar(player, 'Prog')

@@ -1,4 +1,4 @@
--- local ID = zones[xi.zone.ABYSSEA_ALTEPA]
+-- local ID = zones[invaderXim.zone.ABYSSEA_ALTEPA]
 
 return {
     ['Bonarpant']         = { event = 336 },

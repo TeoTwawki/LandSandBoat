@@ -6,29 +6,29 @@
 -- Vilatroire : !pos -260 -70 423 100
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.INTRODUCTION_TO_TEAMWORK)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.INTRODUCTION_TO_TEAMWORK)
 
 quest.reward =
 {
-    item  = xi.item.SHELL_RING,
+    item  = invaderXim.item.SHELL_RING,
     fame  = 80,
-    title = xi.title.THIRD_RATE_ORGANIZER,
+    title = invaderXim.title.THIRD_RATE_ORGANIZER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.WEST_RONFAURE] =
+        [invaderXim.zone.WEST_RONFAURE] =
         {
             ['Vilatroire'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:getFameLevel(xi.fameArea.SANDORIA) >= 2 and
+                        player:getFameLevel(invaderXim.fameArea.SANDORIA) >= 2 and
                         player:getMainLvl() >= 10
                     then
                         return quest:progressEvent(135)
@@ -50,10 +50,10 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.WEST_RONFAURE] =
+        [invaderXim.zone.WEST_RONFAURE] =
         {
             ['Vilatroire'] =
             {

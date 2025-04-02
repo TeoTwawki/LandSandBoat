@@ -4,7 +4,7 @@
 -- Type: Item Deliverer
 -- !pos 61.899 -2.5 -112.956 241
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WOODS]
+local ID = zones[invaderXim.zone.WINDURST_WOODS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.MORIMAR_BASALT_FIELDS] =
+zones[invaderXim.zone.MORIMAR_BASALT_FIELDS] =
 {
     text =
     {
@@ -40,4 +40,4 @@ zones[xi.zone.MORIMAR_BASALT_FIELDS] =
     },
 }
 
-return zones[xi.zone.MORIMAR_BASALT_FIELDS]
+return zones[invaderXim.zone.MORIMAR_BASALT_FIELDS]

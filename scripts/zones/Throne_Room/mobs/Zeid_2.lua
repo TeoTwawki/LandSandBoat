@@ -9,10 +9,10 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
-            { id = xi.jsa.BLOOD_WEAPON, hpp = math.random(20, 50) },
+            { id = invaderXim.jsa.BLOOD_WEAPON, hpp = math.random(20, 50) },
         },
     })
 end

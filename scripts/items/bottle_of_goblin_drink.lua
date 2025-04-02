@@ -11,10 +11,10 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    if not target:hasStatusEffect(xi.effect.FOOD) then
-        target:addStatusEffect(xi.effect.FOOD, 1, 3, 10800, 4541)
+    if not target:hasStatusEffect(invaderXim.effect.FOOD) then
+        target:addStatusEffect(invaderXim.effect.FOOD, 1, 3, 10800, 4541)
     else
-        target:messageBasic(xi.msg.basic.NO_EFFECT)
+        target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
     end
 end
 
@@ -22,7 +22,7 @@ itemObject.onEffectGain = function(target, effect)
 end
 
 itemObject.onEffectTick = function(target, effect)
-    if target:hasStatusEffect(xi.effect.HEALING) then
+    if target:hasStatusEffect(invaderXim.effect.HEALING) then
         target:addMP(effect:getPower())
     end
 end

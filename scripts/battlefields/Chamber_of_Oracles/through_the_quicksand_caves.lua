@@ -3,12 +3,12 @@
 -- Name: Zilart Mission 6
 -- !pos -221 -24 19 206
 -----------------------------------
-local chamberOfOraclesID = zones[xi.zone.CHAMBER_OF_ORACLES]
+local chamberOfOraclesID = zones[invaderXim.zone.CHAMBER_OF_ORACLES]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId                = xi.zone.CHAMBER_OF_ORACLES,
-    battlefieldId         = xi.battlefield.id.THROUGH_THE_QUICKSAND_CAVES,
+    zoneId                = invaderXim.zone.CHAMBER_OF_ORACLES,
+    battlefieldId         = invaderXim.battlefield.id.THROUGH_THE_QUICKSAND_CAVES,
     canLoseExp            = false,
     isMission             = true,
     allowTrusts           = true,
@@ -18,9 +18,9 @@ local content = BattlefieldMission:new({
     index                 = 0,
     entryNpc              = 'SC_Entrance',
     exitNpc               = 'Shimmering_Circle',
-    missionArea           = xi.mission.log_id.ZILART,
-    mission               = xi.mission.id.zilart.THROUGH_THE_QUICKSAND_CAVES,
-    missionStatusArea     = xi.mission.log_id.ZILART,
+    missionArea           = invaderXim.mission.log_id.ZILART,
+    mission               = invaderXim.mission.id.zilart.THROUGH_THE_QUICKSAND_CAVES,
+    missionStatusArea     = invaderXim.mission.log_id.ZILART,
     requiredMissionStatus = 0,
 })
 
@@ -49,7 +49,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

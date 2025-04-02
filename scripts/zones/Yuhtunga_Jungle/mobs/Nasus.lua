@@ -2,13 +2,13 @@
 -- Area: Yuhtunga Jungle
 --  Mob: Nasus
 -----------------------------------
-local ID = zones[xi.zone.YUHTUNGA_JUNGLE]
+local ID = zones[invaderXim.zone.YUHTUNGA_JUNGLE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

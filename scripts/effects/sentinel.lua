@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.SENTINEL
+-- invaderXim.effect.SENTINEL
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -7,13 +7,13 @@ local effectObject = {}
 effectObject.onEffectGain = function(target, effect)
     local enmityBonus = 100
 
-    if target:getMainJob() ~= xi.job.PLD then
+    if target:getMainJob() ~= invaderXim.job.PLD then
         enmityBonus = 50
     end
 
-    target:addMod(xi.mod.UDMGPHYS, -effect:getPower())
-    target:addMod(xi.mod.ENMITY, enmityBonus)
-    target:addMod(xi.mod.ENMITY_LOSS_REDUCTION, effect:getSubPower())
+    target:addMod(invaderXim.mod.UDMGPHYS, -effect:getPower())
+    target:addMod(invaderXim.mod.ENMITY, enmityBonus)
+    target:addMod(invaderXim.mod.ENMITY_LOSS_REDUCTION, effect:getSubPower())
 end
 
 effectObject.onEffectTick = function(target, effect)
@@ -31,20 +31,20 @@ effectObject.onEffectTick = function(target, effect)
         end
 
         effect:setPower(power - decayby)
-        target:delMod(xi.mod.UDMGPHYS, -decayby)
+        target:delMod(invaderXim.mod.UDMGPHYS, -decayby)
     end
 end
 
 effectObject.onEffectLose = function(target, effect)
     local enmityBonus = 100
 
-    if target:getMainJob() ~= xi.job.PLD then
+    if target:getMainJob() ~= invaderXim.job.PLD then
         enmityBonus = 50
     end
 
-    target:delMod(xi.mod.UDMGPHYS, -effect:getPower())
-    target:delMod(xi.mod.ENMITY, enmityBonus)
-    target:delMod(xi.mod.ENMITY_LOSS_REDUCTION, effect:getSubPower())
+    target:delMod(invaderXim.mod.UDMGPHYS, -effect:getPower())
+    target:delMod(invaderXim.mod.ENMITY, enmityBonus)
+    target:delMod(invaderXim.mod.ENMITY_LOSS_REDUCTION, effect:getSubPower())
 end
 
 return effectObject

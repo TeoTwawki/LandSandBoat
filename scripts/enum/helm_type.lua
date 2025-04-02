@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.helmType
-xi.helmType =
+---@enum invaderXim.helmType
+invaderXim.helmType =
 {
     HARVESTING = 1,
     EXCAVATION = 2,

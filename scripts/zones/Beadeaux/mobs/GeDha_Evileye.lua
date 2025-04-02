@@ -9,8 +9,8 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 240)
-    xi.magian.onMobDeath(mob, player, optParams, set{ 283 })
+    invaderXim.hunts.checkHunt(mob, player, 240)
+    invaderXim.magian.onMobDeath(mob, player, optParams, set{ 283 })
 end
 
 return entity

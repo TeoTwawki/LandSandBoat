@@ -10,8 +10,8 @@ local mobskillObject = {}
 
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
     if
-        mob:isMobType(xi.mobType.NOTORIOUS) or
-        target:hasStatusEffect(xi.effect.BATTLEFIELD)
+        mob:isMobType(invaderXim.mobType.NOTORIOUS) or
+        target:hasStatusEffect(invaderXim.effect.BATTLEFIELD)
     then
         return 0
     end
@@ -22,9 +22,9 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     -- time to drain HP. 50-100
     local power = math.random(0, 151) + 150
-    local dmg = xi.mobskills.mobFinalAdjustments(power, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.DARK, xi.mobskills.shadowBehavior.NUMSHADOWS_1)
+    local dmg = invaderXim.mobskills.mobFinalAdjustments(power, mob, skill, target, invaderXim.attackType.MAGICAL, invaderXim.damageType.DARK, invaderXim.mobskills.shadowBehavior.NUMSHADOWS_1)
 
-    skill:setMsg(xi.mobskills.mobPhysicalDrainMove(mob, target, skill, xi.mobskills.drainType.HP, dmg))
+    skill:setMsg(invaderXim.mobskills.mobPhysicalDrainMove(mob, target, skill, invaderXim.mobskills.drainType.HP, dmg))
 
     return dmg
 end

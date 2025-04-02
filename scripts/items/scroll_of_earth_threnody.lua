@@ -7,11 +7,11 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return target:canLearnSpell(xi.magic.spell.EARTH_THRENODY)
+    return target:canLearnSpell(invaderXim.magic.spell.EARTH_THRENODY)
 end
 
 itemObject.onItemUse = function(target)
-    target:addSpell(xi.magic.spell.EARTH_THRENODY)
+    target:addSpell(invaderXim.magic.spell.EARTH_THRENODY)
 end
 
 return itemObject

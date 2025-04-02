@@ -464,7 +464,7 @@ OSSL_DEPRECATEDIN_3_0 int ERR_load_X509V3_strings(void);
 #  define CRYPTO_F_CRYPTO_OCB128_INIT                      0
 #  define CRYPTO_F_CRYPTO_SET_EX_DATA                      0
 #  define CRYPTO_F_GET_AND_LOCK                            0
-#  define CRYPTO_F_OPENSSL_ATEXIT                          0
+#  define CRYPTO_F_OPENSSL_ATIXIMT                          0
 #  define CRYPTO_F_OPENSSL_BUF2HEXSTR                      0
 #  define CRYPTO_F_OPENSSL_FOPEN                           0
 #  define CRYPTO_F_OPENSSL_HEXSTR2BUF                      0
@@ -1062,7 +1062,7 @@ OSSL_DEPRECATEDIN_3_0 int ERR_load_X509V3_strings(void);
 #  define PKCS7_F_PKCS7_ADD_SIGNATURE                      0
 #  define PKCS7_F_PKCS7_ADD_SIGNER                         0
 #  define PKCS7_F_PKCS7_BIO_ADD_DIGEST                     0
-#  define PKCS7_F_PKCS7_COPY_EXISTING_DIGEST               0
+#  define PKCS7_F_PKCS7_COPY_IXIMSTING_DIGEST               0
 #  define PKCS7_F_PKCS7_CTRL                               0
 #  define PKCS7_F_PKCS7_DATADECODE                         0
 #  define PKCS7_F_PKCS7_DATAFINAL                          0

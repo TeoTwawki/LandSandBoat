@@ -2,7 +2,7 @@
 -- Area: Mamook
 --  Mob: Gulool Ja Ja
 -----------------------------------
-local ID = zones[xi.zone.MAMOOK]
+local ID = zones[invaderXim.zone.MAMOOK]
 mixins =
 {
     require('scripts/mixins/job_special'),
@@ -13,7 +13,7 @@ mixins =
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMod(xi.mod.DOUBLE_ATTACK, 20)
+    mob:setMod(invaderXim.mod.DOUBLE_ATTACK, 20)
 end
 
 entity.onMobEngage = function(mob, target)
@@ -41,7 +41,7 @@ entity.onMobFight = function(mob, target)
 
     for i = ID.mob.GULOOL_JA_JA + 1, ID.mob.GULOOL_JA_JA + 4 do
         local pet = GetMobByID(i)
-        if pet and pet:getCurrentAction() == xi.act.ROAMING then
+        if pet and pet:getCurrentAction() == invaderXim.act.ROAMING then
             pet:updateEnmity(target)
         end
     end
@@ -52,7 +52,7 @@ entity.onMobDisengage = function(mob)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.SHINING_SCALE_RIFLER)
+    player:addTitle(invaderXim.title.SHINING_SCALE_RIFLER)
     for i = 1, 4 do DespawnMob(ID.mob.GULOOL_JA_JA + i) end
 end
 

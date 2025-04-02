@@ -13,7 +13,7 @@ local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
     local result = 0
-    if target:hasStatusEffect(xi.effect.SMITHING_IMAGERY) then
+    if target:hasStatusEffect(invaderXim.effect.SMITHING_IMAGERY) then
         result = 237
     end
 
@@ -21,15 +21,15 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffect(xi.effect.SMITHING_IMAGERY, 3, 0, 480)
+    target:addStatusEffect(invaderXim.effect.SMITHING_IMAGERY, 3, 0, 480)
 end
 
 itemObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.SMITH, 1)
+    target:addMod(invaderXim.mod.SMITH, 1)
 end
 
 itemObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.SMITH, 1)
+    target:delMod(invaderXim.mod.SMITH, 1)
 end
 
 return itemObject

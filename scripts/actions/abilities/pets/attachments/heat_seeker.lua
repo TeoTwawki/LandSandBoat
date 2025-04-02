@@ -12,7 +12,7 @@ attachmentObject.onEquip = function(automaton)
     automaton:addListener('AUTOMATON_AI_TICK', 'AUTO_HEAT_SEEKER_TICK', function(pet, target)
         if pet:getLocalVar('heatseekertick') > 0 then
             local master = pet:getMaster()
-            local maneuvers = master:countEffect(xi.effect.THUNDER_MANEUVER)
+            local maneuvers = master:countEffect(invaderXim.effect.THUNDER_MANEUVER)
             local lasttick = pet:getLocalVar('heatseekertick')
             local tick = VanadielTime()
             local dt = tick - lasttick
@@ -25,7 +25,7 @@ attachmentObject.onEquip = function(automaton)
                 end
 
                 if amount ~= 0 then
-                    pet:addMod(xi.mod.ACC, amount)
+                    pet:addMod(invaderXim.mod.ACC, amount)
                 end
             else
                 amount = -1 * dt
@@ -34,7 +34,7 @@ attachmentObject.onEquip = function(automaton)
                 end
 
                 if amount ~= 0 then
-                    pet:delMod(xi.mod.ACC, -amount)
+                    pet:delMod(invaderXim.mod.ACC, -amount)
                 end
             end
 
@@ -48,7 +48,7 @@ attachmentObject.onEquip = function(automaton)
 
     automaton:addListener('DISENGAGE', 'AUTO_HEAT_SEEKER_DISENGAGE', function(pet)
         if pet:getLocalVar('heatseeker') > 0 then
-            pet:delMod(xi.mod.ACC, pet:getLocalVar('heatseeker'))
+            pet:delMod(invaderXim.mod.ACC, pet:getLocalVar('heatseeker'))
             pet:setLocalVar('heatseeker', 0)
         end
 

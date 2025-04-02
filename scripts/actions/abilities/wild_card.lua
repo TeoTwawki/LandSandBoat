@@ -9,13 +9,13 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    ability:setRecast(math.max(0, ability:getRecast() - player:getMod(xi.mod.ONE_HOUR_RECAST) * 60))
+    ability:setRecast(math.max(0, ability:getRecast() - player:getMod(invaderXim.mod.ONE_HOUR_RECAST) * 60))
 
     return 0, 0
 end
 
 abilityObject.onUseAbility = function(caster, target, ability, action)
-    return xi.job_utils.corsair.useWildCard(caster, target, ability, action)
+    return invaderXim.job_utils.corsair.useWildCard(caster, target, ability, action)
 end
 
 return abilityObject

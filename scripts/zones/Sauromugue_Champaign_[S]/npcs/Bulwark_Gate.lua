@@ -8,11 +8,11 @@ local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.KNOT_QUITE_THERE) == xi.questStatus.QUEST_ACCEPTED and
+        player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.KNOT_QUITE_THERE) == invaderXim.questStatus.QUEST_ACCEPTED and
         player:getCharVar('KnotQuiteThere') == 1
     then
         if
-            trade:hasItemQty(xi.item.ONE_HUNDRED_EIGHT_KNOT_QUIPU, 1) and
+            trade:hasItemQty(invaderXim.item.ONE_HUNDRED_EIGHT_KNOT_QUIPU, 1) and
             trade:getGil() == 0 and
             trade:getItemCount() == 1
         then
@@ -22,7 +22,7 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    if player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.KNOT_QUITE_THERE) == xi.questStatus.QUEST_ACCEPTED then
+    if player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.KNOT_QUITE_THERE) == invaderXim.questStatus.QUEST_ACCEPTED then
         if player:getCharVar('KnotQuiteThere') == 0 then
             player:startEvent(105)
         end

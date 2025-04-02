@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.HEADY_ARTIFICE
+-- invaderXim.effect.HEADY_ARTIFICE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

@@ -11,7 +11,7 @@ entity.onTrigger = function(player, npc)
     local z = player:getZPos()
 
     if x >= 1.51 and x <= 9.49 and z >= 273.1 and z <= 281 then
-        if player:hasKeyItem(xi.ki.RHINOSTERY_CERTIFICATE) then
+        if player:hasKeyItem(invaderXim.ki.RHINOSTERY_CERTIFICATE) then
             player:startEvent(401)
         else
             player:startEvent(264)

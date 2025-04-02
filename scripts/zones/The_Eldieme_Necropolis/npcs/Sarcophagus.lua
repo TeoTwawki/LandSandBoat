@@ -4,7 +4,7 @@
 -- Involved in Quests: The Requiem (BARD AF2), A New Dawn (BST AF3)
 -- !pos -420 8 500 195
 -----------------------------------
-local ID = zones[xi.zone.THE_ELDIEME_NECROPOLIS]
+local ID = zones[invaderXim.zone.THE_ELDIEME_NECROPOLIS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -16,7 +16,7 @@ entity.onTrade = function(player, npc, trade)
     if
         player:getCharVar('TheRequiemCS') == 3 and
         player:getCharVar('TheRequiemYumKilled') == 0 and
-        npcUtil.tradeHas(trade, xi.item.FLASK_OF_HOLY_WATER) and
+        npcUtil.tradeHas(trade, invaderXim.item.FLASK_OF_HOLY_WATER) and
         offset == player:getCharVar('TheRequiemRandom') - 1 and
         npcUtil.popFromQM(player, npc, { ID.mob.YUM_KIMIL, ID.mob.YUM_KIMIL + 1, ID.mob.YUM_KIMIL + 2 }, { hide = 0 })
     then
@@ -33,7 +33,7 @@ entity.onTrigger = function(player, npc)
 
     -- A NEW DAWN (Beastmaster AF3)
     if
-        player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.A_NEW_DAWN) == xi.questStatus.QUEST_ACCEPTED and
+        player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.A_NEW_DAWN) == invaderXim.questStatus.QUEST_ACCEPTED and
         npc:getID() == ID.npc.SARCOPHAGUS_OFFSET
     then
         local aNewDawnEvent = player:getCharVar('ANewDawn_Event')
@@ -70,15 +70,15 @@ entity.onEventFinish = function(player, csid, option, npc)
         player:setCharVar('TheRequiemYumKilled', 0)
         player:setCharVar('TheRequiemRandom', 0)
         player:setCharVar('TheRequiemAlreadyPoped', 0)
-        npcUtil.giveKeyItem(player, xi.ki.STAR_RING1)
+        npcUtil.giveKeyItem(player, invaderXim.ki.STAR_RING1)
 
     -- A NEW DAWN
     elseif
         csid == 45 and
-        npcUtil.completeQuest(player, xi.questLog.JEUNO, xi.quest.id.jeuno.A_NEW_DAWN, { item = 14222, title = xi.title.PARAGON_OF_BEASTMASTER_EXCELLENCE })
+        npcUtil.completeQuest(player, invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.A_NEW_DAWN, { item = 14222, title = invaderXim.title.PARAGON_OF_BEASTMASTER_EXCELLENCE })
     then
         player:setCharVar('ANewDawn_Event', 6)
-        player:delKeyItem(xi.ki.TAMERS_WHISTLE)
+        player:delKeyItem(invaderXim.ki.TAMERS_WHISTLE)
     end
 end
 

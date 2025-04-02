@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.time
-xi.time =
+---@enum invaderXim.time
+invaderXim.time =
 {
     NONE        = 0,
     MIDNIGHT    = 1,

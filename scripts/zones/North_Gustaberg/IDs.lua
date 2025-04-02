@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.NORTH_GUSTABERG] =
+zones[invaderXim.zone.NORTH_GUSTABERG] =
 {
     text =
     {
@@ -61,7 +61,7 @@ zones[xi.zone.NORTH_GUSTABERG] =
 
         VOIDWALKER =
         {
-            [xi.keyItem.CLEAR_ABYSSITE] =
+            [invaderXim.keyItem.CLEAR_ABYSSITE] =
             {
                 17211881, -- Globster
                 17211880, -- Globster
@@ -73,18 +73,18 @@ zones[xi.zone.NORTH_GUSTABERG] =
                 17211874, -- Ground Guzzler
             },
 
-            [xi.keyItem.COLORFUL_ABYSSITE] =
+            [invaderXim.keyItem.COLORFUL_ABYSSITE] =
             {
                 17211873, -- Lamprey Lord
                 17211872,  -- Shoggoth
             },
 
-            [xi.keyItem.ORANGE_ABYSSITE] =
+            [invaderXim.keyItem.ORANGE_ABYSSITE] =
             {
                 17211865  -- Blobdingnag
             },
 
-            [xi.keyItem.BLACK_ABYSSITE] =
+            [invaderXim.keyItem.BLACK_ABYSSITE] =
             {
                 17211864  -- Yilbegan
             }
@@ -110,4 +110,4 @@ zones[xi.zone.NORTH_GUSTABERG] =
     },
 }
 
-return zones[xi.zone.NORTH_GUSTABERG]
+return zones[invaderXim.zone.NORTH_GUSTABERG]

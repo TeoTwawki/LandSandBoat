@@ -21,10 +21,10 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.tpmod = xi.spells.blue.tpMod.ATTACK
-    params.attackType = xi.attackType.PHYSICAL
-    params.damageType = xi.damageType.HTH
-    params.scattr = xi.skillchainType.INDURATION
+    params.tpmod = invaderXim.spells.blue.tpMod.ATTACK
+    params.attackType = invaderXim.attackType.PHYSICAL
+    params.damageType = invaderXim.damageType.HTH
+    params.scattr = invaderXim.skillchainType.INDURATION
     params.numhits = 1
     params.multiplier = 1.0
     params.tp150 = 1.0
@@ -40,7 +40,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.chr_wsc = 0.0
     params.ignorefstrcap = true -- Grand Slam doesn't have an fSTR cap
 
-    return xi.spells.blue.usePhysicalSpell(caster, target, spell, params)
+    return invaderXim.spells.blue.usePhysicalSpell(caster, target, spell, params)
 end
 
 return spellObject

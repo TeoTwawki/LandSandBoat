@@ -6,11 +6,11 @@
 -- Levil : !pos -87.204 3.350 12.655 256
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.CRIES_FROM_THE_DEEP)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.CRIES_FROM_THE_DEEP)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.SEEDS_OF_DOUBT },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.SEEDS_OF_DOUBT },
 }
 
 mission.sections =
@@ -20,12 +20,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(180),
         },
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             onTriggerAreaEnter =
             {
@@ -44,7 +44,7 @@ mission.sections =
             {
                 [1532] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 1)
-                    player:setPos(91.751, -40, -63.998, 127, xi.zone.EASTERN_ADOULIN)
+                    player:setPos(91.751, -40, -63.998, 127, invaderXim.zone.EASTERN_ADOULIN)
                 end,
 
                 [1550] = function(player, csid, option, npc)

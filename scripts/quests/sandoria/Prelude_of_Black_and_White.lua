@@ -7,11 +7,11 @@
 -- Narcheral : !pos 129 -11 126 231
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.PRELUDE_OF_BLACK_AND_WHITE)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.PRELUDE_OF_BLACK_AND_WHITE)
 
 quest.reward =
 {
-    item = xi.item.HEALERS_DUCKBILLS,
+    item = invaderXim.item.HEALERS_DUCKBILLS,
     fame = 40,
 }
 
@@ -19,13 +19,13 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.SANDORIA, xi.quest.id.sandoria.MESSENGER_FROM_BEYOND) and
-                player:getMainLvl() >= xi.settings.main.AF2_QUEST_LEVEL and
-                player:getMainJob() == xi.job.WHM
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.MESSENGER_FROM_BEYOND) and
+                player:getMainLvl() >= invaderXim.settings.main.AF2_QUEST_LEVEL and
+                player:getMainJob() == invaderXim.job.WHM
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['_6h1'] = quest:progressEvent(551),
 
@@ -39,15 +39,15 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Narcheral'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.CANTEEN_OF_YAGUDO_HOLY_WATER, xi.item.MOCCASINS }) then
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.CANTEEN_OF_YAGUDO_HOLY_WATER, invaderXim.item.MOCCASINS }) then
                         return quest:progressEvent(691)
                     end
                 end,

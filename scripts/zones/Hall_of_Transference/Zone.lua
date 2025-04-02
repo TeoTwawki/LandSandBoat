@@ -118,24 +118,24 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
     elseif csid == 161 and option == 1 then
         local prevZone = player:getPreviousZone()
 
-        if prevZone == xi.zone.LA_THEINE_PLATEAU then
+        if prevZone == invaderXim.zone.LA_THEINE_PLATEAU then
             player:setCharVar('LastSkyWarpHolla', getMidnight())
-        elseif prevZone == xi.zone.KONSCHTAT_HIGHLANDS then
+        elseif prevZone == invaderXim.zone.KONSCHTAT_HIGHLANDS then
             player:setCharVar('LastSkyWarpDem', getMidnight())
-        elseif prevZone == xi.zone.TAHRONGI_CANYON then
+        elseif prevZone == invaderXim.zone.TAHRONGI_CANYON then
             player:setCharVar('LastSkyWarpMea', getMidnight())
         end
 
-        xi.teleport.to(player, xi.teleport.id.SKY)
+        invaderXim.teleport.to(player, invaderXim.teleport.id.SKY)
     elseif csid == 169 and option == 1 then
         player:setCharVar('MeaChipRegistration', 0)
-        xi.teleport.to(player, xi.teleport.id.SKY)
+        invaderXim.teleport.to(player, invaderXim.teleport.id.SKY)
     elseif csid == 170 and option == 1 then
         player:setCharVar('HollaChipRegistration', 0)
-        xi.teleport.to(player, xi.teleport.id.SKY)
+        invaderXim.teleport.to(player, invaderXim.teleport.id.SKY)
     elseif csid == 171 and option == 1 then
         player:setCharVar('DemChipRegistration', 0)
-        xi.teleport.to(player, xi.teleport.id.SKY)
+        invaderXim.teleport.to(player, invaderXim.teleport.id.SKY)
     end
 end
 

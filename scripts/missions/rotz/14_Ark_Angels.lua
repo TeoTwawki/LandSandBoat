@@ -13,22 +13,22 @@
 -- qm1_5 : !pos 555.998 -38.205 520.627 180
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ZILART, xi.mission.id.zilart.ARK_ANGELS)
+local mission = Mission:new(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.ARK_ANGELS)
 
 -- Table index based on Battlefield ID - Offset, this ordering is different
 -- from the keyItem table
 local keyItemOffset =
 {
-    [0] = xi.ki.SHARD_OF_APATHY,
-    [1] = xi.ki.SHARD_OF_COWARDICE,
-    [2] = xi.ki.SHARD_OF_ENVY,
-    [3] = xi.ki.SHARD_OF_ARROGANCE,
-    [4] = xi.ki.SHARD_OF_RAGE,
+    [0] = invaderXim.ki.SHARD_OF_APATHY,
+    [1] = invaderXim.ki.SHARD_OF_COWARDICE,
+    [2] = invaderXim.ki.SHARD_OF_ENVY,
+    [3] = invaderXim.ki.SHARD_OF_ARROGANCE,
+    [4] = invaderXim.ki.SHARD_OF_RAGE,
 }
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_SEALED_SHRINE },
+    nextMission = { invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_SEALED_SHRINE },
 }
 
 mission.sections =
@@ -38,7 +38,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Gilgamesh'] = mission:event(171),
         },
@@ -49,14 +49,14 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 0
         end,
 
-        [xi.zone.THE_SHRINE_OF_RUAVITAU] =
+        [invaderXim.zone.THE_SHRINE_OF_RUAVITAU] =
         {
             ['blank_divine_might'] = mission:progressEvent(53, 917, 1408, 1550),
 
             onEventFinish =
             {
                 [53] = function(player, csid, option, npc)
-                    player:setMissionStatus(xi.mission.log_id.ZILART, 1)
+                    player:setMissionStatus(invaderXim.mission.log_id.ZILART, 1)
                 end,
             },
         },
@@ -67,7 +67,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 1
         end,
 
-        [xi.zone.LALOFF_AMPHITHEATER] =
+        [invaderXim.zone.LALOFF_AMPHITHEATER] =
         {
             onEventFinish =
             {
@@ -81,21 +81,21 @@ mission.sections =
 
                     -- Divine Might
                     elseif keyItemIndex == 5 then
-                        for keyItemId = xi.ki.SHARD_OF_APATHY, xi.ki.SHARD_OF_RAGE do
+                        for keyItemId = invaderXim.ki.SHARD_OF_APATHY, invaderXim.ki.SHARD_OF_RAGE do
                             npcUtil.giveKeyItem(player, keyItemId)
                         end
 
-                        if player:getQuestStatus(xi.questLog.OUTLANDS, xi.quest.id.outlands.DIVINE_MIGHT) == xi.questStatus.QUEST_ACCEPTED then
+                        if player:getQuestStatus(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.DIVINE_MIGHT) == invaderXim.questStatus.QUEST_ACCEPTED then
                             player:setCharVar('DivineMight', 2)
                         end
                     end
 
                     if
-                        player:hasKeyItem(xi.ki.SHARD_OF_APATHY) and
-                        player:hasKeyItem(xi.ki.SHARD_OF_ARROGANCE) and
-                        player:hasKeyItem(xi.ki.SHARD_OF_COWARDICE) and
-                        player:hasKeyItem(xi.ki.SHARD_OF_ENVY) and
-                        player:hasKeyItem(xi.ki.SHARD_OF_RAGE)
+                        player:hasKeyItem(invaderXim.ki.SHARD_OF_APATHY) and
+                        player:hasKeyItem(invaderXim.ki.SHARD_OF_ARROGANCE) and
+                        player:hasKeyItem(invaderXim.ki.SHARD_OF_COWARDICE) and
+                        player:hasKeyItem(invaderXim.ki.SHARD_OF_ENVY) and
+                        player:hasKeyItem(invaderXim.ki.SHARD_OF_RAGE)
                     then
                         mission:complete(player)
                     end

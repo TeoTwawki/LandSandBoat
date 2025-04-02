@@ -18,9 +18,9 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     mob:setLocalVar('providence', 1)
     mob:setSpellList(506)
-    mob:setMobMod(xi.mobMod.MAGIC_COOL, 0)
+    mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 0)
 
-    skill:setMsg(xi.msg.basic.USES)
+    skill:setMsg(invaderXim.msg.basic.USES)
 
     return 0
 end

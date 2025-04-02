@@ -6,11 +6,11 @@
 -- Ploh Trishbahk : !pos 100.580 -40.150 -63.830 257
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.UNDYING_LIGHT)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.UNDYING_LIGHT)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.THE_LIGHT_WITHIN },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_LIGHT_WITHIN },
 }
 
 mission.sections =
@@ -20,13 +20,13 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             onZoneIn = function(player, prevZone)
                 -- TODO: This event does not occur on retail if warping from Ceizak to
                 -- Adoulin, and only occurs if they enter through the gate.
                 if
-                    prevZone == xi.zone.CEIZAK_BATTLEGROUNDS and
+                    prevZone == invaderXim.zone.CEIZAK_BATTLEGROUNDS and
                     mission:getVar(player, 'Status') == 0
                 then
                     return 182
@@ -52,7 +52,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Ploh_Trishbahk'] =
             {
@@ -73,17 +73,17 @@ mission.sections =
             {
                 [1547] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 2)
-                    player:setPos(91.751, -40, -63.998, 127, xi.zone.EASTERN_ADOULIN)
+                    player:setPos(91.751, -40, -63.998, 127, invaderXim.zone.EASTERN_ADOULIN)
                 end,
 
                 [1549] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        xi.mission.setVar(player, xi.mission.log_id.SOA, xi.mission.id.soa.THE_LIGHT_WITHIN, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.mission.setVar(player, invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_LIGHT_WITHIN, 'Timer', VanadielUniqueDay() + 1)
 
                         -- NOTE: Since The Light Within is not completed at the end of its events, start the status at 1, and then reset it to
                         -- 0 once the reward ring has been obtained.
 
-                        xi.mission.setVar(player, xi.mission.log_id.SOA, xi.mission.id.soa.THE_LIGHT_WITHIN, 'Status', 1)
+                        invaderXim.mission.setVar(player, invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_LIGHT_WITHIN, 'Status', 1)
                     end
                 end,
             },

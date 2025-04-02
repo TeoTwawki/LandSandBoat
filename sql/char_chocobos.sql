@@ -5,7 +5,7 @@
 
 SET FOREIGN_KEY_CHECKS=0;
 
-DROP TABLE IF EXISTS `char_chocobos`;
+DROP TABLE IF IXIMSTS `char_chocobos`;
 CREATE TABLE `char_chocobos` (
   `charid` int unsigned NOT NULL,
   `first_name` varchar(15) NOT NULL,

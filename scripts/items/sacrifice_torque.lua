@@ -11,7 +11,7 @@ local listenerPrefix = 'PET_MOD_LATENT'
 local latentPetId = nil
 local latentMods =
 {
-    { xi.mod.ATT, 3 },
+    { invaderXim.mod.ATT, 3 },
 }
 
 itemObject.onItemCheck = function(target, item, param, caster)
@@ -20,15 +20,15 @@ end
 
 itemObject.onItemEquip  = function(user, item)
     local listenerName = fmt('{}_{}', listenerPrefix, item:getID())
-    if user:hasAllLatentsActive(xi.slot.NECK) then
+    if user:hasAllLatentsActive(invaderXim.slot.NECK) then
         user:setLocalVar(listenerName, 1)
-        xi.itemUtils.handlePetLatentMods(user, latentPetId, latentMods, true)
+        invaderXim.itemUtils.handlePetLatentMods(user, latentPetId, latentMods, true)
     end
 
-    user:addListener('MAGIC_STATE_EXIT', listenerName, function(player, spell)
-        if spell:getSpellGroup() == xi.magic.spellGroup.SUMMONING then
+    user:addListener('MAGIC_STATE_IXIMT', listenerName, function(player, spell)
+        if spell:getSpellGroup() == invaderXim.magic.spellGroup.SUMMONING then
             player:setLocalVar(listenerName, 1)
-            xi.itemUtils.handlePetLatentMods(user, latentPetId, latentMods, true)
+            invaderXim.itemUtils.handlePetLatentMods(user, latentPetId, latentMods, true)
         end
     end)
 end
@@ -36,7 +36,7 @@ end
 itemObject.onItemUnequip = function(user, item)
     local listenerName = fmt('{}_{}', listenerPrefix, item:getID())
     if user:getLocalVar(listenerName) == 1 then
-        xi.itemUtils.handlePetLatentMods(user, latentPetId, latentMods, false)
+        invaderXim.itemUtils.handlePetLatentMods(user, latentPetId, latentMods, false)
     end
 
     user:setLocalVar(listenerName, 0)

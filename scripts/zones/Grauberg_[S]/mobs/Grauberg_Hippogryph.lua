@@ -3,7 +3,7 @@
 --  Mob: Grauberg Hippogryph
 -- Note: PH for Kotan-kor Kamuy
 -----------------------------------
-local ID = zones[xi.zone.GRAUBERG_S]
+local ID = zones[invaderXim.zone.GRAUBERG_S]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -24,7 +24,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, kotanPHTable, 5, 10800) -- 3 hours
+    invaderXim.mob.phOnDespawn(mob, kotanPHTable, 5, 10800) -- 3 hours
 end
 
 return entity

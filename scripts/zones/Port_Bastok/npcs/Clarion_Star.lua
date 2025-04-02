@@ -4,13 +4,13 @@
 -- Trust NPC
 -- !pos 81.478 7.500 -24.169 236
 -----------------------------------
-local ID = zones[xi.zone.PORT_BASTOK]
+local ID = zones[invaderXim.zone.PORT_BASTOK]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.trust.onTradeCipher(player, trade, 437, 457, 458)
+    invaderXim.trust.onTradeCipher(player, trade, 437, 457, 458)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)

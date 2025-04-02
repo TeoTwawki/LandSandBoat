@@ -2,20 +2,20 @@
 -- TOAU-42: Path of Darkness
 -- !instance 7700
 -----------------------------------
-local ID = zones[xi.zone.NYZUL_ISLE]
+local ID = zones[invaderXim.zone.NYZUL_ISLE]
 -----------------------------------
 local instanceObject = {}
 
 -- Requirements for the first player registering the instance
 instanceObject.registryRequirements = function(player)
-    return player:getCurrentMission(xi.mission.log_id.TOAU) == xi.mission.id.toau.PATH_OF_DARKNESS and
-        player:hasKeyItem(xi.ki.NYZUL_ISLE_ROUTE) and
-        player:getMissionStatus(xi.mission.log_id.TOAU) == 1
+    return player:getCurrentMission(invaderXim.mission.log_id.TOAU) == invaderXim.mission.id.toau.PATH_OF_DARKNESS and
+        player:hasKeyItem(invaderXim.ki.NYZUL_ISLE_ROUTE) and
+        player:getMissionStatus(invaderXim.mission.log_id.TOAU) == 1
 end
 
 -- Requirements for further players entering an already-registered instance
 instanceObject.entryRequirements = function(player)
-    return player:getCurrentMission(xi.mission.log_id.TOAU) >= xi.mission.id.toau.PATH_OF_DARKNESS
+    return player:getCurrentMission(invaderXim.mission.log_id.TOAU) >= invaderXim.mission.id.toau.PATH_OF_DARKNESS
 end
 
 -- Called on the instance once it is created and ready
@@ -26,7 +26,7 @@ end
 
 -- Once the instance is ready inform the requester that it's ready
 instanceObject.onInstanceCreatedCallback = function(player, instance)
-    xi.instance.onInstanceCreatedCallback(player, instance)
+    invaderXim.instance.onInstanceCreatedCallback(player, instance)
 
     -- Kill the Nyzul Isle update spam
     for _, v in ipairs(player:getParty()) do
@@ -44,17 +44,17 @@ instanceObject.afterInstanceRegister = function(player)
     -- but moving here from that reference.
     player:messageSpecial(ID.text.TIME_TO_COMPLETE, instance:getTimeLimit())
 
-    if player:hasKeyItem(xi.ki.NYZUL_ISLE_ROUTE) then
-        player:delKeyItem(xi.ki.NYZUL_ISLE_ROUTE)
-        player:messageSpecial(ID.text.FADES_INTO_NOTHINGNESS, xi.ki.NYZUL_ISLE_ROUTE)
+    if player:hasKeyItem(invaderXim.ki.NYZUL_ISLE_ROUTE) then
+        player:delKeyItem(invaderXim.ki.NYZUL_ISLE_ROUTE)
+        player:messageSpecial(ID.text.FADES_INTO_NOTHINGNESS, invaderXim.ki.NYZUL_ISLE_ROUTE)
     end
 
-    player:addTempItem(xi.item.UNDERSEA_RUINS_FIREFLIES)
+    player:addTempItem(invaderXim.item.UNDERSEA_RUINS_FIREFLIES)
 end
 
 -- Instance "tick"
 instanceObject.onInstanceTimeUpdate = function(instance, elapsed)
-    xi.instance.updateInstanceTime(instance, elapsed, ID.text)
+    invaderXim.instance.updateInstanceTime(instance, elapsed, ID.text)
 end
 
 -- On fail
@@ -93,7 +93,7 @@ instanceObject.onInstanceProgressUpdate = function(instance, progress)
 
         local door = GetNPCByID(ID.npc.DOOR_OFFSET + 8, instance)
         if door then
-            door:setAnimation(xi.animation.OPEN_DOOR)
+            door:setAnimation(invaderXim.animation.OPEN_DOOR)
         end
 
     elseif progress == 50 then
@@ -107,10 +107,10 @@ instanceObject.onInstanceComplete = function(instance)
 
     for i, v in pairs(chars) do
         if
-            v:getCurrentMission(xi.mission.log_id.TOAU) == xi.mission.id.toau.PATH_OF_DARKNESS and
-            v:getMissionStatus(xi.mission.log_id.TOAU) == 1
+            v:getCurrentMission(invaderXim.mission.log_id.TOAU) == invaderXim.mission.id.toau.PATH_OF_DARKNESS and
+            v:getMissionStatus(invaderXim.mission.log_id.TOAU) == 1
         then
-            v:setMissionStatus(xi.mission.log_id.TOAU, 2)
+            v:setMissionStatus(invaderXim.mission.log_id.TOAU, 2)
         end
 
         v:setPos(0, 0, 0, 0, 72)

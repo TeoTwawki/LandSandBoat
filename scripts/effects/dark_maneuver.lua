@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.DARK_MANEUVER
+-- invaderXim.effect.DARK_MANEUVER
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

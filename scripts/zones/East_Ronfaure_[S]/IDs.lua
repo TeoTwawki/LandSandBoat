@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.EAST_RONFAURE_S] =
+zones[invaderXim.zone.EAST_RONFAURE_S] =
 {
     text =
     {
@@ -39,7 +39,7 @@ zones[xi.zone.EAST_RONFAURE_S] =
 
         VOIDWALKER =
         {
-            [xi.keyItem.CLEAR_ABYSSITE] =
+            [invaderXim.keyItem.CLEAR_ABYSSITE] =
             {
                 17109393, -- Sunderclaw
                 17109392, -- Sunderclaw
@@ -51,18 +51,18 @@ zones[xi.zone.EAST_RONFAURE_S] =
                 17109386, -- Quagmire Pugil
             },
 
-            [xi.keyItem.COLORFUL_ABYSSITE] =
+            [invaderXim.keyItem.COLORFUL_ABYSSITE] =
             {
                 17109385, -- Capricornus
                 17109384, -- Yacumama
             },
 
-            [xi.keyItem.BLUE_ABYSSITE] =
+            [invaderXim.keyItem.BLUE_ABYSSITE] =
             {
                 17109383, -- Krabkatoa
             },
 
-            [xi.keyItem.BLACK_ABYSSITE] =
+            [invaderXim.keyItem.BLACK_ABYSSITE] =
             {
                 17109382, -- Yilbegan
             }
@@ -76,4 +76,4 @@ zones[xi.zone.EAST_RONFAURE_S] =
     },
 }
 
-return zones[xi.zone.EAST_RONFAURE_S]
+return zones[invaderXim.zone.EAST_RONFAURE_S]

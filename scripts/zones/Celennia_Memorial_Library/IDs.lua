@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.CELENNIA_MEMORIAL_LIBRARY] =
+zones[invaderXim.zone.CELENNIA_MEMORIAL_LIBRARY] =
 {
     text =
     {
@@ -24,4 +24,4 @@ zones[xi.zone.CELENNIA_MEMORIAL_LIBRARY] =
     },
 }
 
-return zones[xi.zone.CELENNIA_MEMORIAL_LIBRARY]
+return zones[invaderXim.zone.CELENNIA_MEMORIAL_LIBRARY]

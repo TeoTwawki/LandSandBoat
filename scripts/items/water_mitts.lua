@@ -11,7 +11,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    local effect = xi.effect.ENWATER
+    local effect = invaderXim.effect.ENWATER
     doEnspell(target, target, nil, effect)
 end
 

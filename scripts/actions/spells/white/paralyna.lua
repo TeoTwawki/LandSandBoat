@@ -10,14 +10,14 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    if target:getStatusEffect(xi.effect.PARALYSIS) ~= nil then
-        target:delStatusEffect(xi.effect.PARALYSIS)
-        spell:setMsg(xi.msg.basic.MAGIC_REMOVE_EFFECT)
+    if target:getStatusEffect(invaderXim.effect.PARALYSIS) ~= nil then
+        target:delStatusEffect(invaderXim.effect.PARALYSIS)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_REMOVE_EFFECT)
     else
-        spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
     end
 
-    return xi.effect.PARALYSIS
+    return invaderXim.effect.PARALYSIS
 end
 
 return spellObject

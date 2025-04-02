@@ -5,7 +5,7 @@
 -- !pos -3 0 11 245
 -----------------------------------
 require('scripts/zones/Lower_Jeuno/globals')
-local ID = zones[xi.zone.LOWER_JEUNO]
+local ID = zones[invaderXim.zone.LOWER_JEUNO]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -13,14 +13,14 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     local hour              = VanadielHour()
     local playerOnQuestId   = GetServerVariable('[JEUNO]CommService')
-    local doneCommService   = (player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.COMMUNITY_SERVICE) == xi.questStatus.QUEST_COMPLETED) and 1 or 0
+    local doneCommService   = (player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.COMMUNITY_SERVICE) == invaderXim.questStatus.QUEST_COMPLETED) and 1 or 0
     local currCommService   = player:getCharVar('currCommService')
-    local hasMembershipCard = player:hasKeyItem(xi.ki.LAMP_LIGHTERS_MEMBERSHIP_CARD) and 1 or 0
+    local hasMembershipCard = player:hasKeyItem(invaderXim.ki.LAMP_LIGHTERS_MEMBERSHIP_CARD) and 1 or 0
 
     local allLampsLit = true
     for i = 0, 11 do
         local lamp = GetNPCByID(ID.npc.STREETLAMP_OFFSET + i)
-        if lamp and lamp:getAnimation() == xi.anim.CLOSE_DOOR then
+        if lamp and lamp:getAnimation() == invaderXim.anim.CLOSE_DOOR then
             allLampsLit = false
             break
         end
@@ -45,7 +45,7 @@ entity.onTrigger = function(player, npc)
 
     -- quest is available to player, nobody is currently on it, and the hour is right
     elseif
-        player:getFameLevel(xi.fameArea.JEUNO) >= 1 and
+        player:getFameLevel(invaderXim.fameArea.JEUNO) >= 1 and
         playerOnQuestId == 0 and
         (hour >= 18 or hour < 1)
     then
@@ -62,7 +62,7 @@ entity.onEventUpdate = function(player, csid, option, npc)
         -- player accepts quest
         -- if nobody else has already been assigned to the quest, including Vhana, give it to this player
 
-        local doneCommService = (player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.COMMUNITY_SERVICE) == xi.questStatus.QUEST_COMPLETED) and 1 or 0
+        local doneCommService = (player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.COMMUNITY_SERVICE) == invaderXim.questStatus.QUEST_COMPLETED) and 1 or 0
         local playerOnQuestId = GetServerVariable('[JEUNO]CommService')
         local hour = VanadielHour()
 
@@ -72,7 +72,7 @@ entity.onEventUpdate = function(player, csid, option, npc)
         then
             -- nobody is currently on the quest
             SetServerVariable('[JEUNO]CommService', player:getID())
-            player:addQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.COMMUNITY_SERVICE)
+            player:addQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.COMMUNITY_SERVICE)
             player:setCharVar('currCommService', 1)
             player:updateEvent(1, doneCommService)
         else
@@ -85,23 +85,23 @@ end
 entity.onEventFinish = function(player, csid, option, npc)
     -- COMMUNITY SERVICE
     if csid == 117 then
-        local params = { title = xi.title.TORCHBEARER, var = 'currCommService' }
-        if player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.COMMUNITY_SERVICE) ~= xi.questStatus.QUEST_COMPLETED then
+        local params = { title = invaderXim.title.TORCHBEARER, var = 'currCommService' }
+        if player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.COMMUNITY_SERVICE) ~= invaderXim.questStatus.QUEST_COMPLETED then
             -- first victory
             params.fame = 30
         else
             -- repeat victory. offer membership card.
             params.fame = 15
             if option == 1 then
-                params.keyItem = xi.ki.LAMP_LIGHTERS_MEMBERSHIP_CARD
+                params.keyItem = invaderXim.ki.LAMP_LIGHTERS_MEMBERSHIP_CARD
             end
         end
 
-        npcUtil.completeQuest(player, xi.questLog.JEUNO, xi.quest.id.jeuno.COMMUNITY_SERVICE, params)
+        npcUtil.completeQuest(player, invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.COMMUNITY_SERVICE, params)
 
     elseif csid == 118 and option == 1 then
         -- player drops membership card
-        player:delKeyItem(xi.ki.LAMP_LIGHTERS_MEMBERSHIP_CARD)
+        player:delKeyItem(invaderXim.ki.LAMP_LIGHTERS_MEMBERSHIP_CARD)
 
     elseif csid == 119 then
         -- player fails quest

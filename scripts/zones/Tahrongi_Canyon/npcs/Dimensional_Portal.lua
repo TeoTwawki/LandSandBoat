@@ -3,13 +3,13 @@
 --  NPC: Dimensional_Portal
 -- !pos 260.000 35.150 340.000 117
 -----------------------------------
-local ID = zones[xi.zone.TAHRONGI_CANYON]
+local ID = zones[invaderXim.zone.TAHRONGI_CANYON]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if player:getCurrentMission(xi.mission.log_id.COP) > xi.mission.id.cop.THE_WARRIORS_PATH then
+    if player:getCurrentMission(invaderXim.mission.log_id.COP) > invaderXim.mission.id.cop.THE_WARRIORS_PATH then
         player:startEvent(915)
     else
         player:messageSpecial(ID.text.ALREADY_OBTAINED_TELE + 1) -- Telepoint Disappeared

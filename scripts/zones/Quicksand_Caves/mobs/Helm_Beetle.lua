@@ -3,7 +3,7 @@
 --  Mob: Helm Beetle
 -- Note: PH for Diamond Daig
 -----------------------------------
-local ID = zones[xi.zone.QUICKSAND_CAVES]
+local ID = zones[invaderXim.zone.QUICKSAND_CAVES]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -14,11 +14,11 @@ local diamondPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 813, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 813, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, diamondPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, diamondPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

@@ -13,7 +13,7 @@
 -- Table structure for table `npc_list`
 --
 
-DROP TABLE IF EXISTS `npc_list`;
+DROP TABLE IF IXIMSTS `npc_list`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `npc_list` (

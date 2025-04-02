@@ -10,9 +10,9 @@ end
 zoneObject.onZoneOut = function(player)
     local inEinherjar = player:getCharVar('[ein]chamber')
     if inEinherjar then
-        local chamberData = xi.einherjar.getChamber(inEinherjar)
+        local chamberData = invaderXim.einherjar.getChamber(inEinherjar)
         if chamberData then
-            xi.einherjar.onZoneOut(chamberData, player)
+            invaderXim.einherjar.onZoneOut(chamberData, player)
         end
     end
 end
@@ -32,9 +32,9 @@ zoneObject.onZoneIn = function(player, prevZone)
     -- TODO: Will likely conflict with The Rider Cometh
     local inEinherjar = player:getCharVar('[ein]chamber')
     if inEinherjar then
-        local chamberData = xi.einherjar.getChamber(inEinherjar)
+        local chamberData = invaderXim.einherjar.getChamber(inEinherjar)
         if chamberData then
-            local validForChamber = xi.einherjar.onReconnection(chamberData, player)
+            local validForChamber = invaderXim.einherjar.onReconnection(chamberData, player)
             if validForChamber then
                 return -1
             end
@@ -50,7 +50,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onZoneTick = function(zone)
-    xi.einherjar.onZoneTick(zone)
+    invaderXim.einherjar.onZoneTick(zone)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

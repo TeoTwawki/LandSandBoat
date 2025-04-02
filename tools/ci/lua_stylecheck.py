@@ -1,6 +1,6 @@
 # ===========================================================================
 #
-#  Copyright (c) 2022 LandSandBoat Dev Teams
+#  Copyright (c) 2022 InvaderXim Dev Teams
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -42,8 +42,8 @@ deprecated_requires = [
 ]
 
 invalid_enums = [
-    "xi.items.",
-    "xi.effects.",
+    "invaderXim.items.",
+    "invaderXim.effects.",
 ]
 
 # 'functionName' : [ noNumberInParamX, noNumberInParamY, ... ],
@@ -110,7 +110,7 @@ class LuaStyleCheck:
         Multi-line tables should use Allman braces, and all braces should be have at least one space or newline
         prior to any nested table definition.
 
-        See: https://github.com/LandSandBoat/server/wiki/Development-Guide#lua-allman-braces
+        See: https://github.com/InvaderXim/server/wiki/Development-Guide#lua-allman-braces
         """
         # [ ]{0,} : Any number of spaces
         # =       : = character
@@ -157,7 +157,7 @@ class LuaStyleCheck:
     def check_semicolon(self, line):
         """No semi-colons should be used in Lua scripts.
 
-        See: https://github.com/LandSandBoat/server/wiki/Development-Guide#lua-no-semicolons
+        See: https://github.com/InvaderXim/server/wiki/Development-Guide#lua-no-semicolons
         """
 
         # Ignore strings in line
@@ -172,7 +172,7 @@ class LuaStyleCheck:
     def check_variable_names(self, line):
         """Variables should not use underscores and be lowerCamelCased with the exception of `ID`
 
-        See: https://github.com/LandSandBoat/server/wiki/Development-Guide#lua-naming-and-misc
+        See: https://github.com/InvaderXim/server/wiki/Development-Guide#lua-naming-and-misc
         """
         # local     : 'local ' (with a space)
         # (?=       : Positive lookahead
@@ -221,7 +221,7 @@ class LuaStyleCheck:
         """Parentheses should have padding prior to opening and after closing, but must not contain padding after
         the open parenthesis, or prior to closing.
 
-        See: https://github.com/LandSandBoat/server/wiki/Development-Guide#lua-no-excess-whitespace
+        See: https://github.com/InvaderXim/server/wiki/Development-Guide#lua-no-excess-whitespace
         """
 
         if len(re.findall(r"\([ ]| [\)]", line)) > 0:
@@ -291,7 +291,7 @@ class LuaStyleCheck:
         """Multi-line conditional blocks should contain if/elseif and then on their own lines,
         with conditions indented between them.
 
-        See: https://github.com/LandSandBoat/server/wiki/Development-Guide#lua-formatting-conditional-blocks
+        See: https://github.com/InvaderXim/server/wiki/Development-Guide#lua-formatting-conditional-blocks
         """
 
         stripped_line = re.sub(r"\".*?\"|'.*?'", "", line) # Ignore data in quotes
@@ -317,7 +317,7 @@ class LuaStyleCheck:
             for deprecated_str in deprecated_requires:
                 if deprecated_str in line:
                     if deprecated_str == "IDs":
-                        self.error("IDs requires should be replaced with references to zones[xi.zone.ZONE_ENUM]")
+                        self.error("IDs requires should be replaced with references to zones[invaderXim.zone.ZONE_ENUM]")
                     else:
                         self.error(f"Use of deprecated/unnecessary require: {deprecated_str}. This should be removed")
 

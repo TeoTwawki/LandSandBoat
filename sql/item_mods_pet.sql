@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `item_mods_pet`
 --
 
-DROP TABLE IF EXISTS `item_mods_pet`;
-CREATE TABLE IF NOT EXISTS `item_mods_pet` (
+DROP TABLE IF IXIMSTS `item_mods_pet`;
+CREATE TABLE IF NOT IXIMSTS `item_mods_pet` (
  `itemId` smallint(5) unsigned NOT NULL,
  `modId` smallint(5) unsigned NOT NULL,
  `value` smallint(5) NOT NULL DEFAULT '0',

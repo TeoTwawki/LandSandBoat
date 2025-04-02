@@ -2,7 +2,7 @@
 -- Area: Arrapago Remnants
 --  Mob: Vile Wahzil
 -----------------------------------
-local ID = zones[xi.zone.ARRAPAGO_REMNANTS]
+local ID = zones[invaderXim.zone.ARRAPAGO_REMNANTS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -13,7 +13,7 @@ entity.onMobSpawn = function(mob)
         return
     end
 
-    GetNPCByID(ID.npc[2][2].SOCKET, instance):setStatus(xi.status.DISAPPEAR)
+    GetNPCByID(ID.npc[2][2].SOCKET, instance):setStatus(invaderXim.status.DISAPPEAR)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

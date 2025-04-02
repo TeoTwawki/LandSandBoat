@@ -14,7 +14,7 @@
 -- !pos 199.38 -22.559 60
 -- !pos -200.679 -8.57 60
 -----------------------------------
-local ID = zones[xi.zone.PHOMIUNA_AQUEDUCTS]
+local ID = zones[invaderXim.zone.PHOMIUNA_AQUEDUCTS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -68,8 +68,8 @@ entity.onTrigger = function(player, npc)
                 player:messageSpecial(ID.text.CANNOT_REACH_LADDER)
             elseif
                 eventID == 28 and
-                player:getCurrentMission(xi.mission.log_id.COP) == xi.mission.id.cop.DISTANT_BELIEFS and
-                xi.mission.getVar(player, xi.mission.log_id.COP, xi.mission.id.cop.DISTANT_BELIEFS, 'Status') == 1
+                player:getCurrentMission(invaderXim.mission.log_id.COP) == invaderXim.mission.id.cop.DISTANT_BELIEFS and
+                invaderXim.mission.getVar(player, invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.DISTANT_BELIEFS, 'Status') == 1
             then
                 player:startEvent(35)
             elseif eventID == 99 then
@@ -83,7 +83,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 35 then
-        xi.mission.setVar(player, xi.mission.log_id.COP, xi.mission.id.cop.DISTANT_BELIEFS, 'Status', 2)
+        invaderXim.mission.setVar(player, invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.DISTANT_BELIEFS, 'Status', 2)
     end
 end
 

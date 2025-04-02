@@ -22,7 +22,7 @@ zoneObject.onInitialize = function(zone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -51,7 +51,7 @@ end
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
     if
         player:getLocalVar('Hu-Xzoi-TP') == 0 and
-        player:getAnimation() == xi.anim.NONE
+        player:getAnimation() == invaderXim.anim.NONE
     then
         -- prevent 2cs at same time
         player:startEvent(149 + triggerArea:getTriggerAreaID())

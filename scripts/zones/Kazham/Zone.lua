@@ -5,12 +5,12 @@
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.chocobo.initZone(zone)
-    xi.chocoboGame.clearRecord(zone)
+    invaderXim.chocobo.initZone(zone)
+    invaderXim.chocoboGame.clearRecord(zone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -21,7 +21,7 @@ zoneObject.onZoneIn = function(player, prevZone)
         player:getYPos() == 0 and
         player:getZPos() == 0
     then
-        if prevZone == xi.zone.KAZHAM_JEUNO_AIRSHIP then
+        if prevZone == invaderXim.zone.KAZHAM_JEUNO_AIRSHIP then
             cs = 10002
         end
 

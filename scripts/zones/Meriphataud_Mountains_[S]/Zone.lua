@@ -1,14 +1,14 @@
 -----------------------------------
 -- Zone: Meriphataud_Mountains_[S] (97)
 -----------------------------------
-local ID = zones[xi.zone.MERIPHATAUD_MOUNTAINS_S]
+local ID = zones[invaderXim.zone.MERIPHATAUD_MOUNTAINS_S]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.chocobo.initZone(zone)
-    xi.voidwalker.zoneOnInit(zone)
+    invaderXim.chocobo.initZone(zone)
+    invaderXim.voidwalker.zoneOnInit(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -34,9 +34,9 @@ zoneObject.onGameHour = function(zone)
 
     if npc then
         if hour == 17 then
-            npc:setStatus(xi.status.DISAPPEAR)
+            npc:setStatus(invaderXim.status.DISAPPEAR)
         elseif hour == 7 then
-            npc:setStatus(xi.status.NORMAL)
+            npc:setStatus(invaderXim.status.NORMAL)
         end
     end
 end

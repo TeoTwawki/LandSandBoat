@@ -6,8 +6,8 @@ require('scripts/globals/treasure')
 -----------------------------------
 local m = Module:new('pre_rmt_drops')
 
-m:addOverride('xi.zones.Castle_Oztroja.Zone.onInitialize', function(zone)
-    xi.treasure.treasureInfo[xi.treasure.type.COFFER].zone[xi.zone.CASTLE_OZTROJA].item = { 0.150, xi.item.ASTRAL_RING }
+m:addOverride('invaderXim.zones.Castle_Oztroja.Zone.onInitialize', function(zone)
+    invaderXim.treasure.treasureInfo[invaderXim.treasure.type.COFFER].zone[invaderXim.zone.CASTLE_OZTROJA].item = { 0.150, invaderXim.item.ASTRAL_RING }
 end)
 
 return m

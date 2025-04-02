@@ -1,11 +1,11 @@
 
 xi = xi or {}
-xi.voidwalker = xi.voidwalker or {}
+invaderXim.voidwalker = invaderXim.voidwalker or {}
 
-xi.voidwalker.pos =
+invaderXim.voidwalker.pos =
 {
     -- Aquan path
-    [xi.zone.EAST_RONFAURE] =
+    [invaderXim.zone.EAST_RONFAURE] =
     {
         [1] =  { mobId = nil, pos = { 374, -45,  138 } },
         [2] =  { mobId = nil, pos = { 466, -45,  140 } },
@@ -29,7 +29,7 @@ xi.voidwalker.pos =
         [20] = { mobId = nil, pos = { 266, -48,  252 } },
     },
 
-    [xi.zone.EAST_RONFAURE_S] =
+    [invaderXim.zone.EAST_RONFAURE_S] =
     {
         [1] =  { mobId = nil, pos = { 277, -49, 210 } },
         [2] =  { mobId = nil, pos = { 350, -47, 173 } },
@@ -53,7 +53,7 @@ xi.voidwalker.pos =
         [20] = { mobId = nil, pos = { 233, -19, -310 } }
     },
 
-    [xi.zone.JUGNER_FOREST] =
+    [invaderXim.zone.JUGNER_FOREST] =
     {
         [1] = { mobId = nil, pos = { 237, 0, 67 } },
         [2] = { mobId = nil, pos = { 162, 0, 131 } },
@@ -77,7 +77,7 @@ xi.voidwalker.pos =
         [20] = { mobId = nil, pos = { 362, 0, 434 } }
     },
 
-    [xi.zone.JUGNER_FOREST_S] =
+    [invaderXim.zone.JUGNER_FOREST_S] =
     {
         [1] = { mobId = nil, pos = { 367, 0, 434 } },
         [2] = { mobId = nil, pos = { 219, 7, 365 } },
@@ -102,7 +102,7 @@ xi.voidwalker.pos =
     },
 
     -- Amorph path
-    [xi.zone.NORTH_GUSTABERG] =
+    [invaderXim.zone.NORTH_GUSTABERG] =
     {
         [1] = { mobId = nil, pos = { -488, 40, 468 } },
         [2] = { mobId = nil, pos = { -624, 39, 394 } },
@@ -131,7 +131,7 @@ xi.voidwalker.pos =
         [25] = { mobId = nil, pos = { 301, -61, 540 } },
     },
 
-    [xi.zone.NORTH_GUSTABERG_S] =
+    [invaderXim.zone.NORTH_GUSTABERG_S] =
     {
         [1] = { mobId = nil, pos = { -488, 40, 468 } },
         [2] = { mobId = nil, pos = { -624, 39, 394 } },
@@ -160,7 +160,7 @@ xi.voidwalker.pos =
         [25] = { mobId = nil, pos = { 301, -61, 540 } },
     },
 
-    [xi.zone.PASHHOW_MARSHLANDS] =
+    [invaderXim.zone.PASHHOW_MARSHLANDS] =
     {
         [1] = { mobId = nil, pos = { 507, 25, 553 } },
         [2] = { mobId = nil, pos = { 364, 25, 439 } },
@@ -183,7 +183,7 @@ xi.voidwalker.pos =
         [19] = { mobId = nil, pos = { -288, 24, -291 } }
     },
 
-    [xi.zone.PASHHOW_MARSHLANDS_S] =
+    [invaderXim.zone.PASHHOW_MARSHLANDS_S] =
     {
         [1] = { mobId = nil, pos = { 507, 25, 553 } },
         [2] = { mobId = nil, pos = { 364, 25, 439 } },
@@ -208,7 +208,7 @@ xi.voidwalker.pos =
     },
 
     -- Vermin path
-    [xi.zone.WEST_SARUTABARUTA] =
+    [invaderXim.zone.WEST_SARUTABARUTA] =
     {
         [1] = { mobId = nil, pos = { -319, -16, 397 } },
         [2] = { mobId = nil, pos = { -188, -16, 396 } },
@@ -233,7 +233,7 @@ xi.voidwalker.pos =
         [21] = { mobId = nil, pos = { 128, -4, -148 } },
     },
 
-    [xi.zone.WEST_SARUTABARUTA_S] =
+    [invaderXim.zone.WEST_SARUTABARUTA_S] =
     {
         [1] = { mobId = nil, pos = { -319, -16, 397 } },
         [2] = { mobId = nil, pos = { -188, -16, 396 } },
@@ -258,7 +258,7 @@ xi.voidwalker.pos =
         [21] = { mobId = nil, pos = { 128, -4, -148 } },
     },
 
-    [xi.zone.MERIPHATAUD_MOUNTAINS] =
+    [invaderXim.zone.MERIPHATAUD_MOUNTAINS] =
     {
         [1] = { mobId = nil, pos = { -412, 8, 362 } },
         [2] = { mobId = nil, pos = { -190, 7, 394 } },
@@ -284,7 +284,7 @@ xi.voidwalker.pos =
         [22] = { mobId = nil, pos = { -342, 0, 36 } },
     },
 
-    [xi.zone.MERIPHATAUD_MOUNTAINS_S] =
+    [invaderXim.zone.MERIPHATAUD_MOUNTAINS_S] =
     {
         [1] = { mobId = nil, pos = { -412, 8, 362 } },
         [2] = { mobId = nil, pos = { -190, 7, 394 } },
@@ -311,7 +311,7 @@ xi.voidwalker.pos =
     },
 
     -- Arcana path
-    [xi.zone.BATALLIA_DOWNS] =
+    [invaderXim.zone.BATALLIA_DOWNS] =
     {
         [1] = { mobId = nil, pos = { -431, -31, 441 } },
         [2] = { mobId = nil, pos = { -500, -23, 288 } },
@@ -335,7 +335,7 @@ xi.voidwalker.pos =
         [20] = { mobId = nil, pos = { 358, 8, -246 } },
     },
 
-    [xi.zone.BATALLIA_DOWNS_S] =
+    [invaderXim.zone.BATALLIA_DOWNS_S] =
     {
         [1] = { mobId = nil, pos = { -431, -31, 441 } },
         [2] = { mobId = nil, pos = { -500, -23, 288 } },
@@ -359,7 +359,7 @@ xi.voidwalker.pos =
         [20] = { mobId = nil, pos = { 358, 8, -246 } },
     },
 
-    [xi.zone.SAUROMUGUE_CHAMPAIGN] =
+    [invaderXim.zone.SAUROMUGUE_CHAMPAIGN] =
     {
         [1] = { mobId = nil, pos = { -38, -7, -227 } },
         [2] = { mobId = nil, pos = { -26, 0, -154 } },
@@ -383,7 +383,7 @@ xi.voidwalker.pos =
         [20] = { mobId = nil, pos = { -131, 16, 0 } },
     },
 
-    [xi.zone.SAUROMUGUE_CHAMPAIGN_S] =
+    [invaderXim.zone.SAUROMUGUE_CHAMPAIGN_S] =
     {
         [1] = { mobId = nil, pos = { -38, -7, -227 } },
         [2] = { mobId = nil, pos = { -26, 0, -154 } },
@@ -407,7 +407,7 @@ xi.voidwalker.pos =
         [20] = { mobId = nil, pos = { -131, 16, 0 } },
     },
 
-    [xi.zone.ROLANBERRY_FIELDS] =
+    [invaderXim.zone.ROLANBERRY_FIELDS] =
     {
         [1] = { mobId = nil, pos = { -315, -16, -592 } },
         [2] = { mobId = nil, pos = { -250, 0, -408 } },
@@ -432,7 +432,7 @@ xi.voidwalker.pos =
         [21] = { mobId = nil, pos = { 276, -32, -297 } },
     },
 
-    [xi.zone.ROLANBERRY_FIELDS_S] =
+    [invaderXim.zone.ROLANBERRY_FIELDS_S] =
     {
         [1] = { mobId = nil, pos = { -315, -16, -592 } },
         [2] = { mobId = nil, pos = { -250, 0, -408 } },
@@ -458,7 +458,7 @@ xi.voidwalker.pos =
     },
 
     -- Undead path
-    [xi.zone.BEAUCEDINE_GLACIER] =
+    [invaderXim.zone.BEAUCEDINE_GLACIER] =
     {
         [1] = { mobId = nil, pos = { -123, -79, 135 } },
         [2] = { mobId = nil, pos = { -159, -79, -143 } },
@@ -483,7 +483,7 @@ xi.voidwalker.pos =
         [21] = { mobId = nil, pos = { 284, 0, 69 } },
     },
 
-    [xi.zone.BEAUCEDINE_GLACIER_S] =
+    [invaderXim.zone.BEAUCEDINE_GLACIER_S] =
     {
         [1] = { mobId = nil, pos = { -123, -79, 135 } },
         [2] = { mobId = nil, pos = { -159, -79, -143 } },
@@ -508,7 +508,7 @@ xi.voidwalker.pos =
         [21] = { mobId = nil, pos = { 284, 0, 69 } },
     },
 
-    [xi.zone.XARCABARD] =
+    [invaderXim.zone.XARCABARD] =
     {
         [1] = { mobId = nil, pos = { -356, -35, 20 } },
         [2] = { mobId = nil, pos = { -190, -3, 83 } },
@@ -532,7 +532,7 @@ xi.voidwalker.pos =
         [20] = { mobId = nil, pos = { 422, 0, -194 } },
     },
 
-    [xi.zone.XARCABARD_S] =
+    [invaderXim.zone.XARCABARD_S] =
     {
         [1] = { mobId = nil, pos = { -356, -35, 20 } },
         [2] = { mobId = nil, pos = { -190, -3, 83 } },
@@ -557,7 +557,7 @@ xi.voidwalker.pos =
     },
 
     -- Beast path
-    [xi.zone.LA_THEINE_PLATEAU] =
+    [invaderXim.zone.LA_THEINE_PLATEAU] =
     {
         [1] = { mobId = nil, pos = { -334, 37, 185 } },
         [2] = { mobId = nil, pos = { 188, 22, 276 } },
@@ -581,7 +581,7 @@ xi.voidwalker.pos =
         [20] = { mobId = nil, pos = { -607, 0, 600 } },
     },
 
-    [xi.zone.KONSCHTAT_HIGHLANDS] =
+    [invaderXim.zone.KONSCHTAT_HIGHLANDS] =
     {
         [1] = { mobId = nil, pos = { 465, 31, 591 } },
         [2] = { mobId = nil, pos = { 397, 32, 364 } },
@@ -605,7 +605,7 @@ xi.voidwalker.pos =
         [20] = { mobId = nil, pos = { -254, 18, 97 } },
     },
 
-    [xi.zone.TAHRONGI_CANYON] =
+    [invaderXim.zone.TAHRONGI_CANYON] =
     {
         [1] = { mobId = nil, pos = { 121, 0, -69 } },
         [2] = { mobId = nil, pos = { 107, -8, -228 } },

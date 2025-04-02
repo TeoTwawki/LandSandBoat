@@ -14,7 +14,7 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    return xi.job_utils.thief.useBully(player, target, ability)
+    return invaderXim.job_utils.thief.useBully(player, target, ability)
 end
 
 return abilityObject

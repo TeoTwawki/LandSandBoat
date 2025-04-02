@@ -1,7 +1,7 @@
 -- Zone: PsoXja (9)
 -- Desc: this file contains functions that are shared by multiple luas in this zone's directory
 -----------------------------------
-local ID = zones[xi.zone.PSOXJA]
+local ID = zones[invaderXim.zone.PSOXJA]
 -----------------------------------
 
 local psoXjaGlobal = {}
@@ -10,15 +10,15 @@ local psoXjaGlobal = {}
     correctSideOfDoor (boolean) true if player is trading from the near(gargoyle)-side of the gate
     ..............................................................................................]]
 psoXjaGlobal.attemptPickLock = function(player, npc, trade, correctSideOfDoor)
-    local isThf = player:getMainJob() == xi.job.THF
+    local isThf = player:getMainJob() == invaderXim.job.THF
     local tradedLockTool = trade:getItemCount() == 1 and (
-        trade:hasItemQty(xi.item.SKELETON_KEY, 1) or
-        trade:hasItemQty(xi.item.LIVING_KEY, 1) or
-        trade:hasItemQty(xi.item.SET_OF_THIEFS_TOOLS, 1)
+        trade:hasItemQty(invaderXim.item.SKELETON_KEY, 1) or
+        trade:hasItemQty(invaderXim.item.LIVING_KEY, 1) or
+        trade:hasItemQty(invaderXim.item.SET_OF_THIEFS_TOOLS, 1)
     )
 
     if
-        npc:getAnimation() == xi.anim.CLOSE_DOOR and
+        npc:getAnimation() == invaderXim.anim.CLOSE_DOOR and
         correctSideOfDoor and
         isThf and
         tradedLockTool
@@ -47,7 +47,7 @@ end
     correctSideOfDoor (boolean) true if player is clicking from the near(gargoyle)-side of gate
     ..............................................................................................]]
 psoXjaGlobal.attemptOpenDoor = function(player, npc, correctSideOfDoor)
-    if npc:getAnimation() == xi.anim.CLOSE_DOOR then
+    if npc:getAnimation() == invaderXim.anim.CLOSE_DOOR then
         if correctSideOfDoor then
             local offset = npc:getID() - ID.npc.STONE_DOOR_OFFSET
             local gargoyle = ID.mob.GARGOYLE_OFFSET + offset

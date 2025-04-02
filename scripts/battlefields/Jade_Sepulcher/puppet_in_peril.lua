@@ -2,12 +2,12 @@
 -- Area: Jade Sepulcher
 -- BCNM: TOAU-29 Puppet in Peril
 -----------------------------------
-local jadeSepulcherID = zones[xi.zone.JADE_SEPULCHER]
+local jadeSepulcherID = zones[invaderXim.zone.JADE_SEPULCHER]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId                = xi.zone.JADE_SEPULCHER,
-    battlefieldId         = xi.battlefield.id.PUPPET_IN_PERIL,
+    zoneId                = invaderXim.zone.JADE_SEPULCHER,
+    battlefieldId         = invaderXim.battlefield.id.PUPPET_IN_PERIL,
     canLoseExp            = false,
     isMission             = true,
     allowTrusts           = true,
@@ -18,9 +18,9 @@ local content = BattlefieldMission:new({
     allowedAreas          = set{ 1 },
     entryNpc              = '_1v0',
     exitNpcs              = { '_1v1', '_1v2', '_1v3' },
-    missionArea           = xi.mission.log_id.TOAU,
-    mission               = xi.mission.id.toau.PUPPET_IN_PERIL,
-    missionStatusArea     = xi.mission.log_id.TOAU,
+    missionArea           = invaderXim.mission.log_id.TOAU,
+    mission               = invaderXim.mission.id.toau.PUPPET_IN_PERIL,
+    missionStatusArea     = invaderXim.mission.log_id.TOAU,
     requiredMissionStatus = 1,
 })
 
@@ -39,7 +39,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

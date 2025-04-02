@@ -4,7 +4,7 @@
 -- Involved In Quest: The Root of the Problem
 -- !pos 19 17 59 169
 -----------------------------------
-local ID = zones[xi.zone.TORAIMARAI_CANAL]
+local ID = zones[invaderXim.zone.TORAIMARAI_CANAL]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.DRAIN_SAMBA
+-- invaderXim.effect.DRAIN_SAMBA
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

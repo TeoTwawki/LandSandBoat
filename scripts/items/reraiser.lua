@@ -12,9 +12,9 @@ end
 
 itemObject.onItemUse = function(target)
     local duration = 3600
-    target:delStatusEffect(xi.effect.RERAISE)
-    target:addStatusEffect(xi.effect.RERAISE, 1, 0, duration)
-    target:messageBasic(xi.msg.basic.GAINS_EFFECT_OF_STATUS, xi.effect.RERAISE)
+    target:delStatusEffect(invaderXim.effect.RERAISE)
+    target:addStatusEffect(invaderXim.effect.RERAISE, 1, 0, duration)
+    target:messageBasic(invaderXim.msg.basic.GAINS_EFFECT_OF_STATUS, invaderXim.effect.RERAISE)
 end
 
 return itemObject

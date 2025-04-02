@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.ARRAPAGO_REEF]
+local ID = zones[invaderXim.zone.ARRAPAGO_REEF]
 
 return {
     ['qm1']  = { special = ID.text.SLIMY_TOUCH },

@@ -11,7 +11,7 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.BLINDNESS, 20, 0, 120))
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.BLINDNESS, 20, 0, 120))
 
     if mob:getPool() == 1318 and mob:getLocalVar('SAND_BLAST') == 1 then -- Feeler Anltion
         local alastorId = mob:getID() + 6
@@ -23,7 +23,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
         end
     end
 
-    return xi.effect.BLINDNESS
+    return invaderXim.effect.BLINDNESS
 end
 
 return mobskillObject

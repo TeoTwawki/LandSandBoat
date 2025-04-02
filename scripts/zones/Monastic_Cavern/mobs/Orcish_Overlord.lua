@@ -4,7 +4,7 @@
 -- Note: PH for Overlord Bakgodek
 -- TODO: messages should be zone-wide
 -----------------------------------
-local ID = zones[xi.zone.MONASTIC_CAVERN]
+local ID = zones[invaderXim.zone.MONASTIC_CAVERN]
 mixins = { require('scripts/mixins/job_special') }
 -----------------------------------
 ---@type TMobEntity
@@ -13,11 +13,11 @@ local entity = {}
 entity.onMobInitialize = function(mob)
     -- the quest version of this NM doesn't drop gil
     if mob:getID() >= ID.mob.UNDERSTANDING_OVERLORD_OFFSET then
-        mob:setMobMod(xi.mobMod.GIL_MAX, -1)
+        mob:setMobMod(invaderXim.mobMod.GIL_MAX, -1)
     end
 
     if mob:getID() == ID.mob.ORCISH_OVERLORD then
-        mob:addMod(xi.mod.DOUBLE_ATTACK, 20)
+        mob:addMod(invaderXim.mod.DOUBLE_ATTACK, 20)
     end
 end
 

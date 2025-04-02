@@ -1,29 +1,29 @@
 xi = xi or {}
-xi.apkallu = xi.apkallu or {}
-xi.apkallu.zones = xi.apkallu.zones or {}
+invaderXim.apkallu = invaderXim.apkallu or {}
+invaderXim.apkallu.zones = invaderXim.apkallu.zones or {}
 
-xi.apkallu.fish =
+invaderXim.apkallu.fish =
 {
-    xi.item.AHTAPOT,
-    xi.item.VEYDAL_WRASSE,
-    xi.item.YAYINBALIGI,
+    invaderXim.item.AHTAPOT,
+    invaderXim.item.VEYDAL_WRASSE,
+    invaderXim.item.YAYINBALIGI,
 }
 
-xi.apkallu.track = function(mob)
+invaderXim.apkallu.track = function(mob)
     local zoneID = mob:getZoneID()
-    xi.apkallu.zones[zoneID] = xi.apkallu.zones[zoneID] or {}
-    table.insert(xi.apkallu.zones[zoneID], mob)
+    invaderXim.apkallu.zones[zoneID] = invaderXim.apkallu.zones[zoneID] or {}
+    table.insert(invaderXim.apkallu.zones[zoneID], mob)
 end
 
-xi.apkallu.initialize = function(mob)
+invaderXim.apkallu.initialize = function(mob)
     local zoneID = mob:getZoneID()
     local ID     = zones[zoneID]
     local hate   = GetServerVariable('ApkalluHate_'..zoneID)
-    local tier   = xi.apkallu.getHateTier(hate)
+    local tier   = invaderXim.apkallu.getHateTier(hate)
 
     if tier == 0 and mob:getID() == ID.mob.APKALLU_NPC then
         -- Convert this Apkallu into an NPC
-        mob:setStatus(xi.status.NORMAL)
+        mob:setStatus(invaderXim.status.NORMAL)
     elseif tier == 2 then
         -- Apkallu now aggro by sight
         mob:setAggressive(true)
@@ -35,12 +35,12 @@ xi.apkallu.initialize = function(mob)
     end
 
     local reduction = utils.clamp((hate - 5) * 100, 0, 9500)
-    mob:setMod(xi.mod.DMGPHYS, -reduction)
-    mob:setMod(xi.mod.DMGRANGE, -reduction)
-    mob:setMod(xi.mod.DMGMAGIC, -reduction)
+    mob:setMod(invaderXim.mod.DMGPHYS, -reduction)
+    mob:setMod(invaderXim.mod.DMGRANGE, -reduction)
+    mob:setMod(invaderXim.mod.DMGMAGIC, -reduction)
 end
 
-xi.apkallu.updateHate = function(zoneID, amount)
+invaderXim.apkallu.updateHate = function(zoneID, amount)
     local ID               = zones[zoneID]
     local previousHate     = GetServerVariable('ApkalluHate_'..zoneID)
     local hate             = previousHate + amount
@@ -59,18 +59,18 @@ xi.apkallu.updateHate = function(zoneID, amount)
         return
     end
 
-    local apkallus = xi.apkallu.zones[zoneID]
+    local apkallus = invaderXim.apkallu.zones[zoneID]
     if apkallus == nil then
         return
     end
 
-    local previousTier = xi.apkallu.getHateTier(previousHate)
-    local currentTier  = xi.apkallu.getHateTier(hate)
+    local previousTier = invaderXim.apkallu.getHateTier(previousHate)
+    local currentTier  = invaderXim.apkallu.getHateTier(hate)
     if currentTier ~= previousTier then
         if amount > 0 then
             if currentTier == 1 then
                 -- Change NPC Apkallu back to mobs
-                GetMobByID(ID.mob.APKALLU_NPC):setStatus(xi.status.UPDATE)
+                GetMobByID(ID.mob.APKALLU_NPC):setStatus(invaderXim.status.UPDATE)
             elseif currentTier == 2 then
                 -- Apkallu now aggro by sight
                 for _, mob in ipairs(apkallus) do
@@ -86,7 +86,7 @@ xi.apkallu.updateHate = function(zoneID, amount)
         else
             if currentTier == 0 then
                 -- Change Apkallu to NPC
-                GetMobByID(ID.mob.APKALLU_NPC):setStatus(xi.status.NORMAL)
+                GetMobByID(ID.mob.APKALLU_NPC):setStatus(invaderXim.status.NORMAL)
             elseif currentTier == 1 then
                 -- Apkallu no longer aggro by sight
                 for _, mob in ipairs(apkallus) do
@@ -104,13 +104,13 @@ xi.apkallu.updateHate = function(zoneID, amount)
 
     local reduction = utils.clamp((hate - 5) * 100, 0, 9500)
     for _, mob in ipairs(apkallus) do
-        mob:setMod(xi.mod.DMGPHYS, -reduction)
-        mob:setMod(xi.mod.DMGRANGE, -reduction)
-        mob:setMod(xi.mod.DMGMAGIC, -reduction)
+        mob:setMod(invaderXim.mod.DMGPHYS, -reduction)
+        mob:setMod(invaderXim.mod.DMGRANGE, -reduction)
+        mob:setMod(invaderXim.mod.DMGMAGIC, -reduction)
     end
 end
 
-xi.apkallu.getHateTier = function(hate)
+invaderXim.apkallu.getHateTier = function(hate)
     if hate >= 45 then
         return 3
     elseif hate >= 25 then
@@ -122,20 +122,20 @@ xi.apkallu.getHateTier = function(hate)
     end
 end
 
-xi.apkallu.canRunAway = function(mob)
+invaderXim.apkallu.canRunAway = function(mob)
     local zoneID = mob:getZoneID()
     local hate = GetServerVariable('ApkalluHate_'..zoneID)
-    return xi.apkallu.getHateTier(hate) >= 3
+    return invaderXim.apkallu.getHateTier(hate) >= 3
 end
 
-xi.apkallu.canUseAbility = function(mob, threshold)
+invaderXim.apkallu.canUseAbility = function(mob, threshold)
     if mob:isNM() then
         return 0
     end
 
     local zoneID = mob:getZoneID()
     if
-        (zoneID == xi.zone.ARRAPAGO_REEF or zoneID == xi.zone.MOUNT_ZHAYOLM) and
+        (zoneID == invaderXim.zone.ARRAPAGO_REEF or zoneID == invaderXim.zone.MOUNT_ZHAYOLM) and
         GetServerVariable('ApkalluHate_'..zoneID) < threshold
     then
         return 1

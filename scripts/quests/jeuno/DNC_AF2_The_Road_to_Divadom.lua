@@ -7,26 +7,26 @@
 -- Glowing Pebbles : !pos 104.2 4.1 443.6 82
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_ROAD_TO_DIVADOM)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_ROAD_TO_DIVADOM)
 
 quest.reward =
 {
-    title = xi.title.STARDUST_DANCER,
+    title = invaderXim.title.STARDUST_DANCER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.THE_UNFINISHED_WALTZ) and
-                player:getMainJob() == xi.job.DNC and
-                player:getMainLvl() >= xi.settings.main.AF2_QUEST_LEVEL and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.THE_UNFINISHED_WALTZ) and
+                player:getMainJob() == invaderXim.job.DNC and
+                player:getMainLvl() >= invaderXim.settings.main.AF2_QUEST_LEVEL and
                 not quest:getMustZone(player) and
                 quest:getVar(player, 'Timer') <= VanadielUniqueDay()
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Laila'] = quest:progressEvent(10136),
 
@@ -41,11 +41,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
-                player:getMainJob() == xi.job.DNC
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
+                player:getMainJob() == invaderXim.job.DNC
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Laila'] =
             {
@@ -73,7 +73,7 @@ quest.sections =
             onEventFinish =
             {
                 [10170] = function(player, csid, option, npc)
-                    local tightsItemID = xi.item.DANCERS_TIGHTS_F - player:getGender()
+                    local tightsItemID = invaderXim.item.DANCERS_TIGHTS_F - player:getGender()
 
                     if npcUtil.giveItem(player, tightsItemID) then
                         quest:complete(player)
@@ -88,14 +88,14 @@ quest.sections =
             },
         },
 
-        [xi.zone.JUGNER_FOREST_S] =
+        [invaderXim.zone.JUGNER_FOREST_S] =
         {
             ['Glowing_Pebbles'] =
             {
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'Prog') == 2 and
-                        npcUtil.tradeHasExactly(trade, xi.item.BLOCK_OF_YAGUDO_GLUE)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.BLOCK_OF_YAGUDO_GLUE)
                     then
                         return quest:progressEvent(107)
                     end
@@ -134,11 +134,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                not player:hasCompletedQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.COMEBACK_QUEEN)
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                not player:hasCompletedQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.COMEBACK_QUEEN)
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Laila']        = quest:event(10140):replaceDefault(),
             ['Rhea_Myuliah'] = quest:event(10141):replaceDefault(),

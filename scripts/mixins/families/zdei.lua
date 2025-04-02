@@ -31,7 +31,7 @@ g_mixins.families.zdei = function(mob)
         -- Change to a new mode if time has expired and not currently charging optic induration
         if
             now >= changeTime and
-            mob:getCurrentAction() == xi.act.ATTACK and
+            mob:getCurrentAction() == invaderXim.act.ATTACK and
             mob:getLocalVar('chargeCount') == 0
         then
             if mob:getAnimationSub() <= 1 then

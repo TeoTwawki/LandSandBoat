@@ -9,7 +9,7 @@ entity.onMobSpawn = function(mob)
     -- Above 50% HP, mob will spam Jump three times in succession with the third Jump having a long delay.
     -- Once his HP dips below 50%, he will add additional 'short' jumps at 10% intervals.
     -- His attack also becomes notably higher at this point.
-    mob:setMod(xi.mod.REGAIN, 400)
+    mob:setMod(invaderXim.mod.REGAIN, 400)
 
     mob:addListener('WEAPONSKILL_USE', 'TRIPLE_JUMP', function(mobArg, target, wsid, tp, action)
         local mobHPP        = mobArg:getHPP()
@@ -47,7 +47,7 @@ entity.onMobSpawn = function(mob)
             mobArg:getLocalVar('rage') ~= 1
         then
             mobArg:setLocalVar('rage', 1)
-            mobArg:addMod(xi.mod.ATT, 100)
+            mobArg:addMod(invaderXim.mod.ATT, 100)
         end
     end)
 end

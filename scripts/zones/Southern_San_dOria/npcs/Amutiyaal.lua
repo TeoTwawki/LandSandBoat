@@ -4,7 +4,7 @@
 --  Warp NPC (Aht Urhgan)
 -- !pos 116 0.1 84 230
 -----------------------------------
-local ID = zones[xi.zone.SOUTHERN_SAN_DORIA]
+local ID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -44,8 +44,8 @@ entity.onTrade = function(player, npc, trade)
     if
         trade:getGil() == 300 and
         trade:getItemCount() == 1 and
-        player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.LURE_OF_THE_WILDCAT) == xi.questStatus.QUEST_COMPLETED and
-        player:getCurrentMission(xi.mission.log_id.TOAU) > xi.mission.id.toau.IMMORTAL_SENTRIES
+        player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.LURE_OF_THE_WILDCAT) == invaderXim.questStatus.QUEST_COMPLETED and
+        player:getCurrentMission(invaderXim.mission.log_id.TOAU) > invaderXim.mission.id.toau.IMMORTAL_SENTRIES
     then
         -- Needs a check for at least traded an invitation card to Naja Salaheem
         player:startEvent(881)
@@ -53,14 +53,14 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    local lureSandy = player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.LURE_OF_THE_WILDCAT)
+    local lureSandy = player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.LURE_OF_THE_WILDCAT)
     local wildcatSandy = player:getCharVar('WildcatSandy')
 
     if
-        lureSandy ~= xi.questStatus.QUEST_COMPLETED and
-        xi.settings.main.ENABLE_TOAU == 1
+        lureSandy ~= invaderXim.questStatus.QUEST_COMPLETED and
+        invaderXim.settings.main.ENABLE_TOAU == 1
     then
-        if lureSandy == xi.questStatus.QUEST_AVAILABLE then
+        if lureSandy == invaderXim.questStatus.QUEST_AVAILABLE then
             player:startEvent(812)
         else
             if wildcatSandy == 0 then
@@ -71,7 +71,7 @@ entity.onTrigger = function(player, npc)
                 player:startEvent(814)
             end
         end
-    elseif player:getCurrentMission(xi.mission.log_id.TOAU) >= xi.mission.id.toau.PRESIDENT_SALAHEEM then
+    elseif player:getCurrentMission(invaderXim.mission.log_id.TOAU) >= invaderXim.mission.id.toau.PRESIDENT_SALAHEEM then
         player:startEvent(880)
     else
         player:startEvent(816)
@@ -80,19 +80,19 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 812 then
-        player:addQuest(xi.questLog.SANDORIA, xi.quest.id.sandoria.LURE_OF_THE_WILDCAT)
+        player:addQuest(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.LURE_OF_THE_WILDCAT)
         player:setCharVar('WildcatSandy', 0)
-        npcUtil.giveKeyItem(player, xi.ki.RED_SENTINEL_BADGE)
+        npcUtil.giveKeyItem(player, invaderXim.ki.RED_SENTINEL_BADGE)
     elseif csid == 815 then
-        player:completeQuest(xi.questLog.SANDORIA, xi.quest.id.sandoria.LURE_OF_THE_WILDCAT)
-        player:addFame(xi.fameArea.SANDORIA, 150)
+        player:completeQuest(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.LURE_OF_THE_WILDCAT)
+        player:addFame(invaderXim.fameArea.SANDORIA, 150)
         player:setCharVar('WildcatSandy', 0)
-        player:delKeyItem(xi.ki.RED_SENTINEL_BADGE)
-        player:messageSpecial(ID.text.KEYITEM_LOST, xi.ki.RED_SENTINEL_BADGE)
-        npcUtil.giveKeyItem(player, xi.ki.RED_INVITATION_CARD)
+        player:delKeyItem(invaderXim.ki.RED_SENTINEL_BADGE)
+        player:messageSpecial(ID.text.KEYITEM_LOST, invaderXim.ki.RED_SENTINEL_BADGE)
+        npcUtil.giveKeyItem(player, invaderXim.ki.RED_INVITATION_CARD)
     elseif csid == 881 then
         player:tradeComplete()
-        xi.teleport.to(player, xi.teleport.id.WHITEGATE)
+        invaderXim.teleport.to(player, invaderXim.teleport.id.WHITEGATE)
     end
 end
 

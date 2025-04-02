@@ -5,9 +5,9 @@
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.helm.initZone(zone, xi.helmType.HARVESTING)
-    xi.chocobo.initZone(zone)
-    xi.darkRider.addHoofprints(zone)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.HARVESTING)
+    invaderXim.chocobo.initZone(zone)
+    invaderXim.darkRider.addHoofprints(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -28,10 +28,10 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
 end
 
 zoneObject.onGameHour = function(zone)
-    xi.darkRider.onGameHour(zone)
+    invaderXim.darkRider.onGameHour(zone)
 
     if VanadielHour() == 0 then
-        xi.darkRider.addHoofprints(zone)
+        invaderXim.darkRider.addHoofprints(zone)
     end
 end
 

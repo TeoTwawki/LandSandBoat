@@ -9,11 +9,11 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.white_mage.checkBenediction(player, target, ability)
+    return invaderXim.job_utils.white_mage.checkBenediction(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    return xi.job_utils.white_mage.useBenediction(player, target, ability)
+    return invaderXim.job_utils.white_mage.useBenediction(player, target, ability)
 end
 
 return abilityObject

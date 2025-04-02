@@ -5,20 +5,20 @@ xi = xi or {}
 
 --[[
 -----------------------------------
-mob:entityAnimationPacket(xi.animationString.STATUS_VISIBLE)
+mob:entityAnimationPacket(invaderXim.animationString.STATUS_VISIBLE)
 -----------------------------------
 The base entity is a mob, and anyone in range to see the mob sees the animation.
 We do accept a second argument in this one, for target.
 An example of this is the afflictors in Beadeaux, which target the player.
 
 -----------------------------------
-player:entityVisualPacket(xi.animationString.STATUS_VISIBLE)
+player:entityVisualPacket(invaderXim.animationString.STATUS_VISIBLE)
 -----------------------------------
 In this, it's a part of the zone itself animating, so player is used as base entity and any player that zones in gets sent the packet to light up that part of the zone.
 There is technically an "object" or "entity" but its not ID'd like an NPC, and technically speaking a zone dat is laid out like NPC's are part of it.
 
 -----------------------------------
-SendEntityVisualPacket(ID.npc.GEYSER_OFFSET,xi.animationString.STATUS_VISIBLE)
+SendEntityVisualPacket(ID.npc.GEYSER_OFFSET,invaderXim.animationString.STATUS_VISIBLE)
 -----------------------------------
 This one is a luautils binding, sending a packet to the entire zone (of whoever is in visual range of the ID specified) on demand.
 
@@ -26,8 +26,8 @@ These are FOURCC (4 character codes). They will always be 4, not 5+.
 For most things you can get away with using the wrong one, and they still just work.
 --]]
 
----@enum xi.animationString
-xi.animationString =
+---@enum invaderXim.animationString
+invaderXim.animationString =
 {
     -- Physical
     ATTACK_1                  = 'ati0',

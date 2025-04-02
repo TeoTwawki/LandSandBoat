@@ -33,7 +33,7 @@ for _, entry in pairs(nmsToPersist) do
     local varName     = '[Respawn]' .. mobName
     local respawnFunc = entry[3]
 
-    m:addOverride(string.format('xi.zones.%s.mobs.%s.onMobDespawn', zoneName, mobName),
+    m:addOverride(string.format('invaderXim.zones.%s.mobs.%s.onMobDespawn', zoneName, mobName),
     function(mob)
         super(mob)
 
@@ -43,7 +43,7 @@ for _, entry in pairs(nmsToPersist) do
         print(string.format('Writing respawn time to server vars: %s %i', mob:getName(), respawn))
     end)
 
-    m:addOverride(string.format('xi.zones.%s.Zone.onInitialize', zoneName),
+    m:addOverride(string.format('invaderXim.zones.%s.Zone.onInitialize', zoneName),
     function(zone)
         super(zone)
 

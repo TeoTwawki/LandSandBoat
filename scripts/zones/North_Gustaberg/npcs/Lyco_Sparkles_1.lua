@@ -3,7 +3,7 @@
 --  NPC: Lycopodium Teleport 1
 -- !pos -258.186 -3.231 204.774 106
 -----------------------------------
-local ID = zones[xi.zone.NORTH_GUSTABERG]
+local ID = zones[invaderXim.zone.NORTH_GUSTABERG]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

@@ -6,8 +6,8 @@
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 188)
-    player:addTitle(xi.title.SKULLCRUSHER)
+    invaderXim.hunts.checkHunt(mob, player, 188)
+    player:addTitle(invaderXim.title.SKULLCRUSHER)
 end
 
 return entity

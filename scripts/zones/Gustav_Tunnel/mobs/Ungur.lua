@@ -6,18 +6,18 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.GIL_MIN, 12000)
-    mob:setMobMod(xi.mobMod.GIL_MAX, 12000)
+    mob:setMobMod(invaderXim.mobMod.GIL_MIN, 12000)
+    mob:setMobMod(invaderXim.mobMod.GIL_MAX, 12000)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.TERROR)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.TERROR)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 475)
+    invaderXim.hunts.checkHunt(mob, player, 475)
 end
 
 return entity

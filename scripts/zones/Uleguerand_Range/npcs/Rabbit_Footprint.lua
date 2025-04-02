@@ -2,7 +2,7 @@
 -- Area: Uleguerand_Range
 --  NPC: Rabbit Footprint (Spawns White/Black Coney)
 -----------------------------------
-local ID = zones[xi.zone.ULEGUERAND_RANGE]
+local ID = zones[invaderXim.zone.ULEGUERAND_RANGE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -44,7 +44,7 @@ entity.onTrade = function(player, npc, trade)
         local z = points[currentPoint][3]
         GetMobByID(coney):setSpawn(x, y, z, 0)
         if
-            npcUtil.tradeHas(trade, xi.item.SAN_DORIAN_CARROT) and
+            npcUtil.tradeHas(trade, invaderXim.item.SAN_DORIAN_CARROT) and
             npcUtil.popFromQM(player, npc, coney)
         then
             player:confirmTrade()
@@ -70,7 +70,7 @@ local function moveFootprint(npc)
 
     local nextPointLoc = points[nextPoint]
     npc:setLocalVar('currentPoint', nextPoint)
-    npc:setStatus(xi.status.NORMAL)
+    npc:setStatus(invaderXim.status.NORMAL)
     npcUtil.queueMove(npc, nextPointLoc, 1000)
 end
 
@@ -88,7 +88,7 @@ entity.onTimeTrigger = function(npc, triggerID)
         else
             npc:setLocalVar('activeTime', 0)
             npc:setLocalVar('currentPoint', 0)
-            npc:setStatus(xi.status.DISAPPEAR)
+            npc:setStatus(invaderXim.status.DISAPPEAR)
         end
     end
 end

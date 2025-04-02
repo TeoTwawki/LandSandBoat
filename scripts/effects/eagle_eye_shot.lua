@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.EAGLE_EYE_SHOT
+-- invaderXim.effect.EAGLE_EYE_SHOT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

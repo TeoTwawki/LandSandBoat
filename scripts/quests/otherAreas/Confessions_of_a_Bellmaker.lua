@@ -5,21 +5,21 @@
 -- Mevreauche !pos -193 11 148 231
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.CONFESSIONS_OF_A_BELLMAKER)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.CONFESSIONS_OF_A_BELLMAKER)
 
 quest.reward =
 {
-    item = xi.item.MINSTRELS_DAGGER,
+    item = invaderXim.item.MINSTRELS_DAGGER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.RIVERNE_SITE_A01] =
+        [invaderXim.zone.RIVERNE_SITE_A01] =
         {
             ['Stone_Monument'] =
             {
@@ -32,7 +32,7 @@ quest.sections =
             {
                 [101] = function(player, csid, option, npc)
                     quest:begin(player)
-                    npcUtil.giveKeyItem(player, xi.keyItem.ORNAMENTED_SCROLL)
+                    npcUtil.giveKeyItem(player, invaderXim.keyItem.ORNAMENTED_SCROLL)
                 end,
             },
         },
@@ -40,10 +40,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.RIVERNE_SITE_A01] =
+        [invaderXim.zone.RIVERNE_SITE_A01] =
         {
             ['Stone_Monument'] =
             {
@@ -83,12 +83,12 @@ quest.sections =
 
                 [103] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.keyItem.ORNAMENTED_SCROLL)
+                        player:delKeyItem(invaderXim.keyItem.ORNAMENTED_SCROLL)
                     end
                 end,
             },
         },
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Reinberta'] =
             {
@@ -106,7 +106,7 @@ quest.sections =
                 end,
             },
         },
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Mevreauche'] =
             {

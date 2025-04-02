@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.ALTAR_ROOM]
+local ID = zones[invaderXim.zone.ALTAR_ROOM]
 
 return {
     ['Hooknox']  = { event = 46 },

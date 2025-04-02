@@ -22,8 +22,8 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.BEAST
-    params.effect = xi.effect.SLEEP_I
+    params.ecosystem = invaderXim.ecosystem.BEAST
+    params.effect = invaderXim.effect.SLEEP_I
     local power = 1
     local tick = 0
     local duration = 60
@@ -31,7 +31,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     local isGaze = false
     local isConal = false
 
-    return xi.spells.blue.useEnfeeblingSpell(caster, target, spell, params, power, tick, duration, resistThreshold, isGaze, isConal)
+    return invaderXim.spells.blue.useEnfeeblingSpell(caster, target, spell, params, power, tick, duration, resistThreshold, isGaze, isConal)
 end
 
 return spellObject

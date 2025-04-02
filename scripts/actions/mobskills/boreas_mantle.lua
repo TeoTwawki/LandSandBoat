@@ -34,14 +34,14 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
             local clone = GetMobByID(cloneID)
             if clone then
                 local action = clone:getCurrentAction()
-                if action ~= xi.act.NONE and action ~= xi.act.DEATH then
+                if action ~= invaderXim.act.NONE and action ~= invaderXim.act.DEATH then
                     DespawnMob(cloneID)
                 end
             end
         end
     end)
 
-    skill:setMsg(xi.msg.basic.NONE)
+    skill:setMsg(invaderXim.msg.basic.NONE)
     return 0
 end
 

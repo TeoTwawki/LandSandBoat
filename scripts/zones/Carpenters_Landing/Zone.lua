@@ -7,7 +7,7 @@ local func = require('scripts/zones/Carpenters_Landing/globals')
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.helm.initZone(zone, xi.helmType.LOGGING)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.LOGGING)
     func.herculesTreeOnGameHour()
 end
 
@@ -26,7 +26,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onGameHour = function(zone)

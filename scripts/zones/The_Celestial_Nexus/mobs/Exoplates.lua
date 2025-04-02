@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addMod(xi.mod.REGAIN, 50)
+    mob:addMod(invaderXim.mod.REGAIN, 50)
 end
 
 entity.onMobSpawn = function(mob)
@@ -51,9 +51,9 @@ entity.onMobDeath = function(mob, player, optParams)
     local ealdnarche = GetMobByID(mob:getID() - 1)
 
     if ealdnarche then
-        ealdnarche:delStatusEffect(xi.effect.PHYSICAL_SHIELD)
-        ealdnarche:delStatusEffect(xi.effect.ARROW_SHIELD)
-        ealdnarche:delStatusEffect(xi.effect.MAGIC_SHIELD)
+        ealdnarche:delStatusEffect(invaderXim.effect.PHYSICAL_SHIELD)
+        ealdnarche:delStatusEffect(invaderXim.effect.ARROW_SHIELD)
+        ealdnarche:delStatusEffect(invaderXim.effect.MAGIC_SHIELD)
     end
 end
 

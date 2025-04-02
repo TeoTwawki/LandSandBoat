@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.MAMOOL_JA_TRAINING_GROUNDS] =
+zones[invaderXim.zone.MAMOOL_JA_TRAINING_GROUNDS] =
 {
     text =
     {
@@ -29,7 +29,7 @@ zones[xi.zone.MAMOOL_JA_TRAINING_GROUNDS] =
 
     mob =
     {
-        [xi.assault.mission.IMPERIAL_AGENT_RESCUE] =
+        [invaderXim.assault.mission.IMPERIAL_AGENT_RESCUE] =
         {
             MOBS_START =
             {
@@ -43,7 +43,7 @@ zones[xi.zone.MAMOOL_JA_TRAINING_GROUNDS] =
             },
         },
 
-        [xi.assault.mission.PREEMPTIVE_STRIKE] =
+        [invaderXim.assault.mission.PREEMPTIVE_STRIKE] =
         {
             MOBS_START =
             {
@@ -65,4 +65,4 @@ zones[xi.zone.MAMOOL_JA_TRAINING_GROUNDS] =
     },
 }
 
-return zones[xi.zone.MAMOOL_JA_TRAINING_GROUNDS]
+return zones[invaderXim.zone.MAMOOL_JA_TRAINING_GROUNDS]

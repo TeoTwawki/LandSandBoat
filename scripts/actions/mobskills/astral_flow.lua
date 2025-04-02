@@ -20,7 +20,7 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.msg.basic.USES)
+    skill:setMsg(invaderXim.msg.basic.USES)
 
     local mobID  = mob:getID()
     local avatar = mobID + 2 -- default offset
@@ -37,7 +37,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
         end
     end
 
-    return xi.effect.ASTRAL_FLOW
+    return invaderXim.effect.ASTRAL_FLOW
 end
 
 return mobskillObject

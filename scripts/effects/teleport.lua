@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.TELEPORT
+-- invaderXim.effect.TELEPORT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -15,23 +15,23 @@ effectObject.onEffectLose = function(target, effect)
 
     if target:isMob() then
         DespawnMob(target:getID())
-    elseif destination == xi.teleport.id.WARP then
+    elseif destination == invaderXim.teleport.id.WARP then
         target:warp()
-    elseif destination == xi.teleport.id.ESCAPE then
-        xi.teleport.escape(target)
-    elseif destination == xi.teleport.id.OUTPOST then
+    elseif destination == invaderXim.teleport.id.ESCAPE then
+        invaderXim.teleport.escape(target)
+    elseif destination == invaderXim.teleport.id.OUTPOST then
         local region = effect:getSubPower()
-        xi.teleport.toOutpost(target, region)
-    elseif destination == xi.teleport.id.LEADER then
-        xi.teleport.toLeader(target)
-    elseif destination == xi.teleport.id.HOME_NATION then
-        xi.teleport.toHomeNation(target)
-    elseif destination == xi.teleport.id.RETRACE then
-        xi.teleport.toAlliedNation(target)
-    elseif destination == xi.teleport.id.TIDAL_TALISMAN then
-        xi.teleport.tidalTeleport(target)
+        invaderXim.teleport.toOutpost(target, region)
+    elseif destination == invaderXim.teleport.id.LEADER then
+        invaderXim.teleport.toLeader(target)
+    elseif destination == invaderXim.teleport.id.HOME_NATION then
+        invaderXim.teleport.toHomeNation(target)
+    elseif destination == invaderXim.teleport.id.RETRACE then
+        invaderXim.teleport.toAlliedNation(target)
+    elseif destination == invaderXim.teleport.id.TIDAL_TALISMAN then
+        invaderXim.teleport.tidalTeleport(target)
     else
-        xi.teleport.to(target, destination)
+        invaderXim.teleport.to(target, destination)
     end
 end
 

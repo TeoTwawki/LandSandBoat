@@ -7,12 +7,12 @@
 -- Kipligg : !pos -32 0 22 256
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.MINISTERIAL_WHISPERS)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.MINISTERIAL_WHISPERS)
 
 mission.reward =
 {
     bayld       = 500,
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.A_DAY_IN_THE_LIFE_OF_A_PIONEER },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.A_DAY_IN_THE_LIFE_OF_A_PIONEER },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Kipligg'] = mission:event(163):setPriority(101), -- TODO: This overrides default logic in NPC script
             ['Levil']   = mission:progressEvent(158),
@@ -31,8 +31,8 @@ mission.sections =
             {
                 [158] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        xi.mission.setVar(player, xi.mission.log_id.SOA, xi.mission.id.soa.A_DAY_IN_THE_LIFE_OF_A_PIONEER, 'Timer', VanadielUniqueDay() + 1)
-                        xi.mission.setMustZone(player, xi.mission.log_id.SOA, xi.mission.id.soa.A_DAY_IN_THE_LIFE_OF_A_PIONEER)
+                        invaderXim.mission.setVar(player, invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.A_DAY_IN_THE_LIFE_OF_A_PIONEER, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.mission.setMustZone(player, invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.A_DAY_IN_THE_LIFE_OF_A_PIONEER)
                     end
                 end,
             },

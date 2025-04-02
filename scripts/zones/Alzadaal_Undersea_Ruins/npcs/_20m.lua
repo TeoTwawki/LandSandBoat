@@ -3,13 +3,13 @@
 -- Door: Runic Seal
 -- !pos 125 -2 20 72
 -----------------------------------
-local ID = zones[xi.zone.ALZADAAL_UNDERSEA_RUINS]
+local ID = zones[invaderXim.zone.ALZADAAL_UNDERSEA_RUINS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if not xi.instance.onTrigger(player, npc, xi.zone.NYZUL_ISLE) then
+    if not invaderXim.instance.onTrigger(player, npc, invaderXim.zone.NYZUL_ISLE) then
         player:messageSpecial(ID.text.NOTHING_HAPPENS)
     end
 end
@@ -17,7 +17,7 @@ end
 entity.onEventUpdate = function(player, csid, option, npc)
     -- If instance loading or entry fails (for you or your party):
     -- Force the Nyzul Isle loop to bail out
-    if xi.instance.onEventUpdate(player, csid, option, npc) then
+    if invaderXim.instance.onEventUpdate(player, csid, option, npc) then
         player:setLocalVar('NYZUL_INSTANCE', 1)
     else
         -- stops the loop of checking all party member requirements
@@ -39,7 +39,7 @@ entity.onEventFinish = function(player, csid, option, npc)
     elseif csid == 116 and option == 1 then
         -- TODO: Entrance message for registrant: 'Commencing transport to Nyzul Isle'  This was not being hit
         -- by Path of Darkness, and has been moved (in that case) into the mission script.
-        xi.instance.onEventFinish(player, csid, option, npc)
+        invaderXim.instance.onEventFinish(player, csid, option, npc)
     end
 end
 

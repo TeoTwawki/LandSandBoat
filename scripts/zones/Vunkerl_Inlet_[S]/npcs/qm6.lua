@@ -4,15 +4,15 @@
 -- Involved In Quest: EVIL_AT_THE_INLET
 -- !pos -636 -51 -454 83
 -----------------------------------
-local ID = zones[xi.zone.VUNKERL_INLET_S]
+local ID = zones[invaderXim.zone.VUNKERL_INLET_S]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
     if
-        player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.EVIL_AT_THE_INLET) == xi.questStatus.QUEST_ACCEPTED and
-        player:hasKeyItem(xi.ki.EVIL_WARDING_SEAL)
+        player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.EVIL_AT_THE_INLET) == invaderXim.questStatus.QUEST_ACCEPTED and
+        player:hasKeyItem(invaderXim.ki.EVIL_WARDING_SEAL)
     then
         player:startEvent(112)
     else
@@ -22,7 +22,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 112 then
-        player:delKeyItem(xi.ki.EVIL_WARDING_SEAL)
+        player:delKeyItem(invaderXim.ki.EVIL_WARDING_SEAL)
     end
 end
 

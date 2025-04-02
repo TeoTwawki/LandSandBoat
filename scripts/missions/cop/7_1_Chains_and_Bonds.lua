@@ -7,11 +7,11 @@
 -- Sewer Entrance : !pos 28 -12 44 26
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.CHAINS_AND_BONDS)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.CHAINS_AND_BONDS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.FLAMES_IN_THE_DARKNESS },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.FLAMES_IN_THE_DARKNESS },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.LUFAISE_MEADOWS] =
+        [invaderXim.zone.LUFAISE_MEADOWS] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 0 then
@@ -32,21 +32,21 @@ mission.sections =
             onEventUpdate =
             {
                 [111] = function(player, csid, option, npc)
-                    player:updateEvent(0, xi.item.DUCAL_GUARDS_RING)
+                    player:updateEvent(0, invaderXim.item.DUCAL_GUARDS_RING)
                 end,
             },
 
             onEventFinish =
             {
                 [111] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.DUCAL_GUARDS_RING) then
+                    if npcUtil.giveItem(player, invaderXim.item.DUCAL_GUARDS_RING) then
                         mission:setVar(player, 'Status', 1)
                     end
                 end,
             },
         },
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['_0qa'] =
             {
@@ -99,7 +99,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SEALIONS_DEN] =
+        [invaderXim.zone.SEALIONS_DEN] =
         {
             onZoneIn = function(player, prevZone)
                 if not mission:isVarBitsSet(player, 'Option', 2) then

@@ -3,8 +3,8 @@
 -- This table holds the parameters for the current fish ranking contest
 --
 
-DROP TABLE IF EXISTS `fishing_contest`;
-CREATE TABLE IF NOT EXISTS `fishing_contest` (
+DROP TABLE IF IXIMSTS `fishing_contest`;
+CREATE TABLE IF NOT IXIMSTS `fishing_contest` (
     `status`        tinyint(2)  unsigned NOT NULL,
     `criteria`      tinyint(2)  unsigned NOT NULL,
     `measure`       tinyint(2)  unsigned NOT NULL,

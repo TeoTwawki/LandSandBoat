@@ -5,25 +5,25 @@
 -- Rouliette : !pos -24 -2 11 244
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.CANDLE_MAKING)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.CANDLE_MAKING)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.JEUNO,
-    keyItem  = xi.ki.HOLY_CANDLE,
-    title    = xi.title.BELIEVER_OF_ALTANA,
+    fameArea = invaderXim.fameArea.JEUNO,
+    keyItem  = invaderXim.ki.HOLY_CANDLE,
+    title    = invaderXim.title.BELIEVER_OF_ALTANA,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.A_CANDLELIGHT_VIGIL) == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.A_CANDLELIGHT_VIGIL) == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Rouliette'] = quest:progressEvent(36),
 
@@ -38,15 +38,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Rouliette'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.LANOLIN_CUBE) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.LANOLIN_CUBE) then
                         return quest:progressEvent(37)
                     end
                 end,

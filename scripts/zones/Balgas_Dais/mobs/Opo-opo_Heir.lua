@@ -18,13 +18,13 @@ entity.onMobFight = function(mob, target)
         mob:setAutoAttackEnabled(true)
         mob:setMobAbilityEnabled(true)
         mob:addHP(mob:getMaxHP() / 2)
-        mob:addMod(xi.mod.ATT, 500)
+        mob:addMod(invaderXim.mod.ATT, 500)
 
         if math.random(1, 2) == 2 then
-            mob:addMod(xi.mod.UDMGPHYS, -10000)
-            mob:addMod(xi.mod.UDMGRANGE, -10000)
+            mob:addMod(invaderXim.mod.UDMGPHYS, -10000)
+            mob:addMod(invaderXim.mod.UDMGRANGE, -10000)
         else
-            mob:setMod(xi.mod.UDMGMAGIC, -10000)
+            mob:setMod(invaderXim.mod.UDMGMAGIC, -10000)
         end
     end
 end

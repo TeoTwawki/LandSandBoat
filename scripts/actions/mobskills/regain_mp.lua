@@ -14,7 +14,7 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local mp = target:getMaxMP() - target:getMP()
 
-    skill:setMsg(xi.msg.basic.AOE_REGAIN_MP)
+    skill:setMsg(invaderXim.msg.basic.AOE_REGAIN_MP)
 
     target:addMP(mp)
 

@@ -13,9 +13,9 @@ end
 itemObject.onItemUse = function(target)
     local pet = target:getPet()
     if pet then
-        pet:addStatusEffect(xi.effect.REGAIN, 15, 3, 15)
+        pet:addStatusEffect(invaderXim.effect.REGAIN, 15, 3, 15)
     else
-        target:messageBasic(xi.msg.basic.NO_EFFECT)
+        target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
     end
 end
 

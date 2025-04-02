@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.BATTLEFIELD
+-- invaderXim.effect.BATTLEFIELD
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -9,7 +9,7 @@ effectObject.onEffectGain = function(target, effect)
         target:getPet():addStatusEffect(effect)
     end
 
-    if target:getObjType() == xi.objType.PC then
+    if target:getObjType() == invaderXim.objType.PC then
         target:clearTrusts()
     end
 end
@@ -20,7 +20,7 @@ end
 effectObject.onEffectLose = function(target, effect)
     local pet = target:getPet()
     if pet then
-        pet:delStatusEffect(xi.effect.BATTLEFIELD)
+        pet:delStatusEffect(invaderXim.effect.BATTLEFIELD)
         pet:leaveBattlefield(1)
     end
 

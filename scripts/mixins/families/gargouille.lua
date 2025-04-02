@@ -15,16 +15,16 @@ local function changeStance(mob)
     -- If mob is standing
     if mob:getAnimationSub() == 4 then
         mob:setAnimationSub(5) -- Fly
-        mob:setMobMod(xi.mobMod.SKILL_LIST, 117) -- Set Fly Skill List. ('Dark Mist' and 'Dark Orb')
-        mob:addMod(xi.mod.EVA, 60)
-        mob:addMod(xi.mod.DMGMAGIC, -1250)
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 117) -- Set Fly Skill List. ('Dark Mist' and 'Dark Orb')
+        mob:addMod(invaderXim.mod.EVA, 60)
+        mob:addMod(invaderXim.mod.DMGMAGIC, -1250)
 
     -- If mob is flying
     else
         mob:setAnimationSub(4) -- Stand
-        mob:setMobMod(xi.mobMod.SKILL_LIST, 118) -- Set Standing Skill List. ('Terror Eye', 'Triumphant Roar' and 'Bloody Claw')
-        mob:delMod(xi.mod.EVA, 60)
-        mob:delMod(xi.mod.DMGMAGIC, -1250)
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 118) -- Set Standing Skill List. ('Terror Eye', 'Triumphant Roar' and 'Bloody Claw')
+        mob:delMod(invaderXim.mod.EVA, 60)
+        mob:delMod(invaderXim.mod.DMGMAGIC, -1250)
     end
 
     -- Reset timer
@@ -35,7 +35,7 @@ g_mixins.families.gargouille = function(gargouilleMob)
     -- Set default state.
     gargouilleMob:addListener('SPAWN', 'GARGOUILLE_SPAWN', function(mob)
         mob:setAnimationSub(4)
-        mob:setMobMod(xi.mobMod.SKILL_LIST, 118) -- Set Standing Skill List. ('Terror Eye', 'Triumphant Roar' and 'Bloody Claw')
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 118) -- Set Standing Skill List. ('Terror Eye', 'Triumphant Roar' and 'Bloody Claw')
         mob:setLocalVar('formTimer', os.time() + math.random(180, 240))
     end)
 

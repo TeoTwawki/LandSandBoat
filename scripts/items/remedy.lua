@@ -13,10 +13,10 @@ end
 
 local removableStatus =
 {
-    xi.effect.SILENCE,
-    xi.effect.BLINDNESS,
-    xi.effect.POISON,
-    xi.effect.PARALYSIS,
+    invaderXim.effect.SILENCE,
+    invaderXim.effect.BLINDNESS,
+    invaderXim.effect.POISON,
+    invaderXim.effect.PARALYSIS,
 }
 
 itemObject.onItemUse = function(target)
@@ -27,8 +27,8 @@ itemObject.onItemUse = function(target)
     end
 
     local rDisease = math.random(1, 2) -- Disease is not guaranteed to be cured, 1 means removed 2 means fail. 50% chance
-    if rDisease == 1 and target:hasStatusEffect(xi.effect.DISEASE) then
-        target:delStatusEffect(xi.effect.DISEASE)
+    if rDisease == 1 and target:hasStatusEffect(invaderXim.effect.DISEASE) then
+        target:delStatusEffect(invaderXim.effect.DISEASE)
     end
 end
 

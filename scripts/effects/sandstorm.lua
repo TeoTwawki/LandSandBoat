@@ -1,18 +1,18 @@
 -----------------------------------
--- xi.effect.SANDSTORM
+-- invaderXim.effect.SANDSTORM
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.VIT, effect:getPower())
+    target:addMod(invaderXim.mod.VIT, effect:getPower())
 end
 
 effectObject.onEffectTick = function(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.VIT, effect:getPower())
+    target:delMod(invaderXim.mod.VIT, effect:getPower())
 end
 
 return effectObject

@@ -4,7 +4,7 @@
 -- Type: Guild Merchant: Fishing Guild
 -- !pos 1.841 -2.101 -9.000 221
 -----------------------------------
-local ID = zones[xi.zone.SHIP_BOUND_FOR_MHAURA_PIRATES]
+local ID = zones[invaderXim.zone.SHIP_BOUND_FOR_MHAURA_PIRATES]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

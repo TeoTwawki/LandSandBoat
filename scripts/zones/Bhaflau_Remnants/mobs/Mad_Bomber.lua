@@ -4,7 +4,7 @@
 --  Self-Destructs after about 75 seconds
 --  Spawns Rampart if it dies before self-destruct
 -----------------------------------
-local ID = zones[xi.zone.BHAFLAU_REMNANTS]
+local ID = zones[invaderXim.zone.BHAFLAU_REMNANTS]
 -----------------------------------
 
 ---@type TMobEntity
@@ -24,10 +24,10 @@ entity.onMobFight = function(mob, target)
 
     if mob:getBattleTime() > shifttime then
         if size == 3 then
-            mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-            mob:addImmunity(xi.immunity.DARK_SLEEP)
-            mob:addImmunity(xi.immunity.STUN)
-            mob:addImmunity(xi.immunity.TERROR)
+            mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+            mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+            mob:addImmunity(invaderXim.immunity.STUN)
+            mob:addImmunity(invaderXim.immunity.TERROR)
             mob:useMobAbility(597)
             mob:setLocalVar('timeUp', 1)
         else
@@ -45,7 +45,7 @@ entity.onMobDeath = function(mob, player, optParams)
             local dormant = GetNPCByID(ID.npc.DORMANT_RAMPART[1], instance)
 
             if dormant then
-                dormant:setStatus(xi.status.NORMAL)
+                dormant:setStatus(invaderXim.status.NORMAL)
                 dormant:setUntargetable(false)
             end
         end

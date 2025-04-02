@@ -11,10 +11,10 @@ entity.onMobSpawn = function(mob)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 203)
-    player:addTitle(xi.title.MARYS_GUIDE)
-    xi.tutorial.onMobDeath(player)
-    xi.magian.onMobDeath(mob, player, optParams, set{ 710 })
+    invaderXim.hunts.checkHunt(mob, player, 203)
+    player:addTitle(invaderXim.title.MARYS_GUIDE)
+    invaderXim.tutorial.onMobDeath(player)
+    invaderXim.magian.onMobDeath(mob, player, optParams, set{ 710 })
 end
 
 return entity

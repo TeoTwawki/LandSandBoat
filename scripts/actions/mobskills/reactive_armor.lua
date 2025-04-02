@@ -13,9 +13,9 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.SHOCK_SPIKES, math.random(20, 30), 0, 180))
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.SHOCK_SPIKES, math.random(20, 30), 0, 180))
 
-    return xi.effect.SHOCK_SPIKES
+    return invaderXim.effect.SHOCK_SPIKES
 end
 
 return mobskillObject

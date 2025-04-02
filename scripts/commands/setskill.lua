@@ -27,7 +27,7 @@ commandObj.onTrigger = function(player, skillName, skillLV, target)
         return
     end
 
-    local skillID = tonumber(skillName) or xi.skill[string.upper(skillName)]
+    local skillID = tonumber(skillName) or invaderXim.skill[string.upper(skillName)]
     local targ
 
     if
@@ -66,7 +66,7 @@ commandObj.onTrigger = function(player, skillName, skillLV, target)
     end
 
     targ:setSkillLevel(skillID, skillLV * 10)
-    targ:messageBasic(xi.msg.basic.SKILL_REACHES_LEVEL, skillID, skillLV)
+    targ:messageBasic(invaderXim.msg.basic.SKILL_REACHES_LEVEL, skillID, skillLV)
 
     if targ ~= player then
         player:printToPlayer(string.format('%s\'s new skillID \'%s\' Skill: %s', targ:getName(), skillName, (targ:getCharSkillLevel(skillID) / 10)..'.0'))

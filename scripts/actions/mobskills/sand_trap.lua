@@ -13,12 +13,12 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.PETRIFICATION, 1, 0, math.random(12, 20)))
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.PETRIFICATION, 1, 0, math.random(12, 20)))
 
     -- reset everyones enmity
     mob:resetEnmity(target)
 
-    return xi.effect.PETRIFICATION
+    return invaderXim.effect.PETRIFICATION
 end
 
 return mobskillObject

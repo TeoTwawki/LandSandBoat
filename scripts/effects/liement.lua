@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.LIEMENT
+-- invaderXim.effect.LIEMENT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

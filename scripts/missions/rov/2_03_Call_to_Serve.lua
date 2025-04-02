@@ -4,14 +4,14 @@
 -----------------------------------
 -- !addmission 13 48
 -----------------------------------
-local portJeunoID = zones[xi.zone.PORT_JEUNO]
+local portJeunoID = zones[invaderXim.zone.PORT_JEUNO]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.CALL_TO_SERVE)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.CALL_TO_SERVE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.NUMBERING_DAYS },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.NUMBERING_DAYS },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.PORT_JEUNO] =
+        [invaderXim.zone.PORT_JEUNO] =
         {
             -- Receiving this Alter Ego is required for completing the mission, so we can handle it here.
             ['Mystic_Retriever'] =
@@ -29,7 +29,7 @@ mission.sections =
                 onTrigger = function(player, npc)
                     if
                         mission:getVar(player, 'Retrieve') == 1 and
-                        npcUtil.giveItem(player, xi.item.CIPHER_OF_PRISHES_ALTER_EGO_II)
+                        npcUtil.giveItem(player, invaderXim.item.CIPHER_OF_PRISHES_ALTER_EGO_II)
                     then
                         mission:complete(player)
                     end
@@ -38,7 +38,7 @@ mission.sections =
 
             onZoneIn = function(player, prevZone)
                 if
-                    xi.rhapsodies.charactersAvailable(player) and
+                    invaderXim.rhapsodies.charactersAvailable(player) and
                     mission:getVar(player, 'Retrieve') == 0
                 then
                     -- Note: Working with the assumption that there are four variable parameters for this mission,
@@ -67,7 +67,7 @@ mission.sections =
             {
                 [399] = function(player, csid, option, npc)
                     if option == 1 then
-                        local hasCompletedDarkness = player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.DARKNESS_NAMED) and 2 or 0
+                        local hasCompletedDarkness = player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.DARKNESS_NAMED) and 2 or 0
 
                         player:updateEvent(0, hasCompletedDarkness, 1, 1)
                     end
@@ -78,10 +78,10 @@ mission.sections =
             {
                 [399] = function(player, csid, option, npc)
                     if player:getFreeSlotsCount() == 0 then
-                        player:messageSpecial(portJeunoID.text.MYSTIC_RETRIEVER, xi.item.CIPHER_OF_PRISHES_ALTER_EGO_II)
+                        player:messageSpecial(portJeunoID.text.MYSTIC_RETRIEVER, invaderXim.item.CIPHER_OF_PRISHES_ALTER_EGO_II)
                         mission:setVar(player, 'Retrieve', 1)
                     else
-                        npcUtil.giveItem(player, xi.item.CIPHER_OF_PRISHES_ALTER_EGO_II)
+                        npcUtil.giveItem(player, invaderXim.item.CIPHER_OF_PRISHES_ALTER_EGO_II)
                         mission:complete(player)
                     end
                 end,

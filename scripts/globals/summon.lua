@@ -5,11 +5,11 @@ require('scripts/globals/combat/level_correction')
 require('scripts/globals/combat/physical_utilities')
 -----------------------------------
 xi = xi or {}
-xi.summon = xi.summon or {}
+invaderXim.summon = invaderXim.summon or {}
 
 local function getDexCritRate(source, target)
     -- https://www.bg-wiki.com/bg/Critical_Hit_Rate
-    local dDex    = source:getStat(xi.mod.DEX) - target:getStat(xi.mod.AGI)
+    local dDex    = source:getStat(invaderXim.mod.DEX) - target:getStat(invaderXim.mod.AGI)
     local dDexAbs = math.abs(dDex)
     local sign    = 1
 
@@ -94,25 +94,25 @@ local function avatarHitDmg(weaponDmg, fSTR, pDif)
     return (weaponDmg + fSTR) * pDif
 end
 
-xi.summon.getSummoningSkillOverCap = function(avatar)
+invaderXim.summon.getSummoningSkillOverCap = function(avatar)
     local summoner       = avatar:getMaster()
-    local summoningSkill = summoner:getSkillLevel(xi.skill.SUMMONING_MAGIC)
-    local maxSkill       = summoner:getMaxSkillLevel(avatar:getMainLvl(), xi.job.SMN, xi.skill.SUMMONING_MAGIC)
+    local summoningSkill = summoner:getSkillLevel(invaderXim.skill.SUMMONING_MAGIC)
+    local maxSkill       = summoner:getMaxSkillLevel(avatar:getMainLvl(), invaderXim.job.SMN, invaderXim.skill.SUMMONING_MAGIC)
 
     return math.max(summoningSkill - maxSkill, 0)
 end
 
-xi.summon.avatarPhysicalMove = function(avatar, target, skill, numberofhits, accmod, dmgmod, dmgmodsubsequent, tpeffect, mtp100, mtp200, mtp300)
+invaderXim.summon.avatarPhysicalMove = function(avatar, target, skill, numberofhits, accmod, dmgmod, dmgmodsubsequent, tpeffect, mtp100, mtp200, mtp300)
     local returninfo = {}
 
     -- I have never read a limit on accuracy bonus from summoning skill which can currently go far past 200 over cap
     -- current retail is over +250 skill so I am removing the cap, my SMN is at 695 total skill
-    local acc = avatar:getACC() + xi.summon.getSummoningSkillOverCap(avatar)
+    local acc = avatar:getACC() + invaderXim.summon.getSummoningSkillOverCap(avatar)
     local eva = target:getEVA()
 
     -- Level correction does not happen in Adoulin zones, Legion, or zones in Escha/Reisenjima
     -- https://www.bg-wiki.com/bg/PDIF#Level_Correction_Function_.28cRatio.29
-    local shouldApplyLevelCorrection = xi.combat.levelCorrection.isLevelCorrectedZone(avatar)
+    local shouldApplyLevelCorrection = invaderXim.combat.levelCorrection.isLevelCorrectedZone(avatar)
 
     -- https://forum.square-enix.com/ffxi/threads/45365?p=534537#post534537
     -- https://www.bg-wiki.com/bg/Hit_Rate
@@ -170,7 +170,7 @@ xi.summon.avatarPhysicalMove = function(avatar, target, skill, numberofhits, acc
     if numHitsLanded == 0 then
         -- Missed everything we can exit early
         finaldmg = 0
-        skill:setMsg(xi.msg.basic.SKILL_MISS)
+        skill:setMsg(invaderXim.msg.basic.SKILL_MISS)
     else
         -- https://www.bg-wiki.com/bg/Critical_Hit_Rate
         -- Crit rate has a base of 5% and no cap, 0-100% are valid
@@ -178,17 +178,17 @@ xi.summon.avatarPhysicalMove = function(avatar, target, skill, numberofhits, acc
         local baseCritRate = 5
         local maxCritRate  = 1 -- 100%
         local minCritRate  = 0 -- 0%
-        local critRate     = baseCritRate + getDexCritRate(avatar, target) + avatar:getMod(xi.mod.CRITHITRATE)
+        local critRate     = baseCritRate + getDexCritRate(avatar, target) + avatar:getMod(invaderXim.mod.CRITHITRATE)
 
         critRate = critRate / 100
         critRate = utils.clamp(critRate, minCritRate, maxCritRate)
 
         local weaponDmg = avatar:getWeaponDmg()
-        local fSTR      = xi.combat.physical.calculateMeleeStatFactor(avatar, target)
+        local fSTR      = invaderXim.combat.physical.calculateMeleeStatFactor(avatar, target)
 
         -- https://www.bg-wiki.com/bg/PDIF
         -- https://www.bluegartr.com/threads/127523-pDIF-Changes-(Feb.-10th-2016)
-        local ratio  = avatar:getStat(xi.mod.ATT) / target:getStat(xi.mod.DEF)
+        local ratio  = avatar:getStat(invaderXim.mod.ATT) / target:getStat(invaderXim.mod.DEF)
         local cRatio = ratio
 
         if shouldApplyLevelCorrection then
@@ -203,7 +203,7 @@ xi.summon.avatarPhysicalMove = function(avatar, target, skill, numberofhits, acc
         --Everything past this point is randomly computed per hit
 
         numHitsProcessed      = 0
-        local critAttackBonus = 1 + ((avatar:getMod(xi.mod.CRIT_DMG_INCREASE) - target:getMod(xi.mod.CRIT_DEF_BONUS)) / 100)
+        local critAttackBonus = 1 + ((avatar:getMod(invaderXim.mod.CRIT_DMG_INCREASE) - target:getMod(invaderXim.mod.CRIT_DEF_BONUS)) / 100)
 
         if firstHitLanded then
             local wRatio = cRatio
@@ -242,7 +242,7 @@ xi.summon.avatarPhysicalMove = function(avatar, target, skill, numberofhits, acc
         end
 
         -- apply ftp bonus
-        if tpeffect == xi.mobskills.physicalTpBonus.DMG_VARIES then
+        if tpeffect == invaderXim.mobskills.physicalTpBonus.DMG_VARIES then
             finaldmg = finaldmg * avatarFTP(avatar:getTP(), mtp100, mtp200, mtp300)
         end
     end
@@ -255,20 +255,20 @@ end
 
 local attackTypeShields =
 {
-    [xi.attackType.PHYSICAL] = xi.effect.PHYSICAL_SHIELD,
-    [xi.attackType.RANGED  ] = xi.effect.ARROW_SHIELD,
-    [xi.attackType.MAGICAL ] = xi.effect.MAGIC_SHIELD,
+    [invaderXim.attackType.PHYSICAL] = invaderXim.effect.PHYSICAL_SHIELD,
+    [invaderXim.attackType.RANGED  ] = invaderXim.effect.ARROW_SHIELD,
+    [invaderXim.attackType.MAGICAL ] = invaderXim.effect.MAGIC_SHIELD,
 }
 
-xi.summon.avatarFinalAdjustments = function(dmg, mob, skill, target, skilltype, damagetype, shadowbehav)
-    local missMessage = xi.msg.basic.SKILL_MISS
-    if mob:getCurrentAction() == xi.action.PET_MOBABILITY_FINISH then
-        missMessage = xi.msg.basic.JA_MISS_2
+invaderXim.summon.avatarFinalAdjustments = function(dmg, mob, skill, target, skilltype, damagetype, shadowbehav)
+    local missMessage = invaderXim.msg.basic.SKILL_MISS
+    if mob:getCurrentAction() == invaderXim.action.PET_MOBABILITY_FINISH then
+        missMessage = invaderXim.msg.basic.JA_MISS_2
     end
 
     -- Physical Attack Missed
     if
-        skilltype == xi.attackType.PHYSICAL and
+        skilltype == invaderXim.attackType.PHYSICAL and
         dmg == 0
     then
         skill:setMsg(missMessage)
@@ -278,46 +278,46 @@ xi.summon.avatarFinalAdjustments = function(dmg, mob, skill, target, skilltype, 
 
     -- set message to damage
     -- this is for AoE because its only set once
-    if mob:getCurrentAction() == xi.action.PET_MOBABILITY_FINISH then
-        if skill:getMsg() ~= xi.msg.basic.JA_MAGIC_BURST then
-            skill:setMsg(xi.msg.basic.USES_JA_TAKE_DAMAGE)
+    if mob:getCurrentAction() == invaderXim.action.PET_MOBABILITY_FINISH then
+        if skill:getMsg() ~= invaderXim.msg.basic.JA_MAGIC_BURST then
+            skill:setMsg(invaderXim.msg.basic.USES_JA_TAKE_DAMAGE)
         end
     else
-        skill:setMsg(xi.msg.basic.DAMAGE)
+        skill:setMsg(invaderXim.msg.basic.DAMAGE)
     end
 
     -- Handle shadows depending on shadow behavior / skilltype
     dmg = utils.takeShadows(target, dmg, shadowbehav)
 
     -- handle Third Eye using shadowbehav as a guide
-    local teye = target:getStatusEffect(xi.effect.THIRD_EYE)
+    local teye = target:getStatusEffect(invaderXim.effect.THIRD_EYE)
 
     -- T.Eye only procs when active with PHYSICAL stuff
     if
         teye ~= nil and
-        skilltype == xi.attackType.PHYSICAL
+        skilltype == invaderXim.attackType.PHYSICAL
     then
-        if shadowbehav == xi.mobskills.shadowBehavior.WIPE_SHADOWS then -- e.g. aoe moves
-            target:delStatusEffect(xi.effect.THIRD_EYE)
-        elseif shadowbehav ~= xi.mobskills.shadowBehavior.IGNORE_SHADOWS then -- it can be absorbed by shadows
+        if shadowbehav == invaderXim.mobskills.shadowBehavior.WIPE_SHADOWS then -- e.g. aoe moves
+            target:delStatusEffect(invaderXim.effect.THIRD_EYE)
+        elseif shadowbehav ~= invaderXim.mobskills.shadowBehavior.IGNORE_SHADOWS then -- it can be absorbed by shadows
             -- third eye doesnt care how many shadows, so attempt to anticipate, but reduce
             -- chance of anticipate based on previous successful anticipates.
             local prevAnt = teye:getPower()
             if prevAnt == 0 then
                 -- 100% proc
                 teye:setPower(1)
-                skill:setMsg(xi.msg.basic.ANTICIPATE)
+                skill:setMsg(invaderXim.msg.basic.ANTICIPATE)
                 return 0
             end
 
             if math.random() * 10 < 8 - prevAnt then
                 -- anticipated!
                 teye:setPower(prevAnt + 1)
-                skill:setMsg(xi.msg.basic.ANTICIPATE)
+                skill:setMsg(invaderXim.msg.basic.ANTICIPATE)
                 return 0
             end
 
-            target:delStatusEffect(xi.effect.THIRD_EYE)
+            target:delStatusEffect(invaderXim.effect.THIRD_EYE)
         end
     end
 
@@ -330,17 +330,17 @@ xi.summon.avatarFinalAdjustments = function(dmg, mob, skill, target, skilltype, 
 
     -- handle invincible
     if
-        target:hasStatusEffect(xi.effect.INVINCIBLE) and
-        skilltype == xi.attackType.PHYSICAL
+        target:hasStatusEffect(invaderXim.effect.INVINCIBLE) and
+        skilltype == invaderXim.attackType.PHYSICAL
     then
         return 0
     end
 
     -- handle pd
     if
-        (target:hasStatusEffect(xi.effect.PERFECT_DODGE) or
-        target:hasStatusEffect(xi.effect.ALL_MISS)) and
-        skilltype == xi.attackType.PHYSICAL
+        (target:hasStatusEffect(invaderXim.effect.PERFECT_DODGE) or
+        target:hasStatusEffect(invaderXim.effect.ALL_MISS)) and
+        skilltype == invaderXim.attackType.PHYSICAL
     then
         skill:setMsg(missMessage)
 
@@ -348,20 +348,20 @@ xi.summon.avatarFinalAdjustments = function(dmg, mob, skill, target, skilltype, 
     end
 
     -- Calculate Blood Pact Damage before stoneskin
-    dmg = math.floor(dmg + dmg * mob:getMod(xi.mod.BP_DAMAGE) / 100)
+    dmg = math.floor(dmg + dmg * mob:getMod(invaderXim.mod.BP_DAMAGE) / 100)
 
     if dmg < 0 then
         return dmg
     end
 
     -- handle One For All, Liement
-    if skilltype == xi.attackType.MAGICAL then
+    if skilltype == invaderXim.attackType.MAGICAL then
         dmg = utils.oneforall(target, dmg)
     end
 
     -- Handle Phalanx
     if dmg > 0 then
-        dmg = utils.clamp(dmg - target:getMod(xi.mod.PHALANX), 0, 99999)
+        dmg = utils.clamp(dmg - target:getMod(invaderXim.mod.PHALANX), 0, 99999)
     end
 
     -- handling stoneskin
@@ -375,17 +375,17 @@ end
 
 -- returns true if mob attack hit
 -- used to stop tp move status effects
-xi.summon.avatarPhysicalHit = function(skill, dmg)
+invaderXim.summon.avatarPhysicalHit = function(skill, dmg)
     -- if message is not the default. Then there was a miss, shadow taken etc
-    return skill:getMsg() == xi.msg.basic.DAMAGE
+    return skill:getMsg() == invaderXim.msg.basic.DAMAGE
 end
 
 -- Checks if the summoner is in a Trial Size Avatar Mini Fight (used to restrict summoning while in bcnm)
-xi.summon.avatarMiniFightCheck = function(caster)
+invaderXim.summon.avatarMiniFightCheck = function(caster)
     local result = 0
     local bcnmid
-    if caster:hasStatusEffect(xi.effect.BATTLEFIELD) then
-        bcnmid = caster:getStatusEffect(xi.effect.BATTLEFIELD):getPower()
+    if caster:hasStatusEffect(invaderXim.effect.BATTLEFIELD) then
+        bcnmid = caster:getStatusEffect(invaderXim.effect.BATTLEFIELD):getPower()
         if
             bcnmid == 418 or
             bcnmid == 609 or

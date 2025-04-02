@@ -3,7 +3,7 @@
 --  Mob: Eotyrannus
 -- Note: PH for Lindwurm
 -----------------------------------
-local ID = zones[xi.zone.IFRITS_CAULDRON]
+local ID = zones[invaderXim.zone.IFRITS_CAULDRON]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -19,11 +19,11 @@ local lindwurmPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 758, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 758, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, lindwurmPHTable, 5, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, lindwurmPHTable, 5, 3600) -- 1 hour
 end
 
 return entity

@@ -7,7 +7,7 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    if target:hasStatusEffect(xi.effect.IMPAIRMENT) then
+    if target:hasStatusEffect(invaderXim.effect.IMPAIRMENT) then
         return 0
     end
 
@@ -15,7 +15,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:delStatusEffectSilent(xi.effect.IMPAIRMENT)
+    target:delStatusEffectSilent(invaderXim.effect.IMPAIRMENT)
     target:messageText(target, zones[target:getZoneID()].text.CELL_OFFSET + 9)
 end
 

@@ -6,24 +6,24 @@
 -- Monument : !pos 300 -62.803 498.2 106
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.HEARTS_OF_MYTHRIL)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.HEARTS_OF_MYTHRIL)
 
 quest.reward =
 {
     fame     = 80,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.SITABAKI,
-    title    = xi.title.PURSUER_OF_THE_PAST,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.SITABAKI,
+    title    = invaderXim.title.PURSUER_OF_THE_PAST,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Elki'] = quest:progressEvent(41),
 
@@ -31,7 +31,7 @@ quest.sections =
             {
                 [41] = function(player, csid, option, npc)
                     if option == 0 then
-                        npcUtil.giveKeyItem(player, xi.ki.BOUQUET_FOR_THE_PIONEERS)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.BOUQUET_FOR_THE_PIONEERS)
                         quest:begin(player)
                     end
                 end,
@@ -41,10 +41,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Elki'] =
             {
@@ -59,18 +59,18 @@ quest.sections =
             {
                 [42] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        xi.quest.setMustZone(player, xi.questLog.BASTOK, xi.quest.id.bastok.THE_ELEVENTHS_HOUR)
+                        invaderXim.quest.setMustZone(player, invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_ELEVENTHS_HOUR)
                     end
                 end,
             },
         },
 
-        [xi.zone.NORTH_GUSTABERG] =
+        [invaderXim.zone.NORTH_GUSTABERG] =
         {
             ['Monument'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.BOUQUET_FOR_THE_PIONEERS) then
+                    if player:hasKeyItem(invaderXim.ki.BOUQUET_FOR_THE_PIONEERS) then
                         return quest:progressEvent(11)
                     end
                 end,
@@ -81,7 +81,7 @@ quest.sections =
                 [11] = function(player, csid, option, npc)
                     if option == 0 then
                         quest:setVar(player, 'Prog', 1)
-                        player:delKeyItem(xi.ki.BOUQUET_FOR_THE_PIONEERS)
+                        player:delKeyItem(invaderXim.ki.BOUQUET_FOR_THE_PIONEERS)
                     end
                 end,
             },

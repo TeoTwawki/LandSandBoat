@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.TAVNAZIAN_SAFEHOLD]
+local ID = zones[invaderXim.zone.TAVNAZIAN_SAFEHOLD]
 
 return {
     ['_0q1']                    = { messageSpecial = ID.text.DOOR_IS_LOCKED_TIGHT },

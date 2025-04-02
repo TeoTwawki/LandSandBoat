@@ -10,15 +10,15 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    local skillLvl = caster:getSkillLevel(xi.skill.DARK_MAGIC)
+    local skillLvl = caster:getSkillLevel(invaderXim.skill.DARK_MAGIC)
     local basedmg = skillLvl / 4
     local params = {}
     params.dmg = basedmg
     params.multiplier = 3
-    params.skillType = xi.skill.DARK_MAGIC
-    params.attribute = xi.mod.INT
+    params.skillType = invaderXim.skill.DARK_MAGIC
+    params.attribute = invaderXim.mod.INT
     params.hasMultipleTargetReduction = false
-    params.diff = caster:getStat(xi.mod.INT)-target:getStat(xi.mod.INT)
+    params.diff = caster:getStat(invaderXim.mod.INT)-target:getStat(invaderXim.mod.INT)
     params.bonus = 1.0
 
     -- Calculate raw damage
@@ -32,7 +32,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     -- Add on bonuses (staff/day/weather/jas/mab/etc all go in this function)
     dmg = addBonuses(caster, spell, target, dmg)
     -- Add in target adjustment
-    dmg = dmg * xi.spells.damage.calculateNukeAbsorbOrNullify(target, spell:getElement())
+    dmg = dmg * invaderXim.spells.damage.calculateNukeAbsorbOrNullify(target, spell:getElement())
     -- Add in final adjustments including the actual damage dealt
     local final = finalMagicAdjustments(caster, target, spell, dmg)
 
@@ -40,7 +40,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     local duration = calculateDuration(180, spell:getSkillType(), spell:getSpellGroup(), caster, target)
 
     -- Check for Dia
-    local dia = target:getStatusEffect(xi.effect.DIA)
+    local dia = target:getStatusEffect(invaderXim.effect.DIA)
 
     -- Calculate DoT effect
     -- http://wiki.ffo.jp/html/1954.html
@@ -74,13 +74,13 @@ spellObject.onSpellCast = function(caster, target, spell)
     end
 
     -- Do it!
-    target:addStatusEffect(xi.effect.BIO, dotdmg, 3, duration, 0, 20, 3)
-    spell:setMsg(xi.msg.basic.MAGIC_DMG)
+    target:addStatusEffect(invaderXim.effect.BIO, dotdmg, 3, duration, 0, 20, 3)
+    spell:setMsg(invaderXim.msg.basic.MAGIC_DMG)
 
     -- Try to kill same tier Dia (default behavior)
-    if xi.settings.main.DIA_OVERWRITE == 1 and dia ~= nil then
+    if invaderXim.settings.main.DIA_OVERWRITE == 1 and dia ~= nil then
         if dia:getPower() <= 3 then
-            target:delStatusEffect(xi.effect.DIA)
+            target:delStatusEffect(invaderXim.effect.DIA)
         end
     end
 

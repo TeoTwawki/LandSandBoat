@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.WEST_RONFAURE]
+local ID = zones[invaderXim.zone.WEST_RONFAURE]
 
 return {
     ['Aaveleon']       = { event = 101 }, -- "Ow! Ouch! Gah... If only I'd remembered that ointment!"

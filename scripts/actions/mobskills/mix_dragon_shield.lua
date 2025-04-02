@@ -16,11 +16,11 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
         skill:setMsg(280) -- Target gains the effect of {ID}
     end
 
-    if not target:hasStatusEffect(xi.effect.MAGIC_DEF_BOOST) then
-        target:addStatusEffect(xi.effect.MAGIC_DEF_BOOST, 10, 0, 60)
+    if not target:hasStatusEffect(invaderXim.effect.MAGIC_DEF_BOOST) then
+        target:addStatusEffect(invaderXim.effect.MAGIC_DEF_BOOST, 10, 0, 60)
     end
 
-    return xi.effect.MAGIC_DEF_BOOST
+    return invaderXim.effect.MAGIC_DEF_BOOST
 end
 
 return mobskillObject

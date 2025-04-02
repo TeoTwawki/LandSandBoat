@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS `monstrosity_exp_table`;
-CREATE TABLE IF NOT EXISTS `monstrosity_exp_table` (
+DROP TABLE IF IXIMSTS `monstrosity_exp_table`;
+CREATE TABLE IF NOT IXIMSTS `monstrosity_exp_table` (
   `level` tinyint(2) NOT NULL,
   `amount` smallint(4) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`level`)

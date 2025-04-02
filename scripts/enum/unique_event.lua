@@ -10,8 +10,8 @@ xi = xi or {}
 --
 -- DO NOT USE THIS FOR CUSTOM THINGS, IT WILL GET CLOBBERED BY UPSTREAM DEVS.
 
----@enum xi.uniqueEvent
-xi.uniqueEvent =
+---@enum invaderXim.uniqueEvent
+invaderXim.uniqueEvent =
 {
     EKOKOKO_INTRODUCTION = 0,
     RECEIVED_NEXUS_CAPE  = 1,

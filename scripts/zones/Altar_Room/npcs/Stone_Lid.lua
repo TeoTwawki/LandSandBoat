@@ -3,18 +3,18 @@
 --  NPC: Stone Lid
 -- !pos -316.4390, 24.7654, 12.1590
 -----------------------------------
-local ID = zones[xi.zone.ALTAR_ROOM]
+local ID = zones[invaderXim.zone.ALTAR_ROOM]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    local moralmanifest = player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.A_MORAL_MANIFEST)
+    local moralmanifest = player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.A_MORAL_MANIFEST)
     if
-        moralmanifest == xi.questStatus.QUEST_ACCEPTED and
+        moralmanifest == invaderXim.questStatus.QUEST_ACCEPTED and
         player:getCharVar('moral') == 7
     then
-        if trade:hasItemQty(xi.item.YAGUDO_HEADGEAR, 1) then -- Trade Yagudo Headgear
+        if trade:hasItemQty(invaderXim.item.YAGUDO_HEADGEAR, 1) then -- Trade Yagudo Headgear
             player:tradeComplete()
             player:startEvent(50)
         end
@@ -22,10 +22,10 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    -- local moralmanifest = player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.A_MORAL_MANIFEST)
+    -- local moralmanifest = player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.A_MORAL_MANIFEST)
     local moral = player:getCharVar('moral')
-    local head = player:getEquipID(xi.slot.HEAD)
-    if moral == 5 and head == xi.item.YAGUDO_HEADGEAR then
+    local head = player:getEquipID(invaderXim.slot.HEAD)
+    if moral == 5 and head == invaderXim.item.YAGUDO_HEADGEAR then
         player:startEvent(48)
     elseif moral == 6 then
         player:startEvent(49)
@@ -53,7 +53,7 @@ entity.onEventFinish = function(player, csid, option, npc)
     elseif csid == 49 then
         player:setCharVar('moral', 7)
     elseif csid == 50 then
-        if npcUtil.giveItem(player, xi.item.TSOO_HAJAS_HEADGEAR) then
+        if npcUtil.giveItem(player, invaderXim.item.TSOO_HAJAS_HEADGEAR) then
             player:setCharVar('moral', 8)
         end
     end

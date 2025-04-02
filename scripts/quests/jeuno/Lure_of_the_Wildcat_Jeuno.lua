@@ -4,16 +4,16 @@
 -- !addquest 3 90
 -- Ajithaam : !pos -82 0.1 160 244
 -----------------------------------
-local upperJeunoID = zones[xi.zone.UPPER_JEUNO]
+local upperJeunoID = zones[invaderXim.zone.UPPER_JEUNO]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.LURE_OF_THE_WILDCAT)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.LURE_OF_THE_WILDCAT)
 
 quest.reward =
 {
     fame     = 150,
-    fameArea = xi.fameArea.JEUNO,
-    keyItem  = xi.ki.WHITE_INVITATION_CARD,
+    fameArea = invaderXim.fameArea.JEUNO,
+    keyItem  = invaderXim.ki.WHITE_INVITATION_CARD,
 }
 
 local wildcatNpcData =
@@ -56,18 +56,18 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                xi.settings.main.ENABLE_TOAU == 1
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                invaderXim.settings.main.ENABLE_TOAU == 1
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Ajithaam'] = quest:progressEvent(10088),
 
             onEventFinish =
             {
                 [10088] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.WHITE_SENTINEL_BADGE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.WHITE_SENTINEL_BADGE)
                     quest:begin(player)
                 end,
             },
@@ -76,10 +76,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Bluffnix'] = wildcatOnTrigger,
             ['Gurdern']  = wildcatOnTrigger,
@@ -97,7 +97,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.PORT_JEUNO] =
+        [invaderXim.zone.PORT_JEUNO] =
         {
             ['Karl']      = wildcatOnTrigger,
             ['Red_Ghost'] = wildcatOnTrigger,
@@ -115,7 +115,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Adolie']        = wildcatOnTrigger,
             ['Albiona']       = wildcatOnTrigger,
@@ -133,7 +133,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Ajithaam'] =
             {
@@ -165,8 +165,8 @@ quest.sections =
                 [10087] = wildcatOnEventFinish,
 
                 [10091] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.WHITE_SENTINEL_BADGE)
-                    player:messageSpecial(upperJeunoID.text.KEYITEM_LOST, xi.ki.WHITE_SENTINEL_BADGE)
+                    player:delKeyItem(invaderXim.ki.WHITE_SENTINEL_BADGE)
+                    player:messageSpecial(upperJeunoID.text.KEYITEM_LOST, invaderXim.ki.WHITE_SENTINEL_BADGE)
 
                     quest:complete(player)
                 end,

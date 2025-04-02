@@ -2,18 +2,18 @@
 -- TOAU-44: Nashmeira's Plea
 -- !instance 7701
 -----------------------------------
-local ID = zones[xi.zone.NYZUL_ISLE]
+local ID = zones[invaderXim.zone.NYZUL_ISLE]
 -----------------------------------
 local instanceObject = {}
 
 instanceObject.registryRequirements = function(player)
-    return player:getCurrentMission(xi.mission.log_id.TOAU) == xi.mission.id.toau.NASHMEIRAS_PLEA and
-        player:hasKeyItem(xi.ki.MYTHRIL_MIRROR) and
-        player:getMissionStatus(xi.mission.log_id.TOAU) == 1
+    return player:getCurrentMission(invaderXim.mission.log_id.TOAU) == invaderXim.mission.id.toau.NASHMEIRAS_PLEA and
+        player:hasKeyItem(invaderXim.ki.MYTHRIL_MIRROR) and
+        player:getMissionStatus(invaderXim.mission.log_id.TOAU) == 1
 end
 
 instanceObject.entryRequirements = function(player)
-    return player:getCurrentMission(xi.mission.log_id.TOAU) >= xi.mission.id.toau.NASHMEIRAS_PLEA
+    return player:getCurrentMission(invaderXim.mission.log_id.TOAU) >= invaderXim.mission.id.toau.NASHMEIRAS_PLEA
 end
 
 instanceObject.onInstanceCreated = function(instance)
@@ -22,7 +22,7 @@ instanceObject.onInstanceCreated = function(instance)
 end
 
 instanceObject.onInstanceCreatedCallback = function(player, instance)
-    xi.instance.onInstanceCreatedCallback(player, instance)
+    invaderXim.instance.onInstanceCreatedCallback(player, instance)
 
     -- Kill the Nyzul Isle update spam
     for _, v in ipairs(player:getParty()) do
@@ -36,11 +36,11 @@ instanceObject.afterInstanceRegister = function(player)
     local instance = player:getInstance()
     player:messageSpecial(ID.text.TIME_TO_COMPLETE, instance:getTimeLimit())
 
-    player:delKeyItem(xi.ki.MYTHRIL_MIRROR)
+    player:delKeyItem(invaderXim.ki.MYTHRIL_MIRROR)
 end
 
 instanceObject.onInstanceTimeUpdate = function(instance, elapsed)
-    xi.instance.updateInstanceTime(instance, elapsed, ID.text)
+    invaderXim.instance.updateInstanceTime(instance, elapsed, ID.text)
 end
 
 instanceObject.onInstanceFailure = function(instance)
@@ -76,10 +76,10 @@ instanceObject.onInstanceComplete = function(instance)
 
     for i, v in pairs(chars) do
         if
-            v:getCurrentMission(xi.mission.log_id.TOAU) == xi.mission.id.toau.NASHMEIRAS_PLEA and
-            v:getMissionStatus(xi.mission.log_id.TOAU) == 1
+            v:getCurrentMission(invaderXim.mission.log_id.TOAU) == invaderXim.mission.id.toau.NASHMEIRAS_PLEA and
+            v:getMissionStatus(invaderXim.mission.log_id.TOAU) == 1
         then
-            v:setMissionStatus(xi.mission.log_id.TOAU, 2)
+            v:setMissionStatus(invaderXim.mission.log_id.TOAU, 2)
         end
 
         v:setPos(0, 0, 0, 0, 72)

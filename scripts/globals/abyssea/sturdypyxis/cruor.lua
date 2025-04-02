@@ -2,11 +2,11 @@
 -- Abyssea Sturdy Pyxis - Cruor
 -----------------------------------
 xi = xi or {}
-xi.pyxis = xi.pyxis or {}
+invaderXim.pyxis = invaderXim.pyxis or {}
 
-xi.pyxis.cruor = {}
+invaderXim.pyxis.cruor = {}
 
-xi.pyxis.cruor.giveCruor = function(npc, player)
+invaderXim.pyxis.cruor.giveCruor = function(npc, player)
     local ID = zones[npc:getZoneID()]
     local alliance = player:getAlliance()
     local cruorAmount = npc:getLocalVar('CRUOR')

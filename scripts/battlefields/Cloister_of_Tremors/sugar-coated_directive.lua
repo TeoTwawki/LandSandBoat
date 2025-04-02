@@ -2,12 +2,12 @@
 -- Area: Cloister of Tremors
 -- BCNM: Sugar Coated Directive (ASA-4)
 -----------------------------------
-local cloisterOfTremorsID = zones[xi.zone.CLOISTER_OF_TREMORS]
+local cloisterOfTremorsID = zones[invaderXim.zone.CLOISTER_OF_TREMORS]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId        = xi.zone.CLOISTER_OF_TREMORS,
-    battlefieldId = xi.battlefield.id.SUGAR_COATED_DIRECTIVE_CLOISTER_OF_TREMORS,
+    zoneId        = invaderXim.zone.CLOISTER_OF_TREMORS,
+    battlefieldId = invaderXim.battlefield.id.SUGAR_COATED_DIRECTIVE_CLOISTER_OF_TREMORS,
     canLoseExp    = false,
     isMission     = true,
     allowTrusts   = true,
@@ -18,9 +18,9 @@ local content = BattlefieldMission:new({
     entryNpc         = 'EP_Entrance',
     exitNpc          = 'Earth_Protocrystal',
 
-    requiredKeyItems = { xi.ki.DOMINAS_AMBER_SEAL, keep = true },
-    missionArea      = xi.mission.log_id.ASA,
-    mission          = xi.mission.id.asa.SUGAR_COATED_DIRECTIVE,
+    requiredKeyItems = { invaderXim.ki.DOMINAS_AMBER_SEAL, keep = true },
+    missionArea      = invaderXim.mission.log_id.ASA,
+    mission          = invaderXim.mission.id.asa.SUGAR_COATED_DIRECTIVE,
     requiredVar      = 'Mission[11][3]Titan',
     requiredValue    = 1,
 
@@ -38,7 +38,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

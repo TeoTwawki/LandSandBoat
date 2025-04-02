@@ -3,7 +3,7 @@
 --  Mob: Huge Spider
 -- Note: PH for Falcatus Aranei
 -----------------------------------
-local ID = zones[xi.zone.KORROLOKA_TUNNEL]
+local ID = zones[invaderXim.zone.KORROLOKA_TUNNEL]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -18,11 +18,11 @@ local falcatusPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 729, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 729, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, falcatusPHTable, 5, 7200) -- 2 hour minimum
+    invaderXim.mob.phOnDespawn(mob, falcatusPHTable, 5, 7200) -- 2 hour minimum
 end
 
 return entity

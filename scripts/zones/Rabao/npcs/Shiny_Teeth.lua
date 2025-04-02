@@ -3,7 +3,7 @@
 --  NPC: Shiny Teeth
 -- !pos -30 8 99 247
 -----------------------------------
-local ID = zones[xi.zone.RABAO]
+local ID = zones[invaderXim.zone.RABAO]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -28,7 +28,7 @@ entity.onTrigger = function(player, npc)
     }
 
     player:showText(npc, ID.text.SHINY_TEETH_SHOP_DIALOG)
-    xi.shop.general(player, stock)
+    invaderXim.shop.general(player, stock)
 end
 
 return entity

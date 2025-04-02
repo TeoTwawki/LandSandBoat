@@ -5,30 +5,30 @@
 -- Lokpix : !pos -61.942 3.949 224.900 114
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OUTLANDS, xi.quest.id.outlands.OPEN_SESAME)
+local quest = Quest:new(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.OPEN_SESAME)
 
 quest.reward =
 {
-    fameArea = xi.fameArea.SELBINA_RABAO,
+    fameArea = invaderXim.fameArea.SELBINA_RABAO,
     fame     = 30,
-    keyItem  = xi.ki.LOADSTONE,
+    keyItem  = invaderXim.ki.LOADSTONE,
 }
 
 local tradeItems =
 {
-    { xi.item.METEORITE,   1 },
-    { xi.item.SOIL_GEM,    1 },
-    { xi.item.SOIL_GEODE, 12 },
+    { invaderXim.item.METEORITE,   1 },
+    { invaderXim.item.SOIL_GEM,    1 },
+    { invaderXim.item.SOIL_GEODE, 12 },
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.EASTERN_ALTEPA_DESERT] =
+        [invaderXim.zone.EASTERN_ALTEPA_DESERT] =
         {
             ['Lokpix'] = quest:progressEvent(20),
 
@@ -45,16 +45,16 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.EASTERN_ALTEPA_DESERT] =
+        [invaderXim.zone.EASTERN_ALTEPA_DESERT] =
         {
             ['Lokpix'] =
             {
                 onTrade = function(player, npc, trade)
                     for _, tradeOption in ipairs(tradeItems) do
-                        if npcUtil.tradeHasExactly(trade, { tradeOption, { xi.item.TREMORSTONE, 1 } }) then
+                        if npcUtil.tradeHasExactly(trade, { tradeOption, { invaderXim.item.TREMORSTONE, 1 } }) then
                             return quest:progressEvent(22)
                         end
                     end

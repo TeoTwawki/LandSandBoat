@@ -2,13 +2,13 @@
 -- Area: The Sanctuary of Zi'Tah
 --   NM: Doomed Pilgrims
 -----------------------------------
-local ID = zones[xi.zone.THE_SANCTUARY_OF_ZITAH]
+local ID = zones[invaderXim.zone.THE_SANCTUARY_OF_ZITAH]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
 end
 
 entity.onMobDisengage = function(mob)

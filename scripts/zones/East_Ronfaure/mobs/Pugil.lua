@@ -3,7 +3,7 @@
 --  Mob: Pugil
 -- Note: PH for Swamfisk
 -----------------------------------
-local ID = zones[xi.zone.EAST_RONFAURE]
+local ID = zones[invaderXim.zone.EAST_RONFAURE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -74,13 +74,13 @@ local swamfiskSpawnPoints =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 64, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 64, 1, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = swamfiskSpawnPoints
-    xi.mob.phOnDespawn(mob, swamfiskPHTable, 7, 3600, params) -- 1 hour minimum
+    invaderXim.mob.phOnDespawn(mob, swamfiskPHTable, 7, 3600, params) -- 1 hour minimum
 end
 
 return entity

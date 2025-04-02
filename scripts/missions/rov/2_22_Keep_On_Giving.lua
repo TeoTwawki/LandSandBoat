@@ -6,18 +6,18 @@
 -- qm_rov2_20 : !pos -44.741 -23.753 568.504 25
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.KEEP_ON_GIVING)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.KEEP_ON_GIVING)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.PAST_IMPERFECT },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.PAST_IMPERFECT },
 }
 
 local itemOptions =
 {
-    [0] = { xi.item.BEEF_STEWPOT,          1 },
-    [1] = { xi.item.SERVING_OF_ZARU_SOBA,  1 },
-    [2] = { xi.item.SPICY_CRACKER,        30 },
+    [0] = { invaderXim.item.BEEF_STEWPOT,          1 },
+    [1] = { invaderXim.item.SERVING_OF_ZARU_SOBA,  1 },
+    [2] = { invaderXim.item.SPICY_CRACKER,        30 },
 }
 
 mission.sections =
@@ -27,7 +27,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.MISAREAUX_COAST] =
+        [invaderXim.zone.MISAREAUX_COAST] =
         {
             ['qm_rov2_20'] =
             {
@@ -39,7 +39,7 @@ mission.sections =
                         -- NOTE: First parameter is dependent on RotZ completion status regarding Kam'lanaut living.  With minimal requirements,
                         -- this was '1', while with RotZ completed this was '3'
 
-                        local rotzParam = player:hasCompletedMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_CELESTIAL_NEXUS) and 3 or 1
+                        local rotzParam = player:hasCompletedMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_CELESTIAL_NEXUS) and 3 or 1
 
                         return mission:progressEvent(17, rotzParam, 23)
                     end

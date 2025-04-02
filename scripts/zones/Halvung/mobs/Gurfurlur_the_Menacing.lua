@@ -4,7 +4,7 @@
 -- !pos -59.000 -23.000 3.000 62
 -----------------------------------
 mixins = { require('scripts/mixins/job_special') }
-local ID = zones[xi.zone.HALVUNG]
+local ID = zones[invaderXim.zone.HALVUNG]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -35,7 +35,7 @@ entity.onMobFight = function(mob, target)
     for i = ID.mob.GURFURLUR_THE_MENACING + 1, ID.mob.GURFURLUR_THE_MENACING + 4 do
         local pet = GetMobByID(i)
 
-        if pet and pet:getCurrentAction() == xi.act.ROAMING then
+        if pet and pet:getCurrentAction() == invaderXim.act.ROAMING then
             pet:updateEnmity(target)
         end
     end
@@ -46,7 +46,7 @@ entity.onMobDisengage = function(mob)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.TROLL_SUBJUGATOR)
+    player:addTitle(invaderXim.title.TROLL_SUBJUGATOR)
     for i = 1, 4 do DespawnMob(ID.mob.GURFURLUR_THE_MENACING + i) end
 end
 

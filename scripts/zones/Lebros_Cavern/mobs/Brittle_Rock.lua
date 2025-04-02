@@ -3,24 +3,24 @@
 --  Mob: Brittle Rock
 -- Immune to sleep (light, dark), poison, cannot regain HP on deaggro
 -----------------------------------
-local ID = zones[xi.zone.LEBROS_CAVERN]
+local ID = zones[invaderXim.zone.LEBROS_CAVERN]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    xi.assault.adjustMobLevel(mob)
-    mob:setMobMod(xi.mobMod.NO_REST, 0)
-    mob:setMobMod(xi.mobMod.EXP_BONUS, -100)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+    invaderXim.assault.adjustMobLevel(mob)
+    mob:setMobMod(invaderXim.mobMod.NO_REST, 0)
+    mob:setMobMod(invaderXim.mobMod.EXP_BONUS, -100)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
     mob:setAutoAttackEnabled(false)
-    mob:setMod(xi.mod.UDMGPHYS, -9000)
-    mob:setMod(xi.mod.UDMGBREATH, -9000)
-    mob:setMod(xi.mod.UDMGRANGE, -9000)
-    mob:setMod(xi.mod.UDMGMAGIC, -9000)
-    mob:setMod(xi.mod.CURSE_MEVA, 9999)
-    mob:setMod(xi.mod.EVA, 0)
-    mob:setMobMod(xi.mobMod.NO_DROPS, 1)
+    mob:setMod(invaderXim.mod.UDMGPHYS, -9000)
+    mob:setMod(invaderXim.mod.UDMGBREATH, -9000)
+    mob:setMod(invaderXim.mod.UDMGRANGE, -9000)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, -9000)
+    mob:setMod(invaderXim.mod.CURSE_MEVA, 9999)
+    mob:setMod(invaderXim.mod.EVA, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_DROPS, 1)
     mob:addListener('WEAPONSKILL_TAKE', 'BRITTLE_ROCK_WEAPONSKILL_TAKE', function(mobArg, user, wsid)
         if wsid == 1838 then
             mobArg:setHP(0)
@@ -37,16 +37,16 @@ entity.onMobDeath = function(mob, player, optParams)
             return
         end
 
-        if mobID == ID.mob[xi.assault.mission.EXCAVATION_DUTY].MOBS_START.BRITTLE_ROCK1 then
-            GetNPCByID(ID.npc._1rx, instance):setAnimation(xi.animation.OPEN_DOOR)
-        elseif mobID == ID.mob[xi.assault.mission.EXCAVATION_DUTY].MOBS_START.BRITTLE_ROCK2 then
-            GetNPCByID(ID.npc._1ry, instance):setAnimation(xi.animation.OPEN_DOOR)
-        elseif mobID == ID.mob[xi.assault.mission.EXCAVATION_DUTY].MOBS_START.BRITTLE_ROCK3 then
-            GetNPCByID(ID.npc._1rz, instance):setAnimation(xi.animation.OPEN_DOOR)
-        elseif mobID == ID.mob[xi.assault.mission.EXCAVATION_DUTY].MOBS_START.BRITTLE_ROCK4 then
-            GetNPCByID(ID.npc._jr0, instance):setAnimation(xi.animation.OPEN_DOOR)
-        elseif mobID == ID.mob[xi.assault.mission.EXCAVATION_DUTY].MOBS_START.BRITTLE_ROCK5 then
-            GetNPCByID(ID.npc._jr1, instance):setAnimation(xi.animation.OPEN_DOOR)
+        if mobID == ID.mob[invaderXim.assault.mission.EXCAVATION_DUTY].MOBS_START.BRITTLE_ROCK1 then
+            GetNPCByID(ID.npc._1rx, instance):setAnimation(invaderXim.animation.OPEN_DOOR)
+        elseif mobID == ID.mob[invaderXim.assault.mission.EXCAVATION_DUTY].MOBS_START.BRITTLE_ROCK2 then
+            GetNPCByID(ID.npc._1ry, instance):setAnimation(invaderXim.animation.OPEN_DOOR)
+        elseif mobID == ID.mob[invaderXim.assault.mission.EXCAVATION_DUTY].MOBS_START.BRITTLE_ROCK3 then
+            GetNPCByID(ID.npc._1rz, instance):setAnimation(invaderXim.animation.OPEN_DOOR)
+        elseif mobID == ID.mob[invaderXim.assault.mission.EXCAVATION_DUTY].MOBS_START.BRITTLE_ROCK4 then
+            GetNPCByID(ID.npc._jr0, instance):setAnimation(invaderXim.animation.OPEN_DOOR)
+        elseif mobID == ID.mob[invaderXim.assault.mission.EXCAVATION_DUTY].MOBS_START.BRITTLE_ROCK5 then
+            GetNPCByID(ID.npc._jr1, instance):setAnimation(invaderXim.animation.OPEN_DOOR)
         end
 
         instance:setProgress(instance:getProgress() + 1)

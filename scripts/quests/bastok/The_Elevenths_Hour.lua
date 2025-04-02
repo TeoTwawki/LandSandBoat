@@ -7,27 +7,27 @@
 -- Old Toolbox : !pos 113.649 -32.8 79.617 143
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.THE_ELEVENTHS_HOUR)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_ELEVENTHS_HOUR)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.SMALL_SWORD,
-    title    = xi.title.PURSUER_OF_THE_TRUTH,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.SMALL_SWORD,
+    title    = invaderXim.title.PURSUER_OF_THE_TRUTH,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.HEARTS_OF_MYTHRIL) and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 3 and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.HEARTS_OF_MYTHRIL) and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 3 and
                 not quest:getMustZone(player)
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Elki'] = quest:progressEvent(43),
 
@@ -44,10 +44,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Babenn'] =
             {
@@ -61,7 +61,7 @@ quest.sections =
             ['Elki'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.OLD_TOOLBOX) then
+                    if player:hasKeyItem(invaderXim.ki.OLD_TOOLBOX) then
                         return quest:progressEvent(44)
                     end
                 end,
@@ -70,7 +70,7 @@ quest.sections =
             ['Parraggoh'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.THE_ELEVENTHS_HOUR) then
+                    if player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_ELEVENTHS_HOUR) then
                         return quest:event(46)
                     end
                 end,
@@ -86,18 +86,18 @@ quest.sections =
 
                 [45] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.OLD_TOOLBOX)
+                        player:delKeyItem(invaderXim.ki.OLD_TOOLBOX)
                     end
                 end,
             },
         },
 
-        [xi.zone.PALBOROUGH_MINES] =
+        [invaderXim.zone.PALBOROUGH_MINES] =
         {
             ['Old_Toolbox'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.OLD_TOOLBOX) then
+                    if not player:hasKeyItem(invaderXim.ki.OLD_TOOLBOX) then
                         return quest:progressEvent(23)
                     end
                 end,
@@ -107,7 +107,7 @@ quest.sections =
             {
                 [23] = function(player, csid, option, npc)
                     if option == 0 then
-                        player:addKeyItem(xi.ki.OLD_TOOLBOX)
+                        player:addKeyItem(invaderXim.ki.OLD_TOOLBOX)
                     end
                 end
             },

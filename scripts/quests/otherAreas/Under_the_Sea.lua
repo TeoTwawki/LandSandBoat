@@ -9,25 +9,25 @@
 -- Zaldon  : !pos -11.810 -7.287 -6.742 248
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.UNDER_THE_SEA)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.UNDER_THE_SEA)
 
 quest.reward =
 {
-    item     = xi.item.AMBER_EARRING,
-    title    = xi.title.LIL_CUPID,
-    fameArea = xi.fameArea.SELBINA_RABAO,
+    item     = invaderXim.item.AMBER_EARRING,
+    title    = invaderXim.title.LIL_CUPID,
+    fameArea = invaderXim.fameArea.SELBINA_RABAO,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.SELBINA_RABAO) >= 2 and
-                xi.settings.map.FISHING_ENABLE == true
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.SELBINA_RABAO) >= 2 and
+                invaderXim.settings.map.FISHING_ENABLE == true
         end,
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Yaya'] = quest:progressEvent(31),
 
@@ -42,17 +42,17 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Oswald'] =
             {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 0 then
                         return quest:progressEvent(32) -- Oswald is looking for his ring
-                    elseif player:hasKeyItem(xi.ki.ETCHED_RING) then
+                    elseif player:hasKeyItem(invaderXim.ki.ETCHED_RING) then
                         return quest:progressEvent(37) -- You found it!
                     end
                 end,
@@ -71,14 +71,14 @@ quest.sections =
             {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 2 then
-                        return quest:progressEvent(34, xi.item.FAT_GREEDIE)
+                        return quest:progressEvent(34, invaderXim.item.FAT_GREEDIE)
                     end
                 end,
 
                 onTrade = function(player, npc, trade)
                     if
                         quest:getVar(player, 'Prog') == 3 and
-                        npcUtil.tradeHasExactly(trade, xi.item.FAT_GREEDIE)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.FAT_GREEDIE)
                     then
                         if math.random(1, 100) <= 20 then
                             return quest:progressEvent(35) -- Ring found !
@@ -105,7 +105,7 @@ quest.sections =
 
                 [35] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    npcUtil.giveKeyItem(player, xi.ki.ETCHED_RING)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ETCHED_RING)
                     quest:setVar(player, 'Prog', 4)
                 end,
 
@@ -115,7 +115,7 @@ quest.sections =
 
                 [37] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.ETCHED_RING)
+                        player:delKeyItem(invaderXim.ki.ETCHED_RING)
                     end
                 end,
             },
@@ -124,11 +124,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.THE_SAND_CHARM) == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.THE_SAND_CHARM) == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Oswald'] = quest:event(38):replaceDefault(),
         },

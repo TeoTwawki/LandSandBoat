@@ -3,13 +3,13 @@
 --   NM: Microplasm
 -- Note: Part of mission "The Salt of the Earth"
 -----------------------------------
-local ID = zones[xi.zone.GUSTAV_TUNNEL]
+local ID = zones[invaderXim.zone.GUSTAV_TUNNEL]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

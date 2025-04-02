@@ -3,8 +3,8 @@
 -- This table holds the submissions to the fish ranking contest
 --
 
-DROP TABLE IF EXISTS `fishing_contest_entries`;
-CREATE TABLE IF NOT EXISTS `fishing_contest_entries` (
+DROP TABLE IF IXIMSTS `fishing_contest_entries`;
+CREATE TABLE IF NOT IXIMSTS `fishing_contest_entries` (
     `charid`      int(10)     unsigned    NOT NULL,
     `mjob`        tinyint(2)  unsigned    NOT NULL,
     `sjob`        tinyint(2)  unsigned    NOT NULL,

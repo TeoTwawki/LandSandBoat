@@ -9,7 +9,7 @@ mixins = { require('scripts/mixins/families/chariot') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMod(xi.mod.UDMGMAGIC, -170)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, -170)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
@@ -19,7 +19,7 @@ entity.onMobDeath = function(mob, player, optParams)
             instance:setLocalVar('bossModifier', instance:getProgress())
         end
 
-        xi.salvage.spawnTempChest(mob)
+        invaderXim.salvage.spawnTempChest(mob)
     end
 end
 

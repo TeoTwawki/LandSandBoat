@@ -5,11 +5,11 @@
 local spellObject = {}
 
 spellObject.onMagicCastingCheck = function(caster, target, spell)
-    return xi.trust.canCast(caster, spell, xi.magic.spell.LION_II)
+    return invaderXim.trust.canCast(caster, spell, invaderXim.magic.spell.LION_II)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    return xi.trust.spawn(caster, spell)
+    return invaderXim.trust.spawn(caster, spell)
 end
 
 spellObject.onMobSpawn = function(mob)
@@ -18,10 +18,10 @@ spellObject.onMobSpawn = function(mob)
 
     local kGrapeshot = 3198
 
-    xi.trust.teamworkMessage(mob, {
-        [xi.magic.spell.ZEID] = xi.trust.messageOffset.TEAMWORK_1,
-        [xi.magic.spell.ALDO] = xi.trust.messageOffset.TEAMWORK_2,
-        [xi.magic.spell.GILGAMESH] = xi.trust.messageOffset.TEAMWORK_3,
+    invaderXim.trust.teamworkMessage(mob, {
+        [invaderXim.magic.spell.ZEID] = invaderXim.trust.messageOffset.TEAMWORK_1,
+        [invaderXim.magic.spell.ALDO] = invaderXim.trust.messageOffset.TEAMWORK_2,
+        [invaderXim.magic.spell.GILGAMESH] = invaderXim.trust.messageOffset.TEAMWORK_3,
     })
 
     -- Stun all the things!
@@ -34,11 +34,11 @@ spellObject.onMobSpawn = function(mob)
 end
 
 spellObject.onMobDespawn = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.DESPAWN)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.DESPAWN)
 end
 
 spellObject.onMobDeath = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.DEATH)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.DEATH)
 end
 
 return spellObject

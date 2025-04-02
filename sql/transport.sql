@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `transport`
 --
 
-DROP TABLE IF EXISTS `transport`;
-CREATE TABLE IF NOT EXISTS `transport` (
+DROP TABLE IF IXIMSTS `transport`;
+CREATE TABLE IF NOT IXIMSTS `transport` (
   `id` tinyint(3) unsigned NOT NULL,
   `name` tinytext NOT NULL,
   `transport` int(10) unsigned NOT NULL DEFAULT '0',

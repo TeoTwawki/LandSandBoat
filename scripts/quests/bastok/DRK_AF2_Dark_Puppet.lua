@@ -7,29 +7,29 @@
 -- qm5 (Sword) : !pos -92 -28 -70 193
 -- qm6 (Soul)  : !pos -132 -27 -245 193
 -----------------------------------
-local ordellesID = zones[xi.zone.ORDELLES_CAVES]
+local ordellesID = zones[invaderXim.zone.ORDELLES_CAVES]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.DARK_PUPPET)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.DARK_PUPPET)
 
 quest.reward =
 {
     fame     = 40,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.CHAOS_SOLLERETS,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.CHAOS_SOLLERETS,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.DARK_LEGACY) and
-                player:getMainJob() == xi.job.DRK and
-                player:getMainLvl() >= xi.settings.main.AF2_QUEST_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.DARK_LEGACY) and
+                player:getMainJob() == invaderXim.job.DRK and
+                player:getMainLvl() >= invaderXim.settings.main.AF2_QUEST_LEVEL
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Cid'] = quest:progressEvent(760),
 
@@ -44,17 +44,17 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.ORDELLES_CAVES] =
+        [invaderXim.zone.ORDELLES_CAVES] =
         {
             ['qm4'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        not player:hasItem(xi.item.GERWITZS_AXE) and
-                        npcUtil.tradeHasExactly(trade, xi.item.DARKSTEEL_INGOT) and
+                        not player:hasItem(invaderXim.item.GERWITZS_AXE) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.DARKSTEEL_INGOT) and
                         npcUtil.popFromQM(player, npc, ordellesID.mob.DARK_PUPPET_OFFSET, { hide = 0 })
                     then
                         player:confirmTrade()
@@ -68,8 +68,8 @@ quest.sections =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        not player:hasItem(xi.item.GERWITZS_SWORD) and
-                        npcUtil.tradeHasExactly(trade, xi.item.GERWITZS_AXE) and
+                        not player:hasItem(invaderXim.item.GERWITZS_SWORD) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.GERWITZS_AXE) and
                         npcUtil.popFromQM(player, npc, ordellesID.mob.DARK_PUPPET_OFFSET + 1, { hide = 0 })
                     then
                         player:confirmTrade()
@@ -83,7 +83,7 @@ quest.sections =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.GERWITZS_SWORD) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.GERWITZS_SWORD) and
                         npcUtil.popFromQM(player, npc, ordellesID.mob.DARK_PUPPET_OFFSET + 2, { hide = 0 })
                     then
                         player:confirmTrade()
@@ -114,7 +114,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.LA_THEINE_PLATEAU] =
+        [invaderXim.zone.LA_THEINE_PLATEAU] =
         {
             onZoneIn = function(player, prevZone)
                 if quest:getVar(player, 'Prog') == 2 then

@@ -14,7 +14,7 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local hp = target:getMaxHP() - target:getHP()
 
-    skill:setMsg(xi.msg.basic.AOE_REGAIN_HP)
+    skill:setMsg(invaderXim.msg.basic.AOE_REGAIN_HP)
 
     target:addHP(hp)
     target:wakeUp()

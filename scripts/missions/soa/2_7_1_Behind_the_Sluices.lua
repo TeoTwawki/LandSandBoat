@@ -8,14 +8,14 @@
 -- Antiquated_Sluice_Gate  : !pos -529.361 -7.000 59.988 258
 -- WATERWAY_FACILITY_CRANK : !addkeyitem 2450
 -----------------------------------
-local ralaID = zones[xi.zone.RALA_WATERWAYS]
+local ralaID = zones[invaderXim.zone.RALA_WATERWAYS]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.BEHIND_THE_SLUICES)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.BEHIND_THE_SLUICES)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.THE_LEAFKIN_MONARCH },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_LEAFKIN_MONARCH },
 }
 
 mission.sections =
@@ -24,18 +24,18 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
-                not player:hasKeyItem(xi.ki.WATERWAY_FACILITY_CRANK) and
+                not player:hasKeyItem(invaderXim.ki.WATERWAY_FACILITY_CRANK) and
                 missionStatus == 0
         end,
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
-            ['Sluice_Gate_6'] = mission:messageSpecial(ralaID.text.PERHAPS_THE_WISEST, xi.ki.WATERWAY_FACILITY_CRANK),
+            ['Sluice_Gate_6'] = mission:messageSpecial(ralaID.text.PERHAPS_THE_WISEST, invaderXim.ki.WATERWAY_FACILITY_CRANK),
 
             ['Storage_Container'] =
             {
                 onTrigger = function(player, npc)
-                    return mission:keyItem(xi.ki.WATERWAY_FACILITY_CRANK)
+                    return mission:keyItem(invaderXim.ki.WATERWAY_FACILITY_CRANK)
                 end,
             },
         },
@@ -45,11 +45,11 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
-                player:hasKeyItem(xi.ki.WATERWAY_FACILITY_CRANK) and
+                player:hasKeyItem(invaderXim.ki.WATERWAY_FACILITY_CRANK) and
                 missionStatus == 0
         end,
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['Sluice_Gate_6'] =
             {
@@ -71,10 +71,10 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
-                player:hasKeyItem(xi.ki.WATERWAY_FACILITY_CRANK)
+                player:hasKeyItem(invaderXim.ki.WATERWAY_FACILITY_CRANK)
         end,
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['Sluice_Gate_6'] =
             {
@@ -103,7 +103,7 @@ mission.sections =
                 missionStatus == 3
         end,
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             onZoneIn = function(player, prevZone)
                 return 353
@@ -123,7 +123,7 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['Sluice_Gate_6'] = mission:event(361):replaceDefault(),
         },

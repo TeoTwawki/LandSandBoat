@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.SEA_SERPENT_GROTTO]
+local ID = zones[invaderXim.zone.SEA_SERPENT_GROTTO]
 
 return {
     ['qm1']             = { messageSpecial = ID.text.NOTHING_OUT_OF_ORDINARY },

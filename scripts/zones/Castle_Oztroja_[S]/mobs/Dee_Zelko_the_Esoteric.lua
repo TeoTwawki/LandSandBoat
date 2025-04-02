@@ -8,8 +8,8 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.MAGIC_COOL, 14)
-    mob:setMod(xi.mod.UFASTCAST, 100)
+    mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 14)
+    mob:setMod(invaderXim.mod.UFASTCAST, 100)
 end
 
 entity.onMobFight = function(mob, target)

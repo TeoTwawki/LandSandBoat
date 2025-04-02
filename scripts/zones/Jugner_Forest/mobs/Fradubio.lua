@@ -2,7 +2,7 @@
 -- Area: Jugner_Forest
 --   NM: Fradubio
 -----------------------------------
-local ID = zones[xi.zone.JUGNER_FOREST]
+local ID = zones[invaderXim.zone.JUGNER_FOREST]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -10,9 +10,9 @@ local entity = {}
 local updateRegen = function(mob)
     local hour = VanadielHour()
     if hour >= 4 and hour < 20 then
-        mob:setMod(xi.mod.REGEN, 25)
+        mob:setMod(invaderXim.mod.REGEN, 25)
     else
-        mob:setMod(xi.mod.REGEN, 0)
+        mob:setMod(invaderXim.mod.REGEN, 0)
     end
 end
 

@@ -2,7 +2,7 @@
 -- Area: Zhayolm Remnants
 -- MOB: Mamool Ja Sophist
 -----------------------------------
-local ID = zones[xi.zone.ZHAYOLM_REMNANTS]
+local ID = zones[invaderXim.zone.ZHAYOLM_REMNANTS]
 -----------------------------------
 
 ---@type TMobEntity
@@ -24,7 +24,7 @@ entity.onMobDeath = function(mob, player, optParams)
                     ID.mob.ARCHAIC_RAMPART[2]
                 }
 
-                if xi.salvage.groupKilled(instance, group) then
+                if invaderXim.salvage.groupKilled(instance, group) then
                     local id       = ID.mob.POROGGO_MADAME[3]
                     local stageBoss = GetMobByID(id, instance)
                     if stageBoss and stageBoss:getLocalVar('spawned') == 0 then

@@ -7,11 +7,11 @@
 -- Aldo              : !pos 20 3 -58 245
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ZILART, xi.mission.id.zilart.ROMAEVE)
+local mission = Mission:new(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.ROMAEVE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_TEMPLE_OF_DESOLATION },
+    nextMission = { invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_TEMPLE_OF_DESOLATION },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Aldo'] =
             {
@@ -42,7 +42,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['_700'] = mission:progressEvent(3),
 

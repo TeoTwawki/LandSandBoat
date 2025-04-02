@@ -3,19 +3,19 @@
 -- Qu'Bia Arena BCNM50, Comet Orb
 -- !additem 1177
 -----------------------------------
-local qubiaID = zones[xi.zone.QUBIA_ARENA]
+local qubiaID = zones[invaderXim.zone.QUBIA_ARENA]
 -----------------------------------
 
 local content = Battlefield:new({
-    zoneId           = xi.zone.QUBIA_ARENA,
-    battlefieldId    = xi.battlefield.id.AWFUL_AUTOPSY,
+    zoneId           = invaderXim.zone.QUBIA_ARENA,
+    battlefieldId    = invaderXim.battlefield.id.AWFUL_AUTOPSY,
     maxPlayers       = 3,
     levelCap         = 50,
     timeLimit        = utils.minutes(15),
     index            = 15,
     entryNpc         = 'BC_Entrance',
     exitNpc          = 'Burning_Circle',
-    requiredItems    = { xi.item.COMET_ORB, wearMessage = qubiaID.text.A_CRACK_HAS_FORMED, wornMessage = qubiaID.text.ORB_IS_CRACKED },
+    requiredItems    = { invaderXim.item.COMET_ORB, wearMessage = qubiaID.text.A_CRACK_HAS_FORMED, wornMessage = qubiaID.text.ORB_IS_CRACKED },
     armouryCrates    =
     {
         qubiaID.mob.CHAHNAMEEDS_STOMACH + 4,
@@ -82,49 +82,49 @@ content.groups =
 content.loot =
 {
     {
-        { item = xi.item.UNDEAD_SKIN, weight = 1000 }, -- undead_skin
+        { item = invaderXim.item.UNDEAD_SKIN, weight = 1000 }, -- undead_skin
     },
 
     {
-        { item = xi.item.NONE,         weight = 500 }, -- nothing
-        { item = xi.item.RIVAL_RIBBON, weight = 250 }, -- rival_ribbon
-        { item = xi.item.SUPER_RIBBON, weight = 250 }, -- super_ribbon
+        { item = invaderXim.item.NONE,         weight = 500 }, -- nothing
+        { item = invaderXim.item.RIVAL_RIBBON, weight = 250 }, -- rival_ribbon
+        { item = invaderXim.item.SUPER_RIBBON, weight = 250 }, -- super_ribbon
     },
 
     {
-        { item = xi.item.NONE,          weight = 250 }, -- nothing
-        { item = xi.item.IVORY_MITTS,   weight = 250 }, -- ivory_mitts
-        { item = xi.item.RUSH_GLOVES,   weight = 250 }, -- rush_gloves
-        { item = xi.item.SLY_GAUNTLETS, weight = 250 }, -- sly_gauntlets
+        { item = invaderXim.item.NONE,          weight = 250 }, -- nothing
+        { item = invaderXim.item.IVORY_MITTS,   weight = 250 }, -- ivory_mitts
+        { item = invaderXim.item.RUSH_GLOVES,   weight = 250 }, -- rush_gloves
+        { item = invaderXim.item.SLY_GAUNTLETS, weight = 250 }, -- sly_gauntlets
     },
 
     {
-        { item = xi.item.NONE,            weight = 200 }, -- nothing
-        { item = xi.item.HEAVY_MANTLE,    weight = 200 }, -- heavy_mantle
-        { item = xi.item.ESOTERIC_MANTLE, weight = 200 }, -- esoteric_mantle
-        { item = xi.item.SNIPERS_MANTLE,  weight = 200 }, -- snipers_mantle
-        { item = xi.item.TEMPLARS_MANTLE, weight = 200 }, -- templars_mantle
+        { item = invaderXim.item.NONE,            weight = 200 }, -- nothing
+        { item = invaderXim.item.HEAVY_MANTLE,    weight = 200 }, -- heavy_mantle
+        { item = invaderXim.item.ESOTERIC_MANTLE, weight = 200 }, -- esoteric_mantle
+        { item = invaderXim.item.SNIPERS_MANTLE,  weight = 200 }, -- snipers_mantle
+        { item = invaderXim.item.TEMPLARS_MANTLE, weight = 200 }, -- templars_mantle
     },
 
     {
-        { item = xi.item.NONE,             weight = 200 }, -- nothing
-        { item = xi.item.HATEFUL_COLLAR,   weight = 200 }, -- hateful_collar
-        { item = xi.item.STORM_GORGET,     weight = 200 }, -- storm_gorget
-        { item = xi.item.INTELLECT_TORQUE, weight = 200 }, -- intellect_torque
-        { item = xi.item.BENIGN_NECKLACE,  weight = 200 }, -- benign_necklace
+        { item = invaderXim.item.NONE,             weight = 200 }, -- nothing
+        { item = invaderXim.item.HATEFUL_COLLAR,   weight = 200 }, -- hateful_collar
+        { item = invaderXim.item.STORM_GORGET,     weight = 200 }, -- storm_gorget
+        { item = invaderXim.item.INTELLECT_TORQUE, weight = 200 }, -- intellect_torque
+        { item = invaderXim.item.BENIGN_NECKLACE,  weight = 200 }, -- benign_necklace
     },
 
     {
-        { item = xi.item.NONE,            weight = 200 }, -- nothing
-        { item = xi.item.DARKSTEEL_INGOT, weight = 200 }, -- darksteel_ingot
-        { item = xi.item.EBONY_LOG,       weight = 200 }, -- ebony_log
-        { item = xi.item.PETRIFIED_LOG,   weight = 200 }, -- petrified_log
-        { item = xi.item.GOLD_INGOT,      weight = 200 }, -- gold_ingot
+        { item = invaderXim.item.NONE,            weight = 200 }, -- nothing
+        { item = invaderXim.item.DARKSTEEL_INGOT, weight = 200 }, -- darksteel_ingot
+        { item = invaderXim.item.EBONY_LOG,       weight = 200 }, -- ebony_log
+        { item = invaderXim.item.PETRIFIED_LOG,   weight = 200 }, -- petrified_log
+        { item = invaderXim.item.GOLD_INGOT,      weight = 200 }, -- gold_ingot
     },
 
     {
-        { item = xi.item.NONE,            weight = 875 }, -- nothing
-        { item = xi.item.SCROLL_OF_QUAKE, weight = 125 }, -- scroll_of_quake
+        { item = invaderXim.item.NONE,            weight = 875 }, -- nothing
+        { item = invaderXim.item.SCROLL_OF_QUAKE, weight = 125 }, -- scroll_of_quake
     },
 }
 

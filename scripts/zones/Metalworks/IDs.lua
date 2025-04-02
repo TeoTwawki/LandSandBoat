@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.METALWORKS] =
+zones[invaderXim.zone.METALWORKS] =
 {
     text =
     {
@@ -60,4 +60,4 @@ zones[xi.zone.METALWORKS] =
     },
 }
 
-return zones[xi.zone.METALWORKS]
+return zones[invaderXim.zone.METALWORKS]

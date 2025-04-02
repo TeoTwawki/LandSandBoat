@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.element
-xi.element =
+---@enum invaderXim.element
+invaderXim.element =
 {
     NONE    = 0,
     FIRE    = 1,

@@ -8,7 +8,7 @@
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    if xi.settings.main.ENABLE_MAGIAN_TRIALS ~= 1 then
+    if invaderXim.settings.main.ENABLE_MAGIAN_TRIALS ~= 1 then
         return
     end
 
@@ -28,7 +28,7 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    if xi.settings.main.ENABLE_MAGIAN_TRIALS ~= 1 then
+    if invaderXim.settings.main.ENABLE_MAGIAN_TRIALS ~= 1 then
         return
     end
 
@@ -36,9 +36,9 @@ entity.onTrigger = function(player, npc)
         player:startEvent(10151)
     elseif
         player:getCharVar('MetGreenMagianMog') == 0 and
-        not player:hasKeyItem(xi.ki.MAGIAN_LEARNERS_LOG)
+        not player:hasKeyItem(invaderXim.ki.MAGIAN_LEARNERS_LOG)
     then
-        if not player:hasKeyItem(xi.ki.MAGIAN_TRIAL_LOG) then
+        if not player:hasKeyItem(invaderXim.ki.MAGIAN_TRIAL_LOG) then
             player:startEvent(10160, 0)
         else
             player:startEvent(10160, 1)
@@ -50,8 +50,8 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 10160 and option == 1 then
-        if not player:hasKeyItem(xi.ki.MAGIAN_TRIAL_LOG) then
-            npcUtil.giveKeyItem(player, xi.ki.MAGIAN_LEARNERS_LOG)
+        if not player:hasKeyItem(invaderXim.ki.MAGIAN_TRIAL_LOG) then
+            npcUtil.giveKeyItem(player, invaderXim.ki.MAGIAN_LEARNERS_LOG)
         end
 
         player:setCharVar('MetGreenMagianMog', 1)

@@ -2,7 +2,7 @@
 -- Area: Ifrit's Cauldron
 --  Mob: Goblin Alchemist
 -----------------------------------
-local ID = zones[xi.zone.IFRITS_CAULDRON]
+local ID = zones[invaderXim.zone.IFRITS_CAULDRON]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -15,11 +15,11 @@ local foreseerPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 757, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 757, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, foreseerPHTable, 5, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, foreseerPHTable, 5, 3600) -- 1 hour
 end
 
 return entity

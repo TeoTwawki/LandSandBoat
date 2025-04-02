@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.LABYRINTH_OF_ONZOZO] =
+zones[invaderXim.zone.LABYRINTH_OF_ONZOZO] =
 {
     text =
     {
@@ -50,4 +50,4 @@ zones[xi.zone.LABYRINTH_OF_ONZOZO] =
     },
 }
 
-return zones[xi.zone.LABYRINTH_OF_ONZOZO]
+return zones[invaderXim.zone.LABYRINTH_OF_ONZOZO]

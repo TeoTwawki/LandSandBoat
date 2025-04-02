@@ -9,15 +9,15 @@
 -- Heillal    : !pos 30.8 -5.8 2.3 252
 -- Oaken Door : !pos 97 -7 -12 252
 -----------------------------------
-local norgID = zones[xi.zone.NORG]
+local norgID = zones[invaderXim.zone.NORG]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.THE_BEGINNING)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.THE_BEGINNING)
 
 mission.reward =
 {
-    keyItem     = xi.ki.REISENJIMA_SANCTORIUM_ORB,
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.FLAMES_OF_PRAYER },
+    keyItem     = invaderXim.ki.REISENJIMA_SANCTORIUM_ORB,
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.FLAMES_OF_PRAYER },
 }
 
 mission.sections =
@@ -27,7 +27,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Pacomart'] =
             {
@@ -48,7 +48,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Tonasav'] =
             {
@@ -69,7 +69,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['_700']       = mission:event(276):setPriority(1005), -- RoV objectives are highest priority, set higher than progressEvent (1000)
             ['Comitiolus'] = mission:messageSpecial(norgID.text.DIDYA_GET_BUMPED):setPriority(1005),

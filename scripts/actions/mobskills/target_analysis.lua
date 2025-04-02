@@ -8,17 +8,17 @@ local mobskillObject = {}
 
 local attributesDown =
 {
-    xi.effect.STR_DOWN,
-    xi.effect.DEX_DOWN,
-    xi.effect.VIT_DOWN,
-    xi.effect.AGI_DOWN,
-    xi.effect.MND_DOWN,
-    xi.effect.INT_DOWN,
-    xi.effect.CHR_DOWN,
+    invaderXim.effect.STR_DOWN,
+    invaderXim.effect.DEX_DOWN,
+    invaderXim.effect.VIT_DOWN,
+    invaderXim.effect.AGI_DOWN,
+    invaderXim.effect.MND_DOWN,
+    invaderXim.effect.INT_DOWN,
+    invaderXim.effect.CHR_DOWN,
 }
 
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
-    local skillList = mob:getMobMod(xi.mobMod.SKILL_LIST)
+    local skillList = mob:getMobMod(invaderXim.mobMod.SKILL_LIST)
     local mobhp = mob:getHPP()
 
     if
@@ -36,7 +36,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
 
     for i = 1, 7 do
         if math.random(0, 100) < 40 then
-            skill:setMsg(xi.mobskills.mobDrainAttribute(mob, target, attributesDown[i], 10, 3, 60))
+            skill:setMsg(invaderXim.mobskills.mobDrainAttribute(mob, target, attributesDown[i], 10, 3, 60))
             drained = drained + 1
         end
     end

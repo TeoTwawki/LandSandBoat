@@ -17,17 +17,17 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     local params = {}
     params.ftpMod = { 2.75, 3.5, 4 }
     params.dex_wsc = 0.28 params.int_wsc = 0.28
-    params.ele = xi.element.WIND
-    params.skill = xi.skill.DAGGER
+    params.ele = invaderXim.element.WIND
+    params.skill = invaderXim.skill.DAGGER
     params.includemab = true
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         -- https://www.bg-wiki.com/bg/Aeolian_Edge
         params.ftpMod = { 2, 3, 4.5 }
         params.dex_wsc = 0.4 params.int_wsc = 0.4
     end
 
-    local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
+    local damage, criticalHit, tpHits, extraHits = invaderXim.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
     return tpHits, extraHits, criticalHit, damage
 end
 

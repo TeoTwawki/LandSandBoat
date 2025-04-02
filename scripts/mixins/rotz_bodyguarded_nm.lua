@@ -17,7 +17,7 @@ g_mixins.bodyguard = function(bodyguardedNM)
         elseif
             not mob:hasFollowTarget() and bodyguardedNM
         then
-            mob:follow(bodyguardedNM, xi.followType.ROAM)
+            mob:follow(bodyguardedNM, invaderXim.followType.ROAM)
         end
     end
 
@@ -30,7 +30,7 @@ g_mixins.bodyguard = function(bodyguardedNM)
     bodyguardedNM:addListener('SPAWN', 'ROTZ_BODYGUARDED_NM_SPAWN', function(mob)
         local regionID = mob:getZone():getRegionID()
         -- will spawn with body guard mobs if region is beastmen controlled
-        if GetRegionOwner(regionID) == xi.nation.BEASTMEN then
+        if GetRegionOwner(regionID) == invaderXim.nation.BEASTMEN then
             local nmID = mob:getID()
             local nmSpawnPos = mob:getSpawnPos()
             local guardIDs = { nmID + 1, nmID + 2 }
@@ -47,10 +47,10 @@ g_mixins.bodyguard = function(bodyguardedNM)
 
                     guard:setSpawn(nmSpawnPos.x - spawnPosOffset[index], nmSpawnPos.y, nmSpawnPos.z)
                     guard:spawn()
-                    guard:follow(mob, xi.followType.ROAM)
+                    guard:follow(mob, invaderXim.followType.ROAM)
                     guard:addListener('ROAM_TICK', 'ROTZ_BODYGUARD_ROAM', bodyGuardRoam)
                     guard:addListener('DESPAWN', 'ROTZ_BODYGUARD_DESPAWN', bodyGuardDespawn)
-                    guard:setMobMod(xi.mobMod.NO_DESPAWN, 1)
+                    guard:setMobMod(invaderXim.mobMod.NO_DESPAWN, 1)
                 end
             end
         end

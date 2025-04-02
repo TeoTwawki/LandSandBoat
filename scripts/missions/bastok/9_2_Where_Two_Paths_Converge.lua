@@ -9,19 +9,19 @@
 -- Rashid     : !pos -8.444 -2 -123.575 234
 -- Iron Eater : !pos 92.936 -19.532 1.814 237
 -----------------------------------
-local bastokMarketsID = zones[xi.zone.BASTOK_MARKETS]
-local bastokMinesID   = zones[xi.zone.BASTOK_MINES]
-local metalworksID    = zones[xi.zone.METALWORKS]
-local portBastokID    = zones[xi.zone.PORT_BASTOK]
+local bastokMarketsID = zones[invaderXim.zone.BASTOK_MARKETS]
+local bastokMinesID   = zones[invaderXim.zone.BASTOK_MINES]
+local metalworksID    = zones[invaderXim.zone.METALWORKS]
+local portBastokID    = zones[invaderXim.zone.PORT_BASTOK]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.BASTOK, xi.mission.id.bastok.WHERE_TWO_PATHS_CONVERGE)
+local mission = Mission:new(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.WHERE_TWO_PATHS_CONVERGE)
 
 mission.reward =
 {
     rank = 10,
     gil = 100000,
-    title = xi.title.HERO_AMONG_HEROES,
+    title = invaderXim.title.HERO_AMONG_HEROES,
 }
 
 local handleAcceptMission = function(player, csid, option, npc)
@@ -35,11 +35,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             onEventFinish =
             {
@@ -47,7 +47,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             onEventFinish =
             {
@@ -55,7 +55,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             onEventFinish =
             {
@@ -63,7 +63,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             onEventFinish =
             {
@@ -77,17 +77,17 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Cleades'] = mission:messageSpecial(bastokMarketsID.text.EXTENDED_MISSION_OFFSET + 19),
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Rashid'] = mission:messageSpecial(bastokMinesID.text.EXTENDED_MISSION_OFFSET + 19),
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Iron_Eater'] =
             {
@@ -115,26 +115,26 @@ mission.sections =
                 [782] = function(player, csid, option, npc)
                     mission:complete(player)
 
-                    if not npcUtil.giveItem(player, xi.item.BASTOKAN_FLAG) then
+                    if not npcUtil.giveItem(player, invaderXim.item.BASTOKAN_FLAG) then
                         mission:setVar(player, 'Flag', 1)
                     end
                 end,
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Argus'] = mission:messageSpecial(portBastokID.text.EXTENDED_MISSION_OFFSET + 19),
         },
 
-        [xi.zone.THRONE_ROOM] =
+        [invaderXim.zone.THRONE_ROOM] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 1 and
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.WHERE_TWO_PATHS_CONVERGE
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.WHERE_TWO_PATHS_CONVERGE
                     then
                         player:setMissionStatus(mission.areaId, 2)
                     end
@@ -149,7 +149,7 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Iron_Eater'] =
             {
@@ -158,7 +158,7 @@ mission.sections =
                 -- with one conditional, but playing it safe.
                 onTrigger = function(player, npc)
                     if mission:getVar(player, 'Flag') == 1 then
-                        if npcUtil.giveItem(player, xi.item.BASTOKAN_FLAG) then
+                        if npcUtil.giveItem(player, invaderXim.item.BASTOKAN_FLAG) then
                             mission:setVar(player, 'Flag', 0)
                         end
                     end

@@ -1,7 +1,7 @@
 -----------------------------------
 -- Chains of Apathy
 -----------------------------------
-local ID = zones[xi.zone.EMPYREAL_PARADOX]
+local ID = zones[invaderXim.zone.EMPYREAL_PARADOX]
 -----------------------------------
 ---@type TMobSkill
 local mobskillObject = {}
@@ -12,8 +12,8 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
         if v.entity:isPC() then
             local race = v.entity:getRace()
             if
-                (race == xi.race.HUME_M or race == xi.race.HUME_F) and
-                not v.entity:hasKeyItem(xi.ki.LIGHT_OF_VAHZL)
+                (race == invaderXim.race.HUME_M or race == invaderXim.race.HUME_F) and
+                not v.entity:hasKeyItem(invaderXim.ki.LIGHT_OF_VAHZL)
             then
                 mob:showText(mob, ID.text.PROMATHIA_TEXT)
                 return 0
@@ -28,16 +28,16 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     if
         target:isPC() and
         (
-            (target:getRace() == xi.race.HUME_M or target:getRace() == xi.race.HUME_F) and
-            not target:hasKeyItem(xi.ki.LIGHT_OF_VAHZL)
+            (target:getRace() == invaderXim.race.HUME_M or target:getRace() == invaderXim.race.HUME_F) and
+            not target:hasKeyItem(invaderXim.ki.LIGHT_OF_VAHZL)
         )
     then
-        skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.TERROR, 30, 0, 30))
+        skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.TERROR, 30, 0, 30))
     else
-        skill:setMsg(xi.msg.basic.SKILL_NO_EFFECT)
+        skill:setMsg(invaderXim.msg.basic.SKILL_NO_EFFECT)
     end
 
-    return xi.effect.TERROR
+    return invaderXim.effect.TERROR
 end
 
 return mobskillObject

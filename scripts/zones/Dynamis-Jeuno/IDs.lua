@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.DYNAMIS_JEUNO] =
+zones[invaderXim.zone.DYNAMIS_JEUNO] =
 {
     text =
     {
@@ -27,37 +27,37 @@ zones[xi.zone.DYNAMIS_JEUNO] =
     {
         TIME_EXTENSION =
         {
-            { minutes = 10, ki = xi.ki.CRIMSON_GRANULES_OF_TIME,   mob = { 17547301, 17547302, 17547303 } },
-            { minutes = 10, ki = xi.ki.AZURE_GRANULES_OF_TIME,     mob = 17547389 },
-            { minutes = 10, ki = xi.ki.AMBER_GRANULES_OF_TIME,     mob = 17547390 },
-            { minutes = 15, ki = xi.ki.ALABASTER_GRANULES_OF_TIME, mob = 17547420 },
-            { minutes = 15, ki = xi.ki.OBSIDIAN_GRANULES_OF_TIME,  mob = 17547467 },
+            { minutes = 10, ki = invaderXim.ki.CRIMSON_GRANULES_OF_TIME,   mob = { 17547301, 17547302, 17547303 } },
+            { minutes = 10, ki = invaderXim.ki.AZURE_GRANULES_OF_TIME,     mob = 17547389 },
+            { minutes = 10, ki = invaderXim.ki.AMBER_GRANULES_OF_TIME,     mob = 17547390 },
+            { minutes = 15, ki = invaderXim.ki.ALABASTER_GRANULES_OF_TIME, mob = 17547420 },
+            { minutes = 15, ki = invaderXim.ki.OBSIDIAN_GRANULES_OF_TIME,  mob = 17547467 },
         },
 
         REFILL_STATUE =
         {
             {
-                { mob = 17547295, eye = xi.dynamis.eye.RED   }, -- Goblin_Replica
-                { mob = 17547296, eye = xi.dynamis.eye.BLUE  },
-                { mob = 17547297, eye = xi.dynamis.eye.GREEN },
+                { mob = 17547295, eye = invaderXim.dynamis.eye.RED   }, -- Goblin_Replica
+                { mob = 17547296, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 17547297, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 17547391, eye = xi.dynamis.eye.RED   }, -- Goblin_Replica
-                { mob = 17547392, eye = xi.dynamis.eye.BLUE  },
-                { mob = 17547393, eye = xi.dynamis.eye.GREEN },
+                { mob = 17547391, eye = invaderXim.dynamis.eye.RED   }, -- Goblin_Replica
+                { mob = 17547392, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 17547393, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 17547421, eye = xi.dynamis.eye.RED   }, -- Goblin_Replica
-                { mob = 17547422, eye = xi.dynamis.eye.BLUE  },
-                { mob = 17547423, eye = xi.dynamis.eye.GREEN },
+                { mob = 17547421, eye = invaderXim.dynamis.eye.RED   }, -- Goblin_Replica
+                { mob = 17547422, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 17547423, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 17547456, eye = xi.dynamis.eye.RED   }, -- Goblin_Replica
-                { mob = 17547457, eye = xi.dynamis.eye.BLUE  },
-                { mob = 17547458, eye = xi.dynamis.eye.GREEN },
+                { mob = 17547456, eye = invaderXim.dynamis.eye.RED   }, -- Goblin_Replica
+                { mob = 17547457, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 17547458, eye = invaderXim.dynamis.eye.GREEN },
             },
         },
 
@@ -101,4 +101,4 @@ zones[xi.zone.DYNAMIS_JEUNO] =
     },
 }
 
-return zones[xi.zone.DYNAMIS_JEUNO]
+return zones[invaderXim.zone.DYNAMIS_JEUNO]

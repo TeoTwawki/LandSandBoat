@@ -8,16 +8,16 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    if target:getStatusEffectBySource(xi.effect.VIT_BOOST, xi.effectSourceType.EQUIPPED_ITEM, xi.item.TOUGH_BELT) ~= nil then
-        target:delStatusEffect(xi.effect.VIT_BOOST, nil, xi.effectSourceType.EQUIPPED_ITEM, xi.item.TOUGH_BELT)
+    if target:getStatusEffectBySource(invaderXim.effect.VIT_BOOST, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.TOUGH_BELT) ~= nil then
+        target:delStatusEffect(invaderXim.effect.VIT_BOOST, nil, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.TOUGH_BELT)
     end
 
     return 0
 end
 
 itemObject.onItemUse = function(target)
-    if target:hasEquipped(xi.item.TOUGH_BELT) then
-        target:addStatusEffect(xi.effect.VIT_BOOST, 3, 0, 60, 0, 0, 0, xi.effectSourceType.EQUIPPED_ITEM, xi.item.TOUGH_BELT)
+    if target:hasEquipped(invaderXim.item.TOUGH_BELT) then
+        target:addStatusEffect(invaderXim.effect.VIT_BOOST, 3, 0, 60, 0, 0, 0, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.TOUGH_BELT)
     end
 end
 

@@ -9,14 +9,14 @@ local zoneObject = {}
 zoneObject.onInitialize = function(zone)
     zone:registerCuboidTriggerArea(1, -292, -10, 90 , -258, 10, 105)
     quests.ffr.initZone(zone) -- register trigger areas 2 through 6
-    xi.events.harvestFestival.applyHalloweenNpcCostumes(zone:getID())
-    xi.chocobo.initZone(zone)
-    xi.chocoboGame.clearRecord(zone)
-    xi.conquest.toggleRegionalNPCs(zone)
+    invaderXim.events.harvestFestival.applyHalloweenNpcCostumes(zone:getID())
+    invaderXim.chocobo.initZone(zone)
+    invaderXim.chocoboGame.clearRecord(zone)
+    invaderXim.conquest.toggleRegionalNPCs(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
-    -- MOG HOUSE EXIT
+    -- MOG HOUSE IXIMT
     if
         player:getXPos() == 0 and
         player:getYPos() == 0 and
@@ -27,7 +27,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

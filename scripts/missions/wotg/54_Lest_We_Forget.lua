@@ -5,10 +5,10 @@
 -- !addmission 5 53
 -- Veridical Conflux : !pos -142.279 -6.749 585.239 89
 -----------------------------------
-local graubergID = zones[xi.zone.GRAUBERG_S]
+local graubergID = zones[invaderXim.zone.GRAUBERG_S]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.LEST_WE_FORGET)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.LEST_WE_FORGET)
 
 mission.reward = {}
 
@@ -45,7 +45,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.GRAUBERG_S] =
+        [invaderXim.zone.GRAUBERG_S] =
         {
             ['Veridical_Conflux'] =
             {
@@ -70,7 +70,7 @@ mission.sections =
 
             afterZoneIn = function(player)
                 if
-                    not player:hasItem(xi.item.MOONSHADE_EARRING) and
+                    not player:hasItem(invaderXim.item.MOONSHADE_EARRING) and
                     mission:getVar(player, 'Status') == 0
                 then
                     mission:setLocalVar(player, 'Option', 1)
@@ -103,14 +103,14 @@ mission.sections =
                         if player:getFreeSlotsCount() < 1 then
                             player:messageSpecial(ID.text.ITEM_CANNOT_BE_OBTAINED)
                         else
-                            player:addItem(xi.item.MOONSHADE_EARRING, 1,
+                            player:addItem(invaderXim.item.MOONSHADE_EARRING, 1,
                                 firstAugInfo[firstAugSel][1],
                                 firstAugInfo[firstAugSel][2],
                                 secondAugInfo[secondAugSel][1],
                                 secondAugInfo[secondAugSel][2]
                             )
 
-                            player:messageSpecial(ID.text.ITEM_OBTAINED, xi.item.MOONSHADE_EARRING)
+                            player:messageSpecial(ID.text.ITEM_OBTAINED, invaderXim.item.MOONSHADE_EARRING)
 
                             mission:setVar(player, 'Status', 0)
                         end
@@ -119,15 +119,15 @@ mission.sections =
 
                 [46] = function(player, csid, option, npc)
                     if option == 1 then
-                        player:delMission(xi.mission.log_id.WOTG, xi.mission.id.wotg.MAIDEN_OF_THE_DUSK)
-                        player:delMission(xi.mission.log_id.WOTG, xi.mission.id.wotg.WHERE_IT_ALL_BEGAN)
-                        player:delMission(xi.mission.log_id.WOTG, xi.mission.id.wotg.A_TOKEN_OF_TROTH)
-                        player:delMission(xi.mission.log_id.WOTG, xi.mission.id.wotg.LEST_WE_FORGET)
+                        player:delMission(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.MAIDEN_OF_THE_DUSK)
+                        player:delMission(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.WHERE_IT_ALL_BEGAN)
+                        player:delMission(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.A_TOKEN_OF_TROTH)
+                        player:delMission(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.LEST_WE_FORGET)
 
-                        player:addMission(xi.mission.log_id.WOTG, xi.mission.id.wotg.MAIDEN_OF_THE_DUSK)
-                        xi.mission.setVar(player, xi.mission.log_id.WOTG, xi.mission.id.wotg.MAIDEN_OF_THE_DUSK, 'Status', 2)
+                        player:addMission(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.MAIDEN_OF_THE_DUSK)
+                        invaderXim.mission.setVar(player, invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.MAIDEN_OF_THE_DUSK, 'Status', 2)
 
-                        npcUtil.giveKeyItem(player, xi.ki.PRIMAL_GLOW)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.PRIMAL_GLOW)
                         player:messageSpecial(graubergID.text.YOU_HAVE_RETRACED_RIVER)
                     else
                         mission:setMustZone(player)

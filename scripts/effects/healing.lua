@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.HEALING
+-- invaderXim.effect.HEALING
 -- Activated through the /heal command
 -----------------------------------
 ---@type TEffect
@@ -11,13 +11,13 @@ effectObject.onEffectGain = function(target, effect)
     -- Abyssea Lights and time remaining check
     if
         target:isPC() and
-        xi.abyssea.isInAbysseaZone(target)
+        invaderXim.abyssea.isInAbysseaZone(target)
     then
-        local visitantEffect = target:getStatusEffect(xi.effect.VISITANT)
+        local visitantEffect = target:getStatusEffect(invaderXim.effect.VISITANT)
 
-        if visitantEffect and visitantEffect:getIcon() == xi.effect.VISITANT then
-            xi.abyssea.displayTimeRemaining(target)
-            xi.abyssea.displayAbysseaLights(target)
+        if visitantEffect and visitantEffect:getIcon() == invaderXim.effect.VISITANT then
+            invaderXim.abyssea.displayTimeRemaining(target)
+            invaderXim.abyssea.displayAbysseaLights(target)
         end
     end
 
@@ -28,7 +28,7 @@ effectObject.onEffectGain = function(target, effect)
     then
         local ID                = zones[target:getZoneID()]
         local maxWaitTime       = 480 -- Max wait of 8 minutes.
-        local secondsPerTick    = xi.settings.map.HEALING_TICK_DELAY
+        local secondsPerTick    = invaderXim.settings.map.HEALING_TICK_DELAY
         local minWaitTime       = math.min(3 * secondsPerTick, maxWaitTime)
         local waitTimeInSeconds = math.random(minWaitTime, maxWaitTime)
 
@@ -49,8 +49,8 @@ effectObject.onEffectGain = function(target, effect)
         end)
     end
 
-    if target:getObjType() == xi.objType.PC then
-        xi.voidwalker.onHealing(target)
+    if target:getObjType() == invaderXim.objType.PC then
+        invaderXim.voidwalker.onHealing(target)
     end
 end
 
@@ -60,41 +60,41 @@ effectObject.onEffectTick = function(target, effect)
     if healtime > 2 then
         -- curse II also known as "zombie"
         if
-            not target:hasStatusEffect(xi.effect.DISEASE) and
-            not target:hasStatusEffect(xi.effect.PLAGUE) and
-            not target:hasStatusEffect(xi.effect.CURSE_II)
+            not target:hasStatusEffect(invaderXim.effect.DISEASE) and
+            not target:hasStatusEffect(invaderXim.effect.PLAGUE) and
+            not target:hasStatusEffect(invaderXim.effect.CURSE_II)
         then
             local healHP = 0
             if
                 target:getContinentID() == 1 and
-                target:hasStatusEffect(xi.effect.SIGNET)
+                target:hasStatusEffect(invaderXim.effect.SIGNET)
             then
-                healHP = 10 + (3 * math.floor(target:getMainLvl() / 10)) + (healtime - 2) * (1 + math.floor(target:getMaxHP() / 300)) + target:getMod(xi.mod.HPHEAL)
+                healHP = 10 + (3 * math.floor(target:getMainLvl() / 10)) + (healtime - 2) * (1 + math.floor(target:getMaxHP() / 300)) + target:getMod(invaderXim.mod.HPHEAL)
             else
-                target:addTP(xi.settings.main.HEALING_TP_CHANGE)
-                healHP = 10 + (healtime - 2) + target:getMod(xi.mod.HPHEAL)
+                target:addTP(invaderXim.settings.main.HEALING_TP_CHANGE)
+                healHP = 10 + (healtime - 2) + target:getMod(invaderXim.mod.HPHEAL)
             end
 
             -- Records of Eminence: Heal Without Using Magic
             if
-                target:getObjType() == xi.objType.PC and
+                target:getObjType() == invaderXim.objType.PC and
                 target:getEminenceProgress(4) and
                 healHP > 0 and
                 target:getHPP() < 100
             then
-                xi.roe.onRecordTrigger(target, 4)
+                invaderXim.roe.onRecordTrigger(target, 4)
             end
 
             target:addHPLeaveSleeping(healHP)
             target:updateEnmityFromCure(target, healHP)
-            target:addMP(12 + ((healtime - 2) * (1 + target:getMod(xi.mod.CLEAR_MIND))) + target:getMod(xi.mod.MPHEAL))
+            target:addMP(12 + ((healtime - 2) * (1 + target:getMod(invaderXim.mod.CLEAR_MIND))) + target:getMod(invaderXim.mod.MPHEAL))
         end
     end
 end
 
 effectObject.onEffectLose = function(target, effect)
     target:setAnimation(0)
-    target:delStatusEffect(xi.effect.LEAVEGAME)
+    target:delStatusEffect(invaderXim.effect.LEAVEGAME)
 
     -- Dances with Luopans
     target:setLocalVar('GEO_DWL_Resting', 0)

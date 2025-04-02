@@ -6,12 +6,12 @@
 -- Oaken Door : !pos 97 -7 -12 252
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.VOLTO_OSCURO)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.VOLTO_OSCURO)
 
 mission.reward =
 {
-    item        = xi.item.CIPHER_OF_ZEIDS_ALTER_EGO_II,
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.RING_MY_BELL },
+    item        = invaderXim.item.CIPHER_OF_ZEIDS_ALTER_EGO_II,
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.RING_MY_BELL },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['_700'] =
             {
@@ -30,8 +30,8 @@ mission.sections =
                         -- Tenzen parameter causes a small difference in dialogue if you answer that you do not know
                         -- who he is.  This uses the logic previously implemented in 1-18 for determining the value.
 
-                        local promathiaMission = player:getCurrentMission(xi.mission.log_id.COP)
-                        local metTenzen = (promathiaMission >= xi.mission.id.cop.A_VESSEL_WITHOUT_A_CAPTAIN) and 1 or 0
+                        local promathiaMission = player:getCurrentMission(invaderXim.mission.log_id.COP)
+                        local metTenzen = (promathiaMission >= invaderXim.mission.id.cop.A_VESSEL_WITHOUT_A_CAPTAIN) and 1 or 0
 
                         return mission:event(279, { [7] = metTenzen }):setPriority(1005)
                     else

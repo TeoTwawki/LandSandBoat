@@ -21,12 +21,12 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.PLANTOID
-    params.tpmod = xi.spells.blue.tpMod.DAMAGE
-    params.attackType = xi.attackType.MAGICAL
-    params.damageType = xi.damageType.LIGHT
-    params.skillType = xi.skill.BLUE_MAGIC
-    params.scattr = xi.skillchainType.COMPRESSION
+    params.ecosystem = invaderXim.ecosystem.PLANTOID
+    params.tpmod = invaderXim.spells.blue.tpMod.DAMAGE
+    params.attackType = invaderXim.attackType.MAGICAL
+    params.damageType = invaderXim.damageType.LIGHT
+    params.skillType = invaderXim.skill.BLUE_MAGIC
+    params.scattr = invaderXim.skillchainType.COMPRESSION
     params.diff = 0
     params.bonus = -50 -- 50 magic accuracy penalty
     params.numhits = 1
@@ -48,9 +48,9 @@ spellObject.onSpellCast = function(caster, target, spell)
     if resist == 1 then
         local targets = spell:getTotalTargets()
         damage = damage / targets
-        damage = xi.spells.blue.applySpellDamage(caster, target, spell, damage, params)
+        damage = invaderXim.spells.blue.applySpellDamage(caster, target, spell, damage, params)
     else
-        spell:setMsg(xi.msg.basic.MAGIC_RESIST)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_RESIST)
     end
 
     return damage

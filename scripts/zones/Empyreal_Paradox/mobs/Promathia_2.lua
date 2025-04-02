@@ -3,15 +3,15 @@
 --  Mob: Promathia
 -- Note: Phase 2
 -----------------------------------
-local ID = zones[xi.zone.EMPYREAL_PARADOX]
+local ID = zones[invaderXim.zone.EMPYREAL_PARADOX]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addMod(xi.mod.REGAIN, 75)
-    mob:addMod(xi.mod.UFASTCAST, 50)
-    mob:setMobMod(xi.mobMod.MAGIC_COOL, 15)
+    mob:addMod(invaderXim.mod.REGAIN, 75)
+    mob:addMod(invaderXim.mod.UFASTCAST, 50)
+    mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 15)
 end
 
 entity.onMobSpawn = function(mob)
@@ -42,17 +42,17 @@ entity.onMobEngage = function(mob, target)
 end
 
 entity.onMobFight = function(mob, target)
-    if mob:getAnimationSub() == 3 and not mob:hasStatusEffect(xi.effect.STUN) then
+    if mob:getAnimationSub() == 3 and not mob:hasStatusEffect(invaderXim.effect.STUN) then
         mob:setAnimationSub(0)
         mob:stun(1500)
     elseif
         mob:getAnimationSub() == 2 and
-        not mob:hasStatusEffect(xi.effect.MAGIC_SHIELD)
+        not mob:hasStatusEffect(invaderXim.effect.MAGIC_SHIELD)
     then
         mob:setAnimationSub(0)
     elseif
         mob:getAnimationSub() == 1 and
-        not mob:hasStatusEffect(xi.effect.PHYSICAL_SHIELD)
+        not mob:hasStatusEffect(invaderXim.effect.PHYSICAL_SHIELD)
     then
         mob:setAnimationSub(0)
     end
@@ -68,8 +68,8 @@ end
 
 entity.onSpellPrecast = function(mob, spell)
     if spell:getID() == 218 then
-        spell:setAoE(xi.magic.aoe.RADIAL)
-        spell:setFlag(xi.magic.spellFlag.HIT_ALL)
+        spell:setAoE(invaderXim.magic.aoe.RADIAL)
+        spell:setFlag(invaderXim.magic.spellFlag.HIT_ALL)
         spell:setRadius(30)
         spell:setAnimation(280)
         spell:setMPCost(1)

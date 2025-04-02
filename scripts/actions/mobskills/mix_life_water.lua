@@ -16,9 +16,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
         skill:setMsg(280) -- Target gains the effect of {ID}
     end
 
-    if not target:hasStatusEffect(xi.effect.REGEN) then
-        target:addStatusEffect(xi.effect.REGEN, 20, 3, 60)
-        return xi.effect.REGEN
+    if not target:hasStatusEffect(invaderXim.effect.REGEN) then
+        target:addStatusEffect(invaderXim.effect.REGEN, 20, 3, 60)
+        return invaderXim.effect.REGEN
     end
 
     return 0 -- Very wrong if no effect.

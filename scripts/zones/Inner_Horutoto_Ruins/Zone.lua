@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Inner Horutoto Ruins (192)
 -----------------------------------
-local ID = zones[xi.zone.INNER_HORUTOTO_RUINS]
+local ID = zones[invaderXim.zone.INNER_HORUTOTO_RUINS]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -12,7 +12,7 @@ zoneObject.onInitialize = function(zone)
     zone:registerCuboidTriggerArea(3, -257.8, 0, -24.9, -256.1, 1, -23.5) -- Black
     zone:registerCuboidTriggerArea(4, -261, -3, 182, -257, -1, 186) -- Teleport at H-6
 
-    xi.treasure.initZone(zone)
+    invaderXim.treasure.initZone(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -30,7 +30,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
@@ -48,15 +48,15 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
     switch (triggerArea:getTriggerAreaID()): caseof
     {
         [1] = function()  -- Red Circle
-            if player:getMainJob() == xi.job.RDM and triggerArea:addCount(1) == 1 then
+            if player:getMainJob() == invaderXim.job.RDM and triggerArea:addCount(1) == 1 then
                 if red then
-                    red:setAnimation(xi.anim.OPEN_DOOR)
-                    red:entityAnimationPacket(xi.animationString.OPEN_DOOR)
+                    red:setAnimation(invaderXim.anim.OPEN_DOOR)
+                    red:entityAnimationPacket(invaderXim.animationString.OPEN_DOOR)
                 end
 
                 if
-                    white and white:getAnimation() == xi.anim.OPEN_DOOR and
-                    black and black:getAnimation() == xi.anim.OPEN_DOOR
+                    white and white:getAnimation() == invaderXim.anim.OPEN_DOOR and
+                    black and black:getAnimation() == invaderXim.anim.OPEN_DOOR
                 then
                     GetNPCByID(circle + 3):openDoor(30)
                     GetNPCByID(circle + 4):openDoor(30)
@@ -65,15 +65,15 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
         end,
 
         [2] = function()  -- White Circle
-            if player:getMainJob() == xi.job.WHM and triggerArea:addCount(1) == 1 then
+            if player:getMainJob() == invaderXim.job.WHM and triggerArea:addCount(1) == 1 then
                 if white then
-                    white:setAnimation(xi.anim.OPEN_DOOR)
-                    white:entityAnimationPacket(xi.animationString.OPEN_DOOR)
+                    white:setAnimation(invaderXim.anim.OPEN_DOOR)
+                    white:entityAnimationPacket(invaderXim.animationString.OPEN_DOOR)
                 end
 
                 if
-                    red and red:getAnimation() == xi.anim.OPEN_DOOR and
-                    black and black:getAnimation() == xi.anim.OPEN_DOOR
+                    red and red:getAnimation() == invaderXim.anim.OPEN_DOOR and
+                    black and black:getAnimation() == invaderXim.anim.OPEN_DOOR
                 then
                     GetNPCByID(circle + 3):openDoor(30)
                     GetNPCByID(circle + 4):openDoor(30)
@@ -82,15 +82,15 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
         end,
 
         [3] = function()  -- Black Circle
-            if player:getMainJob() == xi.job.BLM and triggerArea:addCount(1) == 1 then
+            if player:getMainJob() == invaderXim.job.BLM and triggerArea:addCount(1) == 1 then
                 if black then
-                    black:setAnimation(xi.anim.OPEN_DOOR)
-                    black:entityAnimationPacket(xi.animationString.OPEN_DOOR)
+                    black:setAnimation(invaderXim.anim.OPEN_DOOR)
+                    black:entityAnimationPacket(invaderXim.animationString.OPEN_DOOR)
                 end
 
                 if
-                    red and red:getAnimation() == xi.anim.OPEN_DOOR and
-                    white and white:getAnimation() == xi.anim.OPEN_DOOR
+                    red and red:getAnimation() == invaderXim.anim.OPEN_DOOR and
+                    white and white:getAnimation() == invaderXim.anim.OPEN_DOOR
                 then
                     GetNPCByID(circle + 3):openDoor(30)
                     GetNPCByID(circle + 4):openDoor(30)
@@ -115,33 +115,33 @@ zoneObject.onTriggerAreaLeave = function(player, triggerArea)
         [1] = function()  -- Red Circle
             if
                 red and
-                player:getMainJob() == xi.job.RDM and
+                player:getMainJob() == invaderXim.job.RDM and
                 triggerArea:delCount(1) == 0
             then
-                red:setAnimation(xi.anim.CLOSE_DOOR)
-                red:entityAnimationPacket(xi.animationString.CLOSE_DOOR)
+                red:setAnimation(invaderXim.anim.CLOSE_DOOR)
+                red:entityAnimationPacket(invaderXim.animationString.CLOSE_DOOR)
             end
         end,
 
         [2] = function()  -- White Circle
             if
                 white and
-                player:getMainJob() == xi.job.WHM and
+                player:getMainJob() == invaderXim.job.WHM and
                 triggerArea:delCount(1) == 0
             then
-                white:setAnimation(xi.anim.CLOSE_DOOR)
-                white:entityAnimationPacket(xi.animationString.CLOSE_DOOR)
+                white:setAnimation(invaderXim.anim.CLOSE_DOOR)
+                white:entityAnimationPacket(invaderXim.animationString.CLOSE_DOOR)
             end
         end,
 
         [3] = function()  -- Black Circle
             if
                 black and
-                player:getMainJob() == xi.job.BLM and
+                player:getMainJob() == invaderXim.job.BLM and
                 triggerArea:delCount(1) == 0
             then
-                black:setAnimation(xi.anim.CLOSE_DOOR)
-                black:entityAnimationPacket(xi.animationString.CLOSE_DOOR)
+                black:setAnimation(invaderXim.anim.CLOSE_DOOR)
+                black:entityAnimationPacket(invaderXim.animationString.CLOSE_DOOR)
             end
         end,
     }

@@ -7,7 +7,7 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    if target:hasStatusEffect(xi.effect.OBLIVISCENCE) then
+    if target:hasStatusEffect(invaderXim.effect.OBLIVISCENCE) then
         return 0
     end
 
@@ -15,7 +15,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:delStatusEffectSilent(xi.effect.OBLIVISCENCE)
+    target:delStatusEffectSilent(invaderXim.effect.OBLIVISCENCE)
     target:messageText(target, zones[target:getZoneID()].text.CELL_OFFSET + 8)
 end
 

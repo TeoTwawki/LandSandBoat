@@ -8,22 +8,22 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local rftd = player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.REQUIEM_FOR_THE_DEPARTED)
+    local rftd = player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.REQUIEM_FOR_THE_DEPARTED)
 
     -- Change to BRASS_RIBBON_OF_SERVICE later when Campaign has been added.
     if
-        rftd == xi.questStatus.QUEST_AVAILABLE and
-        player:hasKeyItem(xi.ki.BRONZE_RIBBON_OF_SERVICE) and
+        rftd == invaderXim.questStatus.QUEST_AVAILABLE and
+        player:hasKeyItem(invaderXim.ki.BRONZE_RIBBON_OF_SERVICE) and
         player:getMainLvl() >= 30
     then
         player:startEvent(105) -- Start quest "Requiem for the Departed"
-    elseif rftd == xi.questStatus.QUEST_ACCEPTED then
-        if player:hasKeyItem(xi.ki.SHEAF_OF_HANDMADE_INCENSE) then
+    elseif rftd == invaderXim.questStatus.QUEST_ACCEPTED then
+        if player:hasKeyItem(invaderXim.ki.SHEAF_OF_HANDMADE_INCENSE) then
             player:startEvent(107) -- During quest "Requiem for the Departed" (with Handmade Incense KI)
         else
             player:startEvent(106) -- During quest "Requiem for the Departed" (before retrieving KI Handmade Incense)
         end
-    elseif rftd == xi.questStatus.QUEST_COMPLETED then
+    elseif rftd == invaderXim.questStatus.QUEST_COMPLETED then
         player:startEvent(108) -- New standard dialog after "Requiem for the Departed"
     else
         player:startEvent(104) -- Standard dialog
@@ -32,12 +32,12 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 105 then
-        player:addQuest(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.REQUIEM_FOR_THE_DEPARTED)
+        player:addQuest(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.REQUIEM_FOR_THE_DEPARTED)
     elseif
         csid == 107 and
-        npcUtil.completeQuest(player, xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.REQUIEM_FOR_THE_DEPARTED, { item = xi.item.SCROLL_OF_RECALL_MERIPH })
+        npcUtil.completeQuest(player, invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.REQUIEM_FOR_THE_DEPARTED, { item = invaderXim.item.SCROLL_OF_RECALL_MERIPH })
     then
-        player:delKeyItem(xi.ki.SHEAF_OF_HANDMADE_INCENSE)
+        player:delKeyItem(invaderXim.ki.SHEAF_OF_HANDMADE_INCENSE)
     end
 end
 

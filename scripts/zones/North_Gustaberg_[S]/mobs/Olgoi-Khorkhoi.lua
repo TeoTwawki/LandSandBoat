@@ -9,7 +9,7 @@ entity.onMobSpawn = function(mob)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 499)
+    invaderXim.hunts.checkHunt(mob, player, 499)
 end
 
 entity.onMobDespawn = function(mob)

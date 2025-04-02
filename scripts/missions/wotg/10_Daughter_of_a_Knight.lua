@@ -8,16 +8,16 @@
 -- Humus-rich Earth (past)    : !pos -510.535 7.568 289.283 82
 -- Humus-rich Earth (present) : !pos -510.535 7.568 289.283 104
 -----------------------------------
-local pastJugnerID = zones[xi.zone.JUGNER_FOREST_S]
-local presentJugnerID = zones[xi.zone.JUGNER_FOREST]
+local pastJugnerID = zones[invaderXim.zone.JUGNER_FOREST_S]
+local presentJugnerID = zones[invaderXim.zone.JUGNER_FOREST]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.DAUGHTER_OF_A_KNIGHT)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.DAUGHTER_OF_A_KNIGHT)
 
 mission.reward =
 {
-    keyItem     = xi.ki.BOTTLE_OF_TREANT_TONIC,
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.A_SPOONFUL_OF_SUGAR },
+    keyItem     = invaderXim.ki.BOTTLE_OF_TREANT_TONIC,
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.A_SPOONFUL_OF_SUGAR },
 }
 
 mission.sections =
@@ -28,7 +28,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 0
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Amaura'] =
             {
@@ -54,12 +54,12 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 1
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Amaura'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.CERNUNNOS_BULB) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.CERNUNNOS_BULB) then
                         -- TODO: What are these args from caps?
                         -- Observed : 647298804, 0, 1743, 1, 759, 600, 0, 4
                         return mission:progressEvent(937, 0, 2)
@@ -95,21 +95,21 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 2
         end,
 
-        [xi.zone.JUGNER_FOREST_S] =
+        [invaderXim.zone.JUGNER_FOREST_S] =
         {
             ['Humus-rich_Earth'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.CERNUNNOS_BULB) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.CERNUNNOS_BULB) then
                         player:confirmTrade()
                         player:setMissionStatus(mission.areaId, 3)
 
-                        return mission:messageSpecial(pastJugnerID.text.YOU_PLANT_ITEM, xi.item.CERNUNNOS_BULB)
+                        return mission:messageSpecial(pastJugnerID.text.YOU_PLANT_ITEM, invaderXim.item.CERNUNNOS_BULB)
                     end
                 end,
 
                 onTrigger = function(player, npc)
-                    return mission:messageSpecial(pastJugnerID.text.IDEAL_PLACE_TO_PLANT_ITEM, xi.item.CERNUNNOS_BULB)
+                    return mission:messageSpecial(pastJugnerID.text.IDEAL_PLACE_TO_PLANT_ITEM, invaderXim.item.CERNUNNOS_BULB)
                 end,
             },
         },
@@ -121,7 +121,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 3
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Amaura'] =
             {
@@ -131,17 +131,17 @@ mission.sections =
             },
         },
 
-        [xi.zone.JUGNER_FOREST_S] =
+        [invaderXim.zone.JUGNER_FOREST_S] =
         {
             ['Humus-rich_Earth'] =
             {
                 onTrigger = function(player, npc)
-                    return mission:messageSpecial(pastJugnerID.text.ITEM_IS_PLANTED_HERE, xi.item.CERNUNNOS_BULB)
+                    return mission:messageSpecial(pastJugnerID.text.ITEM_IS_PLANTED_HERE, invaderXim.item.CERNUNNOS_BULB)
                 end,
             }
         },
 
-        [xi.zone.JUGNER_FOREST] =
+        [invaderXim.zone.JUGNER_FOREST] =
         {
             ['Humus-rich_Earth'] =
             {
@@ -166,7 +166,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 4
         end,
 
-        [xi.zone.JUGNER_FOREST] =
+        [invaderXim.zone.JUGNER_FOREST] =
         {
             ['Humus-rich_Earth'] =
             {
@@ -190,7 +190,7 @@ mission.sections =
             onEventFinish =
             {
                 [34] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.CERNUNNOS_RESIN)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.CERNUNNOS_RESIN)
 
                     player:setLocalVar('cernunnosDefeated', 0)
                     player:setMissionStatus(mission.areaId, 5)
@@ -205,7 +205,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 5
         end,
 
-        [xi.zone.JUGNER_FOREST] =
+        [invaderXim.zone.JUGNER_FOREST] =
         {
             ['Humus-rich_Earth'] =
             {
@@ -215,7 +215,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Amaura'] =
             {
@@ -227,7 +227,7 @@ mission.sections =
             onEventFinish =
             {
                 [939] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.CERNUNNOS_RESIN)
+                    player:delKeyItem(invaderXim.ki.CERNUNNOS_RESIN)
                     player:setMissionStatus(mission.areaId, 6)
 
                     mission:setVar(player, 'Timer', VanadielUniqueDay() + 1)
@@ -244,7 +244,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 6
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Amaura'] =
             {

@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Attohwa_Chasm (7)
 -----------------------------------
-local ID = zones[xi.zone.ATTOHWA_CHASM]
+local ID = zones[invaderXim.zone.ATTOHWA_CHASM]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -39,7 +39,7 @@ zoneObject.onInitialize = function(zone)
     zone:registerCylindricalTriggerArea(29, -238, -118, 5)
     zone:registerCylindricalTriggerArea(30, -385.349, -173.973, 5)
 
-    xi.helm.initZone(zone, xi.helmType.EXCAVATION)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.EXCAVATION)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -57,7 +57,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
@@ -70,8 +70,8 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
         if gasponia ~= nil then
             gasponia:openDoor(3)
 
-            if not player:hasStatusEffect(xi.effect.POISON) then
-                player:addStatusEffect(xi.effect.POISON, 15, 0, math.random(30, 60))
+            if not player:hasStatusEffect(invaderXim.effect.POISON) then
+                player:addStatusEffect(invaderXim.effect.POISON, 15, 0, math.random(30, 60))
                 player:messageSpecial(ID.text.GASPONIA_POISON)
             end
         end

@@ -2,9 +2,9 @@
 -- Abyssea Sturdy Pyxis Red Chest
 -----------------------------------
 xi = xi or {}
-xi.pyxis = xi.pyxis or {}
+invaderXim.pyxis = invaderXim.pyxis or {}
 
-xi.pyxis.redChest = {}
+invaderXim.pyxis.redChest = {}
 
 local pressureChoice =
 {
@@ -40,7 +40,7 @@ local function SetLockwearAdd(npc, lockwearmessage)
     npc:setLocalVar('LOCKWEARADD', math.random(0, lockwearmax))
 end
 
-xi.pyxis.redChest.startEvent = function(player, npc, event, contentMessage, timeleft)
+invaderXim.pyxis.redChest.startEvent = function(player, npc, event, contentMessage, timeleft)
     local targetnumber    = npc:getLocalVar('RAND_NUM')
     local currentpressure = npc:getLocalVar('CURRENTPRESSURE')
     local currentAttempts = npc:getLocalVar('CURRENT_ATTEMPTS')
@@ -66,7 +66,7 @@ xi.pyxis.redChest.startEvent = function(player, npc, event, contentMessage, time
     player:startEvent(event, contentMessage, currentpressure, goodPressure, lockwearmessage -1, attemptsallowed, currentAttempts, 3, timeleft) -- Red
 end
 
-xi.pyxis.redChest.unlock = function(player, csid, option, npc)
+invaderXim.pyxis.redChest.unlock = function(player, csid, option, npc)
     local lockedchoice     = bit.lshift(1, option)
 
     if lockedchoice == 1 then
@@ -99,22 +99,22 @@ xi.pyxis.redChest.unlock = function(player, csid, option, npc)
         newPressure >= targetlow and
         newPressure <= targethigh
     then
-        xi.pyxis.messageChest(player, ID.text.AIR_PRESSURE_CHANGE, pressurechange, 0, nil, newPressure, npc)
-        xi.pyxis.messageChest(player, ID.text.PLAYER_OPENED_LOCK, 0, 0, 0, 0, npc)
-        xi.pyxis.openChest(player, npc)
+        invaderXim.pyxis.messageChest(player, ID.text.AIR_PRESSURE_CHANGE, pressurechange, 0, nil, newPressure, npc)
+        invaderXim.pyxis.messageChest(player, ID.text.PLAYER_OPENED_LOCK, 0, 0, 0, 0, npc)
+        invaderXim.pyxis.openChest(player, npc)
     elseif currentAttempts >= attemptsallowed then
-        xi.pyxis.removeChest(player, npc, 0, 1)
-        xi.pyxis.messageChest(player, ID.text.PLAYER_FAILED_LOCK, 0, 0, 0, 0, npc)
+        invaderXim.pyxis.removeChest(player, npc, 0, 1)
+        invaderXim.pyxis.messageChest(player, ID.text.PLAYER_FAILED_LOCK, 0, 0, 0, 0, npc)
         player:messageSpecial(ID.text.CHEST_DISAPPEARED)
     else
         npc:setLocalVar('LOCKWEARMESSAGE', math.random(1, 4))
 
         if newPressure > 0 then
             npc:setLocalVar('CURRENTPRESSURE', newPressure)
-            xi.pyxis.messageChest(player, ID.text.AIR_PRESSURE_CHANGE, pressurechange, 0, nil, newPressure, npc)
+            invaderXim.pyxis.messageChest(player, ID.text.AIR_PRESSURE_CHANGE, pressurechange, 0, nil, newPressure, npc)
         else
             npc:setLocalVar('CURRENTPRESSURE', 0)
-            xi.pyxis.messageChest(player, ID.text.AIR_PRESSURE_CHANGE, pressurechange, 0, nil, 0, npc)
+            invaderXim.pyxis.messageChest(player, ID.text.AIR_PRESSURE_CHANGE, pressurechange, 0, nil, 0, npc)
         end
     end
 end

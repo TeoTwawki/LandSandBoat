@@ -9,10 +9,10 @@ local entity = {}
 
 entity.onTrigger = function(player, npc)
     if
-        player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.THE_TIGRESS_STIRS) == xi.questStatus.QUEST_ACCEPTED and
-        not player:hasKeyItem(xi.ki.SMALL_STARFRUIT)
+        player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.THE_TIGRESS_STIRS) == invaderXim.questStatus.QUEST_ACCEPTED and
+        not player:hasKeyItem(invaderXim.ki.SMALL_STARFRUIT)
     then
-        npcUtil.giveKeyItem(player, xi.ki.SMALL_STARFRUIT)
+        npcUtil.giveKeyItem(player, invaderXim.ki.SMALL_STARFRUIT)
     end
 end
 

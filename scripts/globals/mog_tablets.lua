@@ -2,7 +2,7 @@
 -- Mog Tablets
 -----------------------------------
 xi = xi or {}
-xi.mogTablet = xi.mogTablet or {}
+invaderXim.mogTablet = invaderXim.mogTablet or {}
 
 -- Announcement zone IDs
 -- 0 : A mog tablet has been discovered in [West Ronfaure/East Ronfaure/the La Theine Plateau/the Valkurm Dunes/Jugner Forest/the Batallia Downs/North Gustaberg/South Gustaberg/the Konschtat Highlands/the Pashhow Marshlands/the Rolanberry Fields/Beaucedine Glacier/Xarcabard/West Sarutabaruta/East Sarutabaruta/the Tahrongi Canyon/the Buburimu Peninsula/the Meriphataud Mountains/the Sauromugue Champaign/Qufim Island/Behemoth's Dominion/Cape Teriggan/the Eastern Altepa Desert/the Sanctuary of Zi'Tah/Ro'Maeve/the Yuhtunga Jungle/the Yhoator Jungle/the Western Altepa Desert/the Valley of Sorrows]!
@@ -32,50 +32,50 @@ xi.mogTablet = xi.mogTablet or {}
 -- Not yet discovered
 -- 14333 : No tablet has been discovered there yet. It's not too late for you to stake your claim, kupo!
 
-xi.mogTablet.zones =
+invaderXim.mogTablet.zones =
 {
-    [0] = xi.zone.WEST_RONFAURE,
-    [1] = xi.zone.EAST_RONFAURE,
-    [2] = xi.zone.LA_THEINE_PLATEAU,
-    [3] = xi.zone.VALKURM_DUNES,
-    [4] = xi.zone.JUGNER_FOREST,
-    [5] = xi.zone.BATALLIA_DOWNS,
-    [6] = xi.zone.NORTH_GUSTABERG,
-    [7] = xi.zone.SOUTH_GUSTABERG,
-    [8] = xi.zone.KONSCHTAT_HIGHLANDS,
-    [9] = xi.zone.PASHHOW_MARSHLANDS,
-    [10] = xi.zone.ROLANBERRY_FIELDS,
-    [11] = xi.zone.BEAUCEDINE_GLACIER,
-    [12] = xi.zone.XARCABARD,
-    [13] = xi.zone.WEST_SARUTABARUTA,
-    [14] = xi.zone.EAST_SARUTABARUTA,
-    [15] = xi.zone.TAHRONGI_CANYON,
-    [16] = xi.zone.BUBURIMU_PENINSULA,
-    [17] = xi.zone.MERIPHATAUD_MOUNTAINS,
-    [18] = xi.zone.SAUROMUGUE_CHAMPAIGN,
-    [19] = xi.zone.QUFIM_ISLAND,
-    [20] = xi.zone.BEHEMOTHS_DOMINION,
-    [21] = xi.zone.CAPE_TERIGGAN,
-    [22] = xi.zone.EASTERN_ALTEPA_DESERT,
-    [23] = xi.zone.THE_SANCTUARY_OF_ZITAH,
-    [24] = xi.zone.ROMAEVE,
-    [25] = xi.zone.YUHTUNGA_JUNGLE,
-    [26] = xi.zone.YHOATOR_JUNGLE,
-    [27] = xi.zone.WESTERN_ALTEPA_DESERT,
-    [28] = xi.zone.VALLEY_OF_SORROWS,
+    [0] = invaderXim.zone.WEST_RONFAURE,
+    [1] = invaderXim.zone.EAST_RONFAURE,
+    [2] = invaderXim.zone.LA_THEINE_PLATEAU,
+    [3] = invaderXim.zone.VALKURM_DUNES,
+    [4] = invaderXim.zone.JUGNER_FOREST,
+    [5] = invaderXim.zone.BATALLIA_DOWNS,
+    [6] = invaderXim.zone.NORTH_GUSTABERG,
+    [7] = invaderXim.zone.SOUTH_GUSTABERG,
+    [8] = invaderXim.zone.KONSCHTAT_HIGHLANDS,
+    [9] = invaderXim.zone.PASHHOW_MARSHLANDS,
+    [10] = invaderXim.zone.ROLANBERRY_FIELDS,
+    [11] = invaderXim.zone.BEAUCEDINE_GLACIER,
+    [12] = invaderXim.zone.XARCABARD,
+    [13] = invaderXim.zone.WEST_SARUTABARUTA,
+    [14] = invaderXim.zone.EAST_SARUTABARUTA,
+    [15] = invaderXim.zone.TAHRONGI_CANYON,
+    [16] = invaderXim.zone.BUBURIMU_PENINSULA,
+    [17] = invaderXim.zone.MERIPHATAUD_MOUNTAINS,
+    [18] = invaderXim.zone.SAUROMUGUE_CHAMPAIGN,
+    [19] = invaderXim.zone.QUFIM_ISLAND,
+    [20] = invaderXim.zone.BEHEMOTHS_DOMINION,
+    [21] = invaderXim.zone.CAPE_TERIGGAN,
+    [22] = invaderXim.zone.EASTERN_ALTEPA_DESERT,
+    [23] = invaderXim.zone.THE_SANCTUARY_OF_ZITAH,
+    [24] = invaderXim.zone.ROMAEVE,
+    [25] = invaderXim.zone.YUHTUNGA_JUNGLE,
+    [26] = invaderXim.zone.YHOATOR_JUNGLE,
+    [27] = invaderXim.zone.WESTERN_ALTEPA_DESERT,
+    [28] = invaderXim.zone.VALLEY_OF_SORROWS,
 }
 
 -- [zoneId] = { { tabletZoneOffset, x, y, z }, { ... }, { ... }, }
-xi.mogTablet.locations =
+invaderXim.mogTablet.locations =
 {
-    [xi.zone.VALKURM_DUNES] =
+    [invaderXim.zone.VALKURM_DUNES] =
     {
         { 3, 288.756, -0.262, 2.605 },
     },
 }
 
 -- For use with message 15
-xi.mogTablet.powers =
+invaderXim.mogTablet.powers =
 {
     -- lshift 1 by amount
     THRIFTY_TRANSIT      = 1,
@@ -91,7 +91,7 @@ xi.mogTablet.powers =
     CRYSTAL_CABOODLE     = 11,
 }
 
-xi.mogTablet.tablets =
+invaderXim.mogTablet.tablets =
 {
     TEMPERANCE = 0,
     FORTITUDE  = 1,
@@ -106,20 +106,20 @@ xi.mogTablet.tablets =
     COURAGE    = 10,
 }
 
-xi.mogTablet.onZoneInitialize = function(zone)
+invaderXim.mogTablet.onZoneInitialize = function(zone)
     -- Lookup server vars
     -- See if we need to spawn any tablets
 end
 
-xi.mogTablet.onZoneIn = function(zone, player)
+invaderXim.mogTablet.onZoneIn = function(zone, player)
     -- Lookup server vars
     -- player:messageSpecial(15,
-    --     xi.mogTablet.powers.THRIFTY_TRANSIT,
-    --     xi.mogTablet.powers.MARTIAL_MASTER,
-    --     xi.mogTablet.powers.BLOOD_OF_THE_VAMPYR)
+    --     invaderXim.mogTablet.powers.THRIFTY_TRANSIT,
+    --     invaderXim.mogTablet.powers.MARTIAL_MASTER,
+    --     invaderXim.mogTablet.powers.BLOOD_OF_THE_VAMPYR)
 end
 
-xi.mogTablet.onZoneTick = function(zone)
+invaderXim.mogTablet.onZoneTick = function(zone)
     -- local now = os.clock()
     -- local lastCalled = zone:getLocalVar('MogTabletTick')
     -- Every 10s, rather than every tick
@@ -129,7 +129,7 @@ xi.mogTablet.onZoneTick = function(zone)
     --         for _, player in pairs(zone:getPlayers()) do
     --             -- Check their distance from the tablet(s) in the zone to see if we should reveal it (87')
     --             if tablet:checkDistance(player) <= 87 then
-    --                tablet:setStatus(xi.status.NORMAL)
+    --                tablet:setStatus(invaderXim.status.NORMAL)
     --             end
     --         end
     --     end
@@ -137,7 +137,7 @@ xi.mogTablet.onZoneTick = function(zone)
     -- end
 end
 
-xi.mogTablet.hideAllTabletsImpl = function(zoneId)
+invaderXim.mogTablet.hideAllTabletsImpl = function(zoneId)
     local zone = GetZone(zoneId)
     if not zone then
         return
@@ -145,19 +145,19 @@ xi.mogTablet.hideAllTabletsImpl = function(zoneId)
 
     local results = zone:queryEntitiesByName('Mog-Tablet')
     for _, entity in pairs(results) do
-        entity:setStatus(xi.status.DISAPPEAR)
+        entity:setStatus(invaderXim.status.DISAPPEAR)
     end
 end
 
-xi.mogTablet.hideAllTablets = function()
-    for _, zoneId in pairs(xi.mogTablet.zones) do
-        SendLuaFuncStringToZone(xi.zone.RULUDE_GARDENS, zoneId, fmt([[
-            xi.mogTablet.hideAllTabletsImpl({})
+invaderXim.mogTablet.hideAllTablets = function()
+    for _, zoneId in pairs(invaderXim.mogTablet.zones) do
+        SendLuaFuncStringToZone(invaderXim.zone.RULUDE_GARDENS, zoneId, fmt([[
+            invaderXim.mogTablet.hideAllTabletsImpl({})
         ]], zoneId))
     end
 end
 
-xi.mogTablet.messageAllPlayersImpl = function(zoneId)
+invaderXim.mogTablet.messageAllPlayersImpl = function(zoneId)
     local zone = GetZone(zoneId)
     if not zone then
         return
@@ -168,42 +168,42 @@ xi.mogTablet.messageAllPlayersImpl = function(zoneId)
     end
 end
 
-xi.mogTablet.messageAllPlayers = function()
-    for _, zoneId in pairs(xi.mogTablet.zones) do
-        SendLuaFuncStringToZone(xi.zone.RULUDE_GARDENS, zoneId, fmt([[
-            xi.mogTablet.messageAllPlayersImpl({})
+invaderXim.mogTablet.messageAllPlayers = function()
+    for _, zoneId in pairs(invaderXim.mogTablet.zones) do
+        SendLuaFuncStringToZone(invaderXim.zone.RULUDE_GARDENS, zoneId, fmt([[
+            invaderXim.mogTablet.messageAllPlayersImpl({})
         ]], zoneId))
     end
 end
 
-xi.mogTablet.tabletFoundAnnouncementImpl = function(zoneId)
+invaderXim.mogTablet.tabletFoundAnnouncementImpl = function(zoneId)
     local zone = GetZone(zoneId)
     if not zone then
         return
     end
 
     for _, player in pairs(zone:getPlayers()) do
-        -- player:messageSpecial(ID.text.MOG_TABLET_BASE, xi.mogTablet.locations[zoneId][1])
+        -- player:messageSpecial(ID.text.MOG_TABLET_BASE, invaderXim.mogTablet.locations[zoneId][1])
     end
 end
 
-xi.mogTablet.tabletFoundAnnouncement = function(player)
+invaderXim.mogTablet.tabletFoundAnnouncement = function(player)
     local foundInZoneId = player:getZoneID()
-    for _, zoneId in pairs(xi.mogTablet.zones) do
+    for _, zoneId in pairs(invaderXim.mogTablet.zones) do
         SendLuaFuncStringToZone(foundInZoneId, zoneId, fmt([[
-            xi.mogTablet.tabletFoundAnnouncementImpl({})
+            invaderXim.mogTablet.tabletFoundAnnouncementImpl({})
         ]], zoneId))
     end
 end
 
-xi.mogTablet.tabletOnTrigger = function(player, npc)
+invaderXim.mogTablet.tabletOnTrigger = function(player, npc)
     local interactedWith = npc:getLocalVar('interactedWith')
     if interactedWith == 1 then
         local ID = zones[player:getZoneID()]
         player:messageSpecial(ID.text.YOU_RECOVERED_MOG_TABLET)
         player:setCharVar('[MOGTABLET]Found', 1)
 
-        xi.mogTablet.tabletFoundAnnouncement(player)
+        invaderXim.mogTablet.tabletFoundAnnouncement(player)
 
         -- TODO: Update server var for this tablet so it can be
         -- tracked by the Moogle
@@ -211,7 +211,7 @@ xi.mogTablet.tabletOnTrigger = function(player, npc)
         npc:setLocalVar('interactedWith', 1)
         npc:setAnimationSub(5) -- Play 'flying away' animation
         npc:timer(5000, function(npcArg)
-            npcArg:setStatus(xi.status.DISAPPEAR)
+            npcArg:setStatus(invaderXim.status.DISAPPEAR)
             npcArg:setAnimationSub(6) -- Reset animation
         end)
     end
@@ -224,9 +224,9 @@ end
 -- You found a tablet cs 10111, 10112
 -- No menu options apart from story cs 10114
 
-xi.mogTablet.moogleOnTrigger = function(player, npc)
+invaderXim.mogTablet.moogleOnTrigger = function(player, npc)
     -- NOTE: This setting doesn't exist yet, because this feature isn't ready!
-    if xi.settings.ENABLE_MOG_TABLETS then
+    if invaderXim.settings.ENABLE_MOG_TABLETS then
         local allTabletsFound = false
         if allTabletsFound then
             player:startEvent(10109)
@@ -236,14 +236,14 @@ xi.mogTablet.moogleOnTrigger = function(player, npc)
     end
 end
 
-xi.mogTablet.moogleOnEventUpdate = function(player, csid, option, npc)
+invaderXim.mogTablet.moogleOnEventUpdate = function(player, csid, option, npc)
     -- print('update', csid, option)
     -- TODO: Check server vars
 
     local numCollected = 11
-    local power1 = xi.mogTablet.powers.MARTIAL_MASTER
-    local power2 = xi.mogTablet.powers.TREASURE_HOUND
-    local power3 = xi.mogTablet.powers.SWIFT_SHOES
+    local power1 = invaderXim.mogTablet.powers.MARTIAL_MASTER
+    local power2 = invaderXim.mogTablet.powers.TREASURE_HOUND
+    local power3 = invaderXim.mogTablet.powers.SWIFT_SHOES
 
     -- The current Super Kupower
     if option == 1 then
@@ -280,17 +280,17 @@ xi.mogTablet.moogleOnEventUpdate = function(player, csid, option, npc)
 
     -- Located tablets in zone
     elseif option > 4 then
-        -- local zoneId = xi.mogTablet.zones[option - 3]
+        -- local zoneId = invaderXim.mogTablet.zones[option - 3]
 
         -- Use zoneId to lookup
 
         -- Deliver results to player
         -- player:updateEventString('Test')
-        -- player:messageSpecial(14331, xi.mogTablet.tablets.CHARITY)
+        -- player:messageSpecial(14331, invaderXim.mogTablet.tablets.CHARITY)
     end
 end
 
-xi.mogTablet.moogleOnEventFinish = function(player, csid, option, npc)
+invaderXim.mogTablet.moogleOnEventFinish = function(player, csid, option, npc)
     -- print('finish', csid, option)
 
     -- Hand out prizes

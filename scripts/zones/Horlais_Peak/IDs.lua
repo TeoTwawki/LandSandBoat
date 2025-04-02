@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.HORLAIS_PEAK] =
+zones[invaderXim.zone.HORLAIS_PEAK] =
 {
     text =
     {
@@ -64,4 +64,4 @@ zones[xi.zone.HORLAIS_PEAK] =
     },
 }
 
-return zones[xi.zone.HORLAIS_PEAK]
+return zones[invaderXim.zone.HORLAIS_PEAK]

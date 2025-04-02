@@ -13,10 +13,10 @@ local weaponskillObject = {}
 
 weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary, action, taChar)
     -- Apply aftermath
-    xi.aftermath.addStatusEffect(player, tp, xi.slot.MAIN, xi.aftermath.type.EMPYREAN)
+    invaderXim.aftermath.addStatusEffect(player, tp, invaderXim.slot.MAIN, invaderXim.aftermath.type.EMPYREAN)
 
-    local ftphp = xi.weaponskills.fTP(tp, { 0.22, 0.33, 0.52 })
-    local ftpmp = xi.weaponskills.fTP(tp, { 0.15, 0.22, 0.35 })
+    local ftphp = invaderXim.weaponskills.fTP(tp, { 0.22, 0.33, 0.52 })
+    local ftpmp = invaderXim.weaponskills.fTP(tp, { 0.15, 0.22, 0.35 })
     player:addHP(ftphp * player:getMaxHP())
     return 0, 0, false, ftpmp * player:getMaxMP()
 end

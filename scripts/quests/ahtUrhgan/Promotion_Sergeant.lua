@@ -7,26 +7,26 @@
 -- Totoroon           : !pos -13 0 -24 53
 -- qm11               : !pos 195 2 -616 79
 -----------------------------------
-local whitegateID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local whitegateID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.PROMOTION_SERGEANT)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.PROMOTION_SERGEANT)
 
 quest.reward =
 {
-    keyItem = xi.ki.S_WILDCAT_BADGE,
-    title   = xi.title.SERGEANT,
+    keyItem = invaderXim.ki.S_WILDCAT_BADGE,
+    title   = invaderXim.title.SERGEANT,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and player:getCharVar('AssaultPromotion') >= 25 and
-            player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.PROMOTION_CORPORAL) == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and player:getCharVar('AssaultPromotion') >= 25 and
+            player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.PROMOTION_CORPORAL) == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = quest:progressEvent(5055),
 
@@ -42,10 +42,10 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 0
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 0
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = quest:progressEvent(5058):oncePerZone(),
 
@@ -68,15 +68,15 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 1
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 1
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = quest:progressEvent(5058):oncePerZone(),
         },
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             onTriggerAreaEnter =
             {
@@ -101,20 +101,20 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 2
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 2
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = quest:progressEvent(5058):oncePerZone(),
         },
 
-        [xi.zone.NASHMAU] =
+        [invaderXim.zone.NASHMAU] =
         {
             ['Totoroon'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.BOWL_OF_SUTLAC) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.BOWL_OF_SUTLAC) then
                         return quest:progressEvent(304)
                     end
                 end,
@@ -135,15 +135,15 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 3
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 3
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = quest:progressEvent(5058):oncePerZone(),
         },
 
-        [xi.zone.CAEDARVA_MIRE] =
+        [invaderXim.zone.CAEDARVA_MIRE] =
         {
             ['qm11'] = quest:progressEvent(20),
 
@@ -157,10 +157,10 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 4
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 4
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = quest:progressEvent(5057),
 
@@ -170,7 +170,7 @@ quest.sections =
                     if quest:complete(player) then
                         player:setCharVar('AssaultPromotion', 0)
                         player:messageSpecial(whitegateID.text.PROMOTION_SERGEANT)
-                        player:delKeyItem(xi.ki.C_WILDCAT_BADGE)
+                        player:delKeyItem(invaderXim.ki.C_WILDCAT_BADGE)
                     end
                 end,
             },

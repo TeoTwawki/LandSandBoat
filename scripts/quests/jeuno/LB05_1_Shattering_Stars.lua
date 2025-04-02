@@ -4,25 +4,25 @@
 -- Log ID: 3, Quest ID: 132
 -- Maat : !pos 8 3 118 243
 -----------------------------------
-local ruludeID = zones[xi.zone.RULUDE_GARDENS]
+local ruludeID = zones[invaderXim.zone.RULUDE_GARDENS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.SHATTERING_STARS)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.SHATTERING_STARS)
 
 quest.reward =
 {
     fame = 80,
-    fameArea = xi.fameArea.JEUNO,
-    title = xi.title.STAR_BREAKER,
+    fameArea = invaderXim.fameArea.JEUNO,
+    title = invaderXim.title.STAR_BREAKER,
 }
 
 local maatBattlefieldIds =
 {
-    [xi.zone.BALGAS_DAIS]        = { 101, 102, 103 },
-    [xi.zone.CHAMBER_OF_ORACLES] = { 194, 195, 196 },
-    [xi.zone.HORLAIS_PEAK]       = {   5,   6,   7 },
-    [xi.zone.QUBIA_ARENA]        = { 517, 518, 519 },
-    [xi.zone.WAUGHROON_SHRINE]   = {  70,  71,  72 },
+    [invaderXim.zone.BALGAS_DAIS]        = { 101, 102, 103 },
+    [invaderXim.zone.CHAMBER_OF_ORACLES] = { 194, 195, 196 },
+    [invaderXim.zone.HORLAIS_PEAK]       = {   5,   6,   7 },
+    [invaderXim.zone.QUBIA_ARENA]        = { 517, 518, 519 },
+    [invaderXim.zone.WAUGHROON_SHRINE]   = {  70,  71,  72 },
 }
 
 local maatBattlefieldZone =
@@ -37,8 +37,8 @@ local maatBattlefieldZone =
                     local jobId        = player:getMainJob()
                     local maatsCapMask = player:getCharVar('maatsCap')
 
-                    if player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.SHATTERING_STARS) == xi.questStatus.QUEST_ACCEPTED then
-                        npcUtil.giveItem(player, xi.item.SCROLL_OF_INSTANT_WARP)
+                    if player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.SHATTERING_STARS) == invaderXim.questStatus.QUEST_ACCEPTED then
+                        npcUtil.giveItem(player, invaderXim.item.SCROLL_OF_INSTANT_WARP)
                         quest:setVar(player, 'Prog', jobId)
                     end
 
@@ -46,7 +46,7 @@ local maatBattlefieldZone =
                         player:setCharVar('maatsCap', utils.mask.setBit(maatsCapMask, jobId - 1, true))
                     end
 
-                    player:addTitle(xi.title.MAAT_MASHER)
+                    player:addTitle(invaderXim.title.MAAT_MASHER)
                 end
             end
         end,
@@ -58,14 +58,14 @@ quest.sections =
     -- Section: Quest available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
                 player:getMainJob() <= 15 and -- Only the "old" jobs may start this quest.
                 player:getMainLvl() >= 66 and
                 player:getLevelCap() == 70 and
-                xi.settings.main.MAX_LEVEL >= 75
+                invaderXim.settings.main.MAX_LEVEL >= 75
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Maat'] =
             {
@@ -86,12 +86,12 @@ quest.sections =
     -- Section: Quest accepted.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
                 player:getMainJob() <= 15 and
                 player:getMainLvl() >= 66
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Maat'] =
             {
@@ -104,7 +104,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    local properTestimony = xi.item.WARRIORS_TESTIMONY + player:getMainJob() - 1
+                    local properTestimony = invaderXim.item.WARRIORS_TESTIMONY + player:getMainJob() - 1
 
                     if
                         npcUtil.tradeHasExactly(trade, properTestimony) and
@@ -120,15 +120,15 @@ quest.sections =
                 [64] = function(player, csid, option, npc)
                     if option == 1 then
                         local mJob = player:getMainJob()
-                        if mJob == xi.job.MNK or mJob == xi.job.WHM or mJob == xi.job.SMN then
+                        if mJob == invaderXim.job.MNK or mJob == invaderXim.job.WHM or mJob == invaderXim.job.SMN then
                             player:setPos(299.316, -123.591, 353.760, 66, 146)
-                        elseif mJob == xi.job.WAR or mJob == xi.job.BLM or mJob == xi.job.RNG then
+                        elseif mJob == invaderXim.job.WAR or mJob == invaderXim.job.BLM or mJob == invaderXim.job.RNG then
                             player:setPos(-511.459, 159.004, -210.543, 10, 139)
-                        elseif mJob == xi.job.PLD or mJob == xi.job.DRK or mJob == xi.job.BRD then
+                        elseif mJob == invaderXim.job.PLD or mJob == invaderXim.job.DRK or mJob == invaderXim.job.BRD then
                             player:setPos(-225.146, -24.250, 20.057, 255, 206)
-                        elseif mJob == xi.job.RDM or mJob == xi.job.THF or mJob == xi.job.BST then
+                        elseif mJob == invaderXim.job.RDM or mJob == invaderXim.job.THF or mJob == invaderXim.job.BST then
                             player:setPos(-349.899, 104.213, -260.150, 0, 144)
-                        elseif mJob == xi.job.SAM or mJob == xi.job.NIN or mJob == xi.job.DRG then
+                        elseif mJob == invaderXim.job.SAM or mJob == invaderXim.job.NIN or mJob == invaderXim.job.DRG then
                             player:setPos(-220.084, -0.645, 4.442, 191, 168)
                         end
                     end
@@ -146,16 +146,16 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status >= xi.questStatus.QUEST_ACCEPTED and
+            return status >= invaderXim.questStatus.QUEST_ACCEPTED and
                 player:getMainJob() <= 15 and
                 player:getMainLvl() >= 66
         end,
 
-        [xi.zone.BALGAS_DAIS]        = maatBattlefieldZone,
-        [xi.zone.CHAMBER_OF_ORACLES] = maatBattlefieldZone,
-        [xi.zone.HORLAIS_PEAK]       = maatBattlefieldZone,
-        [xi.zone.QUBIA_ARENA]        = maatBattlefieldZone,
-        [xi.zone.WAUGHROON_SHRINE]   = maatBattlefieldZone,
+        [invaderXim.zone.BALGAS_DAIS]        = maatBattlefieldZone,
+        [invaderXim.zone.CHAMBER_OF_ORACLES] = maatBattlefieldZone,
+        [invaderXim.zone.HORLAIS_PEAK]       = maatBattlefieldZone,
+        [invaderXim.zone.QUBIA_ARENA]        = maatBattlefieldZone,
+        [invaderXim.zone.WAUGHROON_SHRINE]   = maatBattlefieldZone,
     },
 }
 

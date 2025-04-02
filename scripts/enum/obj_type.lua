@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.objType
-xi.objType =
+---@enum invaderXim.objType
+invaderXim.objType =
 {
     PC     = 0x01,
     NPC    = 0x02,

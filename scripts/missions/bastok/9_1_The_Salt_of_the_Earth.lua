@@ -11,14 +11,14 @@
 -- Dancing Wolf : !pos 7.619 7 81.209 247
 -- qm2 (Gustav) : !pos -130 1.256 252.696 212
 -----------------------------------
-local bastokMarketsID = zones[xi.zone.BASTOK_MARKETS]
-local bastokMinesID   = zones[xi.zone.BASTOK_MINES]
-local gustavID        = zones[xi.zone.GUSTAV_TUNNEL]
-local metalworksID    = zones[xi.zone.METALWORKS]
-local portBastokID    = zones[xi.zone.PORT_BASTOK]
+local bastokMarketsID = zones[invaderXim.zone.BASTOK_MARKETS]
+local bastokMinesID   = zones[invaderXim.zone.BASTOK_MINES]
+local gustavID        = zones[invaderXim.zone.GUSTAV_TUNNEL]
+local metalworksID    = zones[invaderXim.zone.METALWORKS]
+local portBastokID    = zones[invaderXim.zone.PORT_BASTOK]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_SALT_OF_THE_EARTH)
+local mission = Mission:new(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_SALT_OF_THE_EARTH)
 
 mission.reward =
 {
@@ -46,11 +46,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             onEventFinish =
             {
@@ -58,7 +58,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             onEventFinish =
             {
@@ -66,7 +66,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             onEventFinish =
             {
@@ -74,7 +74,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             onEventFinish =
             {
@@ -88,17 +88,17 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Cleades'] = mission:messageSpecial(bastokMarketsID.text.EXTENDED_MISSION_OFFSET + 14),
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Rashid'] = mission:messageSpecial(bastokMinesID.text.EXTENDED_MISSION_OFFSET + 14),
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Alois'] =
             {
@@ -134,12 +134,12 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Argus'] = mission:messageSpecial(portBastokID.text.EXTENDED_MISSION_OFFSET + 14),
         },
 
-        [xi.zone.RABAO] =
+        [invaderXim.zone.RABAO] =
         {
             ['Dancing_Wolf'] =
             {
@@ -170,7 +170,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.GUSTAV_TUNNEL] =
+        [invaderXim.zone.GUSTAV_TUNNEL] =
         {
             ['qm2'] =
             {
@@ -185,9 +185,9 @@ mission.sections =
                         return mission:messageSpecial(gustavID.text.BAD_FEELING_ABOUT_PLACE)
                     elseif
                         missionStatus == 3 and
-                        not player:hasKeyItem(xi.ki.MIRACLESALT)
+                        not player:hasKeyItem(invaderXim.ki.MIRACLESALT)
                     then
-                        return mission:keyItem(xi.ki.MIRACLESALT)
+                        return mission:keyItem(invaderXim.ki.MIRACLESALT)
                     end
                 end,
             },
@@ -208,13 +208,13 @@ mission.sections =
 
     {
         check = function(player, currentMission, missionStatus, vars)
-            return player:getNation() == xi.nation.BASTOK and
-                player:getCurrentMission(mission.areaId) == xi.mission.id.bastok.NONE and
+            return player:getNation() == invaderXim.nation.BASTOK and
+                player:getCurrentMission(mission.areaId) == invaderXim.mission.id.bastok.NONE and
                 player:hasCompletedMission(mission.areaId, mission.missionId) and
-                not player:hasCompletedMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.WHERE_TWO_PATHS_CONVERGE)
+                not player:hasCompletedMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.WHERE_TWO_PATHS_CONVERGE)
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Alois'] = mission:event(778):importantOnce(),
         },
@@ -226,7 +226,7 @@ mission.sections =
                 mission:getVar(player, 'Option') ~= 0
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Franziska'] =
             {

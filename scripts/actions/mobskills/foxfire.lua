@@ -9,14 +9,14 @@
 local mobskillObject = {}
 
 local validJobs = set{
-    xi.job.RDM,
-    xi.job.THF,
-    xi.job.PLD,
-    xi.job.BST,
-    xi.job.RNG,
-    xi.job.BRD,
-    xi.job.NIN,
-    xi.job.COR,
+    invaderXim.job.RDM,
+    invaderXim.job.THF,
+    invaderXim.job.PLD,
+    invaderXim.job.BST,
+    invaderXim.job.RNG,
+    invaderXim.job.BRD,
+    invaderXim.job.NIN,
+    invaderXim.job.COR,
 }
 
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
@@ -31,12 +31,12 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local numhits = 1
     local accmod = 1
     local ftp    = 2
-    local info = xi.mobskills.mobPhysicalMove(mob, target, skill, numhits, accmod, ftp, xi.mobskills.physicalTpBonus.NO_EFFECT, 0, 0, 0)
-    local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.BLUNT, info.hitslanded)
+    local info = invaderXim.mobskills.mobPhysicalMove(mob, target, skill, numhits, accmod, ftp, invaderXim.mobskills.physicalTpBonus.NO_EFFECT, 0, 0, 0)
+    local dmg = invaderXim.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, invaderXim.attackType.PHYSICAL, invaderXim.damageType.BLUNT, info.hitslanded)
 
-    xi.mobskills.mobPhysicalStatusEffectMove(mob, target, skill, xi.effect.STUN, 1, 0, 16)
+    invaderXim.mobskills.mobPhysicalStatusEffectMove(mob, target, skill, invaderXim.effect.STUN, 1, 0, 16)
 
-    target:takeDamage(dmg, mob, xi.attackType.PHYSICAL, xi.damageType.BLUNT)
+    target:takeDamage(dmg, mob, invaderXim.attackType.PHYSICAL, invaderXim.damageType.BLUNT)
     return dmg
 end
 

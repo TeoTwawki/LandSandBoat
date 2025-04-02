@@ -10,11 +10,11 @@ require('scripts/quests/tutorial')
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.tutorial.onTrigger(player, npc, 813, 2)
+    invaderXim.tutorial.onTrigger(player, npc, 813, 2)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.tutorial.onEventFinish(player, csid, option, 813, 2)
+    invaderXim.tutorial.onEventFinish(player, csid, option, 813, 2)
 end
 
 return entity

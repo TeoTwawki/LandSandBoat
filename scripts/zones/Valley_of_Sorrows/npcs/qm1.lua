@@ -4,7 +4,7 @@
 -- Spawns Adamantoise or Aspidochelone
 -- !pos 0 0 -37 59
 -----------------------------------
-local ID = zones[xi.zone.VALLEY_OF_SORROWS]
+local ID = zones[invaderXim.zone.VALLEY_OF_SORROWS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -15,12 +15,12 @@ entity.onTrade = function(player, npc, trade)
         not GetMobByID(ID.mob.ASPIDOCHELONE):isSpawned()
     then
         if
-            npcUtil.tradeHasExactly(trade, xi.item.CLUMP_OF_BLUE_PONDWEED) and
+            npcUtil.tradeHasExactly(trade, invaderXim.item.CLUMP_OF_BLUE_PONDWEED) and
             npcUtil.popFromQM(player, npc, ID.mob.ADAMANTOISE)
         then
             player:confirmTrade()
         elseif
-            npcUtil.tradeHasExactly(trade, xi.item.CLUMP_OF_RED_PONDWEED) and
+            npcUtil.tradeHasExactly(trade, invaderXim.item.CLUMP_OF_RED_PONDWEED) and
             npcUtil.popFromQM(player, npc, ID.mob.ASPIDOCHELONE)
         then
             player:confirmTrade()

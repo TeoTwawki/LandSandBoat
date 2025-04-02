@@ -10,24 +10,24 @@
 -- Ebon_Panel_Galka  : !pos 577.648 -5.180 -700.000 35
 -- _0z0              : !pos 420 -2.05 400 35
 -----------------------------------
-local altaieuID = zones[xi.zone.ALTAIEU]
-local ruhmetID  = zones[xi.zone.THE_GARDEN_OF_RUHMET]
+local altaieuID = zones[invaderXim.zone.ALTAIEU]
+local ruhmetID  = zones[invaderXim.zone.THE_GARDEN_OF_RUHMET]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.WHEN_ANGELS_FALL)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.WHEN_ANGELS_FALL)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.DAWN },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.DAWN },
 }
 
 local ebonPanel =
 {
-    ['_iz2']              = { 1, 120, xi.ki.LIGHT_OF_VAHZL   },
-    ['Ebon_Panel_Elvaan'] = { 2, 121, xi.ki.LIGHT_OF_MEA     },
-    ['Ebon_Panel_Taru']   = { 3, 123, xi.ki.LIGHT_OF_HOLLA   },
-    ['Ebon_Panel_Mithra'] = { 4, 124, xi.ki.LIGHT_OF_DEM     },
-    ['Ebon_Panel_Galka']  = { 5, 122, xi.ki.LIGHT_OF_ALTAIEU },
+    ['_iz2']              = { 1, 120, invaderXim.ki.LIGHT_OF_VAHZL   },
+    ['Ebon_Panel_Elvaan'] = { 2, 121, invaderXim.ki.LIGHT_OF_MEA     },
+    ['Ebon_Panel_Taru']   = { 3, 123, invaderXim.ki.LIGHT_OF_HOLLA   },
+    ['Ebon_Panel_Mithra'] = { 4, 124, invaderXim.ki.LIGHT_OF_DEM     },
+    ['Ebon_Panel_Galka']  = { 5, 122, invaderXim.ki.LIGHT_OF_ALTAIEU },
 }
 
 local ebonPanelOnTrigger = function(player, npc)
@@ -36,7 +36,7 @@ local ebonPanelOnTrigger = function(player, npc)
     if missionStatus == 1 then
         return mission:progressEvent(202)
     elseif missionStatus == 2 then
-        local basicRace = player:getRace() <= xi.race.MITHRA and math.ceil(player:getRace() / 2) or 5
+        local basicRace = player:getRace() <= invaderXim.race.MITHRA and math.ceil(player:getRace() / 2) or 5
         local panelData = ebonPanel[npc:getName()]
 
         if basicRace == panelData[1] then
@@ -52,7 +52,7 @@ end
 local ebonPanelOnEventFinish = function(player, csid, option, npc)
     if option == 1 then
         npcUtil.giveKeyItem(player, ebonPanel[npc:getName()][3])
-        player:addTitle(xi.title.WARRIOR_OF_THE_CRYSTAL)
+        player:addTitle(invaderXim.title.WARRIOR_OF_THE_CRYSTAL)
         mission:setVar(player, 'Status', 3)
     end
 end
@@ -64,7 +64,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.THE_GARDEN_OF_RUHMET] =
+        [invaderXim.zone.THE_GARDEN_OF_RUHMET] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 0 then
@@ -103,7 +103,7 @@ mission.sections =
             ['_0zu'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.BRAND_OF_DAWN) then
+                    if not player:hasKeyItem(invaderXim.ki.BRAND_OF_DAWN) then
                         return mission:progressEvent(110)
                     end
                 end,
@@ -112,7 +112,7 @@ mission.sections =
             ['_0zv'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.BRAND_OF_TWILIGHT) then
+                    if not player:hasKeyItem(invaderXim.ki.BRAND_OF_TWILIGHT) then
                         return mission:progressEvent(111)
                     end
                 end,
@@ -122,13 +122,13 @@ mission.sections =
             {
                 [110] = function(player, csid, option, npc)
                     if option == 1 then
-                        npcUtil.giveKeyItem(player, xi.ki.BRAND_OF_DAWN)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.BRAND_OF_DAWN)
                     end
                 end,
 
                 [111] = function(player, csid, option, npc)
                     if option == 1 then
-                        npcUtil.giveKeyItem(player, xi.ki.BRAND_OF_TWILIGHT)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.BRAND_OF_TWILIGHT)
                     end
                 end,
 
@@ -139,7 +139,7 @@ mission.sections =
                 [124] = ebonPanelOnEventFinish,
 
                 [201] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.MYSTERIOUS_AMULET_PRISHE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.MYSTERIOUS_AMULET_PRISHE)
                     mission:setVar(player, 'Status', 1)
                 end,
 
@@ -159,7 +159,7 @@ mission.sections =
                     -- NOTE: Moving the player for this event is handled in the battlefield script.
 
                     if
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.WHEN_ANGELS_FALL and
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.WHEN_ANGELS_FALL and
                         mission:getVar(player, 'Status') == 4
                     then
                         mission:setVar(player, 'Status', 5)
@@ -168,7 +168,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.ALTAIEU] =
+        [invaderXim.zone.ALTAIEU] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 6 then
@@ -179,8 +179,8 @@ mission.sections =
             onEventFinish =
             {
                 [165] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.MYSTERIOUS_AMULET_PRISHE)
-                    player:messageSpecial(altaieuID.text.RETURN_AMULET_TO_PRISHE, xi.ki.MYSTERIOUS_AMULET)
+                    player:delKeyItem(invaderXim.ki.MYSTERIOUS_AMULET_PRISHE)
+                    player:messageSpecial(altaieuID.text.RETURN_AMULET_TO_PRISHE, invaderXim.ki.MYSTERIOUS_AMULET)
                     mission:complete(player)
                 end,
             },

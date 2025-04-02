@@ -8,14 +8,14 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local newNation = xi.nation.BASTOK
+    local newNation = invaderXim.nation.BASTOK
     local oldNation = player:getNation()
     local rank = GetNationRank(newNation)
 
     if oldNation == newNation then
         player:startEvent(362, 0, 0, 0, oldNation)
     elseif
-        player:getCurrentMission(oldNation) ~= xi.mission.id.nation.NONE or
+        player:getCurrentMission(oldNation) ~= invaderXim.mission.id.nation.NONE or
         player:getMissionStatus(player:getNation()) ~= 0
     then
         player:startEvent(361, 0, 0, 0, newNation)
@@ -41,7 +41,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 360 and option == 1 then
-        local newNation = xi.nation.BASTOK
+        local newNation = invaderXim.nation.BASTOK
         local rank = GetNationRank(newNation)
         local cost = 0
 

@@ -7,12 +7,12 @@
 -- _6z0  : !pos 0 -12 48 251
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_TEMPLE_OF_DESOLATION)
+local mission = Mission:new(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_TEMPLE_OF_DESOLATION)
 
 mission.reward =
 {
-    title       = xi.title.SEALER_OF_THE_PORTAL_OF_THE_GODS,
-    nextMission = { xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_HALL_OF_THE_GODS },
+    title       = invaderXim.title.SEALER_OF_THE_PORTAL_OF_THE_GODS,
+    nextMission = { invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_HALL_OF_THE_GODS },
 }
 
 mission.sections =
@@ -22,13 +22,13 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Gilgamesh'] = mission:event(10),
             ['Kamui']     = mission:event(11),
         },
 
-        [xi.zone.HALL_OF_THE_GODS] =
+        [invaderXim.zone.HALL_OF_THE_GODS] =
         {
             ['_6z0'] = mission:progressEvent(1),
 

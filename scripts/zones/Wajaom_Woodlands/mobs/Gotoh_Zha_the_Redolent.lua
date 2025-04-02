@@ -31,16 +31,16 @@ mixins =
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
-    mob:addImmunity(xi.immunity.SILENCE)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
 end
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
-            { id = xi.jsa.MANAFONT, hpp = math.random(66, 95) },
-            { id = xi.jsa.BENEDICTION, hpp = 0 },
+            { id = invaderXim.jsa.MANAFONT, hpp = math.random(66, 95) },
+            { id = invaderXim.jsa.BENEDICTION, hpp = 0 },
         },
     })
 
@@ -53,11 +53,11 @@ entity.onMobFight = function(mob, target)
         mob:setLocalVar('jobChanged', 1)
         mob:setSpellList(297) -- Set WHM spell list.
         -- set new JSA parameters
-        xi.mix.jobSpecial.config(mob, {
+        invaderXim.mix.jobSpecial.config(mob, {
             specials =
             {
-                { id = xi.jsa.MANAFONT, hpp = 0 },
-                { id = xi.jsa.BENEDICTION, hpp = math.random(25, 50) },
+                { id = invaderXim.jsa.MANAFONT, hpp = 0 },
+                { id = invaderXim.jsa.BENEDICTION, hpp = math.random(25, 50) },
             },
         })
     end

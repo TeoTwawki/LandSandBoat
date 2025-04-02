@@ -4,7 +4,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `account_ip_record`
 --
 
-DROP TABLE IF EXISTS `account_ip_record`;
+DROP TABLE IF IXIMSTS `account_ip_record`;
 CREATE TABLE `account_ip_record` (
   `login_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `accid` int(10) NOT NULL,

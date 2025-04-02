@@ -3,7 +3,7 @@
 --  Mob: Birdtrap
 -- Note: Placeholder Orctrap
 -----------------------------------
-local ID = zones[xi.zone.CARPENTERS_LANDING]
+local ID = zones[invaderXim.zone.CARPENTERS_LANDING]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -73,7 +73,7 @@ end
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = orctrapSpawnPoints
-    xi.mob.phOnDespawn(mob, orctrapPHTable, 10, 3600, params) -- 1 hour minimum
+    invaderXim.mob.phOnDespawn(mob, orctrapPHTable, 10, 3600, params) -- 1 hour minimum
 end
 
 return entity

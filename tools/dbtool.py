@@ -294,13 +294,13 @@ def db_query(query):
 def fetch_credentials():
     global settings, database, host, port, login, password
     database = (
-        os.getenv("XI_NETWORK_SQL_DATABASE") or settings["network"]["SQL_DATABASE"]
+        os.getenv("IXIM_NETWORK_SQL_DATABASE") or settings["network"]["SQL_DATABASE"]
     )
-    host = os.getenv("XI_NETWORK_SQL_HOST") or settings["network"]["SQL_HOST"]
-    port = int(os.getenv("XI_NETWORK_SQL_PORT") or int(settings["network"]["SQL_PORT"]))
-    login = os.getenv("XI_NETWORK_SQL_LOGIN") or settings["network"]["SQL_LOGIN"]
+    host = os.getenv("IXIM_NETWORK_SQL_HOST") or settings["network"]["SQL_HOST"]
+    port = int(os.getenv("IXIM_NETWORK_SQL_PORT") or int(settings["network"]["SQL_PORT"]))
+    login = os.getenv("IXIM_NETWORK_SQL_LOGIN") or settings["network"]["SQL_LOGIN"]
     password = (
-        os.getenv("XI_NETWORK_SQL_PASSWORD") or settings["network"]["SQL_PASSWORD"]
+        os.getenv("IXIM_NETWORK_SQL_PASSWORD") or settings["network"]["SQL_PASSWORD"]
     )
 
 
@@ -1343,7 +1343,7 @@ def main():
         while cur:
             colorama.init(autoreset=True)
             title = (
-                "LandSandBoat Database Management Tool\n" + "Connected to " + database
+                "InvaderXim Database Management Tool\n" + "Connected to " + database
             )
             if db_ver:
                 title = title + "\n" + str("#" + db_ver)

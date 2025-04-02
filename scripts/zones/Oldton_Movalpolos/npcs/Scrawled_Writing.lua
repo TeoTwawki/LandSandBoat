@@ -3,7 +3,7 @@
 --  NPC: Scrawled_Writing
 -- Allows players to spawn NM Goblin Wolfman
 -----------------------------------
-local ID = zones[xi.zone.OLDTON_MOVALPOLOS]
+local ID = zones[invaderXim.zone.OLDTON_MOVALPOLOS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -17,7 +17,7 @@ local scrawledWritingPositions =
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHas(trade, xi.item.BOTTLE_OF_GOBLIN_DRINK) and
+        npcUtil.tradeHas(trade, invaderXim.item.BOTTLE_OF_GOBLIN_DRINK) and
         npcUtil.popFromQM(player, npc, ID.mob.GOBLIN_WOLFMAN, { radius = 2, hide = 900 })
     then
         player:confirmTrade()

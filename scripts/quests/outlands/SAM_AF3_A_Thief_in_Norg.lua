@@ -8,27 +8,27 @@
 -- _6i8 (Door)     : !pos 70 7 2 234
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OUTLANDS, xi.quest.id.outlands.A_THIEF_IN_NORG)
+local quest = Quest:new(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.A_THIEF_IN_NORG)
 
 quest.reward =
 {
     fame = 60,
-    fameArea = xi.fameArea.NORG,
-    item = xi.item.MYOCHIN_KABUTO,
-    title = xi.title.PARAGON_OF_SAMURAI_EXCELLENCE,
+    fameArea = invaderXim.fameArea.NORG,
+    item = invaderXim.item.MYOCHIN_KABUTO,
+    title = invaderXim.title.PARAGON_OF_SAMURAI_EXCELLENCE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.OUTLANDS, xi.quest.id.outlands.YOMI_OKURI) and
-                player:getMainJob() == xi.job.SAM and
-                player:getMainLvl() >= xi.settings.main.AF3_QUEST_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.YOMI_OKURI) and
+                player:getMainJob() == invaderXim.job.SAM and
+                player:getMainLvl() >= invaderXim.settings.main.AF3_QUEST_LEVEL
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Jaucribaix'] =
             {
@@ -51,10 +51,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['_6i8'] =
             {
@@ -73,7 +73,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Phoochuchu'] =
             {
@@ -98,14 +98,14 @@ quest.sections =
             },
         },
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Jaucribaix'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        player:hasKeyItem(xi.ki.CHARRED_HELM) and
-                        npcUtil.tradeHasExactly(trade, xi.item.SPOOL_OF_GOLD_THREAD)
+                        player:hasKeyItem(invaderXim.ki.CHARRED_HELM) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.SPOOL_OF_GOLD_THREAD)
                     then
                         return quest:progressEvent(162)
                     end
@@ -119,7 +119,7 @@ quest.sections =
                     elseif questProgress == 5 then
                         return quest:progressEvent(166)
                     elseif questProgress == 6 then
-                        return quest:progressEvent(player:findItem(xi.item.BANISHING_CHARM) and 167 or 168)
+                        return quest:progressEvent(player:findItem(invaderXim.item.BANISHING_CHARM) and 167 or 168)
                     elseif questProgress == 7 then
                         return quest:progressEvent(160)
                     elseif questProgress == 8 then
@@ -138,7 +138,7 @@ quest.sections =
 
                 [162] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    player:delKeyItem(xi.ki.CHARRED_HELM)
+                    player:delKeyItem(invaderXim.ki.CHARRED_HELM)
                     quest:setVar(player, 'Prog', 9)
                     quest:setMustZone(player)
                 end,
@@ -148,18 +148,18 @@ quest.sections =
                 end,
 
                 [166] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.BANISHING_CHARM) then
+                    if npcUtil.giveItem(player, invaderXim.item.BANISHING_CHARM) then
                         quest:setVar(player, 'Prog', 6)
                     end
                 end,
 
                 [168] = function(player, csid, option, npc)
-                    npcUtil.giveItem(player, xi.item.BANISHING_CHARM)
+                    npcUtil.giveItem(player, invaderXim.item.BANISHING_CHARM)
                 end,
             },
         },
 
-        [xi.zone.PORT_JEUNO] =
+        [invaderXim.zone.PORT_JEUNO] =
         {
             ['Sanosuke'] =
             {
@@ -184,7 +184,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.WAUGHROON_SHRINE] =
+        [invaderXim.zone.WAUGHROON_SHRINE] =
         {
             onZoneIn = function(player, prevZone)
                 if quest:getVar(player, 'Prog') == 4 then
@@ -199,8 +199,8 @@ quest.sections =
                 end,
 
                 [32001] = function(player, csid, option, npc)
-                    if player:getLocalVar('battlefieldWin') == xi.battlefield.id.THIEF_IN_NORG then
-                        npcUtil.giveKeyItem(player, xi.ki.CHARRED_HELM)
+                    if player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.THIEF_IN_NORG then
+                        npcUtil.giveKeyItem(player, invaderXim.ki.CHARRED_HELM)
                         quest:setVar(player, 'Prog', 7)
                     end
                 end,
@@ -210,10 +210,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Jaucribaix'] = quest:event(165):replaceDefault()
         },

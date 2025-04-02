@@ -2,7 +2,7 @@
 -- Area: Tahrongi Canyon
 --  NPC: Signpost
 -----------------------------------
-local ID = zones[xi.zone.TAHRONGI_CANYON]
+local ID = zones[invaderXim.zone.TAHRONGI_CANYON]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

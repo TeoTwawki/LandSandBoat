@@ -1,18 +1,18 @@
 -----------------------------------
--- xi.effect.CROOKED_CARDS
+-- invaderXim.effect.CROOKED_CARDS
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.PHANTOM_ROLL, 100)
+    target:addMod(invaderXim.mod.PHANTOM_ROLL, 100)
 end
 
 effectObject.onEffectTick = function(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.PHANTOM_ROLL, 100)
+    target:delMod(invaderXim.mod.PHANTOM_ROLL, 100)
 end
 
 return effectObject

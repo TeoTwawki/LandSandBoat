@@ -9,9 +9,9 @@ abilityObject.onAutomatonAbilityCheck = function(target, automaton, skill)
 end
 
 abilityObject.onAutomatonAbility = function(target, automaton, skill, master, action)
-    automaton:addRecast(xi.recast.ABILITY, skill:getID(), 180)
-    local maneuvers = master:countEffect(xi.effect.EARTH_MANEUVER)
-    local pMod = math.max(automaton:getSkillLevel(xi.skill.AUTOMATON_MELEE), automaton:getSkillLevel(xi.skill.AUTOMATON_RANGED), automaton:getSkillLevel(xi.skill.AUTOMATON_MAGIC))
+    automaton:addRecast(invaderXim.recast.ABILITY, skill:getID(), 180)
+    local maneuvers = master:countEffect(invaderXim.effect.EARTH_MANEUVER)
+    local pMod = math.max(automaton:getSkillLevel(invaderXim.skill.AUTOMATON_MELEE), automaton:getSkillLevel(invaderXim.skill.AUTOMATON_RANGED), automaton:getSkillLevel(invaderXim.skill.AUTOMATON_MAGIC))
     local duration = 180
     local amount = 200
     local bonus = 0
@@ -44,13 +44,13 @@ abilityObject.onAutomatonAbility = function(target, automaton, skill, master, ac
 
     amount = amount + math.floor(bonus)
 
-    if target:addStatusEffect(xi.effect.STONESKIN, amount, 0, duration, 0, 0, 4) then
-        skill:setMsg(xi.msg.basic.SKILL_GAIN_EFFECT)
+    if target:addStatusEffect(invaderXim.effect.STONESKIN, amount, 0, duration, 0, 0, 4) then
+        skill:setMsg(invaderXim.msg.basic.SKILL_GAIN_EFFECT)
     else
-        skill:setMsg(xi.msg.basic.SKILL_NO_EFFECT)
+        skill:setMsg(invaderXim.msg.basic.SKILL_NO_EFFECT)
     end
 
-    return xi.effect.STONESKIN
+    return invaderXim.effect.STONESKIN
 end
 
 return abilityObject

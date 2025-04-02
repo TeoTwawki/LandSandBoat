@@ -8,11 +8,11 @@
 require('scripts/missions/soa/helpers')
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.AN_EXTRAORDINARY_GENTLEMAN)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.AN_EXTRAORDINARY_GENTLEMAN)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.THE_ORDERS_TREASURES },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_ORDERS_TREASURES },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:progressEvent(135, 256),
 

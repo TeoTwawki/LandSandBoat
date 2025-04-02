@@ -3,7 +3,7 @@
 --  Mob: Veteran Quadav
 -- Note: PH for Ni'Zho Bladebender
 -----------------------------------
-local ID = zones[xi.zone.PASHHOW_MARSHLANDS]
+local ID = zones[invaderXim.zone.PASHHOW_MARSHLANDS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -15,11 +15,11 @@ local niZhoPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 60, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 60, 1, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, niZhoPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, niZhoPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

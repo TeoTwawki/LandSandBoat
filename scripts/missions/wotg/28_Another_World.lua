@@ -6,11 +6,11 @@
 -- Halver : !pos 2 0.1 0.1 233
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.ANOTHER_WORLD)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.ANOTHER_WORLD)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.A_HAWK_IN_REPOSE },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.A_HAWK_IN_REPOSE },
 }
 
 mission.sections =
@@ -20,10 +20,10 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onZoneIn = function(player, prevZone)
-                if prevZone == xi.zone.EAST_RONFAURE then
+                if prevZone == invaderXim.zone.EAST_RONFAURE then
                     return 945
                 end
             end,
@@ -36,7 +36,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Halver'] =
             {

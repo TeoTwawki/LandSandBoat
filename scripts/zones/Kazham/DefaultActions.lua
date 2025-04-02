@@ -1,4 +1,4 @@
--- local ID = zones[xi.zone.KAZHAM]
+-- local ID = zones[invaderXim.zone.KAZHAM]
 
 return {
     ['_6y9']              = { event = 126 },

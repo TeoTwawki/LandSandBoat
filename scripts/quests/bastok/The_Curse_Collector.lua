@@ -6,13 +6,13 @@
 -- The Mute  : !pos -166.230 -1 -73.685 147
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.THE_CURSE_COLLECTOR)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_CURSE_COLLECTOR)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.POISON_CESTI,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.POISON_CESTI,
 }
 
 local handleAfflictorTriggerArea = function(player, triggerArea)
@@ -39,17 +39,17 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and player:getFameLevel(xi.fameArea.BASTOK) >= 4
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and player:getFameLevel(invaderXim.fameArea.BASTOK) >= 4
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Zon-Fobun'] = quest:progressEvent(251),
 
             onEventFinish =
             {
                 [251] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.CURSEPAPER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.CURSEPAPER)
                     quest:begin(player)
                 end,
             },
@@ -58,10 +58,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Zon-Fobun'] =
             {
@@ -79,13 +79,13 @@ quest.sections =
             {
                 [252] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.CURSEPAPER)
+                        player:delKeyItem(invaderXim.ki.CURSEPAPER)
                     end
                 end,
             },
         },
 
-        [xi.zone.BEADEAUX] =
+        [invaderXim.zone.BEADEAUX] =
         {
             ['The_Mute'] =
             {

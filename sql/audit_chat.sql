@@ -1,5 +1,5 @@
 
-DROP TABLE IF EXISTS `audit_chat`;
+DROP TABLE IF IXIMSTS `audit_chat`;
 CREATE TABLE `audit_chat` (
     `lineID` INT(10) NOT NULL AUTO_INCREMENT,
     `speaker` TINYTEXT NOT NULL,

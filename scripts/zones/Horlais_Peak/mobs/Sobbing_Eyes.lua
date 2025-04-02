@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMod(xi.mod.SLEEP_MEVA, 75)
+    mob:setMod(invaderXim.mod.SLEEP_MEVA, 75)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

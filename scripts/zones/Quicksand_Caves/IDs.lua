@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.QUICKSAND_CAVES] =
+zones[invaderXim.zone.QUICKSAND_CAVES] =
 {
     text =
     {
@@ -51,7 +51,7 @@ zones[xi.zone.QUICKSAND_CAVES] =
         DIAMOND_DAIG          = GetFirstID('Diamond_Daig'),
         ANTICAN_TRIBUNUS      = GetFirstID('Antican_Tribunus'),
         TRIARIUS_X_XV         = GetFirstID('Triarius_X-XV'),
-        HASTATUS_XI_XII       = GetFirstID('Hastatus_XI-XII'),
+        HASTATUS_IXIM_XII       = GetFirstID('Hastatus_XI-XII'),
         SABOTENDER_BAILARIN   = GetFirstID('Sabotender_Bailarin'),
         SABOTENDER_BAILARINA  = GetFirstID('Sabotender_Bailarina'),
         VALOR                 = GetFirstID('Valor'),
@@ -81,4 +81,4 @@ zones[xi.zone.QUICKSAND_CAVES] =
     },
 }
 
-return zones[xi.zone.QUICKSAND_CAVES]
+return zones[invaderXim.zone.QUICKSAND_CAVES]

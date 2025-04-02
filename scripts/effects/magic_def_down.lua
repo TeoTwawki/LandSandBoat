@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.MAGIC_DEF_DOWN
+-- invaderXim.effect.MAGIC_DEF_DOWN
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

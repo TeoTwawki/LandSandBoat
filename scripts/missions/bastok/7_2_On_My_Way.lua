@@ -11,13 +11,13 @@
 -- Hilda   : !pos -163 -8 13 236
 -- Gumbah  : !pos 52 0 -36 234
 -----------------------------------
-local bastokMarketsID = zones[xi.zone.BASTOK_MARKETS]
-local bastokMinesID   = zones[xi.zone.BASTOK_MINES]
-local metalworksID    = zones[xi.zone.METALWORKS]
-local portBastokID    = zones[xi.zone.PORT_BASTOK]
+local bastokMarketsID = zones[invaderXim.zone.BASTOK_MARKETS]
+local bastokMinesID   = zones[invaderXim.zone.BASTOK_MINES]
+local metalworksID    = zones[invaderXim.zone.METALWORKS]
+local portBastokID    = zones[invaderXim.zone.PORT_BASTOK]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.BASTOK, xi.mission.id.bastok.ON_MY_WAY)
+local mission = Mission:new(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.ON_MY_WAY)
 
 mission.reward =
 {
@@ -36,11 +36,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             onEventFinish =
             {
@@ -48,7 +48,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             onEventFinish =
             {
@@ -56,7 +56,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             onEventFinish =
             {
@@ -64,7 +64,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             onEventFinish =
             {
@@ -78,7 +78,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Cleades'] =
             {
@@ -95,7 +95,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Gumbah'] =
             {
@@ -131,7 +131,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Franziska'] =
             {
@@ -195,7 +195,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Argus'] =
             {
@@ -228,16 +228,16 @@ mission.sections =
             },
         },
 
-        [xi.zone.WAUGHROON_SHRINE] =
+        [invaderXim.zone.WAUGHROON_SHRINE] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 2 and
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.ON_MY_WAY
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.ON_MY_WAY
                     then
-                        npcUtil.giveKeyItem(player, xi.ki.LETTER_FROM_WEREI)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.LETTER_FROM_WEREI)
                         player:setMissionStatus(mission.areaId, 3)
                         mission:setVar(player, 'Option', 1)
                     end
@@ -253,12 +253,12 @@ mission.sections =
                 mission:getVar(player, 'Option') == 1
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Cleades'] = mission:progressEvent(1011),
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Gumbah'] = mission:progressEvent(177),
             ['Rashid'] = mission:progressEvent(1011),
@@ -271,12 +271,12 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Malduc'] = mission:progressEvent(1011),
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Argus'] = mission:progressEvent(1011),
         },
@@ -289,15 +289,15 @@ mission.sections =
                 mission:getVar(player, 'Stage') == 1
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['_6lg'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.BEAUTY_AND_THE_GALKA) and
-                        player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.FALLEN_COMRADES) and
-                        player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.RIVALS)
+                        player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.BEAUTY_AND_THE_GALKA) and
+                        player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.FALLEN_COMRADES) and
+                        player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.RIVALS)
                     then
                         return mission:progressEvent(622)
                     else

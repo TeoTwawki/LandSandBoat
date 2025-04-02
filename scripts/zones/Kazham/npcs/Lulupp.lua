@@ -30,8 +30,8 @@ local pathNodes =
 
 entity.onSpawn = function(npc)
     npc:initNpcAi()
-    npc:setPos(xi.path.first(pathNodes))
-    npc:pathThrough(pathNodes, xi.path.flag.PATROL)
+    npc:setPos(invaderXim.path.first(pathNodes))
+    npc:pathThrough(pathNodes, invaderXim.path.flag.PATROL)
 end
 
 entity.onTrade = function(player, npc, trade)
@@ -46,24 +46,24 @@ entity.onTrade = function(player, npc, trade)
     -- 905       Wyvern Skull
     -- 1147      Ancient Salt
     -- 4600      Lucky Egg
-    local opoOpoAndIStatus = player:getQuestStatus(xi.questLog.OUTLANDS, xi.quest.id.outlands.THE_OPO_OPO_AND_I)
+    local opoOpoAndIStatus = player:getQuestStatus(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.THE_OPO_OPO_AND_I)
     local progress = player:getCharVar('OPO_OPO_PROGRESS')
     local failed = player:getCharVar('OPO_OPO_FAILED')
 
-    if opoOpoAndIStatus == xi.questStatus.QUEST_ACCEPTED then
+    if opoOpoAndIStatus == invaderXim.questStatus.QUEST_ACCEPTED then
         if progress == 0 or failed == 1 then
-            if trade:hasItemQty(xi.item.BROKEN_MITHRAN_FISHING_ROD, 1) then -- first or second time trading correctly
+            if trade:hasItemQty(invaderXim.item.BROKEN_MITHRAN_FISHING_ROD, 1) then -- first or second time trading correctly
                 player:startEvent(219)
             elseif
-                trade:hasItemQty(xi.item.WORKBENCH, 1) or
-                trade:hasItemQty(xi.item.TEN_OF_COINS_CARD, 1) or
-                trade:hasItemQty(xi.item.HANDFUL_OF_THE_SANDS_OF_SILENCE, 1) or
-                trade:hasItemQty(xi.item.WANDERING_BULB, 1) or
-                trade:hasItemQty(xi.item.SET_OF_GIANT_FISH_BONES, 1) or
-                trade:hasItemQty(xi.item.BLACKENED_TOAD, 1) or
-                trade:hasItemQty(xi.item.WYVERN_SKULL, 1) or
-                trade:hasItemQty(xi.item.ROCK_OF_ANCIENT_SALT, 1) or
-                trade:hasItemQty(xi.item.LUCKY_EGG, 1)
+                trade:hasItemQty(invaderXim.item.WORKBENCH, 1) or
+                trade:hasItemQty(invaderXim.item.TEN_OF_COINS_CARD, 1) or
+                trade:hasItemQty(invaderXim.item.HANDFUL_OF_THE_SANDS_OF_SILENCE, 1) or
+                trade:hasItemQty(invaderXim.item.WANDERING_BULB, 1) or
+                trade:hasItemQty(invaderXim.item.SET_OF_GIANT_FISH_BONES, 1) or
+                trade:hasItemQty(invaderXim.item.BLACKENED_TOAD, 1) or
+                trade:hasItemQty(invaderXim.item.WYVERN_SKULL, 1) or
+                trade:hasItemQty(invaderXim.item.ROCK_OF_ANCIENT_SALT, 1) or
+                trade:hasItemQty(invaderXim.item.LUCKY_EGG, 1)
             then
                 player:startEvent(229)
             end
@@ -72,17 +72,17 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    local opoOpoAndIStatus = player:getQuestStatus(xi.questLog.OUTLANDS, xi.quest.id.outlands.THE_OPO_OPO_AND_I)
+    local opoOpoAndIStatus = player:getQuestStatus(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.THE_OPO_OPO_AND_I)
     local progress = player:getCharVar('OPO_OPO_PROGRESS')
     local failed = player:getCharVar('OPO_OPO_FAILED')
     local retry = player:getCharVar('OPO_OPO_RETRY')
 
     if
         player:getCharVar('BathedInScent') == 1 and
-        opoOpoAndIStatus == xi.questStatus.QUEST_AVAILABLE
+        opoOpoAndIStatus == invaderXim.questStatus.QUEST_AVAILABLE
     then
         player:startEvent(217, 0, 483)  -- 483 broken mithran fishing rod
-    elseif opoOpoAndIStatus == xi.questStatus.QUEST_ACCEPTED then
+    elseif opoOpoAndIStatus == invaderXim.questStatus.QUEST_ACCEPTED then
         if retry == 1 then
             player:startEvent(239) -- gave 1st NPC wrong item instead of "Broken Mithran Fishing Rod"
         elseif retry == 2 then
@@ -115,7 +115,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 217 and option == 1  then                   -- Opo Opo and I quest start CS
-        player:addQuest(xi.questLog.OUTLANDS, xi.quest.id.outlands.THE_OPO_OPO_AND_I)
+        player:addQuest(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.THE_OPO_OPO_AND_I)
     elseif csid == 219 then
         if player:getCharVar('OPO_OPO_PROGRESS') == 0 then
             player:tradeComplete()

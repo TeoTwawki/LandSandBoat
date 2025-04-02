@@ -2,7 +2,7 @@
 -- Area: Zhayolm Remnants
 -- MOB: Mamool Ja Bounder (THF)
 -----------------------------------
-local ID = zones[xi.zone.ZHAYOLM_REMNANTS]
+local ID = zones[invaderXim.zone.ZHAYOLM_REMNANTS]
 -----------------------------------
 
 ---@type TMobEntity
@@ -27,23 +27,23 @@ entity.onMobDeath = function(mob, player, optParams)
             local progress = instance:getProgress()
 
             if stage == 2 then
-                xi.salvage.spawnTempChest(mob,
+                invaderXim.salvage.spawnTempChest(mob,
                 {
                     rate = 1000,
-                    itemID_1 = xi.item.FLASK_OF_STRANGE_MILK,
+                    itemID_1 = invaderXim.item.FLASK_OF_STRANGE_MILK,
                     itemAmount_1 = 10,
                 })
                 if progress == 4 then
                     instance:setLocalVar('stageComplete', 2)
-                    GetNPCByID(ID.npc.SOCKET, instance):setStatus(xi.status.NORMAL)
-                    xi.salvage.unsealDoors(instance, { ID.npc.DOOR_2_1, ID.npc.DOOR_2_2, ID.npc.DOOR_2_3, ID.npc.DOOR_2_4 })
-                    xi.salvage.spawnGroup(instance, utils.slice(ID.mob.DRACO_LIZARD, 9, 16))
-                    xi.salvage.spawnGroup(instance, utils.slice(ID.mob.DRACO_LIZARD, 1, 8))
-                    xi.salvage.spawnGroup(instance, utils.slice(ID.mob.WYVERN, 9, 16))
-                    xi.salvage.onDoorOpen(GetNPCByID(ID.npc.DOOR_2_1, instance), nil, 5)
-                    xi.salvage.onDoorOpen(GetNPCByID(ID.npc.DOOR_2_2, instance))
-                    xi.salvage.onDoorOpen(GetNPCByID(ID.npc.DOOR_2_3, instance))
-                    xi.salvage.onDoorOpen(GetNPCByID(ID.npc.DOOR_2_4, instance))
+                    GetNPCByID(ID.npc.SOCKET, instance):setStatus(invaderXim.status.NORMAL)
+                    invaderXim.salvage.unsealDoors(instance, { ID.npc.DOOR_2_1, ID.npc.DOOR_2_2, ID.npc.DOOR_2_3, ID.npc.DOOR_2_4 })
+                    invaderXim.salvage.spawnGroup(instance, utils.slice(ID.mob.DRACO_LIZARD, 9, 16))
+                    invaderXim.salvage.spawnGroup(instance, utils.slice(ID.mob.DRACO_LIZARD, 1, 8))
+                    invaderXim.salvage.spawnGroup(instance, utils.slice(ID.mob.WYVERN, 9, 16))
+                    invaderXim.salvage.onDoorOpen(GetNPCByID(ID.npc.DOOR_2_1, instance), nil, 5)
+                    invaderXim.salvage.onDoorOpen(GetNPCByID(ID.npc.DOOR_2_2, instance))
+                    invaderXim.salvage.onDoorOpen(GetNPCByID(ID.npc.DOOR_2_3, instance))
+                    invaderXim.salvage.onDoorOpen(GetNPCByID(ID.npc.DOOR_2_4, instance))
                 end
             elseif stage == 3 then
                 local group =
@@ -55,7 +55,7 @@ entity.onMobDeath = function(mob, player, optParams)
                     ID.mob.ARCHAIC_RAMPART[1]
                 }
 
-                if xi.salvage.groupKilled(instance, group) then
+                if invaderXim.salvage.groupKilled(instance, group) then
                     local id        = ID.mob.POROGGO_MADAME[3]
                     local stageBoss = GetMobByID(id, instance)
                     if stageBoss and stageBoss:getLocalVar('spawned') == 0 then

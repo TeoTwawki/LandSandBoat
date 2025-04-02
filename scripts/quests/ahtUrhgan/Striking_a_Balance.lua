@@ -6,7 +6,7 @@
 -- Saliyahf: !pos -60 0 65 50
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.STRIKING_A_BALANCE)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.STRIKING_A_BALANCE)
 
 local positionTable =
 {
@@ -21,7 +21,7 @@ local positionTable =
 
 quest.reward =
 {
-    item = { { xi.item.IMPERIAL_BRONZE_PIECE, 3 } },
+    item = { { invaderXim.item.IMPERIAL_BRONZE_PIECE, 3 } },
 }
 
 quest.sections =
@@ -29,10 +29,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Wazyih'] =
             {
@@ -63,10 +63,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 0
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 0
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Saliyahf'] = quest:replaceEvent(687),
 
@@ -83,10 +83,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 1
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 1
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Saliyahf'] = quest:replaceEvent(687),
 
@@ -110,10 +110,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 2
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 2
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Saliyahf'] =
             {
@@ -143,10 +143,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 3
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 3
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Saliyahf'] =
             {
@@ -169,7 +169,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.AL_ZAHBI] =
+        [invaderXim.zone.AL_ZAHBI] =
         {
             ['550'] =
             {
@@ -177,7 +177,7 @@ quest.sections =
                     quest:setVar(player, 'Prog', 4)
                     local newPosition = npcUtil.pickNewPosition(npc:getID(), positionTable)
                     npc:setPos(newPosition.x, newPosition.y, newPosition.z)
-                    return quest:keyItem(xi.ki.MUNAHDAS_PACKAGE)
+                    return quest:keyItem(invaderXim.ki.MUNAHDAS_PACKAGE)
                 end,
             },
         },
@@ -185,10 +185,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 4
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 4
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             onZoneIn = function(player, prevZone)
                 return 695
@@ -205,10 +205,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 5
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 5
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Saliyahf'] = quest:progressEvent(696),
 
@@ -218,7 +218,7 @@ quest.sections =
             {
                 [696] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.MUNAHDAS_PACKAGE)
+                        player:delKeyItem(invaderXim.ki.MUNAHDAS_PACKAGE)
                     end
                 end,
             },

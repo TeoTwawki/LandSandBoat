@@ -10,17 +10,17 @@ require('scripts/globals/chocobo_raising')
 local m = Module:new('chocobo_raising_qol')
 
 -- When the server has started and everything is ready, apply changes to global settings in Chocobo Raising
-m:addOverride('xi.server.onServerStart', function()
+m:addOverride('invaderXim.server.onServerStart', function()
     -- Call super!
     super()
 
     -- Speed up growth boundaries
-    xi.chocoboRaising.daysToChick      =   2 -- Down from 4
-    xi.chocoboRaising.daysToAdolescent =   7 -- Down from 19
-    xi.chocoboRaising.daysToAdult1     =  14 -- Down from 29
-    xi.chocoboRaising.daysToAdult2     =  43
-    xi.chocoboRaising.daysToAdult3     =  64
-    xi.chocoboRaising.daysToAdult4     = 129 -- Retirement
+    invaderXim.chocoboRaising.daysToChick      =   2 -- Down from 4
+    invaderXim.chocoboRaising.daysToAdolescent =   7 -- Down from 19
+    invaderXim.chocoboRaising.daysToAdult1     =  14 -- Down from 29
+    invaderXim.chocoboRaising.daysToAdult2     =  43
+    invaderXim.chocoboRaising.daysToAdult3     =  64
+    invaderXim.chocoboRaising.daysToAdult4     = 129 -- Retirement
 
     -- Make resultant ridable chocobo speed/endurance etc. more rewarding
     -- https://www.bg-wiki.com/ffxi/Category:Chocobo_Raising
@@ -30,18 +30,18 @@ m:addOverride('xi.server.onServerStart', function()
     -- Max ranks is +9: with skills and relevant silks.
 
     -- Chocobo Speed Ratings
-    xi.chocoboRaising.ridingSpeedBase    =  90
-    xi.chocoboRaising.ridingSpeedPerRank =   4
-    xi.chocoboRaising.ridingSpeedCap     = 120
+    invaderXim.chocoboRaising.ridingSpeedBase    =  90
+    invaderXim.chocoboRaising.ridingSpeedPerRank =   4
+    invaderXim.chocoboRaising.ridingSpeedCap     = 120
     -- Ability: Gallop adds 1 rank
     -- Purple Race Silks add 1 rank
     -- Original: Leads to absolute max of: 80 + (2.5 * 9): 102.5 -> clamped to 100
     -- Original: Leads to absolute max of: 90 + (4 * 9): 126 -> clamped to 120
 
     -- Chocobo Endurance Ratings (minutes)
-    xi.chocoboRaising.ridingTimeBase    = 20
-    xi.chocoboRaising.ridingTimePerRank =  5
-    xi.chocoboRaising.ridingTimeCap     = 60
+    invaderXim.chocoboRaising.ridingTimeBase    = 20
+    invaderXim.chocoboRaising.ridingTimePerRank =  5
+    invaderXim.chocoboRaising.ridingTimeCap     = 60
     -- Ability: Canter adds 1 rank
     -- Red Race Silks add 1 rank
     -- Original: Leads to absolute max of: 17 + (4 * 9): 53 -> clamped to 45

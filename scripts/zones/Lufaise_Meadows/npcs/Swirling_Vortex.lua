@@ -12,7 +12,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 100 and option == 1 then
-        xi.teleport.to(player, xi.teleport.id.VALKURM_VORTEX)
+        invaderXim.teleport.to(player, invaderXim.teleport.id.VALKURM_VORTEX)
     end
 end
 

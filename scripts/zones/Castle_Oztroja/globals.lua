@@ -1,7 +1,7 @@
 -- Zone: Castle Oztroja (151)
 -- Desc: this file contains functions that are shared by multiple luas in this zone's directory
 -----------------------------------
-local ID = zones[xi.zone.CASTLE_OZTROJA]
+local ID = zones[invaderXim.zone.CASTLE_OZTROJA]
 -----------------------------------
 
 local oztrojaGlobal =
@@ -21,9 +21,9 @@ local oztrojaGlobal =
         repeat
             numOpen = 0
             for i = 0, 3 do
-                local correctState = xi.anim.OPEN_DOOR + math.random(0, 1)
+                local correctState = invaderXim.anim.OPEN_DOOR + math.random(0, 1)
                 combo[i] = correctState
-                if correctState == xi.anim.OPEN_DOOR then
+                if correctState == invaderXim.anim.OPEN_DOOR then
                     numOpen = numOpen + 1
                 end
             end
@@ -35,7 +35,7 @@ local oztrojaGlobal =
             local hintLever = GetNPCByID(ID.npc.HINT_HANDLE_OFFSET + i)
 
             if realLever and hintLever then
-                realLever:setAnimation(xi.anim.CLOSE_DOOR)
+                realLever:setAnimation(invaderXim.anim.CLOSE_DOOR)
                 hintLever:setAnimation(combo[i])
             end
         end
@@ -53,10 +53,10 @@ local oztrojaGlobal =
         ..............................................................................................]]
     handleOnTrigger = function(npc)
         -- toggle the lever
-        if npc:getAnimation() == xi.anim.CLOSE_DOOR then
-            npc:setAnimation(xi.anim.OPEN_DOOR)
+        if npc:getAnimation() == invaderXim.anim.CLOSE_DOOR then
+            npc:setAnimation(invaderXim.anim.OPEN_DOOR)
         else
-            npc:setAnimation(xi.anim.CLOSE_DOOR)
+            npc:setAnimation(invaderXim.anim.CLOSE_DOOR)
         end
 
         npc:timer(1500, function(npcArg)
@@ -78,7 +78,7 @@ local oztrojaGlobal =
             if comboFound then
                 GetNPCByID(ID.npc.HANDLE_DOOR_FLOOR_2):openDoor(6)
                 for i = 0, 3 do
-                    GetNPCByID(ID.npc.HANDLE_DOOR_FLOOR_2 + 2 + i):setAnimation(xi.anim.CLOSE_DOOR)
+                    GetNPCByID(ID.npc.HANDLE_DOOR_FLOOR_2 + 2 + i):setAnimation(invaderXim.anim.CLOSE_DOOR)
                 end
             end
         end)

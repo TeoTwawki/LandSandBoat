@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.LIBRA
+-- invaderXim.effect.LIBRA
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

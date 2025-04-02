@@ -6,12 +6,12 @@
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:addStatusEffect(xi.effect.STONESKIN, math.random(30, 40), 0, 300)
+    mob:addStatusEffect(invaderXim.effect.STONESKIN, math.random(30, 40), 0, 300)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 199)
-    xi.regime.checkRegime(player, mob, 16, 1, xi.regime.type.FIELDS)
+    invaderXim.hunts.checkHunt(mob, player, 199)
+    invaderXim.regime.checkRegime(player, mob, 16, 1, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)

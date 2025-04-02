@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.NUKE_WALL
+-- invaderXim.effect.NUKE_WALL
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

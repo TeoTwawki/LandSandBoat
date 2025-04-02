@@ -5,26 +5,26 @@
 -- Gwill : !pos -317.829 -15.948 -177.375 235
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.THE_RETURN_OF_THE_ADVENTURER)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_RETURN_OF_THE_ADVENTURER)
 
 quest.reward =
 {
     fame     = 80,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.COTTON_HEADBAND,
-    title    = xi.title.KULATZ_BRIDGE_COMPANION,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.COTTON_HEADBAND,
+    title    = invaderXim.title.KULATZ_BRIDGE_COMPANION,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.FATHER_FIGURE) and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 3
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.FATHER_FIGURE) and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 3
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Gwill'] = quest:progressEvent(242),
 
@@ -39,15 +39,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Gwill'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.STICK_OF_CINNAMON) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.STICK_OF_CINNAMON) then
                         return quest:progressEvent(243)
                     end
                 end,

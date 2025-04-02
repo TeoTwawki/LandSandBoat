@@ -6,7 +6,7 @@
 -- https://ffxiclopedia.fandom.com/wiki/Category:Chocobo_Raising
 -- https://www.bg-wiki.com/ffxi/Category:Chocobo_Raising
 -- https://ffxiclopedia.fandom.com/wiki/Arael%27s_Chocobo_Raising_Guide
--- https://ffxi.gamerescape.com/wiki/Arael%27s_Chocobo_Raising_Guide
+-- https://ffinvaderXim.gamerescape.com/wiki/Arael%27s_Chocobo_Raising_Guide
 -- https://www.ffxionline.com/forum/ffxi-game-related/crafting-synthesis/chocobo-raising-racing-and-digging/63439-chocobo-color-to-egg-stats-fact
 -- https://www.ffxiah.com/forum/topic/32770/ninians-guide-to-chocobo-raising-v2/
 -- https://docs.google.com/spreadsheets/d/1LluCnhI_LTvxW-Q6X6R2i-_jL9TABEbKcGPBMZOOlYU/edit#gid=0
@@ -32,10 +32,10 @@ require('scripts/globals/chocobo_names')
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.chocoboRaising = xi.chocoboRaising or {}
-xi.chocoboRaising.chocoState = xi.chocoboRaising.chocoState or {}
+invaderXim.chocoboRaising = invaderXim.chocoboRaising or {}
+invaderXim.chocoboRaising.chocoState = invaderXim.chocoboRaising.chocoState or {}
 
-local debug = utils.getDebugPlayerPrinter(xi.settings.main.DEBUG_CHOCOBO_RAISING)
+local debug = utils.getDebugPlayerPrinter(invaderXim.settings.main.DEBUG_CHOCOBO_RAISING)
 
 -----------------------------------
 -- Settings
@@ -46,18 +46,18 @@ local debug = utils.getDebugPlayerPrinter(xi.settings.main.DEBUG_CHOCOBO_RAISING
 -- One Earth day: 86400 seconds (default)
 -- One Vana'diel week: 27648 seconds - 7 hours, 40 minutes, 48 seconds Earth time
 -- One Vana'diel day: 3456 seconds - 57 minutes, 36 seconds Earth time (1/25 of one Earth day)
-xi.chocoboRaising.dayLength        = 86400
-xi.chocoboRaising.daysToChick      = 4
-xi.chocoboRaising.daysToAdolescent = 19
-xi.chocoboRaising.daysToAdult1     = 29
-xi.chocoboRaising.daysToAdult2     = 43 -- 'You've done a great job raising this chocobo. Now is the best time to improve its attributes.'
-xi.chocoboRaising.daysToAdult3     = 64 -- 'Chocobo's growth seems to have stabilized. The animal has developed quite a distinguished air.'
-xi.chocoboRaising.daysToAdult4     = 129 -- Retirement
+invaderXim.chocoboRaising.dayLength        = 86400
+invaderXim.chocoboRaising.daysToChick      = 4
+invaderXim.chocoboRaising.daysToAdolescent = 19
+invaderXim.chocoboRaising.daysToAdult1     = 29
+invaderXim.chocoboRaising.daysToAdult2     = 43 -- 'You've done a great job raising this chocobo. Now is the best time to improve its attributes.'
+invaderXim.chocoboRaising.daysToAdult3     = 64 -- 'Chocobo's growth seems to have stabilized. The animal has developed quite a distinguished air.'
+invaderXim.chocoboRaising.daysToAdult4     = 129 -- Retirement
 
 -- TODO: Make sure all settings are plainly described.
 -- TODO: Add settings to disable retirement, with/without infinite stat growth.
--- xi.settings.main.CHOCOBO_RAISING_DISABLE_RETIREMENT  = false, -- true/false.
--- xi.settings.main.CHOCOBO_RAISING_STAT_GROWTH_CAP     = 512,   -- int.
+-- invaderXim.settings.main.CHOCOBO_RAISING_DISABLE_RETIREMENT  = false, -- true/false.
+-- invaderXim.settings.main.CHOCOBO_RAISING_STAT_GROWTH_CAP     = 512,   -- int.
 
 -- Maximum randomness applied to walkEnergyAmount for a given walk
 local walkEnergyRandomness = 5
@@ -78,17 +78,17 @@ local watchOverEnergy = 5
 -- Max ranks is +9: with skills and relevant silks.
 
 -- Chocobo Speed Ratings
-xi.chocoboRaising.ridingSpeedBase    =  80
-xi.chocoboRaising.ridingSpeedPerRank = 2.5
-xi.chocoboRaising.ridingSpeedCap     = 100
+invaderXim.chocoboRaising.ridingSpeedBase    =  80
+invaderXim.chocoboRaising.ridingSpeedPerRank = 2.5
+invaderXim.chocoboRaising.ridingSpeedCap     = 100
 -- Ability: Gallop adds 1 rank
 -- Purple Race Silks add 1 rank
 -- Leads to absolute max of: 80 + (2.5 * 9): 102.5 -> clamped to 100
 
 -- Chocobo Endurance Ratings (minutes)
-xi.chocoboRaising.ridingTimeBase    = 17
-xi.chocoboRaising.ridingTimePerRank =  4
-xi.chocoboRaising.ridingTimeCap     = 45
+invaderXim.chocoboRaising.ridingTimeBase    = 17
+invaderXim.chocoboRaising.ridingTimePerRank =  4
+invaderXim.chocoboRaising.ridingTimeCap     = 45
 -- Ability: Canter adds 1 rank
 -- Red Race Silks add 1 rank
 -- Leads to absolute max of: 17 + (4 * 9): 53 -> clamped to 45
@@ -135,9 +135,9 @@ local numberToRank = function(skill)
     return rank
 end
 
-xi.chocoboRaising.getPlayerRidingSpeedAndTime = function(player)
-    local baseSpeed = xi.chocoboRaising.ridingSpeedBase
-    local baseTime  = xi.chocoboRaising.ridingTimeBase
+invaderXim.chocoboRaising.getPlayerRidingSpeedAndTime = function(player)
+    local baseSpeed = invaderXim.chocoboRaising.ridingSpeedBase
+    local baseTime  = invaderXim.chocoboRaising.ridingTimeBase
 
     -- TODO: This should be looking up your registered chocobo, not your
     --     : current raising chocobo.
@@ -150,8 +150,8 @@ xi.chocoboRaising.getPlayerRidingSpeedAndTime = function(player)
 
     local strRank  = numberToRank(chocoState.strength)
     local endRank  = numberToRank(chocoState.endurance)
-    local outSpeed = utils.clamp(baseSpeed + (strRank * xi.chocoboRaising.ridingSpeedPerRank), 0, xi.chocoboRaising.ridingSpeedCap)
-    local outTime  = utils.clamp(baseTime + (endRank * xi.chocoboRaising.ridingTimePerRank), 0, xi.chocoboRaising.ridingTimeCap)
+    local outSpeed = utils.clamp(baseSpeed + (strRank * invaderXim.chocoboRaising.ridingSpeedPerRank), 0, invaderXim.chocoboRaising.ridingSpeedCap)
+    local outTime  = utils.clamp(baseTime + (endRank * invaderXim.chocoboRaising.ridingTimePerRank), 0, invaderXim.chocoboRaising.ridingTimeCap)
 
     return outSpeed, outTime
 end
@@ -205,35 +205,35 @@ local conditionsHealedByItems =
 {
     [conditions.ILL] =
     {
-        xi.item.CLUMP_OF_TOKOPEKKO_WILDGRASS,
-        xi.item.CELERITY_SALAD,
+        invaderXim.item.CLUMP_OF_TOKOPEKKO_WILDGRASS,
+        invaderXim.item.CELERITY_SALAD,
     },
     [conditions.VERY_ILL] =
     {
-        xi.item.CLUMP_OF_TOKOPEKKO_WILDGRASS,
-        xi.item.CELERITY_SALAD,
+        invaderXim.item.CLUMP_OF_TOKOPEKKO_WILDGRASS,
+        invaderXim.item.CELERITY_SALAD,
     },
     [conditions.SICK] =
     {
-        xi.item.CLUMP_OF_GARIDAV_WILDGRASS,
-        xi.item.CELERITY_SALAD,
+        invaderXim.item.CLUMP_OF_GARIDAV_WILDGRASS,
+        invaderXim.item.CELERITY_SALAD,
     },
     [conditions.INJURED] =
     {
-        xi.item.CLUMP_OF_GAUSEBIT_WILDGRASS,
-        xi.item.CELERITY_SALAD,
+        invaderXim.item.CLUMP_OF_GAUSEBIT_WILDGRASS,
+        invaderXim.item.CELERITY_SALAD,
     },
     [conditions.SPOILED] =
     {
-        xi.item.CELERITY_SALAD,
+        invaderXim.item.CELERITY_SALAD,
     },
     [conditions.BORED] =
     {
-        xi.item.CELERITY_SALAD,
+        invaderXim.item.CELERITY_SALAD,
     },
     [conditions.LOVESICK] =
     {
-        xi.item.CELERITY_SALAD,
+        invaderXim.item.CELERITY_SALAD,
     },
 }
 utils.unused(conditionsHealedByItems)
@@ -277,9 +277,9 @@ local carePlanData =
 
 local handleStatChange = function(stat, change, max)
     if change > 0 then
-        change = change * xi.settings.main.CHOCOBO_RAISING_STAT_POS_MULTIPLIER
+        change = change * invaderXim.settings.main.CHOCOBO_RAISING_STAT_POS_MULTIPLIER
     elseif change < 0 then
-        change = change * xi.settings.main.CHOCOBO_RAISING_STAT_NEG_MULTIPLIER
+        change = change * invaderXim.settings.main.CHOCOBO_RAISING_STAT_NEG_MULTIPLIER
     end
 
     -- TODO: Enum for which stat is changing?
@@ -304,7 +304,7 @@ local handleCarePlan = function(player, chocoState, carePlan)
     local payment = carePlanData[carePlan][7]
 
     if payment then
-        payment = payment * xi.settings.main.CHOCOBO_RAISING_GIL_MULTIPLIER
+        payment = payment * invaderXim.settings.main.CHOCOBO_RAISING_GIL_MULTIPLIER
         debug(string.format('Care Plan Payment: %d', payment))
 
         -- TODO: Handle payment
@@ -316,178 +316,178 @@ end
 local validFoods =
 {
 --  [itemId]                                = { hunger, affection, energy, strength, endurance, discernment, receptivity, randomAttribute, glow }
-    [xi.item.BUNCH_OF_GYSAHL_GREENS]       = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
-    [xi.item.BUNCH_OF_SHARUG_GREENS]       = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
-    [xi.item.BUNCH_OF_AZOUPH_GREENS]       = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
-    [xi.item.CARROT_PASTE]                 = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
-    [xi.item.HERB_PASTE]                   = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
-    [xi.item.VEGETABLE_PASTE]              = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
-    [xi.item.WORM_PASTE]                   = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
-    [xi.item.VOMP_CARROT]                  = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
-    [xi.item.SAN_DORIAN_CARROT]            = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
-    [xi.item.ZEGHAM_CARROT]                = { 25, 10,   0, 0, 0, 0, 0, 0, glow.BLUE   },
-    [xi.item.CLUMP_OF_GAUSEBIT_WILDGRASS]  = { 25, 10,   0, 0, 0, 0, 0, 0, glow.YELLOW },
-    [xi.item.CLUMP_OF_GARIDAV_WILDGRASS]   = { 25, 10,   0, 0, 0, 0, 0, 0, glow.YELLOW },
-    [xi.item.CLUMP_OF_TOKOPEKKO_WILDGRASS] = { 25, 10,   0, 0, 0, 0, 0, 0, glow.YELLOW },
-    [xi.item.CHOCOLIXIR]                   = { 50,  0, 100, 0, 0, 0, 0, 0, glow.YELLOW },
-    [xi.item.HI_CHOCOLIXIR]                = { 25,  0, 100, 0, 0, 0, 0, 0, glow.YELLOW },
-    [xi.item.CHOCOTONIC]                   = { 25, 10,   0, 0, 0, 0, 0, 0, glow.YELLOW },
-    [xi.item.CUPID_WORM]                   = { 25, 10,   0, 0, 0, 0, 0, 0, glow.BLUE   },
-    [xi.item.GREGARIOUS_WORM]              = { 25, 10,   0, 0, 0, 0, 0, 0, glow.YELLOW },
-    [xi.item.PARASITE_WORM]                = { 25, 10,   0, 0, 0, 0, 0, 0, glow.BLUE   },
-    [xi.item.TORNADO_SALAD]                = { 25, 10,   0, 0, 0, 0, 0, 0, glow.GREEN  },
-    [xi.item.CELERITY_SALAD]               = { 25, 10,   0, 0, 0, 0, 0, 0, glow.GREEN  },
-    [xi.item.LETHE_POTAGE]                 = { 25, 10,   0, 0, 0, 0, 0, 0, glow.GREEN  },
-    [xi.item.LETHE_CONSOMME]               = { 25, 10,   0, 0, 0, 0, 0, 0, glow.GREEN  },
-    [xi.item.LA_THEINE_MILLET]             = { 25, 10,   0, 0, 0, 0, 0, 0, glow.GREEN  },
---  [xi.item.SCROLL_OF_INSTANT_WARP]       = { 0, 0, 0, 0, 0, 0, 0, 0, glow.WARP },
+    [invaderXim.item.BUNCH_OF_GYSAHL_GREENS]       = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
+    [invaderXim.item.BUNCH_OF_SHARUG_GREENS]       = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
+    [invaderXim.item.BUNCH_OF_AZOUPH_GREENS]       = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
+    [invaderXim.item.CARROT_PASTE]                 = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
+    [invaderXim.item.HERB_PASTE]                   = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
+    [invaderXim.item.VEGETABLE_PASTE]              = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
+    [invaderXim.item.WORM_PASTE]                   = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
+    [invaderXim.item.VOMP_CARROT]                  = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
+    [invaderXim.item.SAN_DORIAN_CARROT]            = { 25, 10,   0, 0, 0, 0, 0, 0, glow.RED    },
+    [invaderXim.item.ZEGHAM_CARROT]                = { 25, 10,   0, 0, 0, 0, 0, 0, glow.BLUE   },
+    [invaderXim.item.CLUMP_OF_GAUSEBIT_WILDGRASS]  = { 25, 10,   0, 0, 0, 0, 0, 0, glow.YELLOW },
+    [invaderXim.item.CLUMP_OF_GARIDAV_WILDGRASS]   = { 25, 10,   0, 0, 0, 0, 0, 0, glow.YELLOW },
+    [invaderXim.item.CLUMP_OF_TOKOPEKKO_WILDGRASS] = { 25, 10,   0, 0, 0, 0, 0, 0, glow.YELLOW },
+    [invaderXim.item.CHOCOLIXIR]                   = { 50,  0, 100, 0, 0, 0, 0, 0, glow.YELLOW },
+    [invaderXim.item.HI_CHOCOLIXIR]                = { 25,  0, 100, 0, 0, 0, 0, 0, glow.YELLOW },
+    [invaderXim.item.CHOCOTONIC]                   = { 25, 10,   0, 0, 0, 0, 0, 0, glow.YELLOW },
+    [invaderXim.item.CUPID_WORM]                   = { 25, 10,   0, 0, 0, 0, 0, 0, glow.BLUE   },
+    [invaderXim.item.GREGARIOUS_WORM]              = { 25, 10,   0, 0, 0, 0, 0, 0, glow.YELLOW },
+    [invaderXim.item.PARASITE_WORM]                = { 25, 10,   0, 0, 0, 0, 0, 0, glow.BLUE   },
+    [invaderXim.item.TORNADO_SALAD]                = { 25, 10,   0, 0, 0, 0, 0, 0, glow.GREEN  },
+    [invaderXim.item.CELERITY_SALAD]               = { 25, 10,   0, 0, 0, 0, 0, 0, glow.GREEN  },
+    [invaderXim.item.LETHE_POTAGE]                 = { 25, 10,   0, 0, 0, 0, 0, 0, glow.GREEN  },
+    [invaderXim.item.LETHE_CONSOMME]               = { 25, 10,   0, 0, 0, 0, 0, 0, glow.GREEN  },
+    [invaderXim.item.LA_THEINE_MILLET]             = { 25, 10,   0, 0, 0, 0, 0, 0, glow.GREEN  },
+--  [invaderXim.item.SCROLL_OF_INSTANT_WARP]       = { 0, 0, 0, 0, 0, 0, 0, 0, glow.WARP },
 }
 
 -- Items that can be found on a walk in a certain area
 local walkItems =
 {
     -- Short Walk: Sandoria
-    [xi.zone.WEST_RONFAURE] =
+    [invaderXim.zone.WEST_RONFAURE] =
     {
-        xi.item.BEASTCOIN,
-        xi.item.BRONZE_AXE,
-        xi.item.RONFAURE_CHESTNUT,
-        xi.item.FLINT_STONE,
-        xi.item.CLUMP_OF_GARIDAV_WILDGRASS,
-        xi.item.GOBLIN_MASK,
-        xi.item.LITTLE_WORM,
-        xi.item.PEBBLE,
-        xi.item.SILVER_BEASTCOIN,
-        xi.item.CLUMP_OF_TOKOPEKKO_WILDGRASS,
-        xi.item.BAG_OF_WILDGRASS_SEEDS,
+        invaderXim.item.BEASTCOIN,
+        invaderXim.item.BRONZE_AXE,
+        invaderXim.item.RONFAURE_CHESTNUT,
+        invaderXim.item.FLINT_STONE,
+        invaderXim.item.CLUMP_OF_GARIDAV_WILDGRASS,
+        invaderXim.item.GOBLIN_MASK,
+        invaderXim.item.LITTLE_WORM,
+        invaderXim.item.PEBBLE,
+        invaderXim.item.SILVER_BEASTCOIN,
+        invaderXim.item.CLUMP_OF_TOKOPEKKO_WILDGRASS,
+        invaderXim.item.BAG_OF_WILDGRASS_SEEDS,
     },
     -- Short Walk: Bastok
-    [xi.zone.NORTH_GUSTABERG] =
+    [invaderXim.zone.NORTH_GUSTABERG] =
     {
-        xi.item.BEASTCOIN,
-        xi.item.FLINT_STONE,
-        xi.item.CLUMP_OF_GARIDAV_WILDGRASS,
-        xi.item.GOBLIN_MASK,
-        xi.item.LITTLE_WORM,
-        xi.item.EAR_OF_MILLIONCORN,
-        xi.item.PEBBLE,
-        xi.item.QUADAV_BACKPLATE,
-        xi.item.SILVER_BEASTCOIN,
-        xi.item.CLUMP_OF_TOKOPEKKO_WILDGRASS,
-        xi.item.BAG_OF_WILDGRASS_SEEDS,
+        invaderXim.item.BEASTCOIN,
+        invaderXim.item.FLINT_STONE,
+        invaderXim.item.CLUMP_OF_GARIDAV_WILDGRASS,
+        invaderXim.item.GOBLIN_MASK,
+        invaderXim.item.LITTLE_WORM,
+        invaderXim.item.EAR_OF_MILLIONCORN,
+        invaderXim.item.PEBBLE,
+        invaderXim.item.QUADAV_BACKPLATE,
+        invaderXim.item.SILVER_BEASTCOIN,
+        invaderXim.item.CLUMP_OF_TOKOPEKKO_WILDGRASS,
+        invaderXim.item.BAG_OF_WILDGRASS_SEEDS,
     },
     -- Short Walk: Windurst
-    [xi.zone.EAST_SARUTABARUTA] =
+    [invaderXim.zone.EAST_SARUTABARUTA] =
     {
-        xi.item.BEASTCOIN,
-        xi.item.FLINT_STONE,
-        xi.item.CLUMP_OF_GARIDAV_WILDGRASS,
-        xi.item.GOBLIN_MASK,
-        xi.item.GOBLIN_HELM,
-        xi.item.LITTLE_WORM,
-        xi.item.PEBBLE,
-        xi.item.PIECE_OF_ROTTEN_MEAT,
-        xi.item.SILVER_BEASTCOIN,
-        xi.item.BOX_OF_TARUTARU_RICE,
-        xi.item.CLUMP_OF_TOKOPEKKO_WILDGRASS,
-        xi.item.BAG_OF_WILDGRASS_SEEDS,
-        xi.item.YAGUDO_BEAD_NECKLACE,
+        invaderXim.item.BEASTCOIN,
+        invaderXim.item.FLINT_STONE,
+        invaderXim.item.CLUMP_OF_GARIDAV_WILDGRASS,
+        invaderXim.item.GOBLIN_MASK,
+        invaderXim.item.GOBLIN_HELM,
+        invaderXim.item.LITTLE_WORM,
+        invaderXim.item.PEBBLE,
+        invaderXim.item.PIECE_OF_ROTTEN_MEAT,
+        invaderXim.item.SILVER_BEASTCOIN,
+        invaderXim.item.BOX_OF_TARUTARU_RICE,
+        invaderXim.item.CLUMP_OF_TOKOPEKKO_WILDGRASS,
+        invaderXim.item.BAG_OF_WILDGRASS_SEEDS,
+        invaderXim.item.YAGUDO_BEAD_NECKLACE,
     },
     -- Medium Walk: Sandoria
-    [xi.zone.LA_THEINE_PLATEAU] =
+    [invaderXim.zone.LA_THEINE_PLATEAU] =
     {
-        xi.item.BEASTCOIN,
-        xi.item.CRAB_SHELL,
-        xi.item.CUPID_WORM,
-        xi.item.CHUNK_OF_DARKSTEEL_ORE,
-        xi.item.CLUMP_OF_GARIDAV_WILDGRASS,
-        xi.item.GOBLIN_ARMOR,
-        xi.item.LILAC,
-        xi.item.PEBBLE,
-        xi.item.SILVER_BEASTCOIN,
-        xi.item.CLUMP_OF_TOKOPEKKO_WILDGRASS,
-        xi.item.ZEGHAM_CARROT,
-        xi.item.MYTHRIL_BEASTCOIN,
+        invaderXim.item.BEASTCOIN,
+        invaderXim.item.CRAB_SHELL,
+        invaderXim.item.CUPID_WORM,
+        invaderXim.item.CHUNK_OF_DARKSTEEL_ORE,
+        invaderXim.item.CLUMP_OF_GARIDAV_WILDGRASS,
+        invaderXim.item.GOBLIN_ARMOR,
+        invaderXim.item.LILAC,
+        invaderXim.item.PEBBLE,
+        invaderXim.item.SILVER_BEASTCOIN,
+        invaderXim.item.CLUMP_OF_TOKOPEKKO_WILDGRASS,
+        invaderXim.item.ZEGHAM_CARROT,
+        invaderXim.item.MYTHRIL_BEASTCOIN,
     },
     -- Medium Walk: Bastok
-    [xi.zone.KONSCHTAT_HIGHLANDS] =
+    [invaderXim.zone.KONSCHTAT_HIGHLANDS] =
     {
-        xi.item.BEASTCOIN,
-        xi.item.CUPID_WORM,
-        xi.item.CLUMP_OF_GARIDAV_WILDGRASS,
-        xi.item.GOBLIN_ARMOR,
-        xi.item.GOBLIN_HELM,
-        xi.item.PEBBLE,
-        xi.item.CHUNK_OF_DARKSTEEL_ORE,
-        xi.item.CHUNK_OF_PLATINUM_ORE,
-        xi.item.RAIN_LILY,
-        xi.item.SHEEP_TOOTH,
-        xi.item.SILVER_BEASTCOIN,
-        xi.item.CLUMP_OF_TOKOPEKKO_WILDGRASS,
-        xi.item.VOMP_CARROT,
-        xi.item.ZEGHAM_CARROT,
+        invaderXim.item.BEASTCOIN,
+        invaderXim.item.CUPID_WORM,
+        invaderXim.item.CLUMP_OF_GARIDAV_WILDGRASS,
+        invaderXim.item.GOBLIN_ARMOR,
+        invaderXim.item.GOBLIN_HELM,
+        invaderXim.item.PEBBLE,
+        invaderXim.item.CHUNK_OF_DARKSTEEL_ORE,
+        invaderXim.item.CHUNK_OF_PLATINUM_ORE,
+        invaderXim.item.RAIN_LILY,
+        invaderXim.item.SHEEP_TOOTH,
+        invaderXim.item.SILVER_BEASTCOIN,
+        invaderXim.item.CLUMP_OF_TOKOPEKKO_WILDGRASS,
+        invaderXim.item.VOMP_CARROT,
+        invaderXim.item.ZEGHAM_CARROT,
     },
     -- Medium Walk: Windurst
-    [xi.zone.TAHRONGI_CANYON] =
+    [invaderXim.zone.TAHRONGI_CANYON] =
     {
-        xi.item.AMARYLLIS,
-        xi.item.BEASTCOIN,
-        xi.item.CHICKEN_BONE,
-        xi.item.CUPID_WORM,
-        xi.item.CHUNK_OF_DARKSTEEL_ORE,
-        xi.item.CLUMP_OF_GARIDAV_WILDGRASS,
-        xi.item.GOBLIN_ARMOR,
-        xi.item.PEBBLE,
-        xi.item.CHUNK_OF_PLATINUM_ORE,
-        xi.item.SILVER_BEASTCOIN,
-        xi.item.VOMP_CARROT,
-        xi.item.ZEGHAM_CARROT,
-        xi.item.BAG_OF_TREE_CUTTINGS,
+        invaderXim.item.AMARYLLIS,
+        invaderXim.item.BEASTCOIN,
+        invaderXim.item.CHICKEN_BONE,
+        invaderXim.item.CUPID_WORM,
+        invaderXim.item.CHUNK_OF_DARKSTEEL_ORE,
+        invaderXim.item.CLUMP_OF_GARIDAV_WILDGRASS,
+        invaderXim.item.GOBLIN_ARMOR,
+        invaderXim.item.PEBBLE,
+        invaderXim.item.CHUNK_OF_PLATINUM_ORE,
+        invaderXim.item.SILVER_BEASTCOIN,
+        invaderXim.item.VOMP_CARROT,
+        invaderXim.item.ZEGHAM_CARROT,
+        invaderXim.item.BAG_OF_TREE_CUTTINGS,
     },
     -- Long Walk: Sandoria
-    [xi.zone.JUGNER_FOREST] =
+    [invaderXim.zone.JUGNER_FOREST] =
     {
-        xi.item.CHUNK_OF_ADAMAN_ORE,
-        xi.item.GOBLIN_HELM,
-        xi.item.GOLD_BEASTCOIN,
-        xi.item.GREGARIOUS_WORM,
-        xi.item.MYTHRIL_BEASTCOIN,
-        xi.item.OLIVE_FLOWER,
-        xi.item.CHUNK_OF_ORICHALCUM_ORE,
-        xi.item.PEBBLE,
-        xi.item.PIECE_OF_ROTTEN_MEAT,
-        xi.item.SILVER_BEASTCOIN,
-        xi.item.BAG_OF_TREE_CUTTINGS,
-        xi.item.BAG_OF_WILDGRASS_SEEDS,
+        invaderXim.item.CHUNK_OF_ADAMAN_ORE,
+        invaderXim.item.GOBLIN_HELM,
+        invaderXim.item.GOLD_BEASTCOIN,
+        invaderXim.item.GREGARIOUS_WORM,
+        invaderXim.item.MYTHRIL_BEASTCOIN,
+        invaderXim.item.OLIVE_FLOWER,
+        invaderXim.item.CHUNK_OF_ORICHALCUM_ORE,
+        invaderXim.item.PEBBLE,
+        invaderXim.item.PIECE_OF_ROTTEN_MEAT,
+        invaderXim.item.SILVER_BEASTCOIN,
+        invaderXim.item.BAG_OF_TREE_CUTTINGS,
+        invaderXim.item.BAG_OF_WILDGRASS_SEEDS,
     },
     -- Long Walk: Bastok
-    [xi.zone.PASHHOW_MARSHLANDS] =
+    [invaderXim.zone.PASHHOW_MARSHLANDS] =
     {
-        xi.item.CHUNK_OF_ADAMAN_ORE,
-        xi.item.CATTLEYA,
-        xi.item.GOBLIN_HELM,
-        xi.item.GREGARIOUS_WORM,
-        xi.item.MYTHRIL_BEASTCOIN,
-        xi.item.CHUNK_OF_ORICHALCUM_ORE,
-        xi.item.PEBBLE,
-        xi.item.PIECE_OF_ROTTEN_MEAT,
-        xi.item.SILVER_BEASTCOIN,
-        xi.item.BAG_OF_TREE_CUTTINGS,
+        invaderXim.item.CHUNK_OF_ADAMAN_ORE,
+        invaderXim.item.CATTLEYA,
+        invaderXim.item.GOBLIN_HELM,
+        invaderXim.item.GREGARIOUS_WORM,
+        invaderXim.item.MYTHRIL_BEASTCOIN,
+        invaderXim.item.CHUNK_OF_ORICHALCUM_ORE,
+        invaderXim.item.PEBBLE,
+        invaderXim.item.PIECE_OF_ROTTEN_MEAT,
+        invaderXim.item.SILVER_BEASTCOIN,
+        invaderXim.item.BAG_OF_TREE_CUTTINGS,
     },
     -- Long Walk: Windurst
-    [xi.zone.MERIPHATAUD_MOUNTAINS] =
+    [invaderXim.zone.MERIPHATAUD_MOUNTAINS] =
     {
-        xi.item.CHUNK_OF_ADAMAN_ORE,
-        xi.item.CASABLANCA,
-        xi.item.GOBLIN_HELM,
-        xi.item.GOLD_BEASTCOIN,
-        xi.item.GREGARIOUS_WORM,
-        xi.item.MYTHRIL_BEASTCOIN,
-        xi.item.PEBBLE,
-        xi.item.PIECE_OF_ROTTEN_MEAT,
-        xi.item.SILVER_BEASTCOIN,
-        xi.item.BAG_OF_TREE_CUTTINGS,
-        xi.item.CHUNK_OF_ORICHALCUM_ORE,
+        invaderXim.item.CHUNK_OF_ADAMAN_ORE,
+        invaderXim.item.CASABLANCA,
+        invaderXim.item.GOBLIN_HELM,
+        invaderXim.item.GOLD_BEASTCOIN,
+        invaderXim.item.GREGARIOUS_WORM,
+        invaderXim.item.MYTHRIL_BEASTCOIN,
+        invaderXim.item.PEBBLE,
+        invaderXim.item.PIECE_OF_ROTTEN_MEAT,
+        invaderXim.item.SILVER_BEASTCOIN,
+        invaderXim.item.BAG_OF_TREE_CUTTINGS,
+        invaderXim.item.CHUNK_OF_ORICHALCUM_ORE,
     },
 }
 
@@ -499,37 +499,37 @@ local walkItems =
 local csidTable =
 {
     -- { intro csid, main csid, trading csid, rejection csid, chicks owner csid, short walk csid, medium walk csid, long walk csid, watch csid, debug }
-    [xi.zone.SOUTHERN_SAN_DORIA] = { 817, 823, 826, 831, 852, 298, 299, 300, 304, 862 }, -- Hantileon
-    [xi.zone.BASTOK_MINES]       = { 508, 509, 512, 515, 542, 554, 555, 556, 560, 558 }, -- Zopago
-    [xi.zone.WINDURST_WOODS]     = { 741, 742, 745, 748, 766, 810, 811, 812, 816, 773 }, -- Pulonono
+    [invaderXim.zone.SOUTHERN_SAN_DORIA] = { 817, 823, 826, 831, 852, 298, 299, 300, 304, 862 }, -- Hantileon
+    [invaderXim.zone.BASTOK_MINES]       = { 508, 509, 512, 515, 542, 554, 555, 556, 560, 558 }, -- Zopago
+    [invaderXim.zone.WINDURST_WOODS]     = { 741, 742, 745, 748, 766, 810, 811, 812, 816, 773 }, -- Pulonono
 }
 
 local raisingLocation =
 {
-    [xi.zone.SOUTHERN_SAN_DORIA] = 1,
-    [xi.zone.BASTOK_MINES]       = 2,
-    [xi.zone.WINDURST_WOODS]     = 3,
+    [invaderXim.zone.SOUTHERN_SAN_DORIA] = 1,
+    [invaderXim.zone.BASTOK_MINES]       = 2,
+    [invaderXim.zone.WINDURST_WOODS]     = 3,
 }
 
 local shortWalkLocation =
 {
-    [1] = xi.zone.WEST_RONFAURE,
-    [2] = xi.zone.NORTH_GUSTABERG,
-    [3] = xi.zone.EAST_SARUTABARUTA,
+    [1] = invaderXim.zone.WEST_RONFAURE,
+    [2] = invaderXim.zone.NORTH_GUSTABERG,
+    [3] = invaderXim.zone.EAST_SARUTABARUTA,
 }
 
 local mediumWalkLocation =
 {
-    [1] = xi.zone.LA_THEINE_PLATEAU,
-    [2] = xi.zone.KONSCHTAT_HIGHLANDS,
-    [3] = xi.zone.TAHRONGI_CANYON,
+    [1] = invaderXim.zone.LA_THEINE_PLATEAU,
+    [2] = invaderXim.zone.KONSCHTAT_HIGHLANDS,
+    [3] = invaderXim.zone.TAHRONGI_CANYON,
 }
 
 local longWalkLocation =
 {
-    [1] = xi.zone.JUGNER_FOREST,
-    [2] = xi.zone.PASHHOW_MARSHLANDS,
-    [3] = xi.zone.MERIPHATAUD_MOUNTAINS,
+    [1] = invaderXim.zone.JUGNER_FOREST,
+    [2] = invaderXim.zone.PASHHOW_MARSHLANDS,
+    [3] = invaderXim.zone.MERIPHATAUD_MOUNTAINS,
 }
 
 local stage =
@@ -680,15 +680,15 @@ local cutscenes =
 local getCutsceneWithOffset = function(player, cutscene)
     local cutsceneOffsets =
     {
-        [xi.zone.SOUTHERN_SAN_DORIA] = cutscenes.SANDORIA_OFFSET,
-        [xi.zone.BASTOK_MINES]       = cutscenes.BASTOK_OFFSET,
-        [xi.zone.WINDURST_WOODS]     = cutscenes.WINDURST_OFFSET,
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] = cutscenes.SANDORIA_OFFSET,
+        [invaderXim.zone.BASTOK_MINES]       = cutscenes.BASTOK_OFFSET,
+        [invaderXim.zone.WINDURST_WOODS]     = cutscenes.WINDURST_OFFSET,
     }
 
     return cutscene + cutsceneOffsets[player:getZoneID()]
 end
 
-xi.chocoboRaising.newChocobo = function(player, egg)
+invaderXim.chocoboRaising.newChocobo = function(player, egg)
     local newChoco = {}
 
     -- TODO: If egg exdata is empty (historic objects, etc.) then generate it randomly now.
@@ -792,7 +792,7 @@ local getWeatherInZone = function(zoneId)
     if not zone then
         print('ChocoboRaising: Failed to get Zone object for weather information. \
             Is the target zone on another executable?')
-        return xi.weather.NONE
+        return invaderXim.weather.NONE
     end
 
     return zone:getWeather()
@@ -801,12 +801,12 @@ end
 -- If stage = [1] and age >= [2], play CS: [3] and set stage to [4].
 local ageBoundaries =
 {
-    { stage.EGG,        xi.chocoboRaising.daysToChick,      cutscenes.EGG_HATCHING,          stage.CHICK },
-    { stage.CHICK,      xi.chocoboRaising.daysToAdolescent, cutscenes.CHICK_TO_ADOLESCENT,   stage.ADOLESCENT },
-    { stage.ADOLESCENT, xi.chocoboRaising.daysToAdult1,     cutscenes.ADOLESCENT_TO_ADULT_1, stage.ADULT_1 },
-    { stage.ADULT_1,    xi.chocoboRaising.daysToAdult2,     cutscenes.ADULT_1_TO_ADULT_2,    stage.ADULT_2 },
-    { stage.ADULT_2,    xi.chocoboRaising.daysToAdult3,     cutscenes.ADULT_2_TO_ADULT_3,    stage.ADULT_3 },
-    { stage.ADULT_3,    xi.chocoboRaising.daysToAdult4,     cutscenes.ADULT_3_TO_ADULT_4,    stage.ADULT_4 },
+    { stage.EGG,        invaderXim.chocoboRaising.daysToChick,      cutscenes.EGG_HATCHING,          stage.CHICK },
+    { stage.CHICK,      invaderXim.chocoboRaising.daysToAdolescent, cutscenes.CHICK_TO_ADOLESCENT,   stage.ADOLESCENT },
+    { stage.ADOLESCENT, invaderXim.chocoboRaising.daysToAdult1,     cutscenes.ADOLESCENT_TO_ADULT_1, stage.ADULT_1 },
+    { stage.ADULT_1,    invaderXim.chocoboRaising.daysToAdult2,     cutscenes.ADULT_1_TO_ADULT_2,    stage.ADULT_2 },
+    { stage.ADULT_2,    invaderXim.chocoboRaising.daysToAdult3,     cutscenes.ADULT_2_TO_ADULT_3,    stage.ADULT_3 },
+    { stage.ADULT_3,    invaderXim.chocoboRaising.daysToAdult4,     cutscenes.ADULT_3_TO_ADULT_4,    stage.ADULT_4 },
 }
 
 local ageToStage = function(age)
@@ -904,13 +904,13 @@ end
 
 local updateChocoState = function(player, chocoState)
     -- Update age and last_update_age
-    chocoState.age             = math.floor((os.time() - chocoState.created) / xi.chocoboRaising.dayLength) + 1
+    chocoState.age             = math.floor((os.time() - chocoState.created) / invaderXim.chocoboRaising.dayLength) + 1
     chocoState.last_update_age = chocoState.age
 
     debug(string.format('Writing chocoState to cache and db. age: %d, last_update_age: %d', chocoState.age, chocoState.last_update_age))
 
     -- Write to cache
-    xi.chocoboRaising.chocoState[player:getID()] = chocoState
+    invaderXim.chocoboRaising.chocoState[player:getID()] = chocoState
 
     -- Write to db
     player:setChocoboRaisingInfo(chocoState)
@@ -985,19 +985,19 @@ local onRaisingEventPlayout = function(player, csOffset, chocoState)
                 chocoState.last_name == 'Chocobo'
             then
                 -- Pick a name at random: First name only
-                chocoState.first_name = xi.chocoboNames.getRandomName()
+                chocoState.first_name = invaderXim.chocoboNames.getRandomName()
                 chocoState.last_name = ''
             end
         end,
 
         [cutscenes.CRYING_AT_NIGHT] = function()
             -- NOTE: The messaging is handled in the CS
-            player:addKeyItem(xi.ki.WHITE_HANDKERCHIEF)
+            player:addKeyItem(invaderXim.ki.WHITE_HANDKERCHIEF)
             player:setCharVar('[choco]WH_TIME', os.time() * utils.days(1))
         end,
 
         [cutscenes.HAVENT_SEEN_YOU] = function()
-            player:delKeyItem(xi.ki.WHITE_HANDKERCHIEF)
+            player:delKeyItem(invaderXim.ki.WHITE_HANDKERCHIEF)
             player:setCharVar('[choco]WH_TIME', 0)
         end,
 
@@ -1060,7 +1060,7 @@ local handleCSUpdate = function(player, chocoState, doEventUpdate)
     return chocoState
 end
 
-xi.chocoboRaising.initChocoboData = function(player)
+invaderXim.chocoboRaising.initChocoboData = function(player)
     local chocoState = player:getChocoboRaisingInfo()
     if not chocoState then
         return chocoState
@@ -1074,7 +1074,7 @@ xi.chocoboRaising.initChocoboData = function(player)
     -- Age is worked out alongside 'the day you handed in your egg'
     -- So on the 0th day, the chocobo is 1 day old.
 
-    chocoState.age = math.floor((os.time() - chocoState.created) / xi.chocoboRaising.dayLength) + 1
+    chocoState.age = math.floor((os.time() - chocoState.created) / invaderXim.chocoboRaising.dayLength) + 1
 
     debug('chocoState.age = ' .. chocoState.age)
     debug('chocoState.last_update_age = ' .. chocoState.last_update_age)
@@ -1188,7 +1188,7 @@ xi.chocoboRaising.initChocoboData = function(player)
         local whiteHandkerchiefStarted = false
         if
             -- TODO: Should this be a charvar to track this?
-            not player:hasKeyItem(xi.ki.WHITE_HANDKERCHIEF) and
+            not player:hasKeyItem(invaderXim.ki.WHITE_HANDKERCHIEF) and
             age == 7
         then
             table.insert(events, { age, { cutscenes.CRYING_AT_NIGHT } })
@@ -1214,13 +1214,13 @@ xi.chocoboRaising.initChocoboData = function(player)
     return chocoState
 end
 
-xi.chocoboRaising.startCutscene = function(player, npc, trade)
+invaderXim.chocoboRaising.startCutscene = function(player, npc, trade)
     local ID            = zones[player:getZoneID()]
     local reminderCsid  = csidTable[player:getZoneID()][1]
     local mainCsid      = csidTable[player:getZoneID()][2]
     local tradeCsid     = csidTable[player:getZoneID()][3]
     local rejectionCsid = csidTable[player:getZoneID()][4]
-    local chocoState    = xi.chocoboRaising.initChocoboData(player)
+    local chocoState    = invaderXim.chocoboRaising.initChocoboData(player)
 
     if chocoState == nil then
         print('ERROR! startCutscene \'chocoState\' is nil!')
@@ -1230,14 +1230,14 @@ xi.chocoboRaising.startCutscene = function(player, npc, trade)
 
     if trade then -- Trade
         if
-            npcUtil.tradeHasExactly(trade, xi.item.CHOCOBO_EGG_FAINTLY_WARM) or
-            npcUtil.tradeHasExactly(trade, xi.item.CHOCOBO_EGG_SLIGHTLY_WARM) or
-            npcUtil.tradeHasExactly(trade, xi.item.CHOCOBO_EGG_A_BIT_WARM) or
-            npcUtil.tradeHasExactly(trade, xi.item.CHOCOBO_EGG_A_LITTLE_WARM) or
-            npcUtil.tradeHasExactly(trade, xi.item.CHOCOBO_EGG_SOMEWHAT_WARM)
+            npcUtil.tradeHasExactly(trade, invaderXim.item.CHOCOBO_EGG_FAINTLY_WARM) or
+            npcUtil.tradeHasExactly(trade, invaderXim.item.CHOCOBO_EGG_SLIGHTLY_WARM) or
+            npcUtil.tradeHasExactly(trade, invaderXim.item.CHOCOBO_EGG_A_BIT_WARM) or
+            npcUtil.tradeHasExactly(trade, invaderXim.item.CHOCOBO_EGG_A_LITTLE_WARM) or
+            npcUtil.tradeHasExactly(trade, invaderXim.item.CHOCOBO_EGG_SOMEWHAT_WARM)
         then
             if chocoState == nil then
-                -- Handed over egg, handled in onEventFinish and xi.chocoboRaising.newChocobo
+                -- Handed over egg, handled in onEventFinish and invaderXim.chocoboRaising.newChocobo
                 player:startEvent(tradeCsid, 0, 0, 0, 0, 0, 0, 0, 1)
             else -- Already has a chocobo
                 -- Check location
@@ -1312,7 +1312,7 @@ xi.chocoboRaising.startCutscene = function(player, npc, trade)
     end
 
     -- Now that we're done modifiying it, write chocoState to cache
-    xi.chocoboRaising.chocoState[player:getID()] = chocoState
+    invaderXim.chocoboRaising.chocoState[player:getID()] = chocoState
 
     player:startEventString(mainCsid, chocoState.first_name, chocoState.last_name, chocoState.first_name, chocoState.last_name,
         isTradeEvent, infoFlag, chocoState.sex, 0, 0, 0, 0, 0)
@@ -1322,28 +1322,28 @@ end
 -- VCS Trainer Interactions
 -----------------------------------
 
-xi.chocoboRaising.onTradeVCSTrainer = function(player, npc, trade)
-    if not xi.settings.main.ENABLE_CHOCOBO_RAISING then
+invaderXim.chocoboRaising.onTradeVCSTrainer = function(player, npc, trade)
+    if not invaderXim.settings.main.ENABLE_CHOCOBO_RAISING then
         player:startEvent(csidTable[player:getZoneID()][1])
 
         return
     end
 
-    xi.chocoboRaising.startCutscene(player, npc, trade)
+    invaderXim.chocoboRaising.startCutscene(player, npc, trade)
 end
 
-xi.chocoboRaising.onTriggerVCSTrainer = function(player, npc)
-    if not xi.settings.main.ENABLE_CHOCOBO_RAISING then
+invaderXim.chocoboRaising.onTriggerVCSTrainer = function(player, npc)
+    if not invaderXim.settings.main.ENABLE_CHOCOBO_RAISING then
         player:startEvent(csidTable[player:getZoneID()][1])
 
         return
     end
 
-    xi.chocoboRaising.startCutscene(player, npc, nil)
+    invaderXim.chocoboRaising.startCutscene(player, npc, nil)
 end
 
-xi.chocoboRaising.onEventUpdateVCSTrainer = function(player, csid, option, npc)
-    if not xi.settings.main.ENABLE_CHOCOBO_RAISING then
+invaderXim.chocoboRaising.onEventUpdateVCSTrainer = function(player, csid, option, npc)
+    if not invaderXim.settings.main.ENABLE_CHOCOBO_RAISING then
         return
     end
 
@@ -1354,7 +1354,7 @@ xi.chocoboRaising.onEventUpdateVCSTrainer = function(player, csid, option, npc)
     local ID         = zones[player:getZoneID()]
     local mainCsid   = csidTable[player:getZoneID()][2]
     local tradeCsid  = csidTable[player:getZoneID()][3]
-    local chocoState = xi.chocoboRaising.chocoState[player:getID()]
+    local chocoState = invaderXim.chocoboRaising.chocoState[player:getID()]
 
     -- Egg trade
     if csid == tradeCsid then
@@ -1385,8 +1385,8 @@ xi.chocoboRaising.onEventUpdateVCSTrainer = function(player, csid, option, npc)
         if bit.band(0x000000FF, option) == 0xFF then
             local offset1     = bit.band(0x3FF, bit.rshift(option, 8))
             local offset2     = bit.band(0x3FF, bit.rshift(option, 18))
-            local fname       = xi.chocoboNames[offset1]
-            local lname       = xi.chocoboNames[offset2]
+            local fname       = invaderXim.chocoboNames[offset1]
+            local lname       = invaderXim.chocoboNames[offset2]
             local fullnamekey = string.format('%s %s', fname, lname)
 
             -- https://ffxiclopedia.fandom.com/wiki/Chocobo_Names
@@ -1400,7 +1400,7 @@ xi.chocoboRaising.onEventUpdateVCSTrainer = function(player, csid, option, npc)
                 print('ERROR! onEventUpdateVCSTrainer - chocoboNames lookup failed!')
             elseif nameTooLong then
                 print(string.format('ERROR! %s selected name combination too long for chocobo: %s', player:getName(), fullnamekey))
-            elseif xi.bannedChocoboNames[fullnamekey] then
+            elseif invaderXim.bannedChocoboNames[fullnamekey] then
                 print(string.format('ERROR! %s selected banned name for chocobo: %s', player:getName(), fullnamekey))
             else
                 chocoState.first_name = fname
@@ -1409,7 +1409,7 @@ xi.chocoboRaising.onEventUpdateVCSTrainer = function(player, csid, option, npc)
                 debug(string.format('%s updating chocobo name: %s', player:getName(), fullnamekey))
 
                 -- Write to cache
-                xi.chocoboRaising.chocoState[player:getID()] = chocoState
+                invaderXim.chocoboRaising.chocoState[player:getID()] = chocoState
 
                 -- Set synthetic CS option for later CSs
                 option = 0xFF
@@ -1462,7 +1462,7 @@ xi.chocoboRaising.onEventUpdateVCSTrainer = function(player, csid, option, npc)
                 player:getName(), carePlanSlot + 1, carePlanType, carePlanLength))
 
             -- Write to cache
-            xi.chocoboRaising.chocoState[player:getID()] = chocoState
+            invaderXim.chocoboRaising.chocoState[player:getID()] = chocoState
         end
 
         --------------------------------------------------------
@@ -1701,7 +1701,7 @@ xi.chocoboRaising.onEventUpdateVCSTrainer = function(player, csid, option, npc)
 
             [600] = function()
                 -- Get KI during another CS (determined randomly)
-                local ki    = xi.ki.DIRTY_HANDKERCHIEF
+                local ki    = invaderXim.ki.DIRTY_HANDKERCHIEF
                 local getKi = 1
 
                 player:updateEvent(ki, 0, 0, 0, 0, getKi, 0, 0)
@@ -1821,7 +1821,7 @@ xi.chocoboRaising.onEventUpdateVCSTrainer = function(player, csid, option, npc)
                     end
 
                     -- If you haven't completed the White Handkerchief quest yet
-                    if not player:hasKeyItem(xi.keyItem.WHITE_HANDKERCHIEF) then
+                    if not player:hasKeyItem(invaderXim.keyItem.WHITE_HANDKERCHIEF) then
                         table.insert(possibleEvents, 2)
                     end
 
@@ -2186,14 +2186,14 @@ xi.chocoboRaising.onEventUpdateVCSTrainer = function(player, csid, option, npc)
     end
 end
 
-xi.chocoboRaising.onEventFinishVCSTrainer = function(player, csid, option, npc)
-    if not xi.settings.main.ENABLE_CHOCOBO_RAISING then
+invaderXim.chocoboRaising.onEventFinishVCSTrainer = function(player, csid, option, npc)
+    if not invaderXim.settings.main.ENABLE_CHOCOBO_RAISING then
         return
     end
 
     local mainCsid   = csidTable[player:getZoneID()][2]
     local tradeCsid  = csidTable[player:getZoneID()][3]
-    local chocoState = xi.chocoboRaising.chocoState[player:getID()]
+    local chocoState = invaderXim.chocoboRaising.chocoState[player:getID()]
 
     if csid == tradeCsid and option == 252 then
         -- TODO: Validate this! Really validate this!
@@ -2202,7 +2202,7 @@ xi.chocoboRaising.onEventFinishVCSTrainer = function(player, csid, option, npc)
         local egg   = trade:getItem()
 
         -- TODO: Make sure problems here don't leak into core and cause a crash!
-        local newChoco = xi.chocoboRaising.newChocobo(player, egg)
+        local newChoco = invaderXim.chocoboRaising.newChocobo(player, egg)
 
         if player:setChocoboRaisingInfo(newChoco) then
             player:confirmTrade()

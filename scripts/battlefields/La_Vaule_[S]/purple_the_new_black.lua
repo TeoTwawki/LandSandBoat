@@ -3,12 +3,12 @@
 -- BCNM: Purple, The New Black (WOTG07)
 --  Mob: Galarhigg (17125681 or 17125682 or 17125683)
 -----------------------------------
-local laVauleID = zones[xi.zone.LA_VAULE_S]
+local laVauleID = zones[invaderXim.zone.LA_VAULE_S]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId                = xi.zone.LA_VAULE_S,
-    battlefieldId         = xi.battlefield.id.PURPLE_THE_NEW_BLACK,
+    zoneId                = invaderXim.zone.LA_VAULE_S,
+    battlefieldId         = invaderXim.battlefield.id.PURPLE_THE_NEW_BLACK,
     canLoseExp            = false,
     isMission             = true,
     allowTrusts           = true,
@@ -17,9 +17,9 @@ local content = BattlefieldMission:new({
     index                 = 1,
     entryNpc              = '_2d1',
     exitNpcs              = { '_2d3', '_2d5', '_2d7' },
-    missionArea           = xi.mission.log_id.WOTG,
-    mission               = xi.mission.id.wotg.PURPLE_THE_NEW_BLACK,
-    missionStatusArea     = xi.mission.log_id.WOTG,
+    missionArea           = invaderXim.mission.log_id.WOTG,
+    mission               = invaderXim.mission.id.wotg.PURPLE_THE_NEW_BLACK,
+    missionStatusArea     = invaderXim.mission.log_id.WOTG,
     requiredMissionStatus = 1,
 })
 
@@ -34,7 +34,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

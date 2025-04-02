@@ -25,15 +25,15 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     params.str_wsc = 0.5
     params.vit_wsc = 0.5
 
-    local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doPhysicalWeaponskill(player, target, wsID, params, tp, action, primary, taChar)
+    local damage, criticalHit, tpHits, extraHits = invaderXim.weaponskills.doPhysicalWeaponskill(player, target, wsID, params, tp, action, primary, taChar)
 
     -- Handle status effects.
     local effects =
     {
-        [1] = { xi.effect.ATTACK_DOWN,   xi.element.WATER, 12.5 },
-        [2] = { xi.effect.DEFENSE_DOWN,  xi.element.WIND,  12.5 },
-        [3] = { xi.effect.ACCURACY_DOWN, xi.element.EARTH, 20   },
-        [4] = { xi.effect.EVASION_DOWN,  xi.element.ICE,   20   },
+        [1] = { invaderXim.effect.ATTACK_DOWN,   invaderXim.element.WATER, 12.5 },
+        [2] = { invaderXim.effect.DEFENSE_DOWN,  invaderXim.element.WIND,  12.5 },
+        [3] = { invaderXim.effect.ACCURACY_DOWN, invaderXim.element.EARTH, 20   },
+        [4] = { invaderXim.effect.EVASION_DOWN,  invaderXim.element.ICE,   20   },
     }
 
     for index = 1, #effects do
@@ -41,7 +41,7 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
         local actionElement = effects[index][2]
         local power         = effects[index][3]
         local duration      = math.floor(60 + 3 * tp / 100 * applyResistanceAddEffect(player, target, actionElement, 0))
-        xi.weaponskills.handleWeaponskillEffect(player, target, effectId, actionElement, damage, power, duration)
+        invaderXim.weaponskills.handleWeaponskillEffect(player, target, effectId, actionElement, damage, power, duration)
     end
 
     return tpHits, extraHits, criticalHit, damage

@@ -8,19 +8,19 @@
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.chocoboRaising.onTradeVCSTrainer(player, npc, trade)
+    invaderXim.chocoboRaising.onTradeVCSTrainer(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    xi.chocoboRaising.onTriggerVCSTrainer(player, npc)
+    invaderXim.chocoboRaising.onTriggerVCSTrainer(player, npc)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.chocoboRaising.onEventUpdateVCSTrainer(player, csid, option, npc)
+    invaderXim.chocoboRaising.onEventUpdateVCSTrainer(player, csid, option, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.chocoboRaising.onEventFinishVCSTrainer(player, csid, option, npc)
+    invaderXim.chocoboRaising.onEventFinishVCSTrainer(player, csid, option, npc)
 end
 
 return entity

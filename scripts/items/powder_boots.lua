@@ -11,8 +11,8 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:delStatusEffect(xi.effect.FLEE)
-    target:addStatusEffect(xi.effect.FLEE, 10000, 0, 30)
+    target:delStatusEffect(invaderXim.effect.FLEE)
+    target:addStatusEffect(invaderXim.effect.FLEE, 10000, 0, 30)
 end
 
 return itemObject

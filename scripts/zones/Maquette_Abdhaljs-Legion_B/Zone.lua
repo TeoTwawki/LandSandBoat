@@ -30,7 +30,7 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
 end
 
 zoneObject.onInstanceLoadFailed = function()
-    return xi.zone.MHAURA
+    return invaderXim.zone.MHAURA
 end
 
 return zoneObject

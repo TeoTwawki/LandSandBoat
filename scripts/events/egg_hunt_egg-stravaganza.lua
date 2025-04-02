@@ -9,10 +9,10 @@
 -- Windurst Woods      !pos 104.823 -5.000 -55.745 241
 -----------------------------------
 xi = xi or {}
-xi.events = xi.events or {}
-xi.events.eggHunt = xi.events.eggHunt or {}
-xi.events.eggHunt.data = xi.events.eggHunt.data or {}
-xi.events.eggHunt.entities = xi.events.eggHunt.entities or {}
+invaderXim.events = invaderXim.events or {}
+invaderXim.events.eggHunt = invaderXim.events.eggHunt or {}
+invaderXim.events.eggHunt.data = invaderXim.events.eggHunt.data or {}
+invaderXim.events.eggHunt.entities = invaderXim.events.eggHunt.entities or {}
 
 local event = SeasonalEvent:new('egg_hunt')
 
@@ -54,7 +54,7 @@ local settings =
 }
 
 local function loadSettings(currentTable, settingsName)
-    local settingTable = xi.settings.main[settingsName]
+    local settingTable = invaderXim.settings.main[settingsName]
 
     if not settingTable then
         if currentTable.ANNOUNCE then
@@ -78,7 +78,7 @@ end
 
 loadSettings(settings, 'EGG_HUNT')
 
-xi.events.eggHunt.enabledCheck = function()
+invaderXim.events.eggHunt.enabledCheck = function()
     local month = tonumber(os.date('%m'))
     local day = tonumber(os.date('%d'))
 
@@ -96,15 +96,15 @@ xi.events.eggHunt.enabledCheck = function()
     return false
 end
 
-event:setEnableCheck(xi.events.eggHunt.enabledCheck)
+event:setEnableCheck(invaderXim.events.eggHunt.enabledCheck)
 
 -----------------------------------
 -- Data
 -----------------------------------
 
-xi.events.eggHunt.data =
+invaderXim.events.eggHunt.data =
 {
-    [xi.zone.SOUTHERN_SAN_DORIA] =
+    [invaderXim.zone.SOUTHERN_SAN_DORIA] =
     {
         cs          = 872,
         moogle      = { 194, 56.195, 1.999, -25.207 }, --!pos 56.195 1.999 -25.207 230
@@ -128,7 +128,7 @@ xi.events.eggHunt.data =
         },
     },
 
-    [xi.zone.NORTHERN_SAN_DORIA] =
+    [invaderXim.zone.NORTHERN_SAN_DORIA] =
     {
         cs          = 832,
         moogle      = { 128, -224.135, 8.000, 53.476 }, -- !pos -224.135 8.000 53.476 231
@@ -149,7 +149,7 @@ xi.events.eggHunt.data =
         },
     },
 
-    [xi.zone.BASTOK_MINES] =
+    [invaderXim.zone.BASTOK_MINES] =
     {
         cs          = 561,
         moogle      = { 0, -33.600, -0.001, -110.000 }, -- !pos -33.600 -0.001 -110.000 234
@@ -169,7 +169,7 @@ xi.events.eggHunt.data =
         },
     },
 
-    [xi.zone.BASTOK_MARKETS] =
+    [invaderXim.zone.BASTOK_MARKETS] =
     {
         cs          = 467,
         moogle      = { 40, -260.440, -12.021, -79.538 }, -- !pos -260.440 -12.021 -79.538 235
@@ -191,7 +191,7 @@ xi.events.eggHunt.data =
         },
     },
 
-    [xi.zone.WINDURST_WATERS] =
+    [invaderXim.zone.WINDURST_WATERS] =
     {
         cs          = 969,
         moogle      = { 0, -55.470, -5.391, 216.362 }, -- !pos -55.470 -5.391 216.362 238
@@ -212,7 +212,7 @@ xi.events.eggHunt.data =
         },
     },
 
-    [xi.zone.WINDURST_WOODS] =
+    [invaderXim.zone.WINDURST_WOODS] =
     {
         cs          = 785,
         moogle      = { 161, 104.823, -5.000, -55.745 }, -- !pos 104.823 -5.000 -55.745 241
@@ -255,14 +255,14 @@ local messageOffset =
 -- Helpers
 -----------------------------------
 
-xi.events.eggHunt.charToEgg = function(char)
+invaderXim.events.eggHunt.charToEgg = function(char)
     -- Char offset from 'A', eg. B = 1, C = 2, etc.
     local charOffset = string.byte(string.lower(char)) - 97
-    return xi.item.A_EGG + charOffset
+    return invaderXim.item.A_EGG + charOffset
 end
 
 -- If egg is already in table, return index so it can be added to total eg. 2x 'A' Egg
-xi.events.eggHunt.findEggIndex = function(eggList, eggLetter)
+invaderXim.events.eggHunt.findEggIndex = function(eggList, eggLetter)
     for index, egg in pairs(eggList) do
         if egg and egg[1] == eggLetter then
             return index
@@ -273,14 +273,14 @@ xi.events.eggHunt.findEggIndex = function(eggList, eggLetter)
 end
 
 -- Convert string to table of lettered eggs
-xi.events.eggHunt.stringToEggs = function(text)
+invaderXim.events.eggHunt.stringToEggs = function(text)
     local str     = string.lower(text)
     local eggList = {}
 
     for char = 1, #str do
         local ascii   = string.byte(string.sub(str, char, char))
-        local itemID  = xi.item.A_EGG + (ascii - 97)
-        local itemPos = xi.events.eggHunt.findEggIndex(eggList, itemID)
+        local itemID  = invaderXim.item.A_EGG + (ascii - 97)
+        local itemPos = invaderXim.events.eggHunt.findEggIndex(eggList, itemID)
 
         -- If table already contains this egg, add to total
         if itemPos > -1 then
@@ -296,7 +296,7 @@ end
 local hasFirstThree = function(player)
     return (
         player:getCharVar(settings.VAR.FIRST_THREE) == 1 or
-        player:hasItem(xi.item.EGG_HELM)
+        player:hasItem(invaderXim.item.EGG_HELM)
     )
 end
 
@@ -306,15 +306,15 @@ end
 
 local minorRewards =
 {
-    xi.item.CHOCOBO_TICKET,
-    xi.item.RED_DROP,
-    xi.item.YELLOW_DROP,
-    xi.item.BLUE_DROP,
-    xi.item.GREEN_DROP,
-    xi.item.CLEAR_DROP,
-    xi.item.PURPLE_DROP,
-    xi.item.WHITE_DROP,
-    xi.item.BLACK_DROP,
+    invaderXim.item.CHOCOBO_TICKET,
+    invaderXim.item.RED_DROP,
+    invaderXim.item.YELLOW_DROP,
+    invaderXim.item.BLUE_DROP,
+    invaderXim.item.GREEN_DROP,
+    invaderXim.item.CLEAR_DROP,
+    invaderXim.item.PURPLE_DROP,
+    invaderXim.item.WHITE_DROP,
+    invaderXim.item.BLACK_DROP,
 }
 
 local minorReward = function()
@@ -333,15 +333,15 @@ local tradeInReward =
         rewardAmount = 1,
         itemsAccepted =
         {
-            { { xi.item.BIRD_EGG, 12 } },
-            { { xi.item.LIZARD_EGG, 6 } },
-            xi.item.SOFT_BOILED_EGG,
-            xi.item.COLORED_EGG,
+            { { invaderXim.item.BIRD_EGG, 12 } },
+            { { invaderXim.item.LIZARD_EGG, 6 } },
+            invaderXim.item.SOFT_BOILED_EGG,
+            invaderXim.item.COLORED_EGG,
         },
         conditional =
         {
-            { settings.ERA_2008, { { xi.item.HARD_BOILED_EGG, 12 } } },
-            { settings.ERA_2019, xi.item.APKALLU_EGG },
+            { settings.ERA_2008, { { invaderXim.item.HARD_BOILED_EGG, 12 } } },
+            { settings.ERA_2019, invaderXim.item.APKALLU_EGG },
         },
     },
 
@@ -352,7 +352,7 @@ local tradeInReward =
         rewardAmount  = 2,
         itemsAccepted =
         {
-            xi.item.PARTY_EGG
+            invaderXim.item.PARTY_EGG
         },
     },
 
@@ -363,11 +363,11 @@ local tradeInReward =
         rewardAmount  = 3,
         itemsAccepted =
         {
-            xi.item.LUCKY_EGG
+            invaderXim.item.LUCKY_EGG
         },
         conditional   =
         {
-            { settings.ERA_2018, { { xi.item.SAIRUI_RAN, 99 } } },
+            { settings.ERA_2018, { { invaderXim.item.SAIRUI_RAN, 99 } } },
         },
     },
 
@@ -378,20 +378,20 @@ local tradeInReward =
         rewardAmount = 8,
         conditional  =
         {
-            { settings.ERA_2018, xi.item.IMPERIAL_EGG },
+            { settings.ERA_2018, invaderXim.item.IMPERIAL_EGG },
         },
     },
 }
 
 local rollRewardAmount = function(rewardAmount)
     if rewardAmount == 1 then
-        return { math.random(xi.item.A_EGG, xi.item.Z_EGG) }
+        return { math.random(invaderXim.item.A_EGG, invaderXim.item.Z_EGG) }
     end
 
     local rewardTable = {}
 
     for i = 1, rewardAmount do
-        table.insert(rewardTable, math.random(xi.item.A_EGG, xi.item.Z_EGG))
+        table.insert(rewardTable, math.random(invaderXim.item.A_EGG, invaderXim.item.Z_EGG))
     end
 
     return rewardTable
@@ -453,15 +453,15 @@ local firstThree = function(player, npc, trade)
 
     if
         npcUtil.tradeHasExactly(trade, {
-            xi.events.eggHunt.charToEgg(string.sub(charName, 1, 1)),
-            xi.events.eggHunt.charToEgg(string.sub(charName, 2, 2)),
-            xi.events.eggHunt.charToEgg(string.sub(charName, 3, 3)),
+            invaderXim.events.eggHunt.charToEgg(string.sub(charName, 1, 1)),
+            invaderXim.events.eggHunt.charToEgg(string.sub(charName, 2, 2)),
+            invaderXim.events.eggHunt.charToEgg(string.sub(charName, 3, 3)),
         })
     then
         -- If not 2007, or player already has Egg Helm,.minor reward is issued instead
-        if settings.ERA_2007 and not player:hasItem(xi.item.EGG_HELM) then
+        if settings.ERA_2007 and not player:hasItem(invaderXim.item.EGG_HELM) then
             player:setVar(settings.VAR.FIRST_THREE, 1)
-            return xi.item.EGG_HELM
+            return invaderXim.item.EGG_HELM
         end
 
         player:setVar(settings.VAR.FIRST_THREE, 1)
@@ -476,9 +476,9 @@ local sevenKind = function(player, npc, trade)
     end
 
     for letterOffset = 0, 26 do
-        if npcUtil.tradeHasExactly(trade, { { xi.item.A_EGG + letterOffset, 7 } }) then
-            if not player:hasItem(xi.item.FORTUNE_EGG) then
-                return xi.item.FORTUNE_EGG
+        if npcUtil.tradeHasExactly(trade, { { invaderXim.item.A_EGG + letterOffset, 7 } }) then
+            if not player:hasItem(invaderXim.item.FORTUNE_EGG) then
+                return invaderXim.item.FORTUNE_EGG
             end
 
             if settings.MINOR_REWARDS then
@@ -497,21 +497,21 @@ local straightEight = function(player, npc, trade)
     end
 
     local initial = string.lower(string.sub(player:getName(), 1, 1)) -- eg. 'a'
-    local letter = string.byte(initial) - 97 + xi.item.A_EGG        -- itemID
+    local letter = string.byte(initial) - 97 + invaderXim.item.A_EGG        -- itemID
     local eggs = {}
 
     for i = 1, 8 do
         table.insert(eggs, letter)
         letter = letter + 1
 
-        if letter > xi.item.Z_EGG then
-            letter = xi.item.A_EGG
+        if letter > invaderXim.item.Z_EGG then
+            letter = invaderXim.item.A_EGG
         end
     end
 
     if npcUtil.tradeHasExactly(trade, eggs) then
-        if not player:hasItem(xi.item.HAPPY_EGG) then
-            return xi.item.HAPPY_EGG
+        if not player:hasItem(invaderXim.item.HAPPY_EGG) then
+            return invaderXim.item.HAPPY_EGG
         end
 
         if settings.MINOR_REWARDS then
@@ -522,25 +522,25 @@ end
 
 local regionNames =
 {
-    xi.events.eggHunt.stringToEggs('RONFA'),
-    xi.events.eggHunt.stringToEggs('ZULKH'),
-    xi.events.eggHunt.stringToEggs('NORVA'),
-    xi.events.eggHunt.stringToEggs('GUSTA'),
-    xi.events.eggHunt.stringToEggs('DERFL'),
-    xi.events.eggHunt.stringToEggs('SARUT'),
-    xi.events.eggHunt.stringToEggs('KOLSH'),
-    xi.events.eggHunt.stringToEggs('ARAGO'),
-    xi.events.eggHunt.stringToEggs('FAURE'),
-    xi.events.eggHunt.stringToEggs('VALDE'),
-    xi.events.eggHunt.stringToEggs('QUFIM'),
-    xi.events.eggHunt.stringToEggs('LITEL'),
-    xi.events.eggHunt.stringToEggs('KUZOT'),
-    xi.events.eggHunt.stringToEggs('VOLLB'),
-    xi.events.eggHunt.stringToEggs('ELSHI'),
-    xi.events.eggHunt.stringToEggs('ELSHI'),
-    xi.events.eggHunt.stringToEggs('TULIA'),
-    xi.events.eggHunt.stringToEggs('MOVAL'),
-    xi.events.eggHunt.stringToEggs('TAVNA'),
+    invaderXim.events.eggHunt.stringToEggs('RONFA'),
+    invaderXim.events.eggHunt.stringToEggs('ZULKH'),
+    invaderXim.events.eggHunt.stringToEggs('NORVA'),
+    invaderXim.events.eggHunt.stringToEggs('GUSTA'),
+    invaderXim.events.eggHunt.stringToEggs('DERFL'),
+    invaderXim.events.eggHunt.stringToEggs('SARUT'),
+    invaderXim.events.eggHunt.stringToEggs('KOLSH'),
+    invaderXim.events.eggHunt.stringToEggs('ARAGO'),
+    invaderXim.events.eggHunt.stringToEggs('FAURE'),
+    invaderXim.events.eggHunt.stringToEggs('VALDE'),
+    invaderXim.events.eggHunt.stringToEggs('QUFIM'),
+    invaderXim.events.eggHunt.stringToEggs('LITEL'),
+    invaderXim.events.eggHunt.stringToEggs('KUZOT'),
+    invaderXim.events.eggHunt.stringToEggs('VOLLB'),
+    invaderXim.events.eggHunt.stringToEggs('ELSHI'),
+    invaderXim.events.eggHunt.stringToEggs('ELSHI'),
+    invaderXim.events.eggHunt.stringToEggs('TULIA'),
+    invaderXim.events.eggHunt.stringToEggs('MOVAL'),
+    invaderXim.events.eggHunt.stringToEggs('TAVNA'),
 }
 
 local beastCostumes =
@@ -552,9 +552,9 @@ local beastCostumes =
 
 local nationRewards =
 {
-    { xi.item.WING_EGG,   xi.item.MELODIUS_EGG,  xi.item.EGG_STOOL, },
-    { xi.item.LAMP_EGG,   xi.item.CLOCKWORK_EGG, xi.item.EGG_TABLE, },
-    { xi.item.FLOWER_EGG, xi.item.HATCHLING_EGG, xi.item.EGG_LOCKER, },
+    { invaderXim.item.WING_EGG,   invaderXim.item.MELODIUS_EGG,  invaderXim.item.EGG_STOOL, },
+    { invaderXim.item.LAMP_EGG,   invaderXim.item.CLOCKWORK_EGG, invaderXim.item.EGG_TABLE, },
+    { invaderXim.item.FLOWER_EGG, invaderXim.item.HATCHLING_EGG, invaderXim.item.EGG_LOCKER, },
 }
 
 local regionControl = function(player, npc, trade)
@@ -570,7 +570,7 @@ local regionControl = function(player, npc, trade)
             -- Beastmen controlled
             if owner == 3 then
                 local costume = beastCostumes[math.random(#beastCostumes)]
-                player:addStatusEffect(xi.effect.COSTUME, costume, 0, utils.minutes(60))
+                player:addStatusEffect(invaderXim.effect.COSTUME, costume, 0, utils.minutes(60))
                 player:confirmTrade()
 
                 return
@@ -584,9 +584,9 @@ local regionControl = function(player, npc, trade)
                 -- 2007 Reward
                 elseif
                     settings.ERA_2007 and
-                    not player:hasItem(xi.item.JEWELED_EGG)
+                    not player:hasItem(invaderXim.item.JEWELED_EGG)
                 then
-                    return xi.item.JEWELED_EGG
+                    return invaderXim.item.JEWELED_EGG
 
                 -- 2008 Reward
                 elseif
@@ -604,19 +604,19 @@ local regionControl = function(player, npc, trade)
 
                 elseif
                     settings.ERA_2009 and
-                    not player:hasItem(xi.item.EGG_LANTERN)
+                    not player:hasItem(invaderXim.item.EGG_LANTERN)
                 then
-                    return xi.item.EGG_LANTERN
+                    return invaderXim.item.EGG_LANTERN
 
                 -- 2013 Reward
                 elseif
                     settings.ERA_2013 and
                     player:hasItem(reward[2]) and
                     player:hasItem(reward[3]) and
-                    player:hasItem(xi.item.EGG_LANTERN) and
-                    not player:hasItem(xi.item.PRINSEGGSTARTA)
+                    player:hasItem(invaderXim.item.EGG_LANTERN) and
+                    not player:hasItem(invaderXim.item.PRINSEGGSTARTA)
                 then
-                    return xi.item.PRINSEGGSTARTA
+                    return invaderXim.item.PRINSEGGSTARTA
 
                 -- Repeat Reward (If enabled)
                 elseif
@@ -635,14 +635,14 @@ end
 
 local elementNames =
 {
-    { xi.events.eggHunt.stringToEggs('FIRE'),    xi.item.RED_DROP    },
-    { xi.events.eggHunt.stringToEggs('ICE'),     xi.item.CLEAR_DROP  },
-    { xi.events.eggHunt.stringToEggs('AIR'),     xi.item.GREEN_DROP  },
-    { xi.events.eggHunt.stringToEggs('EARTH'),   xi.item.YELLOW_DROP },
-    { xi.events.eggHunt.stringToEggs('THUNDER'), xi.item.PURPLE_DROP },
-    { xi.events.eggHunt.stringToEggs('WATER'),   xi.item.BLUE_DROP   },
-    { xi.events.eggHunt.stringToEggs('LIGHT'),   xi.item.WHITE_DROP  },
-    { xi.events.eggHunt.stringToEggs('DARK'),    xi.item.BLACK_DROP  },
+    { invaderXim.events.eggHunt.stringToEggs('FIRE'),    invaderXim.item.RED_DROP    },
+    { invaderXim.events.eggHunt.stringToEggs('ICE'),     invaderXim.item.CLEAR_DROP  },
+    { invaderXim.events.eggHunt.stringToEggs('AIR'),     invaderXim.item.GREEN_DROP  },
+    { invaderXim.events.eggHunt.stringToEggs('EARTH'),   invaderXim.item.YELLOW_DROP },
+    { invaderXim.events.eggHunt.stringToEggs('THUNDER'), invaderXim.item.PURPLE_DROP },
+    { invaderXim.events.eggHunt.stringToEggs('WATER'),   invaderXim.item.BLUE_DROP   },
+    { invaderXim.events.eggHunt.stringToEggs('LIGHT'),   invaderXim.item.WHITE_DROP  },
+    { invaderXim.events.eggHunt.stringToEggs('DARK'),    invaderXim.item.BLACK_DROP  },
 }
 
 local weekDay = function(player, npc, trade)
@@ -654,22 +654,22 @@ local weekDay = function(player, npc, trade)
     local elementDay = elementNames[VanadielDayElement()]
 
     if npcUtil.tradeHasExactly(trade, elementDay[1]) then
-        if player:hasItem(xi.item.ORPHIC_EGG) then
+        if player:hasItem(invaderXim.item.ORPHIC_EGG) then
             return elementDay[2] -- Colored Drop
         else
-            return xi.item.ORPHIC_EGG
+            return invaderXim.item.ORPHIC_EGG
         end
     end
 end
 
 local eraCombo =
 {
-    ELEVEN   = { xi.events.eggHunt.stringToEggs('ELEVEN'),   xi.item.HATCHLING_SHIELD     },
-    LEAFKIN  = { xi.events.eggHunt.stringToEggs('LEAFKIN'),  xi.item.PIECE_OF_COPSE_CANDY },
-    VANADIEL = { xi.events.eggHunt.stringToEggs('VANADIEL'), xi.item.CRACKER              },
-    HARE     = { xi.events.eggHunt.stringToEggs('HARE'),     xi.item.RABBIT_CAP           },
-    BUNNY    = { xi.events.eggHunt.stringToEggs('BUNNY'),    xi.item.RABBIT_CAP           },
-    RABBIT   = { xi.events.eggHunt.stringToEggs('RABBIT'),   xi.item.RABBIT_CAP           },
+    ELEVEN   = { invaderXim.events.eggHunt.stringToEggs('ELEVEN'),   invaderXim.item.HATCHLING_SHIELD     },
+    LEAFKIN  = { invaderXim.events.eggHunt.stringToEggs('LEAFKIN'),  invaderXim.item.PIECE_OF_COPSE_CANDY },
+    VANADIEL = { invaderXim.events.eggHunt.stringToEggs('VANADIEL'), invaderXim.item.CRACKER              },
+    HARE     = { invaderXim.events.eggHunt.stringToEggs('HARE'),     invaderXim.item.RABBIT_CAP           },
+    BUNNY    = { invaderXim.events.eggHunt.stringToEggs('BUNNY'),    invaderXim.item.RABBIT_CAP           },
+    RABBIT   = { invaderXim.events.eggHunt.stringToEggs('RABBIT'),   invaderXim.item.RABBIT_CAP           },
 }
 
 local testEraCombo = function(player, npc, trade, combo, rewardQty)
@@ -734,9 +734,9 @@ local getSecondInitial = function(player, option)
 
             if
                 firstLetter == (option - 3) and
-                member:getEquipID(xi.slot.HEAD) == xi.item.EGG_HELM
+                member:getEquipID(invaderXim.slot.HEAD) == invaderXim.item.EGG_HELM
             then
-                return xi.item.A_EGG + secondLetter
+                return invaderXim.item.A_EGG + secondLetter
             end
         end
     end
@@ -744,7 +744,7 @@ local getSecondInitial = function(player, option)
     return 0
 end
 
-xi.events.eggHunt.combos =
+invaderXim.events.eggHunt.combos =
 {
     { check = firstThree,    message = messageOffset.REWARD1 },
     { check = sevenKind,     message = messageOffset.REWARD2 },
@@ -754,21 +754,21 @@ xi.events.eggHunt.combos =
 }
 
 if settings.ERA_2014 then
-    table.insert(xi.events.eggHunt.combos, { check = era2014, message = messageOffset.REWARD2 })
+    table.insert(invaderXim.events.eggHunt.combos, { check = era2014, message = messageOffset.REWARD2 })
 end
 
 if settings.ERA_2015 then
-    table.insert(xi.events.eggHunt.combos, { check = era2015, message = messageOffset.REWARD2 })
+    table.insert(invaderXim.events.eggHunt.combos, { check = era2015, message = messageOffset.REWARD2 })
 end
 
 if settings.ERA_2018 then
-    table.insert(xi.events.eggHunt.combos, { check = era2018, message = messageOffset.REWARD2 })
+    table.insert(invaderXim.events.eggHunt.combos, { check = era2018, message = messageOffset.REWARD2 })
 end
 
 for bonusWord, rewardItem in pairs(settings.BONUS_WORDS) do
-    local customEggs = xi.events.eggHunt.stringToEggs(bonusWord)
+    local customEggs = invaderXim.events.eggHunt.stringToEggs(bonusWord)
 
-    table.insert(xi.events.eggHunt.combos,
+    table.insert(invaderXim.events.eggHunt.combos,
     {
         check = function(player, npc, trade)
             if npcUtil.tradeHasExactly(trade, customEggs) then
@@ -783,13 +783,13 @@ end
 -----------------------------------
 -- HELM event handler
 -----------------------------------
-xi.events.eggHunt.helmResult = function(player, itemID)
+invaderXim.events.eggHunt.helmResult = function(player, itemID)
     if
-        xi.events.eggHunt.enabledCheck() and
+        invaderXim.events.eggHunt.enabledCheck() and
         player:getCharVar(settings.VAR.DAILY_HELM) < VanadielUniqueDay()
     then
         player:timer(3000, function(playerArg)
-            if npcUtil.giveItem(playerArg, math.random(xi.item.A_EGG, xi.item.Z_EGG)) then
+            if npcUtil.giveItem(playerArg, math.random(invaderXim.item.A_EGG, invaderXim.item.Z_EGG)) then
                 playerArg:setCharVar(settings.VAR.DAILY_HELM, VanadielUniqueDay())
             end
         end)
@@ -800,7 +800,7 @@ end
 -- Moogle event handlers
 -----------------------------------
 
-xi.events.eggHunt.onTrigger = function(player, npc)
+invaderXim.events.eggHunt.onTrigger = function(player, npc)
     local zoneID = player:getZoneID()
 
     npc:facePlayer(player, true)
@@ -825,21 +825,21 @@ xi.events.eggHunt.onTrigger = function(player, npc)
 
         if options ~= -1 then
             options = utils.mask.setBit(options, 26, 0)
-            player:startEvent(xi.events.eggHunt.data[zoneID].cs, 3, options)
+            player:startEvent(invaderXim.events.eggHunt.data[zoneID].cs, 3, options)
         else
-            player:startEvent(xi.events.eggHunt.data[zoneID].cs, 1)
+            player:startEvent(invaderXim.events.eggHunt.data[zoneID].cs, 1)
         end
     end
 end
 
-xi.events.eggHunt.onEventFinish = function(player, csid, option, npc)
+invaderXim.events.eggHunt.onEventFinish = function(player, csid, option, npc)
     -- 'Forget it.' or out of range
     if option > 28 then
         return
 
     -- Selected party member initial
     elseif option >= 3 then
-        local eggsGiven = { xi.item.A_EGG + option - 3 }
+        local eggsGiven = { invaderXim.item.A_EGG + option - 3 }
         local second = getSecondInitial(player, option)
 
         -- Give second letter if selected player has Egg Helm equipped
@@ -853,13 +853,13 @@ xi.events.eggHunt.onEventFinish = function(player, csid, option, npc)
 
     -- Random daily letter
     else
-        if npcUtil.giveItem(player, math.random(xi.item.A_EGG, xi.item.Z_EGG)) then
+        if npcUtil.giveItem(player, math.random(invaderXim.item.A_EGG, invaderXim.item.Z_EGG)) then
             player:setVar(settings.VAR.DAILY_EGG, VanadielUniqueDay())
         end
     end
 end
 
-xi.events.eggHunt.onTrade = function(player, npc, trade)
+invaderXim.events.eggHunt.onTrade = function(player, npc, trade)
     local zoneID = player:getZoneID()
 
     npc:facePlayer(player, true)
@@ -868,7 +868,7 @@ xi.events.eggHunt.onTrade = function(player, npc, trade)
         return
     end
 
-    for _, v in pairs(xi.events.eggHunt.combos) do
+    for _, v in pairs(invaderXim.events.eggHunt.combos) do
         local reward = v.check(player, npc, trade)
         if reward then
             -- If reward already received today, send message and finish event
@@ -884,7 +884,7 @@ xi.events.eggHunt.onTrade = function(player, npc, trade)
                 if type(v.message) == 'number' then
                     player:messageText(npc, zones[zoneID].text.EGG_HUNT_OFFSET + v.message)
                 else
-                    player:printToPlayer(string.format('Moogle : %s', v.message), xi.msg.channel.NS_SAY, 'Moogle')
+                    player:printToPlayer(string.format('Moogle : %s', v.message), invaderXim.msg.channel.NS_SAY, 'Moogle')
                 end
             end
 
@@ -918,7 +918,7 @@ local function insertNpc(zone, entry)
     local look = entry[5]
 
     local npc = zone:insertDynamicEntity({
-        objtype     = xi.objType.NPC,
+        objtype     = invaderXim.objType.NPC,
         name        = '     ',
         look        = look,
         x           = x,
@@ -931,12 +931,12 @@ local function insertNpc(zone, entry)
         releaseIdOnDisappear = true,
     })
 
-    table.insert(xi.events.eggHunt.entities, npc:getID())
+    table.insert(invaderXim.events.eggHunt.entities, npc:getID())
 end
 
 local function insertMoogle(zone, pos)
     local npc = zone:insertDynamicEntity({
-        objtype       = xi.objType.NPC,
+        objtype       = invaderXim.objType.NPC,
         name          = 'Egg_Hunt_Moogle',
         packetName    = 'Moogle',
         look          = 82,
@@ -944,17 +944,17 @@ local function insertMoogle(zone, pos)
         y             = pos[3],
         z             = pos[4],
         rotation      = pos[1],
-        onTrigger     = xi.events.eggHunt.onTrigger,
-        onEventFinish = xi.events.eggHunt.onEventFinish,
-        onTrade       = xi.events.eggHunt.onTrade,
+        onTrigger     = invaderXim.events.eggHunt.onTrigger,
+        onEventFinish = invaderXim.events.eggHunt.onEventFinish,
+        onTrade       = invaderXim.events.eggHunt.onTrade,
         releaseIdOnDisappear = true,
     })
 
-    table.insert(xi.events.eggHunt.entities, npc:getID())
+    table.insert(invaderXim.events.eggHunt.entities, npc:getID())
 end
 
-xi.events.eggHunt.generateEntities = function()
-    for zoneID, data in pairs(xi.events.eggHunt.data) do
+invaderXim.events.eggHunt.generateEntities = function()
+    for zoneID, data in pairs(invaderXim.events.eggHunt.data) do
         local zone = GetZone(zoneID)
         if zone then
             insertMoogle(zone, data.moogle)
@@ -973,33 +973,33 @@ xi.events.eggHunt.generateEntities = function()
     end
 end
 
-xi.events.eggHunt.showEntities = function(enabled)
-    if enabled and #xi.events.eggHunt.entities == 0 then
-        xi.events.eggHunt.generateEntities()
+invaderXim.events.eggHunt.showEntities = function(enabled)
+    if enabled and #invaderXim.events.eggHunt.entities == 0 then
+        invaderXim.events.eggHunt.generateEntities()
     end
 
-    for _, entityID in pairs(xi.events.eggHunt.entities) do
+    for _, entityID in pairs(invaderXim.events.eggHunt.entities) do
         local entity = GetNPCByID(entityID)
         if entity then
             if enabled then
-                entity:setStatus(xi.status.NORMAL)
+                entity:setStatus(invaderXim.status.NORMAL)
             else
-                entity:setStatus(xi.status.INVISIBLE)
+                entity:setStatus(invaderXim.status.INVISIBLE)
             end
         end
     end
 
     if not enabled then
-        xi.events.eggHunt.entities = {}
+        invaderXim.events.eggHunt.entities = {}
     end
 end
 
 event:setStartFunction(function()
-    xi.events.eggHunt.showEntities(true)
+    invaderXim.events.eggHunt.showEntities(true)
 end)
 
 event:setEndFunction(function()
-    xi.events.eggHunt.showEntities(false)
+    invaderXim.events.eggHunt.showEntities(false)
 end)
 
 return event

@@ -3,18 +3,18 @@
 -- Area: Sacrarium
 -- Notes: Used to spawn Swift Belt NM's
 -----------------------------------
-local ID = zones[xi.zone.SACRARIUM]
+local ID = zones[invaderXim.zone.SACRARIUM]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 local swiftBeltNMs =
 {
-    { ID.mob.SWIFT_BELT_NM_OFFSET,     { [xi.race.HUME_M]   = true, [xi.race.HUME_F]   = true } }, -- Balor (hume)
-    { ID.mob.SWIFT_BELT_NM_OFFSET + 1, { [xi.race.ELVAAN_M] = true, [xi.race.ELVAAN_F] = true } }, -- Luaith (elvaan)
-    { ID.mob.SWIFT_BELT_NM_OFFSET + 2, { [xi.race.TARU_M]   = true, [xi.race.TARU_F]   = true } }, -- Lobais (tarutaru)
-    { ID.mob.SWIFT_BELT_NM_OFFSET + 5, { [xi.race.MITHRA]   = true } },                            -- Caithleann (mithra)
-    { ID.mob.SWIFT_BELT_NM_OFFSET + 6, { [xi.race.GALKA]    = true } },                            -- Indich (galka)
+    { ID.mob.SWIFT_BELT_NM_OFFSET,     { [invaderXim.race.HUME_M]   = true, [invaderXim.race.HUME_F]   = true } }, -- Balor (hume)
+    { ID.mob.SWIFT_BELT_NM_OFFSET + 1, { [invaderXim.race.ELVAAN_M] = true, [invaderXim.race.ELVAAN_F] = true } }, -- Luaith (elvaan)
+    { ID.mob.SWIFT_BELT_NM_OFFSET + 2, { [invaderXim.race.TARU_M]   = true, [invaderXim.race.TARU_F]   = true } }, -- Lobais (tarutaru)
+    { ID.mob.SWIFT_BELT_NM_OFFSET + 5, { [invaderXim.race.MITHRA]   = true } },                            -- Caithleann (mithra)
+    { ID.mob.SWIFT_BELT_NM_OFFSET + 6, { [invaderXim.race.GALKA]    = true } },                            -- Indich (galka)
 }
 
 entity.onTrigger = function(player, npc)
@@ -32,7 +32,7 @@ end
 
 entity.onTrade = function(player, npc, trade)
     -- fomor codex
-    if trade:hasItemQty(xi.item.FOMOR_CODEX, 1) and trade:getItemCount() == 1 then
+    if trade:hasItemQty(invaderXim.item.FOMOR_CODEX, 1) and trade:getItemCount() == 1 then
         local draftOffset = npc:getID() - ID.npc.STALE_DRAFT_OFFSET
         local nmId = swiftBeltNMs[draftOffset + 1][1]
         local races = swiftBeltNMs[draftOffset + 1][2]

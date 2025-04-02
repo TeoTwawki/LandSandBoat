@@ -2,7 +2,7 @@
 -- Area: Grand Palace of Hu'Xzoi
 --  NPC: Cermet Portal (Security Gate)
 -----------------------------------
-local ID = zones[xi.zone.GRAND_PALACE_OF_HUXZOI]
+local ID = zones[invaderXim.zone.GRAND_PALACE_OF_HUXZOI]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

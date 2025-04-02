@@ -7,7 +7,7 @@
 -- !pos -378.950 -15.742 144.215 24
 -- !pos -141.523 -15.529 91.709 24
 -----------------------------------
-local ID = zones[xi.zone.LUFAISE_MEADOWS]
+local ID = zones[invaderXim.zone.LUFAISE_MEADOWS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -286,18 +286,18 @@ local spawnPoints =
 
 entity.onMobInitialize = function(mob)
     local mobID = mob:getID()
-    xi.mob.updateNMSpawnPoint(mob, spawnPoints[mobID])
+    invaderXim.mob.updateNMSpawnPoint(mob, spawnPoints[mobID])
 
     mob:addListener('ITEM_DROPS', 'ITEM_DROPS_PADFOOD', function(mobArg, loot)
         if mob:getID() == ID.mob.PADFOOT[GetServerVariable('realPadfoot')] then
-            loot:addGroup(xi.drop_rate.GUARANTEED,
+            loot:addGroup(invaderXim.drop_rate.GUARANTEED,
             {
-                { item = xi.item.ASSAILANTS_RING, weight = 750 },
-                { item = xi.item.ASTRAL_EARRING, weight = 250 },
+                { item = invaderXim.item.ASSAILANTS_RING, weight = 750 },
+                { item = invaderXim.item.ASTRAL_EARRING, weight = 250 },
             })
         else
-            loot:addItem(xi.item.SHEEPSKIN, xi.drop_rate.VERY_COMMON)
-            loot:addItem(xi.item.LANOLIN_CUBE, xi.drop_rate.GUARANTEED)
+            loot:addItem(invaderXim.item.SHEEPSKIN, invaderXim.drop_rate.VERY_COMMON)
+            loot:addItem(invaderXim.item.LANOLIN_CUBE, invaderXim.drop_rate.GUARANTEED)
         end
     end)
 end
@@ -316,7 +316,7 @@ entity.onMobDespawn = function(mob)
                 DespawnMob(v)
             end
 
-            xi.mob.updateNMSpawnPoint(GetMobByID(v), spawnPoints[v])
+            invaderXim.mob.updateNMSpawnPoint(GetMobByID(v), spawnPoints[v])
             GetMobByID(v):setRespawnTime(respawn)
         end
 

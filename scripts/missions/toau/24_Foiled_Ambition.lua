@@ -5,13 +5,13 @@
 -- !addmission 4 23
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.FOILED_AMBITION)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.FOILED_AMBITION)
 
 mission.reward =
 {
-    item        = { { xi.item.IMPERIAL_GOLD_PIECE, 5 } },
-    title       = xi.title.KARABABAS_SECRET_AGENT,
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.PLAYING_THE_PART },
+    item        = { { invaderXim.item.IMPERIAL_GOLD_PIECE, 5 } },
+    title       = invaderXim.title.KARABABAS_SECRET_AGENT,
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.PLAYING_THE_PART },
 }
 
 mission.sections =
@@ -23,7 +23,7 @@ mission.sections =
                 VanadielUniqueDay() >= mission:getVar(player, 'Timer')
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             onTriggerAreaEnter =
             {

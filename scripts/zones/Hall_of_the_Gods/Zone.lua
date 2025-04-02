@@ -17,8 +17,8 @@ zoneObject.onZoneIn = function(player, prevZone)
     then
         player:setPos(-0.011, -1.848, -176.133, 192)
     elseif
-        player:getCurrentMission(xi.mission.log_id.ACP) == xi.mission.id.acp.REMEMBER_ME_IN_YOUR_DREAMS and
-        prevZone == xi.zone.ROMAEVE
+        player:getCurrentMission(invaderXim.mission.log_id.ACP) == invaderXim.mission.id.acp.REMEMBER_ME_IN_YOUR_DREAMS and
+        prevZone == invaderXim.zone.ROMAEVE
     then
         cs = 5
     end
@@ -27,7 +27,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
@@ -38,8 +38,8 @@ end
 
 zoneObject.onEventFinish = function(player, csid, option, npc)
     if csid == 5 then
-        player:completeMission(xi.mission.log_id.ACP, xi.mission.id.acp.REMEMBER_ME_IN_YOUR_DREAMS)
-        player:addMission(xi.mission.log_id.ACP, xi.mission.id.acp.BORN_OF_HER_NIGHTMARES)
+        player:completeMission(invaderXim.mission.log_id.ACP, invaderXim.mission.id.acp.REMEMBER_ME_IN_YOUR_DREAMS)
+        player:addMission(invaderXim.mission.log_id.ACP, invaderXim.mission.id.acp.BORN_OF_HER_NIGHTMARES)
     end
 end
 

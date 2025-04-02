@@ -8,8 +8,8 @@ mixins = { require('scripts/mixins/families/empty_terroanima') }
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMod(xi.mod.DOUBLE_ATTACK, 20)
-    mob:addMod(xi.mod.DEFP, 35)
+    mob:setMod(invaderXim.mod.DOUBLE_ATTACK, 20)
+    mob:addMod(invaderXim.mod.DEFP, 35)
 end
 
 entity.onMobWeaponSkillPrepare = function(mob, target)
@@ -29,7 +29,7 @@ entity.onMobFight = function(mob, target)
     end
 
     if mob:getHPP() <= 35 then
-        mob:setMod(xi.mod.STORETP, 250)
+        mob:setMod(invaderXim.mod.STORETP, 250)
     end
 end
 

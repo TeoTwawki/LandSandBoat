@@ -10,11 +10,11 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.dancer.checkStepAbility(player, target, ability)
+    return invaderXim.job_utils.dancer.checkStepAbility(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability, action)
-    return xi.job_utils.dancer.useStepAbility(player, target, ability, action, xi.effect.SLUGGISH_DAZE_1, 2, 6)
+    return invaderXim.job_utils.dancer.useStepAbility(player, target, ability, action, invaderXim.effect.SLUGGISH_DAZE_1, 2, 6)
 end
 
 return abilityObject

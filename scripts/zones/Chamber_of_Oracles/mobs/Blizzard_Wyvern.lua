@@ -7,12 +7,12 @@
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.SIGHT_RANGE, 17)
+    mob:setMobMod(invaderXim.mobMod.SIGHT_RANGE, 17)
 end
 
 entity.onMobEngage = function(mob, target)
     mob:useMobAbility(815)
-    mob:setMod(xi.mod.REGAIN, 100)
+    mob:setMod(invaderXim.mod.REGAIN, 100)
 end
 
 entity.onMobFight = function(mob, target)

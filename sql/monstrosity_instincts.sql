@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `monstrosity_instincts`;
+DROP TABLE IF IXIMSTS `monstrosity_instincts`;
 CREATE TABLE `monstrosity_instincts` (
     `monstrosity_instinct_id` smallint(30) unsigned NOT NULL,
     `cost` smallint(30) unsigned NOT NULL,

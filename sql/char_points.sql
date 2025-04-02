@@ -2,7 +2,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for `char_points`
 -- ----------------------------
-DROP TABLE IF EXISTS `char_points`;
+DROP TABLE IF IXIMSTS `char_points`;
 CREATE TABLE `char_points` (
   `charid` int(10) unsigned NOT NULL,
   `sandoria_cp` int(10) unsigned NOT NULL DEFAULT '0',

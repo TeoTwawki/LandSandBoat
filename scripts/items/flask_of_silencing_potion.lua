@@ -11,10 +11,10 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    if not target:hasStatusEffect(xi.effect.SILENCE) then
-        target:addStatusEffect(xi.effect.SILENCE, 1, 3, 180)
+    if not target:hasStatusEffect(invaderXim.effect.SILENCE) then
+        target:addStatusEffect(invaderXim.effect.SILENCE, 1, 3, 180)
     else
-        target:messageBasic(xi.msg.basic.NO_EFFECT)
+        target:messageBasic(invaderXim.msg.basic.NO_EFFECT)
     end
 end
 

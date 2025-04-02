@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Castle_Zvahl_Keep (162)
 -----------------------------------
-local ID = zones[xi.zone.CASTLE_ZVAHL_KEEP]
+local ID = zones[invaderXim.zone.CASTLE_ZVAHL_KEEP]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -28,7 +28,7 @@ zoneObject.onInitialize = function(zone)
     zone:registerCylindricalTriggerArea(7, -527, 33, 3) -- S porter on map 4
     zone:registerCylindricalTriggerArea(8, -460, 60, 3) -- Hidden room porter on map 4
 
-    xi.treasure.initZone(zone)
+    invaderXim.treasure.initZone(zone)
 end
 
 zoneObject.onZoneTick = function(zone)
@@ -51,7 +51,7 @@ zoneObject.onZoneTick = function(zone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -74,7 +74,7 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
 
     player:setLocalVar(string.format('Zvhal_teleporter_%s', table.npc), 1)
 
-    if teleporter and teleporter:getAnimation() == xi.animation.OPEN_DOOR then
+    if teleporter and teleporter:getAnimation() == invaderXim.animation.OPEN_DOOR then
         player:startCutscene(table.event)
     end
 end

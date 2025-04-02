@@ -7,11 +7,11 @@
 -- Iron Gate : !pos 612 132 774 32
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.ONE_TO_BE_FEARED)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.ONE_TO_BE_FEARED)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.CHAINS_AND_BONDS },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.CHAINS_AND_BONDS },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Cid'] =
             {
@@ -40,14 +40,14 @@ mission.sections =
             },
         },
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Despachiaire']     = mission:event(318),
             ['Ironclad_Gorilla'] = mission:event(306),
             ['Justinius']        = mission:event(267),
         },
 
-        [xi.zone.SEALIONS_DEN] =
+        [invaderXim.zone.SEALIONS_DEN] =
         {
             ['_0w0'] =
             {
@@ -98,19 +98,19 @@ mission.sections =
 
                 [33] = function(player, csid, option, npc)
                     mission:complete(player)
-                    player:setPos(407.389, -0.262, -72.964, 96, xi.zone.LUFAISE_MEADOWS)
+                    player:setPos(407.389, -0.262, -72.964, 96, invaderXim.zone.LUFAISE_MEADOWS)
                 end,
 
                 [32001] = function(player, csid, option, npc)
                     if
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.ONE_TO_BE_FEARED and
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.ONE_TO_BE_FEARED and
                         mission:getVar(player, 'Status') == 3
                     then
                         -- While we could queue this, any disconnect would cause the player to have to
                         -- repeat this fight.  Retail handles event 33 as onZoneIn, and this implementation
                         -- both matches and provides safety in the above scenario.
                         mission:setVar(player, 'Status', 4)
-                        player:setPos(612.057, 132.664, 776.920, 188, xi.zone.SEALIONS_DEN)
+                        player:setPos(612.057, 132.664, 776.920, 188, invaderXim.zone.SEALIONS_DEN)
                     end
                 end,
             },
@@ -122,7 +122,7 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Ironclad_Gorilla'] = mission:event(306):replaceDefault(),
         },

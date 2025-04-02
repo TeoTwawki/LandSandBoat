@@ -9,7 +9,7 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    player:addStatusEffect(xi.effect.AVATARS_FAVOR, 1, 10, 7200)
+    player:addStatusEffect(invaderXim.effect.AVATARS_FAVOR, 1, 10, 7200)
 end
 
 return abilityObject

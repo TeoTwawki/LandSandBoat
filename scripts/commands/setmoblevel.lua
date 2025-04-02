@@ -22,13 +22,13 @@ commandObj.onTrigger = function(player, lv)
     -- set level
     if target and target:isMob() then
         player:printToPlayer(string.format('Old MainJob(jID: %s) LV: %i / SubJob(jID: %s) LV: %i ',
-            target:getMainJob(), target:getMainLvl(), target:getSubJob(), target:getSubLvl()), xi.msg.channel.SYSTEM_3
+            target:getMainJob(), target:getMainLvl(), target:getSubJob(), target:getSubLvl()), invaderXim.msg.channel.SYSTEM_3
         )
 
         target:setMobLevel(lv)
 
         player:printToPlayer(string.format('New MainJob(jID: %s) LV: %i / SubJob(jID: %s) LV: %i ',
-            target:getMainJob(), target:getMainLvl(), target:getSubJob(), target:getSubLvl()), xi.msg.channel.SYSTEM_3
+            target:getMainJob(), target:getMainLvl(), target:getSubJob(), target:getSubLvl()), invaderXim.msg.channel.SYSTEM_3
         )
     else
         error('must target a monster first!')

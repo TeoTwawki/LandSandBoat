@@ -19,7 +19,7 @@ A container/quest/mission is made up of one or more "sections", which are all of
     end,
 
     -- Each section is split into the different zones that each NPC/trigger is in
-    [xi.zone.SOME_AREA] = {
+    [invaderXim.zone.SOME_AREA] = {
         ['Some_NPC'] = {
             onTrigger = function(player, npc)
                 return quest:progressEvent(101) -- Quest should progress when this event finishes
@@ -33,7 +33,7 @@ A container/quest/mission is made up of one or more "sections", which are all of
         },
     },
 
-    [xi.zone.SOME_OTHER_AREA] = {
+    [invaderXim.zone.SOME_OTHER_AREA] = {
         ['Another_NPC'] = {
             -- interactions
         },
@@ -199,7 +199,7 @@ Below is a more-exhaustive mock example of how a section can be set up, and it t
     end,
 
     -- Each section is split into the different zones that each NPC/trigger is in
-    [xi.zone.SOME_AREA] = {
+    [invaderXim.zone.SOME_AREA] = {
 
         -- NPCs are indexed by their handlers like `onTrade`, `onTrigger`, etc
         ['Some_NPC_Name'] = {
@@ -212,7 +212,7 @@ Below is a more-exhaustive mock example of how a section can be set up, and it t
             end,
 
             onTrade = function(player, npc, trade)
-                if npcUtil.tradeHasExactly(trade, xi.items.SOME_ITEM) then
+                if npcUtil.tradeHasExactly(trade, invaderXim.items.SOME_ITEM) then
                     return quest:progressEvent(111)
                 end
             end,
@@ -237,7 +237,7 @@ Below is a more-exhaustive mock example of how a section can be set up, and it t
         },
     },
 
-    [xi.zone.SOME_OTHER_AREA] = {
+    [invaderXim.zone.SOME_OTHER_AREA] = {
 
         -- onZoneIn needs to have only one entry that will handle all the different cases,
         -- and should return the event ID to be played if any

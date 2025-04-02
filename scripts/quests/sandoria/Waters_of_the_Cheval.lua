@@ -4,19 +4,19 @@
 -- Nouveil !pos 123 0 106 231
 -- Cheval_River !pos 223 -58 426 101
 -----------------------------------
-local eastRonfaureID     = zones[xi.zone.EAST_RONFAURE]
-local northernSandoriaID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local eastRonfaureID     = zones[invaderXim.zone.EAST_RONFAURE]
+local northernSandoriaID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.WATERS_OF_THE_CHEVAL)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.WATERS_OF_THE_CHEVAL)
 
 quest.reward =
 {
     fame       = 30,
-    fameArea   = xi.fameArea.SANDORIA,
-    item       = xi.item.WING_PENDANT,
+    fameArea   = invaderXim.fameArea.SANDORIA,
+    item       = invaderXim.item.WING_PENDANT,
     itemParams = { fromTrade = true },
-    title      = xi.title.THE_PURE_ONE,
+    title      = invaderXim.title.THE_PURE_ONE,
 }
 
 quest.sections =
@@ -24,10 +24,10 @@ quest.sections =
     -- Speak with Miageau (L-7) just past the entrance to the Cathedral.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Miageau'] =
             {
@@ -50,21 +50,21 @@ quest.sections =
     -- Trade Cheval Water to Miageau.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Miageau'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHas(trade, xi.item.SKIN_OF_CHEVAL_RIVER_WATER) then
+                    if npcUtil.tradeHas(trade, invaderXim.item.SKIN_OF_CHEVAL_RIVER_WATER) then
                         return quest:progressEvent(515)
                     end
                 end,
 
                 onTrigger = function(player, npc)
-                    if player:hasItem(xi.item.BLESSED_WATERSKIN) then
+                    if player:hasItem(invaderXim.item.BLESSED_WATERSKIN) then
                         return quest:event(512)
                     else
                         return quest:event(519)
@@ -82,9 +82,9 @@ quest.sections =
                 end,
 
                 onTrigger = function(player, npc)
-                    if player:hasItem(xi.item.SKIN_OF_CHEVAL_RIVER_WATER) then
+                    if player:hasItem(invaderXim.item.SKIN_OF_CHEVAL_RIVER_WATER) then
                         return quest:event(573)
-                    elseif player:hasItem(xi.item.BLESSED_WATERSKIN) then
+                    elseif player:hasItem(invaderXim.item.BLESSED_WATERSKIN) then
                         return quest:event(572)
                     else
                         return quest:event(575)
@@ -101,24 +101,24 @@ quest.sections =
                 end,
 
                 [571] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.BLESSED_WATERSKIN, { fromTrade = true }) then
+                    if npcUtil.giveItem(player, invaderXim.item.BLESSED_WATERSKIN, { fromTrade = true }) then
                         player:confirmTrade()
                     end
                 end,
             },
         },
 
-        [xi.zone.EAST_RONFAURE] =
+        [invaderXim.zone.EAST_RONFAURE] =
         {
             ['Cheval_River'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHas(trade, xi.item.BLESSED_WATERSKIN) and
-                        npcUtil.giveItem(player, xi.item.SKIN_OF_CHEVAL_RIVER_WATER, { silent = true, fromTrade = true })
+                        npcUtil.tradeHas(trade, invaderXim.item.BLESSED_WATERSKIN) and
+                        npcUtil.giveItem(player, invaderXim.item.SKIN_OF_CHEVAL_RIVER_WATER, { silent = true, fromTrade = true })
                     then
                         player:confirmTrade()
-                        return quest:messageSpecial(eastRonfaureID.text.CHEVAL_RIVER_WATER, xi.item.SKIN_OF_CHEVAL_RIVER_WATER)
+                        return quest:messageSpecial(eastRonfaureID.text.CHEVAL_RIVER_WATER, invaderXim.item.SKIN_OF_CHEVAL_RIVER_WATER)
                     end
                 end,
 

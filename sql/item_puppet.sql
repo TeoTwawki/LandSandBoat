@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `item_puppet`
 --
 
-DROP TABLE IF EXISTS `item_puppet`;
-CREATE TABLE IF NOT EXISTS `item_puppet` (
+DROP TABLE IF IXIMSTS `item_puppet`;
+CREATE TABLE IF NOT IXIMSTS `item_puppet` (
   `itemid` smallint(5) unsigned NOT NULL,
   `name` tinytext NOT NULL,
   `slot` tinyint(2) unsigned NOT NULL DEFAULT '0',

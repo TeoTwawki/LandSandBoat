@@ -5,23 +5,23 @@
 -- Hot Springs : !pos 444 -37 -18 139
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.THE_GENERALS_SECRET)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.THE_GENERALS_SECRET)
 
 quest.reward =
 {
     fame = 30,
-    fameArea = xi.fameArea.SANDORIA,
-    item = xi.item.LYNX_BAGHNAKHS,
+    fameArea = invaderXim.fameArea.SANDORIA,
+    item = invaderXim.item.LYNX_BAGHNAKHS,
 }
 
 quest.sections =
 {
     {
         check = function(player, status)
-            return status == xi.questStatus.QUEST_AVAILABLE and player:getFameLevel(xi.fameArea.SANDORIA) > 1
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and player:getFameLevel(invaderXim.fameArea.SANDORIA) > 1
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Curilla'] = quest:progressEvent(55),
 
@@ -30,7 +30,7 @@ quest.sections =
                 [55] = function(player, csid, option, npc)
                     if option == 1 then
                         quest:begin(player)
-                        npcUtil.giveKeyItem(player, xi.ki.CURILLAS_BOTTLE_EMPTY)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.CURILLAS_BOTTLE_EMPTY)
                     end
                 end,
             },
@@ -39,15 +39,15 @@ quest.sections =
 
     {
         check = function(player, status)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Curilla'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.CURILLAS_BOTTLE_FULL) then
+                    if player:hasKeyItem(invaderXim.ki.CURILLAS_BOTTLE_FULL) then
                         return quest:progressEvent(54)
                     else
                         return quest:progressEvent(53)
@@ -59,20 +59,20 @@ quest.sections =
             {
                 [54] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.CURILLAS_BOTTLE_FULL)
+                        player:delKeyItem(invaderXim.ki.CURILLAS_BOTTLE_FULL)
                     end
                 end,
             },
         },
 
-        [xi.zone.HORLAIS_PEAK] =
+        [invaderXim.zone.HORLAIS_PEAK] =
         {
             ['Hot_Springs'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.CURILLAS_BOTTLE_EMPTY) then
-                        player:delKeyItem(xi.ki.CURILLAS_BOTTLE_EMPTY)
-                        return quest:keyItem(xi.ki.CURILLAS_BOTTLE_FULL)
+                    if player:hasKeyItem(invaderXim.ki.CURILLAS_BOTTLE_EMPTY) then
+                        player:delKeyItem(invaderXim.ki.CURILLAS_BOTTLE_EMPTY)
+                        return quest:keyItem(invaderXim.ki.CURILLAS_BOTTLE_FULL)
                     end
                 end,
             },

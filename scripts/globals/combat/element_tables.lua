@@ -5,8 +5,8 @@
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.combat = xi.combat or {}
-xi.combat.element = xi.combat.element or {}
+invaderXim.combat = invaderXim.combat or {}
+invaderXim.combat.element = invaderXim.combat.element or {}
 -----------------------------------
 
 local column =
@@ -29,276 +29,276 @@ local column =
     MERIT_ELEMENT_MACC    = 16,
 }
 
-xi.combat.element.dataTable =
+invaderXim.combat.element.dataTable =
 {
-    [xi.element.FIRE   ] = { xi.element.WATER,   xi.day.FIRESDAY,     xi.weather.HOT_SPELL,  xi.weather.HEAT_WAVE,     xi.mod.FIRE_SDT,    xi.mod.FIRE_RES_RANK,    xi.mod.FIRE_NULL,  xi.mod.FIRE_ABSORB,  xi.mod.FIRE_MACC,    xi.mod.FIRE_MEVA,    xi.mod.FIRE_AFFINITY_DMG,    xi.mod.FIRE_AFFINITY_ACC,    xi.mod.FORCE_FIRE_DWBONUS,      xi.effect.BARFIRE,     xi.merit.FIRE_MAGIC_POTENCY,      xi.merit.FIRE_MAGIC_ACCURACY      },
-    [xi.element.ICE    ] = { xi.element.FIRE,    xi.day.ICEDAY,       xi.weather.SNOW,       xi.weather.BLIZZARDS,     xi.mod.ICE_SDT,     xi.mod.ICE_RES_RANK,     xi.mod.ICE_NULL,   xi.mod.ICE_ABSORB,   xi.mod.ICE_MACC,     xi.mod.ICE_MEVA,     xi.mod.ICE_AFFINITY_DMG,     xi.mod.ICE_AFFINITY_ACC,     xi.mod.FORCE_ICE_DWBONUS,       xi.effect.BARBLIZZARD, xi.merit.ICE_MAGIC_POTENCY,       xi.merit.ICE_MAGIC_ACCURACY       },
-    [xi.element.WIND   ] = { xi.element.ICE,     xi.day.WINDSDAY,     xi.weather.WIND,       xi.weather.GALES,         xi.mod.WIND_SDT,    xi.mod.WIND_RES_RANK,    xi.mod.WIND_NULL,  xi.mod.WIND_ABSORB,  xi.mod.WIND_MACC,    xi.mod.WIND_MEVA,    xi.mod.WIND_AFFINITY_DMG,    xi.mod.WIND_AFFINITY_ACC,    xi.mod.FORCE_WIND_DWBONUS,      xi.effect.BARAERO,     xi.merit.WIND_MAGIC_POTENCY,      xi.merit.WIND_MAGIC_ACCURACY      },
-    [xi.element.EARTH  ] = { xi.element.WIND,    xi.day.EARTHSDAY,    xi.weather.DUST_STORM, xi.weather.SAND_STORM,    xi.mod.EARTH_SDT,   xi.mod.EARTH_RES_RANK,   xi.mod.EARTH_NULL, xi.mod.EARTH_ABSORB, xi.mod.EARTH_MACC,   xi.mod.EARTH_MEVA,   xi.mod.EARTH_AFFINITY_DMG,   xi.mod.EARTH_AFFINITY_ACC,   xi.mod.FORCE_EARTH_DWBONUS,     xi.effect.BARSTONE,    xi.merit.EARTH_MAGIC_POTENCY,     xi.merit.EARTH_MAGIC_ACCURACY     },
-    [xi.element.THUNDER] = { xi.element.EARTH,   xi.day.LIGHTNINGDAY, xi.weather.THUNDER,    xi.weather.THUNDERSTORMS, xi.mod.THUNDER_SDT, xi.mod.THUNDER_RES_RANK, xi.mod.LTNG_NULL,  xi.mod.LTNG_ABSORB,  xi.mod.THUNDER_MACC, xi.mod.THUNDER_MEVA, xi.mod.THUNDER_AFFINITY_DMG, xi.mod.THUNDER_AFFINITY_ACC, xi.mod.FORCE_LIGHTNING_DWBONUS, xi.effect.BARTHUNDER,  xi.merit.LIGHTNING_MAGIC_POTENCY, xi.merit.LIGHTNING_MAGIC_ACCURACY },
-    [xi.element.WATER  ] = { xi.element.THUNDER, xi.day.WATERSDAY,    xi.weather.RAIN,       xi.weather.SQUALL,        xi.mod.WATER_SDT,   xi.mod.WATER_RES_RANK,   xi.mod.WATER_NULL, xi.mod.WATER_ABSORB, xi.mod.WATER_MACC,   xi.mod.WATER_MEVA,   xi.mod.WATER_AFFINITY_DMG,   xi.mod.WATER_AFFINITY_ACC,   xi.mod.FORCE_WATER_DWBONUS,     xi.effect.BARWATER,    xi.merit.WATER_MAGIC_POTENCY,     xi.merit.WATER_MAGIC_ACCURACY     },
-    [xi.element.LIGHT  ] = { xi.element.DARK,    xi.day.LIGHTSDAY,    xi.weather.AURORAS,    xi.weather.STELLAR_GLARE, xi.mod.LIGHT_SDT,   xi.mod.LIGHT_RES_RANK,   xi.mod.LIGHT_NULL, xi.mod.LIGHT_ABSORB, xi.mod.LIGHT_MACC,   xi.mod.LIGHT_MEVA,   xi.mod.LIGHT_AFFINITY_DMG,   xi.mod.LIGHT_AFFINITY_ACC,   xi.mod.FORCE_LIGHT_DWBONUS,     0,                     0,                                0                                 },
-    [xi.element.DARK   ] = { xi.element.LIGHT,   xi.day.DARKSDAY,     xi.weather.GLOOM,      xi.weather.DARKNESS,      xi.mod.DARK_SDT,    xi.mod.DARK_RES_RANK,    xi.mod.DARK_NULL,  xi.mod.DARK_ABSORB,  xi.mod.DARK_MACC,    xi.mod.DARK_MEVA,    xi.mod.DARK_AFFINITY_DMG,    xi.mod.DARK_AFFINITY_ACC,    xi.mod.FORCE_DARK_DWBONUS,      0,                     0,                                0                                 },
+    [invaderXim.element.FIRE   ] = { invaderXim.element.WATER,   invaderXim.day.FIRESDAY,     invaderXim.weather.HOT_SPELL,  invaderXim.weather.HEAT_WAVE,     invaderXim.mod.FIRE_SDT,    invaderXim.mod.FIRE_RES_RANK,    invaderXim.mod.FIRE_NULL,  invaderXim.mod.FIRE_ABSORB,  invaderXim.mod.FIRE_MACC,    invaderXim.mod.FIRE_MEVA,    invaderXim.mod.FIRE_AFFINITY_DMG,    invaderXim.mod.FIRE_AFFINITY_ACC,    invaderXim.mod.FORCE_FIRE_DWBONUS,      invaderXim.effect.BARFIRE,     invaderXim.merit.FIRE_MAGIC_POTENCY,      invaderXim.merit.FIRE_MAGIC_ACCURACY      },
+    [invaderXim.element.ICE    ] = { invaderXim.element.FIRE,    invaderXim.day.ICEDAY,       invaderXim.weather.SNOW,       invaderXim.weather.BLIZZARDS,     invaderXim.mod.ICE_SDT,     invaderXim.mod.ICE_RES_RANK,     invaderXim.mod.ICE_NULL,   invaderXim.mod.ICE_ABSORB,   invaderXim.mod.ICE_MACC,     invaderXim.mod.ICE_MEVA,     invaderXim.mod.ICE_AFFINITY_DMG,     invaderXim.mod.ICE_AFFINITY_ACC,     invaderXim.mod.FORCE_ICE_DWBONUS,       invaderXim.effect.BARBLIZZARD, invaderXim.merit.ICE_MAGIC_POTENCY,       invaderXim.merit.ICE_MAGIC_ACCURACY       },
+    [invaderXim.element.WIND   ] = { invaderXim.element.ICE,     invaderXim.day.WINDSDAY,     invaderXim.weather.WIND,       invaderXim.weather.GALES,         invaderXim.mod.WIND_SDT,    invaderXim.mod.WIND_RES_RANK,    invaderXim.mod.WIND_NULL,  invaderXim.mod.WIND_ABSORB,  invaderXim.mod.WIND_MACC,    invaderXim.mod.WIND_MEVA,    invaderXim.mod.WIND_AFFINITY_DMG,    invaderXim.mod.WIND_AFFINITY_ACC,    invaderXim.mod.FORCE_WIND_DWBONUS,      invaderXim.effect.BARAERO,     invaderXim.merit.WIND_MAGIC_POTENCY,      invaderXim.merit.WIND_MAGIC_ACCURACY      },
+    [invaderXim.element.EARTH  ] = { invaderXim.element.WIND,    invaderXim.day.EARTHSDAY,    invaderXim.weather.DUST_STORM, invaderXim.weather.SAND_STORM,    invaderXim.mod.EARTH_SDT,   invaderXim.mod.EARTH_RES_RANK,   invaderXim.mod.EARTH_NULL, invaderXim.mod.EARTH_ABSORB, invaderXim.mod.EARTH_MACC,   invaderXim.mod.EARTH_MEVA,   invaderXim.mod.EARTH_AFFINITY_DMG,   invaderXim.mod.EARTH_AFFINITY_ACC,   invaderXim.mod.FORCE_EARTH_DWBONUS,     invaderXim.effect.BARSTONE,    invaderXim.merit.EARTH_MAGIC_POTENCY,     invaderXim.merit.EARTH_MAGIC_ACCURACY     },
+    [invaderXim.element.THUNDER] = { invaderXim.element.EARTH,   invaderXim.day.LIGHTNINGDAY, invaderXim.weather.THUNDER,    invaderXim.weather.THUNDERSTORMS, invaderXim.mod.THUNDER_SDT, invaderXim.mod.THUNDER_RES_RANK, invaderXim.mod.LTNG_NULL,  invaderXim.mod.LTNG_ABSORB,  invaderXim.mod.THUNDER_MACC, invaderXim.mod.THUNDER_MEVA, invaderXim.mod.THUNDER_AFFINITY_DMG, invaderXim.mod.THUNDER_AFFINITY_ACC, invaderXim.mod.FORCE_LIGHTNING_DWBONUS, invaderXim.effect.BARTHUNDER,  invaderXim.merit.LIGHTNING_MAGIC_POTENCY, invaderXim.merit.LIGHTNING_MAGIC_ACCURACY },
+    [invaderXim.element.WATER  ] = { invaderXim.element.THUNDER, invaderXim.day.WATERSDAY,    invaderXim.weather.RAIN,       invaderXim.weather.SQUALL,        invaderXim.mod.WATER_SDT,   invaderXim.mod.WATER_RES_RANK,   invaderXim.mod.WATER_NULL, invaderXim.mod.WATER_ABSORB, invaderXim.mod.WATER_MACC,   invaderXim.mod.WATER_MEVA,   invaderXim.mod.WATER_AFFINITY_DMG,   invaderXim.mod.WATER_AFFINITY_ACC,   invaderXim.mod.FORCE_WATER_DWBONUS,     invaderXim.effect.BARWATER,    invaderXim.merit.WATER_MAGIC_POTENCY,     invaderXim.merit.WATER_MAGIC_ACCURACY     },
+    [invaderXim.element.LIGHT  ] = { invaderXim.element.DARK,    invaderXim.day.LIGHTSDAY,    invaderXim.weather.AURORAS,    invaderXim.weather.STELLAR_GLARE, invaderXim.mod.LIGHT_SDT,   invaderXim.mod.LIGHT_RES_RANK,   invaderXim.mod.LIGHT_NULL, invaderXim.mod.LIGHT_ABSORB, invaderXim.mod.LIGHT_MACC,   invaderXim.mod.LIGHT_MEVA,   invaderXim.mod.LIGHT_AFFINITY_DMG,   invaderXim.mod.LIGHT_AFFINITY_ACC,   invaderXim.mod.FORCE_LIGHT_DWBONUS,     0,                     0,                                0                                 },
+    [invaderXim.element.DARK   ] = { invaderXim.element.LIGHT,   invaderXim.day.DARKSDAY,     invaderXim.weather.GLOOM,      invaderXim.weather.DARKNESS,      invaderXim.mod.DARK_SDT,    invaderXim.mod.DARK_RES_RANK,    invaderXim.mod.DARK_NULL,  invaderXim.mod.DARK_ABSORB,  invaderXim.mod.DARK_MACC,    invaderXim.mod.DARK_MEVA,    invaderXim.mod.DARK_AFFINITY_DMG,    invaderXim.mod.DARK_AFFINITY_ACC,    invaderXim.mod.FORCE_DARK_DWBONUS,      0,                     0,                                0                                 },
 }
 
-xi.combat.element.getOppositeElement = function(element)
+invaderXim.combat.element.getOppositeElement = function(element)
     -- Validate fed value.
     local elementToCheck = utils.defaultIfNil(element, 0)
 
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.DARK then
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.DARK then
         return 0
     end
 
-    return xi.combat.element.dataTable[elementToCheck][column.ELEMENT_OPPOSED]
+    return invaderXim.combat.element.dataTable[elementToCheck][column.ELEMENT_OPPOSED]
 end
 
 -----------------------------------
 -- Day-related functions
 -----------------------------------
-xi.combat.element.getAssociatedDay = function(element)
+invaderXim.combat.element.getAssociatedDay = function(element)
     -- Validate fed value.
     local elementToCheck = utils.defaultIfNil(element, 0)
 
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.DARK then
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.DARK then
         return -1
     end
 
-    return xi.combat.element.dataTable[elementToCheck][column.DAY_ASSOCIATED]
+    return invaderXim.combat.element.dataTable[elementToCheck][column.DAY_ASSOCIATED]
 end
 
-xi.combat.element.getOppositeDay = function(element)
+invaderXim.combat.element.getOppositeDay = function(element)
     -- Validate fed value.
     local elementToCheck = utils.defaultIfNil(element, 0)
 
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.DARK then
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.DARK then
         return -1
     end
 
     -- Fetch opposite element.
-    elementToCheck = xi.combat.element.dataTable[elementToCheck][column.ELEMENT_OPPOSED]
+    elementToCheck = invaderXim.combat.element.dataTable[elementToCheck][column.ELEMENT_OPPOSED]
 
-    return xi.combat.element.dataTable[elementToCheck][column.DAY_ASSOCIATED]
+    return invaderXim.combat.element.dataTable[elementToCheck][column.DAY_ASSOCIATED]
 end
 
-xi.combat.element.getDayElement = function(day)
+invaderXim.combat.element.getDayElement = function(day)
     -- Validate fed value.
     local dayToCheck = utils.defaultIfNil(day, -1)
 
-    for elementToCheck = xi.element.FIRE, xi.element.DARK do
-        if dayToCheck == xi.combat.element.dataTable[elementToCheck][column.DAY_ASSOCIATED] then
+    for elementToCheck = invaderXim.element.FIRE, invaderXim.element.DARK do
+        if dayToCheck == invaderXim.combat.element.dataTable[elementToCheck][column.DAY_ASSOCIATED] then
             return elementToCheck
         end
     end
 
-    return xi.element.NONE
+    return invaderXim.element.NONE
 end
 
 -----------------------------------
 -- Weather-related functions
 -----------------------------------
-xi.combat.element.getAssociatedSingleWeather = function(element)
+invaderXim.combat.element.getAssociatedSingleWeather = function(element)
     -- Validate fed value.
     local elementToCheck = utils.defaultIfNil(element, 0)
 
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.DARK then
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.DARK then
         return -1
     end
 
-    return xi.combat.element.dataTable[elementToCheck][column.WEATHER_SINGLE]
+    return invaderXim.combat.element.dataTable[elementToCheck][column.WEATHER_SINGLE]
 end
 
-xi.combat.element.getOppositeSingleWeather = function(element)
+invaderXim.combat.element.getOppositeSingleWeather = function(element)
     -- Validate fed value.
     local elementToCheck = utils.defaultIfNil(element, 0)
 
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.DARK then
-        return -1
-    end
-
-    -- Fetch opposite element.
-    elementToCheck = xi.combat.element.dataTable[elementToCheck][column.ELEMENT_OPPOSED]
-
-    return xi.combat.element.dataTable[elementToCheck][column.WEATHER_SINGLE]
-end
-
-xi.combat.element.getAssociatedDoubleWeather = function(element)
-    -- Validate fed value.
-    local elementToCheck = utils.defaultIfNil(element, 0)
-
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.DARK then
-        return -1
-    end
-
-    return xi.combat.element.dataTable[elementToCheck][column.WEATHER_DOUBLE]
-end
-
-xi.combat.element.getOppositeDoubleWeather = function(element)
-    -- Validate fed value.
-    local elementToCheck = utils.defaultIfNil(element, 0)
-
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.DARK then
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.DARK then
         return -1
     end
 
     -- Fetch opposite element.
-    elementToCheck = xi.combat.element.dataTable[elementToCheck][column.ELEMENT_OPPOSED]
+    elementToCheck = invaderXim.combat.element.dataTable[elementToCheck][column.ELEMENT_OPPOSED]
 
-    return xi.combat.element.dataTable[elementToCheck][column.WEATHER_DOUBLE]
+    return invaderXim.combat.element.dataTable[elementToCheck][column.WEATHER_SINGLE]
 end
 
-xi.combat.element.getWeatherElement = function(weather)
+invaderXim.combat.element.getAssociatedDoubleWeather = function(element)
+    -- Validate fed value.
+    local elementToCheck = utils.defaultIfNil(element, 0)
+
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.DARK then
+        return -1
+    end
+
+    return invaderXim.combat.element.dataTable[elementToCheck][column.WEATHER_DOUBLE]
+end
+
+invaderXim.combat.element.getOppositeDoubleWeather = function(element)
+    -- Validate fed value.
+    local elementToCheck = utils.defaultIfNil(element, 0)
+
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.DARK then
+        return -1
+    end
+
+    -- Fetch opposite element.
+    elementToCheck = invaderXim.combat.element.dataTable[elementToCheck][column.ELEMENT_OPPOSED]
+
+    return invaderXim.combat.element.dataTable[elementToCheck][column.WEATHER_DOUBLE]
+end
+
+invaderXim.combat.element.getWeatherElement = function(weather)
     -- Validate fed value.
     local weatherToCheck = utils.defaultIfNil(weather, 0)
 
-    for elementChecked = xi.element.FIRE, xi.element.DARK do
-        local elementalSingle = xi.combat.element.dataTable[elementChecked][column.WEATHER_SINGLE]
-        local elementalDouble = xi.combat.element.dataTable[elementChecked][column.WEATHER_DOUBLE]
+    for elementChecked = invaderXim.element.FIRE, invaderXim.element.DARK do
+        local elementalSingle = invaderXim.combat.element.dataTable[elementChecked][column.WEATHER_SINGLE]
+        local elementalDouble = invaderXim.combat.element.dataTable[elementChecked][column.WEATHER_DOUBLE]
 
         if weatherToCheck == elementalSingle or weatherToCheck == elementalDouble then
             return elementChecked
         end
     end
 
-    return xi.element.NONE
+    return invaderXim.element.NONE
 end
 
 -----------------------------------
 -- Modifier-related functions
 -----------------------------------
-xi.combat.element.getElementalSDTModifier = function(element)
+invaderXim.combat.element.getElementalSDTModifier = function(element)
     -- Validate fed value.
     local elementToCheck = utils.defaultIfNil(element, 0)
 
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.DARK then
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.DARK then
         return 0
     end
 
-    return xi.combat.element.dataTable[elementToCheck][column.MOD_ELEMENT_SDT]
+    return invaderXim.combat.element.dataTable[elementToCheck][column.MOD_ELEMENT_SDT]
 end
 
-xi.combat.element.getElementalResistanceRankModifier = function(element)
+invaderXim.combat.element.getElementalResistanceRankModifier = function(element)
     -- Validate fed value.
     local elementToCheck = utils.defaultIfNil(element, 0)
 
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.DARK then
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.DARK then
         return 0
     end
 
-    return xi.combat.element.dataTable[elementToCheck][column.MOD_ELEMENT_RES_RANK]
+    return invaderXim.combat.element.dataTable[elementToCheck][column.MOD_ELEMENT_RES_RANK]
 end
 
-xi.combat.element.getElementalNullificationModifier = function(element)
+invaderXim.combat.element.getElementalNullificationModifier = function(element)
     -- Validate fed value.
     local elementToCheck = utils.defaultIfNil(element, 0)
 
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.DARK then
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.DARK then
         return 0
     end
 
-    return xi.combat.element.dataTable[elementToCheck][column.MOD_ELEMENT_NULL]
+    return invaderXim.combat.element.dataTable[elementToCheck][column.MOD_ELEMENT_NULL]
 end
 
-xi.combat.element.getElementalAbsorptionModifier = function(element)
+invaderXim.combat.element.getElementalAbsorptionModifier = function(element)
     -- Validate fed value.
     local elementToCheck = utils.defaultIfNil(element, 0)
 
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.DARK then
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.DARK then
         return 0
     end
 
-    return xi.combat.element.dataTable[elementToCheck][column.MOD_ELEMENT_ABSORB]
+    return invaderXim.combat.element.dataTable[elementToCheck][column.MOD_ELEMENT_ABSORB]
 end
 
-xi.combat.element.getElementalMACCModifier = function(element)
+invaderXim.combat.element.getElementalMACCModifier = function(element)
     -- Validate fed value.
     local elementToCheck = utils.defaultIfNil(element, 0)
 
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.DARK then
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.DARK then
         return 0
     end
 
-    return xi.combat.element.dataTable[elementToCheck][column.MOD_ELEMENT_MACC]
+    return invaderXim.combat.element.dataTable[elementToCheck][column.MOD_ELEMENT_MACC]
 end
 
-xi.combat.element.getElementalMEVAModifier = function(element)
+invaderXim.combat.element.getElementalMEVAModifier = function(element)
     -- Validate fed value.
     local elementToCheck = utils.defaultIfNil(element, 0)
 
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.DARK then
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.DARK then
         return 0
     end
 
-    return xi.combat.element.dataTable[elementToCheck][column.MOD_ELEMENT_MEVA]
+    return invaderXim.combat.element.dataTable[elementToCheck][column.MOD_ELEMENT_MEVA]
 end
 
-xi.combat.element.getElementalAffinityDMGModifier = function(element)
+invaderXim.combat.element.getElementalAffinityDMGModifier = function(element)
     -- Validate fed value.
     local elementToCheck = utils.defaultIfNil(element, 0)
 
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.DARK then
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.DARK then
         return 0
     end
 
-    return xi.combat.element.dataTable[elementToCheck][column.MOD_AFFINITY_DMG]
+    return invaderXim.combat.element.dataTable[elementToCheck][column.MOD_AFFINITY_DMG]
 end
 
-xi.combat.element.getElementalAffinityMACCModifier = function(element)
+invaderXim.combat.element.getElementalAffinityMACCModifier = function(element)
     -- Validate fed value.
     local elementToCheck = utils.defaultIfNil(element, 0)
 
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.DARK then
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.DARK then
         return 0
     end
 
-    return xi.combat.element.dataTable[elementToCheck][column.MOD_AFFINITY_MACC]
+    return invaderXim.combat.element.dataTable[elementToCheck][column.MOD_AFFINITY_MACC]
 end
 
-xi.combat.element.getForcedDayOrWeatherBonusModifier = function(element)
+invaderXim.combat.element.getForcedDayOrWeatherBonusModifier = function(element)
     -- Validate fed value.
     local elementToCheck = utils.defaultIfNil(element, 0)
 
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.DARK then
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.DARK then
         return 0
     end
 
-    return xi.combat.element.dataTable[elementToCheck][column.MOD_FORCE_DW_BONUS]
+    return invaderXim.combat.element.dataTable[elementToCheck][column.MOD_FORCE_DW_BONUS]
 end
 
 -----------------------------------
 -- Effect-related functions
 -----------------------------------
-xi.combat.element.getAssociatedBarspellEffect = function(element)
+invaderXim.combat.element.getAssociatedBarspellEffect = function(element)
     -- Validate fed value.
     local elementToCheck = utils.defaultIfNil(element, 0)
 
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.WATER then
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.WATER then
         return 0
     end
 
-    return xi.combat.element.dataTable[elementToCheck][column.EFFECT_BARSPELL]
+    return invaderXim.combat.element.dataTable[elementToCheck][column.EFFECT_BARSPELL]
 end
 
 -----------------------------------
 -- Merit-related functions
 -----------------------------------
-xi.combat.element.getElementalPotencyMerit = function(element)
+invaderXim.combat.element.getElementalPotencyMerit = function(element)
     -- Validate fed value.
     local elementToCheck = utils.defaultIfNil(element, 0)
 
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.WATER then
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.WATER then
         return 0
     end
 
-    return xi.combat.element.dataTable[elementToCheck][column.MERIT_ELEMENT_POTENCY]
+    return invaderXim.combat.element.dataTable[elementToCheck][column.MERIT_ELEMENT_POTENCY]
 end
 
-xi.combat.element.getElementalAccuracyMerit = function(element)
+invaderXim.combat.element.getElementalAccuracyMerit = function(element)
     -- Validate fed value.
     local elementToCheck = utils.defaultIfNil(element, 0)
 
-    if elementToCheck < xi.element.FIRE or elementToCheck > xi.element.WATER then
+    if elementToCheck < invaderXim.element.FIRE or elementToCheck > invaderXim.element.WATER then
         return 0
     end
 
-    return xi.combat.element.dataTable[elementToCheck][column.MERIT_ELEMENT_MACC]
+    return invaderXim.combat.element.dataTable[elementToCheck][column.MERIT_ELEMENT_MACC]
 end

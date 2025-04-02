@@ -4,12 +4,12 @@
 -- Kohlo-Lakolo, !pos -26.8 -6 190 240
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.CRYING_OVER_ONIONS)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.CRYING_OVER_ONIONS)
 
 quest.reward =
 {
     fame     = 120,
-    fameArea = xi.fameArea.WINDURST,
+    fameArea = invaderXim.fameArea.WINDURST,
 }
 
 quest.sections =
@@ -17,11 +17,11 @@ quest.sections =
     -- Section: Quest is available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.WINDURST, xi.quest.id.windurst.ONION_RINGS)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.ONION_RINGS)
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Kohlo-Lakolo'] =
             {
@@ -29,7 +29,7 @@ quest.sections =
                     if quest:getVar(player, 'Reward') == 1 then
                         if
                             player:getMainLvl() >= 5 and
-                            player:getFameLevel(xi.fameArea.WINDURST) >= 5 and
+                            player:getFameLevel(invaderXim.fameArea.WINDURST) >= 5 and
                             not quest:getMustZone(player)
                         then
                             return quest:progressEvent(496) -- Quest starting event.
@@ -49,7 +49,7 @@ quest.sections =
             onEventFinish =
             {
                 [449] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.BOUNCER_CLUB) then
+                    if npcUtil.giveItem(player, invaderXim.item.BOUNCER_CLUB) then
                         quest:setVar(player, 'Reward', 1)
                         quest:setMustZone(player)
                     end
@@ -65,10 +65,10 @@ quest.sections =
     -- Section: Quest accepeted in time.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Kohlo-Lakolo'] =
             {
@@ -145,13 +145,13 @@ quest.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Honoi-Gomoi'] =
             {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 0 then
-                        return quest:progressEvent(774, 0, xi.item.STAR_SPINEL)
+                        return quest:progressEvent(774, 0, invaderXim.item.STAR_SPINEL)
                     elseif quest:getVar(player, 'Prog') == 1 or quest:getVar(player, 'Prog') == 2 then
                         return quest:event(777) -- Reminder text before trade.
                     elseif quest:getVar(player, 'Prog') == 3 then
@@ -164,9 +164,9 @@ quest.sections =
                 onTrade = function(player, npc, trade)
                     if
                         (quest:getVar(player, 'Prog') == 1 or quest:getVar(player, 'Prog') == 2) and
-                        npcUtil.tradeHasExactly(trade, xi.item.STAR_SPINEL)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.STAR_SPINEL)
                     then
-                        return quest:progressEvent(775, 0, xi.item.STAR_SPINEL)
+                        return quest:progressEvent(775, 0, invaderXim.item.STAR_SPINEL)
                     end
                 end,
             },
@@ -178,7 +178,7 @@ quest.sections =
                 end,
 
                 [775] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.STAR_NECKLACE) then
+                    if npcUtil.giveItem(player, invaderXim.item.STAR_NECKLACE) then
                         player:confirmTrade()
                         quest:setVar(player, 'Prog', 3)
                     end
@@ -192,7 +192,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Nanaa_Mihgo'] =
             {
@@ -215,11 +215,11 @@ quest.sections =
     -- Section: Quest completed.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.THE_PROMISE) == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.THE_PROMISE) == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             -- New default texts.
             ['Gomada-Vulmada'] = quest:event(507):replaceDefault(),

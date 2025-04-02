@@ -3,7 +3,7 @@
 --  Mob: Erlik
 -- Note: Place holder Baobhan Sith
 -----------------------------------
-local ID = zones[xi.zone.GUSTAV_TUNNEL]
+local ID = zones[invaderXim.zone.GUSTAV_TUNNEL]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -69,11 +69,11 @@ local baobhanPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 767, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 767, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, baobhanPHTable, 5, 14400, { spawnPoints = baobhanSpawnPoints }) -- 4 hours
+    invaderXim.mob.phOnDespawn(mob, baobhanPHTable, 5, 14400, { spawnPoints = baobhanSpawnPoints }) -- 4 hours
 end
 
 return entity

@@ -10,8 +10,8 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    mob:useMobAbility(mob:getMobMod(xi.mobMod.TELEPORT_END))
-    skill:setMsg(xi.msg.basic.NONE)
+    mob:useMobAbility(mob:getMobMod(invaderXim.mobMod.TELEPORT_END))
+    skill:setMsg(invaderXim.msg.basic.NONE)
 
     return 0
 end

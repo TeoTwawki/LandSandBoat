@@ -11,7 +11,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:messageBasic(xi.msg.basic.RECOVERS_MP, 0, target:addMP(150 * xi.settings.main.ITEM_POWER))
+    target:messageBasic(invaderXim.msg.basic.RECOVERS_MP, 0, target:addMP(150 * invaderXim.settings.main.ITEM_POWER))
 end
 
 return itemObject

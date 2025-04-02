@@ -1,4 +1,4 @@
--- local ID = zones[xi.zone.RABAO]
+-- local ID = zones[invaderXim.zone.RABAO]
 
 return {
     ['Alfesar']         = { event = 52 },

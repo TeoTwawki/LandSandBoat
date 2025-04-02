@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `char_storage`
 --
 
-DROP TABLE IF EXISTS `char_storage`;
-CREATE TABLE IF NOT EXISTS `char_storage` (
+DROP TABLE IF IXIMSTS `char_storage`;
+CREATE TABLE IF NOT IXIMSTS `char_storage` (
   `charid` int(10) unsigned NOT NULL,
   `inventory` tinyint(2) unsigned NOT NULL DEFAULT '30',
   `safe` tinyint(2) unsigned NOT NULL DEFAULT '50',

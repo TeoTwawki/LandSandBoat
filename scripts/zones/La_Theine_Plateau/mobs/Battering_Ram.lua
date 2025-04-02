@@ -2,7 +2,7 @@
 -- Area: La Theine Plateau
 --  Mob: Battering Ram
 -----------------------------------
-local ID = zones[xi.zone.LA_THEINE_PLATEAU]
+local ID = zones[invaderXim.zone.LA_THEINE_PLATEAU]
 -----------------------------------
 require('scripts/quests/tutorial')
 -----------------------------------
@@ -42,15 +42,15 @@ local sheepNMSpawnPoints =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.tutorial.onMobDeath(player)
+    invaderXim.tutorial.onMobDeath(player)
 end
 
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = sheepNMSpawnPoints
 
-    if not xi.mob.phOnDespawn(mob, bloodtearPHTable, 10, 75600, params) then -- 21 hours
-        xi.mob.phOnDespawn(mob, lumberingLambertPHTable, 10, 1200, params) -- 20 min
+    if not invaderXim.mob.phOnDespawn(mob, bloodtearPHTable, 10, 75600, params) then -- 21 hours
+        invaderXim.mob.phOnDespawn(mob, lumberingLambertPHTable, 10, 1200, params) -- 20 min
     end
 end
 

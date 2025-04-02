@@ -30,7 +30,7 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
 end
 
 zoneObject.onInstanceLoadFailed = function()
-    return xi.zone.RULUDE_GARDENS
+    return invaderXim.zone.RULUDE_GARDENS
 end
 
 return zoneObject

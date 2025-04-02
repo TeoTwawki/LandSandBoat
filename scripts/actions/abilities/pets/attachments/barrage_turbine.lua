@@ -9,11 +9,11 @@ attachmentObject.onEquip = function(pet)
         local master = automaton:getMaster()
 
         if
-            not automaton:hasRecast(xi.recast.ABILITY, xi.automaton.abilities.BARRAGE_TURBINE) and
+            not automaton:hasRecast(invaderXim.recast.ABILITY, invaderXim.automaton.abilities.BARRAGE_TURBINE) and
             master and
-            master:countEffect(xi.effect.WIND_MANEUVER) > 0
+            master:countEffect(invaderXim.effect.WIND_MANEUVER) > 0
         then
-            automaton:useMobAbility(xi.automaton.abilities.BARRAGE_TURBINE, target)
+            automaton:useMobAbility(invaderXim.automaton.abilities.BARRAGE_TURBINE, target)
         end
     end)
 end

@@ -21,10 +21,10 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.ARCANA
-    params.attackType = xi.damageType.ELEMENTAL
-    params.damageType = xi.damageType.THUNDER
-    params.attribute = xi.mod.INT
+    params.ecosystem = invaderXim.ecosystem.ARCANA
+    params.attackType = invaderXim.damageType.ELEMENTAL
+    params.damageType = invaderXim.damageType.THUNDER
+    params.attribute = invaderXim.mod.INT
     params.multiplier = 1.5625
     params.tMultiplier = 1.0
     params.duppercap = 61
@@ -36,13 +36,13 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.mnd_wsc = 0.1
     params.chr_wsc = 0.0
 
-    params.addedEffect = xi.effect.STUN
+    params.addedEffect = invaderXim.effect.STUN
     local power = 1
     local tick = 0
     local duration = 5
 
-    local damage = xi.spells.blue.useMagicalSpell(caster, target, spell, params)
-    xi.spells.blue.useMagicalSpellAddedEffect(caster, target, spell, params, power, tick, duration)
+    local damage = invaderXim.spells.blue.useMagicalSpell(caster, target, spell, params)
+    invaderXim.spells.blue.useMagicalSpellAddedEffect(caster, target, spell, params, power, tick, duration)
 
     return damage
 end

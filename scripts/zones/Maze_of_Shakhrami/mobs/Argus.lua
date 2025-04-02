@@ -2,7 +2,7 @@
 -- Area: Maze of Shakhrami
 --   NM: Argus
 -----------------------------------
-local ID = zones[xi.zone.MAZE_OF_SHAKHRAMI]
+local ID = zones[invaderXim.zone.MAZE_OF_SHAKHRAMI]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

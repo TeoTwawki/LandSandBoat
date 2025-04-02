@@ -2,12 +2,12 @@
 -- Those Who Lurk in Shadows (III)
 -- Qu'Bia Arena mission battlefield
 -----------------------------------
-local qubiaID = zones[xi.zone.QUBIA_ARENA]
+local qubiaID = zones[invaderXim.zone.QUBIA_ARENA]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId                = xi.zone.QUBIA_ARENA,
-    battlefieldId         = xi.battlefield.id.THOSE_WHO_LURK_IN_SHADOWS,
+    zoneId                = invaderXim.zone.QUBIA_ARENA,
+    battlefieldId         = invaderXim.battlefield.id.THOSE_WHO_LURK_IN_SHADOWS,
     canLoseExp            = false,
     isMission             = true,
     allowTrusts           = true,
@@ -17,28 +17,28 @@ local content = BattlefieldMission:new({
     index                 = 20,
     entryNpc              = 'BC_Entrance',
     exitNpc               = 'Burning_Circle',
-    missionArea           = xi.mission.log_id.ACP,
-    mission               = xi.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_III,
-    missionStatusArea     = xi.mission.log_id.ACP,
+    missionArea           = invaderXim.mission.log_id.ACP,
+    mission               = invaderXim.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_III,
+    missionStatusArea     = invaderXim.mission.log_id.ACP,
     requiredMissionStatus = 0,
-    requiredKeyItems      = { xi.ki.MARK_OF_SEED, message = qubiaID.text.LOST_KEYITEM },
+    requiredKeyItems      = { invaderXim.ki.MARK_OF_SEED, message = qubiaID.text.LOST_KEYITEM },
 
     experimental = true,
 })
 
 -- TODO: This should be moved to mission script once converted to Interaction Framework
 function content:onEventFinishWin(player, csid, option, npc)
-    if player:getCurrentMission(xi.mission.log_id.ACP) == xi.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_III then
-        player:completeMission(xi.mission.log_id.ACP, xi.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_III)
-        player:addMission(xi.mission.log_id.ACP, xi.mission.id.acp.REMEMBER_ME_IN_YOUR_DREAMS)
+    if player:getCurrentMission(invaderXim.mission.log_id.ACP) == invaderXim.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_III then
+        player:completeMission(invaderXim.mission.log_id.ACP, invaderXim.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_III)
+        player:addMission(invaderXim.mission.log_id.ACP, invaderXim.mission.id.acp.REMEMBER_ME_IN_YOUR_DREAMS)
     end
 
     if
-        not player:hasKeyItem(xi.ki.IVORY_KEY) and
-        player:getCurrentMission(xi.mission.log_id.ACP) >= xi.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_III
+        not player:hasKeyItem(invaderXim.ki.IVORY_KEY) and
+        player:getCurrentMission(invaderXim.mission.log_id.ACP) >= invaderXim.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_III
     then
         player:setCharVar('LastIvoryKey', getMidnight())
-        npcUtil.giveKeyItem(player, xi.ki.IVORY_KEY)
+        npcUtil.giveKeyItem(player, invaderXim.ki.IVORY_KEY)
     end
 end
 
@@ -70,7 +70,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

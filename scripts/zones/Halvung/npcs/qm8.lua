@@ -3,18 +3,18 @@
 --  NPC: ??? (Bracelet of verve)
 -- Trade Moblin Oil
 -----------------------------------
-local ID = zones[xi.zone.HALVUNG]
+local ID = zones[invaderXim.zone.HALVUNG]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHas(trade, xi.item.MOBLIN_OIL) and
-        not player:hasKeyItem(xi.ki.BRACELET_OF_VERVE)
+        npcUtil.tradeHas(trade, invaderXim.item.MOBLIN_OIL) and
+        not player:hasKeyItem(invaderXim.ki.BRACELET_OF_VERVE)
     then
         player:confirmTrade()
-        npcUtil.giveKeyItem(player, xi.ki.BRACELET_OF_VERVE)
+        npcUtil.giveKeyItem(player, invaderXim.ki.BRACELET_OF_VERVE)
     else
         player:messageSpecial(ID.text.DULL_PIECE)
     end

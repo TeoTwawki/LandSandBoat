@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.DYNAMIS_WINDURST] =
+zones[invaderXim.zone.DYNAMIS_WINDURST] =
 {
     text =
     {
@@ -28,48 +28,48 @@ zones[xi.zone.DYNAMIS_WINDURST] =
     {
         TIME_EXTENSION =
         {
-            { minutes = 10, ki = xi.ki.CRIMSON_GRANULES_OF_TIME,   mob = 17543258 },
-            { minutes = 10, ki = xi.ki.AZURE_GRANULES_OF_TIME,     mob = 17543342 },
-            { minutes = 10, ki = xi.ki.AMBER_GRANULES_OF_TIME,     mob = 17543372 },
-            { minutes = 15, ki = xi.ki.ALABASTER_GRANULES_OF_TIME, mob = 17543446 },
-            { minutes = 15, ki = xi.ki.OBSIDIAN_GRANULES_OF_TIME,  mob = 17543259 },
+            { minutes = 10, ki = invaderXim.ki.CRIMSON_GRANULES_OF_TIME,   mob = 17543258 },
+            { minutes = 10, ki = invaderXim.ki.AZURE_GRANULES_OF_TIME,     mob = 17543342 },
+            { minutes = 10, ki = invaderXim.ki.AMBER_GRANULES_OF_TIME,     mob = 17543372 },
+            { minutes = 15, ki = invaderXim.ki.ALABASTER_GRANULES_OF_TIME, mob = 17543446 },
+            { minutes = 15, ki = invaderXim.ki.OBSIDIAN_GRANULES_OF_TIME,  mob = 17543259 },
         },
 
         REFILL_STATUE =
         {
             {
-                { mob = 17543268, eye = xi.dynamis.eye.RED  }, -- Avatar_Icon
-                { mob = 17543269, eye = xi.dynamis.eye.BLUE },
+                { mob = 17543268, eye = invaderXim.dynamis.eye.RED  }, -- Avatar_Icon
+                { mob = 17543269, eye = invaderXim.dynamis.eye.BLUE },
             },
             {
-                { mob = 17543305, eye = xi.dynamis.eye.RED   }, -- Avatar_Icon
-                { mob = 17543306, eye = xi.dynamis.eye.GREEN },
+                { mob = 17543305, eye = invaderXim.dynamis.eye.RED   }, -- Avatar_Icon
+                { mob = 17543306, eye = invaderXim.dynamis.eye.GREEN },
             },
             {
-                { mob = 17543353, eye = xi.dynamis.eye.RED  }, -- Avatar_Icon
-                { mob = 17543354, eye = xi.dynamis.eye.BLUE },
+                { mob = 17543353, eye = invaderXim.dynamis.eye.RED  }, -- Avatar_Icon
+                { mob = 17543354, eye = invaderXim.dynamis.eye.BLUE },
             },
             {
-                { mob = 17543362, eye = xi.dynamis.eye.RED   }, -- Avatar_Icon
-                { mob = 17543363, eye = xi.dynamis.eye.GREEN },
+                { mob = 17543362, eye = invaderXim.dynamis.eye.RED   }, -- Avatar_Icon
+                { mob = 17543363, eye = invaderXim.dynamis.eye.GREEN },
             },
             {
-                { mob = 17543392, eye = xi.dynamis.eye.RED   }, -- Avatar_Icon
-                { mob = 17543393, eye = xi.dynamis.eye.GREEN },
+                { mob = 17543392, eye = invaderXim.dynamis.eye.RED   }, -- Avatar_Icon
+                { mob = 17543393, eye = invaderXim.dynamis.eye.GREEN },
             },
             {
-                { mob = 17543409, eye = xi.dynamis.eye.RED  }, -- Avatar_Icon
-                { mob = 17543410, eye = xi.dynamis.eye.BLUE },
+                { mob = 17543409, eye = invaderXim.dynamis.eye.RED  }, -- Avatar_Icon
+                { mob = 17543410, eye = invaderXim.dynamis.eye.BLUE },
             },
             {
-                { mob = 17543419, eye = xi.dynamis.eye.RED   }, -- Avatar_Icon
-                { mob = 17543420, eye = xi.dynamis.eye.BLUE  },
-                { mob = 17543421, eye = xi.dynamis.eye.GREEN },
+                { mob = 17543419, eye = invaderXim.dynamis.eye.RED   }, -- Avatar_Icon
+                { mob = 17543420, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 17543421, eye = invaderXim.dynamis.eye.GREEN },
             },
             {
-                { mob = 17543461, eye = xi.dynamis.eye.RED   }, -- Avatar_Icon
-                { mob = 17543462, eye = xi.dynamis.eye.BLUE  },
-                { mob = 17543463, eye = xi.dynamis.eye.GREEN },
+                { mob = 17543461, eye = invaderXim.dynamis.eye.RED   }, -- Avatar_Icon
+                { mob = 17543462, eye = invaderXim.dynamis.eye.BLUE  },
+                { mob = 17543463, eye = invaderXim.dynamis.eye.GREEN },
             },
         },
     },
@@ -95,4 +95,4 @@ zones[xi.zone.DYNAMIS_WINDURST] =
     },
 }
 
-return zones[xi.zone.DYNAMIS_WINDURST]
+return zones[invaderXim.zone.DYNAMIS_WINDURST]

@@ -30,18 +30,18 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.afterZoneIn = function(player)
-    xi.chocoboGame.handleMessage(player)
+    invaderXim.chocoboGame.handleMessage(player)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
     local triggerAreaID = triggerArea:getTriggerAreaID()
 
-    if triggerAreaID == 1 and player:hasStatusEffect(xi.effect.MOUNTED) then
-        xi.chocoboGame.onTriggerAreaEnter(player)
+    if triggerAreaID == 1 and player:hasStatusEffect(invaderXim.effect.MOUNTED) then
+        invaderXim.chocoboGame.onTriggerAreaEnter(player)
     end
 end
 
@@ -52,7 +52,7 @@ zoneObject.onEventUpdate = function(player, csid, option, npc)
 end
 
 zoneObject.onEventFinish = function(player, csid, option, npc)
-    xi.chocoboGame.onEventFinish(player, csid)
+    invaderXim.chocoboGame.onEventFinish(player, csid)
 end
 
 return zoneObject

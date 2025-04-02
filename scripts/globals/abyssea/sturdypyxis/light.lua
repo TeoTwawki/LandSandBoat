@@ -4,11 +4,11 @@
 require('scripts/globals/abyssea')
 -----------------------------------
 xi = xi or {}
-xi.pyxis = xi.pyxis or {}
+invaderXim.pyxis = invaderXim.pyxis or {}
 
-xi.pyxis.light = {}
+invaderXim.pyxis.light = {}
 
-xi.pyxis.light.giveLight = function(npc, player)
+invaderXim.pyxis.light.giveLight = function(npc, player)
     local alliance = player:getAlliance()
     local light  = npc:getLocalVar('LIGHT')
     local lightValue = npc:getLocalVar('LIGHT_VALUE')
@@ -18,7 +18,7 @@ xi.pyxis.light.giveLight = function(npc, player)
             member:getZoneID() == player:getZoneID() and
             member:isPC()
         then
-            xi.abyssea.addPlayerLights(member, light, lightValue)
+            invaderXim.abyssea.addPlayerLights(member, light, lightValue)
         end
     end
 end

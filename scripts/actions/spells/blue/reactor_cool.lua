@@ -21,22 +21,22 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    local duration = xi.spells.blue.calculateDurationWithDiffusion(caster, 120)
+    local duration = invaderXim.spells.blue.calculateDurationWithDiffusion(caster, 120)
 
     -- Reactor Cool Will Overwrite Ice Spikes and Def Boost regardless of Power
     if
-        target:hasStatusEffect(xi.effect.DEFENSE_BOOST) or
-        target:hasStatusEffect(xi.effect.ICE_SPIKES)
+        target:hasStatusEffect(invaderXim.effect.DEFENSE_BOOST) or
+        target:hasStatusEffect(invaderXim.effect.ICE_SPIKES)
     then
-        target:delStatusEffectSilent(xi.effect.DEFENSE_BOOST)
-        target:delStatusEffectSilent(xi.effect.ICE_SPIKES)
+        target:delStatusEffectSilent(invaderXim.effect.DEFENSE_BOOST)
+        target:delStatusEffectSilent(invaderXim.effect.ICE_SPIKES)
     end
 
-    target:addStatusEffect(xi.effect.DEFENSE_BOOST, 12, 0, duration)
-    target:addStatusEffect(xi.effect.ICE_SPIKES, 5, 0, duration)
-    spell:setMsg(xi.msg.basic.MAGIC_GAIN_EFFECT)
+    target:addStatusEffect(invaderXim.effect.DEFENSE_BOOST, 12, 0, duration)
+    target:addStatusEffect(invaderXim.effect.ICE_SPIKES, 5, 0, duration)
+    spell:setMsg(invaderXim.msg.basic.MAGIC_GAIN_EFFECT)
 
-    return xi.effect.DEFENSE_BOOST
+    return invaderXim.effect.DEFENSE_BOOST
 end
 
 return spellObject

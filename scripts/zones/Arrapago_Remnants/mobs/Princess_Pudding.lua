@@ -2,7 +2,7 @@
 -- Area: Arrapago Remnants
 --  Mob: Princess Pudding
 -----------------------------------
-local ID = zones[xi.zone.ARRAPAGO_REMNANTS]
+local ID = zones[invaderXim.zone.ARRAPAGO_REMNANTS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -16,7 +16,7 @@ entity.onMobSpawn = function(mob)
     local slot = GetNPCByID(ID.npc[2][2].SLOT, instance)
 
     if slot then
-        slot:setStatus(xi.status.DISAPPEAR)
+        slot:setStatus(invaderXim.status.DISAPPEAR)
     end
 end
 

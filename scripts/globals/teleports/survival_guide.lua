@@ -7,7 +7,7 @@ require('scripts/globals/utils')
 local survival = require('scripts/globals/teleports/survival_guide_map')
 -----------------------------------
 xi = xi or {}
-xi.survivalGuide = xi.survivalGuide or {}
+invaderXim.survivalGuide = invaderXim.survivalGuide or {}
 -----------------------------------
 
 local optionMap =
@@ -25,11 +25,11 @@ local optionMap =
 -- Local functions
 -----------------------------------
 local function checkForRegisteredSurvivalGuide(player, guide)
-    local hasRegisteredGuide = player:hasTeleport(xi.teleport.type.SURVIVAL, guide.groupIndex - 1, guide.group - 1)
+    local hasRegisteredGuide = player:hasTeleport(invaderXim.teleport.type.SURVIVAL, guide.groupIndex - 1, guide.group - 1)
 
     if not hasRegisteredGuide then
         player:messageSpecial(zones[guide.zoneId].text.COMMON_SENSE_SURVIVAL)
-        player:addTeleport(xi.teleport.type.SURVIVAL, guide.groupIndex - 1, guide.group - 1)
+        player:addTeleport(invaderXim.teleport.type.SURVIVAL, guide.groupIndex - 1, guide.group - 1)
 
         return false
     end
@@ -40,11 +40,11 @@ end
 -----------------------------------
 -- Public functions
 -----------------------------------
-xi.survivalGuide.onTrigger = function(player)
+invaderXim.survivalGuide.onTrigger = function(player)
     local currentZoneId = player:getZoneID()
     local tableIndex    = survival.zoneIdToGuideIdMap[currentZoneId]
     local guide         = survival.survivalGuides[tableIndex]
-    local expansions    = 3 + (4 * xi.settings.main.ENABLE_COP) + (8 * xi.settings.main.ENABLE_TOAU) + (16 * xi.settings.main.ENABLE_WOTG) + (2048 * xi.settings.main.ENABLE_SOA)
+    local expansions    = 3 + (4 * invaderXim.settings.main.ENABLE_COP) + (8 * invaderXim.settings.main.ENABLE_TOAU) + (16 * invaderXim.settings.main.ENABLE_WOTG) + (2048 * invaderXim.settings.main.ENABLE_SOA)
 
     if guide then
         -- If this survival guide hasn't been registered yet (saved to database) do that now.
@@ -56,18 +56,18 @@ xi.survivalGuide.onTrigger = function(player)
             -- Get the teleport menu option.
             -- Menu options can be organized by Region or Content.
             -- Default (0) is region.
-            local teleportMenu = player:getTeleportMenu(xi.teleport.type.SURVIVAL)
+            local teleportMenu = player:getTeleportMenu(invaderXim.teleport.type.SURVIVAL)
 
             if teleportMenu[10] == 1 then
                 param = bit.bor(param, 0x0800)
             end
 
-            if player:hasKeyItem(xi.ki.RHAPSODY_IN_WHITE) then
+            if player:hasKeyItem(invaderXim.ki.RHAPSODY_IN_WHITE) then
                 -- "Rhapsody in White" key item reduces teleport fee by 80%
                 param = bit.bor(param, 0x2000)
             end
 
-            local g1, g2, g3, g4 = unpack(player:getTeleportTable(xi.teleport.type.SURVIVAL))
+            local g1, g2, g3, g4 = unpack(player:getTeleportTable(invaderXim.teleport.type.SURVIVAL))
 
             -- param 1 = Does nothing.
             -- param 2 = current area, player amount of tabs, fee reducer(s) and menu layout (region/content).
@@ -84,14 +84,14 @@ xi.survivalGuide.onTrigger = function(player)
     end
 end
 
-xi.survivalGuide.onEventUpdate = function(player, csid, option, npc)
+invaderXim.survivalGuide.onEventUpdate = function(player, csid, option, npc)
     local choice = bit.band(option, 0xFF)
 
     if
         choice >= optionMap.SET_MENU_LAYOUT and
         choice <= optionMap.TELEPORT_MENU
     then
-        local favorites = player:getTeleportMenu(xi.teleport.type.SURVIVAL)
+        local favorites = player:getTeleportMenu(invaderXim.teleport.type.SURVIVAL)
         local index     = bit.rshift(bit.band(option, 0xFF0000), 16)
 
         if choice ~= optionMap.TELEPORT_MENU then
@@ -118,7 +118,7 @@ xi.survivalGuide.onEventUpdate = function(player, csid, option, npc)
                 favorites[10] = (bit.rshift(option, 16))
             end
 
-            player:setTeleportMenu(xi.teleport.type.SURVIVAL, favorites)
+            player:setTeleportMenu(invaderXim.teleport.type.SURVIVAL, favorites)
         end
 
         for x = 1, 3 do
@@ -132,7 +132,7 @@ xi.survivalGuide.onEventUpdate = function(player, csid, option, npc)
     end
 end
 
-xi.survivalGuide.onEventFinish = function(player, eventId, option, npc)
+invaderXim.survivalGuide.onEventFinish = function(player, eventId, option, npc)
     if
         eventId == 8500 and
         bit.band(option, 0xFF) == optionMap.TELEPORT
@@ -146,7 +146,7 @@ xi.survivalGuide.onEventFinish = function(player, eventId, option, npc)
             if
                 guide and
                 guide.zoneId ~= currentZoneId and
-                player:hasTeleport(xi.teleport.type.SURVIVAL, guide.groupIndex - 1, guide.group - 1) -- Destination check.
+                player:hasTeleport(invaderXim.teleport.type.SURVIVAL, guide.groupIndex - 1, guide.group - 1) -- Destination check.
             then
                 local teleportCostGil  = 1000
                 local teleportCostTabs = 50
@@ -155,7 +155,7 @@ xi.survivalGuide.onEventFinish = function(player, eventId, option, npc)
                 -- If the player has the "Rhapsody in White" KI, the cost is 10% of original gil or 20% of original tabs.
                 -- GIL: 1000 -> 100
                 -- TABS: 50 -> 10
-                if player:hasKeyItem(xi.ki.RHAPSODY_IN_WHITE) then
+                if player:hasKeyItem(invaderXim.ki.RHAPSODY_IN_WHITE) then
                     teleportCostGil  = teleportCostGil / 10
                     teleportCostTabs = teleportCostTabs / 5
                 end

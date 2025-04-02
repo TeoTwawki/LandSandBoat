@@ -16,7 +16,7 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local damage = math.max(0, target:getHP() - (target:getMaxHP() * 0.10))
 
-    target:takeDamage(damage, mob, xi.attackType.PHYSICAL, xi.damageType.NONE)
+    target:takeDamage(damage, mob, invaderXim.attackType.PHYSICAL, invaderXim.damageType.NONE)
     return damage
 end
 

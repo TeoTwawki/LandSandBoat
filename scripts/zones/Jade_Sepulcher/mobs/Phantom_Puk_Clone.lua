@@ -8,9 +8,9 @@ mixins = { require('scripts/mixins/families/puk') }
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:addStatusEffect(xi.effect.BLINK, 3, 0, 180)
-    mob:setMod(xi.mod.DMG, 10000)
-    mob:setMod(xi.mod.HP, 0)
+    mob:addStatusEffect(invaderXim.effect.BLINK, 3, 0, 180)
+    mob:setMod(invaderXim.mod.DMG, 10000)
+    mob:setMod(invaderXim.mod.HP, 0)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

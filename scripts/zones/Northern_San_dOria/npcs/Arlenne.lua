@@ -2,7 +2,7 @@
 -- Area: Northern San d'Oria
 --  NPC: Arlenne
 -----------------------------------
-local ID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local ID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -10,26 +10,26 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     local stock =
     {
-        xi.item.ASH_CLUB,           74, 3,
-        xi.item.MAPLE_WAND,         54, 3,
-        xi.item.WILLOW_WAND,       384, 3,
-        xi.item.YEW_WAND,         1628, 1,
-        xi.item.ASH_STAFF,          66, 3,
-        xi.item.HOLLY_STAFF,       660, 3,
-        xi.item.ELM_STAFF,        3750, 1,
-        xi.item.ASH_POLE,          436, 3,
-        xi.item.HOLLY_POLE,       5279, 2,
-        xi.item.ELM_POLE,        18969, 1,
-        xi.item.CESTI,             149, 3,
-        xi.item.BRASS_KNUCKLES,    936, 3,
-        xi.item.BRASS_BAGHNAKHS,  1757, 3,
-        xi.item.BRONZE_ZAGHNAL,    357, 3,
-        xi.item.BRASS_ZAGHNAL,    2938, 3,
-        xi.item.ZAGHNAL,         13041, 1,
+        invaderXim.item.ASH_CLUB,           74, 3,
+        invaderXim.item.MAPLE_WAND,         54, 3,
+        invaderXim.item.WILLOW_WAND,       384, 3,
+        invaderXim.item.YEW_WAND,         1628, 1,
+        invaderXim.item.ASH_STAFF,          66, 3,
+        invaderXim.item.HOLLY_STAFF,       660, 3,
+        invaderXim.item.ELM_STAFF,        3750, 1,
+        invaderXim.item.ASH_POLE,          436, 3,
+        invaderXim.item.HOLLY_POLE,       5279, 2,
+        invaderXim.item.ELM_POLE,        18969, 1,
+        invaderXim.item.CESTI,             149, 3,
+        invaderXim.item.BRASS_KNUCKLES,    936, 3,
+        invaderXim.item.BRASS_BAGHNAKHS,  1757, 3,
+        invaderXim.item.BRONZE_ZAGHNAL,    357, 3,
+        invaderXim.item.BRASS_ZAGHNAL,    2938, 3,
+        invaderXim.item.ZAGHNAL,         13041, 1,
     }
 
     player:showText(npc, ID.text.ARLENNE_SHOP_DIALOG)
-    xi.shop.nation(player, stock, xi.nation.SANDORIA)
+    invaderXim.shop.nation(player, stock, invaderXim.nation.SANDORIA)
 end
 
 return entity

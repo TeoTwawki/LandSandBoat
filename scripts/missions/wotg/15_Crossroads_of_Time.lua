@@ -9,11 +9,11 @@
 require('scripts/missions/wotg/helpers')
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.CROSSROADS_OF_TIME)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.CROSSROADS_OF_TIME)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.SANDSWEPT_MEMORIES },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.SANDSWEPT_MEMORIES },
 }
 
 mission.sections =
@@ -21,13 +21,13 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
-                xi.wotg.helpers.meetsMission15Reqs(player)
+                invaderXim.wotg.helpers.meetsMission15Reqs(player)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             onZoneIn = function(player, prevZone)
-                if prevZone == xi.zone.EAST_RONFAURE_S then
+                if prevZone == invaderXim.zone.EAST_RONFAURE_S then
                     return 145
                 end
             end,

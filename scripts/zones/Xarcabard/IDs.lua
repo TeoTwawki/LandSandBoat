@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.XARCABARD] =
+zones[invaderXim.zone.XARCABARD] =
 {
     text =
     {
@@ -63,7 +63,7 @@ zones[xi.zone.XARCABARD] =
         KOENIGSTIGER     = GetFirstID('Koenigstiger'),
         VOIDWALKER       =
         {
-            [xi.keyItem.CLEAR_ABYSSITE] =
+            [invaderXim.keyItem.CLEAR_ABYSSITE] =
             {
                 17236241, -- Gorehound
                 17236240, -- Gorehound
@@ -74,16 +74,16 @@ zones[xi.zone.XARCABARD] =
                 17236235, -- Gjenganger
                 17236234, -- Gjenganger
             },
-            [xi.keyItem.COLORFUL_ABYSSITE] =
+            [invaderXim.keyItem.COLORFUL_ABYSSITE] =
             {
                 17236233, -- Erebus
                 17236232  -- Feuerunke
             },
-            [xi.keyItem.PURPLE_ABYSSITE] =
+            [invaderXim.keyItem.PURPLE_ABYSSITE] =
             {
                 17236231  -- Lord Ruthven
             },
-            [xi.keyItem.BLACK_ABYSSITE] =
+            [invaderXim.keyItem.BLACK_ABYSSITE] =
             {
                 17236230  -- Yilbegan
             }
@@ -101,4 +101,4 @@ zones[xi.zone.XARCABARD] =
     },
 }
 
-return zones[xi.zone.XARCABARD]
+return zones[invaderXim.zone.XARCABARD]

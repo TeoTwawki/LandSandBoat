@@ -5,14 +5,14 @@
 -- !addmission 13 46
 -- Ru'Lude Homepoint 1 : !pos -6 3 0.001 243
 -----------------------------------
-local ruludeID = zones[xi.zone.RULUDE_GARDENS]
+local ruludeID = zones[invaderXim.zone.RULUDE_GARDENS]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.CRASHING_WAVES)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.CRASHING_WAVES)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.CALL_TO_SERVE },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.CALL_TO_SERVE },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             -- Receiving this Alter Ego is required for completing the mission, so we can handle it here.
             ['Mystic_Retriever'] =
@@ -30,7 +30,7 @@ mission.sections =
                 onTrigger = function(player, npc)
                     if
                         mission:getVar(player, 'Retrieve') == 1 and
-                        npcUtil.giveItem(player, xi.item.CIPHER_OF_TENZENS_ALTER_EGO_II)
+                        npcUtil.giveItem(player, invaderXim.item.CIPHER_OF_TENZENS_ALTER_EGO_II)
                     then
                         mission:complete(player)
                     end
@@ -41,8 +41,8 @@ mission.sections =
             {
                 [1] = function(player, triggerArea)
                     if
-                        xi.rhapsodies.charactersAvailable(player) and
-                        player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.A_VESSEL_WITHOUT_A_CAPTAIN) and
+                        invaderXim.rhapsodies.charactersAvailable(player) and
+                        player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.A_VESSEL_WITHOUT_A_CAPTAIN) and
                         mission:getVar(player, 'Retrieve') == 0
                     then
                         -- Note: There are 4 parameters that impact the message shown in this state which all appear to revolve
@@ -66,8 +66,8 @@ mission.sections =
                         -- Additional Note: These seem to be progressive bits.  Each previous value must be set for the next parameter
                         -- to cause an impact.
 
-                        local hasProgressed = player:getCurrentMission(xi.mission.log_id.COP) >= xi.mission.id.cop.DARKNESS_NAMED and 1 or 0
-                        local isCurrent     = player:getCurrentMission(xi.mission.log_id.COP) <= xi.mission.id.cop.DARKNESS_NAMED and 0 or 1
+                        local hasProgressed = player:getCurrentMission(invaderXim.mission.log_id.COP) >= invaderXim.mission.id.cop.DARKNESS_NAMED and 1 or 0
+                        local isCurrent     = player:getCurrentMission(invaderXim.mission.log_id.COP) <= invaderXim.mission.id.cop.DARKNESS_NAMED and 0 or 1
 
                         return mission:progressEvent(10244, hasProgressed, hasProgressed, isCurrent, 0)
                     elseif mission:getVar(player, 'Status') == 0 then
@@ -80,10 +80,10 @@ mission.sections =
             {
                 [10244] = function(player, csid, option, npc)
                     if player:getFreeSlotsCount() == 0 then
-                        player:messageSpecial(ruludeID.text.MYSTIC_RETRIEVER, xi.item.CIPHER_OF_TENZENS_ALTER_EGO_II)
+                        player:messageSpecial(ruludeID.text.MYSTIC_RETRIEVER, invaderXim.item.CIPHER_OF_TENZENS_ALTER_EGO_II)
                         mission:setVar(player, 'Retrieve', 1)
                     else
-                        npcUtil.giveItem(player, xi.item.CIPHER_OF_TENZENS_ALTER_EGO_II)
+                        npcUtil.giveItem(player, invaderXim.item.CIPHER_OF_TENZENS_ALTER_EGO_II)
                         mission:complete(player)
                     end
                 end,

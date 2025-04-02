@@ -6,19 +6,19 @@
 -- !additem 2127
 -- !pos 600 -0.5 -600 38
 -----------------------------------
-local ID = zones[xi.zone.APOLLYON]
+local ID = zones[invaderXim.zone.APOLLYON]
 -----------------------------------
 
 local content = Limbus:new({
-    zoneId           = xi.zone.APOLLYON,
-    battlefieldId    = xi.battlefield.id.CS_APOLLYON,
+    zoneId           = invaderXim.zone.APOLLYON,
+    battlefieldId    = invaderXim.battlefield.id.CS_APOLLYON,
     maxPlayers       = 18,
     timeLimit        = utils.minutes(20),
     index            = 5,
     area             = 6,
     entryNpcs        = { '_12i', '_127' },
-    requiredKeyItems = { xi.ki.COSMO_CLEANSE, { xi.ki.RED_CARD, xi.ki.BLACK_CARD }, message = ID.text.YOU_INSERT_THE_CARD_POLISHED },
-    requiredItems    = { xi.item.METAL_CHIP },
+    requiredKeyItems = { invaderXim.ki.COSMO_CLEANSE, { invaderXim.ki.RED_CARD, invaderXim.ki.BLACK_CARD }, message = ID.text.YOU_INSERT_THE_CARD_POLISHED },
+    requiredItems    = { invaderXim.item.METAL_CHIP },
     name             = 'CS_APOLLYON',
     lootCrateId      = ID.npc.CS_LOOT_CRATE,
     timeExtension    = 5,
@@ -40,7 +40,7 @@ function content:onBattlefieldTick(battlefield, tick)
     Battlefield.onBattlefieldTick(self, battlefield, tick)
 
     -- Do nothing unless the battlefield has been locked due to engaged
-    if battlefield:getStatus() ~= xi.battlefield.status.LOCKED then
+    if battlefield:getStatus() ~= invaderXim.battlefield.status.LOCKED then
         return
     end
 
@@ -104,7 +104,7 @@ function content.handleBossCombatTick(boss, supportOffsets, otherSupportOffsets)
     local bossID  = boss:getID()
 
     for _, offset in ipairs(offsets) do
-        if GetMobByID(bossID + offset):getStatus() ~= xi.status.DISAPPEAR then
+        if GetMobByID(bossID + offset):getStatus() ~= invaderXim.status.DISAPPEAR then
             return
         end
     end
@@ -146,7 +146,7 @@ local setupSharedHate = function(bossID, battlefield, mobs)
 
     for _, mob in ipairs(mobs) do
         if mob:getID() ~= bossID then
-            mob:setMobMod(xi.mobMod.SHARE_TARGET, targID)
+            mob:setMobMod(invaderXim.mobMod.SHARE_TARGET, targID)
         end
     end
 end
@@ -172,11 +172,11 @@ content.groups =
 
         mods =
         {
-            [xi.mod.SLASH_SDT ] = 2000,
-            [xi.mod.UDMGMAGIC ] = 2000,
-            [xi.mod.IMPACT_SDT] = 100,
-            [xi.mod.HTH_SDT   ] = 100,
-            [xi.mod.PIERCE_SDT] = 100,
+            [invaderXim.mod.SLASH_SDT ] = 2000,
+            [invaderXim.mod.UDMGMAGIC ] = 2000,
+            [invaderXim.mod.IMPACT_SDT] = 100,
+            [invaderXim.mod.HTH_SDT   ] = 100,
+            [invaderXim.mod.PIERCE_SDT] = 100,
         },
 
         isParty    = true,
@@ -203,11 +203,11 @@ content.groups =
 
         mods = -- Supposedly weak to piercing and magic. Strong against Slash, Impact and H2h
         {
-            [xi.mod.PIERCE_SDT] = 2000,
-            [xi.mod.UDMGMAGIC ] = 2000,
-            [xi.mod.IMPACT_SDT] = -2000,
-            [xi.mod.HTH_SDT   ] = -2000,
-            [xi.mod.SLASH_SDT ] = -2000,
+            [invaderXim.mod.PIERCE_SDT] = 2000,
+            [invaderXim.mod.UDMGMAGIC ] = 2000,
+            [invaderXim.mod.IMPACT_SDT] = -2000,
+            [invaderXim.mod.HTH_SDT   ] = -2000,
+            [invaderXim.mod.SLASH_SDT ] = -2000,
         },
 
         isParty    = true,
@@ -236,9 +236,9 @@ content.groups =
 
         mods =
         {
-            [xi.mod.IMPACT_SDT] = 2000,
-            [xi.mod.HTH_SDT   ] = 2000,
-            [xi.mod.UDMGMAGIC ] = -2000,
+            [invaderXim.mod.IMPACT_SDT] = 2000,
+            [invaderXim.mod.HTH_SDT   ] = 2000,
+            [invaderXim.mod.UDMGMAGIC ] = -2000,
         },
 
         isParty    = true,
@@ -257,15 +257,15 @@ content.groups =
 
         mobMods =
         {
-            [xi.mobMod.SOUND_RANGE] = 10,
-            [xi.mobMod.DETECTION]   = bit.bor(xi.detects.SIGHT, xi.detects.HEARING),
+            [invaderXim.mobMod.SOUND_RANGE] = 10,
+            [invaderXim.mobMod.DETECTION]   = bit.bor(invaderXim.detects.SIGHT, invaderXim.detects.HEARING),
         },
 
         death = function(battlefield, mob, count)
             if count == 1 then
-                xi.limbus.spawnFrom(mob, ID.CS_APOLLYON.npc.TIME_CRATES[1])
+                invaderXim.limbus.spawnFrom(mob, ID.CS_APOLLYON.npc.TIME_CRATES[1])
             elseif count == 2 then
-                xi.limbus.spawnFrom(mob, ID.CS_APOLLYON.npc.TIME_CRATES[2])
+                invaderXim.limbus.spawnFrom(mob, ID.CS_APOLLYON.npc.TIME_CRATES[2])
             elseif count == 3 then
                 npcUtil.showCrate(GetNPCByID(ID.npc.CS_LOOT_CRATE))
             end
@@ -279,18 +279,18 @@ content.loot =
     {
         {
             quantity = 5,
-            { item = xi.item.ANCIENT_BEASTCOIN, weight = xi.loot.weight.NORMAL },
+            { item = invaderXim.item.ANCIENT_BEASTCOIN, weight = invaderXim.loot.weight.NORMAL },
         },
 
         {
             quantity = 2,
-            { item = xi.item.NONE,              weight = xi.loot.weight.NORMAL },
-            { item = xi.item.ANCIENT_BEASTCOIN, weight = xi.loot.weight.NORMAL },
+            { item = invaderXim.item.NONE,              weight = invaderXim.loot.weight.NORMAL },
+            { item = invaderXim.item.ANCIENT_BEASTCOIN, weight = invaderXim.loot.weight.NORMAL },
         },
 
         {
-            { item = xi.item.NONE,       weight = xi.loot.weight.VERY_HIGH },
-            { item = xi.item.METAL_CHIP, weight = xi.loot.weight.VERY_LOW  },
+            { item = invaderXim.item.NONE,       weight = invaderXim.loot.weight.VERY_HIGH },
+            { item = invaderXim.item.METAL_CHIP, weight = invaderXim.loot.weight.VERY_LOW  },
         },
     },
 }

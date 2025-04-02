@@ -7,11 +7,11 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return target:canLearnAbility(xi.jobAbility.ALLIES_ROLL)
+    return target:canLearnAbility(invaderXim.jobAbility.ALLIES_ROLL)
 end
 
 itemObject.onItemUse = function(target)
-    target:addLearnedAbility(xi.jobAbility.ALLIES_ROLL)
+    target:addLearnedAbility(invaderXim.jobAbility.ALLIES_ROLL)
 end
 
 return itemObject

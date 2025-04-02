@@ -8,8 +8,8 @@ require('scripts/quests/tutorial')
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.tutorial.onAuctionTrigger(player)
-    player:sendMenu(xi.menuType.AUCTION)
+    invaderXim.tutorial.onAuctionTrigger(player)
+    player:sendMenu(invaderXim.menuType.AUCTION)
 end
 
 return entity

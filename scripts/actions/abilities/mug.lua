@@ -12,7 +12,7 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability, action)
-    return xi.job_utils.thief.useMug(player, target, ability, action)
+    return invaderXim.job_utils.thief.useMug(player, target, ability, action)
 end
 
 return abilityObject

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.STUN
+-- invaderXim.effect.STUN
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

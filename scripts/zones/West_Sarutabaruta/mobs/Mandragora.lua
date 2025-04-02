@@ -3,7 +3,7 @@
 --  Mob: Mandragora
 -- Note: PH for Tom Tit Tat
 -----------------------------------
-local ID = zones[xi.zone.WEST_SARUTABARUTA]
+local ID = zones[invaderXim.zone.WEST_SARUTABARUTA]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -15,11 +15,11 @@ local tomTitTatPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 26, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 26, 1, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, tomTitTatPHTable, 10, math.random(3600, 7200)) -- 1 to 2 hours
+    invaderXim.mob.phOnDespawn(mob, tomTitTatPHTable, 10, math.random(3600, 7200)) -- 1 to 2 hours
 end
 
 return entity

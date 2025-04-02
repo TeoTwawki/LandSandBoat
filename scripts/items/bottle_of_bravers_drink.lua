@@ -17,13 +17,13 @@ itemObject.onItemUse = function(target)
 
     local effects =
     {
-        xi.effect.STR_BOOST_II,
-        xi.effect.DEX_BOOST_II,
-        xi.effect.VIT_BOOST_II,
-        xi.effect.AGI_BOOST_II,
-        xi.effect.INT_BOOST_II,
-        xi.effect.MND_BOOST_II,
-        xi.effect.CHR_BOOST_II
+        invaderXim.effect.STR_BOOST_II,
+        invaderXim.effect.DEX_BOOST_II,
+        invaderXim.effect.VIT_BOOST_II,
+        invaderXim.effect.AGI_BOOST_II,
+        invaderXim.effect.INT_BOOST_II,
+        invaderXim.effect.MND_BOOST_II,
+        invaderXim.effect.CHR_BOOST_II
     }
 
     for _, effect in ipairs(effects) do

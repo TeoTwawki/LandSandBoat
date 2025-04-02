@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if player:getPreviousZone() == xi.zone.RIVERNE_SITE_B01 then
+    if player:getPreviousZone() == invaderXim.zone.RIVERNE_SITE_B01 then
         player:startEvent(10) -- To Riv Site B
     else
         -- Instead of a strict requirement, allow the player to

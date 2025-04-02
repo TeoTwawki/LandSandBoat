@@ -3,7 +3,7 @@
 --  Mob: Great Ameretat
 -- Note: PH for Jaded Jody
 -----------------------------------
-local ID = zones[xi.zone.WAJAOM_WOODLANDS]
+local ID = zones[invaderXim.zone.WAJAOM_WOODLANDS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -18,7 +18,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, jodyPHTable, 10, 7200) -- 2 hours
+    invaderXim.mob.phOnDespawn(mob, jodyPHTable, 10, 7200) -- 2 hours
 end
 
 return entity

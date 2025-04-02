@@ -9,16 +9,16 @@
 -- qm1              : !pos -62.239 -7.9619 -137.1251
 -- _1l0 (Rock Slab) : !pos -99 -7 -91 57
 -----------------------------------
-local talaccaCoveID = zones[xi.zone.TALACCA_COVE]
+local talaccaCoveID = zones[invaderXim.zone.TALACCA_COVE]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.LUCK_OF_THE_DRAW)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.LUCK_OF_THE_DRAW)
 
 quest.reward =
 {
-    item    = xi.item.CORSAIR_DIE,
-    keyItem = xi.ki.JOB_GESTURE_CORSAIR,
-    title   = xi.title.SEAGULL_PHRATRIE_CREW_MEMBER,
+    item    = invaderXim.item.CORSAIR_DIE,
+    keyItem = invaderXim.ki.JOB_GESTURE_CORSAIR,
+    title   = invaderXim.title.SEAGULL_PHRATRIE_CREW_MEMBER,
 }
 
 quest.sections =
@@ -26,10 +26,10 @@ quest.sections =
     -- Section: Quest available
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and player:getMainLvl() >= xi.settings.main.ADVANCED_JOB_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and player:getMainLvl() >= invaderXim.settings.main.ADVANCED_JOB_LEVEL
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Ratihb'] =
             {
@@ -51,10 +51,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Mafwahb'] =
             {
@@ -77,7 +77,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.ARRAPAGO_REEF] =
+        [invaderXim.zone.ARRAPAGO_REEF] =
         {
             ['qm6'] =
             {
@@ -96,7 +96,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.TALACCA_COVE] =
+        [invaderXim.zone.TALACCA_COVE] =
         {
             ['qm1'] =
             {
@@ -120,13 +120,13 @@ quest.sections =
             {
                 [2] = function(player, csid, option, npc)
                     quest:setVar(player, 'Prog', 4)
-                    npcUtil.giveKeyItem(player, xi.ki.FORGOTTEN_HEXAGUN)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.FORGOTTEN_HEXAGUN)
                 end,
 
                 [3] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.FORGOTTEN_HEXAGUN)
-                        player:unlockJob(xi.job.COR)
+                        player:delKeyItem(invaderXim.ki.FORGOTTEN_HEXAGUN)
+                        player:unlockJob(invaderXim.job.COR)
                         player:messageSpecial(talaccaCoveID.text.YOU_CAN_NOW_BECOME_A_CORSAIR)
                     end
                 end,
@@ -141,12 +141,12 @@ quest.sections =
             -- but before finishing Equipped for all Occasions.
             -- This charvar is cleaned up on complete of 'Equipped for all Occasions' when quest:complete() is called.
 
-            return status == xi.questStatus.QUEST_COMPLETED and
-                xi.quest.getVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.EQUIPPED_FOR_ALL_OCCASIONS, 'Stage') == 0 and
-                not player:hasCompletedQuest(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.EQUIPPED_FOR_ALL_OCCASIONS)
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                invaderXim.quest.getVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.EQUIPPED_FOR_ALL_OCCASIONS, 'Stage') == 0 and
+                not player:hasCompletedQuest(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.EQUIPPED_FOR_ALL_OCCASIONS)
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Ratihb'] =
             {
@@ -158,7 +158,7 @@ quest.sections =
             onEventFinish =
             {
                 [552] = function(player, csid, option, npc)
-                    xi.quest.setVar(player, xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.EQUIPPED_FOR_ALL_OCCASIONS, 'Stage', 1)
+                    invaderXim.quest.setVar(player, invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.EQUIPPED_FOR_ALL_OCCASIONS, 'Stage', 1)
                 end,
             },
         },

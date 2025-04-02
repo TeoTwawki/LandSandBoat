@@ -15,9 +15,9 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.EVASION_BOOST, 25, 0, 60))
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.EVASION_BOOST, 25, 0, 60))
 
-    return xi.effect.EVASION_BOOST
+    return invaderXim.effect.EVASION_BOOST
 end
 
 return mobskillObject

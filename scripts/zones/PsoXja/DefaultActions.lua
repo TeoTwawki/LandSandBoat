@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.PSOXJA]
+local ID = zones[invaderXim.zone.PSOXJA]
 
 return {
     ['_09g']              = { messageSpecial = ID.text.DOOR_LOCKED },

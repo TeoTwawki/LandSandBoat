@@ -2,12 +2,12 @@
 -- Head Wind
 -- Boneyard Gully mission battlefield
 -----------------------------------
-local boneyardGullyID = zones[xi.zone.BONEYARD_GULLY]
+local boneyardGullyID = zones[invaderXim.zone.BONEYARD_GULLY]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId        = xi.zone.BONEYARD_GULLY,
-    battlefieldId = xi.battlefield.id.HEAD_WIND,
+    zoneId        = invaderXim.zone.BONEYARD_GULLY,
+    battlefieldId = invaderXim.battlefield.id.HEAD_WIND,
     canLoseExp    = false,
     isMission     = true,
     allowTrusts   = true,
@@ -18,14 +18,14 @@ local content = BattlefieldMission:new({
     entryNpc      = '_081',
     exitNpcs      = { '_082', '_084', '_086' },
 
-    missionArea           = xi.mission.log_id.COP,
-    mission               = xi.mission.id.cop.THREE_PATHS,
-    missionStatus         = xi.mission.status.COP.ULMIA,
-    missionStatusArea     = xi.mission.log_id.COP,
+    missionArea           = invaderXim.mission.log_id.COP,
+    mission               = invaderXim.mission.id.cop.THREE_PATHS,
+    missionStatus         = invaderXim.mission.status.COP.ULMIA,
+    missionStatusArea     = invaderXim.mission.log_id.COP,
     requiredMissionStatus = 7,
 
     grantXP = 1000,
-    title   = xi.title.DELTA_ENFORCER,
+    title   = invaderXim.title.DELTA_ENFORCER,
 })
 
 content.groups =
@@ -54,7 +54,7 @@ content.groups =
 
         superlinkGroup = 1,
         allDeath       = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 

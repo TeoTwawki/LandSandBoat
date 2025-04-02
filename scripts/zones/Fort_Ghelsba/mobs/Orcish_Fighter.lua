@@ -2,7 +2,7 @@
 -- Area: Fort Ghelsba
 --  Mob: Orcish Fighter
 -----------------------------------
-local ID = zones[xi.zone.FORT_GHELSBA]
+local ID = zones[invaderXim.zone.FORT_GHEIXIMA]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

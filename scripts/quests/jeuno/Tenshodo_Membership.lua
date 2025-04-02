@@ -7,34 +7,34 @@
 -- NOTE: Players can straight turn in Tenshodo Invite bypassing this quest. Quest never shows in log until completed.
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.TENSHODO_MEMBERSHIP)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.TENSHODO_MEMBERSHIP)
 
 quest.reward =
 {
-    item    = xi.item.TENSHODO_INVITE,
-    keyItem = xi.ki.TENSHODO_MEMBERS_CARD,
+    item    = invaderXim.item.TENSHODO_INVITE,
+    keyItem = invaderXim.ki.TENSHODO_MEMBERS_CARD,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.JEUNO) >= 3
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.JEUNO) >= 3
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Ghebi_Damomohe'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.TENSHODO_INVITE }) then
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.TENSHODO_INVITE }) then
                         return quest:progressEvent(108)
                     end
                 end,
 
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.keyItem.TENSHODO_APPLICATION_FORM) then
+                    if player:hasKeyItem(invaderXim.keyItem.TENSHODO_APPLICATION_FORM) then
                         return quest:progressEvent(107)
                     end
                 end,
@@ -50,25 +50,25 @@ quest.sections =
 
                 [107] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.keyItem.TENSHODO_APPLICATION_FORM)
+                        player:delKeyItem(invaderXim.keyItem.TENSHODO_APPLICATION_FORM)
                     end
                 end,
 
                 [108] = function(player, csid, option, npc)
                     if quest:complete(player) then
                         player:tradeComplete()
-                        player:delKeyItem(xi.keyItem.TENSHODO_APPLICATION_FORM)
+                        player:delKeyItem(invaderXim.keyItem.TENSHODO_APPLICATION_FORM)
                     end
                 end,
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Jabbar'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.TENSHODO_APPLICATION_FORM) then
+                    if player:hasKeyItem(invaderXim.ki.TENSHODO_APPLICATION_FORM) then
                         return quest:progressEvent(152)
                     elseif quest:getVar(player, 'Prog') == 1 then
                         return quest:progressEvent(151)
@@ -79,7 +79,7 @@ quest.sections =
             ['Silver_Owl'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.TENSHODO_APPLICATION_FORM) then
+                    if player:hasKeyItem(invaderXim.ki.TENSHODO_APPLICATION_FORM) then
                         return quest:progressEvent(152, 1)
                     elseif quest:getVar(player, 'Prog') == 1 then
                         return quest:progressEvent(151, 1)
@@ -90,7 +90,7 @@ quest.sections =
             onEventFinish =
             {
                 [151] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.keyItem.TENSHODO_APPLICATION_FORM)
+                    npcUtil.giveKeyItem(player, invaderXim.keyItem.TENSHODO_APPLICATION_FORM)
                 end,
             },
         },

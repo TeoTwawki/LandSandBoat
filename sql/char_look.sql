@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `char_look`
 --
 
-DROP TABLE IF EXISTS `char_look`;
-CREATE TABLE IF NOT EXISTS `char_look` (
+DROP TABLE IF IXIMSTS `char_look`;
+CREATE TABLE IF NOT IXIMSTS `char_look` (
   `charid` int(10) unsigned NOT NULL,
   `face` tinyint(2) unsigned NOT NULL DEFAULT '0',
   `race` tinyint(2) unsigned NOT NULL DEFAULT '0',

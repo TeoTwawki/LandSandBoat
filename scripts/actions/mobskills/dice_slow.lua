@@ -11,16 +11,16 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    local slowed  = xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.SLOW, 1250, 0, 120)
-    local sleeped = xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.SLEEP_I, 1, 0, 30)
+    local slowed  = invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.SLOW, 1250, 0, 120)
+    local sleeped = invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.SLEEP_I, 1, 0, 30)
 
-    skill:setMsg(xi.msg.basic.SKILL_ENFEEB_IS)
+    skill:setMsg(invaderXim.msg.basic.SKILL_ENFEEB_IS)
     if sleeped then
-        return xi.effect.SLEEP_I
+        return invaderXim.effect.SLEEP_I
     elseif slowed then
-        return xi.effect.SLOW
+        return invaderXim.effect.SLOW
     else
-        skill:setMsg(xi.msg.basic.SKILL_MISS) -- no effect
+        skill:setMsg(invaderXim.msg.basic.SKILL_MISS) -- no effect
     end
 
     return nil

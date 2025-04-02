@@ -17,7 +17,7 @@ commandObj.onTrigger = function(player, progress)
         return
     end
 
-    if zone:getTypeMask() == xi.zoneType.INSTANCED then
+    if zone:getTypeMask() == invaderXim.zoneType.INSTANCED then
         local instance = player:getInstance()
         if not instance then
             return

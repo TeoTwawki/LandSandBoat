@@ -17,16 +17,16 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     local params = {}
     params.ftpMod = { 1.0, 1.75, 2.5 }
     params.str_wsc = 0.2 params.mnd_wsc = 0.2
-    params.ele = xi.element.LIGHT
-    params.skill = xi.skill.CLUB
+    params.ele = invaderXim.element.LIGHT
+    params.skill = invaderXim.skill.CLUB
     params.includemab = true
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         params.ftpMod = { 1.625, 3.0, 4.625 }
         params.str_wsc = 0.4 params.mnd_wsc = 0.4
     end
 
-    local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
+    local damage, criticalHit, tpHits, extraHits = invaderXim.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
     return tpHits, extraHits, criticalHit, damage
 end
 

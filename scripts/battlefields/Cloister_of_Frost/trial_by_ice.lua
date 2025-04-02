@@ -4,23 +4,23 @@
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId           = xi.zone.CLOISTER_OF_FROST,
-    battlefieldId    = xi.battlefield.id.TRIAL_BY_ICE,
+    zoneId           = invaderXim.zone.CLOISTER_OF_FROST,
+    battlefieldId    = invaderXim.battlefield.id.TRIAL_BY_ICE,
     canLoseExp       = false,
     maxPlayers       = 6,
     timeLimit        = utils.minutes(30),
     index            = 0,
     entryNpc         = 'IP_Entrance',
     exitNpc          = 'Ice_Protocrystal',
-    requiredKeyItems = { xi.ki.TUNING_FORK_OF_ICE },
+    requiredKeyItems = { invaderXim.ki.TUNING_FORK_OF_ICE },
 
-    questArea = xi.questLog.SANDORIA,
-    quest     = xi.quest.id.sandoria.TRIAL_BY_ICE,
+    questArea = invaderXim.questLog.SANDORIA,
+    quest     = invaderXim.quest.id.sandoria.TRIAL_BY_ICE,
 })
 
 function content:onEventFinishWin(player, csid, option, npc)
-    player:addTitle(xi.title.HEIR_OF_THE_GREAT_ICE)
-    npcUtil.giveKeyItem(player, xi.ki.WHISPER_OF_FROST)
+    player:addTitle(invaderXim.title.HEIR_OF_THE_GREAT_ICE)
+    npcUtil.giveKeyItem(player, invaderXim.ki.WHISPER_OF_FROST)
 end
 
 content.groups =
@@ -28,7 +28,7 @@ content.groups =
     {
         mobs = { 'Shiva_Prime_TBI' },
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

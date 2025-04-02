@@ -7,7 +7,7 @@
 -- qm1 (???) Ranguemont Pass !pos 54 10 -147 166
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.BLIGHTED_GLOOM)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.BLIGHTED_GLOOM)
 
 quest.reward = {}
 
@@ -16,10 +16,10 @@ quest.sections = {
     -- Qm's normal state
      {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE or status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE or status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.KORROLOKA_TUNNEL] = {
+        [invaderXim.zone.KORROLOKA_TUNNEL] = {
             ['qm3'] = {
                 onTrigger = function(player, npc)
                     return quest:messageSpecial(zones[player:getZoneID()].text.NOTHING_OUT_OF_ORDINARY)
@@ -27,7 +27,7 @@ quest.sections = {
             },
         },
 
-        [xi.zone.ORDELLES_CAVES] = {
+        [invaderXim.zone.ORDELLES_CAVES] = {
             ['qm8'] = {
                 onTrigger = function(player, npc)
                     return quest:messageSpecial(zones[player:getZoneID()].text.NOTHING_OUT_OF_ORDINARY)
@@ -35,7 +35,7 @@ quest.sections = {
             },
         },
 
-        [xi.zone.RANGUEMONT_PASS] = {
+        [invaderXim.zone.RANGUEMONT_PASS] = {
             ['qm1'] = {
                 onTrigger = function(player, npc)
                     return quest:messageSpecial(zones[player:getZoneID()].text.NOTHING_OUT_OF_ORDINARY)
@@ -43,7 +43,7 @@ quest.sections = {
             },
         },
 
-        [xi.zone.JUGNER_FOREST] = {
+        [invaderXim.zone.JUGNER_FOREST] = {
             ['qm2'] = {
                 onTrigger = function(player, npc)
                     return quest:messageSpecial(zones[player:getZoneID()].text.NOTHING_OUT_OF_ORDINARY)
@@ -55,12 +55,12 @@ quest.sections = {
     -- Section: Begin quest
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
-                and player:getQuestStatus(xi.questLog.JEUNO, PAST_REFLECTIONS) == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
+                and player:getQuestStatus(invaderXim.questLog.JEUNO, PAST_REFLECTIONS) == invaderXim.questStatus.QUEST_COMPLETED
                 and player:getFellowValue('bond') >= 45
         end,
 
-        [xi.zone.UPPER_JEUNO] = {
+        [invaderXim.zone.UPPER_JEUNO] = {
             ['Luto_Mewrilah'] = {
                 onTrigger = function(player, npc)
                     local fellowParam = getFellowParam(player)
@@ -79,13 +79,13 @@ quest.sections = {
     -- Section: Questing
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.UPPER_JEUNO] = {
+        [invaderXim.zone.UPPER_JEUNO] = {
             ['Luto_Mewrilah'] = {
                 onTrigger = function(player, npc)
-                    if quest:getVar(player, 'Prog') == 1 and player:hasKeyItem(xi.keyItem.VITRALLUM) then
+                    if quest:getVar(player, 'Prog') == 1 and player:hasKeyItem(invaderXim.keyItem.VITRALLUM) then
                         local fellowParam = getFellowParam(player)
                         return quest:progressEvent(10066, {[7] = fellowParam})
                     end
@@ -99,15 +99,15 @@ quest.sections = {
             },
         },
 
-        [xi.zone.KORROLOKA_TUNNEL] = {
+        [invaderXim.zone.KORROLOKA_TUNNEL] = {
             ['qm3'] = {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.keyItem.VITRALLUM) then
+                    if not player:hasKeyItem(invaderXim.keyItem.VITRALLUM) then
                         if quest:getVar(player, 'Prog') == 0 and player:getLocalVar('Initiate') == 0 and not GetMobByID(zones[player:getZoneID()].mob.METALLIC_SLIME):isSpawned() then
                             local fellowParam = getFellowParam(player)
                             return quest:progressEvent(1, {[7] = fellowParam})
                         elseif quest:getVar(player, 'Prog') == 1 then
-                            npcUtil.giveKeyItem(player, xi.keyItem.VITRALLUM)
+                            npcUtil.giveKeyItem(player, invaderXim.keyItem.VITRALLUM)
                         else
                             return quest:messageSpecial(zones[player:getZoneID()].text.NOTHING_OUT_OF_ORDINARY)
                         end
@@ -132,15 +132,15 @@ quest.sections = {
             },
         },
 
-        [xi.zone.ORDELLES_CAVES] = {
+        [invaderXim.zone.ORDELLES_CAVES] = {
             ['qm8'] = {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.keyItem.VITRALLUM) then
+                    if not player:hasKeyItem(invaderXim.keyItem.VITRALLUM) then
                         if quest:getVar(player, 'Prog') == 0 and player:getLocalVar('Initiate') == 0 and not GetMobByID(zones[player:getZoneID()].mob.METALLIC_SLIME):isSpawned() then
                             local fellowParam = getFellowParam(player)
                             return quest:progressEvent(56, {[7] = fellowParam})
                         elseif quest:getVar(player, 'Prog') == 1 then
-                            npcUtil.giveKeyItem(player, xi.keyItem.VITRALLUM)
+                            npcUtil.giveKeyItem(player, invaderXim.keyItem.VITRALLUM)
                         else
                             return quest:messageSpecial(zones[player:getZoneID()].text.NOTHING_OUT_OF_ORDINARY)
                         end
@@ -165,15 +165,15 @@ quest.sections = {
             },
         },
 
-        [xi.zone.RANGUEMONT_PASS] = {
+        [invaderXim.zone.RANGUEMONT_PASS] = {
             ['qm1'] = {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.keyItem.VITRALLUM) then
+                    if not player:hasKeyItem(invaderXim.keyItem.VITRALLUM) then
                         if quest:getVar(player, 'Prog') == 0 and player:getLocalVar('Initiate') == 0 and not GetMobByID(zones[player:getZoneID()].mob.METALLIC_SLIME):isSpawned() then
                             local fellowParam = getFellowParam(player)
                             return quest:progressEvent(22, {[7] = fellowParam})
                         elseif quest:getVar(player, 'Prog') == 1 then
-                            npcUtil.giveKeyItem(player, xi.keyItem.VITRALLUM)
+                            npcUtil.giveKeyItem(player, invaderXim.keyItem.VITRALLUM)
                         else
                             return quest:messageSpecial(zones[player:getZoneID()].text.NOTHING_OUT_OF_ORDINARY)
                         end
@@ -198,7 +198,7 @@ quest.sections = {
             },
         },
 
-        [xi.zone.JUGNER_FOREST] = {
+        [invaderXim.zone.JUGNER_FOREST] = {
             ['qm2'] = {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 2 then
@@ -213,7 +213,7 @@ quest.sections = {
             onEventFinish = {
                 [31] = function(player, csid, option, npc)
                     quest:complete(player)
-                    player:delKeyItem(xi.keyItem.VITRALLUM)
+                    player:delKeyItem(invaderXim.keyItem.VITRALLUM)
                     player:setFellowValue('bondcap', 70)
                     player:messageText(player, zones[player:getZoneID()].text.FELLOW_STRENGTH)
                 end,

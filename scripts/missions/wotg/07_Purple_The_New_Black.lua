@@ -8,11 +8,11 @@
 -- _2d1 (Reinforced Gateway) : !pos -114.386 -3.599 -179.804 85
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.PURPLE_THE_NEW_BLACK)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.PURPLE_THE_NEW_BLACK)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.IN_THE_NAME_OF_THE_FATHER },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.IN_THE_NAME_OF_THE_FATHER },
 }
 
 mission.sections =
@@ -23,7 +23,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 0
         end,
 
-        [xi.zone.LA_VAULE_S] =
+        [invaderXim.zone.LA_VAULE_S] =
         {
             ['_2d1'] = mission:progressEvent(2, 85, 3456, utils.MAX_UINT32 - 207616, 1525, 0, 19550816, 0, 0),
 
@@ -42,7 +42,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus >= 1
         end,
 
-        [xi.zone.LA_VAULE_S] =
+        [invaderXim.zone.LA_VAULE_S] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 2 then
@@ -54,9 +54,9 @@ mission.sections =
             {
                 -- Completed BCNM
                 [32001] = function(player, csid, option, npc)
-                    if player:getLocalVar('battlefieldWin') == xi.battlefield.id.PURPLE_THE_NEW_BLACK then
+                    if player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.PURPLE_THE_NEW_BLACK then
                         player:setMissionStatus(mission.areaId, 2)
-                        player:setPos(-260.44, 0.134, -156.652, 192, xi.zone.LA_VAULE_S)
+                        player:setPos(-260.44, 0.134, -156.652, 192, invaderXim.zone.LA_VAULE_S)
                     end
                 end,
 

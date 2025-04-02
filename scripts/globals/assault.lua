@@ -6,24 +6,24 @@ require('scripts/globals/besieged')
 require('scripts/globals/npc_util')
 -----------------------------------
 xi = xi or {}
-xi.assault = xi.assault or {}
+invaderXim.assault = invaderXim.assault or {}
 
-xi.assault.assaultOrders =
+invaderXim.assault.assaultOrders =
 {
-    xi.ki.LEUJAOAM_ASSAULT_ORDERS,
-    xi.ki.MAMOOL_JA_ASSAULT_ORDERS,
-    xi.ki.LEBROS_ASSAULT_ORDERS,
-    xi.ki.PERIQIA_ASSAULT_ORDERS,
-    xi.ki.ILRUSI_ASSAULT_ORDERS,
-    xi.ki.NYZUL_ISLE_ASSAULT_ORDERS,
+    invaderXim.ki.LEUJAOAM_ASSAULT_ORDERS,
+    invaderXim.ki.MAMOOL_JA_ASSAULT_ORDERS,
+    invaderXim.ki.LEBROS_ASSAULT_ORDERS,
+    invaderXim.ki.PERIQIA_ASSAULT_ORDERS,
+    invaderXim.ki.ILRUSI_ASSAULT_ORDERS,
+    invaderXim.ki.NYZUL_ISLE_ASSAULT_ORDERS,
 }
 
-xi.assault.getAssaultArea = function(player)
+invaderXim.assault.getAssaultArea = function(player)
     return math.floor((player:getCurrentAssault() - 1) / 10)
 end
 
-xi.assault.hasOrders = function(player)
-    for _, assaultOrders in pairs(xi.assault.assaultOrders) do
+invaderXim.assault.hasOrders = function(player)
+    for _, assaultOrders in pairs(invaderXim.assault.assaultOrders) do
         if player:hasKeyItem(assaultOrders) then
             return true
         end
@@ -32,7 +32,7 @@ xi.assault.hasOrders = function(player)
     return false
 end
 
-xi.assault.onAssaultUpdate = function(player, csid, option, npc)
+invaderXim.assault.onAssaultUpdate = function(player, csid, option, npc)
     local ID = zones[player:getZoneID()]
 
     local cap = bit.band(option, 0x03)
@@ -50,9 +50,9 @@ xi.assault.onAssaultUpdate = function(player, csid, option, npc)
 
     if
         player:getGMLevel() == 0 and
-        player:getPartySize() < xi.settings.main.ASSAULT_MINIMUM
+        player:getPartySize() < invaderXim.settings.main.ASSAULT_MINIMUM
     then
-        player:messageSpecial(ID.text.MEMBER_TOO_FAR - 1, xi.settings.main.ASSAULT_MINIMUM)
+        player:messageSpecial(ID.text.MEMBER_TOO_FAR - 1, invaderXim.settings.main.ASSAULT_MINIMUM)
         player:instanceEntry(npc, 1)
         return
     elseif player:checkSoloPartyAlliance() == 2 then
@@ -62,12 +62,12 @@ xi.assault.onAssaultUpdate = function(player, csid, option, npc)
     end
 end
 
-xi.assault.onInstanceCreatedCallback = function(player, instance)
+invaderXim.assault.onInstanceCreatedCallback = function(player, instance)
     if instance then
         instance:setLevelCap(player:getLocalVar('AssaultCap'))
         player:setLocalVar('AssaultCap', 0)
         player:setCharVar('Assault_Armband', 1)
-        player:delKeyItem(xi.ki.ASSAULT_ARMBAND)
+        player:delKeyItem(invaderXim.ki.ASSAULT_ARMBAND)
     else
         local npc = player:getEventTarget()
         player:messageText(player, zones[player:getZoneID()].text.CANNOT_ENTER, false)
@@ -75,7 +75,7 @@ xi.assault.onInstanceCreatedCallback = function(player, instance)
     end
 end
 
-xi.assault.afterInstanceRegister = function(player, fireFlies)
+invaderXim.assault.afterInstanceRegister = function(player, fireFlies)
     local instance = player:getInstance()
     local assaultID = player:getCurrentAssault()
     local levelCap = instance:getLevelCap()
@@ -87,7 +87,7 @@ xi.assault.afterInstanceRegister = function(player, fireFlies)
     player:addTempItem(fireFlies)
 
     if levelCap ~= 0 then
-        player:addStatusEffect(xi.effect.LEVEL_RESTRICTION, levelCap, 0, 0)
+        player:addStatusEffect(invaderXim.effect.LEVEL_RESTRICTION, levelCap, 0, 0)
     end
 
     for _, entity in pairs(ID.mob[assaultID].MOBS_START) do
@@ -95,7 +95,7 @@ xi.assault.afterInstanceRegister = function(player, fireFlies)
     end
 end
 
-xi.assault.onInstanceFailure = function(instance)
+invaderXim.assault.onInstanceFailure = function(instance)
     local chars = instance:getChars()
     local mobs = instance:getMobs()
 
@@ -110,19 +110,19 @@ xi.assault.onInstanceFailure = function(instance)
     end
 end
 
-xi.assault.onInstanceComplete = function(instance, posX, posZ)
+invaderXim.assault.onInstanceComplete = function(instance, posX, posZ)
     local chars = instance:getChars()
     local ID = zones[instance:getZone():getID()]
 
-    GetNPCByID(ID.npc.RUNE_OF_RELEASE, instance):setStatus(xi.status.NORMAL)
-    GetNPCByID(ID.npc.ANCIENT_LOCKBOX, instance):setStatus(xi.status.NORMAL)
+    GetNPCByID(ID.npc.RUNE_OF_RELEASE, instance):setStatus(invaderXim.status.NORMAL)
+    GetNPCByID(ID.npc.ANCIENT_LOCKBOX, instance):setStatus(invaderXim.status.NORMAL)
 
     for _, entity in pairs(chars) do
         entity:messageSpecial(ID.text.RUNE_UNLOCKED_POS, posX, posZ)
     end
 end
 
-xi.assault.instanceOnEventFinish = function(player, csid, zone)
+invaderXim.assault.instanceOnEventFinish = function(player, csid, zone)
     if csid == 102 then
         local instance = player:getInstance()
         local chars = instance:getChars()
@@ -132,7 +132,7 @@ xi.assault.instanceOnEventFinish = function(player, csid, zone)
     end
 end
 
-xi.assault.runeReleaseFinish = function(player, csid, option, npc)
+invaderXim.assault.runeReleaseFinish = function(player, csid, option, npc)
     if csid == 100 and option == 1 then
         local instance = player:getInstance()
         local chars = instance:getChars()
@@ -142,7 +142,7 @@ xi.assault.runeReleaseFinish = function(player, csid, option, npc)
         local points = 0
         local assaultID = player:getCurrentAssault()
         local mobs = instance:getMobs()
-        local pointsArea = xi.assault.getAssaultArea(player)
+        local pointsArea = invaderXim.assault.getAssaultArea(player)
 
         for _, entity in pairs(mobs) do
             local mobID = entity:getID()
@@ -153,7 +153,7 @@ xi.assault.runeReleaseFinish = function(player, csid, option, npc)
             if entity:getLocalVar('AssaultPointsAwarded') == 0 then
                 entity:setLocalVar('AssaultPointsAwarded', 1)
 
-                local pointModifier = xi.assault.missionInfo[assaultID].minimumPoints
+                local pointModifier = invaderXim.assault.missionInfo[assaultID].minimumPoints
                 points = pointModifier - (pointModifier * playerpoints)
                 if entity:getCharVar('Assault_Armband') == 1 then
                     points = points * 1.1
@@ -178,7 +178,7 @@ xi.assault.runeReleaseFinish = function(player, csid, option, npc)
     end
 end
 
-xi.assault.adjustMobLevel = function(mob)
+invaderXim.assault.adjustMobLevel = function(mob)
     local instance = mob:getInstance()
     local levelCap = instance:getLevelCap()
     local reducedLevel = 0

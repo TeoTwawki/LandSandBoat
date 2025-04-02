@@ -12,14 +12,14 @@ mixins =
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
-    mob:setMod(xi.mod.UFASTCAST, 100)
-    mob:setMobMod(xi.mobMod.GIL_MIN, 15000)
-    mob:setMobMod(xi.mobMod.GIL_MAX, 20000)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
+    mob:setMod(invaderXim.mod.UFASTCAST, 100)
+    mob:setMobMod(invaderXim.mobMod.GIL_MIN, 15000)
+    mob:setMobMod(invaderXim.mobMod.GIL_MAX, 20000)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.CANNOT_GUARD, 1)
+    mob:setMobMod(invaderXim.mobMod.CANNOT_GUARD, 1)
     local kingArthroID = mob:getID()
 
     -- Use King Arthro ID to determine Knight Crab Id's, then set their respawn to 0 so they don't spawn while KA is up
@@ -29,10 +29,10 @@ entity.onMobSpawn = function(mob)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    if mob:hasStatusEffect(xi.effect.ENWATER) then
+    if mob:hasStatusEffect(invaderXim.effect.ENWATER) then
         return 0, 0, 0
     else
-        return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.PARALYZE)
+        return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.PARALYZE)
     end
 end
 

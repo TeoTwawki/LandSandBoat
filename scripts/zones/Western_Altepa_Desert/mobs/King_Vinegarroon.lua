@@ -9,25 +9,25 @@ local function mobRegen(mob)
     local hour = VanadielHour()
 
     if hour >= 6 and hour <= 20 then
-        mob:setMod(xi.mod.REGEN, 125)
+        mob:setMod(invaderXim.mod.REGEN, 125)
     else
-        mob:setMod(xi.mod.REGEN, 250)
+        mob:setMod(invaderXim.mod.REGEN, 250)
     end
 end
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.PETRIFY, { chance = 100 })
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.PETRIFY, { chance = 100 })
 end
 
 entity.onMobRoam = function(mob)
     local weather = mob:getWeather()
     if
-        weather ~= xi.weather.DUST_STORM and
-        weather ~= xi.weather.SAND_STORM
+        weather ~= invaderXim.weather.DUST_STORM and
+        weather ~= invaderXim.weather.SAND_STORM
     then
         DespawnMob(mob:getID())
     end
@@ -49,11 +49,11 @@ entity.onMobFight = function(mob, target)
 
     for _, condition in ipairs(drawInTable.conditions) do
         if condition then
-            mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+            mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
             utils.drawIn(target, drawInTable)
             break
         else
-            mob:setMobMod(xi.mobMod.NO_MOVE, 0)
+            mob:setMobMod(invaderXim.mobMod.NO_MOVE, 0)
         end
     end
 
@@ -77,7 +77,7 @@ entity.onMobSkillTarget = function(target, mob, mobskill)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.VINEGAR_EVAPORATOR)
+    player:addTitle(invaderXim.title.VINEGAR_EVAPORATOR)
 end
 
 entity.onMobDespawn = function(mob)

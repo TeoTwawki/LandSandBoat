@@ -6,22 +6,22 @@
 -- Guilerme : !pos -4.5 0 99 231
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.ROSEL_THE_ARMORER)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.ROSEL_THE_ARMORER)
 
 quest.reward =
 {
     -- Delivered to correct Prince: 200G, Incorrect Prince: 100G
-    title = xi.title.ENTRANCE_DENIED,
+    title = invaderXim.title.ENTRANCE_DENIED,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Rosel'] =
             {
@@ -53,7 +53,7 @@ quest.sections =
                 [523] = function(player, csid, option, npc)
                     if option == 0 then
                         quest:begin(player)
-                        npcUtil.giveKeyItem(player, xi.ki.RECEIPT_FOR_THE_PRINCE)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.RECEIPT_FOR_THE_PRINCE)
                     else
                         quest:setVar(player, 'Prog', 1)
                     end
@@ -62,7 +62,7 @@ quest.sections =
                 [524] = function(player, csid, option, npc)
                     if option == 0 then
                         quest:begin(player)
-                        npcUtil.giveKeyItem(player, xi.ki.RECEIPT_FOR_THE_PRINCE)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.RECEIPT_FOR_THE_PRINCE)
                     end
                 end,
             },
@@ -71,16 +71,16 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Rosel'] =
             {
                 onTrigger = function(player, npc)
                     local questStage = quest:getVar(player, 'Stage')
-                    if player:hasKeyItem(xi.ki.RECEIPT_FOR_THE_PRINCE) then
+                    if player:hasKeyItem(invaderXim.ki.RECEIPT_FOR_THE_PRINCE) then
                         return quest:progressEvent(524, 0, 0, 0, 0, questStage - 1)
                     else
                         local questOption = quest:getVar(player, 'Option')
@@ -104,12 +104,12 @@ quest.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Guilerme'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.RECEIPT_FOR_THE_PRINCE) then
+                    if player:hasKeyItem(invaderXim.ki.RECEIPT_FOR_THE_PRINCE) then
                         local questStage = quest:getVar(player, 'Stage')
                         return quest:progressEvent(507, 0, 0, 0, 0, 0, 0, questStage - 1)
                     end
@@ -123,7 +123,7 @@ quest.sections =
                     -- has chosen correctly or not.  Option 0 is correct answer, while
                     -- option 1 was an incorrect answer.
                     quest:setVar(player, 'Option', option)
-                    player:delKeyItem(xi.ki.RECEIPT_FOR_THE_PRINCE)
+                    player:delKeyItem(invaderXim.ki.RECEIPT_FOR_THE_PRINCE)
                 end,
             },
         },

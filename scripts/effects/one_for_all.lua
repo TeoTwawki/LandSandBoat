@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.ONE_FOR_ALL
+-- invaderXim.effect.ONE_FOR_ALL
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

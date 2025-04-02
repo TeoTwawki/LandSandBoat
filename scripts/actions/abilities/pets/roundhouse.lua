@@ -5,7 +5,7 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.summoner.canUseBloodPact(player, player:getPet(), target, ability)
+    return invaderXim.job_utils.summoner.canUseBloodPact(player, player:getPet(), target, ability)
 end
 
 -- http://wiki.ffo.jp/html/37928.html
@@ -14,14 +14,14 @@ abilityObject.onPetAbility = function(target, pet, petskill, summoner, action)
     local accmod = 1
     local dmgmod = 5.0
 
-    xi.job_utils.summoner.onUseBloodPact(target, petskill, summoner, action)
+    invaderXim.job_utils.summoner.onUseBloodPact(target, petskill, summoner, action)
 
-    local damage = xi.summon.avatarPhysicalMove(pet, target, petskill, numhits, accmod, dmgmod, 0, xi.mobskills.physicalTpBonus.CRIT_VARIES, 1, 1, 1)
-    local totaldamage = xi.summon.avatarFinalAdjustments(damage.dmg, pet, petskill, target, xi.attackType.PHYSICAL, xi.damageType.BLUNT, numhits)
+    local damage = invaderXim.summon.avatarPhysicalMove(pet, target, petskill, numhits, accmod, dmgmod, 0, invaderXim.mobskills.physicalTpBonus.CRIT_VARIES, 1, 1, 1)
+    local totaldamage = invaderXim.summon.avatarFinalAdjustments(damage.dmg, pet, petskill, target, invaderXim.attackType.PHYSICAL, invaderXim.damageType.BLUNT, numhits)
 
-    xi.job_utils.summoner.calculateTPReturn(pet, target, totaldamage, damage.hitslanded)
+    invaderXim.job_utils.summoner.calculateTPReturn(pet, target, totaldamage, damage.hitslanded)
 
-    target:takeDamage(totaldamage, pet, xi.attackType.PHYSICAL, xi.damageType.BLUNT)
+    target:takeDamage(totaldamage, pet, invaderXim.attackType.PHYSICAL, invaderXim.damageType.BLUNT)
     target:updateEnmityFromDamage(pet, totaldamage)
 
     return totaldamage

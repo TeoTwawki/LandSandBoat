@@ -41,7 +41,7 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
 end
 
 zoneObject.onInstanceLoadFailed = function()
-    return xi.zone.ALZADAAL_UNDERSEA_RUINS
+    return invaderXim.zone.ALZADAAL_UNDERSEA_RUINS
 end
 
 return zoneObject

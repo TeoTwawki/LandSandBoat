@@ -14,7 +14,7 @@ local entity = {}
 -- TODO: Resistances need verifying: Light_Sleep, Poison, Requiem, Terror, Dispel, Petrify
 
 entity.onMobInitialize = function(IxAernDrkMob)
-    IxAernDrkMob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
+    IxAernDrkMob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
 
     IxAernDrkMob:addListener('DEATH', 'AERN_DEATH', function(mob, killer)
         local timesReraised = mob:getLocalVar('AERN_RERAISES')
@@ -28,7 +28,7 @@ entity.onMobInitialize = function(IxAernDrkMob)
                 target = target:getMaster()
             end
 
-            mob:setMobMod(xi.mobMod.NO_DROPS, 1)
+            mob:setMobMod(invaderXim.mobMod.NO_DROPS, 1)
             mob:timer(9000, function(mobArg)
                 mobArg:setHP(mob:getMaxHP())
                 mobArg:setMP(mob:getMaxMP())
@@ -65,7 +65,7 @@ entity.onMobInitialize = function(IxAernDrkMob)
             end)
         else
             -- death
-            mob:setMobMod(xi.mobMod.NO_DROPS, 0)
+            mob:setMobMod(invaderXim.mobMod.NO_DROPS, 0)
             -- DespawnMob(QnAernA)
             -- DespawnMob(QnAernB)
         end
@@ -84,21 +84,21 @@ entity.onMobSpawn = function(mob)
 
     -- Not immune to: Drain, Aspir
     -- Resistances Confirmed
-    mob:addImmunity(xi.immunity.ELEGY)
-    mob:addImmunity(xi.immunity.STUN)
-    mob:addImmunity(xi.immunity.BIND)
-    mob:addImmunity(xi.immunity.SLOW)
-    mob:addImmunity(xi.immunity.PARALYZE)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.GRAVITY)
-    mob:addImmunity(xi.immunity.SILENCE)
-    mob:addImmunity(xi.immunity.BLIND)
+    mob:addImmunity(invaderXim.immunity.ELEGY)
+    mob:addImmunity(invaderXim.immunity.STUN)
+    mob:addImmunity(invaderXim.immunity.BIND)
+    mob:addImmunity(invaderXim.immunity.SLOW)
+    mob:addImmunity(invaderXim.immunity.PARALYZE)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
+    mob:addImmunity(invaderXim.immunity.BLIND)
 
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
             {
-                id = xi.jsa.BLOOD_WEAPON_IXDRK,
+                id = invaderXim.jsa.BLOOD_WEAPON_IXDRK,
                 hpp = math.random(90, 95),
                 cooldown = 120,
                 endCode = function(mobArg)

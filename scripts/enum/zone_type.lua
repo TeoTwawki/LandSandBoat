@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.zoneType
-xi.zoneType =
+---@enum invaderXim.zoneType
+invaderXim.zoneType =
 {
     UNKNOWN   = 0x0000,
     CITY      = 0x0001,

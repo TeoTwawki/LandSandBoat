@@ -8,15 +8,15 @@ mixins = { require('scripts/mixins/families/orobon') }
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.DETECTION, bit.bor(xi.detects.SIGHT, xi.detects.HEARING))
-    mob:setMobMod(xi.mobMod.SIGHT_RANGE, 25)
-    mob:setMobMod(xi.mobMod.NO_DROPS, 1)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
+    mob:setMobMod(invaderXim.mobMod.DETECTION, bit.bor(invaderXim.detects.SIGHT, invaderXim.detects.HEARING))
+    mob:setMobMod(invaderXim.mobMod.SIGHT_RANGE, 25)
+    mob:setMobMod(invaderXim.mobMod.NO_DROPS, 1)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
 end
 
 entity.onMobWeaponSkill = function(target, mob, skill)
-    if skill:getID() == xi.mobSkill.HYPNIC_LAMP then
-        mob:useMobAbility(xi.mobSkill.DEATHGNASH)
+    if skill:getID() == invaderXim.mobSkill.HYPNIC_LAMP then
+        mob:useMobAbility(invaderXim.mobSkill.DEATHGNASH)
     end
 end
 

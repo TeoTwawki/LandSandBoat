@@ -9,25 +9,25 @@
 -- Rouva            !pos -16.3326 2.1 10.3829
 -- Para NM ???      !pos -414.915 0 -362.9870
 -----------------------------------
-local ID = zones[xi.zone.CARPENTERS_LANDING]
+local ID = zones[invaderXim.zone.CARPENTERS_LANDING]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.ELDERLY_PURSUITS)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.ELDERLY_PURSUITS)
 
 quest.reward =
 {
-    item = xi.item.ELEGANT_RIBBON,
+    item = invaderXim.item.ELEGANT_RIBBON,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-            player:hasCompletedQuest(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.SECRETS_OF_OVENS_LOST)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+            player:hasCompletedQuest(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.SECRETS_OF_OVENS_LOST)
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Despachiaire'] = quest:progressEvent(517),
 
@@ -35,7 +35,7 @@ quest.sections =
             {
                 [517] = function(player, csid, option, npc)
                     quest:begin(player)
-                    npcUtil.giveKeyItem(player, xi.ki.ANTIQUE_AMULET)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ANTIQUE_AMULET)
                 end,
             },
         },
@@ -43,15 +43,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog <= 2
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog <= 2
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Rouva'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.ANTIQUE_AMULET) then
+                    if player:hasKeyItem(invaderXim.ki.ANTIQUE_AMULET) then
                         return quest:progressEvent(747)
                     end
                 end,
@@ -65,7 +65,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.CARPENTERS_LANDING] =
+        [invaderXim.zone.CARPENTERS_LANDING] =
         {
             ['qm_para'] =
             {
@@ -77,13 +77,13 @@ quest.sections =
                         return quest:messageSpecial(ID.text.STENCH_OF_DECAY)
                     elseif
                         quest:getVar(player, 'Prog') == 2 and
-                        player:hasKeyItem(xi.ki.ANTIQUE_AMULET)
+                        player:hasKeyItem(invaderXim.ki.ANTIQUE_AMULET)
                     then
                         quest:setVar(player, 'Prog', 3)
-                        player:delKeyItem(xi.ki.ANTIQUE_AMULET)
-                        player:addKeyItem(xi.ki.CATHEDRAL_MEDALLION)
-                        player:messageSpecial(ID.text.POLISH_MUSHROOM_SPORE, xi.ki.ANTIQUE_AMULET)
-                        return quest:messageSpecial(ID.text.KEYITEM_OBTAINED, xi.ki.CATHEDRAL_MEDALLION)
+                        player:delKeyItem(invaderXim.ki.ANTIQUE_AMULET)
+                        player:addKeyItem(invaderXim.ki.CATHEDRAL_MEDALLION)
+                        player:messageSpecial(ID.text.POLISH_MUSHROOM_SPORE, invaderXim.ki.ANTIQUE_AMULET)
+                        return quest:messageSpecial(ID.text.KEYITEM_OBTAINED, invaderXim.ki.CATHEDRAL_MEDALLION)
                     end
                 end,
             },
@@ -113,15 +113,15 @@ quest.sections =
     {
 
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog >= 3
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog >= 3
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Rouva'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.CATHEDRAL_MEDALLION) then
+                    if player:hasKeyItem(invaderXim.ki.CATHEDRAL_MEDALLION) then
                         return quest:progressEvent(748)
                     end
                 end,
@@ -135,7 +135,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Despachiaire'] =
             {
@@ -150,7 +150,7 @@ quest.sections =
             {
                 [518] = function(player, csid, option, npc)
                     quest:complete(player)
-                    player:delKeyItem(xi.ki.CATHEDRAL_MEDALLION)
+                    player:delKeyItem(invaderXim.ki.CATHEDRAL_MEDALLION)
                 end,
             },
         },

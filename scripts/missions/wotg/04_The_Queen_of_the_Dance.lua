@@ -9,11 +9,11 @@
 require('scripts/missions/wotg/helpers')
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.THE_QUEEN_OF_THE_DANCE)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.THE_QUEEN_OF_THE_DANCE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.WHILE_THE_CAT_IS_AWAY },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.WHILE_THE_CAT_IS_AWAY },
 }
 
 mission.sections =
@@ -22,10 +22,10 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and missionStatus == 0 and
-                xi.wotg.helpers.meetsMission4Reqs(player)
+                invaderXim.wotg.helpers.meetsMission4Reqs(player)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Lion_Springs'] = mission:progressEvent(68, 80, 4224267, 1756, utils.MAX_UINT32 - 1540096, utils.MAX_UINT32 - 1239549952, 427798150, 3, 4095),
 
@@ -44,19 +44,19 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 1
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Lion_Springs'] = mission:event(69),
         },
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Turlough'] = mission:progressEvent(10172),
 
             onEventFinish =
             {
                 [10172] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.MAYAKOV_SHOW_TICKET)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.MAYAKOV_SHOW_TICKET)
                     player:setMissionStatus(mission.areaId, 2)
                 end,
             },
@@ -69,7 +69,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus >= 2
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Lion_Springs'] = mission:progressEvent(70, 1, 0, 2964, 0, 66453367, 8366690, 4095, 131140),
 
@@ -102,17 +102,17 @@ mission.sections =
             {
                 [70] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 3)
-                    player:setPos(100.801, 1, 103.211, 31, xi.zone.SOUTHERN_SAN_DORIA_S)
+                    player:setPos(100.801, 1, 103.211, 31, invaderXim.zone.SOUTHERN_SAN_DORIA_S)
                 end,
 
                 [152] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 4)
-                    player:setPos(100.801, 1, 103.211, 31, xi.zone.SOUTHERN_SAN_DORIA_S)
+                    player:setPos(100.801, 1, 103.211, 31, invaderXim.zone.SOUTHERN_SAN_DORIA_S)
                 end,
 
                 [153] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.MAYAKOV_SHOW_TICKET)
+                        player:delKeyItem(invaderXim.ki.MAYAKOV_SHOW_TICKET)
                     end
                 end,
             },

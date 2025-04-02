@@ -22,19 +22,19 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.UNDEAD
-    params.tpmod = xi.spells.blue.tpMod.ACC
+    params.ecosystem = invaderXim.ecosystem.UNDEAD
+    params.tpmod = invaderXim.spells.blue.tpMod.ACC
     params.bonusacc = 0
-    if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
+    if caster:hasStatusEffect(invaderXim.effect.AZURE_LORE) then
         params.bonusacc = 70
-    elseif caster:hasStatusEffect(xi.effect.CHAIN_AFFINITY) then
+    elseif caster:hasStatusEffect(invaderXim.effect.CHAIN_AFFINITY) then
         params.bonusacc = math.floor(caster:getTP() / 50)
     end
 
-    params.attackType = xi.attackType.PHYSICAL
-    params.damageType = xi.damageType.HTH
-    params.scattr = xi.skillchainType.COMPRESSION
-    params.scattr2 = xi.skillchainType.REVERBERATION
+    params.attackType = invaderXim.attackType.PHYSICAL
+    params.damageType = invaderXim.damageType.HTH
+    params.scattr = invaderXim.skillchainType.COMPRESSION
+    params.scattr2 = invaderXim.skillchainType.REVERBERATION
     params.numhits = 1
     params.multiplier = 1.5
     params.tp150 = 1.5
@@ -49,13 +49,13 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
 
-    params.effect = xi.effect.ATTACK_DOWN
+    params.effect = invaderXim.effect.ATTACK_DOWN
     local power = 15
     local tick = 0
     local duration = 60
 
-    local damage = xi.spells.blue.usePhysicalSpell(caster, target, spell, params)
-    xi.spells.blue.usePhysicalSpellAddedEffect(caster, target, spell, params, damage, power, tick, duration)
+    local damage = invaderXim.spells.blue.usePhysicalSpell(caster, target, spell, params)
+    invaderXim.spells.blue.usePhysicalSpellAddedEffect(caster, target, spell, params, damage, power, tick, duration)
 
     return damage
 end

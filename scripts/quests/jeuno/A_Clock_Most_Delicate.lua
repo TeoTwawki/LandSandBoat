@@ -6,26 +6,26 @@
 -- _6s2   : !pos -80 0 104 244
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.A_CLOCK_MOST_DELICATE)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.A_CLOCK_MOST_DELICATE)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.JEUNO,
+    fameArea = invaderXim.fameArea.JEUNO,
     gil      = 1200,
-    item     = xi.item.ENGINEERS_GLOVES,
-    title    = xi.title.PROFESSIONAL_LOAFER,
+    item     = invaderXim.item.ENGINEERS_GLOVES,
+    title    = invaderXim.title.PROFESSIONAL_LOAFER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.JEUNO) >= 5
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.JEUNO) >= 5
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['_6s2'] =
             {
@@ -74,15 +74,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['_6s2'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.CLOCK_TOWER_OIL) then
+                    if player:hasKeyItem(invaderXim.ki.CLOCK_TOWER_OIL) then
                         return quest:progressEvent(202)
                     else
                         return quest:event(117)
@@ -94,7 +94,7 @@ quest.sections =
             {
                 [202] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.CLOCK_TOWER_OIL)
+                        player:delKeyItem(invaderXim.ki.CLOCK_TOWER_OIL)
                     end
                 end,
             },

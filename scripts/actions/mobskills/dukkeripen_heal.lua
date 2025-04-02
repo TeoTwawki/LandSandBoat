@@ -7,7 +7,7 @@
 local mobskillObject = {}
 
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
-    if mob:getMainJob() == xi.job.COR then
+    if mob:getMainJob() == invaderXim.job.COR then
         return 0
     else
         return 1
@@ -15,9 +15,9 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.msg.basic.SELF_HEAL)
+    skill:setMsg(invaderXim.msg.basic.SELF_HEAL)
 
-    return xi.mobskills.mobHealMove(mob, math.random(350, 500))
+    return invaderXim.mobskills.mobHealMove(mob, math.random(350, 500))
 end
 
 return mobskillObject

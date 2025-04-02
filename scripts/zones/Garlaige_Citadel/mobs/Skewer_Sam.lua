@@ -6,7 +6,7 @@
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.BEAKBENDER)
+    player:addTitle(invaderXim.title.BEAKBENDER)
 end
 
 entity.onMobDespawn = function(mob)

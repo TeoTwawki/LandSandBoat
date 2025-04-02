@@ -4,23 +4,23 @@
 -- Log ID: 1, Quest ID: 61
 -- Juroro : !pos 32 7 -41 236
 -----------------------------------
-local portBastokID = zones[xi.zone.PORT_BASTOK]
+local portBastokID = zones[invaderXim.zone.PORT_BASTOK]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.TRIAL_BY_EARTH)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.TRIAL_BY_EARTH)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.BASTOK,
+    fameArea = invaderXim.fameArea.BASTOK,
 }
 
 local rewardItems =
 {
-    [0] = xi.item.TITANS_CUDGEL,
-    [1] = xi.item.EARTH_BELT,
-    [2] = xi.item.EARTH_RING,
-    [3] = xi.item.DOSE_OF_DESERT_LIGHT,
+    [0] = invaderXim.item.TITANS_CUDGEL,
+    [1] = invaderXim.item.EARTH_BELT,
+    [2] = invaderXim.item.EARTH_RING,
+    [3] = invaderXim.item.DOSE_OF_DESERT_LIGHT,
 }
 
 local function getRewardMask(player)
@@ -32,7 +32,7 @@ local function getRewardMask(player)
         end
     end
 
-    if player:hasSpell(xi.magic.spell.TITAN) then
+    if player:hasSpell(invaderXim.magic.spell.TITAN) then
         rewardMask = utils.mask.setBit(rewardMask, 5, true)
     end
 
@@ -47,7 +47,7 @@ local function giveQuestReward(player, eventOption)
     elseif eventOption == 5 then
         npcUtil.giveCurrency(player, 'gil', 10000)
     elseif eventOption == 6 then
-        player:addSpell(xi.magic.spell.TITAN)
+        player:addSpell(invaderXim.magic.spell.TITAN)
         player:messageSpecial(portBastokID.text.TITAN_UNLOCKED, 0, 0, 1)
     end
 
@@ -58,19 +58,19 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 6
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 6
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
-            ['Juroro'] = quest:progressEvent(249, 0, xi.ki.TUNING_FORK_OF_EARTH),
+            ['Juroro'] = quest:progressEvent(249, 0, invaderXim.ki.TUNING_FORK_OF_EARTH),
 
             onEventFinish =
             {
                 [249] = function(player, csid, option, npc)
                     if option == 1 then
-                        npcUtil.giveKeyItem(player, xi.ki.TUNING_FORK_OF_EARTH)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.TUNING_FORK_OF_EARTH)
                         quest:begin(player)
                     end
                 end,
@@ -80,24 +80,24 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Juroro'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.WHISPER_OF_TREMORS) then
-                        if not player:hasKeyItem(xi.ki.TUNING_FORK_OF_EARTH) then
+                    if not player:hasKeyItem(invaderXim.ki.WHISPER_OF_TREMORS) then
+                        if not player:hasKeyItem(invaderXim.ki.TUNING_FORK_OF_EARTH) then
                             -- Player has failed the BCNM and requires a new Tuning Fork
 
-                            return quest:progressEvent(284, 0, xi.ki.TUNING_FORK_OF_EARTH)
+                            return quest:progressEvent(284, 0, invaderXim.ki.TUNING_FORK_OF_EARTH)
                         else
-                            return quest:event(250, 0, xi.ki.TUNING_FORK_OF_EARTH, 1)
+                            return quest:event(250, 0, invaderXim.ki.TUNING_FORK_OF_EARTH, 1)
                         end
                     else
-                        return quest:progressEvent(252, 0, xi.ki.TUNING_FORK_OF_EARTH, 1, 0, getRewardMask(player))
+                        return quest:progressEvent(252, 0, invaderXim.ki.TUNING_FORK_OF_EARTH, 1, 0, getRewardMask(player))
                     end
                 end,
             },
@@ -107,25 +107,25 @@ quest.sections =
                 [252] = function(player, csid, option, npc)
                     if giveQuestReward(player, option) then
                         quest:complete(player)
-                        player:delKeyItem(xi.ki.WHISPER_OF_TREMORS)
+                        player:delKeyItem(invaderXim.ki.WHISPER_OF_TREMORS)
                         quest:setTimedVar(player, 'Timer', NextJstDay())
                     end
                 end,
 
                 [284] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.TUNING_FORK_OF_EARTH)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.TUNING_FORK_OF_EARTH)
                 end,
             },
         },
 
-        [xi.zone.CLOISTER_OF_TREMORS] =
+        [invaderXim.zone.CLOISTER_OF_TREMORS] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
-                    if player:getLocalVar('battlefieldWin') == xi.battlefield.id.TRIAL_BY_EARTH then
-                        npcUtil.giveKeyItem(player, xi.ki.WHISPER_OF_TREMORS)
-                        player:addTitle(xi.title.HEIR_OF_THE_GREAT_EARTH)
+                    if player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.TRIAL_BY_EARTH then
+                        npcUtil.giveKeyItem(player, invaderXim.ki.WHISPER_OF_TREMORS)
+                        player:addTitle(invaderXim.title.HEIR_OF_THE_GREAT_EARTH)
                     end
                 end,
             },
@@ -134,21 +134,21 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
                 quest:getVar(player, 'Timer') == 0
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
-            ['Juroro'] = quest:progressEvent(249, 0, xi.ki.TUNING_FORK_OF_EARTH),
+            ['Juroro'] = quest:progressEvent(249, 0, invaderXim.ki.TUNING_FORK_OF_EARTH),
 
             onEventFinish =
             {
                 [249] = function(player, csid, option, npc)
                     if option == 1 then
-                        player:delQuest(xi.questLog.BASTOK, xi.quest.id.bastok.TRIAL_BY_EARTH)
+                        player:delQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.TRIAL_BY_EARTH)
 
-                        npcUtil.giveKeyItem(player, xi.ki.TUNING_FORK_OF_EARTH)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.TUNING_FORK_OF_EARTH)
 
                         quest:begin(player)
                     end

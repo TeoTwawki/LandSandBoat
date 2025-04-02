@@ -8,14 +8,14 @@
 -- qm7             : !pos -504 20 -419 208
 -- _6z0            : !pos 0 -12 48 251
 -----------------------------------
-local quicksandCavesID = zones[xi.zone.QUICKSAND_CAVES]
+local quicksandCavesID = zones[invaderXim.zone.QUICKSAND_CAVES]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_MITHRA_AND_THE_CRYSTAL)
+local mission = Mission:new(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_MITHRA_AND_THE_CRYSTAL)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_GATE_OF_THE_GODS },
+    nextMission = { invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_GATE_OF_THE_GODS },
 }
 
 mission.sections =
@@ -26,12 +26,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Gilgamesh'] = mission:event(170),
         },
 
-        [xi.zone.RABAO] =
+        [invaderXim.zone.RABAO] =
         {
             ['Maryoh_Comyujah'] = mission:event(82),
         },
@@ -43,7 +43,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 0
         end,
 
-        [xi.zone.RABAO] =
+        [invaderXim.zone.RABAO] =
         {
             ['Maryoh_Comyujah'] =
             {
@@ -58,7 +58,7 @@ mission.sections =
             {
                 [81] = function(player, csid, option, npc)
                     if option == 1 then
-                        player:setMissionStatus(xi.mission.log_id.ZILART, 1)
+                        player:setMissionStatus(invaderXim.mission.log_id.ZILART, 1)
                     else
                         mission:setVar(player, 'Option', 1)
                     end
@@ -70,10 +70,10 @@ mission.sections =
     -- Section: Mission Active, missionStatus == 1, does not have Scrap of Papyrus
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == mission.missionId and missionStatus == 1 and not player:hasKeyItem(xi.ki.SCRAP_OF_PAPYRUS)
+            return currentMission == mission.missionId and missionStatus == 1 and not player:hasKeyItem(invaderXim.ki.SCRAP_OF_PAPYRUS)
         end,
 
-        [xi.zone.QUICKSAND_CAVES] =
+        [invaderXim.zone.QUICKSAND_CAVES] =
         {
             ['qm7'] =
             {
@@ -105,7 +105,7 @@ mission.sections =
 
                 [13] = function(player, csid, option, npc)
                     if option == 1 then
-                        npcUtil.giveKeyItem(player, xi.ki.SCRAP_OF_PAPYRUS)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.SCRAP_OF_PAPYRUS)
                     end
                 end,
             },
@@ -116,19 +116,19 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
-                player:hasKeyItem(xi.ki.SCRAP_OF_PAPYRUS)
+                player:hasKeyItem(invaderXim.ki.SCRAP_OF_PAPYRUS)
         end,
 
-        [xi.zone.RABAO] =
+        [invaderXim.zone.RABAO] =
         {
             ['Maryoh_Comyujah'] = mission:progressEvent(83),
 
             onEventFinish =
             {
                 [83] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.SCRAP_OF_PAPYRUS)
-                    npcUtil.giveKeyItem(player, xi.ki.CERULEAN_CRYSTAL)
-                    player:setMissionStatus(xi.mission.log_id.ZILART, 2)
+                    player:delKeyItem(invaderXim.ki.SCRAP_OF_PAPYRUS)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.CERULEAN_CRYSTAL)
+                    player:setMissionStatus(invaderXim.mission.log_id.ZILART, 2)
                 end,
             },
         },
@@ -140,7 +140,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 2
         end,
 
-        [xi.zone.RABAO] =
+        [invaderXim.zone.RABAO] =
         {
             ['Maryoh_Comyujah'] = mission:progressEvent(84),
         },
@@ -149,10 +149,10 @@ mission.sections =
     -- Section: Mission Active, has Cerulean Crystal
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == mission.missionId and player:hasKeyItem(xi.ki.CERULEAN_CRYSTAL)
+            return currentMission == mission.missionId and player:hasKeyItem(invaderXim.ki.CERULEAN_CRYSTAL)
         end,
 
-        [xi.zone.HALL_OF_THE_GODS] =
+        [invaderXim.zone.HALL_OF_THE_GODS] =
         {
             ['_6z0']              = mission:progressEvent(4),
             ['Shimmering_Circle'] = mission:progressEvent(3),
@@ -170,10 +170,10 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return player:hasCompletedMission(mission.areaId, mission.missionId) or
-                player:hasKeyItem(xi.ki.SCRAP_OF_PAPYRUS)
+                player:hasKeyItem(invaderXim.ki.SCRAP_OF_PAPYRUS)
         end,
 
-        [xi.zone.QUICKSAND_CAVES] =
+        [invaderXim.zone.QUICKSAND_CAVES] =
         {
             ['qm7'] = mission:messageSpecial(quicksandCavesID.text.YOU_FIND_NOTHING),
         },
@@ -185,7 +185,7 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.RABAO] =
+        [invaderXim.zone.RABAO] =
         {
             ['Maryoh_Comyujah'] = mission:progressEvent(85),
         },

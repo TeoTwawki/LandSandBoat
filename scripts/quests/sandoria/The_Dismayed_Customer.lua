@@ -8,20 +8,20 @@
 -- qm3      : !pos -399 -10 -438 100
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.THE_DISMAYED_CUSTOMER)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.THE_DISMAYED_CUSTOMER)
 
 quest.reward =
 {
     fame = 30,
-    fameArea = xi.fameArea.SANDORIA,
+    fameArea = invaderXim.fameArea.SANDORIA,
     gil = 560,
-    title = xi.title.LOST_FOUND_OFFICER,
+    title = invaderXim.title.LOST_FOUND_OFFICER,
 }
 
 local function handleQm(player, qmNumber)
     if quest:getVar(player, 'Stage') == qmNumber then
         quest:setVar(player, 'Stage', 0)
-        return quest:keyItem(xi.ki.GULEMONTS_DOCUMENT)
+        return quest:keyItem(invaderXim.ki.GULEMONTS_DOCUMENT)
     end
 end
 
@@ -29,11 +29,11 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.SANDORIA, xi.quest.id.sandoria.A_TASTE_FOR_MEAT)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.A_TASTE_FOR_MEAT)
         end,
 
-        [xi.zone.PORT_SAN_DORIA] =
+        [invaderXim.zone.PORT_SAN_DORIA] =
         {
             ['Gulemont'] =
             {
@@ -56,15 +56,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_SAN_DORIA] =
+        [invaderXim.zone.PORT_SAN_DORIA] =
         {
             ['Gulemont'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.GULEMONTS_DOCUMENT) then
+                    if player:hasKeyItem(invaderXim.ki.GULEMONTS_DOCUMENT) then
                         return quest:progressEvent(607)
                     else
                         return quest:progressEvent(606)
@@ -76,13 +76,13 @@ quest.sections =
             {
                 [607] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.GULEMONTS_DOCUMENT)
+                        player:delKeyItem(invaderXim.ki.GULEMONTS_DOCUMENT)
                     end
                 end,
             },
         },
 
-        [xi.zone.WEST_RONFAURE] =
+        [invaderXim.zone.WEST_RONFAURE] =
         {
             ['qm1'] =
             {

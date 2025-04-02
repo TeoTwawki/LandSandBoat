@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.BEARCLAW_PINNACLE] =
+zones[invaderXim.zone.BEARCLAW_PINNACLE] =
 {
     text =
     {
@@ -42,4 +42,4 @@ zones[xi.zone.BEARCLAW_PINNACLE] =
     },
 }
 
-return zones[xi.zone.BEARCLAW_PINNACLE]
+return zones[invaderXim.zone.BEARCLAW_PINNACLE]

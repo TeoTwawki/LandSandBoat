@@ -6,7 +6,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    player:sendMenu(xi.menuType.AUCTION)
+    player:sendMenu(invaderXim.menuType.AUCTION)
 end
 
 return entity

@@ -2,7 +2,7 @@
 -- Area: Grand Palace of Hu'Xzoi
 --  Mob: Eo'zdei
 -----------------------------------
-local ID = zones[xi.zone.GRAND_PALACE_OF_HUXZOI]
+local ID = zones[invaderXim.zone.GRAND_PALACE_OF_HUXZOI]
 mixins = { require('scripts/mixins/families/zdei') }
 -----------------------------------
 ---@type TMobEntity

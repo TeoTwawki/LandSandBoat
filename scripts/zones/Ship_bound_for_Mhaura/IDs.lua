@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.SHIP_BOUND_FOR_MHAURA] =
+zones[invaderXim.zone.SHIP_BOUND_FOR_MHAURA] =
 {
     text =
     {
@@ -29,4 +29,4 @@ zones[xi.zone.SHIP_BOUND_FOR_MHAURA] =
     },
 }
 
-return zones[xi.zone.SHIP_BOUND_FOR_MHAURA]
+return zones[invaderXim.zone.SHIP_BOUND_FOR_MHAURA]

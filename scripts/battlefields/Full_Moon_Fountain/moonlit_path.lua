@@ -2,27 +2,27 @@
 -- Area: Full Moon Fountain
 -- Name: The Moonlit Path
 -----------------------------------
-local fullMoonFountainID = zones[xi.zone.FULL_MOON_FOUNTAIN]
+local fullMoonFountainID = zones[invaderXim.zone.FULL_MOON_FOUNTAIN]
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId           = xi.zone.FULL_MOON_FOUNTAIN,
-    battlefieldId    = xi.battlefield.id.MOONLIT_PATH,
+    zoneId           = invaderXim.zone.FULL_MOON_FOUNTAIN,
+    battlefieldId    = invaderXim.battlefield.id.MOONLIT_PATH,
     canLoseExp       = false,
     maxPlayers       = 6,
     timeLimit        = utils.minutes(30),
     index            = 0,
     entryNpc         = 'MS_Entrance',
     exitNpc          = 'Moon_Spiral',
-    requiredKeyItems = { xi.ki.MOON_BAUBLE, keep = true },
+    requiredKeyItems = { invaderXim.ki.MOON_BAUBLE, keep = true },
 
-    questArea = xi.questLog.WINDURST,
-    quest     = xi.quest.id.windurst.THE_MOONLIT_PATH,
+    questArea = invaderXim.questLog.WINDURST,
+    quest     = invaderXim.quest.id.windurst.THE_MOONLIT_PATH,
 })
 
 function content:onEventFinishWin(player, csid, option, npc)
-    player:delKeyItem(xi.ki.MOON_BAUBLE)
-    npcUtil.giveKeyItem(player, xi.ki.WHISPER_OF_THE_MOON)
+    player:delKeyItem(invaderXim.ki.MOON_BAUBLE)
+    npcUtil.giveKeyItem(player, invaderXim.ki.WHISPER_OF_THE_MOON)
 end
 
 content.groups =
@@ -36,7 +36,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

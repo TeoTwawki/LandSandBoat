@@ -20,17 +20,17 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local multi = 1.0
-    if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
+    if caster:hasStatusEffect(invaderXim.effect.AZURE_LORE) then
         multi = multi + 1.50
     end
 
     local params = {}
-    params.ecosystem = xi.ecosystem.AQUAN
-    params.attackType = xi.attackType.MAGICAL
-    params.damageType = xi.damageType.WATER
-    params.attribute = xi.mod.INT
-    params.skillType = xi.skill.BLUE_MAGIC
-    params.effect = xi.effect.NONE
+    params.ecosystem = invaderXim.ecosystem.AQUAN
+    params.attackType = invaderXim.attackType.MAGICAL
+    params.damageType = invaderXim.damageType.WATER
+    params.attribute = invaderXim.mod.INT
+    params.skillType = invaderXim.skill.BLUE_MAGIC
+    params.effect = invaderXim.effect.NONE
     params.multiplier = multi
     params.tMultiplier = 3.5
     params.duppercap = 100
@@ -47,7 +47,7 @@ spellObject.onSpellCast = function(caster, target, spell)
         target:dispelStatusEffect()
     end
 
-    return xi.spells.blue.useMagicalSpell(caster, target, spell, params)
+    return invaderXim.spells.blue.useMagicalSpell(caster, target, spell, params)
 end
 
 return spellObject

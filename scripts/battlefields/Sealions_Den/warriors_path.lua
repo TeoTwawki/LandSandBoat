@@ -2,12 +2,12 @@
 -- Area: Sealion's Den
 -- Name: The Warrior's Path
 -----------------------------------
-local sealionsDenID = zones[xi.zone.SEALIONS_DEN]
+local sealionsDenID = zones[invaderXim.zone.SEALIONS_DEN]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId        = xi.zone.SEALIONS_DEN,
-    battlefieldId = xi.battlefield.id.WARRIORS_PATH,
+    zoneId        = invaderXim.zone.SEALIONS_DEN,
+    battlefieldId = invaderXim.battlefield.id.WARRIORS_PATH,
     canLoseExp    = false,
     isMission     = true,
     allowTrusts   = true,
@@ -17,12 +17,12 @@ local content = BattlefieldMission:new({
     index         = 1,
     entryNpc      = '_0w0',
     exitNpc       = 'Airship_Door',
-    missionArea   = xi.mission.log_id.COP,
-    mission       = xi.mission.id.cop.THE_WARRIORS_PATH,
+    missionArea   = invaderXim.mission.log_id.COP,
+    mission       = invaderXim.mission.id.cop.THE_WARRIORS_PATH,
     requiredVar   = 'Mission[6][748]Status',
     requiredValue = 1,
 
-    title = xi.title.THE_CHEBUKKIS_WORST_NIGHTMARE,
+    title = invaderXim.title.THE_CHEBUKKIS_WORST_NIGHTMARE,
 })
 
 content.groups =
@@ -36,7 +36,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 

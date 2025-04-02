@@ -7,11 +7,11 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return target:canLearnSpell(xi.magic.spell.TELEPORT_MEA)
+    return target:canLearnSpell(invaderXim.magic.spell.TELEPORT_MEA)
 end
 
 itemObject.onItemUse = function(target)
-    target:addSpell(xi.magic.spell.TELEPORT_MEA)
+    target:addSpell(invaderXim.magic.spell.TELEPORT_MEA)
 end
 
 return itemObject

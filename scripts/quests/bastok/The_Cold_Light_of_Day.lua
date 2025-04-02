@@ -5,12 +5,12 @@
 -- Malene : !pos -173 -5 64 235
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.THE_COLD_LIGHT_OF_DAY)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_COLD_LIGHT_OF_DAY)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.BASTOK,
+    fameArea = invaderXim.fameArea.BASTOK,
     gil      = 500,
 }
 
@@ -18,10 +18,10 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Malene'] = quest:progressEvent(102),
 
@@ -36,17 +36,17 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status >= xi.questStatus.QUEST_ACCEPTED
+            return status >= invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Gwill'] = quest:event(103),
 
             ['Malene'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.STEAM_CLOCK) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.STEAM_CLOCK) then
                         return quest:progressEvent(104)
                     end
                 end,

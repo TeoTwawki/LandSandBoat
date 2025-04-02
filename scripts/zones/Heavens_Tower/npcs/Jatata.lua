@@ -6,7 +6,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if player:getNation() == xi.nation.WINDURST then
+    if player:getNation() == invaderXim.nation.WINDURST then
         player:startEvent(77)
     else
         player:startEvent(78)

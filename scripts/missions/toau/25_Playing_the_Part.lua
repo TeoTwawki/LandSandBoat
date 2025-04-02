@@ -6,11 +6,11 @@
 -- Naja Salaheem : !pos 22.700 -8.804 -45.591 50
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.PLAYING_THE_PART)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.PLAYING_THE_PART)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.SEAL_OF_THE_SERPENT },
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.SEAL_OF_THE_SERPENT },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
                 VanadielUniqueDay() >= mission:getVar(player, 'Timer')
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = mission:progressEvent(3110),
 

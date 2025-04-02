@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: RoMaeve (122)
 -----------------------------------
-local ID = zones[xi.zone.ROMAEVE]
+local ID = zones[invaderXim.zone.ROMAEVE]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -12,7 +12,7 @@ zoneObject.onInitialize = function(zone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -44,7 +44,7 @@ zoneObject.onGameHour = function(zone)
             if moongate1:getLocalVar('romaeveActive') == 0 then
                 -- Loop over the affected NPCs: Moongates, bridges and fountain
                 for i = ID.npc.MOONGATE_OFFSET, ID.npc.MOONGATE_OFFSET + 7 do
-                    GetNPCByID(i):setAnimation(xi.anim.OPEN_DOOR) -- Open them
+                    GetNPCByID(i):setAnimation(invaderXim.anim.OPEN_DOOR) -- Open them
                 end
 
                 moongate2:setUntargetable(true)
@@ -56,7 +56,7 @@ zoneObject.onGameHour = function(zone)
         elseif vanadielHour == 6 then
             if moongate1:getLocalVar('romaeveActive') == 1 then
                 for i = ID.npc.MOONGATE_OFFSET, ID.npc.MOONGATE_OFFSET + 7 do
-                    GetNPCByID(i):setAnimation(xi.anim.CLOSE_DOOR)
+                    GetNPCByID(i):setAnimation(invaderXim.anim.CLOSE_DOOR)
                 end
 
                 moongate2:setUntargetable(false)

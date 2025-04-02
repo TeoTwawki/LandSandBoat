@@ -8,26 +8,26 @@
 -- Sunken Footprint  : !pos 188.429 -27.623 163.764 137
 -- Fresh Snowmelt    : !pos -71.660 -2.58 450.114 84
 -----------------------------------
-local pastBatalliaID = zones[xi.zone.BATALLIA_DOWNS_S]
+local pastBatalliaID = zones[invaderXim.zone.BATALLIA_DOWNS_S]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.CHASING_SHADOWS)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.CHASING_SHADOWS)
 
 quest.reward =
 {
-    item = xi.item.DARKSTEEL_SHEET,
+    item = invaderXim.item.DARKSTEEL_SHEET,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.BLOOD_OF_HEROES) and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.BLOOD_OF_HEROES) and
                 quest:getVar(player, 'Timer') <= VanadielUniqueDay()
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Rholont']              = quest:event(656),
             ['Rongelouts_N_Distaud'] = quest:progressEvent(165),
@@ -43,16 +43,16 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Rholont']              = quest:event(167),
             ['Rongelouts_N_Distaud'] = quest:event(168),
         },
 
-        [xi.zone.XARCABARD_S] =
+        [invaderXim.zone.XARCABARD_S] =
         {
             ['Backfilled_Pit'] =
             {
@@ -87,7 +87,7 @@ quest.sections =
 
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.BEAUCEDINE_GLACIER_S and
+                    prevZone == invaderXim.zone.BEAUCEDINE_GLACIER_S and
                     quest:getVar(player, 'Prog') == 0
                 then
                     return 30
@@ -118,7 +118,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.BATALLIA_DOWNS_S] =
+        [invaderXim.zone.BATALLIA_DOWNS_S] =
         {
             ['Fresh_Snowmelt'] =
             {
@@ -153,7 +153,7 @@ quest.sections =
 
             onZoneIn = function(player, prevZone)
                 if
-                    prevZone == xi.zone.BEAUCEDINE_GLACIER_S and
+                    prevZone == invaderXim.zone.BEAUCEDINE_GLACIER_S and
                     quest:getVar(player, 'Prog') == 5
                 then
                     return 114
@@ -176,8 +176,8 @@ quest.sections =
 
                 [117] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:addQuest(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.FACE_OF_THE_FUTURE)
-                        player:setPos(-49.903, 0.293, 436.922, 0, xi.zone.BATALLIA_DOWNS)
+                        player:addQuest(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.FACE_OF_THE_FUTURE)
+                        player:setPos(-49.903, 0.293, 436.922, 0, invaderXim.zone.BATALLIA_DOWNS)
                     end
                 end,
             },

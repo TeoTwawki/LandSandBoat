@@ -6,22 +6,22 @@
 -- Chalvatot : !pos -105 0.1 72 233
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.HER_MAJESTYS_GARDEN)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.HER_MAJESTYS_GARDEN)
 
 quest.reward =
 {
-    keyItem = xi.ki.MAP_OF_THE_NORTHLANDS_AREA,
+    keyItem = invaderXim.ki.MAP_OF_THE_NORTHLANDS_AREA,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.SANDORIA) >= 4
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.SANDORIA) >= 4
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Chalvatot'] = quest:progressEvent(84),
 
@@ -37,15 +37,15 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Chalvatot'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHas(trade, xi.item.CHUNK_OF_DERFLAND_HUMUS) then
+                    if npcUtil.tradeHas(trade, invaderXim.item.CHUNK_OF_DERFLAND_HUMUS) then
                         return quest:progressEvent(83)
                     end
                 end,

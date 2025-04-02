@@ -3,9 +3,9 @@
 -----------------------------------
 
 xi = xi or {}
-xi.mannequin = xi.mannequin or {}
+invaderXim.mannequin = invaderXim.mannequin or {}
 
-xi.mannequin.type =
+invaderXim.mannequin.type =
 {
     HUME_M   = 0x01,
     HUME_F   = 0x02,
@@ -17,7 +17,7 @@ xi.mannequin.type =
     GALKA    = 0x80,
 }
 
-xi.mannequin.pose =
+invaderXim.mannequin.pose =
 {
     NORMAL    = 0x00,
     SIT       = 0x01,
@@ -28,29 +28,29 @@ xi.mannequin.pose =
     SPECIAL   = 0x10,
 }
 
-xi.mannequin.cost =
+invaderXim.mannequin.cost =
 {
     PURCHASE  = 100000,
     TRADE     = 2000,
     POSE      = 200,
 }
 
-xi.mannequin.getMannequins = function(player)
+invaderXim.mannequin.getMannequins = function(player)
     local mannequinMask = 0
-    for itemId = xi.item.HUME_M_MANNEQUIN, xi.item.GALKA_MANNEQUIN do
+    for itemId = invaderXim.item.HUME_M_MANNEQUIN, invaderXim.item.GALKA_MANNEQUIN do
         if player:hasItem(itemId) then
-            mannequinMask = utils.mask.setBit(mannequinMask, itemId - xi.item.HUME_M_MANNEQUIN, true)
+            mannequinMask = utils.mask.setBit(mannequinMask, itemId - invaderXim.item.HUME_M_MANNEQUIN, true)
         end
     end
 
     return mannequinMask
 end
 
-xi.mannequin.setMannequinPose = function(player, race, pose)
+invaderXim.mannequin.setMannequinPose = function(player, race, pose)
     -- Race = 1 to 8
-    player:setMannequinPose(xi.item.HUME_M_MANNEQUIN + race - 1, race, pose)
+    player:setMannequinPose(invaderXim.item.HUME_M_MANNEQUIN + race - 1, race, pose)
 end
 
-xi.mannequin.getMannequinPose = function(player, race)
-    return player:getMannequinPose(xi.item.HUME_M_MANNEQUIN + race - 1)
+invaderXim.mannequin.getMannequinPose = function(player, race)
+    return player:getMannequinPose(invaderXim.item.HUME_M_MANNEQUIN + race - 1)
 end

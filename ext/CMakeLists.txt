@@ -21,7 +21,7 @@ if(TRACY_ENABLE)
             "TRACY_ON_DEMAND ON"
             "TRACY_NO_BROADCAST ON"
             "TRACY_NO_CONTEXT_SWITCH ON"
-            "TRACY_NO_EXIT ON"
+            "TRACY_NO_IXIMT ON"
             "TRACY_NO_VSYNC_CAPTURE ON"
             "TRACY_NO_FRAME_IMAGE ON"
             # "TRACY_NO_SYSTEM_TRACING ON" # This is incredibly heavy, add this line back if you need to speed up profiling

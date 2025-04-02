@@ -13,10 +13,10 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local power = 1
-    local duration = xi.mobskills.calculateDuration(skill:getTP(), 30, 60)
+    local duration = invaderXim.mobskills.calculateDuration(skill:getTP(), 30, 60)
 
-    skill:setMsg(xi.mobskills.mobGazeMove(mob, target, xi.effect.AMNESIA, power, 0, duration))
-    return xi.effect.AMNESIA
+    skill:setMsg(invaderXim.mobskills.mobGazeMove(mob, target, invaderXim.effect.AMNESIA, power, 0, duration))
+    return invaderXim.effect.AMNESIA
 end
 
 return mobskillObject

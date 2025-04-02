@@ -40,8 +40,8 @@ local handleFaustFacingDirectionMechanics = function(faust)
 end
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.GIL_MIN, 17986)
-    mob:setMobMod(xi.mobMod.GIL_MAX, 27482)
+    mob:setMobMod(invaderXim.mobMod.GIL_MIN, 17986)
+    mob:setMobMod(invaderXim.mobMod.GIL_MAX, 27482)
 end
 
 entity.onMobSpawn = function(mob)
@@ -53,7 +53,7 @@ entity.onMobRoam = function(mob)
     if mob:atPoint(home) then
         handleFaustFacingDirectionMechanics(mob)
     else
-        mob:pathThrough(home, xi.pathflag.NONE)
+        mob:pathThrough(home, invaderXim.pathflag.NONE)
     end
 end
 

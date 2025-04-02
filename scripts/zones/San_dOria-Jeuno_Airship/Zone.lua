@@ -30,9 +30,9 @@ zoneObject.onGameHour = function(zone)
         (vanadielHour >= 18 or
         vanadielHour < 6)
     then
-        qmObj:setStatus(xi.status.NORMAL)
+        qmObj:setStatus(invaderXim.status.NORMAL)
     else
-        qmObj:setStatus(xi.status.DISAPPEAR)
+        qmObj:setStatus(invaderXim.status.DISAPPEAR)
     end
 end
 
@@ -43,9 +43,9 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
     if csid == 100 then
         local prevzone = player:getPreviousZone()
 
-        if prevzone == xi.zone.PORT_JEUNO then
+        if prevzone == invaderXim.zone.PORT_JEUNO then
             player:setPos(0, 0, 0, 0, 232)
-        elseif prevzone == xi.zone.PORT_SAN_DORIA then
+        elseif prevzone == invaderXim.zone.PORT_SAN_DORIA then
             player:setPos(0, 0, 0, 0, 246)
         end
     end

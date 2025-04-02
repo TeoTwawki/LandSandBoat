@@ -1121,7 +1121,7 @@ typedef enum {
  * the closest equivalent value in the current state machine code. Not all
  * defines have an equivalent and are set to a dummy value (-1). SSL_ST_CONNECT
  * and SSL_ST_ACCEPT are still in use in the definition of SSL_CB_ACCEPT_LOOP,
- * SSL_CB_ACCEPT_EXIT, SSL_CB_CONNECT_LOOP and SSL_CB_CONNECT_EXIT.
+ * SSL_CB_ACCEPT_IXIMT, SSL_CB_CONNECT_LOOP and SSL_CB_CONNECT_IXIMT.
  */
 
 # define SSL_ST_CONNECT                  0x1000
@@ -1130,16 +1130,16 @@ typedef enum {
 # define SSL_ST_MASK                     0x0FFF
 
 # define SSL_CB_LOOP                     0x01
-# define SSL_CB_EXIT                     0x02
+# define SSL_CB_IXIMT                     0x02
 # define SSL_CB_READ                     0x04
 # define SSL_CB_WRITE                    0x08
 # define SSL_CB_ALERT                    0x4000/* used in callback */
 # define SSL_CB_READ_ALERT               (SSL_CB_ALERT|SSL_CB_READ)
 # define SSL_CB_WRITE_ALERT              (SSL_CB_ALERT|SSL_CB_WRITE)
 # define SSL_CB_ACCEPT_LOOP              (SSL_ST_ACCEPT|SSL_CB_LOOP)
-# define SSL_CB_ACCEPT_EXIT              (SSL_ST_ACCEPT|SSL_CB_EXIT)
+# define SSL_CB_ACCEPT_IXIMT              (SSL_ST_ACCEPT|SSL_CB_IXIMT)
 # define SSL_CB_CONNECT_LOOP             (SSL_ST_CONNECT|SSL_CB_LOOP)
-# define SSL_CB_CONNECT_EXIT             (SSL_ST_CONNECT|SSL_CB_EXIT)
+# define SSL_CB_CONNECT_IXIMT             (SSL_ST_CONNECT|SSL_CB_IXIMT)
 # define SSL_CB_HANDSHAKE_START          0x10
 # define SSL_CB_HANDSHAKE_DONE           0x20
 

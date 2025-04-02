@@ -21,18 +21,18 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    local typeEffect = xi.effect.DEFENSE_DOWN
-    local defDown    = xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.DEFENSE_DOWN, 50, 0, 30)
-    local mdefDown   = xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.MAGIC_DEF_DOWN, 50, 0, 30)
+    local typeEffect = invaderXim.effect.DEFENSE_DOWN
+    local defDown    = invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.DEFENSE_DOWN, 50, 0, 30)
+    local mdefDown   = invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.MAGIC_DEF_DOWN, 50, 0, 30)
 
-    skill:setMsg(xi.msg.basic.SKILL_ENFEEB_IS)
+    skill:setMsg(invaderXim.msg.basic.SKILL_ENFEEB_IS)
 
-    if defDown == xi.msg.basic.SKILL_ENFEEB_IS then
-        typeEffect = xi.effect.DEFENSE_DOWN
-    elseif mdefDown == xi.msg.basic.SKILL_ENFEEB_IS then
-        typeEffect = xi.effect.MAGIC_DEF_DOWN
+    if defDown == invaderXim.msg.basic.SKILL_ENFEEB_IS then
+        typeEffect = invaderXim.effect.DEFENSE_DOWN
+    elseif mdefDown == invaderXim.msg.basic.SKILL_ENFEEB_IS then
+        typeEffect = invaderXim.effect.MAGIC_DEF_DOWN
     else
-        skill:setMsg(xi.msg.basic.SKILL_MISS)
+        skill:setMsg(invaderXim.msg.basic.SKILL_MISS)
     end
 
     return typeEffect

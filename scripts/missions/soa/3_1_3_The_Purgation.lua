@@ -6,19 +6,19 @@
 -- Erminold : !pos 50.949 -40 -90.942 257
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.THE_PURGATION)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_PURGATION)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.THE_KEY },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_KEY },
 }
 
 local purgationKeyItems =
 {
-    xi.ki.ETERNAL_FLAME,
-    xi.ki.VIAL_OF_UNTAINTED_HOLY_WATER,
-    xi.ki.PIECE_OF_A_STONE_WALL,
-    xi.ki.WEATHER_VANE_WINGS,
+    invaderXim.ki.ETERNAL_FLAME,
+    invaderXim.ki.VIAL_OF_UNTAINTED_HOLY_WATER,
+    invaderXim.ki.PIECE_OF_A_STONE_WALL,
+    invaderXim.ki.WEATHER_VANE_WINGS,
 }
 
 mission.sections =
@@ -28,7 +28,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             -- TODO: Continue to check if Levil's dialogue changes.  This event has been
             -- repeated for several missions.
@@ -36,7 +36,7 @@ mission.sections =
             ['Levil'] = mission:event(138),
         },
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Erminold'] = mission:event(1526):replaceDefault(),
 
@@ -51,7 +51,7 @@ mission.sections =
             {
                 [1510] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        xi.mission.setVar(player, xi.mission.log_id.SOA, xi.mission.id.soa.THE_KEY, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.mission.setVar(player, invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_KEY, 'Timer', VanadielUniqueDay() + 1)
 
                         for _, keyItem in ipairs(purgationKeyItems) do
                             player:delKeyItem(keyItem)

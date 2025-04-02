@@ -13,53 +13,53 @@ local additionalAllyLooks =
 {
     [20] =
     {
-        [xi.nation.SANDORIA] =
+        [invaderXim.nation.SANDORIA] =
         {
             '0x010004041C106E20833080406850836083700000', -- Fouagine
             '0x01000A041C103C206C306C406C503C6000700000', -- Ferchinne
         },
 
-        [xi.nation.BASTOK] =
+        [invaderXim.nation.BASTOK] =
         {
             --
         },
 
-        [xi.nation.WINDURST] =
+        [invaderXim.nation.WINDURST] =
         {
             '0x0100030601100120013001400150016001700000', -- Harara_WW
         },
     },
     [30] =
     {
-        [xi.nation.SANDORIA] =
+        [invaderXim.nation.SANDORIA] =
         {
             --
         },
 
-        [xi.nation.BASTOK] =
+        [invaderXim.nation.BASTOK] =
         {
             '0x01000E020F100720003003400750006000700000', -- Suzel
         },
 
-        [xi.nation.WINDURST] =
+        [invaderXim.nation.WINDURST] =
         {
             --
         },
     },
     [40] =
     {
-        [xi.nation.SANDORIA] =
+        [invaderXim.nation.SANDORIA] =
         {
             '0x01000D0323108A20803088408050056100700000', -- Parelbriaux
             '0x01000101141019200C3002400250056000700000', -- Petva
         },
 
-        [xi.nation.BASTOK] =
+        [invaderXim.nation.BASTOK] =
         {
             --
         },
 
-        [xi.nation.WINDURST] =
+        [invaderXim.nation.WINDURST] =
         {
             '0x0100000500100220023002400250006000700000', -- Taraihi-Perunhi
             '0x01000306461118205230B8408550006000700000', -- Wetata
@@ -67,36 +67,36 @@ local additionalAllyLooks =
     },
     [50] =
     {
-        [xi.nation.SANDORIA] =
+        [invaderXim.nation.SANDORIA] =
         {
             --
         },
 
-        [xi.nation.BASTOK] =
+        [invaderXim.nation.BASTOK] =
         {
             '0x01000D0801101620053019400C505C6000700000', -- Iron Eater (17748016)
             '0x0100010814102720173015401550006000700000', -- Ferocious_Artisan
         },
 
-        [xi.nation.WINDURST] =
+        [invaderXim.nation.WINDURST] =
         {
             '0x0100020700100220023002400250006000700000', -- Naih_Arihmepp
         },
     },
     [99] =
     {
-        [xi.nation.SANDORIA] =
+        [invaderXim.nation.SANDORIA] =
         {
             --
         },
 
-        [xi.nation.BASTOK] =
+        [invaderXim.nation.BASTOK] =
         {
             --
             '0x010008021C106A20733073406850006000700000', -- Merol
         },
 
-        [xi.nation.WINDURST] =
+        [invaderXim.nation.WINDURST] =
         {
             --
         },
@@ -142,7 +142,7 @@ local function addWeaponIfNecessary(look)
     return string.sub(look, 1, 30) .. weapon .. string.sub(look, 33, string.len(look))
 end
 
-m:addOverride('xi.garrison.getAllyInfo', function(zoneID, zoneData, nationID)
+m:addOverride('invaderXim.garrison.getAllyInfo', function(zoneID, zoneData, nationID)
     -- Get the original allyInfo table (getAllyInfo() returns a temporary, so it's safe to
     -- modify it in-flight)
     local allyInfoTable = super(zoneID, zoneData, nationID)

@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.KUFTAL_TUNNEL] =
+zones[invaderXim.zone.KUFTAL_TUNNEL] =
 {
     text =
     {
@@ -57,4 +57,4 @@ zones[xi.zone.KUFTAL_TUNNEL] =
     },
 }
 
-return zones[xi.zone.KUFTAL_TUNNEL]
+return zones[invaderXim.zone.KUFTAL_TUNNEL]

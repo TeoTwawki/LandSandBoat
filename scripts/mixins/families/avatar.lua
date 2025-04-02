@@ -52,7 +52,7 @@ g_mixins.families.avatar = function(avatarMob)
         end
     end)
 
-    avatarMob:addListener('WEAPONSKILL_STATE_EXIT', 'AVATAR_MOBSKILL_FINISHED', function(mob)
+    avatarMob:addListener('WEAPONSKILL_STATE_IXIMT', 'AVATAR_MOBSKILL_FINISHED', function(mob)
         mob:setUnkillable(false)
         mob:setHP(0)
     end)

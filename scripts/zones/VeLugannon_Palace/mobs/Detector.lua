@@ -2,7 +2,7 @@
 -- Area: VeLugannon Palace
 --  Mob: Detector
 -----------------------------------
-local ID = zones[xi.zone.VELUGANNON_PALACE]
+local ID = zones[invaderXim.zone.VELUGANNON_PALACE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -71,7 +71,7 @@ entity.onMobFight = function(mob, target)
     end
 
     -- make sure pet has a target
-    if mobToSpawn:getCurrentAction() == xi.act.ROAMING then
+    if mobToSpawn:getCurrentAction() == invaderXim.act.ROAMING then
         mobToSpawn:updateEnmity(target)
     end
 end
@@ -87,7 +87,7 @@ entity.onMobDisengage = function(mob)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 743, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 743, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)

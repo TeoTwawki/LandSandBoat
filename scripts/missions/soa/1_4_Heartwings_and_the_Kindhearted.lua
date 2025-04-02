@@ -6,11 +6,11 @@
 -- WESTERN_ADOULIN : !zone 256
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.HEARTWINGS_AND_THE_KINDHEARTED)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.HEARTWINGS_AND_THE_KINDHEARTED)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.PIONEER_REGISTRATION },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.PIONEER_REGISTRATION },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             onZoneIn = function(player, prevZone)
                 return 2

@@ -184,11 +184,11 @@ end
 (',', b)  -- PASS
 (',',b)   -- FAIL
 
-xi.items.SOMETHING -- FAIL
-xi.item.SOMETHING  -- PASS
+invaderXim.items.SOMETHING -- FAIL
+invaderXim.item.SOMETHING  -- PASS
 
-xi.effects.SOMETHING -- FAIL
-xi.effect.SOMETHING  -- PASS
+invaderXim.effects.SOMETHING -- FAIL
+invaderXim.effect.SOMETHING  -- PASS
 
 if x == 1 then y = 2 -- FAIL
 elseif x == 2 then y = 3 -- FAIL

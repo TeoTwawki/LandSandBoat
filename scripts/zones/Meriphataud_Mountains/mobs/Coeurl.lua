@@ -3,7 +3,7 @@
 --  Mob: Coeurl
 -- Note: PH for Patripatan
 -----------------------------------
-local ID = zones[xi.zone.MERIPHATAUD_MOUNTAINS]
+local ID = zones[invaderXim.zone.MERIPHATAUD_MOUNTAINS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -16,11 +16,11 @@ local patripatanPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 63, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 63, 1, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, patripatanPHTable, 5, math.random(3600, 10800)) -- 1 to 3 hours
+    invaderXim.mob.phOnDespawn(mob, patripatanPHTable, 5, math.random(3600, 10800)) -- 1 to 3 hours
 end
 
 return entity

@@ -10,11 +10,11 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.white_mage.checkMartyr(player, target, ability)
+    return invaderXim.job_utils.white_mage.checkMartyr(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    return xi.job_utils.white_mage.useMartyr(player, target, ability)
+    return invaderXim.job_utils.white_mage.useMartyr(player, target, ability)
 end
 
 return abilityObject

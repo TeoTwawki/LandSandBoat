@@ -1,10 +1,10 @@
 -----------------------------------
 -- Nyzul Isle: Floor generation methods and data.
 -----------------------------------
-local ID = zones[xi.zone.NYZUL_ISLE]
+local ID = zones[invaderXim.zone.NYZUL_ISLE]
 -----------------------------------
 xi = xi or {}
-xi.nyzul = xi.nyzul or {}
+invaderXim.nyzul = invaderXim.nyzul or {}
 
 -----------------------------------
 -- Data Tables
@@ -1136,21 +1136,21 @@ local function lampsActivate(instance)
     end
 
     -- Lamp Objective: Register
-    if lampsObjective == xi.nyzul.lampsObjective.REGISTER then
+    if lampsObjective == invaderXim.nyzul.lampsObjective.REGISTER then
         local spawnPoint = math.random(1, #dTableLampPoints)
         local runicLamp1 = GetNPCByID(ID.npc.RUNIC_LAMP_OFFSET, instance)
 
         -- Spawn lamps.
         if runicLamp1 then
             runicLamp1:setPos(dTableLampPoints[spawnPoint])
-            runicLamp1:setStatus(xi.status.NORMAL)
+            runicLamp1:setStatus(invaderXim.status.NORMAL)
         end
 
         -- Save data.
         instance:setLocalVar('[Lamp]PartySize', instance:getLocalVar('partySize'))
 
     -- Lamp Objective: Activate All
-    elseif lampsObjective == xi.nyzul.lampsObjective.ACTIVATE_ALL then
+    elseif lampsObjective == invaderXim.nyzul.lampsObjective.ACTIVATE_ALL then
         local runicLamps = math.random(2, partySize - 1)
 
         -- Spawn lamps.
@@ -1158,7 +1158,7 @@ local function lampsActivate(instance)
             local spawnPoint = math.random(1, #dTableLampPoints)
 
             GetNPCByID(i, instance):setPos(dTableLampPoints[spawnPoint])
-            GetNPCByID(i, instance):setStatus(xi.status.NORMAL)
+            GetNPCByID(i, instance):setStatus(invaderXim.status.NORMAL)
             table.remove(dTableLampPoints, spawnPoint)
         end
 
@@ -1166,7 +1166,7 @@ local function lampsActivate(instance)
         instance:setLocalVar('[Lamp]count', runicLamps)
 
     -- Lamp Objective: Activate in Order
-    elseif lampsObjective == xi.nyzul.lampsObjective.ORDER then
+    elseif lampsObjective == invaderXim.nyzul.lampsObjective.ORDER then
         local runicLamps      = math.random(2, 4)
         local dTableLampOrder = {}
 
@@ -1181,7 +1181,7 @@ local function lampsActivate(instance)
             local lampRandom = math.random(1, #dTableLampOrder)
 
             GetNPCByID(i, instance):setPos(dTableLampPoints[spawnPoint])
-            GetNPCByID(i, instance):setStatus(xi.status.NORMAL)
+            GetNPCByID(i, instance):setStatus(invaderXim.status.NORMAL)
             GetNPCByID(i, instance):setLocalVar('[Lamp]order', dTableLampOrder[lampRandom])
 
             table.remove(dTableLampOrder, lampRandom)
@@ -1198,7 +1198,7 @@ end
 -- Global functions
 -----------------------------------
 
-xi.nyzul.prepareMobs = function(instance)
+invaderXim.nyzul.prepareMobs = function(instance)
     local currentFloor = instance:getLocalVar('Nyzul_Current_Floor')
 
     -- Failsafe: Initialize variable
@@ -1220,7 +1220,7 @@ xi.nyzul.prepareMobs = function(instance)
         SpawnMob(floorBoss, instance)
 
     -- All other floors except free.
-    elseif instance:getStage() ~= xi.nyzul.objective.FREE_FLOOR then
+    elseif instance:getStage() ~= invaderXim.nyzul.objective.FREE_FLOOR then
         -- Build dynamic table with all the possible spawn points.
         local floorLayout      = instance:getLocalVar('Nyzul_Isle_FloorLayout')
         local spawnPointIndex  = 0
@@ -1235,7 +1235,7 @@ xi.nyzul.prepareMobs = function(instance)
         switch (instance:getStage()) : caseof
         {
             -- Enemy Leader Objective
-            [xi.nyzul.objective.ELIMINATE_ENEMY_LEADER] = function()
+            [invaderXim.nyzul.objective.ELIMINATE_ENEMY_LEADER] = function()
                 local floorBoss = math.random(pTableEnemyLeaders[1][1], pTableEnemyLeaders[1][2])
                 spawnPointIndex = math.random(1, #dTableSpawnPoint)
                 spawnPoint      = dTableSpawnPoint[spawnPointIndex]
@@ -1253,7 +1253,7 @@ xi.nyzul.prepareMobs = function(instance)
             end,
 
             -- Specified Enemy Group Objective
-            [xi.nyzul.objective.ELIMINATE_SPECIFIED_ENEMIES] = function()
+            [invaderXim.nyzul.objective.ELIMINATE_SPECIFIED_ENEMIES] = function()
                 local specificGroup         = math.random(1, 7)
                 local groupAmount           = math.random(2, pTableSpecifiedMobs[specificGroup][2] - pTableSpecifiedMobs[specificGroup][1] + 1)
                 local dTableSpecificEnemies = {}
@@ -1275,7 +1275,7 @@ xi.nyzul.prepareMobs = function(instance)
                     -- Set mobs of the specified group to CHECK_AS_NM
                     local groupMob = GetMobByID(enemy, instance)
                     if groupMob then
-                        groupMob:setMobMod(xi.mobMod.CHECK_AS_NM, 1)
+                        groupMob:setMobMod(invaderXim.mobMod.CHECK_AS_NM, 1)
                     end
 
                     -- Remove table entry.
@@ -1290,7 +1290,7 @@ xi.nyzul.prepareMobs = function(instance)
             end,
 
             -- Eliminate All Objective
-            [xi.nyzul.objective.ELIMINATE_ALL_ENEMIES] = function()
+            [invaderXim.nyzul.objective.ELIMINATE_ALL_ENEMIES] = function()
                 if math.random(1, 100) <= 20 then -- 20% chance that Dahank will spawn.
                     spawnPointIndex = math.random(1, #dTableSpawnPoint)
                     spawnPoint      = dTableSpawnPoint[spawnPointIndex]
@@ -1308,8 +1308,8 @@ xi.nyzul.prepareMobs = function(instance)
             end,
 
             -- Activate Lamps Objective
-            [xi.nyzul.objective.ACTIVATE_ALL_LAMPS] = function()
-                instance:setLocalVar('[Lamps]Objective', math.random(xi.nyzul.lampsObjective.REGISTER, xi.nyzul.lampsObjective.ORDER))
+            [invaderXim.nyzul.objective.ACTIVATE_ALL_LAMPS] = function()
+                instance:setLocalVar('[Lamps]Objective', math.random(invaderXim.nyzul.lampsObjective.REGISTER, invaderXim.nyzul.lampsObjective.ORDER))
                 lampsActivate(instance)
             end,
         }
@@ -1327,7 +1327,7 @@ xi.nyzul.prepareMobs = function(instance)
             table.remove(dTableSpawnPoint, spawnPointIndex)
 
             -- Update floor objective.
-            if instance:getStage() == xi.nyzul.objective.ELIMINATE_ALL_ENEMIES then
+            if instance:getStage() == invaderXim.nyzul.objective.ELIMINATE_ALL_ENEMIES then
                 instance:setLocalVar('Eliminate', instance:getLocalVar('Eliminate') + 1)
             end
         end
@@ -1344,7 +1344,7 @@ xi.nyzul.prepareMobs = function(instance)
             table.remove(dTableSpawnPoint, spawnPointIndex)
 
             -- Update floor objective.
-            if instance:getStage() == xi.nyzul.objective.ELIMINATE_ALL_ENEMIES then
+            if instance:getStage() == invaderXim.nyzul.objective.ELIMINATE_ALL_ENEMIES then
                 instance:setLocalVar('Eliminate', instance:getLocalVar('Eliminate') + 1)
             end
         end
@@ -1364,7 +1364,7 @@ xi.nyzul.prepareMobs = function(instance)
             end
 
             -- Update floor gear penalty.
-            instance:setLocalVar('gearPenalty', math.random(xi.nyzul.penalty.TIME, xi.nyzul.penalty.PATHOS))
+            instance:setLocalVar('gearPenalty', math.random(invaderXim.nyzul.penalty.TIME, invaderXim.nyzul.penalty.PATHOS))
         end
 
         -- Spawn fodder NM's.
@@ -1406,7 +1406,7 @@ xi.nyzul.prepareMobs = function(instance)
                 table.remove(dTableSpawnPoint, spawnPointIndex)
 
                 -- Update floor objective.
-                if instance:getStage() == xi.nyzul.objective.ELIMINATE_ALL_ENEMIES then
+                if instance:getStage() == invaderXim.nyzul.objective.ELIMINATE_ALL_ENEMIES then
                     instance:setLocalVar('Eliminate', instance:getLocalVar('Eliminate') + 1)
                 end
 
@@ -1438,10 +1438,10 @@ xi.nyzul.prepareMobs = function(instance)
             table.remove(dTableSpawnPoint, spawnPointIndex)
 
             -- Update floor objective.
-            if instance:getStage() == xi.nyzul.objective.ELIMINATE_ALL_ENEMIES then
+            if instance:getStage() == invaderXim.nyzul.objective.ELIMINATE_ALL_ENEMIES then
                 instance:setLocalVar('Eliminate', instance:getLocalVar('Eliminate') + 1)
             elseif
-                instance:getStage() == xi.nyzul.objective.ELIMINATE_SPECIFIED_ENEMY and
+                instance:getStage() == invaderXim.nyzul.objective.ELIMINATE_SPECIFIED_ENEMY and
                 instance:getLocalVar('Nyzul_Specified_Enemy') == 0
             then
                 instance:setLocalVar('Nyzul_Specified_Enemy', mobID)

@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.FULL_MOON_FOUNTAIN] =
+zones[invaderXim.zone.FULL_MOON_FOUNTAIN] =
 {
     text =
     {
@@ -48,4 +48,4 @@ zones[xi.zone.FULL_MOON_FOUNTAIN] =
     },
 }
 
-return zones[xi.zone.FULL_MOON_FOUNTAIN]
+return zones[invaderXim.zone.FULL_MOON_FOUNTAIN]

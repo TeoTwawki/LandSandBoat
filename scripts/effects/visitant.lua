@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.VISITANT
+-- invaderXim.effect.VISITANT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -62,29 +62,29 @@ reportTimeRemaining = function(player, effect)
         else
             -- There's 4s of buffer time built in, so that the full countdown is displayed.
             -- If we reached the end, delete the status effect so that the player is ejected.
-            player:delStatusEffectSilent(xi.effect.VISITANT)
+            player:delStatusEffectSilent(invaderXim.effect.VISITANT)
         end
     end
 end
 
 effectObject.onEffectGain = function(target, effect)
-    effect:addEffectFlag(xi.effectFlag.OFFLINE_TICK)
-    effect:addEffectFlag(xi.effectFlag.NO_CANCEL)
-    effect:addEffectFlag(xi.effectFlag.ON_ZONE)
-    effect:addEffectFlag(xi.effectFlag.HIDE_TIMER)
+    effect:addEffectFlag(invaderXim.effectFlag.OFFLINE_TICK)
+    effect:addEffectFlag(invaderXim.effectFlag.NO_CANCEL)
+    effect:addEffectFlag(invaderXim.effectFlag.ON_ZONE)
+    effect:addEffectFlag(invaderXim.effectFlag.HIDE_TIMER)
 
     target:setLocalVar('lastTimeUpdate', effect:getTimeRemaining() / 1000 + 1)
 end
 
 effectObject.onEffectTick = function(target, effect)
-    if not xi.abyssea.isInAbysseaZone(target) then
+    if not invaderXim.abyssea.isInAbysseaZone(target) then
         target:delStatusEffect(effect:getEffectType())
     end
 
     -- Searing Ward Tether is set and reset in zone onTriggerAreaLeave and
     -- onTriggerAreaEnter.
     if target:getLocalVar('tetherTimer') == 11 then
-        xi.abyssea.searingWardTimer(target)
+        invaderXim.abyssea.searingWardTimer(target)
     end
 
     -- Handle Time Remaining Messages. This will no longer be called if the time
@@ -101,12 +101,12 @@ effectObject.onEffectLose = function(target, effect)
 
     if
         target:getLocalVar('gameLogin') == 0 and
-        xi.abyssea.isInAbysseaZone(target)
+        invaderXim.abyssea.isInAbysseaZone(target)
     then
         target:setLocalVar('finalCountdown', 0)
         target:messageSpecial(ID.text.ABYSSEA_TIME_OFFSET + 8)
         target:startEvent(2180)
-    elseif effect:getIcon() == xi.effect.VISITANT then
+    elseif effect:getIcon() == invaderXim.effect.VISITANT then
         -- Player exited willingly, set their time stored as seconds remaining.  Cap at 120 minutes,
         -- and remove the 4 seconds that was granted as a buffer time.
         local timeRemaining = math.min(effect:getTimeRemaining() / 1000 - 4, 7200)

@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Labyrinth of Onzozo (213)
 -----------------------------------
-local ID = zones[xi.zone.LABYRINTH_OF_ONZOZO]
+local ID = zones[invaderXim.zone.LABYRINTH_OF_ONZOZO]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -10,7 +10,7 @@ zoneObject.onInitialize = function(zone)
     UpdateNMSpawnPoint(ID.mob.MYSTICMAKER_PROFBLIX)
     GetMobByID(ID.mob.MYSTICMAKER_PROFBLIX):setRespawnTime(math.random(900, 10800))
 
-    xi.treasure.initZone(zone)
+    invaderXim.treasure.initZone(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -28,7 +28,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.COMMITMENT
+-- invaderXim.effect.COMMITMENT
 -- Handled in map/utils/charutils
 -----------------------------------
 ---@type TEffect

@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.PERIQIA] =
+zones[invaderXim.zone.PERIQIA] =
 {
     text =
     {
@@ -52,7 +52,7 @@ zones[xi.zone.PERIQIA] =
 
     mob =
     {
-        [xi.assault.mission.SEAGULL_GROUNDED] =
+        [invaderXim.assault.mission.SEAGULL_GROUNDED] =
         {
             MOBS_START =
             {
@@ -60,7 +60,7 @@ zones[xi.zone.PERIQIA] =
                 17006602, 17006603, 17006604, 17006605, 17006606, 17006607, 17006608, 17006610, 17006611,
             },
         },
-        [xi.assault.mission.REQUIEM] =
+        [invaderXim.assault.mission.REQUIEM] =
         {
             MOBS_START =
             {
@@ -96,4 +96,4 @@ zones[xi.zone.PERIQIA] =
     }
 }
 
-return zones[xi.zone.PERIQIA]
+return zones[invaderXim.zone.PERIQIA]

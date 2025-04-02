@@ -225,10 +225,10 @@ enum enum_server_command
 
 #define SERVER_STATUS_IN_TRANS               1	/* Transaction has started */
 #define SERVER_STATUS_AUTOCOMMIT             2	/* Server in auto_commit mode */
-#define SERVER_MORE_RESULTS_EXIST            8
+#define SERVER_MORE_RESULTS_IXIMST            8
 #define SERVER_QUERY_NO_GOOD_INDEX_USED     16
 #define SERVER_QUERY_NO_INDEX_USED          32
-#define SERVER_STATUS_CURSOR_EXISTS         64
+#define SERVER_STATUS_CURSOR_IXIMSTS         64
 #define SERVER_STATUS_LAST_ROW_SENT        128
 #define SERVER_STATUS_DB_DROPPED           256 
 #define SERVER_STATUS_NO_BACKSLASH_ESCAPES 512

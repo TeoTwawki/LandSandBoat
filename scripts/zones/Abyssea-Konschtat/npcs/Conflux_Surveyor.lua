@@ -7,11 +7,11 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.abyssea.surveyorOnTrigger(player, npc)
+    invaderXim.abyssea.surveyorOnTrigger(player, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.abyssea.surveyorOnEventFinish(player, csid, option, npc)
+    invaderXim.abyssea.surveyorOnEventFinish(player, csid, option, npc)
 end
 
 return entity

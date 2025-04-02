@@ -5,16 +5,16 @@
 require('scripts/globals/quests')
 -----------------------------------
 xi = xi or {}
-xi.beastmenTreasure = xi.beastmenTreasure or {}
+invaderXim.beastmenTreasure = invaderXim.beastmenTreasure or {}
 
 local zoneData =
 {
-    [xi.zone.YUHTUNGA_JUNGLE] =
+    [invaderXim.zone.YUHTUNGA_JUNGLE] =
     {
         statusvar = 'BMT_Lowlands_Status',
         dsvar = 'BMT_Lowlands_Digsite',
-        mapid = xi.ki.MAP_OF_THE_ELSHIMO_REGIONS,
-        day = xi.day.WINDSDAY,
+        mapid = invaderXim.ki.MAP_OF_THE_ELSHIMO_REGIONS,
+        day = invaderXim.day.WINDSDAY,
         fetchitems =
         {
             1480, -- Mermaid Head
@@ -28,12 +28,12 @@ local zoneData =
             racial = { [887]   = 3 }  -- Coral Fragment
         }
     },
-    [xi.zone.YHOATOR_JUNGLE] =
+    [invaderXim.zone.YHOATOR_JUNGLE] =
     {
         statusvar = 'BMT_Uplands_Status',
         dsvar = 'BMT_Uplands_Digsite',
-        mapid = xi.ki.MAP_OF_THE_ELSHIMO_REGIONS,
-        day = xi.day.LIGHTNINGDAY,
+        mapid = invaderXim.ki.MAP_OF_THE_ELSHIMO_REGIONS,
+        day = invaderXim.day.LIGHTNINGDAY,
         fetchitems =
         {
             1484, -- Rancor Mantle
@@ -47,12 +47,12 @@ local zoneData =
             racial = { [4158]  = 3 }  -- Venom Potion
         }
     },
-    [xi.zone.WESTERN_ALTEPA_DESERT] =
+    [invaderXim.zone.WESTERN_ALTEPA_DESERT] =
     {
         statusvar = 'BMT_Kuzotz_Status',
         dsvar = 'BMT_Kuzotz_Digsite',
-        mapid = xi.ki.MAP_OF_THE_KUZOTZ_REGION,
-        day = xi.day.EARTHSDAY,
+        mapid = invaderXim.ki.MAP_OF_THE_KUZOTZ_REGION,
+        day = invaderXim.day.EARTHSDAY,
         fetchitems =
         {
             1476, -- Xhifhut Strings
@@ -144,16 +144,16 @@ end
 local wRocksGems   = convertToWeighted(sharedLoot.rocksgems)
 local wSeedsRacial =
 {
-    [xi.zone.YUHTUNGA_JUNGLE] = convertToWeighted(addLoot(sharedLoot.seeds, zoneData[xi.zone.YUHTUNGA_JUNGLE].loot.racial)),
-    [xi.zone.YHOATOR_JUNGLE] = convertToWeighted(addLoot(sharedLoot.seeds, zoneData[xi.zone.YHOATOR_JUNGLE].loot.racial)),
-    [xi.zone.WESTERN_ALTEPA_DESERT] = convertToWeighted(addLoot(sharedLoot.seeds, zoneData[xi.zone.WESTERN_ALTEPA_DESERT].loot.racial))
+    [invaderXim.zone.YUHTUNGA_JUNGLE] = convertToWeighted(addLoot(sharedLoot.seeds, zoneData[invaderXim.zone.YUHTUNGA_JUNGLE].loot.racial)),
+    [invaderXim.zone.YHOATOR_JUNGLE] = convertToWeighted(addLoot(sharedLoot.seeds, zoneData[invaderXim.zone.YHOATOR_JUNGLE].loot.racial)),
+    [invaderXim.zone.WESTERN_ALTEPA_DESERT] = convertToWeighted(addLoot(sharedLoot.seeds, zoneData[invaderXim.zone.WESTERN_ALTEPA_DESERT].loot.racial))
 }
 local wCoins       = convertToWeighted(sharedLoot.coins)
 local wSealsUnique =
 {
-    [xi.zone.YUHTUNGA_JUNGLE] = convertToWeighted(addLoot(sharedLoot.seals, zoneData[xi.zone.YUHTUNGA_JUNGLE].loot.unique)),
-    [xi.zone.YHOATOR_JUNGLE] = convertToWeighted(addLoot(sharedLoot.seals, zoneData[xi.zone.YHOATOR_JUNGLE].loot.unique)),
-    [xi.zone.WESTERN_ALTEPA_DESERT] = convertToWeighted(addLoot(sharedLoot.seals, zoneData[xi.zone.WESTERN_ALTEPA_DESERT].loot.unique)),
+    [invaderXim.zone.YUHTUNGA_JUNGLE] = convertToWeighted(addLoot(sharedLoot.seals, zoneData[invaderXim.zone.YUHTUNGA_JUNGLE].loot.unique)),
+    [invaderXim.zone.YHOATOR_JUNGLE] = convertToWeighted(addLoot(sharedLoot.seals, zoneData[invaderXim.zone.YHOATOR_JUNGLE].loot.unique)),
+    [invaderXim.zone.WESTERN_ALTEPA_DESERT] = convertToWeighted(addLoot(sharedLoot.seals, zoneData[invaderXim.zone.WESTERN_ALTEPA_DESERT].loot.unique)),
 }
 
 local function weightedRandomSelect(w_loot)
@@ -193,48 +193,48 @@ local function startMapMarkerEvent(eventid, player, digsiteids)
     player:startEvent(eventid, player:getZoneID(), 0, pos.x * 1000, pos.z * 1000)
 end
 
-xi.beastmenTreasure.handleNpcOnTrigger = function(player, digsiteids)
+invaderXim.beastmenTreasure.handleNpcOnTrigger = function(player, digsiteids)
     local zd = zoneData[player:getZoneID()]
     local status = player:getCharVar(zd.statusvar)
 
     if not player:hasKeyItem(zd.mapid) then
         player:startEvent(102) -- Peddlestox lectures you for not having a map
-    elseif status == xi.questStatus.QUEST_AVAILABLE then
+    elseif status == invaderXim.questStatus.QUEST_AVAILABLE then
         player:startEvent(100) -- Peddlestox says go fetch
-    elseif status == xi.questStatus.QUEST_ACCEPTED then
+    elseif status == invaderXim.questStatus.QUEST_ACCEPTED then
         player:startEvent(104) -- 'What do I look like, a charity?'
-    elseif status == xi.questStatus.QUEST_COMPLETED then
+    elseif status == invaderXim.questStatus.QUEST_COMPLETED then
         -- Note: Quest will be 'completed' after trading the correct items,
         -- but will be set to available again after excavating the reward.
-        startMapMarkerEvent(103, player, xi.beastmenTreasure.getTableOfIDs(digsiteids)) -- Peddlestox reminds you where your digsite is
+        startMapMarkerEvent(103, player, invaderXim.beastmenTreasure.getTableOfIDs(digsiteids)) -- Peddlestox reminds you where your digsite is
     end
 end
 
-xi.beastmenTreasure.handleNpcOnTrade = function(player, trade, digsiteids)
+invaderXim.beastmenTreasure.handleNpcOnTrade = function(player, trade, digsiteids)
     local zd = zoneData[player:getZoneID()]
 
     if
-        player:getCharVar(zd.statusvar) == xi.questStatus.QUEST_ACCEPTED and
+        player:getCharVar(zd.statusvar) == invaderXim.questStatus.QUEST_ACCEPTED and
         npcUtil.tradeHasExactly(trade, zd.fetchitems)
     then
         -- Assign a random dig site to the player
         player:setCharVar(zd.dsvar, math.random(1, 8))
-        startMapMarkerEvent(101, player, xi.beastmenTreasure.getTableOfIDs(digsiteids)) -- Peddlestox shows you where to dig
+        startMapMarkerEvent(101, player, invaderXim.beastmenTreasure.getTableOfIDs(digsiteids)) -- Peddlestox shows you where to dig
     end
 end
 
-xi.beastmenTreasure.handleNpcOnEventFinish = function(player, csid)
+invaderXim.beastmenTreasure.handleNpcOnEventFinish = function(player, csid)
     local zd = zoneData[player:getZoneID()]
 
     if csid == 100 then
-        player:incrementCharVar(zd.statusvar, xi.questStatus.QUEST_ACCEPTED)
+        player:incrementCharVar(zd.statusvar, invaderXim.questStatus.QUEST_ACCEPTED)
     elseif csid == 101 then
         player:confirmTrade()
-        player:setCharVar(zd.statusvar, xi.questStatus.QUEST_COMPLETED)
+        player:setCharVar(zd.statusvar, invaderXim.questStatus.QUEST_COMPLETED)
     end
 end
 
-xi.beastmenTreasure.updatePeddlestox = function(zone, peddlestoxID)
+invaderXim.beastmenTreasure.updatePeddlestox = function(zone, peddlestoxID)
     --[[ Allows Peddlestox to appear on the appropriate day and disappear when the day is over.
     This function is called by each of the three zones where Peddlestox can appear: once on init,
     and once at the start of each new game day. Since Peddlestox is disabled in the db by default, we
@@ -245,8 +245,8 @@ xi.beastmenTreasure.updatePeddlestox = function(zone, peddlestoxID)
     end
 
     if zoneData[zone].day == VanadielDayOfTheWeek() then
-        peddlestox:setStatus(xi.status.NORMAL)
-    elseif peddlestox:getStatus() == xi.status.NORMAL then
+        peddlestox:setStatus(invaderXim.status.NORMAL)
+    elseif peddlestox:getStatus() == invaderXim.status.NORMAL then
         --[[
             Peddlestox should play a teleport animation and then fade out. On retail this is an 0x03A
             packet with animation id 122. Retail capture of
@@ -258,13 +258,13 @@ xi.beastmenTreasure.updatePeddlestox = function(zone, peddlestoxID)
         ]]--
         peddlestox:independentAnimation(peddlestox, 122, 0)
         peddlestox:timer(5000, function(npc)
-            peddlestox:setStatus(xi.status.DISAPPEAR)
+            peddlestox:setStatus(invaderXim.status.DISAPPEAR)
         end)
     end
 end
 
-xi.beastmenTreasure.handleQmOnTrigger = function(player, npc, buriedtext, nothingtext, digsiteids)
-    local digsiteid = xi.beastmenTreasure.getTableOfIDs(digsiteids)[getAssignedDigSite(player)]
+invaderXim.beastmenTreasure.handleQmOnTrigger = function(player, npc, buriedtext, nothingtext, digsiteids)
+    local digsiteid = invaderXim.beastmenTreasure.getTableOfIDs(digsiteids)[getAssignedDigSite(player)]
     local qmid = npc:getID()
 
     if digsiteid == nil or digsiteid ~= qmid then
@@ -275,14 +275,14 @@ xi.beastmenTreasure.handleQmOnTrigger = function(player, npc, buriedtext, nothin
     end
 end
 
-xi.beastmenTreasure.handleQmOnTrade = function(player, npc, trade, digsiteids)
+invaderXim.beastmenTreasure.handleQmOnTrade = function(player, npc, trade, digsiteids)
     local zoneid = player:getZoneID()
     local digsite = getAssignedDigSite(player)
 
     if
-        npcUtil.tradeHasExactly(trade, xi.item.PICKAXE) and
-        player:getCharVar(zoneData[zoneid].statusvar) == xi.questStatus.QUEST_COMPLETED and
-        npc:getID() == xi.beastmenTreasure.getTableOfIDs(digsiteids)[digsite]
+        npcUtil.tradeHasExactly(trade, invaderXim.item.PICKAXE) and
+        player:getCharVar(zoneData[zoneid].statusvar) == invaderXim.questStatus.QUEST_COMPLETED and
+        npc:getID() == invaderXim.beastmenTreasure.getTableOfIDs(digsiteids)[digsite]
     then
         --[[ Event 105 needs args to spawn and animate a treasure chest
              Example args from retail capture: 105 123 450762 1745 201805 7 723 490292 4095
@@ -296,7 +296,7 @@ xi.beastmenTreasure.handleQmOnTrade = function(player, npc, trade, digsiteids)
     end
 end
 
-xi.beastmenTreasure.handleQmOnEventFinish = function(player, csid)
+invaderXim.beastmenTreasure.handleQmOnEventFinish = function(player, csid)
     local zoneid = player:getZoneID()
 
     if csid == 105 then
@@ -317,12 +317,12 @@ xi.beastmenTreasure.handleQmOnEventFinish = function(player, csid)
         player:addTreasure(item3)
         player:addTreasure(item4)
         -- Reset player vars
-        player:setCharVar(zoneData[zoneid].statusvar, xi.questStatus.QUEST_AVAILABLE)
+        player:setCharVar(zoneData[zoneid].statusvar, invaderXim.questStatus.QUEST_AVAILABLE)
         player:setCharVar(zoneData[zoneid].dsvar, 0)
     end
 end
 
-xi.beastmenTreasure.getTableOfIDs = function(digsiteids)
+invaderXim.beastmenTreasure.getTableOfIDs = function(digsiteids)
     -- Creates the table of IDs from the BEASTMEN_TREASURE_OFFSET in each three zone IDs.lua
     local IDs = {
         digsiteids,

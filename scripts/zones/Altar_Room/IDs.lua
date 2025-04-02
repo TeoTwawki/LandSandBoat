@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.ALTAR_ROOM] =
+zones[invaderXim.zone.ALTAR_ROOM] =
 {
     text =
     {
@@ -36,4 +36,4 @@ zones[xi.zone.ALTAR_ROOM] =
     },
 }
 
-return zones[xi.zone.ALTAR_ROOM]
+return zones[invaderXim.zone.ALTAR_ROOM]

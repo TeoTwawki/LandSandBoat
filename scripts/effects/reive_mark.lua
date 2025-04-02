@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.REIVE_MARK
+-- invaderXim.effect.REIVE_MARK
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -15,7 +15,7 @@ end
 
 effectObject.onEffectLose = function(target, effect)
     if target:getPet() then
-        target:getPet():delStatusEffect(xi.effect.REIVE_MARK)
+        target:getPet():delStatusEffect(invaderXim.effect.REIVE_MARK)
     end
 end
 

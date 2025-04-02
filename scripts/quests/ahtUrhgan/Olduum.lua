@@ -5,18 +5,18 @@
 -- Leypoint !pos -200 -8.5 80 51
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.OLDUUM)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.OLDUUM)
 
 quest.reward =
 {
-    item = xi.item.LIGHTNING_BAND,
+    item = invaderXim.item.LIGHTNING_BAND,
 }
 
 local keyItems =
 {
-    xi.ki.ELECTROCELL,
-    xi.ki.ELECTROPOT,
-    xi.ki.ELECTROLOCOMOTIVE,
+    invaderXim.ki.ELECTROCELL,
+    invaderXim.ki.ELECTROPOT,
+    invaderXim.ki.ELECTROLOCOMOTIVE,
 }
 
 local hasQuestKeyItem = function(player)
@@ -34,10 +34,10 @@ quest.sections =
     -- Section: Begin quest
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Dkhaaya'] =
             {
@@ -49,7 +49,7 @@ quest.sections =
             onEventFinish =
             {
                 [4] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.DKHAAYAS_RESEARCH_JOURNAL)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.DKHAAYAS_RESEARCH_JOURNAL)
                     quest:begin(player)
                 end,
             },
@@ -59,10 +59,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Dkhaaya'] =
             {
@@ -80,21 +80,21 @@ quest.sections =
                 [6] = function(player, csid, option, npc)
                     player:delKeyItem(keyItems[quest:getVar(player, 'Prog')])
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.DKHAAYAS_RESEARCH_JOURNAL)
+                        player:delKeyItem(invaderXim.ki.DKHAAYAS_RESEARCH_JOURNAL)
                     end
                 end,
             },
         },
 
-        [xi.zone.AYDEEWA_SUBTERRANE] =
+        [invaderXim.zone.AYDEEWA_SUBTERRANE] =
         {
             ['Excavation_Site'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        not player:hasItem(xi.item.OLDUUM_RING) and
+                        not player:hasItem(invaderXim.item.OLDUUM_RING) and
                         not hasQuestKeyItem(player) and
-                        npcUtil.tradeHasExactly(trade, xi.item.PICKAXE)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.PICKAXE)
                     then
                         if math.random(1, 10) > 5 then
                             quest:setVar(player, 'Prog', math.random(1, 3))
@@ -126,10 +126,10 @@ quest.sections =
     -- Section: Quest completed
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Dkhaaya'] =
             {
@@ -137,8 +137,8 @@ quest.sections =
                     if hasQuestKeyItem(player) then
                         return quest:progressEvent(8)
                     elseif
-                        player:hasItem(xi.item.OLDUUM_RING) or
-                        player:hasItem(xi.item.LIGHTNING_BAND)
+                        player:hasItem(invaderXim.item.OLDUUM_RING) or
+                        player:hasItem(invaderXim.item.LIGHTNING_BAND)
                     then
                         return quest:event(7)
                     else
@@ -156,25 +156,25 @@ quest.sections =
             onEventFinish =
             {
                 [8] = function(player, csid, option, npc)
-                    npcUtil.giveItem(player, xi.item.LIGHTNING_BAND)
+                    npcUtil.giveItem(player, invaderXim.item.LIGHTNING_BAND)
                     player:delKeyItem(keyItems[quest:getVar(player, 'Prog')])
                     quest:setVar(player, 'Prog', 0)
                 end,
             },
         },
 
-        [xi.zone.WAJAOM_WOODLANDS] =
+        [invaderXim.zone.WAJAOM_WOODLANDS] =
         {
             ['Leypoint'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasItem(xi.item.LIGHTNING_BAND) then
-                        return quest:messageSpecial(zones[player:getZoneID()].text.LEYPOINT + 1, xi.item.LIGHTNING_BAND)
+                    if player:hasItem(invaderXim.item.LIGHTNING_BAND) then
+                        return quest:messageSpecial(zones[player:getZoneID()].text.LEYPOINT + 1, invaderXim.item.LIGHTNING_BAND)
                     end
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.LIGHTNING_BAND) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.LIGHTNING_BAND) then
                         if player:getFreeSlotsCount() == 0 then
                             return quest:messageSpecial(zones[player:getZoneID()].text.ITEM_CANNOT_BE_OBTAINED)
                         else
@@ -187,22 +187,22 @@ quest.sections =
             onEventFinish =
             {
                 [2] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.OLDUUM_RING) then
+                    if npcUtil.giveItem(player, invaderXim.item.OLDUUM_RING) then
                         player:confirmTrade()
                     end
                 end,
             },
         },
 
-        [xi.zone.AYDEEWA_SUBTERRANE] =
+        [invaderXim.zone.AYDEEWA_SUBTERRANE] =
         {
             ['Excavation_Site'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        not player:hasItem(xi.item.OLDUUM_RING) and
+                        not player:hasItem(invaderXim.item.OLDUUM_RING) and
                         not hasQuestKeyItem(player) and
-                        npcUtil.tradeHasExactly(trade, xi.item.PICKAXE)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.PICKAXE)
                     then
                         if math.random(1, 10) > 5 then
                             quest:setVar(player, 'Prog', math.random(1, 3))
@@ -234,10 +234,10 @@ quest.sections =
     -- Section: Quest accepted or completed
     {
         check = function(player, status, vars)
-            return status >= xi.questStatus.QUEST_AVAILABLE
+            return status >= invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.AYDEEWA_SUBTERRANE] =
+        [invaderXim.zone.AYDEEWA_SUBTERRANE] =
         {
             ['Excavation_Site'] =
             {

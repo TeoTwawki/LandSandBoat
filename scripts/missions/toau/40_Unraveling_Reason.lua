@@ -6,12 +6,12 @@
 -- Pherimociel : !pos -31.627 1.002 67.956 243
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.UNRAVELING_REASON)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.UNRAVELING_REASON)
 
 mission.reward =
 {
-    title       = xi.title.ENDYMION_PARATROOPER,
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.LIGHT_OF_JUDGMENT },
+    title       = invaderXim.title.ENDYMION_PARATROOPER,
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.LIGHT_OF_JUDGMENT },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Pherimociel'] =
             {
@@ -62,7 +62,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WAJAOM_WOODLANDS] =
+        [invaderXim.zone.WAJAOM_WOODLANDS] =
         {
             onZoneIn = function(player, prevZone)
                 -- Each of these 3 cutscenes that follow Ru'Lude 10098 are onZone events.  It is possible

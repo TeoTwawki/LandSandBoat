@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.day
-xi.day =
+---@enum invaderXim.day
+invaderXim.day =
 {
     FIRESDAY     = 0,
     EARTHSDAY    = 1,

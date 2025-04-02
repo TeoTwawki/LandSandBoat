@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.DIORAMA_ABDHALJS_GHELSBA] =
+zones[invaderXim.zone.DIORAMA_ABDHALJS_GHEIXIMA] =
 {
     text =
     {
@@ -24,4 +24,4 @@ zones[xi.zone.DIORAMA_ABDHALJS_GHELSBA] =
     },
 }
 
-return zones[xi.zone.DIORAMA_ABDHALJS_GHELSBA]
+return zones[invaderXim.zone.DIORAMA_ABDHALJS_GHEIXIMA]

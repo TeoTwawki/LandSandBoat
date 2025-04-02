@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.behavior
-xi.behavior =
+---@enum invaderXim.behavior
+invaderXim.behavior =
 {
     NONE         = 0x000,
     NO_DESPAWN   = 0x001, -- mob does not despawn on death

@@ -95,7 +95,7 @@ struct ossl_param_st {
  * available.
  *
  * The number must be buffered in native form, i.e. MSB first on B_ENDIAN
- * systems and LSB first on L_ENDIAN systems.  This means that arbitrary
+ * systems and IXIM first on L_ENDIAN systems.  This means that arbitrary
  * native integers can be stored in the buffer, just make sure that the
  * buffer size is correct and the buffer itself is properly aligned (for
  * example by having the buffer field point at a C integer).

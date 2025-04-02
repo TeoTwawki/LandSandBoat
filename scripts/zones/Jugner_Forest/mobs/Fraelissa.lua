@@ -2,7 +2,7 @@
 -- Area: Jugner Forest
 --   NM: Fraelissa
 -----------------------------------
-local ID = zones[xi.zone.JUGNER_FOREST]
+local ID = zones[invaderXim.zone.JUGNER_FOREST]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -123,14 +123,14 @@ local fradubioSpawnPoints =
 local updateRegen = function(mob)
     local hour = VanadielHour()
     if hour >= 4 and hour < 20 then
-        mob:setMod(xi.mod.REGEN, 25)
+        mob:setMod(invaderXim.mod.REGEN, 25)
     else
-        mob:setMod(xi.mod.REGEN, 0)
+        mob:setMod(invaderXim.mod.REGEN, 0)
     end
 end
 
 entity.onMobInitialize = function(mob)
-    xi.mob.updateNMSpawnPoint(mob, fraelissaSpawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, fraelissaSpawnPoints)
     mob:setRespawnTime(math.random(3600, 4500)) -- 60 to 75 minutes
 end
 
@@ -147,16 +147,16 @@ entity.onMobRoam = function(mob)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 158)
+    invaderXim.hunts.checkHunt(mob, player, 158)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.updateNMSpawnPoint(mob, fraelissaSpawnPoints)
+    invaderXim.mob.updateNMSpawnPoint(mob, fraelissaSpawnPoints)
 
     local params = { }
     params.spawnPoints = fradubioSpawnPoints
 
-    if not xi.mob.phOnDespawn(mob, fradubioPHTable, 10, 75600, params) then -- 21 hour minimum
+    if not invaderXim.mob.phOnDespawn(mob, fradubioPHTable, 10, 75600, params) then -- 21 hour minimum
         mob:setRespawnTime(math.random(3600, 4500)) -- 60 to 75 minutes
     end
 end

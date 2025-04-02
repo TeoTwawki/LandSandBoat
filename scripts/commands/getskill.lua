@@ -22,7 +22,7 @@ commandObj.onTrigger = function(player, skillName, target)
         return
     end
 
-    local skillID = tonumber(skillName) or xi.skill[string.upper(skillName)]
+    local skillID = tonumber(skillName) or invaderXim.skill[string.upper(skillName)]
     local targ = nil
 
     if

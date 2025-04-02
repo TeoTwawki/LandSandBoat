@@ -8,7 +8,7 @@ local entity = {}
 
 entity.onTrigger = function(player, npc)
     if
-        player:getQuestStatus(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.REDEEMING_ROCKS) == xi.questStatus.QUEST_ACCEPTED and
+        player:getQuestStatus(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.REDEEMING_ROCKS) == invaderXim.questStatus.QUEST_ACCEPTED and
         player:getCharVar('RedeemingRocksProg') == 1
     then
         player:startEvent(114) -- 2nd CS quest "Redeeming Rocks"

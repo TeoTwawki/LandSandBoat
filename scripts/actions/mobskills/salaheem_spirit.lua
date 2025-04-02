@@ -16,23 +16,23 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local duration = 50
     local bonusTime = math.floor(mob:getTP() / 10) + 5
 
-    target:delStatusEffect(xi.effect.STR_BOOST)
-    target:delStatusEffect(xi.effect.DEX_BOOST)
-    target:delStatusEffect(xi.effect.VIT_BOOST)
-    target:delStatusEffect(xi.effect.AGI_BOOST)
-    target:delStatusEffect(xi.effect.INT_BOOST)
-    target:delStatusEffect(xi.effect.MND_BOOST)
-    target:delStatusEffect(xi.effect.CHR_BOOST)
+    target:delStatusEffect(invaderXim.effect.STR_BOOST)
+    target:delStatusEffect(invaderXim.effect.DEX_BOOST)
+    target:delStatusEffect(invaderXim.effect.VIT_BOOST)
+    target:delStatusEffect(invaderXim.effect.AGI_BOOST)
+    target:delStatusEffect(invaderXim.effect.INT_BOOST)
+    target:delStatusEffect(invaderXim.effect.MND_BOOST)
+    target:delStatusEffect(invaderXim.effect.CHR_BOOST)
 
-    target:addStatusEffect(xi.effect.STR_BOOST, power, tick, duration + bonusTime)
-    target:addStatusEffect(xi.effect.DEX_BOOST, power, tick, duration + bonusTime)
-    target:addStatusEffect(xi.effect.VIT_BOOST, power, tick, duration + bonusTime)
-    target:addStatusEffect(xi.effect.AGI_BOOST, power, tick, duration + bonusTime)
-    target:addStatusEffect(xi.effect.INT_BOOST, power, tick, duration + bonusTime)
-    target:addStatusEffect(xi.effect.MND_BOOST, power, tick, duration + bonusTime)
-    target:addStatusEffect(xi.effect.CHR_BOOST, power, tick, duration + bonusTime)
+    target:addStatusEffect(invaderXim.effect.STR_BOOST, power, tick, duration + bonusTime)
+    target:addStatusEffect(invaderXim.effect.DEX_BOOST, power, tick, duration + bonusTime)
+    target:addStatusEffect(invaderXim.effect.VIT_BOOST, power, tick, duration + bonusTime)
+    target:addStatusEffect(invaderXim.effect.AGI_BOOST, power, tick, duration + bonusTime)
+    target:addStatusEffect(invaderXim.effect.INT_BOOST, power, tick, duration + bonusTime)
+    target:addStatusEffect(invaderXim.effect.MND_BOOST, power, tick, duration + bonusTime)
+    target:addStatusEffect(invaderXim.effect.CHR_BOOST, power, tick, duration + bonusTime)
 
-    skill:setMsg(xi.msg.basic.STATUS_BOOST_2)
+    skill:setMsg(invaderXim.msg.basic.STATUS_BOOST_2)
 
     return 0
 end

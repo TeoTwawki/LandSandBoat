@@ -32,7 +32,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.constant2 = 144.6666
 
     target:eraseStatusEffect()
-    return xi.spells.blue.useCuringSpell(caster, target, spell, params)
+    return invaderXim.spells.blue.useCuringSpell(caster, target, spell, params)
 end
 
 return spellObject

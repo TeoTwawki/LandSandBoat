@@ -11,17 +11,17 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local damage = mob:getWeaponDmg() * 2
-    local shadow = xi.mobskills.shadowBehavior.NUMSHADOWS_1
+    local shadow = invaderXim.mobskills.shadowBehavior.NUMSHADOWS_1
 
     -- Asanbosam (pool id 256) uses a modified blood drain that ignores shadows
     if mob:getPool() == 256 then
-        shadow = xi.mobskills.shadowBehavior.IGNORE_SHADOWS
+        shadow = invaderXim.mobskills.shadowBehavior.IGNORE_SHADOWS
     end
 
-    damage = xi.mobskills.mobMagicalMove(mob, target, skill, damage, xi.element.DARK, 1, xi.mobskills.magicalTpBonus.MAB_BONUS, 1)
-    damage = xi.mobskills.mobFinalAdjustments(damage, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.DARK, shadow)
+    damage = invaderXim.mobskills.mobMagicalMove(mob, target, skill, damage, invaderXim.element.DARK, 1, invaderXim.mobskills.magicalTpBonus.MAB_BONUS, 1)
+    damage = invaderXim.mobskills.mobFinalAdjustments(damage, mob, skill, target, invaderXim.attackType.MAGICAL, invaderXim.damageType.DARK, shadow)
 
-    skill:setMsg(xi.mobskills.mobPhysicalDrainMove(mob, target, skill, xi.mobskills.drainType.HP, damage))
+    skill:setMsg(invaderXim.mobskills.mobPhysicalDrainMove(mob, target, skill, invaderXim.mobskills.drainType.HP, damage))
 
     return damage
 end

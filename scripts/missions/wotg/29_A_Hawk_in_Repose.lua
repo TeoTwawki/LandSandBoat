@@ -6,11 +6,11 @@
 -- Weathered Gravestone : !pos 149.728 -5.109 -395.121 105
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.A_HAWK_IN_REPOSE)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.A_HAWK_IN_REPOSE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.THE_BATTLE_OF_XARCABARD },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.THE_BATTLE_OF_XARCABARD },
 }
 
 mission.sections =
@@ -20,13 +20,13 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BATALLIA_DOWNS] =
+        [invaderXim.zone.BATALLIA_DOWNS] =
         {
             ['Weathered_Gravestone'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.LILAC) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.LILAC) and
                         mission:getVar(player, 'Status') == 1
                     then
                         return mission:progressEvent(503, 0, 23, 1753, 0, 0, 0, 1, 3871)

@@ -4,7 +4,7 @@
 -- Type: Purifies cursed items with their corresponding abjurations.
 -- !pos 98.108 -1 137.999 231
 -----------------------------------
-local nsandyID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local nsandyID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -13,7 +13,7 @@ entity.onTrade = function(player, npc, trade)
     if trade:getItemCount() == 2 then
         local item = 0
         local reward = 0
-        local abjurList = xi.abjurations
+        local abjurList = invaderXim.abjurations
         for i = 1, #abjurList, 5 do
             if trade:hasItemQty(abjurList[i], 1) then
                 if trade:hasItemQty(abjurList[i + 1], 1) then

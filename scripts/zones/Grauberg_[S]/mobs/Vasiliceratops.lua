@@ -7,13 +7,13 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addImmunity(xi.immunity.BIND)
-    mob:addImmunity(xi.immunity.GRAVITY)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.PETRIFY)
+    mob:addImmunity(invaderXim.immunity.BIND)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.PETRIFY)
 
-    mob:setMod(xi.mod.DOUBLE_ATTACK, 100)
+    mob:setMod(invaderXim.mod.DOUBLE_ATTACK, 100)
     mob:setBaseSpeed(100)
 end
 
@@ -22,7 +22,7 @@ entity.onMobWeaponSkillPrepare = function(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 505)
+    invaderXim.hunts.checkHunt(mob, player, 505)
 end
 
 return entity

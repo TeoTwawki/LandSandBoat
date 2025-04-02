@@ -3,7 +3,7 @@
 --  Mob: Goobbue Gardener
 -- Note: PH for Keeper of Halidom
 -----------------------------------
-local ID = zones[xi.zone.THE_SANCTUARY_OF_ZITAH]
+local ID = zones[invaderXim.zone.THE_SANCTUARY_OF_ZITAH]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -14,11 +14,11 @@ local keeperPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 114, 2, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 114, 2, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, keeperPHTable, 10, 7200) -- 2 hours
+    invaderXim.mob.phOnDespawn(mob, keeperPHTable, 10, 7200) -- 2 hours
 end
 
 return entity

@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.THE_CELESTIAL_NEXUS] =
+zones[invaderXim.zone.THE_CELESTIAL_NEXUS] =
 {
     text =
     {
@@ -32,4 +32,4 @@ zones[xi.zone.THE_CELESTIAL_NEXUS] =
     },
 }
 
-return zones[xi.zone.THE_CELESTIAL_NEXUS]
+return zones[invaderXim.zone.THE_CELESTIAL_NEXUS]

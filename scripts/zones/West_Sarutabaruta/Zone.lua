@@ -7,10 +7,10 @@ require('scripts/quests/i_can_hear_a_rainbow')
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.conquest.setRegionalConquestOverseers(zone:getRegionID())
+    invaderXim.conquest.setRegionalConquestOverseers(zone:getRegionID())
 
-    xi.helm.initZone(zone, xi.helmType.HARVESTING)
-    xi.voidwalker.zoneOnInit(zone)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.HARVESTING)
+    invaderXim.voidwalker.zoneOnInit(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -27,13 +27,13 @@ zoneObject.onZoneIn = function(player, prevZone)
     if quests.rainbow.onZoneIn(player) then
         cs = 48
     elseif
-        player:getCurrentMission(xi.mission.log_id.ASA) == xi.mission.id.asa.BURGEONING_DREAD and
-        prevZone == xi.zone.WINDURST_WATERS
+        player:getCurrentMission(invaderXim.mission.log_id.ASA) == invaderXim.mission.id.asa.BURGEONING_DREAD and
+        prevZone == invaderXim.zone.WINDURST_WATERS
     then
         cs = 62
     elseif
-        player:getCurrentMission(xi.mission.log_id.ASA) == xi.mission.id.asa.BURGEONING_DREAD and
-        prevZone == xi.zone.PORT_WINDURST
+        player:getCurrentMission(invaderXim.mission.log_id.ASA) == invaderXim.mission.id.asa.BURGEONING_DREAD and
+        prevZone == invaderXim.zone.PORT_WINDURST
     then
         cs = 63
     end
@@ -42,7 +42,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
@@ -58,8 +58,8 @@ end
 
 zoneObject.onEventFinish = function(player, csid, option, npc)
     if csid == 62 or csid == 63 then
-        player:completeMission(xi.mission.log_id.ASA, xi.mission.id.asa.BURGEONING_DREAD)
-        player:addMission(xi.mission.log_id.ASA, xi.mission.id.asa.THAT_WHICH_CURDLES_BLOOD)
+        player:completeMission(invaderXim.mission.log_id.ASA, invaderXim.mission.id.asa.BURGEONING_DREAD)
+        player:addMission(invaderXim.mission.log_id.ASA, invaderXim.mission.id.asa.THAT_WHICH_CURDLES_BLOOD)
     end
 end
 

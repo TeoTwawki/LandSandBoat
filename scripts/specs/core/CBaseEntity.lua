@@ -611,7 +611,7 @@ end
 function CBaseEntity:changeMusic(blockID, musicTrackID)
 end
 
----@param menu xi.menuType
+---@param menu invaderXim.menuType
 ---@return nil
 function CBaseEntity:sendMenu(menu)
 end
@@ -696,7 +696,7 @@ function CBaseEntity:getZone(arg0)
 end
 
 ---@nodiscard
----@return xi.zone
+---@return invaderXim.zone
 function CBaseEntity:getZoneID()
 end
 
@@ -706,13 +706,13 @@ function CBaseEntity:getZoneName()
 end
 
 ---@nodiscard
----@param zone xi.zone
+---@param zone invaderXim.zone
 ---@return boolean
 function CBaseEntity:hasVisitedZone(zone)
 end
 
 ---@nodiscard
----@return xi.zone
+---@return invaderXim.zone
 function CBaseEntity:getPreviousZone()
 end
 
@@ -1629,7 +1629,7 @@ end
 ---@nodiscard
 ---@param questLogID integer
 ---@param questID integer
----@return xi.questStatus
+---@return invaderXim.questStatus
 function CBaseEntity:getQuestStatus(questLogID, questID)
 end
 
@@ -1810,13 +1810,13 @@ end
 function CBaseEntity:completeAssault(missionID)
 end
 
----@param keyItemID xi.keyItem
+---@param keyItemID invaderXim.keyItem
 ---@return nil
 function CBaseEntity:addKeyItem(keyItemID)
 end
 
 ---@nodiscard
----@param keyItemID xi.keyItem
+---@param keyItemID invaderXim.keyItem
 ---@return boolean
 function CBaseEntity:hasKeyItem(keyItemID)
 end
@@ -1827,12 +1827,12 @@ function CBaseEntity:delKeyItem(keyItemID)
 end
 
 ---@nodiscard
----@param keyItemID xi.keyItem
+---@param keyItemID invaderXim.keyItem
 ---@return boolean
 function CBaseEntity:seenKeyItem(keyItemID)
 end
 
----@param keyItemID xi.keyItem
+---@param keyItemID invaderXim.keyItem
 ---@return nil
 function CBaseEntity:unseenKeyItem(keyItemID)
 end

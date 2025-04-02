@@ -2,13 +2,13 @@
 -- Area: Ranguemont Pass
 --   NM: Taisaijin
 -----------------------------------
-local ID = zones[xi.zone.RANGUEMONT_PASS]
+local ID = zones[invaderXim.zone.RANGUEMONT_PASS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.BYE_BYE_TAISAI)
+    player:addTitle(invaderXim.title.BYE_BYE_TAISAI)
 end
 
 entity.onMobDespawn = function(mob)

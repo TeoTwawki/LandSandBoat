@@ -11,11 +11,11 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    local effect    = xi.effect.RERAISE
+    local effect    = invaderXim.effect.RERAISE
     local power     = 3
     local duration  = 600
 
-    xi.itemUtils.addItemEffect(target, effect, power, duration)
+    invaderXim.itemUtils.addItemEffect(target, effect, power, duration)
 end
 
 return itemObject

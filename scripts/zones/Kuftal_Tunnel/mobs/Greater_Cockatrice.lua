@@ -3,7 +3,7 @@
 --  Mob: Greater Cockatrice
 -- Note: Place Holder for Pelican
 -----------------------------------
-local ID = zones[xi.zone.KUFTAL_TUNNEL]
+local ID = zones[invaderXim.zone.KUFTAL_TUNNEL]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -70,13 +70,13 @@ local pelicanPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 741, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 741, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
     local params = {}
     params.SpawnPoints = pelicanSpawnPoints
-    xi.mob.phOnDespawn(mob, pelicanPHTable, 5, 10800, params) -- 4 hours
+    invaderXim.mob.phOnDespawn(mob, pelicanPHTable, 5, 10800, params) -- 4 hours
 end
 
 return entity

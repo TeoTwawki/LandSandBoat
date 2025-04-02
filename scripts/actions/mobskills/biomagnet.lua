@@ -28,7 +28,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
         end
     end)
 
-    skill:setMsg(xi.msg.basic.DRAWN_IN)
+    skill:setMsg(invaderXim.msg.basic.DRAWN_IN)
 
     return 0
 end

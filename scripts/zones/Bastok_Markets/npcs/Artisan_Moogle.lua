@@ -6,15 +6,15 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.artisan.moogleOnTrigger(player, npc)
+    invaderXim.artisan.moogleOnTrigger(player, npc)
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
-    xi.artisan.moogleOnUpdate(player, csid, option, npc)
+    invaderXim.artisan.moogleOnUpdate(player, csid, option, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.artisan.moogleOnFinish(player, csid, option, npc)
+    invaderXim.artisan.moogleOnFinish(player, csid, option, npc)
 end
 
 return entity

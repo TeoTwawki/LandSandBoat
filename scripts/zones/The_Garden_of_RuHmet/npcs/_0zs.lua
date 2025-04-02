@@ -7,8 +7,8 @@ local entity = {}
 
 entity.onTrigger = function(player, npc)
     if
-        player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.WHEN_ANGELS_FALL) or
-        xi.mission.getVar(player, xi.mission.log_id.COP, xi.mission.id.cop.WHEN_ANGELS_FALL, 'Status') == 6
+        player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.WHEN_ANGELS_FALL) or
+        invaderXim.mission.getVar(player, invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.WHEN_ANGELS_FALL, 'Status') == 6
     then
         player:startEvent(112)
     end

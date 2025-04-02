@@ -110,19 +110,19 @@ local mobInfo =
     -- [X] = { 'Coveter-1139-6', 1139,  6 },
 }
 
-m:addOverride('xi.zones.GM_Home.Zone.onInitialize', function(zone)
+m:addOverride('invaderXim.zones.GM_Home.Zone.onInitialize', function(zone)
     super(zone)
 
     for i = 1, #mobInfo do
         local mob = zone:insertDynamicEntity({
-            objtype     = xi.objType.MOB,
+            objtype     = invaderXim.objType.MOB,
             name        = mobInfo[i][1],
             groupId     = 5,
             groupZoneId = 154,
             onMobSpawn = function(mob)
                 mob:setModelId(mobInfo[i][2])
                 mob:setAnimationSub(mobInfo[i][3])
-                mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+                mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
             end,
 
             releaseIdOnDisappear  = true,

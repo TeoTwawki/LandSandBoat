@@ -4,16 +4,16 @@
 -- Involved in Mission: Magicite
 -- !pos 60 24 -2 148
 -----------------------------------
-local ID = zones[xi.zone.QULUN_DOME]
+local ID = zones[invaderXim.zone.QULUN_DOME]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
     if
-        player:hasKeyItem(xi.ki.SILVER_BELL) and
-        player:hasKeyItem(xi.ki.CORUSCANT_ROSARY) and
-        player:hasKeyItem(xi.ki.BLACK_MATINEE_NECKLACE)
+        player:hasKeyItem(invaderXim.ki.SILVER_BELL) and
+        player:hasKeyItem(invaderXim.ki.CORUSCANT_ROSARY) and
+        player:hasKeyItem(invaderXim.ki.BLACK_MATINEE_NECKLACE)
     then
         if player:getZPos() < -7.2 then
             player:startEvent(51)
@@ -26,7 +26,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if (csid == 50 or csid == 51) and option == 1 then
-        player:messageSpecial(ID.text.THE_3_ITEMS_GLOW_FAINTLY, xi.ki.SILVER_BELL, xi.ki.CORUSCANT_ROSARY, xi.ki.BLACK_MATINEE_NECKLACE)
+        player:messageSpecial(ID.text.THE_3_ITEMS_GLOW_FAINTLY, invaderXim.ki.SILVER_BELL, invaderXim.ki.CORUSCANT_ROSARY, invaderXim.ki.BLACK_MATINEE_NECKLACE)
     end
 end
 

@@ -3,7 +3,7 @@
 --  Mob: Flying Manta
 -- Note: PH for Lord of Onzozo and Peg Powler
 -----------------------------------
-local ID = zones[xi.zone.LABYRINTH_OF_ONZOZO]
+local ID = zones[invaderXim.zone.LABYRINTH_OF_ONZOZO]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -29,12 +29,12 @@ local pegPowlerPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 774, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 774, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, lordOfOnzozoPHTable, 4, 57600) -- 16 hour minimum
-    xi.mob.phOnDespawn(mob, pegPowlerPHTable, 4, 7200) -- 2 hour minimum
+    invaderXim.mob.phOnDespawn(mob, lordOfOnzozoPHTable, 4, 57600) -- 16 hour minimum
+    invaderXim.mob.phOnDespawn(mob, pegPowlerPHTable, 4, 7200) -- 2 hour minimum
 end
 
 return entity

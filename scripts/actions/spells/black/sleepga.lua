@@ -21,7 +21,7 @@ spellObject.onSpellCast = function(caster, target, spell)
         -- You'd have to script the use of every individual spell in Amnaf's list..
     end
 
-    return xi.spells.enfeebling.useEnfeeblingSpell(caster, target, spell)
+    return invaderXim.spells.enfeebling.useEnfeeblingSpell(caster, target, spell)
 end
 
 return spellObject

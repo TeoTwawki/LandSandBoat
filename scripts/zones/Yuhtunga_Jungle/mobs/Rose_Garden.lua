@@ -2,7 +2,7 @@
 -- Area: Yuhtunga Jungle
 --  Mob: Rose Garden
 -----------------------------------
-local ID = zones[xi.zone.YUHTUNGA_JUNGLE]
+local ID = zones[invaderXim.zone.YUHTUNGA_JUNGLE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -11,7 +11,7 @@ local roseGardenPH = ID.mob.ROSE_GARDEN - 1
 
 entity.onMobSpawn = function(mob)
     mob:setLocalVar('timeToGrow', os.time() + math.random(36000, 37800)) -- 10:00:00 to 10:30:00
-    mob:setMod(xi.mod.REGEN, 25)
+    mob:setMod(invaderXim.mod.REGEN, 25)
 end
 
 entity.onMobDisengage = function(mob)

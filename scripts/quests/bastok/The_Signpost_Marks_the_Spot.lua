@@ -6,29 +6,29 @@
 -- Roh Latteh : !pos -11.823 6.999 -9.249 234
 -- Signpost   : !pos -183 65 599 108
 -----------------------------------
-local konschtatID = zones[xi.zone.KONSCHTAT_HIGHLANDS]
+local konschtatID = zones[invaderXim.zone.KONSCHTAT_HIGHLANDS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.THE_SIGNPOST_MARKS_THE_SPOT)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.THE_SIGNPOST_MARKS_THE_SPOT)
 
 quest.reward =
 {
-    item     = xi.item.LINEN_ROBE,
+    item     = invaderXim.item.LINEN_ROBE,
     fame     = 50,
-    fameArea = xi.fameArea.BASTOK,
-    title    = xi.title.TREASURE_SCAVENGER,
+    fameArea = invaderXim.fameArea.BASTOK,
+    title    = invaderXim.title.TREASURE_SCAVENGER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 2 and
-                player:hasCompletedQuest(xi.questLog.BASTOK, xi.quest.id.bastok.MOM_THE_ADVENTURER)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 2 and
+                player:hasCompletedQuest(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.MOM_THE_ADVENTURER)
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Nbu_Latteh'] = quest:progressEvent(235),
 
@@ -45,29 +45,29 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.KONSCHTAT_HIGHLANDS] =
+        [invaderXim.zone.KONSCHTAT_HIGHLANDS] =
         {
             ['Signpost'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.PAINTING_OF_A_WINDMILL) then
+                    if not player:hasKeyItem(invaderXim.ki.PAINTING_OF_A_WINDMILL) then
                         player:messageSpecial(konschtatID.text.SIGNPOST_DIALOG_2)
 
-                        return quest:keyItem(xi.ki.PAINTING_OF_A_WINDMILL)
+                        return quest:keyItem(invaderXim.ki.PAINTING_OF_A_WINDMILL)
                     end
                 end,
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Roh_Latteh'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.PAINTING_OF_A_WINDMILL) then
+                    if player:hasKeyItem(invaderXim.ki.PAINTING_OF_A_WINDMILL) then
                         return quest:progressEvent(96)
                     end
                 end,
@@ -77,7 +77,7 @@ quest.sections =
             {
                 [96] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.PAINTING_OF_A_WINDMILL)
+                        player:delKeyItem(invaderXim.ki.PAINTING_OF_A_WINDMILL)
                     end
                 end,
             },

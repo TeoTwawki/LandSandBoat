@@ -13,11 +13,11 @@
     [6] = !pos -345 15 -442 68
 ]]
 -----------------------------------
-local aydeewaID = zones[xi.zone.AYDEEWA_SUBTERRANE]
-local whitegateID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local aydeewaID = zones[invaderXim.zone.AYDEEWA_SUBTERRANE]
+local whitegateID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.PROMOTION_CHIEF_SERGEANT)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.PROMOTION_CHIEF_SERGEANT)
 local patchStage =
 {
     NONE      = 0,
@@ -44,7 +44,7 @@ local triggerPatch = function(player, npc)
 
     -- Dont have KI have not picked or planted at patch
     if
-        not player:hasKeyItem(xi.ki.SCOURSHROOM) and
+        not player:hasKeyItem(invaderXim.ki.SCOURSHROOM) and
         mushroomVar == patchStage.NONE
     then
         return quest:progressEvent(14)
@@ -55,7 +55,7 @@ local triggerPatch = function(player, npc)
 
     -- Section Planting if have KI and has not yet been touched
     elseif
-        player:hasKeyItem(xi.ki.SCOURSHROOM) and
+        player:hasKeyItem(invaderXim.ki.SCOURSHROOM) and
         mushroomVar == patchStage.NONE
     then
         return quest:progressEvent(19)
@@ -85,7 +85,7 @@ local triggerPatch = function(player, npc)
 
     -- player has KI and has not been harvested already
     elseif
-        player:hasKeyItem(xi.ki.SCOURSHROOM) and
+        player:hasKeyItem(invaderXim.ki.SCOURSHROOM) and
         mushroomVar == patchStage.NONE
     then
         return quest:progressEvent(16)
@@ -105,21 +105,21 @@ end
 
 quest.reward =
 {
-    item    = xi.item.IMPERIAL_MYTHRIL_PIECE,
-    keyItem = xi.ki.CS_WILDCAT_BADGE,
-    title   = xi.title.CHIEF_SERGEANT,
+    item    = invaderXim.item.IMPERIAL_MYTHRIL_PIECE,
+    keyItem = invaderXim.ki.CS_WILDCAT_BADGE,
+    title   = invaderXim.title.CHIEF_SERGEANT,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
             player:getVar('AssaultPromotion') >= 25 and
-            player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.PROMOTION_SERGEANT_MAJOR) == xi.questStatus.QUEST_COMPLETED
+            player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.PROMOTION_SERGEANT_MAJOR) == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] = quest:progressEvent(5060),
 
@@ -134,11 +134,11 @@ quest.sections =
     {
         -- Started quest has a reminder, trigger Hagakoff to progress
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 0
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] = quest:progressEvent(5062):oncePerZone(),
 
@@ -155,11 +155,11 @@ quest.sections =
     {
         -- Talked to Hagakoff and told to go back to Abquhbah
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 1
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] = quest:progressEvent(5068),
 
@@ -174,11 +174,11 @@ quest.sections =
     {
         -- Talked to Abquhbah and told to go back to Hagakoff again
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 2
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] = quest:progressEvent(5069):oncePerZone(),
 
@@ -194,11 +194,11 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
             vars.Prog == 3
         end,
 
-        [xi.zone.AYDEEWA_SUBTERRANE] =
+        [invaderXim.zone.AYDEEWA_SUBTERRANE] =
         {
             ['Mushroom_Patch'] =
             {
@@ -213,7 +213,7 @@ quest.sections =
                     local mushroomPatchOffset = npc:getID() - aydeewaID.npc.MUSHROOM_PATCH
 
                     quest:setVar(player, 'MPatch'..mushroomPatchOffset, patchStage.HARVESTED)
-                    player:addKeyItem(xi.ki.SCOURSHROOM)
+                    player:addKeyItem(invaderXim.ki.SCOURSHROOM)
                 end,
 
                 [19] = function(player, csid, option, npc)
@@ -223,7 +223,7 @@ quest.sections =
                         quest:setVar(player, 'MPatch'..mushroomPatchOffset, patchStage.PLANTED)
                         quest:setVar(player, 'MPatch_Time'..mushroomPatchOffset, VanadielUniqueDay() + 1)
                         player:needToZone(true)
-                        player:delKeyItem(xi.ki.SCOURSHROOM)
+                        player:delKeyItem(invaderXim.ki.SCOURSHROOM)
                     end
                 end,
 
@@ -245,7 +245,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Abquhbah'] =
             {
@@ -276,12 +276,12 @@ quest.sections =
 
                         if quest:complete(player) then
                             if option >= 30 then
-                                npcUtil.giveItem(player, xi.item.IMPERIAL_GOLD_PIECE)
+                                npcUtil.giveItem(player, invaderXim.item.IMPERIAL_GOLD_PIECE)
                             end
 
                             player:setCharVar('AssaultPromotion', 0)
                             player:messageSpecial(whitegateID.text.PROMOTION_CHIEF_SERGEANT)
-                            player:delKeyItem(xi.ki.SCOURSHROOM)
+                            player:delKeyItem(invaderXim.ki.SCOURSHROOM)
                         end
                     end
                 end,

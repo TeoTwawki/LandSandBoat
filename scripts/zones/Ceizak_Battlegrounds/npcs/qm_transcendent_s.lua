@@ -4,13 +4,13 @@
 -- Spawns Transcendent Scorpion
 -- !pos 160 0 -400 261
 -----------------------------------
-local ID = zones[xi.zone.CEIZAK_BATTLEGROUNDS]
+local ID = zones[invaderXim.zone.CEIZAK_BATTLEGROUNDS]
 -----------------------------------
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHasExactly(trade, xi.item.CELADON_YGGRETE_SHARD_III) and
+        npcUtil.tradeHasExactly(trade, invaderXim.item.CELADON_YGGRETE_SHARD_III) and
         npcUtil.popFromQM(player, npc, ID.mob.TRANSCENDENT_SCORPION, { radius = 1 })
     then
         player:confirmTrade()

@@ -6,11 +6,11 @@
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.CANNOT_GUARD, 1)
+    mob:setMobMod(invaderXim.mobMod.CANNOT_GUARD, 1)
 end
 
 entity.onMobMagicPrepare = function(mob, target, spellId)
-    if not mob:hasStatusEffect(xi.effect.HUNDRED_FISTS, 0) then
+    if not mob:hasStatusEffect(invaderXim.effect.HUNDRED_FISTS, 0) then
         local rnd = math.random(1, 100)
         if rnd <= 50 then
             return 186 -- aeroga 3

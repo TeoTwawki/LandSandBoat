@@ -5,21 +5,21 @@
 -- Buffalostalker_Dodzbraz : !pos -380.171 -24.89 -180.797 5
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.BOMBS_AWAY)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.BOMBS_AWAY)
 
 quest.reward =
 {
-    item  = xi.item.CHUNK_OF_SHUMEYO_SALT,
+    item  = invaderXim.item.CHUNK_OF_SHUMEYO_SALT,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.ULEGUERAND_RANGE] =
+        [invaderXim.zone.ULEGUERAND_RANGE] =
         {
             ['Buffalostalker_Dodzbraz'] = quest:progressEvent(6),
 
@@ -36,10 +36,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status ~= xi.questStatus.QUEST_AVAILABLE
+            return status ~= invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.ULEGUERAND_RANGE] =
+        [invaderXim.zone.ULEGUERAND_RANGE] =
         {
             ['Buffalostalker_Dodzbraz'] =
             {
@@ -48,7 +48,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.CLUSTER_CORE, 2 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.CLUSTER_CORE, 2 } }) then
                         return quest:progressEvent(8) -- Quest completed dialog.
                     end
                 end,

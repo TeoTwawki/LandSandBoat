@@ -21,27 +21,27 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.BEAST
-    params.attribute = xi.mod.INT
-    params.skillType = xi.skill.BLUE_MAGIC
-    params.effect = xi.effect.NONE
+    params.ecosystem = invaderXim.ecosystem.BEAST
+    params.attribute = invaderXim.mod.INT
+    params.skillType = invaderXim.skill.BLUE_MAGIC
+    params.effect = invaderXim.effect.NONE
     local resistThreshold = 0.25
-    local effect = xi.effect.NONE
+    local effect = invaderXim.effect.NONE
 
     local resist = applyResistanceEffect(caster, target, spell, params)
     if resist >= resistThreshold then
-        spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
 
         -- Gaze move
         if target:isFacing(caster) and caster:isFacing(target) then
             effect = target:dispelStatusEffect()
-            spell:setMsg(xi.msg.basic.MAGIC_ERASE)
-            if effect == xi.effect.NONE then
-                spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+            spell:setMsg(invaderXim.msg.basic.MAGIC_ERASE)
+            if effect == invaderXim.effect.NONE then
+                spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
             end
         end
     else
-        spell:setMsg(xi.msg.basic.MAGIC_RESIST)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_RESIST)
     end
 
     return effect

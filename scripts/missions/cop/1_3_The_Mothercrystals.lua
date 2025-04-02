@@ -10,44 +10,44 @@
 require('scripts/missions/cop/helpers')
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.THE_MOTHERCRYSTALS)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_MOTHERCRYSTALS)
 
 mission.reward =
 {
-    title = xi.title.ANCIENT_FLAME_FOLLOWER,
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.AN_INVITATION_WEST },
+    title = invaderXim.title.ANCIENT_FLAME_FOLLOWER,
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.AN_INVITATION_WEST },
 }
 
 -- Some helper functions require access to this mission class in order to operate.  The below
 -- functions wrap the helper to ensure that value gets to them.
 local shatteredTelepointSealMemory = function(player, csid, option, npc)
-    xi.cop.helpers.shatteredTelepointSealMemory(mission, player, csid, option, npc)
+    invaderXim.cop.helpers.shatteredTelepointSealMemory(mission, player, csid, option, npc)
 end
 
 local largeApparatusOnTrigger = function(player, npc)
-    return xi.cop.helpers.largeApparatusOnTrigger(mission, player, npc)
+    return invaderXim.cop.helpers.largeApparatusOnTrigger(mission, player, npc)
 end
 
 local largeApparatusOnEventFinish = function(player, csid, option, npc)
-    xi.cop.helpers.largeApparatusOnEventFinish(mission, player, csid, option, npc)
+    invaderXim.cop.helpers.largeApparatusOnEventFinish(mission, player, csid, option, npc)
 end
 
 local spireEventFinish = function(player, csid, option, npc)
-    xi.cop.helpers.spireEventFinish(mission, player, csid, option, npc)
+    invaderXim.cop.helpers.spireEventFinish(mission, player, csid, option, npc)
 end
 
 local shatteredTelepointOnTrigger = function(player, npc)
     if
-        xi.cop.helpers.numPromyvionCompleted(player) == 1 and
-        not xi.cop.helpers.hasCompletedPromyvion(player, player:getZoneID()) and
+        invaderXim.cop.helpers.numPromyvionCompleted(player) == 1 and
+        not invaderXim.cop.helpers.hasCompletedPromyvion(player, player:getZoneID()) and
         mission:getVar(player, 'Option') == 0
     then
         local zoneId = player:getZoneID()
 
-        player:setLocalVar('toPromyvion', xi.cop.helpers.shatteredTelepointInfo[zoneId][1])
-        return mission:progressEvent(xi.cop.helpers.shatteredTelepointInfo[zoneId][2] - 1)
+        player:setLocalVar('toPromyvion', invaderXim.cop.helpers.shatteredTelepointInfo[zoneId][1])
+        return mission:progressEvent(invaderXim.cop.helpers.shatteredTelepointInfo[zoneId][2] - 1)
     else
-        return xi.cop.helpers.shatteredTelepointOnTrigger(mission, player, npc)
+        return invaderXim.cop.helpers.shatteredTelepointOnTrigger(mission, player, npc)
     end
 end
 
@@ -58,7 +58,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.KONSCHTAT_HIGHLANDS] =
+        [invaderXim.zone.KONSCHTAT_HIGHLANDS] =
         {
             ['Shattered_Telepoint'] =
             {
@@ -67,13 +67,13 @@ mission.sections =
 
             onEventFinish =
             {
-                [912] = xi.cop.helpers.sendToZoneOnFinish,
-                [913] = xi.cop.helpers.shatteredTelepointEntry,
+                [912] = invaderXim.cop.helpers.sendToZoneOnFinish,
+                [913] = invaderXim.cop.helpers.shatteredTelepointEntry,
                 [918] = shatteredTelepointSealMemory,
             },
         },
 
-        [xi.zone.LA_THEINE_PLATEAU] =
+        [invaderXim.zone.LA_THEINE_PLATEAU] =
         {
             ['Shattered_Telepoint'] =
             {
@@ -82,13 +82,13 @@ mission.sections =
 
             onEventFinish =
             {
-                [201] = xi.cop.helpers.sendToZoneOnFinish,
-                [202] = xi.cop.helpers.shatteredTelepointEntry,
+                [201] = invaderXim.cop.helpers.sendToZoneOnFinish,
+                [202] = invaderXim.cop.helpers.shatteredTelepointEntry,
                 [212] = shatteredTelepointSealMemory,
             },
         },
 
-        [xi.zone.TAHRONGI_CANYON] =
+        [invaderXim.zone.TAHRONGI_CANYON] =
         {
             ['Shattered_Telepoint'] =
             {
@@ -97,13 +97,13 @@ mission.sections =
 
             onEventFinish =
             {
-                [912] = xi.cop.helpers.sendToZoneOnFinish,
-                [913] = xi.cop.helpers.shatteredTelepointEntry,
+                [912] = invaderXim.cop.helpers.sendToZoneOnFinish,
+                [913] = invaderXim.cop.helpers.shatteredTelepointEntry,
                 [918] = shatteredTelepointSealMemory,
             },
         },
 
-        [xi.zone.HALL_OF_TRANSFERENCE] =
+        [invaderXim.zone.HALL_OF_TRANSFERENCE] =
         {
             ['_0e3'] =
             {
@@ -122,11 +122,11 @@ mission.sections =
 
             onZoneIn = function(player, prevZone)
                 if
-                    xi.cop.helpers.numPromyvionCompleted(player) == 2 and
-                    not xi.cop.helpers.hasCompletedPromyvion(player, prevZone) and
+                    invaderXim.cop.helpers.numPromyvionCompleted(player) == 2 and
+                    not invaderXim.cop.helpers.hasCompletedPromyvion(player, prevZone) and
                     mission:getVar(player, 'Status') == 0
                 then
-                    player:setLocalVar('toPromyvion', xi.cop.helpers.shatteredTelepointInfo[prevZone][1])
+                    player:setLocalVar('toPromyvion', invaderXim.cop.helpers.shatteredTelepointInfo[prevZone][1])
                     return 155
                 end
             end,
@@ -140,28 +140,28 @@ mission.sections =
                 [155] = function(player, csid, option, npc)
                     -- This event only happens once since there is no sealing component.
                     mission:setVar(player, 'Status', 1)
-                    xi.cop.helpers.sendToPromyvionZone(player:getLocalVar('toPromyvion'))
+                    invaderXim.cop.helpers.sendToPromyvionZone(player:getLocalVar('toPromyvion'))
                 end,
             },
         },
 
-        [xi.zone.PROMYVION_DEM] =
+        [invaderXim.zone.PROMYVION_DEM] =
         {
-            onZoneIn = xi.cop.helpers.promyvionOnZoneIn,
+            onZoneIn = invaderXim.cop.helpers.promyvionOnZoneIn,
 
             onEventFinish =
             {
                 [51] = function(player, csid, option, npc)
-                    mission:setVar(player, 'Option', xi.cop.helpers.promyvionCrags.DEM)
+                    mission:setVar(player, 'Option', invaderXim.cop.helpers.promyvionCrags.DEM)
                 end,
 
                 [52] = function(player, csid, option, npc)
-                    mission:setVar(player, 'Option', xi.cop.helpers.promyvionCrags.DEM)
+                    mission:setVar(player, 'Option', invaderXim.cop.helpers.promyvionCrags.DEM)
                 end,
             },
         },
 
-        [xi.zone.SPIRE_OF_DEM] =
+        [invaderXim.zone.SPIRE_OF_DEM] =
         {
             onEventFinish =
             {
@@ -169,23 +169,23 @@ mission.sections =
             },
         },
 
-        [xi.zone.PROMYVION_HOLLA] =
+        [invaderXim.zone.PROMYVION_HOLLA] =
         {
-            onZoneIn = xi.cop.helpers.promyvionOnZoneIn,
+            onZoneIn = invaderXim.cop.helpers.promyvionOnZoneIn,
 
             onEventFinish =
             {
                 [51] = function(player, csid, option, npc)
-                    mission:setVar(player, 'Option', xi.cop.helpers.promyvionCrags.HOLLA)
+                    mission:setVar(player, 'Option', invaderXim.cop.helpers.promyvionCrags.HOLLA)
                 end,
 
                 [52] = function(player, csid, option, npc)
-                    mission:setVar(player, 'Option', xi.cop.helpers.promyvionCrags.HOLLA)
+                    mission:setVar(player, 'Option', invaderXim.cop.helpers.promyvionCrags.HOLLA)
                 end,
             },
         },
 
-        [xi.zone.SPIRE_OF_HOLLA] =
+        [invaderXim.zone.SPIRE_OF_HOLLA] =
         {
             onEventFinish =
             {
@@ -193,23 +193,23 @@ mission.sections =
             },
         },
 
-        [xi.zone.PROMYVION_MEA] =
+        [invaderXim.zone.PROMYVION_MEA] =
         {
-            onZoneIn = xi.cop.helpers.promyvionOnZoneIn,
+            onZoneIn = invaderXim.cop.helpers.promyvionOnZoneIn,
 
             onEventFinish =
             {
                 [51] = function(player, csid, option, npc)
-                    mission:setVar(player, 'Option', xi.cop.helpers.promyvionCrags.MEA)
+                    mission:setVar(player, 'Option', invaderXim.cop.helpers.promyvionCrags.MEA)
                 end,
 
                 [52] = function(player, csid, option, npc)
-                    mission:setVar(player, 'Option', xi.cop.helpers.promyvionCrags.MEA)
+                    mission:setVar(player, 'Option', invaderXim.cop.helpers.promyvionCrags.MEA)
                 end,
             },
         },
 
-        [xi.zone.SPIRE_OF_MEA] =
+        [invaderXim.zone.SPIRE_OF_MEA] =
         {
             onEventFinish =
             {
@@ -223,7 +223,7 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.KONSCHTAT_HIGHLANDS] =
+        [invaderXim.zone.KONSCHTAT_HIGHLANDS] =
         {
             ['Shattered_Telepoint'] = mission:event(913):replaceDefault(),
 
@@ -237,7 +237,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.TAHRONGI_CANYON] =
+        [invaderXim.zone.TAHRONGI_CANYON] =
         {
             ['Shattered_Telepoint'] = mission:event(913):replaceDefault(),
 
@@ -251,7 +251,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.LA_THEINE_PLATEAU] =
+        [invaderXim.zone.LA_THEINE_PLATEAU] =
         {
             ['Shattered_Telepoint'] = mission:event(202):replaceDefault(),
 

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.ALACRITY
+-- invaderXim.effect.ALACRITY
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

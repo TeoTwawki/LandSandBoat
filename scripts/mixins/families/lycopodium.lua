@@ -3,8 +3,8 @@ require('scripts/globals/mixins')
 -- TODO: Lycopodiums should use a regen move on players with the title "Babban's Traveling Companion"
 
 xi = xi or {}
-xi.mix = xi.mix or {}
-xi.mix.lycopodium = xi.mix.lycopodium or {}
+invaderXim.mix = invaderXim.mix or {}
+invaderXim.mix.lycopodium = invaderXim.mix.lycopodium or {}
 
 g_mixins = g_mixins or {}
 g_mixins.families = g_mixins.families or {}
@@ -13,7 +13,7 @@ g_mixins.families.lycopodium = function(mob)
     mob:addListener('SPAWN', 'LYCOPODIUM_SPAWN', function(lycopodium)
         lycopodium:setAutoAttackEnabled(false)
         lycopodium:setMobAbilityEnabled(false)
-        lycopodium:setMobMod(xi.mobMod.ALWAYS_AGGRO, 1)
+        lycopodium:setMobMod(invaderXim.mobMod.ALWAYS_AGGRO, 1)
     end)
 
     mob:addListener('ROAM_TICK', 'LYCOPODIUM_RTICK', function(lycopodium)

@@ -3,7 +3,7 @@
 --  Mob: Yagudo Persecutor
 -- Note: PH for Naa Zeku the Unwaiting
 -----------------------------------
-local ID = zones[xi.zone.MERIPHATAUD_MOUNTAINS]
+local ID = zones[invaderXim.zone.MERIPHATAUD_MOUNTAINS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -17,7 +17,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, naaZekuPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, naaZekuPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

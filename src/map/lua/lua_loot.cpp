@@ -1,7 +1,7 @@
 ﻿/*
 ===========================================================================
 
-  Copyright (c) 2022-2022 LandSandBoat
+  Copyright (c) 2022-2022 InvaderXim
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -47,7 +47,7 @@ CLuaLootContainer::CLuaLootContainer(LootContainer* loot)
 /************************************************************************
  *  Function: addItem()
  *  Purpose : Adds an item to the loot container
- *  Example : loot:addItem(xi.items.ANCIENT_BEASTCOIN, xi.loot.rate.GUARENTEED, 2);
+ *  Example : loot:addItem(invaderXim.items.ANCIENT_BEASTCOIN, invaderXim.loot.rate.GUARENTEED, 2);
  *  Notes   : Last parameter, quantity, is optional and defaults to 1
  ************************************************************************/
 
@@ -59,7 +59,7 @@ void CLuaLootContainer::addItem(uint16 item, uint16 rate, sol::variadic_args va)
 /************************************************************************
  *  Function: addGroup()
  *  Purpose : Adds a group of items to the loot container
- *  Example : loot:addGroup(xi.loot.rate.COMMON, { { item = xi.items.ANCIENT_BEASTCOIN, weight = 100 } });
+ *  Example : loot:addGroup(invaderXim.loot.rate.COMMON, { { item = invaderXim.items.ANCIENT_BEASTCOIN, weight = 100 } });
  *  Notes   : Item table is a list of tables with "item" key and an optional "weight" which defaults to 1
  ************************************************************************/
 
@@ -71,7 +71,7 @@ void CLuaLootContainer::addGroup(uint16 groupRate, sol::table const& items)
 /************************************************************************
  *  Function: addItemFixed()
  *  Purpose : Adds an item to the loot container with a fixed drop rate
- *  Example : loot:addItemFixed(xi.items.ANCIENT_BEASTCOIN, 500, 2);
+ *  Example : loot:addItemFixed(invaderXim.items.ANCIENT_BEASTCOIN, 500, 2);
  *  Notes   : Last parameter, quantity, is optional and defaults to 1
  *            Fixed drop rate is 0-1000.
  ************************************************************************/
@@ -84,7 +84,7 @@ void CLuaLootContainer::addItemFixed(uint16 item, uint16 rate, sol::variadic_arg
 /************************************************************************
  *  Function: addGroupFixed()
  *  Purpose : Adds a group of items to the loot container with a fixed drop rate
- *  Example : loot:addGroup(500, { { item = xi.items.ANCIENT_BEASTCOIN, weight = 100 } });
+ *  Example : loot:addGroup(500, { { item = invaderXim.items.ANCIENT_BEASTCOIN, weight = 100 } });
  *  Notes   : Item table is a list of tables with "item" key and an optional "weight" which defaults to 1
  *            Fixed drop rate is 0-1000.
  ************************************************************************/

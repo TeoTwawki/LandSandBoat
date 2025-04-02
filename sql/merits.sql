@@ -2,7 +2,7 @@
 -- Table structure for table `merits`
 --
 
-DROP TABLE IF EXISTS `merits`;
+DROP TABLE IF IXIMSTS `merits`;
 CREATE TABLE `merits` (
   `meritid` smallint(5) unsigned NOT NULL,
   `name` char(25) NOT NULL,

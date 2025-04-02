@@ -5,12 +5,12 @@
 -- !addmission 4 18
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.SWEETS_FOR_THE_SOUL)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.SWEETS_FOR_THE_SOUL)
 
 mission.reward =
 {
-    title       = xi.title.KARABABAS_TOUR_GUIDE,
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.TEAHOUSE_TUMULT },
+    title       = invaderXim.title.KARABABAS_TOUR_GUIDE,
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.TEAHOUSE_TUMULT },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             onTriggerAreaEnter =
             {

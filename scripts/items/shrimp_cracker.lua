@@ -13,27 +13,27 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.foodOnItemCheck(target, xi.foodType.BASIC)
+    return invaderXim.itemUtils.foodOnItemCheck(target, invaderXim.foodType.BASIC)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffect(xi.effect.FOOD, 0, 0, 180, 5635)
+    target:addStatusEffect(invaderXim.effect.FOOD, 0, 0, 180, 5635)
 end
 
 itemObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.VIT, 1)
-    target:addMod(xi.mod.DEF, 10)
-    target:addMod(xi.mod.AMORPH_KILLER, 10)
-    target:addMod(xi.mod.VIRUSRES, 10)
-    target:addMod(xi.mod.HPHEAL, 8)
+    target:addMod(invaderXim.mod.VIT, 1)
+    target:addMod(invaderXim.mod.DEF, 10)
+    target:addMod(invaderXim.mod.AMORPH_KILLER, 10)
+    target:addMod(invaderXim.mod.VIRUSRES, 10)
+    target:addMod(invaderXim.mod.HPHEAL, 8)
 end
 
 itemObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.VIT, 1)
-    target:delMod(xi.mod.DEF, 10)
-    target:delMod(xi.mod.AMORPH_KILLER, 10)
-    target:delMod(xi.mod.VIRUSRES, 10)
-    target:delMod(xi.mod.HPHEAL, 8)
+    target:delMod(invaderXim.mod.VIT, 1)
+    target:delMod(invaderXim.mod.DEF, 10)
+    target:delMod(invaderXim.mod.AMORPH_KILLER, 10)
+    target:delMod(invaderXim.mod.VIRUSRES, 10)
+    target:delMod(invaderXim.mod.HPHEAL, 8)
 end
 
 return itemObject

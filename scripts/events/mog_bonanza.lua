@@ -4,10 +4,10 @@
 -- https://www.bg-wiki.com/ffxi/Category:Mog_Bonanza
 -----------------------------------
 xi = xi or {}
-xi.events = xi.events or {}
-xi.events.mogBonanza = xi.events.mogBonanza or {}
-xi.events.mogBonanza.data = xi.events.mogBonanza.data or {}
-xi.events.mogBonanza.entities = xi.events.mogBonanza.entities or {}
+invaderXim.events = invaderXim.events or {}
+invaderXim.events.mogBonanza = invaderXim.events.mogBonanza or {}
+invaderXim.events.mogBonanza.data = invaderXim.events.mogBonanza.data or {}
+invaderXim.events.mogBonanza.entities = invaderXim.events.mogBonanza.entities or {}
 
 local localSettings =
 {
@@ -50,7 +50,7 @@ local localSettings =
 
 local event = SeasonalEvent:new('MogBonanza')
 
-xi.events.mogBonanza.enabledCheck = function()
+invaderXim.events.mogBonanza.enabledCheck = function()
     local currentTime = os.time()
 
     return currentTime >= localSettings.BUYING_PERIOD_START and
@@ -60,7 +60,7 @@ end
 local isInPurchasingPeriod = function()
     local currentTime = os.time()
 
-    return xi.events.mogBonanza.enabledCheck() and
+    return invaderXim.events.mogBonanza.enabledCheck() and
         currentTime >= localSettings.BUYING_PERIOD_START and
         currentTime <= localSettings.BUYING_PERIOD_END
 end
@@ -68,19 +68,19 @@ end
 local isInCollectionPeriod = function()
     local currentTime = os.time()
 
-    return xi.events.mogBonanza.enabledCheck() and
+    return invaderXim.events.mogBonanza.enabledCheck() and
         currentTime >= localSettings.COLLECTION_PERIOD_START and
         currentTime <= localSettings.COLLECTION_PERIOD_END
 end
 
-event:setEnableCheck(xi.events.mogBonanza.enabledCheck)
+event:setEnableCheck(invaderXim.events.mogBonanza.enabledCheck)
 
 local csidLookup =
 {
-    [xi.zone.PORT_SAN_DORIA ] = 824,
-    [xi.zone.PORT_BASTOK    ] = 467,
-    [xi.zone.PORT_WINDURST  ] = 912,
-    [xi.zone.CHOCOBO_CIRCUIT] = 503,
+    [invaderXim.zone.PORT_SAN_DORIA ] = 824,
+    [invaderXim.zone.PORT_BASTOK    ] = 467,
+    [invaderXim.zone.PORT_WINDURST  ] = 912,
+    [invaderXim.zone.CHOCOBO_CIRCUIT] = 503,
 }
 
 -- NOTE: Each Reward Rank can support up to 46 items along with a gil reward.  This is bit-packed
@@ -96,32 +96,32 @@ local rewardList =
 
         rewardItems =
         {
-            [ 0] = xi.item.ICE_BRAND,
-            [ 1] = xi.item.ONION_SWORD_III,
-            [ 2] = xi.item.AIR_KNIFE,
-            [ 3] = xi.item.ZANMATO_P2,
-            [ 4] = xi.item.DRAGON_FANGS,
-            [ 5] = xi.item.MALEFIC_AXE,
-            [ 6] = xi.item.DRASTIC_AXE,
-            [ 7] = xi.item.ARTEMISS_BOW_P2,
-            [ 8] = xi.item.MIRACLE_CHEER,
-            [ 9] = xi.item.FINAL_SICKLE,
-            [10] = xi.item.PANDITS_STAFF,
-            [11] = xi.item.CHOCOBO_KNIFE,
-            [12] = xi.item.DIAMOND_ASPIS,
-            [13] = xi.item.FLAMETONGUE,
-            [14] = xi.item.MUTSU_NO_KAMI_YOSHIYUKI,
-            [15] = xi.item.HEBOS_SPEAR,
-            [16] = xi.item.PREMIUM_HEART,
-            [17] = xi.item.SAVE_THE_QUEEN_III,
-            [18] = xi.item.YAGYU_DARKBLADE,
-            [19] = xi.item.BRAVE_BLADE_III,
-            [20] = xi.item.WIZARDS_ROD,
-            [21] = xi.item.EXETER,
-            [22] = xi.item.COPY_OF_JUDGMENT_DAY,
-            [23] = xi.item.EBISU_FISHING_ROD,
-            [24] = xi.item.MOG_KUPON_AW_KUPO,
-            [25] = xi.item.ABDHALJS_TOME,
+            [ 0] = invaderXim.item.ICE_BRAND,
+            [ 1] = invaderXim.item.ONION_SWORD_III,
+            [ 2] = invaderXim.item.AIR_KNIFE,
+            [ 3] = invaderXim.item.ZANMATO_P2,
+            [ 4] = invaderXim.item.DRAGON_FANGS,
+            [ 5] = invaderXim.item.MALEFIC_AXE,
+            [ 6] = invaderXim.item.DRASTIC_AXE,
+            [ 7] = invaderXim.item.ARTEMISS_BOW_P2,
+            [ 8] = invaderXim.item.MIRACLE_CHEER,
+            [ 9] = invaderXim.item.FINAL_SICKLE,
+            [10] = invaderXim.item.PANDITS_STAFF,
+            [11] = invaderXim.item.CHOCOBO_KNIFE,
+            [12] = invaderXim.item.DIAMOND_ASPIS,
+            [13] = invaderXim.item.FLAMETONGUE,
+            [14] = invaderXim.item.MUTSU_NO_KAMI_YOSHIYUKI,
+            [15] = invaderXim.item.HEBOS_SPEAR,
+            [16] = invaderXim.item.PREMIUM_HEART,
+            [17] = invaderXim.item.SAVE_THE_QUEEN_III,
+            [18] = invaderXim.item.YAGYU_DARKBLADE,
+            [19] = invaderXim.item.BRAVE_BLADE_III,
+            [20] = invaderXim.item.WIZARDS_ROD,
+            [21] = invaderXim.item.EXETER,
+            [22] = invaderXim.item.COPY_OF_JUDGMENT_DAY,
+            [23] = invaderXim.item.EBISU_FISHING_ROD,
+            [24] = invaderXim.item.MOG_KUPON_AW_KUPO,
+            [25] = invaderXim.item.ABDHALJS_TOME,
         },
     },
 
@@ -132,26 +132,26 @@ local rewardList =
 
         rewardItems =
         {
-            [ 0] = xi.item.MOG_KUPON_A_OMII,
-            [ 1] = xi.item.MOG_KUPON_AW_UWIII,
-            [ 2] = xi.item.MOG_KUPON_I_AF119,
-            [ 3] = xi.item.MOG_KUPON_AW_VGR,
-            [ 4] = xi.item.MOG_KUPON_I_RME,
-            [ 5] = xi.item.MOG_KUPON_W_PULSE,
-            [ 6] = xi.item.MOG_KUPON_AW_VGRII,
-            [ 7] = xi.item.MOG_KUPON_W_JOB,
-            [ 8] = xi.item.MOG_KUPON_A_DEII,
-            [ 9] = xi.item.MOG_KUPON_W_DEIII,
-            [10] = xi.item.WAILING_BELT,
-            [11] = xi.item.SHAPERS_SHAWL,
-            [12] = xi.item.TEN_THOUSAND_BYNE_BILL,
-            [13] = xi.item.RANPERRE_GOLDPIECE,
-            [14] = xi.item.RIMILALA_STRIPESHELL,
-            [15] = xi.item.BAYLD_CRYSTAL,
-            [16] = xi.item.DENSE_CLUSTER,
-            [17] = xi.item.CATS_EYE,
-            [18] = xi.item.MOG_KUPON_AW_GFIII,
-            [19] = xi.item.LU_SHANGS_FISHING_ROD,
+            [ 0] = invaderXim.item.MOG_KUPON_A_OMII,
+            [ 1] = invaderXim.item.MOG_KUPON_AW_UWIII,
+            [ 2] = invaderXim.item.MOG_KUPON_I_AF119,
+            [ 3] = invaderXim.item.MOG_KUPON_AW_VGR,
+            [ 4] = invaderXim.item.MOG_KUPON_I_RME,
+            [ 5] = invaderXim.item.MOG_KUPON_W_PULSE,
+            [ 6] = invaderXim.item.MOG_KUPON_AW_VGRII,
+            [ 7] = invaderXim.item.MOG_KUPON_W_JOB,
+            [ 8] = invaderXim.item.MOG_KUPON_A_DEII,
+            [ 9] = invaderXim.item.MOG_KUPON_W_DEIII,
+            [10] = invaderXim.item.WAILING_BELT,
+            [11] = invaderXim.item.SHAPERS_SHAWL,
+            [12] = invaderXim.item.TEN_THOUSAND_BYNE_BILL,
+            [13] = invaderXim.item.RANPERRE_GOLDPIECE,
+            [14] = invaderXim.item.RIMILALA_STRIPESHELL,
+            [15] = invaderXim.item.BAYLD_CRYSTAL,
+            [16] = invaderXim.item.DENSE_CLUSTER,
+            [17] = invaderXim.item.CATS_EYE,
+            [18] = invaderXim.item.MOG_KUPON_AW_GFIII,
+            [19] = invaderXim.item.LU_SHANGS_FISHING_ROD,
         },
     },
 
@@ -162,32 +162,32 @@ local rewardList =
 
         rewardItems =
         {
-            [ 0] = xi.item.MOG_KUPON_AW_UW,
-            [ 1] = xi.item.MOG_KUPON_AW_COS,
-            [ 2] = xi.item.AUCUBA_CROWN,
-            [ 3] = xi.item.CURMUDGEONS_HELMET,
-            [ 4] = xi.item.GAZERS_HELMET,
-            [ 5] = xi.item.RETCHING_HELMET,
-            [ 6] = xi.item.KARAKUL_CAP,
-            [ 7] = xi.item.HOTENGEKI,
-            [ 8] = xi.item.GRUDGE,
-            [ 9] = xi.item.PLUTON_COFFER,
-            [10] = xi.item.BEITETSU_COFFER,
-            [11] = xi.item.RIFT_BOULDER_COFFER,
-            [12] = xi.item.MARBLE_MOG_PELL,
-            [13] = xi.item.OCHRE_MOG_PELL,
-            [14] = xi.item.MARS_ORB,
-            [15] = xi.item.CHOCOBO_ROPE,
-            [16] = xi.item.CHOCOBO_TORQUE,
-            [17] = xi.item.MOG_KUPON_A_SAP,
-            [18] = xi.item.MOG_KUPON_A_JAD,
-            [19] = xi.item.MOG_KUPON_A_RUB,
-            [20] = xi.item.DEMONIC_AXE,
-            [21] = xi.item.BRAVE_BLADE_II,
-            [22] = xi.item.ONION_SWORD_II,
-            [23] = xi.item.MOG_KUPON_I_ORCHE,
-            [24] = xi.item.SHEET_OF_PROMATHIAN_TUNES,
-            [25] = xi.item.SHEET_OF_ADOULINIAN_TUNES,
+            [ 0] = invaderXim.item.MOG_KUPON_AW_UW,
+            [ 1] = invaderXim.item.MOG_KUPON_AW_COS,
+            [ 2] = invaderXim.item.AUCUBA_CROWN,
+            [ 3] = invaderXim.item.CURMUDGEONS_HELMET,
+            [ 4] = invaderXim.item.GAZERS_HELMET,
+            [ 5] = invaderXim.item.RETCHING_HELMET,
+            [ 6] = invaderXim.item.KARAKUL_CAP,
+            [ 7] = invaderXim.item.HOTENGEKI,
+            [ 8] = invaderXim.item.GRUDGE,
+            [ 9] = invaderXim.item.PLUTON_COFFER,
+            [10] = invaderXim.item.BEITETSU_COFFER,
+            [11] = invaderXim.item.RIFT_BOULDER_COFFER,
+            [12] = invaderXim.item.MARBLE_MOG_PELL,
+            [13] = invaderXim.item.OCHRE_MOG_PELL,
+            [14] = invaderXim.item.MARS_ORB,
+            [15] = invaderXim.item.CHOCOBO_ROPE,
+            [16] = invaderXim.item.CHOCOBO_TORQUE,
+            [17] = invaderXim.item.MOG_KUPON_A_SAP,
+            [18] = invaderXim.item.MOG_KUPON_A_JAD,
+            [19] = invaderXim.item.MOG_KUPON_A_RUB,
+            [20] = invaderXim.item.DEMONIC_AXE,
+            [21] = invaderXim.item.BRAVE_BLADE_II,
+            [22] = invaderXim.item.ONION_SWORD_II,
+            [23] = invaderXim.item.MOG_KUPON_I_ORCHE,
+            [24] = invaderXim.item.SHEET_OF_PROMATHIAN_TUNES,
+            [25] = invaderXim.item.SHEET_OF_ADOULINIAN_TUNES,
         },
     },
 }
@@ -267,7 +267,7 @@ local giveBonanzaPearl = function(player, number)
         return nil
     end
 
-    player:addItem({ id = xi.item.BONANZA_PEARL,
+    player:addItem({ id = invaderXim.item.BONANZA_PEARL,
         exdata =
         {
             [0] = bit.band(number, 0xFF),
@@ -282,11 +282,11 @@ local giveBonanzaPearl = function(player, number)
     })
 end
 
-xi.events.mogBonanza.onBonanzaMoogleTrade = function(player, npc, trade)
+invaderXim.events.mogBonanza.onBonanzaMoogleTrade = function(player, npc, trade)
     if
-        xi.events.mogBonanza.enabledCheck() and
+        invaderXim.events.mogBonanza.enabledCheck() and
         isInCollectionPeriod() and
-        npcUtil.tradeHasExactly(trade, xi.item.BONANZA_PEARL)
+        npcUtil.tradeHasExactly(trade, invaderXim.item.BONANZA_PEARL)
     then
         local bonanzaPearl = trade:getItem(0)
         local exData       = bonanzaPearl:getExData()
@@ -306,8 +306,8 @@ xi.events.mogBonanza.onBonanzaMoogleTrade = function(player, npc, trade)
     end
 end
 
-xi.events.mogBonanza.onBonanzaMoogleTrigger = function(player, npc)
-    if xi.events.mogBonanza.enabledCheck() then
+invaderXim.events.mogBonanza.onBonanzaMoogleTrigger = function(player, npc)
+    if invaderXim.events.mogBonanza.enabledCheck() then
         local baseCs = csidLookup[player:getZoneID()]
 
         if isInPurchasingPeriod() then
@@ -336,8 +336,8 @@ xi.events.mogBonanza.onBonanzaMoogleTrigger = function(player, npc)
     end
 end
 
-xi.events.mogBonanza.onBonanzaMoogleEventUpdate = function(player, csid, option, npc)
-    if xi.events.mogBonanza.enabledCheck() then
+invaderXim.events.mogBonanza.onBonanzaMoogleEventUpdate = function(player, csid, option, npc)
+    if invaderXim.events.mogBonanza.enabledCheck() then
         local baseCs = csidLookup[player:getZoneID()]
 
         if
@@ -368,7 +368,7 @@ xi.events.mogBonanza.onBonanzaMoogleEventUpdate = function(player, csid, option,
                 -- for lack of gil.
 
                 player:updateEvent(0, 0, 0, 0, 0, 0, 0, 1)
-            elseif player:getItemCount(xi.item.BONANZA_PEARL) >= localSettings.MAX_PEARLS then
+            elseif player:getItemCount(invaderXim.item.BONANZA_PEARL) >= localSettings.MAX_PEARLS then
                 player:updateEvent(0, localSettings.MAX_PEARLS, 0, 0, 0, 0, 0, 3)
             else
                 player:setLocalVar('selectedNumber', selectedNumber)
@@ -380,8 +380,8 @@ xi.events.mogBonanza.onBonanzaMoogleEventUpdate = function(player, csid, option,
     end
 end
 
-xi.events.mogBonanza.onBonanzaMoogleEventFinish = function(player, csid, option, npc)
-    if xi.events.mogBonanza.enabledCheck() then
+invaderXim.events.mogBonanza.onBonanzaMoogleEventFinish = function(player, csid, option, npc)
+    if invaderXim.events.mogBonanza.enabledCheck() then
         local zoneId = player:getZoneID()
         local baseCs = csidLookup[player:getZoneID()]
 
@@ -392,7 +392,7 @@ xi.events.mogBonanza.onBonanzaMoogleEventFinish = function(player, csid, option,
 
                 player:delGil(localSettings.PEARL_COST)
                 giveBonanzaPearl(player, selectedNumber)
-                player:messageSpecial(ID.text.ITEM_OBTAINED, xi.item.BONANZA_PEARL)
+                player:messageSpecial(ID.text.ITEM_OBTAINED, invaderXim.item.BONANZA_PEARL)
             end
         elseif csid == baseCs + 2 then
             local optionType = bit.band(option, 0xFF)
@@ -413,7 +413,7 @@ xi.events.mogBonanza.onBonanzaMoogleEventFinish = function(player, csid, option,
                 end
             elseif
                 optionType == 6 and
-                npcUtil.giveItem(player, xi.item.BONANZA_BISCUIT)
+                npcUtil.giveItem(player, invaderXim.item.BONANZA_BISCUIT)
             then
                 player:confirmTrade()
             end
@@ -423,7 +423,7 @@ end
 
 event:setStartFunction(function()
     -- TODO: Show/Hide Bonanza Moogles
-    -- TODO: Append onto xi.settings.main.SERVER_MESSAGE
+    -- TODO: Append onto invaderXim.settings.main.SERVER_MESSAGE
 end)
 
 event:setEndFunction(function()

@@ -1,13 +1,13 @@
 -----------------------------------
 -- Zone: Selbina (248)
 -----------------------------------
-local ID = zones[xi.zone.SELBINA]
+local ID = zones[invaderXim.zone.SELBINA]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.server.setExplorerMoogles(ID.npc.EXPLORER_MOOGLE)
+    invaderXim.server.setExplorerMoogles(ID.npc.EXPLORER_MOOGLE)
     InitializeFishingContestSystem()
 end
 
@@ -16,7 +16,7 @@ zoneObject.onGameHour = function(zone)
 end
 
 zoneObject.onZoneTick = function(zone)
-    if xi.settings.main.AUTO_FISHING_CONTEST then
+    if invaderXim.settings.main.AUTO_FISHING_CONTEST then
         ProgressFishingContest()
     end
 end
@@ -30,8 +30,8 @@ zoneObject.onZoneIn = function(player, prevZone)
         player:getZPos() == 0
     then
         if
-            prevZone == xi.zone.SHIP_BOUND_FOR_SELBINA or
-            prevZone == xi.zone.SHIP_BOUND_FOR_SELBINA_PIRATES
+            prevZone == invaderXim.zone.SHIP_BOUND_FOR_SELBINA or
+            prevZone == invaderXim.zone.SHIP_BOUND_FOR_SELBINA_PIRATES
         then
             cs = 202
             player:setPos(32.500, -2.500, -45.500, 192)
@@ -41,7 +41,7 @@ zoneObject.onZoneIn = function(player, prevZone)
     end
 
     if
-        player:hasKeyItem(xi.ki.SEANCE_STAFF) and
+        player:hasKeyItem(invaderXim.ki.SEANCE_STAFF) and
         player:getCharVar('Enagakure_Killed') == 1
     then
         cs = 1101
@@ -51,7 +51,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTransportEvent = function(player, transport)
@@ -64,15 +64,15 @@ end
 zoneObject.onEventFinish = function(player, csid, option, npc)
     if csid == 200 then
         if GetServerVariable('Selbina_Destination') > 89 then
-            player:setPos(0, 0, 0, 0, xi.zone.SHIP_BOUND_FOR_MHAURA_PIRATES)
+            player:setPos(0, 0, 0, 0, invaderXim.zone.SHIP_BOUND_FOR_MHAURA_PIRATES)
         else
-            player:setPos(0, 0, 0, 0, xi.zone.SHIP_BOUND_FOR_MHAURA)
+            player:setPos(0, 0, 0, 0, invaderXim.zone.SHIP_BOUND_FOR_MHAURA)
         end
     elseif
         csid == 1101 and
-        npcUtil.completeQuest(player, xi.questLog.OUTLANDS, xi.quest.id.outlands.I_LL_TAKE_THE_BIG_BOX, { item = 14226, fameArea = xi.fameArea.NORG, var = { 'Enagakure_Killed', 'illTakeTheBigBoxCS' } })
+        npcUtil.completeQuest(player, invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.I_LL_TAKE_THE_BIG_BOX, { item = 14226, fameArea = invaderXim.fameArea.NORG, var = { 'Enagakure_Killed', 'illTakeTheBigBoxCS' } })
     then
-        player:delKeyItem(xi.ki.SEANCE_STAFF)
+        player:delKeyItem(invaderXim.ki.SEANCE_STAFF)
     end
 end
 

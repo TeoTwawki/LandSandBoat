@@ -8,14 +8,14 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addImmunity(xi.immunity.STUN)
-    mob:addMod(xi.mod.SILENCE_MEVA, 80)
+    mob:addImmunity(invaderXim.immunity.STUN)
+    mob:addMod(invaderXim.mod.SILENCE_MEVA, 80)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 771, 2, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 772, 2, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 774, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 771, 2, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 772, 2, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 774, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)

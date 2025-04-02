@@ -12,11 +12,11 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    local effect    = xi.effect.MULTI_SHOTS
+    local effect    = invaderXim.effect.MULTI_SHOTS
     local power     = 50 --Double Shot Rate
     local duration  = 60
 
-    xi.itemUtils.addItemEffect(target, effect, power, duration)
+    invaderXim.itemUtils.addItemEffect(target, effect, power, duration)
 end
 
 return itemObject

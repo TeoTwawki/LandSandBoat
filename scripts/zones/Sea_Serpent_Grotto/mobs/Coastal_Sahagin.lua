@@ -3,7 +3,7 @@
 --  Mob: Coastal Sahagin
 -- Note: PH for Denn the Orcavoiced
 -----------------------------------
-local ID = zones[xi.zone.SEA_SERPENT_GROTTO]
+local ID = zones[invaderXim.zone.SEA_SERPENT_GROTTO]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -14,13 +14,13 @@ local dennPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 806, 1, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 807, 1, xi.regime.type.GROUNDS)
-    xi.regime.checkRegime(player, mob, 808, 1, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 806, 1, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 807, 1, invaderXim.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 808, 1, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, dennPHTable, 10, 7200) -- 2 hours
+    invaderXim.mob.phOnDespawn(mob, dennPHTable, 10, 7200) -- 2 hours
 end
 
 return entity

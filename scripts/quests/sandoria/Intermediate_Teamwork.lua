@@ -6,30 +6,30 @@
 -- Vilatroire : !pos -260 -70 423 100
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.INTERMEDIATE_TEAMWORK)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.INTERMEDIATE_TEAMWORK)
 
 quest.reward =
 {
-    item  = xi.item.SCROLL_OF_MAGES_BALLAD,
+    item  = invaderXim.item.SCROLL_OF_MAGES_BALLAD,
     fame  = 80,
-    title = xi.title.SECOND_RATE_ORGANIZER,
+    title = invaderXim.title.SECOND_RATE_ORGANIZER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.INTRODUCTION_TO_TEAMWORK) == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.INTRODUCTION_TO_TEAMWORK) == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.WEST_RONFAURE] =
+        [invaderXim.zone.WEST_RONFAURE] =
         {
             ['Vilatroire'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:getFameLevel(xi.fameArea.SANDORIA) >= 3 and
+                        player:getFameLevel(invaderXim.fameArea.SANDORIA) >= 3 and
                         player:getMainLvl() >= 10
                     then
                         return quest:progressEvent(133)
@@ -51,10 +51,10 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.WEST_RONFAURE] =
+        [invaderXim.zone.WEST_RONFAURE] =
         {
             ['Vilatroire'] =
             {
@@ -87,23 +87,23 @@ quest.sections =
                                 local mRace = member:getRace()
 
                                 if
-                                    (pRace == xi.race.HUME_M or pRace == xi.race.HUME_F) and
-                                    (mRace == xi.race.HUME_M or mRace == xi.race.HUME_F)
+                                    (pRace == invaderXim.race.HUME_M or pRace == invaderXim.race.HUME_F) and
+                                    (mRace == invaderXim.race.HUME_M or mRace == invaderXim.race.HUME_F)
                                 then
                                     partySameRaceCount = partySameRaceCount + 1
                                 elseif
-                                    (pRace == xi.race.ELVAAN_M or pRace == xi.race.ELVAAN_F) and
-                                    (mRace == xi.race.ELVAAN_M or mRace == xi.race.ELVAAN_F)
+                                    (pRace == invaderXim.race.ELVAAN_M or pRace == invaderXim.race.ELVAAN_F) and
+                                    (mRace == invaderXim.race.ELVAAN_M or mRace == invaderXim.race.ELVAAN_F)
                                 then
                                     partySameRaceCount = partySameRaceCount + 1
                                 elseif
-                                    (pRace == xi.race.TARU_M or pRace == xi.race.TARU_F) and
-                                    (mRace == xi.race.TARU_M or mRace == xi.race.TARU_F)
+                                    (pRace == invaderXim.race.TARU_M or pRace == invaderXim.race.TARU_F) and
+                                    (mRace == invaderXim.race.TARU_M or mRace == invaderXim.race.TARU_F)
                                 then
                                     partySameRaceCount = partySameRaceCount + 1
-                                elseif pRace == xi.race.GALKA and mRace == xi.race.GALKA then
+                                elseif pRace == invaderXim.race.GALKA and mRace == invaderXim.race.GALKA then
                                     partySameRaceCount = partySameRaceCount + 1
-                                elseif pRace == xi.race.MITHRA and mRace == xi.race.MITHRA then
+                                elseif pRace == invaderXim.race.MITHRA and mRace == invaderXim.race.MITHRA then
                                     partySameRaceCount = partySameRaceCount + 1
                                 end
                             end

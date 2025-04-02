@@ -2,17 +2,17 @@
 -- behind_the_sluices
 -- !instance 25900
 -----------------------------------
-local ID = zones[xi.zone.RALA_WATERWAYS_U]
+local ID = zones[invaderXim.zone.RALA_WATERWAYS_U]
 -----------------------------------
 local instanceObject = {}
 
 instanceObject.registryRequirements = function(player)
-    return player:hasKeyItem(xi.ki.WATERWAY_FACILITY_CRANK) and
-        player:getMissionStatus(xi.mission.log_id.SOA) == 2
+    return player:hasKeyItem(invaderXim.ki.WATERWAY_FACILITY_CRANK) and
+        player:getMissionStatus(invaderXim.mission.log_id.SOA) == 2
 end
 
 instanceObject.entryRequirements = function(player)
-    return player:hasKeyItem(xi.ki.WATERWAY_FACILITY_CRANK) -- TODO: Past this mission
+    return player:hasKeyItem(invaderXim.ki.WATERWAY_FACILITY_CRANK) -- TODO: Past this mission
 end
 
 instanceObject.onInstanceCreated = function(instance)
@@ -52,12 +52,12 @@ instanceObject.onInstanceCreated = function(instance)
 end
 
 instanceObject.onInstanceCreatedCallback = function(player, instance)
-    xi.instance.onInstanceCreatedCallback(player, instance)
+    invaderXim.instance.onInstanceCreatedCallback(player, instance)
 end
 
 instanceObject.afterInstanceRegister = function(player)
-    player:messageSpecial(ID.text.KEYITEM_LOST, xi.ki.WATERWAY_FACILITY_CRANK)
-    player:delKeyItem(xi.ki.WATERWAY_FACILITY_CRANK)
+    player:messageSpecial(ID.text.KEYITEM_LOST, invaderXim.ki.WATERWAY_FACILITY_CRANK)
+    player:delKeyItem(invaderXim.ki.WATERWAY_FACILITY_CRANK)
 end
 
 instanceObject.onInstanceTimeUpdate = function(instance, elapsed)
@@ -91,7 +91,7 @@ instanceObject.onInstanceTimeUpdate = function(instance, elapsed)
                     if target and mob:getTP() >= 1000 then
                         -- Turn off Mistdaggers STANDBACK
                         if mob:getID() == mistDaggerID then
-                            mob:setMobMod(xi.mobMod.HP_STANDBACK, 0)
+                            mob:setMobMod(invaderXim.mobMod.HP_STANDBACK, 0)
                         end
 
                         mob:setLocalVar('CUSTOM_WS_STATE', 1)
@@ -117,14 +117,14 @@ instanceObject.onInstanceTimeUpdate = function(instance, elapsed)
 
                         -- Reset Mistdaggers STANDBACK
                         if mob:getID() == mistDaggerID then
-                            mob:setMobMod(xi.mobMod.HP_STANDBACK, 100)
+                            mob:setMobMod(invaderXim.mobMod.HP_STANDBACK, 100)
                         end
                     end
                 end,
             }
         else -- Arciela
             if instance:getLocalVar('FIGHT_STARTED') == 1 then
-                xi.ally.startAssist(mob, xi.ally.ASSIST_RANDOM)
+                invaderXim.ally.startAssist(mob, invaderXim.ally.ASSIST_RANDOM)
             end
         end
     end
@@ -145,10 +145,10 @@ instanceObject.onInstanceComplete = function(instance)
     for i, v in pairs(chars) do
         v:startEvent(1000)
 
-        local onThisMission = v:getCurrentMission(xi.mission.log_id.SOA) == xi.mission.id.soa.BEHIND_THE_SLUICES
-        local onThisFight = v:getMissionStatus(xi.mission.log_id.SOA) == 2
+        local onThisMission = v:getCurrentMission(invaderXim.mission.log_id.SOA) == invaderXim.mission.id.soa.BEHIND_THE_SLUICES
+        local onThisFight = v:getMissionStatus(invaderXim.mission.log_id.SOA) == 2
         if onThisMission and onThisFight then
-            v:setMissionStatus(xi.mission.log_id.SOA, 3)
+            v:setMissionStatus(invaderXim.mission.log_id.SOA, 3)
         end
     end
 end

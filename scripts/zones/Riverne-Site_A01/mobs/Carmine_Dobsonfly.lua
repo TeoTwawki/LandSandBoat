@@ -2,13 +2,13 @@
 -- Area: Riverne - Site A01
 --  Mob: Carmine Dobsonfly
 -----------------------------------
-local ID = zones[xi.zone.RIVERNE_SITE_A01]
+local ID = zones[invaderXim.zone.RIVERNE_SITE_A01]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.SUPERLINK, ID.mob.CARMINE_DOBSONFLY_OFFSET)
+    mob:setMobMod(invaderXim.mobMod.SUPERLINK, ID.mob.CARMINE_DOBSONFLY_OFFSET)
     mob:setMagicCastingEnabled(false) -- does not cast spells while idle
 end
 

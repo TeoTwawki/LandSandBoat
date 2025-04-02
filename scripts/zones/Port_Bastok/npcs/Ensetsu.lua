@@ -8,11 +8,11 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local ayameAndKaede = player:getQuestStatus(xi.questLog.BASTOK, xi.quest.id.bastok.AYAME_AND_KAEDE)
+    local ayameAndKaede = player:getQuestStatus(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.AYAME_AND_KAEDE)
 
     if
-        ayameAndKaede == xi.questStatus.QUEST_COMPLETED and
-        player:getQuestStatus(xi.questLog.OUTLANDS, xi.quest.id.outlands.TWENTY_IN_PIRATE_YEARS) == xi.questStatus.QUEST_AVAILABLE
+        ayameAndKaede == invaderXim.questStatus.QUEST_COMPLETED and
+        player:getQuestStatus(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.TWENTY_IN_PIRATE_YEARS) == invaderXim.questStatus.QUEST_AVAILABLE
     then
         player:startEvent(247)
     elseif player:getCharVar('twentyInPirateYearsCS') == 2 then
@@ -20,7 +20,7 @@ entity.onTrigger = function(player, npc)
     elseif player:getCharVar('twentyInPirateYearsCS') == 4 then
         player:startEvent(263)
     elseif
-        player:getQuestStatus(xi.questLog.OUTLANDS, xi.quest.id.outlands.I_LL_TAKE_THE_BIG_BOX) == xi.questStatus.QUEST_ACCEPTED and
+        player:getQuestStatus(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.I_LL_TAKE_THE_BIG_BOX) == invaderXim.questStatus.QUEST_ACCEPTED and
         player:getCharVar('illTakeTheBigBoxCS') == 0
     then
         player:startEvent(264)

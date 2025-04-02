@@ -3,7 +3,7 @@
 --  Mob: Ladybug
 -- Note: PH for Skogs Fru
 -----------------------------------
-local ID = zones[xi.zone.EAST_RONFAURE_S]
+local ID = zones[invaderXim.zone.EAST_RONFAURE_S]
 mixins = { require('scripts/mixins/families/ladybug') }
 -----------------------------------
 ---@type TMobEntity
@@ -21,7 +21,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, skogsFruPHTable, 5, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, skogsFruPHTable, 5, 3600) -- 1 hour
 end
 
 return entity

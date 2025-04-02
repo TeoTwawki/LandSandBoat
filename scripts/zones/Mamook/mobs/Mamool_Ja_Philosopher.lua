@@ -8,7 +8,7 @@ mixins = { require('scripts/mixins/families/mamool_ja'), require('scripts/mixins
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.SEES_THROUGH_ILLUSION, 1)
+    mob:setMobMod(invaderXim.mobMod.SEES_THROUGH_ILLUSION, 1)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

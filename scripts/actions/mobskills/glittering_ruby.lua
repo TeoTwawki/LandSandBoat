@@ -12,20 +12,20 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     --randomly give str/dex/vit/agi/int/mnd/chr (+12)
     local effects =
     {
-        xi.effect.STR_BOOST,
-        xi.effect.DEX_BOOST,
-        xi.effect.VIT_BOOST,
-        xi.effect.AGI_BOOST,
-        xi.effect.INT_BOOST,
-        xi.effect.MND_BOOST,
-        xi.effect.CHR_BOOST,
+        invaderXim.effect.STR_BOOST,
+        invaderXim.effect.DEX_BOOST,
+        invaderXim.effect.VIT_BOOST,
+        invaderXim.effect.AGI_BOOST,
+        invaderXim.effect.INT_BOOST,
+        invaderXim.effect.MND_BOOST,
+        invaderXim.effect.CHR_BOOST,
     }
 
     local effectId    = utils.randomEntry(effects)
     local effectPower = math.random(12, 14)
 
     target:addStatusEffect(effectId, effectPower, 0, 90)
-    skill:setMsg(xi.msg.basic.SKILL_GAIN_EFFECT)
+    skill:setMsg(invaderXim.msg.basic.SKILL_GAIN_EFFECT)
 
     return effectId
 end

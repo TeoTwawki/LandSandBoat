@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.BESIEGED
+-- invaderXim.effect.BESIEGED
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

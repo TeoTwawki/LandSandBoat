@@ -11,24 +11,24 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     if target:isUndead() then
-        spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT) -- No effect
+        spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT) -- No effect
         return 0
     end
 
     --calculate raw damage (unknown function  -> only dark skill though) - using http://www.bluegartr.com/threads/44518-Drain-Calculations
     -- also have small constant to account for 0 dark skill
-    local dmg = 20 + (1.236 * caster:getSkillLevel(xi.skill.DARK_MAGIC))
+    local dmg = 20 + (1.236 * caster:getSkillLevel(invaderXim.skill.DARK_MAGIC))
     local targetHP = target:getHP()
 
-    if dmg > (caster:getSkillLevel(xi.skill.DARK_MAGIC) + 85) then
-        dmg = (caster:getSkillLevel(xi.skill.DARK_MAGIC) + 85)
+    if dmg > (caster:getSkillLevel(invaderXim.skill.DARK_MAGIC) + 85) then
+        dmg = (caster:getSkillLevel(invaderXim.skill.DARK_MAGIC) + 85)
     end
 
     --get resist multiplier (1x if no resist)
     local params = {}
-    params.diff = caster:getStat(xi.mod.INT)-target:getStat(xi.mod.INT)
-    params.attribute = xi.mod.INT
-    params.skillType = xi.skill.DARK_MAGIC
+    params.diff = caster:getStat(invaderXim.mod.INT)-target:getStat(invaderXim.mod.INT)
+    params.attribute = invaderXim.mod.INT
+    params.skillType = invaderXim.skill.DARK_MAGIC
     params.bonus = 1.0
     local resist = applyResistanceEffect(caster, target, spell, params)
     --get the resisted damage
@@ -36,7 +36,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     --add on bonuses (staff/day/weather/jas/mab/etc all go in this function)
     dmg = addBonuses(caster, spell, target, dmg)
     --add in target adjustment
-    dmg = dmg * xi.spells.damage.calculateNukeAbsorbOrNullify(target, spell:getElement())
+    dmg = dmg * invaderXim.spells.damage.calculateNukeAbsorbOrNullify(target, spell:getElement())
 
     if dmg < 0 then
         dmg = 0
@@ -52,11 +52,11 @@ spellObject.onSpellCast = function(caster, target, spell)
     local leftOver = (caster:getHP() + dmg) - caster:getMaxHP()
 
     if leftOver > 0 then
-        caster:addStatusEffect(xi.effect.MAX_HP_BOOST, (leftOver / caster:getMaxHP()) * 100, 0, 180)
+        caster:addStatusEffect(invaderXim.effect.MAX_HP_BOOST, (leftOver / caster:getMaxHP()) * 100, 0, 180)
     end
 
     caster:addHP(dmg)
-    spell:setMsg(xi.msg.basic.MAGIC_DRAIN_HP) --change msg to 'xxx hp drained from the yyyy.'
+    spell:setMsg(invaderXim.msg.basic.MAGIC_DRAIN_HP) --change msg to 'xxx hp drained from the yyyy.'
     return dmg
 end
 

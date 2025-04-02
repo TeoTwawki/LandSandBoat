@@ -13,7 +13,7 @@
 -- Table structure for table `traits`
 --
 
-DROP TABLE IF EXISTS `traits`;
+DROP TABLE IF IXIMSTS `traits`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `traits` (

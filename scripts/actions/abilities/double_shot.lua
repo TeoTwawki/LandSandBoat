@@ -9,11 +9,11 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.ranger.checkDoubleShot(player, target, ability)
+    return invaderXim.job_utils.ranger.checkDoubleShot(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability, action)
-    return xi.job_utils.ranger.useDoubleShot(player, target, ability, action)
+    return invaderXim.job_utils.ranger.useDoubleShot(player, target, ability, action)
 end
 
 return abilityObject

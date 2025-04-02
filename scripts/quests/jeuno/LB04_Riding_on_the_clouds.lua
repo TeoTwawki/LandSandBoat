@@ -4,48 +4,48 @@
 -- Log ID: 3, Quest ID: 131
 -- Maat : !pos 8 3 118 243
 -----------------------------------
-local ruludeID = zones[xi.zone.RULUDE_GARDENS]
+local ruludeID = zones[invaderXim.zone.RULUDE_GARDENS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.RIDING_ON_THE_CLOUDS)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.RIDING_ON_THE_CLOUDS)
 
 local function handleSandoriaTrade(player, npc, trade)
-    if npcUtil.tradeHasExactly(trade, xi.item.KINDREDS_SEAL) then
+    if npcUtil.tradeHasExactly(trade, invaderXim.item.KINDREDS_SEAL) then
         quest:setVar(player, 'npcSandoria', 8)
         player:confirmTrade()
-        npcUtil.giveKeyItem(player, xi.ki.SCOWLING_STONE)
+        npcUtil.giveKeyItem(player, invaderXim.ki.SCOWLING_STONE)
     end
 end
 
 local function handleBastokTrade(player, npc, trade)
-    if npcUtil.tradeHasExactly(trade, xi.item.KINDREDS_SEAL) then
+    if npcUtil.tradeHasExactly(trade, invaderXim.item.KINDREDS_SEAL) then
         quest:setVar(player, 'npcBastok', 8)
         player:confirmTrade()
-        npcUtil.giveKeyItem(player, xi.ki.SMILING_STONE)
+        npcUtil.giveKeyItem(player, invaderXim.ki.SMILING_STONE)
     end
 end
 
 local function handleWindurstTrade(player, npc, trade)
-    if npcUtil.tradeHasExactly(trade, xi.item.KINDREDS_SEAL) then
+    if npcUtil.tradeHasExactly(trade, invaderXim.item.KINDREDS_SEAL) then
         quest:setVar(player, 'npcWindurst', 8)
         player:confirmTrade()
-        npcUtil.giveKeyItem(player, xi.ki.SPIRITED_STONE)
+        npcUtil.giveKeyItem(player, invaderXim.ki.SPIRITED_STONE)
     end
 end
 
 local function handleOtherlandsTrade(player, npc, trade)
-    if npcUtil.tradeHasExactly(trade, xi.item.KINDREDS_SEAL) then
+    if npcUtil.tradeHasExactly(trade, invaderXim.item.KINDREDS_SEAL) then
         quest:setVar(player, 'npcOtherlands', 8)
         player:confirmTrade()
-        npcUtil.giveKeyItem(player, xi.ki.SOMBER_STONE)
+        npcUtil.giveKeyItem(player, invaderXim.ki.SOMBER_STONE)
     end
 end
 
 quest.reward =
 {
     fame = 60,
-    fameArea = xi.fameArea.JEUNO,
-    title = xi.title.CLOUD_BREAKER,
+    fameArea = invaderXim.fameArea.JEUNO,
+    title = invaderXim.title.CLOUD_BREAKER,
 }
 
 quest.sections =
@@ -53,13 +53,13 @@ quest.sections =
     -- Section: Quest available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
                 player:getMainLvl() >= 61 and
                 player:getLevelCap() == 65 and
-                xi.settings.main.MAX_LEVEL >= 70
+                invaderXim.settings.main.MAX_LEVEL >= 70
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Maat'] =
             {
@@ -96,19 +96,19 @@ quest.sections =
     -- Section: Quest accepted.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Maat'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:hasKeyItem(xi.ki.SMILING_STONE) and
-                        player:hasKeyItem(xi.ki.SCOWLING_STONE) and
-                        player:hasKeyItem(xi.ki.SOMBER_STONE) and
-                        player:hasKeyItem(xi.ki.SPIRITED_STONE)
+                        player:hasKeyItem(invaderXim.ki.SMILING_STONE) and
+                        player:hasKeyItem(invaderXim.ki.SCOWLING_STONE) and
+                        player:hasKeyItem(invaderXim.ki.SOMBER_STONE) and
+                        player:hasKeyItem(invaderXim.ki.SPIRITED_STONE)
                     then
                         return quest:progressEvent(90) -- Finish Quest "Riding on the Clouds"
                     else
@@ -126,10 +126,10 @@ quest.sections =
             {
                 [90] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.SCOWLING_STONE)
-                        player:delKeyItem(xi.ki.SMILING_STONE)
-                        player:delKeyItem(xi.ki.SOMBER_STONE)
-                        player:delKeyItem(xi.ki.SPIRITED_STONE)
+                        player:delKeyItem(invaderXim.ki.SCOWLING_STONE)
+                        player:delKeyItem(invaderXim.ki.SMILING_STONE)
+                        player:delKeyItem(invaderXim.ki.SOMBER_STONE)
+                        player:delKeyItem(invaderXim.ki.SPIRITED_STONE)
                         player:setLevelCap(70)
                         player:messageSpecial(ruludeID.text.YOUR_LEVEL_LIMIT_IS_NOW_70)
                     end
@@ -138,7 +138,7 @@ quest.sections =
         },
 
         -- San d'Oria Zones and NPCs
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Raminel'] =
             {
@@ -157,7 +157,7 @@ quest.sections =
                 end,
             },
         },
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Taurette'] =
             {
@@ -176,7 +176,7 @@ quest.sections =
                 end,
             },
         },
-        [xi.zone.PORT_SAN_DORIA] =
+        [invaderXim.zone.PORT_SAN_DORIA] =
         {
             ['Sheridan'] =
             {
@@ -213,7 +213,7 @@ quest.sections =
         },
 
         -- Bastok Zones and NPCs
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Babenn'] =
             {
@@ -224,7 +224,7 @@ quest.sections =
                 end,
             },
         },
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Gwill'] =
             {
@@ -243,7 +243,7 @@ quest.sections =
                 end,
             },
         },
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Kaede'] =
             {
@@ -262,7 +262,7 @@ quest.sections =
                 end,
             },
         },
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Naji'] =
             {
@@ -291,7 +291,7 @@ quest.sections =
         },
 
         -- Windurst Zones and NPCs
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Koko_Lihzeh'] =
             {
@@ -318,7 +318,7 @@ quest.sections =
                 end,
             },
         },
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Koru-Moru'] =
             {
@@ -329,7 +329,7 @@ quest.sections =
                 end,
             },
         },
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Shanruru'] =
             {
@@ -340,7 +340,7 @@ quest.sections =
                 end,
             },
         },
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Boizo-Naizo'] =
             {
@@ -359,7 +359,7 @@ quest.sections =
                 end,
             },
         },
-        [xi.zone.HEAVENS_TOWER] =
+        [invaderXim.zone.HEAVENS_TOWER] =
         {
             ['Kupipi'] =
             {
@@ -372,7 +372,7 @@ quest.sections =
         },
 
         -- Otherlands (Selbina and Mhaura) Zones and NPCs
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Mathilde'] =
             {
@@ -407,7 +407,7 @@ quest.sections =
                 end,
             },
         },
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Celestina'] =
             {

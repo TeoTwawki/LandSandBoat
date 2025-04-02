@@ -3,19 +3,19 @@
 -- Boneyard Gully ENM, Miasma Filter
 -- !addkeyitem MIASMA_FILTER
 -----------------------------------
-local boneyardGullyID = zones[xi.zone.BONEYARD_GULLY]
+local boneyardGullyID = zones[invaderXim.zone.BONEYARD_GULLY]
 -----------------------------------
 
 local content = Battlefield:new({
-    zoneId           = xi.zone.BONEYARD_GULLY,
-    battlefieldId    = xi.battlefield.id.SHELL_WE_DANCE,
+    zoneId           = invaderXim.zone.BONEYARD_GULLY,
+    battlefieldId    = invaderXim.battlefield.id.SHELL_WE_DANCE,
     maxPlayers       = 18,
     levelCap         = 75,
     timeLimit        = utils.minutes(30),
     index            = 3,
     entryNpc         = '_081',
     exitNpcs         = { '_082', '_084', '_086' },
-    requiredKeyItems = { xi.ki.MIASMA_FILTER },
+    requiredKeyItems = { invaderXim.ki.MIASMA_FILTER },
     armouryCrates    =
     {
         boneyardGullyID.mob.PARATA + 8,
@@ -36,23 +36,23 @@ content:addEssentialMobs({ 'Parata', 'Bladmall' })
 content.loot =
 {
     {
-        { item = xi.item.PIECE_OF_CASSIA_LUMBER,   weight = 375 },
-        { item = xi.item.SQUARE_OF_ELTORO_LEATHER, weight = 328 },
-        { item = xi.item.DRAGON_BONE,              weight = 263 },
+        { item = invaderXim.item.PIECE_OF_CASSIA_LUMBER,   weight = 375 },
+        { item = invaderXim.item.SQUARE_OF_ELTORO_LEATHER, weight = 328 },
+        { item = invaderXim.item.DRAGON_BONE,              weight = 263 },
     },
 
     {
-        { item = xi.item.NONE,         weight = 812 },
-        { item = xi.item.CLOUD_EVOKER, weight = 188 },
+        { item = invaderXim.item.NONE,         weight = 812 },
+        { item = invaderXim.item.CLOUD_EVOKER, weight = 188 },
     },
 
     {
         quantity = 2,
-        { item = xi.item.NONE,                    weight = 199 },
-        { item = xi.item.STONE_SPLITTER,          weight = 150 },
-        { item = xi.item.FRENZY_FIFE,             weight = 175 },
-        { item = xi.item.BLAU_DOLCH,              weight = 238 },
-        { item = xi.item.SCROLL_OF_ARMYS_PAEON_V, weight = 238 },
+        { item = invaderXim.item.NONE,                    weight = 199 },
+        { item = invaderXim.item.STONE_SPLITTER,          weight = 150 },
+        { item = invaderXim.item.FRENZY_FIFE,             weight = 175 },
+        { item = invaderXim.item.BLAU_DOLCH,              weight = 238 },
+        { item = invaderXim.item.SCROLL_OF_ARMYS_PAEON_V, weight = 238 },
     },
 }
 

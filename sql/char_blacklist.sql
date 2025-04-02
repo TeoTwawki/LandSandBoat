@@ -10,7 +10,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- Structure of table `char_blacklist`
 --
 
-DROP TABLE IF EXISTS `char_blacklist`;
+DROP TABLE IF IXIMSTS `char_blacklist`;
 CREATE TABLE `char_blacklist` (
   `charid_owner` int(10) unsigned NOT NULL,
   `charid_target` int(10) unsigned NOT NULL,

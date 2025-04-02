@@ -9,7 +9,7 @@ end
 
 zoneObject.onInstanceZoneIn = function(player, instance)
     if player:getInstance() == nil then
-        player:setPos(0, 0, 0, 0, xi.zone.MOUNT_ZHAYOLM)
+        player:setPos(0, 0, 0, 0, invaderXim.zone.MOUNT_ZHAYOLM)
         return
     end
 
@@ -36,13 +36,13 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
         local chars = instance:getChars()
 
         for _, entity in pairs(chars) do
-            entity:setPos(0, 0, 0, 0, xi.zone.MOUNT_ZHAYOLM)
+            entity:setPos(0, 0, 0, 0, invaderXim.zone.MOUNT_ZHAYOLM)
         end
     end
 end
 
 zoneObject.onInstanceLoadFailed = function()
-    return xi.zone.MOUNT_ZHAYOLM
+    return invaderXim.zone.MOUNT_ZHAYOLM
 end
 
 return zoneObject

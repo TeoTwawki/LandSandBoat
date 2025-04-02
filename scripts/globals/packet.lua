@@ -6,7 +6,7 @@
 -- Use at your own risk!
 -----------------------------------
 xi = xi or {}
-xi.packet = xi.packet or {}
+invaderXim.packet = invaderXim.packet or {}
 
 -- Will parse a string of the form:
 -- [2021-05-10 22:05:57] Incoming packet 0x069:
@@ -27,7 +27,7 @@ xi.packet = xi.packet or {}
 --       C | 00 00 00 00 00 00 00 00 -- -- -- -- -- -- -- --    C | ........--------
 --
 -- as a table: { 0x69, 0x64, 0x37, ... }
-xi.packet.parseFromCaptureString = function(input)
+invaderXim.packet.parseFromCaptureString = function(input)
     local data = {}
     for line in input:gmatch('[^\r\n]+') do
         -- Match lines containing hex data
@@ -44,7 +44,7 @@ xi.packet.parseFromCaptureString = function(input)
 end
 
 -- Split and parse packets (splitting at date sections)
-function xi.packet.parseMultiplePackets(combinedData)
+function invaderXim.packet.parseMultiplePackets(combinedData)
     local function splitByDate(text)
         local result   = {}
         local pattern  = '%[(%d%d%d%d%-%d%d%-%d%d %d%d:%d%d:%d%d)%]' -- Pattern to match date/time
@@ -70,7 +70,7 @@ function xi.packet.parseMultiplePackets(combinedData)
     local parsedData = {}
 
     for _, data in ipairs(splitData) do
-        table.insert(parsedData, xi.packet.parseFromCaptureString(data))
+        table.insert(parsedData, invaderXim.packet.parseFromCaptureString(data))
     end
 
     return parsedData

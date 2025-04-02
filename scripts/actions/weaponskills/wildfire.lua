@@ -20,16 +20,16 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     local params = {}
     params.ftpMod = { 5.5, 5.5, 5.5 }
     params.agi_wsc = 0.6
-    params.ele = xi.element.FIRE
-    params.skill = xi.skill.MARKSMANSHIP
+    params.ele = invaderXim.element.FIRE
+    params.skill = invaderXim.skill.MARKSMANSHIP
     params.includemab = true
 
     -- TODO: needs to give enmity down at varying tp percent's that is treated separately than the gear cap of -50% enmity http://www.bg-wiki.com/bg/Wildfire
 
     -- Apply aftermath
-    xi.aftermath.addStatusEffect(player, tp, xi.slot.RANGED, xi.aftermath.type.EMPYREAN)
+    invaderXim.aftermath.addStatusEffect(player, tp, invaderXim.slot.RANGED, invaderXim.aftermath.type.EMPYREAN)
 
-    local damage, tpHits, extraHits = xi.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
+    local damage, tpHits, extraHits = invaderXim.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
 
     return tpHits, extraHits, false, damage
 end

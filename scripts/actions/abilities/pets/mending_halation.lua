@@ -17,10 +17,10 @@ abilityObject.onPetAbility = function(target, pet, skill)
     local hpAmount  = math.floor(7 * pet:getMainLvl())
     local hpRestore = hpAmount
 
-    if master and master:getMerit(xi.merit.MENDING_HALATION) > 0 then
-        hpRestore = hpRestore + (hpRestore * 0.05 * master:getMerit(xi.merit.MENDING_HALATION))
-        if master:getMod(xi.mod.MENDING_HALATION) > 0 then
-            hpRestore = hpRestore + (hpRestore * 0.04 * master:getMerit(xi.merit.MENDING_HALATION))
+    if master and master:getMerit(invaderXim.merit.MENDING_HALATION) > 0 then
+        hpRestore = hpRestore + (hpRestore * 0.05 * master:getMerit(invaderXim.merit.MENDING_HALATION))
+        if master:getMod(invaderXim.mod.MENDING_HALATION) > 0 then
+            hpRestore = hpRestore + (hpRestore * 0.04 * master:getMerit(invaderXim.merit.MENDING_HALATION))
         end
     end
 
@@ -28,7 +28,7 @@ abilityObject.onPetAbility = function(target, pet, skill)
 
     target:wakeUp()
 
-    skill:setMsg(xi.msg.basic.SKILL_RECOVERS_HP)
+    skill:setMsg(invaderXim.msg.basic.SKILL_RECOVERS_HP)
 
     if target:getID() == pet:getID() then
         hpRestore = 0

@@ -15,15 +15,15 @@
 -- qm2 (La Theine) : !pos -72.99 54.599 -443.126 102
 -- NOTE: Garlaige QM order is based on quest progression
 -----------------------------------
-local garlaigeID = zones[xi.zone.GARLAIGE_CITADEL]
+local garlaigeID = zones[invaderXim.zone.GARLAIGE_CITADEL]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.HITTING_THE_MARQUISATE)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.HITTING_THE_MARQUISATE)
 
 quest.reward =
 {
-    item  = xi.item.ROGUES_POULAINES,
-    title = xi.title.PARAGON_OF_THIEF_EXCELLENCE,
+    item  = invaderXim.item.ROGUES_POULAINES,
+    title = invaderXim.title.PARAGON_OF_THIEF_EXCELLENCE,
 }
 
 -- Data for reused functions for the initial six Garlaige QMs.  Ordered by quest
@@ -43,11 +43,11 @@ local garlaigeQmOnTrigger = function(player, npc)
     local qmData = garlaigeQmInfo[npc:getName()]
 
     if
-        player:hasKeyItem(xi.ki.BOMB_INCENSE) and
+        player:hasKeyItem(invaderXim.ki.BOMB_INCENSE) and
         quest:getVar(player, 'hagainProg') == qmData[1]
     then
         player:messageSpecial(garlaigeID.text.PRESENCE_FROM_CEILING)
-        return quest:progressEvent(qmData[2], xi.ki.BOMB_INCENSE)
+        return quest:progressEvent(qmData[2], invaderXim.ki.BOMB_INCENSE)
     end
 end
 
@@ -64,14 +64,14 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
                 not quest:getMustZone(player) and
-                player:hasCompletedQuest(xi.questLog.WINDURST, xi.quest.id.windurst.AS_THICK_AS_THIEVES) and
-                player:getMainJob() == xi.job.THF and
-                player:getMainLvl() >= xi.settings.main.AF3_QUEST_LEVEL
+                player:hasCompletedQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.AS_THICK_AS_THIEVES) and
+                player:getMainJob() == invaderXim.job.THF and
+                player:getMainLvl() >= invaderXim.settings.main.AF3_QUEST_LEVEL
         end,
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Nanaa_Mihgo'] = quest:progressEvent(512),
 
@@ -79,7 +79,7 @@ quest.sections =
             {
                 [512] = function(player, csid, option, npc)
                     quest:begin(player)
-                    npcUtil.giveKeyItem(player, xi.ki.CAT_BURGLARS_NOTE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.CAT_BURGLARS_NOTE)
                 end,
             },
         },
@@ -87,10 +87,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.GARLAIGE_CITADEL] =
+        [invaderXim.zone.GARLAIGE_CITADEL] =
         {
             ['qm5'] =
             {
@@ -134,10 +134,10 @@ quest.sections =
                             return quest:messageSpecial(garlaigeID.text.THE_PRESENCE_MOVES + 7)
                         elseif
                             not GetMobByID(garlaigeID.mob.CHANDELIER):isSpawned() and
-                            player:hasKeyItem(xi.ki.BOMB_INCENSE)
+                            player:hasKeyItem(invaderXim.ki.BOMB_INCENSE)
                         then
                             player:messageSpecial(garlaigeID.text.HEAT_FROM_CEILING)
-                            return quest:progressEvent(56, xi.keyItem.BOMB_INCENSE)
+                            return quest:progressEvent(56, invaderXim.keyItem.BOMB_INCENSE)
                         end
                     end
                 end,
@@ -163,16 +163,16 @@ quest.sections =
             },
         },
 
-        [xi.zone.LA_THEINE_PLATEAU] =
+        [invaderXim.zone.LA_THEINE_PLATEAU] =
         {
             ['qm2'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.PICKAXE) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.PICKAXE) and
                         quest:getVar(player, 'nanaaProg') == 1
                     then
-                        return quest:progressEvent(119, 0, xi.item.ROGUES_POULAINES, 0, xi.item.PICKAXE)
+                        return quest:progressEvent(119, 0, invaderXim.item.ROGUES_POULAINES, 0, invaderXim.item.PICKAXE)
                     end
                 end,
             },
@@ -182,19 +182,19 @@ quest.sections =
                 [119] = function(player, csid, option, npc)
                     if quest:complete(player) then
                         player:confirmTrade()
-                        player:delKeyItem(xi.ki.CAT_BURGLARS_NOTE)
+                        player:delKeyItem(invaderXim.ki.CAT_BURGLARS_NOTE)
                     end
                 end,
             },
         },
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Yatniel'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, { { xi.item.QUAKE_GRENADE, 4 } })
+                        npcUtil.tradeHasExactly(trade, { { invaderXim.item.QUAKE_GRENADE, 4 } })
                     then
                         return quest:progressEvent(10031)
                     end
@@ -204,9 +204,9 @@ quest.sections =
                     local yatnielProgress = quest:getVar(player, 'yatnielProg')
 
                     if yatnielProgress == 0 then
-                        return quest:progressEvent(10029, 0, xi.item.QUAKE_GRENADE)
+                        return quest:progressEvent(10029, 0, invaderXim.item.QUAKE_GRENADE)
                     elseif yatnielProgress == 1 then
-                        return quest:progressEvent(10030, 0, xi.item.QUAKE_GRENADE)
+                        return quest:progressEvent(10030, 0, invaderXim.item.QUAKE_GRENADE)
                     elseif yatnielProgress == 2 then
                         return quest:progressEvent(10032)
                     end
@@ -226,12 +226,12 @@ quest.sections =
             },
         },
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Hagain'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.LUMP_OF_CHANDELIER_COAL) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.LUMP_OF_CHANDELIER_COAL) then
                         return quest:progressEvent(10005)
                     end
                 end,
@@ -240,11 +240,11 @@ quest.sections =
                     local hagainProgress = quest:getVar(player, 'hagainProg')
 
                     if hagainProgress == 0 then
-                        return quest:progressEvent(10003, 0, xi.ki.BOMB_INCENSE, xi.item.LUMP_OF_CHANDELIER_COAL)
+                        return quest:progressEvent(10003, 0, invaderXim.ki.BOMB_INCENSE, invaderXim.item.LUMP_OF_CHANDELIER_COAL)
                     elseif hagainProgress == 8 then
                         return quest:progressEvent(10006)
                     else
-                        return quest:progressEvent(10004, 0, xi.ki.BOMB_INCENSE, xi.item.LUMP_OF_CHANDELIER_COAL)
+                        return quest:progressEvent(10004, 0, invaderXim.ki.BOMB_INCENSE, invaderXim.item.LUMP_OF_CHANDELIER_COAL)
                     end
                 end,
             },
@@ -253,18 +253,18 @@ quest.sections =
             {
                 [10003] = function(player, csid, option, npc)
                     quest:setVar(player, 'hagainProg', 1)
-                    npcUtil.giveKeyItem(player, xi.ki.BOMB_INCENSE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.BOMB_INCENSE)
                 end,
 
                 [10005] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    player:delKeyItem(xi.ki.BOMB_INCENSE)
+                    player:delKeyItem(invaderXim.ki.BOMB_INCENSE)
                     quest:setVar(player, 'hagainProg', 8)
                 end,
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Nanaa_Mihgo'] =
             {

@@ -12,11 +12,11 @@
 -- Outer Horu. Ruin : !pos 466 0 -660 194
 -- _5e9 - Gate      : !pos 584 0 -660 194
 -----------------------------------
-local eastSarutabarutaID   = zones[xi.zone.EAST_SARUTABARUTA]
-local outerHorutotoRuinsID = zones[xi.zone.OUTER_HORUTOTO_RUINS]
+local eastSarutabarutaID   = zones[invaderXim.zone.EAST_SARUTABARUTA]
+local outerHorutotoRuinsID = zones[invaderXim.zone.OUTER_HORUTOTO_RUINS]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_HEART_OF_THE_MATTER)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_HEART_OF_THE_MATTER)
 local msgBase = outerHorutotoRuinsID.text.ORB_ALREADY_PLACED
 
 mission.reward =
@@ -26,22 +26,22 @@ mission.reward =
 
 local darkOrbKI =
 {
-    xi.ki.FIRST_DARK_MANA_ORB,
-    xi.ki.SECOND_DARK_MANA_ORB,
-    xi.ki.THIRD_DARK_MANA_ORB,
-    xi.ki.FOURTH_DARK_MANA_ORB,
-    xi.ki.FIFTH_DARK_MANA_ORB,
-    xi.ki.SIXTH_DARK_MANA_ORB,
+    invaderXim.ki.FIRST_DARK_MANA_ORB,
+    invaderXim.ki.SECOND_DARK_MANA_ORB,
+    invaderXim.ki.THIRD_DARK_MANA_ORB,
+    invaderXim.ki.FOURTH_DARK_MANA_ORB,
+    invaderXim.ki.FIFTH_DARK_MANA_ORB,
+    invaderXim.ki.SIXTH_DARK_MANA_ORB,
 }
 
 local glowingOrbKI =
 {
-    xi.ki.FIRST_GLOWING_MANA_ORB,
-    xi.ki.SECOND_GLOWING_MANA_ORB,
-    xi.ki.THIRD_GLOWING_MANA_ORB,
-    xi.ki.FOURTH_GLOWING_MANA_ORB,
-    xi.ki.FIFTH_GLOWING_MANA_ORB,
-    xi.ki.SIXTH_GLOWING_MANA_ORB,
+    invaderXim.ki.FIRST_GLOWING_MANA_ORB,
+    invaderXim.ki.SECOND_GLOWING_MANA_ORB,
+    invaderXim.ki.THIRD_GLOWING_MANA_ORB,
+    invaderXim.ki.FOURTH_GLOWING_MANA_ORB,
+    invaderXim.ki.FIFTH_GLOWING_MANA_ORB,
+    invaderXim.ki.SIXTH_GLOWING_MANA_ORB,
 }
 
 local handleAcceptMission = function(player, csid, option, npc)
@@ -117,12 +117,12 @@ mission.sections =
     -- Choosing to keep the existing flow we had already.
     {
         check = function(player, currentMission)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId and
                 not player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onEventFinish =
             {
@@ -130,7 +130,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onEventFinish =
             {
@@ -138,7 +138,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onEventFinish =
             {
@@ -146,7 +146,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onEventFinish =
             {
@@ -161,7 +161,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Janshura-Rashura'] = mission:event(105),
             ['Nine_of_Clubs']    = mission:event(106),
@@ -169,7 +169,7 @@ mission.sections =
             ['Ten_of_Clubs']     = mission:event(107),
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Chawo_Shipeynyo'] = mission:event(110),
             ['Keo-Koruo']       = mission:event(108),
@@ -177,7 +177,7 @@ mission.sections =
             ['Zokima-Rokima']   = mission:event(107),
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Dagoza-Beruza'] = mission:event(132),
             ['Mokyokyo']      = mission:event(131),
@@ -185,7 +185,7 @@ mission.sections =
             ['Ten_of_Hearts'] = mission:event(134),
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Miiri-Wohri'] = mission:event(133),
             ['Rakoh_Buuma'] = mission:event(136),
@@ -201,7 +201,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 1
         end,
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Apururu'] = mission:progressEvent(137),
 
@@ -209,12 +209,12 @@ mission.sections =
             {
                 [137] = function(player, csid, option, npc)
                     npcUtil.giveKeyItem(player, {
-                        xi.ki.FIRST_DARK_MANA_ORB,
-                        xi.ki.SECOND_DARK_MANA_ORB,
-                        xi.ki.THIRD_DARK_MANA_ORB,
-                        xi.ki.FOURTH_DARK_MANA_ORB,
-                        xi.ki.FIFTH_DARK_MANA_ORB,
-                        xi.ki.SIXTH_DARK_MANA_ORB
+                        invaderXim.ki.FIRST_DARK_MANA_ORB,
+                        invaderXim.ki.SECOND_DARK_MANA_ORB,
+                        invaderXim.ki.THIRD_DARK_MANA_ORB,
+                        invaderXim.ki.FOURTH_DARK_MANA_ORB,
+                        invaderXim.ki.FIFTH_DARK_MANA_ORB,
+                        invaderXim.ki.SIXTH_DARK_MANA_ORB
                     })
                     player:setMissionStatus(mission.areaId, 2)
                 end,
@@ -229,19 +229,19 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 2
         end,
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Apururu'] = mission:progressEvent(138),
         },
 
-        [xi.zone.EAST_SARUTABARUTA] =
+        [invaderXim.zone.EAST_SARUTABARUTA] =
         {
             ['Pore-Ohre'] = mission:progressEvent(46),
 
             onEventFinish =
             {
                 [46] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.SOUTHEASTERN_STAR_CHARM)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.SOUTHEASTERN_STAR_CHARM)
                     player:setMissionStatus(mission.areaId, 3)
                 end,
             },
@@ -254,12 +254,12 @@ mission.sections =
             return currentMission == mission.missionId and (missionStatus == 3 or missionStatus == 4)
         end,
 
-        [xi.zone.EAST_SARUTABARUTA] =
+        [invaderXim.zone.EAST_SARUTABARUTA] =
         {
             ['Pore-Ohre'] = mission:event(47),
         },
 
-        [xi.zone.OUTER_HORUTOTO_RUINS] =
+        [invaderXim.zone.OUTER_HORUTOTO_RUINS] =
         {
             ['_5ee'] =
             {
@@ -339,14 +339,14 @@ mission.sections =
                 mission:getVar(player, 'OrbsPlaced') == 6
         end,
 
-        [xi.zone.OUTER_HORUTOTO_RUINS] =
+        [invaderXim.zone.OUTER_HORUTOTO_RUINS] =
         {
             ['_5e9'] = mission:event(44),
 
             onEventFinish =
             {
                 [44] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.SOUTHEASTERN_STAR_CHARM)
+                    player:delKeyItem(invaderXim.ki.SOUTHEASTERN_STAR_CHARM)
                     player:setMissionStatus(mission.areaId, 4)
                     player:messageSpecial(outerHorutotoRuinsID.text.ALL_G_ORBS_ENERGIZED)
                     mission:setVar(player, 'GizmoUsed', 0)
@@ -364,7 +364,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 5
         end,
 
-        [xi.zone.EAST_SARUTABARUTA] =
+        [invaderXim.zone.EAST_SARUTABARUTA] =
         {
             onZoneIn = function(player, prevZone)
                 return 48
@@ -383,7 +383,7 @@ mission.sections =
         },
 
         -- You somehow avoided losing the orbs.
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Apururu'] = mission:event(145),
 
@@ -406,13 +406,13 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 6
         end,
 
-        [xi.zone.EAST_SARUTABARUTA] =
+        [invaderXim.zone.EAST_SARUTABARUTA] =
         {
             ['Pore-Ohre']   = mission:messageText(eastSarutabarutaID.text.PORE_OHRE_STOLEN_ORBS),
             ['Quh_Berhuja'] = mission:messageText(eastSarutabarutaID.text.QUH_BERHUJA_STOLEN_ORBS),
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Apururu'] = mission:progressEvent(143),
 
@@ -430,30 +430,30 @@ mission.sections =
         check = function(player)
             return player:getNation() == mission.areaId and
                 player:hasCompletedMission(mission.areaId, mission.missionId) and
-                not player:hasCompletedMission(xi.mission.log_id.WINDURST, xi.mission.id.windurst.THE_PRICE_OF_PEACE)
+                not player:hasCompletedMission(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.THE_PRICE_OF_PEACE)
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Nine_of_Clubs'] = mission:event(74),
             ['Puo_Rhen']      = mission:event(79),
             ['Ten_of_Clubs']  = mission:event(80),
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Keo-Koruo']   = mission:event(105),
             ['Pakke-Pokke'] = mission:event(104),
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Dagoza-Beruza'] = mission:event(112),
             ['Panna-Donna']   = mission:event(113),
             ['Ten_of_Hearts'] = mission:event(114),
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Apururu']     = mission:event(144):importantOnce(),
             ['Miiri-Wohri'] = mission:event(118),

@@ -3,12 +3,12 @@
 -- Waughroon Shrine mission battlefield
 -- !pos -345 104 -260 144
 -----------------------------------
-local waughroonID = zones[xi.zone.WAUGHROON_SHRINE]
+local waughroonID = zones[invaderXim.zone.WAUGHROON_SHRINE]
 -----------------------------------
 
 local content = BattlefieldMission:new({
-    zoneId                = xi.zone.WAUGHROON_SHRINE,
-    battlefieldId         = xi.battlefield.id.ON_MY_WAY,
+    zoneId                = invaderXim.zone.WAUGHROON_SHRINE,
+    battlefieldId         = invaderXim.battlefield.id.ON_MY_WAY,
     canLoseExp            = false,
     isMission             = true,
     allowTrusts           = true,
@@ -18,9 +18,9 @@ local content = BattlefieldMission:new({
     index                 = 3,
     entryNpc              = 'BC_Entrance',
     exitNpc               = 'Burning_Circle',
-    missionArea           = xi.mission.log_id.BASTOK,
-    mission               = xi.mission.id.bastok.ON_MY_WAY,
-    missionStatusArea     = xi.mission.log_id.BASTOK,
+    missionArea           = invaderXim.mission.log_id.BASTOK,
+    mission               = invaderXim.mission.id.bastok.ON_MY_WAY,
+    missionStatusArea     = invaderXim.mission.log_id.BASTOK,
     requiredMissionStatus = 2,
 })
 
@@ -52,7 +52,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

@@ -12,8 +12,8 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffect(xi.effect.QUICKENING, 5, 0, 3600)
-    target:messageBasic(xi.msg.basic.GAINS_EFFECT_OF_STATUS, xi.effect.QUICKENING)
+    target:addStatusEffect(invaderXim.effect.QUICKENING, 5, 0, 3600)
+    target:messageBasic(invaderXim.msg.basic.GAINS_EFFECT_OF_STATUS, invaderXim.effect.QUICKENING)
 end
 
 return itemObject

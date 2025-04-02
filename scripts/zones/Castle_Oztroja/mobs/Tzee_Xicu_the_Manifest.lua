@@ -3,14 +3,14 @@
 --   NM: Tzee Xicu the Manifest
 -- TODO: messages should be zone-wide
 -----------------------------------
-local ID = zones[xi.zone.CASTLE_OZTROJA]
+local ID = zones[invaderXim.zone.CASTLE_OZTROJA]
 mixins = { require('scripts/mixins/job_special') }
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
 end
 
 entity.onMobEngage = function(mob, target)
@@ -18,11 +18,11 @@ entity.onMobEngage = function(mob, target)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.PARALYZE, { duration = 60 })
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.PARALYZE, { duration = 60 })
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.DEITY_DEBUNKER)
+    player:addTitle(invaderXim.title.DEITY_DEBUNKER)
     if optParams.isKiller then
         mob:showText(mob, ID.text.YAGUDO_KING_DEATH)
     end

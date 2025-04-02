@@ -11,13 +11,13 @@
 -- Naji    : !pos 64 -14 -4 237
 -- Ayame   : !pos 133 -19 34 237
 -----------------------------------
-local bastokMarketsID = zones[xi.zone.BASTOK_MARKETS]
-local bastokMinesID   = zones[xi.zone.BASTOK_MINES]
-local metalworksID    = zones[xi.zone.METALWORKS]
-local portBastokID    = zones[xi.zone.PORT_BASTOK]
+local bastokMarketsID = zones[invaderXim.zone.BASTOK_MARKETS]
+local bastokMinesID   = zones[invaderXim.zone.BASTOK_MINES]
+local metalworksID    = zones[invaderXim.zone.METALWORKS]
+local portBastokID    = zones[invaderXim.zone.PORT_BASTOK]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_CRYSTAL_LINE)
+local mission = Mission:new(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_CRYSTAL_LINE)
 
 mission.reward =
 {
@@ -35,11 +35,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             onEventFinish =
             {
@@ -47,7 +47,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             onEventFinish =
             {
@@ -55,7 +55,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             onEventFinish =
             {
@@ -63,7 +63,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             onEventFinish =
             {
@@ -77,22 +77,22 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Cleades'] = mission:messageSpecial(bastokMarketsID.text.ORIGINAL_MISSION_OFFSET + 19),
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Rashid'] = mission:messageSpecial(bastokMinesID.text.ORIGINAL_MISSION_OFFSET + 19),
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Ayame'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.C_L_REPORT) then
+                    if player:hasKeyItem(invaderXim.ki.C_L_REPORT) then
                         return mission:progressEvent(712)
                     end
                 end,
@@ -103,7 +103,7 @@ mission.sections =
                 onTrade = function(player, npc, trade)
                     if
                         player:getMissionStatus(mission.areaId) == 1 and
-                        npcUtil.tradeHasExactly(trade, xi.item.FADED_CRYSTAL)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.FADED_CRYSTAL)
                     then
                         return mission:progressEvent(506)
                     end
@@ -112,7 +112,7 @@ mission.sections =
                 onTrigger = function(player, npc)
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
-                    if player:hasKeyItem(xi.ki.C_L_REPORT) then
+                    if player:hasKeyItem(invaderXim.ki.C_L_REPORT) then
                         return mission:messageText(metalworksID.text.MISSION_DIALOG_CID_TO_AYAME)
                     elseif missionStatus == 0 then
                         return mission:progressEvent(505)
@@ -127,7 +127,7 @@ mission.sections =
             ['Naji'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.C_L_REPORT) then
+                    if player:hasKeyItem(invaderXim.ki.C_L_REPORT) then
                         return mission:progressEvent(711)
                     end
                 end,
@@ -137,7 +137,7 @@ mission.sections =
             {
                 [505] = function(player, csid, option, npc)
                     if option == 0 then
-                        local crystalItem = math.random(xi.item.FIRE_CRYSTAL, xi.item.DARK_CRYSTAL)
+                        local crystalItem = math.random(invaderXim.item.FIRE_CRYSTAL, invaderXim.item.DARK_CRYSTAL)
 
                         if npcUtil.giveItem(player, crystalItem) then
                             player:setMissionStatus(mission.areaId, 1)
@@ -148,19 +148,19 @@ mission.sections =
                 [506] = function(player, csid, option, npc)
                     if option == 0 then
                         player:confirmTrade()
-                        npcUtil.giveKeyItem(player, xi.ki.C_L_REPORT)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.C_L_REPORT)
                     end
                 end,
 
                 [712] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.C_L_REPORT)
+                        player:delKeyItem(invaderXim.ki.C_L_REPORT)
                     end
                 end,
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Argus'] = mission:messageSpecial(portBastokID.text.ORIGINAL_MISSION_OFFSET + 19),
         },

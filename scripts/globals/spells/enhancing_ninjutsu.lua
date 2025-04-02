@@ -2,8 +2,8 @@
 -- Enhancing Spell Utilities
 -----------------------------------
 xi = xi or {}
-xi.spells = xi.spells or {}
-xi.spells.enhancing = xi.spells.enhancing or {}
+invaderXim.spells = invaderXim.spells or {}
+invaderXim.spells.enhancing = invaderXim.spells.enhancing or {}
 -----------------------------------
 
 local column =
@@ -18,38 +18,38 @@ local column =
 local pTable =
 {
 -- Structure:            [spellId] = { Tier, Main_Effect, Power, Duration, Always_Overwrite },
-    [xi.magic.spell.GEKKA_ICHI   ] = { 1, xi.effect.ENMITY_BOOST,     30, 300, true  },
-    [xi.magic.spell.KAKKA_ICHI   ] = { 1, xi.effect.STORE_TP,         10, 180, true  },
-    [xi.magic.spell.MIGAWARI_ICHI] = { 1, xi.effect.MIGAWARI,          0,  60, true  },
-    [xi.magic.spell.MONOMI_ICHI  ] = { 1, xi.effect.SNEAK,             0, 420, false },
-    [xi.magic.spell.MYOSHU_ICHI  ] = { 1, xi.effect.SUBTLE_BLOW_PLUS, 10, 180, true  },
-    [xi.magic.spell.TONKO_ICHI   ] = { 1, xi.effect.INVISIBLE,         0, 420, false },
-    [xi.magic.spell.TONKO_NI     ] = { 2, xi.effect.INVISIBLE,         0, 600, false },
-    [xi.magic.spell.UTSUSEMI_ICHI] = { 1, xi.effect.COPY_IMAGE,        3,   0, false },
-    [xi.magic.spell.UTSUSEMI_NI  ] = { 1, xi.effect.COPY_IMAGE,        4,   0, false },
-    [xi.magic.spell.UTSUSEMI_SAN ] = { 1, xi.effect.COPY_IMAGE,        5,   0, false },
-    [xi.magic.spell.YAIN_ICHI    ] = { 1, xi.effect.PAX,              15, 300, true  },
+    [invaderXim.magic.spell.GEKKA_ICHI   ] = { 1, invaderXim.effect.ENMITY_BOOST,     30, 300, true  },
+    [invaderXim.magic.spell.KAKKA_ICHI   ] = { 1, invaderXim.effect.STORE_TP,         10, 180, true  },
+    [invaderXim.magic.spell.MIGAWARI_ICHI] = { 1, invaderXim.effect.MIGAWARI,          0,  60, true  },
+    [invaderXim.magic.spell.MONOMI_ICHI  ] = { 1, invaderXim.effect.SNEAK,             0, 420, false },
+    [invaderXim.magic.spell.MYOSHU_ICHI  ] = { 1, invaderXim.effect.SUBTLE_BLOW_PLUS, 10, 180, true  },
+    [invaderXim.magic.spell.TONKO_ICHI   ] = { 1, invaderXim.effect.INVISIBLE,         0, 420, false },
+    [invaderXim.magic.spell.TONKO_NI     ] = { 2, invaderXim.effect.INVISIBLE,         0, 600, false },
+    [invaderXim.magic.spell.UTSUSEMI_ICHI] = { 1, invaderXim.effect.COPY_IMAGE,        3,   0, false },
+    [invaderXim.magic.spell.UTSUSEMI_NI  ] = { 1, invaderXim.effect.COPY_IMAGE,        4,   0, false },
+    [invaderXim.magic.spell.UTSUSEMI_SAN ] = { 1, invaderXim.effect.COPY_IMAGE,        5,   0, false },
+    [invaderXim.magic.spell.YAIN_ICHI    ] = { 1, invaderXim.effect.PAX,              15, 300, true  },
 }
 
 -- Ninjutsu Potency function.
-xi.spells.enhancing.calculateNinjutsuPower = function(caster, target, spell, spellId, tier, spellEffect)
+invaderXim.spells.enhancing.calculateNinjutsuPower = function(caster, target, spell, spellId, tier, spellEffect)
     local power    = pTable[spellId][column.EFFECT_POWER]
     local subPower = 0
 
     -- Migawari
-    if spellEffect == xi.effect.MIGAWARI then
-        power = math.floor(caster:getSkillLevel(xi.skill.NINJUTSU) / 5)
+    if spellEffect == invaderXim.effect.MIGAWARI then
+        power = math.floor(caster:getSkillLevel(invaderXim.skill.NINJUTSU) / 5)
         subPower = 100
 
     -- Utsusemi
-    elseif spellEffect == xi.effect.COPY_IMAGE then
-        power    = power + target:getMod(xi.mod.UTSUSEMI_BONUS)
-        subPower = xi.effect.COPY_IMAGE_3
+    elseif spellEffect == invaderXim.effect.COPY_IMAGE then
+        power    = power + target:getMod(invaderXim.mod.UTSUSEMI_BONUS)
+        subPower = invaderXim.effect.COPY_IMAGE_3
 
         -- Utsusemi: Ni non-ninja penalty
         if
-            spellId == xi.magic.spell.UTSUSEMI_NI and
-            caster:getMainJob() ~= xi.job.NIN
+            spellId == invaderXim.magic.spell.UTSUSEMI_NI and
+            caster:getMainJob() ~= invaderXim.job.NIN
         then
             power = power - 1
         end
@@ -63,7 +63,7 @@ xi.spells.enhancing.calculateNinjutsuPower = function(caster, target, spell, spe
 end
 
 -- Main function for Enhancing Spells.
-xi.spells.enhancing.useEnhancingNinjutsu = function(caster, target, spell)
+invaderXim.spells.enhancing.useEnhancingNinjutsu = function(caster, target, spell)
     local spellId = spell:getID()
 
     -- Get Variables from Parameters Table.
@@ -77,22 +77,22 @@ xi.spells.enhancing.useEnhancingNinjutsu = function(caster, target, spell)
     --------------------------------------------------
     -- Calculate Spell Potency and subpower.
     --------------------------------------------------
-    local power, subPower = xi.spells.enhancing.calculateNinjutsuPower(caster, target, spell, spellId, tier, spellEffect)
+    local power, subPower = invaderXim.spells.enhancing.calculateNinjutsuPower(caster, target, spell, spellId, tier, spellEffect)
 
     ------------------------------
     -- Handle exceptions.
     ------------------------------
     -- Gekka
-    if spellEffect == xi.effect.ENMITY_BOOST then
-        target:delStatusEffect(xi.effect.PAX)
+    if spellEffect == invaderXim.effect.ENMITY_BOOST then
+        target:delStatusEffect(invaderXim.effect.PAX)
 
     -- Monomi / Tonko
-    elseif spellEffect == xi.effect.SNEAK or spellEffect == xi.effect.INVISIBLE then
+    elseif spellEffect == invaderXim.effect.SNEAK or spellEffect == invaderXim.effect.INVISIBLE then
         paramThree = 10
 
     -- Yain
-    elseif spellEffect == xi.effect.PAX then
-        target:delStatusEffect(xi.effect.ENMITY_BOOST)
+    elseif spellEffect == invaderXim.effect.PAX then
+        target:delStatusEffect(invaderXim.effect.ENMITY_BOOST)
     end
 
     ------------------------------------------------------------
@@ -103,28 +103,28 @@ xi.spells.enhancing.useEnhancingNinjutsu = function(caster, target, spell)
         target:addStatusEffect(spellEffect, power, paramThree, duration, 0, subPower)
 
     -- Utsusemi exception.
-    elseif not alwaysOverwrite and spellEffect == xi.effect.COPY_IMAGE then
-        local targetEffect = target:getStatusEffect(xi.effect.COPY_IMAGE)
+    elseif not alwaysOverwrite and spellEffect == invaderXim.effect.COPY_IMAGE then
+        local targetEffect = target:getStatusEffect(invaderXim.effect.COPY_IMAGE)
 
         -- Third Eye and Utsusemi don't stack. Utsusemi removes Third Eye.
-        if target:hasStatusEffect(xi.effect.THIRD_EYE) then
-            target:delStatusEffect(xi.effect.THIRD_EYE)
+        if target:hasStatusEffect(invaderXim.effect.THIRD_EYE) then
+            target:delStatusEffect(invaderXim.effect.THIRD_EYE)
         end
 
         paramThree = pTable[spellId][column.EFFECT_POWER] - 2
 
         if targetEffect == nil or targetEffect:getPower() <= paramThree then
-            target:addStatusEffectEx(xi.effect.COPY_IMAGE, subPower, paramThree, duration, 900, 0, power) -- Not a mistake.
-            spell:setMsg(xi.msg.basic.MAGIC_GAIN_EFFECT)
+            target:addStatusEffectEx(invaderXim.effect.COPY_IMAGE, subPower, paramThree, duration, 900, 0, power) -- Not a mistake.
+            spell:setMsg(invaderXim.msg.basic.MAGIC_GAIN_EFFECT)
         else
-            spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+            spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
         end
 
     else
         if target:addStatusEffect(spellEffect, power, paramThree, duration, 0, subPower) then
-            spell:setMsg(xi.msg.basic.MAGIC_GAIN_EFFECT)
+            spell:setMsg(invaderXim.msg.basic.MAGIC_GAIN_EFFECT)
         else
-            spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT) -- No effect.
+            spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT) -- No effect.
         end
     end
 

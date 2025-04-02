@@ -5,18 +5,18 @@
 --  Starts and finishes quest: Toraimarai Turmoil
 -- !pos 23 -5 -193 238
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WATERS]
+local ID = zones[invaderXim.zone.WINDURST_WATERS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
     local needToZone = player:needToZone()
-    local sayFlowers = player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.SAY_IT_WITH_FLOWERS)
+    local sayFlowers = player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.SAY_IT_WITH_FLOWERS)
     local flowerProgress = player:getCharVar('FLOWER_PROGRESS')
 
     if
-        (sayFlowers == xi.questStatus.QUEST_ACCEPTED or sayFlowers == xi.questStatus.QUEST_COMPLETED) and
+        (sayFlowers == invaderXim.questStatus.QUEST_ACCEPTED or sayFlowers == invaderXim.questStatus.QUEST_COMPLETED) and
         flowerProgress == 1
     then
         if needToZone then

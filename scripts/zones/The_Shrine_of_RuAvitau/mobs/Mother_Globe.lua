@@ -4,7 +4,7 @@
 -- TODO: Looked like pets had an additional effect: stun with an unknown proc rate
 -- TODO: "Links with Slave Globes, and Slave Globes link with Defenders. Defenders do not link with Slave Globes or Mother Globe."
 -----------------------------------
-local ID = zones[xi.zone.THE_SHRINE_OF_RUAVITAU]
+local ID = zones[invaderXim.zone.THE_SHRINE_OF_RUAVITAU]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -70,9 +70,9 @@ end
 
 -- spawn the slave and update any enmity
 local spawnSlaveGlobe = function(mg, slaveGlobe, spawnPos)
-    mg:entityAnimationPacket(xi.animationString.CAST_SUMMONER_START)
+    mg:entityAnimationPacket(invaderXim.animationString.CAST_SUMMONER_START)
     mg:timer(5000, function(mob)
-        mg:entityAnimationPacket(xi.animationString.CAST_SUMMONER_STOP)
+        mg:entityAnimationPacket(invaderXim.animationString.CAST_SUMMONER_STOP)
         slaveGlobe:setSpawn(spawnPos.x, spawnPos.y, spawnPos.z, spawnPos.rot)
         slaveGlobe:spawn()
         if mg:isEngaged() then
@@ -85,8 +85,8 @@ local spawnSlaveGlobe = function(mg, slaveGlobe, spawnPos)
 
             if currentSlave then
                 local action = currentSlave:getCurrentAction()
-                if action ~= xi.act.NONE and action ~= xi.act.DEATH then
-                    currentSlave:follow(followTarget, xi.followType.ROAM)
+                if action ~= invaderXim.act.NONE and action ~= invaderXim.act.DEATH then
+                    currentSlave:follow(followTarget, invaderXim.followType.ROAM)
                     followTarget = currentSlave
                 end
             end
@@ -127,7 +127,7 @@ end
 
 entity.onMobSpawn = function(mob)
     mob:setLocalVar('nextSlaveSpawnTime', os.time() + 30) -- spawn first 30s from now
-    mob:addStatusEffectEx(xi.effect.SHOCK_SPIKES, 0, 60, 0, 0) -- ~60 damage
+    mob:addStatusEffectEx(invaderXim.effect.SHOCK_SPIKES, 0, 60, 0, 0) -- ~60 damage
     -- TODO: Effect can be stolen, giving a THF (Aura Steal) or BLU (Voracious Trunk) a 60 minute shock spikes effect (unknown potency).
     -- If effect is stolen, he will recast it instantly.
 end
@@ -136,7 +136,7 @@ entity.onMobFight = function(mob, target)
     -- Keep pets linked
     for _, slaveGlobeID in ipairs(slaveGlobes) do
         local pet = GetMobByID(slaveGlobeID)
-        if pet and pet:getCurrentAction() == xi.act.ROAMING then
+        if pet and pet:getCurrentAction() == invaderXim.act.ROAMING then
             pet:updateEnmity(target)
         end
     end

@@ -14,9 +14,9 @@ end
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local dmgmod = mob:getWeaponDmg() * 4
 
-    local dmg = xi.mobskills.mobFinalAdjustments(dmgmod, mob, skill, target, xi.attackType.SPECIAL, xi.damageType.DARK, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
+    local dmg = invaderXim.mobskills.mobFinalAdjustments(dmgmod, mob, skill, target, invaderXim.attackType.SPECIAL, invaderXim.damageType.DARK, invaderXim.mobskills.shadowBehavior.IGNORE_SHADOWS)
 
-    target:takeDamage(dmg, mob, xi.attackType.SPECIAL, xi.damageType.DARK)
+    target:takeDamage(dmg, mob, invaderXim.attackType.SPECIAL, invaderXim.damageType.DARK)
 
     return dmg
 end

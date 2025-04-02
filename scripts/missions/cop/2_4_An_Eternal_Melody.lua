@@ -8,11 +8,11 @@
 -- Dilapidated Gate : !pos 260 9 -435 25
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.AN_ETERNAL_MELODY)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.AN_ETERNAL_MELODY)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.ANCIENT_VOWS },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.ANCIENT_VOWS },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['_0qa'] =
             {
@@ -65,7 +65,7 @@ mission.sections =
             onEventFinish =
             {
                 [104] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.MYSTERIOUS_AMULET)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.MYSTERIOUS_AMULET)
                     mission:setVar(player, 'Status', 1)
                 end,
 
@@ -75,7 +75,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.MISAREAUX_COAST] =
+        [invaderXim.zone.MISAREAUX_COAST] =
         {
             ['_0p0'] =
             {

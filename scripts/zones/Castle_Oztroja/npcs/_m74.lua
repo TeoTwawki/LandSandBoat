@@ -4,7 +4,7 @@
 -- Notes: Opens door _477 when _m72 to _m75 are lit
 -- !pos -59.525 -72.320 -62.379 151
 -----------------------------------
-local ID = zones[xi.zone.CASTLE_OZTROJA]
+local ID = zones[invaderXim.zone.CASTLE_OZTROJA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -13,9 +13,9 @@ entity.onTrigger = function(player, npc)
     local brassDoor = GetNPCByID(npc:getID() - 4)
 
     if
-        npc:getAnimation() == xi.anim.CLOSE_DOOR and
+        npc:getAnimation() == invaderXim.anim.CLOSE_DOOR and
         brassDoor and
-        brassDoor:getAnimation() == xi.anim.CLOSE_DOOR
+        brassDoor:getAnimation() == invaderXim.anim.CLOSE_DOOR
     then
         player:startEvent(10)
     else
@@ -29,14 +29,14 @@ entity.onEventFinish = function(player, csid, option, npc)
 
         if
             brassDoor and
-            brassDoor:getAnimation() == xi.anim.CLOSE_DOOR
+            brassDoor:getAnimation() == invaderXim.anim.CLOSE_DOOR
         then
             brassDoor:openDoor(35)
             for i = 2, 5 do
                 local torch = GetNPCByID(ID.npc.BRASS_DOOR_FLOOR_4_H7 + i)
 
                 if torch then
-                    torch:setAnimation(xi.anim.CLOSE_DOOR)
+                    torch:setAnimation(invaderXim.anim.CLOSE_DOOR)
                     torch:openDoor(39)
                 end
             end

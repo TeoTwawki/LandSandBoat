@@ -12,8 +12,8 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.MAGIC_COOL, 6)
-    mob:setMod(xi.mod.SILENCE_MEVA, 100)
+    mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 6)
+    mob:setMod(invaderXim.mod.SILENCE_MEVA, 100)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

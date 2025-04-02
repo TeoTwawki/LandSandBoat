@@ -14,12 +14,12 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     if not target:isPC() then
-        skill:setMsg(xi.msg.basic.SKILL_NO_EFFECT)
+        skill:setMsg(invaderXim.msg.basic.SKILL_NO_EFFECT)
         return
     end
 
     local slots = {}
-    for slot = xi.slot.MAIN, xi.slot.BACK do
+    for slot = invaderXim.slot.MAIN, invaderXim.slot.BACK do
         table.insert(slots, slot)
     end
 
@@ -27,16 +27,16 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     for _, slot in pairs(slots) do
         if target:hasSlotEquipped(slot) then
             target:unequipItem(slot)
-            if slot == xi.slot.MAIN then
-                target:unequipItem(xi.slot.SUB)
+            if slot == invaderXim.slot.MAIN then
+                target:unequipItem(invaderXim.slot.SUB)
             end
 
-            skill:setMsg(xi.msg.basic.USES)
+            skill:setMsg(invaderXim.msg.basic.USES)
             return
         end
     end
 
-    skill:setMsg(xi.msg.basic.SKILL_NO_EFFECT)
+    skill:setMsg(invaderXim.msg.basic.SKILL_NO_EFFECT)
 end
 
 return mobskillObject

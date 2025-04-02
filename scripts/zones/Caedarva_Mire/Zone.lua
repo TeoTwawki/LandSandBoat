@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Caedarva_Mire (79)
 -----------------------------------
-local ID = zones[xi.zone.CAEDARVA_MIRE]
+local ID = zones[invaderXim.zone.CAEDARVA_MIRE]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -9,8 +9,8 @@ local zoneObject = {}
 zoneObject.onInitialize = function(zone)
     GetMobByID(ID.mob.KHIMAIRA):setRespawnTime(math.random(12, 36) * 3600) -- 12 to 36 hours after maintenance, in 1-hour increments
 
-    xi.helm.initZone(zone, xi.helmType.LOGGING)
-    xi.darkRider.addHoofprints(zone)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.LOGGING)
+    invaderXim.darkRider.addHoofprints(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -24,11 +24,11 @@ zoneObject.onZoneIn = function(player, prevZone)
         player:setPos(339.996, 2.5, -721.286, 200)
     end
 
-    if prevZone == xi.zone.LEUJAOAM_SANCTUM then
+    if prevZone == invaderXim.zone.LEUJAOAM_SANCTUM then
         player:setPos(495.450, -28.25, -478.43, 32)
     end
 
-    if prevZone == xi.zone.PERIQIA then
+    if prevZone == invaderXim.zone.PERIQIA then
         player:setPos(-252.715, -7.666, -30.64, 128)
     end
 
@@ -46,10 +46,10 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
 end
 
 zoneObject.onGameHour = function(zone)
-    xi.darkRider.onGameHour(zone)
+    invaderXim.darkRider.onGameHour(zone)
 
     if VanadielHour() == 0 then
-        xi.darkRider.addHoofprints(zone)
+        invaderXim.darkRider.addHoofprints(zone)
     end
 end
 

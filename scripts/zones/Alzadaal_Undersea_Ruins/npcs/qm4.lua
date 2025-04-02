@@ -3,14 +3,14 @@
 --  NPC: ??? (Spawn Wulgaru(ZNM T2))
 -- !pos -22 -4 204 72
 -----------------------------------
-local ID = zones[xi.zone.ALZADAAL_UNDERSEA_RUINS]
+local ID = zones[invaderXim.zone.ALZADAAL_UNDERSEA_RUINS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHas(trade, xi.item.OPALUS_GEM) and
+        npcUtil.tradeHas(trade, invaderXim.item.OPALUS_GEM) and
         npcUtil.popFromQM(player, npc, ID.mob.WULGARU)
     then
         -- Trade Opalus Gem

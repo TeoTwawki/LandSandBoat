@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.MAQUETTE_ABDHALJS_LEGION_B] =
+zones[invaderXim.zone.MAQUETTE_ABDHALJS_LEGION_B] =
 {
     text =
     {
@@ -21,4 +21,4 @@ zones[xi.zone.MAQUETTE_ABDHALJS_LEGION_B] =
     },
 }
 
-return zones[xi.zone.MAQUETTE_ABDHALJS_LEGION_B]
+return zones[invaderXim.zone.MAQUETTE_ABDHALJS_LEGION_B]

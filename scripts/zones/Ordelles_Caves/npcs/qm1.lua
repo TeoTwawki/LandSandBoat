@@ -3,7 +3,7 @@
 --  NPC: ???
 -- Spawns Aroma Leech - RSE Satchets
 -----------------------------------
-local ID = zones[xi.zone.ORDELLES_CAVES]
+local ID = zones[invaderXim.zone.ORDELLES_CAVES]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -25,7 +25,7 @@ entity.onTrigger = function(player, npc)
 
         local item = 18246 + playerRace - raceOffset
         GetMobByID(ID.mob.AROMA_LEECH):addListener('ITEM_DROPS', 'ITEM_DROPS_RSE', function(mob, loot)
-            loot:addItem(item, xi.drop_rate.UNCOMMON)
+            loot:addItem(item, invaderXim.drop_rate.UNCOMMON)
         end)
 
         local newSpawn = math.random(1, 3) -- determine new spawn point for ???

@@ -31,7 +31,7 @@ commandObj.onTrigger = function(player, target)
     if targ then
         local pos = targ:getPos()
         pos0 = (pos.x == 0 and pos.y == 0 and pos.z == 0)
-        if targ:getStatus() == xi.status.NORMAL and not pos0 then
+        if targ:getStatus() == invaderXim.status.NORMAL and not pos0 then
             isUp = true
         end
     else

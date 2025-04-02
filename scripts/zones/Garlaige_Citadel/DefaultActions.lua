@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.GARLAIGE_CITADEL]
+local ID = zones[invaderXim.zone.GARLAIGE_CITADEL]
 
 return {
     ['qm1']          = { messageSpecial = ID.text.YOU_FIND_NOTHING },

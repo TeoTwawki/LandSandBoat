@@ -4,7 +4,7 @@
 -- !pos 460 0 540 34
 -- !pos 380 0 540 34
 -----------------------------------
-local ID = zones[xi.zone.GRAND_PALACE_OF_HUXZOI]
+local ID = zones[invaderXim.zone.GRAND_PALACE_OF_HUXZOI]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -15,17 +15,17 @@ entity.onTrade = function(player, npc, trade)
     if nm and not nm:isSpawned() then
         local chance = 0 -- percent chance that an item will drop.
 
-        if npcUtil.tradeHas(trade, { { xi.item.HIGH_QUALITY_AERN_ORGAN, 3 } }) then
+        if npcUtil.tradeHas(trade, { { invaderXim.item.HIGH_QUALITY_AERN_ORGAN, 3 } }) then
             chance = 100
-        elseif npcUtil.tradeHas(trade, { { xi.item.HIGH_QUALITY_AERN_ORGAN, 2 } }) then
+        elseif npcUtil.tradeHas(trade, { { invaderXim.item.HIGH_QUALITY_AERN_ORGAN, 2 } }) then
             chance = 66
-        elseif npcUtil.tradeHas(trade, xi.item.HIGH_QUALITY_AERN_ORGAN) then
+        elseif npcUtil.tradeHas(trade, invaderXim.item.HIGH_QUALITY_AERN_ORGAN) then
             chance = 33
         end
 
         if chance > 0 then
             player:confirmTrade()
-            npc:setStatus(xi.status.DISAPPEAR)
+            npc:setStatus(invaderXim.status.DISAPPEAR)
 
             -- spawn Ix'Aern (MNK) and minions
             nm:setSpawn(npc:getXPos(), npc:getYPos(), npc:getZPos())

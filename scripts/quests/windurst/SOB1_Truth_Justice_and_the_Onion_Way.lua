@@ -4,14 +4,14 @@
 -- Kohlo-Lakolo, !pos -26.8 -6 190 240
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.TRUTH_JUSTICE_AND_THE_ONION_WAY)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.TRUTH_JUSTICE_AND_THE_ONION_WAY)
 
 quest.reward =
 {
     fame     = 10,
-    fameArea = xi.fameArea.WINDURST,
-    item     = xi.item.JUSTICE_BADGE,
-    title    = xi.title.STAR_ONION_BRIGADE_MEMBER,
+    fameArea = invaderXim.fameArea.WINDURST,
+    item     = invaderXim.item.JUSTICE_BADGE,
+    title    = invaderXim.title.STAR_ONION_BRIGADE_MEMBER,
 }
 
 quest.sections =
@@ -19,11 +19,11 @@ quest.sections =
     -- Section: Quest is available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
                 player:getMainLvl() >= 5 -- To be confirmed, but only way to see default interaction.
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Kohlo-Lakolo'] = quest:progressEvent(368), -- Quest starting event.
 
@@ -41,10 +41,10 @@ quest.sections =
     -- Section: Quest accepeted.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Kohlo-Lakolo'] =
             {
@@ -53,8 +53,8 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.RARAB_TAIL) then
-                        return quest:progressEvent(378, 0, xi.item.RARAB_TAIL, xi.item.JUSTICE_BADGE)
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.RARAB_TAIL) then
+                        return quest:progressEvent(378, 0, invaderXim.item.RARAB_TAIL, invaderXim.item.JUSTICE_BADGE)
                     end
                 end,
             },
@@ -82,11 +82,11 @@ quest.sections =
     -- Section: Quest completed.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.KNOW_ONES_ONIONS) == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.KNOW_ONES_ONIONS) == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             -- New default texts.
             ['Gomada-Vulmada'] = quest:event(381):replaceDefault(),

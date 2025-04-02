@@ -2,12 +2,12 @@
 -- Beyond Infinity
 -- Qu'Bia Arena Level Break
 -----------------------------------
-local qubiaID = zones[xi.zone.QUBIA_ARENA]
+local qubiaID = zones[invaderXim.zone.QUBIA_ARENA]
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId        = xi.zone.QUBIA_ARENA,
-    battlefieldId = xi.battlefield.id.BEYOND_INFINITY,
+    zoneId        = invaderXim.zone.QUBIA_ARENA,
+    battlefieldId = invaderXim.battlefield.id.BEYOND_INFINITY,
     canLoseExp    = false,
     allowTrusts   = true,
     maxPlayers    = 6,
@@ -17,19 +17,19 @@ local content = BattlefieldQuest:new({
     entryNpc      = 'BC_Entrance',
     exitNpc       = 'Burning_Circle',
 
-    questArea = xi.questLog.JEUNO,
-    quest     = xi.quest.id.jeuno.BEYOND_INFINITY,
+    questArea = invaderXim.questLog.JEUNO,
+    quest     = invaderXim.quest.id.jeuno.BEYOND_INFINITY,
 
     requiredKeyItems =
     {
-        xi.ki.SOUL_GEM_CLASP,
+        invaderXim.ki.SOUL_GEM_CLASP,
         onlyInitiator = true,
         message =
         {
             qubiaID.text.SOUL_GEM_REACTS,
             {
-                xi.ki.SOUL_GEM_CLASP,
-                xi.ki.SOUL_GEM,
+                invaderXim.ki.SOUL_GEM_CLASP,
+                invaderXim.ki.SOUL_GEM,
             }
         },
         deleteMessage = qubiaID.text.LOST_KEYITEM,
@@ -47,7 +47,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

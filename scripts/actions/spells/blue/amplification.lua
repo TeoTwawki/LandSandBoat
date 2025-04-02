@@ -21,18 +21,18 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    local duration = xi.spells.blue.calculateDurationWithDiffusion(caster, 90)
-    local returnEffect = xi.effect.MAGIC_ATK_BOOST
+    local duration = invaderXim.spells.blue.calculateDurationWithDiffusion(caster, 90)
+    local returnEffect = invaderXim.effect.MAGIC_ATK_BOOST
 
-    local actionOne = target:addStatusEffect(xi.effect.MAGIC_ATK_BOOST, 10, 0, duration)
-    local actionTwo = target:addStatusEffect(xi.effect.MAGIC_DEF_BOOST, 10, 0, duration)
+    local actionOne = target:addStatusEffect(invaderXim.effect.MAGIC_ATK_BOOST, 10, 0, duration)
+    local actionTwo = target:addStatusEffect(invaderXim.effect.MAGIC_DEF_BOOST, 10, 0, duration)
 
     if not actionOne and not actionTwo then -- both statuses fail to apply
-        spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
     elseif not actionOne and actionTwo then -- the first status fails to apply
-        returnEffect = xi.effect.MAGIC_DEF_BOOST
+        returnEffect = invaderXim.effect.MAGIC_DEF_BOOST
     elseif actionOne and not actionTwo then -- the second status fails to apply
-        returnEffect = xi.effect.MAGIC_ATK_BOOST
+        returnEffect = invaderXim.effect.MAGIC_ATK_BOOST
     end
 
     return returnEffect

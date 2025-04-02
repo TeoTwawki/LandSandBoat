@@ -10,7 +10,7 @@ quest.sections    = {}
 quest.sections[1] = {}
 
 quest.sections[1].check = function(player, currentMission, missionStatus, vars)
-    return xi.moghouse.isInMogHouseInHomeNation(player) and
+    return invaderXim.moghouse.isInMogHouseInHomeNation(player) and
         quest:getVar(player, 'notSeen') == 1
 end
 
@@ -35,7 +35,7 @@ local moogleZoneInEvent =
 quest.sections[2] = {}
 
 quest.sections[2].check = function(player, currentMission, missionStatus, vars)
-    return not xi.moghouse.isInMogHouseInHomeNation(player) and
+    return not invaderXim.moghouse.isInMogHouseInHomeNation(player) and
         player:isInMogHouse() and
         quest:getVar(player, 'oNation') == 1
 end
@@ -52,7 +52,7 @@ local otherNationTriggerEvent =
     },
 }
 
-for _, zoneId in ipairs(xi.moghouse.moghouseZones) do
+for _, zoneId in ipairs(invaderXim.moghouse.moghouseZones) do
     quest.sections[1][zoneId] = moogleZoneInEvent
     quest.sections[2][zoneId] = otherNationTriggerEvent
 end

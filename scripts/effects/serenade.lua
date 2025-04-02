@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.SERENADE
+-- invaderXim.effect.SERENADE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

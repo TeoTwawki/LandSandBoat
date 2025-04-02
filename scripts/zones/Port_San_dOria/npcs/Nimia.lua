@@ -3,28 +3,28 @@
 --  NPC: Nimia
 -- Elshimo Lowlands Regional Merchant
 -----------------------------------
-local ID = zones[xi.zone.PORT_SAN_DORIA]
+local ID = zones[invaderXim.zone.PORT_SAN_DORIA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if GetRegionOwner(xi.region.ELSHIMOLOWLANDS) ~= xi.nation.SANDORIA then
+    if GetRegionOwner(invaderXim.region.ELSHIMOLOWLANDS) ~= invaderXim.nation.SANDORIA then
         player:showText(npc, ID.text.NIMIA_CLOSED_DIALOG)
     else
         local stock =
         {
-            xi.item.BUNCH_OF_KAZHAM_PEPPERS,   62,
-            xi.item.KAZHAM_PINEAPPLE,          62,
-            xi.item.MITHRAN_TOMATO,            41,
-            xi.item.PINCH_OF_BLACK_PEPPER,    265,
-            xi.item.OGRE_PUMPKIN,              99,
-            xi.item.KUKURU_BEAN,              124,
-            xi.item.PHALAENOPSIS,            1872,
+            invaderXim.item.BUNCH_OF_KAZHAM_PEPPERS,   62,
+            invaderXim.item.KAZHAM_PINEAPPLE,          62,
+            invaderXim.item.MITHRAN_TOMATO,            41,
+            invaderXim.item.PINCH_OF_BLACK_PEPPER,    265,
+            invaderXim.item.OGRE_PUMPKIN,              99,
+            invaderXim.item.KUKURU_BEAN,              124,
+            invaderXim.item.PHALAENOPSIS,            1872,
         }
 
         player:showText(npc, ID.text.NIMIA_OPEN_DIALOG)
-        xi.shop.general(player, stock, xi.fameArea.SANDORIA)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.SANDORIA)
     end
 end
 

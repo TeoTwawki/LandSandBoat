@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.slot
-xi.slot =
+---@enum invaderXim.slot
+invaderXim.slot =
 {
     MAIN   = 0,
     SUB    = 1,
@@ -24,4 +24,4 @@ xi.slot =
     BACK   = 15,
 }
 
-xi.MAX_SLOTID  = 15
+invaderXim.MAX_SLOTID  = 15

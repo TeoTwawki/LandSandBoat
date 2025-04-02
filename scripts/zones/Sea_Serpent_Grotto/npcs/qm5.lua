@@ -4,7 +4,7 @@
 -- Quests: An Undying Pledge
 -- !pos 135 -9 220
 -----------------------------------
-local ID = zones[xi.zone.SEA_SERPENT_GROTTO]
+local ID = zones[invaderXim.zone.SEA_SERPENT_GROTTO]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -28,7 +28,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 18 then
-        npcUtil.giveKeyItem(player, xi.ki.CALIGINOUS_BLADE)
+        npcUtil.giveKeyItem(player, invaderXim.ki.CALIGINOUS_BLADE)
         player:setCharVar('anUndyingPledgeCS', 3)
         player:setCharVar('anUndyingPledgeNM_killed', 0)
     end

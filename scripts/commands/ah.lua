@@ -12,7 +12,7 @@ commandObj.cmdprops =
 }
 
 commandObj.onTrigger = function(player)
-    player:sendMenu(xi.menuType.AUCTION)
+    player:sendMenu(invaderXim.menuType.AUCTION)
 end
 
 return commandObj

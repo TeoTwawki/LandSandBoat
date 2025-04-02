@@ -9,15 +9,15 @@
 -- Cid          : !pos -12 -12 1 237
 -- Iron Grate   : !pos -340 -93 156.7 111
 -----------------------------------
-local promyvionVahzlID = zones[xi.zone.PROMYVION_VAHZL]
-local psoXjaID         = zones[xi.zone.PSOXJA]
+local promyvionVahzlID = zones[invaderXim.zone.PROMYVION_VAHZL]
+local psoXjaID         = zones[invaderXim.zone.PSOXJA]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.THE_ENDURING_TUMULT_OF_WAR)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_ENDURING_TUMULT_OF_WAR)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.DESIRES_OF_EMPTINESS },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.DESIRES_OF_EMPTINESS },
 }
 
 mission.sections =
@@ -27,7 +27,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Despachiaire'] =
             {
@@ -49,7 +49,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Chasalvige'] =
             {
@@ -73,7 +73,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_SAN_DORIA] =
+        [invaderXim.zone.PORT_SAN_DORIA] =
         {
             ['Anoki'] =
             {
@@ -100,7 +100,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 0 then
@@ -116,7 +116,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Cid'] =
             {
@@ -139,7 +139,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PSOXJA] =
+        [invaderXim.zone.PSOXJA] =
         {
             ['_i98'] =
             {
@@ -184,7 +184,7 @@ mission.sections =
             onZoneIn = function(player, prevZone)
                 if
                     player:getXPos() == -300 and
-                    prevZone == xi.zone.BEAUCEDINE_GLACIER and
+                    prevZone == invaderXim.zone.BEAUCEDINE_GLACIER and
                     mission:getVar(player, 'Status') == 2
                 then
                     return 1
@@ -205,7 +205,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PROMYVION_VAHZL] =
+        [invaderXim.zone.PROMYVION_VAHZL] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 4 then
@@ -216,10 +216,10 @@ mission.sections =
             onEventFinish =
             {
                 [50] = function(player, csid, option, npc)
-                    player:addKeyItem(xi.ki.MYSTERIOUS_AMULET_DRAINED)
-                    player:addKeyItem(xi.ki.LIGHT_OF_VAHZL)
-                    player:messageSpecial(promyvionVahzlID.text.AMULET_RETURNED, xi.ki.MYSTERIOUS_AMULET)
-                    player:messageSpecial(promyvionVahzlID.text.LIGHT_OF_VAHZL, xi.ki.LIGHT_OF_VAHZL)
+                    player:addKeyItem(invaderXim.ki.MYSTERIOUS_AMULET_DRAINED)
+                    player:addKeyItem(invaderXim.ki.LIGHT_OF_VAHZL)
+                    player:messageSpecial(promyvionVahzlID.text.AMULET_RETURNED, invaderXim.ki.MYSTERIOUS_AMULET)
+                    player:messageSpecial(promyvionVahzlID.text.LIGHT_OF_VAHZL, invaderXim.ki.LIGHT_OF_VAHZL)
 
                     mission:complete(player)
                 end,

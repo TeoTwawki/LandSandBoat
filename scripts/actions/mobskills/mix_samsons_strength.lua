@@ -10,13 +10,13 @@ end
 
 local statii =
 {
-    xi.effect.STR_BOOST,
-    xi.effect.DEX_BOOST,
-    xi.effect.VIT_BOOST,
-    xi.effect.AGI_BOOST,
-    xi.effect.INT_BOOST,
-    xi.effect.MND_BOOST,
-    xi.effect.CHR_BOOST,
+    invaderXim.effect.STR_BOOST,
+    invaderXim.effect.DEX_BOOST,
+    invaderXim.effect.VIT_BOOST,
+    invaderXim.effect.AGI_BOOST,
+    invaderXim.effect.INT_BOOST,
+    invaderXim.effect.MND_BOOST,
+    invaderXim.effect.CHR_BOOST,
 }
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
@@ -33,7 +33,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     end
 
     -- What happens if no effect?
-    return xi.effect.VIT_BOOST_II -- VIT_BOOST_II = 121
+    return invaderXim.effect.VIT_BOOST_II -- VIT_BOOST_II = 121
 end
 
 return mobskillObject

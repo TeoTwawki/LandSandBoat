@@ -11,7 +11,7 @@ local mobskillObject = {}
 
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
     if mob:getPool() ~= 4006 then
-        mob:messageBasic(xi.msg.basic.READIES_WS, 0, 42)
+        mob:messageBasic(invaderXim.msg.basic.READIES_WS, 0, 42)
     end
 
     return 0
@@ -19,17 +19,17 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     if mob:getPool() == 4006 then -- Trion@QuBia_Arena only
-        target:showText(mob, zones[xi.zone.QUBIA_ARENA].text.SAVAGE_LAND)
+        target:showText(mob, zones[invaderXim.zone.QUBIA_ARENA].text.SAVAGE_LAND)
     end
 
     local numhits = 2
     local accmod = 1
     local ftp    = 2.0 -- fTP and fTP scaling unknown. TODO: capture ftp
-    local info = xi.mobskills.mobPhysicalMove(mob, target, skill, numhits, accmod, ftp, xi.mobskills.physicalTpBonus.NO_EFFECT, 0, 0, 0)
-    local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.SLASHING, info.hitslanded)
+    local info = invaderXim.mobskills.mobPhysicalMove(mob, target, skill, numhits, accmod, ftp, invaderXim.mobskills.physicalTpBonus.NO_EFFECT, 0, 0, 0)
+    local dmg = invaderXim.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, invaderXim.attackType.PHYSICAL, invaderXim.damageType.SLASHING, info.hitslanded)
 
     -- AA EV: Approx 900 damage to 75 DRG/35 THF.  400 to a NIN/WAR in Arhat, but took shadows.
-    target:takeDamage(dmg, mob, xi.attackType.PHYSICAL, xi.damageType.SLASHING)
+    target:takeDamage(dmg, mob, invaderXim.attackType.PHYSICAL, invaderXim.damageType.SLASHING)
     return dmg
 end
 

@@ -29,7 +29,7 @@ commandObj.onTrigger = function(player, speed)
         player:printToPlayer(string.format('New speed: %u', speed == -1 and 0 or speed))
     end
 
-    player:setMod(xi.mod.MOVE_SPEED_OVERRIDE, speed)
+    player:setMod(invaderXim.mod.MOVE_SPEED_OVERRIDE, speed)
     player:recalculateStats()
 end
 

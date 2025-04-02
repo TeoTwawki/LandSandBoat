@@ -13,7 +13,7 @@
 -- Table structure for table `weapon_skills`
 --
 
-DROP TABLE IF EXISTS `weapon_skills`;
+DROP TABLE IF IXIMSTS `weapon_skills`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `weapon_skills` (

@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.WESTERN_ADOULIN]
+local ID = zones[invaderXim.zone.WESTERN_ADOULIN]
 
 return {
     ['Aindemont']        = { event = 569 },

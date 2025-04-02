@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.WALK_OF_ECHOES_P2] =
+zones[invaderXim.zone.WALK_OF_ECHOES_P2] =
 {
     text =
     {
@@ -20,4 +20,4 @@ zones[xi.zone.WALK_OF_ECHOES_P2] =
     },
 }
 
-return zones[xi.zone.WALK_OF_ECHOES_P2]
+return zones[invaderXim.zone.WALK_OF_ECHOES_P2]

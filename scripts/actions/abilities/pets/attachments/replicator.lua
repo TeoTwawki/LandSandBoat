@@ -11,11 +11,11 @@ attachmentObject.onEquip = function(pet)
 
         if
             master and
-            master:countEffect(xi.effect.WIND_MANEUVER) > 0 and
+            master:countEffect(invaderXim.effect.WIND_MANEUVER) > 0 and
             automaton:getHPP() <= hpthreshold and
-            not automaton:hasStatusEffect(xi.effect.BLINK)
+            not automaton:hasStatusEffect(invaderXim.effect.BLINK)
         then
-            automaton:useMobAbility(xi.automaton.abilities.REPLICATOR, automaton)
+            automaton:useMobAbility(invaderXim.automaton.abilities.REPLICATOR, automaton)
         end
     end)
 end

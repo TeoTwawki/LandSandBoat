@@ -10,10 +10,10 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local catch = player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.CATCH_IT_IF_YOU_CAN)
-    local wonderWands = player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.WONDER_WANDS)
+    local catch = player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.CATCH_IT_IF_YOU_CAN)
+    local wonderWands = player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.WONDER_WANDS)
 
-    if wonderWands == xi.questStatus.QUEST_ACCEPTED then
+    if wonderWands == invaderXim.questStatus.QUEST_ACCEPTED then
         player:startEvent(258, 0, 17053)
     elseif catch == 0 then
         local prog = player:getCharVar('QuestCatchItIfYouCan_var')
@@ -30,9 +30,9 @@ entity.onTrigger = function(player, npc)
     elseif
         catch >= 1 and
         (
-            player:hasStatusEffect(xi.effect.MUTE) or
-            player:hasStatusEffect(xi.effect.BANE) or
-            player:hasStatusEffect(xi.effect.PLAGUE)
+            player:hasStatusEffect(invaderXim.effect.MUTE) or
+            player:hasStatusEffect(invaderXim.effect.BANE) or
+            player:hasStatusEffect(invaderXim.effect.PLAGUE)
         )
     then
         player:startEvent(246) -- CATCH IT IF YOU CAN: Quest Turn In 1
@@ -40,9 +40,9 @@ entity.onTrigger = function(player, npc)
         player:startEvent(255) -- CATCH IT IF YOU CAN: After Quest
     elseif
         catch == 1 and
-        not player:hasStatusEffect(xi.effect.MUTE) and
-        not player:hasStatusEffect(xi.effect.BANE) and
-        not player:hasStatusEffect(xi.effect.PLAGUE)
+        not player:hasStatusEffect(invaderXim.effect.MUTE) and
+        not player:hasStatusEffect(invaderXim.effect.BANE) and
+        not player:hasStatusEffect(invaderXim.effect.PLAGUE)
     then
         local rand = math.random(1, 2)
         if rand == 1 then
@@ -50,7 +50,7 @@ entity.onTrigger = function(player, npc)
         else
             player:startEvent(251) -- CATCH IT IF YOU CAN: During Quest 2
         end
-    elseif wonderWands == xi.questStatus.QUEST_COMPLETED then
+    elseif wonderWands == invaderXim.questStatus.QUEST_COMPLETED then
         player:startEvent(265)
     else
         player:startEvent(230) -- STANDARD CONVERSATION
@@ -59,27 +59,27 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 231 then
-        player:addQuest(xi.questLog.WINDURST, xi.quest.id.windurst.CATCH_IT_IF_YOU_CAN)
+        player:addQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.CATCH_IT_IF_YOU_CAN)
     elseif csid == 246 and option == 0 then
         player:needToZone(true)
-        if player:hasStatusEffect(xi.effect.MUTE) then
-            player:delStatusEffect(xi.effect.MUTE)
+        if player:hasStatusEffect(invaderXim.effect.MUTE) then
+            player:delStatusEffect(invaderXim.effect.MUTE)
             npcUtil.giveCurrency(player, 'gil', 1000)
-        elseif player:hasStatusEffect(xi.effect.BANE) then
-            player:delStatusEffect(xi.effect.BANE)
+        elseif player:hasStatusEffect(invaderXim.effect.BANE) then
+            player:delStatusEffect(invaderXim.effect.BANE)
             npcUtil.giveCurrency(player, 'gil', 1200)
-        elseif player:hasStatusEffect(xi.effect.PLAGUE) then
-            player:delStatusEffect(xi.effect.PLAGUE)
+        elseif player:hasStatusEffect(invaderXim.effect.PLAGUE) then
+            player:delStatusEffect(invaderXim.effect.PLAGUE)
             npcUtil.giveCurrency(player, 'gil', 1500)
         end
 
         player:setCharVar('QuestCatchItIfYouCan_var', 0)
 
-        if player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.CATCH_IT_IF_YOU_CAN) == xi.questStatus.QUEST_ACCEPTED then
-            player:completeQuest(xi.questLog.WINDURST, xi.quest.id.windurst.CATCH_IT_IF_YOU_CAN)
-            player:addFame(xi.fameArea.WINDURST, 75)
+        if player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.CATCH_IT_IF_YOU_CAN) == invaderXim.questStatus.QUEST_ACCEPTED then
+            player:completeQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.CATCH_IT_IF_YOU_CAN)
+            player:addFame(invaderXim.fameArea.WINDURST, 75)
         else
-            player:addFame(xi.fameArea.WINDURST, 8)
+            player:addFame(invaderXim.fameArea.WINDURST, 8)
         end
     end
 end

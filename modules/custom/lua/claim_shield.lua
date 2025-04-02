@@ -100,7 +100,7 @@ local timerFunc = function(mob)
 
     local numEntries = #entries
 
-    mob:setMobMod(xi.mobMod.CLAIM_TYPE, xi.claimType.EXCLUSIVE)
+    mob:setMobMod(invaderXim.mobMod.CLAIM_TYPE, invaderXim.claimType.EXCLUSIVE)
     mob:setUnkillable(false)
     mob:setCallForHelpBlocked(false)
 
@@ -121,7 +121,7 @@ local timerFunc = function(mob)
                 str = string.format('You have won the lottery for %s! (out of %i players)', mob:getPacketName(), numEntries)
             end
 
-            member:printToPlayer(str, xi.msg.channel.SYSTEM_3, '')
+            member:printToPlayer(str, invaderXim.msg.channel.SYSTEM_3, '')
 
             -- Remove from entries table
             local pos = tableFindPosByID(entries, member)
@@ -138,7 +138,7 @@ local timerFunc = function(mob)
                 str = string.format('Your were not successful in the lottery for %s. (out of %i players)', mob:getPacketName(), numEntries)
             end
 
-            member:printToPlayer(str, xi.msg.channel.SYSTEM_3, '')
+            member:printToPlayer(str, invaderXim.msg.channel.SYSTEM_3, '')
             mob:clearEnmityForEntity(member)
         end
     end
@@ -148,7 +148,7 @@ end
 local spawnFunc = function(mob)
     print(string.format('Applying Claimshield to %s for %ims', mob:getPacketName(), claimshieldTime))
 
-    mob:setMobMod(xi.mobMod.CLAIM_TYPE, xi.claimType.UNCLAIMABLE)
+    mob:setMobMod(invaderXim.mobMod.CLAIM_TYPE, invaderXim.claimType.UNCLAIMABLE)
     mob:setUnkillable(true)
     mob:setCallForHelpBlocked(true)
     mob:stun(claimshieldTime)
@@ -167,7 +167,7 @@ end
 -- NOTE: At the time we iterate over these entries, the Lua zone and mob objects won't be ready,
 --     : so we deal with everything as strings for now.
 for _, entry in pairs(nmsToShield) do
-    m:addOverride(string.format('xi.zones.%s.mobs.%s.onMobSpawn', entry[1], entry[2]), overrideFunc)
+    m:addOverride(string.format('invaderXim.zones.%s.mobs.%s.onMobSpawn', entry[1], entry[2]), overrideFunc)
 end
 
 return m

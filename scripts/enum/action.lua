@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.action
-xi.action =
+---@enum invaderXim.action
+invaderXim.action =
 {
     NONE                  = 0,
     ATTACK                = 1,
@@ -47,4 +47,4 @@ xi.action =
     JOBABILITY_INTERRUPT  = 38,
 }
 
-xi.act = xi.action
+invaderXim.act = invaderXim.action

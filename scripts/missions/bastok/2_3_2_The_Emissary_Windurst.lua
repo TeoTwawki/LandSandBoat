@@ -7,10 +7,10 @@
 -- Melek     : !pos -80 -5 158 240
 -- Uu Zhoumo : !pos -179 16 155 145
 -----------------------------------
-local northSandoriaID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local northSandoriaID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY_WINDURST)
+local mission = Mission:new(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY_WINDURST)
 
 mission.reward = {}
 
@@ -21,12 +21,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.GIDDEUS] =
+        [invaderXim.zone.GIDDEUS] =
         {
             ['Uu_Zhoumo'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.ASPIR_KNIFE) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.ASPIR_KNIFE) then
                         return mission:progressEvent(41)
                     end
                 end,
@@ -52,13 +52,13 @@ mission.sections =
 
                 [41] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    player:delKeyItem(xi.ki.DULL_SWORD)
+                    player:delKeyItem(invaderXim.ki.DULL_SWORD)
                     player:setMissionStatus(mission.areaId, 6)
                 end,
             },
         },
 
-        [xi.zone.HEAVENS_TOWER] =
+        [invaderXim.zone.HEAVENS_TOWER] =
         {
             ['Kupipi'] =
             {
@@ -66,16 +66,16 @@ mission.sections =
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
                     if missionStatus == 3 then
-                        if xi.settings.main.ENABLE_TRUST_QUESTS == 1 then
-                            local needsSemihTrust = (not player:hasSpell(xi.magic.spell.SEMIH_LAFIHNA) and not player:hasItem(xi.item.CIPHER_OF_SEMIHS_ALTER_EGO)) and 1 or 0
+                        if invaderXim.settings.main.ENABLE_TRUST_QUESTS == 1 then
+                            local needsSemihTrust = (not player:hasSpell(invaderXim.magic.spell.SEMIH_LAFIHNA) and not player:hasItem(invaderXim.item.CIPHER_OF_SEMIHS_ALTER_EGO)) and 1 or 0
                             local hasTrustQuest =
                             (
-                                player:hasKeyItem(xi.ki.SAN_DORIA_TRUST_PERMIT) or
-                                player:hasKeyItem(xi.ki.BASTOK_TRUST_PERMIT) or
-                                player:hasKeyItem(xi.ki.WINDURST_TRUST_PERMIT)
+                                player:hasKeyItem(invaderXim.ki.SAN_DORIA_TRUST_PERMIT) or
+                                player:hasKeyItem(invaderXim.ki.BASTOK_TRUST_PERMIT) or
+                                player:hasKeyItem(invaderXim.ki.WINDURST_TRUST_PERMIT)
                             ) and 0 or 1
 
-                            return mission:progressEvent(239, 0, 0, 0, xi.nation.BASTOK, 0, hasTrustQuest, needsSemihTrust)
+                            return mission:progressEvent(239, 0, 0, 0, invaderXim.nation.BASTOK, 0, hasTrustQuest, needsSemihTrust)
                         else
                             return mission:progressEvent(239)
                         end
@@ -96,7 +96,7 @@ mission.sections =
             onEventUpdate =
             {
                 [42] = function(player, csid, option, npc)
-                    local onPathUntraveled = player:getCurrentMission(xi.mission.log_id.ROV) == xi.mission.id.rov.THE_PATH_UNTRAVELED and 1 or 0
+                    local onPathUntraveled = player:getCurrentMission(invaderXim.mission.log_id.ROV) == invaderXim.mission.id.rov.THE_PATH_UNTRAVELED and 1 or 0
 
                     player:updateEvent(0, 0, 0, 0, 0, 0, 0, onPathUntraveled)
                 end,
@@ -110,25 +110,25 @@ mission.sections =
 
                 [239] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 4)
-                    npcUtil.giveKeyItem(player, xi.ki.SWORD_OFFERING)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.SWORD_OFFERING)
 
                     if
-                        xi.settings.main.ENABLE_TRUST_QUESTS == 1 and
-                        not player:hasSpell(xi.magic.spell.SEMIH_LAFIHNA) and
-                        not player:hasItem(xi.item.CIPHER_OF_SEMIHS_ALTER_EGO)
+                        invaderXim.settings.main.ENABLE_TRUST_QUESTS == 1 and
+                        not player:hasSpell(invaderXim.magic.spell.SEMIH_LAFIHNA) and
+                        not player:hasItem(invaderXim.item.CIPHER_OF_SEMIHS_ALTER_EGO)
                     then
-                        npcUtil.giveItem(player, xi.item.CIPHER_OF_SEMIHS_ALTER_EGO)
+                        npcUtil.giveItem(player, invaderXim.item.CIPHER_OF_SEMIHS_ALTER_EGO)
                     end
                 end,
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Helaku'] = mission:messageText(northSandoriaID.text.THE_EMISSARY_PLACEHOLDER),
         },
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Ada'] = mission:event(51),
 
@@ -138,8 +138,8 @@ mission.sections =
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
                     if
-                        player:hasKeyItem(xi.ki.SWORD_OFFERING) and
-                        not player:hasKeyItem(xi.ki.DULL_SWORD)
+                        player:hasKeyItem(invaderXim.ki.SWORD_OFFERING) and
+                        not player:hasKeyItem(invaderXim.ki.DULL_SWORD)
                     then
                         return mission:progressEvent(53) -- Trade Sword with fake.
                     elseif missionStatus <= 3 then -- After getting instructions and before getting Magic Sword.
@@ -168,13 +168,13 @@ mission.sections =
             onEventFinish =
             {
                 [53] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.DULL_SWORD)
-                    player:delKeyItem(xi.ki.SWORD_OFFERING)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.DULL_SWORD)
+                    player:delKeyItem(invaderXim.ki.SWORD_OFFERING)
                 end,
 
                 [55] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:addMission(xi.mission.log_id.BASTOK, xi.mission.id.bastok.THE_EMISSARY)
+                        player:addMission(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.THE_EMISSARY)
                         player:setMissionStatus(mission.areaId, 7)
                     end
                 end,

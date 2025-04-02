@@ -6,8 +6,8 @@
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.amk.helpers.cardianOrbDrop(mob, player, xi.ki.ORB_OF_COINS)
-    xi.regime.checkRegime(player, mob, 667, 4, xi.regime.type.GROUNDS)
+    invaderXim.amk.helpers.cardianOrbDrop(mob, player, invaderXim.ki.ORB_OF_COINS)
+    invaderXim.regime.checkRegime(player, mob, 667, 4, invaderXim.regime.type.GROUNDS)
 end
 
 return entity

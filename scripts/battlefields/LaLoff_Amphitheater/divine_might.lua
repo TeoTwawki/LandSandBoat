@@ -2,12 +2,12 @@
 -- Area: LaLoff Amphitheater
 -- Name: Divine Might
 -----------------------------------
-local laLoffID = zones[xi.zone.LALOFF_AMPHITHEATER]
+local laLoffID = zones[invaderXim.zone.LALOFF_AMPHITHEATER]
 -----------------------------------
 
 local content = Battlefield:new({
-    zoneId        = xi.zone.LALOFF_AMPHITHEATER,
-    battlefieldId = xi.battlefield.id.DIVINE_MIGHT,
+    zoneId        = invaderXim.zone.LALOFF_AMPHITHEATER,
+    battlefieldId = invaderXim.battlefield.id.DIVINE_MIGHT,
     canLoseExp    = false,
     allowTrusts   = true,
     maxPlayers    = 18,
@@ -17,12 +17,12 @@ local content = Battlefield:new({
     entryNpcs     = { 'qm1_1', 'qm1_2', 'qm1_3', 'qm1_4', 'qm1_5' },
 
     -- TODO: wornMessage needs verification, but is necessary to ensure item cannot be reused.
-    requiredItems = { xi.item.ARK_PENTASPHERE, wearMessage = laLoffID.text.THE_SEAL_FADES, wornMessage = { laLoffID.text.LARGE_CRACK_RUNNING_DOWN, xi.item.ARK_PENTASPHERE } },
+    requiredItems = { invaderXim.item.ARK_PENTASPHERE, wearMessage = laLoffID.text.THE_SEAL_FADES, wornMessage = { laLoffID.text.LARGE_CRACK_RUNNING_DOWN, invaderXim.item.ARK_PENTASPHERE } },
 })
 
 function content:entryRequirement(player, npc, isRegistrant, trade)
-    return player:getQuestStatus(xi.questLog.OUTLANDS, xi.quest.id.outlands.DIVINE_MIGHT) == xi.questStatus.QUEST_ACCEPTED or
-        player:getQuestStatus(xi.questLog.OUTLANDS, xi.quest.id.outlands.DIVINE_MIGHT_REPEAT) == xi.questStatus.QUEST_ACCEPTED
+    return player:getQuestStatus(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.DIVINE_MIGHT) == invaderXim.questStatus.QUEST_ACCEPTED or
+        player:getQuestStatus(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.DIVINE_MIGHT_REPEAT) == invaderXim.questStatus.QUEST_ACCEPTED
 end
 
 content.groups =
@@ -56,7 +56,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 

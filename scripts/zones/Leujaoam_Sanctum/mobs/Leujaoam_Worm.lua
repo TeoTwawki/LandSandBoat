@@ -6,9 +6,9 @@
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    xi.assault.adjustMobLevel(mob)
-    mob:setMod(xi.mod.UDMGMAGIC, -5000)
-    mob:addMod(xi.mod.DEF, 100)
+    invaderXim.assault.adjustMobLevel(mob)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, -5000)
+    mob:addMod(invaderXim.mod.DEF, 100)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

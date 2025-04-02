@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.KAMIHR_DRIFTS]
+local ID = zones[invaderXim.zone.KAMIHR_DRIFTS]
 
 return {
     ['Alpine_Trail']  = { messageSpecial = ID.text.PATH_SEEMS_TO_LEAD },

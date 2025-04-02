@@ -18,23 +18,23 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     local params     = {}
     params.numHits   = 5
     params.ftpMod    = { 1.0625, 1.0625, 1.0625 }
-    params.dex_wsc   = player:getMerit(xi.merit.SHIJIN_SPIRAL) * 0.17
+    params.dex_wsc   = player:getMerit(invaderXim.merit.SHIJIN_SPIRAL) * 0.17
     params.atkVaries = { 1.05, 1.05, 1.05 }
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         params.multiHitfTP = true -- http://wiki.ffo.jp/html/25607.html
         params.ftpMod      = { 1.5, 1.5, 1.5 }
-        params.dex_wsc     = 0.7 + player:getMerit(xi.merit.SHIJIN_SPIRAL) * 0.03
+        params.dex_wsc     = 0.7 + player:getMerit(invaderXim.merit.SHIJIN_SPIRAL) * 0.03
     end
 
-    local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doPhysicalWeaponskill(player, target, wsID, params, tp, action, primary, taChar)
+    local damage, criticalHit, tpHits, extraHits = invaderXim.weaponskills.doPhysicalWeaponskill(player, target, wsID, params, tp, action, primary, taChar)
 
     -- Handle status effect
-    local effectId      = xi.effect.PLAGUE
-    local actionElement = xi.element.FIRE
+    local effectId      = invaderXim.effect.PLAGUE
+    local actionElement = invaderXim.element.FIRE
     local power         = 5
     local duration      = math.floor(15 + 3 * tp / 1000)
-    xi.weaponskills.handleWeaponskillEffect(player, target, effectId, actionElement, damage, power, duration)
+    invaderXim.weaponskills.handleWeaponskillEffect(player, target, effectId, actionElement, damage, power, duration)
 
     return tpHits, extraHits, criticalHit, damage
 end

@@ -18,19 +18,19 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     local params = {}
     params.ftpMod = { 4.0, 4.25, 4.75 }
     params.agi_wsc = 0.3
-    params.ele = xi.element.DARK
-    params.skill = xi.skill.MARKSMANSHIP
+    params.ele = invaderXim.element.DARK
+    params.skill = invaderXim.skill.MARKSMANSHIP
     params.includemab = true
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         params.ftpMod = { 4.0, 6.7, 10.0 }
         params.agi_wsc = 1.0
     end
 
     -- Apply Aftermath
-    xi.aftermath.addStatusEffect(player, tp, xi.slot.RANGED, xi.aftermath.type.MYTHIC)
+    invaderXim.aftermath.addStatusEffect(player, tp, invaderXim.slot.RANGED, invaderXim.aftermath.type.MYTHIC)
 
-    local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
+    local damage, criticalHit, tpHits, extraHits = invaderXim.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
 
     return tpHits, extraHits, criticalHit, damage
 end

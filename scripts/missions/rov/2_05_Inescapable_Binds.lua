@@ -5,11 +5,11 @@
 -- !addmission 13 52
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.INESCAPABLE_BINDS)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.INESCAPABLE_BINDS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.EVER_FORWARD },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.EVER_FORWARD },
 }
 
 mission.sections =
@@ -17,8 +17,8 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
-                xi.rhapsodies.charactersAvailable(player) and
-                player:hasKeyItem(xi.ki.BOARDING_PERMIT)
+                invaderXim.rhapsodies.charactersAvailable(player) and
+                player:hasKeyItem(invaderXim.ki.BOARDING_PERMIT)
         end,
 
         -- There's two ways to complete this mission: Either by obtaining a Boarding Permit which
@@ -28,7 +28,7 @@ mission.sections =
         -- For the scenario of obtaining a Boarding Permit, this mission is completed in the quest
         -- script for "The Road to Aht Urhgan"
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             onZoneIn = function(player, prevZone)
                 return { 165, 0 }
@@ -37,10 +37,10 @@ mission.sections =
             onEventUpdate =
             {
                 [165] = function(player, csid, option, npc)
-                    local toauProgress = player:getCurrentMission(xi.mission.log_id.TOAU) >= xi.mission.id.toau.ROYAL_PUPPETEER and 1 or 0
-                    local copProgress = player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.THE_WARRIORS_PATH) and 1 or 0
+                    local toauProgress = player:getCurrentMission(invaderXim.mission.log_id.TOAU) >= invaderXim.mission.id.toau.ROYAL_PUPPETEER and 1 or 0
+                    local copProgress = player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_WARRIORS_PATH) and 1 or 0
 
-                    if player:hasCompletedMission(xi.mission.log_id.TOAU, xi.mission.id.toau.PASSING_GLORY) then
+                    if player:hasCompletedMission(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.PASSING_GLORY) then
                         toauProgress = toauProgress + 1
                     end
 

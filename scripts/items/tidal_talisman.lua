@@ -9,7 +9,7 @@ local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
     local zoneId = target:getZoneID()
-    local destZoneData = xi.teleport.tidalDestinations[zoneId]
+    local destZoneData = invaderXim.teleport.tidalDestinations[zoneId]
 
     if
         destZoneData and
@@ -22,7 +22,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffectEx(xi.effect.TELEPORT, 0, xi.teleport.id.TIDAL_TALISMAN, 0, 4)
+    target:addStatusEffectEx(invaderXim.effect.TELEPORT, 0, invaderXim.teleport.id.TIDAL_TALISMAN, 0, 4)
 end
 
 return itemObject

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.RAPTURE
+-- invaderXim.effect.RAPTURE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.WEST_SARUTABARUTA_S] =
+zones[invaderXim.zone.WEST_SARUTABARUTA_S] =
 {
     text =
     {
@@ -37,7 +37,7 @@ zones[xi.zone.WEST_SARUTABARUTA_S] =
         RAMPONNEAU = GetFirstID('Ramponneau'),
         VOIDWALKER =
         {
-            [xi.keyItem.CLEAR_ABYSSITE] =
+            [invaderXim.keyItem.CLEAR_ABYSSITE] =
             {
                 17166778, -- Raker bee
                 17166777, -- Raker bee
@@ -49,18 +49,18 @@ zones[xi.zone.WEST_SARUTABARUTA_S] =
                 17166771, -- Rummager beetle
             },
 
-            [xi.keyItem.COLORFUL_ABYSSITE] =
+            [invaderXim.keyItem.COLORFUL_ABYSSITE] =
             {
                 17166770,  -- Jyeshtha
                 17166769, -- Farruca Fly
             },
 
-            [xi.keyItem.BROWN_ABYSSITE] =
+            [invaderXim.keyItem.BROWN_ABYSSITE] =
             {
                 17166768, -- Orcus
             },
 
-            [xi.keyItem.BLACK_ABYSSITE] =
+            [invaderXim.keyItem.BLACK_ABYSSITE] =
             {
                 17166767, -- Yilbegan
             },
@@ -74,4 +74,4 @@ zones[xi.zone.WEST_SARUTABARUTA_S] =
     },
 }
 
-return zones[xi.zone.WEST_SARUTABARUTA_S]
+return zones[invaderXim.zone.WEST_SARUTABARUTA_S]

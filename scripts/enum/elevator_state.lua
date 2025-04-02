@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.elevatorState
-xi.elevatorState =
+---@enum invaderXim.elevatorState
+invaderXim.elevatorState =
 {
     BOTTOM  = 0,
     TOP     = 1,

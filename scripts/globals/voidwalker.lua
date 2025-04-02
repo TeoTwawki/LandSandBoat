@@ -5,31 +5,31 @@ require('scripts/globals/mobs')
 require('scripts/globals/voidwalkerpos')
 -----------------------------------
 xi = xi or {}
-xi.voidwalker = xi.voidwalker or {}
+invaderXim.voidwalker = invaderXim.voidwalker or {}
 
 local abyssiteKeyitems =
 {
-    [9] = xi.keyItem.BLACK_ABYSSITE,
-    [8] = xi.keyItem.GREY_ABYSSITE,
-    [7] = xi.keyItem.PURPLE_ABYSSITE,
-    [6] = xi.keyItem.YELLOW_ABYSSITE,
-    [5] = xi.keyItem.BROWN_ABYSSITE,
-    [4] = xi.keyItem.ORANGE_ABYSSITE,
-    [3] = xi.keyItem.BLUE_ABYSSITE,
-    [2] = xi.keyItem.COLORFUL_ABYSSITE,
-    [1] = xi.keyItem.CLEAR_ABYSSITE,
+    [9] = invaderXim.keyItem.BLACK_ABYSSITE,
+    [8] = invaderXim.keyItem.GREY_ABYSSITE,
+    [7] = invaderXim.keyItem.PURPLE_ABYSSITE,
+    [6] = invaderXim.keyItem.YELLOW_ABYSSITE,
+    [5] = invaderXim.keyItem.BROWN_ABYSSITE,
+    [4] = invaderXim.keyItem.ORANGE_ABYSSITE,
+    [3] = invaderXim.keyItem.BLUE_ABYSSITE,
+    [2] = invaderXim.keyItem.COLORFUL_ABYSSITE,
+    [1] = invaderXim.keyItem.CLEAR_ABYSSITE,
 }
 
 local abyssiteMessage =
 {
-    [xi.keyItem.CLEAR_ABYSSITE]    = 0,
-    [xi.keyItem.COLORFUL_ABYSSITE] = 1,
-    [xi.keyItem.BLUE_ABYSSITE]     = 2,
-    [xi.keyItem.ORANGE_ABYSSITE]   = 2,
-    [xi.keyItem.BROWN_ABYSSITE]    = 2,
-    [xi.keyItem.YELLOW_ABYSSITE]   = 2,
-    [xi.keyItem.GREY_ABYSSITE]     = 2,
-    [xi.keyItem.BLACK_ABYSSITE]    = 3
+    [invaderXim.keyItem.CLEAR_ABYSSITE]    = 0,
+    [invaderXim.keyItem.COLORFUL_ABYSSITE] = 1,
+    [invaderXim.keyItem.BLUE_ABYSSITE]     = 2,
+    [invaderXim.keyItem.ORANGE_ABYSSITE]   = 2,
+    [invaderXim.keyItem.BROWN_ABYSSITE]    = 2,
+    [invaderXim.keyItem.YELLOW_ABYSSITE]   = 2,
+    [invaderXim.keyItem.GREY_ABYSSITE]     = 2,
+    [invaderXim.keyItem.BLACK_ABYSSITE]    = 3
 }
 
 local function getCurrentKIsBitsFromPlayer(player)
@@ -82,17 +82,17 @@ local function getMobsFromAbyssites(zoneId, abyssites)
 end
 
 local function removeMobIdFromPos(zoneId, mobId)
-    for i, pos in ipairs(xi.voidwalker.pos[zoneId]) do
+    for i, pos in ipairs(invaderXim.voidwalker.pos[zoneId]) do
         if pos.mobId == mobId then
-            xi.voidwalker.pos[zoneId][i].mobId = nil
+            invaderXim.voidwalker.pos[zoneId][i].mobId = nil
         end
     end
 end
 
 local function searchEmptyPos(zoneId)
-    local maxPos     = #xi.voidwalker.pos[zoneId]
+    local maxPos     = #invaderXim.voidwalker.pos[zoneId]
     local pos        = math.random(1, maxPos)
-    local currentPos = xi.voidwalker.pos[zoneId][pos]
+    local currentPos = invaderXim.voidwalker.pos[zoneId][pos]
 
     if currentPos.mobId == nil then
         return pos
@@ -106,15 +106,15 @@ local function setRandomPos(zoneId, mobId)
 
     if
         not mob or
-        not xi.voidwalker.pos[zoneId]
+        not invaderXim.voidwalker.pos[zoneId]
     then
         return
     end
 
     local pos = searchEmptyPos(zoneId)
 
-    xi.voidwalker.pos[zoneId][pos].mobId = mobId
-    local vPos                           = xi.voidwalker.pos[zoneId][pos].pos
+    invaderXim.voidwalker.pos[zoneId][pos].mobId = mobId
+    local vPos                           = invaderXim.voidwalker.pos[zoneId][pos].pos
 
     mob:setSpawn(vPos[1], vPos[2], vPos[3])
     mob:setPos(vPos[1], vPos[2], vPos[3])
@@ -210,11 +210,11 @@ local function checkUpgrade(player, mob, nextKeyItem)
             if nextKeyItem then
                 player:addKeyItem(nextKeyItem)
 
-                if currentKeyItem == xi.keyItem.CLEAR_ABYSSITE then
+                if currentKeyItem == invaderXim.keyItem.CLEAR_ABYSSITE then
                     player:messageSpecial(zoneTextTable.VOIDWALKER_UPGRADE_KI_1, currentKeyItem, nextKeyItem)
-                elseif currentKeyItem == xi.keyItem.COLORFUL_ABYSSITE then
+                elseif currentKeyItem == invaderXim.keyItem.COLORFUL_ABYSSITE then
                     player:messageSpecial(zoneTextTable.VOIDWALKER_UPGRADE_KI_2, currentKeyItem, nextKeyItem)
-                elseif nextKeyItem == xi.keyItem.BLACK_ABYSSITE then
+                elseif nextKeyItem == invaderXim.keyItem.BLACK_ABYSSITE then
                     player:messageSpecial(zoneTextTable.VOIDWALKER_OBTAIN_KI, nextKeyItem)
                 end
             end
@@ -225,8 +225,8 @@ end
 -----------------------------------
 -- NPC Assai Nybaem
 -----------------------------------
-xi.voidwalker.npcOnTrigger = function(player, npc)
-    if xi.settings.main.ENABLE_VOIDWALKER ~= 1 then
+invaderXim.voidwalker.npcOnTrigger = function(player, npc)
+    if invaderXim.settings.main.ENABLE_VOIDWALKER ~= 1 then
         return
     end
 
@@ -234,7 +234,7 @@ xi.voidwalker.npcOnTrigger = function(player, npc)
     player:startEvent(10120, currentKIS)
 end
 
-xi.voidwalker.npcOnEventUpdate = function(player, csid, option, npc)
+invaderXim.voidwalker.npcOnEventUpdate = function(player, csid, option, npc)
     local opt = bit.band(option, 0xF)
 
     if
@@ -242,7 +242,7 @@ xi.voidwalker.npcOnEventUpdate = function(player, csid, option, npc)
         opt == 3
     then
         local hasGil = player:getGil() >= 1000
-        local hasKi  = player:hasKeyItem(xi.keyItem.CLEAR_ABYSSITE)
+        local hasKi  = player:hasKeyItem(invaderXim.keyItem.CLEAR_ABYSSITE)
 
         if not hasGil then
             player:updateEvent(3)
@@ -254,12 +254,12 @@ xi.voidwalker.npcOnEventUpdate = function(player, csid, option, npc)
     end
 end
 
-xi.voidwalker.npcOnEventFinish = function(player, csid, option, npc)
+invaderXim.voidwalker.npcOnEventFinish = function(player, csid, option, npc)
     local opt = bit.band(option, 0xF)
 
     if csid == 10120 then
         if opt == 1 then
-            local msg = zones[xi.zone.RULUDE_GARDENS]
+            local msg = zones[invaderXim.zone.RULUDE_GARDENS]
             local ki  = abyssiteKeyitems[1]
             player:delGil(1000)
             player:addKeyItem(ki)
@@ -274,7 +274,7 @@ end
 -----------------------------------
 -- Zone On Init
 -----------------------------------
-xi.voidwalker.zoneOnInit = function(zone)
+invaderXim.voidwalker.zoneOnInit = function(zone)
     local zoneId         = zone:getID()
     local voidwalkerMobs = zones[zoneId].mob.VOIDWALKER
 
@@ -288,12 +288,12 @@ end
 local mobIsBusy = function(mob)
     local act = mob:getCurrentAction()
 
-    return  act == xi.act.MOBABILITY_START or
-            act == xi.act.MOBABILITY_USING or
-            act == xi.act.MOBABILITY_FINISH or
-            act == xi.act.MAGIC_START or
-            act == xi.act.MAGIC_CASTING or
-            act == xi.act.MAGIC_FINISH
+    return  act == invaderXim.act.MOBABILITY_START or
+            act == invaderXim.act.MOBABILITY_USING or
+            act == invaderXim.act.MOBABILITY_FINISH or
+            act == invaderXim.act.MAGIC_START or
+            act == invaderXim.act.MAGIC_CASTING or
+            act == invaderXim.act.MAGIC_FINISH
 end
 
 local function doMobSkillEveryHPP(mob, every, start, mobskill, condition)
@@ -351,100 +351,100 @@ end
 local modByMobName =
 {
     ['Krabkatoa'] = function(mob)
-        mob:addStatusEffect(xi.effect.REGAIN, 10, 0, 0)
-        mob:addMod(xi.mod.DOUBLE_ATTACK, 10)
+        mob:addStatusEffect(invaderXim.effect.REGAIN, 10, 0, 0)
+        mob:addMod(invaderXim.mod.DOUBLE_ATTACK, 10)
     end,
 
     ['Tammuz'] = function(mob)
-        mob:addStatusEffect(xi.effect.MIGHTY_STRIKES, 1, 0, 0)
+        mob:addStatusEffect(invaderXim.effect.MIGHTY_STRIKES, 1, 0, 0)
     end,
 
     ['Erebus'] = function(mob)
-        mob:addImmunity(xi.immunity.GRAVITY)
-        mob:addImmunity(xi.immunity.BIND)
+        mob:addImmunity(invaderXim.immunity.GRAVITY)
+        mob:addImmunity(invaderXim.immunity.BIND)
     end,
 
     ['Raker_Bee'] = function(mob)
-        mob:addImmunity(xi.immunity.GRAVITY)
-        mob:addImmunity(xi.immunity.BIND)
+        mob:addImmunity(invaderXim.immunity.GRAVITY)
+        mob:addImmunity(invaderXim.immunity.BIND)
     end,
 
     ['Gjenganger'] = function(mob)
-        mob:addImmunity(xi.immunity.STUN)
+        mob:addImmunity(invaderXim.immunity.STUN)
     end,
 }
 
 local mixinByMobName =
 {
     ['Capricornus'] = function(mob)
-        doMobSkillEveryHPP(mob, 20, 80, xi.jsa.MIGHTY_STRIKES, not mob:hasStatusEffect(xi.effect.MIGHTY_STRIKES))
-        if mob:hasStatusEffect(xi.effect.MIGHTY_STRIKES) and not mobIsBusy(mob) then
-            mob:useMobAbility(xi.mob.skills.RECOIL_DIVE)
+        doMobSkillEveryHPP(mob, 20, 80, invaderXim.jsa.MIGHTY_STRIKES, not mob:hasStatusEffect(invaderXim.effect.MIGHTY_STRIKES))
+        if mob:hasStatusEffect(invaderXim.effect.MIGHTY_STRIKES) and not mobIsBusy(mob) then
+            mob:useMobAbility(invaderXim.mob.skills.RECOIL_DIVE)
         end
     end,
 
     ['Yacumama'] = function(mob)
-        doMobSkillEveryHPP(mob, 20, 80, xi.jsa.HUNDRED_FISTS, not mob:hasStatusEffect(xi.effect.HUNDRED_FISTS))
+        doMobSkillEveryHPP(mob, 20, 80, invaderXim.jsa.HUNDRED_FISTS, not mob:hasStatusEffect(invaderXim.effect.HUNDRED_FISTS))
     end,
 
     ['Lamprey_Lord'] = function(mob)
-        randomly(mob, 10, 60, xi.effect.BLOOD_WEAPON, xi.jsa.BLOOD_WEAPON)
+        randomly(mob, 10, 60, invaderXim.effect.BLOOD_WEAPON, invaderXim.jsa.BLOOD_WEAPON)
     end,
 
     ['Shoggoth'] = function(mob)
-        doMobSkillEveryHPP(mob, 20, 80, xi.jsa.CHAINSPELL, not mob:hasStatusEffect(xi.effect.CHAINSPELL))
+        doMobSkillEveryHPP(mob, 20, 80, invaderXim.jsa.CHAINSPELL, not mob:hasStatusEffect(invaderXim.effect.CHAINSPELL))
     end,
 
     ['Jyeshtha'] = function(mob)
-        randomly(mob, 30, 60, xi.jsa.MIGHTY_STRIKES, xi.jsa.MIGHTY_STRIKES)
+        randomly(mob, 30, 60, invaderXim.jsa.MIGHTY_STRIKES, invaderXim.jsa.MIGHTY_STRIKES)
         if
             mob:getLocalVar('MOBSKILL_USE') == 1 and
-            not mob:hasStatusEffect(xi.effect.MIGHTY_STRIKES)
+            not mob:hasStatusEffect(invaderXim.effect.MIGHTY_STRIKES)
         then
             mob:setLocalVar('MOBSKILL_USE', 0)
         end
     end,
 
     ['Blobdingnag'] = function(mob)
-        doMobSkillEveryHPP(mob, 20, 82, xi.mob.skills.CYTOKINESIS, true)
+        doMobSkillEveryHPP(mob, 20, 82, invaderXim.mob.skills.CYTOKINESIS, true)
     end,
 
     ['Farruca_Fly'] = function(mob)
-        doMobSkillEveryHPP(mob, 20, 80, xi.jsa.PERFECT_DODGE, not mob:hasStatusEffect(xi.effect.PERFECT_DODGE))
+        doMobSkillEveryHPP(mob, 20, 80, invaderXim.jsa.PERFECT_DODGE, not mob:hasStatusEffect(invaderXim.effect.PERFECT_DODGE))
     end,
 
     ['Skuld'] = function(mob)
-        doMobSkillEveryHPP(mob, 20, 80, xi.jsa.CHAINSPELL, not mob:hasStatusEffect(xi.effect.CHAINSPELL))
+        doMobSkillEveryHPP(mob, 20, 80, invaderXim.jsa.CHAINSPELL, not mob:hasStatusEffect(invaderXim.effect.CHAINSPELL))
     end,
 
     ['Erebus'] = function(mob)
-        randomly(mob, 30, 60, xi.effect.BLOOD_WEAPON, xi.jsa.BLOOD_WEAPON)
+        randomly(mob, 30, 60, invaderXim.effect.BLOOD_WEAPON, invaderXim.jsa.BLOOD_WEAPON)
         if
-            mob:hasStatusEffect(xi.effect.BLOOD_WEAPON) and
-            not mob:hasStatusEffect(xi.effect.HUNDRED_FISTS)
+            mob:hasStatusEffect(invaderXim.effect.BLOOD_WEAPON) and
+            not mob:hasStatusEffect(invaderXim.effect.HUNDRED_FISTS)
         then
-            mob:addStatusEffect(xi.effect.HUNDRED_FISTS, 1, 0, 30)
+            mob:addStatusEffect(invaderXim.effect.HUNDRED_FISTS, 1, 0, 30)
         end
     end,
 
     ['Feuerunke'] = function(mob)
-        randomly(mob, 30, 60, xi.effect.HUNDRED_FISTS, xi.jsa.HUNDRED_FISTS)
+        randomly(mob, 30, 60, invaderXim.effect.HUNDRED_FISTS, invaderXim.jsa.HUNDRED_FISTS)
     end,
 
     ['Dawon'] = function(mob)
-        doMobSkillEveryHPP(mob, 20, 80, xi.jsa.PERFECT_DODGE, not mob:hasStatusEffect(xi.effect.PERFECT_DODGE))
+        doMobSkillEveryHPP(mob, 20, 80, invaderXim.jsa.PERFECT_DODGE, not mob:hasStatusEffect(invaderXim.effect.PERFECT_DODGE))
     end
 }
 
 -----------------------------------
 -- Mob On Init
 -----------------------------------
-xi.voidwalker.onMobInitialize = function(mob)
+invaderXim.voidwalker.onMobInitialize = function(mob)
 end
 
-xi.voidwalker.onMobSpawn = function(mob)
+invaderXim.voidwalker.onMobSpawn = function(mob)
     local mobName = mob:getName()
-    mob:setStatus(xi.status.INVISIBLE)
+    mob:setStatus(invaderXim.status.INVISIBLE)
     mob:hideHP(true)
     mob:hideName(true)
     mob:setUntargetable(true)
@@ -455,7 +455,7 @@ xi.voidwalker.onMobSpawn = function(mob)
     end
 end
 
-xi.voidwalker.onMobFight = function(mob, target)
+invaderXim.voidwalker.onMobFight = function(mob, target)
     local mobName = mob:getName()
     local mixin   = mixinByMobName[mobName]
 
@@ -480,7 +480,7 @@ xi.voidwalker.onMobFight = function(mob, target)
     end
 end
 
-xi.voidwalker.onMobDisengage = function(mob)
+invaderXim.voidwalker.onMobDisengage = function(mob)
     mob:setLocalVar('[VoidWalker]PopedBy', 0)
     mob:setLocalVar('[VoidWalker]checkPopedBy', 0)
     mob:setLocalVar('[VoidWalker]PopedWith', 0)
@@ -488,13 +488,13 @@ xi.voidwalker.onMobDisengage = function(mob)
     mob:setLocalVar('MOBSKILL_USE', 0)
     mob:setLocalVar('MOBSKILL_TIME', 0)
     DespawnPet(mob)
-    mob:setStatus(xi.status.INVISIBLE)
+    mob:setStatus(invaderXim.status.INVISIBLE)
     mob:hideHP(true)
     mob:hideName(true)
     mob:setUntargetable(true)
 end
 
-xi.voidwalker.onMobDespawn = function(mob)
+invaderXim.voidwalker.onMobDespawn = function(mob)
     local zoneId = mob:getZoneID()
     local mobId  = mob:getID()
 
@@ -509,7 +509,7 @@ xi.voidwalker.onMobDespawn = function(mob)
     DespawnPet(mob)
 end
 
-xi.voidwalker.onMobDeath = function(mob, player, optParams, keyItem)
+invaderXim.voidwalker.onMobDeath = function(mob, player, optParams, keyItem)
     if player then
         local popkeyitem = mob:getLocalVar('[VoidWalker]PopedWith')
 
@@ -549,8 +549,8 @@ end
 -----------------------------------
 -- onHealing : trigg when player /heal
 -----------------------------------
-xi.voidwalker.onHealing = function(player)
-    if xi.settings.main.ENABLE_VOIDWALKER ~= 1 then
+invaderXim.voidwalker.onHealing = function(player)
+    if invaderXim.settings.main.ENABLE_VOIDWALKER ~= 1 then
         return
     end
 
@@ -582,8 +582,8 @@ xi.voidwalker.onHealing = function(player)
         mob:setLocalVar('[VoidWalker]PopedAt', os.time())
 
         if
-            mobNearest.keyItem ~= xi.keyItem.CLEAR_ABYSSITE and
-            mobNearest.keyItem ~= xi.keyItem.COLORFUL_ABYSSITE
+            mobNearest.keyItem ~= invaderXim.keyItem.CLEAR_ABYSSITE and
+            mobNearest.keyItem ~= invaderXim.keyItem.COLORFUL_ABYSSITE
         then
             player:delKeyItem(mobNearest.keyItem)
             player:messageSpecial(zoneTextTable.VOIDWALKER_BREAK_KI, mobNearest.keyItem)
@@ -594,7 +594,7 @@ xi.voidwalker.onHealing = function(player)
 
         mob:hideName(false)
         mob:setUntargetable(false)
-        mob:setStatus(xi.status.UPDATE)
+        mob:setStatus(invaderXim.status.UPDATE)
         mob:updateClaim(player)
 
     elseif mobNearest.distance >= 300 then

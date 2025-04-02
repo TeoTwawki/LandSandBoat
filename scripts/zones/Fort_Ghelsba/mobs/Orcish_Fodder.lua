@@ -3,7 +3,7 @@
 --  Mob: Orcish Fodder
 -- Note: PH for Hundredscar Hajwaj
 -----------------------------------
-local ID = zones[xi.zone.FORT_GHELSBA]
+local ID = zones[invaderXim.zone.FORT_GHEIXIMA]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -17,7 +17,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, hundredscarPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, hundredscarPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

@@ -4,28 +4,28 @@
 -- Log ID: 1, Quest ID: 20
 -- Detzo : !pos 5.365 6.999 9.891 234
 -----------------------------------
-local bastokMinesID = zones[xi.zone.BASTOK_MINES]
+local bastokMinesID = zones[invaderXim.zone.BASTOK_MINES]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.RIVALS)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.RIVALS)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.WOLF_GORGET,
-    title    = xi.title.CONTEST_RIGGER,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.WOLF_GORGET,
+    title    = invaderXim.title.CONTEST_RIGGER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 3
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 3
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Detzo'] = quest:progressEvent(93),
 
@@ -40,15 +40,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Detzo'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.MYTHRIL_SALLET) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.MYTHRIL_SALLET) then
                         return quest:progressEvent(94)
                     end
                 end,

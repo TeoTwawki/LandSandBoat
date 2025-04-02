@@ -18,7 +18,7 @@ abilityObject.onAutomatonAbility = function(target, automaton, skill, master, ac
         dex_wsc = 0.25,
     }
 
-    local damage = xi.autows.doAutoRangedWeaponskill(automaton, target, 0, params, 1000, true, skill, action)
+    local damage = invaderXim.autows.doAutoRangedWeaponskill(automaton, target, 0, params, 1000, true, skill, action)
 
     return damage
 end

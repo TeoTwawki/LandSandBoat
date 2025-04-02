@@ -18,7 +18,7 @@ local pathNodes =
 }
 
 entity.onMobSpawn = function(mob)
-    mob:pathThrough(pathNodes, bit.bor(xi.path.flag.PATROL, xi.path.flag.REVERSE))
+    mob:pathThrough(pathNodes, bit.bor(invaderXim.path.flag.PATROL, invaderXim.path.flag.REVERSE))
 end
 
 entity.onMobDeath = function(mob, player, optParams)

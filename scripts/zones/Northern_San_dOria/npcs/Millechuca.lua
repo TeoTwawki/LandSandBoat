@@ -4,13 +4,13 @@
 -- Regional Marchant NPC
 -- Only sells when San d'Oria controls Vollbow.
 -----------------------------------
-local ID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local ID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if GetRegionOwner(xi.region.VOLLBOW) ~= xi.nation.SANDORIA then
+    if GetRegionOwner(invaderXim.region.VOLLBOW) ~= invaderXim.nation.SANDORIA then
         player:showText(npc, ID.text.MILLECHUCA_CLOSED_DIALOG)
     else
         local stock =
@@ -22,7 +22,7 @@ entity.onTrigger = function(player, npc)
         }
 
         player:showText(npc, ID.text.MILLECHUCA_OPEN_DIALOG)
-        xi.shop.general(player, stock, xi.fameArea.SANDORIA)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.SANDORIA)
     end
 end
 

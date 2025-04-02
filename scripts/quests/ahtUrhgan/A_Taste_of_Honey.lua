@@ -3,11 +3,11 @@
 -- Qutiba !pos 92 -7.5 -130 50
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.A_TASTE_OF_HONEY)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.A_TASTE_OF_HONEY)
 
 quest.reward =
 {
-    item = xi.item.IRMIK_HELVASI
+    item = invaderXim.item.IRMIK_HELVASI
 }
 
 quest.sections =
@@ -15,11 +15,11 @@ quest.sections =
     -- Section: Quest available
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.VANISHING_ACT) == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.VANISHING_ACT) == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Qutiba'] =
             {
@@ -53,10 +53,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Qutiba'] =
             {
@@ -65,7 +65,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.POT_OF_WHITE_HONEY, 3 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.POT_OF_WHITE_HONEY, 3 } }) then
                         return quest:progressEvent(580)
                     end
                 end,
@@ -85,15 +85,15 @@ quest.sections =
     -- Section: Quest completed
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Qutiba'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.POT_OF_WHITE_HONEY }) then
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.POT_OF_WHITE_HONEY }) then
                         return quest:progressEvent(581)
                     end
                 end,

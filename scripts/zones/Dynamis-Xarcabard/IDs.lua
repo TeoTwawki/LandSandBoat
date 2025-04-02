@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.DYNAMIS_XARCABARD] =
+zones[invaderXim.zone.DYNAMIS_XARCABARD] =
 {
     text =
     {
@@ -44,53 +44,53 @@ zones[xi.zone.DYNAMIS_XARCABARD] =
     {
         TIME_EXTENSION =
         {
-            { minutes = 10, ki = xi.ki.CRIMSON_GRANULES_OF_TIME,   mob = 17330531 },
-            { minutes = 10, ki = xi.ki.AZURE_GRANULES_OF_TIME,     mob = 17330532 },
-            { minutes = 10, ki = xi.ki.AMBER_GRANULES_OF_TIME,     mob = 17330533 },
-            { minutes = 10, ki = xi.ki.ALABASTER_GRANULES_OF_TIME, mob = 17330534 },
-            { minutes = 20, ki = xi.ki.OBSIDIAN_GRANULES_OF_TIME,  mob = 17330535 },
+            { minutes = 10, ki = invaderXim.ki.CRIMSON_GRANULES_OF_TIME,   mob = 17330531 },
+            { minutes = 10, ki = invaderXim.ki.AZURE_GRANULES_OF_TIME,     mob = 17330532 },
+            { minutes = 10, ki = invaderXim.ki.AMBER_GRANULES_OF_TIME,     mob = 17330533 },
+            { minutes = 10, ki = invaderXim.ki.ALABASTER_GRANULES_OF_TIME, mob = 17330534 },
+            { minutes = 20, ki = invaderXim.ki.OBSIDIAN_GRANULES_OF_TIME,  mob = 17330535 },
         },
 
         REFILL_STATUE =
         {
             {
-                { mob = 17330230, eye = xi.dynamis.eye.RED   }, -- Adamantking_Effigy
-                { mob = 17330231, eye = xi.dynamis.eye.GREEN },
+                { mob = 17330230, eye = invaderXim.dynamis.eye.RED   }, -- Adamantking_Effigy
+                { mob = 17330231, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 17330240, eye = xi.dynamis.eye.RED  }, -- Adamantking_Effigy
-                { mob = 17330241, eye = xi.dynamis.eye.BLUE },
+                { mob = 17330240, eye = invaderXim.dynamis.eye.RED  }, -- Adamantking_Effigy
+                { mob = 17330241, eye = invaderXim.dynamis.eye.BLUE },
             },
 
             {
-                { mob = 17330248, eye = xi.dynamis.eye.RED   }, -- Serjeant_Tombstone
-                { mob = 17330249, eye = xi.dynamis.eye.GREEN },
+                { mob = 17330248, eye = invaderXim.dynamis.eye.RED   }, -- Serjeant_Tombstone
+                { mob = 17330249, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 17330256, eye = xi.dynamis.eye.RED  }, -- Serjeant_Tombstone
-                { mob = 17330257, eye = xi.dynamis.eye.BLUE },
+                { mob = 17330256, eye = invaderXim.dynamis.eye.RED  }, -- Serjeant_Tombstone
+                { mob = 17330257, eye = invaderXim.dynamis.eye.BLUE },
             },
 
             {
-                { mob = 17330273, eye = xi.dynamis.eye.RED   }, -- Avatar_Icon
-                { mob = 17330274, eye = xi.dynamis.eye.GREEN },
+                { mob = 17330273, eye = invaderXim.dynamis.eye.RED   }, -- Avatar_Icon
+                { mob = 17330274, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 17330285, eye = xi.dynamis.eye.RED  }, -- Avatar_Icon
-                { mob = 17330286, eye = xi.dynamis.eye.BLUE },
+                { mob = 17330285, eye = invaderXim.dynamis.eye.RED  }, -- Avatar_Icon
+                { mob = 17330286, eye = invaderXim.dynamis.eye.BLUE },
             },
 
             {
-                { mob = 17330471, eye = xi.dynamis.eye.RED   }, -- Goblin_Replica
-                { mob = 17330472, eye = xi.dynamis.eye.GREEN },
+                { mob = 17330471, eye = invaderXim.dynamis.eye.RED   }, -- Goblin_Replica
+                { mob = 17330472, eye = invaderXim.dynamis.eye.GREEN },
             },
 
             {
-                { mob = 17330483, eye = xi.dynamis.eye.RED  }, -- Goblin_Replica
-                { mob = 17330484, eye = xi.dynamis.eye.BLUE },
+                { mob = 17330483, eye = invaderXim.dynamis.eye.RED  }, -- Goblin_Replica
+                { mob = 17330484, eye = invaderXim.dynamis.eye.BLUE },
             },
         },
 
@@ -151,4 +151,4 @@ zones[xi.zone.DYNAMIS_XARCABARD] =
     },
 }
 
-return zones[xi.zone.DYNAMIS_XARCABARD]
+return zones[invaderXim.zone.DYNAMIS_XARCABARD]

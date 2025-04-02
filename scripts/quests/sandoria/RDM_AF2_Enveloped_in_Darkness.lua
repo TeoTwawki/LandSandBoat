@@ -6,16 +6,16 @@
 -- Chateau d'Oraguille, Curilla,     !pos 27 0.1 0.1 233
 -- Northern San'doria,  Pagisalis,   !pos 97 0.1 113 231
 -----------------------------------
-local crawlersID = zones[xi.zone.CRAWLERS_NEST]
+local crawlersID = zones[invaderXim.zone.CRAWLERS_NEST]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.ENVELOPED_IN_DARKNESS)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.ENVELOPED_IN_DARKNESS)
 
 quest.reward =
 {
-    item     = xi.item.WARLOCKS_BOOTS,
+    item     = invaderXim.item.WARLOCKS_BOOTS,
     fame     = 30,
-    fameArea = xi.fameArea.SANDORIA,
+    fameArea = invaderXim.fameArea.SANDORIA,
 }
 
 quest.sections =
@@ -23,13 +23,13 @@ quest.sections =
     -- Section: Quest available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.THE_CRIMSON_TRIAL) == xi.questStatus.QUEST_COMPLETED and
-                player:getMainJob() == xi.job.RDM and
-                player:getMainLvl() >= xi.settings.main.AF2_QUEST_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.THE_CRIMSON_TRIAL) == invaderXim.questStatus.QUEST_COMPLETED and
+                player:getMainJob() == invaderXim.job.RDM and
+                player:getMainLvl() >= invaderXim.settings.main.AF2_QUEST_LEVEL
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Curilla'] =
             {
@@ -47,7 +47,7 @@ quest.sections =
                 [94] = function(player, csid, option, npc)
                     if option == 1 then -- Accept quest.
                         quest:begin(player)
-                        npcUtil.giveKeyItem(player, xi.ki.OLD_POCKET_WATCH)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.OLD_POCKET_WATCH)
                     else
                         quest:setVar(player, 'Prog', 1) -- You rejected the quest when first offered.
                     end
@@ -56,13 +56,13 @@ quest.sections =
                 [95] = function(player, csid, option, npc)
                     if option == 1 then -- Accept quest.
                         quest:begin(player)
-                        npcUtil.giveKeyItem(player, xi.ki.OLD_POCKET_WATCH)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.OLD_POCKET_WATCH)
                     end
                 end,
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Sharzalion'] = quest:event(68)
         },
@@ -71,10 +71,10 @@ quest.sections =
     -- Section: Quest accepted
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Curilla'] =
             {
@@ -98,7 +98,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.CRAWLERS_NEST] =
+        [invaderXim.zone.CRAWLERS_NEST] =
         {
             ['qm8'] =
             {
@@ -112,8 +112,8 @@ quest.sections =
                             end
                         else
                             if
-                                player:hasKeyItem(xi.ki.CRAWLER_BLOOD) and
-                                player:hasKeyItem(xi.ki.OLD_BOOTS)
+                                player:hasKeyItem(invaderXim.ki.CRAWLER_BLOOD) and
+                                player:hasKeyItem(invaderXim.ki.OLD_BOOTS)
                             then
                                 return quest:progressEvent(4) -- Loose key items. Start boot purification.
                             else
@@ -132,11 +132,11 @@ quest.sections =
                         quest:setVar(player, 'Time', os.time() + 30)
 
                         -- Delete Key items.
-                        player:delKeyItem(xi.ki.CRAWLER_BLOOD)
-                        player:delKeyItem(xi.ki.OLD_BOOTS)
+                        player:delKeyItem(invaderXim.ki.CRAWLER_BLOOD)
+                        player:delKeyItem(invaderXim.ki.OLD_BOOTS)
 
                         -- Message when acepting to bury boots and blood.
-                        player:messageSpecial(crawlersID.text.YOU_BURY_THE, xi.ki.OLD_BOOTS, xi.ki.CRAWLER_BLOOD)
+                        player:messageSpecial(crawlersID.text.YOU_BURY_THE, invaderXim.ki.OLD_BOOTS, invaderXim.ki.CRAWLER_BLOOD)
                     end
                 end,
 
@@ -146,12 +146,12 @@ quest.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Pagisalis'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.SQUARE_OF_VELVET_CLOTH) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.SQUARE_OF_VELVET_CLOTH) then
                         return quest:progressEvent(37)
                     end
                 end,
@@ -170,13 +170,13 @@ quest.sections =
                 [37] = function(player, csid, option, npc)
                     quest:setVar(player, 'Prog', 2) -- Saw ghost.
                     player:tradeComplete()
-                    player:delKeyItem(xi.ki.OLD_POCKET_WATCH)
-                    npcUtil.giveKeyItem(player, xi.ki.OLD_BOOTS)
+                    player:delKeyItem(invaderXim.ki.OLD_POCKET_WATCH)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.OLD_BOOTS)
                 end,
             },
         },
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Sharzalion'] =
             {

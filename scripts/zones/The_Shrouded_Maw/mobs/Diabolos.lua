@@ -2,7 +2,7 @@
 -- Area: The Shrouded Maw
 --  Mob: Diabolos
 -----------------------------------
-local ID = zones[xi.zone.THE_SHROUDED_MAW]
+local ID = zones[invaderXim.zone.THE_SHROUDED_MAW]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -49,11 +49,11 @@ entity.onMobFight = function(mob, target)
             if hpp < percentTable[1] then
                 local tileId = ID.npc.DARKNESS_NAMED_TILE_OFFSET + (inst * 8) + (index - 1)
                 local tile = GetNPCByID(tileId)
-                if tile and tile:getAnimation() == xi.anim.CLOSE_DOOR then
+                if tile and tile:getAnimation() == invaderXim.anim.CLOSE_DOOR then
                     SendEntityVisualPacket(tileId, percentTable[2][inst + 1])  -- Animation for floor dropping
                     SendEntityVisualPacket(tileId, 's123')     -- Tile dropping sound
                     tile:timer(5000, function(tileArg)
-                        tileArg:setAnimation(xi.anim.OPEN_DOOR)     -- Floor opens
+                        tileArg:setAnimation(invaderXim.anim.OPEN_DOOR)     -- Floor opens
                     end)
                 end
 

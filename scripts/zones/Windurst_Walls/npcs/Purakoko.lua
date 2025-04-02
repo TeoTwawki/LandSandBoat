@@ -15,13 +15,13 @@ local paths =
 
 entity.onSpawn = function(npc)
     npc:initNpcAi()
-    npc:setPos(xi.path.first(paths[1]))
-    npc:pathThrough(paths[1], xi.path.flag.PATROL)
+    npc:setPos(invaderXim.path.first(paths[1]))
+    npc:pathThrough(paths[1], invaderXim.path.flag.PATROL)
 end
 
 entity.onPathComplete = function(npc)
     local index = math.random(1, #paths)
-    npc:pathThrough(paths[index], xi.path.flag.PATROL)
+    npc:pathThrough(paths[index], invaderXim.path.flag.PATROL)
 end
 
 return entity

@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Garlaige_Citadel (200)
 -----------------------------------
-local ID = zones[xi.zone.GARLAIGE_CITADEL]
+local ID = zones[invaderXim.zone.GARLAIGE_CITADEL]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -34,7 +34,7 @@ zoneObject.onInitialize = function(zone)
     UpdateNMSpawnPoint(ID.mob.SERKET)
     GetMobByID(ID.mob.SERKET):setRespawnTime(math.random(900, 10800))
 
-    xi.treasure.initZone(zone)
+    invaderXim.treasure.initZone(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -52,7 +52,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
@@ -62,16 +62,16 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
     local gate = GetNPCByID(gateId)
 
     -- Logic when standing on the lever.
-    GetNPCByID(ID.npc.BANISHING_GATE_OFFSET + triggerAreaID):setAnimation(xi.anim.OPEN_DOOR)
+    GetNPCByID(ID.npc.BANISHING_GATE_OFFSET + triggerAreaID):setAnimation(invaderXim.anim.OPEN_DOOR)
 
     -- If all 4 levers of a set are down, open related gate for varying times
     if
         gate and
-        GetNPCByID(gateId):getAnimation() == xi.anim.CLOSE_DOOR and -- Avoid spamming if already open
-        GetNPCByID(gateId + 1):getAnimation() == xi.anim.OPEN_DOOR and
-        GetNPCByID(gateId + 2):getAnimation() == xi.anim.OPEN_DOOR and
-        GetNPCByID(gateId + 3):getAnimation() == xi.anim.OPEN_DOOR and
-        GetNPCByID(gateId + 4):getAnimation() == xi.anim.OPEN_DOOR
+        GetNPCByID(gateId):getAnimation() == invaderXim.anim.CLOSE_DOOR and -- Avoid spamming if already open
+        GetNPCByID(gateId + 1):getAnimation() == invaderXim.anim.OPEN_DOOR and
+        GetNPCByID(gateId + 2):getAnimation() == invaderXim.anim.OPEN_DOOR and
+        GetNPCByID(gateId + 3):getAnimation() == invaderXim.anim.OPEN_DOOR and
+        GetNPCByID(gateId + 4):getAnimation() == invaderXim.anim.OPEN_DOOR
     then
         -- Default open time is 30 seconds for gate 1
         local time = 30
@@ -102,7 +102,7 @@ end
 -- However, if a lever is activated while it's related door is open, the lever will remain activated until the door closes.
 
 zoneObject.onTriggerAreaLeave = function(player, triggerArea)
-    GetNPCByID(ID.npc.BANISHING_GATE_OFFSET + triggerArea:getTriggerAreaID()):setAnimation(xi.anim.CLOSE_DOOR)
+    GetNPCByID(ID.npc.BANISHING_GATE_OFFSET + triggerArea:getTriggerAreaID()):setAnimation(invaderXim.anim.CLOSE_DOOR)
 end
 
 zoneObject.onEventUpdate = function(player, csid, option, npc)

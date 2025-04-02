@@ -12,7 +12,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 103 and option == 1 then
-        player:setPos(0, 0, 0, 0, xi.zone.CRAWLERS_NEST_S)
+        player:setPos(0, 0, 0, 0, invaderXim.zone.CRAWLERS_NEST_S)
     end
 end
 

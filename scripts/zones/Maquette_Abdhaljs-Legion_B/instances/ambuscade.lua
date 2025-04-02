@@ -2,7 +2,7 @@
 -- Ambuscade
 -- !instance 30000
 -----------------------------------
-local ID = zones[xi.zone.MAQUETTE_ABDHALJS_LEGION_B]
+local ID = zones[invaderXim.zone.MAQUETTE_ABDHALJS_LEGION_B]
 -----------------------------------
 local instanceObject = {}
 
@@ -29,7 +29,7 @@ end
 
 -- Instance 'tick'
 instanceObject.onInstanceTimeUpdate = function(instance, elapsed)
-    --xi.instance.updateInstanceTime(instance, elapsed, ID.text)
+    --invaderXim.instance.updateInstanceTime(instance, elapsed, ID.text)
 
     -- Check for mob death (could do also do this in the mob script)
     local mobsStillAlive = false
@@ -47,7 +47,7 @@ end
 
 -- On fail
 instanceObject.onInstanceFailure = function(instance)
-    xi.ambuscade.onInstanceFailure(instance)
+    invaderXim.ambuscade.onInstanceFailure(instance)
 end
 
 -- When something in the instance calls: instance:setProgress(...)
@@ -56,7 +56,7 @@ end
 
 -- On win
 instanceObject.onInstanceComplete = function(instance)
-    xi.ambuscade.onInstanceComplete(instance)
+    invaderXim.ambuscade.onInstanceComplete(instance)
 end
 
 instanceObject.onEventUpdate = function(player, csid, option, npc)

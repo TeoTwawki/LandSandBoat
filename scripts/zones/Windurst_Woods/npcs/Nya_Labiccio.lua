@@ -4,15 +4,15 @@
 -- Only sells when Windurst controlls Gustaberg Region
 -- Confirmed shop stock, August 2013
 -----------------------------------
-local ID = zones[xi.zone.WINDURST_WOODS]
+local ID = zones[invaderXim.zone.WINDURST_WOODS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local regionOwner = GetRegionOwner(xi.region.GUSTABERG)
+    local regionOwner = GetRegionOwner(invaderXim.region.GUSTABERG)
 
-    if regionOwner ~= xi.nation.WINDURST then
+    if regionOwner ~= invaderXim.nation.WINDURST then
         player:showText(npc, ID.text.NYALABICCIO_CLOSED_DIALOG)
     else
         player:showText(npc, ID.text.NYALABICCIO_OPEN_DIALOG)
@@ -24,7 +24,7 @@ entity.onTrigger = function(player, npc)
             611,    36, -- Rye Flour
             4388,   40  -- Eggplant
         }
-        xi.shop.general(player, stock, xi.fameArea.WINDURST)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.WINDURST)
     end
 end
 

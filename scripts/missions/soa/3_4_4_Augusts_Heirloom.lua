@@ -6,11 +6,11 @@
 -- Ploh Trishbahk : !pos 100.580 -40.150 -63.830 257
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.AUGUSTS_HEIRLOOM)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.AUGUSTS_HEIRLOOM)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.BEAUTY_AND_THE_BEAST },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.BEAUTY_AND_THE_BEAST },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Ploh_Trishbahk'] = mission:progressEvent(1514),
 
@@ -32,7 +32,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(143),
         },

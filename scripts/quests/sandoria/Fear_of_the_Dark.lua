@@ -6,7 +6,7 @@
 -- Secodiand : !pos -160 -0 137 231
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.FEAR_OF_THE_DARK)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.FEAR_OF_THE_DARK)
 
 quest.reward =
 {
@@ -17,10 +17,10 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Secodiand'] = quest:progressEvent(19),
 
@@ -36,15 +36,15 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status >= xi.questStatus.QUEST_ACCEPTED
+            return status >= invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Secodiand'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHas(trade, { { xi.item.BAT_WING, 2 } }) then
+                    if npcUtil.tradeHas(trade, { { invaderXim.item.BAT_WING, 2 } }) then
                         return quest:progressEvent(18)
                     end
                 end,
@@ -53,11 +53,11 @@ quest.sections =
             onEventFinish =
             {
                 [18] = function(player, csid, option, npc)
-                    if player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.FEAR_OF_THE_DARK) == xi.questStatus.QUEST_ACCEPTED then
+                    if player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.FEAR_OF_THE_DARK) == invaderXim.questStatus.QUEST_ACCEPTED then
                         quest:complete(player)
                     else
                         npcUtil.giveCurrency(player, 'gil', 200)
-                        player:addFame(xi.fameArea.SANDORIA, 5)
+                        player:addFame(invaderXim.fameArea.SANDORIA, 5)
                     end
 
                     player:confirmTrade()

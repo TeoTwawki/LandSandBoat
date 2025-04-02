@@ -9,7 +9,7 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    target:delStatusEffect(xi.effect.PLAGUE)
+    target:delStatusEffect(invaderXim.effect.PLAGUE)
     return 0
 end
 

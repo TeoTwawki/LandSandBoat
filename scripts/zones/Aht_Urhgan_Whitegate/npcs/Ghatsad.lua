@@ -4,7 +4,7 @@
 -- Involved in quest: No Strings Attached
 -- !pos 34.325 -7.804 57.511 50
 -----------------------------------
-local ID = zones[xi.zone.AHT_URHGAN_WHITEGATE]
+local ID = zones[invaderXim.zone.AHT_URHGAN_WHITEGATE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -14,20 +14,20 @@ local entity = {}
 -- event parameters (numUnlockedHeads).
 local automatonHeads =
 {
-    xi.item.VALOREDGE_HEAD,
-    xi.item.SHARPSHOT_HEAD,
-    xi.item.STORMWAKER_HEAD,
-    xi.item.SOULSOOTHER_HEAD,
-    xi.item.SPIRITREAVER_HEAD,
+    invaderXim.item.VALOREDGE_HEAD,
+    invaderXim.item.SHARPSHOT_HEAD,
+    invaderXim.item.STORMWAKER_HEAD,
+    invaderXim.item.SOULSOOTHER_HEAD,
+    invaderXim.item.SPIRITREAVER_HEAD,
 }
 
 local unlockCost =
 {
-    [0] = { xi.item.IMPERIAL_SILVER_PIECE,  3 },
-    [1] = { xi.item.IMPERIAL_MYTHRIL_PIECE, 3 },
-    [2] = { xi.item.IMPERIAL_GOLD_PIECE,    1 },
-    [3] = { xi.item.IMPERIAL_MYTHRIL_PIECE, 2 },
-    [4] = { xi.item.IMPERIAL_MYTHRIL_PIECE, 4 },
+    [0] = { invaderXim.item.IMPERIAL_SILVER_PIECE,  3 },
+    [1] = { invaderXim.item.IMPERIAL_MYTHRIL_PIECE, 3 },
+    [2] = { invaderXim.item.IMPERIAL_GOLD_PIECE,    1 },
+    [3] = { invaderXim.item.IMPERIAL_MYTHRIL_PIECE, 2 },
+    [4] = { invaderXim.item.IMPERIAL_MYTHRIL_PIECE, 4 },
 }
 
 -- This table is keyed by the initial attachmentStatus for each Head/Frame
@@ -36,26 +36,26 @@ local headAndFrameItems =
 {
     [2] =
     {
-        xi.item.BRASS_SHEET,
-        xi.item.WAMOURA_COCOON,
-        xi.item.CHUNK_OF_IMPERIAL_CERMET,
-        xi.item.PATAS
+        invaderXim.item.BRASS_SHEET,
+        invaderXim.item.WAMOURA_COCOON,
+        invaderXim.item.CHUNK_OF_IMPERIAL_CERMET,
+        invaderXim.item.PATAS
     },
 
     [3] =
     {
-        xi.item.PIECE_OF_ROSEWOOD_LUMBER,
-        xi.item.SQUARE_OF_KARAKUL_CLOTH,
-        xi.item.SQUARE_OF_KARAKUL_LEATHER,
-        xi.item.HEAVY_CROSSBOW
+        invaderXim.item.PIECE_OF_ROSEWOOD_LUMBER,
+        invaderXim.item.SQUARE_OF_KARAKUL_CLOTH,
+        invaderXim.item.SQUARE_OF_KARAKUL_LEATHER,
+        invaderXim.item.HEAVY_CROSSBOW
     },
 
     [4] =
     {
-        xi.item.SPOOL_OF_GOLD_THREAD,
-        xi.item.SQUARE_OF_VELVET_CLOTH,
-        xi.item.SQUARE_OF_WAMOURA_CLOTH,
-        xi.item.BRASS_RING
+        invaderXim.item.SPOOL_OF_GOLD_THREAD,
+        invaderXim.item.SQUARE_OF_VELVET_CLOTH,
+        invaderXim.item.SQUARE_OF_WAMOURA_CLOTH,
+        invaderXim.item.BRASS_RING
     },
 }
 
@@ -63,18 +63,18 @@ local headAndFrameItems =
 -- Vana'diel days to wait until completed.
 local turbanItems =
 {
-    [xi.item.WHITE_PUPPET_TURBAN] =
+    [invaderXim.item.WHITE_PUPPET_TURBAN] =
     {
-        [xi.item.SCROLL_OF_CURE_V ] = { 2, 4 },
-        [xi.item.SCROLL_OF_REGEN  ] = { 3, 4 },
-        [xi.item.SCROLL_OF_CURE_II] = { 5, 5 },
+        [invaderXim.item.SCROLL_OF_CURE_V ] = { 2, 4 },
+        [invaderXim.item.SCROLL_OF_REGEN  ] = { 3, 4 },
+        [invaderXim.item.SCROLL_OF_CURE_II] = { 5, 5 },
     },
 
-    [xi.item.BLACK_PUPPET_TURBAN] =
+    [invaderXim.item.BLACK_PUPPET_TURBAN] =
     {
-        [xi.item.SCROLL_OF_STONE_IV  ] = { 2, 4 },
-        [xi.item.SCROLL_OF_ABSORB_INT] = { 3, 4 },
-        [xi.item.SCROLL_OF_FIRE      ] = { 5, 5 },
+        [invaderXim.item.SCROLL_OF_STONE_IV  ] = { 2, 4 },
+        [invaderXim.item.SCROLL_OF_ABSORB_INT] = { 3, 4 },
+        [invaderXim.item.SCROLL_OF_FIRE      ] = { 5, 5 },
     },
 }
 
@@ -180,17 +180,17 @@ entity.onTrade = function(player, npc, trade)
         if trade:getSlotCount() == 3 then
             if tradeHasPayment then
                 if
-                    trade:getItemQty(xi.item.WHITE_PUPPET_TURBAN) == 1 and
-                    not player:hasAttachment(xi.item.SOULSOOTHER_HEAD)
+                    trade:getItemQty(invaderXim.item.WHITE_PUPPET_TURBAN) == 1 and
+                    not player:hasAttachment(invaderXim.item.SOULSOOTHER_HEAD)
                 then
-                    local range = getWaitRange(xi.item.WHITE_PUPPET_TURBAN, trade)
+                    local range = getWaitRange(invaderXim.item.WHITE_PUPPET_TURBAN, trade)
 
                     play_event902(player, 12, math.random(range[1], range[2]))
                 elseif
-                    trade:getItemQty(xi.item.BLACK_PUPPET_TURBAN) == 1 and
-                    not player:hasAttachment(xi.item.SPIRITREAVER_HEAD)
+                    trade:getItemQty(invaderXim.item.BLACK_PUPPET_TURBAN) == 1 and
+                    not player:hasAttachment(invaderXim.item.SPIRITREAVER_HEAD)
                 then
-                    local range = getWaitRange(xi.item.BLACK_PUPPET_TURBAN, trade)
+                    local range = getWaitRange(invaderXim.item.BLACK_PUPPET_TURBAN, trade)
 
                     play_event902(player, 13, math.random(range[1], range[2]))
                 end
@@ -203,7 +203,7 @@ entity.onTrade = function(player, npc, trade)
         not attachmentReady and
         player:getCharVar('PUP_nextCoffeeTrade') <= VanadielUniqueDay()
     then
-        if npcUtil.tradeHasExactly(trade, xi.item.CUP_OF_IMPERIAL_COFFEE) then
+        if npcUtil.tradeHasExactly(trade, invaderXim.item.CUP_OF_IMPERIAL_COFFEE) then
             player:confirmTrade()
             player:setCharVar('PUP_AttachmentReady', player:getCharVar('PUP_AttachmentReady') - 1)
             player:setCharVar('PUP_nextCoffeeTrade', VanadielUniqueDay() + 1)
@@ -257,8 +257,8 @@ entity.onTrigger = function(player, npc)
     ]]
 
     if
-        player:hasCompletedQuest(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.NO_STRINGS_ATTACHED) and
-        player:getMainJob() == xi.job.PUP
+        player:hasCompletedQuest(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.NO_STRINGS_ATTACHED) and
+        player:getMainJob() == invaderXim.job.PUP
     then
         local requiredLevel = numUnlockedHeads * 10
 
@@ -357,18 +357,18 @@ entity.onEventFinish = function(player, csid, option, npc)
         local attachmentStatus = player:getCharVar('PUP_AttachmentStatus')
 
         if attachmentStatus == 8 then
-            player:unlockAttachment(xi.item.VALOREDGE_FRAME)
-            player:unlockAttachment(xi.item.VALOREDGE_HEAD)
+            player:unlockAttachment(invaderXim.item.VALOREDGE_FRAME)
+            player:unlockAttachment(invaderXim.item.VALOREDGE_HEAD)
             player:messageSpecial(ID.text.AUTOMATON_VALOREDGE_UNLOCK)
             player:setCharVar('PUP_AttachmentOption', 0)
         elseif attachmentStatus == 9 then
-            player:unlockAttachment(xi.item.SHARPSHOT_FRAME)
-            player:unlockAttachment(xi.item.SHARPSHOT_HEAD)
+            player:unlockAttachment(invaderXim.item.SHARPSHOT_FRAME)
+            player:unlockAttachment(invaderXim.item.SHARPSHOT_HEAD)
             player:messageSpecial(ID.text.AUTOMATON_SHARPSHOT_UNLOCK)
             player:setCharVar('PUP_AttachmentOption', 0)
         elseif attachmentStatus == 10 then
-            player:unlockAttachment(xi.item.STORMWAKER_FRAME)
-            player:unlockAttachment(xi.item.STORMWAKER_HEAD)
+            player:unlockAttachment(invaderXim.item.STORMWAKER_FRAME)
+            player:unlockAttachment(invaderXim.item.STORMWAKER_HEAD)
             player:messageSpecial(ID.text.AUTOMATON_STORMWAKER_UNLOCK)
             player:setCharVar('PUP_AttachmentOption', 0)
         end
@@ -384,16 +384,16 @@ entity.onEventFinish = function(player, csid, option, npc)
         local unlockedAttachments = getHeadMask(player)
 
         if attachmentStatus == 12 then
-            player:unlockAttachment(xi.item.SOULSOOTHER_HEAD)
+            player:unlockAttachment(invaderXim.item.SOULSOOTHER_HEAD)
             player:messageSpecial(ID.text.AUTOMATON_SOULSOOTHER_UNLOCK)
         elseif attachmentStatus == 13 then
-            player:unlockAttachment(xi.item.SPIRITREAVER_HEAD)
+            player:unlockAttachment(invaderXim.item.SPIRITREAVER_HEAD)
             player:messageSpecial(ID.text.AUTOMATON_SPIRITREAVER_UNLOCK)
         elseif attachmentStatus == 14 and unlockedAttachments == 30 then
-            player:unlockAttachment(xi.item.SPIRITREAVER_HEAD)
+            player:unlockAttachment(invaderXim.item.SPIRITREAVER_HEAD)
             player:messageSpecial(ID.text.AUTOMATON_SPIRITREAVER_UNLOCK)
         elseif attachmentStatus == 14 and unlockedAttachments == 46 then
-            player:unlockAttachment(xi.item.SOULSOOTHER_HEAD)
+            player:unlockAttachment(invaderXim.item.SOULSOOTHER_HEAD)
             player:messageSpecial(ID.text.AUTOMATON_SOULSOOTHER_UNLOCK)
         end
 

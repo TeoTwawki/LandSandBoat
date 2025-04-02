@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.EQUANIMITY
+-- invaderXim.effect.EQUANIMITY
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

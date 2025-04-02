@@ -10,11 +10,11 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    xi.job_utils.blue_mage.checkChainAffinity(player, target, ability)
+    invaderXim.job_utils.blue_mage.checkChainAffinity(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability, action)
-    xi.job_utils.blue_mage.useChainAffinity(player, target, ability, action)
+    invaderXim.job_utils.blue_mage.useChainAffinity(player, target, ability, action)
 end
 
 return abilityObject

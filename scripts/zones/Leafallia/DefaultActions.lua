@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.LEAFALLIA]
+local ID = zones[invaderXim.zone.LEAFALLIA]
 
 return {
     ['Aged_Stump']       = { messageSpecial = ID.text.RINGS_TOO_NUMEROUS },

@@ -7,11 +7,11 @@ local zoneObject = {}
 zoneObject.onInitialize = function(zone)
     zone:registerCuboidTriggerArea(1, -112, -3, -17, -96, 3, -3)     -- event COP
     zone:registerCuboidTriggerArea(2, 53.5, 5, -165.3, 66.5, 6, -72) -- drawbridge area
-    xi.conquest.toggleRegionalNPCs(zone)
+    invaderXim.conquest.toggleRegionalNPCs(zone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -22,7 +22,7 @@ zoneObject.onZoneIn = function(player, prevZone)
         player:getYPos() == 0 and
         player:getZPos() == 0
     then
-        if prevZone == xi.zone.BASTOK_JEUNO_AIRSHIP then
+        if prevZone == invaderXim.zone.BASTOK_JEUNO_AIRSHIP then
             cs = { 73 }
             player:setPos(-36.000, 7.000, -58.000, 194)
         else

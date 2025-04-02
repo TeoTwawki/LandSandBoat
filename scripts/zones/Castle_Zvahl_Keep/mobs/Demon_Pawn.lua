@@ -3,7 +3,7 @@
 --  Mob: Demon Pawn
 -- Note: PH for Baronet Romwe
 -----------------------------------
-local ID = zones[xi.zone.CASTLE_ZVAHL_KEEP]
+local ID = zones[invaderXim.zone.CASTLE_ZVAHL_KEEP]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -72,7 +72,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, baronetPHTable, 10, 1, { spawnPoints = baronetSpawnPoints }) -- No Respawn
+    invaderXim.mob.phOnDespawn(mob, baronetPHTable, 10, 1, { spawnPoints = baronetSpawnPoints }) -- No Respawn
 end
 
 return entity

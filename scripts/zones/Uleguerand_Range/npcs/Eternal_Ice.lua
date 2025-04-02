@@ -6,14 +6,14 @@
 -- !pos 455 -82 421 5
 -- !pos -95 -146 378 5
 -----------------------------------
-local ID = zones[xi.zone.ULEGUERAND_RANGE]
+local ID = zones[invaderXim.zone.ULEGUERAND_RANGE]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if not player:hasKeyItem(xi.ki.MYSTIC_ICE) then
-        npcUtil.giveKeyItem(player, xi.ki.MYSTIC_ICE)
+    if not player:hasKeyItem(invaderXim.ki.MYSTIC_ICE) then
+        npcUtil.giveKeyItem(player, invaderXim.ki.MYSTIC_ICE)
     else
         player:messageSpecial(ID.text.NOTHING_OUT_OF_ORDINARY)
     end

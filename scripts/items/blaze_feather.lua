@@ -11,7 +11,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffect(xi.effect.BLAZE_SPIKES, 10, 0, 90)
+    target:addStatusEffect(invaderXim.effect.BLAZE_SPIKES, 10, 0, 90)
 end
 
 return itemObject

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.RESTRAINT
+-- invaderXim.effect.RESTRAINT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -13,7 +13,7 @@ end
 effectObject.onEffectLose = function(target, effect)
     local power = effect:getPower()
 
-    target:delMod(xi.mod.ALL_WSDMG_FIRST_HIT, power)
+    target:delMod(invaderXim.mod.ALL_WSDMG_FIRST_HIT, power)
 end
 
 return effectObject

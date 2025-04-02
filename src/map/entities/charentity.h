@@ -30,7 +30,7 @@
 
 #include "common/cbasetypes.h"
 #include "common/mmo.h"
-#include "common/xi.h"
+#include "common/invaderXim.h"
 
 #include <bitset>
 #include <deque>

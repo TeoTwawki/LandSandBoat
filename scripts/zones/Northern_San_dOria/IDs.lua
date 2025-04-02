@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.NORTHERN_SAN_DORIA] =
+zones[invaderXim.zone.NORTHERN_SAN_DORIA] =
 {
     text =
     {
@@ -104,7 +104,7 @@ zones[xi.zone.NORTHERN_SAN_DORIA] =
         FFR_COULLENE                  = 12092, -- Magic could be of use on my journey to Paradise. Thank you so much!
         FLYER_ACCEPTED                = 12093, -- Your flyer is accepted!
         FLYER_ALREADY                 = 12094, -- This person already has a flyer.
-        MOGHOUSE_EXIT                 = 12393, -- You have learned your way through the back alleys of San d'Oria! Now you can exit to any area from your residence.
+        MOGHOUSE_IXIMT                 = 12393, -- You have learned your way through the back alleys of San d'Oria! Now you can exit to any area from your residence.
         AILBECHE_WHEN_FISHING         = 12413, -- Oh, when will my father take me fishing...
         OH_I_WANT_MY_ITEM             = 12652, -- Oh, I want my <item>.
         GAUDYLOX_SHOP_DIALOG          = 12653, -- <Phssshooooowoooo> You never see Goblinshhh from underworld? Me no bad. Me sell chipshhh. You buy. Use with shhhtone heart. You get lucky!
@@ -141,4 +141,4 @@ zones[xi.zone.NORTHERN_SAN_DORIA] =
     },
 }
 
-return zones[xi.zone.NORTHERN_SAN_DORIA]
+return zones[invaderXim.zone.NORTHERN_SAN_DORIA]

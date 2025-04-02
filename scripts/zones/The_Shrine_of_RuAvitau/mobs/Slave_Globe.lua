@@ -2,7 +2,7 @@
 -- Area: The Shrine of Ru'Avitau
 --  Mob: Slave Globe
 -----------------------------------
-local ID = zones[xi.zone.THE_SHRINE_OF_RUAVITAU]
+local ID = zones[invaderXim.zone.THE_SHRINE_OF_RUAVITAU]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -19,10 +19,10 @@ entity.onMobInitialize = function(mob)
 
                 if
                     followTarget and
-                    action ~= xi.act.NONE and
-                    action ~= xi.act.DEATH
+                    action ~= invaderXim.act.NONE and
+                    action ~= invaderXim.act.DEATH
                 then
-                    slaveGlobe:follow(followTarget, xi.followType.ROAM)
+                    slaveGlobe:follow(followTarget, invaderXim.followType.ROAM)
                     followTarget = slaveGlobe
                 end
             end

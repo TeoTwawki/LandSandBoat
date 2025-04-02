@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.RAYKE
+-- invaderXim.effect.RAYKE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

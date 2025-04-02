@@ -6,72 +6,72 @@ require('scripts/globals/abyssea')
 require('scripts/globals/abyssea/sturdypyxis/chest')
 -----------------------------------
 xi = xi or {}
-xi.pyxis = xi.pyxis or {}
+invaderXim.pyxis = invaderXim.pyxis or {}
 
-xi.pyxis.spawn = {}
+invaderXim.pyxis.spawn = {}
 
-xi.pyxis.spawn.chestLightValues =
+invaderXim.pyxis.spawn.chestLightValues =
 {
     [1] =
     {
-        [xi.abyssea.lightType.PEARL] = 5,
-        [xi.abyssea.lightType.RUBY ] = 8,
-        [xi.abyssea.lightType.AZURE] = 8,
-        [xi.abyssea.lightType.AMBER] = 8
+        [invaderXim.abyssea.lightType.PEARL] = 5,
+        [invaderXim.abyssea.lightType.RUBY ] = 8,
+        [invaderXim.abyssea.lightType.AZURE] = 8,
+        [invaderXim.abyssea.lightType.AMBER] = 8
     },
 
     [2] =
     {
-        [xi.abyssea.lightType.PEARL] = 10,
-        [xi.abyssea.lightType.RUBY ] = 16,
-        [xi.abyssea.lightType.AZURE] = 16,
-        [xi.abyssea.lightType.AMBER] = 16
+        [invaderXim.abyssea.lightType.PEARL] = 10,
+        [invaderXim.abyssea.lightType.RUBY ] = 16,
+        [invaderXim.abyssea.lightType.AZURE] = 16,
+        [invaderXim.abyssea.lightType.AMBER] = 16
     },
 
     [3] =
     {
-        [xi.abyssea.lightType.PEARL]   = 15,
-        [xi.abyssea.lightType.RUBY ]   = 32,
-        [xi.abyssea.lightType.AZURE]   = 32,
-        [xi.abyssea.lightType.AMBER]   = 32,
-        [xi.abyssea.lightType.GOLDEN]  = 5,
-        [xi.abyssea.lightType.SILVERY] = 5,
-        [xi.abyssea.lightType.EBON]    = 1,
+        [invaderXim.abyssea.lightType.PEARL]   = 15,
+        [invaderXim.abyssea.lightType.RUBY ]   = 32,
+        [invaderXim.abyssea.lightType.AZURE]   = 32,
+        [invaderXim.abyssea.lightType.AMBER]   = 32,
+        [invaderXim.abyssea.lightType.GOLDEN]  = 5,
+        [invaderXim.abyssea.lightType.SILVERY] = 5,
+        [invaderXim.abyssea.lightType.EBON]    = 1,
     },
 
     [4] =
     {
-        [xi.abyssea.lightType.RUBY ]   = 64,
-        [xi.abyssea.lightType.AZURE]   = 64,
-        [xi.abyssea.lightType.GOLDEN]  = 10,
-        [xi.abyssea.lightType.SILVERY] = 10,
-        [xi.abyssea.lightType.EBON]    = 2,
+        [invaderXim.abyssea.lightType.RUBY ]   = 64,
+        [invaderXim.abyssea.lightType.AZURE]   = 64,
+        [invaderXim.abyssea.lightType.GOLDEN]  = 10,
+        [invaderXim.abyssea.lightType.SILVERY] = 10,
+        [invaderXim.abyssea.lightType.EBON]    = 2,
     },
 
     [5] =
     {
-        [xi.abyssea.lightType.GOLDEN]  = 15,
-        [xi.abyssea.lightType.SILVERY] = 15,
-        [xi.abyssea.lightType.EBON]    = 3,
+        [invaderXim.abyssea.lightType.GOLDEN]  = 15,
+        [invaderXim.abyssea.lightType.SILVERY] = 15,
+        [invaderXim.abyssea.lightType.EBON]    = 3,
     }
 }
 
-xi.pyxis.spawn.goldCofferSize =
+invaderXim.pyxis.spawn.goldCofferSize =
 {
     BIG_CHEST    = 1159,
     LITTLE_CHEST = 1155,
 }
 
-xi.pyxis.spawn.chestMessageByChestType =
+invaderXim.pyxis.spawn.chestMessageByChestType =
 {
-    [xi.pyxis.chestType.BLUE] =
+    [invaderXim.pyxis.chestType.BLUE] =
     {
-        [xi.pyxis.chestDropType.TEMPORARY_ITEM] =
+        [invaderXim.pyxis.chestDropType.TEMPORARY_ITEM] =
         {
             [1] = { messageId = 42, maxItem = 3 },
         },
 
-        [xi.pyxis.chestDropType.RESTORE] =
+        [invaderXim.pyxis.chestDropType.RESTORE] =
         {
             [1] = { messageId =  1 },
             [2] = { messageId =  4 },
@@ -80,7 +80,7 @@ xi.pyxis.spawn.chestMessageByChestType =
             [5] = { messageId = 13 },
         },
 
-        [xi.pyxis.chestDropType.CRUOR] =
+        [invaderXim.pyxis.chestDropType.CRUOR] =
         {
             [1] = { messageId =  2 },
             [2] = { messageId =  5 },
@@ -89,12 +89,12 @@ xi.pyxis.spawn.chestMessageByChestType =
             [5] = { messageId = 15 },
         },
 
-        [xi.pyxis.chestDropType.TIME] =
+        [invaderXim.pyxis.chestDropType.TIME] =
         {
             [1] = { messageId = 17 },
         },
 
-        [xi.pyxis.chestDropType.EXP] =
+        [invaderXim.pyxis.chestDropType.EXP] =
         {
             [1] = { messageId =  3 },
             [2] = { messageId =  6 },
@@ -103,42 +103,42 @@ xi.pyxis.spawn.chestMessageByChestType =
             [5] = { messageId = 16 },
         },
 
-        [xi.pyxis.chestDropType.NUMEROUS_TEMPITEMS] =
+        [invaderXim.pyxis.chestDropType.NUMEROUS_TEMPITEMS] =
         {
             [1] = { messageId = 14 }
         },
     },
 
-    [xi.pyxis.chestType.GOLD] =
+    [invaderXim.pyxis.chestType.GOLD] =
     {
-        [xi.pyxis.spawn.goldCofferSize.BIG_CHEST] =
+        [invaderXim.pyxis.spawn.goldCofferSize.BIG_CHEST] =
         {
-            [xi.pyxis.chestDropType.TEMPORARY_ITEM]  = { message = 42, maxItem = 3 },
-            [xi.pyxis.chestDropType.ITEM          ]  = { message = 43, maxItem = 4 },
-            [xi.pyxis.chestDropType.POPITEM       ]  = { message = 43, maxItem = 2 },
-            [xi.pyxis.chestDropType.AUGMENTED_ITEM]  = { message = 44, maxItem = 2 },
-            [xi.pyxis.chestDropType.KEY_ITEM      ]  = { message = 45, maxItem = 1 },
+            [invaderXim.pyxis.chestDropType.TEMPORARY_ITEM]  = { message = 42, maxItem = 3 },
+            [invaderXim.pyxis.chestDropType.ITEM          ]  = { message = 43, maxItem = 4 },
+            [invaderXim.pyxis.chestDropType.POPITEM       ]  = { message = 43, maxItem = 2 },
+            [invaderXim.pyxis.chestDropType.AUGMENTED_ITEM]  = { message = 44, maxItem = 2 },
+            [invaderXim.pyxis.chestDropType.KEY_ITEM      ]  = { message = 45, maxItem = 1 },
         },
 
-        [xi.pyxis.spawn.goldCofferSize.LITTLE_CHEST] =
+        [invaderXim.pyxis.spawn.goldCofferSize.LITTLE_CHEST] =
         {
-            [xi.pyxis.chestDropType.TEMPORARY_ITEM]  = { message = 42, maxItem = 3 },
-            [xi.pyxis.chestDropType.ITEM          ]  = { message = 43, maxItem = 4 },
-            [xi.pyxis.chestDropType.POPITEM       ]  = { message = 43, maxItem = 2 },
-            [xi.pyxis.chestDropType.AUGMENTED_ITEM]  = { message = 44, maxItem = 2 },
+            [invaderXim.pyxis.chestDropType.TEMPORARY_ITEM]  = { message = 42, maxItem = 3 },
+            [invaderXim.pyxis.chestDropType.ITEM          ]  = { message = 43, maxItem = 4 },
+            [invaderXim.pyxis.chestDropType.POPITEM       ]  = { message = 43, maxItem = 2 },
+            [invaderXim.pyxis.chestDropType.AUGMENTED_ITEM]  = { message = 44, maxItem = 2 },
         }
     }
 }
 
-xi.pyxis.spawn.lightsMessage =
+invaderXim.pyxis.spawn.lightsMessage =
 {
-    [xi.abyssea.lightType.PEARL  ] = { 18, 18, 22, 22, 26 },
-    [xi.abyssea.lightType.GOLDEN ] = { 30, 30, 36, 36, 39 },
-    [xi.abyssea.lightType.SILVERY] = { 31, 31, 37, 37, 40 },
-    [xi.abyssea.lightType.EBON   ] = { 32, 32, 38, 38, 41 },
-    [xi.abyssea.lightType.AZURE  ] = { 19, 19, 23, 27, 33 },
-    [xi.abyssea.lightType.RUBY   ] = { 20, 20, 24, 28, 34 },
-    [xi.abyssea.lightType.AMBER  ] = { 21, 21, 25, 29, 35 },
+    [invaderXim.abyssea.lightType.PEARL  ] = { 18, 18, 22, 22, 26 },
+    [invaderXim.abyssea.lightType.GOLDEN ] = { 30, 30, 36, 36, 39 },
+    [invaderXim.abyssea.lightType.SILVERY] = { 31, 31, 37, 37, 40 },
+    [invaderXim.abyssea.lightType.EBON   ] = { 32, 32, 38, 38, 41 },
+    [invaderXim.abyssea.lightType.AZURE  ] = { 19, 19, 23, 27, 33 },
+    [invaderXim.abyssea.lightType.RUBY   ] = { 20, 20, 24, 28, 34 },
+    [invaderXim.abyssea.lightType.AMBER  ] = { 21, 21, 25, 29, 35 },
 }
 
 -----------------------------------
@@ -168,7 +168,7 @@ local function GetPyxisID(player)
     for npcId = baseChestId, baseChestId + 79 do
         local npc = GetNPCByID(npcId)
         if npc and timeElapsedCheck(npc, player) then
-            if npc:getStatus() == xi.status.DISAPPEAR then
+            if npc:getStatus() == invaderXim.status.DISAPPEAR then
                 chestId = npcId
                 break
             end
@@ -181,9 +181,9 @@ local function GetPyxisID(player)
             local npc = GetNPCByID(i)
 
             if npc then
-                if npc:getStatus() == xi.status.CUTSCENE_ONLY then
-                    npc:setStatus(xi.status.DISAPPEAR)
-                elseif npc:getStatus() == xi.status.DISAPPEAR then
+                if npc:getStatus() == invaderXim.status.CUTSCENE_ONLY then
+                    npc:setStatus(invaderXim.status.DISAPPEAR)
+                elseif npc:getStatus() == invaderXim.status.DISAPPEAR then
                     npc:setLocalVar('[pyxis]SPAWNTIME', (os.time() + 180000))
                 end
             end
@@ -201,8 +201,8 @@ end
 -- Desc: This method allow you to check if you can spawn pyxies with lights
 -----------------------------------
 local function CanSpawnPyxis(player)
-    local lightValues = xi.abyssea.getLightsTable(player)
-    local dropchance = math.random(1 + lightValues[xi.abyssea.lightType.PEARL], 500)
+    local lightValues = invaderXim.abyssea.getLightsTable(player)
+    local dropchance = math.random(1 + lightValues[invaderXim.abyssea.lightType.PEARL], 500)
     return dropchance >= 250
 end
 
@@ -210,20 +210,20 @@ end
 -- Desc: This method allow you to determine chest type
 -----------------------------------
 local function determineChestType(lightValues)
-    local redLight = lightValues[xi.abyssea.lightType.RUBY]
-    local blueLight = lightValues[xi.abyssea.lightType.AZURE]
-    local goldLight = lightValues[xi.abyssea.lightType.AMBER]
+    local redLight = lightValues[invaderXim.abyssea.lightType.RUBY]
+    local blueLight = lightValues[invaderXim.abyssea.lightType.AZURE]
+    local goldLight = lightValues[invaderXim.abyssea.lightType.AMBER]
 
     local blueChance = math.max(math.random(blueLight), 255 * 0.25) -- min 25% can adjust
     local redChance = math.random(redLight)
     local goldChance = math.random(goldLight)
 
     if redChance > blueChance and redChance > goldChance then
-        return xi.pyxis.chestType.RED
+        return invaderXim.pyxis.chestType.RED
     elseif goldChance > blueChance and goldChance > redChance then
-        return xi.pyxis.chestType.GOLD
+        return invaderXim.pyxis.chestType.GOLD
     else
-        return xi.pyxis.chestType.BLUE
+        return invaderXim.pyxis.chestType.BLUE
     end
 end
 
@@ -231,17 +231,17 @@ local function GetBlueChestInfos(player, lightValues)
     -- Lowers the required amount of correct guesses for blue pyxides by 1
     local abyssitesAmountCorrect =
     {
-        xi.ki.EMERALD_ABYSSITE_OF_ACUMEN,
-        xi.ki.CRIMSON_ABYSSITE_OF_ACUMEN,
-        xi.ki.IVORY_ABYSSITE_OF_ACUMEN
+        invaderXim.ki.EMERALD_ABYSSITE_OF_ACUMEN,
+        invaderXim.ki.CRIMSON_ABYSSITE_OF_ACUMEN,
+        invaderXim.ki.IVORY_ABYSSITE_OF_ACUMEN
     }
 
     -- The bearer will experience greater fortune with blue pyxides in Abyssea.
     local abyssitesExperiences =
     {
-        xi.ki.IVORY_ABYSSITE_OF_KISMET,
-        xi.ki.SCARLET_ABYSSITE_OF_KISMET,
-        xi.ki.VERMILLION_ABYSSITE_OF_KISMET
+        invaderXim.ki.IVORY_ABYSSITE_OF_KISMET,
+        invaderXim.ki.SCARLET_ABYSSITE_OF_KISMET,
+        invaderXim.ki.VERMILLION_ABYSSITE_OF_KISMET
     }
 
     local dataAzureTiers =
@@ -254,10 +254,10 @@ local function GetBlueChestInfos(player, lightValues)
     }
 
     local blueabyssitebonus = 0
-    local playerAzureLight = lightValues[xi.abyssea.lightType.AZURE]
+    local playerAzureLight = lightValues[invaderXim.abyssea.lightType.AZURE]
     local chestModel = 965
     local chestSize = 3
-    local chestType = xi.pyxis.chestType.BLUE
+    local chestType = invaderXim.pyxis.chestType.BLUE
     local amountCorrectAnswerNeeded = math.random(2, 6)
     local chestTier = 1
 
@@ -287,8 +287,8 @@ local function GetBlueChestInfos(player, lightValues)
 
     local tmpTable = {}
 
-    for key, value in pairs(xi.pyxis.spawn.chestMessageByChestType[chestType]) do
-        if key == xi.pyxis.chestDropType.TIME and chestTier < 4 then
+    for key, value in pairs(invaderXim.pyxis.spawn.chestMessageByChestType[chestType]) do
+        if key == invaderXim.pyxis.chestDropType.TIME and chestTier < 4 then
             goto skip_to_next
         end
 
@@ -299,10 +299,10 @@ local function GetBlueChestInfos(player, lightValues)
 
     local dropType = tmpTable[math.random(1, #tmpTable)]
 
-    local drop = xi.pyxis.spawn.chestMessageByChestType[chestType][dropType][1]
+    local drop = invaderXim.pyxis.spawn.chestMessageByChestType[chestType][dropType][1]
 
-    if #xi.pyxis.spawn.chestMessageByChestType[chestType][dropType] > 1 then
-        drop = xi.pyxis.spawn.chestMessageByChestType[chestType][dropType][chestTier]
+    if #invaderXim.pyxis.spawn.chestMessageByChestType[chestType][dropType] > 1 then
+        drop = invaderXim.pyxis.spawn.chestMessageByChestType[chestType][dropType][chestTier]
     end
 
     local message = drop.messageId
@@ -327,9 +327,9 @@ local function GetRedChestInfos(player, lightValues)
     -- The bearer will experience greater fortune with blue pyxides in Abyssea.
     local abyssitesExperiences =
     {
-        xi.ki.AZURE_ABYSSITE_OF_PROSPERITY,
-        xi.ki.JADE_ABYSSITE_OF_PROSPERITY,
-        xi.ki.IVORY_ABYSSITE_OF_PROSPERITY,
+        invaderXim.ki.AZURE_ABYSSITE_OF_PROSPERITY,
+        invaderXim.ki.JADE_ABYSSITE_OF_PROSPERITY,
+        invaderXim.ki.IVORY_ABYSSITE_OF_PROSPERITY,
     }
 
     local dataRubyTiers =
@@ -342,9 +342,9 @@ local function GetRedChestInfos(player, lightValues)
     }
 
     local chestModel = 968
-    local dropType = xi.pyxis.chestDropType.LIGHT
+    local dropType = invaderXim.pyxis.chestDropType.LIGHT
     local chestSize = 3
-    local playerRubyLight = lightValues[xi.abyssea.lightType.RUBY]
+    local playerRubyLight = lightValues[invaderXim.abyssea.lightType.RUBY]
     local redabyssitebonus = 0
     local chestTier = 1
 
@@ -369,15 +369,15 @@ local function GetRedChestInfos(player, lightValues)
     local lightAvailable = {}
     local nb = 1
 
-    for key, value in pairs(xi.pyxis.spawn.chestLightValues[chestTier]) do
+    for key, value in pairs(invaderXim.pyxis.spawn.chestLightValues[chestTier]) do
         lightAvailable[nb] = key
         nb = nb + 1
     end
 
     local randLight = math.random(1, #lightAvailable)
     local light = lightAvailable[randLight]
-    local message = xi.pyxis.spawn.lightsMessage[light][chestTier]
-    local chestLightValue = xi.pyxis.spawn.chestLightValues[chestTier][light]
+    local message = invaderXim.pyxis.spawn.lightsMessage[light][chestTier]
+    local chestLightValue = invaderXim.pyxis.spawn.chestLightValues[chestTier][light]
 
     return dropType, chestModel, chestSize, chestTier, light, message, chestLightValue
 end
@@ -385,9 +385,9 @@ end
 local function GetGoldChestInfos(player, lightValues)
     local abyssites =
     {
-        xi.ki.VIRIDIAN_ABYSSITE_OF_DESTINY,
-        xi.ki.CRIMSON_ABYSSITE_OF_DESTINY,
-        xi.ki.IVORY_ABYSSITE_OF_DESTINY,
+        invaderXim.ki.VIRIDIAN_ABYSSITE_OF_DESTINY,
+        invaderXim.ki.CRIMSON_ABYSSITE_OF_DESTINY,
+        invaderXim.ki.IVORY_ABYSSITE_OF_DESTINY,
     }
 
     local dataAmberTiers =
@@ -399,9 +399,9 @@ local function GetGoldChestInfos(player, lightValues)
         [5] = { min = 224, max = 255, maxUnlockNumber = 90 },
     }
 
-    local playerAmberLight = lightValues[xi.abyssea.lightType.AMBER]
-    local chestSize = xi.pyxis.spawn.goldCofferSize.LITTLE_CHEST
-    local chestType = xi.pyxis.chestType.GOLD
+    local playerAmberLight = lightValues[invaderXim.abyssea.lightType.AMBER]
+    local chestSize = invaderXim.pyxis.spawn.goldCofferSize.LITTLE_CHEST
+    local chestType = invaderXim.pyxis.chestType.GOLD
     local maxUnlockNumber = 35
     local chestTier = 1
     local amberabyssitebonus = 0
@@ -428,11 +428,11 @@ local function GetGoldChestInfos(player, lightValues)
     chestTier = math.min(chestTier + amberabyssitebonus, 5)
 
     if chestTier >= 5 or math.random(1, 100) < 5 then
-        chestSize = xi.pyxis.spawn.goldCofferSize.BIG_CHEST
+        chestSize = invaderXim.pyxis.spawn.goldCofferSize.BIG_CHEST
     end
 
-    local droptype = math.random(1, #xi.pyxis.spawn.chestMessageByChestType[chestType][chestSize])
-    local drop = xi.pyxis.spawn.chestMessageByChestType[chestType][chestSize][droptype]
+    local droptype = math.random(1, #invaderXim.pyxis.spawn.chestMessageByChestType[chestType][chestSize])
+    local drop = invaderXim.pyxis.spawn.chestMessageByChestType[chestType][chestSize][droptype]
     local nbItem = 1
 
     for i = 2, drop.maxItem do
@@ -451,7 +451,7 @@ end
 -----------------------------------
 local function SetPyxisData(npc, mob, player)
     local ID                = zones[player:getZoneID()]
-    local lightValues       = xi.abyssea.getLightsTable(player)
+    local lightValues       = invaderXim.abyssea.getLightsTable(player)
     local chestType         = determineChestType(lightValues)
     local chestModel        = 0
     local chestTier         = 0
@@ -470,7 +470,7 @@ local function SetPyxisData(npc, mob, player)
 
     switch(chestType): caseof
     {
-        [xi.pyxis.chestType.BLUE] = function()
+        [invaderXim.pyxis.chestType.BLUE] = function()
             local bcChestSize, bcChestType, bcChestModel, bcChestTier, bcAmountCorrectAnswerNeeded, bcDroptype, bcMessage, bcRestore, bcNbItem = GetBlueChestInfos(player, lightValues)
             randnum     = math.random(10, 99)
             sizeflag    = bcChestSize
@@ -484,7 +484,7 @@ local function SetPyxisData(npc, mob, player)
             nbItem      = bcNbItem
         end,
 
-        [xi.pyxis.chestType.RED] = function()
+        [invaderXim.pyxis.chestType.RED] = function()
             local rcDropType, rcChestModel, rcChestSize, rcChestTier, rcLight, rcMessage, rcChestLightValue = GetRedChestInfos(player, lightValues)
             randnum         = math.random(25, 60)
             sizeflag        = rcChestSize
@@ -496,7 +496,7 @@ local function SetPyxisData(npc, mob, player)
             light           = rcLight
         end,
 
-        [xi.pyxis.chestType.GOLD] = function()
+        [invaderXim.pyxis.chestType.GOLD] = function()
             local gcSize, gcMaxUnlockNumber, gcChestTier, gcChestModel, gcDroptype, gcNbItem, gcMessage = GetGoldChestInfos(player, lightValues)
             randnum         = math.random(11, gcMaxUnlockNumber)
             maxUnlockNumber = gcMaxUnlockNumber
@@ -509,7 +509,7 @@ local function SetPyxisData(npc, mob, player)
         end,
     }
 
-    if npc ~= nil or npc:getStatus() == xi.status.DISAPPEAR then
+    if npc ~= nil or npc:getStatus() == invaderXim.status.DISAPPEAR then
         npc:resetLocalVars()
         --------------------------------------
         -- Change flags
@@ -539,15 +539,15 @@ local function SetPyxisData(npc, mob, player)
         npc:setLocalVar('SPAWNSTATUS', 1)
         npc:setLocalVar('CHESTID', npc:getID())
         npc:setPos(mobPos.x, mobPos.y, mobPos.z, mobPos.rot)
-        npc:setStatus(xi.status.NORMAL)
-        npc:entityAnimationPacket(xi.animationString.STATUS_VISIBLE)
+        npc:setStatus(invaderXim.status.NORMAL)
+        npc:entityAnimationPacket(invaderXim.animationString.STATUS_VISIBLE)
         npc:setAnimationSub(12)
-        xi.pyxis.messageChest(player, ID.text.MONSTER_CONCEALED_CHEST, 0, 0, 0, 0)
+        invaderXim.pyxis.messageChest(player, ID.text.MONSTER_CONCEALED_CHEST, 0, 0, 0, 0)
         npc:setModelId(chestModel)
 
         npc:timer(180000, function(npcArg)
-            if npcArg:getStatus() == xi.status.NORMAL then
-                xi.pyxis.removeChest(player, npc, 0, 1)
+            if npcArg:getStatus() == invaderXim.status.NORMAL then
+                invaderXim.pyxis.removeChest(player, npc, 0, 1)
             end
         end)
     else
@@ -555,7 +555,7 @@ local function SetPyxisData(npc, mob, player)
     end
 end
 
-xi.pyxis.spawnPyxis = function(mob, player)
+invaderXim.pyxis.spawnPyxis = function(mob, player)
     local chestId = GetPyxisID(player)
     local npc = GetNPCByID(chestId)
 

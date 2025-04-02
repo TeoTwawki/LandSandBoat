@@ -4,12 +4,12 @@
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.events = xi.events or {}
-xi.events.harvestFestival = xi.events.harvestFestival or {}
+invaderXim.events = invaderXim.events or {}
+invaderXim.events.harvestFestival = invaderXim.events.harvestFestival or {}
 
 -- TODO: Convert this to use event handler and cleanup
 
-xi.events.harvestFestival.isHalloweenEnabled = function()
+invaderXim.events.harvestFestival.isHalloweenEnabled = function()
     local option = 0
     local month = tonumber(os.date('%m'))
     local day = tonumber(os.date('%d'))
@@ -17,10 +17,10 @@ xi.events.harvestFestival.isHalloweenEnabled = function()
     if
         month == 10 and day >= 20 or
         month == 11 and day == 1 or
-        xi.settings.main.HALLOWEEN_YEAR_ROUND ~= 0
+        invaderXim.settings.main.HALLOWEEN_YEAR_ROUND ~= 0
     then
         -- According to wiki Harvest Fest is Oct 20 - Nov 1.
-        if xi.settings.main.HALLOWEEN_2005 == 1 then
+        if invaderXim.settings.main.HALLOWEEN_2005 == 1 then
             option = 1
         -- elseif HALLOWEEN_2008 == 1 then
         --     option = 2
@@ -35,8 +35,8 @@ xi.events.harvestFestival.isHalloweenEnabled = function()
 end
 
 local function halloweenItemsCheck(player)
-    local headSlot = player:getEquipID(xi.slot.HEAD)
-    local mainHand = player:getEquipID(xi.slot.MAIN)
+    local headSlot = player:getEquipID(invaderXim.slot.HEAD)
+    local mainHand = player:getEquipID(invaderXim.slot.MAIN)
     local reward = 0
 
     -- Normal Quality Rewards
@@ -50,13 +50,13 @@ local function halloweenItemsCheck(player)
     -- Checks for HQ Upgrade
     for ri = 1, #rewardList do
         if headSlot == rewardList[ri] or mainHand == rewardList[ri] then
-            if headSlot == pumpkinHead and not player:hasItem(xi.item.HORROR_HEAD) then
+            if headSlot == pumpkinHead and not player:hasItem(invaderXim.item.HORROR_HEAD) then
                 reward = 13917 -- Horror Head
-            elseif headSlot == pumpkinHead2 and not player:hasItem(xi.item.HORROR_HEAD_II) then
+            elseif headSlot == pumpkinHead2 and not player:hasItem(invaderXim.item.HORROR_HEAD_II) then
                 reward = 15177 -- Horror Head II
-            elseif mainHand == trickStaff and not player:hasItem(xi.item.TREAT_STAFF) then
+            elseif mainHand == trickStaff and not player:hasItem(invaderXim.item.TREAT_STAFF) then
                 reward =  17566 -- Treat Staff
-            elseif mainHand == trickStaff2 and not player:hasItem(xi.item.TREAT_STAFF_II) then
+            elseif mainHand == trickStaff2 and not player:hasItem(invaderXim.item.TREAT_STAFF_II) then
                 reward = 17588 -- Treat Staff II
             end
 
@@ -81,11 +81,11 @@ local function halloweenItemsCheck(player)
     return reward
 end
 
-xi.events.harvestFestival.onHalloweenTrade = function(player, trade, npc)
+invaderXim.events.harvestFestival.onHalloweenTrade = function(player, trade, npc)
     local zone = player:getZoneName()
     local ID = zones[player:getZoneID()]
 
-    local contentEnabled = xi.events.harvestFestival.isHalloweenEnabled()
+    local contentEnabled = invaderXim.events.harvestFestival.isHalloweenEnabled()
     local item = trade:getItemId()
     -----------------------------------
     -- 2005 edition
@@ -171,7 +171,7 @@ xi.events.harvestFestival.onHalloweenTrade = function(player, trade, npc)
                     player:addItem(itemReward)
                     player:messageSpecial(ID.text.ITEM_OBTAINED, itemReward)
 
-                elseif player:canUseMisc(xi.zoneMisc.COSTUME) and not alreadyTradedChk then
+                elseif player:canUseMisc(invaderXim.zoneMisc.COSTUME) and not alreadyTradedChk then
                 -- Other neat looking halloween type costumes
                 -- two dragon skins: @420/421
                 -- @422 dancing weapon
@@ -197,7 +197,7 @@ xi.events.harvestFestival.onHalloweenTrade = function(player, trade, npc)
                     local halloweenCostumeList = { quadav, orc, yagudo, shade, ghost, hound, skeleton, darkStalker }
 
                     local costumePicked = halloweenCostumeList[math.random(1, #halloweenCostumeList)] -- will randomly pick one of the costumes in the list
-                    player:addStatusEffect(xi.effect.COSTUME, costumePicked, 0, 3600)
+                    player:addStatusEffect(invaderXim.effect.COSTUME, costumePicked, 0, 3600)
 
                     -- pitchForkCostumeList defines the special costumes per zone that can trigger the pitch fork requirement
                     -- zone, costumeID
@@ -242,8 +242,8 @@ xi.events.harvestFestival.onHalloweenTrade = function(player, trade, npc)
     end
 end
 
-xi.events.harvestFestival.applyHalloweenNpcCostumes = function(zoneid)
-    if xi.events.harvestFestival.isHalloweenEnabled() ~= 0 then
+invaderXim.events.harvestFestival.applyHalloweenNpcCostumes = function(zoneid)
+    if invaderXim.events.harvestFestival.isHalloweenEnabled() ~= 0 then
         local skins = zones[zoneid].npc.HALLOWEEN_SKINS
         if skins then
             for id, skin in pairs(skins) do

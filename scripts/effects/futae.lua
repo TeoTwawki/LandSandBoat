@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.FUTAE
+-- invaderXim.effect.FUTAE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

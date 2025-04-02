@@ -10,8 +10,8 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:delStatusEffect(xi.effect.SNEAK)
-    target:addStatusEffect(xi.effect.SNEAK, 1, 0, math.floor(180 * xi.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER))
+    target:delStatusEffect(invaderXim.effect.SNEAK)
+    target:addStatusEffect(invaderXim.effect.SNEAK, 1, 0, math.floor(180 * invaderXim.settings.main.SNEAK_INVIS_DURATION_MULTIPLIER))
 end
 
 return itemObject

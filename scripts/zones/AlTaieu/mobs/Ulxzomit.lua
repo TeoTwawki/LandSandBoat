@@ -3,7 +3,7 @@
 --  Mob: Ul'xzomit
 -----------------------------------
 mixins = { require('scripts/mixins/follow') }
-local ID = zones[xi.zone.ALTAIEU]
+local ID = zones[invaderXim.zone.ALTAIEU]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -14,22 +14,22 @@ for i = 0, 14 do
 end
 
 entity.onMobInitialize = function(mob)
-    xi.follow.assignLeaderMod(mob, leaders, 2)
+    invaderXim.follow.assignLeaderMod(mob, leaders, 2)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMobMod(xi.mobMod.ROAM_COOL, 0)
-    mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 50)
+    mob:setMobMod(invaderXim.mobMod.ROAM_COOL, 0)
+    mob:setMobMod(invaderXim.mobMod.ROAM_DISTANCE, 50)
 
     -- Baby Ul'xzomit
-    if mob:getMobMod(xi.mobMod.LEADER) < 0 then
+    if mob:getMobMod(invaderXim.mobMod.LEADER) < 0 then
         mob:setMobFlags(1153)
     end
 end
 
 -- Do the linking for the babies.
 entity.onMobRoamAction = function(mob)
-    if mob:getMobMod(xi.mobMod.LEADER) > 0 then
+    if mob:getMobMod(invaderXim.mobMod.LEADER) > 0 then
         return
     end
 

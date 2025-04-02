@@ -29,26 +29,26 @@
 -- Rabao: !zone 247
 -- Zoriboh: !pos -43 8 82
 -----------------------------------
-local korrolokaID = zones[xi.zone.KORROLOKA_TUNNEL]
+local korrolokaID = zones[invaderXim.zone.KORROLOKA_TUNNEL]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OUTLANDS, xi.quest.id.outlands.CHASING_DREAMS)
+local quest = Quest:new(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.CHASING_DREAMS)
 
 quest.reward =
 {
     fame     = 30,
-    item     = xi.item.VENERER_RING,
-    fameArea = xi.fameArea.SELBINA_RABAO,
+    item     = invaderXim.item.VENERER_RING,
+    fameArea = invaderXim.fameArea.SELBINA_RABAO,
     gil      = 4000,
 }
 
 local handleFlask = function(player)
-    player:messageSpecial(korrolokaID.text.FILL_FLASK, xi.ki.WASHUS_FLASK)
+    player:messageSpecial(korrolokaID.text.FILL_FLASK, invaderXim.ki.WASHUS_FLASK)
 
     if  quest:getVar(player, 'Option') == 30 then
-        player:delKeyItem(xi.ki.WASHUS_FLASK)
-        player:messageSpecial(korrolokaID.text.FLASK_FULL, xi.ki.WASHUS_FLASK)
-        npcUtil.giveKeyItem(player, xi.ki.FLASK_OF_CLAM_WATER)
+        player:delKeyItem(invaderXim.ki.WASHUS_FLASK)
+        player:messageSpecial(korrolokaID.text.FLASK_FULL, invaderXim.ki.WASHUS_FLASK)
+        npcUtil.giveKeyItem(player, invaderXim.ki.FLASK_OF_CLAM_WATER)
         quest:setVar(player, 'Prog', 4)
 
     else
@@ -60,10 +60,10 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.RABAO] =
+        [invaderXim.zone.RABAO] =
         {
             ['Rudolfo'] = quest:progressEvent(117),
 
@@ -79,10 +79,10 @@ quest.sections =
     {
         -- Quest stage preceding and including getting clam water
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog <= 3
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog <= 3
         end,
 
-        [xi.zone.RABAO] =
+        [invaderXim.zone.RABAO] =
         {
             ['Zoriboh'] =
             {
@@ -103,7 +103,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Sohyon'] =
             {
@@ -133,26 +133,26 @@ quest.sections =
                 end,
 
                 [221] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.WASHUS_FLASK) -- WASHU'S FLASK Key Item = 623
+                    npcUtil.giveKeyItem(player, invaderXim.ki.WASHUS_FLASK) -- WASHU'S FLASK Key Item = 623
                     quest:setVar(player, 'Prog', 3)
                 end,
             },
         },
 
-        [xi.zone.KORROLOKA_TUNNEL] =
+        [invaderXim.zone.KORROLOKA_TUNNEL] =
         {
             ['_4t0'] =
             {
                 onTrigger = function(player, npc)
                     if
                         not quest:isVarBitsSet(player, 'Option', 1) and
-                        player:hasKeyItem(xi.ki.WASHUS_FLASK)
+                        player:hasKeyItem(invaderXim.ki.WASHUS_FLASK)
                     then
                         quest:setVarBit(player, 'Option', 1)
                         handleFlask(player)
                         return quest:noAction()
                     else
-                        return quest:messageSpecial(korrolokaID.text.CLAM_EMPTY, xi.ki.WASHUS_FLASK)
+                        return quest:messageSpecial(korrolokaID.text.CLAM_EMPTY, invaderXim.ki.WASHUS_FLASK)
                     end
                 end,
             },
@@ -161,13 +161,13 @@ quest.sections =
                 onTrigger = function(player, npc)
                     if
                         not quest:isVarBitsSet(player, 'Option', 2) and
-                        player:hasKeyItem(xi.ki.WASHUS_FLASK)
+                        player:hasKeyItem(invaderXim.ki.WASHUS_FLASK)
                     then
                         quest:setVarBit(player, 'Option', 2)
                         handleFlask(player)
                         return quest:noAction()
                     else
-                        return quest:messageSpecial(korrolokaID.text.CLAM_EMPTY, xi.ki.WASHUS_FLASK)
+                        return quest:messageSpecial(korrolokaID.text.CLAM_EMPTY, invaderXim.ki.WASHUS_FLASK)
                     end
                 end,
             },
@@ -176,13 +176,13 @@ quest.sections =
                 onTrigger = function(player, npc)
                     if
                         not quest:isVarBitsSet(player, 'Option', 3) and
-                        player:hasKeyItem(xi.ki.WASHUS_FLASK)
+                        player:hasKeyItem(invaderXim.ki.WASHUS_FLASK)
                     then
                         quest:setVarBit(player, 'Option', 3)
                         handleFlask(player)
                         return quest:noAction()
                     else
-                        return quest:messageSpecial(korrolokaID.text.CLAM_EMPTY, xi.ki.WASHUS_FLASK)
+                        return quest:messageSpecial(korrolokaID.text.CLAM_EMPTY, invaderXim.ki.WASHUS_FLASK)
                     end
                 end,
             },
@@ -191,13 +191,13 @@ quest.sections =
                 onTrigger = function(player, npc)
                     if
                         not quest:isVarBitsSet(player, 'Option', 4) and
-                        player:hasKeyItem(xi.ki.WASHUS_FLASK)
+                        player:hasKeyItem(invaderXim.ki.WASHUS_FLASK)
                     then
                         quest:setVarBit(player, 'Option', 4)
                         handleFlask(player)
                         return quest:noAction()
                     else
-                        return quest:messageSpecial(korrolokaID.text.CLAM_EMPTY, xi.ki.WASHUS_FLASK)
+                        return quest:messageSpecial(korrolokaID.text.CLAM_EMPTY, invaderXim.ki.WASHUS_FLASK)
                     end
                 end,
             },
@@ -207,17 +207,17 @@ quest.sections =
     {
         -- Quest section suceeding having gathered the clam water
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog >= 4
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog >= 4
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Sohyon'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:hasKeyItem(xi.ki.FLASK_OF_CLAM_WATER) and
-                        not player:hasKeyItem(xi.ki.STOREROOM_KEY)
+                        player:hasKeyItem(invaderXim.ki.FLASK_OF_CLAM_WATER) and
+                        not player:hasKeyItem(invaderXim.ki.STOREROOM_KEY)
                     then
                         return quest:progressEvent(210)
                     end
@@ -227,8 +227,8 @@ quest.sections =
             ['Gimb'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.STOREROOM_KEY) then
-                        return quest:progressEvent(211, 0, xi.item.PINCH_OF_PRISM_POWDER)
+                    if player:hasKeyItem(invaderXim.ki.STOREROOM_KEY) then
+                        return quest:progressEvent(211, 0, invaderXim.item.PINCH_OF_PRISM_POWDER)
                     end
                 end,
             },
@@ -236,24 +236,24 @@ quest.sections =
             onEventFinish =
             {
                 [210] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.FLASK_OF_CLAM_WATER)
-                    npcUtil.giveKeyItem(player, xi.ki.STOREROOM_KEY)
+                    player:delKeyItem(invaderXim.ki.FLASK_OF_CLAM_WATER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.STOREROOM_KEY)
                 end,
 
                 [211] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.STOREROOM_KEY)
+                    player:delKeyItem(invaderXim.ki.STOREROOM_KEY)
                     quest:setVar(player, 'Prog', 5)
                 end,
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Kagetora'] =
             {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 5 then
-                        return quest:progressEvent(322, 0, xi.item.EASTERN_GEM)
+                        return quest:progressEvent(322, 0, invaderXim.item.EASTERN_GEM)
                     else
                         -- Additional Dialogue
                         return quest:event(324)
@@ -275,7 +275,7 @@ quest.sections =
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 6 then
                         -- Additional Dialogue
-                        return quest:event(326, 0, xi.item.EASTERN_GEM)
+                        return quest:event(326, 0, invaderXim.item.EASTERN_GEM)
                     elseif quest:getVar(player, 'Prog') > 6 then
                         -- Additional Dialogue
                         return quest:event(327)
@@ -296,7 +296,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Abelard'] =
             {
@@ -315,7 +315,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.LUFAISE_MEADOWS] =
+        [invaderXim.zone.LUFAISE_MEADOWS] =
         {
             onZoneIn =
                 function(player, prevZone)
@@ -332,7 +332,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.RABAO] =
+        [invaderXim.zone.RABAO] =
         {
             ['Zoriboh'] =
             {

@@ -15,9 +15,9 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local power = 500
-    local duration = xi.mobskills.calculateDuration(skill:getTP(), 30, 90)
+    local duration = invaderXim.mobskills.calculateDuration(skill:getTP(), 30, 90)
 
-    xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.ATTACK_DOWN, power, 0, duration)
+    invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.ATTACK_DOWN, power, 0, duration)
 end
 
 return mobskillObject

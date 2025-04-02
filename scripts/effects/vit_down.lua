@@ -1,15 +1,15 @@
 -----------------------------------
--- xi.effect.VIT_DOWN
+-- invaderXim.effect.VIT_DOWN
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    if (target:getStat(xi.mod.VIT) - effect:getPower()) < 0 then
-        effect:setPower(target:getStat(xi.mod.VIT))
+    if (target:getStat(invaderXim.mod.VIT) - effect:getPower()) < 0 then
+        effect:setPower(target:getStat(invaderXim.mod.VIT))
     end
 
-    target:addMod(xi.mod.VIT, -effect:getPower())
+    target:addMod(invaderXim.mod.VIT, -effect:getPower())
 end
 
 effectObject.onEffectTick = function(target, effect)
@@ -17,14 +17,14 @@ effectObject.onEffectTick = function(target, effect)
     local downVITEffectSize = effect:getPower()
     if downVITEffectSize > 0 then
         effect:setPower(downVITEffectSize - 1)
-        target:delMod(xi.mod.VIT, -1)
+        target:delMod(invaderXim.mod.VIT, -1)
     end
 end
 
 effectObject.onEffectLose = function(target, effect)
     local downVITEffectSize = effect:getPower()
     if downVITEffectSize > 0 then
-        target:delMod(xi.mod.VIT, -downVITEffectSize)
+        target:delMod(invaderXim.mod.VIT, -downVITEffectSize)
     end
 end
 

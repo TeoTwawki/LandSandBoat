@@ -22,42 +22,42 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.foodOnItemCheck(target, xi.foodType.BASIC)
+    return invaderXim.itemUtils.foodOnItemCheck(target, invaderXim.foodType.BASIC)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffect(xi.effect.FOOD, 0, 0, 1800, 4395)
+    target:addStatusEffect(invaderXim.effect.FOOD, 0, 0, 1800, 4395)
 end
 
 itemObject.onEffectGain = function(target, effect)
-    if target:getRace() ~= xi.race.GALKA then
-        target:addMod(xi.mod.STR, 3)
-        target:addMod(xi.mod.INT, -4)
-        target:addMod(xi.mod.ATT, 9)
-        target:addMod(xi.mod.RATT, 9)
+    if target:getRace() ~= invaderXim.race.GALKA then
+        target:addMod(invaderXim.mod.STR, 3)
+        target:addMod(invaderXim.mod.INT, -4)
+        target:addMod(invaderXim.mod.ATT, 9)
+        target:addMod(invaderXim.mod.RATT, 9)
     else
-        target:addMod(xi.mod.STR, 3)
-        target:addMod(xi.mod.INT, -1)
-        target:addMod(xi.mod.FOOD_ATTP, 25)
-        target:addMod(xi.mod.FOOD_ATT_CAP, 30)
-        target:addMod(xi.mod.FOOD_RATTP, 25)
-        target:addMod(xi.mod.FOOD_RATT_CAP, 30)
+        target:addMod(invaderXim.mod.STR, 3)
+        target:addMod(invaderXim.mod.INT, -1)
+        target:addMod(invaderXim.mod.FOOD_ATTP, 25)
+        target:addMod(invaderXim.mod.FOOD_ATT_CAP, 30)
+        target:addMod(invaderXim.mod.FOOD_RATTP, 25)
+        target:addMod(invaderXim.mod.FOOD_RATT_CAP, 30)
     end
 end
 
 itemObject.onEffectLose = function(target, effect)
-    if target:getRace() ~= xi.race.GALKA then
-        target:delMod(xi.mod.STR, 3)
-        target:delMod(xi.mod.INT, -4)
-        target:delMod(xi.mod.ATT, 9)
-        target:delMod(xi.mod.RATT, 9)
+    if target:getRace() ~= invaderXim.race.GALKA then
+        target:delMod(invaderXim.mod.STR, 3)
+        target:delMod(invaderXim.mod.INT, -4)
+        target:delMod(invaderXim.mod.ATT, 9)
+        target:delMod(invaderXim.mod.RATT, 9)
     else
-        target:delMod(xi.mod.STR, 3)
-        target:delMod(xi.mod.INT, -1)
-        target:delMod(xi.mod.FOOD_ATTP, 25)
-        target:delMod(xi.mod.FOOD_ATT_CAP, 30)
-        target:delMod(xi.mod.FOOD_RATTP, 25)
-        target:delMod(xi.mod.FOOD_RATT_CAP, 30)
+        target:delMod(invaderXim.mod.STR, 3)
+        target:delMod(invaderXim.mod.INT, -1)
+        target:delMod(invaderXim.mod.FOOD_ATTP, 25)
+        target:delMod(invaderXim.mod.FOOD_ATT_CAP, 30)
+        target:delMod(invaderXim.mod.FOOD_RATTP, 25)
+        target:delMod(invaderXim.mod.FOOD_RATT_CAP, 30)
     end
 end
 

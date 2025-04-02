@@ -6,12 +6,12 @@
 -- Fyi_Chalmwoh    : !pos -39.273 -16.000 70.126 249
 -- Mire Incense KI : 709
 -----------------------------------
-local mhauraID    = zones[xi.zone.MHAURA]
-local phomiunaID  = zones[xi.zone.PHOMIUNA_AQUEDUCTS]
-local misareauxID = zones[xi.zone.MISAREAUX_COAST]
+local mhauraID    = zones[invaderXim.zone.MHAURA]
+local phomiunaID  = zones[invaderXim.zone.PHOMIUNA_AQUEDUCTS]
+local misareauxID = zones[invaderXim.zone.MISAREAUX_COAST]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.KNOCKING_ON_FORBIDDEN_DOORS)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.KNOCKING_ON_FORBIDDEN_DOORS)
 
 quest.sections =
 {
@@ -19,11 +19,11 @@ quest.sections =
     -- QUEST AVAILABLE
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.BEHIND_THE_SMILE)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.BEHIND_THE_SMILE)
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Enaremand'] = quest:progressEvent(535),
 
@@ -39,10 +39,10 @@ quest.sections =
     -- QUEST ACCEPTED
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Chemioue'] =
             {
@@ -61,7 +61,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.PHOMIUNA_AQUEDUCTS] =
+        [invaderXim.zone.PHOMIUNA_AQUEDUCTS] =
         {
             ['Wooden_Ladder'] =
             {
@@ -83,7 +83,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.MISAREAUX_COAST] =
+        [invaderXim.zone.MISAREAUX_COAST] =
         {
             ['qm_mire_incense'] =
             {
@@ -91,9 +91,9 @@ quest.sections =
                     --- ??? by end of river
                     if
                         quest:getVar(player, 'Prog') == 2 and
-                        not player:hasKeyItem(xi.ki.MIRE_INCENSE)
+                        not player:hasKeyItem(invaderXim.ki.MIRE_INCENSE)
                     then
-                        return quest:keyItem(xi.ki.MIRE_INCENSE)
+                        return quest:keyItem(invaderXim.ki.MIRE_INCENSE)
                     end
                 end,
             },
@@ -104,14 +104,14 @@ quest.sections =
                     local progressVar = quest:getVar(player, 'Prog')
                     -- First time clicking on ???
                     if
-                        player:hasKeyItem(xi.ki.MIRE_INCENSE) and
+                        player:hasKeyItem(invaderXim.ki.MIRE_INCENSE) and
                         progressVar == 2
                     then
-                        return quest:progressEvent(556, { [1] = xi.ki.MIRE_INCENSE })
+                        return quest:progressEvent(556, { [1] = invaderXim.ki.MIRE_INCENSE })
 
                     -- Second time clicking on ???
                     elseif progressVar == 3 then
-                        return quest:progressEvent(557, { [1] = xi.ki.MIRE_INCENSE })
+                        return quest:progressEvent(557, { [1] = invaderXim.ki.MIRE_INCENSE })
 
                     -- Clicking on the ??? after killing NM
                     elseif progressVar == 4 then
@@ -146,24 +146,24 @@ quest.sections =
 
                 [558] = function(player, csid, option, npc)
                     quest:setVar(player, 'Prog', 5)
-                    npcUtil.giveKeyItem(player, xi.ki.BETTER_HUMES_AND_MANNEQUINS)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.BETTER_HUMES_AND_MANNEQUINS)
                 end,
             },
         },
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Fyi_Chalmwoh'] =
             {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 5 then
                         return quest:progressEvent(321, { [0] = 704,
-                            [1] = xi.mannequin.getMannequins(player),
-                            [2] = xi.mannequin.cost.PURCHASE,
-                            [3] = xi.mannequin.cost.TRADE,
-                            [4] = xi.mannequin.cost.POSE,
+                            [1] = invaderXim.mannequin.getMannequins(player),
+                            [2] = invaderXim.mannequin.cost.PURCHASE,
+                            [3] = invaderXim.mannequin.cost.TRADE,
+                            [4] = invaderXim.mannequin.cost.POSE,
                             [5] = player:getGil(),
-                            [6] = xi.ki.BETTER_HUMES_AND_MANNEQUINS })
+                            [6] = invaderXim.ki.BETTER_HUMES_AND_MANNEQUINS })
                     end
                 end,
             },
@@ -180,19 +180,19 @@ quest.sections =
     -- Quest complete
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                player:hasKeyItem(xi.ki.BETTER_HUMES_AND_MANNEQUINS)
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                player:hasKeyItem(invaderXim.ki.BETTER_HUMES_AND_MANNEQUINS)
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Fyi_Chalmwoh'] =
             {
                 onTrigger = function(player, npc)
-                    return quest:progressEvent(321, { [1] = xi.mannequin.getMannequins(player),
-                        [2] = xi.mannequin.cost.PURCHASE,
-                        [3] = xi.mannequin.cost.TRADE,
-                        [4] = xi.mannequin.cost.POSE,
+                    return quest:progressEvent(321, { [1] = invaderXim.mannequin.getMannequins(player),
+                        [2] = invaderXim.mannequin.cost.PURCHASE,
+                        [3] = invaderXim.mannequin.cost.TRADE,
+                        [4] = invaderXim.mannequin.cost.POSE,
                         [5] = player:getGil(),
                         })
                 end,
@@ -201,7 +201,7 @@ quest.sections =
                     -- Trade exactly one mannequin without gil.  Gil taken separately.
                     local tradedMannequin = 0
 
-                    for itemId = xi.item.HUME_M_MANNEQUIN, xi.item.GALKA_MANNEQUIN do
+                    for itemId = invaderXim.item.HUME_M_MANNEQUIN, invaderXim.item.GALKA_MANNEQUIN do
                         if npcUtil.tradeHasExactly(trade, itemId) then
                             tradedMannequin = itemId
                         end
@@ -209,9 +209,9 @@ quest.sections =
 
                     if tradedMannequin then
                         return quest:progressEvent(319, { [0] = 2,
-                            [1] = xi.mannequin.getMannequins(player), -- Player Mannequin List
-                            [2] = xi.mannequin.cost.PURCHASE,
-                            [3] = xi.mannequin.cost.TRADE,
+                            [1] = invaderXim.mannequin.getMannequins(player), -- Player Mannequin List
+                            [2] = invaderXim.mannequin.cost.PURCHASE,
+                            [3] = invaderXim.mannequin.cost.TRADE,
                             [4] = 1, -- Leaving this out gives a "It's still in pretty good condition" message
                             })
                     end
@@ -224,12 +224,12 @@ quest.sections =
                     if option == 0 then
                         -- Purchase a mannequin
                         local richEnough = 0
-                        if player:getGil() >= xi.mannequin.cost.PURCHASE then
+                        if player:getGil() >= invaderXim.mannequin.cost.PURCHASE then
                             richEnough = 1
                         end
 
                         player:updateEvent({ [0] = richEnough, -- Not sure if this is the legitimate use, but it works.
-                            [1] = xi.mannequin.getMannequins(player),
+                            [1] = invaderXim.mannequin.getMannequins(player),
                             [2] = option,
                         })
                     elseif
@@ -239,9 +239,9 @@ quest.sections =
                         -- Pose a mannequin
                         local race = option - 10 -- From 1 to 8, for consistency in lua
                         player:updateEvent({ [0] = 1,
-                            [1] = xi.mannequin.getMannequins(player),
+                            [1] = invaderXim.mannequin.getMannequins(player),
                             [2] = option,
-                            [3] = xi.mannequin.getMannequinPose(player, race),
+                            [3] = invaderXim.mannequin.getMannequinPose(player, race),
                         })
                     end
                 end,
@@ -254,10 +254,10 @@ quest.sections =
                     if
                         option >= 1 and
                         option <= 8 and
-                        player:delGil(xi.mannequin.cost.TRADE)
+                        player:delGil(invaderXim.mannequin.cost.TRADE)
                     then
                         player:confirmTrade()
-                        npcUtil.giveItem(player, xi.item.HUME_M_MANNEQUIN + option - 1)
+                        npcUtil.giveItem(player, invaderXim.item.HUME_M_MANNEQUIN + option - 1)
                     end
                 end,
 
@@ -267,18 +267,18 @@ quest.sections =
                         -- Purchase the mannequin.  Option = race (1-8)
                         option >= 1 and
                         option <= 8 and
-                        player:delGil(xi.mannequin.cost.PURCHASE)
+                        player:delGil(invaderXim.mannequin.cost.PURCHASE)
                     then
-                        player:messageSpecial(mhauraID.text.ITEM_OBTAINED, xi.item.HUME_M_MANNEQUIN + option - 1)
-                        player:addItem(xi.item.HUME_M_MANNEQUIN + option - 1)
+                        player:messageSpecial(mhauraID.text.ITEM_OBTAINED, invaderXim.item.HUME_M_MANNEQUIN + option - 1)
+                        player:addItem(invaderXim.item.HUME_M_MANNEQUIN + option - 1)
                     elseif
                         option >= 10 and
-                        player:delGil(xi.mannequin.cost.POSE)
+                        player:delGil(invaderXim.mannequin.cost.POSE)
                     then
                         -- Posing a mannequin
                         local race = ((option - 11) % 8) + 1 -- 1 to 8 for lua consistency
                         local pose = math.floor(option / 32)
-                        xi.mannequin.setMannequinPose(player, race, pose)
+                        invaderXim.mannequin.setMannequinPose(player, race, pose)
                     end
                 end,
             },

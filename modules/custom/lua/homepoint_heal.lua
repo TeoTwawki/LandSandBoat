@@ -7,7 +7,7 @@ require('scripts/globals/homepoint')
 -----------------------------------
 local m = Module:new('homepoint_heal')
 
-m:addOverride('xi.homepoint.onTrigger', function(player, csid, index)
+m:addOverride('invaderXim.homepoint.onTrigger', function(player, csid, index)
     player:addHP(player:getMaxHP())
     player:addMP(player:getMaxMP())
     super(player, csid, index)

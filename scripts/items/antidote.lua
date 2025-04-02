@@ -11,8 +11,8 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    if target:hasStatusEffect(xi.effect.POISON) then
-        target:delStatusEffect(xi.effect.POISON)
+    if target:hasStatusEffect(invaderXim.effect.POISON) then
+        target:delStatusEffect(invaderXim.effect.POISON)
     end
 end
 

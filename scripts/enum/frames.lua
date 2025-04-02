@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.frames
-xi.frames =
+---@enum invaderXim.frames
+invaderXim.frames =
 {
     HARLEQUIN  = 0x20,
     VALOREDGE  = 0x21,

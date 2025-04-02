@@ -4,14 +4,14 @@
 -- Kohlo-Lakolo, !pos -26.8 -6 190 240
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.KNOW_ONES_ONIONS)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.KNOW_ONES_ONIONS)
 
 quest.reward =
 {
     fame     = 10,
-    fameArea = xi.fameArea.WINDURST,
-    item     = xi.item.SCROLL_OF_BLAZE_SPIKES,
-    title    = xi.title.SOB_SUPER_HERO,
+    fameArea = invaderXim.fameArea.WINDURST,
+    item     = invaderXim.item.SCROLL_OF_BLAZE_SPIKES,
+    title    = invaderXim.title.SOB_SUPER_HERO,
 }
 
 -- NOTE
@@ -30,11 +30,11 @@ quest.sections =
     -- Section: Quest is available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.WINDURST, xi.quest.id.windurst.TRUTH_JUSTICE_AND_THE_ONION_WAY)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.TRUTH_JUSTICE_AND_THE_ONION_WAY)
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Kohlo-Lakolo'] =
             {
@@ -43,10 +43,10 @@ quest.sections =
                         player:getMainLvl() >= 5 and
                         not quest:getMustZone(player)
                     then
-                        if player:getRank(xi.nation.WINDURST) < 3 then
-                            return quest:progressEvent(391, 0, xi.item.WILD_ONION) -- Quest starting event. (In time)
+                        if player:getRank(invaderXim.nation.WINDURST) < 3 then
+                            return quest:progressEvent(391, 0, invaderXim.item.WILD_ONION) -- Quest starting event. (In time)
                         else
-                            return quest:progressEvent(388, 0, xi.item.WILD_ONION) -- Quest starting event. (Missed action)
+                            return quest:progressEvent(388, 0, invaderXim.item.WILD_ONION) -- Quest starting event. (Missed action)
                         end
                     else
                         return quest:event(379) -- Default text.
@@ -71,22 +71,22 @@ quest.sections =
     -- Section: Quest accepeted in time.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
                 vars.Prog == 1 and
-                player:getRank(xi.nation.WINDURST) < 3
+                player:getRank(invaderXim.nation.WINDURST) < 3
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Kohlo-Lakolo'] =
             {
                 onTrigger = function(player, npc)
-                    return quest:event(392, 0, xi.item.WILD_ONION) -- Reminder text if you are still in time.
+                    return quest:event(392, 0, invaderXim.item.WILD_ONION) -- Reminder text if you are still in time.
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.WILD_ONION, 4 } }) then
-                        return quest:progressEvent(398, 0, xi.item.WILD_ONION) -- Trade in time. Quest goes on.
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.WILD_ONION, 4 } }) then
+                        return quest:progressEvent(398, 0, invaderXim.item.WILD_ONION) -- Trade in time. Quest goes on.
                     end
                 end,
             },
@@ -110,24 +110,24 @@ quest.sections =
     -- Section: Trade performed in time.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
                 vars.Prog == 2 and
-                player:getRank(xi.nation.WINDURST) < 3
+                player:getRank(invaderXim.nation.WINDURST) < 3
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Gomada-Vulmada'] = quest:event(394),
-            ['Kohlo-Lakolo']   = quest:event(399, 0, xi.item.WILD_ONION),
+            ['Kohlo-Lakolo']   = quest:event(399, 0, invaderXim.item.WILD_ONION),
             ['Papo-Hopo']      = quest:event(393),
             ['Pichichi']       = quest:event(395),
             ['Pyo_Nzon']       = quest:event(396),
             ['Yafa_Yaa']       = quest:event(397),
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
-            ['_6n2'] = quest:progressEvent(288, 0, xi.item.WILD_ONION),
+            ['_6n2'] = quest:progressEvent(288, 0, invaderXim.item.WILD_ONION),
 
             onEventFinish =
             {
@@ -141,11 +141,11 @@ quest.sections =
     -- Section: Expedition complete. End quest.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
                 vars.Prog == 3
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Gomada-Vulmada'] = quest:event(404),
             ['Kohlo-Lakolo']   = quest:progressEvent(400),
@@ -168,27 +168,27 @@ quest.sections =
     -- Section: Quest accepted. You are late at any step of the process, except very last step.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
                 vars.Prog < 3 and
-                player:getRank(xi.nation.WINDURST) >= 3
+                player:getRank(invaderXim.nation.WINDURST) >= 3
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Kohlo-Lakolo'] =
             {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 0 then
-                        return quest:event(389, 0, xi.item.WILD_ONION) -- Reminder text: Started quest late.
+                        return quest:event(389, 0, invaderXim.item.WILD_ONION) -- Reminder text: Started quest late.
                     elseif quest:getVar(player, 'Prog') == 1 then
-                        return quest:event(387, 0, xi.item.WILD_ONION) -- Reminder text: In time for introduction but late before trade is done.
+                        return quest:event(387, 0, invaderXim.item.WILD_ONION) -- Reminder text: In time for introduction but late before trade is done.
                     elseif quest:getVar(player, 'Prog') == 2 then
                         return quest:event(386)                         -- Reminder text: Late after trade. Quest Complete.
                     end
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.WILD_ONION, 4 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.WILD_ONION, 4 } }) then
                         return quest:progressEvent(390) -- Quest Complete.
                     end
                 end,
@@ -222,11 +222,11 @@ quest.sections =
     -- Section: Quest completed.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.INSPECTORS_GADGET) == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.INSPECTORS_GADGET) == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             -- New default texts.
             ['Gomada-Vulmada'] = quest:event(405):replaceDefault(),

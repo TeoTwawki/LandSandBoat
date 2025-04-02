@@ -2,7 +2,7 @@
 -- Area: Konschtat Highlands
 --   NM: Rampaging Ram
 -----------------------------------
-local ID = zones[xi.zone.KONSCHTAT_HIGHLANDS]
+local ID = zones[invaderXim.zone.KONSCHTAT_HIGHLANDS]
 require('scripts/quests/tutorial')
 -----------------------------------
 ---@type TMobEntity
@@ -17,12 +17,12 @@ local steelfacePHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 205)
-    xi.tutorial.onMobDeath(player)
+    invaderXim.hunts.checkHunt(mob, player, 205)
+    invaderXim.tutorial.onMobDeath(player)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, steelfacePHTable, 10, 75600) -- 21 hours minimum
+    invaderXim.mob.phOnDespawn(mob, steelfacePHTable, 10, 75600) -- 21 hours minimum
 end
 
 return entity

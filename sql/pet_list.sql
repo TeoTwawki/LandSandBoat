@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `pet_list`
 --
 
-DROP TABLE IF EXISTS `pet_list`;
-CREATE TABLE IF NOT EXISTS `pet_list` (
+DROP TABLE IF IXIMSTS `pet_list`;
+CREATE TABLE IF NOT IXIMSTS `pet_list` (
   `petid` int(10) unsigned NOT NULL,
   `name` char(15) NOT NULL,
   `poolid` int(10) unsigned NOT NULL DEFAULT '0',

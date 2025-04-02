@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.HP_STANDBACK, 50)
+    mob:setMobMod(invaderXim.mobMod.HP_STANDBACK, 50)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

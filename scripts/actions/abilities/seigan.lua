@@ -10,7 +10,7 @@ local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
     if not target:isWeaponTwoHanded() then
-        return xi.msg.basic.NEEDS_2H_WEAPON, 0
+        return invaderXim.msg.basic.NEEDS_2H_WEAPON, 0
     end
 
     return 0, 0
@@ -18,9 +18,9 @@ end
 
 abilityObject.onUseAbility = function(player, target, ability)
     if target:isWeaponTwoHanded() then
-        target:delStatusEffect(xi.effect.HASSO)
-        target:delStatusEffect(xi.effect.SEIGAN)
-        target:addStatusEffect(xi.effect.SEIGAN, 0, 0, 300)
+        target:delStatusEffect(invaderXim.effect.HASSO)
+        target:delStatusEffect(invaderXim.effect.SEIGAN)
+        target:addStatusEffect(invaderXim.effect.SEIGAN, 0, 0, 300)
     end
 end
 

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.GESTATION
+-- invaderXim.effect.GESTATION
 -- https://ffxiclopedia.fandom.com/wiki/Gestation
 --
 -- Effects
@@ -22,7 +22,7 @@ local effectObject = {}
 local boostAmount = 50 -- +50% movement speed
 
 effectObject.onEffectGain = function(target, effect)
-    effect:addMod(xi.mod.MOVE_SPEED_STACKABLE, boostAmount)
+    effect:addMod(invaderXim.mod.MOVE_SPEED_STACKABLE, boostAmount)
 end
 
 effectObject.onEffectTick = function(target, effect)

@@ -6,11 +6,11 @@
 -- Hollowed Pathway : !pos 215.371 39.025 -446.368 267
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.SOUL_SIPHON)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.SOUL_SIPHON)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.STONEWALLED },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.STONEWALLED },
 }
 
 mission.sections =
@@ -20,12 +20,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(152),
         },
 
-        [xi.zone.KAMIHR_DRIFTS] =
+        [invaderXim.zone.KAMIHR_DRIFTS] =
         {
             ['Hollowed_Pathway'] = mission:progressEvent(32),
 
@@ -40,13 +40,13 @@ mission.sections =
                 [32] = function(player, csid, option, npc)
                     if option == 0 then
                         mission:setVar(player, 'Status', 1)
-                        player:setPos(495.312, 29.905, 379.563, 112, xi.zone.CIRDAS_CAVERNS)
+                        player:setPos(495.312, 29.905, 379.563, 112, invaderXim.zone.CIRDAS_CAVERNS)
                     end
                 end,
             },
         },
 
-        [xi.zone.CIRDAS_CAVERNS] =
+        [invaderXim.zone.CIRDAS_CAVERNS] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 1 then
@@ -58,7 +58,7 @@ mission.sections =
             {
                 [29] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 2)
-                    player:setPos(-210.208, 40.218, -447.346, 243, xi.zone.KAMIHR_DRIFTS)
+                    player:setPos(-210.208, 40.218, -447.346, 243, invaderXim.zone.KAMIHR_DRIFTS)
                 end,
             },
         },

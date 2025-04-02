@@ -7,11 +7,11 @@ local entity = {}
 
 entity.onMobSpawn = function(mob)
     mob:setRespawnTime(0)
-    mob:setMobMod(xi.mobMod.SUPERLINK, 32)
+    mob:setMobMod(invaderXim.mobMod.SUPERLINK, 32)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.XOLOTL_XTRAPOLATOR)
+    player:addTitle(invaderXim.title.XOLOTL_XTRAPOLATOR)
 end
 
 entity.onMobDespawn = function(mob)

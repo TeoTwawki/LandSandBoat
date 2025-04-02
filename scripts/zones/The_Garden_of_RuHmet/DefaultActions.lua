@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.THE_GARDEN_OF_RUHMET]
+local ID = zones[invaderXim.zone.THE_GARDEN_OF_RUHMET]
 
 return {
     ['_0zt']              = { messageSpecial = ID.text.PORTAL_SEALED },

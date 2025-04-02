@@ -44,7 +44,7 @@ commandObj.onTrigger = function(player, arg1, arg2)
 
     -- validate animationID
     if animationId ~= nil then
-        animationId = tonumber(animationId) or xi.anim[string.upper(animationId)]
+        animationId = tonumber(animationId) or invaderXim.anim[string.upper(animationId)]
     end
 
     if animationId == nil then

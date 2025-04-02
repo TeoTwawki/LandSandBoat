@@ -2,16 +2,16 @@
 -- Rumors from the West
 -- Seekers of Adoulin M1-1
 -----------------------------------
--- NOTE: xi.mission.id.soa.RUMORS_FROM_THE_WEST is set on character creation
+-- NOTE: invaderXim.mission.id.soa.RUMORS_FROM_THE_WEST is set on character creation
 -- !addmission 12 0
 -- Darcia : !pos -36 -1 -15 245
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.RUMORS_FROM_THE_WEST)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.RUMORS_FROM_THE_WEST)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.THE_GEOMAGNETRON },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_GEOMAGNETRON },
 }
 
 mission.sections =
@@ -22,16 +22,16 @@ mission.sections =
             -- This is needed because this mission sorts before hidden quests and gets checked first
 
             if
-                xi.settings.main.NEW_CHARACTER_CUTSCENE == 1 and
+                invaderXim.settings.main.NEW_CHARACTER_CUTSCENE == 1 and
                 player:getCharVar('HQuest[newCharacterCS]notSeen') == 1
             then
                 return false
             end
 
-            return currentMission == mission.missionId and xi.settings.main.ENABLE_SOA == 1
+            return currentMission == mission.missionId and invaderXim.settings.main.ENABLE_SOA == 1
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Darcia'] =
             {
@@ -60,22 +60,22 @@ mission.sections =
                 [10117] = function(player, csid, option, npc)
                     if option == 1 then
                         if mission:complete(player) then
-                            npcUtil.giveKeyItem(player, xi.ki.GEOMAGNETRON)
+                            npcUtil.giveKeyItem(player, invaderXim.ki.GEOMAGNETRON)
                         end
                     elseif option == 2 then
                         -- Paid to skip ahead, handle this manually
                         mission:complete(player)
                         player:delGil(1000000)
-                        npcUtil.giveKeyItem(player, xi.ki.ADOULINIAN_CHARTER_PERMIT)
-                        player:completeMission(xi.mission.log_id.SOA, xi.mission.id.soa.THE_GEOMAGNETRON)
-                        player:addMission(xi.mission.log_id.SOA, xi.mission.id.soa.ONWARD_TO_ADOULIN)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.ADOULINIAN_CHARTER_PERMIT)
+                        player:completeMission(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_GEOMAGNETRON)
+                        player:addMission(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.ONWARD_TO_ADOULIN)
                     end
                 end,
             },
         },
 
         -- Optional CS's
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onZoneIn = function(player, prevZone)
                 local missionStatus = player:getMissionStatus(mission.areaId)
@@ -95,7 +95,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             onZoneIn = function(player, prevZone)
                 local missionStatus = player:getMissionStatus(mission.areaId)
@@ -115,7 +115,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onZoneIn = function(player, prevZone)
                 local missionStatus = player:getMissionStatus(mission.areaId)

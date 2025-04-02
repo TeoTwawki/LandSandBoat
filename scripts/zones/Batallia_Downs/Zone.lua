@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Batallia_Downs (105)
 -----------------------------------
-local ID = zones[xi.zone.BATALLIA_DOWNS]
+local ID = zones[invaderXim.zone.BATALLIA_DOWNS]
 require('scripts/quests/full_speed_ahead')
 require('scripts/quests/i_can_hear_a_rainbow')
 -----------------------------------
@@ -34,7 +34,7 @@ zoneObject.onInitialize = function(zone)
 
     registerRegionAroundNPC(zone, ID.npc.SYRILLIA, 9)
 
-    xi.voidwalker.zoneOnInit(zone)
+    invaderXim.voidwalker.zoneOnInit(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -49,10 +49,10 @@ zoneObject.onZoneIn = function(player, prevZone)
     end
 
     if player:getCharVar('[QUEST]FullSpeedAhead') == 1 then -- Normal Mode
-        player:addStatusEffect(xi.effect.FULL_SPEED_AHEAD, 0, 3, xi.fsa.duration)
+        player:addStatusEffect(invaderXim.effect.FULL_SPEED_AHEAD, 0, 3, invaderXim.fsa.duration)
         return -1
     elseif player:getCharVar('[QUEST]FullSpeedAhead') == 2 then -- Easy Mode
-        player:addStatusEffect(xi.effect.FULL_SPEED_AHEAD, 1, 3, xi.fsa.duration)
+        player:addStatusEffect(invaderXim.effect.FULL_SPEED_AHEAD, 1, 3, invaderXim.fsa.duration)
         return -1
     end
 
@@ -64,20 +64,20 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.afterZoneIn = function(player)
-    xi.chocoboGame.handleMessage(player)
+    invaderXim.chocoboGame.handleMessage(player)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
     local triggerAreaID = triggerArea:getTriggerAreaID()
 
-    if player:hasStatusEffect(xi.effect.FULL_SPEED_AHEAD) then
-        xi.fsa.onTriggerAreaEnter(player, triggerAreaID)
-    elseif triggerAreaID == 1 and player:hasStatusEffect(xi.effect.MOUNTED) then
-        xi.chocoboGame.onTriggerAreaEnter(player)
+    if player:hasStatusEffect(invaderXim.effect.FULL_SPEED_AHEAD) then
+        invaderXim.fsa.onTriggerAreaEnter(player, triggerAreaID)
+    elseif triggerAreaID == 1 and player:hasStatusEffect(invaderXim.effect.MOUNTED) then
+        invaderXim.chocoboGame.onTriggerAreaEnter(player)
     end
 end
 
@@ -89,7 +89,7 @@ end
 
 zoneObject.onEventFinish = function(player, csid, option, npc)
     if csid == 24 then
-        xi.fsa.completeGame(player)
+        invaderXim.fsa.completeGame(player)
     elseif
         csid == 26 and
         option == 0
@@ -104,7 +104,7 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
         player:setPos(475, 8.8, -159, 128, 105)
     end
 
-    xi.chocoboGame.onEventFinish(player, csid)
+    invaderXim.chocoboGame.onEventFinish(player, csid)
 end
 
 return zoneObject

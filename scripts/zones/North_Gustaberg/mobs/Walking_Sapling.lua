@@ -3,7 +3,7 @@
 --  Mob: Walking Sapling
 -- Note: Place Holder For Maighdean Uaine
 -----------------------------------
-local ID = zones[xi.zone.NORTH_GUSTABERG]
+local ID = zones[invaderXim.zone.NORTH_GUSTABERG]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -20,11 +20,11 @@ local maighdeanPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 18, 2, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 18, 2, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, maighdeanPHTable, 5, 900) -- 15 min minimum
+    invaderXim.mob.phOnDespawn(mob, maighdeanPHTable, 5, 900) -- 15 min minimum
 end
 
 return entity

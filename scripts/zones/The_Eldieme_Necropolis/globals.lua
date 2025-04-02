@@ -2,7 +2,7 @@
 -- Zone: The Eldieme Necropolis (195)
 -- Desc: this file contains functions that are shared by multiple luas in this zone's directory
 -----------------------------------
-local ID = zones[xi.zone.THE_ELDIEME_NECROPOLIS]
+local ID = zones[invaderXim.zone.THE_ELDIEME_NECROPOLIS]
 -----------------------------------
 local spawnSkulls = function()
     -- Spawn all 7 Skulls
@@ -30,7 +30,7 @@ local countUnlitBraziers = function()
 
     for i = 0, 6 do
         local brazier = GetNPCByID(ID.npc.CANDLE_OFFSET + i)
-        if brazier and brazier:getAnimation() == xi.anim.OPEN_DOOR then
+        if brazier and brazier:getAnimation() == invaderXim.anim.OPEN_DOOR then
             numberNotLit = numberNotLit - 1
         end
     end
@@ -39,11 +39,11 @@ local countUnlitBraziers = function()
 end
 
 local lightBrazier = function(player, npc)
-    npc:setAnimation(xi.anim.OPEN_DOOR)
+    npc:setAnimation(invaderXim.anim.OPEN_DOOR)
 
     --unlight brazier after five minutes
     npc:timer(300000, function()
-        npc:setAnimation(xi.anim.CLOSE_DOOR)
+        npc:setAnimation(invaderXim.anim.CLOSE_DOOR)
     end)
 
     player:messageSpecial(ID.text.THE_BRAZIER_IS_LIT)
@@ -61,8 +61,8 @@ end
 local eldiemeGlobal = {
     -- Click on any of the intersection gates
     gateOnTrigger = function(player, npc)
-        if npc:getAnimation() == xi.anim.CLOSE_DOOR then
-            if player:hasKeyItem(xi.ki.MAGICKED_ASTROLABE) then
+        if npc:getAnimation() == invaderXim.anim.CLOSE_DOOR then
+            if player:hasKeyItem(invaderXim.ki.MAGICKED_ASTROLABE) then
                 npc:openDoor(8)
             else
                 player:messageSpecial(ID.text.SOLID_STONE)
@@ -75,8 +75,8 @@ local eldiemeGlobal = {
         -- toggle gates between open and close animations
         -- gates are grouped in groups of five. even numbered groups share one animation, while odd numbered groups share the other.
 
-        local animEven = (npc:getAnimation() == xi.anim.OPEN_DOOR) and xi.anim.CLOSE_DOOR or xi.anim.OPEN_DOOR
-        local animOdd  = (npc:getAnimation() == xi.anim.OPEN_DOOR) and xi.anim.OPEN_DOOR or xi.anim.CLOSE_DOOR
+        local animEven = (npc:getAnimation() == invaderXim.anim.OPEN_DOOR) and invaderXim.anim.CLOSE_DOOR or invaderXim.anim.OPEN_DOOR
+        local animOdd  = (npc:getAnimation() == invaderXim.anim.OPEN_DOOR) and invaderXim.anim.OPEN_DOOR or invaderXim.anim.CLOSE_DOOR
 
         for i = 0, 19 do
             local group = math.floor(i / 5)
@@ -93,7 +93,7 @@ local eldiemeGlobal = {
     handleCandleTrade = function(player, npc, trade)
         if
             os.time() > GetServerVariable('[ELDIEME]TimeToRespawnSkulls') and
-            npcUtil.tradeHasExactly(trade, xi.item.FLINT_STONE)
+            npcUtil.tradeHasExactly(trade, invaderXim.item.FLINT_STONE)
         then
             lightBrazier(player, npc)
         else
@@ -102,10 +102,10 @@ local eldiemeGlobal = {
     end,
 
     handleCandleTrigger = function(player, npc)
-        if npc:getAnimation() == xi.anim.OPEN_DOOR then
+        if npc:getAnimation() == invaderXim.anim.OPEN_DOOR then
             player:messageSpecial(ID.text.BRAZIER_ACTIVE)
         elseif os.time() > GetServerVariable('[ELDIEME]TimeToRespawnSkulls') then
-            player:messageSpecial(ID.text.BRAZIER_OUT, 0, xi.item.FLINT_STONE)
+            player:messageSpecial(ID.text.BRAZIER_OUT, 0, invaderXim.item.FLINT_STONE)
         else
             player:messageSpecial(ID.text.BRAZIER_COOLDOWN)
         end

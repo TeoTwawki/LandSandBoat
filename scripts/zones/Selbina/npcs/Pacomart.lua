@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if player:getCurrentMission(xi.mission.log_id.ROV) >= xi.mission.id.rov.FLAMES_OF_PRAYER then
+    if player:getCurrentMission(invaderXim.mission.log_id.ROV) >= invaderXim.mission.id.rov.FLAMES_OF_PRAYER then
         player:startEvent(179)
     end
 end

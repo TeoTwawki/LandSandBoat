@@ -3,7 +3,7 @@
 --  Mob: Phorusrhacos
 -- Note: PH for Picolaton
 -----------------------------------
-local ID = zones[xi.zone.WESTERN_ALTEPA_DESERT]
+local ID = zones[invaderXim.zone.WESTERN_ALTEPA_DESERT]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -22,7 +22,7 @@ entity.onMobDespawn = function(mob)
         UpdateNMSpawnPoint(mob:getID())
     end
 
-    xi.mob.phOnDespawn(mob, picolatonPHTable, 10, 6400)
+    invaderXim.mob.phOnDespawn(mob, picolatonPHTable, 10, 6400)
 end
 
 return entity

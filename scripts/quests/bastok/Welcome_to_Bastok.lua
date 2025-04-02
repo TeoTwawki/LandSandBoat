@@ -6,24 +6,24 @@
 -- Bartolomeo : !pos -84.967 1.896 -18.679 236
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.WELCOME_TO_BASTOK)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.WELCOME_TO_BASTOK)
 
 quest.reward =
 {
     fame     = 80,
-    fameArea = xi.fameArea.BASTOK,
-    item     = xi.item.SPATHA,
-    title    = xi.title.BASTOK_WELCOMING_COMMITTEE,
+    fameArea = invaderXim.fameArea.BASTOK,
+    item     = invaderXim.item.SPATHA,
+    title    = invaderXim.title.BASTOK_WELCOMING_COMMITTEE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Powhatan'] = quest:progressEvent(50),
 
@@ -40,10 +40,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Powhatan'] =
             {
@@ -62,7 +62,7 @@ quest.sections =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:getEquipID(xi.slot.SUB) == xi.item.SHELL_SHIELD and
+                        player:getEquipID(invaderXim.slot.SUB) == invaderXim.item.SHELL_SHIELD and
                         quest:getVar(player, 'Prog') == 0
                     then
                         return quest:progressEvent(52)

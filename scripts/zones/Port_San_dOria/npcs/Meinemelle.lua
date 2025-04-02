@@ -3,7 +3,7 @@
 --  NPC: Meinemelle
 -- !pos -8.289 -9.3 -146.093 232
 -----------------------------------
-local ID = zones[xi.zone.PORT_SAN_DORIA]
+local ID = zones[invaderXim.zone.PORT_SAN_DORIA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

@@ -3,7 +3,7 @@
 --  Mob: Groundskeeper
 -- Note: Place holder Despot
 -----------------------------------
-local ID = zones[xi.zone.RUAUN_GARDENS]
+local ID = zones[invaderXim.zone.RUAUN_GARDENS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -29,8 +29,8 @@ local despotPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 143, 2, xi.regime.type.FIELDS)
-    xi.regime.checkRegime(player, mob, 144, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 143, 2, invaderXim.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 144, 1, invaderXim.regime.type.FIELDS)
     if optParams.isKiller then
         mob:setLocalVar('killer', player:getID())
     end
@@ -39,7 +39,7 @@ end
 entity.onMobDespawn = function(mob)
     local params = {}
     params.immediate = true
-    if xi.mob.phOnDespawn(mob, despotPHTable, 5, 7200, params) then -- 2 hours
+    if invaderXim.mob.phOnDespawn(mob, despotPHTable, 5, 7200, params) then -- 2 hours
         local phId = mob:getID()
         local nmId = despotPHTable[phId]
         GetMobByID(nmId):addListener('SPAWN', 'PH_VAR', function(m)

@@ -14,10 +14,10 @@ commandObj.cmdprops =
 commandObj.onTrigger = function(player)
     local targ = player:getCursorTarget()
     if targ and not targ:isNPC() then
-        local stun = targ:getStatusEffect(xi.effect.STUN)
-        targ:delStatusEffect(xi.effect.STUN)
+        local stun = targ:getStatusEffect(invaderXim.effect.STUN)
+        targ:delStatusEffect(invaderXim.effect.STUN)
         if not stun or stun:getPower() ~= 69 then -- it's toggleable
-            targ:addStatusEffect(xi.effect.STUN, 69, 0, 3600)
+            targ:addStatusEffect(invaderXim.effect.STUN, 69, 0, 3600)
             player:printToPlayer('Gave target super Stun.')
         else
             player:printToPlayer('Removed target mob\'s super Stun.')

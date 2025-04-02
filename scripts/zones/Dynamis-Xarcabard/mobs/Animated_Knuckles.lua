@@ -2,7 +2,7 @@
 -- Area: Dynamis - Xarcabard
 --  Mob: Animated Knuckles
 -----------------------------------
-local ID = zones[xi.zone.DYNAMIS_XARCABARD]
+local ID = zones[invaderXim.zone.DYNAMIS_XARCABARD]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -21,7 +21,7 @@ end
 
 entity.onMobDeath = function(mob, player, optParams)
     player:showText(mob, ID.text.ANIMATED_KNUCKLES_DIALOG + 1)
-    xi.magian.onMobDeath(mob, player, optParams, set{ 3097 })
+    invaderXim.magian.onMobDeath(mob, player, optParams, set{ 3097 })
 end
 
 return entity

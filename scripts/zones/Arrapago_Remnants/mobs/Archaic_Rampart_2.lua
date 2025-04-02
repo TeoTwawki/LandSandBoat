@@ -3,7 +3,7 @@
 --  Mob: Archaic Rampart
 -----------------------------------
 mixins = { require('scripts/mixins/families/rampart') }
-local ID = zones[xi.zone.ARRAPAGO_REMNANTS]
+local ID = zones[invaderXim.zone.ARRAPAGO_REMNANTS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

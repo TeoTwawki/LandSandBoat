@@ -28,9 +28,9 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
     if csid == 100 then
         local prevzone = player:getPreviousZone()
 
-        if prevzone == xi.zone.PORT_JEUNO then
+        if prevzone == invaderXim.zone.PORT_JEUNO then
             player:setPos(0, 0, 0, 0, 240)
-        elseif prevzone == xi.zone.PORT_WINDURST then
+        elseif prevzone == invaderXim.zone.PORT_WINDURST then
             player:setPos(0, 0, 0, 0, 246)
         end
     end

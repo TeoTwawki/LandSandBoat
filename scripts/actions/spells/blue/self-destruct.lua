@@ -22,18 +22,18 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.attackType = xi.attackType.MAGICAL
-    params.damageType = xi.damageType.FIRE
+    params.attackType = invaderXim.attackType.MAGICAL
+    params.damageType = invaderXim.damageType.FIRE
     local playerHP = caster:getLocalVar('selfdestructHp')
     local damage = playerHP - 1
 
     if damage > 0 then
-        damage = xi.spells.blue.applySpellDamage(caster, target, spell, damage, params)
+        damage = invaderXim.spells.blue.applySpellDamage(caster, target, spell, damage, params)
         caster:setHP(1)
-        caster:delStatusEffectSilent(xi.effect.WEAKNESS)
-        caster:addStatusEffect(xi.effect.WEAKNESS, 1, 0, 300)
+        caster:delStatusEffectSilent(invaderXim.effect.WEAKNESS)
+        caster:addStatusEffect(invaderXim.effect.WEAKNESS, 1, 0, 300)
     else
-        spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_NO_EFFECT)
     end
 
     return damage

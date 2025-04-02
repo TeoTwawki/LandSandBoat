@@ -12,7 +12,7 @@
 -- Sedal-Godjal     : !pos 185 -3 -116 149
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.VAIN)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.VAIN)
 
 mission.reward =
 {
@@ -30,11 +30,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onEventFinish =
             {
@@ -42,7 +42,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onEventFinish =
             {
@@ -50,7 +50,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onEventFinish =
             {
@@ -58,7 +58,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onEventFinish =
             {
@@ -72,7 +72,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Moreno-Toeno'] =
             {
@@ -80,7 +80,7 @@ mission.sections =
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
                     if missionStatus == 0 then
-                        return mission:progressEvent(752, 0, xi.ki.STAR_SEEKER)
+                        return mission:progressEvent(752, 0, invaderXim.ki.STAR_SEEKER)
                     elseif missionStatus <= 3 then
                         return mission:progressEvent(753)
                     elseif missionStatus == 4 then
@@ -93,8 +93,8 @@ mission.sections =
             {
                 [752] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 1)
-                    npcUtil.giveKeyItem(player, xi.ki.STAR_SEEKER)
-                    player:addTitle(xi.title.FUGITIVE_MINISTER_BOUNTY_HUNTER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.STAR_SEEKER)
+                    player:addTitle(invaderXim.title.FUGITIVE_MINISTER_BOUNTY_HUNTER)
                 end,
 
                 [758] = function(player, csid, option, npc)
@@ -103,7 +103,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BATALLIA_DOWNS] =
+        [invaderXim.zone.BATALLIA_DOWNS] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -123,7 +123,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BEAUCEDINE_GLACIER] =
+        [invaderXim.zone.BEAUCEDINE_GLACIER] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -139,7 +139,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BUBURIMU_PENINSULA] =
+        [invaderXim.zone.BUBURIMU_PENINSULA] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -151,26 +151,26 @@ mission.sections =
             {
                 [5] = function(player, csid, option, npc)
                     if
-                        player:getPreviousZone() == xi.zone.LABYRINTH_OF_ONZOZO or
-                        player:getPreviousZone() == xi.zone.MHAURA
+                        player:getPreviousZone() == invaderXim.zone.LABYRINTH_OF_ONZOZO or
+                        player:getPreviousZone() == invaderXim.zone.MHAURA
                     then
                         player:updateEvent(0, 0, 0, 0, 0, 7)
-                    elseif player:getPreviousZone() == xi.zone.MAZE_OF_SHAKHRAMI then
+                    elseif player:getPreviousZone() == invaderXim.zone.MAZE_OF_SHAKHRAMI then
                         player:updateEvent(0, 0, 0, 0, 0, 6)
                     end
                 end,
             },
         },
 
-        [xi.zone.DAVOI] =
+        [invaderXim.zone.DAVOI] =
         {
             ['Sedal-Godjal'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.CURSE_WAND) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.CURSE_WAND) and
                         player:getMissionStatus(mission.areaId) == 3 and
-                        player:hasKeyItem(xi.ki.MAGIC_DRAINED_STAR_SEEKER)
+                        player:hasKeyItem(invaderXim.ki.MAGIC_DRAINED_STAR_SEEKER)
                     then
                         return mission:progressEvent(120)
                     end
@@ -180,15 +180,15 @@ mission.sections =
                     local missionStatus = player:getMissionStatus(mission.areaId)
 
                     if missionStatus >= 2 then
-                        if player:hasKeyItem(xi.ki.STAR_SEEKER) then
-                            return mission:progressEvent(118, 0, xi.item.CURSE_WAND, xi.ki.STAR_SEEKER)
+                        if player:hasKeyItem(invaderXim.ki.STAR_SEEKER) then
+                            return mission:progressEvent(118, 0, invaderXim.item.CURSE_WAND, invaderXim.ki.STAR_SEEKER)
                         elseif
-                            player:hasKeyItem(xi.ki.MAGIC_DRAINED_STAR_SEEKER) and
+                            player:hasKeyItem(invaderXim.ki.MAGIC_DRAINED_STAR_SEEKER) and
                             missionStatus == 4
                         then
                             return mission:progressEvent(121)
                         else
-                            return mission:progressEvent(119, 0, xi.item.CURSE_WAND)
+                            return mission:progressEvent(119, 0, invaderXim.item.CURSE_WAND)
                         end
                     end
                 end,
@@ -197,8 +197,8 @@ mission.sections =
             onEventFinish =
             {
                 [118] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.STAR_SEEKER)
-                    npcUtil.giveKeyItem(player, xi.ki.MAGIC_DRAINED_STAR_SEEKER)
+                    player:delKeyItem(invaderXim.ki.STAR_SEEKER)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.MAGIC_DRAINED_STAR_SEEKER)
                     player:setMissionStatus(mission.areaId, 3)
                 end,
 
@@ -209,7 +209,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.EAST_RONFAURE] =
+        [invaderXim.zone.EAST_RONFAURE] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -229,7 +229,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.EAST_SARUTABARUTA] =
+        [invaderXim.zone.EAST_SARUTABARUTA] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -241,8 +241,8 @@ mission.sections =
             {
                 [52] = function(player, csid, option, npc)
                     if
-                        player:getPreviousZone() == xi.zone.WINDURST_WOODS or
-                        player:getPreviousZone() == xi.zone.WEST_SARUTABARUTA
+                        player:getPreviousZone() == invaderXim.zone.WINDURST_WOODS or
+                        player:getPreviousZone() == invaderXim.zone.WEST_SARUTABARUTA
                     then
                         if player:getZPos() < 570 then
                             player:updateEvent(0, 0, 0, 0, 0, 1)
@@ -250,7 +250,7 @@ mission.sections =
                             player:updateEvent(0, 0, 0, 0, 0, 2)
                         end
                     elseif
-                        player:getPreviousZone() == xi.zone.OUTER_HORUTOTO_RUINS and
+                        player:getPreviousZone() == invaderXim.zone.OUTER_HORUTOTO_RUINS and
                         player:getZPos() > 570
                     then
                         player:updateEvent(0, 0, 0, 0, 0, 2)
@@ -259,7 +259,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.KONSCHTAT_HIGHLANDS] =
+        [invaderXim.zone.KONSCHTAT_HIGHLANDS] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -279,7 +279,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.LA_THEINE_PLATEAU] =
+        [invaderXim.zone.LA_THEINE_PLATEAU] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -295,7 +295,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.MERIPHATAUD_MOUNTAINS] =
+        [invaderXim.zone.MERIPHATAUD_MOUNTAINS] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -306,16 +306,16 @@ mission.sections =
             onEventUpdate =
             {
                 [34] = function(player, csid, option, npc)
-                    if player:getPreviousZone() == xi.zone.SAUROMUGUE_CHAMPAIGN then
+                    if player:getPreviousZone() == invaderXim.zone.SAUROMUGUE_CHAMPAIGN then
                         player:updateEvent(0, 0, 0, 0, 0, 2)
-                    elseif player:getPreviousZone() == xi.zone.TAHRONGI_CANYON then
+                    elseif player:getPreviousZone() == invaderXim.zone.TAHRONGI_CANYON then
                         player:updateEvent(0, 0, 0, 0, 0, 1)
                     end
                 end,
             },
         },
 
-        [xi.zone.NORTH_GUSTABERG] =
+        [invaderXim.zone.NORTH_GUSTABERG] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -335,7 +335,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PASHHOW_MARSHLANDS] =
+        [invaderXim.zone.PASHHOW_MARSHLANDS] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -353,7 +353,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.ROLANBERRY_FIELDS] =
+        [invaderXim.zone.ROLANBERRY_FIELDS] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -373,7 +373,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.ROMAEVE] =
+        [invaderXim.zone.ROMAEVE] =
         {
             ['QuHau_Spring'] =
             {
@@ -398,7 +398,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SAUROMUGUE_CHAMPAIGN] =
+        [invaderXim.zone.SAUROMUGUE_CHAMPAIGN] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -409,13 +409,13 @@ mission.sections =
             onEventUpdate =
             {
                 [5] = function(player, csid, option, npc)
-                    if player:getPreviousZone() == xi.zone.GARLAIGE_CITADEL then
+                    if player:getPreviousZone() == invaderXim.zone.GARLAIGE_CITADEL then
                         player:updateEvent(0, 0, 0, 0, 0, 2)
-                    elseif player:getPreviousZone() == xi.zone.MERIPHATAUD_MOUNTAINS then
+                    elseif player:getPreviousZone() == invaderXim.zone.MERIPHATAUD_MOUNTAINS then
                         player:updateEvent(0, 0, 0, 0, 0, 4)
                     elseif
-                        player:getPreviousZone() == xi.zone.ROLANBERRY_FIELDS or
-                        player:getPreviousZone() == xi.zone.PORT_JEUNO
+                        player:getPreviousZone() == invaderXim.zone.ROLANBERRY_FIELDS or
+                        player:getPreviousZone() == invaderXim.zone.PORT_JEUNO
                     then
                         player:updateEvent(0, 0, 0, 0, 0, 3)
                     end
@@ -423,7 +423,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SOUTH_GUSTABERG] =
+        [invaderXim.zone.SOUTH_GUSTABERG] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -445,7 +445,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.TAHRONGI_CANYON] =
+        [invaderXim.zone.TAHRONGI_CANYON] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -457,18 +457,18 @@ mission.sections =
             {
                 [37] = function(player, csid, option, npc)
                     if
-                        player:getPreviousZone() == xi.zone.EAST_SARUTABARUTA or
-                        player:getPreviousZone() == xi.zone.BUBURIMU_PENINSULA
+                        player:getPreviousZone() == invaderXim.zone.EAST_SARUTABARUTA or
+                        player:getPreviousZone() == invaderXim.zone.BUBURIMU_PENINSULA
                     then
                         player:updateEvent(0, 0, 0, 0, 0, 7)
-                    elseif player:getPreviousZone() == xi.zone.MAZE_OF_SHAKHRAMI then
+                    elseif player:getPreviousZone() == invaderXim.zone.MAZE_OF_SHAKHRAMI then
                         player:updateEvent(0, 0, 0, 0, 0, 6)
                     end
                 end,
             },
         },
 
-        [xi.zone.THE_SANCTUARY_OF_ZITAH] =
+        [invaderXim.zone.THE_SANCTUARY_OF_ZITAH] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -479,16 +479,16 @@ mission.sections =
             onEventUpdate =
             {
                 [4] = function(player, csid, option, npc)
-                    if player:getPreviousZone() == xi.zone.THE_BOYAHDA_TREE then
+                    if player:getPreviousZone() == invaderXim.zone.THE_BOYAHDA_TREE then
                         player:updateEvent(0, 0, 0, 0, 0, 7)
-                    elseif player:getPreviousZone() == xi.zone.MERIPHATAUD_MOUNTAINS then
+                    elseif player:getPreviousZone() == invaderXim.zone.MERIPHATAUD_MOUNTAINS then
                         player:updateEvent(0, 0, 0, 0, 0, 1)
                     end
                 end,
             },
         },
 
-        [xi.zone.VALKURM_DUNES] =
+        [invaderXim.zone.VALKURM_DUNES] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -510,7 +510,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WEST_RONFAURE] =
+        [invaderXim.zone.WEST_RONFAURE] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -526,7 +526,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WEST_SARUTABARUTA] =
+        [invaderXim.zone.WEST_SARUTABARUTA] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -546,7 +546,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.XARCABARD] =
+        [invaderXim.zone.XARCABARD] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 1 then
@@ -557,7 +557,7 @@ mission.sections =
             onEventUpdate =
             {
                 [11] = function(player, csid, option, npc)
-                    if player:getPreviousZone() == xi.zone.BEAUCEDINE_GLACIER then
+                    if player:getPreviousZone() == invaderXim.zone.BEAUCEDINE_GLACIER then
                         player:updateEvent(0, 0, 0, 0, 0, 2)
                     else
                         player:updateEvent(0, 0, 0, 0, 0, 3)

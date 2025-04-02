@@ -2,7 +2,7 @@
 -- TOAU-15: The Black Coffin
 -- !instance 6000
 -----------------------------------
-local ID = zones[xi.zone.THE_ASHU_TALIF]
+local ID = zones[invaderXim.zone.THE_ASHU_TALIF]
 -----------------------------------
 local instanceObject = {}
 
@@ -29,13 +29,13 @@ local crewTable =
 }
 
 instanceObject.registryRequirements = function(player)
-    return player:getCurrentMission(xi.mission.log_id.TOAU) == xi.mission.id.toau.THE_BLACK_COFFIN and
-        player:hasKeyItem(xi.ki.EPHRAMADIAN_GOLD_COIN)
+    return player:getCurrentMission(invaderXim.mission.log_id.TOAU) == invaderXim.mission.id.toau.THE_BLACK_COFFIN and
+        player:hasKeyItem(invaderXim.ki.EPHRAMADIAN_GOLD_COIN)
 end
 
 instanceObject.entryRequirements = function(player)
-    return player:getCurrentMission(xi.mission.log_id.TOAU) >= xi.mission.id.toau.THE_BLACK_COFFIN and
-        player:hasKeyItem(xi.ki.EPHRAMADIAN_GOLD_COIN)
+    return player:getCurrentMission(invaderXim.mission.log_id.TOAU) >= invaderXim.mission.id.toau.THE_BLACK_COFFIN and
+        player:hasKeyItem(invaderXim.ki.EPHRAMADIAN_GOLD_COIN)
 end
 
 instanceObject.onInstanceCreated = function(instance)
@@ -46,18 +46,18 @@ instanceObject.onInstanceCreated = function(instance)
 end
 
 instanceObject.onInstanceCreatedCallback = function(player, instance)
-    xi.instance.onInstanceCreatedCallback(player, instance)
+    invaderXim.instance.onInstanceCreatedCallback(player, instance)
 end
 
 instanceObject.afterInstanceRegister = function(player)
     local instance = player:getInstance()
-    player:messageSpecial(ID.text.FADES_INTO_NOTHINGNESS, xi.ki.EPHRAMADIAN_GOLD_COIN)
-    player:delKeyItem(xi.ki.EPHRAMADIAN_GOLD_COIN)
+    player:messageSpecial(ID.text.FADES_INTO_NOTHINGNESS, invaderXim.ki.EPHRAMADIAN_GOLD_COIN)
+    player:delKeyItem(invaderXim.ki.EPHRAMADIAN_GOLD_COIN)
     player:messageSpecial(ID.text.TIME_TO_COMPLETE, instance:getTimeLimit())
 end
 
 instanceObject.onInstanceTimeUpdate = function(instance, elapsed)
-    xi.instance.updateInstanceTime(instance, elapsed, ID.text)
+    invaderXim.instance.updateInstanceTime(instance, elapsed, ID.text)
 end
 
 instanceObject.onInstanceFailure = function(instance)
@@ -94,10 +94,10 @@ instanceObject.onInstanceComplete = function(instance)
 
     for i, player in pairs(players) do
         if
-            player:getCurrentMission(xi.mission.log_id.TOAU) == xi.mission.id.toau.THE_BLACK_COFFIN and
-            player:getMissionStatus(xi.mission.log_id.TOAU) == 1
+            player:getCurrentMission(invaderXim.mission.log_id.TOAU) == invaderXim.mission.id.toau.THE_BLACK_COFFIN and
+            player:getMissionStatus(invaderXim.mission.log_id.TOAU) == 1
         then
-            player:setMissionStatus(xi.mission.log_id.TOAU, 2)
+            player:setMissionStatus(invaderXim.mission.log_id.TOAU, 2)
         end
 
         player:startEvent(102)

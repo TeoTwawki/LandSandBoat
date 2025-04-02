@@ -10,7 +10,7 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     target:addEnmity(mob, 1, 1800)
-    skill:setMsg(xi.msg.basic.NONE)
+    skill:setMsg(invaderXim.msg.basic.NONE)
 end
 
 return mobskillObject

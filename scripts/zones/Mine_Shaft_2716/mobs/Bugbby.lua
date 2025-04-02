@@ -3,7 +3,7 @@
 -- CoP Mission 5-3 (A Century of Hardship)
 -- NM: Bugbby
 -----------------------------------
-local ID = zones[xi.zone.MINE_SHAFT_2716]
+local ID = zones[invaderXim.zone.MINE_SHAFT_2716]
 mixins = { require('scripts/mixins/job_special') }
 -----------------------------------
 ---@type TMobEntity
@@ -13,10 +13,10 @@ entity.onMobInitialize = function(mob)
 end
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
-            { id = xi.jsa.MIGHTY_STRIKES, cooldown = 300, hpp = math.random(85, 95) }, -- 5min cooldown
+            { id = invaderXim.jsa.MIGHTY_STRIKES, cooldown = 300, hpp = math.random(85, 95) }, -- 5min cooldown
         },
     })
 end

@@ -5,18 +5,18 @@
 local spellObject = {}
 
 spellObject.onMagicCastingCheck = function(caster, target, spell)
-    return xi.trust.canCast(caster, spell)
+    return invaderXim.trust.canCast(caster, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    return xi.trust.spawn(caster, spell)
+    return invaderXim.trust.spawn(caster, spell)
 end
 
 spellObject.onMobSpawn = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.SPAWN)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.SPAWN)
 
-    mob:addGambit(ai.t.PARTY, { ai.c.NOT_STATUS, xi.effect.CORSAIRS_ROLL }, { ai.r.JA, ai.s.SPECIFIC, xi.ja.CORSAIRS_ROLL })
-    mob:addGambit(ai.t.PARTY, { ai.c.NOT_STATUS, xi.effect.CHAOS_ROLL }, { ai.r.JA, ai.s.SPECIFIC, xi.ja.CHAOS_ROLL })
+    mob:addGambit(ai.t.PARTY, { ai.c.NOT_STATUS, invaderXim.effect.CORSAIRS_ROLL }, { ai.r.JA, ai.s.SPECIFIC, invaderXim.ja.CORSAIRS_ROLL })
+    mob:addGambit(ai.t.PARTY, { ai.c.NOT_STATUS, invaderXim.effect.CHAOS_ROLL }, { ai.r.JA, ai.s.SPECIFIC, invaderXim.ja.CHAOS_ROLL })
 
     mob:addGambit(ai.t.TARGET, { ai.c.ALWAYS, 0 }, { ai.r.RATTACK, 0, 0 }, 10)
 
@@ -28,15 +28,15 @@ spellObject.onMobSpawn = function(mob)
     -- Per the December 10, 2015 update:
     -- "The "Enhanced Magic Accuracy" attribute has been added."
     local power = mob:getMainLvl() / 5
-    mob:addMod(xi.mod.MACC, power)
+    mob:addMod(invaderXim.mod.MACC, power)
 end
 
 spellObject.onMobDespawn = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.DESPAWN)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.DESPAWN)
 end
 
 spellObject.onMobDeath = function(mob)
-    xi.trust.message(mob, xi.trust.messageOffset.DEATH)
+    invaderXim.trust.message(mob, invaderXim.trust.messageOffset.DEATH)
 end
 
 return spellObject

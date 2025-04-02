@@ -2,8 +2,8 @@
 -- A Shantotto Ascension Helpers
 -----------------------------------
 xi = xi or {}
-xi.asa = xi.asa or {}
-xi.asa.helpers = xi.asa.helpers or {}
+invaderXim.asa = invaderXim.asa or {}
+invaderXim.asa.helpers = invaderXim.asa.helpers or {}
 
 local hp = { 80, 60, 40, 20, 1 }
 
@@ -17,7 +17,7 @@ local abilities =
     [7046] = 884, -- Shiva
 }
 
-xi.asa.helpers.astralFlow = function(mob)
+invaderXim.asa.helpers.astralFlow = function(mob)
     local astralFlows = mob:getLocalVar('astralflows')
     for k, v in pairs(hp) do
         if astralFlows == k and mob:getHPP() <= v and mob:canUseAbilities() then

@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.KONSCHTAT_HIGHLANDS]
+local ID = zones[invaderXim.zone.KONSCHTAT_HIGHLANDS]
 
 return {
     ['qm1']                 = { messageSpecial = ID.text.FIND_NOTHING },

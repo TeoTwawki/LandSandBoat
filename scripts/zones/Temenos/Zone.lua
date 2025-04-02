@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Temenos (37)
 -----------------------------------
-local ID = zones[xi.zone.TEMENOS]
+local ID = zones[invaderXim.zone.TEMENOS]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -52,7 +52,7 @@ zoneObject.onInitialize = function(zone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -73,7 +73,7 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
     -- local triggerAreaID = triggerArea:getTriggerAreaID()
     -- local cs
 
-    -- if GetNPCByID(ID.TEMENOS_NORTHERN_TOWER.npc.PORTAL[1] + (triggerAreaID - 1)):getAnimation() == xi.animation.OPEN_DOOR then
+    -- if GetNPCByID(ID.TEMENOS_NORTHERN_TOWER.npc.PORTAL[1] + (triggerAreaID - 1)):getAnimation() == invaderXim.animation.OPEN_DOOR then
     --     if triggerAreaID > 20 then
     --         cs = 120
     --     else

@@ -5,15 +5,15 @@
 -- !addmission 13 36
 -- qm11 : !pos -409.553 17.356 -380.626 123
 -----------------------------------
-local yuhtungaID = zones[xi.zone.YUHTUNGA_JUNGLE]
+local yuhtungaID = zones[invaderXim.zone.YUHTUNGA_JUNGLE]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.THE_LOST_AVATAR)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.THE_LOST_AVATAR)
 
 mission.reward =
 {
-    keyItem     = xi.ki.RHAPSODY_IN_AZURE,
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.VOLTO_OSCURO },
+    keyItem     = invaderXim.ki.RHAPSODY_IN_AZURE,
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.VOLTO_OSCURO },
 }
 
 mission.sections =
@@ -23,7 +23,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.YUHTUNGA_JUNGLE] =
+        [invaderXim.zone.YUHTUNGA_JUNGLE] =
         {
             ['qm11'] =
             {

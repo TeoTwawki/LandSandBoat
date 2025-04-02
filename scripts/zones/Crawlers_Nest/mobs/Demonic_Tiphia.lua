@@ -12,13 +12,13 @@ entity.onMobFight = function(mob, target)
         mob:actionQueueEmpty() and
         os.time() > mob:getLocalVar('cureDelay')
     then
-        mob:castSpell(xi.magic.spell.CURE_V, mob)
+        mob:castSpell(invaderXim.magic.spell.CURE_V, mob)
         mob:setLocalVar('cureDelay', os.time() + 15)
     end
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 236)
+    invaderXim.hunts.checkHunt(mob, player, 236)
 end
 
 return entity

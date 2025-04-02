@@ -12,7 +12,7 @@ end
 
 itemObject.onItemUse = function(target)
     target:forMembersInRange(10, function(member)
-        member:messageBasic(xi.msg.basic.RECOVERS_HP, 0, member:addHP(600 * xi.settings.main.ITEM_POWER))
+        member:messageBasic(invaderXim.msg.basic.RECOVERS_HP, 0, member:addHP(600 * invaderXim.settings.main.ITEM_POWER))
     end)
 end
 

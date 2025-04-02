@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: FeiYin (204)
 -----------------------------------
-local ID = zones[xi.zone.FEIYIN]
+local ID = zones[invaderXim.zone.FEIYIN]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -10,7 +10,7 @@ zoneObject.onInitialize = function(zone)
     UpdateNMSpawnPoint(ID.mob.CAPRICIOUS_CASSIE)
     GetMobByID(ID.mob.CAPRICIOUS_CASSIE):setRespawnTime(math.random(900, 10800))
 
-    xi.treasure.initZone(zone)
+    invaderXim.treasure.initZone(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -26,16 +26,16 @@ zoneObject.onZoneIn = function(player, prevZone)
 
     if
         player:getCharVar('peaceForTheSpiritCS') == 1 and
-        not player:hasItem(xi.item.ANTIQUE_COIN) -- Antique Coin
+        not player:hasItem(invaderXim.item.ANTIQUE_COIN) -- Antique Coin
     then
         SpawnMob(ID.mob.MISER_MURPHY) -- RDM AF
     end
 
-    if player:getCurrentMission(xi.mission.log_id.ACP) == xi.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_I then
+    if player:getCurrentMission(invaderXim.mission.log_id.ACP) == invaderXim.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_I then
         cs = 29
     elseif
-        prevZone == xi.zone.BEAUCEDINE_GLACIER and
-        player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.PIEUJES_DECISION) == xi.questStatus.QUEST_ACCEPTED and
+        prevZone == invaderXim.zone.BEAUCEDINE_GLACIER and
+        player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.PIEUJES_DECISION) == invaderXim.questStatus.QUEST_ACCEPTED and
         player:getCharVar('pieujesDecisionCS') == 0
     then
         cs = 19 -- WHM AF
@@ -45,7 +45,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
@@ -58,8 +58,8 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
     if csid == 19 then
         player:setCharVar('pieujesDecisionCS', 1)
     elseif csid == 29 then
-        player:completeMission(xi.mission.log_id.ACP, xi.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_I)
-        player:addMission(xi.mission.log_id.ACP, xi.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_II)
+        player:completeMission(invaderXim.mission.log_id.ACP, invaderXim.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_I)
+        player:addMission(invaderXim.mission.log_id.ACP, invaderXim.mission.id.acp.THOSE_WHO_LURK_IN_SHADOWS_II)
     end
 end
 

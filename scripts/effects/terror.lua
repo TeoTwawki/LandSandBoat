@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.TERROR
+-- invaderXim.effect.TERROR
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

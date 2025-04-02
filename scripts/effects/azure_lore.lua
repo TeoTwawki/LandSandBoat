@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.AZURE_LORE
+-- invaderXim.effect.AZURE_LORE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

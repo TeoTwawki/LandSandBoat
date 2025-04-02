@@ -2,8 +2,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- ----------------------------
 -- Table structure for char_equip_saved
 -- ----------------------------
-DROP TABLE IF EXISTS `char_equip_saved`;
-CREATE TABLE IF NOT EXISTS `char_equip_saved` (
+DROP TABLE IF IXIMSTS `char_equip_saved`;
+CREATE TABLE IF NOT IXIMSTS `char_equip_saved` (
     `charid` int(10) unsigned NOT NULL,
     `jobid` tinyint(2) unsigned NOT NULL,
     `main` smallint(5) unsigned NOT NULL DEFAULT '0',

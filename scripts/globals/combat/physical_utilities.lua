@@ -20,54 +20,54 @@
 -- 4  - Add them all, and final operations/considerations.
 -----------------------------------
 xi = xi or {}
-xi.combat = xi.combat or {}
-xi.combat.physical = xi.combat.physical or {}
+invaderXim.combat = invaderXim.combat or {}
+invaderXim.combat.physical = invaderXim.combat.physical or {}
 -----------------------------------
 local wsElementalProperties =
 {
     -- [Skillchain type             ] = { None, Fire, Ice, Wind, Earth, Thunder, Water, Light, Dark },
-    [xi.skillchainType.NONE         ] = {    0,    0,   0,    0,     0,       0,     0,     0,    0 }, -- Lv0 None
-    [xi.skillchainType.TRANSFIXION  ] = {    0,    0,   0,    0,     0,       0,     0,     1,    0 }, -- Lv1 Light
-    [xi.skillchainType.COMPRESSION  ] = {    0,    0,   0,    0,     0,       0,     0,     0,    1 }, -- Lv1 Dark
-    [xi.skillchainType.LIQUEFACTION ] = {    0,    1,   0,    0,     0,       0,     0,     0,    0 }, -- Lv1 Fire
-    [xi.skillchainType.SCISSION     ] = {    0,    0,   0,    0,     1,       0,     0,     0,    0 }, -- Lv1 Earth
-    [xi.skillchainType.REVERBERATION] = {    0,    0,   0,    0,     0,       0,     1,     0,    0 }, -- Lv1 Water
-    [xi.skillchainType.DETONATION   ] = {    0,    0,   0,    1,     0,       0,     0,     0,    0 }, -- Lv1 Wind
-    [xi.skillchainType.INDURATION   ] = {    0,    0,   1,    0,     0,       0,     0,     0,    0 }, -- Lv1 Ice
-    [xi.skillchainType.IMPACTION    ] = {    0,    0,   0,    0,     0,       1,     0,     0,    0 }, -- Lv1 Thunder
-    [xi.skillchainType.GRAVITATION  ] = {    0,    0,   0,    0,     1,       0,     0,     0,    1 }, -- Lv2 Earth & Dark
-    [xi.skillchainType.DISTORTION   ] = {    0,    0,   1,    0,     0,       0,     1,     0,    0 }, -- Lv2 Ice & Water
-    [xi.skillchainType.FUSION       ] = {    0,    1,   0,    0,     0,       0,     0,     1,    0 }, -- Lv2 Fire & Light
-    [xi.skillchainType.FRAGMENTATION] = {    0,    0,   0,    1,     0,       1,     0,     0,    0 }, -- Lv2 Wind & Thunder
-    [xi.skillchainType.LIGHT        ] = {    0,    1,   0,    1,     0,       1,     0,     1,    0 }, -- Lv3 Fire, Wind, Thunder, Light
-    [xi.skillchainType.DARKNESS     ] = {    0,    0,   1,    0,     1,       0,     1,     0,    1 }, -- Lv3 Ice, Earth, Water, Dark
-    [xi.skillchainType.LIGHT_II     ] = {    0,    1,   0,    1,     0,       1,     0,     1,    0 }, -- Lv4 Fire, Wind, Thunder, Light
-    [xi.skillchainType.DARKNESS_II  ] = {    0,    0,   1,    0,     1,       0,     1,     0,    1 }, -- Lv4 Ice, Earth, Water, Dark
+    [invaderXim.skillchainType.NONE         ] = {    0,    0,   0,    0,     0,       0,     0,     0,    0 }, -- Lv0 None
+    [invaderXim.skillchainType.TRANSFIXION  ] = {    0,    0,   0,    0,     0,       0,     0,     1,    0 }, -- Lv1 Light
+    [invaderXim.skillchainType.COMPRESSION  ] = {    0,    0,   0,    0,     0,       0,     0,     0,    1 }, -- Lv1 Dark
+    [invaderXim.skillchainType.LIQUEFACTION ] = {    0,    1,   0,    0,     0,       0,     0,     0,    0 }, -- Lv1 Fire
+    [invaderXim.skillchainType.SCISSION     ] = {    0,    0,   0,    0,     1,       0,     0,     0,    0 }, -- Lv1 Earth
+    [invaderXim.skillchainType.REVERBERATION] = {    0,    0,   0,    0,     0,       0,     1,     0,    0 }, -- Lv1 Water
+    [invaderXim.skillchainType.DETONATION   ] = {    0,    0,   0,    1,     0,       0,     0,     0,    0 }, -- Lv1 Wind
+    [invaderXim.skillchainType.INDURATION   ] = {    0,    0,   1,    0,     0,       0,     0,     0,    0 }, -- Lv1 Ice
+    [invaderXim.skillchainType.IMPACTION    ] = {    0,    0,   0,    0,     0,       1,     0,     0,    0 }, -- Lv1 Thunder
+    [invaderXim.skillchainType.GRAVITATION  ] = {    0,    0,   0,    0,     1,       0,     0,     0,    1 }, -- Lv2 Earth & Dark
+    [invaderXim.skillchainType.DISTORTION   ] = {    0,    0,   1,    0,     0,       0,     1,     0,    0 }, -- Lv2 Ice & Water
+    [invaderXim.skillchainType.FUSION       ] = {    0,    1,   0,    0,     0,       0,     0,     1,    0 }, -- Lv2 Fire & Light
+    [invaderXim.skillchainType.FRAGMENTATION] = {    0,    0,   0,    1,     0,       1,     0,     0,    0 }, -- Lv2 Wind & Thunder
+    [invaderXim.skillchainType.LIGHT        ] = {    0,    1,   0,    1,     0,       1,     0,     1,    0 }, -- Lv3 Fire, Wind, Thunder, Light
+    [invaderXim.skillchainType.DARKNESS     ] = {    0,    0,   1,    0,     1,       0,     1,     0,    1 }, -- Lv3 Ice, Earth, Water, Dark
+    [invaderXim.skillchainType.LIGHT_II     ] = {    0,    1,   0,    1,     0,       1,     0,     1,    0 }, -- Lv4 Fire, Wind, Thunder, Light
+    [invaderXim.skillchainType.DARKNESS_II  ] = {    0,    0,   1,    0,     1,       0,     1,     0,    1 }, -- Lv4 Ice, Earth, Water, Dark
 }
 
 -- Table with pDIF caps per weapon/skill type.
-xi.combat.physical.pDifWeaponCapTable =
+invaderXim.combat.physical.pDifWeaponCapTable =
 {
     -- [Skill/weapon type used] = {pre-randomizer_pDIF_cap}, Values from: https://www.bg-wiki.com/ffxi/PDIF
-    [xi.skill.NONE            ] = { 3    }, -- We will use this for mobs.
-    [xi.skill.HAND_TO_HAND    ] = { 3.5  },
-    [xi.skill.DAGGER          ] = { 3.25 },
-    [xi.skill.SWORD           ] = { 3.25 },
-    [xi.skill.GREAT_SWORD     ] = { 3.75 },
-    [xi.skill.AXE             ] = { 3.25 },
-    [xi.skill.GREAT_AXE       ] = { 3.75 },
-    [xi.skill.SCYTHE          ] = { 4    },
-    [xi.skill.POLEARM         ] = { 3.75 },
-    [xi.skill.KATANA          ] = { 3.25 },
-    [xi.skill.GREAT_KATANA    ] = { 3.5  },
-    [xi.skill.CLUB            ] = { 3.25 },
-    [xi.skill.STAFF           ] = { 3.75 },
-    [xi.skill.AUTOMATON_MELEE ] = { 3    }, -- Unknown value. Copy of value below.
-    [xi.skill.AUTOMATON_RANGED] = { 3    }, -- Unknown value. Reference found in an old post: https://forum.square-enix.com/ffxi/archive/index.php/t-52778.html?s=d906df07788334a185a902b0a6ae6a99
-    [xi.skill.AUTOMATON_MAGIC ] = { 3    }, -- Unknown value. Here for completion sake.
-    [xi.skill.ARCHERY         ] = { 3.25 },
-    [xi.skill.MARKSMANSHIP    ] = { 3.5  },
-    [xi.skill.THROWING        ] = { 3.25 },
+    [invaderXim.skill.NONE            ] = { 3    }, -- We will use this for mobs.
+    [invaderXim.skill.HAND_TO_HAND    ] = { 3.5  },
+    [invaderXim.skill.DAGGER          ] = { 3.25 },
+    [invaderXim.skill.SWORD           ] = { 3.25 },
+    [invaderXim.skill.GREAT_SWORD     ] = { 3.75 },
+    [invaderXim.skill.AXE             ] = { 3.25 },
+    [invaderXim.skill.GREAT_AXE       ] = { 3.75 },
+    [invaderXim.skill.SCYTHE          ] = { 4    },
+    [invaderXim.skill.POLEARM         ] = { 3.75 },
+    [invaderXim.skill.KATANA          ] = { 3.25 },
+    [invaderXim.skill.GREAT_KATANA    ] = { 3.5  },
+    [invaderXim.skill.CLUB            ] = { 3.25 },
+    [invaderXim.skill.STAFF           ] = { 3.75 },
+    [invaderXim.skill.AUTOMATON_MELEE ] = { 3    }, -- Unknown value. Copy of value below.
+    [invaderXim.skill.AUTOMATON_RANGED] = { 3    }, -- Unknown value. Reference found in an old post: https://forum.square-enix.com/ffxi/archive/index.php/t-52778.html?s=d906df07788334a185a902b0a6ae6a99
+    [invaderXim.skill.AUTOMATON_MAGIC ] = { 3    }, -- Unknown value. Here for completion sake.
+    [invaderXim.skill.ARCHERY         ] = { 3.25 },
+    [invaderXim.skill.MARKSMANSHIP    ] = { 3.5  },
+    [invaderXim.skill.THROWING        ] = { 3.25 },
 }
 
 local shieldSizeToBlockRateTable =
@@ -82,33 +82,33 @@ local shieldSizeToBlockRateTable =
 
 local elementalGorget = -- Ordered by element.
 {
-    xi.item.FLAME_GORGET,
-    xi.item.SNOW_GORGET,
-    xi.item.BREEZE_GORGET,
-    xi.item.SOIL_GORGET,
-    xi.item.THUNDER_GORGET,
-    xi.item.AQUA_GORGET,
-    xi.item.LIGHT_GORGET,
-    xi.item.SHADOW_GORGET
+    invaderXim.item.FLAME_GORGET,
+    invaderXim.item.SNOW_GORGET,
+    invaderXim.item.BREEZE_GORGET,
+    invaderXim.item.SOIL_GORGET,
+    invaderXim.item.THUNDER_GORGET,
+    invaderXim.item.AQUA_GORGET,
+    invaderXim.item.LIGHT_GORGET,
+    invaderXim.item.SHADOW_GORGET
 }
 
 local elementalBelt = -- Ordered by element.
 {
-    xi.item.FLAME_BELT,
-    xi.item.SNOW_BELT,
-    xi.item.BREEZE_BELT,
-    xi.item.SOIL_BELT,
-    xi.item.THUNDER_BELT,
-    xi.item.AQUA_BELT,
-    xi.item.LIGHT_BELT,
-    xi.item.SHADOW_BELT
+    invaderXim.item.FLAME_BELT,
+    invaderXim.item.SNOW_BELT,
+    invaderXim.item.BREEZE_BELT,
+    invaderXim.item.SOIL_BELT,
+    invaderXim.item.THUNDER_BELT,
+    invaderXim.item.AQUA_BELT,
+    invaderXim.item.LIGHT_BELT,
+    invaderXim.item.SHADOW_BELT
 }
 
 -- 'fSTR' in English Wikis. 'SV function' in JP wiki and Studio Gobli.
 -- BG wiki: https://www.bg-wiki.com/ffxi/FSTR
 -- Gobli Wiki: https://w-atwiki-jp.translate.goog/studiogobli/pages/14.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp
 -- Mob calculation: https://docs.google.com/spreadsheets/d/1YBoveP-weMdidrirY-vPDzHyxbEI2ryECINlfCnFkLI/edit?gid=224123492#gid=224123492&range=C50
-xi.combat.physical.calculateMeleeStatFactor = function(actor, target)
+invaderXim.combat.physical.calculateMeleeStatFactor = function(actor, target)
     local fSTR = 0 -- The variable we want to calculate.
 
     -- Early return: Mobs at or under lvl 1.
@@ -117,7 +117,7 @@ xi.combat.physical.calculateMeleeStatFactor = function(actor, target)
     end
 
     -- Calculate statDiff.
-    local statDiff = actor:getStat(xi.mod.STR) - target:getStat(xi.mod.VIT)
+    local statDiff = actor:getStat(invaderXim.mod.STR) - target:getStat(invaderXim.mod.VIT)
 
     -- Pets and Mobs.
     if actor:isMob() or actor:isPet() then
@@ -169,7 +169,7 @@ end
 -- 'fSTR2' in English Wikis. 'SV function' in JP wiki and Studio Gobli.
 -- BG wiki: https://www.bg-wiki.com/ffxi/FSTR
 -- Gobli Wiki: https://w-atwiki-jp.translate.goog/studiogobli/pages/14.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp
-xi.combat.physical.calculateRangedStatFactor = function(actor, target)
+invaderXim.combat.physical.calculateRangedStatFactor = function(actor, target)
     local fSTR = 0 -- The variable we want to calculate.
 
     -- Early return: Mobs at or under lvl 1.
@@ -178,7 +178,7 @@ xi.combat.physical.calculateRangedStatFactor = function(actor, target)
     end
 
     -- Calculate statDiff.
-    local statDiff = actor:getStat(xi.mod.STR) - target:getStat(xi.mod.VIT)
+    local statDiff = actor:getStat(invaderXim.mod.STR) - target:getStat(invaderXim.mod.VIT)
 
     -- Pets and Mobs.
     if actor:isMob() or actor:isPet() then
@@ -230,17 +230,17 @@ xi.combat.physical.calculateRangedStatFactor = function(actor, target)
 end
 
 -- Weapon Skill Secondary Attribute Modifier: Function used to get stat addition to base damage.
-xi.combat.physical.calculateWSC = function(actor, wsSTRmod, wsDEXmod, wsVITmod, wsAGImod, wsINTmod, wsMNDmod, wsCHRmod)
+invaderXim.combat.physical.calculateWSC = function(actor, wsSTRmod, wsDEXmod, wsVITmod, wsAGImod, wsINTmod, wsMNDmod, wsCHRmod)
     local finalWSC = 0
 
     -- wscSTAT = actor stat * (WS stat modifier + Actor-specific WS stat modifier)
-    local wscSTR = actor:getStat(xi.mod.STR) * (wsSTRmod + actor:getMod(xi.mod.WS_STR_BONUS) / 100)
-    local wscDEX = actor:getStat(xi.mod.DEX) * (wsDEXmod + actor:getMod(xi.mod.WS_DEX_BONUS) / 100)
-    local wscVIT = actor:getStat(xi.mod.VIT) * (wsVITmod + actor:getMod(xi.mod.WS_VIT_BONUS) / 100)
-    local wscAGI = actor:getStat(xi.mod.AGI) * (wsAGImod + actor:getMod(xi.mod.WS_AGI_BONUS) / 100)
-    local wscINT = actor:getStat(xi.mod.INT) * (wsINTmod + actor:getMod(xi.mod.WS_INT_BONUS) / 100)
-    local wscMND = actor:getStat(xi.mod.MND) * (wsMNDmod + actor:getMod(xi.mod.WS_MND_BONUS) / 100)
-    local wscCHR = actor:getStat(xi.mod.CHR) * (wsCHRmod + actor:getMod(xi.mod.WS_CHR_BONUS) / 100)
+    local wscSTR = actor:getStat(invaderXim.mod.STR) * (wsSTRmod + actor:getMod(invaderXim.mod.WS_STR_BONUS) / 100)
+    local wscDEX = actor:getStat(invaderXim.mod.DEX) * (wsDEXmod + actor:getMod(invaderXim.mod.WS_DEX_BONUS) / 100)
+    local wscVIT = actor:getStat(invaderXim.mod.VIT) * (wsVITmod + actor:getMod(invaderXim.mod.WS_VIT_BONUS) / 100)
+    local wscAGI = actor:getStat(invaderXim.mod.AGI) * (wsAGImod + actor:getMod(invaderXim.mod.WS_AGI_BONUS) / 100)
+    local wscINT = actor:getStat(invaderXim.mod.INT) * (wsINTmod + actor:getMod(invaderXim.mod.WS_INT_BONUS) / 100)
+    local wscMND = actor:getStat(invaderXim.mod.MND) * (wsMNDmod + actor:getMod(invaderXim.mod.WS_MND_BONUS) / 100)
+    local wscCHR = actor:getStat(invaderXim.mod.CHR) * (wsCHRmod + actor:getMod(invaderXim.mod.WS_CHR_BONUS) / 100)
 
     finalWSC = wscSTR + wscDEX + wscVIT + wscAGI + wscINT + wscMND + wscCHR
 
@@ -248,7 +248,7 @@ xi.combat.physical.calculateWSC = function(actor, wsSTRmod, wsDEXmod, wsVITmod, 
 end
 
 -- TP factor equation. Used to determine TP modifer across all cases of 'X varies with TP'
-xi.combat.physical.calculateTPfactor = function(actorTP, tpModifierTable)
+invaderXim.combat.physical.calculateTPfactor = function(actorTP, tpModifierTable)
     local tpFactor = 0
 
     if actorTP >= 2000 then
@@ -261,7 +261,7 @@ xi.combat.physical.calculateTPfactor = function(actorTP, tpModifierTable)
 end
 
 -- TP Multiplier calculations.
-xi.combat.physical.calculateFTP = function(actor, tpFactor)
+invaderXim.combat.physical.calculateFTP = function(actor, tpFactor)
     ------------------------------
     -- Regular fTP
     ------------------------------
@@ -280,9 +280,9 @@ xi.combat.physical.calculateFTP = function(actor, tpFactor)
     local handsFtpBonus  = 0
     local weaponFtpBonus = 0
 
-    if actor:getObjType() == xi.objType.PC then
+    if actor:getObjType() == invaderXim.objType.PC then
         -- Calculate Neck fTP bonus.
-        local neckItem    = actor:getEquipID(xi.slot.NECK)
+        local neckItem    = actor:getEquipID(invaderXim.slot.NECK)
         local neckElement = 1 -- We start at 1 for table lookup. 1 = no element.
 
         -- Get Gorget associated element.
@@ -299,13 +299,13 @@ xi.combat.physical.calculateFTP = function(actor, tpFactor)
             wsElementalProperties[scProp1][neckElement] == 1 or
             wsElementalProperties[scProp2][neckElement] == 1 or
             wsElementalProperties[scProp3][neckElement] == 1 or
-            neckItem == xi.item.FOTIA_GORGET
+            neckItem == invaderXim.item.FOTIA_GORGET
         then
             neckFtpBonus = 0.1
         end
 
         -- Calculate Waist fTP bonus.
-        local waistItem    = actor:getEquipID(xi.slot.WAIST)
+        local waistItem    = actor:getEquipID(invaderXim.slot.WAIST)
         local waistElement = 1 -- We start at 1 for table lookup. 1 = no element.
 
         -- Get Belt associated element.
@@ -322,13 +322,13 @@ xi.combat.physical.calculateFTP = function(actor, tpFactor)
             wsElementalProperties[scProp1][waistElement] == 1 or
             wsElementalProperties[scProp2][waistElement] == 1 or
             wsElementalProperties[scProp3][waistElement] == 1 or
-            waistItem == xi.item.FOTIA_BELT
+            waistItem == invaderXim.item.FOTIA_BELT
         then
             waistFtpBonus = 0.1
         end
 
         -- Claculate Head fTP bonus.
-        local headItem = actor:getEquipID(xi.slot.HEAD)
+        local headItem = actor:getEquipID(invaderXim.slot.HEAD)
 
         if
             wsElementalProperties[scProp1][dayElement] == 1 or
@@ -336,36 +336,36 @@ xi.combat.physical.calculateFTP = function(actor, tpFactor)
             wsElementalProperties[scProp3][dayElement] == 1
         then
             if
-                headItem == xi.item.MEKIRA_OTO or
-                headItem == xi.item.MEKIRA_OTO_P1
+                headItem == invaderXim.item.MEKIRA_OTO or
+                headItem == invaderXim.item.MEKIRA_OTO_P1
             then
                 headFtpBonus = 0.1
-            elseif headItem == xi.item.GAVIALIS_HELM then
+            elseif headItem == invaderXim.item.GAVIALIS_HELM then
                 headFtpBonus = 0.117
             end
         end
 
         -- Calculate Hands fTP bonus.
-        local handsItem = actor:getEquipID(xi.slot.HANDS)
+        local handsItem = actor:getEquipID(invaderXim.slot.HANDS)
 
         if
             wsElementalProperties[scProp1][dayElement] == 1 or
             wsElementalProperties[scProp2][dayElement] == 1 or
             wsElementalProperties[scProp3][dayElement] == 1
         then
-            if handsItem == xi.item.ATHOSS_GLOVES then
+            if handsItem == invaderXim.item.ATHOSS_GLOVES then
                 handsFtpBonus = 0.06
             end
         end
 
         -- Calculate Weapon fTP bonus.
-        local weaponItem = actor:getEquipID(xi.slot.MAIN)
+        local weaponItem = actor:getEquipID(invaderXim.slot.MAIN)
 
         if
-            weaponItem == xi.item.PRESTER and
-            (wsElementalProperties[scProp1][xi.element.WIND] == 1 or
-            wsElementalProperties[scProp2][xi.element.WIND] == 1 or
-            wsElementalProperties[scProp3][xi.element.WIND] == 1)
+            weaponItem == invaderXim.item.PRESTER and
+            (wsElementalProperties[scProp1][invaderXim.element.WIND] == 1 or
+            wsElementalProperties[scProp2][invaderXim.element.WIND] == 1 or
+            wsElementalProperties[scProp3][invaderXim.element.WIND] == 1)
         then
             weaponFtpBonus = 0.1
         end
@@ -381,16 +381,16 @@ end
 -- If you update this parameters, update them there aswell.
 ---@param actor CBaseEntity
 ---@param target CBaseEntity
----@param weaponType xi.skill
+---@param weaponType invaderXim.skill
 ---@param wsAttackMod number
 ---@param isCritical boolean
 ---@param applyLevelCorrection boolean
 ---@param tpIgnoresDefense boolean
 ---@param tpFactor number
 ---@param isWeaponskill boolean
----@param weaponSlot xi.slot
+---@param weaponSlot invaderXim.slot
 ---@param isCannonball boolean
-xi.combat.physical.calculateMeleePDIF = function(actor, target, weaponType, wsAttackMod, isCritical, applyLevelCorrection, tpIgnoresDefense, tpFactor, isWeaponskill, weaponSlot, isCannonball)
+invaderXim.combat.physical.calculateMeleePDIF = function(actor, target, weaponType, wsAttackMod, isCritical, applyLevelCorrection, tpIgnoresDefense, tpFactor, isWeaponskill, weaponSlot, isCannonball)
     local pDif = 0
 
     ----------------------------------------
@@ -398,12 +398,12 @@ xi.combat.physical.calculateMeleePDIF = function(actor, target, weaponType, wsAt
     ----------------------------------------
     local baseRatio     = 0
     local actorAttack   = 0
-    local targetDefense = math.max(1, target:getStat(xi.mod.DEF))
+    local targetDefense = math.max(1, target:getStat(invaderXim.mod.DEF))
     local flourishBonus = 1.0
 
     -- Actor Weaponskill Specific Attack modifiers.
     if isWeaponskill then
-        local flourishEffect = actor:getStatusEffect(xi.effect.BUILDING_FLOURISH)
+        local flourishEffect = actor:getStatusEffect(invaderXim.effect.BUILDING_FLOURISH)
 
         if flourishEffect and flourishEffect:getPower() >= 2 then -- 2 or more Finishing Moves used.
             local meritCount = flourishEffect:getSubPower()
@@ -413,7 +413,7 @@ xi.combat.physical.calculateMeleePDIF = function(actor, target, weaponType, wsAt
     end
 
     -- TODO: it is unknown if ws attack mod and flourish bonus are additive or multiplicative
-    actorAttack = math.max(1, math.floor(actor:getStat(xi.mod.ATT, weaponSlot) * wsAttackMod * flourishBonus))
+    actorAttack = math.max(1, math.floor(actor:getStat(invaderXim.mod.ATT, weaponSlot) * wsAttackMod * flourishBonus))
 
     -- Target Defense Modifiers.
     if tpIgnoresDefense then
@@ -423,7 +423,7 @@ xi.combat.physical.calculateMeleePDIF = function(actor, target, weaponType, wsAt
     end
 
     if isCannonball then
-        actorAttack = actor:getStat(xi.mod.DEF)
+        actorAttack = actor:getStat(invaderXim.mod.DEF)
     end
 
     -- Actor Attack / Target Defense ratio
@@ -465,9 +465,9 @@ xi.combat.physical.calculateMeleePDIF = function(actor, target, weaponType, wsAt
     local wRatio             = cRatio + (isCritical and 1 or 0)
     local pDifUpperCap       = 0
     local pDifLowerCap       = 0
-    local damageLimitPlus    = actor:getMod(xi.mod.DAMAGE_LIMIT) / 100
-    local damageLimitPercent = 1 + actor:getMod(xi.mod.DAMAGE_LIMITP) / 100
-    local pDifFinalCap       = (xi.combat.physical.pDifWeaponCapTable[weaponType][1] + damageLimitPlus) * damageLimitPercent + (isCritical and 1 or 0)
+    local damageLimitPlus    = actor:getMod(invaderXim.mod.DAMAGE_LIMIT) / 100
+    local damageLimitPercent = 1 + actor:getMod(invaderXim.mod.DAMAGE_LIMITP) / 100
+    local pDifFinalCap       = (invaderXim.combat.physical.pDifWeaponCapTable[weaponType][1] + damageLimitPlus) * damageLimitPercent + (isCritical and 1 or 0)
 
     -- pDIF upper cap.
     if wRatio < 0.5 then
@@ -511,7 +511,7 @@ xi.combat.physical.calculateMeleePDIF = function(actor, target, weaponType, wsAt
 
     -- Crit damage bonus is a final modifier
     if isCritical then
-        local critDamageBonus = utils.clamp(actor:getMod(xi.mod.CRIT_DMG_INCREASE) + actor:getMod(xi.mod.RANGED_CRIT_DMG_INCREASE) - target:getMod(xi.mod.CRIT_DEF_BONUS), 0, 100)
+        local critDamageBonus = utils.clamp(actor:getMod(invaderXim.mod.CRIT_DMG_INCREASE) + actor:getMod(invaderXim.mod.RANGED_CRIT_DMG_INCREASE) - target:getMod(invaderXim.mod.CRIT_DEF_BONUS), 0, 100)
         pDif                  = pDif * (100 + critDamageBonus) / 100
     end
 
@@ -520,7 +520,7 @@ end
 
 ---@param actor CBaseEntity
 ---@param target CBaseEntity
----@param weaponType xi.skill
+---@param weaponType invaderXim.skill
 ---@param wsAttackMod number
 ---@param isCritical boolean
 ---@param applyLevelCorrection boolean
@@ -528,7 +528,7 @@ end
 ---@param tpFactor number
 ---@param isWeaponskill boolean
 ---@param bonusRangedAttack integer
-xi.combat.physical.calculateRangedPDIF = function(actor, target, weaponType, wsAttackMod, isCritical, applyLevelCorrection, tpIgnoresDefense, tpFactor, isWeaponskill, bonusRangedAttack)
+invaderXim.combat.physical.calculateRangedPDIF = function(actor, target, weaponType, wsAttackMod, isCritical, applyLevelCorrection, tpIgnoresDefense, tpFactor, isWeaponskill, bonusRangedAttack)
     local pDif = 0
 
     ----------------------------------------
@@ -536,13 +536,13 @@ xi.combat.physical.calculateRangedPDIF = function(actor, target, weaponType, wsA
     ----------------------------------------
     local baseRatio     = 0
     local actorAttack   = 0
-    local targetDefense = math.max(1, target:getStat(xi.mod.DEF))
+    local targetDefense = math.max(1, target:getStat(invaderXim.mod.DEF))
     local flourishBonus = 1.0
 
     -- Actor Weaponskill Specific Attack modifiers.
     -- TODO: verify this actually works on ranged WS
     if isWeaponskill then
-        local flourishEffect = actor:getStatusEffect(xi.effect.BUILDING_FLOURISH)
+        local flourishEffect = actor:getStatusEffect(invaderXim.effect.BUILDING_FLOURISH)
 
         if flourishEffect and flourishEffect:getPower() >= 2 then -- 2 or more Finishing Moves used.
             local meritCount = flourishEffect:getSubPower()
@@ -552,7 +552,7 @@ xi.combat.physical.calculateRangedPDIF = function(actor, target, weaponType, wsA
     end
 
     -- TODO: it is unknown if ws attack mod and flourish bonus are additive or multiplicative
-    actorAttack = math.max(1, math.floor((actor:getStat(xi.mod.RATT) + bonusRangedAttack) * wsAttackMod * flourishBonus))
+    actorAttack = math.max(1, math.floor((actor:getStat(invaderXim.mod.RATT) + bonusRangedAttack) * wsAttackMod * flourishBonus))
 
     -- Target Defense Modifiers.
     local ignoreDefenseFactor = 1
@@ -620,9 +620,9 @@ xi.combat.physical.calculateRangedPDIF = function(actor, target, weaponType, wsA
     ----------------------------------------
     -- Step 4: Apply weapon type caps.
     ----------------------------------------
-    local damageLimitPlus    = actor:getMod(xi.mod.DAMAGE_LIMIT) / 100
-    local damageLimitPercent = 1 + actor:getMod(xi.mod.DAMAGE_LIMITP) / 100
-    local pDifFinalCap       = (xi.combat.physical.pDifWeaponCapTable[weaponType][1] + damageLimitPlus) * damageLimitPercent -- Added damage limit bonuses
+    local damageLimitPlus    = actor:getMod(invaderXim.mod.DAMAGE_LIMIT) / 100
+    local damageLimitPercent = 1 + actor:getMod(invaderXim.mod.DAMAGE_LIMITP) / 100
+    local pDifFinalCap       = (invaderXim.combat.physical.pDifWeaponCapTable[weaponType][1] + damageLimitPlus) * damageLimitPercent -- Added damage limit bonuses
 
     pDif = utils.clamp(pDif, 0, pDifFinalCap)
 
@@ -638,7 +638,7 @@ xi.combat.physical.calculateRangedPDIF = function(actor, target, weaponType, wsA
 
     -- Crit damage bonus is a final modifier
     if isCritical then
-        local critDamageBonus = utils.clamp(actor:getMod(xi.mod.CRIT_DMG_INCREASE) - target:getMod(xi.mod.CRIT_DEF_BONUS), 0, 100)
+        local critDamageBonus = utils.clamp(actor:getMod(invaderXim.mod.CRIT_DMG_INCREASE) - target:getMod(invaderXim.mod.CRIT_DEF_BONUS), 0, 100)
         pDif = pDif * (100 + critDamageBonus) / 100
     end
 
@@ -649,10 +649,10 @@ end
 -- Critical hit rate operations
 -----------------------------------
 -- dStat: Critical hit rate bonus from DEX vs AGI difference.
-xi.combat.physical.criticalRateFromStatDiff = function(actor, target)
+invaderXim.combat.physical.criticalRateFromStatDiff = function(actor, target)
     local statBonus = 0
 
-    local dDex = actor:getStat(xi.mod.DEX) - target:getStat(xi.mod.AGI)
+    local dDex = actor:getStat(invaderXim.mod.DEX) - target:getStat(invaderXim.mod.AGI)
 
     if dDex > 50 then
         statBonus = 0.15
@@ -672,34 +672,34 @@ xi.combat.physical.criticalRateFromStatDiff = function(actor, target)
 end
 
 -- Innin: Critical hit rate bonus when actor is behind target.
-xi.combat.physical.criticalRateFromInnin = function(actor, target)
+invaderXim.combat.physical.criticalRateFromInnin = function(actor, target)
     local inninBonus = 0
 
     if
-        actor:hasStatusEffect(xi.effect.INNIN) and
+        actor:hasStatusEffect(invaderXim.effect.INNIN) and
         actor:isBehind(target, 23)
     then
-        inninBonus = actor:getStatusEffect(xi.effect.INNIN):getPower()
+        inninBonus = actor:getStatusEffect(invaderXim.effect.INNIN):getPower()
     end
 
     return inninBonus
 end
 
 -- Fencer: Critical hit rate bonus when actor is only wielding with main hand.
-xi.combat.physical.criticalRateFromFencer = function(actor)
+invaderXim.combat.physical.criticalRateFromFencer = function(actor)
     local fencerBonus = 0
     -- TODO: do any Trusts or mobs ever get Fencer bonuses?
 
-    if actor:getObjType() == xi.objType.PC then
-        local mainEquip = actor:getStorageItem(0, 0, xi.slot.MAIN)
-        local subEquip  = actor:getStorageItem(0, 0, xi.slot.SUB)
+    if actor:getObjType() == invaderXim.objType.PC then
+        local mainEquip = actor:getStorageItem(0, 0, invaderXim.slot.MAIN)
+        local subEquip  = actor:getStorageItem(0, 0, invaderXim.slot.SUB)
         if
             mainEquip and
             not mainEquip:isTwoHanded() and                                                      -- No 2 handed weapons.
             not mainEquip:isHandToHand() and                                                     -- No 2 handed weapons.
-            (subEquip == nil or subEquip:getSkillType() == xi.skill.NONE or subEquip:isShield()) -- Only shields allowed in sub.
+            (subEquip == nil or subEquip:getSkillType() == invaderXim.skill.NONE or subEquip:isShield()) -- Only shields allowed in sub.
         then
-            fencerBonus = actor:getMod(xi.mod.FENCER_CRITHITRATE) / 100
+            fencerBonus = actor:getMod(invaderXim.mod.FENCER_CRITHITRATE) / 100
         end
     end
 
@@ -708,12 +708,12 @@ end
 
 -- Critical rate from Building Flourish.
 -- TODO: Study case where if we can attach modifiers to the effect itself, both this and the effect may need refactoring.
-xi.combat.physical.criticalRateFromFlourish = function(actor)
+invaderXim.combat.physical.criticalRateFromFlourish = function(actor)
     local buildingFlourishBonus = 0
 
-    if actor:hasStatusEffect(xi.effect.BUILDING_FLOURISH) then
-        local effectPower    = actor:getStatusEffect(xi.effect.BUILDING_FLOURISH):getPower()
-        local effectSubPower = actor:getStatusEffect(xi.effect.BUILDING_FLOURISH):getSubPower()
+    if actor:hasStatusEffect(invaderXim.effect.BUILDING_FLOURISH) then
+        local effectPower    = actor:getStatusEffect(invaderXim.effect.BUILDING_FLOURISH):getPower()
+        local effectSubPower = actor:getStatusEffect(invaderXim.effect.BUILDING_FLOURISH):getSubPower()
 
         if effectPower >= 3 then
             buildingFlourishBonus = (10 + effectSubPower) / 100
@@ -724,23 +724,23 @@ xi.combat.physical.criticalRateFromFlourish = function(actor)
 end
 
 -- Critical rate master function.
-xi.combat.physical.calculateSwingCriticalRate = function(actor, target, actorTP, optCritModTable)
+invaderXim.combat.physical.calculateSwingCriticalRate = function(actor, target, actorTP, optCritModTable)
     -- See reference at https://www.bg-wiki.com/ffxi/Critical_Hit_Rate
     local finalCriticalRate     = 0
     local baseCriticalRate      = 0.05
-    local statBonus             = xi.combat.physical.criticalRateFromStatDiff(actor, target)
-    local inninBonus            = xi.combat.physical.criticalRateFromInnin(actor, target)
-    local fencerBonus           = xi.combat.physical.criticalRateFromFencer(actor)
-    local buildingFlourishBonus = xi.combat.physical.criticalRateFromFlourish(actor)
-    local modifierBonus         = actor:getMod(xi.mod.CRITHITRATE) / 100
-    local meritBonus            = actor:getMerit(xi.merit.CRIT_HIT_RATE) / 100
-    local targetCriticalEvasion = target:getMod(xi.mod.CRITICAL_HIT_EVASION) / 100
-    local targetMeritPenalty    = target:getMerit(xi.merit.ENEMY_CRIT_RATE) / 100
+    local statBonus             = invaderXim.combat.physical.criticalRateFromStatDiff(actor, target)
+    local inninBonus            = invaderXim.combat.physical.criticalRateFromInnin(actor, target)
+    local fencerBonus           = invaderXim.combat.physical.criticalRateFromFencer(actor)
+    local buildingFlourishBonus = invaderXim.combat.physical.criticalRateFromFlourish(actor)
+    local modifierBonus         = actor:getMod(invaderXim.mod.CRITHITRATE) / 100
+    local meritBonus            = actor:getMerit(invaderXim.merit.CRIT_HIT_RATE) / 100
+    local targetCriticalEvasion = target:getMod(invaderXim.mod.CRITICAL_HIT_EVASION) / 100
+    local targetMeritPenalty    = target:getMerit(invaderXim.merit.ENEMY_CRIT_RATE) / 100
     local tpFactor              = 0
 
     -- For weaponskills.
     if optCritModTable then
-        tpFactor = xi.combat.physical.calculateTPfactor(actorTP, optCritModTable)
+        tpFactor = invaderXim.combat.physical.calculateTPfactor(actorTP, optCritModTable)
     end
 
     -- Add all different bonuses and clamp.
@@ -749,60 +749,60 @@ xi.combat.physical.calculateSwingCriticalRate = function(actor, target, actorTP,
     return utils.clamp(finalCriticalRate, 0.05, 1) -- TODO: Need confirmation of no upper cap.
 end
 
-xi.combat.physical.calculateNumberOfHits = function(actor, additionalParamsHere)
+invaderXim.combat.physical.calculateNumberOfHits = function(actor, additionalParamsHere)
 end
 
 -- Main Hit (First hit) Functions.
-xi.combat.physical.calculateMainHitAccuracy = function(actor, additionalParamsHere)
+invaderXim.combat.physical.calculateMainHitAccuracy = function(actor, additionalParamsHere)
 end
 
-xi.combat.physical.calculateMainHitCritical = function(actor, additionalParamsHere)
+invaderXim.combat.physical.calculateMainHitCritical = function(actor, additionalParamsHere)
 end
 
-xi.combat.physical.calculateMainHitDamage = function(actor, additionalParamsHere)
+invaderXim.combat.physical.calculateMainHitDamage = function(actor, additionalParamsHere)
 end
 
 -- Secondary Hits (All other) Functions.
-xi.combat.physical.calculateSecondaryHitAccuracy = function(actor, additionalParamsHere)
+invaderXim.combat.physical.calculateSecondaryHitAccuracy = function(actor, additionalParamsHere)
 end
 
-xi.combat.physical.calculateSecondaryHitCritical = function(actor, additionalParamsHere)
+invaderXim.combat.physical.calculateSecondaryHitCritical = function(actor, additionalParamsHere)
 end
 
-xi.combat.physical.calculateSecondaryHitDamage = function(actor, additionalParamsHere)
+invaderXim.combat.physical.calculateSecondaryHitDamage = function(actor, additionalParamsHere)
 end
 
-xi.combat.physical.canParry = function(defender, attacker)
+invaderXim.combat.physical.canParry = function(defender, attacker)
     local canParry = false
 
     if
         defender:isFacing(attacker) and
         defender:isEngaged()
     then
-        if defender:isPC() and defender:getSkillRank(xi.skill.PARRY) > 0 then
-            local mainWeapon = defender:getEquippedItem(xi.slot.MAIN)
+        if defender:isPC() and defender:getSkillRank(invaderXim.skill.PARRY) > 0 then
+            local mainWeapon = defender:getEquippedItem(invaderXim.slot.MAIN)
             if mainWeapon then
-                canParry = mainWeapon:getSkillType() ~= xi.skill.HAND_TO_HAND
+                canParry = mainWeapon:getSkillType() ~= invaderXim.skill.HAND_TO_HAND
             end
         elseif
             defender:isMob() or
             defender:isPet() or
             defender:isTrust()
         then
-            canParry = defender:getMobMod(xi.mobMod.CAN_PARRY) > 0
+            canParry = defender:getMobMod(invaderXim.mobMod.CAN_PARRY) > 0
         end
     end
 
     return canParry
 end
 
-xi.combat.physical.calculateParryRate = function(defender, attacker)
+invaderXim.combat.physical.calculateParryRate = function(defender, attacker)
     local parryRate = 0
 
     -- http://wiki.ffxiclopedia.org/wiki/Talk:Parrying_Skill
     -- {(Parry Skill x .125) + ([Player Agi - Enemy Dex] x .125)} x Diff
 
-    local parrySkill = defender:getSkillLevel(xi.skill.PARRY) + defender:getMod(xi.mod.PARRY)
+    local parrySkill = defender:getSkillLevel(invaderXim.skill.PARRY) + defender:getMod(invaderXim.mod.PARRY)
 
     if defender:isPC() then
         parrySkill = parrySkill + defender:getILvlParry()
@@ -817,63 +817,63 @@ xi.combat.physical.calculateParryRate = function(defender, attacker)
 
     levelDiffMult = utils.clamp(levelDiffMult, 0.4, 1.4)
 
-    local attackerDex = attacker:getStat(xi.mod.DEX)
-    local defenderAgi = defender:getStat(xi.mod.AGI)
+    local attackerDex = attacker:getStat(invaderXim.mod.DEX)
+    local defenderAgi = defender:getStat(invaderXim.mod.AGI)
 
     parryRate = utils.clamp(((parrySkill * 0.1 + (defenderAgi - attackerDex) * 0.125 + 10.0) * levelDiffMult), 5, 25)
 
     -- Issekigan grants parry rate bonus
     -- from best available data if you already capped out at 25% parry it grants another 25% bonus for ~50% parry rate
-    if defender:hasStatusEffect(xi.effect.ISSEKIGAN) then
-        parryRate = parryRate + defender:getStatusEffect(xi.effect.ISSEKIGAN):getPower()
+    if defender:hasStatusEffect(invaderXim.effect.ISSEKIGAN) then
+        parryRate = parryRate + defender:getStatusEffect(invaderXim.effect.ISSEKIGAN):getPower()
     end
 
     -- Inquartata grants a flat parry rate bonus
-    parryRate = parryRate + defender:getMod(xi.mod.INQUARTATA)
+    parryRate = parryRate + defender:getMod(invaderXim.mod.INQUARTATA)
 
     return parryRate
 end
 
-xi.combat.physical.canGuard = function(defender, attacker)
+invaderXim.combat.physical.canGuard = function(defender, attacker)
     local canGuard = false
 
     -- per testing done by Genome guard can proc when petrified, stunned, or asleep
-    -- https://genomeffxi.livejournal.com/18269.html
+    -- https://genomeffinvaderXim.livejournal.com/18269.html
     if
         defender:isFacing(attacker) and
         defender:isEngaged()
     then
-        if defender:isPC() and defender:getSkillRank(xi.skill.GUARD) > 0 then
-            local mainWeapon = defender:getEquippedItem(xi.slot.MAIN)
-            canGuard = (not mainWeapon) or mainWeapon:getSkillType() == xi.skill.HAND_TO_HAND
+        if defender:isPC() and defender:getSkillRank(invaderXim.skill.GUARD) > 0 then
+            local mainWeapon = defender:getEquippedItem(invaderXim.slot.MAIN)
+            canGuard = (not mainWeapon) or mainWeapon:getSkillType() == invaderXim.skill.HAND_TO_HAND
         elseif
             defender:isMob() or
             defender:isPet() or
             defender:isTrust()
         then
-            canGuard = (defender:getMainJob() == xi.job.MNK or defender:getMainJob() == xi.job.PUP) and defender:getMobMod(xi.mobMod.CANNOT_GUARD) == 0
+            canGuard = (defender:getMainJob() == invaderXim.job.MNK or defender:getMainJob() == invaderXim.job.PUP) and defender:getMobMod(invaderXim.mobMod.CANNOT_GUARD) == 0
         end
     end
 
     return canGuard
 end
 
-xi.combat.physical.calculateGuardRate = function(defender, attacker)
+invaderXim.combat.physical.calculateGuardRate = function(defender, attacker)
     local guardRate = 0
 
     -- default to using actual skill
-    local guardSkill = defender:getSkillLevel(xi.skill.GUARD)
+    local guardSkill = defender:getSkillLevel(invaderXim.skill.GUARD)
 
     -- non-players do not have guard skill set on creation
     -- so use max skill at the level for the job
     if defender:isPet() then
-        guardSkill = defender:getMaxSkillLevel(defender:getMainLvl(), defender:getMainJob(), xi.skill.GUARD)
+        guardSkill = defender:getMaxSkillLevel(defender:getMainLvl(), defender:getMainJob(), invaderXim.skill.GUARD)
     elseif defender:isTrust() then
         -- TODO: check trust type for ilvl > 99 when implemented
-        guardSkill = defender:getMaxSkillLevel(math.min(defender:getMainLvl(), 99), defender:getMainJob(), xi.skill.GUARD)
+        guardSkill = defender:getMaxSkillLevel(math.min(defender:getMainLvl(), 99), defender:getMainJob(), invaderXim.skill.GUARD)
     end
 
-    guardSkill = guardSkill + defender:getMod(xi.mod.GUARD) + guardSkill * (defender:getMod(xi.mod.GUARD_PERCENT) / 100)
+    guardSkill = guardSkill + defender:getMod(invaderXim.mod.GUARD) + guardSkill * (defender:getMod(invaderXim.mod.GUARD_PERCENT) / 100)
 
     -- current assumption (from core) is that guard and parry Ilvl are the same
     if defender:isPC() then
@@ -883,21 +883,21 @@ xi.combat.physical.calculateGuardRate = function(defender, attacker)
     local levelDiffMult = 1 + (defender:getMainLvl() - attacker:getMainLvl()) / 15
     levelDiffMult = utils.clamp(levelDiffMult, 0.4, 1.4)
 
-    local attackerDex = attacker:getStat(xi.mod.DEX)
-    local defenderAgi = defender:getStat(xi.mod.AGI)
+    local attackerDex = attacker:getStat(invaderXim.mod.DEX)
+    local defenderAgi = defender:getStat(invaderXim.mod.AGI)
 
     -- Dodge's guard bonus goes over the cap
-    guardRate = utils.clamp(((guardSkill * 0.1 + (defenderAgi - attackerDex) * 0.125 + 10) * levelDiffMult), 5, 25) + defender:getMod(xi.mod.ADDITIVE_GUARD)
+    guardRate = utils.clamp(((guardSkill * 0.1 + (defenderAgi - attackerDex) * 0.125 + 10) * levelDiffMult), 5, 25) + defender:getMod(invaderXim.mod.ADDITIVE_GUARD)
 
     return guardRate
 end
 
-xi.combat.physical.canBlock = function(defender, attacker)
+invaderXim.combat.physical.canBlock = function(defender, attacker)
     local canBlock = false
 
     if defender:isFacing(attacker) and not defender:hasPreventActionEffect() then
-        if defender:isPC() and defender:getSkillRank(xi.skill.SHIELD) > 0 then
-            local shield = defender:getEquippedItem(xi.slot.SUB)
+        if defender:isPC() and defender:getSkillRank(invaderXim.skill.SHIELD) > 0 then
+            local shield = defender:getEquippedItem(invaderXim.slot.SUB)
             if shield then
                 canBlock = shield:isShield()
             end
@@ -906,31 +906,31 @@ xi.combat.physical.canBlock = function(defender, attacker)
             defender:isPet() or
             defender:isTrust()
         then
-            canBlock = defender:getMobMod(xi.mobMod.CAN_SHIELD_BLOCK) > 0
+            canBlock = defender:getMobMod(invaderXim.mobMod.CAN_SHIELD_BLOCK) > 0
         end
     end
 
     return canBlock
 end
 
-xi.combat.physical.calculateBlockRate = function(defender, attacker)
+invaderXim.combat.physical.calculateBlockRate = function(defender, attacker)
     local blockRate = 0
     local shieldSize = 3
     local skillModifier = 0
-    local palisadeMod = defender:getMod(xi.mod.PALISADE_BLOCK_BONUS)
+    local palisadeMod = defender:getMod(invaderXim.mod.PALISADE_BLOCK_BONUS)
     local reprisalMult = 1.0
 
     -- assume bare hands case
-    local attackerSkillType = xi.skill.HAND_TO_HAND
+    local attackerSkillType = invaderXim.skill.HAND_TO_HAND
     if not attacker:isUsingH2H() then
-        attackerSkillType = attacker:getWeaponSkillType(xi.slot.MAIN)
+        attackerSkillType = attacker:getWeaponSkillType(invaderXim.slot.MAIN)
     end
 
     local attackSkill = attacker:getSkillLevel(attackerSkillType)
-    local blockSkill = defender:getSkillLevel(xi.skill.SHIELD)
+    local blockSkill = defender:getSkillLevel(invaderXim.skill.SHIELD)
 
     if defender:isPC() then
-        local shield = defender:getEquippedItem(xi.slot.SUB)
+        local shield = defender:getEquippedItem(invaderXim.slot.SUB)
         -- already checked in canBlock but check again here to make sure
         if shield and shield:isShield() then
             shieldSize = shield:getShieldSize()
@@ -943,18 +943,18 @@ xi.combat.physical.calculateBlockRate = function(defender, attacker)
         defender:isTrust()
     then
         -- already checked in canBlock but check again here to make sure
-        if defender:getMobMod(xi.mobMod.CAN_SHIELD_BLOCK) > 0 then
-            blockRate = defender:getMod(xi.mod.SHIELDBLOCKRATE)
+        if defender:getMobMod(invaderXim.mobMod.CAN_SHIELD_BLOCK) > 0 then
+            blockRate = defender:getMod(invaderXim.mod.SHIELDBLOCKRATE)
             -- automations are a special case
             if defender:isAutomaton() then
-                skillModifier = (defender:getSkillLevel(xi.skill.AUTOMATON_MELEE) - attackSkill) * 0.215
+                skillModifier = (defender:getSkillLevel(invaderXim.skill.AUTOMATON_MELEE) - attackSkill) * 0.215
                 return math.max(0, blockRate + skillModifier)
             -- mobs and trusts use max skill for job and level
             elseif defender:isTrust() then
                 -- TODO: check trust type for ilvl > 99 when implemented
-                blockSkill = defender:getMaxSkillLevel(math.min(defender:getMainLvl(), 99), defender:getMainJob(), xi.skill.SHIELD)
+                blockSkill = defender:getMaxSkillLevel(math.min(defender:getMainLvl(), 99), defender:getMainJob(), invaderXim.skill.SHIELD)
             else
-                blockSkill = defender:getMaxSkillLevel(defender:getMainLvl(), defender:getMainJob(), xi.skill.SHIELD)
+                blockSkill = defender:getMaxSkillLevel(defender:getMainLvl(), defender:getMainJob(), invaderXim.skill.SHIELD)
             end
         else -- No block mobmod so zero rate
             return 0
@@ -967,12 +967,12 @@ xi.combat.physical.calculateBlockRate = function(defender, attacker)
     end
 
     -- Check for Reprisal and adjust skill and block rate bonus multiplier
-    if defender:hasStatusEffect(xi.effect.REPRISAL) then
+    if defender:hasStatusEffect(invaderXim.effect.REPRISAL) then
         blockSkill   = blockSkill * 1.15
         reprisalMult = 1.5
 
         -- Adamas and Priwen set the multiplier to 3.0x while equipped
-        if defender:getMod(xi.mod.REPRISAL_BLOCK_BONUS) > 0 then
+        if defender:getMod(invaderXim.mod.REPRISAL_BLOCK_BONUS) > 0 then
             reprisalMult = 3.0
         end
     end
@@ -988,17 +988,17 @@ xi.combat.physical.calculateBlockRate = function(defender, attacker)
     return blockRate
 end
 
-xi.combat.physical.getDamageReductionForBlock = function(defender, attacker, damage)
+invaderXim.combat.physical.getDamageReductionForBlock = function(defender, attacker, damage)
     -- save original damage for comparison
     local originalDamage = damage
 
     -- do not reduce if damage is negative
     if damage > 0 then
         -- shield def bonus is a flat raw damage reduction that occurs before absorb
-        damage = math.max(0, damage - defender:getMod(xi.mod.SHIELD_DEF_BONUS))
+        damage = math.max(0, damage - defender:getMod(invaderXim.mod.SHIELD_DEF_BONUS))
 
         if defender:isPC() then
-            local shield = defender:getEquippedItem(xi.slot.SUB)
+            local shield = defender:getEquippedItem(invaderXim.slot.SUB)
             local absorb = utils.clamp(100 - shield:getShieldAbsorptionRate(), 0, 100)
             damage = math.floor(damage * (absorb / 100))
         else
@@ -1011,40 +1011,40 @@ xi.combat.physical.getDamageReductionForBlock = function(defender, attacker, dam
     return originalDamage - damage
 end
 
-xi.combat.physical.isBlocked = function(defender, attacker)
+invaderXim.combat.physical.isBlocked = function(defender, attacker)
     local blocked = false
     if
-        xi.combat.physical.canBlock(defender, attacker) and
-        xi.combat.physical.calculateBlockRate(defender, attacker) > math.random(1, 100)
+        invaderXim.combat.physical.canBlock(defender, attacker) and
+        invaderXim.combat.physical.calculateBlockRate(defender, attacker) > math.random(1, 100)
     then
-        defender:trySkillUp(xi.skill.SHIELD, attacker:getMainLvl())
+        defender:trySkillUp(invaderXim.skill.SHIELD, attacker:getMainLvl())
         blocked = true
     end
 
     return blocked
 end
 
-xi.combat.physical.isParried = function(defender, attacker)
+invaderXim.combat.physical.isParried = function(defender, attacker)
     local parried = false
     if
-        xi.combat.physical.canParry(defender, attacker) and
-        xi.combat.physical.calculateParryRate(defender, attacker) > math.random(1, 100)
+        invaderXim.combat.physical.canParry(defender, attacker) and
+        invaderXim.combat.physical.calculateParryRate(defender, attacker) > math.random(1, 100)
     then
         parried = true
 
         -- https://www.bg-wiki.com/ffxi/Turms_Mittens
         if
-            defender:getMod(xi.mod.PARRY_HP_RECOVERY) > 0 and
-            not defender:hasStatusEffect(xi.effect.CURSE_II)
+            defender:getMod(invaderXim.mod.PARRY_HP_RECOVERY) > 0 and
+            not defender:hasStatusEffect(invaderXim.effect.CURSE_II)
         then
-            local recoveryValue = defender:getMod(xi.mod.PARRY_HP_RECOVERY)
+            local recoveryValue = defender:getMod(invaderXim.mod.PARRY_HP_RECOVERY)
             defender:addHP(recoveryValue)
         end
 
         if defender:isPC() then
             -- handle tactical parry
-            if defender:hasTrait(xi.trait.TACTICAL_PARRY) then
-                defender:addTP(defender:getMod(xi.mod.TACTICAL_PARRY))
+            if defender:hasTrait(invaderXim.trait.TACTICAL_PARRY) then
+                defender:addTP(defender:getMod(invaderXim.mod.TACTICAL_PARRY))
             end
         end
     end
@@ -1053,27 +1053,27 @@ xi.combat.physical.isParried = function(defender, attacker)
     if defender:isPC() then
         if
             parried or -- We parried
-            not xi.settings.map.PARRY_OLD_SKILLUP_STYLE -- Old style skillup is not enabled
+            not invaderXim.settings.map.PARRY_OLD_SKILLUP_STYLE -- Old style skillup is not enabled
         then
-            defender:trySkillUp(xi.skill.PARRY, attacker:getMainLvl())
+            defender:trySkillUp(invaderXim.skill.PARRY, attacker:getMainLvl())
         end
     end
 
     return parried
 end
 
-xi.combat.physical.isGuarded = function(defender, attacker)
+invaderXim.combat.physical.isGuarded = function(defender, attacker)
     local guarded = false
     if
-        xi.combat.physical.canGuard(defender, attacker) and
-        xi.combat.physical.calculateGuardRate(defender, attacker) > math.random(1, 100)
+        invaderXim.combat.physical.canGuard(defender, attacker) and
+        invaderXim.combat.physical.calculateGuardRate(defender, attacker) > math.random(1, 100)
     then
         guarded = true
         if defender:isPC() then
-            defender:trySkillUp(xi.skill.GUARD, attacker:getMainLvl())
+            defender:trySkillUp(invaderXim.skill.GUARD, attacker:getMainLvl())
             -- handle tactical guard
-            if defender:hasTrait(xi.trait.TACTICAL_GUARD) then
-                defender:addTP(defender:getMod(xi.mod.TACTICAL_GUARD))
+            if defender:hasTrait(invaderXim.trait.TACTICAL_GUARD) then
+                defender:addTP(defender:getMod(invaderXim.mod.TACTICAL_GUARD))
             end
         end
     end

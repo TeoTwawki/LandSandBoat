@@ -2,18 +2,18 @@
 -- Area: Full Moon Fountain
 -- BCNM: Waking the Beast
 -----------------------------------
-local fullMoonFountainID = zones[xi.zone.FULL_MOON_FOUNTAIN]
+local fullMoonFountainID = zones[invaderXim.zone.FULL_MOON_FOUNTAIN]
 -----------------------------------
 
 local loot =
 {
-    xi.item.CARBUNCLES_CUFFS,
-    xi.item.IFRITS_BOW,
-    xi.item.SHIVAS_SHOTEL,
-    xi.item.TITANS_BASELARDE,
-    xi.item.GARUDAS_SICKLE,
-    xi.item.LEVIATHANS_COUSE,
-    xi.item.RAMUHS_MACE,
+    invaderXim.item.CARBUNCLES_CUFFS,
+    invaderXim.item.IFRITS_BOW,
+    invaderXim.item.SHIVAS_SHOTEL,
+    invaderXim.item.TITANS_BASELARDE,
+    invaderXim.item.GARUDAS_SICKLE,
+    invaderXim.item.LEVIATHANS_COUSE,
+    invaderXim.item.RAMUHS_MACE,
 }
 
 local avatarTwoHours =
@@ -86,8 +86,8 @@ local checkAllCarbyDead = function(mainCarbyID, battlefield)
 
     -- check also battlefield status as this function can be called
     -- even after setting battlefield status to won
-    if allCarbyDead and battlefield:getStatus() ~= xi.battlefield.status.WON then
-        battlefield:setStatus(xi.battlefield.status.WON)
+    if allCarbyDead and battlefield:getStatus() ~= invaderXim.battlefield.status.WON then
+        battlefield:setStatus(invaderXim.battlefield.status.WON)
         handleLoot(battlefield)
     end
 end
@@ -224,14 +224,14 @@ local despawnCarby = function(mainCarby, battlefield, content)
     mainCarby:setUntargetable(true)
     -- send despawn animation packet so carby looks like he despawns
     -- cannot just setHP(0) here because otherwise player sees HP go to zero and gets death message
-    mainCarby:setAnimation(xi.animation.DESPAWN)
+    mainCarby:setAnimation(invaderXim.animation.DESPAWN)
 
     -- after the despawn animation plays then remove the left over name by setting status
     -- and then actually kill carby with setHP(0) (will not produce message for player)
     -- and allow carby to be targeted again (in preparation for next spawn)
     mainCarby:timer(7000, function(mobArg)
         if mobArg then
-            mobArg:setStatus(xi.status.DISAPPEAR)
+            mobArg:setStatus(invaderXim.status.DISAPPEAR)
             mobArg:setHP(0)
             mobArg:setUntargetable(false)
         end
@@ -327,26 +327,26 @@ local checkElementalAvatarTwoHour = function(mainCarbyID, battlefield, phase)
 end
 
 local content = BattlefieldQuest:new({
-    zoneId           = xi.zone.FULL_MOON_FOUNTAIN,
-    battlefieldId    = xi.battlefield.id.WAKING_THE_BEAST_FULLMOON,
+    zoneId           = invaderXim.zone.FULL_MOON_FOUNTAIN,
+    battlefieldId    = invaderXim.battlefield.id.WAKING_THE_BEAST_FULLMOON,
     canLoseExp       = false,
     maxPlayers       = 18,
     timeLimit        = utils.minutes(30),
     index            = 2,
     entryNpc         = 'MS_Entrance',
     exitNpc          = 'Moon_Spiral',
-    questArea = xi.questLog.OTHER_AREAS,
-    quest     = xi.quest.id.otherAreas.WAKING_THE_BEAST,
+    questArea = invaderXim.questLog.OTHER_AREAS,
+    quest     = invaderXim.quest.id.otherAreas.WAKING_THE_BEAST,
 })
 
 -- unclear if this is correct or if all players need the quest items
 function content:entryRequirement(player, npc, isRegistrant, trade)
-    local hasQuestItems = player:hasKeyItem(xi.ki.EYE_OF_FLAMES) and player:hasKeyItem(xi.ki.EYE_OF_FROST) and
-    player:hasKeyItem(xi.ki.EYE_OF_GALES) and player:hasKeyItem(xi.ki.EYE_OF_STORMS) and
-    player:hasKeyItem(xi.ki.EYE_OF_TIDES) and player:hasKeyItem(xi.ki.EYE_OF_TREMORS) and
-    player:hasKeyItem(xi.ki.RAINBOW_RESONATOR)
+    local hasQuestItems = player:hasKeyItem(invaderXim.ki.EYE_OF_FLAMES) and player:hasKeyItem(invaderXim.ki.EYE_OF_FROST) and
+    player:hasKeyItem(invaderXim.ki.EYE_OF_GALES) and player:hasKeyItem(invaderXim.ki.EYE_OF_STORMS) and
+    player:hasKeyItem(invaderXim.ki.EYE_OF_TIDES) and player:hasKeyItem(invaderXim.ki.EYE_OF_TREMORS) and
+    player:hasKeyItem(invaderXim.ki.RAINBOW_RESONATOR)
 
-    local prevCompletedQuest = player:getQuestStatus(self.questArea, self.quest) == xi.questStatus.QUEST_COMPLETED
+    local prevCompletedQuest = player:getQuestStatus(self.questArea, self.quest) == invaderXim.questStatus.QUEST_COMPLETED
 
     -- registrant must actually be doing the quest
     if isRegistrant then

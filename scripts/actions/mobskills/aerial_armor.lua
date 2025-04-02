@@ -7,9 +7,9 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.BLINK, 3, 0, 180))
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.BLINK, 3, 0, 180))
 
-    return xi.effect.BLINK
+    return invaderXim.effect.BLINK
 end
 
 return mobskillObject

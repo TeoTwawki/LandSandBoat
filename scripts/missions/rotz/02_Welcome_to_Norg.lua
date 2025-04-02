@@ -6,11 +6,11 @@
 -- _700 (Oaken Door) : !pos 97 -7 -12 252
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ZILART, xi.mission.id.zilart.WELCOME_TNORG)
+local mission = Mission:new(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.WELCOME_TNORG)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ZILART, xi.mission.id.zilart.KAZHAMS_CHIEFTAINESS },
+    nextMission = { invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.KAZHAMS_CHIEFTAINESS },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['_700'] =
             {

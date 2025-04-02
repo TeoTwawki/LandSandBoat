@@ -7,11 +7,11 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return target:canLearnSpell(xi.magic.spell.FOWL_AUBADE)
+    return target:canLearnSpell(invaderXim.magic.spell.FOWL_AUBADE)
 end
 
 itemObject.onItemUse = function(target)
-    target:addSpell(xi.magic.spell.FOWL_AUBADE)
+    target:addSpell(invaderXim.magic.spell.FOWL_AUBADE)
 end
 
 return itemObject

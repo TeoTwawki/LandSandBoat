@@ -5,11 +5,11 @@
 -- !addmission 13 68
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ROV, xi.mission.id.rov.PRIME_NUMBER)
+local mission = Mission:new(invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.PRIME_NUMBER)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ROV, xi.mission.id.rov.FROM_THE_RUINS },
+    nextMission = { invaderXim.mission.log_id.ROV, invaderXim.mission.id.rov.FROM_THE_RUINS },
 }
 
 mission.sections =
@@ -19,7 +19,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.ALZADAAL_UNDERSEA_RUINS] =
+        [invaderXim.zone.ALZADAAL_UNDERSEA_RUINS] =
         {
             onZoneIn = function(player, prevZone)
                 return 124
@@ -42,7 +42,7 @@ mission.sections =
                 mission:getVar(player, 'Option') == 1
         end,
 
-        [xi.zone.THE_SHROUDED_MAW] =
+        [invaderXim.zone.THE_SHROUDED_MAW] =
         {
             onZoneIn = function(player, prevZone)
                 return 12

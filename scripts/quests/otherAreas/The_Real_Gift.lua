@@ -7,28 +7,28 @@
 -- Oswald  : !pos 47.119 -15.273 7.989 248
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.THE_REAL_GIFT)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.THE_REAL_GIFT)
 
 quest.reward =
 {
-    item     = xi.item.GLASS_FIBER_FISHING_ROD,
-    title    = xi.title.THE_LOVE_DOCTOR,
-    fameArea = xi.fameArea.SELBINA_RABAO,
+    item     = invaderXim.item.GLASS_FIBER_FISHING_ROD,
+    title    = invaderXim.title.THE_LOVE_DOCTOR,
+    fameArea = invaderXim.fameArea.SELBINA_RABAO,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.UNDER_THE_SEA) == xi.questStatus.QUEST_COMPLETED and
-                player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.THE_SAND_CHARM) >= xi.questStatus.QUEST_COMPLETED and
-                xi.settings.map.FISHING_ENABLE == true
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.UNDER_THE_SEA) == invaderXim.questStatus.QUEST_COMPLETED and
+                player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.THE_SAND_CHARM) >= invaderXim.questStatus.QUEST_COMPLETED and
+                invaderXim.settings.map.FISHING_ENABLE == true
         end,
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
-            ['Oswald'] = quest:progressEvent(73, xi.item.SHALL_SHELL), -- Bring me a shall shell
+            ['Oswald'] = quest:progressEvent(73, invaderXim.item.SHALL_SHELL), -- Bring me a shall shell
 
             onEventFinish =
             {
@@ -43,19 +43,19 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Oswald'] =
             {
                 onTrigger = function(player, npc)
-                    return quest:event(74, xi.item.SHALL_SHELL) -- Shall shells yield pearls
+                    return quest:event(74, invaderXim.item.SHALL_SHELL) -- Shall shells yield pearls
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.SHALL_SHELL) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.SHALL_SHELL) then
                         return quest:progressEvent(75) -- You're so fantastic! Thank you!
                     end
                 end,
@@ -74,10 +74,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Oswald'] = quest:progressEvent(76):replaceDefault(),
             -- Thanks for all you've done.

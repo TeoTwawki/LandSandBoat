@@ -8,25 +8,25 @@
 -- Elfriede    : !pos 61 -15 10 248
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.THE_TENSHODO_SHOWDOWN)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.THE_TENSHODO_SHOWDOWN)
 
 quest.reward =
 {
     fame = 30,
-    fameArea = xi.fameArea.WINDURST,
-    item = xi.item.MARAUDERS_KNIFE,
+    fameArea = invaderXim.fameArea.WINDURST,
+    item = invaderXim.item.MARAUDERS_KNIFE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getMainJob() == xi.job.THF and
-                player:getMainLvl() >= xi.settings.main.AF1_QUEST_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getMainJob() == invaderXim.job.THF and
+                player:getMainLvl() >= invaderXim.settings.main.AF1_QUEST_LEVEL
         end,
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Nanaa_Mihgo'] = quest:progressEvent(496),
 
@@ -34,7 +34,7 @@ quest.sections =
             {
                 [496] = function(player, csid, option, npc)
                     quest:begin(player)
-                    npcUtil.giveKeyItem(player, xi.ki.LETTER_FROM_THE_TENSHODO)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LETTER_FROM_THE_TENSHODO)
                 end,
             },
         },
@@ -42,17 +42,17 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Harnek'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.LETTER_FROM_THE_TENSHODO) then
-                        return quest:progressEvent(10021, 0, xi.ki.LETTER_FROM_THE_TENSHODO, xi.ki.TENSHODO_ENVELOPE)
-                    elseif player:hasKeyItem(xi.ki.SIGNED_ENVELOPE) then
+                    if player:hasKeyItem(invaderXim.ki.LETTER_FROM_THE_TENSHODO) then
+                        return quest:progressEvent(10021, 0, invaderXim.ki.LETTER_FROM_THE_TENSHODO, invaderXim.ki.TENSHODO_ENVELOPE)
+                    elseif player:hasKeyItem(invaderXim.ki.SIGNED_ENVELOPE) then
                         return quest:progressEvent(10022)
                     end
                 end,
@@ -61,29 +61,29 @@ quest.sections =
             onEventFinish =
             {
                 [10021] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.LETTER_FROM_THE_TENSHODO)
-                    npcUtil.giveKeyItem(player, xi.ki.TENSHODO_ENVELOPE)
+                    player:delKeyItem(invaderXim.ki.LETTER_FROM_THE_TENSHODO)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.TENSHODO_ENVELOPE)
                     quest:setVar(player, 'Prog', 1)
                 end,
 
                 [10022] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.SIGNED_ENVELOPE)
+                        player:delKeyItem(invaderXim.ki.SIGNED_ENVELOPE)
                     end
                 end,
             },
         },
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Elfriede'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.BOWL_OF_QUADAV_STEW) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.BOWL_OF_QUADAV_STEW) and
                         quest:getVar(player, 'Prog') == 2
                     then
-                        return quest:progressEvent(10004, 0, xi.ki.TENSHODO_ENVELOPE, xi.item.BOWL_OF_QUADAV_STEW)
+                        return quest:progressEvent(10004, 0, invaderXim.ki.TENSHODO_ENVELOPE, invaderXim.item.BOWL_OF_QUADAV_STEW)
                     end
                 end,
 
@@ -91,9 +91,9 @@ quest.sections =
                     local questProgress = quest:getVar(player, 'Prog')
 
                     if questProgress == 1 then
-                        return quest:progressEvent(10002, 0, xi.ki.TENSHODO_ENVELOPE, xi.item.BOWL_OF_QUADAV_STEW)
+                        return quest:progressEvent(10002, 0, invaderXim.ki.TENSHODO_ENVELOPE, invaderXim.item.BOWL_OF_QUADAV_STEW)
                     elseif questProgress == 2 then
-                        return quest:progressEvent(10003, 0, 0, xi.item.BOWL_OF_QUADAV_STEW)
+                        return quest:progressEvent(10003, 0, 0, invaderXim.item.BOWL_OF_QUADAV_STEW)
                     end
                 end,
             },
@@ -106,14 +106,14 @@ quest.sections =
 
                 [10004] = function(player, csid, option, npc)
                     player:confirmTrade()
-                    player:delKeyItem(xi.ki.TENSHODO_ENVELOPE)
-                    npcUtil.giveKeyItem(player, xi.ki.SIGNED_ENVELOPE)
+                    player:delKeyItem(invaderXim.ki.TENSHODO_ENVELOPE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.SIGNED_ENVELOPE)
                     quest:setVar(player, 'Prog', 3)
                 end,
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Nanaa_Mihgo'] =
             {
@@ -132,37 +132,37 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and
-                not player:hasItem(xi.item.BOWL_OF_QUADAV_STEW)
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and
+                not player:hasItem(invaderXim.item.BOWL_OF_QUADAV_STEW)
         end,
 
-        [xi.zone.BEADEAUX] =
+        [invaderXim.zone.BEADEAUX] =
         {
             ['Bronze_Quadav'] =
             {
                 onSteal = function(player, target, ability, action)
-                    return xi.item.BOWL_OF_QUADAV_STEW
+                    return invaderXim.item.BOWL_OF_QUADAV_STEW
                 end
             },
 
             ['Garnet_Quadav'] =
             {
                 onSteal = function(player, target, ability, action)
-                    return xi.item.BOWL_OF_QUADAV_STEW
+                    return invaderXim.item.BOWL_OF_QUADAV_STEW
                 end
             },
 
             ['Silver_Quadav'] =
             {
                 onSteal = function(player, target, ability, action)
-                    return xi.item.BOWL_OF_QUADAV_STEW
+                    return invaderXim.item.BOWL_OF_QUADAV_STEW
                 end
             },
 
             ['Zircon_Quadav'] =
             {
                 onSteal = function(player, target, ability, action)
-                    return xi.item.BOWL_OF_QUADAV_STEW
+                    return invaderXim.item.BOWL_OF_QUADAV_STEW
                 end
             }
         },
@@ -171,13 +171,13 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.AS_THICK_AS_THIEVES) == xi.questStatus.QUEST_AVAILABLE and
-                player:getMainJob() == xi.job.THF and
-                player:getMainLvl() < xi.settings.main.AF2_QUEST_LEVEL
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.AS_THICK_AS_THIEVES) == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getMainJob() == invaderXim.job.THF and
+                player:getMainLvl() < invaderXim.settings.main.AF2_QUEST_LEVEL
         end,
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             ['Nanaa_Mihgo'] = quest:event(503):replaceDefault(),
         },

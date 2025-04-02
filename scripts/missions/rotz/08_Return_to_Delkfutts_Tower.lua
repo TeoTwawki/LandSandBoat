@@ -10,11 +10,11 @@
 -- Qe'Lov Gate (BCNM)     : !pos -520 -4 17 179
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ZILART, xi.mission.id.zilart.RETURN_TO_DELKFUTTS_TOWER)
+local mission = Mission:new(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.RETURN_TO_DELKFUTTS_TOWER)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ZILART, xi.mission.id.zilart.ROMAEVE },
+    nextMission = { invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.ROMAEVE },
 }
 
 mission.sections =
@@ -25,7 +25,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Aldo'] =
             {
@@ -46,7 +46,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Gilgamesh'] = mission:event(13),
         },
@@ -58,7 +58,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 0
         end,
 
-        [xi.zone.LOWER_DELKFUTTS_TOWER] =
+        [invaderXim.zone.LOWER_DELKFUTTS_TOWER] =
         {
             onZoneIn = function(player, prevZone)
                 return 15
@@ -79,7 +79,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 1
         end,
 
-        [xi.zone.STELLAR_FULCRUM] =
+        [invaderXim.zone.STELLAR_FULCRUM] =
         {
             onZoneIn = function(player, prevZone)
                 return 0
@@ -109,7 +109,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus >= 2
         end,
 
-        [xi.zone.STELLAR_FULCRUM] =
+        [invaderXim.zone.STELLAR_FULCRUM] =
         {
             onZoneIn = function(player, prevZone)
                 if player:getMissionStatus(mission.areaId) == 3 then
@@ -124,9 +124,9 @@ mission.sections =
                 end,
 
                 [32001] = function(player, csid, option, npc)
-                    if player:getLocalVar('battlefieldWin') == xi.battlefield.id.RETURN_TO_DELKFUTTS_TOWER then
+                    if player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.RETURN_TO_DELKFUTTS_TOWER then
                         player:setMissionStatus(mission.areaId, 3)
-                        player:setPos(-519.99, 1.076, -19.943, 64, xi.zone.STELLAR_FULCRUM)
+                        player:setPos(-519.99, 1.076, -19.943, 64, invaderXim.zone.STELLAR_FULCRUM)
                     end
                 end,
             },

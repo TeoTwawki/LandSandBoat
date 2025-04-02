@@ -14,16 +14,16 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    local baseDuration       = 120 + player:getJobPointLevel(xi.jp.JIG_DURATION)
-    local durationMultiplier = 1.0 + utils.clamp(player:getMod(xi.mod.JIG_DURATION), 0, 50) / 100
+    local baseDuration       = 120 + player:getJobPointLevel(invaderXim.jp.JIG_DURATION)
+    local durationMultiplier = 1.0 + utils.clamp(player:getMod(invaderXim.mod.JIG_DURATION), 0, 50) / 100
     local finalDuration      = math.floor(baseDuration * durationMultiplier)
 
     -- TODO: Chocobo Jig will not override all types of weight effect. Find out which aren't overriden.
-    if player:hasStatusEffect(xi.effect.WEIGHT) then
-        player:delStatusEffect(xi.effect.WEIGHT)
+    if player:hasStatusEffect(invaderXim.effect.WEIGHT) then
+        player:delStatusEffect(invaderXim.effect.WEIGHT)
     end
 
-    player:addStatusEffect(xi.effect.QUICKENING, 10, 0, finalDuration)
+    player:addStatusEffect(invaderXim.effect.QUICKENING, 10, 0, finalDuration)
 end
 
 return abilityObject

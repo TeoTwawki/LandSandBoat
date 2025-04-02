@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.NEGATE_PETRIFY
+-- invaderXim.effect.NEGATE_PETRIFY
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

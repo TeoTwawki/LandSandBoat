@@ -10,7 +10,7 @@
 local mobskillObject = {}
 
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
-    if mob:isMobType(xi.mobType.NOTORIOUS) then
+    if mob:isMobType(invaderXim.mobType.NOTORIOUS) then
         return 1
     end
 
@@ -19,18 +19,18 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     -- try to drain buff
-    local effect = mob:stealStatusEffect(target, xi.effectFlag.DISPELABLE)
+    local effect = mob:stealStatusEffect(target, invaderXim.effectFlag.DISPELABLE)
     local dmg
 
     if effect ~= 0 then
-        skill:setMsg(xi.msg.basic.EFFECT_DRAINED)
+        skill:setMsg(invaderXim.msg.basic.EFFECT_DRAINED)
         return 1
     else
         -- time to drain HP. 50-100
         local power = math.random(0, 51) + 50
-        dmg = xi.mobskills.mobFinalAdjustments(power, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.DARK, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
+        dmg = invaderXim.mobskills.mobFinalAdjustments(power, mob, skill, target, invaderXim.attackType.MAGICAL, invaderXim.damageType.DARK, invaderXim.mobskills.shadowBehavior.IGNORE_SHADOWS)
 
-        skill:setMsg(xi.mobskills.mobPhysicalDrainMove(mob, target, skill, xi.mobskills.drainType.HP, dmg))
+        skill:setMsg(invaderXim.mobskills.mobPhysicalDrainMove(mob, target, skill, invaderXim.mobskills.drainType.HP, dmg))
     end
 
     return dmg

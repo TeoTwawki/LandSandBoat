@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.THE_ASHU_TALIF] =
+zones[invaderXim.zone.THE_ASHU_TALIF] =
 {
     text =
     {
@@ -58,4 +58,4 @@ zones[xi.zone.THE_ASHU_TALIF] =
     },
 }
 
-return zones[xi.zone.THE_ASHU_TALIF]
+return zones[invaderXim.zone.THE_ASHU_TALIF]

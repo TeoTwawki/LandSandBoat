@@ -17,9 +17,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local power = 25
     local duration = 150
 
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.BLINDNESS, power, 0, duration))
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.BLINDNESS, power, 0, duration))
 
-    return xi.effect.BLINDNESS
+    return invaderXim.effect.BLINDNESS
 end
 
 return mobskillObject

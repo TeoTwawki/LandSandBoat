@@ -8,13 +8,13 @@
 -- Malduc  : !pos 66.200 -14.999 4.426 237
 -- Rashid  : !pos -8.444 -2 -123.575 234
 -----------------------------------
-local bastokMarketsID = zones[xi.zone.BASTOK_MARKETS]
-local bastokMinesID   = zones[xi.zone.BASTOK_MINES]
-local metalworksID    = zones[xi.zone.METALWORKS]
-local portBastokID    = zones[xi.zone.PORT_BASTOK]
+local bastokMarketsID = zones[invaderXim.zone.BASTOK_MARKETS]
+local bastokMinesID   = zones[invaderXim.zone.BASTOK_MINES]
+local metalworksID    = zones[invaderXim.zone.METALWORKS]
+local portBastokID    = zones[invaderXim.zone.PORT_BASTOK]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.BASTOK, xi.mission.id.bastok.FETICHISM)
+local mission = Mission:new(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.FETICHISM)
 
 -- npcUtil.completeMission will only award rank if less than player's current rank in
 -- the nation.  Rank Points are cleared on rank up, which occurs after setting.
@@ -35,7 +35,7 @@ end
 
 local handleFetichTrade = function(player, npc, trade)
     if
-        npcUtil.tradeHasExactly(trade, { xi.item.QUADAV_FETICH_HEAD, xi.item.QUADAV_FETICH_TORSO, xi.item.QUADAV_FETICH_ARMS, xi.item.QUADAV_FETICH_LEGS })
+        npcUtil.tradeHasExactly(trade, { invaderXim.item.QUADAV_FETICH_HEAD, invaderXim.item.QUADAV_FETICH_TORSO, invaderXim.item.QUADAV_FETICH_ARMS, invaderXim.item.QUADAV_FETICH_LEGS })
     then
         if not player:hasCompletedMission(mission.areaId, mission.missionId) then
             return mission:progressEvent(1008)
@@ -55,11 +55,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             onEventFinish =
             {
@@ -67,7 +67,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             onEventFinish =
             {
@@ -75,7 +75,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             onEventFinish =
             {
@@ -83,7 +83,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             onEventFinish =
             {
@@ -99,7 +99,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Cleades'] =
             {
@@ -114,7 +114,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Rashid'] =
             {
@@ -129,7 +129,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Malduc'] =
             {
@@ -144,7 +144,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Argus'] =
             {

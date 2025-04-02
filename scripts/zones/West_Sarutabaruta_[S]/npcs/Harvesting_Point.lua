@@ -6,11 +6,11 @@
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.helm.onTrade(player, npc, trade, xi.helmType.HARVESTING, 901)
+    invaderXim.helm.onTrade(player, npc, trade, invaderXim.helmType.HARVESTING, 901)
 end
 
 entity.onTrigger = function(player, npc)
-    xi.helm.onTrigger(player, xi.helmType.HARVESTING)
+    invaderXim.helm.onTrigger(player, invaderXim.helmType.HARVESTING)
 end
 
 return entity

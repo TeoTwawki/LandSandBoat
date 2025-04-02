@@ -2,7 +2,7 @@
 -- Area: Aydeewa Subterrane
 --  ZNM: Pandemonium Warden
 -----------------------------------
-local ID = zones[xi.zone.AYDEEWA_SUBTERRANE]
+local ID = zones[invaderXim.zone.AYDEEWA_SUBTERRANE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -45,13 +45,13 @@ local avatarAbilities = {  917,   918,   914,   913,   915,   916,   839,   919 
 local avatarSkins =     {   22,    23,    19,    18,    20,    21,    17,    16 }
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 900)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 900)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setMod(xi.mod.DEF, 450)
-    mob:setMod(xi.mod.MEVA, 380)
-    mob:setMod(xi.mod.MDEF, 50)
+    mob:setMod(invaderXim.mod.DEF, 450)
+    mob:setMod(invaderXim.mod.MEVA, 380)
+    mob:setMod(invaderXim.mod.MDEF, 50)
     -- Make sure model is reset back to start
     mob:setModelId(1840)
     -- Prevent death and hide HP until final phase
@@ -67,7 +67,7 @@ end
 entity.onMobDisengage = function(mob)
     -- Make sure model is reset back to start
     mob:setModelId(1840)
-    mob:setMobMod(xi.mobMod.SKILL_LIST, 316)
+    mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 316)
 
     -- Prevent death and hide HP until final phase
     mob:setUnkillable(true)
@@ -140,14 +140,14 @@ entity.onMobFight = function(mob, target)
         mob:setTP(0)
         mob:setModelId(mobModelID[phase])
         mob:setHP(mobHP[phase])
-        mob:setMobMod(xi.mobMod.SKILL_LIST, skillID[phase])
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, skillID[phase])
 
         -- Handle pets
         for i = 1, 8 do
             local oldPet = pets[phase % 2][i]
             local newPet = pets[(phase - 1) % 2][i]
             newPet:updateEnmity(target)
-            newPet:setMobMod(xi.mobMod.MAGIC_DELAY, 4)
+            newPet:setMobMod(invaderXim.mobMod.MAGIC_DELAY, 4)
             handlePet(mob, newPet, oldPet, target, petModelID[phase])
         end
 
@@ -209,7 +209,7 @@ entity.onMobFight = function(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.PANDEMONIUM_QUELLER)
+    player:addTitle(invaderXim.title.PANDEMONIUM_QUELLER)
 
     -- Despawn pets
     for i = 0, 1 do

@@ -12,10 +12,10 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.PLAGUE, 10, 3, xi.mobskills.calculateDuration(skill:getTP(), 15, 45)))
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.SILENCE, 1, 0, xi.mobskills.calculateDuration(skill:getTP(), 30, 60)))
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.PLAGUE, 10, 3, invaderXim.mobskills.calculateDuration(skill:getTP(), 15, 45)))
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.SILENCE, 1, 0, invaderXim.mobskills.calculateDuration(skill:getTP(), 30, 60)))
 
-    return xi.effect.PLAGUE
+    return invaderXim.effect.PLAGUE
 end
 
 return mobskillObject

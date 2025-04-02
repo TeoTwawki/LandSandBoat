@@ -11,20 +11,20 @@
 -- mannequin_legs  : !additem 1604
 -- mannequin_feet  : !additem 1605
 -----------------------------------
-local mhauraID = zones[xi.zone.MHAURA]
+local mhauraID = zones[invaderXim.zone.MHAURA]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.ITS_RAINING_MANNEQUINS)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.ITS_RAINING_MANNEQUINS)
 
 quest.sections =
 {
     -- Speak to Fyi Chalmwoh at G-8 in Mhaura (in the Goldsmithing shop).
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Fyi_Chalmwoh'] = quest:progressEvent(305),
 
@@ -40,16 +40,16 @@ quest.sections =
     -- Now go to Selbina and talk to Ramona at H-9 in the Weaver's shop. She'll give you Key Item Ye Olde Mannequin Catalogue.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 0
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 0
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             -- Hint to go to Selbina
             ['Fyi_Chalmwoh'] = quest:event(306),
         },
 
-        [xi.zone.SELBINA] =
+        [invaderXim.zone.SELBINA] =
         {
             ['Ramona'] = quest:progressEvent(1103),
             -- After this her default cs becomes 175, but we have it down as 170?
@@ -57,7 +57,7 @@ quest.sections =
             onEventFinish =
             {
                 [1103] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.YE_OLDE_MANNEQUIN_CATALOGUE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.YE_OLDE_MANNEQUIN_CATALOGUE)
                     quest:setVar(player, 'Prog', 1)
                 end,
             },
@@ -67,23 +67,23 @@ quest.sections =
     -- Now go to Northern San d'Oria and talk to Cheupirudaux at F-3 in front of the Woodworking Guild. He'll give you Key Item Mannequin Joint Diagrams.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 1
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 1
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             -- Hint to go to San d'Oria
             ['Fyi_Chalmwoh'] = quest:event(307),
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Cheupirudaux'] = quest:progressEvent(759),
 
             onEventFinish =
             {
                 [759] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.MANNEQUIN_JOINT_DIAGRAMS)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.MANNEQUIN_JOINT_DIAGRAMS)
                     quest:setVar(player, 'Prog', 2)
                 end,
             },
@@ -93,10 +93,10 @@ quest.sections =
     -- Now go back to Mhaura and trade all 5 pieces to Fyi Chalmwoh.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 2
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 2
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Fyi_Chalmwoh'] =
             {
@@ -107,11 +107,11 @@ quest.sections =
                 onTrade = function(player, npc, trade)
                     if
                         npcUtil.tradeHasExactly(trade, {
-                            xi.item.MANNEQUIN_HEAD,
-                            xi.item.MANNEQUIN_BODY,
-                            xi.item.MANNEQUIN_HANDS,
-                            xi.item.MANNEQUIN_LEGS,
-                            xi.item.MANNEQUIN_FEET
+                            invaderXim.item.MANNEQUIN_HEAD,
+                            invaderXim.item.MANNEQUIN_BODY,
+                            invaderXim.item.MANNEQUIN_HANDS,
+                            invaderXim.item.MANNEQUIN_LEGS,
+                            invaderXim.item.MANNEQUIN_FEET
                         })
                     then
                         return quest:progressEvent(309)
@@ -134,10 +134,10 @@ quest.sections =
     -- You have to wait about one earth minute to get your reward.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and vars.Prog == 3
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and vars.Prog == 3
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Fyi_Chalmwoh'] =
             {
@@ -155,7 +155,7 @@ quest.sections =
             {
                 [311] = function(player, csid, option, npc)
                     local race = player:getRace()
-                    local chosenMannequin = xi.item.HUME_M_MANNEQUIN + race - 1
+                    local chosenMannequin = invaderXim.item.HUME_M_MANNEQUIN + race - 1
                     if player:getFreeSlotsCount() > 0 and not player:hasItem(chosenMannequin) then
                         if quest:complete(player) then
                             player:tradeComplete()

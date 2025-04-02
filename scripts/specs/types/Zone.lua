@@ -1,7 +1,7 @@
 ---@meta
 
 ---@class TZone
----@field onZoneIn? fun(player: CBaseEntity, prevZone: xi.zone): integer|table<integer>?
+---@field onZoneIn? fun(player: CBaseEntity, prevZone: invaderXim.zone): integer|table<integer>?
 ---@field afterZoneIn? fun(player: CBaseEntity)
 ---@field onZoneOut? fun(player: CBaseEntity)
 ---@field onTriggerAreaEnter? fun(player: CBaseEntity, triggerArea: ITriggerArea, optInstance: CInstance?)
@@ -17,5 +17,5 @@
 ---@field onTOTDChange? fun(TOTD: integer)
 ---@field onInstanceZoneIn? fun(player: CBaseEntity, instance: CInstance)
 ---@field afterInstanceRegister? fun(player: CBaseEntity)
----@field onInstanceLoadFailed? fun(): xi.zone? Return value is zone ID to exit the player to.
+---@field onInstanceLoadFailed? fun(): invaderXim.zone? Return value is zone ID to exit the player to.
 ---@field onZoneTick? fun(zone: CZone)

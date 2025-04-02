@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.PASHHOW_MARSHLANDS_S] =
+zones[invaderXim.zone.PASHHOW_MARSHLANDS_S] =
 {
     text =
     {
@@ -39,7 +39,7 @@ zones[xi.zone.PASHHOW_MARSHLANDS_S] =
 
         VOIDWALKER =
         {
-            [xi.keyItem.CLEAR_ABYSSITE] =
+            [invaderXim.keyItem.CLEAR_ABYSSITE] =
             {
                 17146186, -- Globster
                 17146185, -- Globster
@@ -51,18 +51,18 @@ zones[xi.zone.PASHHOW_MARSHLANDS_S] =
                 17146179, -- Ground Guzzler
             },
 
-            [xi.keyItem.COLORFUL_ABYSSITE] =
+            [invaderXim.keyItem.COLORFUL_ABYSSITE] =
             {
                 17146178, -- Lamprey Lord
                 17146177, -- Shoggoth
             },
 
-            [xi.keyItem.ORANGE_ABYSSITE] =
+            [invaderXim.keyItem.ORANGE_ABYSSITE] =
             {
                 17146170, -- Blobdingnag
             },
 
-            [xi.keyItem.BLACK_ABYSSITE] =
+            [invaderXim.keyItem.BLACK_ABYSSITE] =
             {
                 17146169, -- Yilbegan
             }
@@ -89,4 +89,4 @@ zones[xi.zone.PASHHOW_MARSHLANDS_S] =
     },
 }
 
-return zones[xi.zone.PASHHOW_MARSHLANDS_S]
+return zones[invaderXim.zone.PASHHOW_MARSHLANDS_S]

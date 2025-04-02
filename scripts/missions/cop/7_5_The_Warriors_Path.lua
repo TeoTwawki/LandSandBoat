@@ -5,28 +5,28 @@
 -- !addmission 6 748
 -- Iron Gate : !pos 612 132 774 32
 -----------------------------------
-local altaieuID = zones[xi.zone.ALTAIEU]
+local altaieuID = zones[invaderXim.zone.ALTAIEU]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.THE_WARRIORS_PATH)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_WARRIORS_PATH)
 
 mission.reward =
 {
-    title = xi.title.SEEKER_OF_THE_LIGHT,
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.GARDEN_OF_ANTIQUITY },
+    title = invaderXim.title.SEEKER_OF_THE_LIGHT,
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.GARDEN_OF_ANTIQUITY },
 }
 
 local stolenKeyTable =
 {
-    [1] = xi.ki.LIGHT_OF_VAHZL,
-    [2] = xi.ki.LIGHT_OF_MEA,
-    [3] = xi.ki.LIGHT_OF_HOLLA,
-    [4] = xi.ki.LIGHT_OF_DEM,
-    [5] = xi.ki.LIGHT_OF_ALTAIEU,
+    [1] = invaderXim.ki.LIGHT_OF_VAHZL,
+    [2] = invaderXim.ki.LIGHT_OF_MEA,
+    [3] = invaderXim.ki.LIGHT_OF_HOLLA,
+    [4] = invaderXim.ki.LIGHT_OF_DEM,
+    [5] = invaderXim.ki.LIGHT_OF_ALTAIEU,
 }
 
 local function getStolenKeyItem(player)
-    local raceId = player:getRace() <= xi.race.MITHRA and math.ceil(player:getRace() / 2) or 5
+    local raceId = player:getRace() <= invaderXim.race.MITHRA and math.ceil(player:getRace() / 2) or 5
 
     return stolenKeyTable[raceId]
 end
@@ -38,7 +38,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.SEALIONS_DEN] =
+        [invaderXim.zone.SEALIONS_DEN] =
         {
             ['_0w0'] =
             {
@@ -74,22 +74,22 @@ mission.sections =
 
                 [34] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 3)
-                    player:setPos(-422.100, 0, -532.092, 220, xi.zone.ALTAIEU)
+                    player:setPos(-422.100, 0, -532.092, 220, invaderXim.zone.ALTAIEU)
                 end,
 
                 [32001] = function(player, csid, option, npc)
                     if
                         mission:getVar(player, 'Status') == 1 and
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.WARRIORS_PATH
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.WARRIORS_PATH
                     then
                         mission:setVar(player, 'Status', 2)
-                        player:setPos(612.057, 132.664, 776.920, 188, xi.zone.SEALIONS_DEN)
+                        player:setPos(612.057, 132.664, 776.920, 188, invaderXim.zone.SEALIONS_DEN)
                     end
                 end,
             },
         },
 
-        [xi.zone.ALTAIEU] =
+        [invaderXim.zone.ALTAIEU] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 3 then
@@ -104,13 +104,13 @@ mission.sections =
                 [1] = function(player, csid, option, npc)
                     local stolenLight = getStolenKeyItem(player)
 
-                    player:delKeyItem(xi.ki.MYSTERIOUS_AMULET_DRAINED)
-                    player:messageSpecial(altaieuID.text.AMULET_SHATTERED, xi.ki.MYSTERIOUS_AMULET)
+                    player:delKeyItem(invaderXim.ki.MYSTERIOUS_AMULET_DRAINED)
+                    player:messageSpecial(altaieuID.text.AMULET_SHATTERED, invaderXim.ki.MYSTERIOUS_AMULET)
 
-                    if stolenLight ~= xi.ki.LIGHT_OF_ALTAIEU then
+                    if stolenLight ~= invaderXim.ki.LIGHT_OF_ALTAIEU then
                         player:delKeyItem(stolenLight)
                         player:messageSpecial(altaieuID.text.LIGHT_STOLEN, stolenLight)
-                        npcUtil.giveKeyItem(player, xi.ki.LIGHT_OF_ALTAIEU)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.LIGHT_OF_ALTAIEU)
                     else
                         player:messageSpecial(altaieuID.text.OBTAIN_BUT_STOLEN, stolenLight)
                     end
@@ -130,7 +130,7 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.SEALIONS_DEN] =
+        [invaderXim.zone.SEALIONS_DEN] =
         {
             ['Sueleen'] = mission:event(12),
 
@@ -144,7 +144,7 @@ mission.sections =
             {
                 [12] = function(player, csid, option, npc)
                     if option == 1 then
-                        xi.teleport.to(player, xi.teleport.id.SEA)
+                        invaderXim.teleport.to(player, invaderXim.teleport.id.SEA)
                     end
                 end,
 

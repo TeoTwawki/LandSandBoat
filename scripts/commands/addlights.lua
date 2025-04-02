@@ -61,7 +61,7 @@ commandObj.onTrigger = function(player, light, amount, target)
         return
     end
 
-    xi.abyssea.addPlayerLights(targ, setLight, amount)
+    invaderXim.abyssea.addPlayerLights(targ, setLight, amount)
     local newAmount = targ:getCharVar(light..'Light')
     player:printToPlayer(string.format('%s was given %i %s light, for a total of %i.', targ:getName(), amount, light, newAmount))
 end

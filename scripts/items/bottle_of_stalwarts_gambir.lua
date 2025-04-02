@@ -12,13 +12,13 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    local effect1   = xi.effect.ACCURACY_BOOST
-    local effect2   = xi.effect.ATTACK_BOOST
+    local effect1   = invaderXim.effect.ACCURACY_BOOST
+    local effect2   = invaderXim.effect.ATTACK_BOOST
     local power1    = 100 --ACC/RACC
     local power2    =  50 --ATTP/RATTP
     local duration  = 300
 
-    xi.itemUtils.addTwoItemEffects(target, effect1, effect2, power1, power2, duration)
+    invaderXim.itemUtils.addTwoItemEffects(target, effect1, effect2, power1, power2, duration)
 end
 
 return itemObject

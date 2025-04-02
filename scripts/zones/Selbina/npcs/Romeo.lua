@@ -9,7 +9,7 @@ local entity = {}
 
 entity.onTrade = function(player, npc, trade)
     if
-        player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.DONATE_TO_RECYCLING) == xi.questStatus.QUEST_ACCEPTED and
+        player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.DONATE_TO_RECYCLING) == invaderXim.questStatus.QUEST_ACCEPTED and
         (
             npcUtil.tradeHas(trade, { { 16482, 5 } }) or
             npcUtil.tradeHas(trade, { { 16483, 5 } }) or
@@ -23,11 +23,11 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    local donateToRecycling = player:getQuestStatus(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.DONATE_TO_RECYCLING)
+    local donateToRecycling = player:getQuestStatus(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.DONATE_TO_RECYCLING)
 
-    if donateToRecycling == xi.questStatus.QUEST_AVAILABLE then
+    if donateToRecycling == invaderXim.questStatus.QUEST_AVAILABLE then
         player:startEvent(20) -- Start quest "Donate to Recycling"
-    elseif donateToRecycling == xi.questStatus.QUEST_ACCEPTED then
+    elseif donateToRecycling == invaderXim.questStatus.QUEST_ACCEPTED then
         player:startEvent(22) -- During quest "Donate to Recycling"
     else
         player:startEvent(23) -- Standard dialog
@@ -36,10 +36,10 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 20 then
-        player:addQuest(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.DONATE_TO_RECYCLING)
+        player:addQuest(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.DONATE_TO_RECYCLING)
     elseif
         csid == 21 and
-        npcUtil.completeQuest(player, xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.DONATE_TO_RECYCLING, { item = xi.item.WASTEBASKET, fame_area = xi.fameArea.SELBINA_RABAO, title = xi.title.ECOLOGIST })
+        npcUtil.completeQuest(player, invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.DONATE_TO_RECYCLING, { item = invaderXim.item.WASTEBASKET, fame_area = invaderXim.fameArea.SELBINA_RABAO, title = invaderXim.title.ECOLOGIST })
     then
         player:confirmTrade()
     end

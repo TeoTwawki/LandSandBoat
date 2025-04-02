@@ -12,36 +12,36 @@ entity.onMobInitialize = function(mob)
 end
 
 entity.onMobSpawn = function(mob)
-    xi.mix.jobSpecial.config(mob, {
+    invaderXim.mix.jobSpecial.config(mob, {
         specials =
         {
             { id = 848, hpp = math.random(10, 90) },
         },
     })
 
-    mob:setMobMod(xi.mobMod.NO_STANDBACK, 1)
-    mob:setMobMod(xi.mobMod.SIGHT_RANGE, 13)
-    mob:setMobMod(xi.mobMod.MAGIC_RANGE, 40)
-    mob:setMod(xi.mod.UDMGPHYS, -6000)
-    mob:setMod(xi.mod.UDMGRANGE, -6000)
-    mob:setMod(xi.mod.UDMGMAGIC, -2000)
-    mob:setMod(xi.mod.FIRE_ABSORB, 100)
+    mob:setMobMod(invaderXim.mobMod.NO_STANDBACK, 1)
+    mob:setMobMod(invaderXim.mobMod.SIGHT_RANGE, 13)
+    mob:setMobMod(invaderXim.mobMod.MAGIC_RANGE, 40)
+    mob:setMod(invaderXim.mod.UDMGPHYS, -6000)
+    mob:setMod(invaderXim.mod.UDMGRANGE, -6000)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, -2000)
+    mob:setMod(invaderXim.mod.FIRE_ABSORB, 100)
     -- do not need to set res rank for fire because WTB primes have own
     -- mob resistances row that sets it already
-    mob:addImmunity(xi.immunity.GRAVITY)
-    mob:addImmunity(xi.immunity.BIND)
-    mob:addImmunity(xi.immunity.SILENCE)
-    mob:addImmunity(xi.immunity.STUN)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.TERROR)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
+    mob:addImmunity(invaderXim.immunity.BIND)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
+    mob:addImmunity(invaderXim.immunity.STUN)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.TERROR)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
     -- element specific immunities
-    mob:addImmunity(xi.immunity.PARALYZE)
+    mob:addImmunity(invaderXim.immunity.PARALYZE)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.ENFIRE, { chance = 100, power = math.random(75, 125) })
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.ENFIRE, { chance = 100, power = math.random(75, 125) })
 end
 
 entity.onMobWeaponSkill = function(target, mob, skill)
@@ -93,7 +93,7 @@ entity.onMobFight = function(mob, target)
                 end
 
                 if spellTarget then
-                    elemental:castSpell(xi.magic.spell.FIRE_IV, spellTarget)
+                    elemental:castSpell(invaderXim.magic.spell.FIRE_IV, spellTarget)
                     mob:setLocalVar('healTimer', os.time() + math.random(30, 60))
                     break
                 end

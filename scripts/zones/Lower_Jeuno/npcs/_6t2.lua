@@ -8,17 +8,17 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    local aNewDawn      = player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.A_NEW_DAWN)
+    local aNewDawn      = player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.A_NEW_DAWN)
     local aNewDawnEvent = player:getCharVar('ANewDawn_Event')
     local mLvl          = player:getMainLvl()
 
     -- A New Dawn (BST AF3)
     if
-        player:getQuestStatus(xi.questLog.JEUNO, xi.quest.id.jeuno.SCATTERED_INTO_SHADOW) == xi.questStatus.QUEST_COMPLETED and
-        aNewDawn == xi.questStatus.QUEST_AVAILABLE
+        player:getQuestStatus(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.SCATTERED_INTO_SHADOW) == invaderXim.questStatus.QUEST_COMPLETED and
+        aNewDawn == invaderXim.questStatus.QUEST_AVAILABLE
     then
         if
-            player:getMainJob() == xi.job.BST and
+            player:getMainJob() == invaderXim.job.BST and
             mLvl >= 50
         then
             if aNewDawnEvent == 0 then
@@ -30,7 +30,7 @@ entity.onTrigger = function(player, npc)
             player:startEvent(1)
         end
 
-    elseif aNewDawn == xi.questStatus.QUEST_ACCEPTED then
+    elseif aNewDawn == invaderXim.questStatus.QUEST_ACCEPTED then
         if aNewDawnEvent == 2 then
             player:startEvent(2)
         elseif aNewDawnEvent >= 4 then
@@ -38,7 +38,7 @@ entity.onTrigger = function(player, npc)
         end
 
     elseif
-        aNewDawn == xi.questStatus.QUEST_COMPLETED and
+        aNewDawn == invaderXim.questStatus.QUEST_COMPLETED and
         aNewDawnEvent == 6
     then
         player:startEvent(0)
@@ -49,11 +49,11 @@ entity.onEventFinish = function(player, csid, option, npc)
     if csid == 5 then
         player:setCharVar('ANewDawn_Event', 1)
         if option == 1 then
-            player:addQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.A_NEW_DAWN)
+            player:addQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.A_NEW_DAWN)
             player:setCharVar('ANewDawn_Event', 2)
         end
     elseif csid == 4 and option == 1 then
-        player:addQuest(xi.questLog.JEUNO, xi.quest.id.jeuno.A_NEW_DAWN)
+        player:addQuest(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.A_NEW_DAWN)
         player:setCharVar('ANewDawn_Event', 2)
     elseif csid == 0 then
         player:setCharVar('ANewDawn_Event', 0)

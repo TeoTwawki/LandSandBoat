@@ -2,11 +2,11 @@
 -- Abyssea Sturdy Pyxis - Time
 -----------------------------------
 xi = xi or {}
-xi.pyxis = xi.pyxis or {}
+invaderXim.pyxis = invaderXim.pyxis or {}
 
-xi.pyxis.time = {}
+invaderXim.pyxis.time = {}
 
-xi.pyxis.time.giveTime = function(npc, player)
+invaderXim.pyxis.time.giveTime = function(npc, player)
     local ID = zones[npc:getZoneID()]
     local alliance = player:getAlliance()
 
@@ -15,7 +15,7 @@ xi.pyxis.time.giveTime = function(npc, player)
             member:getZoneID() == player:getZoneID() and
             member:isPC()
         then
-            local effect = member:getStatusEffect(xi.effect.VISITANT)
+            local effect = member:getStatusEffect(invaderXim.effect.VISITANT)
             local oldDuration = effect:getTimeRemaining()
             local newDuration = oldDuration + 10 * 60 * 1000
 
@@ -23,7 +23,7 @@ xi.pyxis.time.giveTime = function(npc, player)
 
             effect:setDuration(newDuration)
             effect:resetStartTime()
-            effect:setIcon(xi.effect.VISITANT)
+            effect:setIcon(invaderXim.effect.VISITANT)
         end
     end
 end

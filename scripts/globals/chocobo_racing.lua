@@ -7,12 +7,12 @@ require('scripts/globals/packet')
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.chocoboRacing = xi.chocoboRacing or {}
+invaderXim.chocoboRacing = invaderXim.chocoboRacing or {}
 
 -- FOR HEAVILY-IN-DEVELOPMET TESTING, you can force these setting:
 -- TODO: When ready for release, publish these to main settings files.
-xi.settings.main.ENABLE_CHOCOBO_RACING = false
-xi.settings.main.DEBUG_CHOCOBO_RACING = false
+invaderXim.settings.main.ENABLE_CHOCOBO_RACING = false
+invaderXim.settings.main.DEBUG_CHOCOBO_RACING = false
 
 -- Notes:
 -- Since there is a timed element, packet elements, and a lot of data to fill in,
@@ -21,7 +21,7 @@ xi.settings.main.DEBUG_CHOCOBO_RACING = false
 -- a stable state everything should be pushed down.
 
 -- To Run:
--- !exec xi.chocoboRacing.startRace()
+-- !exec invaderXim.chocoboRacing.startRace()
 
 -- https://github.com/atom0s/XiPackets/blob/main/world/server/0x0069/README.md
 -- From your capture, paste in the contents of: packetviewer/incoming/0x069.log
@@ -130,10 +130,10 @@ local combinedPacketData = [[
 ]]
 
 local debug = function(player, ...)
-    if xi.settings.main.DEBUG_CHOCOBO_RACING then
+    if invaderXim.settings.main.DEBUG_CHOCOBO_RACING then
         local t = { ... }
         print(unpack(t))
-        player:printToPlayer(table.concat(t, ' '), xi.msg.channel.SYSTEM_3, '')
+        player:printToPlayer(table.concat(t, ' '), invaderXim.msg.channel.SYSTEM_3, '')
     end
 end
 
@@ -150,7 +150,7 @@ end
 local startRaceImpl = function(player)
     debug(player, 'Starting race')
 
-    for _, packet in ipairs(xi.packet.parseMultiplePackets(combinedPacketData)) do
+    for _, packet in ipairs(invaderXim.packet.parseMultiplePackets(combinedPacketData)) do
         if packet[0x04 + 1] == 0x02 then
             -- Races:
             -- 0x0: Galka
@@ -201,18 +201,18 @@ local startRaceImpl = function(player)
     player:startEvent(210, 3885177, 3885177, -132554, -14500, 1344, -1, 610862737, 1)
 
      -- 'Rungaga' seems to an anchor NPC that everything is orchestrated through?
-    setTimer(player, zones[xi.zone.CHOCOBO_CIRCUIT].npc.RUNGAGA)
+    setTimer(player, zones[invaderXim.zone.CHOCOBO_CIRCUIT].npc.RUNGAGA)
 end
 
-xi.chocoboRacing.startRace = function()
-    local players = GetZone(xi.zone.CHOCOBO_CIRCUIT):getPlayers()
+invaderXim.chocoboRacing.startRace = function()
+    local players = GetZone(invaderXim.zone.CHOCOBO_CIRCUIT):getPlayers()
     for _, player in ipairs(players) do
         startRaceImpl(player)
     end
 end
 
 -- 0x05C
-xi.chocoboRacing.onEventUpdate = function(player, csid, option, npc)
+invaderXim.chocoboRacing.onEventUpdate = function(player, csid, option, npc)
     debug(player, 'update', csid, option)
 
     local chocobos =
@@ -255,7 +255,7 @@ xi.chocoboRacing.onEventUpdate = function(player, csid, option, npc)
     end
 end
 
-xi.chocoboRacing.onEventFinish = function(player, csid, option, npc)
+invaderXim.chocoboRacing.onEventFinish = function(player, csid, option, npc)
     debug(player, 'finish', csid, option)
     if csid == 210 and option == 17 then
         debug(player, 'Hand out winnings')

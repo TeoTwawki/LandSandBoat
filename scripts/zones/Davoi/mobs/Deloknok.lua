@@ -8,11 +8,11 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:addMod(xi.mod.SLEEP_MEVA, 90)
+    mob:addMod(invaderXim.mod.SLEEP_MEVA, 90)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

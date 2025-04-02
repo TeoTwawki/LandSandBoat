@@ -7,25 +7,25 @@
 -- Equette    : !pos 3 -22 -17 26
 -- ???        : !pos 58 -7 27 24
 -----------------------------------
-local lufaiseID = zones[xi.zone.LUFAISE_MEADOWS]
+local lufaiseID = zones[invaderXim.zone.LUFAISE_MEADOWS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.A_BITTER_PAST)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.A_BITTER_PAST)
 local orcNM = lufaiseID.mob.BLACKBONE_FRAZDIZ
 
 quest.reward =
 {
-    item = xi.item.YINYANG_LORGNETTE,
+    item = invaderXim.item.YINYANG_LORGNETTE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Frescheque'] = quest:progressEvent(151),
 
@@ -40,15 +40,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Frescheque'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.TINY_WRISTLET) then
+                    if player:hasKeyItem(invaderXim.ki.TINY_WRISTLET) then
                         return quest:progressEvent(154)
                     end
                 end,
@@ -82,13 +82,13 @@ quest.sections =
 
                 [154] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.TINY_WRISTLET)
+                        player:delKeyItem(invaderXim.ki.TINY_WRISTLET)
                     end
                 end,
             },
         },
 
-        [xi.zone.LUFAISE_MEADOWS] =
+        [invaderXim.zone.LUFAISE_MEADOWS] =
         {
             ['qm_bitter_past'] =
             {
@@ -101,9 +101,9 @@ quest.sections =
                         return quest:messageText(lufaiseID.text.SENSE_OF_FOREBODING)
                     elseif
                         quest:getVar(player, 'nmKilled') == 1 and
-                        not player:hasKeyItem(xi.ki.TINY_WRISTLET)
+                        not player:hasKeyItem(invaderXim.ki.TINY_WRISTLET)
                     then
-                        npcUtil.giveKeyItem(player, xi.ki.TINY_WRISTLET)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.TINY_WRISTLET)
                         return quest:noAction()
                     end
                 end,
@@ -137,10 +137,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['Equette'] =
             {

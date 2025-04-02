@@ -5,12 +5,12 @@
 -- LADYBUG_WING: !additem 2506
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.CRYSTAL_WAR, xi.quest.id.crystalWar.SEEING_SPOTS)
+local quest = Quest:new(invaderXim.questLog.CRYSTAL_WAR, invaderXim.quest.id.crystalWar.SEEING_SPOTS)
 
 quest.reward =
 {
     gil = 3000,
-    title = xi.title.LADY_KILLER,
+    title = invaderXim.title.LADY_KILLER,
 }
 
 quest.sections =
@@ -18,10 +18,10 @@ quest.sections =
     -- After speaking with Wyatt, collect four Ladybug Wings.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Wyatt'] =
             {
@@ -42,10 +42,10 @@ quest.sections =
     -- Trade the wings to Wyatt to receive your reward.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED or status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED or status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Wyatt'] =
             {
@@ -55,7 +55,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { { xi.item.LADYBUG_WING, 4 } }) then
+                    if npcUtil.tradeHasExactly(trade, { { invaderXim.item.LADYBUG_WING, 4 } }) then
                         return quest:progressEvent(4)
                     end
                 end,

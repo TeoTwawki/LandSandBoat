@@ -26,7 +26,7 @@ entity.onEventFinish = function(player, csid, option, npc)
     -- CHASING QUOTAS
     if csid == 137 then
         player:setCharVar('ChasingQuotas_Progress', 5)
-        player:delKeyItem(xi.ki.SHINY_EARRING)
+        player:delKeyItem(invaderXim.ki.SHINY_EARRING)
     end
 end
 

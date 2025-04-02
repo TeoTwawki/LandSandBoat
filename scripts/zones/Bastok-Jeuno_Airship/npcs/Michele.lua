@@ -2,7 +2,7 @@
 -- Area: Bastok-Jeuno Airship
 --  NPC: Michele
 -----------------------------------
-local ID = zones[xi.zone.BASTOK_JEUNO_AIRSHIP]
+local ID = zones[invaderXim.zone.BASTOK_JEUNO_AIRSHIP]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

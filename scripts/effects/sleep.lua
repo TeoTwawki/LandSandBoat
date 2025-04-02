@@ -1,12 +1,12 @@
 -----------------------------------
--- xi.effect.SLEEP
+-- invaderXim.effect.SLEEP
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
     -- Immunobreak reset.
-    target:setMod(xi.mod.SLEEP_IMMUNOBREAK, 0)
+    target:setMod(invaderXim.mod.SLEEP_IMMUNOBREAK, 0)
 
     if effect:getTier() > 0 then
         -- bio with subpower > 0 is a signal that we don't wake up targets from this dot damage
@@ -17,8 +17,8 @@ effectObject.onEffectGain = function(target, effect)
             attpReduction = effect:getSubPower()
         end
 
-        target:delStatusEffectSilent(xi.effect.BIO)
-        target:addStatusEffect(xi.effect.BIO, effect:getSubPower(), 3, effect:getDuration(), 0, attpReduction, 1)
+        target:delStatusEffectSilent(invaderXim.effect.BIO)
+        target:addStatusEffect(invaderXim.effect.BIO, effect:getSubPower(), 3, effect:getDuration(), 0, attpReduction, 1)
     end
 end
 

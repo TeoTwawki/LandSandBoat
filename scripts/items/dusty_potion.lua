@@ -11,7 +11,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:messageBasic(xi.msg.basic.RECOVERS_HP, 0, target:addHP(300 * xi.settings.main.ITEM_POWER))
+    target:messageBasic(invaderXim.msg.basic.RECOVERS_HP, 0, target:addHP(300 * invaderXim.settings.main.ITEM_POWER))
 end
 
 return itemObject

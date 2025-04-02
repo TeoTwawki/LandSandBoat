@@ -21,13 +21,13 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.AQUAN
-    params.tpmod = xi.spells.blue.tpMod.DAMAGE
-    params.attackType = xi.attackType.PHYSICAL
-    params.damageType = xi.damageType.BLUNT
-    params.scattr = xi.skillchainType.FRAGMENTATION
-    params.attribute = xi.mod.INT
-    params.skillType = xi.skill.BLUE_MAGIC
+    params.ecosystem = invaderXim.ecosystem.AQUAN
+    params.tpmod = invaderXim.spells.blue.tpMod.DAMAGE
+    params.attackType = invaderXim.attackType.PHYSICAL
+    params.damageType = invaderXim.damageType.BLUNT
+    params.scattr = invaderXim.skillchainType.FRAGMENTATION
+    params.attribute = invaderXim.mod.INT
+    params.skillType = invaderXim.skill.BLUE_MAGIC
     params.numhits = 1
     params.multiplier = 2.0
     params.tp150 = 2.0
@@ -42,13 +42,13 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
 
-    params.effect = xi.effect.PARALYSIS
+    params.effect = invaderXim.effect.PARALYSIS
     local power = 10
     local tick = 0
     local duration = 180
 
-    local damage = xi.spells.blue.usePhysicalSpell(caster, target, spell, params)
-    xi.spells.blue.usePhysicalSpellAddedEffect(caster, target, spell, params, damage, power, tick, duration)
+    local damage = invaderXim.spells.blue.usePhysicalSpell(caster, target, spell, params)
+    invaderXim.spells.blue.usePhysicalSpellAddedEffect(caster, target, spell, params, damage, power, tick, duration)
 
     return damage
 end

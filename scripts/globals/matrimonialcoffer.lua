@@ -4,18 +4,18 @@
 require('scripts/globals/npc_util')
 -----------------------------------
 xi = xi or {}
-xi.matrimonialcoffer = xi.matrimonialcoffer or {}
+invaderXim.matrimonialcoffer = invaderXim.matrimonialcoffer or {}
 
-function xi.matrimonialcoffer.startEvent(player)
+function invaderXim.matrimonialcoffer.startEvent(player)
     local playerGender = player:getGender()
     if playerGender == 1 then
-        player:startEvent(2000, playerGender, 200000, xi.item.MATRIMONY_BAND, 100000, player:getGil())   -- Male Dialog
+        player:startEvent(2000, playerGender, 200000, invaderXim.item.MATRIMONY_BAND, 100000, player:getGil())   -- Male Dialog
     else
-        player:startEvent(2000, playerGender, 400000, xi.item.MATRIMONY_RING, 80000, player:getGil())    -- Female Dialog
+        player:startEvent(2000, playerGender, 400000, invaderXim.item.MATRIMONY_RING, 80000, player:getGil())    -- Female Dialog
     end
 end
 
-function xi.matrimonialcoffer.finishEvent(player, csid, option, npc)
+function invaderXim.matrimonialcoffer.finishEvent(player, csid, option, npc)
     local zone = player:getZoneID()
     local ID = zones[zone]
     local playerGender = player:getGender()
@@ -25,9 +25,9 @@ function xi.matrimonialcoffer.finishEvent(player, csid, option, npc)
             if option == 1 then
                 if
                     player:getGil() >= 200000 and
-                    (not player:findItem(xi.item.BENEDIGHT_HOSE) or not player:findItem(xi.item.BENEDIGHT_COAT))
+                    (not player:findItem(invaderXim.item.BENEDIGHT_HOSE) or not player:findItem(invaderXim.item.BENEDIGHT_COAT))
                 then
-                    if npcUtil.giveItem(player, { xi.item.BENEDIGHT_HOSE, xi.item.BENEDIGHT_COAT }) then
+                    if npcUtil.giveItem(player, { invaderXim.item.BENEDIGHT_HOSE, invaderXim.item.BENEDIGHT_COAT }) then
                         player:delGil(200000)
                     end
                 elseif player:getGil() < 200000 then
@@ -35,7 +35,7 @@ function xi.matrimonialcoffer.finishEvent(player, csid, option, npc)
                 end
             elseif option == 2 then
                 if player:getGil() >= 100000 then
-                    if npcUtil.giveItem(player, { xi.item.MATRIMONY_BAND }) then
+                    if npcUtil.giveItem(player, { invaderXim.item.MATRIMONY_BAND }) then
                         player:delGil(100000)
                     end
                 else
@@ -46,12 +46,12 @@ function xi.matrimonialcoffer.finishEvent(player, csid, option, npc)
             if option == 1 then
                 if
                     player:getGil() >= 400000 and
-                    (not player:findItem(xi.item.BRIDAL_CORSAGE) or
-                    not player:findItem(xi.item.WEDDING_DRESS) or
-                    not player:findItem(xi.item.WEDDING_HOSE) or
-                    not player:findItem(xi.item.WEDDING_BOOTS))
+                    (not player:findItem(invaderXim.item.BRIDAL_CORSAGE) or
+                    not player:findItem(invaderXim.item.WEDDING_DRESS) or
+                    not player:findItem(invaderXim.item.WEDDING_HOSE) or
+                    not player:findItem(invaderXim.item.WEDDING_BOOTS))
                 then
-                    if npcUtil.giveItem(player, { xi.item.BRIDAL_CORSAGE, xi.item.WEDDING_DRESS, xi.item.WEDDING_HOSE, xi.item.WEDDING_BOOTS }) then
+                    if npcUtil.giveItem(player, { invaderXim.item.BRIDAL_CORSAGE, invaderXim.item.WEDDING_DRESS, invaderXim.item.WEDDING_HOSE, invaderXim.item.WEDDING_BOOTS }) then
                         player:delGil(400000)
                     end
                 elseif player:getGil() < 400000 then
@@ -59,7 +59,7 @@ function xi.matrimonialcoffer.finishEvent(player, csid, option, npc)
                 end
             elseif option == 2 then
                 if player:getGil() >= 80000 then
-                    if npcUtil.giveItem(player, xi.item.MATRIMONY_RING) then
+                    if npcUtil.giveItem(player, invaderXim.item.MATRIMONY_RING) then
                         player:delGil(80000)
                     end
                 elseif player:getGil() < 80000 then

@@ -10,10 +10,10 @@
 -- Door: Prince Royal's : !pos -38 -3 73 233
 -- Door: Great Hall     : !pos 0 -1 13 233
 -----------------------------------
-local chateauID = zones[xi.zone.CHATEAU_DORAGUILLE]
+local chateauID = zones[invaderXim.zone.CHATEAU_DORAGUILLE]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.THE_SHADOW_LORD)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.THE_SHADOW_LORD)
 
 mission.reward =
 {
@@ -32,11 +32,11 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -45,7 +45,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -60,7 +60,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Halver'] =
             {
@@ -75,7 +75,7 @@ mission.sections =
                         return mission:messageText(chateauID.text.WHAT_TRION_WILL_SAY)
                     elseif
                         missionStatus == 4 and
-                        player:hasKeyItem(xi.ki.SHADOW_FRAGMENT)
+                        player:hasKeyItem(invaderXim.ki.SHADOW_FRAGMENT)
                     then
                         return mission:progressEvent(548)
                     end
@@ -103,14 +103,14 @@ mission.sections =
 
                 [548] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.SHADOW_FRAGMENT)
+                        player:delKeyItem(invaderXim.ki.SHADOW_FRAGMENT)
                         mission:setVar(player, 'hallEvent', 1)
                     end
                 end,
             },
         },
 
-        [xi.zone.THRONE_ROOM] =
+        [invaderXim.zone.THRONE_ROOM] =
         {
             ['_4l1'] =
             {
@@ -126,14 +126,14 @@ mission.sections =
                 [32001] = function(player, csid, option, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 3 and
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.SHADOW_LORD_BATTLE
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.SHADOW_LORD_BATTLE
                     then
                         if
-                            player:getCurrentMission(xi.mission.log_id.ZILART) ~= xi.mission.id.zilart.THE_NEW_FRONTIER and
-                            not player:hasCompletedMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_NEW_FRONTIER)
+                            player:getCurrentMission(invaderXim.mission.log_id.ZILART) ~= invaderXim.mission.id.zilart.THE_NEW_FRONTIER and
+                            not player:hasCompletedMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_NEW_FRONTIER)
                         then
                             -- Don't add missions we already completed. Players who change nation will hit this.
-                            player:addMission(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_NEW_FRONTIER)
+                            player:addMission(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_NEW_FRONTIER)
                         end
 
                         -- TODO: This is most likely a pos change and onZoneIn
@@ -146,7 +146,7 @@ mission.sections =
                 end,
 
                 [7] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.SHADOW_FRAGMENT)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.SHADOW_FRAGMENT)
                     player:setMissionStatus(mission.areaId, 4)
                     player:setPos(378, -12, -20, 125, 161)
                 end,
@@ -160,7 +160,7 @@ mission.sections =
             return mission:getVar(player, 'hallEvent') == 1
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['_6h4']     = mission:progressEvent(61),
             ['Arsha']    = mission:progressEvent(85),
@@ -181,13 +181,13 @@ mission.sections =
         check = function(player, currentMission, missionStatus, vars)
             return (currentMission == mission.missionId and player:getMissionStatus(mission.areaId) >= 4) or
                 (
-                    currentMission == xi.mission.id.sandoria.NONE and
+                    currentMission == invaderXim.mission.id.sandoria.NONE and
                     player:hasCompletedMission(mission.areaId, mission.missionId) and
-                    not player:hasCompletedMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.LEAUTES_LAST_WISHES)
+                    not player:hasCompletedMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.LEAUTES_LAST_WISHES)
                 )
         end,
 
-        [xi.zone.CHATEAU_DORAGUILLE] =
+        [invaderXim.zone.CHATEAU_DORAGUILLE] =
         {
             ['Halver'] =
             {

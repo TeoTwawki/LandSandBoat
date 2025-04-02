@@ -3,13 +3,13 @@
 --  NPC: Tibelda
 -- Valdeaunia Regional Merchant
 -----------------------------------
-local ID = zones[xi.zone.BASTOK_MINES]
+local ID = zones[invaderXim.zone.BASTOK_MINES]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if GetRegionOwner(xi.region.VALDEAUNIA) ~= xi.nation.BASTOK then
+    if GetRegionOwner(invaderXim.region.VALDEAUNIA) ~= invaderXim.nation.BASTOK then
         player:showText(npc, ID.text.TIBELDA_CLOSED_DIALOG)
     else
         local stock =
@@ -19,7 +19,7 @@ entity.onTrigger = function(player, npc)
         }
 
         player:showText(npc, ID.text.TIBELDA_OPEN_DIALOG)
-        xi.shop.general(player, stock, xi.fameArea.BASTOK)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.BASTOK)
     end
 end
 

@@ -3,7 +3,7 @@
 --  Mob: Midnight Wings
 -- Note: PH for Black Triple Stars
 -----------------------------------
-local ID = zones[xi.zone.ROLANBERRY_FIELDS]
+local ID = zones[invaderXim.zone.ROLANBERRY_FIELDS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -18,7 +18,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, tripleStardPHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, tripleStardPHTable, 10, 3600) -- 1 hour
 end
 
 return entity

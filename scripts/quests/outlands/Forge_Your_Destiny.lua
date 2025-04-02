@@ -8,31 +8,31 @@
 -- qm2 (Konschtat) : !pos -709 2 102 108
 -- qm2 (Zi'Tah)    : !pos 639 -1 -151 121
 -----------------------------------
-local konschtatID = zones[xi.zone.KONSCHTAT_HIGHLANDS]
-local norgID      = zones[xi.zone.NORG]
-local zitahID     = zones[xi.zone.THE_SANCTUARY_OF_ZITAH]
+local konschtatID = zones[invaderXim.zone.KONSCHTAT_HIGHLANDS]
+local norgID      = zones[invaderXim.zone.NORG]
+local zitahID     = zones[invaderXim.zone.THE_SANCTUARY_OF_ZITAH]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OUTLANDS, xi.quest.id.outlands.FORGE_YOUR_DESTINY)
+local quest = Quest:new(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.FORGE_YOUR_DESTINY)
 
 quest.reward =
 {
     fame = 30,
-    fameArea = xi.fameArea.NORG,
-    item = xi.item.MUMEITO,
-    title = xi.title.BUSHIDO_BLADE,
+    fameArea = invaderXim.fameArea.NORG,
+    item = invaderXim.item.MUMEITO,
+    title = invaderXim.title.BUSHIDO_BLADE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and player:getMainLvl() >= xi.settings.main.ADVANCED_JOB_LEVEL
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and player:getMainLvl() >= invaderXim.settings.main.ADVANCED_JOB_LEVEL
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
-            ['Jaucribaix'] = quest:progressEvent(25, xi.item.SACRED_BRANCH, xi.item.LUMP_OF_BOMB_STEEL),
+            ['Jaucribaix'] = quest:progressEvent(25, invaderXim.item.SACRED_BRANCH, invaderXim.item.LUMP_OF_BOMB_STEEL),
 
             onEventFinish =
             {
@@ -47,22 +47,22 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.KONSCHTAT_HIGHLANDS] =
+        [invaderXim.zone.KONSCHTAT_HIGHLANDS] =
         {
             ['qm2'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.LUMP_OF_ORIENTAL_STEEL) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.LUMP_OF_ORIENTAL_STEEL) then
                         if player:checkDistance(npc) > 1.6 then
                             return quest:messageSpecial(konschtatID.text.BLACKENED_MUST_BE_CLOSER)
                         elseif
                             GetMobByID(konschtatID.mob.FORGER):isSpawned() or
                             npc:getLocalVar('forgerNextPopAllowedTime') > os.time()
                         then
-                            return quest:messageSpecial(konschtatID.text.BLACKENED_NOTHING_HAPPENS, xi.item.LUMP_OF_ORIENTAL_STEEL)
+                            return quest:messageSpecial(konschtatID.text.BLACKENED_NOTHING_HAPPENS, invaderXim.item.LUMP_OF_ORIENTAL_STEEL)
                         else
                             local forgerMob = SpawnMob(konschtatID.mob.FORGER)
                             if not forgerMob then
@@ -82,7 +82,7 @@ quest.sections =
                                 GetNPCByID(qmID):setLocalVar('forgerNextPopAllowedTime', os.time() + 120)
                             end)
 
-                            return quest:messageSpecial(konschtatID.text.PLACE_BLACKENED_SPOT, xi.item.LUMP_OF_ORIENTAL_STEEL)
+                            return quest:messageSpecial(konschtatID.text.PLACE_BLACKENED_SPOT, invaderXim.item.LUMP_OF_ORIENTAL_STEEL)
                         end
                     end
                 end,
@@ -92,37 +92,37 @@ quest.sections =
                         return quest:messageSpecial(konschtatID.text.NOT_THE_TIME_FOR_THAT)
                     elseif npc:getLocalVar('forgerNextPopAllowedTime') <= os.time() then
                         -- This message persists even after kill, while the QM is active and quest is accepted.
-                        return quest:messageSpecial(konschtatID.text.BLACKENED_SHOULD_PLACE, xi.item.LUMP_OF_ORIENTAL_STEEL)
+                        return quest:messageSpecial(konschtatID.text.BLACKENED_SHOULD_PLACE, invaderXim.item.LUMP_OF_ORIENTAL_STEEL)
                     end
                 end,
             },
         },
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Aeka'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.CHUNK_OF_DARKSTEEL_ORE) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.CHUNK_OF_DARKSTEEL_ORE) and
                         quest:isVarBitsSet(player, 'Option', 0)
                     then
-                        return quest:progressEvent(47, 0, xi.item.LUMP_OF_ORIENTAL_STEEL, xi.item.CHUNK_OF_DARKSTEEL_ORE)
+                        return quest:progressEvent(47, 0, invaderXim.item.LUMP_OF_ORIENTAL_STEEL, invaderXim.item.CHUNK_OF_DARKSTEEL_ORE)
                     end
                 end,
 
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'waitTimer') == 0 then
-                        if player:findItem(xi.item.LUMP_OF_BOMB_STEEL) then
-                            return quest:progressEvent(48, xi.item.LUMP_OF_BOMB_STEEL)
-                        elseif not player:findItem(xi.item.LUMP_OF_ORIENTAL_STEEL) then
+                        if player:findItem(invaderXim.item.LUMP_OF_BOMB_STEEL) then
+                            return quest:progressEvent(48, invaderXim.item.LUMP_OF_BOMB_STEEL)
+                        elseif not player:findItem(invaderXim.item.LUMP_OF_ORIENTAL_STEEL) then
                             if not quest:isVarBitsSet(player, 'Option', 0) then
-                                return quest:progressEvent(44, xi.item.LUMP_OF_BOMB_STEEL, xi.item.LUMP_OF_ORIENTAL_STEEL)
+                                return quest:progressEvent(44, invaderXim.item.LUMP_OF_BOMB_STEEL, invaderXim.item.LUMP_OF_ORIENTAL_STEEL)
                             else
-                                return quest:progressEvent(46, 0, xi.item.LUMP_OF_ORIENTAL_STEEL, xi.item.CHUNK_OF_DARKSTEEL_ORE)
+                                return quest:progressEvent(46, 0, invaderXim.item.LUMP_OF_ORIENTAL_STEEL, invaderXim.item.CHUNK_OF_DARKSTEEL_ORE)
                             end
                         else
-                            return quest:progressEvent(45, xi.item.LUMP_OF_BOMB_STEEL, xi.item.LUMP_OF_ORIENTAL_STEEL)
+                            return quest:progressEvent(45, invaderXim.item.LUMP_OF_BOMB_STEEL, invaderXim.item.LUMP_OF_ORIENTAL_STEEL)
                         end
                     else
                         return quest:progressEvent(50)
@@ -133,7 +133,7 @@ quest.sections =
             ['Jaucribaix'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.LUMP_OF_BOMB_STEEL, xi.item.SACRED_BRANCH }) then
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.LUMP_OF_BOMB_STEEL, invaderXim.item.SACRED_BRANCH }) then
                         return quest:progressEvent(27)
                     end
                 end,
@@ -148,7 +148,7 @@ quest.sections =
                         -- Parameter is remaining time in Vana'diel hours.
                         return quest:progressEvent(28, timeRemaining / 144)
                     else
-                        return quest:progressEvent(29, xi.item.MUMEITO)
+                        return quest:progressEvent(29, invaderXim.item.MUMEITO)
                     end
                 end,
             },
@@ -157,22 +157,22 @@ quest.sections =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, { { xi.item.CHUNK_OF_GOLD_ORE, 2 }, xi.item.CHUNK_OF_PLATINUM_ORE }) and
+                        npcUtil.tradeHasExactly(trade, { { invaderXim.item.CHUNK_OF_GOLD_ORE, 2 }, invaderXim.item.CHUNK_OF_PLATINUM_ORE }) and
                         quest:isVarBitsSet(player, 'Option', 1)
                     then
-                        return quest:progressEvent(43, 0, 0, xi.item.CHUNK_OF_PLATINUM_ORE, xi.item.CHUNK_OF_GOLD_ORE)
+                        return quest:progressEvent(43, 0, 0, invaderXim.item.CHUNK_OF_PLATINUM_ORE, invaderXim.item.CHUNK_OF_GOLD_ORE)
                     end
                 end,
 
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'waitTimer') == 0 then
-                        if player:findItem(xi.item.SACRED_BRANCH) then
-                            return quest:progressEvent(48, xi.item.SACRED_BRANCH)
-                        elseif not player:findItem(xi.item.SACRED_SPRIG) then
+                        if player:findItem(invaderXim.item.SACRED_BRANCH) then
+                            return quest:progressEvent(48, invaderXim.item.SACRED_BRANCH)
+                        elseif not player:findItem(invaderXim.item.SACRED_SPRIG) then
                             if not quest:isVarBitsSet(player, 'Option', 1) then
-                                return quest:progressEvent(40, xi.item.SACRED_BRANCH, xi.item.SACRED_SPRIG)
+                                return quest:progressEvent(40, invaderXim.item.SACRED_BRANCH, invaderXim.item.SACRED_SPRIG)
                             else
-                                return quest:progressEvent(42, 0, xi.item.SACRED_SPRIG, xi.item.CHUNK_OF_PLATINUM_ORE, xi.item.CHUNK_OF_GOLD_ORE)
+                                return quest:progressEvent(42, 0, invaderXim.item.SACRED_SPRIG, invaderXim.item.CHUNK_OF_PLATINUM_ORE, invaderXim.item.CHUNK_OF_GOLD_ORE)
                             end
                         else
                             return quest:progressEvent(41)
@@ -191,38 +191,38 @@ quest.sections =
 
                 [29] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:messageSpecial(norgID.text.YOU_CAN_NOW_BECOME_A_SAMURAI, xi.item.MUMEITO)
-                        player:unlockJob(xi.job.SAM)
+                        player:messageSpecial(norgID.text.YOU_CAN_NOW_BECOME_A_SAMURAI, invaderXim.item.MUMEITO)
+                        player:unlockJob(invaderXim.job.SAM)
                     end
                 end,
 
                 [40] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.SACRED_SPRIG) then
+                    if npcUtil.giveItem(player, invaderXim.item.SACRED_SPRIG) then
                         quest:setVarBit(player, 'Option', 1)
                     end
                 end,
 
                 [43] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.SACRED_SPRIG) then
+                    if npcUtil.giveItem(player, invaderXim.item.SACRED_SPRIG) then
                         player:confirmTrade()
                     end
                 end,
 
                 [44] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.LUMP_OF_ORIENTAL_STEEL) then
+                    if npcUtil.giveItem(player, invaderXim.item.LUMP_OF_ORIENTAL_STEEL) then
                         quest:setVarBit(player, 'Option', 0)
                     end
                 end,
 
                 [47] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.LUMP_OF_ORIENTAL_STEEL) then
+                    if npcUtil.giveItem(player, invaderXim.item.LUMP_OF_ORIENTAL_STEEL) then
                         player:confirmTrade()
                     end
                 end,
             },
         },
 
-        [xi.zone.THE_SANCTUARY_OF_ZITAH] =
+        [invaderXim.zone.THE_SANCTUARY_OF_ZITAH] =
         {
             ['Guardian_Treant'] =
             {
@@ -235,8 +235,8 @@ quest.sections =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.HATCHET) and
-                        player:hasItem(xi.item.SACRED_SPRIG)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.HATCHET) and
+                        player:hasItem(invaderXim.item.SACRED_SPRIG)
                     then
                         if
                             GetMobByID(zitahID.mob.GUARDIAN_TREANT):isSpawned() or
@@ -265,13 +265,13 @@ quest.sections =
                             return quest:messageSpecial(zitahID.text.SENSE_STRONG_EVIL_PRESENCE)
                         end
                     elseif
-                        npcUtil.tradeHasExactly(trade, xi.item.SACRED_SPRIG) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.SACRED_SPRIG) and
                         quest:getVar(player, 'Prog') == 1 and
-                        npcUtil.giveItem(player, xi.item.SACRED_BRANCH)
+                        npcUtil.giveItem(player, invaderXim.item.SACRED_BRANCH)
                     then
                         quest:setVar(player, 'Prog', 2)
                         player:confirmTrade()
-                        return quest:messageSpecial(zitahID.text.STRANGE_FORCE_VANISHED, xi.item.SACRED_BRANCH)
+                        return quest:messageSpecial(zitahID.text.STRANGE_FORCE_VANISHED, invaderXim.item.SACRED_BRANCH)
                     end
                 end,
 
@@ -283,9 +283,9 @@ quest.sections =
                     elseif questProgress == 1 then
                         return quest:messageSpecial(zitahID.text.NO_LONGER_SENSE_EVIL)
                     elseif questProgress == 2 then
-                        return quest:messageSpecial(zitahID.text.NEWLY_SPROUTED_GLOWING, xi.item.SACRED_SPRIG)
+                        return quest:messageSpecial(zitahID.text.NEWLY_SPROUTED_GLOWING, invaderXim.item.SACRED_SPRIG)
                     elseif npc:getLocalVar('treantNextPopAllowedTime') <= os.time() then
-                        return quest:messageSpecial(zitahID.text.LOOKS_LIKE_STURDY_BRANCH, xi.item.HATCHET)
+                        return quest:messageSpecial(zitahID.text.LOOKS_LIKE_STURDY_BRANCH, invaderXim.item.HATCHET)
                     end
                 end,
             },

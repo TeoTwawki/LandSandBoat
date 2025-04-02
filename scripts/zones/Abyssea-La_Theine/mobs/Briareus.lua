@@ -8,7 +8,7 @@ mixins = { require('scripts/mixins/rage') }
 local entity = {}
 
 local useMeikyoShisui = function(mob)
-    mob:useMobAbility(xi.jsa.MEIKYO_SHISUI)
+    mob:useMobAbility(invaderXim.jsa.MEIKYO_SHISUI)
 end
 
 local mercurialEffects =
@@ -42,11 +42,11 @@ entity.onMobFight = function(mob, target)
     end
 
     -- Use Colossal Slam as many times as possible!
-    if mob:hasStatusEffect(xi.effect.MEIKYO_SHISUI) then
+    if mob:hasStatusEffect(invaderXim.effect.MEIKYO_SHISUI) then
         mob:setTP(1000)
-        mob:setMobMod(xi.mobMod.TP_USE_CHANCE, 10000)
+        mob:setMobMod(invaderXim.mobMod.TP_USE_CHANCE, 10000)
     else
-        mob:setMobMod(xi.mobMod.TP_USE_CHANCE, 200)
+        mob:setMobMod(invaderXim.mobMod.TP_USE_CHANCE, 200)
     end
 end
 
@@ -54,7 +54,7 @@ entity.onMobWeaponSkillPrepare = function(mob, target)
     local cueMove = mob:getLocalVar('CUE_MOVE')
     mob:setLocalVar('CUE_MOVE', 0)
 
-    if mob:hasStatusEffect(xi.effect.MEIKYO_SHISUI) then
+    if mob:hasStatusEffect(invaderXim.effect.MEIKYO_SHISUI) then
         -- Use Colossal Slam as many times as possible!
         cueMove = 2578
     end
@@ -63,7 +63,7 @@ entity.onMobWeaponSkillPrepare = function(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.BRIAREUS_FELLER)
+    player:addTitle(invaderXim.title.BRIAREUS_FELLER)
 end
 
 return entity

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.MANAFONT
+-- invaderXim.effect.MANAFONT
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

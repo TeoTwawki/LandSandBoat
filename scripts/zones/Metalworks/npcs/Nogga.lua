@@ -2,7 +2,7 @@
 -- Area: Metalworks
 --  NPC: Nogga
 -----------------------------------
-local ID = zones[xi.zone.METALWORKS]
+local ID = zones[invaderXim.zone.METALWORKS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -10,14 +10,14 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     local stock =
     {
-        xi.item.BOMB_ARM,                  780, 2,
-        xi.item.GRENADE,                  1252, 3,
-        xi.item.FLASQUE_OF_CATALYTIC_OIL,  104, 3,
-        xi.item.PINCH_OF_SOOT,             655, 1,
+        invaderXim.item.BOMB_ARM,                  780, 2,
+        invaderXim.item.GRENADE,                  1252, 3,
+        invaderXim.item.FLASQUE_OF_CATALYTIC_OIL,  104, 3,
+        invaderXim.item.PINCH_OF_SOOT,             655, 1,
     }
 
     player:showText(npc, ID.text.NOGGA_SHOP_DIALOG)
-    xi.shop.nation(player, stock, xi.nation.BASTOK)
+    invaderXim.shop.nation(player, stock, invaderXim.nation.BASTOK)
 end
 
 return entity

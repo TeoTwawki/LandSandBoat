@@ -12,17 +12,17 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    if target:hasEquipped(xi.item.MESSHIKIMARU) then
-        target:addStatusEffect(xi.effect.ENCHANTMENT, 0, 0, 600, 0, 0, 0, xi.effectSourceType.EQUIPPED_ITEM, xi.item.MESSHIKIMARU)
+    if target:hasEquipped(invaderXim.item.MESSHIKIMARU) then
+        target:addStatusEffect(invaderXim.effect.ENCHANTMENT, 0, 0, 600, 0, 0, 0, invaderXim.effectSourceType.EQUIPPED_ITEM, invaderXim.item.MESSHIKIMARU)
     end
 end
 
 itemObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.ARCANA_KILLER, 20)
+    target:addMod(invaderXim.mod.ARCANA_KILLER, 20)
 end
 
 itemObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.ARCANA_KILLER, 20)
+    target:delMod(invaderXim.mod.ARCANA_KILLER, 20)
 end
 
 return itemObject

@@ -1,8 +1,8 @@
 xi = xi or {}
 
 -- see `enum ENTITYUPDATE` in src\map\packets\basic.h
----@enum xi.entityUpdate
-xi.entityUpdate =
+---@enum invaderXim.entityUpdate
+invaderXim.entityUpdate =
 {
     ENTITY_SPAWN   = 0,
     ENTITY_SHOW    = 1,

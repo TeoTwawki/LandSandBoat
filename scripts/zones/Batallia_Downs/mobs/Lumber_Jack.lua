@@ -8,20 +8,20 @@ mixins = { require('scripts/mixins/job_special') }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMod(xi.mod.UFASTCAST, 85)
-    mob:setMod(xi.mod.DOUBLE_ATTACK, 20)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 600)
-    mob:setMobMod(xi.mobMod.GIL_MIN, 15000)
-    mob:setMobMod(xi.mobMod.GIL_MAX, 20000)
-    mob:setMobMod(xi.mobMod.MUG_GIL, 7500)
+    mob:setMod(invaderXim.mod.UFASTCAST, 85)
+    mob:setMod(invaderXim.mod.DOUBLE_ATTACK, 20)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 600)
+    mob:setMobMod(invaderXim.mobMod.GIL_MIN, 15000)
+    mob:setMobMod(invaderXim.mobMod.GIL_MAX, 20000)
+    mob:setMobMod(invaderXim.mobMod.MUG_GIL, 7500)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    if mob:hasStatusEffect(xi.effect.ENSTONE) then
+    if mob:hasStatusEffect(invaderXim.effect.ENSTONE) then
         return 0, 0, 0
     else
-        return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.STUN)
+        return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.STUN)
     end
 end
 

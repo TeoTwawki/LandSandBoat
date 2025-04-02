@@ -3,7 +3,7 @@
 --  Mob: Virulent Peiste
 -- Note: PH for Sugaar
 -----------------------------------
-local ID = zones[xi.zone.PASHHOW_MARSHLANDS_S]
+local ID = zones[invaderXim.zone.PASHHOW_MARSHLANDS_S]
 -----------------------------------
 mixins = { require('scripts/mixins/families/peiste') }
 -----------------------------------
@@ -23,7 +23,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, sugaarPHTable, 5, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, sugaarPHTable, 5, 3600) -- 1 hour
 end
 
 return entity

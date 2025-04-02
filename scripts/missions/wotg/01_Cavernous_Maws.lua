@@ -9,12 +9,12 @@
 -- Sauromugue Champaign : !pos 369 8 -227 120
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.CAVERNOUS_MAWS)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.CAVERNOUS_MAWS)
 
 mission.reward =
 {
-    keyItem     = xi.ki.PURE_WHITE_FEATHER,
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.BACK_TO_THE_BEGINNING },
+    keyItem     = invaderXim.ki.PURE_WHITE_FEATHER,
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.BACK_TO_THE_BEGINNING },
 }
 
 mission.sections =
@@ -22,10 +22,10 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
-                xi.settings.main.ENABLE_WOTG == 1
+                invaderXim.settings.main.ENABLE_WOTG == 1
         end,
 
-        [xi.zone.BATALLIA_DOWNS] =
+        [invaderXim.zone.BATALLIA_DOWNS] =
         {
             ['Cavernous_Maw'] =
             {
@@ -38,13 +38,13 @@ mission.sections =
             {
                 [500] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        xi.maws.gotoRandomMaw(player)
+                        invaderXim.maws.gotoRandomMaw(player)
                     end
                 end,
             },
         },
 
-        [xi.zone.ROLANBERRY_FIELDS] =
+        [invaderXim.zone.ROLANBERRY_FIELDS] =
         {
             ['Cavernous_Maw'] =
             {
@@ -57,13 +57,13 @@ mission.sections =
             {
                 [500] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        xi.maws.gotoRandomMaw(player)
+                        invaderXim.maws.gotoRandomMaw(player)
                     end
                 end,
             },
         },
 
-        [xi.zone.SAUROMUGUE_CHAMPAIGN] =
+        [invaderXim.zone.SAUROMUGUE_CHAMPAIGN] =
         {
             ['Cavernous_Maw'] =
             {
@@ -76,7 +76,7 @@ mission.sections =
             {
                 [500] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        xi.maws.gotoRandomMaw(player)
+                        invaderXim.maws.gotoRandomMaw(player)
                     end
                 end,
             },

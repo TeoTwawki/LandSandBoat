@@ -2,7 +2,7 @@
 -- Area: Kazham
 --  NPC: Nenepp
 -----------------------------------
-local ID = zones[xi.zone.KAZHAM]
+local ID = zones[invaderXim.zone.KAZHAM]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -16,8 +16,8 @@ local pathNodes =
 
 entity.onSpawn = function(npc)
     npc:initNpcAi()
-    npc:setPos(xi.path.first(pathNodes))
-    npc:pathThrough(pathNodes, xi.path.flag.PATROL)
+    npc:setPos(invaderXim.path.first(pathNodes))
+    npc:pathThrough(pathNodes, invaderXim.path.flag.PATROL)
 end
 
 entity.onTrade = function(player, npc, trade)
@@ -32,21 +32,21 @@ entity.onTrade = function(player, npc, trade)
     -- 905       Wyvern Skull
     -- 1147      Ancient Salt
     -- 4600      Lucky Egg
-    local opoOpoAndIStatus = player:getQuestStatus(xi.questLog.OUTLANDS, xi.quest.id.outlands.THE_OPO_OPO_AND_I)
+    local opoOpoAndIStatus = player:getQuestStatus(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.THE_OPO_OPO_AND_I)
     local progress = player:getCharVar('OPO_OPO_PROGRESS')
     local failed = player:getCharVar('OPO_OPO_FAILED')
-    local goodtrade = trade:hasItemQty(xi.item.LUCKY_EGG, 1)
-    local badtrade = trade:hasItemQty(xi.item.BROKEN_MITHRAN_FISHING_ROD, 1) or
-        trade:hasItemQty(xi.item.WORKBENCH, 1) or
-        trade:hasItemQty(xi.item.HANDFUL_OF_THE_SANDS_OF_SILENCE, 1) or
-        trade:hasItemQty(xi.item.WANDERING_BULB, 1) or
-        trade:hasItemQty(xi.item.SET_OF_GIANT_FISH_BONES, 1) or
-        trade:hasItemQty(xi.item.TEN_OF_COINS_CARD, 1) or
-        trade:hasItemQty(xi.item.WYVERN_SKULL, 1) or
-        trade:hasItemQty(xi.item.BLACKENED_TOAD, 1) or
-        trade:hasItemQty(xi.item.ROCK_OF_ANCIENT_SALT, 1)
+    local goodtrade = trade:hasItemQty(invaderXim.item.LUCKY_EGG, 1)
+    local badtrade = trade:hasItemQty(invaderXim.item.BROKEN_MITHRAN_FISHING_ROD, 1) or
+        trade:hasItemQty(invaderXim.item.WORKBENCH, 1) or
+        trade:hasItemQty(invaderXim.item.HANDFUL_OF_THE_SANDS_OF_SILENCE, 1) or
+        trade:hasItemQty(invaderXim.item.WANDERING_BULB, 1) or
+        trade:hasItemQty(invaderXim.item.SET_OF_GIANT_FISH_BONES, 1) or
+        trade:hasItemQty(invaderXim.item.TEN_OF_COINS_CARD, 1) or
+        trade:hasItemQty(invaderXim.item.WYVERN_SKULL, 1) or
+        trade:hasItemQty(invaderXim.item.BLACKENED_TOAD, 1) or
+        trade:hasItemQty(invaderXim.item.ROCK_OF_ANCIENT_SALT, 1)
 
-    if opoOpoAndIStatus == xi.questStatus.QUEST_ACCEPTED then
+    if opoOpoAndIStatus == invaderXim.questStatus.QUEST_ACCEPTED then
         if progress == 9 or failed == 10 then
             if goodtrade then
                 player:startEvent(241)
@@ -58,12 +58,12 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    local opoOpoAndIStatus = player:getQuestStatus(xi.questLog.OUTLANDS, xi.quest.id.outlands.THE_OPO_OPO_AND_I)
+    local opoOpoAndIStatus = player:getQuestStatus(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.THE_OPO_OPO_AND_I)
     local progress = player:getCharVar('OPO_OPO_PROGRESS')
     local failed = player:getCharVar('OPO_OPO_FAILED')
     local retry = player:getCharVar('OPO_OPO_RETRY')
 
-    if opoOpoAndIStatus == xi.questStatus.QUEST_ACCEPTED then
+    if opoOpoAndIStatus == invaderXim.questStatus.QUEST_ACCEPTED then
         if retry >= 1 then                          -- has failed on future npc so disregard previous successful trade
             player:startEvent(206)
         elseif progress == 9 or failed == 10 then
@@ -80,16 +80,16 @@ entity.onEventFinish = function(player, csid, option, npc)
     if csid == 241 then    -- correct trade, finished quest and receive opo opo crown and 3 pamamas
         if player:getFreeSlotsCount() >= 4 then
             player:tradeComplete()
-            player:addFame(xi.fameArea.WINDURST, 75)
-            player:completeQuest(xi.questLog.OUTLANDS, xi.quest.id.outlands.THE_OPO_OPO_AND_I)
-            player:addItem(xi.item.OPO_OPO_CROWN)   -- opo opo crown
-            player:messageSpecial(ID.text.ITEM_OBTAINED, xi.item.OPO_OPO_CROWN)
-            player:addItem(xi.item.BUNCH_OF_PAMAMAS, 3)  -- 3 pamamas
-            player:messageSpecial(ID.text.ITEM_OBTAINED, xi.item.BUNCH_OF_PAMAMAS, 3)
+            player:addFame(invaderXim.fameArea.WINDURST, 75)
+            player:completeQuest(invaderXim.questLog.OUTLANDS, invaderXim.quest.id.outlands.THE_OPO_OPO_AND_I)
+            player:addItem(invaderXim.item.OPO_OPO_CROWN)   -- opo opo crown
+            player:messageSpecial(ID.text.ITEM_OBTAINED, invaderXim.item.OPO_OPO_CROWN)
+            player:addItem(invaderXim.item.BUNCH_OF_PAMAMAS, 3)  -- 3 pamamas
+            player:messageSpecial(ID.text.ITEM_OBTAINED, invaderXim.item.BUNCH_OF_PAMAMAS, 3)
             player:setCharVar('OPO_OPO_PROGRESS', 0)
             player:setCharVar('OPO_OPO_FAILED', 0)
             player:setCharVar('OPO_OPO_RETRY', 0)
-            player:setTitle(xi.title.KING_OF_THE_OPO_OPOS)
+            player:setTitle(invaderXim.title.KING_OF_THE_OPO_OPOS)
         else
             player:messageSpecial(ID.text.ITEM_CANNOT_BE_OBTAINED)
         end

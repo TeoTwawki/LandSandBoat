@@ -31,7 +31,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
         shadowTwo:updateEnmity(target)
     end
 
-    skill:setMsg(xi.msg.basic.NONE)
+    skill:setMsg(invaderXim.msg.basic.NONE)
 
     return 0
 end

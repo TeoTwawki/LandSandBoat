@@ -15,8 +15,8 @@ spellObject.onSpellCast = function(caster, target, spell)
 
     --get resist multiplier (1x if no resist)
     local params = {}
-    params.attribute = xi.mod.INT
-    params.skillType = xi.skill.DARK_MAGIC
+    params.attribute = invaderXim.mod.INT
+    params.skillType = invaderXim.skill.DARK_MAGIC
     local resist = applyResistanceEffect(caster, target, spell, params)
 
     --get the resisted damage
@@ -26,16 +26,16 @@ spellObject.onSpellCast = function(caster, target, spell)
     dmg = addBonuses(caster, spell, target, dmg)
 
     --add in target adjustment
-    dmg = dmg * xi.spells.damage.calculateNukeAbsorbOrNullify(target, spell:getElement())
+    dmg = dmg * invaderXim.spells.damage.calculateNukeAbsorbOrNullify(target, spell:getElement())
 
     --add in final adjustments
     if resist <= 0.125 then
-        spell:setMsg(xi.msg.basic.MAGIC_RESIST)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_RESIST)
         dmg = 0
     else
-        spell:setMsg(xi.msg.basic.MAGIC_ABSORB_TP)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_ABSORB_TP)
 
-        dmg = dmg * ((100 + caster:getMod(xi.mod.AUGMENTS_ABSORB)) / 100)
+        dmg = dmg * ((100 + caster:getMod(invaderXim.mod.AUGMENTS_ABSORB)) / 100)
 
         if target:getTP() < dmg then
             dmg = target:getTP()

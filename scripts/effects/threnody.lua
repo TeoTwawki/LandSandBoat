@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.THRENODY
+-- invaderXim.effect.THRENODY
 -- Reduces a targets given elemental resistance
 -----------------------------------
 ---@type TEffect

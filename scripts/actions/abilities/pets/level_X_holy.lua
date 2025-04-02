@@ -5,11 +5,11 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.summoner.canUseBloodPact(player, player:getPet(), target, ability)
+    return invaderXim.job_utils.summoner.canUseBloodPact(player, player:getPet(), target, ability)
 end
 
 abilityObject.onPetAbility = function(target, pet, petskill, summoner, action)
-    xi.job_utils.summoner.onUseBloodPact(target, petskill, summoner, action)
+    invaderXim.job_utils.summoner.onUseBloodPact(target, petskill, summoner, action)
     local damage            = 0
     local holyRollOneAnimID = 164
     local primaryTargetID   = action:getPrimaryTargetID()
@@ -29,18 +29,18 @@ abilityObject.onPetAbility = function(target, pet, petskill, summoner, action)
 
     -- Only have an effect if target's level is divisible by die roll
     if target:getMainLvl() % power == 0 then
-        damage = math.floor(pet:getMainLvl() * power + (pet:getStat(xi.mod.MND) - target:getStat(xi.mod.MND)) * 1.5)
+        damage = math.floor(pet:getMainLvl() * power + (pet:getStat(invaderXim.mod.MND) - target:getStat(invaderXim.mod.MND)) * 1.5)
 
-        damage = xi.mobskills.mobMagicalMove(pet, target, petskill, damage, xi.element.LIGHT, 1, xi.mobskills.magicalTpBonus.NO_EFFECT, 10)
-        damage = xi.mobskills.mobAddBonuses(pet, target, damage, xi.element.LIGHT, petskill)
-        damage = xi.summon.avatarFinalAdjustments(damage, pet, petskill, target, xi.attackType.MAGICAL, xi.damageType.LIGHT, 1)
+        damage = invaderXim.mobskills.mobMagicalMove(pet, target, petskill, damage, invaderXim.element.LIGHT, 1, invaderXim.mobskills.magicalTpBonus.NO_EFFECT, 10)
+        damage = invaderXim.mobskills.mobAddBonuses(pet, target, damage, invaderXim.element.LIGHT, petskill)
+        damage = invaderXim.summon.avatarFinalAdjustments(damage, pet, petskill, target, invaderXim.attackType.MAGICAL, invaderXim.damageType.LIGHT, 1)
 
         -- TODO: Magic burst?
 
-        target:takeDamage(damage, pet, xi.attackType.MAGICAL, xi.element.LIGHT)
+        target:takeDamage(damage, pet, invaderXim.attackType.MAGICAL, invaderXim.element.LIGHT)
         target:updateEnmityFromDamage(pet, damage)
     else
-        petskill:setMsg(xi.msg.basic.JA_NO_EFFECT_2)
+        petskill:setMsg(invaderXim.msg.basic.JA_NO_EFFECT_2)
     end
 
     return damage

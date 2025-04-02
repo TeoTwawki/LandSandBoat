@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.allegiance
-xi.allegiance =
+---@enum invaderXim.allegiance
+invaderXim.allegiance =
 {
     MOB       = 0,
     PLAYER    = 1,

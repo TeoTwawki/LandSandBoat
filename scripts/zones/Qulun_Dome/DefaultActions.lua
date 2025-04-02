@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.QULUN_DOME]
+local ID = zones[invaderXim.zone.QULUN_DOME]
 
 return {
     ['_440']     = { messageSpecial = ID.text.IT_SEEMS_TO_BE_LOCKED_BY_POWERFUL_MAGIC },

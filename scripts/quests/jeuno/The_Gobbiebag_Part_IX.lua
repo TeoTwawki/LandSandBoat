@@ -6,34 +6,34 @@
 -----------------------------------
 require('scripts/quests/jeuno/helpers')
 -----------------------------------
-local lowerJeunoID = zones[xi.zone.LOWER_JEUNO]
+local lowerJeunoID = zones[invaderXim.zone.LOWER_JEUNO]
 -----------------------------------
 
 local params =
 {
-    questId            = xi.quest.id.jeuno.THE_GOBBIEBAG_PART_IX,
-    prerequisite       = xi.quest.id.jeuno.THE_GOBBIEBAG_PART_VIII,
+    questId            = invaderXim.quest.id.jeuno.THE_GOBBIEBAG_PART_IX,
+    prerequisite       = invaderXim.quest.id.jeuno.THE_GOBBIEBAG_PART_VIII,
     message            = lowerJeunoID.text.INVENTORY_INCREASED,
     startInventorySize = 70,
     fame               = 5,
-    tradeStew          = xi.item.BOWL_OF_GOBLIN_STEW_880,
+    tradeStew          = invaderXim.item.BOWL_OF_GOBLIN_STEW_880,
 
     tradeItems =
     {
-        xi.item.ORICHALCUM_INGOT,
-        xi.item.SQUARE_OF_PEISTE_LEATHER,
-        xi.item.SQUARE_OF_OIL_SOAKED_CLOTH,
-        xi.item.OXBLOOD_ORB,
+        invaderXim.item.ORICHALCUM_INGOT,
+        invaderXim.item.SQUARE_OF_PEISTE_LEATHER,
+        invaderXim.item.SQUARE_OF_OIL_SOAKED_CLOTH,
+        invaderXim.item.OXBLOOD_ORB,
     },
 
     reward =
     {
         fame = 30,
-        fameArea = xi.fameArea.JEUNO,
+        fameArea = invaderXim.fameArea.JEUNO,
         title = nil,
     },
 }
 
-local quest = xi.jeuno.helpers.GobbiebagQuest:new(params)
+local quest = invaderXim.jeuno.helpers.GobbiebagQuest:new(params)
 
 return quest

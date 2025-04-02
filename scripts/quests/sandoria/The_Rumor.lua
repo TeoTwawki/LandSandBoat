@@ -6,23 +6,23 @@
 -- Novalmauge !pos 70 -24 21 167
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.SANDORIA, xi.quest.id.sandoria.THE_RUMOR)
+local quest = Quest:new(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.THE_RUMOR)
 
 quest.reward =
 {
-    item = xi.item.SCROLL_OF_DRAIN,
+    item = invaderXim.item.SCROLL_OF_DRAIN,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.SANDORIA) >= 3 and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.SANDORIA) >= 3 and
                 player:getMainLvl() >= 10
         end,
 
-        [xi.zone.BOSTAUNIEUX_OUBLIETTE] =
+        [invaderXim.zone.BOSTAUNIEUX_OUBLIETTE] =
         {
             ['Novalmauge'] =
             {
@@ -43,17 +43,17 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BOSTAUNIEUX_OUBLIETTE] =
+        [invaderXim.zone.BOSTAUNIEUX_OUBLIETTE] =
         {
             ['Novalmauge'] =
             {
                 onTrigger = quest:event(11),
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.VIAL_OF_BEASTMAN_BLOOD) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.VIAL_OF_BEASTMAN_BLOOD) then
                         return quest:progressEvent(12)
                     end
                 end,
@@ -71,10 +71,10 @@ quest.sections =
     },
     {
         check = function(player, status)
-            return status == xi.quest.status.COMPLETED
+            return status == invaderXim.quest.status.COMPLETED
         end,
 
-        [xi.zone.BOSTAUNIEUX_OUBLIETTE] =
+        [invaderXim.zone.BOSTAUNIEUX_OUBLIETTE] =
         {
             ['Novalmauge'] = quest:event(14):replaceDefault(),
         },

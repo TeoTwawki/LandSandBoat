@@ -10,14 +10,14 @@ local entity = {}
 
 entity.onMobSpawn = function(mob)
     -- carbuncle prime does not have UDMGPHYS like other elemental primes
-    mob:setMod(xi.mod.UDMGMAGIC, -2000)
-    mob:addImmunity(xi.immunity.SILENCE)
-    mob:addImmunity(xi.immunity.PARALYZE)
-    mob:addImmunity(xi.immunity.BIND)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.BLIND)
-    mob:addImmunity(xi.immunity.GRAVITY)
+    mob:setMod(invaderXim.mod.UDMGMAGIC, -2000)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
+    mob:addImmunity(invaderXim.immunity.PARALYZE)
+    mob:addImmunity(invaderXim.immunity.BIND)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.BLIND)
+    mob:addImmunity(invaderXim.immunity.GRAVITY)
 end
 
 entity.onMobWeaponSkillPrepare = function(mob, target)

@@ -7,7 +7,7 @@
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    xi.geomagneticFount.checkFount(player, npc)
+    invaderXim.geomagneticFount.checkFount(player, npc)
 end
 
 return entity

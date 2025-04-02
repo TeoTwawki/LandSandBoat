@@ -6,11 +6,11 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.ALWAYS_AGGRO, 1) -- "Aggros regardless of level"
+    mob:setMobMod(invaderXim.mobMod.ALWAYS_AGGRO, 1) -- "Aggros regardless of level"
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.MORBOLBANE)
+    player:addTitle(invaderXim.title.MORBOLBANE)
 end
 
 entity.onMobDespawn = function(mob)

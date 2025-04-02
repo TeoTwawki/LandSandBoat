@@ -7,10 +7,10 @@ local mobskillObject = {}
 
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
     if
-        mob:hasStatusEffect(xi.effect.MIGHTY_STRIKES) or
-        mob:hasStatusEffect(xi.effect.SUPER_BUFF) or
-        mob:hasStatusEffect(xi.effect.INVINCIBLE) or
-        mob:hasStatusEffect(xi.effect.BLOOD_WEAPON) or
+        mob:hasStatusEffect(invaderXim.effect.MIGHTY_STRIKES) or
+        mob:hasStatusEffect(invaderXim.effect.SUPER_BUFF) or
+        mob:hasStatusEffect(invaderXim.effect.INVINCIBLE) or
+        mob:hasStatusEffect(invaderXim.effect.BLOOD_WEAPON) or
         not target:isInfront(mob, 128) or
         mob:getAnimationSub() == 1
     then
@@ -28,9 +28,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
         duration = math.random(10, 18)
     end
 
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.TERROR, power, 0, duration))
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.TERROR, power, 0, duration))
 
-    return xi.effect.TERROR
+    return invaderXim.effect.TERROR
 end
 
 return mobskillObject

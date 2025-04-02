@@ -23,7 +23,7 @@ commandObj.onTrigger = function(player, titleId, target)
         return
     end
 
-    titleId = tonumber(titleId) or xi.title[string.upper(titleId)]
+    titleId = tonumber(titleId) or invaderXim.title[string.upper(titleId)]
     if titleId == nil or titleId < 1 then
         error(player, 'Invalid title ID.')
         return

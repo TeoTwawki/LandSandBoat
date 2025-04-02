@@ -12,7 +12,7 @@ entity.onMobRoam = function(mob)
     local weather = mob:getWeather()
     if
         (hour >= 4 and hour < 20) or                                     -- Not night.
-        (weather ~= xi.weather.GLOOM and weather ~= xi.weather.DARKNESS) -- Not dark weather.
+        (weather ~= invaderXim.weather.GLOOM and weather ~= invaderXim.weather.DARKNESS) -- Not dark weather.
     then
         DespawnMob(mob:getID())
     end

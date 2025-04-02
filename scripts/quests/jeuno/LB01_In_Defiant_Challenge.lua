@@ -16,18 +16,18 @@
 -- qm8 : !pos 105.275 -32 92.551 195
 -- qm9 : !pos 92.272 -32 -64.676 195
 -----------------------------------
-local crawlersID = zones[xi.zone.CRAWLERS_NEST]
-local eldiemeID  = zones[xi.zone.THE_ELDIEME_NECROPOLIS]
-local garlaigeID = zones[xi.zone.GARLAIGE_CITADEL]
+local crawlersID = zones[invaderXim.zone.CRAWLERS_NEST]
+local eldiemeID  = zones[invaderXim.zone.THE_ELDIEME_NECROPOLIS]
+local garlaigeID = zones[invaderXim.zone.GARLAIGE_CITADEL]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.IN_DEFIANT_CHALLENGE)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.IN_DEFIANT_CHALLENGE)
 
 local keyItemTable =
 {
-    [xi.zone.CRAWLERS_NEST         ] = { xi.item.CLUMP_OF_EXORAY_MOLD,     crawlersID.text.COMBINE_INTO_A_CLUMP,     crawlersID.text.ITEM_CANNOT_BE_OBTAINED, xi.ki.EXORAY_MOLD_CRUMB1,     xi.ki.EXORAY_MOLD_CRUMB2,     xi.ki.EXORAY_MOLD_CRUMB3     },
-    [xi.zone.GARLAIGE_CITADEL      ] = { xi.item.CHUNK_OF_BOMB_COAL,       garlaigeID.text.COMBINE_INTO_A_CHUNK,     garlaigeID.text.ITEM_CANNOT_BE_OBTAINED, xi.ki.BOMB_COAL_FRAGMENT1,    xi.ki.BOMB_COAL_FRAGMENT2,    xi.ki.BOMB_COAL_FRAGMENT3    },
-    [xi.zone.THE_ELDIEME_NECROPOLIS] = { xi.item.PIECE_OF_ANCIENT_PAPYRUS, eldiemeID.text.PUT_TOGUETHER_TO_COMPLETE, eldiemeID.text.ITEM_CANNOT_BE_OBTAINED,  xi.ki.ANCIENT_PAPYRUS_SHRED1, xi.ki.ANCIENT_PAPYRUS_SHRED2, xi.ki.ANCIENT_PAPYRUS_SHRED3 },
+    [invaderXim.zone.CRAWLERS_NEST         ] = { invaderXim.item.CLUMP_OF_EXORAY_MOLD,     crawlersID.text.COMBINE_INTO_A_CLUMP,     crawlersID.text.ITEM_CANNOT_BE_OBTAINED, invaderXim.ki.EXORAY_MOLD_CRUMB1,     invaderXim.ki.EXORAY_MOLD_CRUMB2,     invaderXim.ki.EXORAY_MOLD_CRUMB3     },
+    [invaderXim.zone.GARLAIGE_CITADEL      ] = { invaderXim.item.CHUNK_OF_BOMB_COAL,       garlaigeID.text.COMBINE_INTO_A_CHUNK,     garlaigeID.text.ITEM_CANNOT_BE_OBTAINED, invaderXim.ki.BOMB_COAL_FRAGMENT1,    invaderXim.ki.BOMB_COAL_FRAGMENT2,    invaderXim.ki.BOMB_COAL_FRAGMENT3    },
+    [invaderXim.zone.THE_ELDIEME_NECROPOLIS] = { invaderXim.item.PIECE_OF_ANCIENT_PAPYRUS, eldiemeID.text.PUT_TOGUETHER_TO_COMPLETE, eldiemeID.text.ITEM_CANNOT_BE_OBTAINED,  invaderXim.ki.ANCIENT_PAPYRUS_SHRED1, invaderXim.ki.ANCIENT_PAPYRUS_SHRED2, invaderXim.ki.ANCIENT_PAPYRUS_SHRED3 },
 }
 
 -- Key Item removals. Needs to be called separately by the quest cleanup.
@@ -40,7 +40,7 @@ end
 -- NOTE: This is handled in such an unconventional manner just so the text appears in the same order as in retail.
 local function handleQMTrigger(player, zoneId, rewardKI)
     -- Era setting.
-    if xi.settings.main.OLDSCHOOL_G1 then
+    if invaderXim.settings.main.OLDSCHOOL_G1 then
         return
     end
 
@@ -76,8 +76,8 @@ end
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.JEUNO,
-    title    = xi.title.HORIZON_BREAKER,
+    fameArea = invaderXim.fameArea.JEUNO,
+    title    = invaderXim.title.HORIZON_BREAKER,
 }
 
 quest.sections =
@@ -85,13 +85,13 @@ quest.sections =
     -- Section: Quest available.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
                 player:getMainLvl() == 50 and
                 player:getLevelCap() == 50 and
-                xi.settings.main.MAX_LEVEL >= 55
+                invaderXim.settings.main.MAX_LEVEL >= 55
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Maat'] =
             {
@@ -114,10 +114,10 @@ quest.sections =
     -- Section: Quest accepted.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Maat'] =
             {
@@ -126,7 +126,7 @@ quest.sections =
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.CLUMP_OF_EXORAY_MOLD, xi.item.CHUNK_OF_BOMB_COAL, xi.item.PIECE_OF_ANCIENT_PAPYRUS }) then
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.CLUMP_OF_EXORAY_MOLD, invaderXim.item.CHUNK_OF_BOMB_COAL, invaderXim.item.PIECE_OF_ANCIENT_PAPYRUS }) then
                         return quest:progressEvent(81)
                     end
                 end,
@@ -137,9 +137,9 @@ quest.sections =
                 [81] = function(player, csid, option, npc)
                     if quest:complete(player) then
                         -- Remove all remaining/lingering KIs
-                        cleanKeyItemSet(player, xi.zone.CRAWLERS_NEST)
-                        cleanKeyItemSet(player, xi.zone.GARLAIGE_CITADEL)
-                        cleanKeyItemSet(player, xi.zone.THE_ELDIEME_NECROPOLIS)
+                        cleanKeyItemSet(player, invaderXim.zone.CRAWLERS_NEST)
+                        cleanKeyItemSet(player, invaderXim.zone.GARLAIGE_CITADEL)
+                        cleanKeyItemSet(player, invaderXim.zone.THE_ELDIEME_NECROPOLIS)
                         -- Finish
                         player:confirmTrade()
                         player:setLevelCap(55)
@@ -148,74 +148,74 @@ quest.sections =
             },
         },
 
-        [xi.zone.CRAWLERS_NEST] =
+        [invaderXim.zone.CRAWLERS_NEST] =
         {
             ['qm10'] =
             {
                 onTrigger = function(player, npc)
-                    handleQMTrigger(player, xi.zone.CRAWLERS_NEST, xi.ki.EXORAY_MOLD_CRUMB1)
+                    handleQMTrigger(player, invaderXim.zone.CRAWLERS_NEST, invaderXim.ki.EXORAY_MOLD_CRUMB1)
                 end,
             },
 
             ['qm11'] =
             {
                 onTrigger = function(player, npc)
-                    handleQMTrigger(player, xi.zone.CRAWLERS_NEST, xi.ki.EXORAY_MOLD_CRUMB2)
+                    handleQMTrigger(player, invaderXim.zone.CRAWLERS_NEST, invaderXim.ki.EXORAY_MOLD_CRUMB2)
                 end,
             },
 
             ['qm12'] =
             {
                 onTrigger = function(player, npc)
-                    handleQMTrigger(player, xi.zone.CRAWLERS_NEST, xi.ki.EXORAY_MOLD_CRUMB3)
+                    handleQMTrigger(player, invaderXim.zone.CRAWLERS_NEST, invaderXim.ki.EXORAY_MOLD_CRUMB3)
                 end,
             },
         },
 
-        [xi.zone.GARLAIGE_CITADEL] =
+        [invaderXim.zone.GARLAIGE_CITADEL] =
         {
             ['qm18'] =
             {
                 onTrigger = function(player, npc)
-                    handleQMTrigger(player, xi.zone.GARLAIGE_CITADEL, xi.ki.BOMB_COAL_FRAGMENT1)
+                    handleQMTrigger(player, invaderXim.zone.GARLAIGE_CITADEL, invaderXim.ki.BOMB_COAL_FRAGMENT1)
                 end,
             },
 
             ['qm19'] =
             {
                 onTrigger = function(player, npc)
-                    handleQMTrigger(player, xi.zone.GARLAIGE_CITADEL, xi.ki.BOMB_COAL_FRAGMENT2)
+                    handleQMTrigger(player, invaderXim.zone.GARLAIGE_CITADEL, invaderXim.ki.BOMB_COAL_FRAGMENT2)
                 end,
             },
 
             ['qm20'] =
             {
                 onTrigger = function(player, npc)
-                    handleQMTrigger(player, xi.zone.GARLAIGE_CITADEL, xi.ki.BOMB_COAL_FRAGMENT3)
+                    handleQMTrigger(player, invaderXim.zone.GARLAIGE_CITADEL, invaderXim.ki.BOMB_COAL_FRAGMENT3)
                 end,
             },
         },
 
-        [xi.zone.THE_ELDIEME_NECROPOLIS] =
+        [invaderXim.zone.THE_ELDIEME_NECROPOLIS] =
         {
             ['qm7'] =
             {
                 onTrigger = function(player, npc)
-                    handleQMTrigger(player, xi.zone.THE_ELDIEME_NECROPOLIS, xi.ki.ANCIENT_PAPYRUS_SHRED1)
+                    handleQMTrigger(player, invaderXim.zone.THE_ELDIEME_NECROPOLIS, invaderXim.ki.ANCIENT_PAPYRUS_SHRED1)
                 end,
             },
 
             ['qm8'] =
             {
                 onTrigger = function(player, npc)
-                    handleQMTrigger(player, xi.zone.THE_ELDIEME_NECROPOLIS, xi.ki.ANCIENT_PAPYRUS_SHRED2)
+                    handleQMTrigger(player, invaderXim.zone.THE_ELDIEME_NECROPOLIS, invaderXim.ki.ANCIENT_PAPYRUS_SHRED2)
                 end,
             },
 
             ['qm9'] =
             {
                 onTrigger = function(player, npc)
-                    handleQMTrigger(player, xi.zone.THE_ELDIEME_NECROPOLIS, xi.ki.ANCIENT_PAPYRUS_SHRED3)
+                    handleQMTrigger(player, invaderXim.zone.THE_ELDIEME_NECROPOLIS, invaderXim.ki.ANCIENT_PAPYRUS_SHRED3)
                 end,
             },
         },

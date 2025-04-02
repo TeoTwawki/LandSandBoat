@@ -8,11 +8,11 @@
 -- Norg        : !zone 252
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ZILART, xi.mission.id.zilart.AWAKENING)
+local mission = Mission:new(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.AWAKENING)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_LAST_VERSE },
+    nextMission = { invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_LAST_VERSE },
 }
 
 local missionOnEventFinish = function(player, csid, option, npc)
@@ -32,7 +32,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Gilgamesh'] = mission:event(177),
         }
@@ -45,7 +45,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['_6tc'] =
             {
@@ -65,7 +65,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             onZoneIn = function(player, prevZone)
                 if not utils.mask.getBit(player:getMissionStatus(mission.areaId), 0) then

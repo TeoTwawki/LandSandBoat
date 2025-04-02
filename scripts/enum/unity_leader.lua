@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.unityLeader
-xi.unityLeader =
+---@enum invaderXim.unityLeader
+invaderXim.unityLeader =
 {
     NONE              = 0,
     PIEUJE            = 1,

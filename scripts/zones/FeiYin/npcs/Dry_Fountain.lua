@@ -4,15 +4,15 @@
 -- Involved In Quest: Peace for the Spirit
 -- !pos -17 -16 71 204
 -----------------------------------
-local ID = zones[xi.zone.FEIYIN]
+local ID = zones[invaderXim.zone.FEIYIN]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    if player:getQuestStatus(xi.questLog.SANDORIA, xi.quest.id.sandoria.PEACE_FOR_THE_SPIRIT) == xi.questStatus.QUEST_ACCEPTED then
+    if player:getQuestStatus(invaderXim.questLog.SANDORIA, invaderXim.quest.id.sandoria.PEACE_FOR_THE_SPIRIT) == invaderXim.questStatus.QUEST_ACCEPTED then
         if
-            trade:hasItemQty(xi.item.ANTIQUE_COIN, 1) and
+            trade:hasItemQty(invaderXim.item.ANTIQUE_COIN, 1) and
             trade:getItemCount() == 1
         then
             player:startEvent(17)

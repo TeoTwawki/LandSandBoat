@@ -16,9 +16,9 @@ entity.onMobFight = function(mob, target)
 
     -- Favors Back Swish when higher HP and at around 50% it starts using Mow and Mortal Ray.
     if hpp < 50 then
-        mob:setMobMod(xi.mobMod.SKILL_LIST, 156)
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 156)
     else
-        mob:setMobMod(xi.mobMod.SKILL_LIST, 155)
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 155)
     end
 end
 

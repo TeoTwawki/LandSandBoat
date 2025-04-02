@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.JUGNER_FOREST_S]
+local ID = zones[invaderXim.zone.JUGNER_FOREST_S]
 
 return {
     ['blank_fork']         = { messageSpecial = ID.text.NOTHING_OUT_OF_ORDINARY },

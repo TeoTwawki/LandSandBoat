@@ -9,9 +9,9 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.POISON, math.random(20, 30), 3, 60))
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.POISON, math.random(20, 30), 3, 60))
 
-    return xi.effect.POISON
+    return invaderXim.effect.POISON
 end
 
 return mobskillObject

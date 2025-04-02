@@ -3,13 +3,13 @@
 --  NPC: Bagnobrok
 -- Movalpolos Regional Merchant
 -----------------------------------
-local ID = zones[xi.zone.PORT_BASTOK]
+local ID = zones[invaderXim.zone.PORT_BASTOK]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if GetRegionOwner(xi.region.MOVALPOLOS) ~= xi.nation.BASTOK then
+    if GetRegionOwner(invaderXim.region.MOVALPOLOS) ~= invaderXim.nation.BASTOK then
         player:showText(npc, ID.text.BAGNOBROK_CLOSED_DIALOG)
     else
         local stock =
@@ -22,7 +22,7 @@ entity.onTrigger = function(player, npc)
         }
 
         player:showText(npc, ID.text.BAGNOBROK_OPEN_DIALOG)
-        xi.shop.general(player, stock, xi.fameArea.BASTOK)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.BASTOK)
     end
 end
 

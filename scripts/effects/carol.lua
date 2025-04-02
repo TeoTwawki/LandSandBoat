@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.CAROL
+-- invaderXim.effect.CAROL
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -8,7 +8,7 @@ effectObject.onEffectGain = function(target, effect)
     local subPower = effect:getSubPower()
     local buff     = 0
 
-    if subPower > xi.element.DARK then -- unpack and apply stat buff if present
+    if subPower > invaderXim.element.DARK then -- unpack and apply stat buff if present
         if subPower >= 400 then
             subPower = subPower - 400
             buff     = 4
@@ -24,24 +24,24 @@ effectObject.onEffectGain = function(target, effect)
         end
     end
 
-    effect:addMod(xi.combat.element.getElementalMEVAModifier(subPower), effect:getPower())
+    effect:addMod(invaderXim.combat.element.getElementalMEVAModifier(subPower), effect:getPower())
 
-    if subPower == xi.element.FIRE then -- fire add STR
-        effect:addMod(xi.mod.STR, buff)
-    elseif subPower == xi.element.ICE then -- ice add INT
-        effect:addMod(xi.mod.INT, buff)
-    elseif subPower == xi.element.WIND then -- wind add AGI
-        effect:addMod(xi.mod.AGI, buff)
-    elseif subPower == xi.element.EARTH then -- earth add VIT
-        effect:addMod(xi.mod.VIT, buff)
-    elseif subPower == xi.element.THUNDER then -- thunder add DEX
-        effect:addMod(xi.mod.DEX, buff)
-    elseif subPower == xi.element.WATER then -- water add MND
-        effect:addMod(xi.mod.MND, buff)
-    elseif subPower == xi.element.LIGHT then -- light add CHR
-        effect:addMod(xi.mod.CHR, buff)
-    elseif subPower == xi.element.DARK then -- dark add MP
-        effect:addMod(xi.mod.MP, buff * 10)
+    if subPower == invaderXim.element.FIRE then -- fire add STR
+        effect:addMod(invaderXim.mod.STR, buff)
+    elseif subPower == invaderXim.element.ICE then -- ice add INT
+        effect:addMod(invaderXim.mod.INT, buff)
+    elseif subPower == invaderXim.element.WIND then -- wind add AGI
+        effect:addMod(invaderXim.mod.AGI, buff)
+    elseif subPower == invaderXim.element.EARTH then -- earth add VIT
+        effect:addMod(invaderXim.mod.VIT, buff)
+    elseif subPower == invaderXim.element.THUNDER then -- thunder add DEX
+        effect:addMod(invaderXim.mod.DEX, buff)
+    elseif subPower == invaderXim.element.WATER then -- water add MND
+        effect:addMod(invaderXim.mod.MND, buff)
+    elseif subPower == invaderXim.element.LIGHT then -- light add CHR
+        effect:addMod(invaderXim.mod.CHR, buff)
+    elseif subPower == invaderXim.element.DARK then -- dark add MP
+        effect:addMod(invaderXim.mod.MP, buff * 10)
     end
 end
 

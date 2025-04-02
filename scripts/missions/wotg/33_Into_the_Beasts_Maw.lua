@@ -6,15 +6,15 @@
 -- Rally Point: Red : !pos -106.071 -25.5 -52.841 137
 -- Peculiar Glint   : !pos 179.439 -24.056 100.032 138
 -----------------------------------
-local pastBaileysID   = zones[xi.zone.CASTLE_ZVAHL_BAILEYS_S]
-local pastXarcabardID = zones[xi.zone.XARCABARD_S]
+local pastBaileysID   = zones[invaderXim.zone.CASTLE_ZVAHL_BAILEYS_S]
+local pastXarcabardID = zones[invaderXim.zone.XARCABARD_S]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.INTO_THE_BEASTS_MAW)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.INTO_THE_BEASTS_MAW)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.THE_HUNTER_ENSNARED },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.THE_HUNTER_ENSNARED },
 }
 
 mission.sections =
@@ -24,24 +24,24 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.XARCABARD_S] =
+        [invaderXim.zone.XARCABARD_S] =
         {
             ['Rally_Point_Red'] = mission:messageSpecial(pastXarcabardID.text.JOIN_ALLIED_FORCE),
         },
 
-        [xi.zone.CASTLE_ZVAHL_BAILEYS_S] =
+        [invaderXim.zone.CASTLE_ZVAHL_BAILEYS_S] =
         {
             ['Ornate_Block'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        not player:hasKeyItem(xi.ki.DISTRESS_SIGNAL_FLARE) and
+                        not player:hasKeyItem(invaderXim.ki.DISTRESS_SIGNAL_FLARE) and
                         mission:getVar(player, 'Status') == 4
                     then
                         if mission:getVar(player, 'Timer') <= VanadielUniqueDay() then
                             return mission:progressEvent(11, 138)
                         else
-                            player:messageName(pastBaileysID.text.CANNOT_FIND_FLARE, nil, xi.ki.DISTRESS_SIGNAL_FLARE)
+                            player:messageName(pastBaileysID.text.CANNOT_FIND_FLARE, nil, invaderXim.ki.DISTRESS_SIGNAL_FLARE)
 
                             return mission:noAction()
                         end
@@ -95,7 +95,7 @@ mission.sections =
 
                 [2] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 2)
-                    player:setPos(183.405, -24.041, 100.041, 126, xi.zone.CASTLE_ZVAHL_BAILEYS_S)
+                    player:setPos(183.405, -24.041, 100.041, 126, invaderXim.zone.CASTLE_ZVAHL_BAILEYS_S)
                 end,
 
                 [3] = function(player, csid, option, npc)
@@ -104,23 +104,23 @@ mission.sections =
 
                 [11] = function(player, csid, option, npc)
                     if option == 1 then
-                        npcUtil.giveKeyItem(player, xi.ki.DISTRESS_SIGNAL_FLARE)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.DISTRESS_SIGNAL_FLARE)
                     end
                 end,
 
                 [14] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 3)
-                    player:setPos(183.405, -24.041, 100.041, 126, xi.zone.CASTLE_ZVAHL_BAILEYS_S)
+                    player:setPos(183.405, -24.041, 100.041, 126, invaderXim.zone.CASTLE_ZVAHL_BAILEYS_S)
                 end,
 
                 [15] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.DISTRESS_SIGNAL_FLARE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.DISTRESS_SIGNAL_FLARE)
                     mission:setVar(player, 'Status', 4)
                 end,
             },
         },
 
-        [xi.zone.GHOYUS_REVERIE] =
+        [invaderXim.zone.GHOYUS_REVERIE] =
         {
             onEventFinish =
             {
@@ -130,7 +130,7 @@ mission.sections =
                     -- implementation of the instance.
 
                     mission:setVar(player, 'Status', 5)
-                    player:setPos(179.987, -24.046, 94.225, 194, xi.zone.CASTLE_ZVAHL_BAILEYS_S)
+                    player:setPos(179.987, -24.046, 94.225, 194, invaderXim.zone.CASTLE_ZVAHL_BAILEYS_S)
                 end,
             },
         },

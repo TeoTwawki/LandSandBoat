@@ -8,14 +8,14 @@
 -- Wailing Pond      : !pos 380 0.1 -181 149
 -- Screaming Pond    : !pos -219 0.1 -101 149
 -----------------------------------
-local davoiID = zones[xi.zone.DAVOI]
+local davoiID = zones[invaderXim.zone.DAVOI]
 -----------------------------------
 
 local quest = HiddenQuest:new('CrimsonOrb')
 
 quest.reward =
 {
-    keyItem = xi.ki.CRIMSON_ORB,
+    keyItem = invaderXim.ki.CRIMSON_ORB,
 }
 
 local pondNpcs =
@@ -60,12 +60,12 @@ local pondEventFinish = function(player, csid, option, npc)
     local numPonds = utils.mask.countBits(questOption, 4)
 
     quest:setVarBit(player, 'Option', npcOffset)
-    player:messageSpecial(davoiID.text.ORB_QUEST_OFFSET + numPonds + 1, 0, 0, 0, xi.ki.WHITE_ORB + numPonds + 1)
-    player:delKeyItem(xi.ki.WHITE_ORB + numPonds)
-    player:addKeyItem(xi.ki.WHITE_ORB + numPonds + 1)
+    player:messageSpecial(davoiID.text.ORB_QUEST_OFFSET + numPonds + 1, 0, 0, 0, invaderXim.ki.WHITE_ORB + numPonds + 1)
+    player:delKeyItem(invaderXim.ki.WHITE_ORB + numPonds)
+    player:addKeyItem(invaderXim.ki.WHITE_ORB + numPonds + 1)
 
     if numPonds == 3 then
-        player:addStatusEffect(xi.effect.CURSE_I, 50, 0, 900)
+        player:addStatusEffect(invaderXim.effect.CURSE_I, 50, 0, 900)
         player:messageSpecial(davoiID.text.ORB_QUEST_OFFSET + 5)
         quest:setVar(player, 'Prog', 3)
     end
@@ -75,10 +75,10 @@ quest.sections =
 {
     {
         check = function(player, questVars, vars)
-            return not player:hasKeyItem(xi.ki.CRIMSON_ORB)
+            return not player:hasKeyItem(invaderXim.ki.CRIMSON_ORB)
         end,
 
-        [xi.zone.DAVOI] =
+        [invaderXim.zone.DAVOI] =
         {
             ['_45d'] = -- Wall of Banishing
             {
@@ -136,12 +136,12 @@ quest.sections =
                 [22] = function(player, csid, option, npc)
                     if option == 1 then
                         quest:setVar(player, 'Prog', 2)
-                        npcUtil.giveKeyItem(player, xi.ki.WHITE_ORB)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.WHITE_ORB)
                     end
                 end,
 
                 [25] = function(player, csid, option, npc)
-                    player:delKeyItem(xi.ki.CURSED_ORB)
+                    player:delKeyItem(invaderXim.ki.CURSED_ORB)
                     quest:complete(player)
                 end,
 

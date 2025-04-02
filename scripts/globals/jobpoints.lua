@@ -32,7 +32,7 @@ local jpCategory =
     RUN = 0x2C0,
 }
 
-xi.jp =
+invaderXim.jp =
 {
 
     --WAR

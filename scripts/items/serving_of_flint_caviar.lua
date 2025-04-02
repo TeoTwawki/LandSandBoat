@@ -13,27 +13,27 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.foodOnItemCheck(target, xi.foodType.BASIC)
+    return invaderXim.itemUtils.foodOnItemCheck(target, invaderXim.foodType.BASIC)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffect(xi.effect.FOOD, 0, 0, 1800, 4276)
+    target:addStatusEffect(invaderXim.effect.FOOD, 0, 0, 1800, 4276)
 end
 
 itemObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.FOOD_HP, 10)
-    target:addMod(xi.mod.FOOD_MP, 10)
-    target:addMod(xi.mod.DEX, 4)
-    target:addMod(xi.mod.MND, -1)
-    target:addMod(xi.mod.CHR, 4)
+    target:addMod(invaderXim.mod.FOOD_HP, 10)
+    target:addMod(invaderXim.mod.FOOD_MP, 10)
+    target:addMod(invaderXim.mod.DEX, 4)
+    target:addMod(invaderXim.mod.MND, -1)
+    target:addMod(invaderXim.mod.CHR, 4)
 end
 
 itemObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.FOOD_HP, 10)
-    target:delMod(xi.mod.FOOD_MP, 10)
-    target:delMod(xi.mod.DEX, 4)
-    target:delMod(xi.mod.MND, -1)
-    target:delMod(xi.mod.CHR, 4)
+    target:delMod(invaderXim.mod.FOOD_HP, 10)
+    target:delMod(invaderXim.mod.FOOD_MP, 10)
+    target:delMod(invaderXim.mod.DEX, 4)
+    target:delMod(invaderXim.mod.MND, -1)
+    target:delMod(invaderXim.mod.CHR, 4)
 end
 
 return itemObject

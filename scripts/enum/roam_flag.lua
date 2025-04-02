@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.roamFlag
-xi.roamFlag =
+---@enum invaderXim.roamFlag
+invaderXim.roamFlag =
 {
     NONE     = 0x000,
     NONE0    = 0x001,

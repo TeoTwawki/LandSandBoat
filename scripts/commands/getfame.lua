@@ -42,15 +42,15 @@ commandObj.onTrigger = function(player, target, famezone)
     end
 
     local fameZoneNames = {}
-    for name, value in pairs(xi.fameArea) do
+    for name, value in pairs(invaderXim.fameArea) do
         fameZoneNames[value] = name
     end
 
     -- Validate famezone
     if famezone == nil then
-        player:printToPlayer(string.format('Fame Report for player: %s', targ:getName()), xi.msg.channel.SYSTEM_3)
+        player:printToPlayer(string.format('Fame Report for player: %s', targ:getName()), invaderXim.msg.channel.SYSTEM_3)
         for i = 0, 15 do
-            player:printToPlayer(string.format('Area %s (%s): %s (Level: %s)', i, fameZoneNames[i], player:getFame(i), player:getFameLevel(i)), xi.msg.channel.SYSTEM_3)
+            player:printToPlayer(string.format('Area %s (%s): %s (Level: %s)', i, fameZoneNames[i], player:getFame(i), player:getFameLevel(i)), invaderXim.msg.channel.SYSTEM_3)
         end
 
         return
@@ -64,9 +64,9 @@ commandObj.onTrigger = function(player, target, famezone)
     local level = player:getFameLevel(famezone)
 
     if level < 9 then
-        player:printToPlayer(string.format('%s\'s reputation in fame area %i (%s) is %i (Level %i). Next level at %i (%i points to go).', targ:getName(), famezone, fameZoneNames[famezone], fame, level, fameBaseValues[level + 1], fameBaseValues[level + 1]-fame), xi.msg.channel.SYSTEM_3)
+        player:printToPlayer(string.format('%s\'s reputation in fame area %i (%s) is %i (Level %i). Next level at %i (%i points to go).', targ:getName(), famezone, fameZoneNames[famezone], fame, level, fameBaseValues[level + 1], fameBaseValues[level + 1]-fame), invaderXim.msg.channel.SYSTEM_3)
     else
-        player:printToPlayer(string.format('%s\'s reputation in fame area %i (%s) is %i (Level %i).', targ:getName(), famezone, fameZoneNames[famezone], fame, level), xi.msg.channel.SYSTEM_3)
+        player:printToPlayer(string.format('%s\'s reputation in fame area %i (%s) is %i (Level %i).', targ:getName(), famezone, fameZoneNames[famezone], fame, level), invaderXim.msg.channel.SYSTEM_3)
     end
 end
 

@@ -11,7 +11,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffect(xi.effect.ENFIRE, 10, 0, 180) -- This is a guess, no potency or duration info is known
+    target:addStatusEffect(invaderXim.effect.ENFIRE, 10, 0, 180) -- This is a guess, no potency or duration info is known
 end
 
 return itemObject

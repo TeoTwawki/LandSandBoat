@@ -11,8 +11,8 @@ local mobskillObject = {}
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
     -- can only used if not silenced
     if
-        mob:getMainJob() == xi.job.BRD and
-        not mob:hasStatusEffect(xi.effect.SILENCE)
+        mob:getMainJob() == invaderXim.job.BRD and
+        not mob:hasStatusEffect(invaderXim.effect.SILENCE)
     then
         return 0
     end
@@ -26,9 +26,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     count = count + target:eraseAllStatusEffect()
 
     if count == 0 then
-        skill:setMsg(xi.msg.basic.SKILL_NO_EFFECT)
+        skill:setMsg(invaderXim.msg.basic.SKILL_NO_EFFECT)
     else
-        skill:setMsg(xi.msg.basic.DISAPPEAR_NUM)
+        skill:setMsg(invaderXim.msg.basic.DISAPPEAR_NUM)
     end
 
     return count

@@ -11,8 +11,8 @@ local mobskillObject = {}
 
 mobskillObject.onMobSkillCheck = function(target, mob, skill)
     if
-        mob:hasStatusEffect(xi.effect.SILENCE) or
-        target:countEffectWithFlag(xi.effectFlag.DISPELABLE) < 3
+        mob:hasStatusEffect(invaderXim.effect.SILENCE) or
+        target:countEffectWithFlag(invaderXim.effectFlag.DISPELABLE) < 3
     then
         return 1
     end
@@ -21,15 +21,15 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    local count = target:dispelAllStatusEffect(xi.effectFlag.DISPELABLE)
+    local count = target:dispelAllStatusEffect(invaderXim.effectFlag.DISPELABLE)
 
     if count == 0 then
-        skill:setMsg(xi.msg.basic.SKILL_NO_EFFECT)
+        skill:setMsg(invaderXim.msg.basic.SKILL_NO_EFFECT)
         return count
     end
 
-    local damage = xi.mobskills.mobFinalAdjustments(117 * count, mob, skill, target, xi.attackType.SPECIAL, xi.damageType.ELEMENTAL, xi.mobskills.shadowBehavior.WIPE_SHADOWS)
-    target:takeDamage(damage, mob, xi.attackType.SPECIAL, xi.damageType.ELEMENTAL)
+    local damage = invaderXim.mobskills.mobFinalAdjustments(117 * count, mob, skill, target, invaderXim.attackType.SPECIAL, invaderXim.damageType.ELEMENTAL, invaderXim.mobskills.shadowBehavior.WIPE_SHADOWS)
+    target:takeDamage(damage, mob, invaderXim.attackType.SPECIAL, invaderXim.damageType.ELEMENTAL)
 
     return damage
 end

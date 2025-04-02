@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Cape_Teriggan (113)
 -----------------------------------
-local ID = zones[xi.zone.CAPE_TERIGGAN]
+local ID = zones[invaderXim.zone.CAPE_TERIGGAN]
 -----------------------------------
 require('scripts/quests/i_can_hear_a_rainbow')
 -----------------------------------
@@ -9,11 +9,11 @@ require('scripts/quests/i_can_hear_a_rainbow')
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.conquest.setRegionalConquestOverseers(zone:getRegionID())
+    invaderXim.conquest.setRegionalConquestOverseers(zone:getRegionID())
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -50,7 +50,7 @@ zoneObject.onZoneWeatherChange = function(weather)
     local kreutzet = GetMobByID(ID.mob.KREUTZET)
 
     if kreutzet then
-        if weather == xi.weather.WIND or weather == xi.weather.GALES then
+        if weather == invaderXim.weather.WIND or weather == invaderXim.weather.GALES then
             DisallowRespawn(ID.mob.KREUTZET, false)
 
             -- Check for respawn.

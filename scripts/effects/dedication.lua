@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.DEDICATION
+-- invaderXim.effect.DEDICATION
 -- Handled in map/utils/charutils
 -----------------------------------
 ---@type TEffect

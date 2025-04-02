@@ -9,14 +9,14 @@
 -- _0m0 (Flux 3) : !pos -340 -2.5 140 22
 -- Cid           : !pos -12 -12 1 237
 -----------------------------------
-local promyvionVahzlID = zones[xi.zone.PROMYVION_VAHZL]
+local promyvionVahzlID = zones[invaderXim.zone.PROMYVION_VAHZL]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.DESIRES_OF_EMPTINESS)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.DESIRES_OF_EMPTINESS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.THREE_PATHS },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THREE_PATHS },
 }
 
 local vahzlPositions =
@@ -101,7 +101,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.PROMYVION_VAHZL] =
+        [invaderXim.zone.PROMYVION_VAHZL] =
         {
             ['_0mc'] =
             {
@@ -153,7 +153,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PSOXJA] =
+        [invaderXim.zone.PSOXJA] =
         {
             ['_i99'] =
             {
@@ -177,7 +177,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.SPIRE_OF_VAHZL] =
+        [invaderXim.zone.SPIRE_OF_VAHZL] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 1 then
@@ -201,7 +201,7 @@ mission.sections =
 
                 [32001] = function(player, csid, option, npc)
                     if
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.DESIRES_OF_EMPTINESS and
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.DESIRES_OF_EMPTINESS and
                         mission:getVar(player, 'Status') == 2
                     then
                         mission:setVar(player, 'Status', 3)
@@ -211,13 +211,13 @@ mission.sections =
                         -- 32001 event finish, and it is vital that arg7 (canSkipCS) is set, else
                         -- the player will receive a black screen.
 
-                        player:setPos(-340.00, -100.25, 140.00, 64, xi.zone.BEAUCEDINE_GLACIER)
+                        player:setPos(-340.00, -100.25, 140.00, 64, invaderXim.zone.BEAUCEDINE_GLACIER)
                     end
                 end,
             },
         },
 
-        [xi.zone.BEAUCEDINE_GLACIER] =
+        [invaderXim.zone.BEAUCEDINE_GLACIER] =
         {
             ['Leigon-Moigon'] =
             {
@@ -255,7 +255,7 @@ mission.sections =
             onEventUpdate =
             {
                 [206] = function(player, csid, option, npc)
-                    player:updateEvent(0, xi.ki.MYSTERIOUS_AMULET)
+                    player:updateEvent(0, invaderXim.ki.MYSTERIOUS_AMULET)
                 end,
             },
 
@@ -267,7 +267,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Cid'] =
             {
@@ -292,7 +292,7 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.PSOXJA] =
+        [invaderXim.zone.PSOXJA] =
         {
             ['_i99'] = mission:event(112),
 

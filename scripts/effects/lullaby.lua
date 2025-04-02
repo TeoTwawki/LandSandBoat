@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.LULLABY
+-- invaderXim.effect.LULLABY
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

@@ -3,13 +3,13 @@
 --  NPC: Iron Gate
 --  Entrance to Sacrarium
 -----------------------------------
-local ID = zones[xi.zone.MISAREAUX_COAST]
+local ID = zones[invaderXim.zone.MISAREAUX_COAST]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if player:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.THE_SECRETS_OF_WORSHIP) then
+    if player:hasCompletedMission(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_SECRETS_OF_WORSHIP) then
         player:startEvent(502)
     else
         player:messageSpecial(ID.text.DOOR_CLOSED)

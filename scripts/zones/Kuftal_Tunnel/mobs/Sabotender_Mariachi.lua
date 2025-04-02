@@ -9,20 +9,20 @@ local entity = {}
 local mobRegen = function(mob)
     local hour = VanadielHour()
     if hour >= 6 and hour < 18 then
-        mob:setMod(xi.mod.REGEN, 80)
+        mob:setMod(invaderXim.mod.REGEN, 80)
     else
-        mob:setMod(xi.mod.REGEN, 0)
+        mob:setMod(invaderXim.mod.REGEN, 0)
     end
 end
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.GIL_MIN, 15000)
-    mob:setMobMod(xi.mobMod.GIL_MAX, 15000)
+    mob:setMobMod(invaderXim.mobMod.GIL_MIN, 15000)
+    mob:setMobMod(invaderXim.mobMod.GIL_MAX, 15000)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.LIGHT_SLEEP)
+    mob:addImmunity(invaderXim.immunity.DARK_SLEEP)
+    mob:addImmunity(invaderXim.immunity.LIGHT_SLEEP)
 end
 
 entity.onMobRoam = function(mob)
@@ -34,7 +34,7 @@ entity.onMobFight = function(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 417)
+    invaderXim.hunts.checkHunt(mob, player, 417)
 end
 
 return entity

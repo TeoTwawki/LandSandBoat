@@ -12,7 +12,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 3 and option == 99 then
-        player:setPos(-142.915, -6.75, 580.452, 96, xi.zone.GRAUBERG_S)
+        player:setPos(-142.915, -6.75, 580.452, 96, invaderXim.zone.GRAUBERG_S)
     end
 end
 

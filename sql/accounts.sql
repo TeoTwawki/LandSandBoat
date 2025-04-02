@@ -9,8 +9,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `accounts`
 --
 
-DROP TABLE IF EXISTS `accounts`;
-CREATE TABLE IF NOT EXISTS `accounts` (
+DROP TABLE IF IXIMSTS `accounts`;
+CREATE TABLE IF NOT IXIMSTS `accounts` (
   `id` int(10) unsigned NOT NULL DEFAULT '0',
   `login` varchar(16) NOT NULL DEFAULT '',
   `password` varchar(64) NOT NULL DEFAULT '',

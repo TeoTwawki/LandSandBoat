@@ -1,8 +1,8 @@
 xi = xi or {}
-xi.skillchainType = xi.skillchainType or {}
+invaderXim.skillchainType = invaderXim.skillchainType or {}
 
----@enum xi.skillchainType
-xi.skillchainType =
+---@enum invaderXim.skillchainType
+invaderXim.skillchainType =
 {
     NONE          =  0, -- Lv0 None
     TRANSFIXION   =  1, -- Lv1 Light

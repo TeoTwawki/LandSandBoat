@@ -8,7 +8,7 @@ zoneObject.onInitialize = function(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
-    return xi.moghouse.onMoghouseZoneIn(player, prevZone)
+    return invaderXim.moghouse.onMoghouseZoneIn(player, prevZone)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

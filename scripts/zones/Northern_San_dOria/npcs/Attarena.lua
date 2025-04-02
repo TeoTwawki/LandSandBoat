@@ -3,17 +3,17 @@
 --  NPC: Attarena
 -- Only sells when San d'Oria controlls Li'Telor Region
 -----------------------------------
-local ID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local ID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.events.harvestFestival.onHalloweenTrade(player, trade, npc)
+    invaderXim.events.harvestFestival.onHalloweenTrade(player, trade, npc)
 end
 
 entity.onTrigger = function(player, npc)
-    if GetRegionOwner(xi.region.LITELOR) ~= xi.nation.SANDORIA then
+    if GetRegionOwner(invaderXim.region.LITELOR) ~= invaderXim.nation.SANDORIA then
         player:showText(npc, ID.text.ATTARENA_CLOSED_DIALOG)
     else
         local stock =
@@ -23,7 +23,7 @@ entity.onTrigger = function(player, npc)
         }
 
         player:showText(npc, ID.text.ATTARENA_OPEN_DIALOG)
-        xi.shop.general(player, stock, xi.fameArea.SANDORIA)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.SANDORIA)
     end
 end
 

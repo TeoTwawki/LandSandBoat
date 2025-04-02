@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Lower_Jeuno (245)
 -----------------------------------
-local ID = zones[xi.zone.LOWER_JEUNO]
+local ID = zones[invaderXim.zone.LOWER_JEUNO]
 local lowerJeunoGlobal = require('scripts/zones/Lower_Jeuno/globals')
 -----------------------------------
 ---@type TZone
@@ -9,7 +9,7 @@ local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
     zone:registerCuboidTriggerArea(1, 23, 0, -43, 44, 7, -39) -- Inside Tenshodo HQ. TODO: Find out if this is used other than in ZM 17 (not anymore). Remove if not.
-    xi.chocobo.initZone(zone)
+    invaderXim.chocobo.initZone(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -28,7 +28,7 @@ zoneObject.onZoneIn = function(player, prevZone)
         -- No need for an 'else' to change it back outside these dates as a re-zone will handle that.
     end
 
-    -- MOG HOUSE EXIT
+    -- MOG HOUSE IXIMT
     if
         player:getXPos() == 0 and
         player:getYPos() == 0 and
@@ -41,7 +41,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
@@ -58,7 +58,7 @@ zoneObject.onGameHour = function(zone)
             local lamp = GetNPCByID(ID.npc.STREETLAMP_OFFSET + i)
 
             if lamp then
-                lamp:setAnimation(xi.anim.CLOSE_DOOR)
+                lamp:setAnimation(invaderXim.anim.CLOSE_DOOR)
             end
         end
 
@@ -68,7 +68,7 @@ zoneObject.onGameHour = function(zone)
         SetServerVariable('[JEUNO]CommService', 0)
         local players = zone:getPlayers()
         for name, player in pairs(players) do
-            if player:hasKeyItem(xi.ki.LAMP_LIGHTERS_MEMBERSHIP_CARD) then
+            if player:hasKeyItem(invaderXim.ki.LAMP_LIGHTERS_MEMBERSHIP_CARD) then
                 player:messageSpecial(ID.text.ZAUKO_IS_RECRUITING)
             end
         end
@@ -82,7 +82,7 @@ zoneObject.onGameHour = function(zone)
 
     -- 1AM: if nobody has accepted the quest yet, NPC Vhana Ehgaklywha takes up the task
     -- she starts near Zauko and paths all the way to the Rolanberry exit.
-    -- xi.path.flag.WALLHACK because she gets stuck on some terrain otherwise.
+    -- invaderXim.path.flag.WALLHACK because she gets stuck on some terrain otherwise.
     elseif vanadielHour == 1 then
         if playerOnQuestId == 0 then
             local npc = GetNPCByID(ID.npc.VHANA_EHGAKLYWHA)
@@ -93,8 +93,8 @@ zoneObject.onGameHour = function(zone)
             npc:clearPath()
             npc:setStatus(0)
             npc:initNpcAi()
-            npc:setPos(xi.path.first(lowerJeunoGlobal.lampPath))
-            npc:pathThrough(lowerJeunoGlobal.lampPath, bit.bor(xi.path.flag.PATROL, xi.path.flag.WALLHACK))
+            npc:setPos(invaderXim.path.first(lowerJeunoGlobal.lampPath))
+            npc:pathThrough(lowerJeunoGlobal.lampPath, bit.bor(invaderXim.path.flag.PATROL, invaderXim.path.flag.WALLHACK))
         end
     end
 end

@@ -6,11 +6,11 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.EXP_BONUS, -100)
-    mob:setMobMod(xi.mobMod.GIL_BONUS, -100)
-    mob:setMobMod(xi.mobMod.NO_DROPS, 1)
-    mob:setMod(xi.mod.STUN_MEVA, 50)
-    mob:addImmunity(xi.immunity.STUN)
+    mob:setMobMod(invaderXim.mobMod.EXP_BONUS, -100)
+    mob:setMobMod(invaderXim.mobMod.GIL_BONUS, -100)
+    mob:setMobMod(invaderXim.mobMod.NO_DROPS, 1)
+    mob:setMod(invaderXim.mod.STUN_MEVA, 50)
+    mob:addImmunity(invaderXim.immunity.STUN)
 end
 
 entity.onMobFight = function(mob, target)

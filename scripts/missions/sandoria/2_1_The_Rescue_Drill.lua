@@ -16,13 +16,13 @@
 -- Yaucevouchat : !pos -318 39 183 102
 -- Ruillont     : !pos -70 1 607 193
 -----------------------------------
-local laTheinePlateauID  = zones[xi.zone.LA_THEINE_PLATEAU]
-local ordellesCavesID    = zones[xi.zone.ORDELLES_CAVES]
-local southernSandoriaID = zones[xi.zone.SOUTHERN_SAN_DORIA]
-local northernSandoriaID = zones[xi.zone.NORTHERN_SAN_DORIA]
+local laTheinePlateauID  = zones[invaderXim.zone.LA_THEINE_PLATEAU]
+local ordellesCavesID    = zones[invaderXim.zone.ORDELLES_CAVES]
+local southernSandoriaID = zones[invaderXim.zone.SOUTHERN_SAN_DORIA]
+local northernSandoriaID = zones[invaderXim.zone.NORTHERN_SAN_DORIA]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.THE_RESCUE_DRILL)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.THE_RESCUE_DRILL)
 
 mission.reward =
 {
@@ -40,11 +40,11 @@ mission.sections =
     -- Player has no active missions
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -53,7 +53,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             onEventFinish =
             {
@@ -70,7 +70,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             ['Ambrotien'] =
             {
@@ -98,19 +98,19 @@ mission.sections =
             {
                 [1005] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.RESCUE_TRAINING_CERTIFICATE)
+                        player:delKeyItem(invaderXim.ki.RESCUE_TRAINING_CERTIFICATE)
                     end
                 end,
 
                 [2005] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.RESCUE_TRAINING_CERTIFICATE)
+                        player:delKeyItem(invaderXim.ki.RESCUE_TRAINING_CERTIFICATE)
                     end
                 end,
             },
         },
 
-        [xi.zone.NORTHERN_SAN_DORIA] =
+        [invaderXim.zone.NORTHERN_SAN_DORIA] =
         {
             ['Grilau'] =
             {
@@ -127,13 +127,13 @@ mission.sections =
             {
                 [1005] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.RESCUE_TRAINING_CERTIFICATE)
+                        player:delKeyItem(invaderXim.ki.RESCUE_TRAINING_CERTIFICATE)
                     end
                 end,
             },
         },
 
-        [xi.zone.LA_THEINE_PLATEAU] =
+        [invaderXim.zone.LA_THEINE_PLATEAU] =
         {
             ['Augevinne'] =
             {
@@ -293,7 +293,7 @@ mission.sections =
                     elseif missionStatus == 10 then
                         return mission:progressEvent(115)
                     elseif missionStatus == 11 then
-                        return mission:messageText(laTheinePlateauID.text.RESCUE_DRILL + 29, xi.ki.RESCUE_TRAINING_CERTIFICATE)
+                        return mission:messageText(laTheinePlateauID.text.RESCUE_DRILL + 29, invaderXim.ki.RESCUE_TRAINING_CERTIFICATE)
                     else
                         return mission:progressEvent(5)
                     end
@@ -344,38 +344,38 @@ mission.sections =
                 end,
 
                 [112] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.BRONZE_SWORD) then
+                    if npcUtil.giveItem(player, invaderXim.item.BRONZE_SWORD) then
                         player:setMissionStatus(mission.areaId, 9)
                     end
                 end,
 
                 [113] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.BRONZE_SWORD) then
+                    if npcUtil.giveItem(player, invaderXim.item.BRONZE_SWORD) then
                         player:setMissionStatus(mission.areaId, 9)
                     end
                 end,
 
                 [114] = function(player, csid, option, npc)
-                    if npcUtil.giveItem(player, xi.item.BRONZE_SWORD) then
+                    if npcUtil.giveItem(player, invaderXim.item.BRONZE_SWORD) then
                         player:setMissionStatus(mission.areaId, 9)
                     end
                 end,
 
                 [115] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.RESCUE_TRAINING_CERTIFICATE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.RESCUE_TRAINING_CERTIFICATE)
                     player:setMissionStatus(mission.areaId, 11)
                 end,
             },
         },
 
-        [xi.zone.ORDELLES_CAVES] =
+        [invaderXim.zone.ORDELLES_CAVES] =
         {
             ['Ruillont'] =
             {
                 onTrade = function(player, npc, trade)
                     if
                         player:getMissionStatus(mission.areaId) == 9 and
-                        npcUtil.tradeHasExactly(trade, xi.item.BRONZE_SWORD)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.BRONZE_SWORD)
                     then
                         return mission:progressEvent(2)
                     end
@@ -418,7 +418,7 @@ mission.sections =
             return player:hasCompletedMission(mission.areaId, mission.missionId)
         end,
 
-        [xi.zone.LA_THEINE_PLATEAU] =
+        [invaderXim.zone.LA_THEINE_PLATEAU] =
         {
             ['Galaihaurat'] = mission:messageText(laTheinePlateauID.text.RESCUE_DRILL + 39):replaceDefault()
         },

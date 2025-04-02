@@ -1,22 +1,22 @@
 -----------------------------------
--- xi.effect.MIKAGE
+-- invaderXim.effect.MIKAGE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    local jpValue = target:getJobPointLevel(xi.jp.MIKAGE_EFFECT)
+    local jpValue = target:getJobPointLevel(invaderXim.jp.MIKAGE_EFFECT)
 
-    target:addMod(xi.mod.ATT, 3 * jpValue)
+    target:addMod(invaderXim.mod.ATT, 3 * jpValue)
 end
 
 effectObject.onEffectTick = function(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    local jpValue = target:getJobPointLevel(xi.jp.MIKAGE_EFFECT)
+    local jpValue = target:getJobPointLevel(invaderXim.jp.MIKAGE_EFFECT)
 
-    target:delMod(xi.mod.ATT, 3 * jpValue)
+    target:delMod(invaderXim.mod.ATT, 3 * jpValue)
 end
 
 return effectObject

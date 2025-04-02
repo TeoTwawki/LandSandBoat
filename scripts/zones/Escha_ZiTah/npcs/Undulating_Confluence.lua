@@ -12,7 +12,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 4 and option == 1 then
-        xi.teleport.to(player, xi.teleport.id.QUFIM_CONFLUENCE)
+        invaderXim.teleport.to(player, invaderXim.teleport.id.QUFIM_CONFLUENCE)
     end
 end
 

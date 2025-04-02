@@ -12,7 +12,7 @@
 ---@field onMobDrawIn? fun(mob: CBaseEntity, target: CBaseEntity)
 ---@field onMobFight? fun(mob: CBaseEntity, target: CBaseEntity)
 ---@field onCriticalHit? fun(mob: CBaseEntity, attacker: CBaseEntity?)
----@field onMobDeath? fun(mob: CBaseEntity, killer: CBaseEntity?, optParams: { isKiller: boolean, noKiller: boolean, isWeaponSkillKill: boolean, weaponskillUsed: xi.weaponskill, weaponskillDamage: integer })
+---@field onMobDeath? fun(mob: CBaseEntity, killer: CBaseEntity?, optParams: { isKiller: boolean, noKiller: boolean, isWeaponSkillKill: boolean, weaponskillUsed: invaderXim.weaponskill, weaponskillDamage: integer })
 ---@field onMobSpawn? fun(mob: CBaseEntity)
 ---@field onMobRoamAction? fun(mob: CBaseEntity)
 ---@field onMobRoam? fun(mob: CBaseEntity)
@@ -22,8 +22,8 @@
 ---@field onMobWeaponSkill? fun(target: CBaseEntity, mob: CBaseEntity, mobSkill: CMobSkill, action: CAction): integer?
 ---@field onMobSkillTarget? fun(target: CBaseEntity, mob: CBaseEntity, mobSkill: CMobSkill): CBaseEntity?
 ---@field onAdditionalEffect? fun(mob: CBaseEntity, target: CBaseEntity, damage: integer): (integer?, integer?, integer?)
----@field onMobMagicPrepare? fun(mob: CBaseEntity, target: CBaseEntity, spell: CSpell?): xi.magic.spell|0?
----@field onWeaponskillHit? fun(mob: CBaseEntity, attacker: CBaseEntity, weaponskillId: xi.weaponskill)
+---@field onMobMagicPrepare? fun(mob: CBaseEntity, target: CBaseEntity, spell: CSpell?): invaderXim.magic.spell|0?
+---@field onWeaponskillHit? fun(mob: CBaseEntity, attacker: CBaseEntity, weaponskillId: invaderXim.weaponskill)
 ---@field onSpikesDamage? fun(mob: CBaseEntity, target: CBaseEntity, damage: integer): (integer?, integer?, integer?)
 ---@field onMagicHit? fun(caster: CBaseEntity, target: CBaseEntity, spell: CSpell)
 ---@field onSpellPrecast? fun(mob: CBaseEntity, spell: CSpell)

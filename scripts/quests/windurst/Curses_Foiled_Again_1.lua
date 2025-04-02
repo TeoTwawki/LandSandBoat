@@ -5,25 +5,25 @@
 -- Shantotto : !pos 122 -2 112 239
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.CURSES_FOILED_AGAIN_1)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.CURSES_FOILED_AGAIN_1)
 
 quest.reward =
 {
     fame     = 80,
-    fameArea = xi.fameArea.WINDURST,
-    item     = xi.item.BRASS_ROD,
+    fameArea = invaderXim.fameArea.WINDURST,
+    item     = invaderXim.item.BRASS_ROD,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
-            ['Shantotto'] = quest:event(171, 0, 0, 0, 0, 0, 0, xi.item.PINCH_OF_BOMB_ASH, xi.item.BONE_CHIP),
+            ['Shantotto'] = quest:event(171, 0, 0, 0, 0, 0, 0, invaderXim.item.PINCH_OF_BOMB_ASH, invaderXim.item.BONE_CHIP),
 
             onEventFinish =
             {
@@ -38,20 +38,20 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Shantotto'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.item.PINCH_OF_BOMB_ASH, { xi.item.BONE_CHIP, 2 } }) then
-                        return quest:progressEvent(173, 0, 0, 0, 0, 0, 0, xi.item.PINCH_OF_BOMB_ASH, xi.item.BONE_CHIP)
+                    if npcUtil.tradeHasExactly(trade, { invaderXim.item.PINCH_OF_BOMB_ASH, { invaderXim.item.BONE_CHIP, 2 } }) then
+                        return quest:progressEvent(173, 0, 0, 0, 0, 0, 0, invaderXim.item.PINCH_OF_BOMB_ASH, invaderXim.item.BONE_CHIP)
                     end
                 end,
 
-                onTrigger = quest:event(172, 0, 0, 0, 0, 0, 0, xi.item.PINCH_OF_BOMB_ASH, xi.item.BONE_CHIP)
+                onTrigger = quest:event(172, 0, 0, 0, 0, 0, 0, invaderXim.item.PINCH_OF_BOMB_ASH, invaderXim.item.BONE_CHIP)
             },
 
             onEventFinish =
@@ -60,12 +60,12 @@ quest.sections =
                     if quest:complete(player) then
                         player:confirmTrade()
 
-                        xi.quest.setVar(player, xi.questLog.WINDURST, xi.quest.id.windurst.CURSES_FOILED_AGAIN_2, 'Timer', VanadielUniqueDay() + 1)
+                        invaderXim.quest.setVar(player, invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.CURSES_FOILED_AGAIN_2, 'Timer', VanadielUniqueDay() + 1)
 
                         -- NOTE: There's two zoning mechanics required prior to the next quest being displayed in logs.  To make this easier,
                         -- setting a mustZone value for this quest as a requisite in order to utilize mustZone in the next quest's available
                         -- block.
-                        xi.quest.setMustZone(player, xi.questLog.WINDURST, xi.quest.id.windurst.CURSES_FOILED_AGAIN_1)
+                        invaderXim.quest.setMustZone(player, invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.CURSES_FOILED_AGAIN_1)
                     end
                 end,
             },

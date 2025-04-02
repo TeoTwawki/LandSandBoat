@@ -9,7 +9,7 @@ xi = xi or {}
 -- NOTE: These are just to map the index from
 --       the menu to a name string.
 --       This is not customisable!
-xi.chocoboNames =
+invaderXim.chocoboNames =
 {
     -- 1-letter
     [0] = 'G',
@@ -866,13 +866,13 @@ xi.chocoboNames =
 }
 
 -- Since this is returning a single-name string, this IS overridable or customisable
-xi.chocoboNames.getRandomName = function()
+invaderXim.chocoboNames.getRandomName = function()
     local name = nil
 
     -- We have to do this nil-checking loop to account for the gaps in the list
     while name == nil do
         -- Pick a 5-8 letter name
-        name = xi.chocoboNames[math.random(168, 762)]
+        name = invaderXim.chocoboNames[math.random(168, 762)]
     end
 
     return name
@@ -884,4 +884,4 @@ local bannedChocoboNames =
     'Blazing Uranus',
     'Uranus Meteor',
 }
-xi.bannedChocoboNames = set(bannedChocoboNames)
+invaderXim.bannedChocoboNames = set(bannedChocoboNames)

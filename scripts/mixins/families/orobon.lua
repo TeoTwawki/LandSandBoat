@@ -17,7 +17,7 @@ g_mixins.families.orobon = function(orobonMob)
     -- Add Orobon Lures to loot pool if eyestalks are broken
     orobonMob:addListener('ITEM_DROPS', 'OROBON_ITEM_DROPS', function(mob, loot)
         if mob:getAnimationSub() == 1 then
-            loot:addItem(xi.item.OROBON_LURE, xi.drop_rate.GUARANTEED)
+            loot:addItem(invaderXim.item.OROBON_LURE, invaderXim.drop_rate.GUARANTEED)
         end
     end)
 end

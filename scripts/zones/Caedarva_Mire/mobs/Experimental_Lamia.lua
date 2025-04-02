@@ -3,7 +3,7 @@
 --  ZNM: Experimental Lamia
 -- !pos -773.369 -11.824 322.298 79
 -----------------------------------
-local ID = zones[xi.zone.CAEDARVA_MIRE]
+local ID = zones[invaderXim.zone.CAEDARVA_MIRE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -27,7 +27,7 @@ local function spawnMinions(mob, target)
 end
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
 end
 
 entity.onMobFight = function(mob, target)
@@ -40,7 +40,7 @@ entity.onMobFight = function(mob, target)
         local minion = GetMobByID(i)
         if
             minion and
-            minion:getCurrentAction() == xi.act.ROAMING
+            minion:getCurrentAction() == invaderXim.act.ROAMING
         then
             minion:updateEnmity(target)
         end

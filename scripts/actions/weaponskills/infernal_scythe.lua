@@ -19,22 +19,22 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
     params.ftpMod     = { 3.5, 3.5, 3.5 }
     params.str_wsc    = 0.3
     params.int_wsc    = 0.3
-    params.ele        = xi.element.DARK
-    params.skill      = xi.skill.SCYTHE
+    params.ele        = invaderXim.element.DARK
+    params.skill      = invaderXim.skill.SCYTHE
     params.includemab = true
 
-    if xi.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
+    if invaderXim.settings.main.USE_ADOULIN_WEAPON_SKILL_CHANGES then
         params.int_wsc = 0.7
     end
 
-    local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
+    local damage, criticalHit, tpHits, extraHits = invaderXim.weaponskills.doMagicWeaponskill(player, target, wsID, params, tp, action, primary)
 
     -- Handle status effect
-    local effectId      = xi.effect.ATTACK_DOWN
-    local actionElement = xi.element.WATER
+    local effectId      = invaderXim.effect.ATTACK_DOWN
+    local actionElement = invaderXim.element.WATER
     local power         = 25
     local duration      = math.floor(18 * tp / 100 * applyResistanceAddEffect(player, target, actionElement, 0))
-    xi.weaponskills.handleWeaponskillEffect(player, target, effectId, actionElement, damage, power, duration)
+    invaderXim.weaponskills.handleWeaponskillEffect(player, target, effectId, actionElement, damage, power, duration)
 
     return tpHits, extraHits, criticalHit, damage
 end

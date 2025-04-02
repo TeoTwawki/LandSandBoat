@@ -53,8 +53,8 @@ commandObj.onTrigger = function(player, arg, arg2, arg3, arg4)
 
     player:registerChocobo(look)
 
-    player:delStatusEffectSilent(xi.effect.MOUNTED)
-    player:addStatusEffectEx(xi.effect.MOUNTED, xi.effect.MOUNTED, xi.mount.CHOCOBO, 0, 1800, 0, 64, true)
+    player:delStatusEffectSilent(invaderXim.effect.MOUNTED)
+    player:addStatusEffectEx(invaderXim.effect.MOUNTED, invaderXim.effect.MOUNTED, invaderXim.mount.CHOCOBO, 0, 1800, 0, 64, true)
 end
 
 return commandObj

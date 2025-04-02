@@ -2,7 +2,7 @@
 -- Area: Wajaom Woodlands
 --  Mob: Zoraal Ja's Pkuucha
 -----------------------------------
-local ID = zones[xi.zone.WAJAOM_WOODLANDS]
+local ID = zones[invaderXim.zone.WAJAOM_WOODLANDS]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -41,7 +41,7 @@ entity.onMobFight = function(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.hunts.checkHunt(mob, player, 447)
+    invaderXim.hunts.checkHunt(mob, player, 447)
 end
 
 return entity

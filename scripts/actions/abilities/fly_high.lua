@@ -9,12 +9,12 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    ability:setRecast(math.max(0, ability:getRecast() - player:getMod(xi.mod.ONE_HOUR_RECAST) * 60))
+    ability:setRecast(math.max(0, ability:getRecast() - player:getMod(invaderXim.mod.ONE_HOUR_RECAST) * 60))
     return 0, 0
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    xi.job_utils.dragoon.useFlyHigh(player, target, ability)
+    invaderXim.job_utils.dragoon.useFlyHigh(player, target, ability)
 end
 
 return abilityObject

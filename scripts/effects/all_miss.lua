@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.ALL_MISS
+-- invaderXim.effect.ALL_MISS
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

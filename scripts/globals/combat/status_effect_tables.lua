@@ -14,8 +14,8 @@
 require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
-xi.combat = xi.combat or {}
-xi.combat.statusEffect = xi.combat.statusEffect or {}
+invaderXim.combat = invaderXim.combat or {}
+invaderXim.combat.statusEffect = invaderXim.combat.statusEffect or {}
 -----------------------------------
 
 -- Table column names.
@@ -32,142 +32,142 @@ local column =
 }
 
 -- Table associating an status effect with their corresponding immunobreak, MEVA and resistance modifiers and immunities.
-xi.combat.statusEffect.dataTable =
+invaderXim.combat.statusEffect.dataTable =
 {
-    [xi.effect.ADDLE        ] = { 0,               xi.effect.NOCTURNE, xi.element.FIRE,    xi.immunity.ADDLE,      xi.mod.SLOWRES,     0, 0,                    xi.mod.ADDLE_IMMUNOBREAK    }, -- Addle cant be immunobroken?
-    [xi.effect.BIND         ] = { 0,               0,                  xi.element.ICE,     xi.immunity.BIND,       xi.mod.BINDRES,     0, xi.mod.BIND_MEVA,     xi.mod.BIND_IMMUNOBREAK     },
-    [xi.effect.BLINDNESS    ] = { 0,               0,                  xi.element.DARK,    xi.immunity.BLIND,      xi.mod.BLINDRES,    0, xi.mod.BLIND_MEVA,    xi.mod.BLIND_IMMUNOBREAK    },
-    [xi.effect.BURN         ] = { xi.effect.DROWN, 0,                  xi.element.FIRE,    0,                      0,                  0, 0,                    0                           },
-    [xi.effect.CHOKE        ] = { xi.effect.FROST, 0,                  xi.element.WIND,    0,                      0,                  0, 0,                    0                           },
-    [xi.effect.CURSE_I      ] = { 0,               0,                  xi.element.DARK,    xi.immunity.NONE,       xi.mod.CURSERES,    0, xi.mod.CURSE_MEVA,    0                           },
-    [xi.effect.DROWN        ] = { xi.effect.SHOCK, 0,                  xi.element.WATER,   0,                      0,                  0, 0,                    0                           },
-    [xi.effect.FLASH        ] = { 0,               0,                  xi.element.LIGHT,   xi.immunity.BLIND,      xi.mod.BLINDRES,    0, xi.mod.BLIND_MEVA,    xi.mod.BLIND_IMMUNOBREAK    },
-    [xi.effect.FROST        ] = { xi.effect.BURN,  0,                  xi.element.ICE,     0,                      0,                  0, 0,                    0                           },
-    [xi.effect.NOCTURNE     ] = { xi.effect.ADDLE, 0,                  xi.element.FIRE,    xi.immunity.ADDLE,      xi.mod.SLOWRES,     0, 0,                    0                           },
-    [xi.effect.NONE         ] = { 0,               0,                  xi.element.DARK,    xi.immunity.DISPEL,     0,                  0, 0,                    0                           },
-    [xi.effect.PARALYSIS    ] = { 0,               0,                  xi.element.ICE,     xi.immunity.PARALYZE,   xi.mod.PARALYZERES, 0, xi.mod.PARALYZE_MEVA, xi.mod.PARALYZE_IMMUNOBREAK },
-    [xi.effect.PETRIFICATION] = { 0,               0,                  xi.element.EARTH,   xi.immunity.PETRIFY,    xi.mod.PETRIFYRES,  0, xi.mod.PETRIFY_MEVA,  xi.mod.PETRIFY_IMMUNOBREAK  },
-    [xi.effect.PLAGUE       ] = { 0,               0,                  xi.element.FIRE,    xi.immunity.PLAGUE,     xi.mod.VIRUSRES,    0, xi.mod.VIRUS_MEVA,    0                           },
-    [xi.effect.POISON       ] = { 0,               0,                  xi.element.WATER,   xi.immunity.POISON,     xi.mod.POISONRES,   0, xi.mod.POISON_MEVA,   xi.mod.POISON_IMMUNOBREAK   },
-    [xi.effect.RASP         ] = { xi.effect.CHOKE, 0,                  xi.element.EARTH,   0,                      0,                  0, 0,                    0                           },
-    [xi.effect.SHOCK        ] = { xi.effect.RASP,  0,                  xi.element.THUNDER, 0,                      0,                  0, 0,                    0                           },
-    [xi.effect.SILENCE      ] = { 0,               0,                  xi.element.WIND,    xi.immunity.SILENCE,    xi.mod.SILENCERES,  0, xi.mod.SILENCE_MEVA,  xi.mod.SILENCE_IMMUNOBREAK  },
-    [xi.effect.SLEEP_I      ] = { 0,               0,                  xi.element.DARK,    xi.immunity.DARK_SLEEP, xi.mod.SLEEPRES,    0, xi.mod.SLEEP_MEVA,    xi.mod.SLEEP_IMMUNOBREAK    },
-    [xi.effect.SLOW         ] = { 0,               0,                  xi.element.EARTH,   xi.immunity.SLOW,       xi.mod.SLOWRES,     0, xi.mod.SLOW_MEVA,     xi.mod.SLOW_IMMUNOBREAK     },
-    [xi.effect.STUN         ] = { 0,               0,                  xi.element.THUNDER, xi.immunity.STUN,       xi.mod.STUNRES,     0, xi.mod.STUN_MEVA,     0                           },
-    [xi.effect.WEIGHT       ] = { 0,               0,                  xi.element.WIND,    xi.immunity.GRAVITY,    xi.mod.GRAVITYRES,  0, xi.mod.GRAVITY_MEVA,  xi.mod.GRAVITY_IMMUNOBREAK  },
+    [invaderXim.effect.ADDLE        ] = { 0,               invaderXim.effect.NOCTURNE, invaderXim.element.FIRE,    invaderXim.immunity.ADDLE,      invaderXim.mod.SLOWRES,     0, 0,                    invaderXim.mod.ADDLE_IMMUNOBREAK    }, -- Addle cant be immunobroken?
+    [invaderXim.effect.BIND         ] = { 0,               0,                  invaderXim.element.ICE,     invaderXim.immunity.BIND,       invaderXim.mod.BINDRES,     0, invaderXim.mod.BIND_MEVA,     invaderXim.mod.BIND_IMMUNOBREAK     },
+    [invaderXim.effect.BLINDNESS    ] = { 0,               0,                  invaderXim.element.DARK,    invaderXim.immunity.BLIND,      invaderXim.mod.BLINDRES,    0, invaderXim.mod.BLIND_MEVA,    invaderXim.mod.BLIND_IMMUNOBREAK    },
+    [invaderXim.effect.BURN         ] = { invaderXim.effect.DROWN, 0,                  invaderXim.element.FIRE,    0,                      0,                  0, 0,                    0                           },
+    [invaderXim.effect.CHOKE        ] = { invaderXim.effect.FROST, 0,                  invaderXim.element.WIND,    0,                      0,                  0, 0,                    0                           },
+    [invaderXim.effect.CURSE_I      ] = { 0,               0,                  invaderXim.element.DARK,    invaderXim.immunity.NONE,       invaderXim.mod.CURSERES,    0, invaderXim.mod.CURSE_MEVA,    0                           },
+    [invaderXim.effect.DROWN        ] = { invaderXim.effect.SHOCK, 0,                  invaderXim.element.WATER,   0,                      0,                  0, 0,                    0                           },
+    [invaderXim.effect.FLASH        ] = { 0,               0,                  invaderXim.element.LIGHT,   invaderXim.immunity.BLIND,      invaderXim.mod.BLINDRES,    0, invaderXim.mod.BLIND_MEVA,    invaderXim.mod.BLIND_IMMUNOBREAK    },
+    [invaderXim.effect.FROST        ] = { invaderXim.effect.BURN,  0,                  invaderXim.element.ICE,     0,                      0,                  0, 0,                    0                           },
+    [invaderXim.effect.NOCTURNE     ] = { invaderXim.effect.ADDLE, 0,                  invaderXim.element.FIRE,    invaderXim.immunity.ADDLE,      invaderXim.mod.SLOWRES,     0, 0,                    0                           },
+    [invaderXim.effect.NONE         ] = { 0,               0,                  invaderXim.element.DARK,    invaderXim.immunity.DISPEL,     0,                  0, 0,                    0                           },
+    [invaderXim.effect.PARALYSIS    ] = { 0,               0,                  invaderXim.element.ICE,     invaderXim.immunity.PARALYZE,   invaderXim.mod.PARALYZERES, 0, invaderXim.mod.PARALYZE_MEVA, invaderXim.mod.PARALYZE_IMMUNOBREAK },
+    [invaderXim.effect.PETRIFICATION] = { 0,               0,                  invaderXim.element.EARTH,   invaderXim.immunity.PETRIFY,    invaderXim.mod.PETRIFYRES,  0, invaderXim.mod.PETRIFY_MEVA,  invaderXim.mod.PETRIFY_IMMUNOBREAK  },
+    [invaderXim.effect.PLAGUE       ] = { 0,               0,                  invaderXim.element.FIRE,    invaderXim.immunity.PLAGUE,     invaderXim.mod.VIRUSRES,    0, invaderXim.mod.VIRUS_MEVA,    0                           },
+    [invaderXim.effect.POISON       ] = { 0,               0,                  invaderXim.element.WATER,   invaderXim.immunity.POISON,     invaderXim.mod.POISONRES,   0, invaderXim.mod.POISON_MEVA,   invaderXim.mod.POISON_IMMUNOBREAK   },
+    [invaderXim.effect.RASP         ] = { invaderXim.effect.CHOKE, 0,                  invaderXim.element.EARTH,   0,                      0,                  0, 0,                    0                           },
+    [invaderXim.effect.SHOCK        ] = { invaderXim.effect.RASP,  0,                  invaderXim.element.THUNDER, 0,                      0,                  0, 0,                    0                           },
+    [invaderXim.effect.SILENCE      ] = { 0,               0,                  invaderXim.element.WIND,    invaderXim.immunity.SILENCE,    invaderXim.mod.SILENCERES,  0, invaderXim.mod.SILENCE_MEVA,  invaderXim.mod.SILENCE_IMMUNOBREAK  },
+    [invaderXim.effect.SLEEP_I      ] = { 0,               0,                  invaderXim.element.DARK,    invaderXim.immunity.DARK_SLEEP, invaderXim.mod.SLEEPRES,    0, invaderXim.mod.SLEEP_MEVA,    invaderXim.mod.SLEEP_IMMUNOBREAK    },
+    [invaderXim.effect.SLOW         ] = { 0,               0,                  invaderXim.element.EARTH,   invaderXim.immunity.SLOW,       invaderXim.mod.SLOWRES,     0, invaderXim.mod.SLOW_MEVA,     invaderXim.mod.SLOW_IMMUNOBREAK     },
+    [invaderXim.effect.STUN         ] = { 0,               0,                  invaderXim.element.THUNDER, invaderXim.immunity.STUN,       invaderXim.mod.STUNRES,     0, invaderXim.mod.STUN_MEVA,     0                           },
+    [invaderXim.effect.WEIGHT       ] = { 0,               0,                  invaderXim.element.WIND,    invaderXim.immunity.GRAVITY,    invaderXim.mod.GRAVITYRES,  0, invaderXim.mod.GRAVITY_MEVA,  invaderXim.mod.GRAVITY_IMMUNOBREAK  },
 }
 
 -----------------------------------
 -- Helper functions to easily fetch table data.
 -----------------------------------
-xi.combat.statusEffect.getNullificatingEffect = function(effectId)
+invaderXim.combat.statusEffect.getNullificatingEffect = function(effectId)
     -- Sanitize fed value
     local effectToCheck = utils.defaultIfNil(effectId, 0)
 
     -- Fetch effect ID from table if entry exists.
-    if xi.combat.statusEffect.dataTable[effectToCheck] then
-        return xi.combat.statusEffect.dataTable[effectToCheck][column.EFFECT_NULLIFIED_BY]
+    if invaderXim.combat.statusEffect.dataTable[effectToCheck] then
+        return invaderXim.combat.statusEffect.dataTable[effectToCheck][column.EFFECT_NULLIFIED_BY]
     end
 
     return 0
 end
 
-xi.combat.statusEffect.getEffectToRemove = function(effectId)
+invaderXim.combat.statusEffect.getEffectToRemove = function(effectId)
     -- Sanitize fed value
     local effectToCheck = utils.defaultIfNil(effectId, 0)
 
     -- Fetch effect ID from table if entry exists.
-    if xi.combat.statusEffect.dataTable[effectToCheck] then
-        return xi.combat.statusEffect.dataTable[effectToCheck][column.EFFECT_NULLIFIES]
+    if invaderXim.combat.statusEffect.dataTable[effectToCheck] then
+        return invaderXim.combat.statusEffect.dataTable[effectToCheck][column.EFFECT_NULLIFIES]
     end
 
     return 0
 end
 
-xi.combat.statusEffect.getAssociatedElement = function(effectId, actionElement)
+invaderXim.combat.statusEffect.getAssociatedElement = function(effectId, actionElement)
     -- Sanitize fed values
     local effectToCheck  = utils.defaultIfNil(effectId, 0)
     local elementToCheck = utils.defaultIfNil(actionElement, 0)
 
     -- Sleep exception.
-    if effectToCheck == xi.effect.SLEEP_I then
+    if effectToCheck == invaderXim.effect.SLEEP_I then
         return elementToCheck
     end
 
     -- Fetch element from table if entry exists.
-    if xi.combat.statusEffect.dataTable[effectToCheck] then
-        return xi.combat.statusEffect.dataTable[effectToCheck][column.EFFECT_ELEMENT]
+    if invaderXim.combat.statusEffect.dataTable[effectToCheck] then
+        return invaderXim.combat.statusEffect.dataTable[effectToCheck][column.EFFECT_ELEMENT]
     end
 
     -- Assume the effect "element" is the same as the action element.
     return elementToCheck
 end
 
-xi.combat.statusEffect.getAssociatedImmunity = function(effectId, actionElement)
+invaderXim.combat.statusEffect.getAssociatedImmunity = function(effectId, actionElement)
     -- Sanitize fed values
     local effectToCheck  = utils.defaultIfNil(effectId, 0)
     local elementToCheck = utils.defaultIfNil(actionElement, 0)
 
     -- Sleep exception.
     if
-        effectToCheck == xi.effect.SLEEP_I and
-        elementToCheck == xi.element.LIGHT
+        effectToCheck == invaderXim.effect.SLEEP_I and
+        elementToCheck == invaderXim.element.LIGHT
     then
-        return xi.immunity.LIGHT_SLEEP
+        return invaderXim.immunity.LIGHT_SLEEP
     end
 
     -- Fetch immunity from table if entry exists.
-    if xi.combat.statusEffect.dataTable[effectToCheck] then
-        return xi.combat.statusEffect.dataTable[effectToCheck][column.EFFECT_IMMUNITY]
+    if invaderXim.combat.statusEffect.dataTable[effectToCheck] then
+        return invaderXim.combat.statusEffect.dataTable[effectToCheck][column.EFFECT_IMMUNITY]
     end
 
     return 0
 end
 
-xi.combat.statusEffect.getAssociatedResistTraitModifier = function(effectId)
+invaderXim.combat.statusEffect.getAssociatedResistTraitModifier = function(effectId)
     -- Sanitize fed value
     local effectToCheck  = utils.defaultIfNil(effectId, 0)
 
     -- Fetch modifier ID from table if entry exists.
-    if xi.combat.statusEffect.dataTable[effectToCheck] then
-        return xi.combat.statusEffect.dataTable[effectToCheck][column.MOD_RESIST_TRAIT]
+    if invaderXim.combat.statusEffect.dataTable[effectToCheck] then
+        return invaderXim.combat.statusEffect.dataTable[effectToCheck][column.MOD_RESIST_TRAIT]
     end
 
     return 0
 end
 
-xi.combat.statusEffect.getAssociatedResistanceRankModifier = function(effectId)
+invaderXim.combat.statusEffect.getAssociatedResistanceRankModifier = function(effectId)
     -- Sanitize fed value
     local effectToCheck  = utils.defaultIfNil(effectId, 0)
 
     -- Fetch modifier ID from table if entry exists.
-    if xi.combat.statusEffect.dataTable[effectToCheck] then
-        return xi.combat.statusEffect.dataTable[effectToCheck][column.MOD_RESIST_RANK]
+    if invaderXim.combat.statusEffect.dataTable[effectToCheck] then
+        return invaderXim.combat.statusEffect.dataTable[effectToCheck][column.MOD_RESIST_RANK]
     end
 
     return 0
 end
 
-xi.combat.statusEffect.getAssociatedMagicEvasionModifier = function(effectId)
+invaderXim.combat.statusEffect.getAssociatedMagicEvasionModifier = function(effectId)
     -- Sanitize fed value
     local effectToCheck  = utils.defaultIfNil(effectId, 0)
 
     -- Fetch modifier ID from table if entry exists.
-    if xi.combat.statusEffect.dataTable[effectToCheck] then
-        return xi.combat.statusEffect.dataTable[effectToCheck][column.MOD_MAGIC_EVASION]
+    if invaderXim.combat.statusEffect.dataTable[effectToCheck] then
+        return invaderXim.combat.statusEffect.dataTable[effectToCheck][column.MOD_MAGIC_EVASION]
     end
 
     return 0
 end
 
-xi.combat.statusEffect.getAssociatedImmunobreakModifier = function(effectId)
+invaderXim.combat.statusEffect.getAssociatedImmunobreakModifier = function(effectId)
     -- Sanitize fed value
     local effectToCheck  = utils.defaultIfNil(effectId, 0)
 
     -- Fetch modifier ID from table if entry exists.
-    if xi.combat.statusEffect.dataTable[effectToCheck] then
-        return xi.combat.statusEffect.dataTable[effectToCheck][column.MOD_IMMUNOBREAK]
+    if invaderXim.combat.statusEffect.dataTable[effectToCheck] then
+        return invaderXim.combat.statusEffect.dataTable[effectToCheck][column.MOD_IMMUNOBREAK]
     end
 
     return 0
@@ -176,12 +176,12 @@ end
 -----------------------------------
 -- Helper functions to check target effect nullification.
 -----------------------------------
-xi.combat.statusEffect.isTargetImmune = function(target, effectId, actionElement)
+invaderXim.combat.statusEffect.isTargetImmune = function(target, effectId, actionElement)
     if not target:isMob() then
         return false
     end
 
-    local immunityId = xi.combat.statusEffect.getAssociatedImmunity(effectId, actionElement)
+    local immunityId = invaderXim.combat.statusEffect.getAssociatedImmunity(effectId, actionElement)
     if
         immunityId > 0 and
         target:hasImmunity(immunityId)
@@ -192,13 +192,13 @@ xi.combat.statusEffect.isTargetImmune = function(target, effectId, actionElement
     return false
 end
 
-xi.combat.statusEffect.isTargetResistant = function(actor, target, effectId)
-    local modifierId = xi.combat.statusEffect.getAssociatedResistTraitModifier(effectId)
+invaderXim.combat.statusEffect.isTargetResistant = function(actor, target, effectId)
+    local modifierId = invaderXim.combat.statusEffect.getAssociatedResistTraitModifier(effectId)
     if modifierId == 0 then
         return false
     end
 
-    local resistancePower = target:getMod(modifierId) + target:getMod(xi.mod.STATUSRES) + 5
+    local resistancePower = target:getMod(modifierId) + target:getMod(invaderXim.mod.STATUSRES) + 5
     if resistancePower <= 5 then
         return false
     end
@@ -215,8 +215,8 @@ xi.combat.statusEffect.isTargetResistant = function(actor, target, effectId)
     return false
 end
 
-xi.combat.statusEffect.isEffectNullified = function(target, effectId)
-    local nullificatingEffect = xi.combat.statusEffect.getNullificatingEffect(effectId)
+invaderXim.combat.statusEffect.isEffectNullified = function(target, effectId)
+    local nullificatingEffect = invaderXim.combat.statusEffect.getNullificatingEffect(effectId)
     if
         nullificatingEffect > 0 and
         target:hasStatusEffect(nullificatingEffect)

@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `char_monstrosity`;
+DROP TABLE IF IXIMSTS `char_monstrosity`;
 CREATE TABLE `char_monstrosity` (
     `charid` int(10) unsigned NOT NULL,
     `current_monstrosity_id` smallint(3) unsigned NOT NULL DEFAULT 0,

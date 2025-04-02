@@ -1,12 +1,12 @@
 xi = xi or {}
-xi.magic = xi.magic or {}
+invaderXim.magic = invaderXim.magic or {}
 
 -----------------------------------
 -- Spell flag bits
 -----------------------------------
 
----@enum xi.spellFlag
-xi.magic.spellFlag =
+---@enum invaderXim.spellFlag
+invaderXim.magic.spellFlag =
 {
     NONE           = 0x00,
     HIT_ALL        = 0x01, -- Hit all targets in range regardless of party
@@ -18,8 +18,8 @@ xi.magic.spellFlag =
 -- Spell AOE IDs
 -----------------------------------
 
----@enum xi.magic.aoe
-xi.magic.aoe =
+---@enum invaderXim.magic.aoe
+invaderXim.magic.aoe =
 {
     NONE        = 0,
     RADIAL      = 1,
@@ -34,8 +34,8 @@ xi.magic.aoe =
 -- Spell Groups
 -----------------------------------
 
----@enum xi.magic.spellGroup
-xi.magic.spellGroup =
+---@enum invaderXim.magic.spellGroup
+invaderXim.magic.spellGroup =
 {
     NONE      = 0,
     SONG      = 1,
@@ -52,8 +52,8 @@ xi.magic.spellGroup =
 -- Spell Families
 -----------------------------------
 
----@enum xi.magic.spellFamily
-xi.magic.spellFamily =
+---@enum invaderXim.magic.spellFamily
+invaderXim.magic.spellFamily =
 {
     NONE               = 0,
     CURE               = 1,
@@ -218,8 +218,8 @@ xi.magic.spellFamily =
 -- Spell IDs
 -----------------------------------
 
----@enum xi.magic.spell
-xi.magic.spell =
+---@enum invaderXim.magic.spell
+invaderXim.magic.spell =
 {
     CURE                  =    1,
     CURE_II               =    2,

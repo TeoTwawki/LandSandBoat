@@ -13,7 +13,7 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    target:addStatusEffect(xi.effect.CROOKED_CARDS, 20, 0, 60)
+    target:addStatusEffect(invaderXim.effect.CROOKED_CARDS, 20, 0, 60)
 end
 
 return abilityObject

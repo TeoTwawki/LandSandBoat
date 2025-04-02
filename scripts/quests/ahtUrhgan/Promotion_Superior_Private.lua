@@ -4,22 +4,22 @@
 -- Naja Salaheem !pos 26 -8 -45.5 50
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.PROMOTION_SUPERIOR_PRIVATE)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.PROMOTION_SUPERIOR_PRIVATE)
 
 quest.reward =
 {
-    keyItem = xi.ki.SP_WILDCAT_BADGE,
+    keyItem = invaderXim.ki.SP_WILDCAT_BADGE,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and player:getCharVar('AssaultPromotion') >= 25 and
-            player:getQuestStatus(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.PROMOTION_PRIVATE_FIRST_CLASS) == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and player:getCharVar('AssaultPromotion') >= 25 and
+            player:getQuestStatus(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.PROMOTION_PRIVATE_FIRST_CLASS) == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = quest:progressEvent(5020, { text_table = 0 }),
 
@@ -33,38 +33,38 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and not player:hasKeyItem(xi.ki.DARK_RIDER_HOOFPRINT)
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and not player:hasKeyItem(invaderXim.ki.DARK_RIDER_HOOFPRINT)
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = quest:event(5021, { text_table = 0 }),
         },
 
-        [xi.zone.BHAFLAU_THICKETS] =
+        [invaderXim.zone.BHAFLAU_THICKETS] =
         {
-            ['Warhorse_Hoofprint'] = quest:keyItem(xi.ki.DARK_RIDER_HOOFPRINT)
+            ['Warhorse_Hoofprint'] = quest:keyItem(invaderXim.ki.DARK_RIDER_HOOFPRINT)
         },
-        [xi.zone.CAEDARVA_MIRE] =
+        [invaderXim.zone.CAEDARVA_MIRE] =
         {
-            ['Warhorse_Hoofprint'] = quest:keyItem(xi.ki.DARK_RIDER_HOOFPRINT)
+            ['Warhorse_Hoofprint'] = quest:keyItem(invaderXim.ki.DARK_RIDER_HOOFPRINT)
         },
-        [xi.zone.MOUNT_ZHAYOLM] =
+        [invaderXim.zone.MOUNT_ZHAYOLM] =
         {
-            ['Warhorse_Hoofprint'] = quest:keyItem(xi.ki.DARK_RIDER_HOOFPRINT)
+            ['Warhorse_Hoofprint'] = quest:keyItem(invaderXim.ki.DARK_RIDER_HOOFPRINT)
         },
-        [xi.zone.WAJAOM_WOODLANDS] =
+        [invaderXim.zone.WAJAOM_WOODLANDS] =
         {
-            ['Warhorse_Hoofprint'] = quest:keyItem(xi.ki.DARK_RIDER_HOOFPRINT)
+            ['Warhorse_Hoofprint'] = quest:keyItem(invaderXim.ki.DARK_RIDER_HOOFPRINT)
         },
 
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED and player:hasKeyItem(xi.ki.DARK_RIDER_HOOFPRINT)
+            return status == invaderXim.questStatus.QUEST_ACCEPTED and player:hasKeyItem(invaderXim.ki.DARK_RIDER_HOOFPRINT)
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] = quest:progressEvent(5022, { text_table = 0 }),
 
@@ -73,8 +73,8 @@ quest.sections =
                 [5022] = function(player, csid, option, npc)
                     if quest:complete(player) then
                         player:setCharVar('AssaultPromotion', 0)
-                        player:delKeyItem(xi.ki.PFC_WILDCAT_BADGE)
-                        player:delKeyItem(xi.ki.DARK_RIDER_HOOFPRINT)
+                        player:delKeyItem(invaderXim.ki.PFC_WILDCAT_BADGE)
+                        player:delKeyItem(invaderXim.ki.DARK_RIDER_HOOFPRINT)
                     end
                 end,
             },

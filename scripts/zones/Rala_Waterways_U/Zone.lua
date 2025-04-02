@@ -28,12 +28,12 @@ end
 
 zoneObject.onEventFinish = function(player, csid, option, npc)
     if csid == 1000 and option == 0 then
-        player:setPos(-530.6, -5.7, 59.9, 128, xi.zone.RALA_WATERWAYS)
+        player:setPos(-530.6, -5.7, 59.9, 128, invaderXim.zone.RALA_WATERWAYS)
     end
 end
 
 zoneObject.onInstanceLoadFailed = function()
-    return xi.zone.RALA_WATERWAYS
+    return invaderXim.zone.RALA_WATERWAYS
 end
 
 return zoneObject

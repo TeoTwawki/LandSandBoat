@@ -14,21 +14,21 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.ICE_SPIKES, math.random(15, 30), 0, 60))
+    skill:setMsg(invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.ICE_SPIKES, math.random(15, 30), 0, 60))
 
-    local effect1 = mob:getStatusEffect(xi.effect.ICE_SPIKES)
+    local effect1 = mob:getStatusEffect(invaderXim.effect.ICE_SPIKES)
     if effect1 then
-        effect1:delEffectFlag(xi.effectFlag.DISPELABLE)
+        effect1:delEffectFlag(invaderXim.effectFlag.DISPELABLE)
     end
 
-    xi.mobskills.mobBuffMove(mob, xi.effect.DEFENSE_BOOST, 26, 0, 60)
+    invaderXim.mobskills.mobBuffMove(mob, invaderXim.effect.DEFENSE_BOOST, 26, 0, 60)
 
-    local effect2 = mob:getStatusEffect(xi.effect.DEFENSE_BOOST)
+    local effect2 = mob:getStatusEffect(invaderXim.effect.DEFENSE_BOOST)
     if effect2 then
-        effect2:delEffectFlag(xi.effectFlag.DISPELABLE)
+        effect2:delEffectFlag(invaderXim.effectFlag.DISPELABLE)
     end
 
-    return xi.effect.ICE_SPIKES
+    return invaderXim.effect.ICE_SPIKES
 end
 
 return mobskillObject

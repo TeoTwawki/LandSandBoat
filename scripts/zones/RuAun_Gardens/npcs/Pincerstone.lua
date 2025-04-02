@@ -3,7 +3,7 @@
 --  NPC: Pincerstone
 -- NPCs which activates the blue teleports in sky
 -----------------------------------
-local ID = zones[xi.zone.RUAUN_GARDENS]
+local ID = zones[invaderXim.zone.RUAUN_GARDENS]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -30,7 +30,7 @@ entity.onTrigger = function(player, npc)
     if portalId ~= nil then
         local portal = GetNPCByID(portalId)
 
-        if portal and portal:getAnimation() == xi.anim.CLOSE_DOOR then
+        if portal and portal:getAnimation() == invaderXim.anim.CLOSE_DOOR then
             GetNPCByID(npcId - 1):openDoor(120)
             portal:openDoor(120)
         else

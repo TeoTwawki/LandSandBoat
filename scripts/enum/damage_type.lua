@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.damageType
-xi.damageType =
+---@enum invaderXim.damageType
+invaderXim.damageType =
 {
     NONE      = 0,
     PIERCING  = 1,

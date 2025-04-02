@@ -8,7 +8,7 @@
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.appraisal.appraiseItem(player, npc, trade, 50, 261)
+    invaderXim.appraisal.appraiseItem(player, npc, trade, 50, 261)
 end
 
 entity.onTrigger = function(player, npc)
@@ -16,7 +16,7 @@ entity.onTrigger = function(player, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.appraisal.appraisalOnEventFinish(player, csid, option, 50, 261, npc)
+    invaderXim.appraisal.appraisalOnEventFinish(player, csid, option, 50, 261, npc)
 end
 
 return entity

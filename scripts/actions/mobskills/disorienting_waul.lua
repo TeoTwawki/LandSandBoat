@@ -14,9 +14,9 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     -- SubPower is resistance chance vs removal by Ecphoria Ring
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.AMNESIA, 35, 0, 60, 80))
+    skill:setMsg(invaderXim.mobskills.mobStatusEffectMove(mob, target, invaderXim.effect.AMNESIA, 35, 0, 60, 80))
 
-    return xi.effect.AMNESIA
+    return invaderXim.effect.AMNESIA
 end
 
 return mobskillObject

@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.RERAISE
+-- invaderXim.effect.RERAISE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

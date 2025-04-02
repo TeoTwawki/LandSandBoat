@@ -8,16 +8,16 @@
 local entity = {}
 
 local removables = {
-    xi.effect.FLASH, xi.effect.BLINDNESS, xi.effect.ELEGY, xi.effect.REQUIEM,
-    xi.effect.PARALYSIS, xi.effect.POISON, xi.effect.DISEASE, xi.effect.PLAGUE,
-    xi.effect.WEIGHT, xi.effect.BIND, xi.effect.BIO, xi.effect.DIA, xi.effect.BURN,
-    xi.effect.FROST, xi.effect.CHOKE, xi.effect.RASP, xi.effect.SHOCK, xi.effect.DROWN,
-    xi.effect.STR_DOWN, xi.effect.DEX_DOWN, xi.effect.VIT_DOWN, xi.effect.AGI_DOWN,
-    xi.effect.INT_DOWN, xi.effect.MND_DOWN, xi.effect.CHR_DOWN, xi.effect.ADDLE, xi.effect.SLOW,
-    xi.effect.HELIX, xi.effect.ACCURACY_DOWN, xi.effect.ATTACK_DOWN, xi.effect.EVASION_DOWN,
-    xi.effect.DEFENSE_DOWN, xi.effect.MAGIC_ACC_DOWN, xi.effect.MAGIC_ATK_DOWN,
-    xi.effect.MAGIC_EVASION_DOWN, xi.effect.MAGIC_DEF_DOWN, xi.effect.MAX_TP_DOWN,
-    xi.effect.MAX_MP_DOWN, xi.effect.MAX_HP_DOWN
+    invaderXim.effect.FLASH, invaderXim.effect.BLINDNESS, invaderXim.effect.ELEGY, invaderXim.effect.REQUIEM,
+    invaderXim.effect.PARALYSIS, invaderXim.effect.POISON, invaderXim.effect.DISEASE, invaderXim.effect.PLAGUE,
+    invaderXim.effect.WEIGHT, invaderXim.effect.BIND, invaderXim.effect.BIO, invaderXim.effect.DIA, invaderXim.effect.BURN,
+    invaderXim.effect.FROST, invaderXim.effect.CHOKE, invaderXim.effect.RASP, invaderXim.effect.SHOCK, invaderXim.effect.DROWN,
+    invaderXim.effect.STR_DOWN, invaderXim.effect.DEX_DOWN, invaderXim.effect.VIT_DOWN, invaderXim.effect.AGI_DOWN,
+    invaderXim.effect.INT_DOWN, invaderXim.effect.MND_DOWN, invaderXim.effect.CHR_DOWN, invaderXim.effect.ADDLE, invaderXim.effect.SLOW,
+    invaderXim.effect.HELIX, invaderXim.effect.ACCURACY_DOWN, invaderXim.effect.ATTACK_DOWN, invaderXim.effect.EVASION_DOWN,
+    invaderXim.effect.DEFENSE_DOWN, invaderXim.effect.MAGIC_ACC_DOWN, invaderXim.effect.MAGIC_ATK_DOWN,
+    invaderXim.effect.MAGIC_EVASION_DOWN, invaderXim.effect.MAGIC_DEF_DOWN, invaderXim.effect.MAX_TP_DOWN,
+    invaderXim.effect.MAX_MP_DOWN, invaderXim.effect.MAX_HP_DOWN
 }
 
 local function removeSpecificDebuffs(mob)
@@ -33,9 +33,9 @@ end
 
 entity.onMobFight = function(mob, target)
     if mob:getHPP() <= 50 then
-        mob:setMobMod(xi.mobMod.SKILL_LIST, 2021)
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 2021)
     else
-        mob:setMobMod(xi.mobMod.SKILL_LIST, 2020)
+        mob:setMobMod(invaderXim.mobMod.SKILL_LIST, 2020)
     end
 end
 
@@ -46,7 +46,7 @@ entity.onMobSpawn = function(mob)
             for _, hateEntity in ipairs(mob:getEnmityList()) do
                 local player = hateEntity.entity
                 if player and player:isPC() then
-                    player:messageSpecial(zones[xi.zone.CEIZAK_BATTLEGROUNDS].text.SPRING_STEP)
+                    player:messageSpecial(zones[invaderXim.zone.CEIZAK_BATTLEGROUNDS].text.SPRING_STEP)
                     break  -- Only send message once
                 end
             end

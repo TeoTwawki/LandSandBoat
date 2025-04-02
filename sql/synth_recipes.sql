@@ -12,7 +12,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-DROP TABLE IF EXISTS `synth_recipes`;
+DROP TABLE IF IXIMSTS `synth_recipes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `synth_recipes` (
@@ -52,7 +52,7 @@ CREATE TABLE `synth_recipes` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 DELIMITER $$
-DROP TRIGGER IF EXISTS ensure_synth_ingredients_are_ordered;
+DROP TRIGGER IF IXIMSTS ensure_synth_ingredients_are_ordered;
 CREATE TRIGGER ensure_synth_ingredients_are_ordered
      BEFORE INSERT ON synth_recipes FOR EACH ROW BEGIN
           IF NEW.Ingredient2 > 0 AND NEW.Ingredient1 > NEW.Ingredient2
@@ -3630,7 +3630,7 @@ INSERT INTO `synth_recipes` VALUES (59933,1,0,0,0,0,0,0,72,0,0,4100,4242,12878,0
 INSERT INTO `synth_recipes` VALUES (59934,1,0,0,0,0,0,0,44,0,0,4100,4242,13713,0,0,0,0,0,0,0,864,864,864,864,1,1,1,1,'Carapace Mittens (desynth)',NULL);  -- 2021.11.06 - FFXIclopedia
 INSERT INTO `synth_recipes` VALUES (59935,1,0,0,0,0,0,0,39,0,0,4100,4242,17026,0,0,0,0,0,0,0,817,880,880,893,3,5,6,1,'Bone Cudgel (desynth)',NULL);  -- 2021.11.01 FFXIclopedia and allakhzam have different recipes.  Went with https://ffxiclopedia.fandom.com/wiki/Bone_Cudgel
 INSERT INTO `synth_recipes` VALUES (59936,1,0,0,0,0,0,0,77,0,0,4100,4242,13850,0,0,0,0,0,0,0,887,792,793,793,1,1,1,1,'Merman\'s Hairpin (desynth)',NULL);  -- 2021.11.01 https://ffxiclopedia.fandom.com/wiki/Merman's_Hairpin
-INSERT INTO `synth_recipes` VALUES (59937,1,0,0,0,0,0,0,36,0,0,4100,4242,12583,0,0,0,0,0,0,0,852,889,852,852,1,1,2,3,'Beetle Harness (desynth)',NULL);  -- 2021.11.01 nothing matches. FFXIclopedia makes no sense b/c of materials needed to make.  Used https://ffxi.allakhazam.com/db/item.html?fitem=536#Desynthesis
+INSERT INTO `synth_recipes` VALUES (59937,1,0,0,0,0,0,0,36,0,0,4100,4242,12583,0,0,0,0,0,0,0,852,889,852,852,1,1,2,3,'Beetle Harness (desynth)',NULL);  -- 2021.11.01 nothing matches. FFXIclopedia makes no sense b/c of materials needed to make.  Used https://ffinvaderXim.allakhazam.com/db/item.html?fitem=536#Desynthesis
 INSERT INTO `synth_recipes` VALUES (59938,1,0,0,0,0,0,0,97,0,0,4100,4242,13846,0,0,0,0,0,0,0,850,1230,1473,1473,1,6,1,1,'Scorpion Helm (desynth)',NULL);  -- 2021.11.01
 INSERT INTO `synth_recipes` VALUES (59939,1,0,0,0,0,0,0,92,0,0,4100,4242,14008,0,0,0,0,0,0,0,817,1193,850,850,3,1,1,3,'Cpc. Gauntlets (desynth)',NULL);  -- 2021.11.01 allakhazam states synth rate is 3,1,1,3 FFXIclopedia shows 3,3,1,3. Nothing shown on others. Chose 3,1,1,3 b/c there are not 3 Crab Shells in the synths to make.
 INSERT INTO `synth_recipes` VALUES (59940,1,0,0,0,0,0,0,85,0,0,4100,4242,17849,0,0,0,0,0,0,0,2157,2157,2171,2171,1,1,1,1,'Hellish Bugle (desynth)',NULL);  -- 2021.11.01
@@ -3641,7 +3641,7 @@ INSERT INTO `synth_recipes` VALUES (59944,1,0,0,0,0,0,0,87,0,0,4100,4242,12436,0
 INSERT INTO `synth_recipes` VALUES (59945,1,0,0,0,0,0,0,60,0,0,4100,4242,13458,0,0,0,0,0,0,0,896,896,896,896,1,1,1,1,'Scorpion Ring (desynth)',NULL);
 INSERT INTO `synth_recipes` VALUES (59946,1,0,0,0,0,0,0,52,0,0,4100,4242,17257,0,0,0,0,0,0,0,893,893,893,893,1,1,1,1,'Bandit\'s Gun (desynth)',NULL);
 INSERT INTO `synth_recipes` VALUES (59947,1,0,0,0,0,0,0,100,0,0,4100,4242,12437,0,0,0,0,0,0,0,850,1587,1586,1586,1,1,1,1,'Gavial Mask (desynth)',NULL);  -- 2021.11.01
-INSERT INTO `synth_recipes` VALUES (59948,1,0,0,0,0,0,0,255,0,0,4100,4242,14426,0,0,0,0,0,0,0,816,816,816,816,1,1,1,1,'Shade Harness (desynth)','COP');  -- 2021.11.01 https://ffxi.allakhazam.com/dyn/guilds/dBonecraft.html
+INSERT INTO `synth_recipes` VALUES (59948,1,0,0,0,0,0,0,255,0,0,4100,4242,14426,0,0,0,0,0,0,0,816,816,816,816,1,1,1,1,'Shade Harness (desynth)','COP');  -- 2021.11.01 https://ffinvaderXim.allakhazam.com/dyn/guilds/dBonecraft.html
 INSERT INTO `synth_recipes` VALUES (59949,1,0,0,0,0,0,0,57,0,0,4100,4242,16794,0,0,0,0,0,0,0,817,882,893,893,3,1,1,1,'Bone Scythe (desynth)',NULL);
 INSERT INTO `synth_recipes` VALUES (59950,1,0,0,0,0,0,0,37,0,0,4100,4242,13459,0,0,0,0,0,0,0,864,895,895,895,1,1,1,1,'Horn Ring (desynth)',NULL);  -- based on synth lvl 10/31/21
 -- INSERT INTO `synth_recipes` VALUES (59951,1,0,0,255,0,0,0,255,0,0,4100,4242,16409,0,0,0,0,0,0,0,649,880,880,855,1,2,3,1,'Lynx Baghnakhs (desynth)',NULL); -- 2021.11.01 no level data

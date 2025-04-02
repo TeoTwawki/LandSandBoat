@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: East_Sarutabaruta (116)
 -----------------------------------
-local ID = zones[xi.zone.EAST_SARUTABARUTA]
+local ID = zones[invaderXim.zone.EAST_SARUTABARUTA]
 require('scripts/quests/i_can_hear_a_rainbow')
 -----------------------------------
 ---@type TZone
@@ -29,9 +29,9 @@ zoneObject.onZoneIn = function(player, prevZone)
     if quests.rainbow.onZoneIn(player) then
         cs = 50
     elseif
-        player:getCurrentMission(xi.mission.log_id.ASA) == xi.mission.id.asa.BURGEONING_DREAD and
-        prevZone == xi.zone.WINDURST_WOODS and
-        not player:hasStatusEffect(xi.effect.MOUNTED)
+        player:getCurrentMission(invaderXim.mission.log_id.ASA) == invaderXim.mission.id.asa.BURGEONING_DREAD and
+        prevZone == invaderXim.zone.WINDURST_WOODS and
+        not player:hasStatusEffect(invaderXim.effect.MOUNTED)
     then
         cs = 71
     end
@@ -40,18 +40,18 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.afterZoneIn = function(player)
-    xi.chocoboGame.handleMessage(player)
+    invaderXim.chocoboGame.handleMessage(player)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
     local triggerAreaID = triggerArea:getTriggerAreaID()
 
-    if triggerAreaID == 1 and player:hasStatusEffect(xi.effect.MOUNTED) then
-        xi.chocoboGame.onTriggerAreaEnter(player)
+    if triggerAreaID == 1 and player:hasStatusEffect(invaderXim.effect.MOUNTED) then
+        invaderXim.chocoboGame.onTriggerAreaEnter(player)
     end
 end
 
@@ -65,11 +65,11 @@ end
 
 zoneObject.onEventFinish = function(player, csid, option, npc)
     if csid == 71 then
-        player:completeMission(xi.mission.log_id.ASA, xi.mission.id.asa.BURGEONING_DREAD)
-        player:addMission(xi.mission.log_id.ASA, xi.mission.id.asa.THAT_WHICH_CURDLES_BLOOD)
+        player:completeMission(invaderXim.mission.log_id.ASA, invaderXim.mission.id.asa.BURGEONING_DREAD)
+        player:addMission(invaderXim.mission.log_id.ASA, invaderXim.mission.id.asa.THAT_WHICH_CURDLES_BLOOD)
     end
 
-    xi.chocoboGame.onEventFinish(player, csid)
+    invaderXim.chocoboGame.onEventFinish(player, csid)
 end
 
 return zoneObject

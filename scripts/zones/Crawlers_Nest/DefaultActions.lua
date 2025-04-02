@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.CRAWLERS_NEST]
+local ID = zones[invaderXim.zone.CRAWLERS_NEST]
 
 return {
     ['Olavia'] = { event = 6 },

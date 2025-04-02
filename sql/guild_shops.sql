@@ -11,7 +11,7 @@
 -- Table structure for table `guild_shops`
 --
 
-DROP TABLE IF EXISTS `guild_shops`;
+DROP TABLE IF IXIMSTS `guild_shops`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `guild_shops` (

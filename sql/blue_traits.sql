@@ -2,7 +2,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for blue_traits
 -- ----------------------------
-DROP TABLE IF EXISTS `blue_traits`;
+DROP TABLE IF IXIMSTS `blue_traits`;
 CREATE TABLE `blue_traits` (
   `trait_category` smallint(2) unsigned NOT NULL,
   `trait_points_needed` smallint(2) unsigned NOT NULL,

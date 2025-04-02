@@ -6,12 +6,12 @@
 -- Sluice_Gate_6 : !pos -561.522 -7.500 60.002 258
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.FOR_WHOM_DO_WE_TOIL)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.FOR_WHOM_DO_WE_TOIL)
 
 mission.reward =
 {
-    keyItem     = xi.ki.NOTE_DETAILING_SEDITIOUS_PLANS,
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.AIMING_FOR_YGNAS },
+    keyItem     = invaderXim.ki.NOTE_DETAILING_SEDITIOUS_PLANS,
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.AIMING_FOR_YGNAS },
 }
 
 mission.sections =
@@ -21,12 +21,12 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(126),
         },
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             ['Sluice_Gate_6'] =
             {
@@ -74,7 +74,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Wegellion'] =
             {
@@ -96,7 +96,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.CELENNIA_MEMORIAL_LIBRARY] =
+        [invaderXim.zone.CELENNIA_MEMORIAL_LIBRARY] =
         {
             ['Yafafa']  = mission:event(1),
             ['History'] = mission:event(1003, 1),

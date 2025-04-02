@@ -2,7 +2,7 @@
 -- Area: Sauromugue Champaign
 --  Mob: Hill Lizard
 -----------------------------------
-local ID = zones[xi.zone.SAUROMUGUE_CHAMPAIGN]
+local ID = zones[invaderXim.zone.SAUROMUGUE_CHAMPAIGN]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -13,11 +13,11 @@ local bashePHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 40, 1, xi.regime.type.FIELDS)
+    invaderXim.regime.checkRegime(player, mob, 40, 1, invaderXim.regime.type.FIELDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, bashePHTable, 10, 3600) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, bashePHTable, 10, 3600) -- 1 hour
 end
 
 return entity

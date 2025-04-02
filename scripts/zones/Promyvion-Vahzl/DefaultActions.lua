@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.PROMYVION_VAHZL]
+local ID = zones[invaderXim.zone.PROMYVION_VAHZL]
 
 return {
     ['_0m0'] = { messageSpecial = ID.text.OVERFLOWING_MEMORIES },

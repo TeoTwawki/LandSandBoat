@@ -9,23 +9,23 @@
 -- Effigy of Sealing 2 : !pos -424 -178 -376 274
 -- _7mw                : !pos 197 58 -20 274
 -----------------------------------
-local kamihrID        = zones[xi.zone.MOUNT_KAMIHR]
-local outerRaKaznarID = zones[xi.zone.OUTER_RAKAZNAR]
+local kamihrID        = zones[invaderXim.zone.MOUNT_KAMIHR]
+local outerRaKaznarID = zones[invaderXim.zone.OUTER_RAKAZNAR]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.A_NEW_FORCE_ARISES)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.A_NEW_FORCE_ARISES)
 
 mission.reward =
 {
-    keyItem     = xi.ki.WORLD_TREE_SAPLING,
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.THE_SACRED_SAPLING },
+    keyItem     = invaderXim.ki.WORLD_TREE_SAPLING,
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_SACRED_SAPLING },
 }
 
 local scaleKeyItems =
 {
-    xi.ki.SUNKISSED_SCALE,
-    xi.ki.MOONTOUCHED_SCALE,
-    xi.ki.STARBLESSED_SCALE,
+    invaderXim.ki.SUNKISSED_SCALE,
+    invaderXim.ki.MOONTOUCHED_SCALE,
+    invaderXim.ki.STARBLESSED_SCALE,
 }
 
 local function getNumScales(player)
@@ -57,7 +57,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CELENNIA_MEMORIAL_LIBRARY] =
+        [invaderXim.zone.CELENNIA_MEMORIAL_LIBRARY] =
         {
             onZoneIn = function(player, prevZone)
                 local numScales = getNumScales(player)
@@ -79,7 +79,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.KAMIHR_DRIFTS] =
+        [invaderXim.zone.KAMIHR_DRIFTS] =
         {
             ['Alpine_Trail'] =
             {
@@ -102,19 +102,19 @@ mission.sections =
             {
                 [55] = function(player, csid, option, npc)
                     if option == 1 then
-                        player:setPos(306.42, -0.051, -24.974, 199, xi.zone.MOUNT_KAMIHR)
+                        player:setPos(306.42, -0.051, -24.974, 199, invaderXim.zone.MOUNT_KAMIHR)
                     end
                 end,
 
                 [56] = function(player, csid, option, npc)
                     if option == 1 then
-                        player:setPos(306.42, -0.051, -24.974, 199, xi.zone.MOUNT_KAMIHR)
+                        player:setPos(306.42, -0.051, -24.974, 199, invaderXim.zone.MOUNT_KAMIHR)
                     end
                 end,
             },
         },
 
-        [xi.zone.MOUNT_KAMIHR] =
+        [invaderXim.zone.MOUNT_KAMIHR] =
         {
             onZoneIn = function(player, prevZone)
                 local numScales = getNumScales(player)
@@ -145,7 +145,7 @@ mission.sections =
             {
                 [4] = function(player, csid, option, npc)
                     mission:setVarBit(player, 'Option', 1)
-                    player:setPos(-8.495, 0.454, 487.467, 12, xi.zone.KAMIHR_DRIFTS)
+                    player:setPos(-8.495, 0.454, 487.467, 12, invaderXim.zone.KAMIHR_DRIFTS)
                 end,
 
                 [5] = function(player, csid, option, npc)
@@ -155,22 +155,22 @@ mission.sections =
                     end
 
                     mission:complete(player)
-                    player:setPos(-8.495, 0.454, 487.467, 12, xi.zone.KAMIHR_DRIFTS)
+                    player:setPos(-8.495, 0.454, 487.467, 12, invaderXim.zone.KAMIHR_DRIFTS)
                 end,
             },
         },
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] = mission:event(165),
         },
 
-        [xi.zone.OUTER_RAKAZNAR] =
+        [invaderXim.zone.OUTER_RAKAZNAR] =
         {
             ['_7mw'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.SUNKISSED_SCALE) then
+                    if not player:hasKeyItem(invaderXim.ki.SUNKISSED_SCALE) then
                         return mission:progressEvent(51, 274, 300, 200, 100, utils.MAX_UINT32 - 307959, 234, 582330, 8)
                     end
                 end,
@@ -179,7 +179,7 @@ mission.sections =
             ['Effigy_of_Sealing_1'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.MOONTOUCHED_SCALE) then
+                    if not player:hasKeyItem(invaderXim.ki.MOONTOUCHED_SCALE) then
                         return mission:progressEvent(52, 274, 300, 200, 100, 239663, 663, 250000, 0)
                     end
                 end,
@@ -188,7 +188,7 @@ mission.sections =
             ['Effigy_of_Sealing_2'] =
             {
                 onTrigger = function(player, npc)
-                    if not player:hasKeyItem(xi.ki.STARBLESSED_SCALE) then
+                    if not player:hasKeyItem(invaderXim.ki.STARBLESSED_SCALE) then
                         return mission:progressEvent(53, 274, 300, 200, 100, 289440, 1681, 568030, 0)
                     end
                 end,
@@ -197,17 +197,17 @@ mission.sections =
             onEventFinish =
             {
                 [51] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.SUNKISSED_SCALE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.SUNKISSED_SCALE)
                     scaleMessage(player)
                 end,
 
                 [52] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.MOONTOUCHED_SCALE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.MOONTOUCHED_SCALE)
                     scaleMessage(player)
                 end,
 
                 [53] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.STARBLESSED_SCALE)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.STARBLESSED_SCALE)
                     scaleMessage(player)
                 end,
             },

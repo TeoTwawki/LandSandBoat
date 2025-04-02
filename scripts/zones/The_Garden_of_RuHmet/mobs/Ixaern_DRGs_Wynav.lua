@@ -6,7 +6,7 @@
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
 end
 
 entity.onMobSpawn = function(mob)
@@ -34,7 +34,7 @@ entity.onMobMagicPrepare = function(mob, target, spellId)
         [8] = 462,
         [9] = 466 -- Virelai (charm)
     }
-    if mob:hasStatusEffect(xi.effect.SOUL_VOICE) then
+    if mob:hasStatusEffect(invaderXim.effect.SOUL_VOICE) then
         return spellList[math.random(1, 9)] -- Virelai possible.
     else
         return spellList[math.random(1, 8)] -- No Virelai!

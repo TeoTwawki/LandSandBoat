@@ -6,7 +6,7 @@
 local entity = {}
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.GOLIATH_KILLER)
+    player:addTitle(invaderXim.title.GOLIATH_KILLER)
 end
 
 return entity

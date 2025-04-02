@@ -2,11 +2,11 @@
 -- Abyssea Sturdy Pyxis - Experience
 -----------------------------------
 xi = xi or {}
-xi.pyxis = xi.pyxis or {}
+invaderXim.pyxis = invaderXim.pyxis or {}
 
-xi.pyxis.exp = {}
+invaderXim.pyxis.exp = {}
 
-xi.pyxis.exp.giveExperience = function(npc, player)
+invaderXim.pyxis.exp.giveExperience = function(npc, player)
     local alliance = player:getAlliance()
     local exp = npc:getLocalVar('EXP')
 

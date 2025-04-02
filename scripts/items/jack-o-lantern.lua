@@ -14,29 +14,29 @@
 local itemObject = {}
 
 itemObject.onItemCheck = function(target, item, param, caster)
-    return xi.itemUtils.foodOnItemCheck(target, xi.foodType.BASIC)
+    return invaderXim.itemUtils.foodOnItemCheck(target, invaderXim.foodType.BASIC)
 end
 
 itemObject.onItemUse = function(target)
-    target:addStatusEffect(xi.effect.FOOD, 0, 0, 10800, 4488)
+    target:addStatusEffect(invaderXim.effect.FOOD, 0, 0, 10800, 4488)
 end
 
 itemObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.CHR, -10)
-    target:addMod(xi.mod.ACC, 10)
-    target:addMod(xi.mod.RACC, 10)
-    target:addMod(xi.mod.EVA, 10)
-    target:addMod(xi.mod.ARCANA_KILLER, 4)
-    target:addMod(xi.mod.DARK_MEVA, 25)
+    target:addMod(invaderXim.mod.CHR, -10)
+    target:addMod(invaderXim.mod.ACC, 10)
+    target:addMod(invaderXim.mod.RACC, 10)
+    target:addMod(invaderXim.mod.EVA, 10)
+    target:addMod(invaderXim.mod.ARCANA_KILLER, 4)
+    target:addMod(invaderXim.mod.DARK_MEVA, 25)
 end
 
 itemObject.onEffectLose = function(target, effect)
-    target:delMod(xi.mod.CHR, -10)
-    target:delMod(xi.mod.ACC, 10)
-    target:delMod(xi.mod.RACC, 10)
-    target:delMod(xi.mod.EVA, 10)
-    target:delMod(xi.mod.ARCANA_KILLER, 4)
-    target:delMod(xi.mod.DARK_MEVA, 25)
+    target:delMod(invaderXim.mod.CHR, -10)
+    target:delMod(invaderXim.mod.ACC, 10)
+    target:delMod(invaderXim.mod.RACC, 10)
+    target:delMod(invaderXim.mod.EVA, 10)
+    target:delMod(invaderXim.mod.ARCANA_KILLER, 4)
+    target:delMod(invaderXim.mod.DARK_MEVA, 25)
 end
 
 return itemObject

@@ -4,17 +4,17 @@
 -- !pos -78 -0.5 600 106
 -- Teleports Players to Abyssea - Grauberg
 -----------------------------------
-local ID = zones[xi.zone.NORTH_GUSTABERG]
+local ID = zones[invaderXim.zone.NORTH_GUSTABERG]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrigger = function(player, npc)
-    if xi.settings.main.ENABLE_ABYSSEA == 1 and player:getMainLvl() >= 30 then
+    if invaderXim.settings.main.ENABLE_ABYSSEA == 1 and player:getMainLvl() >= 30 then
         if
-            xi.abyssea.getHeldTraverserStones(player) >= 1 and
-            player:getQuestStatus(xi.questLog.ABYSSEA, xi.quest.id.abyssea.DAWN_OF_DEATH) == xi.questStatus.QUEST_ACCEPTED and
-            player:getQuestStatus(xi.questLog.ABYSSEA, xi.quest.id.abyssea.AN_ULCEROUS_URAGNITE) == xi.questStatus.QUEST_AVAILABLE
+            invaderXim.abyssea.getHeldTraverserStones(player) >= 1 and
+            player:getQuestStatus(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.DAWN_OF_DEATH) == invaderXim.questStatus.QUEST_ACCEPTED and
+            player:getQuestStatus(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.AN_ULCEROUS_URAGNITE) == invaderXim.questStatus.QUEST_AVAILABLE
         then
             player:startEvent(0)
         else
@@ -27,7 +27,7 @@ end
 
 entity.onEventFinish = function(player, csid, option, npc)
     if csid == 0 then
-        player:addQuest(xi.questLog.ABYSSEA, xi.quest.id.abyssea.AN_ULCEROUS_URAGNITE)
+        player:addQuest(invaderXim.questLog.ABYSSEA, invaderXim.quest.id.abyssea.AN_ULCEROUS_URAGNITE)
     elseif csid == 1 then
         -- Killed Amphitrite
     elseif csid == 908 and option == 1 then

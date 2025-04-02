@@ -3,7 +3,7 @@
 --  NPC: Cermet Portal
 -- !pos -419 0.1 356 35
 -----------------------------------
-local ID = zones[xi.zone.THE_GARDEN_OF_RUHMET]
+local ID = zones[invaderXim.zone.THE_GARDEN_OF_RUHMET]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

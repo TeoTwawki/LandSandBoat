@@ -5,12 +5,12 @@
 -- Pavvke : !pos 16.586 6.985 -14.843 234
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.BASTOK, xi.quest.id.bastok.FALLEN_COMRADES)
+local quest = Quest:new(invaderXim.questLog.BASTOK, invaderXim.quest.id.bastok.FALLEN_COMRADES)
 
 quest.reward =
 {
     fame     = 8,
-    fameArea = xi.fameArea.BASTOK,
+    fameArea = invaderXim.fameArea.BASTOK,
     gil      = 550,
 }
 
@@ -18,11 +18,11 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:getFameLevel(xi.fameArea.BASTOK) >= 2
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:getFameLevel(invaderXim.fameArea.BASTOK) >= 2
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Pavvke'] = quest:progressEvent(90),
 
@@ -37,15 +37,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status >= xi.questStatus.QUEST_ACCEPTED
+            return status >= invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Pavvke'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.SILVER_NAME_TAG) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.SILVER_NAME_TAG) then
                         if player:hasCompletedQuest(quest.areaId, quest.questId) then
                             return quest:progressEvent(92)
                         else
@@ -61,7 +61,7 @@ quest.sections =
                     if quest:complete(player) then
                         player:confirmTrade()
 
-                        player:addFame(xi.fameArea.BASTOK, 112)
+                        player:addFame(invaderXim.fameArea.BASTOK, 112)
                     end
                 end,
 

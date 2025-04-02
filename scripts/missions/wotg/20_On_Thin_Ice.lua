@@ -6,11 +6,11 @@
 -- Raustigne : !pos 3.979 -1.999 44.456 80
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.ON_THIN_ICE)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.ON_THIN_ICE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.PROOF_OF_VALOR },
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.PROOF_OF_VALOR },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA_S] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA_S] =
         {
             ['Raustigne'] =
             {

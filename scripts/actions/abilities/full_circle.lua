@@ -10,11 +10,11 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    return xi.job_utils.geomancer.geoOnAbilityCheck(player, target, ability)
+    return invaderXim.job_utils.geomancer.geoOnAbilityCheck(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    xi.job_utils.geomancer.fullCircle(player, target, ability)
+    invaderXim.job_utils.geomancer.fullCircle(player, target, ability)
 end
 
 return abilityObject

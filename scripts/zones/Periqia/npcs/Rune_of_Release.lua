@@ -15,8 +15,8 @@ entity.onTrigger = function(player, npc)
 end
 
 entity.onEventFinish = function(player, csid, option, npc)
-    xi.assault.instanceOnEventFinish(player, csid, xi.zone.CAEDARVA_MIRE)
-    xi.assault.runeReleaseFinish(player, csid, option, npc)
+    invaderXim.assault.instanceOnEventFinish(player, csid, invaderXim.zone.CAEDARVA_MIRE)
+    invaderXim.assault.runeReleaseFinish(player, csid, option, npc)
 end
 
 return entity

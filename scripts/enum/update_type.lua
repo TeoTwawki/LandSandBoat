@@ -1,8 +1,8 @@
 xi = xi or {}
 
 -- see `enum UPDATETYPE` in src\map\entities\baseentity.h
----@enum xi.updateType
-xi.updateType =
+---@enum invaderXim.updateType
+invaderXim.updateType =
 {
     UPDATE_NONE     = 0x00,
     UPDATE_POS      = 0x01,

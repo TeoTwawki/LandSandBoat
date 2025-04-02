@@ -6,26 +6,26 @@
 -- Kotan-Purutan : !pos 40.32 -9 44.24 249
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.OVERNIGHT_DELIVERY)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.OVERNIGHT_DELIVERY)
 
 quest.reward =
 {
     fame = 100,
-    fameArea = xi.fameArea.WINDURST,
-    item = xi.item.POWER_GI,
+    fameArea = invaderXim.fameArea.WINDURST,
+    item = invaderXim.item.POWER_GI,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.WINDURST, xi.quest.id.windurst.FOOD_FOR_THOUGHT) and
-                player:getFameLevel(xi.fameArea.WINDURST) >= 2 and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.FOOD_FOR_THOUGHT) and
+                player:getFameLevel(invaderXim.fameArea.WINDURST) >= 2 and
                 player:getLocalVar('Quest[2][14]mustZone') == 0
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Kenapa-Keppa'] =
             {
@@ -84,10 +84,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Kotan-Purutan'] =
             {
@@ -95,7 +95,7 @@ quest.sections =
                     local questProgress = quest:getVar(player, 'Prog')
 
                     if
-                        not player:hasKeyItem(xi.ki.SMALL_BAG) and
+                        not player:hasKeyItem(invaderXim.ki.SMALL_BAG) and
                         questProgress >= 4 and
                         questProgress <= 7
                     then
@@ -115,7 +115,7 @@ quest.sections =
             onEventFinish =
             {
                 [141] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.SMALL_BAG)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.SMALL_BAG)
 
                     -- Track timing by day in which the KI is due to be delivered in order
                     -- to simplify the logic for completing this quest.
@@ -128,12 +128,12 @@ quest.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Kenapa-Keppa'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.SMALL_BAG) then
+                    if player:hasKeyItem(invaderXim.ki.SMALL_BAG) then
                         local dueDate = quest:getVar(player, 'dueDate')
                         local currentDay = VanadielUniqueDay()
 
@@ -183,14 +183,14 @@ quest.sections =
 
                 [346] = function(player, csid, option, npc)
                     player:delQuest(quest.areaId, quest.questId)
-                    player:delKeyItem(xi.ki.SMALL_BAG)
+                    player:delKeyItem(invaderXim.ki.SMALL_BAG)
                     quest:setVar(player, 'dueDate', 0)
                     quest:setVar(player, 'Prog', 256)
                 end,
 
                 [348] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:delKeyItem(xi.ki.SMALL_BAG)
+                        player:delKeyItem(invaderXim.ki.SMALL_BAG)
                         player:setLocalVar('Quest[2][16]mustZone', 1)
                     end
                 end,
@@ -200,24 +200,24 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             ['Kotan-Purutan'] = quest:event(143):replaceDefault(),
 
             ['Ohbiru-Dohbiru'] =
             {
                 onTrigger = function(player, npc)
-                    if player:getFameLevel(xi.fameArea.WINDURST) < 6 then
+                    if player:getFameLevel(invaderXim.fameArea.WINDURST) < 6 then
                         return quest:event(351):replaceDefault()
                     end
                 end,
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Kenapa-Keppa'] =
             {

@@ -11,10 +11,10 @@
 -- Goggehn : !pos 3 9 -76 243
 -- _542    : !pos 596 16 -19 184
 -----------------------------------
-local lowerDelkfuttID = zones[xi.zone.LOWER_DELKFUTTS_TOWER]
+local lowerDelkfuttID = zones[invaderXim.zone.LOWER_DELKFUTTS_TOWER]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.BASTOK, xi.mission.id.bastok.JEUNO)
+local mission = Mission:new(invaderXim.mission.log_id.BASTOK, invaderXim.mission.id.bastok.JEUNO)
 
 mission.reward =
 {
@@ -33,11 +33,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             onEventFinish =
             {
@@ -45,7 +45,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             onEventFinish =
             {
@@ -53,7 +53,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             onEventFinish =
             {
@@ -61,7 +61,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             onEventFinish =
             {
@@ -75,17 +75,17 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.BASTOK_MARKETS] =
+        [invaderXim.zone.BASTOK_MARKETS] =
         {
             ['Cleades'] = mission:progressEvent(1002),
         },
 
-        [xi.zone.BASTOK_MINES] =
+        [invaderXim.zone.BASTOK_MINES] =
         {
             ['Rashid'] = mission:progressEvent(1002),
         },
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Lucius'] =
             {
@@ -102,17 +102,17 @@ mission.sections =
             {
                 [322] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 1)
-                    npcUtil.giveKeyItem(player, xi.ki.LETTER_TO_THE_AMBASSADOR)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.LETTER_TO_THE_AMBASSADOR)
                 end,
             },
         },
 
-        [xi.zone.PORT_BASTOK] =
+        [invaderXim.zone.PORT_BASTOK] =
         {
             ['Argus'] = mission:progressEvent(1002),
         },
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['_6r2'] =
             {
@@ -146,12 +146,12 @@ mission.sections =
 
                 [41] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 2)
-                    player:delKeyItem(xi.ki.LETTER_TO_THE_AMBASSADOR)
+                    player:delKeyItem(invaderXim.ki.LETTER_TO_THE_AMBASSADOR)
                 end,
             },
         },
 
-        [xi.zone.LOWER_DELKFUTTS_TOWER] =
+        [invaderXim.zone.LOWER_DELKFUTTS_TOWER] =
         {
             ['_542'] =
             {
@@ -160,7 +160,7 @@ mission.sections =
                     -- the key into a key item, allowing the player to drop the inventory key for space.
                     if
                         player:getMissionStatus(mission.areaId) == 2 and
-                        npcUtil.tradeHasExactly(trade, xi.item.DELKFUTT_KEY)
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.DELKFUTT_KEY)
                     then
                         return mission:progressEvent(1)
                     end
@@ -168,7 +168,7 @@ mission.sections =
 
                 onTrigger = function(player, npc)
                     if player:getMissionStatus(mission.areaId) == 2 then
-                        if player:hasKeyItem(xi.ki.DELKFUTT_KEY) then
+                        if player:hasKeyItem(invaderXim.ki.DELKFUTT_KEY) then
                             return mission:progressEvent(1)
                         else
                             return mission:messageSpecial(lowerDelkfuttID.text.THE_DOOR_IS_FIRMLY_SHUT_OPEN_KEY):setPriority(1000)
@@ -182,8 +182,8 @@ mission.sections =
                 [1] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 3)
 
-                    if not player:hasKeyItem(xi.ki.DELKFUTT_KEY) then
-                        npcUtil.giveKeyItem(player, xi.ki.DELKFUTT_KEY)
+                    if not player:hasKeyItem(invaderXim.ki.DELKFUTT_KEY) then
+                        npcUtil.giveKeyItem(player, invaderXim.ki.DELKFUTT_KEY)
                         player:confirmTrade()
                     end
                 end,

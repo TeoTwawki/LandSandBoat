@@ -7,31 +7,31 @@
 -- MOLDY_WORM_EATEN_CHEST : !addkeyitem 1144
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.AMK, xi.mission.id.amk.SHOCK_ARRANT_ABUSE_OF_AUTHORITY)
+local mission = Mission:new(invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.SHOCK_ARRANT_ABUSE_OF_AUTHORITY)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.AMK, xi.mission.id.amk.LENDER_BEWARE_READ_THE_FINE_PRINT },
+    nextMission = { invaderXim.mission.log_id.AMK, invaderXim.mission.id.amk.LENDER_BEWARE_READ_THE_FINE_PRINT },
 }
 
 mission.sections =
 {
-    -- Digging minigame, handled in xi.amk.helpers and chocobo_digging.lua
+    -- Digging minigame, handled in invaderXim.amk.helpers and chocobo_digging.lua
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
-                not player:hasKeyItem(xi.ki.MOLDY_WORM_EATEN_CHEST)
+                not player:hasKeyItem(invaderXim.ki.MOLDY_WORM_EATEN_CHEST)
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Inconspicuous_Door'] =
             {
                 -- Reminder
                 onTrigger = function(player, npc)
                     -- Variable is stored as 1-indexed zone offset, cutscenes are 0-indexed
-                    local diggingZone = xi.amk.helpers.getDiggingZone(player)
-                    local diggingZoneCsId = xi.amk.helpers.digSites[diggingZone].eventID
+                    local diggingZone = invaderXim.amk.helpers.getDiggingZone(player)
+                    local diggingZoneCsId = invaderXim.amk.helpers.digSites[diggingZone].eventID
                     return mission:progressEvent(10189, diggingZoneCsId)
                 end,
             },
@@ -42,10 +42,10 @@ mission.sections =
     {
         check = function(player, currentMission, missionStatus, vars)
             return currentMission == mission.missionId and
-                player:hasKeyItem(xi.ki.MOLDY_WORM_EATEN_CHEST)
+                player:hasKeyItem(invaderXim.ki.MOLDY_WORM_EATEN_CHEST)
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['Inconspicuous_Door'] =
             {
@@ -58,7 +58,7 @@ mission.sections =
             {
                 [10183] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.MOLDY_WORM_EATEN_CHEST)
+                        player:delKeyItem(invaderXim.ki.MOLDY_WORM_EATEN_CHEST)
                     end
                 end,
             },

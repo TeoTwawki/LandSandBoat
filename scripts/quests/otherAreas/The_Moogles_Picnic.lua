@@ -5,11 +5,11 @@
 -- Moogle : (Mog House, Home Nation)
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.THE_MOOGLE_PICNIC)
+local quest = Quest:new(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.THE_MOOGLE_PICNIC)
 
 quest.reward =
 {
-    title = xi.title.MOGS_EXCEPTIONALLY_KIND_MASTER,
+    title = invaderXim.title.MOGS_EXCEPTIONALLY_KIND_MASTER,
 }
 
 -- Since there are so many zones with interactions:
@@ -20,9 +20,9 @@ quest.sections[1] =
     check = function(player, status, vars)
         local bedPlacedTime = quest:getVar(player, 'bedPlacedTime')
 
-        return status == xi.questStatus.QUEST_AVAILABLE and
-            player:hasCompletedQuest(xi.questLog.OTHER_AREAS, xi.quest.id.otherAreas.GIVE_A_MOOGLE_A_BREAK) and
-            xi.moghouse.isInMogHouseInHomeNation(player) and
+        return status == invaderXim.questStatus.QUEST_AVAILABLE and
+            player:hasCompletedQuest(invaderXim.questLog.OTHER_AREAS, invaderXim.quest.id.otherAreas.GIVE_A_MOOGLE_A_BREAK) and
+            invaderXim.moghouse.isInMogHouseInHomeNation(player) and
             player:getFameLevel(player:getNation()) >= 5 and
             not quest:getMustZone(player) and
             quest:getLocalVar(player, 'questSeen') == 0 and
@@ -37,7 +37,7 @@ local questAvailable =
     ['Moogle'] =
     {
         onTrigger = function(player, npc)
-            return quest:progressEvent(30009, 0, 0, 0, 4, 0, xi.item.SHRIMP_LURE, xi.item.STICK_OF_SELBINA_BUTTER)
+            return quest:progressEvent(30009, 0, 0, 0, 4, 0, invaderXim.item.SHRIMP_LURE, invaderXim.item.STICK_OF_SELBINA_BUTTER)
         end,
     },
 
@@ -56,7 +56,7 @@ local questAvailable =
 quest.sections[2] =
 {
     check = function(player, status, vars)
-        return status == xi.questStatus.QUEST_ACCEPTED
+        return status == invaderXim.questStatus.QUEST_ACCEPTED
     end
 }
 
@@ -66,7 +66,7 @@ local questAccepted =
     ['Moogle'] =
     {
         onTrade = function(player, npc, trade)
-            if npcUtil.tradeHasExactly(trade, { xi.item.SHRIMP_LURE, xi.item.STICK_OF_SELBINA_BUTTER }) then
+            if npcUtil.tradeHasExactly(trade, { invaderXim.item.SHRIMP_LURE, invaderXim.item.STICK_OF_SELBINA_BUTTER }) then
                 return quest:progressEvent(30011)
             end
         end,
@@ -80,7 +80,7 @@ local questAccepted =
             end
 
             if questProgress == 0 then
-                return quest:progressEvent(30010, 0, 0, 0, 0, 0, xi.item.SHRIMP_LURE, xi.item.STICK_OF_SELBINA_BUTTER)
+                return quest:progressEvent(30010, 0, 0, 0, 0, 0, invaderXim.item.SHRIMP_LURE, invaderXim.item.STICK_OF_SELBINA_BUTTER)
             elseif
                 questProgress == 1 and
                 quest:getVar(player, 'Timer') < os.time()
@@ -104,14 +104,14 @@ local questAccepted =
 
         [30012] = function(player, csid, option, npc)
             if quest:complete(player) then
-                player:changeContainerSize(xi.inv.MOGSAFE, 10)
-                player:changeContainerSize(xi.inv.MOGSAFE2, 10)
+                player:changeContainerSize(invaderXim.inv.MOGSAFE, 10)
+                player:changeContainerSize(invaderXim.inv.MOGSAFE2, 10)
             end
         end,
     },
 }
 
-for _, zoneId in ipairs(xi.moghouse.moghouseZones) do
+for _, zoneId in ipairs(invaderXim.moghouse.moghouseZones) do
     quest.sections[1][zoneId] = questAvailable
     quest.sections[2][zoneId] = questAccepted
 end

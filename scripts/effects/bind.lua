@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.BIND
+-- invaderXim.effect.BIND
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -9,7 +9,7 @@ effectObject.onEffectGain = function(target, effect)
     target:setBaseSpeed(0)
 
     -- Immunobreak reset.
-    target:setMod(xi.mod.BIND_IMMUNOBREAK, 0)
+    target:setMod(invaderXim.mod.BIND_IMMUNOBREAK, 0)
 end
 
 effectObject.onEffectTick = function(target, effect)

@@ -3,8 +3,8 @@
 -----------------------------------
 xi = xi or {}
 
----@enum xi.treasurePool
-xi.treasurePool =
+---@enum invaderXim.treasurePool
+invaderXim.treasurePool =
 {
     -- Keep synced with TreasurePoolType
     SOLO                     =   1,

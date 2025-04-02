@@ -6,11 +6,11 @@
 -- Imperial Whitegate : !pos 152 -2 0 50
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.SEAL_OF_THE_SERPENT)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.SEAL_OF_THE_SERPENT)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.MISPLACED_NOBILITY },
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.MISPLACED_NOBILITY },
 }
 
 mission.sections =
@@ -20,14 +20,14 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Imperial_Whitegate'] =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:getEquipID(xi.slot.MAIN) == 0 and
-                        player:getEquipID(xi.slot.SUB) == 0
+                        player:getEquipID(invaderXim.slot.MAIN) == 0 and
+                        player:getEquipID(invaderXim.slot.SUB) == 0
                     then
                         return mission:progressEvent(3111)
                     end

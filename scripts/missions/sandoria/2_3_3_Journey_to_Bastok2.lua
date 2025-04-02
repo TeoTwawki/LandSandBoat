@@ -8,7 +8,7 @@
 -- Savae E Paleade : !pos 23.724 -17.39 -43.360 237
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_TO_BASTOK2)
+local mission = Mission:new(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_TO_BASTOK2)
 
 mission.reward = {}
 
@@ -19,7 +19,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Chantain'] =
             {
@@ -95,9 +95,9 @@ mission.sections =
             {
                 [207] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:addMission(xi.mission.log_id.SANDORIA, xi.mission.id.sandoria.JOURNEY_ABROAD)
-                        player:delKeyItem(xi.ki.KINDRED_CREST)
-                        npcUtil.giveKeyItem(player, xi.ki.KINDRED_REPORT)
+                        player:addMission(invaderXim.mission.log_id.SANDORIA, invaderXim.mission.id.sandoria.JOURNEY_ABROAD)
+                        player:delKeyItem(invaderXim.ki.KINDRED_CREST)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.KINDRED_REPORT)
                         player:setMissionStatus(mission.areaId, 11)
                     end
                 end,
@@ -112,17 +112,17 @@ mission.sections =
             },
         },
 
-        [xi.zone.WAUGHROON_SHRINE] =
+        [invaderXim.zone.WAUGHROON_SHRINE] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
                     if
                         player:getMissionStatus(mission.areaId) == 10 and
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.RANK_2_MISSION_2
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.RANK_2_MISSION_2
                     then
-                        npcUtil.giveKeyItem(player, xi.ki.KINDRED_CREST)
-                        player:delKeyItem(xi.ki.DARK_KEY)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.KINDRED_CREST)
+                        player:delKeyItem(invaderXim.ki.DARK_KEY)
                         player:setMissionStatus(mission.areaId, 11)
                     end
                 end,

@@ -3,7 +3,7 @@
 --  MOB: Black Coney
 -- Note: uses normal rabbit attacks. has double/triple attack.
 -----------------------------------
-local ID = zones[xi.zone.ULEGUERAND_RANGE]
+local ID = zones[invaderXim.zone.ULEGUERAND_RANGE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}

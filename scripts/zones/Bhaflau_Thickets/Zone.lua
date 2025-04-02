@@ -5,8 +5,8 @@
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.helm.initZone(zone, xi.helmType.HARVESTING)
-    xi.darkRider.addHoofprints(zone)
+    invaderXim.helm.initZone(zone, invaderXim.helmType.HARVESTING)
+    invaderXim.darkRider.addHoofprints(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -20,7 +20,7 @@ zoneObject.onZoneIn = function(player, prevZone)
         player:setPos(432, -7, -39, 135)
     end
 
-    if prevZone == xi.zone.MAMOOL_JA_TRAINING_GROUNDS then
+    if prevZone == invaderXim.zone.MAMOOL_JA_TRAINING_GROUNDS then
         player:setPos(-186, -10, -802, 80)
     end
 
@@ -33,10 +33,10 @@ zoneObject.afterZoneIn = function(player)
 end
 
 zoneObject.onGameHour = function(zone)
-    xi.darkRider.onGameHour(zone)
+    invaderXim.darkRider.onGameHour(zone)
 
     if VanadielHour() == 0 then
-        xi.darkRider.addHoofprints(zone)
+        invaderXim.darkRider.addHoofprints(zone)
     end
 end
 

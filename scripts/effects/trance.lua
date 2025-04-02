@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.TRANCE
+-- invaderXim.effect.TRANCE
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.XARCABARD_S]
+local ID = zones[invaderXim.zone.XARCABARD_S]
 
 return {
     ['Animal_Spoor']      = { messageSpecial = ID.text.NOTHING_OUT_OF_ORDINARY },

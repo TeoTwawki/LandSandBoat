@@ -11,7 +11,7 @@ local spellObject = {}
 
 spellObject.onMagicCastingCheck = function(caster, target, spell)
     if caster:getID() ~= target:getID() then
-        return xi.msg.basic.CANNOT_PERFORM_TARG
+        return invaderXim.msg.basic.CANNOT_PERFORM_TARG
     else
         return 0
     end
@@ -26,7 +26,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     local final = 0
 
     local minCure = 130
-    if xi.settings.main.USE_OLD_CURE_FORMULA then
+    if invaderXim.settings.main.USE_OLD_CURE_FORMULA then
         power = getCurePowerOld(caster)
         divisor = 1
         constant = 70
@@ -62,16 +62,16 @@ spellObject.onSpellCast = function(caster, target, spell)
         end
     end
 
-    if xi.settings.main.USE_OLD_CURE_FORMULA then
+    if invaderXim.settings.main.USE_OLD_CURE_FORMULA then
         basecure = getBaseCureOld(power, divisor, constant)
     else
         basecure = getBaseCure(power, divisor, constant, basepower)
     end
 
     --Apply Afflatus Misery Bonus to the Result
-    if caster:hasStatusEffect(xi.effect.AFFLATUS_MISERY) then
+    if caster:hasStatusEffect(invaderXim.effect.AFFLATUS_MISERY) then
         if caster:getID() == target:getID() then -- Let's use a local var to hold the power of Misery so the boost is applied to all targets,
-            caster:setLocalVar('Misery_Power', caster:getMod(xi.mod.AFFLATUS_MISERY))
+            caster:setLocalVar('Misery_Power', caster:getMod(invaderXim.mod.AFFLATUS_MISERY))
         end
 
         local misery = caster:getLocalVar('Misery_Power')
@@ -93,14 +93,14 @@ spellObject.onSpellCast = function(caster, target, spell)
         end
 
         --Afflatus Misery Mod Gets Used Up
-        caster:setMod(xi.mod.AFFLATUS_MISERY, 0)
+        caster:setMod(invaderXim.mod.AFFLATUS_MISERY, 0)
     end
 
     final = getCureFinal(caster, spell, basecure, minCure, false)
-    final = final + (final * (target:getMod(xi.mod.CURE_POTENCY_RCVD) / 100))
+    final = final + (final * (target:getMod(invaderXim.mod.CURE_POTENCY_RCVD) / 100))
 
     --Applying server mods
-    final = final * xi.settings.main.CURE_POWER
+    final = final * invaderXim.settings.main.CURE_POWER
 
     local diff = (target:getMaxHP() - target:getHP())
     if final > diff then
@@ -115,12 +115,12 @@ spellObject.onSpellCast = function(caster, target, spell)
     caster:updateEnmityFromCure(target, final, 100, 100)
 
     if target:getID() == spell:getPrimaryTargetID() then
-        spell:setMsg(xi.msg.basic.MAGIC_RECOVERS_HP)
+        spell:setMsg(invaderXim.msg.basic.MAGIC_RECOVERS_HP)
     else
-        spell:setMsg(xi.msg.basic.SELF_HEAL_SECONDARY)
+        spell:setMsg(invaderXim.msg.basic.SELF_HEAL_SECONDARY)
     end
 
-    local mpBonusPercent = (final * caster:getMod(xi.mod.CURE2MP_PERCENT)) / 100
+    local mpBonusPercent = (final * caster:getMod(invaderXim.mod.CURE2MP_PERCENT)) / 100
     if mpBonusPercent > 0 then
         caster:addMP(mpBonusPercent)
     end

@@ -7,7 +7,7 @@
 -- Fellow Emotes do not currently work
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.BLESSED_RADIANCE)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.BLESSED_RADIANCE)
 
 quest.reward = {}
 
@@ -16,12 +16,12 @@ quest.sections = {
     -- Section: Begin quest
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
-                and player:getQuestStatus(xi.questLog.JEUNO, BLIGHTED_GLOOM) == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
+                and player:getQuestStatus(invaderXim.questLog.JEUNO, BLIGHTED_GLOOM) == invaderXim.questStatus.QUEST_COMPLETED
                 and player:getFellowValue('bond') >= 65
         end,
 
-        [xi.zone.UPPER_JEUNO] = {
+        [invaderXim.zone.UPPER_JEUNO] = {
             ['Luto_Mewrilah'] = {
                 onTrigger = function(player, npc)
                     local fellowParam = getFellowParam(player)
@@ -30,7 +30,7 @@ quest.sections = {
             },
         },
 
-        [xi.zone.LOWER_JEUNO] = {
+        [invaderXim.zone.LOWER_JEUNO] = {
             ['_6td'] = {
                 onTrigger = function(player, npc)
                     local fellowParam = getFellowParam(player)
@@ -54,10 +54,10 @@ quest.sections = {
     -- Section: Questing
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.LOWER_JEUNO] = {
+        [invaderXim.zone.LOWER_JEUNO] = {
             ['_6td'] = {
                 onTrigger = function(player, npc)
                     local fellowParam = getFellowParam(player)
@@ -76,7 +76,7 @@ quest.sections = {
             },
         },
 
-        [xi.zone.UPPER_JEUNO] = {
+        [invaderXim.zone.UPPER_JEUNO] = {
             ['Luto_Mewrilah'] = {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 4 then
@@ -96,13 +96,13 @@ quest.sections = {
             },
         },
 
-        [xi.zone.GIDDEUS] = {
+        [invaderXim.zone.GIDDEUS] = {
             ['Harvesting_Point'] = {
                 onTrade = function(player, npc, trade)
-                    if quest:getVar(player, 'Prog') == 1 and not player:hasKeyItem(xi.keyItem.MISTROOT) and npcUtil.tradeHasExactly(trade, xi.item.SICKLE) then
+                    if quest:getVar(player, 'Prog') == 1 and not player:hasKeyItem(invaderXim.keyItem.MISTROOT) and npcUtil.tradeHasExactly(trade, invaderXim.item.SICKLE) then
                         if player:isFellowSpawned() then
---                           player:getFellow():sendEntityEmote(player:getFellow(), xi.emote.HARVESTING, xi.emoteMode.MOTION)
-                            player:setLocalVar('questHelm', xi.keyItem.MISTROOT)
+--                           player:getFellow():sendEntityEmote(player:getFellow(), invaderXim.emote.HARVESTING, invaderXim.emoteMode.MOTION)
+                            player:setLocalVar('questHelm', invaderXim.keyItem.MISTROOT)
                             return quest:progressEvent(70, {[0] = 4294966559})
                         elseif player:getLocalVar('questHelm') == 0 then
                             player:setLocalVar('questHelm', 1)
@@ -114,8 +114,8 @@ quest.sections = {
 
             onEventFinish = {
                 [70] = function(player, csid, option, npc)
-                    if player:getLocalVar('questHelm') == xi.keyItem.MISTROOT then
-                        if npcUtil.giveKeyItem(player, xi.keyItem.MISTROOT) then
+                    if player:getLocalVar('questHelm') == invaderXim.keyItem.MISTROOT then
+                        if npcUtil.giveKeyItem(player, invaderXim.keyItem.MISTROOT) then
                             player:setLocalVar('questHelm', 0)
                         end
                     elseif player:getLocalVar('questHelm') == 1 then
@@ -126,13 +126,13 @@ quest.sections = {
             },
         },
 
-        [xi.zone.JUGNER_FOREST] = {
+        [invaderXim.zone.JUGNER_FOREST] = {
             ['Logging_Point'] = {
                 onTrade = function(player, npc, trade)
-                    if quest:getVar(player, 'Prog') == 1 and not player:hasKeyItem(xi.keyItem.LUNASCENT_LOG) and npcUtil.tradeHasExactly(trade, xi.item.HATCHET) then
+                    if quest:getVar(player, 'Prog') == 1 and not player:hasKeyItem(invaderXim.keyItem.LUNASCENT_LOG) and npcUtil.tradeHasExactly(trade, invaderXim.item.HATCHET) then
                         if player:isFellowSpawned() then
---                            player:getFellow():sendEntityEmote(player:getFellow(), xi.emote.LOGGING, xi.emoteMode.MOTION)
-                            player:setLocalVar('questHelm', xi.keyItem.LUNASCENT_LOG)
+--                            player:getFellow():sendEntityEmote(player:getFellow(), invaderXim.emote.LOGGING, invaderXim.emoteMode.MOTION)
+                            player:setLocalVar('questHelm', invaderXim.keyItem.LUNASCENT_LOG)
                             return quest:progressEvent(20, {[0] = 4294966558})
                         elseif player:getLocalVar('questHelm') == 0 then
                             player:setLocalVar('questHelm', 1)
@@ -144,8 +144,8 @@ quest.sections = {
 
             onEventFinish = {
                 [20] = function(player, csid, option, npc)
-                    if player:getLocalVar('questHelm') == xi.keyItem.LUNASCENT_LOG then
-                        if npcUtil.giveKeyItem(player, xi.keyItem.LUNASCENT_LOG) then
+                    if player:getLocalVar('questHelm') == invaderXim.keyItem.LUNASCENT_LOG then
+                        if npcUtil.giveKeyItem(player, invaderXim.keyItem.LUNASCENT_LOG) then
                             player:setLocalVar('questHelm', 0)
                         end
                     elseif player:getLocalVar('questHelm') == 1 then
@@ -156,13 +156,13 @@ quest.sections = {
             },
         },
 
-        [xi.zone.MAZE_OF_SHAKHRAMI] = {
+        [invaderXim.zone.MAZE_OF_SHAKHRAMI] = {
             ['Excavation_Point'] = {
                 onTrade = function(player, npc, trade)
-                    if quest:getVar(player, 'Prog') == 1 and not player:hasKeyItem(xi.keyItem.GLIMMERING_MICA) and npcUtil.tradeHasExactly(trade, xi.item.PICKAXE) then
+                    if quest:getVar(player, 'Prog') == 1 and not player:hasKeyItem(invaderXim.keyItem.GLIMMERING_MICA) and npcUtil.tradeHasExactly(trade, invaderXim.item.PICKAXE) then
                         if player:isFellowSpawned() then
---                            player:getFellow():sendEntityEmote(player:getFellow(), xi.emote.EXCAVATION, xi.emoteMode.MOTION)
-                            player:setLocalVar('questHelm', xi.keyItem.GLIMMERING_MICA)
+--                            player:getFellow():sendEntityEmote(player:getFellow(), invaderXim.emote.EXCAVATION, invaderXim.emoteMode.MOTION)
+                            player:setLocalVar('questHelm', invaderXim.keyItem.GLIMMERING_MICA)
                             return quest:progressEvent(60, {[0] = 4294966560})
                         elseif player:getLocalVar('questHelm') == 0 then
                             player:setLocalVar('questHelm', 1)
@@ -174,8 +174,8 @@ quest.sections = {
 
             onEventFinish = {
                 [60] = function(player, csid, option, npc)
-                    if player:getLocalVar('questHelm') == xi.keyItem.GLIMMERING_MICA then
-                        if npcUtil.giveKeyItem(player, xi.keyItem.GLIMMERING_MICA) then
+                    if player:getLocalVar('questHelm') == invaderXim.keyItem.GLIMMERING_MICA then
+                        if npcUtil.giveKeyItem(player, invaderXim.keyItem.GLIMMERING_MICA) then
                             player:setLocalVar('questHelm', 0)
                         end
                     elseif player:getLocalVar('questHelm') == 1 then
@@ -186,7 +186,7 @@ quest.sections = {
             },
         },
 
-        [xi.zone.BEAUCEDINE_GLACIER] = {
+        [invaderXim.zone.BEAUCEDINE_GLACIER] = {
             ['Mirror_Pond'] = {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, 'Prog') == 2 then
@@ -197,8 +197,8 @@ quest.sections = {
 
             onZoneIn = {
                 function(player, prevZone)
-                    if quest:getVar(player, 'Prog') == 1 and player:hasKeyItem(xi.keyItem.GLIMMERING_MICA)
-                    and player:hasKeyItem(xi.keyItem.LUNASCENT_LOG) and player:hasKeyItem(xi.keyItem.MISTROOT) then
+                    if quest:getVar(player, 'Prog') == 1 and player:hasKeyItem(invaderXim.keyItem.GLIMMERING_MICA)
+                    and player:hasKeyItem(invaderXim.keyItem.LUNASCENT_LOG) and player:hasKeyItem(invaderXim.keyItem.MISTROOT) then
                         return 151
                     end
                 end,
@@ -217,9 +217,9 @@ quest.sections = {
 
                 [152] = function(player, csid, option, npc)
                     quest:setVar(player, 'Prog', 3)
-                    player:delKeyItem(xi.keyItem.GLIMMERING_MICA)
-                    player:delKeyItem(xi.keyItem.LUNASCENT_LOG)
-                    player:delKeyItem(xi.keyItem.MISTROOT)
+                    player:delKeyItem(invaderXim.keyItem.GLIMMERING_MICA)
+                    player:delKeyItem(invaderXim.keyItem.LUNASCENT_LOG)
+                    player:delKeyItem(invaderXim.keyItem.MISTROOT)
                 end,
             },
         },
@@ -228,10 +228,10 @@ quest.sections = {
         -- Doors normal state
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE or status == xi.questStatus.QUEST_COMPLETED
+            return status == invaderXim.questStatus.QUEST_AVAILABLE or status == invaderXim.questStatus.QUEST_COMPLETED
         end,
 
-        [xi.zone.LOWER_JEUNO] = {
+        [invaderXim.zone.LOWER_JEUNO] = {
             ['_6td'] = {
                 onTrigger = function(player, npc)
                     return quest:messageSpecial(zones[player:getZoneID()].text.DO_NOT_DISTURB)

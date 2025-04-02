@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.SEALIONS_DEN]
+local ID = zones[invaderXim.zone.SEALIONS_DEN]
 
 local tenzenFunctions = {}
 
@@ -27,7 +27,7 @@ tenzenFunctions.wsSequence = function(mob)
         meikyo == 1
     then
         mob:setTP(0)
-        mob:setMod(xi.mod.DELAY, 0)
+        mob:setMod(invaderXim.mod.DELAY, 0)
         mob:setAnimationSub(0)
         mob:setMobSkillAttack(0)
         mob:setMobAbilityEnabled(false) -- we don't want tenzen to randomly use WS during this phase
@@ -73,7 +73,7 @@ tenzenFunctions.wsSequence = function(mob)
                 lostMobArg:getBattlefield():lose()
             end)
 
-            mobArg:setMobMod(xi.mobMod.NO_MOVE, 1)
+            mobArg:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
             mobArg:showText(mobArg, ID.text.TENZEN_MSG_OFFSET + 1)
         end)
     end
@@ -89,13 +89,13 @@ tenzenFunctions.formSwap = function(mob)
             battleTime - changeTime > 60
         then
             mob:setAnimationSub(5) -- 5 lowered bow mode (1033 animation) 6 is raised bow mode (1034 animation)
-            mob:setBehavior(bit.bor(mob:getBehavior(), xi.behavior.STANDBACK))
+            mob:setBehavior(bit.bor(mob:getBehavior(), invaderXim.behavior.STANDBACK))
             mob:setMobSkillAttack(1171)
             mob:setLocalVar('changeTime', mob:getBattleTime())
 
             if mob:getAnimationSub() == 5 then -- need to sheath his great katana before pulling out bow
                 mob:timer(1000, function(mobArg)
-                    mobArg:setMod(xi.mod.DELAY, 2400) -- attacks more frequently while bow is drawn
+                    mobArg:setMod(invaderXim.mod.DELAY, 2400) -- attacks more frequently while bow is drawn
                     mobArg:setAnimationSub(6)
                 end)
             end
@@ -104,9 +104,9 @@ tenzenFunctions.formSwap = function(mob)
             battleTime - changeTime > 30
         then
             mob:setAnimationSub(0)
-            mob:setBehavior(bit.band(mob:getBehavior(), bit.bnot(xi.behavior.STANDBACK)))
+            mob:setBehavior(bit.band(mob:getBehavior(), bit.bnot(invaderXim.behavior.STANDBACK)))
             mob:setMobSkillAttack(0)
-            mob:setMod(xi.mod.DELAY, 0) -- attack slower back to great katana
+            mob:setMod(invaderXim.mod.DELAY, 0) -- attack slower back to great katana
             mob:setLocalVar('changeTime', mob:getBattleTime())
         end
     end
@@ -126,12 +126,12 @@ tenzenFunctions.riceBall = function(mob, target, busyState)
             if battlefield:getLocalVar('fireworks') ~= 1 then
                 mob:showText(target, ID.text.TENZEN_MSG_OFFSET + 3)
                 mob:useMobAbility(1398)
-                mob:addMod(xi.mod.ATT, 50)
-                mob:addMod(xi.mod.DEF, 30)
-                mob:setMod(xi.mod.DOUBLE_ATTACK, 5)
-                mob:addMod(xi.mod.DEX, 4)
-                mob:addMod(xi.mod.VIT, 4)
-                mob:addMod(xi.mod.CHR, 4)
+                mob:addMod(invaderXim.mod.ATT, 50)
+                mob:addMod(invaderXim.mod.DEF, 30)
+                mob:setMod(invaderXim.mod.DOUBLE_ATTACK, 5)
+                mob:addMod(invaderXim.mod.DEX, 4)
+                mob:addMod(invaderXim.mod.VIT, 4)
+                mob:addMod(invaderXim.mod.CHR, 4)
                 mob:setLocalVar('riceball', 1)
             end
         end

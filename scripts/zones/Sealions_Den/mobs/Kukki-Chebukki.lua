@@ -9,22 +9,22 @@ local entity = {}
 
 entity.onMobSpawn = function(mob)
     -- Leaving these mods here for visual: Tarus can't take damage, don't move, and have scripted fight interactions
-    mob:setMobMod(xi.mobMod.MAGIC_COOL, 60)
-    mob:setMobMod(xi.mobMod.NO_AGGRO, 1)
-    mob:setMobMod(xi.mobMod.NO_LINK, 1)
-    mob:addMod(xi.mod.UDMGPHYS, -10000)
-    mob:addMod(xi.mod.UDMGMAGIC, -10000)
-    mob:addMod(xi.mod.UDMGRANGE, -10000)
-    mob:addMod(xi.mod.UDMGBREATH, -10000)
-    mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+    mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 60)
+    mob:setMobMod(invaderXim.mobMod.NO_AGGRO, 1)
+    mob:setMobMod(invaderXim.mobMod.NO_LINK, 1)
+    mob:addMod(invaderXim.mod.UDMGPHYS, -10000)
+    mob:addMod(invaderXim.mod.UDMGMAGIC, -10000)
+    mob:addMod(invaderXim.mod.UDMGRANGE, -10000)
+    mob:addMod(invaderXim.mod.UDMGBREATH, -10000)
+    mob:setMobMod(invaderXim.mobMod.NO_MOVE, 1)
     mob:setMagicCastingEnabled(false)
     mob:setLocalVar('kukki', 1)
 end
 
 entity.onMobEngage = function(mob, target)
     mob:entityAnimationPacket('ouen') -- each taru will use this animation at the start of the fight
-    mob:setMobMod(xi.mobMod.NO_LINK, 0)
-    mob:setMobMod(xi.mobMod.NO_AGGRO, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_LINK, 0)
+    mob:setMobMod(invaderXim.mobMod.NO_AGGRO, 0)
     mob:setMagicCastingEnabled(true)
     mob:setAnimationSub(1)
 end

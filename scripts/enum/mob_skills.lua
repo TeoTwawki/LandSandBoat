@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.mobSkill
-xi.mobSkill =
+---@enum invaderXim.mobSkill
+invaderXim.mobSkill =
 {
     FOOT_KICK_1              =  257,
     DUST_CLOUD_1             =  258,

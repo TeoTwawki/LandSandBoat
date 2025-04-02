@@ -1,4 +1,4 @@
--- local ID = zones[xi.zone.PHANAUET_CHANNEL]
+-- local ID = zones[invaderXim.zone.PHANAUET_CHANNEL]
 
 return {
     ['Ineuteniace'] = { event = 101 },

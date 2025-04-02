@@ -7,12 +7,12 @@
 -- Radford     : !pos -205.303 -8.000 26.874 87
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WOTG, xi.mission.id.wotg.AFFAIRS_OF_STATE)
+local mission = Mission:new(invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.AFFAIRS_OF_STATE)
 
 mission.reward =
 {
-    keyItem     = xi.ki.COUNT_BORELS_LETTER,
-    nextMission = { xi.mission.log_id.WOTG, xi.mission.id.wotg.BORNE_BY_THE_WIND },
+    keyItem     = invaderXim.ki.COUNT_BORELS_LETTER,
+    nextMission = { invaderXim.mission.log_id.WOTG, invaderXim.mission.id.wotg.BORNE_BY_THE_WIND },
 }
 
 mission.sections =
@@ -29,7 +29,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 0
         end,
 
-        [xi.zone.WINDURST_WATERS_S] =
+        [invaderXim.zone.WINDURST_WATERS_S] =
         {
             ['Velda-Galda'] =
             {
@@ -48,7 +48,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MARKETS_S] =
+        [invaderXim.zone.BASTOK_MARKETS_S] =
         {
             ['Radford'] =
             {
@@ -74,7 +74,7 @@ mission.sections =
             return currentMission == mission.missionId and missionStatus == 1
         end,
 
-        [xi.zone.WINDURST_WATERS_S] =
+        [invaderXim.zone.WINDURST_WATERS_S] =
         {
             ['Velda-Galda'] =
             {
@@ -100,7 +100,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BASTOK_MARKETS_S] =
+        [invaderXim.zone.BASTOK_MARKETS_S] =
         {
             ['Radford'] =
             {

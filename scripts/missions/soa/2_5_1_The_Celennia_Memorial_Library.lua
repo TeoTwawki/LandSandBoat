@@ -8,11 +8,11 @@
 -- Levil   : !pos -87.204 3.350 12.655 256
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.THE_CELENNIA_MEMORIAL_LIBRARY)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_CELENNIA_MEMORIAL_LIBRARY)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.FOR_WHOM_DO_WE_TOIL },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.FOR_WHOM_DO_WE_TOIL },
 }
 
 mission.sections =
@@ -22,7 +22,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WESTERN_ADOULIN] =
+        [invaderXim.zone.WESTERN_ADOULIN] =
         {
             ['Levil'] =
             {
@@ -43,7 +43,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.CELENNIA_MEMORIAL_LIBRARY] =
+        [invaderXim.zone.CELENNIA_MEMORIAL_LIBRARY] =
         {
             ['Yefafa'] =
             {

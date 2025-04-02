@@ -12,7 +12,7 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    xi.monstrosity.relinquishOnAbility(player, target, ability)
+    invaderXim.monstrosity.relinquishOnAbility(player, target, ability)
 end
 
 return abilityObject

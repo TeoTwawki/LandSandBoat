@@ -2,7 +2,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for abilities_charges
 -- ----------------------------
-DROP TABLE IF EXISTS `abilities_charges`;
+DROP TABLE IF IXIMSTS `abilities_charges`;
 CREATE TABLE `abilities_charges` (
   `recastId` smallint(5) unsigned NOT NULL,
   `job` tinyint(2) unsigned NOT NULL,

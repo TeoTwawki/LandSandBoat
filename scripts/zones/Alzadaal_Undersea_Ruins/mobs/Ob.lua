@@ -9,8 +9,8 @@ local entity = {}
 -- Todo: Pups can make it change frames, Overload causes Rage
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
-    mob:addImmunity(xi.immunity.SILENCE)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 300)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
 end
 
 entity.onMobSpawn = function(mob)

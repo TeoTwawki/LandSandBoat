@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.UPPER_JEUNO]
+local ID = zones[invaderXim.zone.UPPER_JEUNO]
 
 return {
     ['_6s2']            = { event = 116 },

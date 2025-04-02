@@ -1,9 +1,9 @@
 require('scripts/globals/utils')
 
 xi = xi or {}
-xi.mission = xi.mission or {}
+invaderXim.mission = invaderXim.mission or {}
 
-xi.mission.log_id =
+invaderXim.mission.log_id =
 {
     SANDORIA    =  0,
     BASTOK      =  1,
@@ -21,25 +21,25 @@ xi.mission.log_id =
     ROV         = 13,
 }
 
-xi.mission.area =
+invaderXim.mission.area =
 {
-    [xi.mission.log_id.SANDORIA]    = 'sandoria',
-    [xi.mission.log_id.BASTOK]      = 'bastok',
-    [xi.mission.log_id.WINDURST]    = 'windurst',
-    [xi.mission.log_id.ZILART]      = 'zilart',
-    [xi.mission.log_id.TOAU]        = 'toau',
-    [xi.mission.log_id.WOTG]        = 'wotg',
-    [xi.mission.log_id.COP]         = 'cop',
-    [xi.mission.log_id.ASSAULT]     = 'assault',
-    [xi.mission.log_id.CAMPAIGN]    = 'campaign',
-    [xi.mission.log_id.ACP]         = 'acp',
-    [xi.mission.log_id.AMK]         = 'amk',
-    [xi.mission.log_id.ASA]         = 'asa',
-    [xi.mission.log_id.SOA]         = 'soa',
-    [xi.mission.log_id.ROV]         = 'rov',
+    [invaderXim.mission.log_id.SANDORIA]    = 'sandoria',
+    [invaderXim.mission.log_id.BASTOK]      = 'bastok',
+    [invaderXim.mission.log_id.WINDURST]    = 'windurst',
+    [invaderXim.mission.log_id.ZILART]      = 'zilart',
+    [invaderXim.mission.log_id.TOAU]        = 'toau',
+    [invaderXim.mission.log_id.WOTG]        = 'wotg',
+    [invaderXim.mission.log_id.COP]         = 'cop',
+    [invaderXim.mission.log_id.ASSAULT]     = 'assault',
+    [invaderXim.mission.log_id.CAMPAIGN]    = 'campaign',
+    [invaderXim.mission.log_id.ACP]         = 'acp',
+    [invaderXim.mission.log_id.AMK]         = 'amk',
+    [invaderXim.mission.log_id.ASA]         = 'asa',
+    [invaderXim.mission.log_id.SOA]         = 'soa',
+    [invaderXim.mission.log_id.ROV]         = 'rov',
 }
 
-xi.mission.status =
+invaderXim.mission.status =
 {
     COP =
     {
@@ -54,7 +54,7 @@ xi.mission.status =
     },
 }
 
-xi.mission.id =
+invaderXim.mission.id =
 {
     -----------------------------------
     --  All Nations
@@ -71,7 +71,7 @@ xi.mission.id =
     -----------------------------------
     --  San d'Oria - Interaction Framework (0)
     -----------------------------------
-    [xi.mission.area[xi.mission.log_id.SANDORIA]] =
+    [invaderXim.mission.area[invaderXim.mission.log_id.SANDORIA]] =
     {
         SMASH_THE_ORCISH_SCOUTS = 0,
         BAT_HUNT                = 1,
@@ -103,7 +103,7 @@ xi.mission.id =
     -----------------------------------
     --  Bastok - Interaction Framework (1)
     -----------------------------------
-    [xi.mission.area[xi.mission.log_id.BASTOK]] =
+    [invaderXim.mission.area[invaderXim.mission.log_id.BASTOK]] =
     {
         THE_ZERUHN_REPORT         = 0,
         GEOLOGICAL_SURVEY         = 1,
@@ -135,7 +135,7 @@ xi.mission.id =
     -----------------------------------
     --  Windurst - Interaction Framework (2)
     -----------------------------------
-    [xi.mission.area[xi.mission.log_id.WINDURST]] =
+    [invaderXim.mission.area[invaderXim.mission.log_id.WINDURST]] =
     {
         THE_HORUTOTO_RUINS_EXPERIMENT = 0,
         THE_HEART_OF_THE_MATTER       = 1,
@@ -167,7 +167,7 @@ xi.mission.id =
     -----------------------------------
     --  Zilart Missions (3)
     -----------------------------------
-    [xi.mission.area[xi.mission.log_id.ZILART]] =
+    [invaderXim.mission.area[invaderXim.mission.log_id.ZILART]] =
     {
         THE_NEW_FRONTIER              = 0,  -- ±
         WELCOME_TNORG                 = 4,  -- ±
@@ -193,7 +193,7 @@ xi.mission.id =
     -----------------------------------
     --  Promathia Missions (6)
     -----------------------------------
-    [xi.mission.area[xi.mission.log_id.COP]] =
+    [invaderXim.mission.area[invaderXim.mission.log_id.COP]] =
     {
         ANCIENT_FLAMES_BECKON            = 101,  -- Category
         THE_RITES_OF_LIFE                = 110,  -- ±
@@ -216,7 +216,7 @@ xi.mission.id =
         -- MEMORIES_OF_A_MAIDEN          =     -- Sub-category
         COMEDY_OF_ERRORS_ACT_I           = 341, -- ±
         -- COMEDY_OF_ERRORS_ACT_II       =     -- ±
-        -- EXIT_STAGE_LEFT               =     -- ±
+        -- IXIMT_STAGE_LEFT               =     -- ±
         TENDING_AGED_WOUNDS              = 350, -- ±
         DARKNESS_NAMED                   = 358, -- ±
         -- THE_CRADLES_OF_CHILDREN_LOST  =     -- Category
@@ -264,7 +264,7 @@ xi.mission.id =
     -----------------------------------
     --  Aht Urhgan Missions (4)
     -----------------------------------
-    [xi.mission.area[xi.mission.log_id.TOAU]] =
+    [invaderXim.mission.area[invaderXim.mission.log_id.TOAU]] =
     {
         LAND_OF_SACRED_SERPENTS = 0,
         IMMORTAL_SENTRIES       = 1,
@@ -319,7 +319,7 @@ xi.mission.id =
     -----------------------------------
     --  Wings of the Goddess (5)
     -----------------------------------
-    [xi.mission.area[xi.mission.log_id.WOTG]] =
+    [invaderXim.mission.area[invaderXim.mission.log_id.WOTG]] =
     {
         CAVERNOUS_MAWS             = 0,  -- ±
         BACK_TO_THE_BEGINNING      = 1,  -- ±
@@ -360,7 +360,7 @@ xi.mission.id =
         DARKNESS_DESCENDS          = 36, -- ±
         ADIEU_LILISETTE            = 37, -- ±
         BY_THE_FADING_LIGHT        = 38, -- ±
-        EDGE_OF_EXISTENCE          = 39, -- ±
+        EDGE_OF_IXIMSTENCE          = 39, -- ±
         HER_MEMORIES               = 40, -- ±
         FORGET_ME_NOT              = 41, -- ±
         PILLAR_OF_HOPE             = 42, -- ±
@@ -380,7 +380,7 @@ xi.mission.id =
     -----------------------------------
     --  A Crystalline Prophecy (9)
     -----------------------------------
-    [xi.mission.area[xi.mission.log_id.ACP]] =
+    [invaderXim.mission.area[invaderXim.mission.log_id.ACP]] =
     {
         A_CRYSTALLINE_PROPHECY        = 0, -- ±
         THE_ECHO_AWAKENS              = 1, -- ±
@@ -399,7 +399,7 @@ xi.mission.id =
     -----------------------------------
     --  A Moogle Kupo d'Etat (10)
     -----------------------------------
-    [xi.mission.area[xi.mission.log_id.AMK]] =
+    [invaderXim.mission.area[invaderXim.mission.log_id.AMK]] =
     {
         A_MOOGLE_KUPO_DETAT                 = 0,  -- ±
         DRENCHED_IT_BEGAN_WITH_A_RAINDROP   = 1,  -- ±
@@ -421,7 +421,7 @@ xi.mission.id =
     -----------------------------------
     --  A Shantotto Ascension (11)
     -----------------------------------
-    [xi.mission.area[xi.mission.log_id.ASA]] =
+    [invaderXim.mission.area[invaderXim.mission.log_id.ASA]] =
     {
         A_SHANTOTTO_ASCENSION       = 0, -- ±
         BURGEONING_DREAD            = 1, -- ±
@@ -443,7 +443,7 @@ xi.mission.id =
     -----------------------------------
     --  Seekers of Adoulin (12)
     -----------------------------------
-    [xi.mission.area[xi.mission.log_id.SOA]] =
+    [invaderXim.mission.area[invaderXim.mission.log_id.SOA]] =
     {
         -- THE_SACRED_CITY_OF_ADOULIN   =  -- Category
         RUMORS_FROM_THE_WEST            = 0,   -- ±
@@ -561,7 +561,7 @@ xi.mission.id =
     -----------------------------------
     --  Rhapsodies of Vana Diel (13)
     -----------------------------------
-    [xi.mission.area[xi.mission.log_id.ROV]] =
+    [invaderXim.mission.area[invaderXim.mission.log_id.ROV]] =
     {
         RHAPSODIES_OF_VANADIEL          = 0,   -- ±
         -- CREATION_AND_REBIRTH         =  -- Category
@@ -661,7 +661,7 @@ xi.mission.id =
         THE_ORBS_RADIANCE               = 224,
         A_RHAPSODY_FOR_THE_AGES         = 226,
     },
-    [xi.mission.area[xi.mission.log_id.CAMPAIGN]] = {},
+    [invaderXim.mission.area[invaderXim.mission.log_id.CAMPAIGN]] = {},
 }
 
 -- Campaign IDs deliberately left out of mission table
@@ -700,7 +700,7 @@ local crystalRequirements =
     [23] = 228, -- Additional 8 stacks needed, plus mission reward of 36 (87% rank bar)
 }
 
-xi.mission.getMissionRankPoints = function(player, missionID)
+invaderXim.mission.getMissionRankPoints = function(player, missionID)
     local crystals     = crystalRequirements[missionID] or 0
     local pointsNeeded = 1024 * (crystals - 0.25) / (3 * rankPointMath(player:getRank(player:getNation())))
 
@@ -717,9 +717,9 @@ end
 local missionType =
 {
     -- Required Rank             :   1  1  1  2  2  2  2  2  2  2  3  3  3  4  5  5  6  6  7  7  8  8  9  9
-    [xi.mission.log_id.SANDORIA] = { 1, 1, 1, 0, 1, 0, 2, 2, 2, 2, 1, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-    [xi.mission.log_id.BASTOK]   = { 2, 0, 1, 0, 1, 0, 2, 2, 2, 2, 0, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-    [xi.mission.log_id.WINDURST] = { 2, 0, 0, 0, 1, 0, 2, 2, 2, 2, 0, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+    [invaderXim.mission.log_id.SANDORIA] = { 1, 1, 1, 0, 1, 0, 2, 2, 2, 2, 1, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+    [invaderXim.mission.log_id.BASTOK]   = { 2, 0, 1, 0, 1, 0, 2, 2, 2, 2, 0, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+    [invaderXim.mission.log_id.WINDURST] = { 2, 0, 0, 0, 1, 0, 2, 2, 2, 2, 0, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 }
 
 local function getRequiredRank(missionId)
@@ -740,7 +740,7 @@ local function getRequiredRank(missionId)
     return requiredRank
 end
 
-xi.mission.getMissionMask = function(player)
+invaderXim.mission.getMissionMask = function(player)
     local nation = player:getNation()
     local rank = player:getRank(nation)
 
@@ -759,7 +759,7 @@ xi.mission.getMissionMask = function(player)
                 rank > getRequiredRank(missionId) or
                 (
                     rank == getRequiredRank(missionId) and
-                    xi.mission.getMissionRankPoints(player, missionId)
+                    invaderXim.mission.getMissionRankPoints(player, missionId)
                 )
             )
             and
@@ -785,9 +785,9 @@ xi.mission.getMissionMask = function(player)
 
     local missionMask = utils.MAX_INT32 - repeatMission - firstMission
     if
-        player:getCurrentMission(nation) == xi.mission.id.nation.NONE and
+        player:getCurrentMission(nation) == invaderXim.mission.id.nation.NONE and
         rank == 5 and
-        not player:hasCompletedMission(nation, xi.mission.id.nation.ARCHLICH) and
+        not player:hasCompletedMission(nation, invaderXim.mission.id.nation.ARCHLICH) and
         player:getMissionStatus(nation) == 8
     then
         -- Only one option is available when selecting M5-1 as required from a gate guard.  Since the mission isn't set,
@@ -804,36 +804,36 @@ local function getVarPrefix(areaId, missionId)
     return string.format('Mission[%d][%d]', areaId, missionId)
 end
 
-xi.mission.getVarPrefix = getVarPrefix
+invaderXim.mission.getVarPrefix = getVarPrefix
 
-xi.mission.incrementVar = function(player, areaId, missionId, name, value)
+invaderXim.mission.incrementVar = function(player, areaId, missionId, name, value)
     return player:incrementCharVar(getVarPrefix(areaId, missionId) .. name, value)
 end
 
-xi.mission.getVar = function(player, areaId, missionId, name)
+invaderXim.mission.getVar = function(player, areaId, missionId, name)
     return player:getVar(getVarPrefix(areaId, missionId) .. name)
 end
 
-xi.mission.setVar = function(player, areaId, missionId, name, value, expiry)
+invaderXim.mission.setVar = function(player, areaId, missionId, name, value, expiry)
     return player:setVar(getVarPrefix(areaId, missionId) .. name, value, expiry)
 end
 
-xi.mission.setVarExpiration = function(player, areaId, missionId, name, expiry)
+invaderXim.mission.setVarExpiration = function(player, areaId, missionId, name, expiry)
     return player:setCharVarExpiration(getVarPrefix(areaId, missionId) .. name, expiry)
 end
 
-xi.mission.getLocalVar = function(player, areaId, missionId, name)
+invaderXim.mission.getLocalVar = function(player, areaId, missionId, name)
     return player:getLocalVar(getVarPrefix(areaId, missionId) .. name)
 end
 
-xi.mission.setLocalVar = function(player, areaId, missionId, name, value)
+invaderXim.mission.setLocalVar = function(player, areaId, missionId, name, value)
     return player:setLocalVar(getVarPrefix(areaId, missionId) .. name, value)
 end
 
-xi.mission.getMustZone = function(player, areaId, missionId)
+invaderXim.mission.getMustZone = function(player, areaId, missionId)
     return player:getLocalVar(getVarPrefix(areaId, missionId) .. 'mustZone') == 1 and true or false
 end
 
-xi.mission.setMustZone = function(player, areaId, missionId)
+invaderXim.mission.setMustZone = function(player, areaId, missionId)
     player:setLocalVar(getVarPrefix(areaId, missionId) .. 'mustZone', 1)
 end

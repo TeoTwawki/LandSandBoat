@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Pashhow_Marshlands (109)
 -----------------------------------
-local ID = zones[xi.zone.PASHHOW_MARSHLANDS]
+local ID = zones[invaderXim.zone.PASHHOW_MARSHLANDS]
 require('scripts/quests/i_can_hear_a_rainbow')
 require('scripts/missions/amk/helpers')
 -----------------------------------
@@ -12,8 +12,8 @@ zoneObject.onInitialize = function(zone)
     UpdateNMSpawnPoint(ID.mob.BOWHO_WARMONGER)
     GetMobByID(ID.mob.BOWHO_WARMONGER):setRespawnTime(75600 + math.random(600, 900)) -- 21 hours, plus 10 to 15 min
 
-    xi.conquest.setRegionalConquestOverseers(zone:getRegionID())
-    xi.voidwalker.zoneOnInit(zone)
+    invaderXim.conquest.setRegionalConquestOverseers(zone:getRegionID())
+    invaderXim.voidwalker.zoneOnInit(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -32,19 +32,19 @@ zoneObject.onZoneIn = function(player, prevZone)
     end
 
     -- AMK06/AMK07
-    if xi.settings.main.ENABLE_AMK == 1 then
-        xi.amk.helpers.tryRandomlyPlaceDiggingLocation(player)
+    if invaderXim.settings.main.ENABLE_AMK == 1 then
+        invaderXim.amk.helpers.tryRandomlyPlaceDiggingLocation(player)
     end
 
     return cs
 end
 
 zoneObject.afterZoneIn = function(player)
-    xi.chocoboGame.handleMessage(player)
+    invaderXim.chocoboGame.handleMessage(player)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
@@ -60,15 +60,15 @@ zoneObject.onZoneWeatherChange = function(weather)
 
     if toxicTamlyn:isSpawned() then
         if
-            weather ~= xi.weather.RAIN and
-            weather ~= xi.weather.SQUALL
+            weather ~= invaderXim.weather.RAIN and
+            weather ~= invaderXim.weather.SQUALL
         then
             DespawnMob(ID.mob.TOXIC_TAMLYN)
             toxicTamlyn:setLocalVar('spawnTime', currentTime + 3600) -- 1 hour
         end
     else
         if
-            (weather == xi.weather.RAIN or weather == xi.weather.SQUALL) and
+            (weather == invaderXim.weather.RAIN or weather == invaderXim.weather.SQUALL) and
             toxicTamlyn:getLocalVar('spawnTime') < currentTime
         then
             SpawnMob(ID.mob.TOXIC_TAMLYN)

@@ -5,28 +5,28 @@
 -- Koru-Moru : !pos -120 -6 124 239
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.STAR_STRUCK)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.STAR_STRUCK)
 
 quest.reward =
 {
     fame     = 20,
-    fameArea = xi.fameArea.WINDURST,
-    item     = xi.item.COMPOUND_EYE_CIRCLET,
+    fameArea = invaderXim.fameArea.WINDURST,
+    item     = invaderXim.item.COMPOUND_EYE_CIRCLET,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Koru-Moru'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasItem(xi.item.TORN_EPISTLE) then
+                    if player:hasItem(invaderXim.item.TORN_EPISTLE) then
                         return quest:progressEvent(197)
                     end
                 end,
@@ -45,17 +45,17 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Koru-Moru'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.TORN_EPISTLE) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.TORN_EPISTLE) then
                         return quest:progressEvent(199)
-                    elseif npcUtil.tradeHasExactly(trade, xi.item.METEORITE) then
+                    elseif npcUtil.tradeHasExactly(trade, invaderXim.item.METEORITE) then
                         return quest:progressEvent(211)
                     end
                 end,
@@ -76,7 +76,7 @@ quest.sections =
                     if quest:complete(player) then
                         player:confirmTrade()
 
-                        xi.quest.setMustZone(player, xi.questLog.WINDURST, xi.quest.id.windurst.BLAST_FROM_THE_PAST)
+                        invaderXim.quest.setMustZone(player, invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.BLAST_FROM_THE_PAST)
                     end
                 end,
             },
@@ -85,11 +85,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                not player:hasCompletedQuest(xi.questLog.WINDURST, xi.quest.id.windurst.THE_PUPPET_MASTER)
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                not player:hasCompletedQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.THE_PUPPET_MASTER)
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Koru-Moru'] = quest:event(213):replaceDefault(),
         },

@@ -4,7 +4,7 @@
 -- Involved in Mission: Limit Break 3
 -- !pos 299.999 37.864 47.067 148
 -----------------------------------
-local ID = zones[xi.zone.QULUN_DOME]
+local ID = zones[invaderXim.zone.QULUN_DOME]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -13,11 +13,11 @@ entity.onTrigger = function(player, npc)
     if npc:getAnimation() == 9 then
         if player:getZPos() < 46 then
             if
-                player:hasKeyItem(xi.ki.SILVER_BELL) and
-                player:hasKeyItem(xi.ki.CORUSCANT_ROSARY) and
-                player:hasKeyItem(xi.ki.BLACK_MATINEE_NECKLACE)
+                player:hasKeyItem(invaderXim.ki.SILVER_BELL) and
+                player:hasKeyItem(invaderXim.ki.CORUSCANT_ROSARY) and
+                player:hasKeyItem(invaderXim.ki.BLACK_MATINEE_NECKLACE)
             then
-                player:messageSpecial(ID.text.THE_3_ITEMS_GLOW_FAINTLY, xi.ki.SILVER_BELL, xi.ki.CORUSCANT_ROSARY, xi.ki.BLACK_MATINEE_NECKLACE)
+                player:messageSpecial(ID.text.THE_3_ITEMS_GLOW_FAINTLY, invaderXim.ki.SILVER_BELL, invaderXim.ki.CORUSCANT_ROSARY, invaderXim.ki.BLACK_MATINEE_NECKLACE)
                 npc:openDoor(20) -- retail timed
             else
                 player:messageSpecial(ID.text.IT_SEEMS_TO_BE_LOCKED_BY_POWERFUL_MAGIC)

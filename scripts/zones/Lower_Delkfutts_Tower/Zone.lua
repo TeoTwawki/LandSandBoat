@@ -10,7 +10,7 @@ zoneObject.onInitialize = function(zone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -26,8 +26,8 @@ zoneObject.onZoneIn = function(player, prevZone)
 
     -- BORN OF HER NIGHTMARES
     if
-        player:getCurrentMission(xi.mission.log_id.ACP) == xi.mission.id.acp.BORN_OF_HER_NIGHTMARES and
-        prevZone == xi.zone.QUFIM_ISLAND
+        player:getCurrentMission(invaderXim.mission.log_id.ACP) == invaderXim.mission.id.acp.BORN_OF_HER_NIGHTMARES and
+        prevZone == invaderXim.zone.QUFIM_ISLAND
     then
         cs = 34
     end
@@ -68,8 +68,8 @@ zoneObject.onEventFinish = function(player, csid, option, npc)
     elseif csid == 4 and (option == 0 or option >= 3) then
         player:setCharVar('option', 0)
     elseif csid == 34 then
-        player:completeMission(xi.mission.log_id.ACP, xi.mission.id.acp.BORN_OF_HER_NIGHTMARES)
-        player:addMission(xi.mission.log_id.ACP, xi.mission.id.acp.BANISHING_THE_ECHO)
+        player:completeMission(invaderXim.mission.log_id.ACP, invaderXim.mission.id.acp.BORN_OF_HER_NIGHTMARES)
+        player:addMission(invaderXim.mission.log_id.ACP, invaderXim.mission.id.acp.BANISHING_THE_ECHO)
     end
 end
 

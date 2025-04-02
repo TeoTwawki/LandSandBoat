@@ -3,7 +3,7 @@
 -----------------------------------
 zones = zones or {}
 
-zones[xi.zone.SPIRE_OF_DEM] =
+zones[invaderXim.zone.SPIRE_OF_DEM] =
 {
     text =
     {
@@ -37,4 +37,4 @@ zones[xi.zone.SPIRE_OF_DEM] =
     },
 }
 
-return zones[xi.zone.SPIRE_OF_DEM]
+return zones[invaderXim.zone.SPIRE_OF_DEM]

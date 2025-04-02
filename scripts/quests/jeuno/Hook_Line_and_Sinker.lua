@@ -4,12 +4,12 @@
 -- EGRET_FISHING_ROD: !additem 1726
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.JEUNO, xi.quest.id.jeuno.HOOK_LINE_AND_SINKER)
+local quest = Quest:new(invaderXim.questLog.JEUNO, invaderXim.quest.id.jeuno.HOOK_LINE_AND_SINKER)
 
 quest.reward =
 {
     gil = 3000,
-    title = xi.title.ROD_RETRIEVER,
+    title = invaderXim.title.ROD_RETRIEVER,
 }
 
 quest.sections =
@@ -17,15 +17,15 @@ quest.sections =
     -- After completing A Vessel Without a Captain, talk to Omer to begin the quest.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and player:getCurrentMission(xi.mission.log_id.COP) > xi.mission.id.cop.A_VESSEL_WITHOUT_A_CAPTAIN
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and player:getCurrentMission(invaderXim.mission.log_id.COP) > invaderXim.mission.id.cop.A_VESSEL_WITHOUT_A_CAPTAIN
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Omer'] =
             {
                 onTrigger = function(player, npc)
-                    return quest:progressEvent(10040, 0, xi.item.THREE_EYED_FISH, xi.item.CRESCENT_FISH, 0, xi.item.EGRET_FISHING_ROD)
+                    return quest:progressEvent(10040, 0, invaderXim.item.THREE_EYED_FISH, invaderXim.item.CRESCENT_FISH, 0, invaderXim.item.EGRET_FISHING_ROD)
                 end,
             },
 
@@ -42,20 +42,20 @@ quest.sections =
     -- Return it to Omer to complete the quest.
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.LOWER_JEUNO] =
+        [invaderXim.zone.LOWER_JEUNO] =
         {
             ['Omer'] =
             {
                 onTrigger = function(player, npc)
-                    return quest:progressEvent(10041, 0, 0, 0, 0, xi.item.EGRET_FISHING_ROD)
+                    return quest:progressEvent(10041, 0, 0, 0, 0, invaderXim.item.EGRET_FISHING_ROD)
                 end,
 
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.EGRET_FISHING_ROD) then
-                        return quest:progressEvent(10042, 0, 0, 0, 0, xi.item.EGRET_FISHING_ROD)
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.EGRET_FISHING_ROD) then
+                        return quest:progressEvent(10042, 0, 0, 0, 0, invaderXim.item.EGRET_FISHING_ROD)
                     end
                 end,
             },

@@ -3,7 +3,7 @@
 --  NPC: Pohka Chichiyowahl
 -- !pos -415 -2 -430 4
 -----------------------------------
-local ID = zones[xi.zone.BIBIKI_BAY]
+local ID = zones[invaderXim.zone.BIBIKI_BAY]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
@@ -17,7 +17,7 @@ entity.onTrigger = function(player, npc)
     }
 
     player:showText(npc, ID.text.POHKA_SHOP_DIALOG)
-    xi.shop.nation(player, stock, xi.nation.WINDURST)
+    invaderXim.shop.nation(player, stock, invaderXim.nation.WINDURST)
 end
 
 return entity

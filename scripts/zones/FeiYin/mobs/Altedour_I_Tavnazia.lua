@@ -2,24 +2,24 @@
 -- Area: Fei'Yin
 --   NM: Altedour I Tavnazia
 -----------------------------------
-local ID = zones[xi.zone.FEIYIN]
+local ID = zones[invaderXim.zone.FEIYIN]
 mixins = { require('scripts/mixins/job_special') }
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 180)
-    mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
+    mob:setMobMod(invaderXim.mobMod.IDLE_DESPAWN, 180)
+    mob:setMobMod(invaderXim.mobMod.ADD_EFFECT, 1)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:addImmunity(xi.immunity.SILENCE)
-    mob:setMod(xi.mod.REGAIN, 20)
+    mob:addImmunity(invaderXim.immunity.SILENCE)
+    mob:setMod(invaderXim.mod.REGAIN, 20)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.MP_DRAIN, { power = math.random(80, 90) })
+    return invaderXim.mob.onAddEffect(mob, target, damage, invaderXim.mob.ae.MP_DRAIN, { power = math.random(80, 90) })
 end
 
 entity.onMobDeath = function(mob, player, optParams)

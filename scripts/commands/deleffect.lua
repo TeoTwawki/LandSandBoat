@@ -38,7 +38,7 @@ commandObj.onTrigger = function(player, arg1, arg2)
     end
 
     -- validate effect
-    id = tonumber(id) or xi.effect[string.upper(id)]
+    id = tonumber(id) or invaderXim.effect[string.upper(id)]
     if id == nil then
         error(player, 'Invalid effect.')
         return

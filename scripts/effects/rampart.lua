@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.RAMPART
+-- invaderXim.effect.RAMPART
 -----------------------------------
 ---@type TEffect
 local effectObject = {}
@@ -8,27 +8,27 @@ effectObject.onEffectGain = function(target, effect)
     local power = effect:getPower()
 
     -- Regular effect
-    effect:addMod(xi.mod.SLASH_SDT, -power)
-    effect:addMod(xi.mod.PIERCE_SDT, -power)
-    effect:addMod(xi.mod.IMPACT_SDT, -power)
-    effect:addMod(xi.mod.HTH_SDT, -power)
-    effect:addMod(xi.mod.FIRE_SDT, -power)
-    effect:addMod(xi.mod.ICE_SDT, -power)
-    effect:addMod(xi.mod.WIND_SDT, -power)
-    effect:addMod(xi.mod.EARTH_SDT, -power)
-    effect:addMod(xi.mod.THUNDER_SDT, -power)
-    effect:addMod(xi.mod.WATER_SDT, -power)
-    effect:addMod(xi.mod.LIGHT_SDT, -power)
-    effect:addMod(xi.mod.DARK_SDT, -power)
+    effect:addMod(invaderXim.mod.SLASH_SDT, -power)
+    effect:addMod(invaderXim.mod.PIERCE_SDT, -power)
+    effect:addMod(invaderXim.mod.IMPACT_SDT, -power)
+    effect:addMod(invaderXim.mod.HTH_SDT, -power)
+    effect:addMod(invaderXim.mod.FIRE_SDT, -power)
+    effect:addMod(invaderXim.mod.ICE_SDT, -power)
+    effect:addMod(invaderXim.mod.WIND_SDT, -power)
+    effect:addMod(invaderXim.mod.EARTH_SDT, -power)
+    effect:addMod(invaderXim.mod.THUNDER_SDT, -power)
+    effect:addMod(invaderXim.mod.WATER_SDT, -power)
+    effect:addMod(invaderXim.mod.LIGHT_SDT, -power)
+    effect:addMod(invaderXim.mod.DARK_SDT, -power)
 
     -- Iron will trait and augment. TODO: Why player only?
-    if target:isPC() and target:hasTrait(xi.trait.IRON_WILL) then
-        effect:addMod(xi.mod.SPELLINTERRUPT, target:getMerit(xi.merit.IRON_WILL))
+    if target:isPC() and target:hasTrait(invaderXim.trait.IRON_WILL) then
+        effect:addMod(invaderXim.mod.SPELLINTERRUPT, target:getMerit(invaderXim.merit.IRON_WILL))
 
-        if target:getMod(xi.mod.ENHANCES_IRON_WILL) > 0 then
-            local subPower = target:getMod(xi.mod.ENHANCES_IRON_WILL) * target:getMerit(xi.merit.IRON_WILL) / 19
+        if target:getMod(invaderXim.mod.ENHANCES_IRON_WILL) > 0 then
+            local subPower = target:getMod(invaderXim.mod.ENHANCES_IRON_WILL) * target:getMerit(invaderXim.merit.IRON_WILL) / 19
 
-            effect:addMod(xi.mod.FASTCAST, subPower)
+            effect:addMod(invaderXim.mod.FASTCAST, subPower)
             effect:setSubPower(subPower)
         end
     end

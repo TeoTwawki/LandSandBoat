@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.CELERITY
+-- invaderXim.effect.CELERITY
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

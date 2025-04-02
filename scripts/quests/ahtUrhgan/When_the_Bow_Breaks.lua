@@ -5,14 +5,14 @@
 -- Gaweesh: !pos -64 -7 38 48
 -- Giwahb Watchtower: !pos -339 -37 654 51
 -----------------------------------
-local ID = zones[xi.zone.WAJAOM_WOODLANDS]
+local ID = zones[invaderXim.zone.WAJAOM_WOODLANDS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.WHEN_THE_BOW_BREAKS)
+local quest = Quest:new(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.WHEN_THE_BOW_BREAKS)
 
 quest.reward =
 {
-    title = xi.title.GALESERPENT_GUARDIAN,
+    title = invaderXim.title.GALESERPENT_GUARDIAN,
 }
 
 quest.sections =
@@ -20,11 +20,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-            player:hasCompletedQuest(xi.questLog.AHT_URHGAN, xi.quest.id.ahtUrhgan.ODE_TO_THE_SERPENTS)
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+            player:hasCompletedQuest(invaderXim.questLog.AHT_URHGAN, invaderXim.quest.id.ahtUrhgan.ODE_TO_THE_SERPENTS)
         end,
 
-        [xi.zone.AL_ZAHBI] =
+        [invaderXim.zone.AL_ZAHBI] =
         {
             ['Gaweesh'] = quest:progressEvent(280),
 
@@ -38,15 +38,15 @@ quest.sections =
     },
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.WAJAOM_WOODLANDS] =
+        [invaderXim.zone.WAJAOM_WOODLANDS] =
         {
             ['Giwahb_Watchtower'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.FRAYED_ARROW) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.FRAYED_ARROW) then
                         return quest:progressEvent(512)
                     end
                 end,

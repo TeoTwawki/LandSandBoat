@@ -1,13 +1,13 @@
 -----------------------------------
 -- Zone: Port_Windurst (240)
 -----------------------------------
-local ID = zones[xi.zone.PORT_WINDURST]
+local ID = zones[invaderXim.zone.PORT_WINDURST]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.server.setExplorerMoogles(ID.npc.EXPLORER_MOOGLE)
+    invaderXim.server.setExplorerMoogles(ID.npc.EXPLORER_MOOGLE)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -18,7 +18,7 @@ zoneObject.onZoneIn = function(player, prevZone)
         player:getYPos() == 0 and
         player:getZPos() == 0
     then
-        if prevZone == xi.zone.WINDURST_JEUNO_AIRSHIP then
+        if prevZone == invaderXim.zone.WINDURST_JEUNO_AIRSHIP then
             cs = { 10004 }
             player:setPos(228.000, -3.000, 76.000, 160)
         else
@@ -31,7 +31,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTransportEvent = function(player, transport)

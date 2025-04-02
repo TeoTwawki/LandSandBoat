@@ -3,7 +3,7 @@
 --  Mob: Antares
 -- Note: Place holder Amikiri
 -----------------------------------
-local ID = zones[xi.zone.GUSTAV_TUNNEL]
+local ID = zones[invaderXim.zone.GUSTAV_TUNNEL]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -68,11 +68,11 @@ local amikiriPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 768, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 768, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, amikiriPHTable, 5, 25200, { spawnPoints = amikiriSpawnPoints }) -- 7 hours
+    invaderXim.mob.phOnDespawn(mob, amikiriPHTable, 5, 25200, { spawnPoints = amikiriSpawnPoints }) -- 7 hours
 end
 
 return entity

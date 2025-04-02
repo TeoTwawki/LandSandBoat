@@ -2,7 +2,7 @@
 -- Area: The Garden of Ru'Hmet
 --  NPC: Cermet Portal (Security Gate)
 -----------------------------------
-local ID = zones[xi.zone.THE_GARDEN_OF_RUHMET]
+local ID = zones[invaderXim.zone.THE_GARDEN_OF_RUHMET]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}

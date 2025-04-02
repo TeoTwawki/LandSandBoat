@@ -3,7 +3,7 @@
 --  MOB: Archaic Gear
 --
 -----------------------------------
-local ID = zones[xi.zone.BHAFLAU_REMNANTS]
+local ID = zones[invaderXim.zone.BHAFLAU_REMNANTS]
 mixins = { require('scripts/mixins/families/gear') }
 -----------------------------------
 
@@ -31,7 +31,7 @@ entity.onMobSpawn = function(mob)
 
     if instance and instance:getStage() == 4 then
         mob:addListener('TAKE_DAMAGE', 'GEAR_TAKE_DAMAGE', function(mobArg, damage, attacker, attackType, damageType)
-            if attackType ~= xi.attackType.RANGED then
+            if attackType ~= invaderXim.attackType.RANGED then
                 mobArg:independentAnimation(mob, 122, 0)
                 mobArg:timer(4000, function(gearMob)
                     if gearMob and gearMob:isAlive() then
@@ -117,11 +117,11 @@ entity.onMobDeath = function(mob, player, optParams)
                     GetNPCByID(ID.npc.DORMANT_RAMPART[4], instance):setPos(westRampartPos[4])
                 end
 
-                GetNPCByID(ID.npc.DORMANT_RAMPART[4], instance):setStatus(xi.status.NORMAL)
+                GetNPCByID(ID.npc.DORMANT_RAMPART[4], instance):setStatus(invaderXim.status.NORMAL)
             end
         end
 
-        xi.salvage.spawnTempChest(mob)
+        invaderXim.salvage.spawnTempChest(mob)
     end
 end
 

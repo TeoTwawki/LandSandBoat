@@ -7,12 +7,12 @@
 -- _515 (BCNM Entry)  : !pos -665.2291 -5.8232 -32.4834 181
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.ZILART, xi.mission.id.zilart.THE_CELESTIAL_NEXUS)
+local mission = Mission:new(invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.THE_CELESTIAL_NEXUS)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.ZILART, xi.mission.id.zilart.AWAKENING },
-    title = xi.title.BURIER_OF_THE_ILLUSION,
+    nextMission = { invaderXim.mission.log_id.ZILART, invaderXim.mission.id.zilart.AWAKENING },
+    title = invaderXim.title.BURIER_OF_THE_ILLUSION,
 }
 
 mission.sections =
@@ -22,21 +22,21 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             ['Gilgamesh'] = mission:event(173),
         },
 
-        [xi.zone.THE_CELESTIAL_NEXUS] =
+        [invaderXim.zone.THE_CELESTIAL_NEXUS] =
         {
             onEventFinish =
             {
                 [32001] = function(player, csid, option, npc)
-                    if player:getLocalVar('battlefieldWin') == xi.battlefield.id.CELESTIAL_NEXUS then
+                    if player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.CELESTIAL_NEXUS then
                         mission:complete(player)
                     end
 
-                    player:setPos(0.003, -18.897, 137.112, 64, xi.zone.HALL_OF_THE_GODS)
+                    player:setPos(0.003, -18.897, 137.112, 64, invaderXim.zone.HALL_OF_THE_GODS)
                 end,
             },
         },

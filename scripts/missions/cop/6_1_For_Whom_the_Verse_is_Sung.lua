@@ -7,11 +7,11 @@
 -- Marble Bridge : !pos -96.6 -0.2 92.3 244
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.FOR_WHOM_THE_VERSE_IS_SUNG)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.FOR_WHOM_THE_VERSE_IS_SUNG)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.A_PLACE_TO_RETURN },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.A_PLACE_TO_RETURN },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             ['Pherimociel'] =
             {
@@ -54,7 +54,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['_6s1'] =
             {

@@ -4,14 +4,14 @@
 -- !addquest 9 56
 -- Apolliane : !pos 447.088 -15.846 -320 265
 -----------------------------------
-local morimarID = zones[xi.zone.MORIMAR_BASALT_FIELDS]
+local morimarID = zones[invaderXim.zone.MORIMAR_BASALT_FIELDS]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.ADOULIN, xi.quest.id.adoulin.A_STONES_THROW_AWAY)
+local quest = Quest:new(invaderXim.questLog.ADOULIN, invaderXim.quest.id.adoulin.A_STONES_THROW_AWAY)
 
 quest.reward =
 {
-    fameArea = xi.fameArea.ADOULIN,
+    fameArea = invaderXim.fameArea.ADOULIN,
     bayld    = 500,
 }
 
@@ -19,10 +19,10 @@ quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE
+            return status == invaderXim.questStatus.QUEST_AVAILABLE
         end,
 
-        [xi.zone.MORIMAR_BASALT_FIELDS] =
+        [invaderXim.zone.MORIMAR_BASALT_FIELDS] =
         {
             ['Apolliane'] = quest:progressEvent(2571),
 
@@ -37,10 +37,10 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.MORIMAR_BASALT_FIELDS] =
+        [invaderXim.zone.MORIMAR_BASALT_FIELDS] =
         {
             ['Apolliane'] =
             {
@@ -49,7 +49,7 @@ quest.sections =
                     -- on mining a Marble Nugget, set the Prog quest variable to 1, as this quest requires
                     -- the player to mine this object.
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.MARBLE_NUGGET) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.MARBLE_NUGGET) and
                         quest:getVar(player, 'Prog') == 1
                     then
                         return quest:progressEvent(2573)
@@ -62,10 +62,10 @@ quest.sections =
             onEventFinish =
             {
                 [2573] = function(player, csid, option, npc)
-                    player:messageSpecial(morimarID.text.YOU_HAVE_LEARNED, xi.ki.DEMOLISHING)
+                    player:messageSpecial(morimarID.text.YOU_HAVE_LEARNED, invaderXim.ki.DEMOLISHING)
 
                     if quest:complete(player) then
-                        player:addKeyItem(xi.ki.DEMOLISHING)
+                        player:addKeyItem(invaderXim.ki.DEMOLISHING)
                         player:confirmTrade()
                     end
                 end,

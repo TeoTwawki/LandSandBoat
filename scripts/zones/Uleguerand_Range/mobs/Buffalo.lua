@@ -3,7 +3,7 @@
 --  Mob: Buffalo
 -- Note: PH for Bonnacon
 -----------------------------------
-local ID = zones[xi.zone.ULEGUERAND_RANGE]
+local ID = zones[invaderXim.zone.ULEGUERAND_RANGE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -22,7 +22,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, bonnaconPHTable, 5, math.random(3600, 86400)) -- 1 to 24 hours
+    invaderXim.mob.phOnDespawn(mob, bonnaconPHTable, 5, math.random(3600, 86400)) -- 1 to 24 hours
 end
 
 return entity

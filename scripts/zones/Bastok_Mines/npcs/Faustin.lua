@@ -3,29 +3,29 @@
 --  NPC: Faustin
 -- Ronfaure Regional Merchant
 -----------------------------------
-local ID = zones[xi.zone.BASTOK_MINES]
+local ID = zones[invaderXim.zone.BASTOK_MINES]
 -----------------------------------
 ---@type TNpcEntity
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    xi.events.harvestFestival.onHalloweenTrade(player, trade, npc)
+    invaderXim.events.harvestFestival.onHalloweenTrade(player, trade, npc)
 end
 
 entity.onTrigger = function(player, npc)
-    if GetRegionOwner(xi.region.RONFAURE) ~= xi.nation.BASTOK then
+    if GetRegionOwner(invaderXim.region.RONFAURE) ~= invaderXim.nation.BASTOK then
         player:showText(npc, ID.text.FAUSTIN_CLOSED_DIALOG)
     else
         local stock =
         {
-            xi.item.SAN_DORIAN_CARROT,           33,
-            xi.item.BUNCH_OF_SAN_DORIAN_GRAPES,  79,
-            xi.item.RONFAURE_CHESTNUT,          124,
-            xi.item.BAG_OF_SAN_DORIAN_FLOUR,     62,
+            invaderXim.item.SAN_DORIAN_CARROT,           33,
+            invaderXim.item.BUNCH_OF_SAN_DORIAN_GRAPES,  79,
+            invaderXim.item.RONFAURE_CHESTNUT,          124,
+            invaderXim.item.BAG_OF_SAN_DORIAN_FLOUR,     62,
         }
 
         player:showText(npc, ID.text.FAUSTIN_OPEN_DIALOG)
-        xi.shop.general(player, stock, xi.fameArea.BASTOK)
+        invaderXim.shop.general(player, stock, invaderXim.fameArea.BASTOK)
     end
 end
 

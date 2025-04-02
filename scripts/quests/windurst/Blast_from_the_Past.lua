@@ -4,31 +4,31 @@
 -- Log ID: 2, Quest ID: 11
 -- Koru-Moru : !pos -120 -6 124 239
 -----------------------------------
-local shakhramiID = zones[xi.zone.MAZE_OF_SHAKHRAMI]
+local shakhramiID = zones[invaderXim.zone.MAZE_OF_SHAKHRAMI]
 -----------------------------------
 
-local quest = Quest:new(xi.questLog.WINDURST, xi.quest.id.windurst.BLAST_FROM_THE_PAST)
+local quest = Quest:new(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.BLAST_FROM_THE_PAST)
 
 quest.reward =
 {
     fame     = 30,
-    fameArea = xi.fameArea.WINDURST,
-    item     = xi.item.GREAT_CLUB,
-    title    = xi.title.FOSSILIZED_SEA_FARER,
+    fameArea = invaderXim.fameArea.WINDURST,
+    item     = invaderXim.item.GREAT_CLUB,
+    title    = invaderXim.title.FOSSILIZED_SEA_FARER,
 }
 
 quest.sections =
 {
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_AVAILABLE and
-                player:hasCompletedQuest(xi.questLog.WINDURST, xi.quest.id.windurst.STAR_STRUCK) and
-                player:getQuestStatus(xi.questLog.WINDURST, xi.quest.id.windurst.CLASS_REUNION) ~= xi.questStatus.QUEST_ACCEPTED and
-                player:getFameLevel(xi.fameArea.WINDURST) >= 3 and
+            return status == invaderXim.questStatus.QUEST_AVAILABLE and
+                player:hasCompletedQuest(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.STAR_STRUCK) and
+                player:getQuestStatus(invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.CLASS_REUNION) ~= invaderXim.questStatus.QUEST_ACCEPTED and
+                player:getFameLevel(invaderXim.fameArea.WINDURST) >= 3 and
                 not quest:getMustZone(player)
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Koru-Moru'] = quest:progressEvent(214),
 
@@ -45,15 +45,15 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_ACCEPTED
+            return status == invaderXim.questStatus.QUEST_ACCEPTED
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Koru-Moru'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, xi.item.BURNITE_SHELL_STONE) then
+                    if npcUtil.tradeHasExactly(trade, invaderXim.item.BURNITE_SHELL_STONE) then
                         return quest:progressEvent(224)
                     else
                         return quest:event(225)
@@ -92,13 +92,13 @@ quest.sections =
                     if quest:complete(player) then
                         player:confirmTrade()
 
-                        xi.quest.setMustZone(player, xi.questLog.WINDURST, xi.quest.id.windurst.NOTHING_MATTERS)
+                        invaderXim.quest.setMustZone(player, invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.NOTHING_MATTERS)
                     end
                 end,
             },
         },
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Tokaka'] =
             {
@@ -117,7 +117,7 @@ quest.sections =
             },
         },
 
-        [xi.zone.MAZE_OF_SHAKHRAMI] =
+        [invaderXim.zone.MAZE_OF_SHAKHRAMI] =
         {
             ['Fossil_Rock'] =
             {
@@ -129,7 +129,7 @@ quest.sections =
                     if rockOffset == 8 then
                         if
                             not GetMobByID(shakhramiID.mob.ICHOROUS_IRE):isSpawned() and
-                            not player:hasItem(xi.item.BURNITE_SHELL_STONE)
+                            not player:hasItem(invaderXim.item.BURNITE_SHELL_STONE)
                         then
                             SpawnMob(shakhramiID.mob.ICHOROUS_IRE):updateClaim(player)
                         else
@@ -143,11 +143,11 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == xi.questStatus.QUEST_COMPLETED and
-                not xi.quest.getMustZone(player, xi.questLog.WINDURST, xi.quest.id.windurst.NOTHING_MATTERS)
+            return status == invaderXim.questStatus.QUEST_COMPLETED and
+                not invaderXim.quest.getMustZone(player, invaderXim.questLog.WINDURST, invaderXim.quest.id.windurst.NOTHING_MATTERS)
         end,
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             ['Yoran-Oran'] = quest:event(223):importantEvent(),
         },

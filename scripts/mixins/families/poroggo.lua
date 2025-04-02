@@ -9,7 +9,7 @@ g_mixins.families.poroggo = function(poroggoMob)
         if mob:getLocalVar('providence') == 1 then
             mob:setSpellList(2)
             mob:setLocalVar('providence', 0)
-            mob:setMobMod(xi.mobMod.MAGIC_COOL, 35)
+            mob:setMobMod(invaderXim.mobMod.MAGIC_COOL, 35)
         end
     end)
 end

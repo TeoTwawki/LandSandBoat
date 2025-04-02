@@ -685,7 +685,7 @@ namespace luautils
 
     // Assumes filename in the form "./scripts/folder0/folder1/folder2/mob_name.lua
     // Object returned form that script will be cached to:
-    // xi.folder0.folder1.folder2.mob_name
+    // invaderXim.folder0.folder1.folder2.mob_name
     void CacheLuaObjectFromFile(std::string const& filename, bool overwriteCurrentEntry /* = false*/)
     {
         TracyZoneScoped;
@@ -1395,7 +1395,7 @@ namespace luautils
     {
         TracyZoneScoped;
 
-        callGlobal<void>("xi.conquest.setRegionalConquestOverseers", regionID);
+        callGlobal<void>("invaderXim.conquest.setRegionalConquestOverseers", regionID);
     }
 
     void SendLuaFuncStringToZone(uint16 requestingZoneId, uint16 executorZoneId, std::string const& str)
@@ -1574,7 +1574,7 @@ namespace luautils
     /************************************************************************
      *                                                                       *
      * NextGameTime - Returns System Time for the next Vana'diel interval    *
-     * See: VTIME_x definitions, or xi.vanaTime for the values to pass       *
+     * See: VTIME_x definitions, or invaderXim.vanaTime for the values to pass       *
      *                                                                       *
      ************************************************************************/
     uint32 NextGameTime(uint32 intervalSeconds)
@@ -1970,7 +1970,7 @@ namespace luautils
 
         ShowTraceFmt("luautils::OnGameIn: {}", PChar->getName());
 
-        callGlobal<void>("xi.player.onGameIn", PChar, PChar->GetPlayTime(false) == 0, zoning);
+        callGlobal<void>("invaderXim.player.onGameIn", PChar, PChar->GetPlayTime(false) == 0, zoning);
     }
 
     void OnZoneIn(CCharEntity* PChar)
@@ -4677,14 +4677,14 @@ namespace luautils
     {
         TracyZoneScoped;
 
-        callGlobal<void>("xi.server.onServerStart");
+        callGlobal<void>("invaderXim.server.onServerStart");
     }
 
     void OnJSTMidnight()
     {
         TracyZoneScoped;
 
-        callGlobal<void>("xi.server.onJSTMidnight");
+        callGlobal<void>("invaderXim.server.onJSTMidnight");
     }
 
     /************************************************************************
@@ -4697,7 +4697,7 @@ namespace luautils
     {
         TracyZoneScoped;
 
-        callGlobal<void>("xi.server.onTimeServerTick");
+        callGlobal<void>("invaderXim.server.onTimeServerTick");
     }
 
     /************************************************************************
@@ -4891,7 +4891,7 @@ namespace luautils
     {
         TracyZoneScoped;
 
-        return callGlobal<std::string>("xi.server.getServerMessage", language);
+        return callGlobal<std::string>("invaderXim.server.getServerMessage", language);
     }
 
     /************************************************************************
@@ -4976,49 +4976,49 @@ namespace luautils
     {
         TracyZoneScoped;
 
-        callGlobal<void>("xi.player.onPlayerDeath", PChar);
+        callGlobal<void>("invaderXim.player.onPlayerDeath", PChar);
     }
 
     void OnPlayerLevelUp(CCharEntity* PChar)
     {
         TracyZoneScoped;
 
-        callGlobal<void>("xi.player.onPlayerLevelUp", PChar);
+        callGlobal<void>("invaderXim.player.onPlayerLevelUp", PChar);
     }
 
     void OnPlayerLevelDown(CCharEntity* PChar)
     {
         TracyZoneScoped;
 
-        callGlobal<void>("xi.player.onPlayerLevelDown", PChar);
+        callGlobal<void>("invaderXim.player.onPlayerLevelDown", PChar);
     }
 
     void OnPlayerMount(CCharEntity* PChar)
     {
         TracyZoneScoped;
 
-        callGlobal<void>("xi.player.onPlayerMount", PChar);
+        callGlobal<void>("invaderXim.player.onPlayerMount", PChar);
     }
 
     void OnPlayerEmote(CCharEntity* PChar, Emote EmoteID)
     {
         TracyZoneScoped;
 
-        callGlobal<void>("xi.player.onPlayerEmote", PChar, static_cast<uint8>(EmoteID));
+        callGlobal<void>("invaderXim.player.onPlayerEmote", PChar, static_cast<uint8>(EmoteID));
     }
 
     void OnPlayerVolunteer(CCharEntity* PChar, std::string const& text)
     {
         TracyZoneScoped;
 
-        callGlobal<void>("xi.player.onPlayerVolunteer", PChar, text);
+        callGlobal<void>("invaderXim.player.onPlayerVolunteer", PChar, text);
     }
 
     bool OnChocoboDig(CCharEntity* PChar)
     {
         TracyZoneScoped;
 
-        return callGlobal<bool>("xi.chocoboDig.start", PChar);
+        return callGlobal<bool>("invaderXim.chocoboDig.start", PChar);
     }
 
     // Loads a Lua function with a fallback hierarchy

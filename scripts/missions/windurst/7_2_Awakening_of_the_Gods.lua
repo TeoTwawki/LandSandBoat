@@ -15,7 +15,7 @@
 -- Granite Door     : !pos 340 0.1 329 159
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.WINDURST, xi.mission.id.windurst.AWAKENING_OF_THE_GODS)
+local mission = Mission:new(invaderXim.mission.log_id.WINDURST, invaderXim.mission.id.windurst.AWAKENING_OF_THE_GODS)
 
 mission.reward =
 {
@@ -34,11 +34,11 @@ mission.sections =
 {
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == xi.mission.id.nation.NONE and
+            return currentMission == invaderXim.mission.id.nation.NONE and
                 player:getNation() == mission.areaId
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             onEventFinish =
             {
@@ -46,7 +46,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WALLS] =
+        [invaderXim.zone.WINDURST_WALLS] =
         {
             onEventFinish =
             {
@@ -54,7 +54,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             onEventFinish =
             {
@@ -62,7 +62,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.WINDURST_WOODS] =
+        [invaderXim.zone.WINDURST_WOODS] =
         {
             onEventFinish =
             {
@@ -76,7 +76,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.WINDURST_WATERS] =
+        [invaderXim.zone.WINDURST_WATERS] =
         {
             ['Kerutoto'] =
             {
@@ -104,7 +104,7 @@ mission.sections =
                         return mission:progressEvent(735)
                     elseif missionStatus == 2 then
                         return mission:progressEvent(739)
-                    elseif missionStatus == 5 and player:hasKeyItem(xi.ki.BOOK_OF_THE_GODS) then
+                    elseif missionStatus == 5 and player:hasKeyItem(invaderXim.ki.BOOK_OF_THE_GODS) then
                         return mission:progressEvent(742)
                     end
                 end,
@@ -126,7 +126,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.KAZHAM] =
+        [invaderXim.zone.KAZHAM] =
         {
             ['Jakoh_Wahcondalo'] =
             {
@@ -175,13 +175,13 @@ mission.sections =
             }
         },
 
-        [xi.zone.TEMPLE_OF_UGGALEPIH] =
+        [invaderXim.zone.TEMPLE_OF_UGGALEPIH] =
         {
             ['_4fx'] =
             {
                 onTrade = function(player, npc, trade)
                     if
-                        npcUtil.tradeHasExactly(trade, xi.item.CURSED_KEY) and
+                        npcUtil.tradeHasExactly(trade, invaderXim.item.CURSED_KEY) and
                         player:getZPos() < 332 and
                         player:getMissionStatus(mission.areaId) >= 3
                     then
@@ -195,9 +195,9 @@ mission.sections =
                 [23] = function(player, csid, option, npc)
                     player:confirmTrade()
                     player:setPos(340, 0, 333)
-                    player:delKeyItem(xi.ki.BLANK_BOOK_OF_THE_GODS)
+                    player:delKeyItem(invaderXim.ki.BLANK_BOOK_OF_THE_GODS)
                     player:setMissionStatus(mission.areaId, 5)
-                    npcUtil.giveKeyItem(player, xi.ki.BOOK_OF_THE_GODS)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.BOOK_OF_THE_GODS)
                 end,
             }
         },

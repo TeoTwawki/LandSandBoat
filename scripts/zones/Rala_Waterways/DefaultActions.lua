@@ -1,4 +1,4 @@
-local ID = zones[xi.zone.RALA_WATERWAYS]
+local ID = zones[invaderXim.zone.RALA_WATERWAYS]
 
 return {
     ['Bezetep']              = { event = 304 },

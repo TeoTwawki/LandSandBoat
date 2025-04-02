@@ -8,17 +8,17 @@
 local abilityObject = {}
 
 abilityObject.onAbilityCheck = function(player, target, ability)
-    if player:hasStatusEffect(xi.effect.IMMANENCE) then
-        return xi.msg.basic.EFFECT_ALREADY_ACTIVE, 0
+    if player:hasStatusEffect(invaderXim.effect.IMMANENCE) then
+        return invaderXim.msg.basic.EFFECT_ALREADY_ACTIVE, 0
     end
 
     return 0, 0
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
-    player:addStatusEffect(xi.effect.IMMANENCE, 1, 0, 60)
+    player:addStatusEffect(invaderXim.effect.IMMANENCE, 1, 0, 60)
 
-    return xi.effect.IMMANENCE
+    return invaderXim.effect.IMMANENCE
 end
 
 return abilityObject

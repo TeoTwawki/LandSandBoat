@@ -21,10 +21,10 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.LIZARD
-    params.attackType = xi.attackType.MAGICAL
-    params.damageType = xi.damageType.WATER
-    params.attribute = xi.mod.INT
+    params.ecosystem = invaderXim.ecosystem.LIZARD
+    params.attackType = invaderXim.attackType.MAGICAL
+    params.damageType = invaderXim.damageType.WATER
+    params.attribute = invaderXim.mod.INT
     params.multiplier = 1.83
     params.tMultiplier = 2.0
     params.duppercap = 69
@@ -36,17 +36,17 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.mnd_wsc = 0.3
     params.chr_wsc = 0.0
 
-    params.addedEffect = xi.effect.BIND
+    params.addedEffect = invaderXim.effect.BIND
     local power = 1
     local tick = 0
     local duration = 30
 
-    local damage = xi.spells.blue.useMagicalSpell(caster, target, spell, params)
+    local damage = invaderXim.spells.blue.useMagicalSpell(caster, target, spell, params)
     if caster:isBehind(target) then
         damage = math.floor(damage * 1.25)
     end
 
-    xi.spells.blue.useMagicalSpellAddedEffect(caster, target, spell, params, power, tick, duration)
+    invaderXim.spells.blue.useMagicalSpellAddedEffect(caster, target, spell, params, power, tick, duration)
 
     return damage
 end

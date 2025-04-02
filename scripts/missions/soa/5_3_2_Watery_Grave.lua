@@ -4,14 +4,14 @@
 -----------------------------------
 -- !addmission 12 118
 -----------------------------------
-local ralaID = zones[xi.zone.RALA_WATERWAYS]
+local ralaID = zones[invaderXim.zone.RALA_WATERWAYS]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.WATERY_GRAVE)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.WATERY_GRAVE)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.SOA, xi.mission.id.soa.BLOOD_FOR_BLOOD },
+    nextMission = { invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.BLOOD_FOR_BLOOD },
 }
 
 mission.sections =
@@ -21,7 +21,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.RALA_WATERWAYS] =
+        [invaderXim.zone.RALA_WATERWAYS] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 1 then
@@ -31,15 +31,15 @@ mission.sections =
 
             afterZoneIn = function(player)
                 if
-                    not player:hasKeyItem(xi.ki.ASH_RUNIC_BOARD) and
+                    not player:hasKeyItem(invaderXim.ki.ASH_RUNIC_BOARD) and
                     mission:getVar(player, 'Status') == 0 and
                     mission:getVar(player, 'Timer') <= VanadielUniqueDay()
                 then
                     -- TODO: This message needs verification, and need to determine if there
                     -- is a unique event or message.  For future Instance implementation, on
                     -- instance fail, Timer var should be set to VanadielUniqueDay() + 1
-                    player:delKeyItem(xi.ki.BLANK_ASH_RUNIC_BOARD)
-                    npcUtil.giveKeyItem(player, xi.ki.ASH_RUNIC_BOARD)
+                    player:delKeyItem(invaderXim.ki.BLANK_ASH_RUNIC_BOARD)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ASH_RUNIC_BOARD)
                 end
             end,
 
@@ -47,18 +47,18 @@ mission.sections =
             {
                 [375] = function(player, csid, option, npc)
                     if mission:complete(player) then
-                        player:delKeyItem(xi.ki.BLANK_ASH_RUNIC_BOARD)
-                        player:messageSpecial(ralaID.text.KEYITEM_LOST, xi.ki.BLANK_ASH_RUNIC_BOARD)
-                        npcUtil.giveKeyItem(player, xi.ki.AGED_UNDYING_NAAKUAL_CREST)
-                        npcUtil.giveKeyItem(player, xi.ki.TEODORS_BLOOD_SIGIL)
+                        player:delKeyItem(invaderXim.ki.BLANK_ASH_RUNIC_BOARD)
+                        player:messageSpecial(ralaID.text.KEYITEM_LOST, invaderXim.ki.BLANK_ASH_RUNIC_BOARD)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.AGED_UNDYING_NAAKUAL_CREST)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.TEODORS_BLOOD_SIGIL)
                         player:messageSpecial(ralaID.text.THREE_BLOOD_SIGILS_PULSE)
-                        npcUtil.giveKeyItem(player, xi.ki.CRYSTALLIZED_PSYCHE)
+                        npcUtil.giveKeyItem(player, invaderXim.ki.CRYSTALLIZED_PSYCHE)
                     end
                 end,
             },
         },
 
-        [xi.zone.RALA_WATERWAYS_U] =
+        [invaderXim.zone.RALA_WATERWAYS_U] =
         {
             onEventFinish =
             {
@@ -67,7 +67,7 @@ mission.sections =
                 -- implementation of the instance.
                 [1000] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 1)
-                    player:setPos(256, -5.768, 60, 128, xi.zone.RALA_WATERWAYS)
+                    player:setPos(256, -5.768, 60, 128, invaderXim.zone.RALA_WATERWAYS)
                 end,
             },
         },

@@ -13,7 +13,7 @@
 -- Table structure for table `conquest_system`
 --
 
-DROP TABLE IF EXISTS `conquest_system`;
+DROP TABLE IF IXIMSTS `conquest_system`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `conquest_system` (

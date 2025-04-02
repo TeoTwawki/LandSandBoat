@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.reaction
-xi.reaction =
+---@enum invaderXim.reaction
+invaderXim.reaction =
 {
     NONE     = 0x00,
     MISS     = 0x01,

@@ -5,27 +5,27 @@
 -- !addmission 12 129
 -- Ploh Trishbahk : !pos 100.580 -40.150 -63.830 257
 -----------------------------------
-local ceizakID = zones[xi.zone.CEIZAK_BATTLEGROUNDS]
+local ceizakID = zones[invaderXim.zone.CEIZAK_BATTLEGROUNDS]
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.SOA, xi.mission.id.soa.THE_LIGHT_WITHIN)
+local mission = Mission:new(invaderXim.mission.log_id.SOA, invaderXim.mission.id.soa.THE_LIGHT_WITHIN)
 
 mission.reward = {}
 
 local rewardItems =
 {
-    xi.item.ADOULIN_RING,
-    xi.item.WOLTARIS_RING,
-    xi.item.WEATHERSPOON_RING,
-    xi.item.JANNISTON_RING,
-    xi.item.RENAYE_RING,
-    xi.item.GORNEY_RING,
-    xi.item.HAVERTON_RING,
-    xi.item.KARIEYH_RING,
-    xi.item.VOCANE_RING,
-    xi.item.THURANDAUT_RING,
-    xi.item.SHNEDDICK_RING,
-    xi.item.ORVAIL_RING,
+    invaderXim.item.ADOULIN_RING,
+    invaderXim.item.WOLTARIS_RING,
+    invaderXim.item.WEATHERSPOON_RING,
+    invaderXim.item.JANNISTON_RING,
+    invaderXim.item.RENAYE_RING,
+    invaderXim.item.GORNEY_RING,
+    invaderXim.item.HAVERTON_RING,
+    invaderXim.item.KARIEYH_RING,
+    invaderXim.item.VOCANE_RING,
+    invaderXim.item.THURANDAUT_RING,
+    invaderXim.item.SHNEDDICK_RING,
+    invaderXim.item.ORVAIL_RING,
 }
 
 mission.sections =
@@ -35,7 +35,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.CEIZAK_BATTLEGROUNDS] =
+        [invaderXim.zone.CEIZAK_BATTLEGROUNDS] =
         {
             onZoneIn = function(player, prevZone)
                 if
@@ -64,16 +64,16 @@ mission.sections =
             {
                 [30] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 2)
-                    player:delKeyItem(xi.ki.PRISTINE_HAIR_RIBBON)
-                    player:messageSpecial(ceizakID.text.KEYITEM_LOST, xi.ki.PRISTINE_HAIR_RIBBON)
-                    npcUtil.giveKeyItem(player, xi.ki.ARCIELAS_SKIRT)
+                    player:delKeyItem(invaderXim.ki.PRISTINE_HAIR_RIBBON)
+                    player:messageSpecial(ceizakID.text.KEYITEM_LOST, invaderXim.ki.PRISTINE_HAIR_RIBBON)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.ARCIELAS_SKIRT)
 
-                    player:setPos(5.54, 0.42, -6.55, 162, xi.zone.LEAFALLIA)
+                    player:setPos(5.54, 0.42, -6.55, 162, invaderXim.zone.LEAFALLIA)
                 end,
             },
         },
 
-        [xi.zone.LEAFALLIA] =
+        [invaderXim.zone.LEAFALLIA] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'Status') == 2 then
@@ -94,12 +94,12 @@ mission.sections =
             {
                 [13] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 3)
-                    player:setPos(427.93, 0.555, 178.2, 192, xi.zone.CEIZAK_BATTLEGROUNDS)
+                    player:setPos(427.93, 0.555, 178.2, 192, invaderXim.zone.CEIZAK_BATTLEGROUNDS)
                 end,
             },
         },
 
-        [xi.zone.EASTERN_ADOULIN] =
+        [invaderXim.zone.EASTERN_ADOULIN] =
         {
             ['Ploh_Trishbahk'] =
             {
@@ -134,7 +134,7 @@ mission.sections =
             {
                 [1555] = function(player, csid, option, npc)
                     if option >= 1 and option <= 12 then
-                        if npcUtil.giveItem(player, { rewardItems[option], xi.item.COUNCILORS_GARB, xi.item.COUNCILORS_CUFFS }) then
+                        if npcUtil.giveItem(player, { rewardItems[option], invaderXim.item.COUNCILORS_GARB, invaderXim.item.COUNCILORS_CUFFS }) then
                             -- NOTE: This mission is not completed here.  Since we started the Status for this mission at 1, reset
                             -- to 0 to signal that it has been completed and avoid 'forever' charVars
 

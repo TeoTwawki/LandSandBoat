@@ -1,5 +1,5 @@
 -----------------------------------
--- xi.effect.STRIKING_FLOURISH
+-- invaderXim.effect.STRIKING_FLOURISH
 -----------------------------------
 ---@type TEffect
 local effectObject = {}

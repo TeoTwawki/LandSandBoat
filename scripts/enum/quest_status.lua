@@ -1,7 +1,7 @@
 xi = xi or {}
 
----@enum xi.questStatus
-xi.questStatus =
+---@enum invaderXim.questStatus
+invaderXim.questStatus =
 {
     QUEST_AVAILABLE = 0,
     QUEST_ACCEPTED  = 1,

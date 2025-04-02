@@ -12,18 +12,18 @@
 -- TODO: Add additional section to complete mission that aligns with Apocalypse Nigh
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.DAWN)
+local mission = Mission:new(invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.DAWN)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.COP, xi.mission.id.cop.THE_LAST_VERSE },
+    nextMission = { invaderXim.mission.log_id.COP, invaderXim.mission.id.cop.THE_LAST_VERSE },
 }
 
 local ringItems =
 {
-    xi.item.RAJAS_RING,
-    xi.item.SATTVA_RING,
-    xi.item.TAMAS_RING,
+    invaderXim.item.RAJAS_RING,
+    invaderXim.item.SATTVA_RING,
+    invaderXim.item.TAMAS_RING,
 }
 
 local ringOnEventUpdate = function(player, csid, option, npc)
@@ -59,7 +59,7 @@ mission.sections =
             return currentMission >= mission.missionId
         end,
 
-        [xi.zone.THE_GARDEN_OF_RUHMET] =
+        [invaderXim.zone.THE_GARDEN_OF_RUHMET] =
         {
             ['_0zy'] =
             {
@@ -79,7 +79,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.EMPYREAL_PARADOX] =
+        [invaderXim.zone.EMPYREAL_PARADOX] =
         {
             onZoneIn = function(player, prevZone)
                 local missionStatus = mission:getVar(player, 'Status')
@@ -107,22 +107,22 @@ mission.sections =
                 end,
 
                 [3] = function(player, csid, option, npc)
-                    npcUtil.giveKeyItem(player, xi.ki.TEAR_OF_ALTANA)
+                    npcUtil.giveKeyItem(player, invaderXim.ki.TEAR_OF_ALTANA)
                     mission:setVar(player, 'Timer', 1, JstMidnight())
                     mission:setVar(player, 'Option', 31)
                     mission:setVar(player, 'Status', 4)
-                    player:setPos(0.18, -10, -470.43, 63, xi.zone.ALTAIEU)
+                    player:setPos(0.18, -10, -470.43, 63, invaderXim.zone.ALTAIEU)
                 end,
 
                 [6] = function(player, csid, option, npc)
                     mission:setVar(player, 'Status', 3)
-                    player:setPos(540, 0, -514, 63, xi.zone.EMPYREAL_PARADOX)
+                    player:setPos(540, 0, -514, 63, invaderXim.zone.EMPYREAL_PARADOX)
                 end,
 
                 [32001] = function(player, csid, option, npc)
                     if
                         mission:getVar(player, 'Status') == 1 and
-                        player:getLocalVar('battlefieldWin') == xi.battlefield.id.DAWN
+                        player:getLocalVar('battlefieldWin') == invaderXim.battlefield.id.DAWN
                     then
                         mission:setVar(player, 'Status', 2)
                     end
@@ -130,7 +130,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.RULUDE_GARDENS] =
+        [invaderXim.zone.RULUDE_GARDENS] =
         {
             onTriggerAreaEnter =
             {
@@ -152,7 +152,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['_6s1'] =
             {
@@ -172,7 +172,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.TAVNAZIAN_SAFEHOLD] =
+        [invaderXim.zone.TAVNAZIAN_SAFEHOLD] =
         {
             ['_0qa'] =
             {
@@ -191,7 +191,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.LUFAISE_MEADOWS] =
+        [invaderXim.zone.LUFAISE_MEADOWS] =
         {
             onTriggerAreaEnter =
             {
@@ -205,13 +205,13 @@ mission.sections =
             onEventFinish =
             {
                 [116] = function(player, csid, option, npc)
-                    player:addTitle(xi.title.BANISHER_OF_EMPTINESS)
+                    player:addTitle(invaderXim.title.BANISHER_OF_EMPTINESS)
                     mission:setVar(player, 'Status', 8)
                 end,
             },
         },
 
-        [xi.zone.NORG] =
+        [invaderXim.zone.NORG] =
         {
             onEventFinish =
             {
@@ -230,7 +230,7 @@ mission.sections =
                 utils.mask.getBit(vars.Option, 0)
         end,
 
-        [xi.zone.SOUTHERN_SAN_DORIA] =
+        [invaderXim.zone.SOUTHERN_SAN_DORIA] =
         {
             onTriggerAreaEnter =
             {
@@ -262,7 +262,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.ULEGUERAND_RANGE] =
+        [invaderXim.zone.ULEGUERAND_RANGE] =
         {
             onZoneIn = function(player, prevZone)
                 if mission:getVar(player, 'LProg') == 1 then
@@ -288,7 +288,7 @@ mission.sections =
                 (utils.mask.getBit(vars.Option, 1) or vars.coloredDropId > 0)
         end,
 
-        [xi.zone.PORT_WINDURST] =
+        [invaderXim.zone.PORT_WINDURST] =
         {
             ['Chipmy-Popmy'] =
             {
@@ -307,7 +307,7 @@ mission.sections =
             },
         },
 
-        [xi.zone.BIBIKI_BAY] =
+        [invaderXim.zone.BIBIKI_BAY] =
         {
             ['Warmachine'] =
             {
@@ -328,7 +328,7 @@ mission.sections =
             onEventFinish =
             {
                 [43] = function(player, csid, option, npc)
-                    local coloredDropId = xi.item.RED_DROP + math.random(0, 7)
+                    local coloredDropId = invaderXim.item.RED_DROP + math.random(0, 7)
 
                     if not npcUtil.giveItem(player, coloredDropId) then
                         mission:setVar(player, 'coloredDropId', coloredDropId)
@@ -349,7 +349,7 @@ mission.sections =
                 utils.mask.getBit(vars.Option, 2)
         end,
 
-        [xi.zone.MHAURA] =
+        [invaderXim.zone.MHAURA] =
         {
             onZoneIn = function(player, prevZone)
                 return 322
@@ -373,7 +373,7 @@ mission.sections =
                 utils.mask.getBit(vars.Option, 3)
         end,
 
-        [xi.zone.OLDTON_MOVALPOLOS] =
+        [invaderXim.zone.OLDTON_MOVALPOLOS] =
         {
             onZoneIn = function(player, prevZone)
                 return 57
@@ -397,7 +397,7 @@ mission.sections =
                 utils.mask.getBit(vars.Option, 4)
         end,
 
-        [xi.zone.METALWORKS] =
+        [invaderXim.zone.METALWORKS] =
         {
             ['Cid'] = mission:progressEvent(897),
 
@@ -419,7 +419,7 @@ mission.sections =
                 vars.Timer == 0
         end,
 
-        [xi.zone.UPPER_JEUNO] =
+        [invaderXim.zone.UPPER_JEUNO] =
         {
             ['_6s1'] =
             {

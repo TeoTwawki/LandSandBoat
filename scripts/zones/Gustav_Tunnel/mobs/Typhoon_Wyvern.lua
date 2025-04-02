@@ -4,7 +4,7 @@
 -- Note: Place holder Ungur
 -- TODO: Ungur PHs should be in a spawn group with only 1 up at a time
 -----------------------------------
-local ID = zones[xi.zone.GUSTAV_TUNNEL]
+local ID = zones[invaderXim.zone.GUSTAV_TUNNEL]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -70,11 +70,11 @@ local ungurPHTable =
 }
 
 entity.onMobDeath = function(mob, player, optParams)
-    xi.regime.checkRegime(player, mob, 769, 2, xi.regime.type.GROUNDS)
+    invaderXim.regime.checkRegime(player, mob, 769, 2, invaderXim.regime.type.GROUNDS)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, ungurPHTable, 5, 7200, { spawnPoints = ungurSpawnPoints }) -- 2 hours
+    invaderXim.mob.phOnDespawn(mob, ungurPHTable, 5, 7200, { spawnPoints = ungurSpawnPoints }) -- 2 hours
 end
 
 return entity

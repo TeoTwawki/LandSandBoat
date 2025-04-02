@@ -3,7 +3,7 @@
 --  Mob: Molech
 -- Note: PH for Magnotaur
 -----------------------------------
-local ID = zones[xi.zone.ULEGUERAND_RANGE]
+local ID = zones[invaderXim.zone.ULEGUERAND_RANGE]
 -----------------------------------
 ---@type TMobEntity
 local entity = {}
@@ -26,7 +26,7 @@ end
 entity.onMobDespawn = function(mob)
     local params = { }
     params.spawnPoints = magnotaurSpawnPoints
-    xi.mob.phOnDespawn(mob, magnotaurPHTable, 10, 3600, params) -- 1 hour
+    invaderXim.mob.phOnDespawn(mob, magnotaurPHTable, 10, 3600, params) -- 1 hour
 end
 
 return entity

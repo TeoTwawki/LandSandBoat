@@ -6,11 +6,11 @@
 -- Naja Salaheem : !pos 22.700 -8.804 -45.591 50
 -----------------------------------
 
-local mission = Mission:new(xi.mission.log_id.TOAU, xi.mission.id.toau.PRESIDENT_SALAHEEM)
+local mission = Mission:new(invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.PRESIDENT_SALAHEEM)
 
 mission.reward =
 {
-    nextMission = { xi.mission.log_id.TOAU, xi.mission.id.toau.KNIGHT_OF_GOLD },
+    nextMission = { invaderXim.mission.log_id.TOAU, invaderXim.mission.id.toau.KNIGHT_OF_GOLD },
 }
 
 mission.sections =
@@ -20,7 +20,7 @@ mission.sections =
             return currentMission == mission.missionId
         end,
 
-        [xi.zone.AHT_URHGAN_WHITEGATE] =
+        [invaderXim.zone.AHT_URHGAN_WHITEGATE] =
         {
             ['Naja_Salaheem'] =
             {
@@ -32,7 +32,7 @@ mission.sections =
                     elseif missionStatus == 2 and not mission:getMustZone(player) then
                         return mission:progressEvent(3020, { text_table = 0 })
                     else
-                        return mission:event(3003, { [0] = xi.besieged.getMercenaryRank(player), text_table = 0 }) -- Default Dialog.
+                        return mission:event(3003, { [0] = invaderXim.besieged.getMercenaryRank(player), text_table = 0 }) -- Default Dialog.
                     end
                 end,
             },

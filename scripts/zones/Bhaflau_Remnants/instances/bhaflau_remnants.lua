@@ -1,7 +1,7 @@
 -----------------------------------
 -- Salvage : Bhaflau Remnants
 -----------------------------------
-local ID = zones[xi.zone.BHAFLAU_REMNANTS]
+local ID = zones[invaderXim.zone.BHAFLAU_REMNANTS]
 -----------------------------------
 
 local mobTable =
@@ -92,49 +92,49 @@ local instanceObject = {}
 
 -- Requirements for the first player registering the instance
 instanceObject.registryRequirements = function(player)
-    return player:getMainLvl() >= 65 and player:hasKeyItem(xi.ki.REMNANTS_PERMIT)
+    return player:getMainLvl() >= 65 and player:hasKeyItem(invaderXim.ki.REMNANTS_PERMIT)
 end
 
 -- Requirements for further players entering an already-registered instance
 instanceObject.entryRequirements = function(player)
-    return player:getMainLvl() >= 65 and player:hasKeyItem(xi.ki.REMNANTS_PERMIT)
+    return player:getMainLvl() >= 65 and player:hasKeyItem(invaderXim.ki.REMNANTS_PERMIT)
 end
 
 -- Called on the instance once it is created and ready
 instanceObject.onInstanceCreated = function(instance)
     instance:setStage(1)
     instance:setProgress(1)
-    xi.salvage.unsealDoors(instance, ID.npc.DOOR_1_0)
+    invaderXim.salvage.unsealDoors(instance, ID.npc.DOOR_1_0)
 end
 
 -- Once the instance is ready inform the requester that it's ready
 instanceObject.onInstanceCreatedCallback = function(player, instance)
-    xi.instance.onInstanceCreatedCallback(player, instance)
+    invaderXim.instance.onInstanceCreatedCallback(player, instance)
 end
 
 -- When the player zones into the instance
 instanceObject.afterInstanceRegister = function(player)
-    for i = xi.slot.MAIN, xi.slot.BACK do
+    for i = invaderXim.slot.MAIN, invaderXim.slot.BACK do
         player:unequipItem(i)
     end
 
-    player:addStatusEffectEx(xi.effect.ENCUMBRANCE_I, xi.effect.ENCUMBRANCE_I, 0xFFFF, 0, 6000)
-    player:addStatusEffectEx(xi.effect.OBLIVISCENCE, xi.effect.OBLIVISCENCE, 1, 0, 6000)
-    player:addStatusEffectEx(xi.effect.OMERTA, xi.effect.OMERTA, 0x3F, 0, 6000)
-    player:addStatusEffectEx(xi.effect.IMPAIRMENT, xi.effect.IMPAIRMENT, 3, 0, 6000)
-    player:addStatusEffectEx(xi.effect.DEBILITATION, xi.effect.DEBILITATION, 0x1FF, 0, 6000)
-    player:addTempItem(xi.item.CAGE_OF_B_REMNANTS_FIREFLIES)
-    player:delKeyItem(xi.ki.REMNANTS_PERMIT)
+    player:addStatusEffectEx(invaderXim.effect.ENCUMBRANCE_I, invaderXim.effect.ENCUMBRANCE_I, 0xFFFF, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.OBLIVISCENCE, invaderXim.effect.OBLIVISCENCE, 1, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.OMERTA, invaderXim.effect.OMERTA, 0x3F, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.IMPAIRMENT, invaderXim.effect.IMPAIRMENT, 3, 0, 6000)
+    player:addStatusEffectEx(invaderXim.effect.DEBILITATION, invaderXim.effect.DEBILITATION, 0x1FF, 0, 6000)
+    player:addTempItem(invaderXim.item.CAGE_OF_B_REMNANTS_FIREFLIES)
+    player:delKeyItem(invaderXim.ki.REMNANTS_PERMIT)
 end
 
 -- Instance 'tick'
 instanceObject.onInstanceTimeUpdate = function(instance, elapsed)
-    xi.instance.updateInstanceTime(instance, elapsed, ID.text)
+    invaderXim.instance.updateInstanceTime(instance, elapsed, ID.text)
 end
 
 -- On fail
 instanceObject.onInstanceFailure = function(instance)
-    xi.salvage.onFailure(instance)
+    invaderXim.salvage.onFailure(instance)
 end
 
 instanceObject.onTriggerAreaEnter = function(player, triggerArea)
@@ -191,14 +191,14 @@ instanceObject.onEventUpdate = function(player, csid, option, npc)
             end
 
             if csid ~= 4 then
-                xi.salvage.onTransportUpdate(player, instance)
+                invaderXim.salvage.onTransportUpdate(player, instance)
             end
 
             if csid == 200 then
                 instance:setStage(2)
                 instance:setProgress(0)
-                xi.salvage.unsealDoors(instance, ID.npc.DOOR_2_EAST_ENTRANCE)
-                xi.salvage.unsealDoors(instance, ID.npc.DOOR_2_WEST_ENTRANCE)
+                invaderXim.salvage.unsealDoors(instance, ID.npc.DOOR_2_EAST_ENTRANCE)
+                invaderXim.salvage.unsealDoors(instance, ID.npc.DOOR_2_WEST_ENTRANCE)
             elseif csid >= 201 and csid <= 204 then
                 instance:setStage(3)
                 instance:setProgress(csid - 200)
@@ -209,15 +209,15 @@ instanceObject.onEventUpdate = function(player, csid, option, npc)
                     ID.npc.DOOR_3_NE_ENTRANCE,
                     ID.npc.DOOR_3_SE_ENTRANCE
                 }
-                xi.salvage.unsealDoors(instance, doors)
+                invaderXim.salvage.unsealDoors(instance, doors)
             elseif csid >= 205 and csid <= 206 then
                 instance:setStage(4)
                 instance:setProgress(csid - 204)
-                xi.salvage.unsealDoors(instance, { ID.npc.DOOR_4_EAST_EXIT, ID.npc.DOOR_4_WEST_EXIT })
+                invaderXim.salvage.unsealDoors(instance, { ID.npc.DOOR_4_EAST_IXIMT, ID.npc.DOOR_4_WEST_IXIMT })
             elseif csid == 207 then
                 instance:setStage(5)
                 instance:setProgress(1)
-                xi.salvage.unsealDoors(instance, ID.npc.DOOR_5_1)
+                invaderXim.salvage.unsealDoors(instance, ID.npc.DOOR_5_1)
                 instance:setLocalVar('exitPoint', math.random(9, 10))
             end
         end
@@ -229,7 +229,7 @@ instanceObject.onEventFinish = function(player, csid, option, npc)
 
     if instance then
         if csid == 1 then
-            player:setPos(0, 0, 0, 0, xi.zone.ALZADAAL_UNDERSEA_RUINS)
+            player:setPos(0, 0, 0, 0, invaderXim.zone.ALZADAAL_UNDERSEA_RUINS)
         elseif csid == 101 then
             player:messageSpecial(ID.text.TIME_TO_COMPLETE, 100)
             player:messageSpecial(ID.text.SALVAGE_START, 1)
@@ -242,11 +242,11 @@ instanceObject.onEventFinish = function(player, csid, option, npc)
 
         if option == 1 and instance:getLocalVar('transportUser') == player:getID() then
             if csid >= 200 and csid <= 207 then
-                xi.salvage.teleportGroup(player)
+                invaderXim.salvage.teleportGroup(player)
                 local group = mobTable[instance:getStage()][instance:getProgress()].STAGE_START
 
                 if group then
-                    xi.salvage.spawnGroup(instance, group)
+                    invaderXim.salvage.spawnGroup(instance, group)
                 end
             end
         end

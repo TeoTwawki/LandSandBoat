@@ -1,7 +1,7 @@
 -----------------------------------
 -- Zone: Vunkerl_Inlet_[S] (83)
 -----------------------------------
-local ID = zones[xi.zone.VUNKERL_INLET_S]
+local ID = zones[invaderXim.zone.VUNKERL_INLET_S]
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
@@ -31,11 +31,11 @@ zoneObject.onGameHour = function(zone)
 
     if npc ~= nil then
         if VanadielHour() == 16 then
-            npc:setStatus(xi.status.DISAPPEAR)
+            npc:setStatus(invaderXim.status.DISAPPEAR)
         end
 
         if VanadielHour() == 6 then
-            npc:setStatus(xi.status.NORMAL)
+            npc:setStatus(invaderXim.status.NORMAL)
         end
     end
 end

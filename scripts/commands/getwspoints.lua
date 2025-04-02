@@ -43,8 +43,8 @@ commandObj.onTrigger = function(player, equipSlot, name)
         player:printToPlayer('No equip slot specified, defaulting to mainhand weapon.')
     end
 
-    local equip = xi.slot[string.upper(equipSlot)]
-    if not equip or equip > xi.slot.RANGED then
+    local equip = invaderXim.slot[string.upper(equipSlot)]
+    if not equip or equip > invaderXim.slot.RANGED then
         error(player, 'Invalid equip slot specified.')
         return
     end

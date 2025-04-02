@@ -7,8 +7,8 @@ require('scripts/quests/i_can_hear_a_rainbow')
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    xi.conquest.setRegionalConquestOverseers(zone:getRegionID())
-    xi.voidwalker.zoneOnInit(zone)
+    invaderXim.conquest.setRegionalConquestOverseers(zone:getRegionID())
+    invaderXim.voidwalker.zoneOnInit(zone)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -18,7 +18,7 @@ zoneObject.onZoneIn = function(player, prevZone)
     local unbridledPassionCS = player:getCharVar('unbridledPassion')
     local pos = player:getPos()
 
-    if prevZone == xi.zone.DYNAMIS_XARCABARD then -- warp player to a correct position after dynamis
+    if prevZone == invaderXim.zone.DYNAMIS_XARCABARD then -- warp player to a correct position after dynamis
         player:setPos(569.312, -0.098, -270.158, 90)
     end
 
@@ -29,9 +29,9 @@ zoneObject.onZoneIn = function(player, prevZone)
     end
 
     if
-        not player:hasKeyItem(xi.ki.VIAL_OF_SHROUDED_SAND) and
+        not player:hasKeyItem(invaderXim.ki.VIAL_OF_SHROUDED_SAND) and
         player:getRank(player:getNation()) >= 6 and
-        player:getMainLvl() >= xi.settings.main.DYNA_LEVEL_MIN and
+        player:getMainLvl() >= invaderXim.settings.main.DYNA_LEVEL_MIN and
         not utils.mask.getBit(dynamisMask, 0)
     then
         cs = 13
@@ -39,9 +39,9 @@ zoneObject.onZoneIn = function(player, prevZone)
         cs = 9
     elseif unbridledPassionCS == 3 then
         if
-            math.abs(pos.x - xi.teleport.destination[xi.teleport.id.VAHZL][1]) < 0.1 and
-            math.abs(pos.y - xi.teleport.destination[xi.teleport.id.VAHZL][2]) < 0.1 and
-            math.abs(pos.z - xi.teleport.destination[xi.teleport.id.VAHZL][3]) < 0.1
+            math.abs(pos.x - invaderXim.teleport.destination[invaderXim.teleport.id.VAHZL][1]) < 0.1 and
+            math.abs(pos.y - invaderXim.teleport.destination[invaderXim.teleport.id.VAHZL][2]) < 0.1 and
+            math.abs(pos.z - invaderXim.teleport.destination[invaderXim.teleport.id.VAHZL][3]) < 0.1
         then
             cs = 5
         else
@@ -53,7 +53,7 @@ zoneObject.onZoneIn = function(player, prevZone)
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
-    xi.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
+    invaderXim.conquest.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)

@@ -2,22 +2,22 @@
 -- Area: Cloister of Frost
 -- BCNM: Class Reunion
 -----------------------------------
-local cloisterOfFrostID = zones[xi.zone.CLOISTER_OF_FROST]
+local cloisterOfFrostID = zones[invaderXim.zone.CLOISTER_OF_FROST]
 -----------------------------------
 
 local content = BattlefieldQuest:new({
-    zoneId           = xi.zone.CLOISTER_OF_FROST,
-    battlefieldId    = xi.battlefield.id.CLASS_REUNION,
+    zoneId           = invaderXim.zone.CLOISTER_OF_FROST,
+    battlefieldId    = invaderXim.battlefield.id.CLASS_REUNION,
     canLoseExp       = false,
     maxPlayers       = 6,
     timeLimit        = utils.minutes(30),
     index            = 1,
     entryNpc         = 'IP_Entrance',
     exitNpc          = 'Ice_Protocrystal',
-    requiredItems    = { xi.item.ICE_PENDULUM },
+    requiredItems    = { invaderXim.item.ICE_PENDULUM },
 
-    questArea     = xi.questLog.WINDURST,
-    quest         = xi.quest.id.windurst.CLASS_REUNION,
+    questArea     = invaderXim.questLog.WINDURST,
+    quest         = invaderXim.quest.id.windurst.CLASS_REUNION,
     requiredVar   = 'ClassReunionProgress',
     requiredValue = 5,
 })
@@ -62,7 +62,7 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
-            battlefield:setStatus(xi.battlefield.status.WON)
+            battlefield:setStatus(invaderXim.battlefield.status.WON)
         end,
     },
 }

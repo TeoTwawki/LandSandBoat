@@ -3,7 +3,7 @@
 -- Description: Calls help from additional Imp Bandsman and grants TP
 -- Used only by the main Imp Bandsman in Call to Arms ISNM
 -----------------------------------
-local ID = zones[xi.zone.TALACCA_COVE]
+local ID = zones[invaderXim.zone.TALACCA_COVE]
 -----------------------------------
 ---@type TMobSkill
 local mobskillObject = {}
@@ -21,7 +21,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local mobID = mob:getID()
     local player = mob:getTarget()
 
-    skill:setMsg(xi.msg.basic.NONE)
+    skill:setMsg(invaderXim.msg.basic.NONE)
 
     mob:timer(4000, function(mobArg)
         mobArg:addTP(1000)
